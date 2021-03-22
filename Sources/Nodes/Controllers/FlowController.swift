@@ -54,6 +54,9 @@ public final class FlowController {
             return
         }
         flows.append(flow)
+        #if DEBUG
+        DebugInformation.FlowControllerDidAttachNotification(flowController: self, flow: flow).post()
+        #endif
         flow.start()
     }
 

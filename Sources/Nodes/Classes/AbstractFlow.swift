@@ -112,6 +112,9 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         guard !_context.isActive
         else { return }
         _context.activate()
+        #if DEBUG
+        DebugInformation.FlowDidStartNotification(flow: self, viewController: viewController as AnyObject).post()
+        #endif
         didStart()
     }
 
@@ -123,6 +126,9 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         guard _context.isActive
         else { return }
         _context.deactivate()
+        #if DEBUG
+        DebugInformation.FlowDidEndNotification(flow: self).post()
+        #endif
     }
 
     /// Appends the given `Flow` instance to the `subFlows` array and calls its `start` method.
@@ -132,6 +138,9 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// - Parameter subFlow: The `Flow` instance to attach and start.
     public final func attach(starting subFlow: Flow) {
         flowController.attach(starting: subFlow)
+        #if DEBUG
+        DebugInformation.FlowDidAttachNotification(flow: self, subFlow: subFlow).post()
+        #endif
     }
 
     /// Calls the end method of the given `Flow` instance and removes it from the `subFlows` array.
