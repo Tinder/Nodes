@@ -102,7 +102,7 @@ extension UIViewController: ViewControllable {
 
     public func uncontain(_ viewController: ViewControllable) {
         let subview: UIView = viewController._asUIViewController().view
-        guard subview.superview == view
+        guard subview.isDescendant(of: view)
         else { return }
         viewController.willMove(toParent: nil)
         subview.removeFromSuperview()
