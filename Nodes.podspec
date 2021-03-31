@@ -7,10 +7,10 @@ Pod::Spec.new do |s|
   s.author   = { 'Tinder' => 'info@gotinder.com' }
   s.source   = { :git => 'https://github.com/TinderApp/Nodes.git', :tag => s.version }
 
-  s.macos.deployment_target   = '10.13'
-  s.ios.deployment_target     = '11.0'
-  s.tvos.deployment_target    = '11.0'
-  s.watchos.deployment_target = '5.0'
+  s.macos.deployment_target   = `make get-deployment-target platform=macos`
+  s.ios.deployment_target     = `make get-deployment-target platform=ios`
+  s.tvos.deployment_target    = `make get-deployment-target platform=tvos`
+  s.watchos.deployment_target = `make get-deployment-target platform=watchos`
 
   s.swift_version = '5.2', '5.3'
   s.source_files  = 'Sources/Nodes/**/*'

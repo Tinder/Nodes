@@ -4,6 +4,12 @@ import PackageDescription
 
 let package = Package(
     name: "Nodes",
+    platforms: [
+        .macOS(.v10_13),
+        .iOS(.v11),
+        .tvOS(.v11),
+        .watchOS(.v5),
+    ],
     products: [
         .library(
             name: "NodesTemplates",
