@@ -3,7 +3,7 @@
 //  Copyright © 2020 Tinder. All rights reserved.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 
 import UIKit
 
@@ -13,11 +13,16 @@ extension UIViewController {
 
         public enum Behavior {
 
-            case sheet, overlay, cover, custom
+            @available(macCatalyst 13.0, iOS 13.0, *)
+            @available(tvOS, unavailable)
+            case sheet
+
+            case overlay, cover, custom
         }
 
         /// Partially cover the screen with or without interactive dismissal.
-        @available(iOS 13.0, *)
+        @available(macCatalyst 13.0, iOS 13.0, *)
+        @available(tvOS, unavailable)
         public static func sheet(
             isInteractiveDismissalEnabled: Bool = false,
             capturesStatusBarAppearance: Bool = false,
@@ -114,11 +119,15 @@ extension UIViewController {
     @discardableResult
     public func withModalStyle(_ modalStyle: ModalStyle) -> Self {
         modalPresentationStyle = modalStyle.presentationStyle
-        if #available(iOS 13.0, *) {
+        if #available(macCatalyst 13.0, iOS 13.0, tvOS 13.0, *) {
             isModalInPresentation = !modalStyle.isInteractiveDismissalEnabled
         }
         transitioningDelegate = modalStyle.transitioningDelegate
-        modalPresentationCapturesStatusBarAppearance = modalStyle.capturesStatusBarAppearance
+        if #available(macCatalyst 13.0, *) {
+            #if !os(tvOS)
+            modalPresentationCapturesStatusBarAppearance = modalStyle.capturesStatusBarAppearance
+            #endif
+        }
         if let adaptivePresentationDelegate = modalStyle.adaptivePresentationDelegate {
             presentationController?.delegate = adaptivePresentationDelegate
         }

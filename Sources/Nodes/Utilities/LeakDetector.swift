@@ -5,7 +5,7 @@
 
 import Foundation
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 #endif
 
@@ -20,7 +20,7 @@ public enum LeakDetector {
     public static func detect(_ object: AnyObject) {
         let callStackSymbols: [String]? = self.callStackSymbols()
         let timeInterval: TimeInterval
-        #if canImport(UIKit)
+        #if canImport(UIKit) && !os(watchOS)
         timeInterval = object is UIViewController ? 5 : 1
         #else
         timeInterval = 1

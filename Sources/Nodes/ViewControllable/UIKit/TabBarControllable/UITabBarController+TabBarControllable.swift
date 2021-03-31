@@ -3,7 +3,7 @@
 //  Copyright © 2020 Tinder. All rights reserved.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 
 import UIKit
 
