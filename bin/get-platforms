@@ -1,0 +1,23 @@
+#!/usr/bin/env swift
+
+import Foundation
+
+let task: Process = .init()
+let pipe: Pipe = .init()
+
+task.standardOutput = pipe
+task.launchPath = "/usr/bin/env"
+task.arguments = ["swift", "package", "dump-package"]
+task.launch()
+task.waitUntilExit()
+
+let data: Data = pipe.fileHandleForReading.readDataToEndOfFile()
+
+guard let object = try? JSONSerialization.jsonObject(with: data),
+      let json = object as? [String: Any],
+      let platforms = json["platforms"] as? [[String: Any]]
+else { exit(1) }
+
+platforms
+    .compactMap { $0["platformName"] as? String }
+    .forEach { print($0) }
