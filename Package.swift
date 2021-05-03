@@ -12,23 +12,23 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "NodesTemplates",
-            targets: ["NodesTemplates"]),
-        .library(
             name: "Nodes",
             targets: ["Nodes"]),
+        .library(
+            name: "XcodeTemplateGenerator",
+            targets: ["XcodeTemplateGeneratorLibrary"]),
     ],
     targets: [
         .target(
-            name: "NodesTemplates",
+            name: "Nodes",
+            dependencies: []),
+        .target(
+            name: "XcodeTemplateGeneratorLibrary",
             dependencies: [],
             resources: [
                 .copy("Resources/Icons"),
                 .copy("Resources/Templates"),
             ]),
-        .target(
-            name: "Nodes",
-            dependencies: []),
         .testTarget(
             name: "NodesTests",
             dependencies: ["Nodes"]),
