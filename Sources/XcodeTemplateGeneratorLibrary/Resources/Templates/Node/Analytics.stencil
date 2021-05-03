@@ -4,35 +4,14 @@ import {{ import }}{% endfor %}
 
 /*
  PURPOSE:
- A protocol used to inject tracking capability.
+ The interface for Analytics tracked by this Node.
  */
-internal protocol {{ node_name }}AnalyticsProvider: AnyObject {}
-
-/*
- PURPOSE:
- The internal interface for Analytics to be performed by the Context and/or View.
- */
-internal protocol {{ node_name }}Analytics: Worker {}
+internal protocol {{ node_name }}Analytics: AnyObject {}
 
 /*
  PURPOSE:
  Concrete implementation of analytics for this Node.
  */
-internal final class {{ node_name }}AnalyticsImp: AbstractWorker<{{ cancellable_type }}> {
-
-//    /// The analytics provider.
-//    private let provider: {{ node_name }}AnalyticsProvider
-//
-//    /// The initializer.
-//    internal init(provider: {{ node_name }}AnalyticsProvider) {
-//        self.provider = provider
-//    }
-
-    /// Implement logic to execute when the Worker is started.
-    internal override func didStart() {}
-
-    /// Implement logic to execute when the Worker has stopped.
-    internal override func willStop() {}
-}
+internal final class {{ node_name }}AnalyticsImp {}
 
 extension {{ node_name }}AnalyticsImp: {{ node_name }}Analytics {}

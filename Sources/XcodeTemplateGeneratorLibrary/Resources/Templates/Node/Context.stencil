@@ -61,7 +61,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext
         analytics: {{ node_name }}Analytics
     ) {
         self.analytics = analytics
-        super.init(presentable: presentable, workers: workers + [analytics])
+        super.init(presentable: presentable, workers: workers)
         presentable.receiver = self
     }{% else %}
 
@@ -74,7 +74,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext
         analytics: {{ node_name }}Analytics
     ) {
         self.analytics = analytics
-        super.init(workers: workers + [analytics])
+        super.init(workers: workers)
     }{% endif %}
 
     /// Implement logic to execute when the Context becomes active.
@@ -82,6 +82,10 @@ internal final class {{ node_name }}ContextImp: AbstractContext
 
     /// Implement logic to execute when the Context will become inactive.
     override internal func willResignActive() {}
+
+    deinit {
+        LeakDetector.detect(analytics)
+    }
 }
 
 extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}{% if owns_view %}{% if root_node %}
