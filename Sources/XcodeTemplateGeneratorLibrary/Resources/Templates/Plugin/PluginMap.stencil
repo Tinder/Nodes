@@ -73,13 +73,13 @@ internal final class {{ plugin_map_name }}PluginMapComponent: Component
 
 /*
  PURPOSE:
- The type used for the keys in the Plugin Map (can be any `Hashable` type relevant to your feature).
+ The type used for the keys in the Plugin Map (can be any `Hashable` type relevant to the plugins).
  */
 internal typealias {{ plugin_map_name }}PluginMapKeyType = String
 
 /*
  PURPOSE:
- To provide additional state used in determining if the Plugins are enabled (can be any type relevant to your feature).
+ To provide additional state used in determining if the Plugins are enabled (can be any type relevant to the plugins).
  */
 internal typealias {{ plugin_map_name }}PluginMapStateType = Void
 
@@ -102,7 +102,7 @@ internal typealias {{ plugin_map_name }}PluginMapType = PluginMap
 
 /*
  PURPOSE:
- Concrete implementation of the Plugin Map to build a collection of (optional) objects.
+ Concrete implementation of the Plugin Map to construct the Plugin collection.
  */
 internal final class {{ plugin_map_name }}PluginMapImp:
     {{ plugin_map_name }}PluginMapType, {{ plugin_map_name }}PluginMap {

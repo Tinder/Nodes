@@ -58,7 +58,7 @@ internal final class {{ plugin_name }}PluginComponent: Component
 
 /*
  PURPOSE:
- To provide additional state used in determining if the Plugin is enabled (can be any type relevant to your feature).
+ To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the plugin).
  */
 internal typealias {{ plugin_name }}PluginStateType = Void
 
@@ -79,7 +79,7 @@ internal typealias {{ plugin_name }}PluginType = Plugin
 
 /*
  PURPOSE:
- Concrete implementation of the Plugin to optionally build objects.
+ Concrete implementation of the Plugin.
  */
 internal final class {{ plugin_name }}PluginImp:
     {{ plugin_name }}PluginType, {{ plugin_name }}Plugin {
@@ -96,13 +96,13 @@ internal final class {{ plugin_name }}PluginImp:
         false
     }
 
-    /// The factory method in which the resulting object is initialized.
+    /// The factory method in which the instance is initialized.
     /// - Parameter component: The component instance
-    /// - Returns: The built instance{% if object_type %}
+    /// - Returns: The initialized instance{% if object_type %}
     override internal func build(
         component: {{ plugin_name }}PluginComponent
     ) -> {{ object_type }} {
-        // TODO: Initialize resulting object
+        // TODO: Initialize instance
     }{% else %}
     override internal func build(
         component: {{ plugin_name }}PluginComponent
