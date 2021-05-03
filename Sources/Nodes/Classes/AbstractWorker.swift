@@ -1,6 +1,8 @@
 //
+//  AbstractWorker.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 /// @mockable
@@ -16,13 +18,10 @@ open class AbstractWorker<CancellableType: Cancellable>: Worker {
 
     public var cancellables: Set<CancellableType> = .init()
 
+    // swiftlint:disable:next redundant_type_annotation
     public private(set) var isWorking: Bool = false
 
     public init() {}
-
-    deinit {
-        stop()
-    }
 
     open func didStart() {}
     open func willStop() {}
@@ -44,5 +43,9 @@ open class AbstractWorker<CancellableType: Cancellable>: Worker {
         }
         cancellables.removeAll()
         isWorking = false
+    }
+
+    deinit {
+        stop()
     }
 }

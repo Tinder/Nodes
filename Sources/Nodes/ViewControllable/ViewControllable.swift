@@ -1,6 +1,8 @@
 //
+//  ViewControllable.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 #if canImport(UIKit) && !os(watchOS)
@@ -12,14 +14,18 @@ public protocol ViewControllable: AnyObject {
     @discardableResult
     func withModalStyle(_ style: UIViewController.ModalStyle) -> Self
 
-    func present(_ viewController: ViewControllable,
-                 withModalStyle modalStyle: UIViewController.ModalStyle,
-                 animated: Bool,
-                 completion: (() -> Void)?)
+    func present(
+        _ viewController: ViewControllable,
+        withModalStyle modalStyle: UIViewController.ModalStyle,
+        animated: Bool,
+        completion: (() -> Void)?
+    )
 
-    func dismiss(_ viewController: ViewControllable,
-                 animated: Bool,
-                 completion: (() -> Void)?)
+    func dismiss(
+        _ viewController: ViewControllable,
+        animated: Bool,
+        completion: (() -> Void)?
+    )
 
     func willMove(toParent viewController: ViewControllable?)
     func didMove(toParent viewController: ViewControllable?)
@@ -30,15 +36,18 @@ public protocol ViewControllable: AnyObject {
     func contain(_ viewController: ViewControllable)
     func contain(_ viewController: ViewControllable, in frame: CGRect)
 
-    func contain(_ viewController: ViewControllable,
-                 in frame: CGRect,
-                 with autoresizingMask: UIView.AutoresizingMask)
+    func contain(
+        _ viewController: ViewControllable,
+        in frame: CGRect,
+        with autoresizingMask: UIView.AutoresizingMask
+    )
 
     func contain(_ viewController: ViewControllable, in view: UIView)
     func contain(_ viewController: ViewControllable, constraints: (_ view: UIView) -> [NSLayoutConstraint])
 
     func uncontain(_ viewController: ViewControllable)
 
+    // swiftlint:disable:next identifier_name
     func _asUIViewController() -> UIViewController
 }
 

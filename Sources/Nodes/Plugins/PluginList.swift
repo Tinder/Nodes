@@ -1,6 +1,8 @@
 //
+//  PluginList.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 open class PluginList<ComponentType, BuildType, StateType> {
@@ -18,12 +20,14 @@ open class PluginList<ComponentType, BuildType, StateType> {
         }
     }
 
+    // swiftlint:disable:next strict_fileprivate
     fileprivate let component: ComponentType
 
     public init(component: ComponentType) {
         self.component = component
     }
 
+    // swiftlint:disable:next unavailable_function
     open func plugins(component: ComponentType) -> [Plugin] {
         fatalError("Method in abstract base class must be overridden")
     }
@@ -64,19 +68,21 @@ extension PluginList where StateType == Void {
     }
 }
 
+// swiftlint:disable:next operator_usage_whitespace
 open class PluginListWithDefault<ComponentType,
                                  BuildType,
                                  StateType>: PluginList<ComponentType, BuildType, StateType> {
 
+    // swiftlint:disable:next unavailable_function
     open func `default`(component: ComponentType, state: StateType) -> BuildType {
         fatalError("Method in abstract base class must be overridden")
     }
 
-    public override func createAll(state: StateType) -> [BuildType] {
+    override public func createAll(state: StateType) -> [BuildType] {
         [`default`(component: component, state: state)] + super.createAll(state: state)
     }
 
-    public override func create(state: StateType) -> BuildType {
+    override public func create(state: StateType) -> BuildType {
         super.create(state: state) ?? `default`(component: component, state: state)
     }
 }

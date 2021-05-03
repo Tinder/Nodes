@@ -1,8 +1,11 @@
 //
+//  AbstractBuilder.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
+// swiftlint:disable:next generic_type_name
 open class AbstractBuilder<ComponentType, BuildType, DynamicBuildDependencyType, DynamicComponentDependencyType> {
 
     private weak var lastComponent: AnyObject?
@@ -13,6 +16,7 @@ open class AbstractBuilder<ComponentType, BuildType, DynamicBuildDependencyType,
         self.componentFactory = componentFactory
     }
 
+    // swiftlint:disable:next unavailable_function
     open func build(
         component: ComponentType,
         dynamicBuildDependency: DynamicBuildDependencyType
@@ -24,8 +28,8 @@ open class AbstractBuilder<ComponentType, BuildType, DynamicBuildDependencyType,
         _ dynamicBuildDependency: DynamicBuildDependencyType,
         _ dynamicComponentDependency: DynamicComponentDependencyType
     ) -> BuildType {
-        let component = componentFactory(dynamicComponentDependency)
-        let newComponent = component as AnyObject
+        let component: ComponentType = componentFactory(dynamicComponentDependency)
+        let newComponent: AnyObject = component as AnyObject
         if newComponent === lastComponent {
             assertionFailure("Component must be a new instance")
         }

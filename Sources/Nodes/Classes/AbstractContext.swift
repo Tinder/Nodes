@@ -1,6 +1,8 @@
 //
+//  AbstractContext.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 public protocol Cancellable: AnyObject, Hashable {
@@ -21,6 +23,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
 
     public var cancellables: Set<CancellableType> = .init()
 
+    // swiftlint:disable:next redundant_type_annotation
     public private(set) var isActive: Bool = false
 
     public var workers: [Worker] {
@@ -31,11 +34,6 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
 
     public init(workers: [Worker]) {
         self.workerController = .init(workers: workers)
-    }
-
-    deinit {
-        deactivate()
-        LeakDetector.detect(workerController)
     }
 
     open func didBecomeActive() {}
@@ -77,10 +75,14 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     public final func withWorkers<T>(ofType type: T.Type, perform: (_ worker: T) throws -> Void) rethrows {
         try workerController.withWorkers(ofType: type, perform: perform)
     }
+
+    deinit {
+        deactivate()
+        LeakDetector.detect(workerController)
+    }
 }
 
-open class AbstractPresentableContext<CancellableType: Cancellable,
-                                      PresentableType>: AbstractContext<CancellableType> {
+open class AbstractPresentableContext<CancellableType: Cancellable, PresentableType>: AbstractContext<CancellableType> {
 
     public let presentable: PresentableType
 

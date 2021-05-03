@@ -1,6 +1,8 @@
 //
+//  LeakDetector.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 import Foundation
@@ -18,6 +20,7 @@ public enum LeakDetector {
                                                     attributes: .concurrent)
 
     public static func detect(_ object: AnyObject) {
+        // swiftlint:disable:next discouraged_optional_collection
         let callStackSymbols: [String]? = self.callStackSymbols()
         let timeInterval: TimeInterval
         #if canImport(UIKit) && !os(watchOS)
@@ -33,6 +36,7 @@ public enum LeakDetector {
         }
     }
 
+    // swiftlint:disable:next discouraged_optional_collection
     private static func callStackSymbols() -> [String]? {
         let environment: [String: String] = ProcessInfo.processInfo.environment
         guard ["1", "true", "TRUE", "yes", "YES"].contains(environment["LEAK_DETECTOR_CAPTURES_CALL_STACK"])

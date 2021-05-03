@@ -1,6 +1,8 @@
 //
+//  Plugin.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 open class Plugin<ComponentType, BuildType, StateType> {
@@ -11,10 +13,12 @@ open class Plugin<ComponentType, BuildType, StateType> {
         self.component = component
     }
 
+    // swiftlint:disable:next unavailable_function
     open func isEnabled(component: ComponentType, state: StateType) -> Bool {
         fatalError("Method in abstract base class must be overridden")
     }
 
+    // swiftlint:disable:next unavailable_function
     open func build(component: ComponentType) -> BuildType {
         fatalError("Method in abstract base class must be overridden")
     }

@@ -1,19 +1,18 @@
 //
+//  FlowController.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 public final class FlowController {
 
     public private(set) var flows: [Flow] = []
 
+    // swiftlint:disable:next redundant_type_annotation
     internal var isFlowLeakDetectionEnabled: Bool = true
 
     public init() {}
-
-    deinit {
-        flows.forEach(detach)
-    }
 
     public func withoutFlowLeakDetection(withoutFlowLeakDetection: (FlowController) -> Void) {
         isFlowLeakDetectionEnabled = false
@@ -68,5 +67,9 @@ public final class FlowController {
 
     public func withFlows<T>(ofType type: T.Type, perform: (_ flow: T) throws -> Void) rethrows {
         try flows(ofType: type).forEach(perform)
+    }
+
+    deinit {
+        flows.forEach(detach)
     }
 }

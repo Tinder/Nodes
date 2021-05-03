@@ -1,6 +1,8 @@
 //
+//  UINavigationController+NavigationControllable.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 #if canImport(UIKit) && !os(watchOS)
@@ -30,6 +32,7 @@ extension UINavigationController: NavigationControllable {
         popViewController(animated: animated)
     }
 
+    // swiftlint:disable:next identifier_name
     public func _asUINavigationController() -> UINavigationController {
         self
     }

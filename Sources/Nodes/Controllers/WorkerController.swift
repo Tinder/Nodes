@@ -1,6 +1,8 @@
 //
+//  WorkerController.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 public final class WorkerController {
@@ -9,11 +11,6 @@ public final class WorkerController {
 
     public init(workers: [Worker]) {
         self.workers = workers
-    }
-
-    deinit {
-        stopWorkers()
-        workers.forEach { LeakDetector.detect($0) }
     }
 
     public func startWorkers() {
@@ -40,5 +37,10 @@ public final class WorkerController {
 
     public func withWorkers<T>(ofType type: T.Type, perform: (_ worker: T) throws -> Void) rethrows {
         try workers(ofType: type).forEach(perform)
+    }
+
+    deinit {
+        stopWorkers()
+        workers.forEach { LeakDetector.detect($0) }
     }
 }

@@ -1,6 +1,8 @@
 //
+//  UIViewController+ModalStyle.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 #if canImport(UIKit) && !os(watchOS)
@@ -11,6 +13,7 @@ extension UIViewController {
 
     public struct ModalStyle {
 
+        // swiftlint:disable:next nesting
         public enum Behavior {
 
             @available(macCatalyst 13.0, iOS 13.0, *)
@@ -89,10 +92,17 @@ extension UIViewController {
         }
 
         public let behavior: Behavior
+
         public let presentationStyle: UIModalPresentationStyle
+
         public let isInteractiveDismissalEnabled: Bool
+
+        // swiftlint:disable:next weak_delegate
         public let transitioningDelegate: UIViewControllerTransitioningDelegate?
+
         public let capturesStatusBarAppearance: Bool
+
+        // swiftlint:disable:next weak_delegate
         public let adaptivePresentationDelegate: UIAdaptivePresentationControllerDelegate?
 
         private init(
@@ -128,6 +138,7 @@ extension UIViewController {
             modalPresentationCapturesStatusBarAppearance = modalStyle.capturesStatusBarAppearance
             #endif
         }
+        // swiftlint:disable:next explicit_type_interface
         if let adaptivePresentationDelegate = modalStyle.adaptivePresentationDelegate {
             presentationController?.delegate = adaptivePresentationDelegate
         }

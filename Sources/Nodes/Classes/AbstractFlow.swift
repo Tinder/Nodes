@@ -1,6 +1,8 @@
 //
+//  AbstractFlow.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 public protocol FlowRetaining: AnyObject {}
@@ -10,6 +12,7 @@ public protocol Flow: AnyObject {
 
     var isStarted: Bool { get }
 
+    // swiftlint:disable:next identifier_name
     var _context: Context { get }
 
     func start()
@@ -22,6 +25,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         _context.isActive
     }
 
+    // swiftlint:disable:next identifier_name
     public let _context: Context
 
     public let context: ContextInterfaceType
@@ -37,18 +41,13 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         context: ContextInterfaceType,
         viewController: ViewControllerType
     ) {
+        // swiftlint:disable:next identifier_name
         guard let _context: Context = context as? Context
         else { preconditionFailure("\(context) must conform to \(Context.self)") }
         self._context = _context
         self.context = context
         self.viewController = viewController
         flowController.isFlowLeakDetectionEnabled = !(self is FlowRetaining)
-    }
-
-    deinit {
-        subFlows.forEach(detach)
-        _context.deactivate()
-        LeakDetector.detect(_context)
     }
 
     open func didStart() {}
@@ -92,5 +91,11 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
 
     public final func withSubFlows<T>(ofType type: T.Type, perform: (_ flow: T) throws -> Void) rethrows {
         try flowController.withFlows(ofType: T.self, perform: perform)
+    }
+
+    deinit {
+        subFlows.forEach(detach)
+        _context.deactivate()
+        LeakDetector.detect(_context)
     }
 }

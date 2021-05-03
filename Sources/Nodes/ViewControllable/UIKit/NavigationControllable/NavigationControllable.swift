@@ -1,6 +1,8 @@
 //
+//  NavigationControllable.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 #if canImport(UIKit) && !os(watchOS)
@@ -16,6 +18,7 @@ public protocol NavigationControllable: ViewControllable {
     func push(_ viewController: ViewControllable, animated: Bool)
     func pop(_ viewController: ViewControllable, animated: Bool)
 
+    // swiftlint:disable:next identifier_name
     func _asUINavigationController() -> UINavigationController
 }
 

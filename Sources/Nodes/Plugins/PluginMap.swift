@@ -1,6 +1,8 @@
 //
+//  PluginMap.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/21/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 open class PluginMap<KeyType: Hashable, ComponentType, BuildType, StateType> {
@@ -18,12 +20,14 @@ open class PluginMap<KeyType: Hashable, ComponentType, BuildType, StateType> {
         }
     }
 
+    // swiftlint:disable:next strict_fileprivate
     fileprivate let component: ComponentType
 
     public init(component: ComponentType) {
         self.component = component
     }
 
+    // swiftlint:disable:next unavailable_function
     open func plugins(component: ComponentType) -> [KeyType: Plugin] {
         fatalError("Method in abstract base class must be overridden")
     }
@@ -59,20 +63,22 @@ extension PluginMap where StateType == Void {
     }
 }
 
+// swiftlint:disable:next operator_usage_whitespace
 open class PluginMapWithDefault<KeyType: Hashable,
                                 ComponentType,
                                 BuildType,
                                 StateType>: PluginMap<KeyType, ComponentType, BuildType, StateType> {
 
+    // swiftlint:disable:next unavailable_function
     open func `default`(component: ComponentType, state: StateType) -> BuildType {
         fatalError("Method in abstract base class must be overridden")
     }
 
-    public override func createAll(state: StateType) -> [BuildType] {
+    override public func createAll(state: StateType) -> [BuildType] {
         [`default`(component: component, state: state)] + super.createAll(state: state)
     }
 
-    public override func create(key: KeyType, state: StateType) -> BuildType {
+    override public func create(key: KeyType, state: StateType) -> BuildType {
         super.create(key: key, state: state) ?? `default`(component: component, state: state)
     }
 }
