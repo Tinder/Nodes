@@ -84,19 +84,14 @@ public final class {{ node_name }}Component: Component
     private let dynamicDependency: {{ node_name }}DynamicComponentDependency
 
     /// The initializer.
+    ///
+    /// Remove `dynamicDependency` default parameter when its type is not `Void`.
+    ///
     /// - Parameter parent: The parent scope
     /// - Parameter dynamicDependency: The dynamic component dependency
-    public init(parent: Scope, dynamicDependency: {{ node_name }}DynamicComponentDependency) {
+    public init(parent: Scope, dynamicDependency: {{ node_name }}DynamicComponentDependency = ()) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
-    }
-
-    /// The overridden initializer.
-    ///
-    /// Remove this initializer when the dynamic component dependency is not `Void`.
-    /// - Parameter parent: The parent scope
-    public override convenience init(parent: Scope) {
-        self.init(parent: parent, dynamicDependency: ())
     }
 }
 
