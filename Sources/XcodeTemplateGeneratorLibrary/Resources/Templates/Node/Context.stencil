@@ -78,10 +78,10 @@ internal final class {{ node_name }}ContextImp: AbstractContext
     }{% endif %}
 
     /// Implement logic to execute when the Context becomes active.
-    internal override func didBecomeActive() {}
+    override internal func didBecomeActive() {}
 
     /// Implement logic to execute when the Context will become inactive.
-    internal override func willResignActive() {}
+    override internal func willResignActive() {}
 }
 
 extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}{% if owns_view %}{% if root_node %}

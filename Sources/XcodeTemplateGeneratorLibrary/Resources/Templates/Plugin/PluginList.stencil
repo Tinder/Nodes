@@ -103,7 +103,7 @@ internal final class {{ plugin_list_name }}PluginListImp:
     /// The method in which the plugins are wrapped by type erased `Plugin` instances.
     /// - Parameter component: The component instance
     /// - Returns: The plugins array
-    internal override func plugins(
+    override internal func plugins(
         component: {{ plugin_list_name }}PluginListComponent
     ) -> [Plugin] {
         [] // Example:

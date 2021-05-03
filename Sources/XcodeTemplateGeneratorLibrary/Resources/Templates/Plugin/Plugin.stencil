@@ -89,7 +89,7 @@ internal final class {{ plugin_name }}PluginImp:
     ///   - component: The component instance
     ///   - state: The state
     /// - Returns: The enabled status of the Plugin
-    internal override func isEnabled(
+    override internal func isEnabled(
         component: {{ plugin_name }}PluginComponent,
         state: {{ plugin_name }}PluginStateType
     ) -> Bool {
@@ -99,12 +99,12 @@ internal final class {{ plugin_name }}PluginImp:
     /// The factory method in which the resulting object is initialized.
     /// - Parameter component: The component instance
     /// - Returns: The built instance{% if object_type %}
-    internal override func build(
+    override internal func build(
         component: {{ plugin_name }}PluginComponent
     ) -> {{ object_type }} {
         // TODO: Initialize resulting object
     }{% else %}
-    internal override func build(
+    override internal func build(
         component: {{ plugin_name }}PluginComponent
     ) -> {{ plugin_name }}Builder {
         {{ plugin_name }}BuilderImp(componentFactory: component.componentFactory)

@@ -41,7 +41,7 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     ///   - context: The Context instance
     ///   - viewController: The View Controller instance{% if flow_properties %}{% for property in flow_properties %}
     ///   - {{ property.name }}: The {{ property.type }} instance{% endfor %}{% endif %}
-    internal{% if not flow_properties %} override{% endif %} init(
+    {% if not flow_properties %}override {% endif %}internal init(
         context: {{ node_name }}ContextInterface,
         viewController: {{ node_name }}ViewControllable{% if flow_properties %},{% for property in flow_properties %}
         {{ property.name }}: {{ property.type }}{% if not forloop.last %},{% endif %}{% endfor %}{% endif %}
@@ -52,7 +52,7 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     }
 
     /// Implement logic to execute when the Flow is started.
-    internal override func didStart() {}
+    override internal func didStart() {}
 }
 
 extension {{ node_name }}FlowImp: {{ node_name }}Flow {}{% if root_node %}

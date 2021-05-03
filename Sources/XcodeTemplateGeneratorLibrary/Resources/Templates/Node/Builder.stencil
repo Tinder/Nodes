@@ -153,7 +153,7 @@ public final class {{ node_name }}Component: Component
     ///   - component: The component instance
     ///   - dynamicBuildDependency: The dynamic build dependency
     /// - Returns: The Flow instance{% if owns_view %}
-    {% if public_node %}public{% else %}internal{% endif %} override func build(
+    override {% if public_node %}public{% else %}internal{% endif %} func build(
         component: {{ node_name }}Component,
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency
     ) -> {{ node_name }}Flow {
@@ -173,7 +173,7 @@ public final class {{ node_name }}Component: Component
             {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %},{% endif %}{% endfor %}{% endif %}
         )
     }{% else %}
-    {% if public_node %}public{% else %}internal{% endif %} override func build(
+    override {% if public_node %}public{% else %}internal{% endif %} func build(
         component: {{ node_name }}Component,
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency
     ) -> {{ node_name }}Flow {

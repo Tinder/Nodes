@@ -110,7 +110,7 @@ internal final class {{ plugin_map_name }}PluginMapImp:
     /// The method in which the plugins are wrapped by type erased `Plugin` instances.
     /// - Parameter component: The component instance
     /// - Returns: The plugins dictionary
-    internal override func plugins(
+    override internal func plugins(
         component: {{ plugin_map_name }}PluginMapComponent
     ) -> [{{ plugin_map_name }}PluginMapKeyType: Plugin] {
         [:] // Example:

@@ -24,10 +24,10 @@ internal final class {{ worker_name }}WorkerImp: AbstractWorker<{{ cancellable_t
     }
 
     /// Implement logic to execute when the Worker is started.
-    internal override func didStart() {}
+    override internal func didStart() {}
 
     /// Implement logic to execute when the Worker has stopped.
-    internal override func willStop() {}
+    override internal func willStop() {}
 }
 
 extension {{ worker_name }}WorkerImp: {{ worker_name }}Worker {}
