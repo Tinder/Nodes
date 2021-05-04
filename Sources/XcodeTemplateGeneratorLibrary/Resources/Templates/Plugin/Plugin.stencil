@@ -24,13 +24,14 @@ internal final class {{ plugin_name }}PluginComponent: Component
      fileprivate let example: Example = .init()
 
      Whenever possible, for example when the dependency does not maintain any state, define the property as a
-     factory that always returns a new instance:
+     factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
+     Needle compatibility whenever the access control is increased.
 
-     fileprivate var example: Example {
+     fileprivate var exampleFactory: Example {
          Example()
      }
 
-     Only when a singleton simply cannot be avoided and is absolutely necessary, shared instances may be returned:
+     Only when a singleton simply cannot be avoided and is absolutely necessary, shared instances may be returned.
 
      fileprivate var example: Example {
          shared { Example() }
