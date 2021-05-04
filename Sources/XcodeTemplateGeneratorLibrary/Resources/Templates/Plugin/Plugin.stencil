@@ -1,7 +1,6 @@
 {{ file_header }}
-
-import NeedleFoundation
-import Nodes
+{% for import in plugin_imports %}
+import {{ import }}{% endfor %}
 
 /*
  PURPOSE:
@@ -49,7 +48,7 @@ internal final class {{ plugin_name }}PluginComponent: Component
          ChildComponent(parent: self)
      }
 
-     */{% if not object_type %}
+     */{% if not return_type %}
 
     fileprivate func componentFactory() -> {{ plugin_name }}Component {
         {{ plugin_name }}Component(parent: self)
@@ -67,13 +66,13 @@ internal typealias {{ plugin_name }}PluginStateType = Void
  The Plugin interface (available to mock for testability).
  */
 internal protocol {{ plugin_name }}Plugin {
-    func create() -> {% if object_type %}{{ object_type }}{% else %}{{ plugin_name }}Builder{% endif %}?
+    func create() -> {% if return_type %}{{ return_type }}{% else %}{{ plugin_name }}Builder{% endif %}?
 }
 
 internal typealias {{ plugin_name }}PluginType = Plugin
     <
     {{ plugin_name }}PluginComponent,
-    {% if object_type %}{{ object_type }}{% else %}{{ plugin_name }}Builder{% endif %},
+    {% if return_type %}{{ return_type }}{% else %}{{ plugin_name }}Builder{% endif %},
     {{ plugin_name }}PluginStateType
     >
 
@@ -98,10 +97,10 @@ internal final class {{ plugin_name }}PluginImp:
 
     /// The factory method in which the instance is initialized.
     /// - Parameter component: The component instance
-    /// - Returns: The initialized instance{% if object_type %}
+    /// - Returns: The initialized instance{% if return_type %}
     override internal func build(
         component: {{ plugin_name }}PluginComponent
-    ) -> {{ object_type }} {
+    ) -> {{ return_type }} {
         // TODO: Initialize instance
     }{% else %}
     override internal func build(
