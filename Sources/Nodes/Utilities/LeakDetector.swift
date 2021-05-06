@@ -19,6 +19,16 @@ public enum LeakDetector {
                                                     qos: .background,
                                                     attributes: .concurrent)
 
+    private static var isDebuggedProcessBeingTraced: Bool {
+        var mib: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, getpid()]
+        var info: kinfo_proc = .init()
+        var size: Int = MemoryLayout<kinfo_proc>.stride
+        let junk: Int32 = sysctl(&mib, UInt32(mib.count), &info, &size, nil, 0)
+        guard junk == 0
+        else { return false }
+        return (info.kp_proc.p_flag & P_TRACED) != 0
+    }
+
     public static func detect(_ object: AnyObject) {
         // swiftlint:disable:next discouraged_optional_collection
         let callStackSymbols: [String]? = self.callStackSymbols()
@@ -32,7 +42,13 @@ public enum LeakDetector {
             guard let object: AnyObject = object
             else { return }
             callStackSymbols?.forEach { print($0) }
-            assertionFailure("Expected object to deallocate: \(object)")
+            if isDebuggedProcessBeingTraced {
+                DispatchQueue.main.sync {
+                    _ = kill(getpid(), SIGSTOP)
+                }
+            } else {
+                assertionFailure("Expected object to deallocate: \(object)")
+            }
         }
     }
 
