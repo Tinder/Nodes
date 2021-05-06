@@ -25,7 +25,6 @@ internal protocol {{ node_name }}FlowInterface: Flow {}{% endif %}{% if owns_vie
  */
 internal protocol {{ node_name }}Presentable: AnyObject {
     var receiver: {{ node_name }}Receiver? { get set }
-    var viewState: {{ node_name }}ViewState { get set }
 }{% endif %}
 
 /*

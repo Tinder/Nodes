@@ -1,13 +1,17 @@
 {{ file_header }}
 {% for import in view_controller_imports %}
 import {{ import }}{% endfor %}
-
+{% if view_state_publisher %}
 /*
  PURPOSE:
  The view state of your View Controller.
  */
-internal struct {{ node_name }}ViewState {}
+internal struct {{ node_name }}ViewState: InitialStateProviding {
 
+    /// The initial view state.
+    internal static var initialState: {{ node_name }}ViewState = .init()
+}
+{% endif %}
 /*
  PURPOSE:
  The interface that the View will speak to the Context through. Used for informing the Context of
@@ -22,38 +26,48 @@ internal protocol {{ node_name }}Receiver: AnyObject {}{% endif %}
  PURPOSE:
  Concrete implementation of the UI.
  */
-internal final class {{ node_name }}ViewController: {{ view_controller_type }} {
+internal final class {{ node_name }}ViewController: {{ view_controller_type }}{% if view_state_publisher %}, StateObserver{% endif %} {
 {% if view_controller_properties %}
     {{ view_controller_properties|indent:4 }}
 {% endif %}
     /// The view receiver.
     internal weak var receiver: {{ node_name }}Receiver?
-
-    internal var viewState: {{ node_name }}ViewState = .init() {
-        didSet { update(with: viewState) }
-    }
-
+{% if view_state_publisher %}
     /// The collection of cancellable instances.
     private var cancellables: Set<{{ cancellable_type }}> = .init()
 
+    /// The view state publisher.
+    private let viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
+{% endif %}
     /// The Analytics instance.
     private let analytics: {{ node_name }}Analytics
 
     /// The initializer.
-    /// - Parameter analytics: The Analytics instance
+    /// - Parameter analytics: The Analytics instance{% if view_state_publisher %}
+    internal init(
+        viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>,
+        analytics: {{ node_name }}Analytics
+    ) {
+        self.viewState = viewState
+        self.analytics = analytics
+        super.init(nibName: nil, bundle: nil)
+    }{% else %}
     internal init(analytics: {{ node_name }}Analytics) {
         self.analytics = analytics
         super.init(nibName: nil, bundle: nil)
-    }
+    }{% endif %}
 
     @available(*, unavailable)
     internal required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-{% if view_controller_methods %}
-    {{ view_controller_methods|indent:4 }}
-{% endif %}
-    private func update(with viewState: {{ node_name }}ViewState) {}
+    }{% if view_controller_methods %}
+
+    {{ view_controller_methods|indent:4 }}{% endif %}{% if view_state_publisher %}
+
+    internal func update(with viewState: {{ node_name }}ViewState) {
+        // Add implementation to this method to update the user interface. This method is called on
+        // the main thread with deduplicated values received from the view state publisher.
+    }{% endif %}
 }
 
 extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}

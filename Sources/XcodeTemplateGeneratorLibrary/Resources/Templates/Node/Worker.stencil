@@ -13,7 +13,12 @@ internal protocol {{ worker_name }}Worker: Worker {}
  Concrete implementation of the Worker.
  */
 internal final class {{ worker_name }}WorkerImp: AbstractWorker<{{ cancellable_type }}> {
-
+{% if view_state_publisher %}
+    /// The view state publisher.
+    internal var viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}> {
+        {{ view_state_publisher|indent:8 }}
+    }
+{% endif %}
     /// The Analytics instance.
     private let analytics: {{ node_name }}Analytics
 
