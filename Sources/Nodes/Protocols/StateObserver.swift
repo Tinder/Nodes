@@ -25,7 +25,6 @@ extension StateObserver {
         _ publisher: P
     ) -> AnyCancellable where P.Output == StateObserverStateType, P.Failure == Never {
         publisher
-            .removeDuplicates()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.update(with: $0)

@@ -66,7 +66,7 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}{%
 
     internal func update(with viewState: {{ node_name }}ViewState) {
         // Add implementation to this method to update the user interface. This method is called on
-        // the main thread with deduplicated values received from the view state publisher.
+        // the main thread with values received from the view state publisher.
     }{% endif %}
 }
 
