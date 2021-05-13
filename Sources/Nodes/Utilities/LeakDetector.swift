@@ -25,7 +25,7 @@ public enum LeakDetector {
         var size: Int = MemoryLayout<kinfo_proc>.stride
         let junk: Int32 = sysctl(&mib, UInt32(mib.count), &info, &size, nil, 0)
         guard junk == 0
-        else { return false }
+        else { return false } // swiftlint:disable:this implicit_return
         return (info.kp_proc.p_flag & P_TRACED) != 0
     }
 
