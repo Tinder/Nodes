@@ -90,7 +90,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext
 extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}{% if owns_view %}{% if root_node %}
 extension {{ node_name }}ContextImp: {{ node_name }}Receiver {
 
-    func viewDidAppear() {
+    internal func viewDidAppear() {
         guard !isReady
         else { return }
         isReady = true

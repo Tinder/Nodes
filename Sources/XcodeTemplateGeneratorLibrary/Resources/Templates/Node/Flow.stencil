@@ -59,6 +59,6 @@ extension {{ node_name }}FlowImp: {{ node_name }}Flow {}{% if root_node %}
 extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {
 
     /// Implement logic to execute when the Root Flow is ready to attach sub-Flows.
-    func didBecomeReady() {}
+    internal func didBecomeReady() {}
 }{% else %}
 extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {}{% endif %}
