@@ -41,13 +41,15 @@ public enum LeakDetector {
         queue.asyncAfter(deadline: .now() + timeInterval) { [weak object] in
             guard let object: AnyObject = object
             else { return }
-            callStackSymbols?.forEach { print($0) }
-            if isDebuggedProcessBeingTraced {
-                DispatchQueue.main.sync {
-                    _ = kill(getpid(), SIGSTOP)
+            DispatchQueue.main.async {
+                if let callStack: String = callStackSymbols?.joined(separator: "\n") {
+                    print(callStack)
                 }
-            } else {
-                assertionFailure("Expected object to deallocate: \(object)")
+                let message: String = "Expected object to deallocate: \(object)"
+                guard isDebuggedProcessBeingTraced
+                else { return assertionFailure(message) }
+                print(message)
+                _ = kill(getpid(), SIGSTOP)
             }
         }
     }
