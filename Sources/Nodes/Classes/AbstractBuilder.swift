@@ -21,7 +21,7 @@ open class AbstractBuilder<ComponentType, BuildType, DynamicBuildDependencyType,
         component: ComponentType,
         dynamicBuildDependency: DynamicBuildDependencyType
     ) -> BuildType {
-        fatalError("Method in abstract base class must be overridden")
+        preconditionFailure("Method in abstract base class must be overridden")
     }
 
     public final func build(

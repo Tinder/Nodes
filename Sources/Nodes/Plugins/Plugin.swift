@@ -15,12 +15,12 @@ open class Plugin<ComponentType, BuildType, StateType> {
 
     // swiftlint:disable:next unavailable_function
     open func isEnabled(component: ComponentType, state: StateType) -> Bool {
-        fatalError("Method in abstract base class must be overridden")
+        preconditionFailure("Method in abstract base class must be overridden")
     }
 
     // swiftlint:disable:next unavailable_function
     open func build(component: ComponentType) -> BuildType {
-        fatalError("Method in abstract base class must be overridden")
+        preconditionFailure("Method in abstract base class must be overridden")
     }
 
     public func create(state: StateType) -> BuildType? {

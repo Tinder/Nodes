@@ -29,7 +29,7 @@ open class PluginMap<KeyType: Hashable, ComponentType, BuildType, StateType> {
 
     // swiftlint:disable:next unavailable_function
     open func plugins(component: ComponentType) -> [KeyType: Plugin] {
-        fatalError("Method in abstract base class must be overridden")
+        preconditionFailure("Method in abstract base class must be overridden")
     }
 
     public func createAll(state: StateType) -> [BuildType] {
@@ -71,7 +71,7 @@ open class PluginMapWithDefault<KeyType: Hashable,
 
     // swiftlint:disable:next unavailable_function
     open func `default`(component: ComponentType, state: StateType) -> BuildType {
-        fatalError("Method in abstract base class must be overridden")
+        preconditionFailure("Method in abstract base class must be overridden")
     }
 
     override public func createAll(state: StateType) -> [BuildType] {
