@@ -154,7 +154,7 @@ public final class {{ node_name }}Component: Component
     ) -> {{ node_name }}Flow {
         let listener: {{ node_name }}Listener = dynamicBuildDependency
         let analytics: {{ node_name }}Analytics = {{ node_name }}AnalyticsImp()
-        let worker: {{ node_name }}WorkerImp = .init(analytics: analytics){% if view_state_publisher %}
+        let worker: {{ worker_name }}Worker = {{ worker_name }}WorkerImp(analytics: analytics){% if view_state_publisher %}
         let viewController: {{ node_name }}ViewController = .init(
             viewState: worker.viewState,
             analytics: analytics
@@ -178,7 +178,7 @@ public final class {{ node_name }}Component: Component
     ) -> {{ node_name }}Flow {
         let (listener, viewController) = dynamicBuildDependency
         let analytics: {{ node_name }}Analytics = {{ node_name }}AnalyticsImp()
-        let worker: {{ node_name }}WorkerImp = .init(analytics: analytics)
+        let worker: {{ worker_name }}Worker = {{ worker_name }}WorkerImp(analytics: analytics)
         let context: {{ node_name }}ContextImp = .init(
             workers: [worker],
             analytics: analytics
