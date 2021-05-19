@@ -13,7 +13,7 @@ import Foundation
 /// @mockable
 public protocol StateObserver: AnyObject {
 
-    associatedtype StateObserverStateType: Equatable
+    associatedtype StateObserverStateType
 
     func update(with: StateObserverStateType)
 }
