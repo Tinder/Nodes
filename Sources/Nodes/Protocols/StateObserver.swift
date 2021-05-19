@@ -10,7 +10,6 @@
 import Combine
 import Foundation
 
-/// @mockable
 public protocol StateObserver: AnyObject {
 
     associatedtype StateObserverStateType
