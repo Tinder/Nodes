@@ -4,9 +4,11 @@ import {{ import }}{% endfor %}
 
 /*
  PURPOSE:
- Encapsulates work to be performed by the Context.
+ Encapsulates work to be performed by the Node.
  */
-internal protocol {{ worker_name }}Worker: Worker {}
+internal protocol {{ worker_name }}Worker: Worker {{ '{' }}{% if view_state_publisher %}
+    var viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}> { get }
+{% endif %}{{ '}' }}
 
 /*
  PURPOSE:
