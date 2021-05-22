@@ -70,7 +70,6 @@ extension UIViewController: ViewControllable {
         with autoresizingMask: UIView.AutoresizingMask
     ) {
         let subview: UIView = viewController._asUIViewController().view
-        viewController.willMove(toParent: self)
         addChild(viewController)
         subview.translatesAutoresizingMaskIntoConstraints = true
         subview.frame = frame
@@ -83,7 +82,6 @@ extension UIViewController: ViewControllable {
         guard view.isDescendant(of: self.view)
         else { return }
         let subview: UIView = viewController._asUIViewController().view
-        viewController.willMove(toParent: self)
         addChild(viewController)
         subview.translatesAutoresizingMaskIntoConstraints = true
         subview.frame = view.bounds
@@ -94,7 +92,6 @@ extension UIViewController: ViewControllable {
 
     public func contain(_ viewController: ViewControllable, constraints: (_ view: UIView) -> [NSLayoutConstraint]) {
         let subview: UIView = viewController._asUIViewController().view
-        viewController.willMove(toParent: self)
         addChild(viewController)
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
@@ -109,7 +106,6 @@ extension UIViewController: ViewControllable {
         viewController.willMove(toParent: nil)
         subview.removeFromSuperview()
         removeChild(viewController)
-        viewController.didMove(toParent: nil)
     }
 
     // swiftlint:disable:next identifier_name
