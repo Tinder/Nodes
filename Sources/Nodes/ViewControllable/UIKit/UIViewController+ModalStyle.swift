@@ -13,12 +13,30 @@ extension UIViewController {
 
     public struct ModalStyle {
 
+        @available(macCatalyst 13.0, iOS 13.0, *)
+        @available(tvOS, unavailable)
         // swiftlint:disable:next nesting
-        public enum Behavior {
+        public enum SheetStyle {
+
+            case page, form
+
+            // swiftlint:disable:next strict_fileprivate
+            fileprivate var presentationStyle: UIModalPresentationStyle {
+                switch self {
+                case .page:
+                    return .pageSheet
+                case .form:
+                    return .formSheet
+                }
+            }
+        }
+
+        // swiftlint:disable:next nesting
+        public enum Behavior: Equatable {
 
             @available(macCatalyst 13.0, iOS 13.0, *)
             @available(tvOS, unavailable)
-            case sheet
+            case sheet(SheetStyle)
 
             case overlay, cover, custom
         }
@@ -27,12 +45,13 @@ extension UIViewController {
         @available(macCatalyst 13.0, iOS 13.0, *)
         @available(tvOS, unavailable)
         public static func sheet(
+            style: SheetStyle = .page,
             isInteractiveDismissalEnabled: Bool = false,
             capturesStatusBarAppearance: Bool = false,
             adaptivePresentationDelegate: UIAdaptivePresentationControllerDelegate? = nil
         ) -> ModalStyle {
-            ModalStyle(behavior: .sheet,
-                       presentationStyle: .pageSheet,
+            ModalStyle(behavior: .sheet(style),
+                       presentationStyle: style.presentationStyle,
                        isInteractiveDismissalEnabled: isInteractiveDismissalEnabled,
                        transitioningDelegate: nil,
                        capturesStatusBarAppearance: capturesStatusBarAppearance,
