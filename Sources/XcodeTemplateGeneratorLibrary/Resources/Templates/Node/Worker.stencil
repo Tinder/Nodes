@@ -17,9 +17,7 @@ internal protocol {{ worker_name }}Worker: Worker {{ '{' }}{% if view_state_publ
 internal final class {{ worker_name }}WorkerImp: AbstractWorker<{{ cancellable_type }}> {
 {% if view_state_publisher %}
     /// The view state publisher.
-    internal var viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}> {
-        {{ view_state_publisher|indent:8 }}
-    }
+    internal let viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
 {% endif %}
     /// The Analytics instance.
     private let analytics: {{ node_name }}Analytics
@@ -28,6 +26,7 @@ internal final class {{ worker_name }}WorkerImp: AbstractWorker<{{ cancellable_t
     /// - Parameter analytics: The Analytics instance
     internal init(analytics: {{ node_name }}Analytics) {
         self.analytics = analytics
+        viewState = {{ view_state_publisher }}
     }
 
     /// Implement logic to execute when the Worker is started.
