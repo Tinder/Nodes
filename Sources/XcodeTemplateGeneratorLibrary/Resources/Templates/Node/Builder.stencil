@@ -153,16 +153,20 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency
     ) -> {{ node_name }}Flow {
         let listener: {{ node_name }}Listener = dynamicBuildDependency
-        let analytics: {{ node_name }}Analytics = {{ node_name }}AnalyticsImp()
-        let worker: {{ worker_name }}Worker = {{ worker_name }}WorkerImp(analytics: analytics){% if view_state_publisher %}
+        let analytics: {{ node_name }}AnalyticsImp = .init()
+        let {% if view_state_publisher %}viewStateWorker{% else %}worker{% endif %}: {{ worker_name }}WorkerImp = .init(
+            analytics: analytics
+        ){% if view_state_publisher %}
         let viewController: {{ node_name }}ViewController = .init(
-            viewState: worker.viewState,
+            viewState: viewStateWorker.viewState,
             analytics: analytics
         ){% else %}
-        let viewController: {{ node_name }}ViewController = .init(analytics: analytics){% endif %}
+        let viewController: {{ node_name }}ViewController = .init(
+            analytics: analytics
+        ){% endif %}
         let context: {{ node_name }}ContextImp = .init(
             presentable: viewController,
-            workers: [worker],
+            workers: [{% if view_state_publisher %}viewStateWorker{% else %}worker{% endif %}],
             analytics: analytics
         )
         context.listener = listener
@@ -177,8 +181,10 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency
     ) -> {{ node_name }}Flow {
         let (listener, viewController) = dynamicBuildDependency
-        let analytics: {{ node_name }}Analytics = {{ node_name }}AnalyticsImp()
-        let worker: {{ worker_name }}Worker = {{ worker_name }}WorkerImp(analytics: analytics)
+        let analytics: {{ node_name }}AnalyticsImp = .init()
+        let worker: {{ worker_name }}WorkerImp = .init(
+            analytics: analytics
+        )
         let context: {{ node_name }}ContextImp = .init(
             workers: [worker],
             analytics: analytics
