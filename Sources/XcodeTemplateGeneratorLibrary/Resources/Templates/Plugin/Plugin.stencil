@@ -6,7 +6,7 @@ import {{ import }}{% endfor %}
  PURPOSE:
  Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
  */
-internal protocol {{ plugin_name }}PluginDependency: Dependency {}
+public protocol {{ plugin_name }}PluginDependency: Dependency {}
 
 /*
  PURPOSE:

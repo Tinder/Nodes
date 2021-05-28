@@ -28,7 +28,7 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     <{{ node_name }}ContextInterface, {{ node_name }}ViewControllable> {
 {% if owns_view %}
     /// Provides the parent Node with access to the View so it can be presented.
-    public var viewControllable: {{ view_controllable_type }} {
+    internal var viewControllable: {{ view_controllable_type }} {
         viewController
     }
 {% endif %}{% if flow_properties %}{% for property in flow_properties %}

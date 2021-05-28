@@ -34,7 +34,7 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
 
  Can be a tuple containing multiple values when necessary.
  */
-public typealias {{ node_name }}DynamicComponentDependency = Void
+{% if public_node %}public{% else %}internal{% endif %} typealias {{ node_name }}DynamicComponentDependency = Void
 
 // MARK: - Component
 
@@ -42,7 +42,7 @@ public typealias {{ node_name }}DynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
-public final class {{ node_name }}Component: Component
+{% if public_node %}public{% else %}internal{% endif %} final class {{ node_name }}Component: Component
     <{{ node_name }}Dependency> {
 
     /*
@@ -89,7 +89,7 @@ public final class {{ node_name }}Component: Component
     ///
     /// - Parameter parent: The parent scope
     /// - Parameter dynamicDependency: The dynamic component dependency
-    public init(parent: Scope, dynamicDependency: {{ node_name }}DynamicComponentDependency = ()) {
+    {% if public_node %}public{% else %}internal{% endif %} init(parent: Scope, dynamicDependency: {{ node_name }}DynamicComponentDependency = ()) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
     }

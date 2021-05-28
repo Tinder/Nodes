@@ -26,7 +26,7 @@ internal protocol {{ plugin_map_name }}Builder: AnyObject {
  PURPOSE:
  Declares the dependencies required by this Plugin Map that will be injected (not created by this Plugin Map itself).
  */
-internal protocol {{ plugin_map_name }}PluginMapDependency: Dependency {}
+public protocol {{ plugin_map_name }}PluginMapDependency: Dependency {}
 
 /*
  PURPOSE:

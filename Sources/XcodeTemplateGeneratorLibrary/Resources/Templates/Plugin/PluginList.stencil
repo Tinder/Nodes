@@ -26,7 +26,7 @@ internal protocol {{ plugin_list_name }}Builder: AnyObject {
  PURPOSE:
  Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
  */
-internal protocol {{ plugin_list_name }}PluginListDependency: Dependency {}
+public protocol {{ plugin_list_name }}PluginListDependency: Dependency {}
 
 /*
  PURPOSE:
