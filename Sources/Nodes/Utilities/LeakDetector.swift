@@ -31,7 +31,7 @@ public enum LeakDetector {
 
     public static func detect(_ object: AnyObject) {
         // swiftlint:disable:next discouraged_optional_collection
-        let callStackSymbols: [String]? = self.callStackSymbols()
+        let callStackSymbols: [String]? = callStackSymbols()
         let timeInterval: TimeInterval
         #if canImport(UIKit) && !os(watchOS)
         timeInterval = object is UIViewController ? 5 : 1
