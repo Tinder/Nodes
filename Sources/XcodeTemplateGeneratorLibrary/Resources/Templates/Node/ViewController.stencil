@@ -48,7 +48,8 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}{%
         viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>,
         analytics: {{ node_name }}Analytics
     ) {
-        self.viewState = viewState
+        self.viewState = viewState{% if view_state_operators %}
+            {{ view_state_operators|indent:8 }}{% endif %}
         self.analytics = analytics
         super.init(nibName: nil, bundle: nil)
     }{% else %}
@@ -64,9 +65,8 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}{%
 
     {{ view_controller_methods|indent:4 }}{% endif %}{% if view_state_publisher %}
 
-    internal func update(with viewState: {{ node_name }}ViewState) {
-        // Add implementation to this method to update the user interface. This method is called on
-        // the main thread with values received from the view state publisher.
+    internal func update(with viewState: {{ node_name }}ViewState) {{ '{' }}{% if view_controller_update_comment %}
+        {{ view_controller_update_comment|indent:8 }}{% endif %}
     }{% endif %}
 }
 
