@@ -23,11 +23,9 @@ extension StateObserver {
     public func observe<P: Publisher>(
         _ publisher: P
     ) -> AnyCancellable where P.Output == StateObserverStateType, P.Failure == Never {
-        publisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] in
-                self?.update(with: $0)
-            }
+        publisher.sink { [weak self] in
+            self?.update(with: $0)
+        }
     }
 }
 
