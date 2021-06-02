@@ -32,10 +32,6 @@ open class Plugin<ComponentType, BuildType, StateType> {
 
 extension Plugin where StateType == Void {
 
-    public func isEnabled(component: ComponentType) -> Bool {
-        isEnabled(component: component, state: ())
-    }
-
     public func create() -> BuildType? {
         create(state: ())
     }
