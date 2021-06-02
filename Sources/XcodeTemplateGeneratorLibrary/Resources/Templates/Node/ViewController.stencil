@@ -49,7 +49,6 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}{%
     ) {
         self.viewState = viewState{% if view_state_operators %}
             {{ view_state_operators|indent:8 }}{% endif %}
-        self.analytics = analytics
         super.init(nibName: nil, bundle: nil)
     }{% else %}
     internal init() {
