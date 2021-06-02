@@ -32,6 +32,9 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}{%
 {% endif %}
     /// The view receiver.
     internal weak var receiver: {{ node_name }}Receiver?
+
+    /// The Analytics instance.
+    internal weak var analytics: {{ node_name }}Analytics?
 {% if view_state_publisher %}
     /// The collection of cancellable instances.
     private var cancellables: Set<{{ cancellable_type }}> = .init()
@@ -39,22 +42,17 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}{%
     /// The view state publisher.
     private let viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
 {% endif %}
-    /// The Analytics instance.
-    private weak var analytics: {{ node_name }}Analytics?
-
-    /// The initializer.
-    /// - Parameter analytics: The Analytics instance{% if view_state_publisher %}
+    /// The initializer.{% if view_state_publisher %}
+    /// - Parameter viewState: The view state publisher
     internal init(
-        viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>,
-        analytics: {{ node_name }}Analytics
+        viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
     ) {
         self.viewState = viewState{% if view_state_operators %}
             {{ view_state_operators|indent:8 }}{% endif %}
         self.analytics = analytics
         super.init(nibName: nil, bundle: nil)
     }{% else %}
-    internal init(analytics: {{ node_name }}Analytics) {
-        self.analytics = analytics
+    internal init() {
         super.init(nibName: nil, bundle: nil)
     }{% endif %}
 
