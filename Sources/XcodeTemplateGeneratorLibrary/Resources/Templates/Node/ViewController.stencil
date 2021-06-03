@@ -49,10 +49,10 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}{%
     ) {
         self.viewState = viewState{% if view_state_operators %}
             {{ view_state_operators|indent:12 }}{% endif %}
-        super.init(nibName: nil, bundle: nil)
+        super.init({{ view_controller_super_parameters }})
     }{% else %}
     internal init() {
-        super.init(nibName: nil, bundle: nil)
+        super.init({{ view_controller_super_parameters }})
     }{% endif %}
 
     @available(*, unavailable)
