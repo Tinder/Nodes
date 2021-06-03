@@ -48,7 +48,7 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}{%
         viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
     ) {
         self.viewState = viewState{% if view_state_operators %}
-            {{ view_state_operators|indent:8 }}{% endif %}
+            {{ view_state_operators|indent:12 }}{% endif %}
         super.init(nibName: nil, bundle: nil)
     }{% else %}
     internal init() {
