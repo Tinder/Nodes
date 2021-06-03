@@ -9,14 +9,14 @@ open class PluginList<ComponentType, BuildType, StateType> {
 
     public final class Plugin {
 
-        private let _create: (StateType) -> BuildType?
+        private let create: (StateType) -> BuildType?
 
         public init(create: @escaping (StateType) -> BuildType?) {
-            _create = create
+            self.create = create
         }
 
         public func create(state: StateType) -> BuildType? {
-            _create(state)
+            create(state)
         }
     }
 
@@ -50,10 +50,6 @@ extension PluginList.Plugin where StateType == Void {
 
     public convenience init(_ create: @escaping @autoclosure () -> BuildType?) {
         self.init(create: create)
-    }
-
-    public func create() -> BuildType? {
-        create(state: ())
     }
 }
 
