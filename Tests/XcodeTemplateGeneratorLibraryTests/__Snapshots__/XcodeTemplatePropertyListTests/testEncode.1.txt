@@ -58,48 +58,6 @@
 			<key>Type</key>
 			<string>text</string>
 		</dict>
-		<dict>
-			<key>Description</key>
-			<string>description-7</string>
-			<key>Identifier</key>
-			<string>identifier-7</string>
-			<key>Name</key>
-			<string>name-7</string>
-			<key>NotPersisted</key>
-			<true/>
-			<key>Required</key>
-			<true/>
-			<key>Type</key>
-			<string>text</string>
-		</dict>
-		<dict>
-			<key>Description</key>
-			<string>description-8</string>
-			<key>Identifier</key>
-			<string>identifier-8</string>
-			<key>Name</key>
-			<string>name-8</string>
-			<key>NotPersisted</key>
-			<true/>
-			<key>Required</key>
-			<true/>
-			<key>Type</key>
-			<string>text</string>
-		</dict>
-		<dict>
-			<key>Description</key>
-			<string>description-9</string>
-			<key>Identifier</key>
-			<string>identifier-9</string>
-			<key>Name</key>
-			<string>name-9</string>
-			<key>NotPersisted</key>
-			<true/>
-			<key>Required</key>
-			<true/>
-			<key>Type</key>
-			<string>text</string>
-		</dict>
 	</array>
 	<key>Platforms</key>
 	<array/>

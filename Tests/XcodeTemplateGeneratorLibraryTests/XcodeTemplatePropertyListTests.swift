@@ -46,11 +46,11 @@ final class XcodeTemplatePropertyListTests: XCTestCase {
                        name: "name-6",
                        description: "description-6")
             }
-            for index in 7...9 {
-                Option(identifier: "identifier-\(index)",
-                       name: "name-\(index)",
-                       description: "description-\(index)")
-            }
+//            for index in 7...9 {
+//                Option(identifier: "identifier-\(index)",
+//                       name: "name-\(index)",
+//                       description: "description-\(index)")
+//            }
         }
         let xml: String = try .init(decoding: plist.encode(), as: UTF8.self)
         assertSnapshot(matching: xml, as: .lines)
