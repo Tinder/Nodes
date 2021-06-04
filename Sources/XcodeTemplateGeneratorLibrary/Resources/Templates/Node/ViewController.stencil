@@ -44,9 +44,7 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}{%
 {% endif %}
     /// The initializer.{% if view_state_publisher %}
     /// - Parameter viewState: The view state publisher
-    internal init(
-        viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
-    ) {
+    internal init(viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>) {
         self.viewState = viewState{% if view_state_operators %}
             {{ view_state_operators|indent:12 }}{% endif %}
         super.init({{ view_controller_super_parameters }})
