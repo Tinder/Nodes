@@ -47,7 +47,7 @@ internal struct XcodeTemplatePropertyList: Equatable, Codable {
         }
     }
 
-    @_functionBuilder
+    @resultBuilder
     // swiftlint:disable:next convenience_type
     internal struct OptionBuilder {
 
