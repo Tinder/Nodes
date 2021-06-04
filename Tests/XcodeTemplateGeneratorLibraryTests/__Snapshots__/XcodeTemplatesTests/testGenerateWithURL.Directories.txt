@@ -1,0 +1,37 @@
+▿ 12 elements
+  ▿ (2 elements)
+    - path: "/Node.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/ Node.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node (without view state).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/ Node (without view state).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node (without view).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node (for root).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/ Node (for root).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Worker.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Plugin List (for Node).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Plugin Map (for Node).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Plugin (for Node).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Plugin.xctemplate"
+    - createIntermediates: true

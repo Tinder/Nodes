@@ -1,0 +1,33 @@
+<fileHeader>
+
+import <workerImports>
+
+/*
+ PURPOSE:
+ Encapsulates work to be performed by the Node.
+ */
+internal protocol <workerName>Worker: Worker {}
+
+/*
+ PURPOSE:
+ Concrete implementation of the Worker.
+ */
+internal final class <workerName>WorkerImp: AbstractWorker<<cancellableType>> {
+
+    /// The Analytics instance.
+    private let analytics: <nodeName>Analytics
+
+    /// The initializer.
+    /// - Parameter analytics: The Analytics instance
+    internal init(analytics: <nodeName>Analytics) {
+        self.analytics = analytics
+    }
+
+    /// Implement logic to execute when the Worker is started.
+    override internal func didStart() {}
+
+    /// Implement logic to execute when the Worker has stopped.
+    override internal func willStop() {}
+}
+
+extension <workerName>WorkerImp: <workerName>Worker {}

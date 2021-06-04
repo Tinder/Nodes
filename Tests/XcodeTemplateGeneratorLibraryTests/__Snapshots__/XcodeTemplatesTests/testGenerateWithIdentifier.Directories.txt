@@ -1,0 +1,37 @@
+▿ 12 elements
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (without view state).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (without view).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (for root).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node (for root).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Worker.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin Map (for Node).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin.xctemplate"
+    - createIntermediates: true

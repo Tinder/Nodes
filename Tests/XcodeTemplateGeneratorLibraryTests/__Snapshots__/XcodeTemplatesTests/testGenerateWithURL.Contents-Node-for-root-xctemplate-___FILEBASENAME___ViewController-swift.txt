@@ -1,0 +1,85 @@
+//___FILEHEADER___
+
+import Combine
+import Nodes
+import UIKit
+
+/*
+ PURPOSE:
+ The view state of your View Controller.
+ */
+internal struct ___VARIABLE_productName___ViewState: Equatable, InitialStateProviding {
+
+    /// The initial view state.
+    internal static var initialState: ___VARIABLE_productName___ViewState = .init()
+}
+
+/*
+ PURPOSE:
+ The interface that the View will speak to the Context through. Used for informing the Context of
+ view events and user interactions.
+ */
+internal protocol ___VARIABLE_productName___Receiver: AnyObject {
+    func viewDidAppear()
+}
+
+/*
+ PURPOSE:
+ Concrete implementation of the UI.
+ */
+internal final class ___VARIABLE_productName___ViewController: UIViewController, StateObserver {
+
+    /// The view receiver.
+    internal weak var receiver: ___VARIABLE_productName___Receiver?
+
+    /// The Analytics instance.
+    internal weak var analytics: ___VARIABLE_productName___Analytics?
+
+    /// The collection of cancellable instances.
+    private var cancellables: Set<AnyCancellable> = .init()
+
+    /// The view state publisher.
+    private let viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+
+    /// The initializer.
+    /// - Parameter viewState: The view state publisher
+    internal init(viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>) {
+        self.viewState = viewState
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    internal required init?(coder: NSCoder) {
+        preconditionFailure("init(coder:) has not been implemented")
+    }
+
+    override internal func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+    }
+
+    override internal func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        observe(viewState).store(in: &cancellables)
+    }
+
+    override internal func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        receiver?.viewDidAppear()
+    }
+
+    override internal func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cancellables.removeAll()
+    }
+
+    internal func update(with viewState: ___VARIABLE_productName___ViewState) {
+        // Add implementation to update the user interface when the view state changes.
+    }
+}
+
+extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllable {}
+extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___Presentable {}

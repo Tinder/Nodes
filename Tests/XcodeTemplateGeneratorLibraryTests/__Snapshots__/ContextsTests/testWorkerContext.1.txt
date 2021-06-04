@@ -1,0 +1,17 @@
+▿ 5 key/value pairs
+  ▿ (2 elements)
+    - key: "cancellable_type"
+    - value: "<cancellableType>"
+  ▿ (2 elements)
+    - key: "file_header"
+    - value: "<fileHeader>"
+  ▿ (2 elements)
+    - key: "node_name"
+    - value: "<nodeName>"
+  ▿ (2 elements)
+    - key: "worker_imports"
+    ▿ value: 1 element
+      - "<workerImports>"
+  ▿ (2 elements)
+    - key: "worker_name"
+    - value: "<workerName>"

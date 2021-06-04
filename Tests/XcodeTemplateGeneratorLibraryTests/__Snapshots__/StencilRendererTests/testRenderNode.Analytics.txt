@@ -1,0 +1,58 @@
+<fileHeader>
+
+import <workerImports>
+
+/*
+ INSTRUCTIONS:
+
+ Option 1
+ ========
+ Conform an existing analytics tracker (or client), that is defined outside of the Node, to the
+ <nodeName>Analytics protocol.
+
+ This option is preferred.
+
+ When using this option, delete the class defined in this file (below).
+
+ Option 2
+ ========
+ Inject an existing analytics tracker (or client), that is defined outside of the Node, into the
+ class defined in this file (below).
+
+ Only use this option if option 1 is not possible, for example, when the class defined in this
+ file (below) is needed to store state (not recommended).
+
+ When using this option, inject the tracker (or client) via a protocol. The protocol for the
+ injected tracker (or client) can either be an existing one defined outside of the Node or
+ can be a new one added to this file.
+ */
+
+/*
+ PURPOSE:
+ The interface for analytics tracked by this Node.
+
+ Whether using option 1 or 2, add requirements to this protocol to provide analytics tracking
+ methods for this Node.
+ */
+internal protocol <nodeName>Analytics: AnyObject {}
+
+/*
+ PURPOSE:
+ The implementations of the protocol methods for analytics tracked by this Node.
+
+ If using option 1, add implementations for the methods defined in the protocol that are not
+ implemented by the conforming tracker (or client).
+
+ If using option 2, delete this extension.
+ */
+internal extension <nodeName>Analytics {}
+
+/*
+ PURPOSE:
+ Custom analytics implementation for this Node, to be used ONLY when storing state is unavoidable.
+
+ If using option 1, delete this class and extension below.
+ */
+internal final class <nodeName>AnalyticsImp {}
+
+extension <nodeName>AnalyticsImp: <nodeName>Analytics {}

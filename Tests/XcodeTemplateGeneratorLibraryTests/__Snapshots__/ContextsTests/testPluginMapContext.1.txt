@@ -1,0 +1,14 @@
+▿ 4 key/value pairs
+  ▿ (2 elements)
+    - key: "file_header"
+    - value: "<fileHeader>"
+  ▿ (2 elements)
+    - key: "plugin_map_imports"
+    ▿ value: 1 element
+      - "<pluginMapImports>"
+  ▿ (2 elements)
+    - key: "plugin_map_name"
+    - value: "<pluginMapName>"
+  ▿ (2 elements)
+    - key: "view_controllable_flow_type"
+    - value: "<viewControllableFlowType>"

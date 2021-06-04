@@ -1,0 +1,49 @@
+▿ Config
+  ▿ baseImports: 2 members
+    - "baseImports-1"
+    - "baseImports-2"
+  - cancellableType: "cancellableType"
+  ▿ dependencies: 2 elements
+    ▿ Variable
+      - name: "dependencies-name-1"
+      - type: "dependencies-type-1"
+    ▿ Variable
+      - name: "dependencies-name-2"
+      - type: "dependencies-type-2"
+  ▿ diGraphImports: 2 members
+    - "diGraphImports-1"
+    - "diGraphImports-2"
+  - fileHeader: "fileHeader"
+  ▿ flowProperties: 2 elements
+    ▿ Variable
+      - name: "flowProperties-name-1"
+      - type: "flowProperties-type-1"
+    ▿ Variable
+      - name: "flowProperties-name-2"
+      - type: "flowProperties-type-2"
+  ▿ includedTemplates: 2 elements
+    - "includedTemplates-1"
+    - "includedTemplates-2"
+  - publisherFailureType: "publisherFailureType"
+  - publisherType: "publisherType"
+  - rootViewControllerMethods: "rootViewControllerMethods"
+  - rootViewControllerMethodsSwiftUI: "rootViewControllerMethodsSwiftUI"
+  - viewControllableFlowType: "viewControllableFlowType"
+  - viewControllableType: "viewControllableType"
+  ▿ viewControllerImports: 2 members
+    - "viewControllerImports-1"
+    - "viewControllerImports-2"
+  ▿ viewControllerImportsSwiftUI: 2 members
+    - "viewControllerImportsSwiftUI-1"
+    - "viewControllerImportsSwiftUI-2"
+  - viewControllerMethods: "viewControllerMethods"
+  - viewControllerMethodsSwiftUI: "viewControllerMethodsSwiftUI"
+  - viewControllerProperties: "viewControllerProperties"
+  - viewControllerPropertiesSwiftUI: "viewControllerPropertiesSwiftUI"
+  - viewControllerSuperParameters: "viewControllerSuperParameters"
+  - viewControllerType: "viewControllerType"
+  - viewControllerUpdateComment: "viewControllerUpdateComment"
+  - viewControllerWithoutViewStateMethods: "viewControllerWithoutViewStateMethods"
+  - viewControllerWithoutViewStateMethodsSwiftUI: "viewControllerWithoutViewStateMethodsSwiftUI"
+  - viewStateOperators: "viewStateOperators"
+  - viewStatePublisher: "viewStatePublisher"

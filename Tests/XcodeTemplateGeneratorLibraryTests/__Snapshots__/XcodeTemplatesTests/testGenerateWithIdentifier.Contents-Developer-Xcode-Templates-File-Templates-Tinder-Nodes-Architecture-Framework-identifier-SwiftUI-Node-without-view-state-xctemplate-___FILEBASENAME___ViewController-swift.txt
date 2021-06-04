@@ -1,0 +1,54 @@
+//___FILEHEADER___
+
+import Combine
+import Nodes
+import SwiftUI
+
+/*
+ PURPOSE:
+ The interface that the View will speak to the Context through. Used for informing the Context of
+ view events and user interactions.
+ */
+internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
+
+/*
+ PURPOSE:
+ Host of the SwiftUI view.
+ */
+internal final class ___VARIABLE_productName___ViewController: AbstractViewHostingController<___VARIABLE_productName___View> {
+}
+
+extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllable {}
+extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___Presentable {}
+
+/*
+ PURPOSE:
+ Concrete implementation of the View.
+ */
+internal struct ___VARIABLE_productName___View: NodesView {
+
+    /// The body of the view.
+    internal var body: some View {
+        Text("___VARIABLE_productName___")
+    }
+
+    /// The view receiver.
+    internal weak var receiver: ___VARIABLE_productName___Receiver?
+
+    /// The Analytics instance.
+    internal weak var analytics: ___VARIABLE_productName___Analytics?
+
+    /// The initializer.
+    internal init() {}
+}
+
+/*
+ PURPOSE:
+ The SwiftUI preview (excluded from release builds).
+ */
+internal struct ___VARIABLE_productName___View_Previews: PreviewProvider {
+
+    internal static var previews: some View {
+        ___VARIABLE_productName___View()
+    }
+}

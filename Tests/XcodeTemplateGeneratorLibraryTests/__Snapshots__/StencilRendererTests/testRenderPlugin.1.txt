@@ -1,0 +1,103 @@
+<fileHeader>
+
+import <pluginImports>
+
+/*
+ PURPOSE:
+ Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
+ */
+public protocol <pluginName>PluginDependency: Dependency {}
+
+/*
+ PURPOSE:
+ Declares dependencies that are owned by this Plugin.
+ */
+internal final class <pluginName>PluginComponent: Component
+    <<pluginName>PluginDependency> {
+
+    /*
+     Dependencies
+     ============
+
+     Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
+
+     fileprivate let example: Example = .init()
+
+     Whenever possible, for example when the dependency does not maintain any state, define the property as a
+     factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
+     Needle compatibility whenever the access control is increased.
+
+     fileprivate var exampleFactory: Example {
+         Example()
+     }
+
+     Only when a singleton simply cannot be avoided and is absolutely necessary, shared instances may be returned.
+
+     fileprivate var example: Example {
+         shared { Example() }
+     }
+
+     */
+
+    /*
+     Child Components
+     ================
+
+     Declare child component factories as 'fileprivate' methods.
+
+     fileprivate func childComponentFactory() -> ChildComponent {
+         ChildComponent(parent: self)
+     }
+
+     */
+}
+
+/*
+ PURPOSE:
+ To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the plugin).
+ */
+internal typealias <pluginName>PluginStateType = Void
+
+/*
+ PURPOSE:
+ The Plugin interface (available to mock for testability).
+ */
+internal protocol <pluginName>Plugin {
+    func create() -> <returnType>?
+}
+
+internal typealias <pluginName>PluginType = Plugin
+    <
+    <pluginName>PluginComponent,
+    <returnType>,
+    <pluginName>PluginStateType
+    >
+
+/*
+ PURPOSE:
+ Concrete implementation of the Plugin.
+ */
+internal final class <pluginName>PluginImp:
+    <pluginName>PluginType, <pluginName>Plugin {
+
+    /// The method in which the Plugin's enabled criteria is defined.
+    /// - Parameters:
+    ///   - component: The component instance
+    ///   - state: The state
+    /// - Returns: The enabled status of the Plugin
+    override internal func isEnabled(
+        component: <pluginName>PluginComponent,
+        state: <pluginName>PluginStateType
+    ) -> Bool {
+        false
+    }
+
+    /// The factory method in which the instance is initialized.
+    /// - Parameter component: The component instance
+    /// - Returns: The initialized instance
+    override internal func build(
+        component: <pluginName>PluginComponent
+    ) -> <returnType> {
+        // TODO: Initialize instance
+    }
+}

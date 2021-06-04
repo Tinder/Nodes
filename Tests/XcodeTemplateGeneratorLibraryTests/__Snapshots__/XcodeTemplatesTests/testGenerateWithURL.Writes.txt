@@ -1,0 +1,175 @@
+▿ 58 elements
+  ▿ (2 elements)
+    - .0: "/Node.xctemplate/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node.xctemplate/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node.xctemplate/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node.xctemplate/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node.xctemplate/___FILEBASENAME___ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node.xctemplate/___FILEBASENAME___ViewStateWorker.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node.xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node.xctemplate/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node.xctemplate/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node.xctemplate/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node.xctemplate/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node.xctemplate/___FILEBASENAME___ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node.xctemplate/___FILEBASENAME___ViewStateWorker.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node.xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (without view state).xctemplate/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (without view state).xctemplate/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (without view state).xctemplate/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (without view state).xctemplate/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (without view state).xctemplate/___FILEBASENAME___ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (without view state).xctemplate/___FILEBASENAME___Worker.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (without view state).xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (without view state).xctemplate/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (without view state).xctemplate/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (without view state).xctemplate/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (without view state).xctemplate/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (without view state).xctemplate/___FILEBASENAME___ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (without view state).xctemplate/___FILEBASENAME___Worker.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (without view state).xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (without view).xctemplate/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (without view).xctemplate/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (without view).xctemplate/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (without view).xctemplate/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (without view).xctemplate/___FILEBASENAME___Worker.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (without view).xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (for root).xctemplate/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (for root).xctemplate/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (for root).xctemplate/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (for root).xctemplate/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (for root).xctemplate/___FILEBASENAME___ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (for root).xctemplate/___FILEBASENAME___ViewStateWorker.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (for root).xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (for root).xctemplate/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (for root).xctemplate/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (for root).xctemplate/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (for root).xctemplate/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (for root).xctemplate/___FILEBASENAME___ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (for root).xctemplate/___FILEBASENAME___ViewStateWorker.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/ Node (for root).xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Worker.xctemplate/___FILEBASENAME___Worker.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Worker.xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin List (for Node).xctemplate/___FILEBASENAME___PluginList.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin List (for Node).xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin Map (for Node).xctemplate/___FILEBASENAME___PluginMap.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin Map (for Node).xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin (for Node).xctemplate/___FILEBASENAME___Plugin.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin (for Node).xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin.xctemplate/___FILEBASENAME___Plugin.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin.xctemplate/TemplateInfo.plist"
+    - .1: true

@@ -1,0 +1,115 @@
+<fileHeader>
+
+import <pluginListImports>
+
+/*
+ PURPOSE:
+ The common Flow interface.
+ */
+internal protocol <pluginListName>Flow: <viewControllableFlowType> {}
+
+/*
+ PURPOSE:
+ The common Listener interface.
+ */
+internal protocol <pluginListName>Listener: AnyObject {}
+
+/*
+ PURPOSE:
+ The common Builder interface.
+ */
+internal protocol <pluginListName>Builder: AnyObject {
+    func build(withListener listener: <pluginListName>Listener) -> <pluginListName>Flow
+}
+
+/*
+ PURPOSE:
+ Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
+ */
+public protocol <pluginListName>PluginListDependency: Dependency {}
+
+/*
+ PURPOSE:
+ Declares dependencies that are owned by this Plugin List.
+ */
+internal final class <pluginListName>PluginListComponent: Component
+    <<pluginListName>PluginListDependency> {
+
+    /*
+     Dependencies
+     ============
+
+     Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
+
+     fileprivate let example: Example = .init()
+
+     Whenever possible, for example when the dependency does not maintain any state, define the property as a
+     factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
+     Needle compatibility whenever the access control is increased.
+
+     fileprivate var exampleFactory: Example {
+         Example()
+     }
+
+     Only when a singleton simply cannot be avoided and is absolutely necessary, shared instances may be returned.
+
+     fileprivate var example: Example {
+         shared { Example() }
+     }
+
+     */
+
+    /*
+     Child Components
+     ================
+
+     Declare child component factories as 'fileprivate' methods.
+
+     fileprivate func childComponentFactory() -> ChildComponent {
+         ChildComponent(parent: self)
+     }
+
+     */
+}
+
+/*
+ PURPOSE:
+ To provide additional state used in determining if the Plugins are enabled (can be any type relevant to the plugins).
+ */
+internal typealias <pluginListName>PluginListStateType = Void
+
+/*
+ PURPOSE:
+ The Plugin List protocol (available to mock for testability).
+ */
+internal protocol <pluginListName>PluginList {
+    func createAll() -> [<pluginListName>Builder]
+    func create() -> <pluginListName>Builder?
+}
+
+internal typealias <pluginListName>PluginListType = PluginList
+    <
+    <pluginListName>PluginListComponent,
+    <pluginListName>Builder,
+    <pluginListName>PluginListStateType
+    >
+
+/*
+ PURPOSE:
+ Concrete implementation of the Plugin List to construct the Plugin collection.
+ */
+internal final class <pluginListName>PluginListImp:
+    <pluginListName>PluginListType, <pluginListName>PluginList {
+
+    /// The method in which the plugins are wrapped by type erased `Plugin` instances.
+    /// - Parameter component: The component instance
+    /// - Returns: The plugins array
+    override internal func plugins(
+        component: <pluginListName>PluginListComponent
+    ) -> [Plugin] {
+        [] // Example:
+//        [
+//            Plugin(ExamplePluginImp(component: component.examplePluginComponentFactory()).create())
+//        ]
+    }
+}

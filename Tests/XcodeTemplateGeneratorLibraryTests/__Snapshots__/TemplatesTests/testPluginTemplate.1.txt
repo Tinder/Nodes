@@ -1,0 +1,41 @@
+▿ PluginTemplate
+  ▿ context: PluginContext
+    - fileHeader: "<fileHeader>"
+    ▿ pluginImports: 3 elements
+      - "<baseImports>"
+      - "<diGraphImports>"
+      - "Nodes"
+    - pluginName: "___VARIABLE_productName___"
+    ▿ returnType: Optional<String>
+      - some: "___VARIABLE_returnType___"
+  - name: "Plugin"
+  ▿ propertyList: XcodeTemplatePropertyList
+    ▿ allowedTypes: 1 element
+      - "public.swift-source"
+    - description: "The source file implementing a Plugin."
+    - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
+    - mainTemplateFile: "___FILEBASENAME___.swift"
+    ▿ options: 2 elements
+      ▿ Option
+        - default: Optional<String>.none
+        - description: "The name of the Plugin"
+        - identifier: "productName"
+        - name: "Plugin name:"
+        - notPersisted: true
+        - required: true
+        - type: "text"
+      ▿ Option
+        - default: Optional<String>.none
+        - description: "The return type of the Plugin"
+        - identifier: "returnType"
+        - name: "Plugin return type:"
+        - notPersisted: true
+        - required: true
+        - type: "text"
+    - platforms: 0 elements
+    - sortOrder: 9
+    - summary: "The source file implementing a Plugin"
+    - supportsSwiftPackage: true
+  ▿ stencils: 1 element
+    - "Plugin"
+  - type: "Plugin"

@@ -1,0 +1,43 @@
+▿ Config
+  ▿ baseImports: 1 member
+    - "Combine"
+  - cancellableType: "AnyCancellable"
+  - dependencies: 0 elements
+  ▿ diGraphImports: 1 member
+    - "NeedleFoundation"
+  - fileHeader: "//___FILEHEADER___"
+  - flowProperties: 0 elements
+  ▿ includedTemplates: 12 elements
+    - "Node"
+    - "NodeSwiftUI"
+    - "NodeWithoutViewState"
+    - "NodeWithoutViewStateSwiftUI"
+    - "NodeWithoutView"
+    - "RootNode"
+    - "RootNodeSwiftUI"
+    - "Worker"
+    - "PluginListNode"
+    - "PluginMapNode"
+    - "PluginNode"
+    - "Plugin"
+  - publisherFailureType: ", Never"
+  - publisherType: "AnyPublisher"
+  - rootViewControllerMethods: "override internal func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .white\n}\n\noverride internal func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride internal func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}\n\noverride internal func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
+  - rootViewControllerMethodsSwiftUI: "override internal func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}"
+  - viewControllableFlowType: "ViewControllableFlow"
+  - viewControllableType: "ViewControllable"
+  ▿ viewControllerImports: 1 member
+    - "UIKit"
+  ▿ viewControllerImportsSwiftUI: 1 member
+    - "SwiftUI"
+  - viewControllerMethods: "override internal func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .white\n}\n\noverride internal func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride internal func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
+  - viewControllerMethodsSwiftUI: ""
+  - viewControllerProperties: ""
+  - viewControllerPropertiesSwiftUI: ""
+  - viewControllerSuperParameters: "nibName: nil, bundle: nil"
+  - viewControllerType: "UIViewController"
+  - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
+  - viewControllerWithoutViewStateMethods: "override internal func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .white\n}"
+  - viewControllerWithoutViewStateMethodsSwiftUI: ""
+  - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
+  - viewStatePublisher: "Just(.initialState).eraseToAnyPublisher()"
