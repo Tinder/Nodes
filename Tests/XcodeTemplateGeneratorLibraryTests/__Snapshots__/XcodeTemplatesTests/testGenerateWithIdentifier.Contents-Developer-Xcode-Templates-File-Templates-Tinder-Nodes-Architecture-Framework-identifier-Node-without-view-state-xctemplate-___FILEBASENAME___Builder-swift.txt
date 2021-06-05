@@ -65,18 +65,6 @@ internal final class ___VARIABLE_productName___Component: Component
 
      */
 
-    /*
-     Child Components
-     ================
-
-     Declare child component factories as 'fileprivate' methods.
-
-     fileprivate func childComponentFactory() -> ChildComponent {
-         ChildComponent(parent: self)
-     }
-
-     */
-
     private let dynamicDependency: ___VARIABLE_productName___DynamicComponentDependency
 
     /// The initializer.
@@ -89,6 +77,18 @@ internal final class ___VARIABLE_productName___Component: Component
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
     }
+
+    /*
+     Child Components
+     ================
+
+     Declare child component factories as 'fileprivate' methods.
+
+     fileprivate func childComponentFactory() -> ChildComponent {
+         ChildComponent(parent: self)
+     }
+
+     */
 }
 
 // MARK: - Builder
