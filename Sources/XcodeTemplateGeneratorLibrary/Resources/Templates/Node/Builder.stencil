@@ -69,18 +69,6 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
 
      */
 
-    /*
-     Child Components
-     ================
-
-     Declare child component factories as 'fileprivate' methods.
-
-     fileprivate func childComponentFactory() -> ChildComponent {
-         ChildComponent(parent: self)
-     }
-
-     */
-
     private let dynamicDependency: {{ node_name }}DynamicComponentDependency
 
     /// The initializer.
@@ -93,6 +81,18 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
     }
+
+    /*
+     Child Components
+     ================
+
+     Declare child component factories as 'fileprivate' methods.
+
+     fileprivate func childComponentFactory() -> ChildComponent {
+         ChildComponent(parent: self)
+     }
+
+     */
 }
 
 // MARK: - Builder
