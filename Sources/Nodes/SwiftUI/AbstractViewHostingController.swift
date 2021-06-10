@@ -6,8 +6,8 @@
 //
 
 #if canImport(SwiftUI)
-
 import SwiftUI
+#endif
 
 @available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public protocol NodesView: View {
@@ -35,7 +35,5 @@ open class AbstractViewHostingController<View: NodesView>: UIHostingController<V
         set { rootView.receiver = newValue }
     }
 }
-
-#endif
 
 #endif

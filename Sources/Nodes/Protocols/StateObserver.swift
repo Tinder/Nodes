@@ -6,9 +6,8 @@
 //
 
 #if canImport(Combine)
-
 import Combine
-import Foundation
+#endif
 
 public protocol StateObserver: AnyObject {
 
@@ -28,5 +27,3 @@ extension StateObserver {
         }
     }
 }
-
-#endif
