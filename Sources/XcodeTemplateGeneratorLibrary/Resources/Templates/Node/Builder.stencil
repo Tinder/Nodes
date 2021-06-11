@@ -61,8 +61,8 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
          Example()
      }
 
-     When shared state is desired and when the dependency depends on another dependency, use the `shared` helper
-     method that always returns the same instance from a computed property.
+     When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
+     that always returns the same instance from a computed property.
 
      fileprivate var example: Example {
          shared { Example(otherDependency: dependency.otherDependency) }
