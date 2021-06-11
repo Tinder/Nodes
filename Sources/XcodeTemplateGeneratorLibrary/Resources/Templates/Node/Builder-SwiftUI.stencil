@@ -53,7 +53,7 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
 
      fileprivate let example: Example = .init()
 
-     Whenever possible, for example when the dependency does not maintain any state, define the property as a
+     Whenever possible, for example when the dependency does not provide shared state, define the property as a
      factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
      Needle compatibility whenever the access control is increased.
 
@@ -61,10 +61,11 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
          Example()
      }
 
-     Only when a singleton simply cannot be avoided and is absolutely necessary, shared instances may be returned.
+     When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
+     that always returns the same instance from a computed property.
 
      fileprivate var example: Example {
-         shared { Example() }
+         shared { Example(otherDependency: dependency.otherDependency) }
      }
 
      */
