@@ -8,6 +8,7 @@
 import ArgumentParser
 import XcodeTemplateGeneratorLibrary
 
+@main
 internal struct XcodeTemplateGeneratorCommand: ParsableCommand {
 
     internal static var configuration: CommandConfiguration = .init(commandName: "xc-template-generator",
@@ -31,5 +32,3 @@ internal struct XcodeTemplateGeneratorCommand: ParsableCommand {
         return try XcodeTemplates.Config(at: path)
     }
 }
-
-XcodeTemplateGeneratorCommand.main()

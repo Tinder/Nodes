@@ -60,7 +60,7 @@ let package = Package(
                 .copy("Resources/Icons"),
                 .copy("Resources/Templates"),
             ]),
-        .target(
+        .executableTarget(
             name: "XcodeTemplateGeneratorTool",
             dependencies: [
                 "XcodeTemplateGeneratorLibrary",
