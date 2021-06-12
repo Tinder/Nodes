@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  XcodeTemplateGeneratorCommand.swift
 //  XcodeTemplateGeneratorTool
 //
 //  Created by Christopher Fuller on 4/25/21.
