@@ -141,51 +141,51 @@ extension XcodeTemplates.Config {
         viewControllerProperties = ""
         viewControllerPropertiesSwiftUI = ""
         viewControllerMethods = """
-            override internal func viewDidLoad() {
+            override func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
             }
 
-            override internal func viewWillAppear(_ animated: Bool) {
+            override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
                 observe(viewState).store(in: &cancellables)
             }
 
-            override internal func viewWillDisappear(_ animated: Bool) {
+            override func viewWillDisappear(_ animated: Bool) {
                 super.viewWillDisappear(animated)
                 cancellables.removeAll()
             }
             """
         viewControllerMethodsSwiftUI = ""
         rootViewControllerMethods = """
-            override internal func viewDidLoad() {
+            override func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
             }
 
-            override internal func viewWillAppear(_ animated: Bool) {
+            override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
                 observe(viewState).store(in: &cancellables)
             }
 
-            override internal func viewDidAppear(_ animated: Bool) {
+            override func viewDidAppear(_ animated: Bool) {
                 super.viewDidAppear(animated)
                 receiver?.viewDidAppear()
             }
 
-            override internal func viewWillDisappear(_ animated: Bool) {
+            override func viewWillDisappear(_ animated: Bool) {
                 super.viewWillDisappear(animated)
                 cancellables.removeAll()
             }
             """
         rootViewControllerMethodsSwiftUI = """
-            override internal func viewDidAppear(_ animated: Bool) {
+            override func viewDidAppear(_ animated: Bool) {
                 super.viewDidAppear(animated)
                 receiver?.viewDidAppear()
             }
             """
         viewControllerWithoutViewStateMethods = """
-            override internal func viewDidLoad() {
+            override func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
             }

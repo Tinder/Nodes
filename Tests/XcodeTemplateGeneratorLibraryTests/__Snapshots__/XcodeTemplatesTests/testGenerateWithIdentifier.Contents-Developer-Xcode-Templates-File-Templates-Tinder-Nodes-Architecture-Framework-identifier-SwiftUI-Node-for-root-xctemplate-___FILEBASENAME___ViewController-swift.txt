@@ -29,7 +29,7 @@ internal protocol ___VARIABLE_productName___Receiver: AnyObject {
  */
 internal final class ___VARIABLE_productName___ViewController: AbstractViewHostingController<___VARIABLE_productName___View> {
 
-    override internal func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         receiver?.viewDidAppear()
     }

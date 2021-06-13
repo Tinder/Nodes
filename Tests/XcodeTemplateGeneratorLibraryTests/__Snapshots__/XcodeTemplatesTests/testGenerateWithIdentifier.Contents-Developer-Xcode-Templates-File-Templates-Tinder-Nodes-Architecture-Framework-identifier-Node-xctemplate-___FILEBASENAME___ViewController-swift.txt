@@ -54,17 +54,17 @@ internal final class ___VARIABLE_productName___ViewController: UIViewController,
         preconditionFailure("init(coder:) has not been implemented")
     }
 
-    override internal func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
     }
 
-    override internal func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         observe(viewState).store(in: &cancellables)
     }
 
-    override internal func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         cancellables.removeAll()
     }
