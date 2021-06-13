@@ -143,7 +143,7 @@ extension XcodeTemplates.Config {
         viewControllerMethods = """
             override internal func viewDidLoad() {
                 super.viewDidLoad()
-                view.backgroundColor = .white
+                view.backgroundColor = .systemBackground
             }
 
             override internal func viewWillAppear(_ animated: Bool) {
@@ -160,7 +160,7 @@ extension XcodeTemplates.Config {
         rootViewControllerMethods = """
             override internal func viewDidLoad() {
                 super.viewDidLoad()
-                view.backgroundColor = .white
+                view.backgroundColor = .systemBackground
             }
 
             override internal func viewWillAppear(_ animated: Bool) {

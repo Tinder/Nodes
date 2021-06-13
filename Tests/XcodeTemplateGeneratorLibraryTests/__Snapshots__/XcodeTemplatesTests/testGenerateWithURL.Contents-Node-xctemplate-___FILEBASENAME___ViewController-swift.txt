@@ -56,7 +56,7 @@ internal final class ___VARIABLE_productName___ViewController: UIViewController,
 
     override internal func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
     }
 
     override internal func viewWillAppear(_ animated: Bool) {
