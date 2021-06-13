@@ -187,7 +187,7 @@ extension XcodeTemplates.Config {
         viewControllerWithoutViewStateMethods = """
             override internal func viewDidLoad() {
                 super.viewDidLoad()
-                view.backgroundColor = .white
+                view.backgroundColor = .systemBackground
             }
             """
         viewControllerWithoutViewStateMethodsSwiftUI = ""

@@ -37,7 +37,7 @@
   - viewControllerSuperParameters: "nibName: nil, bundle: nil"
   - viewControllerType: "UIViewController"
   - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
-  - viewControllerWithoutViewStateMethods: "override internal func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .white\n}"
+  - viewControllerWithoutViewStateMethods: "override internal func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}"
   - viewControllerWithoutViewStateMethodsSwiftUI: ""
   - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
   - viewStatePublisher: "Just(.initialState).eraseToAnyPublisher()"
