@@ -18,7 +18,7 @@ extension XcodeTemplates {
         // swiftlint:disable:next nesting
         internal enum ImportsType {
 
-            case nodes, diGraph, viewController(swiftUI: Bool)
+            case nodes, diGraph, viewController(viewState: Bool, swiftUI: Bool)
         }
 
         // swiftlint:disable:next nesting
@@ -33,6 +33,7 @@ extension XcodeTemplates {
         public var diGraphImports: Set<String>
         public var viewControllerImports: Set<String>
         public var viewControllerImportsSwiftUI: Set<String>
+        public var viewControllerViewStateImports: Set<String>
         public var dependencies: [Variable]
         public var flowProperties: [Variable]
         public var viewControllerType: String
@@ -75,10 +76,11 @@ extension XcodeTemplates {
             case .diGraph:
                 return nodesImports.union(diGraphImports)
             // swiftlint:disable:next explicit_type_interface
-            case let .viewController(swiftUI):
-                return swiftUI
+            case let .viewController(viewState, swiftUI):
+                let imports: Set<String> = swiftUI
                     ? nodesImports.union(viewControllerImportsSwiftUI)
                     : nodesImports.union(viewControllerImports)
+                return viewState ? imports.union(viewControllerViewStateImports) : imports
             }
         }
 
@@ -132,6 +134,7 @@ extension XcodeTemplates.Config {
         diGraphImports = ["NeedleFoundation"]
         viewControllerImports = ["UIKit"]
         viewControllerImportsSwiftUI = ["SwiftUI"]
+        viewControllerViewStateImports = []
         dependencies = []
         flowProperties = []
         viewControllerType = "UIViewController"
@@ -230,6 +233,9 @@ extension XcodeTemplates.Config {
         viewControllerImportsSwiftUI =
             (try? decoder.decode("viewControllerImportsSwiftUI"))
             ?? defaults.viewControllerImportsSwiftUI
+        viewControllerViewStateImports =
+            (try? decoder.decode("viewControllerViewStateImports"))
+            ?? defaults.viewControllerViewStateImports
         dependencies =
             (try? decoder.decode("dependencies"))
             ?? defaults.dependencies

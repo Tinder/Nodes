@@ -47,7 +47,7 @@ internal struct RootNodeTemplate: XcodeTemplate {
             builderImports: config.imports(for: .diGraph),
             contextImports: config.imports(for: .nodes),
             flowImports: config.imports(for: .nodes),
-            viewControllerImports: config.imports(for: .viewController(swiftUI: swiftUI)),
+            viewControllerImports: config.imports(for: .viewController(viewState: true, swiftUI: swiftUI)),
             workerImports: config.imports(for: .nodes),
             dependencies: config.dependencies,
             flowProperties: config.flowProperties,

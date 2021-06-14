@@ -43,6 +43,7 @@
   - viewControllerSuperParameters: "viewControllerSuperParameters"
   - viewControllerType: "viewControllerType"
   - viewControllerUpdateComment: "viewControllerUpdateComment"
+  - viewControllerViewStateImports: 0 members
   - viewControllerWithoutViewStateMethods: "viewControllerWithoutViewStateMethods"
   - viewControllerWithoutViewStateMethodsSwiftUI: "viewControllerWithoutViewStateMethodsSwiftUI"
   - viewStateOperators: "viewStateOperators"
