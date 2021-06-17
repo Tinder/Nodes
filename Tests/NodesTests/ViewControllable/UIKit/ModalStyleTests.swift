@@ -31,7 +31,7 @@ final class ModalStyleTests: XCTestCase {
                                                              adaptivePresentationDelegate: delegate)
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
-        expect(modalStyle.behavior(is: .sheet(.page))) == true
+        expect(modalStyle.behavior) == .page
         expect(modalStyle.presentationStyle) == .pageSheet
         expect(modalStyle.isInteractiveDismissalEnabled) == true
         expect(modalStyle.transitioningDelegate).to(beNil())
@@ -57,7 +57,7 @@ final class ModalStyleTests: XCTestCase {
         let modalStyle: UIViewController.ModalStyle = .sheet()
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
-        expect(modalStyle.behavior(is: .sheet(.page))) == true
+        expect(modalStyle.behavior) == .page
         expect(modalStyle.presentationStyle) == .pageSheet
         expect(modalStyle.isInteractiveDismissalEnabled) == false
         expect(modalStyle.transitioningDelegate).to(beNil())
@@ -90,7 +90,7 @@ final class ModalStyleTests: XCTestCase {
                                                              adaptivePresentationDelegate: delegate)
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
-        expect(modalStyle.behavior(is: .sheet(.form))) == true
+        expect(modalStyle.behavior) == .form
         expect(modalStyle.presentationStyle) == .formSheet
         expect(modalStyle.isInteractiveDismissalEnabled) == true
         expect(modalStyle.transitioningDelegate).to(beNil())
@@ -116,7 +116,7 @@ final class ModalStyleTests: XCTestCase {
         let modalStyle: UIViewController.ModalStyle = .sheet(style: .form)
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
-        expect(modalStyle.behavior(is: .sheet(.form))) == true
+        expect(modalStyle.behavior) == .form
         expect(modalStyle.presentationStyle) == .formSheet
         expect(modalStyle.isInteractiveDismissalEnabled) == false
         expect(modalStyle.transitioningDelegate).to(beNil())
@@ -140,7 +140,7 @@ final class ModalStyleTests: XCTestCase {
         let modalStyle: UIViewController.ModalStyle = .overlay(capturesStatusBarAppearance: true)
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
-        expect(modalStyle.behavior(is: .overlay)) == true
+        expect(modalStyle.behavior) == UIViewController.ModalStyle.Behavior.overlay
         expect(modalStyle.presentationStyle) == .overFullScreen
         expect(modalStyle.isInteractiveDismissalEnabled) == false
         expect(modalStyle.transitioningDelegate).to(beNil())
@@ -166,7 +166,7 @@ final class ModalStyleTests: XCTestCase {
         let modalStyle: UIViewController.ModalStyle = .overlay()
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
-        expect(modalStyle.behavior(is: .overlay)) == true
+        expect(modalStyle.behavior) == UIViewController.ModalStyle.Behavior.overlay
         expect(modalStyle.presentationStyle) == .overFullScreen
         expect(modalStyle.isInteractiveDismissalEnabled) == false
         expect(modalStyle.transitioningDelegate).to(beNil())
@@ -196,7 +196,7 @@ final class ModalStyleTests: XCTestCase {
         let modalStyle: UIViewController.ModalStyle = .cover(delegate: delegate)
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
-        expect(modalStyle.behavior(is: .cover)) == true
+        expect(modalStyle.behavior) == .cover
         expect(modalStyle.presentationStyle) == .fullScreen
         expect(modalStyle.isInteractiveDismissalEnabled) == false
         expect(modalStyle.transitioningDelegate) === delegate
@@ -222,7 +222,7 @@ final class ModalStyleTests: XCTestCase {
         let modalStyle: UIViewController.ModalStyle = .cover()
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
-        expect(modalStyle.behavior(is: .cover)) == true
+        expect(modalStyle.behavior) == .cover
         expect(modalStyle.presentationStyle) == .fullScreen
         expect(modalStyle.isInteractiveDismissalEnabled) == false
         expect(modalStyle.transitioningDelegate).to(beNil())
@@ -252,7 +252,7 @@ final class ModalStyleTests: XCTestCase {
         let modalStyle: UIViewController.ModalStyle = .custom(delegate: delegate)
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
-        expect(modalStyle.behavior(is: .custom)) == true
+        expect(modalStyle.behavior) == .custom
         expect(modalStyle.presentationStyle) == .custom
         expect(modalStyle.isInteractiveDismissalEnabled) == false
         expect(modalStyle.transitioningDelegate) === delegate

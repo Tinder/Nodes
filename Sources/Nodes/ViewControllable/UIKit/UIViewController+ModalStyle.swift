@@ -11,14 +11,28 @@ import UIKit
 
 extension UIViewController {
 
-    public struct ModalStyle {
+    public struct ModalStyle: Equatable {
 
-        @available(macCatalyst 13.0, iOS 13.0, *)
+        public static func == (lhs: ModalStyle, rhs: ModalStyle) -> Bool {
+            lhs.behavior == rhs.behavior
+        }
+
+        @available(macCatalyst 13.0, *)
         @available(tvOS, unavailable)
         // swiftlint:disable:next nesting
-        public enum SheetStyle {
+        public enum SheetStyle: Equatable {
 
             case page, form
+
+            // swiftlint:disable:next strict_fileprivate
+            fileprivate var behavior: Behavior {
+                switch self {
+                case .page:
+                    return .page
+                case .form:
+                    return .form
+                }
+            }
 
             // swiftlint:disable:next strict_fileprivate
             fileprivate var presentationStyle: UIModalPresentationStyle {
@@ -34,24 +48,24 @@ extension UIViewController {
         // swiftlint:disable:next nesting
         public enum Behavior: Equatable {
 
-            @available(macCatalyst 13.0, iOS 13.0, *)
+            @available(macCatalyst 13.0, *)
             @available(tvOS, unavailable)
-            case sheet(SheetStyle)
+            case page, form
 
             case overlay, cover, custom
         }
 
         /// Partially cover the screen with or without interactive dismissal.
-        @available(macCatalyst 13.0, iOS 13.0, *)
+        @available(macCatalyst 13.0, *)
         @available(tvOS, unavailable)
         public static func sheet(
-            style: SheetStyle = .page,
+            style sheetStyle: SheetStyle = .page,
             isInteractiveDismissalEnabled: Bool = false,
             capturesStatusBarAppearance: Bool = false,
             adaptivePresentationDelegate: UIAdaptivePresentationControllerDelegate? = nil
         ) -> ModalStyle {
-            ModalStyle(behavior: .sheet(style),
-                       presentationStyle: style.presentationStyle,
+            ModalStyle(behavior: sheetStyle.behavior,
+                       presentationStyle: sheetStyle.presentationStyle,
                        isInteractiveDismissalEnabled: isInteractiveDismissalEnabled,
                        transitioningDelegate: nil,
                        capturesStatusBarAppearance: capturesStatusBarAppearance,
@@ -138,10 +152,6 @@ extension UIViewController {
             self.transitioningDelegate = transitioningDelegate
             self.capturesStatusBarAppearance = capturesStatusBarAppearance
             self.adaptivePresentationDelegate = adaptivePresentationDelegate
-        }
-
-        public func behavior(is behavior: Behavior) -> Bool {
-            self.behavior == behavior
         }
     }
 
