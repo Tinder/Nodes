@@ -94,20 +94,36 @@ extension UIViewController {
         }
 
         public let behavior: Behavior
-        public let presentationStyle: UIModalPresentationStyle
-        public let controlStatusBarAppearance: Bool
-        public let allowInteractiveDismissal: Bool
+
+        internal let presentationStyle: UIModalPresentationStyle
+        internal let controlStatusBarAppearance: Bool
+        internal let allowInteractiveDismissal: Bool
+        internal let configuration: [(ViewControllable) -> Void]
 
         private init(
             behavior: Behavior,
             presentationStyle: UIModalPresentationStyle,
             controlStatusBarAppearance: Bool,
-            allowInteractiveDismissal: Bool
+            allowInteractiveDismissal: Bool,
+            configuration: [(ViewControllable) -> Void] = []
         ) {
             self.behavior = behavior
             self.presentationStyle = presentationStyle
             self.controlStatusBarAppearance = controlStatusBarAppearance
             self.allowInteractiveDismissal = allowInteractiveDismissal
+            self.configuration = configuration
+        }
+
+        public func withAdditionalConfiguration(
+            configuration additionalConfiguration: @escaping (ViewControllable) -> Void
+        ) -> ModalStyle {
+            ModalStyle(
+                behavior: behavior,
+                presentationStyle: presentationStyle,
+                controlStatusBarAppearance: controlStatusBarAppearance,
+                allowInteractiveDismissal: allowInteractiveDismissal,
+                configuration: configuration + [additionalConfiguration]
+            )
         }
     }
 
@@ -122,6 +138,7 @@ extension UIViewController {
         if #available(macCatalyst 13.0, iOS 13.0, tvOS 13.0, *) {
             isModalInPresentation = !modalStyle.allowInteractiveDismissal
         }
+        modalStyle.configuration.forEach { $0(self) }
         return self
     }
 }
