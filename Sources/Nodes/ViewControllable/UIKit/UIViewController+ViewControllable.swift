@@ -28,7 +28,7 @@ extension UIViewController: ViewControllable {
     ) {
         let viewController: UIViewController = viewController._asUIViewController()
         guard viewController === presentedViewController
-        else { return }
+        else { return completion?() ?? () }
         dismiss(animated: animated, completion: completion)
     }
 
