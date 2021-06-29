@@ -14,99 +14,155 @@ import XCTest
 
 final class ModalStyleTests: XCTestCase {
 
-    private class DelegateMock: NSObject,
-                                UIAdaptivePresentationControllerDelegate,
-                                UIViewControllerTransitioningDelegate {}
+    func testCover() {
 
-    @available(macCatalyst 13.0, iOS 13.0, *)
-    @available(tvOS, unavailable)
-    func testPageSheet() {
-
-        let delegate: DelegateMock = .init()
-
-        expect(delegate).to(notBeNilAndToDeallocateAfterTest())
-
-        let modalStyle: UIViewController.ModalStyle = .sheet(isInteractiveDismissalEnabled: true,
-                                                             capturesStatusBarAppearance: true,
-                                                             adaptivePresentationDelegate: delegate)
+        let modalStyle: UIViewController.ModalStyle = .cover()
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
-        expect(modalStyle.behavior) == .page
-        expect(modalStyle.presentationStyle) == .pageSheet
-        expect(modalStyle.isInteractiveDismissalEnabled) == true
-        expect(modalStyle.transitioningDelegate).to(beNil())
-        expect(modalStyle.capturesStatusBarAppearance) == true
-        expect(modalStyle.adaptivePresentationDelegate) === delegate
+        expect(modalStyle.behavior) == .cover
+        expect(modalStyle.presentationStyle) == .fullScreen
+        expect(modalStyle.controlStatusBarAppearance) == true
+        expect(modalStyle.allowInteractiveDismissal) == false
 
-        expect(viewController.modalPresentationStyle) == .pageSheet
-        expect(viewController.isModalInPresentation) == false
-        expect(viewController.transitioningDelegate).to(beNil())
+        expect(viewController.modalPresentationStyle) == .fullScreen
         if #available(macCatalyst 13.0, *) {
             #if !os(tvOS)
             expect(viewController.modalPresentationCapturesStatusBarAppearance) == true
             #endif
         }
-        expect(viewController.presentationController?.delegate) === delegate
-        breakRetainCycle(viewController)
+        if #available(macCatalyst 13.0, iOS 13.0, tvOS 13.0, *) {
+            expect(viewController.isModalInPresentation) == true
+        }
+    }
+
+    func testOverlay() {
+
+        let modalStyle: UIViewController.ModalStyle = .overlay(controlStatusBarAppearance: true)
+        let viewController: UIViewController = givenViewController(with: modalStyle)
+
+        expect(modalStyle.behavior) == UIViewController.ModalStyle.Behavior.overlay
+        expect(modalStyle.presentationStyle) == .overFullScreen
+        expect(modalStyle.controlStatusBarAppearance) == true
+        expect(modalStyle.allowInteractiveDismissal) == false
+
+        expect(viewController.modalPresentationStyle) == .overFullScreen
+        if #available(macCatalyst 13.0, *) {
+            #if !os(tvOS)
+            expect(viewController.modalPresentationCapturesStatusBarAppearance) == true
+            #endif
+        }
+        if #available(macCatalyst 13.0, iOS 13.0, tvOS 13.0, *) {
+            expect(viewController.isModalInPresentation) == true
+        }
+    }
+
+    func testOverlayWithDefaults() {
+
+        let modalStyle: UIViewController.ModalStyle = .overlay()
+        let viewController: UIViewController = givenViewController(with: modalStyle)
+
+        expect(modalStyle.behavior) == UIViewController.ModalStyle.Behavior.overlay
+        expect(modalStyle.presentationStyle) == .overFullScreen
+        expect(modalStyle.controlStatusBarAppearance) == false
+        expect(modalStyle.allowInteractiveDismissal) == false
+
+        expect(viewController.modalPresentationStyle) == .overFullScreen
+        if #available(macCatalyst 13.0, *) {
+            #if !os(tvOS)
+            expect(viewController.modalPresentationCapturesStatusBarAppearance) == false
+            #endif
+        }
+        if #available(macCatalyst 13.0, iOS 13.0, tvOS 13.0, *) {
+            expect(viewController.isModalInPresentation) == true
+        }
+    }
+
+    func testCustom() {
+
+        let modalStyle: UIViewController.ModalStyle = .custom()
+        let viewController: UIViewController = givenViewController(with: modalStyle)
+
+        expect(modalStyle.behavior) == .custom
+        expect(modalStyle.presentationStyle) == .custom
+        expect(modalStyle.controlStatusBarAppearance) == false
+        expect(modalStyle.allowInteractiveDismissal) == false
+
+        expect(viewController.modalPresentationStyle) == .custom
+        if #available(macCatalyst 13.0, *) {
+            #if !os(tvOS)
+            expect(viewController.modalPresentationCapturesStatusBarAppearance) == false
+            #endif
+        }
+        if #available(macCatalyst 13.0, iOS 13.0, tvOS 13.0, *) {
+            expect(viewController.isModalInPresentation) == true
+        }
+    }
+
+    @available(macCatalyst 13.0, iOS 13.0, *)
+    @available(tvOS, unavailable)
+    func testPageSheet() {
+
+        let modalStyle: UIViewController.ModalStyle = .sheet(style: .page,
+                                                             controlStatusBarAppearance: true,
+                                                             allowInteractiveDismissal: true)
+        let viewController: UIViewController = givenViewController(with: modalStyle)
+
+        expect(modalStyle.behavior) == .page
+        expect(modalStyle.presentationStyle) == .pageSheet
+        expect(modalStyle.controlStatusBarAppearance) == true
+        expect(modalStyle.allowInteractiveDismissal) == true
+
+        expect(viewController.modalPresentationStyle) == .pageSheet
+        if #available(macCatalyst 13.0, *) {
+            #if !os(tvOS)
+            expect(viewController.modalPresentationCapturesStatusBarAppearance) == true
+            #endif
+        }
+        expect(viewController.isModalInPresentation) == false
     }
 
     @available(macCatalyst 13.0, iOS 13.0, *)
     @available(tvOS, unavailable)
     func testPageSheetWithDefaults() {
 
-        let modalStyle: UIViewController.ModalStyle = .sheet()
+        let modalStyle: UIViewController.ModalStyle = .sheet(style: .page)
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
         expect(modalStyle.behavior) == .page
         expect(modalStyle.presentationStyle) == .pageSheet
-        expect(modalStyle.isInteractiveDismissalEnabled) == false
-        expect(modalStyle.transitioningDelegate).to(beNil())
-        expect(modalStyle.capturesStatusBarAppearance) == false
-        expect(modalStyle.adaptivePresentationDelegate).to(beNil())
+        expect(modalStyle.controlStatusBarAppearance) == false
+        expect(modalStyle.allowInteractiveDismissal) == false
 
         expect(viewController.modalPresentationStyle) == .pageSheet
-        expect(viewController.isModalInPresentation) == true
-        expect(viewController.transitioningDelegate).to(beNil())
         if #available(macCatalyst 13.0, *) {
             #if !os(tvOS)
             expect(viewController.modalPresentationCapturesStatusBarAppearance) == false
             #endif
         }
-        expect(viewController.presentationController?.delegate).to(beNil())
-        breakRetainCycle(viewController)
+        expect(viewController.isModalInPresentation) == true
     }
 
     @available(macCatalyst 13.0, iOS 13.0, *)
     @available(tvOS, unavailable)
     func testFormSheet() {
 
-        let delegate: DelegateMock = .init()
-
-        expect(delegate).to(notBeNilAndToDeallocateAfterTest())
-
         let modalStyle: UIViewController.ModalStyle = .sheet(style: .form,
-                                                             isInteractiveDismissalEnabled: true,
-                                                             capturesStatusBarAppearance: true,
-                                                             adaptivePresentationDelegate: delegate)
+                                                             controlStatusBarAppearance: true,
+                                                             allowInteractiveDismissal: true)
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
         expect(modalStyle.behavior) == .form
         expect(modalStyle.presentationStyle) == .formSheet
-        expect(modalStyle.isInteractiveDismissalEnabled) == true
-        expect(modalStyle.transitioningDelegate).to(beNil())
-        expect(modalStyle.capturesStatusBarAppearance) == true
-        expect(modalStyle.adaptivePresentationDelegate) === delegate
+        expect(modalStyle.controlStatusBarAppearance) == true
+        expect(modalStyle.allowInteractiveDismissal) == true
 
         expect(viewController.modalPresentationStyle) == .formSheet
-        expect(viewController.isModalInPresentation) == false
-        expect(viewController.transitioningDelegate).to(beNil())
         if #available(macCatalyst 13.0, *) {
             #if !os(tvOS)
             expect(viewController.modalPresentationCapturesStatusBarAppearance) == true
             #endif
         }
-        expect(viewController.presentationController?.delegate) === delegate
-        breakRetainCycle(viewController)
+        expect(viewController.isModalInPresentation) == false
     }
 
     @available(macCatalyst 13.0, iOS 13.0, *)
@@ -118,168 +174,22 @@ final class ModalStyleTests: XCTestCase {
 
         expect(modalStyle.behavior) == .form
         expect(modalStyle.presentationStyle) == .formSheet
-        expect(modalStyle.isInteractiveDismissalEnabled) == false
-        expect(modalStyle.transitioningDelegate).to(beNil())
-        expect(modalStyle.capturesStatusBarAppearance) == false
-        expect(modalStyle.adaptivePresentationDelegate).to(beNil())
+        expect(modalStyle.controlStatusBarAppearance) == false
+        expect(modalStyle.allowInteractiveDismissal) == false
 
         expect(viewController.modalPresentationStyle) == .formSheet
+        if #available(macCatalyst 13.0, *) {
+            #if !os(tvOS)
+            expect(viewController.modalPresentationCapturesStatusBarAppearance) == false
+            #endif
+        }
         expect(viewController.isModalInPresentation) == true
-        expect(viewController.transitioningDelegate).to(beNil())
-        if #available(macCatalyst 13.0, *) {
-            #if !os(tvOS)
-            expect(viewController.modalPresentationCapturesStatusBarAppearance) == false
-            #endif
-        }
-        expect(viewController.presentationController?.delegate).to(beNil())
-        breakRetainCycle(viewController)
-    }
-
-    func testOverlay() {
-
-        let modalStyle: UIViewController.ModalStyle = .overlay(capturesStatusBarAppearance: true)
-        let viewController: UIViewController = givenViewController(with: modalStyle)
-
-        expect(modalStyle.behavior) == UIViewController.ModalStyle.Behavior.overlay
-        expect(modalStyle.presentationStyle) == .overFullScreen
-        expect(modalStyle.isInteractiveDismissalEnabled) == false
-        expect(modalStyle.transitioningDelegate).to(beNil())
-        expect(modalStyle.capturesStatusBarAppearance) == true
-        expect(modalStyle.adaptivePresentationDelegate).to(beNil())
-
-        expect(viewController.modalPresentationStyle) == .overFullScreen
-        if #available(macCatalyst 13.0, iOS 13.0, tvOS 13.0, *) {
-            expect(viewController.isModalInPresentation) == true
-        }
-        expect(viewController.transitioningDelegate).to(beNil())
-        if #available(macCatalyst 13.0, *) {
-            #if !os(tvOS)
-            expect(viewController.modalPresentationCapturesStatusBarAppearance) == true
-            #endif
-        }
-        expect(viewController.presentationController?.delegate).to(beNil())
-        breakRetainCycle(viewController)
-    }
-
-    func testOverlayWithDefaults() {
-
-        let modalStyle: UIViewController.ModalStyle = .overlay()
-        let viewController: UIViewController = givenViewController(with: modalStyle)
-
-        expect(modalStyle.behavior) == UIViewController.ModalStyle.Behavior.overlay
-        expect(modalStyle.presentationStyle) == .overFullScreen
-        expect(modalStyle.isInteractiveDismissalEnabled) == false
-        expect(modalStyle.transitioningDelegate).to(beNil())
-        expect(modalStyle.capturesStatusBarAppearance) == false
-        expect(modalStyle.adaptivePresentationDelegate).to(beNil())
-
-        expect(viewController.modalPresentationStyle) == .overFullScreen
-        if #available(macCatalyst 13.0, iOS 13.0, tvOS 13.0, *) {
-            expect(viewController.isModalInPresentation) == true
-        }
-        expect(viewController.transitioningDelegate).to(beNil())
-        if #available(macCatalyst 13.0, *) {
-            #if !os(tvOS)
-            expect(viewController.modalPresentationCapturesStatusBarAppearance) == false
-            #endif
-        }
-        expect(viewController.presentationController?.delegate).to(beNil())
-        breakRetainCycle(viewController)
-    }
-
-    func testCover() {
-
-        let delegate: DelegateMock = .init()
-
-        expect(delegate).to(notBeNilAndToDeallocateAfterTest())
-
-        let modalStyle: UIViewController.ModalStyle = .cover(delegate: delegate)
-        let viewController: UIViewController = givenViewController(with: modalStyle)
-
-        expect(modalStyle.behavior) == .cover
-        expect(modalStyle.presentationStyle) == .fullScreen
-        expect(modalStyle.isInteractiveDismissalEnabled) == false
-        expect(modalStyle.transitioningDelegate) === delegate
-        expect(modalStyle.capturesStatusBarAppearance) == false
-        expect(modalStyle.adaptivePresentationDelegate).to(beNil())
-
-        expect(viewController.modalPresentationStyle) == .fullScreen
-        if #available(macCatalyst 13.0, iOS 13.0, tvOS 13.0, *) {
-            expect(viewController.isModalInPresentation) == true
-        }
-        expect(viewController.transitioningDelegate) === delegate
-        if #available(macCatalyst 13.0, *) {
-            #if !os(tvOS)
-            expect(viewController.modalPresentationCapturesStatusBarAppearance) == false
-            #endif
-        }
-        expect(viewController.presentationController?.delegate).to(beNil())
-        breakRetainCycle(viewController)
-    }
-
-    func testCoverWithDefaults() {
-
-        let modalStyle: UIViewController.ModalStyle = .cover()
-        let viewController: UIViewController = givenViewController(with: modalStyle)
-
-        expect(modalStyle.behavior) == .cover
-        expect(modalStyle.presentationStyle) == .fullScreen
-        expect(modalStyle.isInteractiveDismissalEnabled) == false
-        expect(modalStyle.transitioningDelegate).to(beNil())
-        expect(modalStyle.capturesStatusBarAppearance) == false
-        expect(modalStyle.adaptivePresentationDelegate).to(beNil())
-
-        expect(viewController.modalPresentationStyle) == .fullScreen
-        if #available(macCatalyst 13.0, iOS 13.0, tvOS 13.0, *) {
-            expect(viewController.isModalInPresentation) == true
-        }
-        expect(viewController.transitioningDelegate).to(beNil())
-        if #available(macCatalyst 13.0, *) {
-            #if !os(tvOS)
-            expect(viewController.modalPresentationCapturesStatusBarAppearance) == false
-            #endif
-        }
-        expect(viewController.presentationController?.delegate).to(beNil())
-        breakRetainCycle(viewController)
-    }
-
-    func testCustom() {
-
-        let delegate: DelegateMock = .init()
-
-        expect(delegate).to(notBeNilAndToDeallocateAfterTest())
-
-        let modalStyle: UIViewController.ModalStyle = .custom(delegate: delegate)
-        let viewController: UIViewController = givenViewController(with: modalStyle)
-
-        expect(modalStyle.behavior) == .custom
-        expect(modalStyle.presentationStyle) == .custom
-        expect(modalStyle.isInteractiveDismissalEnabled) == false
-        expect(modalStyle.transitioningDelegate) === delegate
-        expect(modalStyle.capturesStatusBarAppearance) == false
-        expect(modalStyle.adaptivePresentationDelegate).to(beNil())
-
-        expect(viewController.modalPresentationStyle) == .custom
-        if #available(macCatalyst 13.0, iOS 13.0, tvOS 13.0, *) {
-            expect(viewController.isModalInPresentation) == true
-        }
-        expect(viewController.transitioningDelegate) === delegate
-        if #available(macCatalyst 13.0, *) {
-            #if !os(tvOS)
-            expect(viewController.modalPresentationCapturesStatusBarAppearance) == false
-            #endif
-        }
-        expect(viewController.presentationController?.delegate).to(beNil())
     }
 
     private func givenViewController(with modalStyle: UIViewController.ModalStyle) -> UIViewController {
         let viewController: UIViewController = .init()
         expect(viewController).to(notBeNilAndToDeallocateAfterTest())
         return viewController.withModalStyle(modalStyle)
-    }
-
-    private func breakRetainCycle(_ viewController: UIViewController) {
-        UIViewController().present(viewController, animated: false)
     }
 }
 
