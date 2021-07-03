@@ -24,6 +24,6 @@ internal struct XcodeTemplateGeneratorCommand: ParsableCommand {
 
     internal func run() throws {
         let config: ConfigFactory = .init()
-        try XcodeTemplates(config: config(path: path)).generate(identifier: identifier)
+        try XcodeTemplates(config: config(at: path)).generate(identifier: identifier)
     }
 }
