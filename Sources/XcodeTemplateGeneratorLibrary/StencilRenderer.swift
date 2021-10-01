@@ -75,8 +75,9 @@ public final class StencilRenderer {
     }
 
     internal func render(_ stencil: String, of type: String, with context: [String: Any]) throws -> String {
+        let bundle: Bundle = .moduleRelativeToExecutable ?? .module
         // swiftlint:disable:next force_unwrapping
-        let stencilURL: URL = Bundle.module.resourceURL!
+        let stencilURL: URL = bundle.resourceURL!
             .appendingPathComponent("Templates")
             .appendingPathComponent(type)
             .appendingPathComponent(stencil)
