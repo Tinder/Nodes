@@ -9,3 +9,6 @@ Packages/
 # Xcode
 *.xcworkspace/
 *.xcodeproj/
+
+# Bazel
+bazel-*
