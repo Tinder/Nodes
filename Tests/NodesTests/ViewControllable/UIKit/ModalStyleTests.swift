@@ -16,11 +16,10 @@ final class ModalStyleTests: XCTestCase {
 
     func testCover() {
 
-        let modalStyle: UIViewController.ModalStyle = .cover()
+        let modalStyle: ModalStyle = .cover()
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
         expect(modalStyle.behavior) == .cover
-        expect(modalStyle.presentationStyle) == .fullScreen
         expect(modalStyle.controlStatusBarAppearance) == true
         expect(modalStyle.allowInteractiveDismissal) == false
 
@@ -37,11 +36,10 @@ final class ModalStyleTests: XCTestCase {
 
     func testOverlay() {
 
-        let modalStyle: UIViewController.ModalStyle = .overlay(controlStatusBarAppearance: true)
+        let modalStyle: ModalStyle = .overlay(controlStatusBarAppearance: true)
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
-        expect(modalStyle.behavior) == UIViewController.ModalStyle.Behavior.overlay
-        expect(modalStyle.presentationStyle) == .overFullScreen
+        expect(modalStyle.behavior) == ModalStyle.Behavior.overlay
         expect(modalStyle.controlStatusBarAppearance) == true
         expect(modalStyle.allowInteractiveDismissal) == false
 
@@ -58,11 +56,10 @@ final class ModalStyleTests: XCTestCase {
 
     func testOverlayWithDefaults() {
 
-        let modalStyle: UIViewController.ModalStyle = .overlay()
+        let modalStyle: ModalStyle = .overlay()
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
-        expect(modalStyle.behavior) == UIViewController.ModalStyle.Behavior.overlay
-        expect(modalStyle.presentationStyle) == .overFullScreen
+        expect(modalStyle.behavior) == ModalStyle.Behavior.overlay
         expect(modalStyle.controlStatusBarAppearance) == false
         expect(modalStyle.allowInteractiveDismissal) == false
 
@@ -79,11 +76,10 @@ final class ModalStyleTests: XCTestCase {
 
     func testCustom() {
 
-        let modalStyle: UIViewController.ModalStyle = .custom()
+        let modalStyle: ModalStyle = .custom()
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
         expect(modalStyle.behavior) == .custom
-        expect(modalStyle.presentationStyle) == .custom
         expect(modalStyle.controlStatusBarAppearance) == false
         expect(modalStyle.allowInteractiveDismissal) == false
 
@@ -102,13 +98,12 @@ final class ModalStyleTests: XCTestCase {
     @available(tvOS, unavailable)
     func testPageSheet() {
 
-        let modalStyle: UIViewController.ModalStyle = .sheet(style: .page,
-                                                             controlStatusBarAppearance: true,
-                                                             allowInteractiveDismissal: true)
+        let modalStyle: ModalStyle = .sheet(style: .page,
+                                            controlStatusBarAppearance: true,
+                                            allowInteractiveDismissal: true)
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
         expect(modalStyle.behavior) == .page
-        expect(modalStyle.presentationStyle) == .pageSheet
         expect(modalStyle.controlStatusBarAppearance) == true
         expect(modalStyle.allowInteractiveDismissal) == true
 
@@ -125,11 +120,10 @@ final class ModalStyleTests: XCTestCase {
     @available(tvOS, unavailable)
     func testPageSheetWithDefaults() {
 
-        let modalStyle: UIViewController.ModalStyle = .sheet(style: .page)
+        let modalStyle: ModalStyle = .sheet(style: .page)
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
         expect(modalStyle.behavior) == .page
-        expect(modalStyle.presentationStyle) == .pageSheet
         expect(modalStyle.controlStatusBarAppearance) == false
         expect(modalStyle.allowInteractiveDismissal) == false
 
@@ -146,13 +140,12 @@ final class ModalStyleTests: XCTestCase {
     @available(tvOS, unavailable)
     func testFormSheet() {
 
-        let modalStyle: UIViewController.ModalStyle = .sheet(style: .form,
-                                                             controlStatusBarAppearance: true,
-                                                             allowInteractiveDismissal: true)
+        let modalStyle: ModalStyle = .sheet(style: .form,
+                                            controlStatusBarAppearance: true,
+                                            allowInteractiveDismissal: true)
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
         expect(modalStyle.behavior) == .form
-        expect(modalStyle.presentationStyle) == .formSheet
         expect(modalStyle.controlStatusBarAppearance) == true
         expect(modalStyle.allowInteractiveDismissal) == true
 
@@ -169,11 +162,10 @@ final class ModalStyleTests: XCTestCase {
     @available(tvOS, unavailable)
     func testFormSheetWithDefaults() {
 
-        let modalStyle: UIViewController.ModalStyle = .sheet(style: .form)
+        let modalStyle: ModalStyle = .sheet(style: .form)
         let viewController: UIViewController = givenViewController(with: modalStyle)
 
         expect(modalStyle.behavior) == .form
-        expect(modalStyle.presentationStyle) == .formSheet
         expect(modalStyle.controlStatusBarAppearance) == false
         expect(modalStyle.allowInteractiveDismissal) == false
 
@@ -186,7 +178,7 @@ final class ModalStyleTests: XCTestCase {
         expect(viewController.isModalInPresentation) == true
     }
 
-    private func givenViewController(with modalStyle: UIViewController.ModalStyle) -> UIViewController {
+    private func givenViewController(with modalStyle: ModalStyle) -> UIViewController {
         let viewController: UIViewController = .init()
         expect(viewController).to(notBeNilAndToDeallocateAfterTest())
         return viewController.withModalStyle(modalStyle)

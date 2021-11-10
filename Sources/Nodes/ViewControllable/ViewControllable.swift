@@ -12,11 +12,11 @@ import UIKit
 public protocol ViewControllable: AnyObject {
 
     @discardableResult
-    func withModalStyle(_ style: UIViewController.ModalStyle) -> Self
+    func withModalStyle(_ style: ModalStyle) -> Self
 
     func present(
         _ viewController: ViewControllable,
-        withModalStyle modalStyle: UIViewController.ModalStyle,
+        withModalStyle modalStyle: ModalStyle,
         animated: Bool,
         completion: (() -> Void)?
     )
@@ -55,7 +55,7 @@ extension ViewControllable {
 
     public func present(
         _ viewController: ViewControllable,
-        withModalStyle modalStyle: UIViewController.ModalStyle,
+        withModalStyle modalStyle: ModalStyle,
         animated: Bool
     ) {
         present(viewController, withModalStyle: modalStyle, animated: animated, completion: nil)
