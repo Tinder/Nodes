@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+PREFLIGHT="swift run --skip-build -- preflight"
+FORMATTER="pretty"
+
+set -e
+
+. git-sh-setup
+
+require_clean_work_tree push "$(cat <<'EOF'
+Preflight requires a clean work tree to analyze the code being pushed.
+Please either commit or stash local changes (or use `--no-verify` to skip).
+EOF)"
+
+ZERO_HASH=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+
+while read LOCAL_REF LOCAL_OID REMOTE_REF REMOTE_OID
+do
+    if [ $LOCAL_REF != ${LOCAL_REF#refs/heads/} ] && [ $LOCAL_OID != $ZERO_HASH ]
+    then
+        if [ $REMOTE_OID != $ZERO_HASH ]
+        then
+            REFS=( "$REMOTE_OID" "$LOCAL_OID" )
+        else
+            BRANCH="main"
+            git fetch origin "$BRANCH:$BRANCH" >/dev/null 2>&1
+            REFS=( "origin/$BRANCH" "$LOCAL_OID" )
+        fi
+        git diff ${REFS[*]} | $PREFLIGHT --diff git --output "$FORMATTER" --strict
+    fi
+done

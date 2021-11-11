@@ -26,6 +26,9 @@ let package = Package(
             url: "https://github.com/apple/swift-argument-parser",
             from: "0.3.0"),
         .package(
+            url: "git@github.com:TinderApp/Preflight.git",
+            from: "0.0.0"),
+        .package(
             url: "https://github.com/realm/SwiftLint.git",
             from: "0.43.0"),
         .package(

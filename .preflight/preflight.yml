@@ -1,0 +1,15 @@
+analyzers:
+  - name: SwiftLint
+    workingDirectory: Sources
+    fileExtensions: [swift]
+    command: swift run --skip-build -- swiftlint lint --quiet --strict --reporter json
+    inputFilesOption: --use-script-input-files
+    exitStatusMask: 0b10 # Code: 2
+    parser: SwiftLint
+  - name: SwiftLint
+    workingDirectory: Tests
+    fileExtensions: [swift]
+    command: swift run --skip-build -- swiftlint lint --quiet --strict --reporter json
+    inputFilesOption: --use-script-input-files
+    exitStatusMask: 0b10 # Code: 2
+    parser: SwiftLint

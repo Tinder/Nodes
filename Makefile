@@ -18,12 +18,15 @@ else
 	@./bin/create-xcframework "$(library)" "$(platforms)" BITCODE_DISABLED "$(version)"
 endif
 
-.PHONY: lint
-lint: swiftlint = ../.build/debug/swiftlint --quiet
-lint:
-	@swift build --product swiftlint
-	@cd Sources && $(swiftlint)
-	@cd Tests && $(swiftlint)
+.PHONY: preflight
+preflight: output ?= pretty
+preflight:
+	@./bin/preflight "$(output)"
+
+.PHONY: preflight-all
+preflight-all: output ?= pretty
+preflight-all:
+	@./bin/preflight-all "$(output)"
 
 .PHONY: get-libraries
 get-libraries:

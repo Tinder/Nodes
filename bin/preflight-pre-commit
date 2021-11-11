@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+PREFLIGHT="swift run --skip-build -- preflight"
+FORMATTER="pretty"
+
+git diff HEAD | $PREFLIGHT --diff git --output "$FORMATTER" --strict

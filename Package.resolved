@@ -47,6 +47,15 @@
         }
       },
       {
+        "package": "Preflight",
+        "repositoryURL": "git@github.com:TinderApp/Preflight.git",
+        "state": {
+          "branch": null,
+          "revision": "5fb51836509ebf6434e057d93e18e06421e8c0d2",
+          "version": "0.0.3"
+        }
+      },
+      {
         "package": "SourceKitten",
         "repositoryURL": "https://github.com/jpsim/SourceKitten.git",
         "state": {
