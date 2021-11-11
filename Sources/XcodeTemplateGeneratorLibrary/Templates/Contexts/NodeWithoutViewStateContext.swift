@@ -83,8 +83,8 @@ public struct NodeWithoutViewStateContext: Context {
         self.flowImports = flowImports.sortedImports()
         self.viewControllerImports = viewControllerImports.sortedImports()
         self.workerImports = workerImports.sortedImports()
-        self.dependencies = dependencies.map { $0.dictionary }
-        self.flowProperties = flowProperties.map { $0.dictionary }
+        self.dependencies = dependencies.map(\.dictionary)
+        self.flowProperties = flowProperties.map(\.dictionary)
         self.viewControllerType = viewControllerType
         self.viewControllableType = viewControllableType
         self.viewControllableFlowType = viewControllableFlowType

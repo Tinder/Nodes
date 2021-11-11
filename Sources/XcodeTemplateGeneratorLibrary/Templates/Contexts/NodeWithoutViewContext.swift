@@ -67,8 +67,8 @@ public struct NodeWithoutViewContext: Context {
         self.contextImports = contextImports.sortedImports()
         self.flowImports = flowImports.sortedImports()
         self.workerImports = workerImports.sortedImports()
-        self.dependencies = dependencies.map { $0.dictionary }
-        self.flowProperties = flowProperties.map { $0.dictionary }
+        self.dependencies = dependencies.map(\.dictionary)
+        self.flowProperties = flowProperties.map(\.dictionary)
         self.viewControllableType = viewControllableType
         self.viewControllableFlowType = viewControllableFlowType
         self.cancellableType = cancellableType
