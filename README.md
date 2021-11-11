@@ -4,7 +4,7 @@ Native Mobile Application Engineering at Scale
 
 ## RIBs Comparison
 
-The Tinder Nodes Architecture Framework leverages many of the same concepts and patterns used in [Uber's cross-platform mobile architecture framework](https://github.com/uber/RIBs) (RIBs) while incorporating additional benefits purpose built for Tinder. **No source code has been copied from RIBs** to create this framework. Other Uber open source projects such as [Needle](https://github.com/uber/needle) and [Mockolo](https://github.com/uber/mockolo) are utilized as dependencies.
+The Nodes Architecture Framework leverages many of the same concepts and patterns used in [Uber's cross-platform mobile architecture framework](https://github.com/uber/RIBs) (RIBs) while incorporating additional benefits purpose built for Tinder. **No source code has been copied from RIBs** to create this framework. Other Uber open source projects such as [Needle](https://github.com/uber/needle) and [Mockolo](https://github.com/uber/mockolo) are utilized as dependencies.
 
 ## Nodes Benefits
 
