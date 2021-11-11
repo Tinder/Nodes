@@ -13,15 +13,15 @@ task.waitUntilExit()
 
 let data: Data = pipe.fileHandleForReading.readDataToEndOfFile()
 
-guard let object = try? JSONSerialization.jsonObject(with: data),
-      let json = object as? [String: Any],
-      let products = json["products"] as? [[String: Any]]
-else { exit(1) }
+guard let object: Any = try? JSONSerialization.jsonObject(with: data),
+      let json: [String: Any] = object as? [String: Any],
+      let products: [[String: Any]] = json["products"] as? [[String: Any]]
+else { exit(EXIT_FAILURE) }
 
 products
     .compactMap {
-        guard let name = $0["name"] as? String,
-              let type = $0["type"] as? [String: Any],
+        guard let name: String = $0["name"] as? String,
+              let type: [String: Any] = $0["type"] as? [String: Any],
               type["library"] != nil
         else { return nil}
         return name
