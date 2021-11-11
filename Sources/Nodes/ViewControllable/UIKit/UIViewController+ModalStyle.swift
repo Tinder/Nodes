@@ -15,14 +15,12 @@ public struct ModalStyle: Equatable {
 
         case cover, overlay
 
-        @available(macCatalyst 13.0, *)
         @available(tvOS, unavailable)
         case page, form
 
         case custom
     }
 
-    @available(macCatalyst 13.0, *)
     @available(tvOS, unavailable)
     public enum SheetStyle: Equatable {
 
@@ -64,7 +62,6 @@ public struct ModalStyle: Equatable {
                    allowInteractiveDismissal: false)
     }
 
-    @available(macCatalyst 13.0, *)
     @available(tvOS, unavailable)
     public static func sheet(
         style sheetStyle: SheetStyle = .page,
@@ -112,15 +109,19 @@ extension UIViewController {
             modalPresentationStyle = .fullScreen
         case .overlay:
             modalPresentationStyle = .overFullScreen
+        #if !os(tvOS)
         case .page:
             modalPresentationStyle = .pageSheet
         case .form:
             modalPresentationStyle = .formSheet
+        #endif
         case .custom:
             modalPresentationStyle = .custom
         }
+        #if !os(tvOS)
         modalPresentationCapturesStatusBarAppearance = modalStyle.controlStatusBarAppearance
-        if #available(iOS 13.0, *) {
+        #endif
+        if #available(iOS 13.0, tvOS 13.0, *) {
             isModalInPresentation = !modalStyle.allowInteractiveDismissal
         }
         modalStyle.configuration.forEach { $0(self) }
