@@ -13,7 +13,7 @@ public protocol FileSystem {
 
     func createDirectory(at url: URL, withIntermediateDirectories createIntermediates: Bool) throws
     func write(_ data: Data, to url: URL, atomically: Bool) throws
-    func contents(atURL url: URL) throws -> Data
+    func contents(of url: URL) throws -> Data
     func copyItem(at fromURL: URL, to toURL: URL) throws
     func removeItem(at url: URL) throws
 }
@@ -32,7 +32,7 @@ extension FileManager: FileSystem {
         try data.write(to: url, options: atomically ? .atomic : [])
     }
 
-    public func contents(atURL url: URL) throws -> Data {
+    public func contents(of url: URL) throws -> Data {
         try Data(contentsOf: url)
     }
 }

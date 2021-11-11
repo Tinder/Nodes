@@ -40,6 +40,6 @@ final class FileSystemTests: XCTestCase {
             .appendingPathComponent("file")
         let contents: Data = .init("data".utf8)
         expect(try fileSystem.write(contents, to: url, atomically: true)).toNot(throwAssertion())
-        expect(try fileSystem.contents(atURL: url)) == contents
+        expect(try fileSystem.contents(of: url)) == contents
     }
 }

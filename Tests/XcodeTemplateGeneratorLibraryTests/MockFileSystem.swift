@@ -28,7 +28,7 @@ internal class MockFileSystem: FileSystem {
         writes.append((contents: contents, path: url.path, atomically: atomically))
     }
 
-    internal func contents(atURL url: URL) throws -> Data {
+    internal func contents(of url: URL) throws -> Data {
         contents[url] ?? Data()
     }
 

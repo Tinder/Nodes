@@ -61,7 +61,7 @@ extension XcodeTemplates {
             using fileSystem: FileSystem = FileManager.default
         ) throws {
             let url: URL = .init(fileURLWithPath: path)
-            self = try fileSystem.contents(atURL: url).decoded(using: YAMLDecoder())
+            self = try fileSystem.contents(of: url).decoded(using: YAMLDecoder())
         }
 
         internal func variable(_ name: String) -> String {
