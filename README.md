@@ -1,6 +1,6 @@
-# Tinder Nodes Architecture Framework
+# Nodes Architecture Framework
 
-> native mobile application engineering at scale
+Native Mobile Application Engineering at Scale
 
 ## RIBs Comparison
 
