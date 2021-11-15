@@ -4,14 +4,14 @@ import Combine
 import Nodes
 import SwiftUI
 
-/*
+/**
  PURPOSE:
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
  */
 internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
 
-/*
+/**
  PURPOSE:
  Host of the SwiftUI view.
  */
@@ -21,7 +21,7 @@ internal final class ___VARIABLE_productName___ViewController: AbstractViewHosti
 extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllable {}
 extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___Presentable {}
 
-/*
+/**
  PURPOSE:
  Concrete implementation of the View.
  */
@@ -42,7 +42,7 @@ internal struct ___VARIABLE_productName___View: NodesView {
     internal init() {}
 }
 
-/*
+/**
  PURPOSE:
  The SwiftUI preview (excluded from release builds).
  */

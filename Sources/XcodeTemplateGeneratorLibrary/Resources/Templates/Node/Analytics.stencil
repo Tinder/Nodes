@@ -27,7 +27,7 @@ import {{ import }}{% endfor %}
  can be a new one added to this file.
  */
 
-/*
+/**
  PURPOSE:
  The interface for analytics tracked by this Node.
 
@@ -36,7 +36,7 @@ import {{ import }}{% endfor %}
  */
 internal protocol {{ node_name }}Analytics: AnyObject {}
 
-/*
+/**
  PURPOSE:
  The implementations of the protocol methods for analytics tracked by this Node.
 
@@ -47,7 +47,7 @@ internal protocol {{ node_name }}Analytics: AnyObject {}
  */
 internal extension {{ node_name }}Analytics {}
 
-/*
+/**
  PURPOSE:
  Custom analytics implementation for this Node, to be used ONLY when storing state is unavoidable.
 

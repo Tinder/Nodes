@@ -2,7 +2,7 @@
 
 import <workerImports>
 
-/*
+/**
  PURPOSE:
  Encapsulates work to be performed by the Node.
  */
@@ -10,7 +10,7 @@ internal protocol <workerName>Worker: Worker {
     var viewState: <publisherType><<nodeName>ViewState<publisherFailureType>> { get }
 }
 
-/*
+/**
  PURPOSE:
  Concrete implementation of the Worker.
  */

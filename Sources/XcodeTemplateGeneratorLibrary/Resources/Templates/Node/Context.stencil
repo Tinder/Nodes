@@ -2,13 +2,13 @@
 {% for import in context_imports %}
 import {{ import }}{% endfor %}
 
-/*
+/**
  PURPOSE:
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
 {% if public_node %}public{% else %}internal{% endif %} protocol {{ node_name }}Listener: AnyObject {}
 
-/*
+/**
  PURPOSE:
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
@@ -18,7 +18,7 @@ internal protocol {{ node_name }}FlowInterface: Flow {
 }{% else %}
 internal protocol {{ node_name }}FlowInterface: Flow {}{% endif %}{% if owns_view %}
 
-/*
+/**
  PURPOSE:
  The interface that the Context will speak to the View through. Used to inform the View of any
  state change (i.e. to keep the UI in sync).
@@ -27,7 +27,7 @@ internal protocol {{ node_name }}Presentable: AnyObject {
     var receiver: {{ node_name }}Receiver? { get set }
 }{% endif %}
 
-/*
+/**
  PURPOSE:
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.

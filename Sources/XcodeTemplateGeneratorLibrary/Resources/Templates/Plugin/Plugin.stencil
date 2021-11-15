@@ -2,13 +2,13 @@
 {% for import in plugin_imports %}
 import {{ import }}{% endfor %}
 
-/*
+/**
  PURPOSE:
  Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
  */
 public protocol {{ plugin_name }}PluginDependency: Dependency {}
 
-/*
+/**
  PURPOSE:
  Declares dependencies that are owned by this Plugin.
  */
@@ -57,13 +57,13 @@ internal final class {{ plugin_name }}PluginComponent: Component
     }{% endif %}
 }
 
-/*
+/**
  PURPOSE:
  To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the plugin).
  */
 internal typealias {{ plugin_name }}PluginStateType = Void
 
-/*
+/**
  PURPOSE:
  The Plugin interface (available to mock for testability).
  */
@@ -78,7 +78,7 @@ internal typealias {{ plugin_name }}PluginType = Plugin
     {{ plugin_name }}PluginStateType
     >
 
-/*
+/**
  PURPOSE:
  Concrete implementation of the Plugin.
  */

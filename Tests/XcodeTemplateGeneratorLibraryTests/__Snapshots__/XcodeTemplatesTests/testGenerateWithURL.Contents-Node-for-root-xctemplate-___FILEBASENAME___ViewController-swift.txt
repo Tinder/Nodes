@@ -4,7 +4,7 @@ import Combine
 import Nodes
 import UIKit
 
-/*
+/**
  PURPOSE:
  The view state of your View Controller.
  */
@@ -14,7 +14,7 @@ internal struct ___VARIABLE_productName___ViewState: Equatable, InitialStateProv
     internal static var initialState: ___VARIABLE_productName___ViewState = .init()
 }
 
-/*
+/**
  PURPOSE:
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
@@ -23,7 +23,7 @@ internal protocol ___VARIABLE_productName___Receiver: AnyObject {
     func viewDidAppear()
 }
 
-/*
+/**
  PURPOSE:
  Concrete implementation of the UI.
  */

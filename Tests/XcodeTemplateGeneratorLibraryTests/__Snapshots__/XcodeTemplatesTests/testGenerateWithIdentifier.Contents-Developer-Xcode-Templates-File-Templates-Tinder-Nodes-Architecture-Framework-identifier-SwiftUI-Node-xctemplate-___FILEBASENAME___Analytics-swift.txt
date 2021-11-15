@@ -28,7 +28,7 @@ import Nodes
  can be a new one added to this file.
  */
 
-/*
+/**
  PURPOSE:
  The interface for analytics tracked by this Node.
 
@@ -37,7 +37,7 @@ import Nodes
  */
 internal protocol ___VARIABLE_productName___Analytics: AnyObject {}
 
-/*
+/**
  PURPOSE:
  The implementations of the protocol methods for analytics tracked by this Node.
 
@@ -48,7 +48,7 @@ internal protocol ___VARIABLE_productName___Analytics: AnyObject {}
  */
 internal extension ___VARIABLE_productName___Analytics {}
 
-/*
+/**
  PURPOSE:
  Custom analytics implementation for this Node, to be used ONLY when storing state is unavoidable.
 

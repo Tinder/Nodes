@@ -2,19 +2,19 @@
 {% for import in plugin_list_imports %}
 import {{ import }}{% endfor %}
 
-/*
+/**
  PURPOSE:
  The common Flow interface.
  */
 internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} {}
 
-/*
+/**
  PURPOSE:
  The common Listener interface.
  */
 internal protocol {{ plugin_list_name }}Listener: AnyObject {}
 
-/*
+/**
  PURPOSE:
  The common Builder interface.
  */
@@ -22,13 +22,13 @@ internal protocol {{ plugin_list_name }}Builder: AnyObject {
     func build(withListener listener: {{ plugin_list_name }}Listener) -> {{ plugin_list_name }}Flow
 }
 
-/*
+/**
  PURPOSE:
  Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
  */
 public protocol {{ plugin_list_name }}PluginListDependency: Dependency {}
 
-/*
+/**
  PURPOSE:
  Declares dependencies that are owned by this Plugin List.
  */
@@ -73,13 +73,13 @@ internal final class {{ plugin_list_name }}PluginListComponent: Component
      */
 }
 
-/*
+/**
  PURPOSE:
  To provide additional state used in determining if the Plugins are enabled (can be any type relevant to the plugins).
  */
 internal typealias {{ plugin_list_name }}PluginListStateType = Void
 
-/*
+/**
  PURPOSE:
  The Plugin List protocol (available to mock for testability).
  */
@@ -95,7 +95,7 @@ internal typealias {{ plugin_list_name }}PluginListType = PluginList
     {{ plugin_list_name }}PluginListStateType
     >
 
-/*
+/**
  PURPOSE:
  Concrete implementation of the Plugin List to construct the Plugin collection.
  */

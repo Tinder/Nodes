@@ -3,13 +3,13 @@
 import Combine
 import Nodes
 
-/*
+/**
  PURPOSE:
  Encapsulates work to be performed by the Node.
  */
 internal protocol ___VARIABLE_productName___Worker: Worker {}
 
-/*
+/**
  PURPOSE:
  Concrete implementation of the Worker.
  */

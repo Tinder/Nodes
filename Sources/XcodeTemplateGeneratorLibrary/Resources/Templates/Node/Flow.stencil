@@ -2,7 +2,7 @@
 {% for import in flow_imports %}
 import {{ import }}{% endfor %}
 
-/*
+/**
  PURPOSE:
  The interface that the Flow will speak to the Context through. Used for informing the Context of
  presentation lifecycle events, as an example.
@@ -12,7 +12,7 @@ internal protocol {{ node_name }}ContextInterface: Context {
     var listener: {{ node_name }}Listener? { get }
 }
 
-/*
+/**
  PURPOSE:
  The interface of the View used for presenting the View of child Nodes. May inherit additional base
  protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
@@ -20,7 +20,7 @@ internal protocol {{ node_name }}ContextInterface: Context {
  */
 internal protocol {{ node_name }}ViewControllable: {{ view_controllable_type }} {}
 
-/*
+/**
  PURPOSE:
  Responsible for presenting views and starting child Flows, and should not contain business logic.
  */

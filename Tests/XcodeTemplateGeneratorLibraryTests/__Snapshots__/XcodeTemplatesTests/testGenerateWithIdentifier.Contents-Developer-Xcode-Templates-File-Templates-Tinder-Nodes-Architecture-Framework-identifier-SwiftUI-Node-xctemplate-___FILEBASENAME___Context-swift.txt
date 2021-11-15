@@ -3,20 +3,20 @@
 import Combine
 import Nodes
 
-/*
+/**
  PURPOSE:
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
 internal protocol ___VARIABLE_productName___Listener: AnyObject {}
 
-/*
+/**
  PURPOSE:
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
 internal protocol ___VARIABLE_productName___FlowInterface: Flow {}
 
-/*
+/**
  PURPOSE:
  The interface that the Context will speak to the View through. Used to inform the View of any
  state change (i.e. to keep the UI in sync).
@@ -25,7 +25,7 @@ internal protocol ___VARIABLE_productName___Presentable: AnyObject {
     var receiver: ___VARIABLE_productName___Receiver? { get set }
 }
 
-/*
+/**
  PURPOSE:
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.

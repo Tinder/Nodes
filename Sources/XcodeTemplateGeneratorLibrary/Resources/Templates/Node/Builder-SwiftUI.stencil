@@ -2,14 +2,14 @@
 {% for import in builder_imports %}
 import {{ import }}{% endfor %}
 
-/*
+/**
  PURPOSE:
  The interface of the Flow.
  */{% if owns_view %}
 {% if public_node %}public{% else %}internal{% endif %} protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}{% else %}
 {% if public_node %}public{% else %}internal{% endif %} protocol {{ node_name }}Flow: Flow {}{% endif %}
 
-/*
+/**
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */{% if dependencies %}
@@ -19,7 +19,7 @@ public protocol {{ node_name }}Dependency: Dependency {
 }{% else %}
 public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
 
-/*
+/**
  PURPOSE:
  A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
@@ -28,7 +28,7 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
 {% if public_node %}public{% else %}internal{% endif %} typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listener{% else %}
 {% if public_node %}public{% else %}internal{% endif %} typealias {{ node_name }}DynamicBuildDependency = ({{ node_name }}Listener, {{ node_name }}ViewControllable){% endif %}
 
-/*
+/**
  PURPOSE:
  A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 
@@ -38,7 +38,7 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
 
 // MARK: - Component
 
-/*
+/**
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
@@ -98,7 +98,7 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
 
 // MARK: - Builder
 
-/*
+/**
  PURPOSE:
  The Builder interface (available to mock for testability).
  */{% if owns_view %}
@@ -118,7 +118,7 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
     {{ node_name }}DynamicComponentDependency
     >
 
-/*
+/**
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.
  */

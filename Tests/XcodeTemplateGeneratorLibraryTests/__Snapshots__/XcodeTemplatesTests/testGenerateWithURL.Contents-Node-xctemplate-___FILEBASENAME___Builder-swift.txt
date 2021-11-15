@@ -4,19 +4,19 @@ import Combine
 import NeedleFoundation
 import Nodes
 
-/*
+/**
  PURPOSE:
  The interface of the Flow.
  */
 internal protocol ___VARIABLE_productName___Flow: ViewControllableFlow {}
 
-/*
+/**
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
 public protocol ___VARIABLE_productName___Dependency: Dependency {}
 
-/*
+/**
  PURPOSE:
  A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
@@ -24,7 +24,7 @@ public protocol ___VARIABLE_productName___Dependency: Dependency {}
  */
 internal typealias ___VARIABLE_productName___DynamicBuildDependency = ___VARIABLE_productName___Listener
 
-/*
+/**
  PURPOSE:
  A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 
@@ -34,7 +34,7 @@ internal typealias ___VARIABLE_productName___DynamicComponentDependency = Void
 
 // MARK: - Component
 
-/*
+/**
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
@@ -94,7 +94,7 @@ internal final class ___VARIABLE_productName___Component: Component
 
 // MARK: - Builder
 
-/*
+/**
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
@@ -110,7 +110,7 @@ internal typealias ___VARIABLE_productName___BuilderType = AbstractBuilder
     ___VARIABLE_productName___DynamicComponentDependency
     >
 
-/*
+/**
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.
  */

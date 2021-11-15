@@ -2,13 +2,13 @@
 
 import <contextImports>
 
-/*
+/**
  PURPOSE:
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
 public protocol <nodeName>Listener: AnyObject {}
 
-/*
+/**
  PURPOSE:
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
@@ -17,7 +17,7 @@ internal protocol <nodeName>FlowInterface: Flow {
     func didBecomeReady()
 }
 
-/*
+/**
  PURPOSE:
  The interface that the Context will speak to the View through. Used to inform the View of any
  state change (i.e. to keep the UI in sync).
@@ -26,7 +26,7 @@ internal protocol <nodeName>Presentable: AnyObject {
     var receiver: <nodeName>Receiver? { get set }
 }
 
-/*
+/**
  PURPOSE:
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.

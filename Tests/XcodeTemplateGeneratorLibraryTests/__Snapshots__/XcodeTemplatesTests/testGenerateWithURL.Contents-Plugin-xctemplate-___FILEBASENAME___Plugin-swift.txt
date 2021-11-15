@@ -4,13 +4,13 @@ import Combine
 import NeedleFoundation
 import Nodes
 
-/*
+/**
  PURPOSE:
  Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
  */
 public protocol ___VARIABLE_productName___PluginDependency: Dependency {}
 
-/*
+/**
  PURPOSE:
  Declares dependencies that are owned by this Plugin.
  */
@@ -55,13 +55,13 @@ internal final class ___VARIABLE_productName___PluginComponent: Component
      */
 }
 
-/*
+/**
  PURPOSE:
  To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the plugin).
  */
 internal typealias ___VARIABLE_productName___PluginStateType = Void
 
-/*
+/**
  PURPOSE:
  The Plugin interface (available to mock for testability).
  */
@@ -76,7 +76,7 @@ internal typealias ___VARIABLE_productName___PluginType = Plugin
     ___VARIABLE_productName___PluginStateType
     >
 
-/*
+/**
  PURPOSE:
  Concrete implementation of the Plugin.
  */
