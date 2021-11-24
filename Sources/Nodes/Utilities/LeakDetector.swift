@@ -1,6 +1,8 @@
 //
+//  LeakDetector.swift
+//  Nodes
+//
 //  Created by Christopher Fuller on 10/3/20.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 import Foundation
@@ -17,7 +19,18 @@ public enum LeakDetector {
                                                     qos: .background,
                                                     attributes: .concurrent)
 
+    private static var isDebuggedProcessBeingTraced: Bool {
+        var mib: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, getpid()]
+        var info: kinfo_proc = .init()
+        var size: Int = MemoryLayout<kinfo_proc>.stride
+        let junk: Int32 = sysctl(&mib, UInt32(mib.count), &info, &size, nil, 0)
+        guard junk == 0
+        else { return false } // swiftlint:disable:this implicit_return
+        return (info.kp_proc.p_flag & P_TRACED) != 0
+    }
+
     public static func detect(_ object: AnyObject) {
+        // swiftlint:disable:next discouraged_optional_collection
         let callStackSymbols: [String]? = self.callStackSymbols()
         let timeInterval: TimeInterval
         #if canImport(UIKit) && !os(watchOS)
@@ -28,11 +41,20 @@ public enum LeakDetector {
         queue.asyncAfter(deadline: .now() + timeInterval) { [weak object] in
             guard let object: AnyObject = object
             else { return }
-            callStackSymbols?.forEach { print($0) }
-            assertionFailure("Expected object to deallocate: \(object)")
+            DispatchQueue.main.async {
+                if let callStack: String = callStackSymbols?.joined(separator: "\n") {
+                    print(callStack)
+                }
+                let message: String = "Expected object to deallocate: \(object)"
+                guard isDebuggedProcessBeingTraced
+                else { return assertionFailure(message) }
+                print(message)
+                _ = kill(getpid(), SIGSTOP)
+            }
         }
     }
 
+    // swiftlint:disable:next discouraged_optional_collection
     private static func callStackSymbols() -> [String]? {
         let environment: [String: String] = ProcessInfo.processInfo.environment
         guard ["1", "true", "TRUE", "yes", "YES"].contains(environment["LEAK_DETECTOR_CAPTURES_CALL_STACK"])
