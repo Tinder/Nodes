@@ -178,6 +178,24 @@ final class ModalStyleTests: XCTestCase {
         expect(viewController.isModalInPresentation) == true
     }
 
+    func testAdditionalConfiguration() {
+        var additionalConfiguration1: [UIViewController] = []
+        var additionalConfiguration2: [UIViewController] = []
+        var additionalConfiguration3: [UIViewController] = []
+        let modalStyle: ModalStyle = .cover()
+            ._withAdditionalConfiguration { additionalConfiguration1.append($0._asUIViewController()) }
+            ._withAdditionalConfiguration { additionalConfiguration2.append($0._asUIViewController()) }
+            ._withAdditionalConfiguration { additionalConfiguration3.append($0._asUIViewController()) }
+        let viewController: UIViewController = givenViewController(with: modalStyle)
+        expect(additionalConfiguration1) == [viewController]
+        expect(additionalConfiguration2) == [viewController]
+        expect(additionalConfiguration3) == [viewController]
+        _ = givenViewController(with: modalStyle)
+        expect(additionalConfiguration1.count) == 2
+        expect(additionalConfiguration2.count) == 2
+        expect(additionalConfiguration3.count) == 2
+    }
+
     private func givenViewController(with modalStyle: ModalStyle) -> UIViewController {
         let viewController: UIViewController = .init()
         expect(viewController).to(notBeNilAndToDeallocateAfterTest())
