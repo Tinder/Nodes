@@ -30,6 +30,10 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         tearDown(keyPath: \.mockFlows, initialValue: [FlowMock(), FlowMock(), FlowMock()])
     }
 
+    override func tearDown() {
+        super.tearDown()
+    }
+
     func testContext() {
         let context: ContextMock = .init()
         expect(context).to(notBeNilAndToDeallocateAfterTest())
@@ -140,15 +144,12 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
     ) -> TestFlow {
         let flow: TestFlow
         switch (context, viewController) {
-        // swiftlint:disable:next explicit_type_interface
         case let (.some(context), .some(viewController)):
             flow = .init(context: context, viewController: viewController)
-        // swiftlint:disable:next explicit_type_interface
         case let (.none, .some(viewController)):
             let context: ContextMock = .init()
             expect(context).to(notBeNilAndToDeallocateAfterTest())
             flow = .init(context: context, viewController: viewController)
-        // swiftlint:disable:next explicit_type_interface
         case let (.some(context), .none):
             let viewController: ViewControllerType = .init()
             expect(viewController).to(notBeNilAndToDeallocateAfterTest())

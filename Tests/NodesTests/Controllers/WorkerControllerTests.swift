@@ -18,6 +18,10 @@ final class WorkerControllerTests: XCTestCase, TestCaseHelpers {
         tearDown(keyPath: \.mockWorkers, initialValue: [WorkerMock(), WorkerMock(), WorkerMock()])
     }
 
+    override func tearDown() {
+        super.tearDown()
+    }
+
     func testWorkers() {
         let workerController: WorkerController = givenWorkerController(with: mockWorkers)
         expect(workerController.workers as? [WorkerMock]) == mockWorkers

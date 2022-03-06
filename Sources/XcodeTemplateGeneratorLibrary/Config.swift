@@ -75,7 +75,6 @@ extension XcodeTemplates {
                 return nodesImports
             case .diGraph:
                 return nodesImports.union(diGraphImports)
-            // swiftlint:disable:next explicit_type_interface
             case let .viewController(viewState, swiftUI):
                 let imports: Set<String> = swiftUI
                     ? nodesImports.union(viewControllerImportsSwiftUI)
@@ -90,17 +89,14 @@ extension XcodeTemplates {
 
         internal func viewControllerMethods(for type: ViewControllerMethodsType) -> String {
             switch type {
-            // swiftlint:disable:next explicit_type_interface
             case let .standard(swiftUI):
                 return swiftUI
                     ? viewControllerMethodsSwiftUI
                     : viewControllerMethods
-            // swiftlint:disable:next explicit_type_interface
             case let .root(swiftUI):
                 return swiftUI
                     ? rootViewControllerMethodsSwiftUI
                     : rootViewControllerMethods
-            // swiftlint:disable:next explicit_type_interface
             case let .withoutViewState(swiftUI):
                 return swiftUI
                     ? viewControllerWithoutViewStateMethodsSwiftUI

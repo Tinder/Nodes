@@ -38,6 +38,10 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         tearDown(keyPath: \.mockCancellables, initialValue: [CancellableMock(), CancellableMock(), CancellableMock()])
     }
 
+    override func tearDown() {
+        super.tearDown()
+    }
+
     func testPresentable() {
         let presentable: PresentableType = .init()
         expect(presentable).to(notBeNilAndToDeallocateAfterTest())

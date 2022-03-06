@@ -34,6 +34,10 @@ final class AbstractWorkerTests: XCTestCase, TestCaseHelpers {
         tearDown(keyPath: \.mockCancellables, initialValue: [CancellableMock(), CancellableMock(), CancellableMock()])
     }
 
+    override func tearDown() {
+        super.tearDown()
+    }
+
     func testStart() {
         let worker: TestWorker = givenWorker()
         expect(worker).toNot(beWorking())

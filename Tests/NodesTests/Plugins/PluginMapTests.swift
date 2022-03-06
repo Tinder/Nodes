@@ -72,6 +72,10 @@ final class PluginMapTests: XCTestCase, TestCaseHelpers {
         tearDown(keyPath: \.component, initialValue: ComponentType())
     }
 
+    override func tearDown() {
+        super.tearDown()
+    }
+
     func testCreateAll() {
         let pluginMap: TestPluginMap = .init(component: component)
         expect(pluginMap).to(notBeNilAndToDeallocateAfterTest())

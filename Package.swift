@@ -23,14 +23,14 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/apple/swift-argument-parser",
-            from: "0.3.0"),
+            url: "https://github.com/apple/swift-argument-parser.git",
+            from: "1.0.0"),
         .package(
             url: "git@github.com:TinderApp/Preflight.git",
             from: "0.0.0"),
         .package(
             url: "https://github.com/realm/SwiftLint.git",
-            from: "0.43.0"),
+            from: "0.46.0"),
         .package(
             url: "https://github.com/JohnSundell/Codextended.git",
             from: "0.3.0"),

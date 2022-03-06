@@ -18,6 +18,10 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         tearDown(keyPath: \.mockFlows, initialValue: [FlowMock(), FlowMock(), FlowMock()])
     }
 
+    override func tearDown() {
+        super.tearDown()
+    }
+
     func testFlows() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         expect(flowController.flows as? [FlowMock]) == mockFlows
