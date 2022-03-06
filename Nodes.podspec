@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target    = `make get-deployment-target platform=tvos`
   s.watchos.deployment_target = `make get-deployment-target platform=watchos`
 
-  s.swift_version = '5.2', '5.3', '5.4'
+  s.swift_version = '5.2', '5.3', '5.4', '5.5'
   s.source_files  = 'Sources/Nodes/**/*'
 end
