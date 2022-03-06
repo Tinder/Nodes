@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.0.4](https://github.com/TinderApp/Nodes/releases/tag/0.0.4)
+
+### Added
+
+- Add test for modal style additional configuration\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#90](https://github.com/TinderApp/Nodes/pull/90)]
+
+### Improved
+
+- Add extra asterisk to block comments (for Xcode help compatibility)\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#89](https://github.com/TinderApp/Nodes/pull/89)]
+
+- Update Argument Parser, SwiftLint and other dependencies\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#93](https://github.com/TinderApp/Nodes/pull/93)]
+
+### Removed
+
+- None
+
+### Fixed
+
+- None
+
+---
+
 ## [0.0.3](https://github.com/TinderApp/Nodes/releases/tag/0.0.3)
 
 ### Added
