@@ -10,10 +10,11 @@ env:
   DEVELOPER_DIR: /Applications/Xcode_${{ secrets.XCODE_VERSION }}.app/Contents/Developer
 
 jobs:
-  build:
-    name: Build
-    runs-on: macos-11
+  bazel:
+    name: Bazel
+    runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout source
+      uses: actions/checkout@v2
     - name: Build
       run: bazelisk build //:Nodes
