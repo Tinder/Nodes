@@ -18,6 +18,44 @@ else
 	@./bin/create-xcframework "$(library)" "$(platforms)" BITCODE_DISABLED "$(version)"
 endif
 
+.PHONY: preview
+preview: library ?= Nodes
+preview: catalog ?= _Documentation
+preview: docc = $(shell xcrun --find docc)
+preview: SYMBOL_GRAPH_PATH = .build/symbol-graphs
+preview: DOCC_SYMBOL_GRAPH_PATH = .build/documentation/symbol-graphs
+preview: OUTPUT_PATH = .build/documentation/html
+preview:
+	@mkdir -p "$(SYMBOL_GRAPH_PATH)" "$(DOCC_SYMBOL_GRAPH_PATH)" "$(OUTPUT_PATH)"
+	swift build \
+		--target "$(library)" \
+		-Xswiftc -emit-symbol-graph \
+		-Xswiftc -emit-symbol-graph-dir \
+		-Xswiftc "$(SYMBOL_GRAPH_PATH)"
+	@cp "$(SYMBOL_GRAPH_PATH)/$(library)"* "$(DOCC_SYMBOL_GRAPH_PATH)"
+	@open "http://localhost:8000/Documentation/$(library)"
+	"$(docc)" preview \
+		"Sources/$(library)/$(catalog).docc" \
+		--additional-symbol-graph-dir "$(DOCC_SYMBOL_GRAPH_PATH)" \
+		--output-dir "$(OUTPUT_PATH)"
+
+.PHONY: docs
+docs: library ?= Nodes
+docs: destination ?= generic/platform=iOS
+docs: DERIVED_DATA_PATH = .build/documentation
+docs: DOCUMENTATION_PATH = Documentation/Generated
+docs:
+	@mkdir -p "$(DERIVED_DATA_PATH)" "$(DOCUMENTATION_PATH)"
+	xcodebuild docbuild \
+		-scheme "$(library)" \
+		-destination "$(destination)" \
+		-derivedDataPath "$(DERIVED_DATA_PATH)"
+	@find "$(DERIVED_DATA_PATH)" \
+		-type d \
+		-name "$(library).doccarchive" \
+		-exec cp -R {} "$(DOCUMENTATION_PATH)/" \;
+	@open "$(DOCUMENTATION_PATH)/$(library).doccarchive"
+
 .PHONY: preflight
 preflight: output ?= pretty
 preflight:
