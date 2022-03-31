@@ -73,8 +73,8 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         flowController.detach(ending: subFlow)
     }
 
-    public final func detach<T>(endingSubFlowsOfType type: T.Type, where completion: (_ flow: T) -> Bool) {
-        flowController.detach(endingFlowsOfType: type, where: completion)
+    public final func detach<T>(endingSubFlowsOfType type: T.Type, where: (_ flow: T) -> Bool) {
+        flowController.detach(endingFlowsOfType: type, where: `where`)
     }
 
     public final func firstSubFlow<T>(ofType type: T.Type) -> T? {
