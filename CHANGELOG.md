@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.0.5](https://github.com/TinderApp/Nodes/releases/tag/0.0.5)
+
+### Added
+
+- Add documentation recipes to Makefile\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#99](https://github.com/TinderApp/Nodes/pull/99)]
+
+### Improved
+
+- Add view controller availability attribute\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#101](https://github.com/TinderApp/Nodes/pull/101)]
+
+### Removed
+
+- None
+
+### Fixed
+
+- Fix parameter label\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#100](https://github.com/TinderApp/Nodes/pull/100)]
+
+---
+
 ## [0.0.4](https://github.com/TinderApp/Nodes/releases/tag/0.0.4)
 
 ### Added
