@@ -25,6 +25,7 @@ internal protocol <nodeName>Receiver: AnyObject {
  PURPOSE:
  Host of the SwiftUI view.
  */
+<viewControllerAvailabilityAttribute>
 internal final class <nodeName>ViewController: AbstractViewHostingController<<nodeName>View> {
 
     <viewControllerProperties>
@@ -40,6 +41,7 @@ extension <nodeName>ViewController: <nodeName>Presentable {}
  PURPOSE:
  Concrete implementation of the View.
  */
+<viewControllerAvailabilityAttribute>
 internal struct <nodeName>View: NodesView {
 
     /// The body of the view.
@@ -70,6 +72,7 @@ internal struct <nodeName>View: NodesView {
  PURPOSE:
  The SwiftUI preview (excluded from release builds).
  */
+<viewControllerAvailabilityAttribute>
 internal struct <nodeName>View_Previews: PreviewProvider {
 
     private static let viewState: AnyPublisher<<nodeName>ViewState<publisherFailureType>> =

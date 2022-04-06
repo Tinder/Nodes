@@ -30,6 +30,8 @@
   - rootViewControllerMethodsSwiftUI: "rootViewControllerMethodsSwiftUI"
   - viewControllableFlowType: "viewControllableFlowType"
   - viewControllableType: "viewControllableType"
+  - viewControllerAvailabilityAttribute: "viewControllerAvailabilityAttribute"
+  - viewControllerAvailabilityAttributeSwiftUI: "viewControllerAvailabilityAttributeSwiftUI"
   ▿ viewControllerImports: 2 members
     - "viewControllerImports-1"
     - "viewControllerImports-2"

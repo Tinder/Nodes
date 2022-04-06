@@ -26,7 +26,8 @@ internal protocol {{ node_name }}Receiver: AnyObject {}{% endif %}
  PURPOSE:
  Host of the SwiftUI view.
  */
-internal final class {{ node_name }}ViewController: AbstractViewHostingController<{{ node_name }}View> {{ '{' }}{% if view_controller_properties %}
+{% if view_controller_availability_attribute %}{{ view_controller_availability_attribute }}
+{% endif %}internal final class {{ node_name }}ViewController: AbstractViewHostingController<{{ node_name }}View> {{ '{' }}{% if view_controller_properties %}
 
     {{ view_controller_properties|indent:4 }}
 {% endif %}{% if view_controller_methods %}
@@ -41,7 +42,8 @@ extension {{ node_name }}ViewController: {{ node_name }}Presentable {}
  PURPOSE:
  Concrete implementation of the View.
  */
-internal struct {{ node_name }}View: NodesView {
+{% if view_controller_availability_attribute %}{{ view_controller_availability_attribute }}
+{% endif %}internal struct {{ node_name }}View: NodesView {
 
     /// The body of the view.
     internal var body: some View {{ '{' }}{% if view_state_publisher %}
@@ -74,7 +76,8 @@ internal struct {{ node_name }}View: NodesView {
  PURPOSE:
  The SwiftUI preview (excluded from release builds).
  */
-internal struct {{ node_name }}View_Previews: PreviewProvider {
+{% if view_controller_availability_attribute %}{{ view_controller_availability_attribute }}
+{% endif %}internal struct {{ node_name }}View_Previews: PreviewProvider {
 {% if view_state_publisher %}
     private static let viewState: AnyPublisher<{{ node_name }}ViewState{{ publisher_failure_type }}> =
         Just<{{ node_name }}ViewState>(.initialState).eraseToAnyPublisher()

@@ -35,6 +35,7 @@
     - rootNode: true
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
+    - viewControllerAvailabilityAttribute: "<viewControllerAvailabilityAttributeSwiftUI>"
     ▿ viewControllerImports: 3 elements
       - "<baseImports>"
       - "<viewControllerImportsSwiftUI>"

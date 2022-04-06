@@ -33,6 +33,7 @@
     - rootNode: false
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
+    - viewControllerAvailabilityAttribute: "<viewControllerAvailabilityAttribute>"
     ▿ viewControllerImports: 3 elements
       - "<baseImports>"
       - "<viewControllerImports>"

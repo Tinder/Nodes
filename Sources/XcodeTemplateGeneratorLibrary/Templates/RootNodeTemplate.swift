@@ -54,6 +54,7 @@ internal struct RootNodeTemplate: XcodeTemplate {
             viewControllerType: config.viewControllerType,
             viewControllableType: config.viewControllableType,
             viewControllableFlowType: config.viewControllableFlowType,
+            viewControllerAvailabilityAttribute: config.viewControllerAvailabilityAttribute(swiftUI: swiftUI),
             viewControllerSuperParameters: config.viewControllerSuperParameters,
             viewControllerProperties: config.viewControllerProperties(swiftUI: swiftUI),
             viewControllerMethods: config.viewControllerMethods(for: .root(swiftUI: swiftUI)),

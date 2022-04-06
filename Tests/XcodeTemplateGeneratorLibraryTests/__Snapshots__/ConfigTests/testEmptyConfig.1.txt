@@ -26,6 +26,8 @@
   - rootViewControllerMethodsSwiftUI: "override func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}"
   - viewControllableFlowType: "ViewControllableFlow"
   - viewControllableType: "ViewControllable"
+  - viewControllerAvailabilityAttribute: ""
+  - viewControllerAvailabilityAttributeSwiftUI: ""
   ▿ viewControllerImports: 1 member
     - "UIKit"
   ▿ viewControllerImportsSwiftUI: 1 member
