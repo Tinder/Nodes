@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.0.6](https://github.com/TinderApp/Nodes/releases/tag/0.0.6)
+
+### Added
+
+- None
+
+### Improved
+
+- Use view state (to avoid compiler warning)\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#104](https://github.com/TinderApp/Nodes/pull/104)]
+
+- Remove extra line (from SwiftUI view controller template)\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#105](https://github.com/TinderApp/Nodes/pull/105)]
+
+### Removed
+
+- None
+
+### Fixed
+
+- Fix view controller availability attribute\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#103](https://github.com/TinderApp/Nodes/pull/103)]
+
+---
+
 ## [0.0.5](https://github.com/TinderApp/Nodes/releases/tag/0.0.5)
 
 ### Added
