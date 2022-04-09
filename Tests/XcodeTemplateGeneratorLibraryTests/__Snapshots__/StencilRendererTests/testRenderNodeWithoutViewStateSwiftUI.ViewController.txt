@@ -20,7 +20,6 @@ internal final class <nodeName>ViewController: AbstractViewHostingController<<no
 
     <viewControllerProperties>
 
-
     <viewControllerMethods>
 }
 
