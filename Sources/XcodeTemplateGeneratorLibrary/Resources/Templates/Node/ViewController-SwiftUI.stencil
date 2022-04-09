@@ -51,7 +51,7 @@ internal protocol {{ node_name }}Receiver: AnyObject {}{% endif %}
     /// The body of the view.
     internal var body: some View {{ '{' }}{% if view_state_publisher %}
         WithViewState(viewState) { viewState in
-            Text("{{ node_name }}")
+            Text(verbatim: "\(type(of: viewState))")
         }{% else %}
         Text("{{ node_name }}"){% endif %}
     }

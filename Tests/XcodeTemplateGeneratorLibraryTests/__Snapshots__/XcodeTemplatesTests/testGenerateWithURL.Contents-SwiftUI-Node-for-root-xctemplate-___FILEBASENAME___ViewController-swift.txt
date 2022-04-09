@@ -47,7 +47,7 @@ internal struct ___VARIABLE_productName___View: NodesView {
     /// The body of the view.
     internal var body: some View {
         WithViewState(viewState) { viewState in
-            Text("___VARIABLE_productName___")
+            Text(verbatim: "\(type(of: viewState))")
         }
     }
 

@@ -50,7 +50,7 @@ internal struct <nodeName>View: NodesView {
     /// The body of the view.
     internal var body: some View {
         WithViewState(viewState) { viewState in
-            Text("<nodeName>")
+            Text(verbatim: "\(type(of: viewState))")
         }
     }
 
