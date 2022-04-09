@@ -62,5 +62,8 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
     }
 }
 
+<viewControllerAvailabilityAttribute>
 extension <nodeName>ViewController: <nodeName>ViewControllable {}
+
+<viewControllerAvailabilityAttribute>
 extension <nodeName>ViewController: <nodeName>Presentable {}

@@ -35,8 +35,11 @@ internal protocol {{ node_name }}Receiver: AnyObject {}{% endif %}
     {{ view_controller_methods|indent:4 }}{% endif %}
 }
 
-extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
-extension {{ node_name }}ViewController: {{ node_name }}Presentable {}
+{% if view_controller_availability_attribute %}{{ view_controller_availability_attribute }}
+{% endif %}extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
+{% if view_controller_availability_attribute %}
+{{ view_controller_availability_attribute }}
+{% endif %}extension {{ node_name }}ViewController: {{ node_name }}Presentable {}
 
 /**
  PURPOSE:

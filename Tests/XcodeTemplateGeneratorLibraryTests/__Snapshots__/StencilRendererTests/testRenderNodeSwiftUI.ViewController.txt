@@ -34,7 +34,10 @@ internal final class <nodeName>ViewController: AbstractViewHostingController<<no
     <viewControllerMethods>
 }
 
+<viewControllerAvailabilityAttribute>
 extension <nodeName>ViewController: <nodeName>ViewControllable {}
+
+<viewControllerAvailabilityAttribute>
 extension <nodeName>ViewController: <nodeName>Presentable {}
 
 /**

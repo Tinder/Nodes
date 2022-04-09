@@ -39,5 +39,8 @@ internal final class <nodeName>ViewController: <viewControllerType> {
     <viewControllerMethods>
 }
 
+<viewControllerAvailabilityAttribute>
 extension <nodeName>ViewController: <nodeName>ViewControllable {}
+
+<viewControllerAvailabilityAttribute>
 extension <nodeName>ViewController: <nodeName>Presentable {}

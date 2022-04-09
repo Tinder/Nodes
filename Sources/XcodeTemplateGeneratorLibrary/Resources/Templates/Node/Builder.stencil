@@ -122,7 +122,8 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.
  */
-{% if public_node %}public{% else %}internal{% endif %} final class {{ node_name }}BuilderImp: {{ node_name }}BuilderType {
+{% if view_controller_availability_attribute %}{{ view_controller_availability_attribute }}
+{% endif %}{% if public_node %}public{% else %}internal{% endif %} final class {{ node_name }}BuilderImp: {{ node_name }}BuilderType {
 
     /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
     /// the dynamic component dependency.
@@ -197,4 +198,5 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
     }{% endif %}
 }
 
-extension {{ node_name }}BuilderImp: {{ node_name }}Builder {}
+{% if view_controller_availability_attribute %}{{ view_controller_availability_attribute }}
+{% endif %}extension {{ node_name }}BuilderImp: {{ node_name }}Builder {}
