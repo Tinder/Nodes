@@ -78,6 +78,8 @@ public final class FlowController {
         if isFlowLeakDetectionEnabled { LeakDetector.detect(flow) }
     }
 
+    /// Detaches `Flow` instances of the given `type` where the given predicate closure returns `true`.
+    ///
     /// Under normal circumstances, user interactions do not directly cause `ViewControllable` instances to
     /// be dismissed, for example when simply tapping a button. To dismiss a `ViewControllable` instance in
     /// these situations, the `Context` instance will be informed of the button tap which then informs the `Flow`
