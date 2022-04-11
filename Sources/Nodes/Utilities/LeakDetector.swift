@@ -11,6 +11,18 @@ import Foundation
 import UIKit
 #endif
 
+/**
+ * `LeakDetector` is used internally (within Nodes' source code) to detect leaks of a Node's objects when the
+ * Node is detached.
+ *
+ * Leak detection is typically scheduled for an instance's stored properties within `deinit`. Detection is
+ * delayed `1` second to allow time for the objects to be released (`5` seconds for `UIViewController`
+ * instances to allow additional time for animated dismissal).
+ *
+ * > Important: Leak detection only occurs in `DEBUG` builds.
+ *
+ * > Tip: `LeakDetector` may be used within application code to detect leaks of custom objects.
+ */
 public enum LeakDetector {
 
     #if DEBUG
@@ -29,6 +41,9 @@ public enum LeakDetector {
         return (info.kp_proc.p_flag & P_TRACED) != 0
     }
 
+    /// Detects whether the given `object` deallocates from memory as expected.
+    ///
+    /// - Parameter object: The instance with which to detect the expected deallocation.
     public static func detect(_ object: AnyObject) {
         // swiftlint:disable:next discouraged_optional_collection
         let callStackSymbols: [String]? = self.callStackSymbols()

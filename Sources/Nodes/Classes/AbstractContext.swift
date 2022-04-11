@@ -5,6 +5,21 @@
 //  Created by Christopher Fuller on 10/3/20.
 //
 
+/**
+ * A Nodes application can use [Combine](https://developer.apple.com/documentation/combine), or any other
+ * reactive library, by providing a type supporting subscription cancellation that conforms to Nodes'
+ * `Cancellable` protocol.
+ *
+ * As an example, to use Combine with Nodes, the following protocol conformance would need to exist within
+ * application code:
+ *
+ * ```swift
+ * import class Combine.AnyCancellable
+ * import protocol Nodes.Cancellable
+ *
+ * extension AnyCancellable: Cancellable {}
+ * ```
+ */
 public protocol Cancellable: AnyObject, Hashable {
 
     func cancel()
