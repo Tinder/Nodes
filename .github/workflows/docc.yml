@@ -16,6 +16,8 @@ jobs:
     # 1st, the Action will clone this repo (that contains the code)
     - name: Git Checkout
       uses: actions/checkout@v2
+      with:
+        xcode-version: latest-stable
     # now we'll build the documentation
     - name: Build Doc Bundle 📗
       run: |
