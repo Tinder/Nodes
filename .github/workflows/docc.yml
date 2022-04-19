@@ -1,39 +1,20 @@
-name: Generate DocC
-# This Github Action generates the DocC documentation for the current repo
-# Then commits this newly generated `.doccarchive` to main
+name: DocC
 
 on:
   push:
     branches: [ main ]
-    # we'll start this action on every push to main
+  pull_request:
+    branches: [ main ]
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode_${{ secrets.XCODE_VERSION }}.app/Contents/Developer
 
 jobs:
-  Build-Github-Actions:
+  docc:
+    name: DocC
     runs-on: macos-latest
-    # we need to run eveything on macOS, as we need to have Xcode installed
-    
     steps:
-    # 1st, the Action will clone this repo (that contains the code)
-    - name: Git Checkout
+    - name: Checkout source
       uses: actions/checkout@v2
-      with:
-        xcode-version: latest-stable
-    # now we'll build the documentation
-    - name: Build Doc Bundle 📗
-      run: |
-          echo "🚀 Starting building Documentation"
-          # You can print out which version of Xcode is used in this GH Action with:
-          # xcodebuild -version
-          
-          # Build the documentation bundle
-          xcodebuild docbuild -scheme Nodes -derivedDataPath ./docbuild -destination 'platform=iOS Simulator,OS=latest,name=iPhone 13 mini' > build_output.txt
-          
-          # I'm redirecting all output from building the project and docs to build_output.txt
-          # If you want to see it (or need to debug some problem), uncomment next line
-          # cat build_output.txt
-
-    - name: Commit `.doccarchive` to main
-      run: |      
-          git add .
-          git commit -m "Generate doccarchive"
-          git push origin
+    - name: Build Documentation
+      run: xcodebuild docbuild -scheme "Nodes" -destination "generic/platform=iOS"
