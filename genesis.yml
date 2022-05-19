@@ -2055,8 +2055,8 @@ files:
 
           private let label: UILabel = {
               let label: UILabel = .init()
-              label.text = "{{ project }}"
               label.translatesAutoresizingMaskIntoConstraints = false
+              label.text = "{{ project }}"
               return label
           }()
 
