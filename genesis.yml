@@ -280,6 +280,54 @@ files:
           </scenes>
       </document>
 
+  - path: "{{ project|split:' '|join:'_' }}/Sources/WindowFactory.swift"
+    contents: |
+      //
+      //  WindowFactory.swift
+      //  {{ project|split:' '|join:'_' }}
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import Nodes
+      import UIKit
+
+      internal struct WindowFactory {
+
+          internal func makeWindow(
+              in windowScene: WindowSceneViewControllable
+          ) -> WindowViewControllable {
+              UIWindow(windowScene: windowScene._asUIWindowScene())
+          }
+      }
+
+      // MARK: - Protocols
+
+      internal protocol WindowSceneViewControllable: AnyObject {
+          func _asUIWindowScene() -> UIWindowScene
+      }
+
+      internal protocol WindowViewControllable: AnyObject {
+          func present(_ viewControllable: ViewControllable)
+      }
+
+      // MARK: - Conformance
+
+      extension UIWindowScene: WindowSceneViewControllable {
+
+          internal func _asUIWindowScene() -> UIWindowScene {
+              self
+          }
+      }
+
+      extension UIWindow: WindowViewControllable {
+
+          internal func present(_ viewControllable: ViewControllable) {
+              rootViewController = viewControllable._asUIViewController()
+              makeKeyAndVisible()
+          }
+      }
+
   - path: "{{ project|split:' '|join:'_' }}/Sources/1 App/AppAnalytics.swift"
     contents: |
       //
@@ -365,8 +413,8 @@ files:
        The interface of the Flow.
        */
       internal protocol AppFlow: Flow {
-          func attachScene(_ viewControllable: SceneViewControllable)
-          func detachScene(_ viewControllable: SceneViewControllable)
+          func attachScene(_ viewControllable: WindowSceneViewControllable)
+          func detachScene(_ viewControllable: WindowSceneViewControllable)
       }
 
       /**
@@ -443,8 +491,8 @@ files:
 
            */
 
-          fileprivate func sceneComponentFactory() -> SceneComponent {
-              SceneComponent(parent: self)
+          fileprivate func sceneComponentFactory(windowScene: WindowSceneViewControllable) -> SceneComponent {
+              SceneComponent(parent: self, dynamicDependency: windowScene)
           }
       }
 
@@ -652,13 +700,13 @@ files:
 
       extension AppFlowImp: AppFlow {
 
-          func attachScene(_ viewControllable: SceneViewControllable) {
+          func attachScene(_ viewControllable: WindowSceneViewControllable) {
               let flow: SceneFlow = sceneBuilder.build(withListener: context,
                                                        viewController: viewControllable)
               attach(starting: flow)
           }
 
-          func detachScene(_ viewControllable: SceneViewControllable) {
+          func detachScene(_ viewControllable: WindowSceneViewControllable) {
               subFlows
                   .compactMap { $0 as? SceneFlow }
                   .filter { $0.viewControllable === viewControllable }
@@ -795,14 +843,14 @@ files:
        The interface of the Flow.
        */
       internal protocol SceneFlow: Flow {
-          var viewControllable: SceneViewControllable { get }
+          var viewControllable: WindowSceneViewControllable { get }
       }
 
       /**
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
-      public protocol SceneDependency: Dependency {}
+      internal protocol SceneDependency: Dependency {}
 
       /**
        PURPOSE:
@@ -810,7 +858,7 @@ files:
 
        Can be a tuple containing multiple values when necessary.
        */
-      internal typealias SceneDynamicBuildDependency = (SceneListener, SceneViewControllable)
+      internal typealias SceneDynamicBuildDependency = (SceneListener, WindowSceneViewControllable)
 
       /**
        PURPOSE:
@@ -818,7 +866,7 @@ files:
 
        Can be a tuple containing multiple values when necessary.
        */
-      internal typealias SceneDynamicComponentDependency = Void
+      internal typealias SceneDynamicComponentDependency = WindowSceneViewControllable
 
       // MARK: - Component
 
@@ -853,6 +901,10 @@ files:
 
            */
 
+          internal var windowFactory: WindowViewControllable {
+              WindowFactory().makeWindow(in: dynamicDependency)
+          }
+
           private let dynamicDependency: SceneDynamicComponentDependency
 
           /// The initializer.
@@ -861,7 +913,7 @@ files:
           ///
           /// - Parameter parent: The parent scope
           /// - Parameter dynamicDependency: The dynamic component dependency
-          internal init(parent: Scope, dynamicDependency: SceneDynamicComponentDependency = ()) {
+          internal init(parent: Scope, dynamicDependency: SceneDynamicComponentDependency) {
               self.dynamicDependency = dynamicDependency
               super.init(parent: parent)
           }
@@ -891,7 +943,7 @@ files:
        */
       internal protocol SceneBuilder: AnyObject {
           func build(withListener listener: SceneListener,
-                     viewController: SceneViewControllable) -> SceneFlow
+                     viewController: WindowSceneViewControllable) -> SceneFlow
       }
 
       internal typealias SceneBuilderType = AbstractBuilder
@@ -916,10 +968,10 @@ files:
           /// - Returns: The Flow instance
           internal func build(
               withListener listener: SceneListener,
-              viewController: SceneViewControllable
+              viewController: WindowSceneViewControllable
           ) -> SceneFlow {
               let dynamicBuildDependency: SceneDynamicBuildDependency = (listener, viewController)
-              let dynamicComponentDependency: SceneDynamicComponentDependency = ()
+              let dynamicComponentDependency: SceneDynamicComponentDependency = viewController
               return build(dynamicBuildDependency, dynamicComponentDependency)
           }
 
@@ -1076,22 +1128,12 @@ files:
 
       /**
        PURPOSE:
-       The interface of the View used for presenting the View of child Nodes. May inherit additional base
-       protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
-       implementation as necessary.
-       */
-      internal protocol SceneViewControllable: AnyObject {
-          func makeWindow() -> WindowViewControllable
-      }
-
-      /**
-       PURPOSE:
        Responsible for presenting views and starting child Flows, and should not contain business logic.
        */
-      internal final class SceneFlowImp: AbstractFlow<SceneContextInterface, SceneViewControllable> {
+      internal final class SceneFlowImp: AbstractFlow<SceneContextInterface, WindowSceneViewControllable> {
 
           /// Provides the parent Node with access to the View so it can be presented.
-          internal var viewControllable: SceneViewControllable {
+          internal var viewControllable: WindowSceneViewControllable {
               viewController
           }
 
@@ -1105,7 +1147,7 @@ files:
           ///   - viewController: The View Controller instance
           internal init(
               context: SceneContextInterface,
-              viewController: SceneViewControllable,
+              viewController: WindowSceneViewControllable,
               windowBuilder: WindowBuilder
           ) {
               self.windowBuilder = windowBuilder
@@ -1119,8 +1161,7 @@ files:
           }
 
           private func attachWindow() {
-              let flow: WindowFlow = windowBuilder.build(withListener: context,
-                                                         viewController: viewController.makeWindow())
+              let flow: WindowFlow = windowBuilder.build(withListener: context)
               attach(starting: flow)
           }
       }
@@ -1169,44 +1210,6 @@ files:
       }
 
       extension SceneWorkerImp: SceneWorker {}
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/2 Scene/UIWindowScene+SceneViewControllable.swift"
-    contents: |
-      //
-      //  UIWindowScene+SceneViewControllable.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import UIKit
-
-      extension UIWindowScene: SceneViewControllable {
-
-          func makeWindow() -> WindowViewControllable {
-              UIWindow(windowScene: self)
-          }
-      }
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/3 Window/UIWindow+WindowViewControllable.swift"
-    contents: |
-      //
-      //  UIWindow+WindowViewControllable.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import Nodes
-      import UIKit
-
-      extension UIWindow: WindowViewControllable {
-
-          func present(_ viewControllable: ViewControllable) {
-              rootViewController = viewControllable._asUIViewController()
-              makeKeyAndVisible()
-          }
-      }
 
   - path: "{{ project|split:' '|join:'_' }}/Sources/3 Window/WindowAnalytics.swift"
     contents: |
@@ -1298,7 +1301,9 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
-      public protocol WindowDependency: Dependency {}
+      internal protocol WindowDependency: Dependency {
+          var windowFactory: WindowViewControllable { get }
+      }
 
       /**
        PURPOSE:
@@ -1306,7 +1311,7 @@ files:
 
        Can be a tuple containing multiple values when necessary.
        */
-      internal typealias WindowDynamicBuildDependency = (WindowListener, WindowViewControllable)
+      internal typealias WindowDynamicBuildDependency = WindowListener
 
       /**
        PURPOSE:
@@ -1386,8 +1391,7 @@ files:
        The Builder interface (available to mock for testability).
        */
       internal protocol WindowBuilder: AnyObject {
-          func build(withListener listener: WindowListener,
-                     viewController: WindowViewControllable) -> WindowFlow
+          func build(withListener listener: WindowListener) -> WindowFlow
       }
 
       internal typealias WindowBuilderType = AbstractBuilder
@@ -1410,11 +1414,8 @@ files:
           /// The dynamic dependencies can be tuples containing multiple values when necessary.
           /// - Parameter listener: An object that can listen for signals from the Node
           /// - Returns: The Flow instance
-          internal func build(
-              withListener listener: WindowListener,
-              viewController: WindowViewControllable
-          ) -> WindowFlow {
-              let dynamicBuildDependency: WindowDynamicBuildDependency = (listener, viewController)
+          internal func build(withListener listener: WindowListener) -> WindowFlow {
+              let dynamicBuildDependency: WindowDynamicBuildDependency = listener
               let dynamicComponentDependency: WindowDynamicComponentDependency = ()
               return build(dynamicBuildDependency, dynamicComponentDependency)
           }
@@ -1428,7 +1429,7 @@ files:
               component: WindowComponent,
               dynamicBuildDependency: WindowDynamicBuildDependency
           ) -> WindowFlow {
-              let (listener, viewController) = dynamicBuildDependency
+              let listener: WindowListener = dynamicBuildDependency
               let analytics: WindowAnalyticsImp = .init()
               let worker: WindowWorkerImp = .init(
                   analytics: analytics
@@ -1440,7 +1441,7 @@ files:
               context.listener = listener
               return WindowFlowImp(
                   context: context,
-                  viewController: viewController,
+                  viewController: component.dependency.windowFactory,
                   rootBuilder: RootBuilderImp(componentFactory: component.rootComponentFactory)
               )
           }
@@ -1534,16 +1535,6 @@ files:
       internal protocol WindowContextInterface: Context, RootListener {
           var flow: WindowFlowInterface? { get set }
           var listener: WindowListener? { get }
-      }
-
-      /**
-       PURPOSE:
-       The interface of the View used for presenting the View of child Nodes. May inherit additional base
-       protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
-       implementation as necessary.
-       */
-      internal protocol WindowViewControllable: AnyObject {
-          func present(_ viewControllable: ViewControllable)
       }
 
       /**
@@ -1713,7 +1704,7 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
-      public protocol RootDependency: Dependency {}
+      internal protocol RootDependency: Dependency {}
 
       /**
        PURPOSE:
