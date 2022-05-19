@@ -280,6 +280,95 @@ files:
           </scenes>
       </document>
 
+  - path: "{{ project|split:' '|join:'_' }}/Sources/AnyCancellable+Cancellable.swift"
+    contents: |
+      //
+      //  AnyCancellable+Cancellable.swift
+      //  {{ project|split:' '|join:'_' }}
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import Combine
+      import Nodes
+
+      extension Combine.AnyCancellable: Nodes.Cancellable {}
+
+  - path: "{{ project|split:' '|join:'_' }}/Sources/AppDelegate.swift"
+    contents: |
+      //
+      //  AppDelegate.swift
+      //  {{ project|split:' '|join:'_' }}
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import Nodes
+      import UIKit
+
+      @main
+      internal class AppDelegate: UIResponder, UIApplicationDelegate {
+
+          private let flowController: FlowController = .init()
+
+          internal func withAppFlow(perform: (AppFlow) -> Void) {
+              flowController.withFirstFlow(ofType: AppFlow.self, perform: perform)
+          }
+
+          internal func application(
+              _ application: UIApplication,
+              didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+          ) -> Bool {
+              registerProviderFactories()
+              let builder: AppBuilder = AppBuilderImp { AppComponent() }
+              flowController.attach(starting: builder.build())
+              return true
+          }
+
+          internal func application(
+              _ application: UIApplication,
+              configurationForConnecting connectingSceneSession: UISceneSession,
+              options: UIScene.ConnectionOptions
+          ) -> UISceneConfiguration {
+              UISceneConfiguration(name: "Default Configuration",
+                                   sessionRole: connectingSceneSession.role)
+          }
+      }
+
+  - path: "{{ project|split:' '|join:'_' }}/Sources/SceneDelegate.swift"
+    contents: |
+      //
+      //  SceneDelegate.swift
+      //  {{ project|split:' '|join:'_' }}
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import UIKit
+
+      internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+          internal func scene(
+              _ scene: UIScene,
+              willConnectTo session: UISceneSession,
+              options connectionOptions: UIScene.ConnectionOptions
+          ) {
+              guard let windowScene: UIWindowScene = scene as? UIWindowScene
+              else { return }
+              withAppFlow { $0.attachScene(windowScene) }
+          }
+
+          internal func sceneDidDisconnect(_ scene: UIScene) {
+              guard let windowScene: UIWindowScene = scene as? UIWindowScene
+              else { return }
+              withAppFlow { $0.detachScene(windowScene) }
+          }
+
+          private func withAppFlow(perform: (AppFlow) -> Void) {
+              (UIApplication.shared.delegate as? AppDelegate)?.withAppFlow(perform: perform)
+          }
+      }
+
   - path: "{{ project|split:' '|join:'_' }}/Sources/WindowFactory.swift"
     contents: |
       //
@@ -609,47 +698,6 @@ files:
       }
 
       extension AppContextImp: AppContextInterface {}
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/1 App/AppDelegate.swift"
-    contents: |
-      //
-      //  AppDelegate.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import Nodes
-      import UIKit
-
-      @main
-      internal class AppDelegate: UIResponder, UIApplicationDelegate {
-
-          private let flowController: FlowController = .init()
-
-          internal func withAppFlow(perform: (AppFlow) -> Void) {
-              flowController.withFirstFlow(ofType: AppFlow.self, perform: perform)
-          }
-
-          internal func application(
-              _ application: UIApplication,
-              didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-          ) -> Bool {
-              registerProviderFactories()
-              let builder: AppBuilder = AppBuilderImp { AppComponent() }
-              flowController.attach(starting: builder.build())
-              return true
-          }
-
-          internal func application(
-              _ application: UIApplication,
-              configurationForConnecting connectingSceneSession: UISceneSession,
-              options: UIScene.ConnectionOptions
-          ) -> UISceneConfiguration {
-              UISceneConfiguration(name: "Default Configuration",
-                                   sessionRole: connectingSceneSession.role)
-          }
-      }
 
   - path: "{{ project|split:' '|join:'_' }}/Sources/1 App/AppFlow.swift"
     contents: |
@@ -1069,40 +1117,6 @@ files:
       }
 
       extension SceneContextImp: SceneContextInterface {}
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/2 Scene/SceneDelegate.swift"
-    contents: |
-      //
-      //  SceneDelegate.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import UIKit
-
-      internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
-          internal func scene(
-              _ scene: UIScene,
-              willConnectTo session: UISceneSession,
-              options connectionOptions: UIScene.ConnectionOptions
-          ) {
-              guard let windowScene: UIWindowScene = scene as? UIWindowScene
-              else { return }
-              withAppFlow { $0.attachScene(windowScene) }
-          }
-
-          internal func sceneDidDisconnect(_ scene: UIScene) {
-              guard let windowScene: UIWindowScene = scene as? UIWindowScene
-              else { return }
-              withAppFlow { $0.detachScene(windowScene) }
-          }
-
-          private func withAppFlow(perform: (AppFlow) -> Void) {
-              (UIApplication.shared.delegate as? AppDelegate)?.withAppFlow(perform: perform)
-          }
-      }
 
   - path: "{{ project|split:' '|join:'_' }}/Sources/2 Scene/SceneFlow.swift"
     contents: |
@@ -2116,20 +2130,6 @@ files:
       }
 
       extension RootWorkerImp: RootWorker {}
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/AnyCancellable+Cancellable.swift"
-    contents: |
-      //
-      //  AnyCancellable+Cancellable.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import Combine
-      import Nodes
-
-      extension Combine.AnyCancellable: Nodes.Cancellable {}
 
   - path: "{{ project|split:' '|join:'_' }}Tests/BuildSettings/Debug.xcconfig"
     contents: |
