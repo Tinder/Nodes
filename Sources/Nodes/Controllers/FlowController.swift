@@ -61,7 +61,7 @@ public final class FlowController {
         flow.start()
     }
 
-    /// Calls the given `Flow` instance's `end` method and removes it from the `flows` array.
+    /// Calls the end method of the given `Flow` instance and removes it from the `subFlows` array.
     ///
     /// The given `Flow` instance must already exist in the `flows` array and its `Context` must be active.
     ///

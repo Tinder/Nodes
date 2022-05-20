@@ -11,19 +11,28 @@ import UIKit
 
 extension UITabBarController: TabBarControllable {
 
-    // swiftlint:disable:next discouraged_optional_collection
-    public var viewControllers: [ViewControllable]? {
+    /// An array of the ``ViewControllable`` instances displayed in the tab bar interface.
+    public var viewControllers: [ViewControllable]? { // swiftlint:disable:this discouraged_optional_collection
         get { children }
         set { set(newValue, animated: false) }
     }
 
-    // swiftlint:disable:next discouraged_optional_collection
-    public func set(_ viewControllers: [ViewControllable]?, animated: Bool) {
+    /// Sets the ``ViewControllable`` instances displayed in the tab bar interface.
+    ///
+    /// - Parameters:
+    ///   - viewControllers: The array of ``ViewControllable`` instances to display in the tab bar interface.
+    ///   - animated: A boolean value specifying whether changes to the tab bar interface are animated or not.
+    public func set(
+        _ viewControllers: [ViewControllable]?, // swiftlint:disable:this discouraged_optional_collection
+        animated: Bool
+    ) {
         setViewControllers(viewControllers?.map { $0._asUIViewController() }, animated: animated)
     }
 
-    // swiftlint:disable:next identifier_name
-    public func _asUITabBarController() -> UITabBarController {
+    /// Returns `self` as a ``UITabBarController``.
+    ///
+    /// - Returns: The `self` instance as a ``UITabBarController``.
+    public func _asUITabBarController() -> UITabBarController {  // swiftlint:disable:this identifier_name
         self
     }
 }

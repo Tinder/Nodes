@@ -11,20 +11,36 @@ import UIKit
 
 extension UINavigationController: NavigationControllable {
 
+    /// An array of the ``ViewControllable`` instances on the navigation stack.
     public var viewControllers: [ViewControllable] {
         get { children }
         set { set(newValue, animated: false) }
     }
 
+    /// Sets the ``ViewControllable`` instances on the navigation stack.
+    ///
+    /// - Parameters:
+    ///   - viewControllers: The array of ``ViewControllable`` instances to set on the navigation stack.
+    ///   - animated: A boolean value specifying whether changes to the navigation stack are animated or not.
     public func set(_ viewControllers: [ViewControllable], animated: Bool) {
         setViewControllers(viewControllers.map { $0._asUIViewController() }, animated: animated)
     }
 
+    /// Pushes a ``ViewControllable`` instance onto the navigation stack.
+    ///
+    /// - Parameters:
+    ///   - viewController: The ``ViewControllable`` instance to push onto the navigation stack.
+    ///   - animated: A boolean value specifying whether the navigation stack transition is animated or not.
     public func push(_ viewController: ViewControllable, animated: Bool) {
         let viewController: UIViewController = viewController._asUIViewController()
         pushViewController(viewController, animated: animated)
     }
 
+    /// Pops a ``ViewControllable`` instance from the navigation stack.
+    ///
+    /// - Parameters:
+    ///   - viewController: The ``ViewControllable`` instance to pop from the navigation stack.
+    ///   - animated: A boolean value specifying whether the navigation stack transition is animated or not.
     public func pop(_ viewController: ViewControllable, animated: Bool) {
         let viewController: UIViewController = viewController._asUIViewController()
         guard viewController === topViewController
@@ -32,8 +48,10 @@ extension UINavigationController: NavigationControllable {
         popViewController(animated: animated)
     }
 
-    // swiftlint:disable:next identifier_name
-    public func _asUINavigationController() -> UINavigationController {
+    /// Returns `self` as a ``UINavigationController``.
+    ///
+    /// - Returns: The `self` instance as a ``UINavigationController``.
+    public func _asUINavigationController() -> UINavigationController { // swiftlint:disable:this identifier_name
         self
     }
 }

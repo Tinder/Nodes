@@ -11,6 +11,15 @@ import UIKit
 
 extension UIViewController: ViewControllable {
 
+    /// Presents the ``ViewControllable`` instance.
+    ///
+    /// - Parameters:
+    ///   - viewController: The ``ViewControllable`` instance to present.
+    ///   - modalStyle: The ``ModalStyle`` to apply to the ``ViewControllable`` instance before presenting.
+    ///   - animated: A boolean value specifying whether presentation is animated or not.
+    ///   - completion: An optional closure to execute when the presentation is finished.
+    ///
+    ///     The closure has no arguments and returns `Void`.
     public func present(
         _ viewController: ViewControllable,
         withModalStyle modalStyle: ModalStyle,
@@ -21,6 +30,14 @@ extension UIViewController: ViewControllable {
         present(viewController.withModalStyle(modalStyle), animated: animated, completion: completion)
     }
 
+    /// Dismisses the ``ViewControllable`` instance.
+    ///
+    /// - Parameters:
+    ///   - viewController: The ``ViewControllable`` instance to dismiss.
+    ///   - animated: A boolean value specifying whether dismissal is animated or not.
+    ///   - completion: An optional closure to execute when the dismissal is finished.
+    ///
+    ///     The closure has no arguments and returns `Void`.
     public func dismiss(
         _ viewController: ViewControllable,
         animated: Bool,
@@ -32,16 +49,27 @@ extension UIViewController: ViewControllable {
         dismiss(animated: animated, completion: completion)
     }
 
+    /// Called just before the ``ViewControllable`` instance is added or removed from a container
+    /// ``ViewControllable`` instance.
+    ///
+    /// - Parameter viewController: The parent ``ViewControllable`` instance, or `nil` if there is no parent.
     public func willMove(toParent viewController: ViewControllable?) {
         let viewController: UIViewController? = viewController?._asUIViewController()
         willMove(toParent: viewController)
     }
 
+    /// Called after the ``ViewControllable`` instance is added or removed from a container
+    /// ``ViewControllable`` instance.
+    ///
+    /// - Parameter viewController: The parent ``ViewControllable`` instance, or `nil` if there is no parent.
     public func didMove(toParent viewController: ViewControllable?) {
         let viewController: UIViewController? = viewController?._asUIViewController()
         didMove(toParent: viewController)
     }
 
+    /// Adds the given ``ViewControllable`` instance as a child.
+    ///
+    /// - Parameter viewController: The ``ViewControllable`` instance to be added as a child.
     public func addChild(_ viewController: ViewControllable) {
         let viewController: UIViewController = viewController._asUIViewController()
         guard !children.contains(viewController)
@@ -49,6 +77,9 @@ extension UIViewController: ViewControllable {
         addChild(viewController)
     }
 
+    /// Removes the given ``ViewControllable`` instance from its parent.
+    ///
+    /// - Parameter viewController: The ``ViewControllable`` instance to be removed from its parent.
     public func removeChild(_ viewController: ViewControllable) {
         let viewController: UIViewController = viewController._asUIViewController()
         guard children.contains(viewController)
@@ -56,14 +87,31 @@ extension UIViewController: ViewControllable {
         viewController.removeFromParent()
     }
 
+    /// Contains the given ``ViewControllable`` instance within the entire bounds of the parent
+    /// ``ViewControllable`` instance.
+    ///
+    /// - Parameter viewController: The ``ViewControllable`` instance to contain.
     public func contain(_ viewController: ViewControllable) {
         contain(viewController, in: view.bounds)
     }
 
+    /// Contains the given ``ViewControllable`` instance within the given frame of the parent
+    /// ``ViewControllable`` instance.
+    ///
+    /// - Parameters:
+    ///   - viewController: The ``ViewControllable`` instance to contain.
+    ///   - frame: The frame in which to contain the ``ViewControllable`` instance.
     public func contain(_ viewController: ViewControllable, in frame: CGRect) {
         contain(viewController, in: frame, with: [.flexibleWidth, .flexibleHeight])
     }
 
+    /// Contains the given ``ViewControllable`` instance within the given frame of the parent
+    /// ``ViewControllable`` instance.
+    ///
+    /// - Parameters:
+    ///   - viewController: The ``ViewControllable`` instance to contain.
+    ///   - frame: The frame in which to contain the ``ViewControllable`` instance.
+    ///   - autoresizingMask: The autoresizing mask to apply to the ``ViewControllable`` instance.
     public func contain(
         _ viewController: ViewControllable,
         in frame: CGRect,
@@ -78,6 +126,12 @@ extension UIViewController: ViewControllable {
         viewController.didMove(toParent: self)
     }
 
+    /// Contains the given ``ViewControllable`` instance within the given view of the parent
+    /// ``ViewControllable`` instance.
+    ///
+    /// - Parameters:
+    ///   - viewController: The ``ViewControllable`` instance to contain.
+    ///   - view: The view in which to contain the ``ViewControllable`` instance.
     public func contain(_ viewController: ViewControllable, in view: UIView) {
         guard view.isDescendant(of: self.view)
         else { return }
@@ -90,6 +144,18 @@ extension UIViewController: ViewControllable {
         viewController.didMove(toParent: self)
     }
 
+    /// Contains the given ``ViewControllable`` instance with the layout constraints provided by the given closure.
+    ///
+    /// - Parameters:
+    ///   - viewController: The ``ViewControllable`` instance to contain.
+    ///   - constraints: The closure providing the layout constraints.
+    ///
+    ///     The closure has the following arguments:
+    ///     | Name | Description                                  |
+    ///     | ---- | -------------------------------------------- |
+    ///     | view | The view on which to add layout constraints. |
+    ///
+    ///     The closure returns an array of layout constraints.
     public func contain(_ viewController: ViewControllable, constraints: (_ view: UIView) -> [NSLayoutConstraint]) {
         let subview: UIView = viewController._asUIViewController().view
         addChild(viewController)
@@ -99,6 +165,9 @@ extension UIViewController: ViewControllable {
         viewController.didMove(toParent: self)
     }
 
+    /// Uncontains the given ``ViewControllable`` instance.
+    ///
+    /// - Parameter viewController: The ``ViewControllable`` instance to uncontain.
     public func uncontain(_ viewController: ViewControllable) {
         let subview: UIView = viewController._asUIViewController().view
         guard subview.isDescendant(of: view)
@@ -108,8 +177,10 @@ extension UIViewController: ViewControllable {
         removeChild(viewController)
     }
 
-    // swiftlint:disable:next identifier_name
-    public func _asUIViewController() -> UIViewController {
+    /// Returns `self` as a ``UIViewController``.
+    ///
+    /// - Returns: The `self` instance as a ``UIViewController``.
+    public func _asUIViewController() -> UIViewController { // swiftlint:disable:this identifier_name
         self
     }
 }
