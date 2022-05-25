@@ -280,24 +280,10 @@ files:
           </scenes>
       </document>
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/AnyCancellable+Cancellable.swift"
+  - path: "{{ project|split:' '|join:'_' }}/Sources/Bootstrap.swift"
     contents: |
       //
-      //  AnyCancellable+Cancellable.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import Combine
-      import Nodes
-
-      extension Combine.AnyCancellable: Nodes.Cancellable {}
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/AppDelegate.swift"
-    contents: |
-      //
-      //  AppDelegate.swift
+      //  Bootstrap.swift
       //  {{ project|split:' '|join:'_' }}
       //
       //  Created by {{ author }} on {{ date }}.
@@ -307,113 +293,21 @@ files:
       import UIKit
 
       @main
-      internal class AppDelegate: UIResponder, UIApplicationDelegate {
+      internal class Bootstrap: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
 
-          private let flowController: FlowController = .init()
+          private let appFlow: AppFlow
 
-          internal func withAppFlow(perform: (AppFlow) -> Void) {
-              flowController.withFirstFlow(ofType: AppFlow.self, perform: perform)
+          override internal init() {
+              registerProviderFactories()
+              appFlow = AppBuilderImp { AppComponent() }.build()
           }
 
           internal func application(
               _ application: UIApplication,
               didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
           ) -> Bool {
-              registerProviderFactories()
-              let builder: AppBuilder = AppBuilderImp { AppComponent() }
-              flowController.attach(starting: builder.build())
+              appFlow.start()
               return true
-          }
-
-          internal func application(
-              _ application: UIApplication,
-              configurationForConnecting connectingSceneSession: UISceneSession,
-              options: UIScene.ConnectionOptions
-          ) -> UISceneConfiguration {
-              UISceneConfiguration(name: "Default Configuration",
-                                   sessionRole: connectingSceneSession.role)
-          }
-      }
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/SceneDelegate.swift"
-    contents: |
-      //
-      //  SceneDelegate.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import UIKit
-
-      internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
-          internal func scene(
-              _ scene: UIScene,
-              willConnectTo session: UISceneSession,
-              options connectionOptions: UIScene.ConnectionOptions
-          ) {
-              guard let windowScene: UIWindowScene = scene as? UIWindowScene
-              else { return }
-              withAppFlow { $0.attachScene(windowScene) }
-          }
-
-          internal func sceneDidDisconnect(_ scene: UIScene) {
-              guard let windowScene: UIWindowScene = scene as? UIWindowScene
-              else { return }
-              withAppFlow { $0.detachScene(windowScene) }
-          }
-
-          private func withAppFlow(perform: (AppFlow) -> Void) {
-              (UIApplication.shared.delegate as? AppDelegate)?.withAppFlow(perform: perform)
-          }
-      }
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/WindowFactory.swift"
-    contents: |
-      //
-      //  WindowFactory.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import Nodes
-      import UIKit
-
-      internal struct WindowFactory {
-
-          internal func makeWindow(
-              in windowScene: WindowSceneViewControllable
-          ) -> WindowViewControllable {
-              UIWindow(windowScene: windowScene._asUIWindowScene())
-          }
-      }
-
-      // MARK: - Protocols
-
-      internal protocol WindowSceneViewControllable: AnyObject {
-          func _asUIWindowScene() -> UIWindowScene
-      }
-
-      internal protocol WindowViewControllable: AnyObject {
-          func present(_ viewControllable: ViewControllable)
-      }
-
-      // MARK: - Conformance
-
-      extension UIWindowScene: WindowSceneViewControllable {
-
-          internal func _asUIWindowScene() -> UIWindowScene {
-              self
-          }
-      }
-
-      extension UIWindow: WindowViewControllable {
-
-          internal func present(_ viewControllable: ViewControllable) {
-              rootViewController = viewControllable._asUIViewController()
-              makeKeyAndVisible()
           }
       }
 
@@ -501,10 +395,7 @@ files:
        PURPOSE:
        The interface of the Flow.
        */
-      internal protocol AppFlow: Flow {
-          func attachScene(_ viewControllable: WindowSceneViewControllable)
-          func detachScene(_ viewControllable: WindowSceneViewControllable)
-      }
+      internal protocol AppFlow: Flow {}
 
       /**
        PURPOSE:
@@ -555,6 +446,8 @@ files:
 
            */
 
+          fileprivate let appService: AppService = AppServiceImp()
+
           private let dynamicDependency: AppDynamicComponentDependency
 
           /// The initializer.
@@ -580,8 +473,8 @@ files:
 
            */
 
-          fileprivate func sceneComponentFactory(windowScene: WindowSceneViewControllable) -> SceneComponent {
-              SceneComponent(parent: self, dynamicDependency: windowScene)
+          fileprivate func sceneComponentFactory() -> SceneComponent {
+              SceneComponent(parent: self)
           }
       }
 
@@ -633,7 +526,8 @@ files:
               )
               let context: AppContextImp = .init(
                   workers: [worker],
-                  analytics: analytics
+                  analytics: analytics,
+                  windowSceneState: component.appService.windowSceneState
               )
               return AppFlowImp(context: context,
                                 sceneBuilder: SceneBuilderImp(componentFactory: component.sceneComponentFactory))
@@ -659,7 +553,10 @@ files:
        The interface that the Context will speak to the Flow through. Used to initiate navigation as
        an example.
        */
-      internal protocol AppFlowInterface: Flow {}
+      internal protocol AppFlowInterface: Flow {
+          func attachScene(_ viewControllable: WindowSceneViewControllable)
+          func detachScene(_ viewControllable: WindowSceneViewControllable)
+      }
 
       /**
        PURPOSE:
@@ -680,10 +577,12 @@ files:
           ///   - analytics: The Analytics instance
           internal init(
               workers: [Worker],
-              analytics: AppAnalytics
+              analytics: AppAnalytics,
+              windowSceneState: AnyPublisher<WindowSceneState, Never>
           ) {
               self.analytics = analytics
               super.init(workers: workers)
+              subscribe(to: windowSceneState)
           }
 
           /// Implement logic to execute when the Context becomes active.
@@ -694,6 +593,19 @@ files:
 
           deinit {
               LeakDetector.detect(analytics)
+          }
+
+          private func subscribe(to windowSceneState: AnyPublisher<WindowSceneState, Never>) {
+              windowSceneState
+                  .filter(\.isAdded)
+                  .map(\.windowScene)
+                  .sink(weak: self) { $0.flow?.attachScene($1) }
+                  .store(in: &cancellables)
+              windowSceneState
+                  .filter(\.isRemoved)
+                  .map(\.windowScene)
+                  .sink(weak: self) { $0.flow?.detachScene($1) }
+                  .store(in: &cancellables)
           }
       }
 
@@ -746,7 +658,8 @@ files:
           override internal func didStart() {}
       }
 
-      extension AppFlowImp: AppFlow {
+      extension AppFlowImp: AppFlow {}
+      extension AppFlowImp: AppFlowInterface {
 
           func attachScene(_ viewControllable: WindowSceneViewControllable) {
               let flow: SceneFlow = sceneBuilder.build(withListener: context,
@@ -761,8 +674,6 @@ files:
                   .forEach(detach)
           }
       }
-
-      extension AppFlowImp: AppFlowInterface {}
 
   - path: "{{ project|split:' '|join:'_' }}/Sources/1 App/AppWorker.swift"
     contents: |
@@ -914,7 +825,7 @@ files:
 
        Can be a tuple containing multiple values when necessary.
        */
-      internal typealias SceneDynamicComponentDependency = WindowSceneViewControllable
+      internal typealias SceneDynamicComponentDependency = Void
 
       // MARK: - Component
 
@@ -949,10 +860,6 @@ files:
 
            */
 
-          internal var windowFactory: WindowViewControllable {
-              WindowFactory().makeWindow(in: dynamicDependency)
-          }
-
           private let dynamicDependency: SceneDynamicComponentDependency
 
           /// The initializer.
@@ -961,7 +868,7 @@ files:
           ///
           /// - Parameter parent: The parent scope
           /// - Parameter dynamicDependency: The dynamic component dependency
-          internal init(parent: Scope, dynamicDependency: SceneDynamicComponentDependency) {
+          internal init(parent: Scope, dynamicDependency: SceneDynamicComponentDependency = ()) {
               self.dynamicDependency = dynamicDependency
               super.init(parent: parent)
           }
@@ -1019,7 +926,7 @@ files:
               viewController: WindowSceneViewControllable
           ) -> SceneFlow {
               let dynamicBuildDependency: SceneDynamicBuildDependency = (listener, viewController)
-              let dynamicComponentDependency: SceneDynamicComponentDependency = viewController
+              let dynamicComponentDependency: SceneDynamicComponentDependency = ()
               return build(dynamicBuildDependency, dynamicComponentDependency)
           }
 
@@ -1175,7 +1082,8 @@ files:
           }
 
           private func attachWindow() {
-              let flow: WindowFlow = windowBuilder.build(withListener: context)
+              let flow: WindowFlow = windowBuilder.build(withListener: context,
+                                                         windowScene: viewController)
               attach(starting: flow)
           }
       }
@@ -1315,9 +1223,7 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
-      internal protocol WindowDependency: Dependency {
-          var windowFactory: WindowViewControllable { get }
-      }
+      internal protocol WindowDependency: Dependency {}
 
       /**
        PURPOSE:
@@ -1325,7 +1231,7 @@ files:
 
        Can be a tuple containing multiple values when necessary.
        */
-      internal typealias WindowDynamicBuildDependency = WindowListener
+      internal typealias WindowDynamicBuildDependency = (WindowListener, WindowSceneViewControllable)
 
       /**
        PURPOSE:
@@ -1405,7 +1311,10 @@ files:
        The Builder interface (available to mock for testability).
        */
       internal protocol WindowBuilder: AnyObject {
-          func build(withListener listener: WindowListener) -> WindowFlow
+          func build(
+              withListener listener: WindowListener,
+              windowScene: WindowSceneViewControllable
+          ) -> WindowFlow
       }
 
       internal typealias WindowBuilderType = AbstractBuilder
@@ -1428,8 +1337,11 @@ files:
           /// The dynamic dependencies can be tuples containing multiple values when necessary.
           /// - Parameter listener: An object that can listen for signals from the Node
           /// - Returns: The Flow instance
-          internal func build(withListener listener: WindowListener) -> WindowFlow {
-              let dynamicBuildDependency: WindowDynamicBuildDependency = listener
+          internal func build(
+              withListener listener: WindowListener,
+              windowScene: WindowSceneViewControllable
+          ) -> WindowFlow {
+              let dynamicBuildDependency: WindowDynamicBuildDependency = (listener, windowScene)
               let dynamicComponentDependency: WindowDynamicComponentDependency = ()
               return build(dynamicBuildDependency, dynamicComponentDependency)
           }
@@ -1443,7 +1355,7 @@ files:
               component: WindowComponent,
               dynamicBuildDependency: WindowDynamicBuildDependency
           ) -> WindowFlow {
-              let listener: WindowListener = dynamicBuildDependency
+              let (listener, windowScene) = dynamicBuildDependency
               let analytics: WindowAnalyticsImp = .init()
               let worker: WindowWorkerImp = .init(
                   analytics: analytics
@@ -1455,7 +1367,7 @@ files:
               context.listener = listener
               return WindowFlowImp(
                   context: context,
-                  viewController: component.dependency.windowFactory,
+                  viewController: windowScene.makeWindow(),
                   rootBuilder: RootBuilderImp(componentFactory: component.rootComponentFactory)
               )
           }
@@ -1577,6 +1489,10 @@ files:
 
           /// Implement logic to execute when the Flow is started.
           override internal func didStart() {
+              attachRoot()
+          }
+
+          private func attachRoot() {
               let flow: RootFlow = rootBuilder.build(withListener: context)
               viewController.present(flow.viewControllable)
               attach(starting: flow)
@@ -2131,6 +2047,182 @@ files:
 
       extension RootWorkerImp: RootWorker {}
 
+  - path: "{{ project|split:' '|join:'_' }}/Sources/Services/AppService.swift"
+    contents: |
+      //
+      //  AppService.swift
+      //  {{ project|split:' '|join:'_' }}
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import Combine
+      import UIKit
+
+      /// @mockable
+      internal protocol AppService {
+          var windowSceneState: AnyPublisher<WindowSceneState, Never> { get }
+      }
+
+      internal final class AppServiceImp: AppService {
+
+          internal var windowSceneState: AnyPublisher<WindowSceneState, Never> {
+              Publishers.Merge(
+                  notificationCenter
+                      .publisher(for: UIScene.willConnectNotification)
+                      .compactMap { $0.object as? UIWindowScene }
+                      .map { .added($0) },
+                  notificationCenter
+                      .publisher(for: UIScene.didDisconnectNotification)
+                      .compactMap { $0.object as? UIWindowScene }
+                      .map { .removed($0) })
+              .eraseToAnyPublisher()
+          }
+
+          private let notificationCenter: NotificationCenter
+
+          internal init(notificationCenter: NotificationCenter = Foundation.NotificationCenter.default) {
+              self.notificationCenter = notificationCenter
+          }
+      }
+
+      internal enum WindowSceneState {
+
+          case added(UIWindowScene)
+          case removed(UIWindowScene)
+
+          internal var isAdded: Bool {
+              guard case .added = self
+              else { return false }
+              return true
+          }
+
+          internal var isRemoved: Bool {
+              guard case .removed = self
+              else { return false }
+              return true
+          }
+
+          internal var windowScene: UIWindowScene {
+              switch self {
+              case let .added(windowScene):
+                  return windowScene
+              case let .removed(windowScene):
+                  return windowScene
+              }
+          }
+      }
+
+  - path: "{{ project|split:' '|join:'_' }}/Sources/System/NotificationCenter.swift"
+    contents: |
+      //
+      //  NotificationCenter.swift
+      //  {{ project|split:' '|join:'_' }}
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import Foundation
+
+      /// @mockable(module: prefix = {{ project|split:' '|join:'_' }})
+      protocol NotificationCenter {
+          func publisher(for name: Notification.Name, object: AnyObject?) -> Foundation.NotificationCenter.Publisher
+      }
+
+      extension NotificationCenter {
+
+          internal func publisher(for name: Notification.Name) -> Foundation.NotificationCenter.Publisher {
+              publisher(for: name, object: nil)
+          }
+      }
+
+      extension Foundation.NotificationCenter: NotificationCenter {}
+
+  - path: "{{ project|split:' '|join:'_' }}/Sources/Utility/AnyCancellable+Cancellable.swift"
+    contents: |
+      //
+      //  AnyCancellable+Cancellable.swift
+      //  {{ project|split:' '|join:'_' }}
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import Combine
+      import Nodes
+
+      extension Combine.AnyCancellable: Nodes.Cancellable {}
+
+  - path: "{{ project|split:' '|join:'_' }}/Sources/Utility/WeakSink.swift"
+    contents: |
+      //
+      //  WeakSink.swift
+      //  {{ project|split:' '|join:'_' }}
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import Combine
+
+      extension Publisher where Failure == Never {
+
+          internal func sink<T: AnyObject>(
+              weak object: T,
+              receiveValue: @escaping (T, Output) -> Void
+          ) -> AnyCancellable {
+              sink { [weak object] value in
+                  guard let object: T = object
+                  else { return }
+                  receiveValue(object, value)
+              }
+          }
+      }
+
+  - path: "{{ project|split:' '|join:'_' }}/Sources/Utility/WindowSceneViewControllable.swift"
+    contents: |
+      //
+      //  WindowSceneViewControllable.swift
+      //  {{ project|split:' '|join:'_' }}
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import UIKit
+
+      internal protocol WindowSceneViewControllable: AnyObject {
+          func makeWindow() -> WindowViewControllable
+      }
+
+      extension UIWindowScene: WindowSceneViewControllable {
+
+          internal func makeWindow() -> WindowViewControllable {
+              UIWindow(windowScene: self)
+          }
+      }
+
+  - path: "{{ project|split:' '|join:'_' }}/Sources/Utility/WindowViewControllable.swift"
+    contents: |
+      //
+      //  WindowViewControllable.swift
+      //  {{ project|split:' '|join:'_' }}
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import Nodes
+      import UIKit
+
+      internal protocol WindowViewControllable: AnyObject {
+          func present(_ viewControllable: ViewControllable)
+      }
+
+      extension UIWindow: WindowViewControllable {
+
+          internal func present(_ viewControllable: ViewControllable) {
+              rootViewController = viewControllable._asUIViewController()
+              makeKeyAndVisible()
+          }
+      }
+
   - path: "{{ project|split:' '|join:'_' }}Tests/BuildSettings/Debug.xcconfig"
     contents: |
       #include "Shared.xcconfig"
@@ -2277,7 +2369,7 @@ files:
                 UISceneConfigurations:
                   UIWindowSceneSessionRoleApplication:
                     - UISceneConfigurationName: Default Configuration
-                      UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
+                      UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).Bootstrap
               UIApplicationSupportsIndirectInputEvents: true
               UILaunchStoryboardName: LaunchScreen
               UIRequiredDeviceCapabilities:
