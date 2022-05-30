@@ -73,4 +73,4 @@ Xcode templates for Nodes will automatically be installed to:
 
 To add additional Nodes to the project, scroll to the Nodes templates in the new file dialog. The `` symbol indicates SwiftUI templates.
 
-<p align="center"><img src="./.assets/Xcode-Templates.png" width="798" /></p>
+<img src="./.assets/Xcode-Templates.png" width="691" />
