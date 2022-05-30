@@ -289,7 +289,6 @@ files:
       //  Created by {{ author }} on {{ date }}.
       //
 
-      import Nodes
       import UIKit
 
       @main
@@ -599,12 +598,12 @@ files:
               windowSceneState
                   .filter(\.isAdded)
                   .map(\.windowScene)
-                  .sink(weak: self) { $0.flow?.attachScene($1) }
+                  .sink { [weak self] in self?.flow?.attachScene($0) }
                   .store(in: &cancellables)
               windowSceneState
                   .filter(\.isRemoved)
                   .map(\.windowScene)
-                  .sink(weak: self) { $0.flow?.detachScene($1) }
+                  .sink { [weak self] in self?.flow?.detachScene($0) }
                   .store(in: &cancellables)
           }
       }
@@ -2151,31 +2150,6 @@ files:
       import Nodes
 
       extension Combine.AnyCancellable: Nodes.Cancellable {}
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/Utility/WeakSink.swift"
-    contents: |
-      //
-      //  WeakSink.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import Combine
-
-      extension Publisher where Failure == Never {
-
-          internal func sink<T: AnyObject>(
-              weak object: T,
-              receiveValue: @escaping (T, Output) -> Void
-          ) -> AnyCancellable {
-              sink { [weak object] value in
-                  guard let object: T = object
-                  else { return }
-                  receiveValue(object, value)
-              }
-          }
-      }
 
   - path: "{{ project|split:' '|join:'_' }}/Sources/Utility/WindowSceneViewControllable.swift"
     contents: |
