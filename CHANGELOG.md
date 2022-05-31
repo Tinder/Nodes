@@ -1,5 +1,55 @@
 # Changelog
 
+## [0.0.7](https://github.com/TinderApp/Nodes/releases/tag/0.0.7)
+
+### Added
+
+- Add API documentation (w/o abstract classes and ViewControllable)\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#107](https://github.com/TinderApp/Nodes/pull/107)]
+
+- Create docc.yml\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#108](https://github.com/TinderApp/Nodes/pull/108)]
+
+- Add remaining API docs\
+  [Garric Nahapetian](https://github.com/tinder-garricnahapetian)
+  [[#109](https://github.com/TinderApp/Nodes/pull/109)]
+
+- Add quick start\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#110](https://github.com/TinderApp/Nodes/pull/110)]
+
+### Improved
+
+- Improve quick start\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#111](https://github.com/TinderApp/Nodes/pull/111)]
+
+- Improve quick start\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#112](https://github.com/TinderApp/Nodes/pull/112)]
+
+- Improve quick start\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#113](https://github.com/TinderApp/Nodes/pull/113)]
+
+- Improve quick start\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#115](https://github.com/TinderApp/Nodes/pull/115)]
+
+### Removed
+
+- Remove root templates\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#114](https://github.com/TinderApp/Nodes/pull/114)]
+
+### Fixed
+
+- None
+
+---
+
 ## [0.0.6](https://github.com/TinderApp/Nodes/releases/tag/0.0.6)
 
 ### Added
