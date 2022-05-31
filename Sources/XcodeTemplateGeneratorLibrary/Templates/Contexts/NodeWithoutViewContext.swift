@@ -11,7 +11,6 @@ public struct NodeWithoutViewContext: Context {
     private let nodeName: String
     private let workerName: String
     private let publicNode: Bool
-    private let rootNode: Bool
     private let builderImports: [String]
     private let contextImports: [String]
     private let flowImports: [String]
@@ -29,7 +28,6 @@ public struct NodeWithoutViewContext: Context {
             "worker_name": workerName,
             "public_node": publicNode,
             "owns_view": false,
-            "root_node": rootNode,
             "builder_imports": builderImports,
             "context_imports": contextImports,
             "flow_imports": flowImports,
@@ -47,7 +45,6 @@ public struct NodeWithoutViewContext: Context {
         nodeName: String,
         workerName: String,
         publicNode: Bool,
-        rootNode: Bool,
         builderImports: Set<String>,
         contextImports: Set<String>,
         flowImports: Set<String>,
@@ -62,7 +59,6 @@ public struct NodeWithoutViewContext: Context {
         self.nodeName = nodeName
         self.workerName = workerName
         self.publicNode = publicNode
-        self.rootNode = rootNode
         self.builderImports = builderImports.sortedImports()
         self.contextImports = contextImports.sortedImports()
         self.flowImports = flowImports.sortedImports()

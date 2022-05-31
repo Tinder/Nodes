@@ -29,12 +29,6 @@ public final class XcodeTemplates {
         if config.includedTemplates.contains("NodeWithoutView") {
             templates.append(NodeWithoutViewTemplate(config: config))
         }
-        if config.includedTemplates.contains("RootNode") {
-            templates.append(RootNodeTemplate(config: config))
-        }
-        if config.includedTemplates.contains("RootNodeSwiftUI") {
-            templates.append(RootNodeTemplate(config: config, swiftUI: true))
-        }
         if config.includedTemplates.contains("Worker") {
             templates.append(WorkerTemplate(config: config))
         }

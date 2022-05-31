@@ -13,9 +13,7 @@ public protocol <nodeName>Listener: AnyObject {}
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
-internal protocol <nodeName>FlowInterface: Flow {
-    func didBecomeReady()
-}
+internal protocol <nodeName>FlowInterface: Flow {}
 
 /**
  PURPOSE:
@@ -42,8 +40,6 @@ internal final class <nodeName>ContextImp: AbstractPresentableContext
 
     /// The Analytics instance.
     private let analytics: <nodeName>Analytics
-
-    private var isReady: Bool = false
 
     /// The initializer.
     /// - Parameters:
@@ -72,12 +68,4 @@ internal final class <nodeName>ContextImp: AbstractPresentableContext
 }
 
 extension <nodeName>ContextImp: <nodeName>ContextInterface {}
-extension <nodeName>ContextImp: <nodeName>Receiver {
-
-    internal func viewDidAppear() {
-        guard !isReady
-        else { return }
-        isReady = true
-        flow?.didBecomeReady()
-    }
-}
+extension <nodeName>ContextImp: <nodeName>Receiver {}

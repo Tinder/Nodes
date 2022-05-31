@@ -13,9 +13,7 @@ public protocol <nodeName>Listener: AnyObject {}
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
-internal protocol <nodeName>FlowInterface: Flow {
-    func didBecomeReady()
-}
+internal protocol <nodeName>FlowInterface: Flow {}
 
 /**
  PURPOSE:

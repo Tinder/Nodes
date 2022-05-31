@@ -41,7 +41,6 @@ internal struct NodeWithoutViewStateTemplate: XcodeTemplate {
             nodeName: config.variable("productName"),
             workerName: config.variable("productName"),
             publicNode: false,
-            rootNode: false,
             builderImports: config.imports(for: .diGraph),
             contextImports: config.imports(for: .nodes),
             flowImports: config.imports(for: .nodes),

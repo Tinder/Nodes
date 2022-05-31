@@ -30,7 +30,6 @@
           - value: "<flowPropertiesType>"
     - nodeName: "___VARIABLE_productName___"
     - publicNode: false
-    - rootNode: false
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     ▿ workerImports: 2 elements

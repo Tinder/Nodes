@@ -56,8 +56,4 @@ internal final class <nodeName>FlowImp: AbstractFlow
 }
 
 extension <nodeName>FlowImp: <nodeName>Flow {}
-extension <nodeName>FlowImp: <nodeName>FlowInterface {
-
-    /// Implement logic to execute when the Root Flow is ready to attach sub-Flows.
-    internal func didBecomeReady() {}
-}
+extension <nodeName>FlowImp: <nodeName>FlowInterface {}

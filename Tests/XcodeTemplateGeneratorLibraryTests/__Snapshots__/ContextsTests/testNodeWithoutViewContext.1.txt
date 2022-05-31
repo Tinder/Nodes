@@ -1,4 +1,4 @@
-▿ 15 key/value pairs
+▿ 14 key/value pairs
   ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
@@ -45,9 +45,6 @@
     - value: false
   ▿ (2 elements)
     - key: "public_node"
-    - value: true
-  ▿ (2 elements)
-    - key: "root_node"
     - value: true
   ▿ (2 elements)
     - key: "view_controllable_flow_type"

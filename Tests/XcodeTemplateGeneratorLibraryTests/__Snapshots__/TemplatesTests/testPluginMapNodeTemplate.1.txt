@@ -24,7 +24,7 @@
         - required: true
         - type: "text"
     - platforms: 0 elements
-    - sortOrder: 7
+    - sortOrder: 5
     - summary: "The source file implementing a Plugin Map"
     - supportsSwiftPackage: true
   ▿ stencils: 1 element

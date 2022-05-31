@@ -32,7 +32,6 @@
     - publicNode: false
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
-    - rootNode: false
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     - viewControllerAvailabilityAttribute: "<viewControllerAvailabilityAttributeSwiftUI>"

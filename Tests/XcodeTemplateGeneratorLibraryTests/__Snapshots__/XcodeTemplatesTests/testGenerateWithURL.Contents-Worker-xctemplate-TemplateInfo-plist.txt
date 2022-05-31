@@ -46,7 +46,7 @@
 	<key>Platforms</key>
 	<array/>
 	<key>SortOrder</key>
-	<integer>5</integer>
+	<integer>8</integer>
 	<key>Summary</key>
 	<string>The source file implementing a Worker</string>
 	<key>SupportsSwiftPackage</key>

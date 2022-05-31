@@ -11,16 +11,6 @@ import XCTest
 
 final class TemplatesTests: XCTestCase, TestFactories {
 
-    func testRootNodeTemplate() {
-        assertSnapshot(matching: RootNodeTemplate(config: givenConfig()),
-                       as: .dump)
-    }
-
-    func testRootNodeSwiftUITemplate() {
-        assertSnapshot(matching: RootNodeTemplate(config: givenConfig(), swiftUI: true),
-                       as: .dump)
-    }
-
     func testNodeTemplate() {
         assertSnapshot(matching: NodeTemplate(config: givenConfig()),
                        as: .dump)

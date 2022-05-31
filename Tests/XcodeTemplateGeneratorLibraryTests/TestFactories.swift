@@ -34,8 +34,6 @@ extension TestFactories {
         config.viewControllerPropertiesSwiftUI = "<viewControllerPropertiesSwiftUI>"
         config.viewControllerMethods = "<viewControllerMethods>"
         config.viewControllerMethodsSwiftUI = "<viewControllerMethodsSwiftUI>"
-        config.rootViewControllerMethods = "<rootViewControllerMethods>"
-        config.rootViewControllerMethodsSwiftUI = "<rootViewControllerMethodsSwiftUI>"
         config.viewControllerWithoutViewStateMethods = "<viewControllerWithoutViewStateMethods>"
         config.viewControllerWithoutViewStateMethodsSwiftUI = "<viewControllerWithoutViewStateMethodsSwiftUI>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
@@ -53,7 +51,6 @@ extension TestFactories {
             nodeName: "<nodeName>",
             workerName: "<workerName>",
             publicNode: true,
-            rootNode: true,
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],
@@ -83,7 +80,6 @@ extension TestFactories {
             nodeName: "<nodeName>",
             workerName: "<workerName>",
             publicNode: true,
-            rootNode: true,
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],
@@ -102,7 +98,6 @@ extension TestFactories {
             nodeName: "<nodeName>",
             workerName: "<workerName>",
             publicNode: true,
-            rootNode: true,
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],

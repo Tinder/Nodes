@@ -12,11 +12,8 @@ import {{ import }}{% endfor %}
  PURPOSE:
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
- */{% if root_node %}
-internal protocol {{ node_name }}FlowInterface: Flow {
-    func didBecomeReady()
-}{% else %}
-internal protocol {{ node_name }}FlowInterface: Flow {}{% endif %}{% if owns_view %}
+ */
+internal protocol {{ node_name }}FlowInterface: Flow {}{% if owns_view %}
 
 /**
  PURPOSE:
@@ -45,9 +42,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext
     internal weak var listener: {{ node_name }}Listener?
 
     /// The Analytics instance.
-    private let analytics: {{ node_name }}Analytics{% if owns_view %}{% if root_node %}
-
-    private var isReady: Bool = false{% endif %}
+    private let analytics: {{ node_name }}Analytics{% if owns_view %}
 
     /// The initializer.
     /// - Parameters:
@@ -87,14 +82,5 @@ internal final class {{ node_name }}ContextImp: AbstractContext
     }
 }
 
-extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}{% if owns_view %}{% if root_node %}
-extension {{ node_name }}ContextImp: {{ node_name }}Receiver {
-
-    internal func viewDidAppear() {
-        guard !isReady
-        else { return }
-        isReady = true
-        flow?.didBecomeReady()
-    }
-}{% else %}
-extension {{ node_name }}ContextImp: {{ node_name }}Receiver {}{% endif %}{% endif %}
+extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}{% if owns_view %}
+extension {{ node_name }}ContextImp: {{ node_name }}Receiver {}{% endif %}
