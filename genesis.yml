@@ -1082,7 +1082,7 @@ files:
 
           private func attachWindow() {
               let flow: WindowFlow = windowBuilder.build(withListener: context,
-                                                         windowScene: viewController)
+                                                         viewController: viewController.makeWindow())
               attach(starting: flow)
           }
       }
@@ -1230,7 +1230,7 @@ files:
 
        Can be a tuple containing multiple values when necessary.
        */
-      internal typealias WindowDynamicBuildDependency = (WindowListener, WindowSceneViewControllable)
+      internal typealias WindowDynamicBuildDependency = (WindowListener, WindowViewControllable)
 
       /**
        PURPOSE:
@@ -1310,10 +1310,8 @@ files:
        The Builder interface (available to mock for testability).
        */
       internal protocol WindowBuilder: AnyObject {
-          func build(
-              withListener listener: WindowListener,
-              windowScene: WindowSceneViewControllable
-          ) -> WindowFlow
+          func build(withListener listener: WindowListener,
+                     viewController: WindowViewControllable) -> WindowFlow
       }
 
       internal typealias WindowBuilderType = AbstractBuilder
@@ -1338,9 +1336,9 @@ files:
           /// - Returns: The Flow instance
           internal func build(
               withListener listener: WindowListener,
-              windowScene: WindowSceneViewControllable
+              viewController: WindowViewControllable
           ) -> WindowFlow {
-              let dynamicBuildDependency: WindowDynamicBuildDependency = (listener, windowScene)
+              let dynamicBuildDependency: WindowDynamicBuildDependency = (listener, viewController)
               let dynamicComponentDependency: WindowDynamicComponentDependency = ()
               return build(dynamicBuildDependency, dynamicComponentDependency)
           }
@@ -1354,7 +1352,7 @@ files:
               component: WindowComponent,
               dynamicBuildDependency: WindowDynamicBuildDependency
           ) -> WindowFlow {
-              let (listener, windowScene) = dynamicBuildDependency
+              let (listener, viewController) = dynamicBuildDependency
               let analytics: WindowAnalyticsImp = .init()
               let worker: WindowWorkerImp = .init(
                   analytics: analytics
@@ -1366,7 +1364,7 @@ files:
               context.listener = listener
               return WindowFlowImp(
                   context: context,
-                  viewController: windowScene.makeWindow(),
+                  viewController: viewController,
                   rootBuilder: RootBuilderImp(componentFactory: component.rootComponentFactory)
               )
           }
