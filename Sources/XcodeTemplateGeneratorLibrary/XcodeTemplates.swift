@@ -26,8 +26,8 @@ public final class XcodeTemplates {
         if config.includedTemplates.contains("NodeWithoutViewStateSwiftUI") {
             templates.append(NodeWithoutViewStateTemplate(config: config, swiftUI: true))
         }
-        if config.includedTemplates.contains("NodeWithoutView") {
-            templates.append(NodeWithoutViewTemplate(config: config))
+        if config.includedTemplates.contains("NodeViewInjected") {
+            templates.append(NodeViewInjectedTemplate(config: config))
         }
         if config.includedTemplates.contains("PluginListNode") {
             templates.append(PluginListNodeTemplate(config: config))

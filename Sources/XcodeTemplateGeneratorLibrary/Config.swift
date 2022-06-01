@@ -123,7 +123,7 @@ extension XcodeTemplates.Config {
             "NodeSwiftUI",
             "NodeWithoutViewState",
             "NodeWithoutViewStateSwiftUI",
-            "NodeWithoutView",
+            "NodeViewInjected",
             "PluginListNode",
             "PluginMapNode",
             "PluginNode",

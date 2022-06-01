@@ -1,15 +1,15 @@
 //
-//  NodeWithoutViewTemplate.swift
+//  NodeViewInjectedTemplate.swift
 //  XcodeTemplateGeneratorLibrary
 //
 //  Created by Christopher Fuller on 4/25/21.
 //
 
-internal struct NodeWithoutViewTemplate: XcodeTemplate {
+internal struct NodeViewInjectedTemplate: XcodeTemplate {
 
     internal typealias Config = XcodeTemplates.Config
 
-    internal let name: String = "Node (without view)"
+    internal let name: String = "Node (view injected)"
     internal let type: String = "Node"
     internal let stencils: [String] = ["Analytics", "Builder", "Context", "Flow", "Worker"]
     internal let context: Context
@@ -23,7 +23,7 @@ internal struct NodeWithoutViewTemplate: XcodeTemplate {
         }
 
     internal init(config: Config) {
-        context = NodeWithoutViewContext(
+        context = NodeViewInjectedContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
             workerName: config.variable("productName"),

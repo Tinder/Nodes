@@ -3,7 +3,7 @@
   - "/ Node.xctemplate"
   - "/Node (without view state).xctemplate"
   - "/ Node (without view state).xctemplate"
-  - "/Node (without view).xctemplate"
+  - "/Node (view injected).xctemplate"
   - "/Plugin List (for Node).xctemplate"
   - "/Plugin Map (for Node).xctemplate"
   - "/Plugin (for Node).xctemplate"

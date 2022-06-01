@@ -12,7 +12,7 @@
     - path: "/ Node (without view state).xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Node (without view).xctemplate"
+    - path: "/Node (view injected).xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Plugin List (for Node).xctemplate"

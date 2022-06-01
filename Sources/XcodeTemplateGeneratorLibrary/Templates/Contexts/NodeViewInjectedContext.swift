@@ -1,11 +1,11 @@
 //
-//  NodeWithoutViewContext.swift
+//  NodeViewInjectedContext.swift
 //  XcodeTemplateGeneratorLibrary
 //
 //  Created by Christopher Fuller on 5/4/21.
 //
 
-public struct NodeWithoutViewContext: Context {
+public struct NodeViewInjectedContext: Context {
 
     private let fileHeader: String
     private let nodeName: String

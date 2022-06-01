@@ -21,6 +21,11 @@ final class TemplatesTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
+    func testNodeViewInjectedTemplate() {
+        assertSnapshot(matching: NodeViewInjectedTemplate(config: givenConfig()),
+                       as: .dump)
+    }
+
     func testNodeWithoutViewStateTemplate() {
         assertSnapshot(matching: NodeWithoutViewStateTemplate(config: givenConfig()),
                        as: .dump)
@@ -28,11 +33,6 @@ final class TemplatesTests: XCTestCase, TestFactories {
 
     func testNodeWithoutViewStateSwiftUITemplate() {
         assertSnapshot(matching: NodeWithoutViewStateTemplate(config: givenConfig(), swiftUI: true),
-                       as: .dump)
-    }
-
-    func testNodeWithoutViewTemplate() {
-        assertSnapshot(matching: NodeWithoutViewTemplate(config: givenConfig()),
                        as: .dump)
     }
 

@@ -40,8 +40,8 @@ public final class StencilRenderer {
         ], with: context.dictionary)
     }
 
-    public func renderNodeWithoutView(
-        context: NodeWithoutViewContext
+    public func renderNodeViewInjected(
+        context: NodeViewInjectedContext
     ) throws -> [String: String] {
         try renderNode(stencils: [
             "Analytics": "Analytics",

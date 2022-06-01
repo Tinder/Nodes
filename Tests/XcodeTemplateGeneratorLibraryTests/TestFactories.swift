@@ -103,8 +103,8 @@ extension TestFactories {
         )
     }
 
-    func givenNodeWithoutViewContext() -> NodeWithoutViewContext {
-        NodeWithoutViewContext(
+    func givenNodeViewInjectedContext() -> NodeViewInjectedContext {
+        NodeViewInjectedContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
             workerName: "<workerName>",

@@ -4,7 +4,7 @@
   - "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node.xctemplate"
   - "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (without view state).xctemplate"
   - "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate"
-  - "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (without view).xctemplate"
+  - "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (view injected).xctemplate"
   - "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate"
   - "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin Map (for Node).xctemplate"
   - "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate"

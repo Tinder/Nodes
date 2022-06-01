@@ -1,5 +1,5 @@
-▿ NodeWithoutViewTemplate
-  ▿ context: NodeWithoutViewContext
+▿ NodeViewInjectedTemplate
+  ▿ context: NodeViewInjectedContext
     ▿ builderImports: 3 elements
       - "<baseImports>"
       - "<diGraphImports>"
@@ -35,7 +35,7 @@
       - "<baseImports>"
       - "Nodes"
     - workerName: "___VARIABLE_productName___"
-  - name: "Node (without view)"
+  - name: "Node (view injected)"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"
