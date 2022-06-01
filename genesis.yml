@@ -570,6 +570,8 @@ files:
           /// The Analytics instance.
           private let analytics: AppAnalytics
 
+          private let windowSceneState: AnyPublisher<WindowSceneState, Never>
+
           /// The initializer.
           /// - Parameters:
           ///   - workers: The Worker instances
@@ -580,12 +582,14 @@ files:
               windowSceneState: AnyPublisher<WindowSceneState, Never>
           ) {
               self.analytics = analytics
+              self.windowSceneState = windowSceneState
               super.init(workers: workers)
-              subscribe(to: windowSceneState)
           }
 
           /// Implement logic to execute when the Context becomes active.
-          override internal func didBecomeActive() {}
+          override internal func didBecomeActive() {
+              subscribe(to: windowSceneState)
+          }
 
           /// Implement logic to execute when the Context will become inactive.
           override internal func willResignActive() {}
