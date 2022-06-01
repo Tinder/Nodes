@@ -24,7 +24,7 @@ extension XcodeTemplates {
         // swiftlint:disable:next nesting
         internal enum ViewControllerMethodsType {
 
-            case standard(swiftUI: Bool), withoutViewState(swiftUI: Bool)
+            case standard(swiftUI: Bool), root(swiftUI: Bool), withoutViewState(swiftUI: Bool)
         }
 
         public var includedTemplates: [String]
@@ -47,6 +47,8 @@ extension XcodeTemplates {
         public var viewControllerPropertiesSwiftUI: String
         public var viewControllerMethods: String
         public var viewControllerMethodsSwiftUI: String
+        public var rootViewControllerMethods: String
+        public var rootViewControllerMethodsSwiftUI: String
         public var viewControllerWithoutViewStateMethods: String
         // swiftlint:disable:next identifier_name
         public var viewControllerWithoutViewStateMethodsSwiftUI: String
@@ -98,6 +100,10 @@ extension XcodeTemplates {
                 return swiftUI
                     ? viewControllerMethodsSwiftUI
                     : viewControllerMethods
+            case let .root(swiftUI):
+                return swiftUI
+                    ? rootViewControllerMethodsSwiftUI
+                    : rootViewControllerMethods
             case let .withoutViewState(swiftUI):
                 return swiftUI
                     ? viewControllerWithoutViewStateMethodsSwiftUI
@@ -157,6 +163,33 @@ extension XcodeTemplates.Config {
             }
             """
         viewControllerMethodsSwiftUI = ""
+        rootViewControllerMethods = """
+            override func viewDidLoad() {
+                super.viewDidLoad()
+                view.backgroundColor = .systemBackground
+            }
+
+            override func viewWillAppear(_ animated: Bool) {
+                super.viewWillAppear(animated)
+                observe(viewState).store(in: &cancellables)
+            }
+
+            override func viewDidAppear(_ animated: Bool) {
+                super.viewDidAppear(animated)
+                receiver?.viewDidAppear()
+            }
+
+            override func viewWillDisappear(_ animated: Bool) {
+                super.viewWillDisappear(animated)
+                cancellables.removeAll()
+            }
+            """
+        rootViewControllerMethodsSwiftUI = """
+            override func viewDidAppear(_ animated: Bool) {
+                super.viewDidAppear(animated)
+                receiver?.viewDidAppear()
+            }
+            """
         viewControllerWithoutViewStateMethods = """
             override func viewDidLoad() {
                 super.viewDidLoad()
@@ -242,6 +275,12 @@ extension XcodeTemplates.Config {
         viewControllerMethodsSwiftUI =
             (try? decoder.decodeString("viewControllerMethodsSwiftUI"))
             ?? defaults.viewControllerMethodsSwiftUI
+        rootViewControllerMethods =
+            (try? decoder.decodeString("rootViewControllerMethods"))
+            ?? defaults.rootViewControllerMethods
+        rootViewControllerMethodsSwiftUI =
+            (try? decoder.decodeString("rootViewControllerMethodsSwiftUI"))
+            ?? defaults.rootViewControllerMethodsSwiftUI
         viewControllerWithoutViewStateMethods =
             (try? decoder.decodeString("viewControllerWithoutViewStateMethods"))
             ?? defaults.viewControllerWithoutViewStateMethods

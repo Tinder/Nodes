@@ -26,6 +26,8 @@
     - "includedTemplates-2"
   - publisherFailureType: "publisherFailureType"
   - publisherType: "publisherType"
+  - rootViewControllerMethods: "rootViewControllerMethods"
+  - rootViewControllerMethodsSwiftUI: "rootViewControllerMethodsSwiftUI"
   - viewControllableFlowType: "viewControllableFlowType"
   - viewControllableType: "viewControllableType"
   - viewControllerAvailabilityAttribute: "viewControllerAvailabilityAttribute"

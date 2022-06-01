@@ -28,6 +28,7 @@ public struct NodeWithoutViewContext: Context {
             "worker_name": workerName,
             "public_node": publicNode,
             "owns_view": false,
+            "root_node": false,
             "builder_imports": builderImports,
             "context_imports": contextImports,
             "flow_imports": flowImports,

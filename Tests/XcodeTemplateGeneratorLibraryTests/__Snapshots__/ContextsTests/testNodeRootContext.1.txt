@@ -1,4 +1,4 @@
-▿ 21 key/value pairs
+▿ 26 key/value pairs
   ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
@@ -47,8 +47,14 @@
     - key: "public_node"
     - value: true
   ▿ (2 elements)
+    - key: "publisher_failure_type"
+    - value: "<publisherFailureType>"
+  ▿ (2 elements)
+    - key: "publisher_type"
+    - value: "<publisherType>"
+  ▿ (2 elements)
     - key: "root_node"
-    - value: false
+    - value: true
   ▿ (2 elements)
     - key: "view_controllable_flow_type"
     - value: "<viewControllableFlowType>"
@@ -74,6 +80,15 @@
   ▿ (2 elements)
     - key: "view_controller_type"
     - value: "<viewControllerType>"
+  ▿ (2 elements)
+    - key: "view_controller_update_comment"
+    - value: "<viewControllerUpdateComment>"
+  ▿ (2 elements)
+    - key: "view_state_operators"
+    - value: "<viewStateOperators>"
+  ▿ (2 elements)
+    - key: "view_state_publisher"
+    - value: "<viewStatePublisher>"
   ▿ (2 elements)
     - key: "worker_imports"
     ▿ value: 1 element

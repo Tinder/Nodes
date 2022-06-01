@@ -34,6 +34,8 @@ extension TestFactories {
         config.viewControllerPropertiesSwiftUI = "<viewControllerPropertiesSwiftUI>"
         config.viewControllerMethods = "<viewControllerMethods>"
         config.viewControllerMethodsSwiftUI = "<viewControllerMethodsSwiftUI>"
+        config.rootViewControllerMethods = "<rootViewControllerMethods>"
+        config.rootViewControllerMethodsSwiftUI = "<rootViewControllerMethodsSwiftUI>"
         config.viewControllerWithoutViewStateMethods = "<viewControllerWithoutViewStateMethods>"
         config.viewControllerWithoutViewStateMethodsSwiftUI = "<viewControllerWithoutViewStateMethodsSwiftUI>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
@@ -47,6 +49,35 @@ extension TestFactories {
 
     func givenNodeContext() -> NodeContext {
         NodeContext(
+            fileHeader: "<fileHeader>",
+            nodeName: "<nodeName>",
+            workerName: "<workerName>",
+            publicNode: true,
+            builderImports: ["<builderImports>"],
+            contextImports: ["<contextImports>"],
+            flowImports: ["<flowImports>"],
+            viewControllerImports: ["<viewControllerImports>"],
+            workerImports: ["<workerImports>"],
+            dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
+            flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
+            viewControllerType: "<viewControllerType>",
+            viewControllableType: "<viewControllableType>",
+            viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllerAvailabilityAttribute: "<viewControllerAvailabilityAttribute>",
+            viewControllerSuperParameters: "<viewControllerSuperParameters>",
+            viewControllerProperties: "<viewControllerProperties>",
+            viewControllerMethods: "<viewControllerMethods>",
+            viewControllerUpdateComment: "<viewControllerUpdateComment>",
+            viewStatePublisher: "<viewStatePublisher>",
+            viewStateOperators: "<viewStateOperators>",
+            publisherType: "<publisherType>",
+            publisherFailureType: "<publisherFailureType>",
+            cancellableType: "<cancellableType>"
+        )
+    }
+
+    func givenNodeRootContext() -> NodeRootContext {
+        NodeRootContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
             workerName: "<workerName>",

@@ -1,4 +1,4 @@
-▿ 25 key/value pairs
+▿ 26 key/value pairs
   ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
@@ -52,6 +52,9 @@
   ▿ (2 elements)
     - key: "publisher_type"
     - value: "<publisherType>"
+  ▿ (2 elements)
+    - key: "root_node"
+    - value: false
   ▿ (2 elements)
     - key: "view_controllable_flow_type"
     - value: "<viewControllableFlowType>"

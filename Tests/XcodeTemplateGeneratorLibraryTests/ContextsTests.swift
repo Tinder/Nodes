@@ -17,6 +17,11 @@ final class ContextsTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
+    func testNodeRootContext() {
+        assertSnapshot(matching: givenNodeRootContext().dictionary,
+                       as: .dump)
+    }
+
     func testNodeWithoutViewContext() {
         assertSnapshot(matching: givenNodeWithoutViewContext().dictionary,
                        as: .dump)

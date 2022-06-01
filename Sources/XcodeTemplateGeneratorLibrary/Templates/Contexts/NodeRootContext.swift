@@ -1,11 +1,11 @@
 //
-//  NodeContext.swift
+//  NodeRootContext.swift
 //  XcodeTemplateGeneratorLibrary
 //
 //  Created by Christopher Fuller on 5/4/21.
 //
 
-public struct NodeContext: Context {
+public struct NodeRootContext: Context {
 
     private let fileHeader: String
     private let nodeName: String
@@ -39,7 +39,7 @@ public struct NodeContext: Context {
             "worker_name": workerName,
             "public_node": publicNode,
             "owns_view": true,
-            "root_node": false,
+            "root_node": true,
             "builder_imports": builderImports,
             "context_imports": contextImports,
             "flow_imports": flowImports,
