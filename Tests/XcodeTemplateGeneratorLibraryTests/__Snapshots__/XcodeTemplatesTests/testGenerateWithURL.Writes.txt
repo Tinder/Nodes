@@ -102,12 +102,6 @@
     - .0: "/Node (without view).xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Worker.xctemplate/___FILEBASENAME___Worker.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/Worker.xctemplate/TemplateInfo.plist"
-    - .1: true
-  ▿ (2 elements)
     - .0: "/Plugin List (for Node).xctemplate/___FILEBASENAME___PluginList.swift"
     - .1: true
   ▿ (2 elements)
@@ -130,4 +124,10 @@
     - .1: true
   ▿ (2 elements)
     - .0: "/Plugin.xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Worker.xctemplate/___FILEBASENAME___Worker.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Worker.xctemplate/TemplateInfo.plist"
     - .1: true

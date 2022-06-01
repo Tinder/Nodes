@@ -29,9 +29,6 @@ public final class XcodeTemplates {
         if config.includedTemplates.contains("NodeWithoutView") {
             templates.append(NodeWithoutViewTemplate(config: config))
         }
-        if config.includedTemplates.contains("Worker") {
-            templates.append(WorkerTemplate(config: config))
-        }
         if config.includedTemplates.contains("PluginListNode") {
             templates.append(PluginListNodeTemplate(config: config))
         }
@@ -43,6 +40,9 @@ public final class XcodeTemplates {
         }
         if config.includedTemplates.contains("Plugin") {
             templates.append(PluginTemplate(config: config))
+        }
+        if config.includedTemplates.contains("Worker") {
+            templates.append(WorkerTemplate(config: config))
         }
         self.templates = templates
     }

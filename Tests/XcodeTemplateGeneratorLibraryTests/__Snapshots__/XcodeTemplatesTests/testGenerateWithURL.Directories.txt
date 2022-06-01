@@ -15,9 +15,6 @@
     - path: "/Node (without view).xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Worker.xctemplate"
-    - createIntermediates: true
-  ▿ (2 elements)
     - path: "/Plugin List (for Node).xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
@@ -28,4 +25,7 @@
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Plugin.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Worker.xctemplate"
     - createIntermediates: true
