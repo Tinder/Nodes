@@ -11,7 +11,6 @@ public final class XcodeTemplates {
 
     private let templates: [XcodeTemplate]
 
-    // swiftlint:disable:next cyclomatic_complexity
     public init(config: Config) {
         var templates: [XcodeTemplate] = []
         if config.includedTemplates.contains("Node") {
