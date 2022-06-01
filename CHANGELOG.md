@@ -9,7 +9,7 @@
   [[#107](https://github.com/TinderApp/Nodes/pull/107)]
 
 - Create docc.yml\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [Garric Nahapetian](https://github.com/tinder-garricnahapetian)
   [[#108](https://github.com/TinderApp/Nodes/pull/108)]
 
 - Add remaining API docs\
