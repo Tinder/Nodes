@@ -280,10 +280,10 @@ files:
           </scenes>
       </document>
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/Bootstrap.swift"
+  - path: "{{ project|split:' '|join:'_' }}/Sources/AppDelegate.swift"
     contents: |
       //
-      //  Bootstrap.swift
+      //  AppDelegate.swift
       //  {{ project|split:' '|join:'_' }}
       //
       //  Created by {{ author }} on {{ date }}.
@@ -292,7 +292,7 @@ files:
       import UIKit
 
       @main
-      internal class Bootstrap: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
+      internal final class AppDelegate: UIResponder, UIApplicationDelegate {
 
           private let appFlow: AppFlow
 
@@ -309,6 +309,19 @@ files:
               return true
           }
       }
+
+  - path: "{{ project|split:' '|join:'_' }}/Sources/SceneDelegate.swift"
+    contents: |
+      //
+      //  SceneDelegate.swift
+      //  {{ project|split:' '|join:'_' }}
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import UIKit
+
+      internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {}
 
   - path: "{{ project|split:' '|join:'_' }}/Sources/1 App/AppAnalytics.swift"
     contents: |
@@ -2341,7 +2354,7 @@ files:
                 UISceneConfigurations:
                   UIWindowSceneSessionRoleApplication:
                     - UISceneConfigurationName: Default Configuration
-                      UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).Bootstrap
+                      UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
               UIApplicationSupportsIndirectInputEvents: true
               UILaunchStoryboardName: LaunchScreen
               UIRequiredDeviceCapabilities:
