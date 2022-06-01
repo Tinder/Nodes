@@ -7,7 +7,7 @@ import <workerImports>
  Encapsulates work to be performed by the Node.
  */
 internal protocol <workerName>Worker: Worker {
-    var viewState: <publisherType><<nodeName>ViewState<publisherFailureType>> { get }
+    var viewState: <publisherType><RootViewState<publisherFailureType>> { get }
 }
 
 /**
@@ -17,14 +17,14 @@ internal protocol <workerName>Worker: Worker {
 internal final class <workerName>WorkerImp: AbstractWorker<<cancellableType>> {
 
     /// The view state publisher.
-    internal let viewState: <publisherType><<nodeName>ViewState<publisherFailureType>>
+    internal let viewState: <publisherType><RootViewState<publisherFailureType>>
 
     /// The Analytics instance.
-    private let analytics: <nodeName>Analytics
+    private let analytics: RootAnalytics
 
     /// The initializer.
     /// - Parameter analytics: The Analytics instance
-    internal init(analytics: <nodeName>Analytics) {
+    internal init(analytics: RootAnalytics) {
         self.analytics = analytics
         viewState = <viewStatePublisher>
     }

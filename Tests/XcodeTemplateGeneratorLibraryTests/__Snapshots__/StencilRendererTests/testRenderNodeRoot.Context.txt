@@ -6,14 +6,14 @@ import <contextImports>
  PURPOSE:
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
-internal protocol <nodeName>Listener: AnyObject {}
+internal protocol RootListener: AnyObject {}
 
 /**
  PURPOSE:
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
-internal protocol <nodeName>FlowInterface: Flow {
+internal protocol RootFlowInterface: Flow {
     func didBecomeReady()
 }
 
@@ -22,8 +22,8 @@ internal protocol <nodeName>FlowInterface: Flow {
  The interface that the Context will speak to the View through. Used to inform the View of any
  state change (i.e. to keep the UI in sync).
  */
-internal protocol <nodeName>Presentable: AnyObject {
-    var receiver: <nodeName>Receiver? { get set }
+internal protocol RootPresentable: AnyObject {
+    var receiver: RootReceiver? { get set }
 }
 
 /**
@@ -31,17 +31,17 @@ internal protocol <nodeName>Presentable: AnyObject {
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.
  */
-internal final class <nodeName>ContextImp: AbstractPresentableContext
-    <<cancellableType>, <nodeName>Presentable> {
+internal final class RootContextImp: AbstractPresentableContext
+    <<cancellableType>, RootPresentable> {
 
     /// The Flow instance.
-    internal weak var flow: <nodeName>FlowInterface?
+    internal weak var flow: RootFlowInterface?
 
     /// The Listener instance.
-    internal weak var listener: <nodeName>Listener?
+    internal weak var listener: RootListener?
 
     /// The Analytics instance.
-    private let analytics: <nodeName>Analytics
+    private let analytics: RootAnalytics
 
     private var isReady: Bool = false
 
@@ -51,9 +51,9 @@ internal final class <nodeName>ContextImp: AbstractPresentableContext
     ///   - workers: The Worker instances
     ///   - analytics: The Analytics instance
     internal init(
-        presentable: <nodeName>Presentable,
+        presentable: RootPresentable,
         workers: [Worker],
-        analytics: <nodeName>Analytics
+        analytics: RootAnalytics
     ) {
         self.analytics = analytics
         super.init(presentable: presentable, workers: workers)
@@ -71,8 +71,8 @@ internal final class <nodeName>ContextImp: AbstractPresentableContext
     }
 }
 
-extension <nodeName>ContextImp: <nodeName>ContextInterface {}
-extension <nodeName>ContextImp: <nodeName>Receiver {
+extension RootContextImp: RootContextInterface {}
+extension RootContextImp: RootReceiver {
 
     internal func viewDidAppear() {
         guard !isReady

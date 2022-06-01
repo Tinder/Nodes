@@ -7,9 +7,9 @@ import <flowImports>
  The interface that the Flow will speak to the Context through. Used for informing the Context of
  presentation lifecycle events, as an example.
  */
-internal protocol <nodeName>ContextInterface: Context {
-    var flow: <nodeName>FlowInterface? { get set }
-    var listener: <nodeName>Listener? { get }
+internal protocol RootContextInterface: Context {
+    var flow: RootFlowInterface? { get set }
+    var listener: RootListener? { get }
 }
 
 /**
@@ -18,14 +18,14 @@ internal protocol <nodeName>ContextInterface: Context {
  protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
  implementation as necessary.
  */
-internal protocol <nodeName>ViewControllable: <viewControllableType> {}
+internal protocol RootViewControllable: <viewControllableType> {}
 
 /**
  PURPOSE:
  Responsible for presenting views and starting child Flows, and should not contain business logic.
  */
-internal final class <nodeName>FlowImp: AbstractFlow
-    <<nodeName>ContextInterface, <nodeName>ViewControllable> {
+internal final class RootFlowImp: AbstractFlow
+    <RootContextInterface, RootViewControllable> {
 
     /// Provides the parent Node with access to the View so it can be presented.
     internal var viewControllable: <viewControllableType> {
@@ -42,8 +42,8 @@ internal final class <nodeName>FlowImp: AbstractFlow
     ///   - viewController: The View Controller instance
     ///   - <flowPropertiesName>: The <flowPropertiesType> instance
     internal init(
-        context: <nodeName>ContextInterface,
-        viewController: <nodeName>ViewControllable,
+        context: RootContextInterface,
+        viewController: RootViewControllable,
         <flowPropertiesName>: <flowPropertiesType>
     ) {
         self.<flowPropertiesName> = <flowPropertiesName>
@@ -55,8 +55,8 @@ internal final class <nodeName>FlowImp: AbstractFlow
     override internal func didStart() {}
 }
 
-extension <nodeName>FlowImp: <nodeName>Flow {}
-extension <nodeName>FlowImp: <nodeName>FlowInterface {
+extension RootFlowImp: RootFlow {}
+extension RootFlowImp: RootFlowInterface {
 
     /// Implement logic to execute when the Root Flow is ready to attach sub-Flows.
     internal func didBecomeReady() {}

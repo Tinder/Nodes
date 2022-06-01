@@ -8,7 +8,7 @@ import <workerImports>
  Option 1
  ========
  Conform an existing analytics tracker (or client), that is defined outside of the Node, to the
- <nodeName>Analytics protocol.
+ RootAnalytics protocol.
 
  This option is preferred.
 
@@ -34,7 +34,7 @@ import <workerImports>
  Whether using option 1 or 2, add requirements to this protocol to provide analytics tracking
  methods for this Node.
  */
-internal protocol <nodeName>Analytics: AnyObject {}
+internal protocol RootAnalytics: AnyObject {}
 
 /**
  PURPOSE:
@@ -45,7 +45,7 @@ internal protocol <nodeName>Analytics: AnyObject {}
 
  If using option 2, delete this extension.
  */
-internal extension <nodeName>Analytics {}
+internal extension RootAnalytics {}
 
 /**
  PURPOSE:
@@ -53,6 +53,6 @@ internal extension <nodeName>Analytics {}
 
  If using option 1, delete this class and extension below.
  */
-internal final class <nodeName>AnalyticsImp {}
+internal final class RootAnalyticsImp {}
 
-extension <nodeName>AnalyticsImp: <nodeName>Analytics {}
+extension RootAnalyticsImp: RootAnalytics {}

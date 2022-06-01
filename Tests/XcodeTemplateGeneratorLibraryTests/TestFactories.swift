@@ -78,7 +78,6 @@ extension TestFactories {
     func givenNodeRootContext() -> NodeRootContext {
         NodeRootContext(
             fileHeader: "<fileHeader>",
-            nodeName: "<nodeName>",
             workerName: "<workerName>",
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],

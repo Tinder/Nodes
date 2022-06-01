@@ -39,7 +39,7 @@
           - value: "<flowPropertiesType>"
   ▿ (2 elements)
     - key: "node_name"
-    - value: "<nodeName>"
+    - value: "Root"
   ▿ (2 elements)
     - key: "owns_view"
     - value: true

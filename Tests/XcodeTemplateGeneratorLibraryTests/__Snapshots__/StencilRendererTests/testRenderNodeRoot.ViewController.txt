@@ -6,10 +6,10 @@ import <viewControllerImports>
  PURPOSE:
  The view state of your View Controller.
  */
-internal struct <nodeName>ViewState: Equatable, InitialStateProviding {
+internal struct RootViewState: Equatable, InitialStateProviding {
 
     /// The initial view state.
-    internal static var initialState: <nodeName>ViewState = .init()
+    internal static var initialState: RootViewState = .init()
 }
 
 /**
@@ -17,7 +17,7 @@ internal struct <nodeName>ViewState: Equatable, InitialStateProviding {
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
  */
-internal protocol <nodeName>Receiver: AnyObject {
+internal protocol RootReceiver: AnyObject {
     func viewDidAppear()
 }
 
@@ -26,25 +26,25 @@ internal protocol <nodeName>Receiver: AnyObject {
  Concrete implementation of the UI.
  */
 <viewControllerAvailabilityAttribute>
-internal final class <nodeName>ViewController: <viewControllerType>, StateObserver {
+internal final class RootViewController: <viewControllerType>, StateObserver {
 
     <viewControllerProperties>
 
     /// The view receiver.
-    internal weak var receiver: <nodeName>Receiver?
+    internal weak var receiver: RootReceiver?
 
     /// The Analytics instance.
-    internal weak var analytics: <nodeName>Analytics?
+    internal weak var analytics: RootAnalytics?
 
     /// The collection of cancellable instances.
     private var cancellables: Set<<cancellableType>> = .init()
 
     /// The view state publisher.
-    private let viewState: <publisherType><<nodeName>ViewState<publisherFailureType>>
+    private let viewState: <publisherType><RootViewState<publisherFailureType>>
 
     /// The initializer.
     /// - Parameter viewState: The view state publisher
-    internal init(viewState: <publisherType><<nodeName>ViewState<publisherFailureType>>) {
+    internal init(viewState: <publisherType><RootViewState<publisherFailureType>>) {
         self.viewState = viewState
             <viewStateOperators>
         super.init(<viewControllerSuperParameters>)
@@ -57,13 +57,13 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
 
     <viewControllerMethods>
 
-    internal func update(with viewState: <nodeName>ViewState) {
+    internal func update(with viewState: RootViewState) {
         <viewControllerUpdateComment>
     }
 }
 
 <viewControllerAvailabilityAttribute>
-extension <nodeName>ViewController: <nodeName>ViewControllable {}
+extension RootViewController: RootViewControllable {}
 
 <viewControllerAvailabilityAttribute>
-extension <nodeName>ViewController: <nodeName>Presentable {}
+extension RootViewController: RootPresentable {}
