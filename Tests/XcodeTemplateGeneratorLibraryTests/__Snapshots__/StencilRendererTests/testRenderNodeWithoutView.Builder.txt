@@ -6,7 +6,7 @@ import <builderImports>
  PURPOSE:
  The interface of the Flow.
  */
-public protocol <nodeName>Flow: Flow {}
+internal protocol <nodeName>Flow: Flow {}
 
 /**
  PURPOSE:
@@ -23,7 +23,7 @@ public protocol <nodeName>Dependency: Dependency {
 
  Can be a tuple containing multiple values when necessary.
  */
-public typealias <nodeName>DynamicBuildDependency = (<nodeName>Listener, <nodeName>ViewControllable)
+internal typealias <nodeName>DynamicBuildDependency = (<nodeName>Listener, <nodeName>ViewControllable)
 
 /**
  PURPOSE:
@@ -31,7 +31,7 @@ public typealias <nodeName>DynamicBuildDependency = (<nodeName>Listener, <nodeNa
 
  Can be a tuple containing multiple values when necessary.
  */
-public typealias <nodeName>DynamicComponentDependency = Void
+internal typealias <nodeName>DynamicComponentDependency = Void
 
 // MARK: - Component
 
@@ -39,7 +39,7 @@ public typealias <nodeName>DynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
-public final class <nodeName>Component: Component
+internal final class <nodeName>Component: Component
     <<nodeName>Dependency> {
 
     /*
@@ -75,7 +75,7 @@ public final class <nodeName>Component: Component
     ///
     /// - Parameter parent: The parent scope
     /// - Parameter dynamicDependency: The dynamic component dependency
-    public init(parent: Scope, dynamicDependency: <nodeName>DynamicComponentDependency = ()) {
+    internal init(parent: Scope, dynamicDependency: <nodeName>DynamicComponentDependency = ()) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
     }
@@ -99,12 +99,12 @@ public final class <nodeName>Component: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
-public protocol <nodeName>Builder: AnyObject {
+internal protocol <nodeName>Builder: AnyObject {
     func build(withListener listener: <nodeName>Listener,
                viewController: <nodeName>ViewControllable) -> <nodeName>Flow
 }
 
-public typealias <nodeName>BuilderType = AbstractBuilder
+internal typealias <nodeName>BuilderType = AbstractBuilder
     <
     <nodeName>Component,
     <nodeName>Flow,
@@ -116,7 +116,7 @@ public typealias <nodeName>BuilderType = AbstractBuilder
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.
  */
-public final class <nodeName>BuilderImp: <nodeName>BuilderType {
+internal final class <nodeName>BuilderImp: <nodeName>BuilderType {
 
     /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
     /// the dynamic component dependency.
@@ -124,7 +124,7 @@ public final class <nodeName>BuilderImp: <nodeName>BuilderType {
     /// The dynamic dependencies can be tuples containing multiple values when necessary.
     /// - Parameter listener: An object that can listen for signals from the Node
     /// - Returns: The Flow instance
-    public func build(
+    internal func build(
         withListener listener: <nodeName>Listener,
         viewController: <nodeName>ViewControllable
     ) -> <nodeName>Flow {
@@ -138,7 +138,7 @@ public final class <nodeName>BuilderImp: <nodeName>BuilderType {
     ///   - component: The component instance
     ///   - dynamicBuildDependency: The dynamic build dependency
     /// - Returns: The Flow instance
-    override public func build(
+    override internal func build(
         component: <nodeName>Component,
         dynamicBuildDependency: <nodeName>DynamicBuildDependency
     ) -> <nodeName>Flow {

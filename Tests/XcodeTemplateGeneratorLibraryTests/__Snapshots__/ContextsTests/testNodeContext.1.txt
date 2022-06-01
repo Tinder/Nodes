@@ -1,4 +1,4 @@
-▿ 26 key/value pairs
+▿ 25 key/value pairs
   ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
@@ -42,9 +42,6 @@
     - value: "<nodeName>"
   ▿ (2 elements)
     - key: "owns_view"
-    - value: true
-  ▿ (2 elements)
-    - key: "public_node"
     - value: true
   ▿ (2 elements)
     - key: "publisher_failure_type"

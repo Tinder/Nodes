@@ -6,7 +6,7 @@ import <contextImports>
  PURPOSE:
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
-public protocol <nodeName>Listener: AnyObject {}
+internal protocol <nodeName>Listener: AnyObject {}
 
 /**
  PURPOSE:

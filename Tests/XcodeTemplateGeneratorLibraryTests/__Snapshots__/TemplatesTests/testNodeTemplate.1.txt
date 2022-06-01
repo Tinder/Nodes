@@ -29,7 +29,6 @@
           - key: "type"
           - value: "<flowPropertiesType>"
     - nodeName: "___VARIABLE_productName___"
-    - publicNode: false
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
     - viewControllableFlowType: "<viewControllableFlowType>"

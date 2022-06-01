@@ -27,7 +27,6 @@ internal struct NodeWithoutViewTemplate: XcodeTemplate {
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
             workerName: config.variable("productName"),
-            publicNode: false,
             builderImports: config.imports(for: .diGraph),
             contextImports: config.imports(for: .nodes),
             flowImports: config.imports(for: .nodes),

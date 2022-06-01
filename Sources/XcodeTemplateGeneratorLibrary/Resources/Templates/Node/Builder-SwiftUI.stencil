@@ -6,8 +6,8 @@ import {{ import }}{% endfor %}
  PURPOSE:
  The interface of the Flow.
  */{% if owns_view %}
-{% if public_node %}public{% else %}internal{% endif %} protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}{% else %}
-{% if public_node %}public{% else %}internal{% endif %} protocol {{ node_name }}Flow: Flow {}{% endif %}
+internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}{% else %}
+internal protocol {{ node_name }}Flow: Flow {}{% endif %}
 
 /**
  PURPOSE:
@@ -25,8 +25,8 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
 
  Can be a tuple containing multiple values when necessary.
  */{% if owns_view %}
-{% if public_node %}public{% else %}internal{% endif %} typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listener{% else %}
-{% if public_node %}public{% else %}internal{% endif %} typealias {{ node_name }}DynamicBuildDependency = ({{ node_name }}Listener, {{ node_name }}ViewControllable){% endif %}
+internal typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listener{% else %}
+internal typealias {{ node_name }}DynamicBuildDependency = ({{ node_name }}Listener, {{ node_name }}ViewControllable){% endif %}
 
 /**
  PURPOSE:
@@ -34,7 +34,7 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
 
  Can be a tuple containing multiple values when necessary.
  */
-{% if public_node %}public{% else %}internal{% endif %} typealias {{ node_name }}DynamicComponentDependency = Void
+internal typealias {{ node_name }}DynamicComponentDependency = Void
 
 // MARK: - Component
 
@@ -42,7 +42,7 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
-{% if public_node %}public{% else %}internal{% endif %} final class {{ node_name }}Component: Component
+internal final class {{ node_name }}Component: Component
     <{{ node_name }}Dependency> {
 
     /*
@@ -78,7 +78,7 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
     ///
     /// - Parameter parent: The parent scope
     /// - Parameter dynamicDependency: The dynamic component dependency
-    {% if public_node %}public{% else %}internal{% endif %} init(parent: Scope, dynamicDependency: {{ node_name }}DynamicComponentDependency = ()) {
+    internal init(parent: Scope, dynamicDependency: {{ node_name }}DynamicComponentDependency = ()) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
     }
@@ -102,15 +102,15 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
  PURPOSE:
  The Builder interface (available to mock for testability).
  */{% if owns_view %}
-{% if public_node %}public{% else %}internal{% endif %} protocol {{ node_name }}Builder: AnyObject {
+internal protocol {{ node_name }}Builder: AnyObject {
     func build(withListener listener: {{ node_name }}Listener) -> {{ node_name }}Flow
 }{% else %}
-{% if public_node %}public{% else %}internal{% endif %} protocol {{ node_name }}Builder: AnyObject {
+internal protocol {{ node_name }}Builder: AnyObject {
     func build(withListener listener: {{ node_name }}Listener,
                viewController: {{ node_name }}ViewControllable) -> {{ node_name }}Flow
 }{% endif %}
 
-{% if public_node %}public{% else %}internal{% endif %} typealias {{ node_name }}BuilderType = AbstractBuilder
+internal typealias {{ node_name }}BuilderType = AbstractBuilder
     <
     {{ node_name }}Component,
     {{ node_name }}Flow,
@@ -123,7 +123,7 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
  Concrete implementation of the Builder, where everything is created and associated.
  */
 {% if view_controller_availability_attribute %}{{ view_controller_availability_attribute }}
-{% endif %}{% if public_node %}public{% else %}internal{% endif %} final class {{ node_name }}BuilderImp: {{ node_name }}BuilderType {
+{% endif %}internal final class {{ node_name }}BuilderImp: {{ node_name }}BuilderType {
 
     /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
     /// the dynamic component dependency.
@@ -131,12 +131,12 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
     /// The dynamic dependencies can be tuples containing multiple values when necessary.
     /// - Parameter listener: An object that can listen for signals from the Node
     /// - Returns: The Flow instance{% if owns_view %}
-    {% if public_node %}public{% else %}internal{% endif %} func build(withListener listener: {{ node_name }}Listener) -> {{ node_name }}Flow {
+    internal func build(withListener listener: {{ node_name }}Listener) -> {{ node_name }}Flow {
         let dynamicBuildDependency: {{ node_name }}DynamicBuildDependency = listener
         let dynamicComponentDependency: {{ node_name }}DynamicComponentDependency = ()
         return build(dynamicBuildDependency, dynamicComponentDependency)
     }{% else %}
-    {% if public_node %}public{% else %}internal{% endif %} func build(
+    internal func build(
         withListener listener: {{ node_name }}Listener,
         viewController: {{ node_name }}ViewControllable
     ) -> {{ node_name }}Flow {
@@ -150,7 +150,7 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
     ///   - component: The component instance
     ///   - dynamicBuildDependency: The dynamic build dependency
     /// - Returns: The Flow instance{% if owns_view %}
-    override {% if public_node %}public{% else %}internal{% endif %} func build(
+    override internal func build(
         component: {{ node_name }}Component,
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency
     ) -> {{ node_name }}Flow {
@@ -179,7 +179,7 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
             {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %},{% endif %}{% endfor %}{% endif %}
         )
     }{% else %}
-    override {% if public_node %}public{% else %}internal{% endif %} func build(
+    override internal func build(
         component: {{ node_name }}Component,
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency
     ) -> {{ node_name }}Flow {

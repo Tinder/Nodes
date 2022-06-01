@@ -6,7 +6,7 @@ import {{ import }}{% endfor %}
  PURPOSE:
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
-{% if public_node %}public{% else %}internal{% endif %} protocol {{ node_name }}Listener: AnyObject {}
+internal protocol {{ node_name }}Listener: AnyObject {}
 
 /**
  PURPOSE:
