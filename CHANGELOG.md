@@ -1,5 +1,45 @@
 # Changelog
 
+## [0.0.8](https://github.com/TinderApp/Nodes/releases/tag/0.0.8)
+
+### Added
+
+- Add root node\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#118](https://github.com/TinderApp/Nodes/pull/118)]
+
+### Improved
+
+- Improve template order\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#119](https://github.com/TinderApp/Nodes/pull/119)]
+
+- Rename "without view" to "view injected"\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#121](https://github.com/TinderApp/Nodes/pull/121)]
+
+- Update screenshot\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#122](https://github.com/TinderApp/Nodes/pull/122)]
+
+- Use "Root" in NodeRootContext\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#123](https://github.com/TinderApp/Nodes/pull/123)]
+
+### Removed
+
+- Remove public config\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#120](https://github.com/TinderApp/Nodes/pull/120)]
+
+### Fixed
+
+- Fix changelog\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#117](https://github.com/TinderApp/Nodes/pull/117)]
+
+---
+
 ## [0.0.7](https://github.com/TinderApp/Nodes/releases/tag/0.0.7)
 
 ### Added
