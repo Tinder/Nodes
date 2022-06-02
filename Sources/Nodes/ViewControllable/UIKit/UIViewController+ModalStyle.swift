@@ -148,8 +148,8 @@ public struct ModalStyle: Equatable {
 
     /// A factory method that creates a ``ModalStyle`` with custom behavior.
     ///
-    /// Custom presentation controlled by `UIViewControllerTransitioningDelegate`
-    /// and `UIViewControllerAnimatedTransitioning` object(s).
+    /// Custom presentation controlled by ``UIViewControllerTransitioningDelegate``
+    /// and ``UIViewControllerAnimatedTransitioning`` object(s).
     ///
     /// - Parameter controlStatusBarAppearance: A Boolean value specifying whether the presented view controller
     ///   takes over control of status bar appearance from the presenting view controller.
