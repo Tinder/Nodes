@@ -24,7 +24,7 @@ Experimentation and Feature Gating
 
 A Node's `Plugin` instance is a factory that optionally creates and returns the Node's `Builder` instance. `PluginList` and `PluginMap` provide `Plugin` collections.
 
-`Plugin`, `PluginList` and `PluginMap` instances are intended to contain conditional logic such as to support experimentation and feature gating. Always utilize `PluginList` and `PluginMap` collections when versioning or A|B Testing Nodes.
+`Plugin`, `PluginList` and `PluginMap` subclasses are intended to contain conditional logic such as to support experimentation and feature gating. Always utilize `PluginList` and `PluginMap` collections when versioning or A|B Testing Nodes.
 
 The `PluginListWithDefault` and `PluginMapWithDefault` variants allow for a default instance to be used when the collection is empty.
 
