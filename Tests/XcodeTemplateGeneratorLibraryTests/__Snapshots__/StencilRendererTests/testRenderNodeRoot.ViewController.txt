@@ -25,7 +25,6 @@ internal protocol RootReceiver: AnyObject {
  PURPOSE:
  Concrete implementation of the UI.
  */
-<viewControllerAvailabilityAttribute>
 internal final class RootViewController: <viewControllerType>, StateObserver {
 
     <viewControllerProperties>
@@ -62,8 +61,5 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     }
 }
 
-<viewControllerAvailabilityAttribute>
 extension RootViewController: RootViewControllable {}
-
-<viewControllerAvailabilityAttribute>
 extension RootViewController: RootPresentable {}

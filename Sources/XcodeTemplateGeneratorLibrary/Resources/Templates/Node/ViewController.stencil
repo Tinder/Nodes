@@ -26,8 +26,7 @@ internal protocol {{ node_name }}Receiver: AnyObject {}{% endif %}
  PURPOSE:
  Concrete implementation of the UI.
  */
-{% if view_controller_availability_attribute %}{{ view_controller_availability_attribute }}
-{% endif %}internal final class {{ node_name }}ViewController: {{ view_controller_type }}{% if view_state_publisher %}, StateObserver{% endif %} {
+internal final class {{ node_name }}ViewController: {{ view_controller_type }}{% if view_state_publisher %}, StateObserver{% endif %} {
 {% if view_controller_properties %}
     {{ view_controller_properties|indent:4 }}
 {% endif %}
@@ -66,8 +65,7 @@ internal protocol {{ node_name }}Receiver: AnyObject {}{% endif %}
     }{% endif %}
 }
 
-{% if view_controller_availability_attribute %}{{ view_controller_availability_attribute }}
-{% endif %}extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
+extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
 {% if view_controller_availability_attribute %}
 {{ view_controller_availability_attribute }}
 {% endif %}extension {{ node_name }}ViewController: {{ node_name }}Presentable {}

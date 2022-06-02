@@ -122,8 +122,7 @@ internal typealias {{ node_name }}BuilderType = AbstractBuilder
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.
  */
-{% if view_controller_availability_attribute %}{{ view_controller_availability_attribute }}
-{% endif %}internal final class {{ node_name }}BuilderImp: {{ node_name }}BuilderType {
+internal final class {{ node_name }}BuilderImp: {{ node_name }}BuilderType {
 
     /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
     /// the dynamic component dependency.
@@ -201,5 +200,4 @@ internal typealias {{ node_name }}BuilderType = AbstractBuilder
     }{% endif %}
 }
 
-{% if view_controller_availability_attribute %}{{ view_controller_availability_attribute }}
-{% endif %}extension {{ node_name }}BuilderImp: {{ node_name }}Builder {}
+extension {{ node_name }}BuilderImp: {{ node_name }}Builder {}

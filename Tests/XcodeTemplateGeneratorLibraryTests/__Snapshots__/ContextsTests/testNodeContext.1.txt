@@ -1,4 +1,4 @@
-▿ 25 key/value pairs
+▿ 24 key/value pairs
   ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
@@ -58,9 +58,6 @@
   ▿ (2 elements)
     - key: "view_controllable_type"
     - value: "<viewControllableType>"
-  ▿ (2 elements)
-    - key: "view_controller_availability_attribute"
-    - value: "<viewControllerAvailabilityAttribute>"
   ▿ (2 elements)
     - key: "view_controller_imports"
     ▿ value: 1 element

@@ -39,9 +39,6 @@ extension XcodeTemplates {
         public var viewControllerType: String
         public var viewControllableType: String
         public var viewControllableFlowType: String
-        public var viewControllerAvailabilityAttribute: String
-        // swiftlint:disable:next identifier_name
-        public var viewControllerAvailabilityAttributeSwiftUI: String
         public var viewControllerSuperParameters: String
         public var viewControllerProperties: String
         public var viewControllerPropertiesSwiftUI: String
@@ -84,10 +81,6 @@ extension XcodeTemplates {
                     : nodesImports.union(viewControllerImports)
                 return viewState ? imports.union(viewControllerViewStateImports) : imports
             }
-        }
-
-        internal func viewControllerAvailabilityAttribute(swiftUI: Bool = false) -> String {
-            swiftUI ? viewControllerAvailabilityAttributeSwiftUI : viewControllerAvailabilityAttribute
         }
 
         internal func viewControllerProperties(swiftUI: Bool = false) -> String {
@@ -141,8 +134,6 @@ extension XcodeTemplates.Config {
         viewControllerType = "UIViewController"
         viewControllableType = "ViewControllable"
         viewControllableFlowType = "ViewControllableFlow"
-        viewControllerAvailabilityAttribute = ""
-        viewControllerAvailabilityAttributeSwiftUI = ""
         viewControllerSuperParameters = "nibName: nil, bundle: nil"
         viewControllerProperties = ""
         viewControllerPropertiesSwiftUI = ""
@@ -254,12 +245,6 @@ extension XcodeTemplates.Config {
         viewControllableFlowType =
             (try? decoder.decodeString("viewControllableFlowType"))
             ?? defaults.viewControllableFlowType
-        viewControllerAvailabilityAttribute =
-            (try? decoder.decodeString("viewControllerAvailabilityAttribute"))
-            ?? defaults.viewControllerAvailabilityAttribute
-        viewControllerAvailabilityAttributeSwiftUI =
-            (try? decoder.decodeString("viewControllerAvailabilityAttributeSwiftUI"))
-            ?? defaults.viewControllerAvailabilityAttributeSwiftUI
         viewControllerSuperParameters =
             (try? decoder.decodeString("viewControllerSuperParameters"))
             ?? defaults.viewControllerSuperParameters

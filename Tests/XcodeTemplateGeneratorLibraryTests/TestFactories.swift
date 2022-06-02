@@ -27,8 +27,6 @@ extension TestFactories {
         config.viewControllerType = "<viewControllerType>"
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableFlowType = "<viewControllableFlowType>"
-        config.viewControllerAvailabilityAttribute = "<viewControllerAvailabilityAttribute>"
-        config.viewControllerAvailabilityAttributeSwiftUI = "<viewControllerAvailabilityAttributeSwiftUI>"
         config.viewControllerSuperParameters = "<viewControllerSuperParameters>"
         config.viewControllerProperties = "<viewControllerProperties>"
         config.viewControllerPropertiesSwiftUI = "<viewControllerPropertiesSwiftUI>"
@@ -62,7 +60,6 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllerAvailabilityAttribute: "<viewControllerAvailabilityAttribute>",
             viewControllerSuperParameters: "<viewControllerSuperParameters>",
             viewControllerProperties: "<viewControllerProperties>",
             viewControllerMethods: "<viewControllerMethods>",
@@ -89,7 +86,6 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllerAvailabilityAttribute: "<viewControllerAvailabilityAttribute>",
             viewControllerSuperParameters: "<viewControllerSuperParameters>",
             viewControllerProperties: "<viewControllerProperties>",
             viewControllerMethods: "<viewControllerMethods>",
@@ -134,7 +130,6 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllerAvailabilityAttribute: "<viewControllerAvailabilityAttribute>",
             viewControllerSuperParameters: "<viewControllerSuperParameters>",
             viewControllerProperties: "<viewControllerProperties>",
             viewControllerMethods: "<viewControllerMethods>",

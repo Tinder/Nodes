@@ -115,7 +115,6 @@ internal typealias <nodeName>BuilderType = AbstractBuilder
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.
  */
-<viewControllerAvailabilityAttribute>
 internal final class <nodeName>BuilderImp: <nodeName>BuilderType {
 
     /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
@@ -163,5 +162,4 @@ internal final class <nodeName>BuilderImp: <nodeName>BuilderType {
     }
 }
 
-<viewControllerAvailabilityAttribute>
 extension <nodeName>BuilderImp: <nodeName>Builder {}

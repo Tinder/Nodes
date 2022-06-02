@@ -31,7 +31,6 @@
     - nodeName: "___VARIABLE_productName___"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
-    - viewControllerAvailabilityAttribute: "<viewControllerAvailabilityAttributeSwiftUI>"
     ▿ viewControllerImports: 3 elements
       - "<baseImports>"
       - "<viewControllerImportsSwiftUI>"

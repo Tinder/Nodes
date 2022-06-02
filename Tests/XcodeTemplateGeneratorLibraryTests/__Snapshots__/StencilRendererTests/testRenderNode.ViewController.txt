@@ -23,7 +23,6 @@ internal protocol <nodeName>Receiver: AnyObject {}
  PURPOSE:
  Concrete implementation of the UI.
  */
-<viewControllerAvailabilityAttribute>
 internal final class <nodeName>ViewController: <viewControllerType>, StateObserver {
 
     <viewControllerProperties>
@@ -60,8 +59,5 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
     }
 }
 
-<viewControllerAvailabilityAttribute>
 extension <nodeName>ViewController: <nodeName>ViewControllable {}
-
-<viewControllerAvailabilityAttribute>
 extension <nodeName>ViewController: <nodeName>Presentable {}
