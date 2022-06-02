@@ -21,7 +21,7 @@ extension UINavigationController: NavigationControllable {
     ///
     /// - Parameters:
     ///   - viewControllers: The array of ``ViewControllable`` instances to set on the navigation stack.
-    ///   - animated: A boolean value specifying whether changes to the navigation stack are animated or not.
+    ///   - animated: A Boolean value specifying whether changes to the navigation stack are animated.
     public func set(_ viewControllers: [ViewControllable], animated: Bool) {
         setViewControllers(viewControllers.map { $0._asUIViewController() }, animated: animated)
     }
@@ -29,8 +29,8 @@ extension UINavigationController: NavigationControllable {
     /// Pushes a ``ViewControllable`` instance onto the navigation stack.
     ///
     /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to push onto the navigation stack.
-    ///   - animated: A boolean value specifying whether the navigation stack transition is animated or not.
+    ///   - viewController: The ``ViewControllable`` instance to push on to the navigation stack.
+    ///   - animated: A Boolean value specifying whether the navigation stack transition is animated.
     public func push(_ viewController: ViewControllable, animated: Bool) {
         let viewController: UIViewController = viewController._asUIViewController()
         pushViewController(viewController, animated: animated)
@@ -40,7 +40,7 @@ extension UINavigationController: NavigationControllable {
     ///
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to pop from the navigation stack.
-    ///   - animated: A boolean value specifying whether the navigation stack transition is animated or not.
+    ///   - animated: A Boolean value specifying whether the navigation stack transition is animated.
     public func pop(_ viewController: ViewControllable, animated: Bool) {
         let viewController: UIViewController = viewController._asUIViewController()
         guard viewController === topViewController

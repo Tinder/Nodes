@@ -38,7 +38,7 @@ open class Plugin<ComponentType, BuildType, StateType> {
     ///   - component: The `ComponentType` instance.
     ///   - state: The `StateType` instance.
     ///
-    /// - Returns: A boolean indicating whether or not the plugin is enabled.
+    /// - Returns: A Boolean value indicating whether the plugin is enabled.
     open func isEnabled( // swiftlint:disable:this unavailable_function
         component: ComponentType,
         state: StateType

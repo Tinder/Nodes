@@ -18,21 +18,21 @@ public protocol NavigationControllable: ViewControllable {
     ///
     /// - Parameters:
     ///   - viewControllers: The array of ``ViewControllable`` instances to set on the navigation stack.
-    ///   - animated: A boolean value specifying whether changes to the navigation stack are animated or not.
+    ///   - animated: A Boolean value specifying whether changes to the navigation stack are animated.
     func set(_ viewControllers: [ViewControllable], animated: Bool)
 
     /// Pushes a ``ViewControllable`` instance onto the navigation stack.
     ///
     /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to push onto the navigation stack.
-    ///   - animated: A boolean value specifying whether the navigation stack transition is animated or not.
+    ///   - viewController: The ``ViewControllable`` instance to push on to the navigation stack.
+    ///   - animated: A Boolean value specifying whether the navigation stack transition is animated.
     func push(_ viewController: ViewControllable, animated: Bool)
 
     /// Pops a ``ViewControllable`` instance from the navigation stack.
     ///
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to pop from the navigation stack.
-    ///   - animated: A boolean value specifying whether the navigation stack transition is animated or not.
+    ///   - animated: A Boolean value specifying whether the navigation stack transition is animated.
     func pop(_ viewController: ViewControllable, animated: Bool)
 
     /// Returns `self` as a ``UINavigationController``.

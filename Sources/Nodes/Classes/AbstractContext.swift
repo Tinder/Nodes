@@ -13,7 +13,7 @@
  * As an example, to use Combine with Nodes, the following protocol conformance would need to exist within
  * application code:
  *
- * ```swift
+ * ```
  * import class Combine.AnyCancellable
  * import protocol Nodes.Cancellable
  *
@@ -27,13 +27,13 @@ public protocol Cancellable: AnyObject, Hashable {
 }
 
 /**
- * The interface used for injecting a `Context` instance into an ``AbstractFlow`` instance which enables the
- * functionality of attaching and detaching child `Flow` instances within the base class implementation.
+ * The interface used for injecting a `Context` instance into an ``AbstractFlow`` instance which enables
+ * attaching and detaching child `Flow` instances within the base class implementation.
  */
 /// @mockable
 public protocol Context: AnyObject {
 
-    /// A Boolean value indicating whether or not the `Context` instance is active.
+    /// A Boolean value indicating whether the `Context` instance is active.
     var isActive: Bool { get }
 
     /// Activates the `Context` instance.
@@ -64,7 +64,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     /// The set of `CancellableType` instances.
     public var cancellables: Set<CancellableType> = .init()
 
-    /// A Boolean value indicating whether or not the `Context` instance is active.
+    /// A Boolean value indicating whether the `Context` instance is active.
     public private(set) var isActive: Bool = false // swiftlint:disable:this redundant_type_annotation
 
     /// The array of `Worker` instances.
@@ -135,8 +135,8 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
         workerController.firstWorker(ofType: type)
     }
 
-    /// Executes the given closure with the first `Worker` instance of the given `type`,
-    /// if any exist, in the `workers` array.
+    /// Executes the given closure with the first `Worker` instance of the given `type`, if any exist,
+    /// in the `workers` array.
     ///
     /// - Parameters:
     ///   - type: The type of the `Worker` instance with which to execute the closure.
@@ -161,8 +161,8 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
         workerController.workers(ofType: type)
     }
 
-    /// Executes the given closure with each `Worker` instance of the given `type`,
-    /// if any exist, in the `workers` array.
+    /// Executes the given closure with each `Worker` instance of the given `type`, if any exist,
+    /// in the `workers` array.
     ///
     /// - Parameters:
     ///   - type: The type of the `Worker` instances with which to execute the closure.

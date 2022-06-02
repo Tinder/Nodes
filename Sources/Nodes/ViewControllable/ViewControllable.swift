@@ -19,12 +19,12 @@ public protocol ViewControllable: AnyObject {
     @discardableResult
     func withModalStyle(_ style: ModalStyle) -> Self
 
-    /// Presents the ``ViewControllable`` instance.
+    /// Presents a ``ViewControllable`` instance.
     ///
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to present.
     ///   - modalStyle: The ``ModalStyle`` to apply to the ``ViewControllable`` instance before presenting.
-    ///   - animated: A boolean value specifying whether presentation is animated or not.
+    ///   - animated: A Boolean value specifying whether presentation is animated.
     ///   - completion: An optional closure to execute when the presentation is finished.
     ///
     ///     The closure has no arguments and returns `Void`.
@@ -35,11 +35,11 @@ public protocol ViewControllable: AnyObject {
         completion: (() -> Void)?
     )
 
-    /// Dismisses the ``ViewControllable`` instance.
+    /// Dismisses a ``ViewControllable`` instance.
     ///
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to dismiss.
-    ///   - animated: A boolean value specifying whether dismissal is animated or not.
+    ///   - animated: A Boolean value specifying whether dismissal is animated.
     ///   - completion: An optional closure to execute when the dismissal is finished.
     ///
     ///     The closure has no arguments and returns `Void`.
@@ -133,12 +133,12 @@ public protocol ViewControllable: AnyObject {
 
 extension ViewControllable {
 
-    /// Presents the ``ViewControllable`` instance.
+    /// Presents a ``ViewControllable`` instance.
     ///
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to present.
     ///   - modalStyle: The ``ModalStyle`` to apply to the ``ViewControllable`` instance before presenting.
-    ///   - animated: A boolean value specifying whether presentation is animated or not.
+    ///   - animated: A Boolean value specifying whether presentation is animated.
     public func present(
         _ viewController: ViewControllable,
         withModalStyle modalStyle: ModalStyle,
@@ -147,11 +147,11 @@ extension ViewControllable {
         present(viewController, withModalStyle: modalStyle, animated: animated, completion: nil)
     }
 
-    /// Dismisses the ``ViewControllable`` instance.
+    /// Dismisses a ``ViewControllable`` instance.
     ///
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to dismiss.
-    ///   - animated: A boolean value specifying whether dismissal is animated or not.
+    ///   - animated: A Boolean value specifying whether dismissal is animated.
     public func dismiss(
         _ viewController: ViewControllable,
         animated: Bool

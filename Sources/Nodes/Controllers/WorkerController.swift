@@ -42,8 +42,8 @@ public final class WorkerController {
         workers.first { $0 is T } as? T
     }
 
-    /// Executes the given closure with the first `Worker` instance of the given `type`,
-    /// if any exist, in the `workers` array.
+    /// Executes the given closure with the first `Worker` instance of the given `type`, if any exist,
+    /// in the `workers` array.
     ///
     /// - Parameters:
     ///   - type: The type of the `Worker` instance with which to execute the closure.
@@ -70,8 +70,8 @@ public final class WorkerController {
         workers.compactMap { $0 as? T }
     }
 
-    /// Executes the given closure with each `Worker` instance of the given `type`,
-    /// if any exist, in the `workers` array.
+    /// Executes the given closure with each `Worker` instance of the given `type`, if any exist,
+    /// in the `workers` array.
     ///
     /// - Parameters:
     ///   - type: The type of the `Worker` instances with which to execute the closure.

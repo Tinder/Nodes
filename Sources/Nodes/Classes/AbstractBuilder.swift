@@ -42,9 +42,10 @@ open class AbstractBuilder<ComponentType, // swiftlint:disable:this operator_usa
         self.componentFactory = componentFactory
     }
 
-    /// The factory method that creates and returns a `BuildType` instance (`Flow` object). This method
-    /// typically also creates several other objects including a `Context` instance, one or more `Worker`
-    /// instances, and a `ViewControllable` instance.
+    /// The factory method that creates and returns a `BuildType` instance (`Flow` object).
+    ///
+    /// This method typically also creates several other objects including a `Context` instance,
+    /// one or more `Worker` instances, and a `ViewControllable` instance.
     ///
     /// - Important: This abstract method must be overridden in subclasses.
     ///   This method should never be called directly.

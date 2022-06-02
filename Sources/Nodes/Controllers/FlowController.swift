@@ -9,11 +9,7 @@
  * `FlowController` is used internally (within Nodes' source code) enabling each `Flow` instance to manage
  * a collection of child `Flow` instances.
  *
- * > Note: Each Nodes application contains a single `FlowController` instance within application code to
- * bootstrap the Node tree.
- *
- * > Important: Avoid additional `FlowController` use within application code except for the single bootstrap
- * instance mentioned above.
+ * > Important: Consider `FlowController` to be a private type and avoid its use within application code.
  */
 public final class FlowController {
 
@@ -26,7 +22,7 @@ public final class FlowController {
     /// Initializes a new `FlowController` instance to manage a collection of `Flow` instances.
     public init() {}
 
-    /// Executes the given closure without leak detection enabled.
+    /// Executes the given closure without `Flow` leak detection enabled.
     ///
     /// - Important: Extremely limit the use of this method to only where it is absolutely unavoidable.
     ///
@@ -49,7 +45,7 @@ public final class FlowController {
     ///
     /// The given `Flow` instance must not already exist in the `flows` array and its `Context` must not be active.
     ///
-    /// - Parameter flow: The `Flow` instance to attach.
+    /// - Parameter flow: The `Flow` instance to attach and start.
     public func attach(starting flow: Flow) {
         guard !flows.contains(where: { $0 === flow }),
               !flow._context.isActive
@@ -61,11 +57,11 @@ public final class FlowController {
         flow.start()
     }
 
-    /// Calls the end method of the given `Flow` instance and removes it from the `subFlows` array.
+    /// Calls the end method of the given `Flow` instance and removes it from the `flows` array.
     ///
     /// The given `Flow` instance must already exist in the `flows` array and its `Context` must be active.
     ///
-    /// - Parameter flow: The `Flow` instance to detach.
+    /// - Parameter flow: The `Flow` instance to end and detach.
     public func detach(ending flow: Flow) {
         guard flows.contains(where: { $0 === flow }),
               flow._context.isActive
@@ -114,14 +110,14 @@ public final class FlowController {
     ///
     /// - Parameters:
     ///   - type: The type of the `Flow` instances to detach.
-    ///   - where: The condition determining whether or not to detach the given `flow` instance.
+    ///   - where: The condition determining whether to detach the given `flow` instance.
     ///
     ///     The closure has the following arguments:
     ///     | Name | Description                      |
     ///     | ---- | -------------------------------- |
     ///     | flow | The `Flow` instance of type `T`. |
     ///
-    ///     The closure returns a boolean indicating whether or not to detach the `Flow` instance.
+    ///     The closure returns a Boolean value indicating whether to detach the `Flow` instance.
     public final func detach<T>(endingFlowsOfType type: T.Type, where: (_ flow: T) -> Bool) {
         flows.reversed().forEach { flow in
             guard let typedFlow: T = flow as? T, `where`(typedFlow)
@@ -167,7 +163,8 @@ public final class FlowController {
         flows.compactMap { $0 as? T }
     }
 
-    /// Executes the given closure with each `Flow` instance of the given `type`, if any exist, in the `flows` array.
+    /// Executes the given closure with each `Flow` instance of the given `type`, if any exist,
+    /// in the `flows` array.
     ///
     /// - Parameters:
     ///   - type: The type of the `Flow` instances with which to execute the closure.

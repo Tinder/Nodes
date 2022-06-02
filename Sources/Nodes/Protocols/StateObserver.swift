@@ -16,8 +16,7 @@ import Combine
  * configuring the `update(with:)` method to automatically be called with view state emitted by a given
  * publisher.
  *
- * > Important: For [SwiftUI](https://developer.apple.com/documentation/swiftui) use ``WithViewState``
- * instead.
+ * > Important: For [SwiftUI](https://developer.apple.com/documentation/swiftui) use ``WithViewState`` instead.
  */
 public protocol StateObserver: AnyObject {
 

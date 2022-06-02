@@ -13,13 +13,13 @@
 public protocol FlowRetaining: AnyObject {}
 
 /**
- * The interface used for passing `Flow` instances into ``AbstractFlow`` instance methods which enables the
- * functionality of attaching and detaching child `Flow` instances within the base class implementation.
+ * The interface used for passing `Flow` instances into ``AbstractFlow`` instance methods which enables
+ * attaching and detaching child `Flow` instances within the base class implementation.
  */
 /// @mockable
 public protocol Flow: AnyObject {
 
-    /// A Boolean value indicating whether or not the `Flow` instance has started.
+    /// A Boolean value indicating whether the `Flow` instance has started.
     var isStarted: Bool { get }
 
     /// The `Context` instance.
@@ -54,7 +54,7 @@ public protocol Flow: AnyObject {
  */
 open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
 
-    /// A Boolean value indicating whether or not the `Flow` instance has started.
+    /// A Boolean value indicating whether the `Flow` instance has started.
     public var isStarted: Bool {
         _context.isActive
     }
@@ -129,7 +129,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///
     /// The given `Flow` instance must not already exist in the `subFlows` array and its `Context` must not be active.
     ///
-    /// - Parameter flow: The `Flow` instance to attach and start.
+    /// - Parameter subFlow: The `Flow` instance to attach and start.
     public final func attach(starting subFlow: Flow) {
         flowController.attach(starting: subFlow)
     }
@@ -138,7 +138,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///
     /// The given `Flow` instance must already exist in the `subFlows` array and its `Context` must be active.
     ///
-    /// - Parameter flow: The `Flow` instance to end and detach.
+    /// - Parameter subFlow: The `Flow` instance to end and detach.
     public final func detach(ending subFlow: Flow) {
         flowController.detach(ending: subFlow)
     }
@@ -163,7 +163,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// Example:
     /// ```
     /// func detach(endingFlowsFor viewControllables: [ViewControllable]) {
-    ///     detach(endingFlowsOfType: ViewControllableFlow.self) { flow in
+    ///     detach(endingSubFlowsOfType: ViewControllableFlow.self) { flow in
     ///         viewControllables.contains { $0 === flow.viewControllable }
     ///     }
     /// }
@@ -172,21 +172,21 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// In the above example, the `where` closure returns `true` if the `viewControllable` of the `flow` exists in the
     /// given `viewControllables` array.
     ///
-    /// - Important: Use this ``detach(endingFlowsOfType:where:)`` method only when `ViewControllable`
+    /// - Important: Use this ``detach(endingSubFlowsOfType:where:)`` method only when `ViewControllable`
     ///   instances are dismissed directly within the UI framework (before the `Context` instance is informed of the
     ///   interaction). And therefore, in normal situations, use the ``detach(ending:)`` method whenever the `Flow`
     ///   instance performs the dismissal.
     ///
     /// - Parameters:
     ///   - type: The type of the `Flow` instances to detach.
-    ///   - where: The condition determining whether or not to detach the given `flow` instance.
+    ///   - where: The condition determining whether to detach the given `flow` instance.
     ///
     ///     The closure has the following arguments:
     ///     | Name | Description                      |
     ///     | ---- | -------------------------------- |
     ///     | flow | The `Flow` instance of type `T`. |
     ///
-    ///     The closure returns a boolean indicating whether or not to detach the `Flow` instance.
+    ///     The closure returns a Boolean value indicating whether to detach the `Flow` instance.
     public final func detach<T>(endingSubFlowsOfType type: T.Type, where: (_ flow: T) -> Bool) {
         flowController.detach(endingFlowsOfType: type, where: `where`)
     }
@@ -226,7 +226,8 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         flowController.flows(ofType: T.self)
     }
 
-    /// Executes the given closure with each `Flow` instance of the given `type`, if any exist, in the `subFlows` array.
+    /// Executes the given closure with each `Flow` instance of the given `type`, if any exist,
+    /// in the `subFlows` array.
     ///
     /// - Parameters:
     ///   - type: The type of the `Flow` instances with which to execute the closure.

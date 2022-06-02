@@ -18,9 +18,9 @@ import SwiftUI
  * > Important: The view state type must conform to the ``InitialStateProviding`` protocol.
  *
  * Usage Example:
- * ```swift
+ * ```
  * struct ExampleViewState: Equatable, InitialStateProviding {
- *     static let initialState: ExampleViewState = .init()
+ *     static let initialState: ExampleViewState = .init(text: "Hello World")
  *     let text: String
  * }
  *

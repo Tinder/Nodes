@@ -11,12 +11,12 @@ import UIKit
 
 extension UIViewController: ViewControllable {
 
-    /// Presents the ``ViewControllable`` instance.
+    /// Presents a ``ViewControllable`` instance.
     ///
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to present.
     ///   - modalStyle: The ``ModalStyle`` to apply to the ``ViewControllable`` instance before presenting.
-    ///   - animated: A boolean value specifying whether presentation is animated or not.
+    ///   - animated: A Boolean value specifying whether presentation is animated.
     ///   - completion: An optional closure to execute when the presentation is finished.
     ///
     ///     The closure has no arguments and returns `Void`.
@@ -30,11 +30,11 @@ extension UIViewController: ViewControllable {
         present(viewController.withModalStyle(modalStyle), animated: animated, completion: completion)
     }
 
-    /// Dismisses the ``ViewControllable`` instance.
+    /// Dismisses a ``ViewControllable`` instance.
     ///
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to dismiss.
-    ///   - animated: A boolean value specifying whether dismissal is animated or not.
+    ///   - animated: A Boolean value specifying whether dismissal is animated.
     ///   - completion: An optional closure to execute when the dismissal is finished.
     ///
     ///     The closure has no arguments and returns `Void`.

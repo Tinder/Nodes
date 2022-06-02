@@ -6,13 +6,13 @@
 //
 
 /**
- * The interface used for injecting a collection of `Worker` instances into an ``AbstractContext`` instance which
- * enables the functionality of starting and stopping the `Worker` instances within the base class implementation.
+ * The interface used for injecting a collection of `Worker` instances into an ``AbstractContext`` instance
+ * which enables starting and stopping the `Worker` instances within the base class implementation.
  */
 /// @mockable
 public protocol Worker: AnyObject {
 
-    /// A Boolean value indicating whether or not the `Worker` instance has started working.
+    /// A Boolean value indicating whether the `Worker` instance has started working.
     var isWorking: Bool { get }
 
     /// Starts the `Worker` instance.
@@ -43,7 +43,7 @@ open class AbstractWorker<CancellableType: Cancellable>: Worker {
     /// The set of `CancellableType` instances.
     public var cancellables: Set<CancellableType> = .init()
 
-    /// A Boolean value indicating whether or not the `Worker` instance has started working.
+    /// A Boolean value indicating whether the `Worker` instance has started working.
     public private(set) var isWorking: Bool = false // swiftlint:disable:this redundant_type_annotation
 
     /// Initializes an `AbstractWorker` instance.
