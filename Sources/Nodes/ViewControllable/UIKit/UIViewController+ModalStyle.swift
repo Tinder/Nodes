@@ -104,7 +104,7 @@ public struct ModalStyle: Equatable {
     /// - Parameter controlStatusBarAppearance: A Boolean value specifying whether the presented view controller
     ///   takes over control of status bar appearance from the presenting view controller.
     ///
-    /// - Returns: A ``ModalStyle`` instance with `behavior` set to `.overlay `, the given
+    /// - Returns: A ``ModalStyle`` instance with `behavior` set to `.overlay`, the given
     ///   `controlStatusBarAppearance` and `allowInteractiveDismissal` set to `false`.
     public static func overlay(
         controlStatusBarAppearance: Bool = false
@@ -154,7 +154,7 @@ public struct ModalStyle: Equatable {
     /// - Parameter controlStatusBarAppearance: A Boolean value specifying whether the presented view controller
     ///   takes over control of status bar appearance from the presenting view controller.
     ///
-    /// - Returns: A ``ModalStyle`` instance with `behavior` set to `. custom`, the given
+    /// - Returns: A ``ModalStyle`` instance with `behavior` set to `.custom`, the given
     ///   `controlStatusBarAppearance` and `allowInteractiveDismissal` set to `false`.
     public static func custom(
         controlStatusBarAppearance: Bool = false
