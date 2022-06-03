@@ -2235,6 +2235,109 @@ files:
     contents: |
       *
 
+  - path: "{{ project|split:' '|join:'_' }}Tests/Tests/Helpers/ComponentBuilder.swift"
+    contents: |
+      //
+      //  ComponentBuilder.swift
+      //  {{ project|split:' '|join:'_' }}Tests
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import NeedleFoundation
+      import Nodes
+      import XCTest
+
+      internal final class ComponentBuilder {
+
+          internal enum ComponentBuilderError: Error {
+
+              case componentTypeMismatch(expected: Any.Type, encountered: Any.Type)
+          }
+
+          private let testCase: XCTestCase
+
+          private var path: [String] = ["^"]
+          private var scopes: [Scope] = []
+
+          fileprivate init<T: BootstrapComponent>(
+              with scope: () -> T,
+              in testCase: XCTestCase
+          ) {
+              self.testCase = testCase
+              let parts: [String] = "\(T.self)".components(separatedBy: ".")
+              path.append(parts[parts.count - 1])
+              let registry: __DependencyProviderRegistry = .instance
+              let pathString: String = path.joined(separator: "->")
+              registry.registerDependencyProviderFactory(for: pathString) {
+                  EmptyDependencyProvider(component: $0)
+              }
+              testCase.addTeardownBlock {
+                  registry.unregisterDependencyProviderFactory(for: pathString)
+              }
+              scopes.append(scope())
+          }
+
+          @discardableResult
+          internal func inject<T: Scope>(
+              _ dependency: () -> Dependency,
+              into scope: (_ parent: Scope) -> T
+          ) -> Self {
+              inject(dependency(), into: scope)
+          }
+
+          @discardableResult
+          internal func inject<T: Scope>(
+              _ dependency: Dependency,
+              into scope: (_ parent: Scope) -> T
+          ) -> Self {
+              let parts: [String] = "\(T.self)".components(separatedBy: ".")
+              path.append(parts[parts.count - 1])
+              let registry: __DependencyProviderRegistry = .instance
+              let pathString: String = path.joined(separator: "->")
+              registry.registerDependencyProviderFactory(for: pathString) { _ in
+                  dependency
+              }
+              testCase.addTeardownBlock {
+                  registry.unregisterDependencyProviderFactory(for: pathString)
+              }
+              scopes.append(scope(self.scope()))
+              return self
+          }
+
+          internal subscript(_ index: Int) -> Scope {
+              scopes[index]
+          }
+
+          internal func scope() -> Scope {
+              self[scopes.count - 1]
+          }
+      }
+
+      extension XCTestCase {
+
+          internal func bootstrap<T: BootstrapComponent>(
+              with scope: @autoclosure () -> T
+          ) -> ComponentBuilder {
+              ComponentBuilder(with: scope, in: self)
+          }
+      }
+
+      extension AbstractBuilder {
+
+          internal convenience init(componentBuilder: () throws -> ComponentBuilder) throws {
+              let scope: Scope = try componentBuilder().scope()
+              guard let component: ComponentType = scope as? ComponentType
+              else { throw ComponentBuilder.ComponentBuilderError.componentTypeMismatch(expected: ComponentType.self,
+                                                                                        encountered: type(of: scope)) }
+              self.init { _ in component }
+          }
+
+          internal convenience init(_ componentBuilder: @autoclosure () -> ComponentBuilder) throws {
+              try self.init(componentBuilder: componentBuilder)
+          }
+      }
+
   - path: "{{ project|split:' '|join:'_' }}Tests/Tests/{{ project|split:' '|join:'_' }}Tests.swift"
     contents: |
       //
