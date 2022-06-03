@@ -294,18 +294,16 @@ files:
       @main
       internal final class AppDelegate: UIResponder, UIApplicationDelegate {
 
-          private let appFlow: AppFlow
-
-          override internal init() {
-              registerProviderFactories()
-              appFlow = AppBuilderImp { AppComponent() }.build()
-          }
+          private lazy var appFlow: AppFlow = AppBuilderImp { AppComponent() }.build()
 
           internal func application(
               _ application: UIApplication,
               didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
           ) -> Bool {
-              appFlow.start()
+              if NSClassFromString("XCTestCase") == nil {
+                  registerProviderFactories()
+                  appFlow.start()
+              }
               return true
           }
       }
