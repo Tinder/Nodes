@@ -2235,6 +2235,19 @@ files:
     contents: |
       *
 
+  - path: "{{ project|split:' '|join:'_' }}Tests/Tests/{{ project|split:' '|join:'_' }}Tests.swift"
+    contents: |
+      //
+      //  {{ project|split:' '|join:'_' }}Tests.swift
+      //  {{ project|split:' '|join:'_' }}Tests
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import XCTest
+
+      class {{ project|split:' '|join:'_' }}Tests: XCTestCase {}
+
   - path: "{{ project|split:' '|join:'_' }}Tests/Tests/Helpers/DependencyProviderRegistrationBuilder.swift"
     contents: |
       //
@@ -2328,19 +2341,6 @@ files:
                        addTeardownBlock: addTeardownBlock)
           }
       }
-
-  - path: "{{ project|split:' '|join:'_' }}Tests/Tests/{{ project|split:' '|join:'_' }}Tests.swift"
-    contents: |
-      //
-      //  {{ project|split:' '|join:'_' }}Tests.swift
-      //  {{ project|split:' '|join:'_' }}Tests
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import XCTest
-
-      class {{ project|split:' '|join:'_' }}Tests: XCTestCase {}
 
   - path: Package.swift
     contents: |
