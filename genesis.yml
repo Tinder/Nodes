@@ -2325,6 +2325,7 @@ files:
               addTeardownBlock: (_ block: @escaping () -> Void) -> Void
           ) {
               let componentPath: String = path.joined(separator: "->")
+              unregisterDependencyProviderFactory(for: componentPath)
               registerDependencyProviderFactory(for: componentPath, dependencyProviderFactory)
               addTeardownBlock { [weak self] in
                   self?.unregisterDependencyProviderFactory(for: componentPath)
