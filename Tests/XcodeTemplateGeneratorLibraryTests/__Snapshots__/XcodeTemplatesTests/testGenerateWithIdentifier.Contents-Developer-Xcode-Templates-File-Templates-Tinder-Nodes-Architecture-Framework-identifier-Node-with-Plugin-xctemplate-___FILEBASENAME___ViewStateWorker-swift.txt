@@ -1,0 +1,40 @@
+//___FILEHEADER___
+
+import Combine
+import Nodes
+
+/**
+ PURPOSE:
+ Encapsulates work to be performed by the Node.
+ */
+internal protocol ___VARIABLE_productName___ViewStateWorker: Worker {
+    var viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never> { get }
+}
+
+/**
+ PURPOSE:
+ Concrete implementation of the Worker.
+ */
+internal final class ___VARIABLE_productName___ViewStateWorkerImp: AbstractWorker<AnyCancellable> {
+
+    /// The view state publisher.
+    internal let viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+
+    /// The Analytics instance.
+    private let analytics: ___VARIABLE_productName___Analytics
+
+    /// The initializer.
+    /// - Parameter analytics: The Analytics instance
+    internal init(analytics: ___VARIABLE_productName___Analytics) {
+        self.analytics = analytics
+        viewState = Just(.initialState).eraseToAnyPublisher()
+    }
+
+    /// Implement logic to execute when the Worker is started.
+    override internal func didStart() {}
+
+    /// Implement logic to execute when the Worker has stopped.
+    override internal func willStop() {}
+}
+
+extension ___VARIABLE_productName___ViewStateWorkerImp: ___VARIABLE_productName___ViewStateWorker {}

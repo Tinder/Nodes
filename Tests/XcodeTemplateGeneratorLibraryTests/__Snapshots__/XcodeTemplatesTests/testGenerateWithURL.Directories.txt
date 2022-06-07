@@ -1,4 +1,4 @@
-▿ 10 elements
+▿ 11 elements
   ▿ (2 elements)
     - path: "/Node.xctemplate"
     - createIntermediates: true
@@ -7,6 +7,9 @@
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node (without view state).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node with Plugin.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/ Node (without view state).xctemplate"

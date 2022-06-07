@@ -164,6 +164,41 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                        named: "Worker")
     }
 
+    func testRenderNodeWithPlugin() throws {
+        let context: NodeWithPluginContext = givenNodeWithPluginContext()
+        let templates: [String: String] = try StencilRenderer().renderNodeWithPlugin(context: context)
+        expect(templates.keys.sorted()) == [
+            "Analytics",
+            "Builder",
+            "Context",
+            "Flow",
+            "Plugin",
+            "ViewController",
+            "Worker"
+        ]
+        assertSnapshot(matching: templates["Analytics"]!,
+                       as: .lines,
+                       named: "Analytics")
+        assertSnapshot(matching: templates["Builder"]!,
+                       as: .lines,
+                       named: "Builder")
+        assertSnapshot(matching: templates["Context"]!,
+                       as: .lines,
+                       named: "Context")
+        assertSnapshot(matching: templates["Flow"]!,
+                       as: .lines,
+                       named: "Flow")
+        assertSnapshot(matching: templates["Plugin"]!,
+                       as: .lines,
+                       named: "Plugin")
+        assertSnapshot(matching: templates["ViewController"]!,
+                       as: .lines,
+                       named: "ViewController")
+        assertSnapshot(matching: templates["Worker"]!,
+                       as: .lines,
+                       named: "Worker")
+    }
+
     func testRenderNodeWithoutViewStateSwiftUI() throws {
         let context: NodeWithoutViewStateContext = givenNodeWithoutViewStateContext()
         let templates: [String: String] = try StencilRenderer().renderNodeWithoutViewState(context: context,

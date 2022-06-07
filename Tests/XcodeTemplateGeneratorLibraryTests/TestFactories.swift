@@ -137,6 +137,36 @@ extension TestFactories {
         )
     }
 
+    func givenNodeWithPluginContext() -> NodeWithPluginContext {
+        NodeWithPluginContext(
+            fileHeader: "<fileHeader>",
+            nodeName: "<nodeName>",
+            pluginName: "<nodeName>",
+            workerName: "<workerName>",
+            builderImports: ["<builderImports>"],
+            contextImports: ["<contextImports>"],
+            flowImports: ["<flowImports>"],
+            pluginImports: ["<pluginImports>"],
+            viewControllerImports: ["<viewControllerImports>"],
+            workerImports: ["<workerImports>"],
+            dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
+            flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
+            viewControllerType: "<viewControllerType>",
+            viewControllableType: "<viewControllableType>",
+            viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllerSuperParameters: "<viewControllerSuperParameters>",
+            viewControllerProperties: "<viewControllerProperties>",
+            viewControllerMethods: "<viewControllerMethods>",
+            viewControllerUpdateComment: "<viewControllerUpdateComment>",
+            viewStatePublisher: "<viewStatePublisher>",
+            viewStateOperators: "<viewStateOperators>",
+            publisherType: "<publisherType>",
+            publisherFailureType: "<publisherFailureType>",
+            cancellableType: "<cancellableType>",
+            returnType: "<returnType>"
+        )
+    }
+
     func givenPluginContext() -> PluginContext {
         PluginContext(
             fileHeader: "<fileHeader>",

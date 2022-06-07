@@ -66,6 +66,21 @@ public final class StencilRenderer {
         ], with: context.dictionary)
     }
 
+    public func renderNodeWithPlugin(
+        context: NodeWithPluginContext
+    ) throws -> [String: String] {
+        var renderedNode = try renderNode(stencils: [
+            "Analytics": "Analytics",
+            "Builder": "Builder",
+            "Context": "Context",
+            "Flow": "Flow",
+            "ViewController": "ViewController",
+            "Worker": "Worker"
+        ], with: context.dictionary)
+        renderedNode["Plugin"] = try render("Plugin", of: "Plugin", with: context.dictionary)
+        return renderedNode
+    }
+
     public func renderPlugin(context: PluginContext) throws -> String {
         try render("Plugin", of: "Plugin", with: context.dictionary)
     }

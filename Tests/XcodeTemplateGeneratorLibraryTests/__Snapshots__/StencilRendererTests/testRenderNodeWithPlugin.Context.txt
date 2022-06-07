@@ -1,0 +1,71 @@
+<fileHeader>
+
+import <contextImports>
+
+/**
+ PURPOSE:
+ The Context delegates callbacks to its (external) Listener, typically the parent Context.
+ */
+internal protocol <nodeName>Listener: AnyObject {}
+
+/**
+ PURPOSE:
+ The interface that the Context will speak to the Flow through. Used to initiate navigation as
+ an example.
+ */
+internal protocol <nodeName>FlowInterface: Flow {}
+
+/**
+ PURPOSE:
+ The interface that the Context will speak to the View through. Used to inform the View of any
+ state change (i.e. to keep the UI in sync).
+ */
+internal protocol <nodeName>Presentable: AnyObject {
+    var receiver: <nodeName>Receiver? { get set }
+}
+
+/**
+ PURPOSE:
+ Contains the business logic of the Node. The lifecycle of the Node is bookended between the
+ `didBecomeActive` and `willResignActive` methods.
+ */
+internal final class <nodeName>ContextImp: AbstractPresentableContext
+    <<cancellableType>, <nodeName>Presentable> {
+
+    /// The Flow instance.
+    internal weak var flow: <nodeName>FlowInterface?
+
+    /// The Listener instance.
+    internal weak var listener: <nodeName>Listener?
+
+    /// The Analytics instance.
+    private let analytics: <nodeName>Analytics
+
+    /// The initializer.
+    /// - Parameters:
+    ///   - presentable: The Presentable instance
+    ///   - workers: The Worker instances
+    ///   - analytics: The Analytics instance
+    internal init(
+        presentable: <nodeName>Presentable,
+        workers: [Worker],
+        analytics: <nodeName>Analytics
+    ) {
+        self.analytics = analytics
+        super.init(presentable: presentable, workers: workers)
+        presentable.receiver = self
+    }
+
+    /// Implement logic to execute when the Context becomes active.
+    override internal func didBecomeActive() {}
+
+    /// Implement logic to execute when the Context will become inactive.
+    override internal func willResignActive() {}
+
+    deinit {
+        LeakDetector.detect(analytics)
+    }
+}
+
+extension <nodeName>ContextImp: <nodeName>ContextInterface {}
+extension <nodeName>ContextImp: <nodeName>Receiver {}
