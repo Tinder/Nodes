@@ -8,7 +8,7 @@
 /**
  * A Nodes application can use [Combine](https://developer.apple.com/documentation/combine), or any other
  * reactive library, by providing a type supporting subscription cancellation that conforms to Nodes'
- * `Cancellable` protocol.
+ * ``Cancellable`` protocol.
  *
  * As an example, to use Combine with Nodes, the following protocol conformance would need to exist within
  * application code:
@@ -22,7 +22,7 @@
  */
 public protocol Cancellable: AnyObject, Hashable {
 
-    /// Cancels the `Cancellable` subscription.
+    /// Cancels the ``Cancellable`` subscription.
     func cancel()
 }
 
@@ -50,11 +50,11 @@ public protocol Context: AnyObject {
 }
 
 /**
- * Nodes’ `AbstractContext` base class.
+ * Nodes’ ``AbstractContext`` base class.
  *
  * > Note: This abstract class should never be instantiated directly and must therefore always be subclassed.
  *
- * `AbstractContext` has the following generic parameter:
+ * ``AbstractContext`` has the following generic parameter:
  * | Name            | Description                                                                                  |
  * | --------------- | -------------------------------------------------------------------------------------------- |
  * | CancellableType | The type supporting subscription cancellation that conforms to the ``Cancellable`` protocol. |
@@ -74,7 +74,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
 
     private let workerController: WorkerController
 
-    /// Initializes an `AbstractContext` instance.
+    /// Initializes an ``AbstractContext`` instance.
     ///
     /// - Parameter workers: The array of `Worker` instances.
     public init(workers: [Worker]) {
@@ -86,7 +86,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     /// - Note: The default implementation of this method does nothing.
     ///
     /// - Important: This method should never be called directly.
-    ///   The `AbstractContext` instance calls this method internally.
+    ///   The ``AbstractContext`` instance calls this method internally.
     open func didBecomeActive() {}
 
     /// Subclasses may override this method to define logic to be performed when the `Context` deactivates.
@@ -94,7 +94,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     /// - Note: The default implementation of this method does nothing.
     ///
     /// - Important: This method should never be called directly.
-    ///   The `AbstractContext` instance calls this method internally.
+    ///   The ``AbstractContext`` instance calls this method internally.
     open func willResignActive() {}
 
     /// Activates the `Context` instance.
@@ -147,7 +147,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     ///     | ------ | ---------------------------------- |
     ///     | worker | The `Worker` instance of type `T`. |
     ///
-    ///     The closure returns `Void` and throws.
+    ///     The closure returns ``Void`` and throws.
     public final func withFirstWorker<T>(ofType type: T.Type, perform: (_ worker: T) throws -> Void) rethrows {
         try workerController.withFirstWorker(ofType: type, perform: perform)
     }
@@ -173,7 +173,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     ///   | ------ | ---------------------------------- |
     ///   | worker | The `Worker` instance of type `T`. |
     ///
-    ///   The closure returns `Void` and throws.
+    ///   The closure returns ``Void`` and throws.
     public final func withWorkers<T>(ofType type: T.Type, perform: (_ worker: T) throws -> Void) rethrows {
         try workerController.withWorkers(ofType: type, perform: perform)
     }
@@ -185,11 +185,11 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
 }
 
 /**
- * Nodes’ `AbstractPresentableContext` base class.
+ * Nodes’ ``AbstractPresentableContext`` base class.
  *
  * > Note: This abstract class should never be instantiated directly and must therefore always be subclassed.
  *
- * `AbstractPresentableContext` has the following generic parameters:
+ * ``AbstractPresentableContext`` has the following generic parameters:
  * | Name            | Description                                                                                  |
  * | --------------- | -------------------------------------------------------------------------------------------- |
  * | CancellableType | The type supporting subscription cancellation that conforms to the ``Cancellable`` protocol. |
@@ -200,7 +200,7 @@ open class AbstractPresentableContext<CancellableType: Cancellable, PresentableT
     /// The `PresentableType` instance.
     public let presentable: PresentableType
 
-    /// Initializes an `AbstractPresentableContext` instance.
+    /// Initializes an ``AbstractPresentableContext`` instance.
     ///
     /// - Parameters:
     ///   - presentable: The `PresentableType` instance.

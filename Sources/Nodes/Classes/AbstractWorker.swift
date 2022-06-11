@@ -29,11 +29,11 @@ public protocol Worker: AnyObject {
 }
 
 /**
- * Nodes’ `AbstractWorker` base class.
+ * Nodes’ ``AbstractWorker`` base class.
  *
  * > Note: This abstract class should never be instantiated directly and must therefore always be subclassed.
  *
- * `AbstractWorker` has the following generic parameter:
+ * ``AbstractWorker`` has the following generic parameter:
  * | Name            | Description                                                                                  |
  * | --------------- | -------------------------------------------------------------------------------------------- |
  * | CancellableType | The type supporting subscription cancellation that conforms to the ``Cancellable`` protocol. |
@@ -46,7 +46,7 @@ open class AbstractWorker<CancellableType: Cancellable>: Worker {
     /// A Boolean value indicating whether the `Worker` instance has started working.
     public private(set) var isWorking: Bool = false // swiftlint:disable:this redundant_type_annotation
 
-    /// Initializes an `AbstractWorker` instance.
+    /// Initializes an ``AbstractWorker`` instance.
     public init() {}
 
     /// Subclasses may override this method to define logic to be performed when the `Worker` starts.
@@ -54,7 +54,7 @@ open class AbstractWorker<CancellableType: Cancellable>: Worker {
     /// - Note: The default implementation of this method does nothing.
     ///
     /// - Important: This method should never be called directly.
-    ///   The `AbstractWorker` instance calls this method internally.
+    ///   The ``AbstractWorker`` instance calls this method internally.
     open func didStart() {}
 
     /// Subclasses may override this method to define logic to be performed when the `Worker` stops.
@@ -62,7 +62,7 @@ open class AbstractWorker<CancellableType: Cancellable>: Worker {
     /// - Note: The default implementation of this method does nothing.
     ///
     /// - Important: This method should never be called directly.
-    ///   The `AbstractWorker` instance calls this method internally.
+    ///   The ``AbstractWorker`` instance calls this method internally.
     open func willStop() {}
 
     /// Starts the `Worker` instance.

@@ -6,7 +6,7 @@
 //
 
 /**
- * Subclasses of ``AbstractFlow`` may adopt the `FlowRetaining` protocol to disable child `Flow` leak detection.
+ * Subclasses of ``AbstractFlow`` may adopt the ``FlowRetaining`` protocol to disable child `Flow` leak detection.
  *
  * > Important: Extremely limit the use of this protocol to only where it is absolutely unavoidable.
  */
@@ -42,15 +42,15 @@ public protocol Flow: AnyObject {
 }
 
 /**
- * Nodes’ `AbstractFlow` base class.
+ * Nodes’ ``AbstractFlow`` base class.
  *
  * > Note: This abstract class should never be instantiated directly and must therefore always be subclassed.
  *
- * `AbstractFlow` has the following generic parameters:
- * | Name                 | Description                                  |
- * | -------------------- | -------------------------------------------- |
- * | ContextInterfaceType | The type of the `Context` instance.          |
- * | ViewControllerType   | The type of the `ViewControllable` instance. |
+ * ``AbstractFlow`` has the following generic parameters:
+ * | Name                 | Description                                    |
+ * | -------------------- | ---------------------------------------------- |
+ * | ContextInterfaceType | The type of the `Context` instance.            |
+ * | ViewControllerType   | The type of the ``ViewControllable`` instance. |
  */
 open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
 
@@ -68,7 +68,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// The `Context` instance.
     public let context: ContextInterfaceType
 
-    /// The `ViewControllable` instance.
+    /// The ``ViewControllable`` instance.
     public let viewController: ViewControllerType
 
     /// The array of child `Flow` instances.
@@ -78,11 +78,11 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
 
     private let flowController: FlowController = .init()
 
-    /// Initializes an `AbstractFlow` instance.
+    /// Initializes an ``AbstractFlow`` instance.
     ///
     /// - Parameters:
     ///   - context: The `Context` instance.
-    ///   - viewController: The `ViewControllable` instance.
+    ///   - viewController: The ``ViewControllable`` instance.
     public init(
         context: ContextInterfaceType,
         viewController: ViewControllerType
@@ -96,12 +96,12 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         flowController.isFlowLeakDetectionEnabled = !(self is FlowRetaining)
     }
 
-    /// Subclasses may override this method to define logic to be performed when the `AbstractFlow` starts.
+    /// Subclasses may override this method to define logic to be performed when the ``AbstractFlow`` starts.
     ///
     /// - Note: The default implementation of this method does nothing.
     ///
     /// - Important: This method should never be called directly.
-    ///   The `AbstractFlow` instance calls this method internally.
+    ///   The ``AbstractFlow`` instance calls this method internally.
     open func didStart() {}
 
     /// Starts the `Flow` instance.
@@ -145,19 +145,19 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
 
     /// Detaches `Flow` instances of the given `type` where the given predicate closure returns `true`.
     ///
-    /// Under normal circumstances, user interactions do not directly cause `ViewControllable` instances to
-    /// be dismissed, for example when simply tapping a button. To dismiss a `ViewControllable` instance in
+    /// Under normal circumstances, user interactions do not directly cause ``ViewControllable`` instances to
+    /// be dismissed, for example when simply tapping a button. To dismiss a ``ViewControllable`` instance in
     /// these situations, the `Context` instance will be informed of the button tap which then informs the `Flow`
     /// instance to perform the dismissal. The `Flow` instance retrieves the appropriate child `Flow` instance
     /// (by type) and, only after the dismissal is complete, detaches the child `Flow` instance using the
     /// ``detach(ending:)`` method.
     ///
-    /// However, in some cases, user interactions can directly cause `ViewControllable` instances to be dismissed,
+    /// However, in some cases, user interactions can directly cause ``ViewControllable`` instances to be dismissed,
     /// for example when interacting with ``UINavigationController`` (from `UIKit`). By long pressing the back button
     /// of a ``UINavigationController``, a user may navigate backward to any point in the navigation history, which
-    /// directly causes one or more `ViewControllable` instances to be immediately popped off the navigation stack.
-    /// In these situations, to detach `Flow` instances corresponding to already dismissed `ViewControllable`
-    /// instances, the `Context` will be informed of the dismissal (and be provided the `ViewControllable` instances)
+    /// directly causes one or more ``ViewControllable`` instances to be immediately popped off the navigation stack.
+    /// In these situations, to detach `Flow` instances corresponding to already dismissed ``ViewControllable``
+    /// instances, the `Context` will be informed of the dismissal (and be provided the ``ViewControllable`` instances)
     /// which then informs the `Flow` instance to perform the detachment only.
     ///
     /// Example:
@@ -169,10 +169,10 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// }
     /// ```
     ///
-    /// In the above example, the `where` closure returns `true` if the `viewControllable` of the `flow` exists in the
-    /// given `viewControllables` array.
+    /// In the above example, the `where` closure returns `true` if the ``ViewControllable`` of the `flow` exists in
+    /// the given `viewControllables` array.
     ///
-    /// - Important: Use this ``detach(endingSubFlowsOfType:where:)`` method only when `ViewControllable`
+    /// - Important: Use this ``detach(endingSubFlowsOfType:where:)`` method only when ``ViewControllable``
     ///   instances are dismissed directly within the UI framework (before the `Context` instance is informed of the
     ///   interaction). And therefore, in normal situations, use the ``detach(ending:)`` method whenever the `Flow`
     ///   instance performs the dismissal.
@@ -212,7 +212,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///     | ---- | -------------------------------- |
     ///     | flow | The `Flow` instance of type `T`. |
     ///
-    ///     The closure returns `Void` and throws.
+    ///     The closure returns ``Void`` and throws.
     public final func withFirstSubFlow<T>(ofType type: T.Type, perform: (_ flow: T) throws -> Void) rethrows {
         try flowController.withFirstFlow(ofType: T.self, perform: perform)
     }
@@ -238,7 +238,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///     | ---- | -------------------------------- |
     ///     | flow | The `Flow` instance of type `T`. |
     ///
-    ///     The closure returns `Void` and throws.
+    ///     The closure returns ``Void`` and throws.
     public final func withSubFlows<T>(ofType type: T.Type, perform: (_ flow: T) throws -> Void) rethrows {
         try flowController.withFlows(ofType: T.self, perform: perform)
     }

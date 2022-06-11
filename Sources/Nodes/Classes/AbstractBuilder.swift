@@ -6,17 +6,17 @@
 //
 
 /**
- * Nodes’ `AbstractBuilder` base class.
+ * Nodes’ ``AbstractBuilder`` base class.
  *
  * > Note: This abstract class should never be instantiated directly and must therefore always be subclassed.
  *
- * `AbstractBuilder` has the following generic parameters:
- * | Name                           | Description                                                                  |
- * | ------------------------------ | ---------------------------------------------------------------------------- |
- * | ComponentType                  | The DI graph `Component` type.                                               |
- * | BuildType                      | The type of `Flow` object the `AbstractBuilder` instance will create.        |
- * | DynamicBuildDependencyType     | The type of dependency provided dynamically to the `BuildType` instance.     |
- * | DynamicComponentDependencyType | The type of dependency provided dynamically to the `ComponentType` instance. |
+ * ``AbstractBuilder`` has the following generic parameters:
+ * | Name                           | Description                                                                    |
+ * | ------------------------------ | ------------------------------------------------------------------------------ |
+ * | ComponentType                  | The DI graph `Component` type.                                                 |
+ * | BuildType                      | The type of `Flow` object the ``AbstractBuilder`` instance will create.        |
+ * | DynamicBuildDependencyType     | The type of dependency provided dynamically to the `BuildType` instance.       |
+ * | DynamicComponentDependencyType | The type of dependency provided dynamically to the `ComponentType` instance.   |
  */
 open class AbstractBuilder<ComponentType, // swiftlint:disable:this operator_usage_whitespace
                            BuildType,
@@ -27,7 +27,7 @@ open class AbstractBuilder<ComponentType, // swiftlint:disable:this operator_usa
 
     private let componentFactory: (DynamicComponentDependencyType) -> ComponentType
 
-    /// Initializes an `AbstractBuilder` instance.
+    /// Initializes an ``AbstractBuilder`` instance.
     ///
     /// - Parameters:
     ///   - componentFactory: The `ComponentType` factory closure.
@@ -45,11 +45,11 @@ open class AbstractBuilder<ComponentType, // swiftlint:disable:this operator_usa
     /// The factory method that creates and returns a `BuildType` instance (`Flow` object).
     ///
     /// This method typically also creates several other objects including a `Context` instance,
-    /// one or more `Worker` instances, and a `ViewControllable` instance.
+    /// one or more `Worker` instances, and a ``ViewControllable`` instance.
     ///
     /// - Important: This abstract method must be overridden in subclasses.
     ///   This method should never be called directly.
-    ///   The `AbstractBuilder` instance calls this method internally.
+    ///   The ``AbstractBuilder`` instance calls this method internally.
     ///
     /// - Parameters:
     ///   - component: The `ComponentType` instance.

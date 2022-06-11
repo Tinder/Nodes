@@ -6,7 +6,7 @@
 //
 
 /**
- * View state types adopt `InitialStateProviding` to specify an initial state.
+ * View state types adopt ``InitialStateProviding`` to specify an initial state.
  */
 public protocol InitialStateProviding {
 

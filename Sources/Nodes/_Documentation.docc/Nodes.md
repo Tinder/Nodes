@@ -40,7 +40,7 @@ Node Creation and Dependency Injection
 
 A Node's `Builder` instance is a factory that non-optionally creates and returns the Node's `Flow` instance.
 
-At that same time, the `Builder` also creates several other objects including the Node's `Context` instance, one or more `Worker` instances, and its `ViewControllable` instance.
+At that same time, the `Builder` also creates several other objects including the Node's `Context` instance, one or more `Worker` instances, and its ``ViewControllable`s``` instance.
 
 Every `Builder` is provided a DI graph `Component` whose dependencies are made available for injection into the objects the `Builder` creates.
 
@@ -54,7 +54,7 @@ Node Tree and Routing
 
 A Node's `Flow` instance acts as a router and is responsible for attaching child `Flow` instances.
 
-A Node tree is created when parent `Flow` instances use a `Builder` instance (either directly or from a `PluginList`, `PluginMap` or `Plugin` instance) to create a child `Flow` instance, and then present the `ViewControllable` instance of the child `Flow` and subsequently attach the child `Flow`. This will automatically start the child Node's `Flow` instance, activate the child Node's `Context` instance and start the child Node's `Worker` instances.
+A Node tree is created when parent `Flow` instances use a `Builder` instance (either directly or from a `PluginList`, `PluginMap` or `Plugin` instance) to create a child `Flow` instance, and then present the ``ViewControllable`` instance of the child `Flow` and subsequently attach the child `Flow`. This will automatically start the child Node's `Flow` instance, activate the child Node's `Context` instance and start the child Node's `Worker` instances.
 
 A `Flow` is also responsible for detaching its child `Flow` instances which occurs in the reverse order. This is an important lifecycle event for the Node, meaning that when a `Flow` instance is detached from its parent, the expectation is that all memory used by the Node and all of its objects is released.
 
@@ -70,7 +70,7 @@ A Node's `Context` instance acts as an interactor and is responsible for handlin
 
 To avoid bloating the `Context` instance, data transformations and other business logic can exist in the Node's `Worker` instances, and the `Context` may call methods on those `Worker` instances as needed.
 
-The `Context` may participate in keeping the Node's user interface (through a `Presentable` protocol) in sync with the current app state, though the view state dedicated `Worker` provided to the Node normally handles this responsibility.
+The `Context` may participate in keeping the Node's user interface (through a `Presentable` protocol) in sync with the current app state, though the Node's view state dedicated `Worker` normally handles this responsibility.
 
 The `Context` can (as desired) delegate data requests, event handling and user interactions to the Node's listener which, in almost every situation, is the `Context` of the parent Node.
 
@@ -82,7 +82,7 @@ The `Context` can (as desired) delegate data requests, event handling and user i
 
 Data Transformations and Business Logic
 
-Every Node is provided a `Worker` instance responsible for transforming app state into view state. Additional `Worker` instances may be used (as needed) for other data transformations or additional business logic. The Node's `Context` instance may call methods on the Node's `Worker` instances as needed.
+Every Node includes a `Worker` instance responsible for transforming app state into view state. Additional `Worker` instances may be used (as needed) for other data transformations or additional business logic. The Node's `Context` instance may call methods on the Node's `Worker` instances as needed.
 
 - ``Worker``
 - ``AbstractWorker``
@@ -91,13 +91,13 @@ Every Node is provided a `Worker` instance responsible for transforming app stat
 
 User Interface
 
-A Node's `ViewControllable` instance defines the Node's user interface (for example a [UIViewController](https://developer.apple.com/documentation/uikit/uiviewcontroller) in a [UIKit](https://developer.apple.com/documentation/uikit) app) and is also responsible for displaying or presenting the user interface of child Nodes. A `ViewControllable` protocol is used instead of the concrete class type to limit the exposed API, to avoid the use of UI frameworks (such as [UIKit](https://developer.apple.com/documentation/uikit)) within `Flow` instances and to facilitate testing.
+A Node's ``ViewControllable`` instance defines the Node's user interface (for example a [UIViewController](https://developer.apple.com/documentation/uikit/uiviewcontroller) in a [UIKit](https://developer.apple.com/documentation/uikit) app) and is also responsible for displaying or presenting the user interface of child Nodes. A ``ViewControllable`` protocol is used instead of the concrete class type to limit the available API, to avoid the use of UI frameworks (such as [UIKit](https://developer.apple.com/documentation/uikit)) within `Flow` instances and to facilitate testing.
 
-The `ViewControllable` instance is injected into the Node's `Context` as well, however a different protocol (`Presentable`) is used there.
+The ``ViewControllable`` instance is injected into the Node's `Context` as well, however a different protocol named `Presentable` is used there.
 
-This means the same exact instance is accessed through a `ViewControllable` protocol from within the `Flow` instance (for presentation) and through a `Presentable` protocol from within the `Context` instance (for updating the UI).
+This means the same exact instance is accessed through a ``ViewControllable`` protocol from within the `Flow` instance (for presentation) and through a `Presentable` protocol from within the `Context` instance (for updating the UI).
 
-Note that although the `Context` may participate in keeping a Node's user interface in sync with the current app state, the view state dedicated `Worker` provided to the Node normally handles this responsibility.
+Note that although the `Context` may participate in keeping a Node's user interface in sync with the current app state, the Node's view state dedicated `Worker` normally handles this responsibility.
 
 - ``ViewControllable``
 - ``ViewControllableFlow``

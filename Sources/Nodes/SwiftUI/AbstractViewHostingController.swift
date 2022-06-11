@@ -34,7 +34,7 @@ public protocol NodesViewHostingController {
     /// The type of the `rootView` instance which must be a ``NodesView``.
     associatedtype ContentType: NodesView
 
-    /// The root view of the `NodesViewHostingController` instance.
+    /// The root view of the ``NodesViewHostingController`` instance.
     var rootView: ContentType { get }
 }
 

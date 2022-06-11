@@ -12,6 +12,6 @@
 /// @mockable
 public protocol ViewControllableFlow: Flow {
 
-    /// The `ViewControllable` instance made available to the parent `Flow` instance for display or presentation.
+    /// The ``ViewControllable`` instance made available to the parent `Flow` instance for display or presentation.
     var viewControllable: ViewControllable { get }
 }

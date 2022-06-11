@@ -10,7 +10,7 @@ import Combine
 #endif
 
 /**
- * `StateObserver` specifies a method for updating a UI with view state.
+ * ``StateObserver`` specifies a method for updating a UI with view state.
  *
  * A protocol extension method is defined for [Combine](https://developer.apple.com/documentation/combine) for
  * configuring the `update(with:)` method to automatically be called with view state emitted by a given
@@ -34,8 +34,8 @@ extension StateObserver {
 
     /// Configures the `update(with:)` method to automatically be called with view state emitted by the given publisher.
     ///
-    /// - Parameter publisher: The view state `Publisher` instance to observe.
-    /// - Returns: A `Cancellable` instance.
+    /// - Parameter publisher: The view state ``Publisher`` instance to observe.
+    /// - Returns: A ``Cancellable`` instance.
     public func observe<P: Publisher>(
         _ publisher: P
     ) -> AnyCancellable where P.Output == StateObserverStateType, P.Failure == Never {

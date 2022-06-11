@@ -6,19 +6,19 @@
 //
 
 /**
- * Nodes’ abstract `PluginList` base class.
+ * Nodes’ abstract ``PluginList`` base class.
  *
- * `PluginList` has the following generic parameters:
- * | Name          | Description                                                                                 |
- * | ------------- | ------------------------------------------------------------------------------------------- |
- * | ComponentType | The DI graph `Component` type.                                                              |
- * | BuildType     | The type of object created (typically a `Builder`).                                         |
- * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
+ * ``PluginList`` has the following generic parameters:
+ * | Name          | Description                                                                                   |
+ * | ------------- | --------------------------------------------------------------------------------------------- |
+ * | ComponentType | The DI graph `Component` type.                                                                |
+ * | BuildType     | The type of object created (typically a `Builder`).                                           |
+ * | StateType     | The type of state to be used as enabled criteria (can be any type, even ``Void`` or a tuple). |
  */
 open class PluginList<ComponentType, BuildType, StateType> {
 
     /**
-     * A type-erased `Plugin` type used by the `PluginList` instance when defining a collection of generic plugins.
+     * A type-erased `Plugin` type used by the ``PluginList`` instance when defining a collection of generic plugins.
      */
     public final class Plugin {
 
@@ -50,7 +50,7 @@ open class PluginList<ComponentType, BuildType, StateType> {
         /// Calls the stored factory closure.
         ///
         /// - Important: This method should never be called directly.
-        ///   The `PluginList` instance calls this method internally.
+        ///   The ``PluginList`` instance calls this method internally.
         ///
         /// - Parameter state: The `StateType` instance.
         ///
@@ -63,7 +63,7 @@ open class PluginList<ComponentType, BuildType, StateType> {
     // swiftlint:disable:next strict_fileprivate
     fileprivate let component: ComponentType
 
-    /// Initializes a new `PluginList` instance.
+    /// Initializes a new ``PluginList`` instance.
     ///
     /// - Parameter component: The `ComponentType` instance.
     public init(component: ComponentType) {
@@ -74,7 +74,7 @@ open class PluginList<ComponentType, BuildType, StateType> {
     ///
     /// - Important: This abstract method must be overridden in subclasses.
     ///   This method should never be called directly.
-    ///   The `PluginList` instance calls this method internally.
+    ///   The ``PluginList`` instance calls this method internally.
     ///
     /// - Parameter component: The `ComponentType` instance.
     ///
@@ -130,7 +130,7 @@ extension PluginList where StateType == Void {
 
     /// Calls `create` on all plugins and returns the resulting non-nil `BuildType` instances.
     ///
-    /// This convenience method has no parameters since `StateType` is `Void`.
+    /// This convenience method has no parameters since `StateType` is ``Void``.
     ///
     /// - Returns: An array of `BuildType` instances.
     public func createAll() -> [BuildType] {
@@ -140,7 +140,7 @@ extension PluginList where StateType == Void {
     /// Calls `create` on each plugin in the plugins collection (in reverse order)
     /// and returns the first non-nil `BuildType` instance.
     ///
-    /// This convenience method has no parameters since `StateType` is `Void`.
+    /// This convenience method has no parameters since `StateType` is ``Void``.
     ///
     /// - Returns: An optional `BuildType` instance.
     public func create() -> BuildType? {
@@ -149,16 +149,16 @@ extension PluginList where StateType == Void {
 }
 
 /**
- * Nodes’ abstract `PluginListWithDefault` base class.
+ * Nodes’ abstract ``PluginListWithDefault`` base class.
  *
  * A default instance is prepended to the collection of `BuildType` instances.
  *
- * `PluginListWithDefault` has the following generic parameters:
- * | Name          | Description                                                                                 |
- * | ------------- | ------------------------------------------------------------------------------------------- |
- * | ComponentType | The DI graph `Component` type.                                                              |
- * | BuildType     | The type of object created (typically a `Builder`).                                         |
- * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
+ * ``PluginListWithDefault`` has the following generic parameters:
+ * | Name          | Description                                                                                   |
+ * | ------------- | --------------------------------------------------------------------------------------------- |
+ * | ComponentType | The DI graph `Component` type.                                                                |
+ * | BuildType     | The type of object created (typically a `Builder`).                                           |
+ * | StateType     | The type of state to be used as enabled criteria (can be any type, even ``Void`` or a tuple). |
  */
 open class PluginListWithDefault<ComponentType, // swiftlint:disable:this operator_usage_whitespace
                                  BuildType,
@@ -168,7 +168,7 @@ open class PluginListWithDefault<ComponentType, // swiftlint:disable:this operat
     ///
     /// - Important: This abstract method must be overridden in subclasses.
     ///   This method should never be called directly.
-    ///   The `PluginListWithDefault` instance calls this method internally.
+    ///   The ``PluginListWithDefault`` instance calls this method internally.
     ///
     /// - Parameters:
     ///   - component: The `ComponentType` instance.
@@ -210,7 +210,7 @@ extension PluginListWithDefault where StateType == Void {
     /// returns the first non-nil `BuildType` instance, otherwise the default instance
     /// returned from ``default(component:state:)`` is returned.
     ///
-    /// This convenience method has no parameters since `StateType` is `Void`.
+    /// This convenience method has no parameters since `StateType` is ``Void``.
     ///
     /// - Returns: A `BuildType` instance.
     public func create() -> BuildType {

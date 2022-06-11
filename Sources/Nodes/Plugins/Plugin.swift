@@ -6,20 +6,20 @@
 //
 
 /**
- * Nodes’ abstract `Plugin` base class.
+ * Nodes’ abstract ``Plugin`` base class.
  *
- * `Plugin` has the following generic parameters:
- * | Name          | Description                                                                                 |
- * | ------------- | ------------------------------------------------------------------------------------------- |
- * | ComponentType | The DI graph `Component` type.                                                              |
- * | BuildType     | The type of object the `Plugin` instance will create (typically a `Builder`).               |
- * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
+ * ``Plugin`` has the following generic parameters:
+ * | Name          | Description                                                                                   |
+ * | ------------- | --------------------------------------------------------------------------------------------- |
+ * | ComponentType | The DI graph `Component` type.                                                                |
+ * | BuildType     | The type of object the `Plugin` instance will create (typically a `Builder`).                 |
+ * | StateType     | The type of state to be used as enabled criteria (can be any type, even ``Void`` or a tuple). |
  */
 open class Plugin<ComponentType, BuildType, StateType> {
 
     private let component: ComponentType
 
-    /// Initializes a new `Plugin` instance.
+    /// Initializes a new ``Plugin`` instance.
     ///
     /// - Parameter component: The `ComponentType` instance.
     public init(component: ComponentType) {
@@ -75,7 +75,7 @@ extension Plugin where StateType == Void {
 
     /// Initializes and returns a `BuildType` instance when the plugin is enabled, otherwise `nil`.
     ///
-    /// This convenience method has no parameters since `StateType` is `Void`.
+    /// This convenience method has no parameters since `StateType` is ``Void``.
     ///
     /// - Returns: An optional `BuildType` instance.
     public func create() -> BuildType? {

@@ -9,11 +9,15 @@
 
 import UIKit
 
+/**
+ * The interface used for injecting a user interface into a `Flow` instance to limit the available API,
+ * to avoid the use of UI frameworks within the `Flow` instance and to facilitate testing.
+ */
 public protocol ViewControllable: AnyObject {
 
     /// Applies the given ``ModalStyle``.
     ///
-    /// - Parameter modalStyle: The `ModalStyle` to apply.
+    /// - Parameter modalStyle: The ``ModalStyle`` to apply.
     ///
     /// - Returns: The `self` instance with the given ``ModalStyle`` applied.
     @discardableResult
@@ -27,7 +31,7 @@ public protocol ViewControllable: AnyObject {
     ///   - animated: A Boolean value specifying whether presentation is animated.
     ///   - completion: An optional closure to execute when the presentation is finished.
     ///
-    ///     The closure has no arguments and returns `Void`.
+    ///     The closure has no arguments and returns ``Void``.
     func present(
         _ viewController: ViewControllable,
         withModalStyle modalStyle: ModalStyle,
@@ -42,7 +46,7 @@ public protocol ViewControllable: AnyObject {
     ///   - animated: A Boolean value specifying whether dismissal is animated.
     ///   - completion: An optional closure to execute when the dismissal is finished.
     ///
-    ///     The closure has no arguments and returns `Void`.
+    ///     The closure has no arguments and returns ``Void``.
     func dismiss(
         _ viewController: ViewControllable,
         animated: Bool,

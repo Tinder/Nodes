@@ -6,19 +6,19 @@
 //
 
 /**
- * `WorkerController` is used internally (within Nodes' source code) enabling each `Context` instance to manage
+ * ``WorkerController`` is used internally (within Nodes' source code) enabling each `Context` instance to manage
  * a collection of `Worker` instances.
  *
- * > Important: Consider `WorkerController` to be a private type and avoid its use within application code.
+ * > Important: Consider ``WorkerController`` to be a private type and avoid its use within application code.
  */
 public final class WorkerController {
 
-    /// The array of `Worker` instances managed by the `WorkerController`.
+    /// The array of `Worker` instances managed by the ``WorkerController``.
     public private(set) var workers: [Worker] = []
 
-    /// Initializes a new `WorkerController` instance to manage a collection of `Worker` instances.
+    /// Initializes a new ``WorkerController`` instance to manage a collection of `Worker` instances.
     ///
-    /// - Parameter workers: The array of `Worker` instances to be managed by the `WorkerController`.
+    /// - Parameter workers: The array of `Worker` instances to be managed by the ``WorkerController``.
     public init(workers: [Worker]) {
         self.workers = workers
     }
@@ -54,7 +54,7 @@ public final class WorkerController {
     ///     | ------ | ---------------------------------- |
     ///     | worker | The `Worker` instance of type `T`. |
     ///
-    ///     The closure returns `Void` and throws.
+    ///     The closure returns ``Void`` and throws.
     public func withFirstWorker<T>(ofType type: T.Type, perform: (_ worker: T) throws -> Void) rethrows {
         guard let worker: T = firstWorker(ofType: type)
         else { return }
@@ -82,7 +82,7 @@ public final class WorkerController {
     ///     | ------ | ---------------------------------- |
     ///     | worker | The `Worker` instance of type `T`. |
     ///
-    ///     The closure returns `Void` and throws.
+    ///     The closure returns ``Void`` and throws.
     public func withWorkers<T>(ofType type: T.Type, perform: (_ worker: T) throws -> Void) rethrows {
         try workers(ofType: type).forEach(perform)
     }

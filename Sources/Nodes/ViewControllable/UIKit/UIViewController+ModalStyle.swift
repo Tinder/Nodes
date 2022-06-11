@@ -10,43 +10,43 @@
 import UIKit
 
 /**
- * Nodes' default modal presentation styles.
+ * Nodes' convenience modal presentation styles for [UIKit](https://developer.apple.com/documentation/uikit).
  */
 public struct ModalStyle: Equatable {
 
-    /// The behavior of the modal style.
+    /// The ``ModalStyle`` behavior.
     public enum Behavior: Equatable {
 
-        /// The ModalStyle.Behavior which maps to UIModalPresentationStyle.fullScreen.
+        /// The ``UIModalPresentationStyle.fullScreen`` behavior.
         case cover
 
-        /// The ModalStyle.Behavior which maps to UIModalPresentationStyle.overFullScreen.
+        /// The ``UIModalPresentationStyle.overFullScreen`` behavior.
         case overlay
 
         @available(tvOS, unavailable)
-        /// The ModalStyle.Behavior which maps to UIModalPresentationStyle.pageSheet.
+        /// The ``UIModalPresentationStyle.pageSheet`` behavior.
         case page
 
         @available(tvOS, unavailable)
-        /// The ModalStyle.Behavior which maps to UIModalPresentationStyle.formSheet.
+        /// The ``UIModalPresentationStyle.formSheet`` behavior.
         case form
 
-        /// The ModalStyle.Behavior which maps to UIModalPresentationStyle.custom.
+        /// The `custom` ``UIModalPresentationStyle`` behavior.
         case custom
     }
 
     @available(tvOS, unavailable)
-    /// The sheet style used to specify the behavior of the modal style.
+    /// The sheet style used to specify the ``ModalStyle`` behavior.
     public enum SheetStyle: Equatable {
 
-        /// The ModalStyle.SheetStyle which maps to UIModalPresentationStyle.pageSheet.
+        /// The ``UIModalPresentationStyle.pageSheet`` behavior.
         case page
 
-        /// The ModalStyle.SheetStyle which maps to UIModalPresentationStyle.formSheet.
+        /// The ``UIModalPresentationStyle.formSheet`` behavior.
         case form
     }
 
-    /// The behavior of the modal style.
+    /// The ``ModalStyle`` behavior.
     public let behavior: Behavior
 
     /// Specifies whether control of status bar appearance is enabled.
@@ -74,8 +74,8 @@ public struct ModalStyle: Equatable {
     /// Returns a Boolean value indicating whether two ``ModalStyle`` instances are equal.
     ///
     /// - Parameters:
-    ///   - lhs: The ModalStyle instance to compare.
-    ///   - rhs: The ModalStyle instance to compare.
+    ///   - lhs: The ``ModalStyle`` instance to compare.
+    ///   - rhs: The ``ModalStyle`` instance to compare.
     ///
     /// - Returns: Whether the behavior of `lhs` is equal to the behavior of `rhs`.
     public static func == (lhs: ModalStyle, rhs: ModalStyle) -> Bool {
@@ -179,7 +179,7 @@ extension UIViewController {
 
     /// Applies the given ``ModalStyle``.
     ///
-    /// - Parameter modalStyle: The `ModalStyle` to apply.
+    /// - Parameter modalStyle: The ``ModalStyle`` to apply.
     ///
     /// - Returns: The `self` instance with the given ``ModalStyle`` applied.
     @discardableResult

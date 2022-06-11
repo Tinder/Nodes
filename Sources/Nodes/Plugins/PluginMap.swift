@@ -6,19 +6,19 @@
 //
 
 /**
- * Nodes’ abstract `PluginMap` base class.
+ * Nodes’ abstract ``PluginMap`` base class.
  *
- * `PluginMap` has the following generic parameters:
- * | Name          | Description                                                                                 |
- * | ------------- | ------------------------------------------------------------------------------------------- |
- * | ComponentType | The DI graph `Component` type.                                                              |
- * | BuildType     | The type of object created (typically a `Builder`).                                         |
- * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
+ * ``PluginMap`` has the following generic parameters:
+ * | Name          | Description                                                                                   |
+ * | ------------- | --------------------------------------------------------------------------------------------- |
+ * | ComponentType | The DI graph `Component` type.                                                                |
+ * | BuildType     | The type of object created (typically a `Builder`).                                           |
+ * | StateType     | The type of state to be used as enabled criteria (can be any type, even ``Void`` or a tuple). |
  */
 open class PluginMap<KeyType: Hashable, ComponentType, BuildType, StateType> {
 
     /**
-     * A type-erased `Plugin` type used by the `PluginMap` instance when defining a collection of generic plugins.
+     * A type-erased `Plugin` type used by the ``PluginMap`` instance when defining a collection of generic plugins.
      */
     public final class Plugin {
 
@@ -50,7 +50,7 @@ open class PluginMap<KeyType: Hashable, ComponentType, BuildType, StateType> {
         /// Calls the stored factory closure.
         ///
         /// - Important: This method should never be called directly.
-        ///   The `PluginMap` instance calls this method internally.
+        ///   The ``PluginMap`` instance calls this method internally.
         ///
         /// - Parameter state: The `StateType` instance.
         ///
@@ -63,7 +63,7 @@ open class PluginMap<KeyType: Hashable, ComponentType, BuildType, StateType> {
     // swiftlint:disable:next strict_fileprivate
     fileprivate let component: ComponentType
 
-    /// Initializes a new `PluginMap` instance.
+    /// Initializes a new ``PluginMap`` instance.
     ///
     /// - Parameter component: The `ComponentType` instance.
     public init(component: ComponentType) {
@@ -74,7 +74,7 @@ open class PluginMap<KeyType: Hashable, ComponentType, BuildType, StateType> {
     ///
     /// - Important: This abstract method must be overridden in subclasses.
     ///   This method should never be called directly.
-    ///   The `PluginMap` instance calls this method internally.
+    ///   The ``PluginMap`` instance calls this method internally.
     ///
     /// - Parameter component: The `ComponentType` instance.
     ///
@@ -92,8 +92,8 @@ open class PluginMap<KeyType: Hashable, ComponentType, BuildType, StateType> {
         plugins(component: component).compactMap { $0.value.create(state: state) }
     }
 
-    /// Calls `create` on the plugin in the dictionary for the given `key`
-    /// and returns the resulting optional `BuildType` instance, or `nil` when the `key` is not in the dictionary.
+    /// Calls `create` on the plugin in the dictionary for the given `key` and returns the resulting optional
+    /// `BuildType` instance, or `nil` when the `key` is not in the dictionary.
     ///
     /// - Parameters:
     ///   - key: The `KeyType` instance.
@@ -127,7 +127,7 @@ extension PluginMap where StateType == Void {
 
     /// Calls `create` on all plugins and returns the resulting non-nil `BuildType` instances.
     ///
-    /// This convenience method has no parameters since `StateType` is `Void`.
+    /// This convenience method has no parameters since `StateType` is ``Void``.
     ///
     /// - Returns: An array of `BuildType` instances.
     public func createAll() -> [BuildType] {
@@ -137,7 +137,7 @@ extension PluginMap where StateType == Void {
     /// Calls `create` on the plugin in the dictionary for the given `key`
     /// and returns the resulting optional `BuildType` instance, or `nil` when the `key` is not in the dictionary.
     ///
-    /// This convenience method has only a `key` parameter since `StateType` is `Void`.
+    /// This convenience method has only a `key` parameter since `StateType` is ``Void``.
     ///
     /// - Parameter key: The `KeyType` instance.
     ///
@@ -148,17 +148,17 @@ extension PluginMap where StateType == Void {
 }
 
 /**
- * Nodes’ abstract `PluginMapWithDefault` base class.
+ * Nodes’ abstract ``PluginMapWithDefault`` base class.
  *
  * A default instance is prepended to the collection of `BuildType` instances.
  *
- * `PluginMapWithDefault` has the following generic parameters:
- * | Name          | Description                                                                                 |
- * | ------------- | ------------------------------------------------------------------------------------------- |
- * | KeyType       | The `Hashable` type for the dictionary keys (typically `String`).                           |
- * | ComponentType | The DI graph `Component` type.                                                              |
- * | BuildType     | The type of object created (typically a `Builder`).                                         |
- * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
+ * ``PluginMapWithDefault`` has the following generic parameters:
+ * | Name          | Description                                                                                   |
+ * | ------------- | --------------------------------------------------------------------------------------------- |
+ * | KeyType       | The ``Hashable`` type for the dictionary keys (typically ``String``).                         |
+ * | ComponentType | The DI graph `Component` type.                                                                |
+ * | BuildType     | The type of object created (typically a `Builder`).                                           |
+ * | StateType     | The type of state to be used as enabled criteria (can be any type, even ``Void`` or a tuple). |
  */
 open class PluginMapWithDefault<KeyType: Hashable, // swiftlint:disable:this operator_usage_whitespace
                                 ComponentType,
@@ -169,7 +169,7 @@ open class PluginMapWithDefault<KeyType: Hashable, // swiftlint:disable:this ope
     ///
     /// - Important: This abstract method must be overridden in subclasses.
     ///   This method should never be called directly.
-    ///   The `PluginListWithDefault` instance calls this method internally.
+    ///   The ``PluginListWithDefault`` instance calls this method internally.
     ///
     /// - Parameters:
     ///   - component: The `ComponentType` instance.
@@ -215,7 +215,7 @@ extension PluginMapWithDefault where StateType == Void {
     /// or the `create` method returns `nil`, the default instance returned from ``default(component:state:)``
     /// is returned.
     ///
-    /// This convenience method has only a `key` parameter since `StateType` is `Void`.
+    /// This convenience method has only a `key` parameter since `StateType` is ``Void``.
     ///
     /// - Parameters:
     ///   - key: The `KeyType` instance.

@@ -47,10 +47,10 @@ public struct WithViewState<ViewState: InitialStateProviding, Content: View>: Vi
 
     @State(initialValue: .initialState) private var viewState: ViewState
 
-    /// Initializes a `WithViewState` view with the given view state `publisher` and `content`.
+    /// Initializes a ``WithViewState`` view with the given view state `publisher` and `content`.
     ///
     /// - Parameters:
-    ///     - publisher: The view state `Publisher` instance to observe.
+    ///     - publisher: The view state ``Publisher`` instance to observe.
     ///     - content: A view builder that creates the content of this view.
     public init<P: Publisher>(
         _ publisher: P,

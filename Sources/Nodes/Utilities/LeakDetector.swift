@@ -12,16 +12,17 @@ import UIKit
 #endif
 
 /**
- * `LeakDetector` is used internally (within Nodes' source code) to detect leaks of a Node's objects when the
+ * ``LeakDetector`` is used internally (within Nodes' source code) to detect leaks of a Node's objects when the
  * Node is detached.
  *
  * Leak detection is typically scheduled for an instance's stored properties within `deinit`. Detection is
- * delayed `1` second to allow time for the objects to be released (`5` seconds for `UIViewController`
- * instances to allow additional time for animated dismissal).
+ * delayed `1` second to allow time for the objects to be released (`5` seconds for
+ * [UIViewController](https://developer.apple.com/documentation/uikit/uiviewcontroller) instances to allow
+ * additional time for animated dismissal).
  *
  * > Important: Leak detection only occurs in `DEBUG` builds.
  *
- * > Tip: `LeakDetector` may be used within application code to detect leaks of custom objects.
+ * > Tip: ``LeakDetector`` may be used within application code to detect leaks of custom objects.
  */
 public enum LeakDetector {
 

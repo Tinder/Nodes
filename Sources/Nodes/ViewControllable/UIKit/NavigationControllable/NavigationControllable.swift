@@ -9,6 +9,11 @@
 
 import UIKit
 
+/**
+ * A protocol that inherits from ``ViewControllable`` used for injecting a navigation user interface into
+ * a `Flow` instance to limit the available API, to avoid the use of UI frameworks within the `Flow`
+ * instance and to facilitate testing.
+ */
 public protocol NavigationControllable: ViewControllable {
 
     /// An array of the ``ViewControllable`` instances on the navigation stack.
