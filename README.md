@@ -14,6 +14,15 @@ We also want you to know that the Nodes Architecture Framework leverages some co
 
 We ❤️ building mobile applications with Nodes and we hope you ~~will~~ do to.
 
+## Documentation
+
+To build Nodes' [DocC](https://developer.apple.com/documentation/docc) documentation and open it in Xcode's documentation window:
+
+```
+$ git clone git@github.com:TinderApp/Nodes.git && cd Nodes
+$ make docs
+```
+
 ## Quick Start
 
 Following these steps will create a new iOS Xcode project set up with Nodes, Needle and Mockolo.
