@@ -34,7 +34,7 @@ public final class FlowController {
     ///     | -------------- | ------------------------------ |
     ///     | flowController | The ``FlowController`` instance. |
     ///
-    ///     The closure returns ``Void``.
+    ///     The closure returns `Void`.
     public func withoutFlowLeakDetection(withoutFlowLeakDetection: (FlowController) -> Void) {
         isFlowLeakDetectionEnabled = false
         withoutFlowLeakDetection(self)
@@ -147,7 +147,7 @@ public final class FlowController {
     ///     | ---- | -------------------------------- |
     ///     | flow | The `Flow` instance of type `T`. |
     ///
-    ///     The closure returns ``Void`` and throws.
+    ///     The closure returns `Void` and throws.
     public func withFirstFlow<T>(ofType type: T.Type, perform: (_ flow: T) throws -> Void) rethrows {
         guard let flow: T = firstFlow(ofType: type)
         else { return }
@@ -175,7 +175,7 @@ public final class FlowController {
     ///     | ---- | -------------------------------- |
     ///     | flow | The `Flow` instance of type `T`. |
     ///
-    ///     The closure returns ``Void`` and throws.
+    ///     The closure returns `Void` and throws.
     public func withFlows<T>(ofType type: T.Type, perform: (_ flow: T) throws -> Void) rethrows {
         try flows(ofType: type).forEach(perform)
     }

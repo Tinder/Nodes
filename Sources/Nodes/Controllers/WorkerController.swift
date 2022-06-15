@@ -54,7 +54,7 @@ public final class WorkerController {
     ///     | ------ | ---------------------------------- |
     ///     | worker | The `Worker` instance of type `T`. |
     ///
-    ///     The closure returns ``Void`` and throws.
+    ///     The closure returns `Void` and throws.
     public func withFirstWorker<T>(ofType type: T.Type, perform: (_ worker: T) throws -> Void) rethrows {
         guard let worker: T = firstWorker(ofType: type)
         else { return }
@@ -82,7 +82,7 @@ public final class WorkerController {
     ///     | ------ | ---------------------------------- |
     ///     | worker | The `Worker` instance of type `T`. |
     ///
-    ///     The closure returns ``Void`` and throws.
+    ///     The closure returns `Void` and throws.
     public func withWorkers<T>(ofType type: T.Type, perform: (_ worker: T) throws -> Void) rethrows {
         try workers(ofType: type).forEach(perform)
     }

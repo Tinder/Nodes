@@ -9,11 +9,11 @@
  * Nodes’ abstract ``PluginList`` base class.
  *
  * ``PluginList`` has the following generic parameters:
- * | Name          | Description                                                                                   |
- * | ------------- | --------------------------------------------------------------------------------------------- |
- * | ComponentType | The DI graph `Component` type.                                                                |
- * | BuildType     | The type of object created (typically a `Builder`).                                           |
- * | StateType     | The type of state to be used as enabled criteria (can be any type, even ``Void`` or a tuple). |
+ * | Name          | Description                                                                                 |
+ * | ------------- | ------------------------------------------------------------------------------------------- |
+ * | ComponentType | The DI graph `Component` type.                                                              |
+ * | BuildType     | The type of object created (typically a `Builder`).                                         |
+ * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
  */
 open class PluginList<ComponentType, BuildType, StateType> {
 
@@ -130,7 +130,7 @@ extension PluginList where StateType == Void {
 
     /// Calls `create` on all plugins and returns the resulting non-nil `BuildType` instances.
     ///
-    /// This convenience method has no parameters since `StateType` is ``Void``.
+    /// This convenience method has no parameters since `StateType` is `Void`.
     ///
     /// - Returns: An array of `BuildType` instances.
     public func createAll() -> [BuildType] {
@@ -140,7 +140,7 @@ extension PluginList where StateType == Void {
     /// Calls `create` on each plugin in the plugins collection (in reverse order)
     /// and returns the first non-nil `BuildType` instance.
     ///
-    /// This convenience method has no parameters since `StateType` is ``Void``.
+    /// This convenience method has no parameters since `StateType` is `Void`.
     ///
     /// - Returns: An optional `BuildType` instance.
     public func create() -> BuildType? {
@@ -154,11 +154,11 @@ extension PluginList where StateType == Void {
  * A default instance is prepended to the collection of `BuildType` instances.
  *
  * ``PluginListWithDefault`` has the following generic parameters:
- * | Name          | Description                                                                                   |
- * | ------------- | --------------------------------------------------------------------------------------------- |
- * | ComponentType | The DI graph `Component` type.                                                                |
- * | BuildType     | The type of object created (typically a `Builder`).                                           |
- * | StateType     | The type of state to be used as enabled criteria (can be any type, even ``Void`` or a tuple). |
+ * | Name          | Description                                                                                 |
+ * | ------------- | ------------------------------------------------------------------------------------------- |
+ * | ComponentType | The DI graph `Component` type.                                                              |
+ * | BuildType     | The type of object created (typically a `Builder`).                                         |
+ * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
  */
 open class PluginListWithDefault<ComponentType, // swiftlint:disable:this operator_usage_whitespace
                                  BuildType,
@@ -210,7 +210,7 @@ extension PluginListWithDefault where StateType == Void {
     /// returns the first non-nil `BuildType` instance, otherwise the default instance
     /// returned from ``default(component:state:)`` is returned.
     ///
-    /// This convenience method has no parameters since `StateType` is ``Void``.
+    /// This convenience method has no parameters since `StateType` is `Void`.
     ///
     /// - Returns: A `BuildType` instance.
     public func create() -> BuildType {

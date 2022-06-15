@@ -147,7 +147,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     ///     | ------ | ---------------------------------- |
     ///     | worker | The `Worker` instance of type `T`. |
     ///
-    ///     The closure returns ``Void`` and throws.
+    ///     The closure returns `Void` and throws.
     public final func withFirstWorker<T>(ofType type: T.Type, perform: (_ worker: T) throws -> Void) rethrows {
         try workerController.withFirstWorker(ofType: type, perform: perform)
     }
@@ -173,7 +173,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     ///   | ------ | ---------------------------------- |
     ///   | worker | The `Worker` instance of type `T`. |
     ///
-    ///   The closure returns ``Void`` and throws.
+    ///   The closure returns `Void` and throws.
     public final func withWorkers<T>(ofType type: T.Type, perform: (_ worker: T) throws -> Void) rethrows {
         try workerController.withWorkers(ofType: type, perform: perform)
     }

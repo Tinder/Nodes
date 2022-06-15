@@ -19,7 +19,7 @@ extension UIViewController: ViewControllable {
     ///   - animated: A Boolean value specifying whether presentation is animated.
     ///   - completion: An optional closure to execute when the presentation is finished.
     ///
-    ///     The closure has no arguments and returns ``Void``.
+    ///     The closure has no arguments and returns `Void`.
     public func present(
         _ viewController: ViewControllable,
         withModalStyle modalStyle: ModalStyle,
@@ -37,7 +37,7 @@ extension UIViewController: ViewControllable {
     ///   - animated: A Boolean value specifying whether dismissal is animated.
     ///   - completion: An optional closure to execute when the dismissal is finished.
     ///
-    ///     The closure has no arguments and returns ``Void``.
+    ///     The closure has no arguments and returns `Void`.
     public func dismiss(
         _ viewController: ViewControllable,
         animated: Bool,

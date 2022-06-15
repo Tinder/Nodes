@@ -212,7 +212,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///     | ---- | -------------------------------- |
     ///     | flow | The `Flow` instance of type `T`. |
     ///
-    ///     The closure returns ``Void`` and throws.
+    ///     The closure returns `Void` and throws.
     public final func withFirstSubFlow<T>(ofType type: T.Type, perform: (_ flow: T) throws -> Void) rethrows {
         try flowController.withFirstFlow(ofType: T.self, perform: perform)
     }
@@ -238,7 +238,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///     | ---- | -------------------------------- |
     ///     | flow | The `Flow` instance of type `T`. |
     ///
-    ///     The closure returns ``Void`` and throws.
+    ///     The closure returns `Void` and throws.
     public final func withSubFlows<T>(ofType type: T.Type, perform: (_ flow: T) throws -> Void) rethrows {
         try flowController.withFlows(ofType: T.self, perform: perform)
     }
