@@ -143,7 +143,7 @@ public final class FlowController {
     ///   - perform: The closure to execute.
     ///
     ///     The closure has the following arguments:
-    ///     | Name | Description           g           |
+    ///     | Name | Description                      |
     ///     | ---- | -------------------------------- |
     ///     | flow | The `Flow` instance of type `T`. |
     ///
