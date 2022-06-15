@@ -11,12 +11,12 @@
  * > Note: This abstract class should never be instantiated directly and must therefore always be subclassed.
  *
  * ``AbstractBuilder`` has the following generic parameters:
- * | Name                           | Description                                                                    |
- * | ------------------------------ | ------------------------------------------------------------------------------ |
- * | ComponentType                  | The DI graph `Component` type.                                                 |
- * | BuildType                      | The type of `Flow` object the ``AbstractBuilder`` instance will create.        |
- * | DynamicBuildDependencyType     | The type of dependency provided dynamically to the `BuildType` instance.       |
- * | DynamicComponentDependencyType | The type of dependency provided dynamically to the `ComponentType` instance.   |
+ * | Name                           | Description                                                                  |
+ * | ------------------------------ | ---------------------------------------------------------------------------- |
+ * | ComponentType                  | The DI graph `Component` type.                                               |
+ * | BuildType                      | The type of `Flow` object the ``AbstractBuilder`` instance will create.      |
+ * | DynamicBuildDependencyType     | The type of dependency provided dynamically to the `BuildType` instance.     |
+ * | DynamicComponentDependencyType | The type of dependency provided dynamically to the `ComponentType` instance. |
  */
 open class AbstractBuilder<ComponentType, // swiftlint:disable:this operator_usage_whitespace
                            BuildType,
