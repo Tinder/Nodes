@@ -70,7 +70,7 @@ A Node's `Context` instance acts as an interactor and is responsible for handlin
 
 To avoid bloating the `Context` instance, data transformations and other business logic can exist in the Node's `Worker` instances, and the `Context` may call methods on those `Worker` instances as needed.
 
-The `Context` may participate in keeping the Node's user interface (through a `Presentable` protocol) in sync with the current app state, though the Node's view state dedicated `Worker` normally handles this responsibility.
+The `Context` may participate in keeping the Node's user interface (through a `Presentable` protocol) in sync with the current app state, though the Node's view state `Worker` normally handles this responsibility.
 
 The `Context` can (as desired) delegate data requests, event handling and user interactions to the Node's listener which, in almost every situation, is the `Context` of the parent Node.
 
@@ -97,7 +97,7 @@ The ``ViewControllable`` instance is injected into the Node's `Context` as well,
 
 This means the same exact instance is accessed through a ``ViewControllable`` protocol from within the `Flow` instance (for presentation) and through a `Presentable` protocol from within the `Context` instance (for updating the UI).
 
-Note that although the `Context` may participate in keeping a Node's user interface in sync with the current app state, the Node's view state dedicated `Worker` normally handles this responsibility.
+Note that although the `Context` may participate in keeping a Node's user interface in sync with the current app state, the Node's view state `Worker` normally handles this responsibility.
 
 - ``ViewControllable``
 - ``ViewControllableFlow``
