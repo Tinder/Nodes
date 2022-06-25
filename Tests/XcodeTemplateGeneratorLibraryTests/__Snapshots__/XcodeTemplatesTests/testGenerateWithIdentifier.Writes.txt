@@ -1,4 +1,4 @@
-▿ 44 elements
+▿ 42 elements
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___Analytics.swift"
     - .1: true
@@ -106,12 +106,6 @@
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/TemplateInfo.plist"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin Map (for Node).xctemplate/___FILEBASENAME___PluginMap.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin Map (for Node).xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/___FILEBASENAME___Plugin.swift"

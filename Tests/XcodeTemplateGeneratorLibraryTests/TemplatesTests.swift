@@ -41,11 +41,6 @@ final class TemplatesTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
-    func testPluginMapNodeTemplate() {
-        assertSnapshot(matching: PluginMapNodeTemplate(config: givenConfig()),
-                       as: .dump)
-    }
-
     func testPluginNodeTemplate() {
         assertSnapshot(matching: PluginNodeTemplate(config: givenConfig()),
                        as: .dump)

@@ -163,15 +163,6 @@ extension TestFactories {
         )
     }
 
-    func givenPluginMapContext() -> PluginMapContext {
-        PluginMapContext(
-            fileHeader: "<fileHeader>",
-            pluginMapName: "<pluginMapName>",
-            pluginMapImports: ["<pluginMapImports>"],
-            viewControllableFlowType: "<viewControllableFlowType>"
-        )
-    }
-
     func givenWorkerContext() -> WorkerContext {
         WorkerContext(
             fileHeader: "<fileHeader>",

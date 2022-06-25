@@ -28,8 +28,7 @@ final class AbstractBuilderTests: XCTestCase {
     }
 
     func testAssertions() {
-        let component: ComponentType = .init()
-        let builder: AbstractBuilder<ComponentType, BuildType, Void, Void> = .init { component }
+        let builder: AbstractBuilder<ComponentType, BuildType, Void, Void> = .init { ComponentType() }
         expect(builder.build()).to(throwAssertion()) // precondition failure for non-overridden method
         expect(builder.build()).to(throwAssertion()) // assertion failure for re-used component instance
     }

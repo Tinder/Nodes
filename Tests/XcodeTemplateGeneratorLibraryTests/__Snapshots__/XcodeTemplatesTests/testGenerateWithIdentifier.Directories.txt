@@ -1,4 +1,4 @@
-▿ 10 elements
+▿ 9 elements
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node.xctemplate"
     - createIntermediates: true
@@ -16,9 +16,6 @@
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate"
-    - createIntermediates: true
-  ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin Map (for Node).xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate"

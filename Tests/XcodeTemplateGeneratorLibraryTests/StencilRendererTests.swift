@@ -208,12 +208,6 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                        as: .lines)
     }
 
-    func testRenderPluginMap() throws {
-        let context: PluginMapContext = givenPluginMapContext()
-        assertSnapshot(matching: try StencilRenderer().renderPluginMap(context: context),
-                       as: .lines)
-    }
-
     func testRenderWorker() throws {
         let context: WorkerContext = givenWorkerContext()
         assertSnapshot(matching: try StencilRenderer().renderWorker(context: context),

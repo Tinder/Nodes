@@ -57,7 +57,7 @@ internal final class ___VARIABLE_productName___PluginComponent: Component
 
 /**
  PURPOSE:
- To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the plugin).
+ To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the Plugin).
  */
 internal typealias ___VARIABLE_productName___PluginStateType = Void
 

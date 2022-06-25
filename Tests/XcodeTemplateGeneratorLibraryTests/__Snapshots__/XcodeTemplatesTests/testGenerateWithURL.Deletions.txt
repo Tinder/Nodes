@@ -1,11 +1,10 @@
-▿ 10 elements
+▿ 9 elements
   - "/Node.xctemplate"
   - "/ Node.xctemplate"
   - "/Node (without view state).xctemplate"
   - "/ Node (without view state).xctemplate"
   - "/Node (view injected).xctemplate"
   - "/Plugin List (for Node).xctemplate"
-  - "/Plugin Map (for Node).xctemplate"
   - "/Plugin (for Node).xctemplate"
   - "/Plugin.xctemplate"
   - "/Worker.xctemplate"

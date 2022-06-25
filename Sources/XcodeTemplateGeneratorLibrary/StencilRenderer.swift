@@ -74,10 +74,6 @@ public final class StencilRenderer {
         try render("PluginList", of: "Plugin", with: context.dictionary)
     }
 
-    public func renderPluginMap(context: PluginMapContext) throws -> String {
-        try render("PluginMap", of: "Plugin", with: context.dictionary)
-    }
-
     public func renderWorker(context: WorkerContext) throws -> String {
         try render("Worker", of: "Node", with: context.dictionary)
     }

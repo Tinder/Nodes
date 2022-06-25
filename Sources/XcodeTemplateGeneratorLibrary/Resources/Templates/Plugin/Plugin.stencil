@@ -59,7 +59,7 @@ internal final class {{ plugin_name }}PluginComponent: Component
 
 /**
  PURPOSE:
- To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the plugin).
+ To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the Plugin).
  */
 internal typealias {{ plugin_name }}PluginStateType = Void
 

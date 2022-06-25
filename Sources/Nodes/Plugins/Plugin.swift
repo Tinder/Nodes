@@ -17,13 +17,18 @@
  */
 open class Plugin<ComponentType, BuildType, StateType> {
 
-    private let component: ComponentType
+    private let componentFactory: () -> ComponentType
+
+    private weak var lastComponent: AnyObject?
 
     /// Initializes a new ``Plugin`` instance.
     ///
-    /// - Parameter component: The `ComponentType` instance.
-    public init(component: ComponentType) {
-        self.component = component
+    /// - Parameters:
+    ///   - componentFactory: The `ComponentType` factory closure.
+    ///
+    ///     The closure is an escaping closure that has no arguments and returns a `ComponentType` instance.
+    public init(componentFactory: @escaping () -> ComponentType) {
+        self.componentFactory = componentFactory
     }
 
     /// Contains the plugin's enabled criteria.
@@ -65,9 +70,20 @@ open class Plugin<ComponentType, BuildType, StateType> {
     ///
     /// - Returns: An optional `BuildType` instance.
     public func create(state: StateType) -> BuildType? {
+        let component: ComponentType = makeComponent()
         guard isEnabled(component: component, state: state)
         else { return nil }
         return build(component: component)
+    }
+
+    // MARK: - Access Control: private
+
+    private func makeComponent() -> ComponentType {
+        let component: ComponentType = componentFactory()
+        let newComponent: AnyObject = component as AnyObject
+        assert(newComponent !== lastComponent, "Factory must produce a new component each time it is called")
+        lastComponent = newComponent
+        return component
     }
 }
 

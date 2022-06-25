@@ -31,9 +31,6 @@ public final class XcodeTemplates {
         if config.includedTemplates.contains("PluginListNode") {
             templates.append(PluginListNodeTemplate(config: config))
         }
-        if config.includedTemplates.contains("PluginMapNode") {
-            templates.append(PluginMapNodeTemplate(config: config))
-        }
         if config.includedTemplates.contains("PluginNode") {
             templates.append(PluginNodeTemplate(config: config))
         }

@@ -29,19 +29,8 @@ final class PluginTests: XCTestCase, TestCaseHelpers {
         }
     }
 
-    private var component: ComponentType!
-
-    override func setUp() {
-        super.setUp()
-        tearDown(keyPath: \.component, initialValue: ComponentType())
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-
     func testCreate() {
-        let plugin: TestPlugin = .init(component: component)
+        let plugin: TestPlugin = .init { ComponentType() }
         expect(plugin).to(notBeNilAndToDeallocateAfterTest())
         expect(plugin.create()).to(beNil())
         plugin.isEnabledOverride = true
@@ -50,7 +39,7 @@ final class PluginTests: XCTestCase, TestCaseHelpers {
 
     func testAssertions() {
         let component: ComponentType = .init()
-        let plugin: Plugin<ComponentType, BuildType, Void> = .init(component: component)
+        let plugin: Plugin<ComponentType, BuildType, Void> = .init { component }
         expect(plugin.isEnabled(component: component, state: ())).to(throwAssertion())
         expect(plugin.build(component: component)).to(throwAssertion())
     }

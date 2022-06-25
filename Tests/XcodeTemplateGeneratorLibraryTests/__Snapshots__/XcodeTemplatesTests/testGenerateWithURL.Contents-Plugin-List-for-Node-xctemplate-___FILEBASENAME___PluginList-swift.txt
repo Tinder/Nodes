@@ -77,7 +77,13 @@ internal final class ___VARIABLE_productName___PluginListComponent: Component
 
 /**
  PURPOSE:
- To provide additional state used in determining if the Plugins are enabled (can be any type relevant to the plugins).
+ The type used for the keys of the Plugin List (can be any `Hashable` type such as `String` or an enumeration).
+ */
+internal typealias ___VARIABLE_productName___PluginListKeyType = String
+
+/**
+ PURPOSE:
+ To provide additional state used in determining if the plugins are enabled (can be any type relevant to the plugins).
  */
 internal typealias ___VARIABLE_productName___PluginListStateType = Void
 
@@ -88,10 +94,12 @@ internal typealias ___VARIABLE_productName___PluginListStateType = Void
 internal protocol ___VARIABLE_productName___PluginList {
     func createAll() -> [___VARIABLE_productName___Builder]
     func create() -> ___VARIABLE_productName___Builder?
+    func create(key: ___VARIABLE_productName___PluginListKeyType) -> ___VARIABLE_productName___Builder?
 }
 
 internal typealias ___VARIABLE_productName___PluginListType = PluginList
     <
+    ___VARIABLE_productName___PluginListKeyType,
     ___VARIABLE_productName___PluginListComponent,
     ___VARIABLE_productName___Builder,
     ___VARIABLE_productName___PluginListStateType
@@ -99,20 +107,29 @@ internal typealias ___VARIABLE_productName___PluginListType = PluginList
 
 /**
  PURPOSE:
- Concrete implementation of the Plugin List to construct the Plugin collection.
+ Concrete implementation of the Plugin List providing the Plugin collection and (optionally) the creation order.
  */
 internal final class ___VARIABLE_productName___PluginListImp:
     ___VARIABLE_productName___PluginListType, ___VARIABLE_productName___PluginList {
 
-    /// The method in which the plugins are wrapped by type erased `Plugin` instances.
+    /// The method in which the plugins are paired with keys and wrapped in type erased `AnyPlugin` instances.
     /// - Parameter component: The component instance
-    /// - Returns: The plugins array
+    /// - Returns: The plugin collection
     override internal func plugins(
         component: ___VARIABLE_productName___PluginListComponent
-    ) -> [Plugin] {
-        [] // Example:
+    ) -> KeyValuePairs<___VARIABLE_productName___PluginListKeyType, AnyPlugin> {
+        [:] // Example:
 //        [
-//            Plugin(ExamplePluginImp(component: component.examplePluginComponentFactory()).create())
+//            "example": AnyPlugin(ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create())
 //        ]
+    }
+
+    /// The method in which a custom creation order may (optionally) be defined.
+    /// - Parameter component: The component instance
+    /// - Returns: The keys defining the plugin creation order.
+    override internal func creationOrder(
+        component: ___VARIABLE_productName___PluginListComponent
+    ) -> [___VARIABLE_productName___PluginListKeyType] {
+        super.creationOrder(component: component)
     }
 }

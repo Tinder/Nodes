@@ -47,11 +47,6 @@ final class ContextsTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
-    func testPluginMapContext() {
-        assertSnapshot(matching: givenPluginMapContext().dictionary,
-                       as: .dump)
-    }
-
     func testWorkerContext() {
         assertSnapshot(matching: givenWorkerContext().dictionary,
                        as: .dump)

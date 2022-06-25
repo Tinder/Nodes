@@ -75,7 +75,13 @@ internal final class {{ plugin_list_name }}PluginListComponent: Component
 
 /**
  PURPOSE:
- To provide additional state used in determining if the Plugins are enabled (can be any type relevant to the plugins).
+ The type used for the keys of the Plugin List (can be any `Hashable` type such as `String` or an enumeration).
+ */
+internal typealias {{ plugin_list_name }}PluginListKeyType = String
+
+/**
+ PURPOSE:
+ To provide additional state used in determining if the plugins are enabled (can be any type relevant to the plugins).
  */
 internal typealias {{ plugin_list_name }}PluginListStateType = Void
 
@@ -86,10 +92,12 @@ internal typealias {{ plugin_list_name }}PluginListStateType = Void
 internal protocol {{ plugin_list_name }}PluginList {
     func createAll() -> [{{ plugin_list_name }}Builder]
     func create() -> {{ plugin_list_name }}Builder?
+    func create(key: {{ plugin_list_name }}PluginListKeyType) -> {{ plugin_list_name }}Builder?
 }
 
 internal typealias {{ plugin_list_name }}PluginListType = PluginList
     <
+    {{ plugin_list_name }}PluginListKeyType,
     {{ plugin_list_name }}PluginListComponent,
     {{ plugin_list_name }}Builder,
     {{ plugin_list_name }}PluginListStateType
@@ -97,20 +105,29 @@ internal typealias {{ plugin_list_name }}PluginListType = PluginList
 
 /**
  PURPOSE:
- Concrete implementation of the Plugin List to construct the Plugin collection.
+ Concrete implementation of the Plugin List providing the Plugin collection and (optionally) the creation order.
  */
 internal final class {{ plugin_list_name }}PluginListImp:
     {{ plugin_list_name }}PluginListType, {{ plugin_list_name }}PluginList {
 
-    /// The method in which the plugins are wrapped by type erased `Plugin` instances.
+    /// The method in which the plugins are paired with keys and wrapped in type erased `AnyPlugin` instances.
     /// - Parameter component: The component instance
-    /// - Returns: The plugins array
+    /// - Returns: The plugin collection
     override internal func plugins(
         component: {{ plugin_list_name }}PluginListComponent
-    ) -> [Plugin] {
-        [] // Example:
+    ) -> KeyValuePairs<{{ plugin_list_name }}PluginListKeyType, AnyPlugin> {
+        [:] // Example:
 //        [
-//            Plugin(ExamplePluginImp(component: component.examplePluginComponentFactory()).create())
+//            "example": AnyPlugin(ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create())
 //        ]
+    }
+
+    /// The method in which a custom creation order may (optionally) be defined.
+    /// - Parameter component: The component instance
+    /// - Returns: The keys defining the plugin creation order.
+    override internal func creationOrder(
+        component: {{ plugin_list_name }}PluginListComponent
+    ) -> [{{ plugin_list_name }}PluginListKeyType] {
+        super.creationOrder(component: component)
     }
 }

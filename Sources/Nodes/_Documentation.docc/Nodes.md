@@ -22,17 +22,15 @@ We ❤️ building mobile applications with Nodes and we hope you ~will~ do to.
 
 Experimentation and Feature Gating
 
-A Node's `Plugin` instance is a factory that optionally creates and returns the Node's `Builder` instance. `PluginList` and `PluginMap` provide `Plugin` collections.
+`Plugin` and `PluginList` subclasses provide conditional logic for experimentation and feature gating. 
 
-`Plugin`, `PluginList` and `PluginMap` subclasses are intended to contain conditional logic such as to support experimentation and feature gating. Always utilize `PluginList` and `PluginMap` collections when versioning or A|B Testing Nodes.
+A Node's `Plugin` instance is a factory that optionally creates and returns the Node's `Builder` instance.
 
-The `PluginListWithDefault` and `PluginMapWithDefault` variants allow for a default instance to be used when the collection is empty.
+A `PluginList` instance provides a `Plugin` collection enabling versioning or A|B Testing multiple Nodes. The `PluginListWithDefault` variant allows for a default instance to be prepended to the `Builder` collection.
 
 - ``Plugin``
 - ``PluginList``
 - ``PluginListWithDefault``
-- ``PluginMap``
-- ``PluginMapWithDefault``
 
 ### Builder
 
@@ -54,7 +52,7 @@ Node Tree and Routing
 
 A Node's `Flow` instance acts as a router and is responsible for attaching child `Flow` instances.
 
-A Node tree is created when parent `Flow` instances use a `Builder` instance (either directly or from a `PluginList`, `PluginMap` or `Plugin` instance) to create a child `Flow` instance, and then present the ``ViewControllable`` instance of the child `Flow` and subsequently attach the child `Flow`. This will automatically start the child Node's `Flow` instance, activate the child Node's `Context` instance and start the child Node's `Worker` instances.
+A Node tree is created when parent `Flow` instances use a `Builder` instance (either directly or from a `Plugin` or `PluginList` instance) to create a child `Flow` instance, and then present the ``ViewControllable`` instance of the child `Flow` and subsequently attach the child `Flow`. This will automatically start the child Node's `Flow` instance, activate the child Node's `Context` instance and start the child Node's `Worker` instances.
 
 A `Flow` is also responsible for detaching its child `Flow` instances which occurs in the reverse order. This is an important lifecycle event for the Node, meaning that when a `Flow` instance is detached from its parent, the expectation is that all memory used by the Node and all of its objects is released.
 

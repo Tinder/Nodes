@@ -77,9 +77,7 @@ open class AbstractBuilder<ComponentType, // swiftlint:disable:this operator_usa
     ) -> BuildType {
         let component: ComponentType = componentFactory(dynamicComponentDependency)
         let newComponent: AnyObject = component as AnyObject
-        if newComponent === lastComponent {
-            assertionFailure("Component must be a new instance")
-        }
+        assert(newComponent !== lastComponent, "Factory must produce a new component each time it is called")
         lastComponent = newComponent
         return build(component: component, dynamicBuildDependency: dynamicBuildDependency)
     }

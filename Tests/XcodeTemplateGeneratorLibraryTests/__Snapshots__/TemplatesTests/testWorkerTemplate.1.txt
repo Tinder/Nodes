@@ -32,7 +32,7 @@
         - required: true
         - type: "text"
     - platforms: 0 elements
-    - sortOrder: 8
+    - sortOrder: 7
     - summary: "The source file implementing a Worker"
     - supportsSwiftPackage: true
   ▿ stencils: 1 element

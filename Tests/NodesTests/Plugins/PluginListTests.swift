@@ -13,97 +13,126 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
 
     private class ComponentType {}
 
-    private class BuildType {}
+    private class BuildType {
 
-    private class TestPlugin: Plugin<ComponentType, BuildType, Void> {
+        var identifier: String
 
-        // swiftlint:disable:next redundant_type_annotation
-        var isEnabledOverride: Bool = false
-
-        override func isEnabled(component: ComponentType, state: Void) -> Bool {
-            isEnabledOverride
-        }
-
-        override func build(component: ComponentType) -> BuildType {
-            BuildType()
+        init(identifier: String) {
+            self.identifier = identifier
         }
     }
 
-    private class TestPluginList: PluginList<ComponentType, BuildType, Void> {
+    private class TestPluginList: PluginList<String, ComponentType, BuildType, Void> {
 
-        // swiftlint:disable:next redundant_type_annotation
-        var isEnabledOverride: Bool = false
+        // swiftlint:disable:next discouraged_optional_collection
+        var creationOrderOverride: [String]?
 
-        override func plugins(component: ComponentType) -> [Plugin] {
-            let plugin: TestPlugin = .init(component: component)
-            plugin.isEnabledOverride = isEnabledOverride
-            return [Plugin(plugin.create()), Plugin(plugin.create()), Plugin(plugin.create())]
+        override func plugins(component: ComponentType) -> KeyValuePairs<String, AnyPlugin> {
+            [
+                "plugin1": AnyPlugin(BuildType(identifier: "plugin1")),
+                "plugin2": AnyPlugin(BuildType(identifier: "plugin2")),
+                "plugin3": AnyPlugin(BuildType(identifier: "plugin3"))
+            ]
+        }
+
+        override func creationOrder(component: ComponentType) -> [String] {
+            creationOrderOverride ?? super.creationOrder(component: component)
         }
     }
 
-    private class TestPluginListWithDefault: PluginListWithDefault<ComponentType, BuildType, Void> {
+    private class TestPluginListWithDefault: PluginListWithDefault<String, ComponentType, BuildType, Void> {
 
-        // swiftlint:disable:next redundant_type_annotation
-        var isEnabledOverride: Bool = false
+        // swiftlint:disable:next discouraged_optional_collection
+        var creationOrderOverride: [String]?
 
         override func `default`(component: ComponentType, state: Void) -> BuildType {
-            BuildType()
+            BuildType(identifier: "default")
         }
 
-        override func plugins(component: ComponentType) -> [Plugin] {
-            let plugin: TestPlugin = .init(component: component)
-            plugin.isEnabledOverride = isEnabledOverride
-            return [Plugin(plugin.create()), Plugin(plugin.create()), Plugin(plugin.create())]
+        override func plugins(component: ComponentType) -> KeyValuePairs<String, AnyPlugin> {
+            [
+                "plugin1": AnyPlugin(BuildType(identifier: "plugin1")),
+                "plugin2": AnyPlugin(BuildType(identifier: "plugin2")),
+                "plugin3": AnyPlugin(BuildType(identifier: "plugin3"))
+            ]
+        }
+
+        override func creationOrder(component: ComponentType) -> [String] {
+            creationOrderOverride ?? super.creationOrder(component: component)
         }
     }
 
-    private var component: ComponentType!
-
-    override func setUp() {
-        super.setUp()
-        tearDown(keyPath: \.component, initialValue: ComponentType())
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-
-    func testCreateAll() {
-        let pluginList: TestPluginList = .init(component: component)
+    func testPluginListCreateAll() {
+        let pluginList: TestPluginList = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
-        expect(pluginList.createAll()).to(beEmpty())
-        pluginList.isEnabledOverride = true
-        expect(pluginList.createAll()).to(haveCount(3))
+        expect(pluginList.createAll().map(\.identifier)) == ["plugin1", "plugin2", "plugin3"]
+        pluginList.creationOrderOverride = ["plugin3", "plugin1"]
+        expect(pluginList.createAll().map(\.identifier)) == ["plugin3", "plugin1"]
+        pluginList.creationOrderOverride = []
+        expect(pluginList.createAll().map(\.identifier)) == []
     }
 
-    func testCreate() {
-        let pluginList: TestPluginList = .init(component: component)
+    func testPluginListWithDefaultCreateAll() {
+        let pluginList: TestPluginListWithDefault = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
+        expect(pluginList.createAll().map(\.identifier)) == ["default", "plugin1", "plugin2", "plugin3"]
+        pluginList.creationOrderOverride = ["plugin3", "plugin1"]
+        expect(pluginList.createAll().map(\.identifier)) == ["default", "plugin3", "plugin1"]
+        pluginList.creationOrderOverride = []
+        expect(pluginList.createAll().map(\.identifier)) == ["default"]
+    }
+
+    func testPluginListCreate() throws {
+        let pluginList: TestPluginList = .init { ComponentType() }
+        expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
+        expect(pluginList.create()?.identifier) == "plugin3"
+        pluginList.creationOrderOverride = ["plugin3", "plugin1"]
+        expect(pluginList.create()?.identifier) == "plugin1"
+        pluginList.creationOrderOverride = []
         expect(pluginList.create()).to(beNil())
-        pluginList.isEnabledOverride = true
-        expect(pluginList.create()).to(beAKindOf(BuildType.self))
     }
 
-    func testCreateAllWithDefault() {
-        let pluginList: TestPluginListWithDefault = .init(component: component)
+    func testPluginListWithDefaultCreate() throws {
+        let pluginList: TestPluginListWithDefault = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
-        expect(pluginList.createAll()).to(haveCount(1))
-        pluginList.isEnabledOverride = true
-        expect(pluginList.createAll()).to(haveCount(4))
+        expect(pluginList.create()?.identifier) == "plugin3"
+        pluginList.creationOrderOverride = ["plugin3", "plugin1"]
+        expect(pluginList.create()?.identifier) == "plugin1"
+        pluginList.creationOrderOverride = []
+        expect(pluginList.create()?.identifier) == "default"
     }
 
-    func testCreateWithDefault() {
-        let pluginList: TestPluginListWithDefault = .init(component: component)
+    func testPluginListCreateWithKey() throws {
+        let pluginList: TestPluginList = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
-        expect(pluginList.create() as BuildType).to(beAKindOf(BuildType.self))
-        pluginList.isEnabledOverride = true
-        expect(pluginList.create()).to(beAKindOf(BuildType.self))
+        expect(pluginList.create(key: "plugin2")?.identifier) == "plugin2"
+        pluginList.creationOrderOverride = ["plugin3", "plugin1"]
+        expect(pluginList.create(key: "plugin2")).to(beNil())
+        pluginList.creationOrderOverride = []
+        expect(pluginList.create(key: "plugin2")).to(beNil())
     }
 
-    func testAssertions() {
+    func testPluginListWithDefaultCreateWithKey() throws {
+        let pluginList: TestPluginListWithDefault = .init { ComponentType() }
+        expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
+        expect(pluginList.create(key: "plugin2")?.identifier) == "plugin2"
+        pluginList.creationOrderOverride = ["plugin3", "plugin1"]
+        expect(pluginList.create(key: "plugin2")?.identifier) == "default"
+        pluginList.creationOrderOverride = []
+        expect(pluginList.create(key: "plugin2")?.identifier) == "default"
+    }
+
+    func testPluginListAssertions() {
         let component: ComponentType = .init()
-        let pluginList: PluginListWithDefault<ComponentType, BuildType, Void> = .init(component: component)
+        let pluginList: PluginList<String, ComponentType, BuildType, Void> = .init { component }
+        expect(pluginList.creationOrder(component: component)).to(throwAssertion())
         expect(pluginList.plugins(component: component)).to(throwAssertion())
-        expect(pluginList.default(component: component, state: ())).to(throwAssertion())
+    }
+
+    func testPluginListWithDefaultAssertions() {
+        let component: ComponentType = .init()
+        let pluginList: PluginListWithDefault<String, ComponentType, BuildType, Void> = .init { component }
+        expect(pluginList.creationOrder(component: component)).to(throwAssertion())
+        expect(pluginList.plugins(component: component)).to(throwAssertion())
     }
 }

@@ -11,24 +11,34 @@
  * ``PluginList`` has the following generic parameters:
  * | Name          | Description                                                                                 |
  * | ------------- | ------------------------------------------------------------------------------------------- |
+ * | KeyType       | The ``Hashable`` key type.                                                                  |
  * | ComponentType | The DI graph `Component` type.                                                              |
  * | BuildType     | The type of object created (typically a `Builder`).                                         |
  * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
  */
-open class PluginList<ComponentType, BuildType, StateType> {
+open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
+
+    private typealias KeyValuePair = (key: KeyType, value: AnyPlugin)
 
     /**
-     * A type-erased `Plugin` type used by the ``PluginList`` instance when defining a collection of generic plugins.
+     * A type-erased `AnyPlugin` type used to define the plugin collection in ``PluginList`` subclasses.
      */
-    public final class Plugin {
+    public final class AnyPlugin {
 
         private let create: (StateType) -> BuildType?
 
-        /// Initializes a new type-erased `Plugin` instance.
+        /// Initializes a new type-erased `AnyPlugin` instance.
+        ///
+        /// Example:
+        /// ```
+        /// Plugin { state in
+        ///     ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create(state: state)
+        /// }
+        /// ```
         ///
         /// - Parameters:
-        ///   - create: A factory closure in which to initialize a generic `Plugin` instance
-        ///     and call its `create` method.
+        ///   - create: A factory closure in which to initialize a generic `AnyPlugin` instance and
+        ///     call its `create` method.
         ///
         ///     The closure has the following arguments:
         ///     | Name  | Description               |
@@ -36,13 +46,6 @@ open class PluginList<ComponentType, BuildType, StateType> {
         ///     | state | The `StateType` instance. |
         ///
         ///     The closure is escaping and returns an optional `BuildType` instance.
-        ///
-        /// Example:
-        /// ```
-        /// Plugin { state in
-        ///     ExamplePluginImp(component: component.examplePluginComponentFactory(state: state)).create()
-        /// }
-        /// ```
         public init(create: @escaping (StateType) -> BuildType?) {
             self.create = create
         }
@@ -61,16 +64,21 @@ open class PluginList<ComponentType, BuildType, StateType> {
     }
 
     // swiftlint:disable:next strict_fileprivate
-    fileprivate let component: ComponentType
+    fileprivate let componentFactory: () -> ComponentType
+
+    private weak var lastComponent: AnyObject?
 
     /// Initializes a new ``PluginList`` instance.
     ///
-    /// - Parameter component: The `ComponentType` instance.
-    public init(component: ComponentType) {
-        self.component = component
+    /// - Parameters:
+    ///   - componentFactory: The `ComponentType` factory closure.
+    ///
+    ///     The closure is an escaping closure that has no arguments and returns a `ComponentType` instance.
+    public init(componentFactory: @escaping () -> ComponentType) {
+        self.componentFactory = componentFactory
     }
 
-    /// Defines the collection of type-erased `Plugin` instances.
+    /// Defines the collection of type-erased `AnyPlugin` instances.
     ///
     /// - Important: This abstract method must be overridden in subclasses.
     ///   This method should never be called directly.
@@ -78,49 +86,125 @@ open class PluginList<ComponentType, BuildType, StateType> {
     ///
     /// - Parameter component: The `ComponentType` instance.
     ///
-    /// - Returns: The array of type-erased `Plugin` instances.
-    open func plugins(component: ComponentType) -> [Plugin] { // swiftlint:disable:this unavailable_function
+    /// - Returns: The collection of type-erased `AnyPlugin` instances.
+    open func plugins( // swiftlint:disable:this unavailable_function
+        component: ComponentType
+    ) -> KeyValuePairs<KeyType, AnyPlugin> {
         preconditionFailure("Method in abstract base class must be overridden")
     }
 
-    /// Calls `create` on all plugins and returns the resulting non-nil `BuildType` instances.
+    /// Defines the order plugins are created in.
+    ///
+    /// This abstract method may be overridden in subclasses. The default implementation returns the keys in
+    /// order as defined in ``plugins(component:)``
+    ///
+    /// - Tip: If a key for a plugin is not included in the returned array, that plugin will not be created.
+    ///   This can be useful to dynamically filter the plugin collection for example.
+    ///
+    /// - Important: This method should never be called directly.
+    ///   The ``PluginList`` instance calls this method internally.
+    ///
+    /// - Parameter component: The `ComponentType` instance.
+    ///
+    /// - Returns: The keys defining the order plugins are created in.
+    open func creationOrder(component: ComponentType) -> [KeyType] {
+        plugins(component: component).map(\.key)
+    }
+
+    /// Calls `create` on the plugins for the keys provided by ``creationOrder(component:)`` and returns
+    /// the resulting non-nil `BuildType` instances in creation order.
     ///
     /// - Parameter state: The `StateType` instance.
     ///
     /// - Returns: An array of `BuildType` instances.
     public func createAll(state: StateType) -> [BuildType] {
-        plugins(component: component).compactMap { $0.create(state: state) }
+        let component: ComponentType = makeComponent()
+        return createAll(component: component, state: state)
     }
 
-    /// Calls `create` on each plugin in the plugins collection (in reverse order)
-    /// and returns the first non-nil `BuildType` instance.
+    /// Calls `create` on each plugin in the plugin collection (in reverse creation order) and returns the
+    /// first non-nil `BuildType` instance.
     ///
     /// - Parameter state: The `StateType` instance.
     ///
     /// - Returns: An optional `BuildType` instance.
     public func create(state: StateType) -> BuildType? {
-        for plugin in plugins(component: component).reversed() {
+        let component: ComponentType = makeComponent()
+        return create(component: component, state: state)
+    }
+
+    /// Calls `create` on the plugin for the given `key` and returns the resulting optional `BuildType` instance,
+    /// or `nil` when the collection does not contain a plugin for that `key`.
+    ///
+    /// - Parameters:
+    ///   - key: The `KeyType` instance.
+    ///   - state: The `StateType` instance.
+    ///
+    /// - Returns: An optional `BuildType` instance.
+    public func create(key: KeyType, state: StateType) -> BuildType? {
+        let component: ComponentType = makeComponent()
+        return create(component: component, key: key, state: state)
+    }
+
+    // MARK: - Access Control: fileprivate
+
+    // swiftlint:disable:next strict_fileprivate
+    fileprivate func makeComponent() -> ComponentType {
+        let component: ComponentType = componentFactory()
+        let newComponent: AnyObject = component as AnyObject
+        assert(newComponent !== lastComponent, "Factory must produce a new component each time it is called")
+        lastComponent = newComponent
+        return component
+    }
+
+    // swiftlint:disable:next strict_fileprivate
+    fileprivate func createAll(component: ComponentType, state: StateType) -> [BuildType] {
+        let plugins: [KeyValuePair] = orderedPlugins(component: component)
+        return plugins.map(\.value).compactMap { $0.create(state: state) }
+    }
+
+    // swiftlint:disable:next strict_fileprivate
+    fileprivate func create(component: ComponentType, state: StateType) -> BuildType? {
+        let plugins: [KeyValuePair] = orderedPlugins(component: component)
+        for plugin: AnyPlugin in plugins.map(\.value).reversed() {
             guard let build: BuildType = plugin.create(state: state)
             else { continue }
             return build
         }
         return nil
     }
+
+    // swiftlint:disable:next strict_fileprivate
+    fileprivate func create(component: ComponentType, key: KeyType, state: StateType) -> BuildType? {
+        let plugins: [KeyValuePair] = orderedPlugins(component: component)
+        guard let plugin: KeyValuePair = plugins.first(where: { $0.key == key })
+        else { return nil }
+        return plugin.value.create(state: state)
+    }
+
+    // MARK: - Access Control: private
+
+    private func orderedPlugins(component: ComponentType) -> [KeyValuePair] {
+        let plugins: KeyValuePairs<KeyType, AnyPlugin> = plugins(component: component)
+        let keys: [KeyType] = creationOrder(component: component)
+        return keys.compactMap { key in plugins.first { $0.key == key } }
+    }
 }
 
-extension PluginList.Plugin where StateType == Void {
+extension PluginList.AnyPlugin where StateType == Void {
 
-    /// Initializes a new type-erased `Plugin` instance.
-    ///
-    /// - Parameters:
-    ///   - create: A factory closure in which to initialize a generic `Plugin` instance and call its `create` method.
-    ///
-    ///     The closure is an escaping autoclosure that has no arguments and returns an optional `BuildType` instance.
+    /// Initializes a new type-erased `AnyPlugin` instance.
     ///
     /// Example:
     /// ```
-    /// Plugin(ExamplePluginImp(component: component.examplePluginComponentFactory()).create())
+    /// Plugin(ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create())
     /// ```
+    ///
+    /// - Parameters:
+    ///   - create: A factory closure in which to initialize a generic `AnyPlugin` instance and
+    ///     call its `create` method.
+    ///
+    ///     The closure is an escaping autoclosure that has no arguments and returns an optional `BuildType` instance.
     public convenience init(_ create: @escaping @autoclosure () -> BuildType?) {
         self.init(create: create)
     }
@@ -128,7 +212,8 @@ extension PluginList.Plugin where StateType == Void {
 
 extension PluginList where StateType == Void {
 
-    /// Calls `create` on all plugins and returns the resulting non-nil `BuildType` instances.
+    /// Calls `create` on the plugins for the keys provided by ``creationOrder(component:)`` and returns
+    /// the resulting non-nil `BuildType` instances in creation order.
     ///
     /// This convenience method has no parameters since `StateType` is `Void`.
     ///
@@ -137,14 +222,26 @@ extension PluginList where StateType == Void {
         createAll(state: ())
     }
 
-    /// Calls `create` on each plugin in the plugins collection (in reverse order)
-    /// and returns the first non-nil `BuildType` instance.
+    /// Calls `create` on each plugin in the plugin collection (in reverse creation order) and returns the
+    /// first non-nil `BuildType` instance.
     ///
     /// This convenience method has no parameters since `StateType` is `Void`.
     ///
     /// - Returns: An optional `BuildType` instance.
     public func create() -> BuildType? {
         create(state: ())
+    }
+
+    /// Calls `create` on the plugin for the given `key` and returns the resulting optional `BuildType` instance,
+    /// or `nil` when the collection does not contain a plugin for that `key`.
+    ///
+    /// This convenience method has only a `key` parameter since `StateType` is `Void`.
+    ///
+    /// - Parameter key: The `KeyType` instance.
+    ///
+    /// - Returns: An optional `BuildType` instance.
+    public func create(key: KeyType) -> BuildType? {
+        create(key: key, state: ())
     }
 }
 
@@ -156,13 +253,15 @@ extension PluginList where StateType == Void {
  * ``PluginListWithDefault`` has the following generic parameters:
  * | Name          | Description                                                                                 |
  * | ------------- | ------------------------------------------------------------------------------------------- |
+ * | KeyType       | The ``Hashable`` key type.                                                                  |
  * | ComponentType | The DI graph `Component` type.                                                              |
  * | BuildType     | The type of object created (typically a `Builder`).                                         |
  * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
  */
-open class PluginListWithDefault<ComponentType, // swiftlint:disable:this operator_usage_whitespace
+open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this operator_usage_whitespace
+                                 ComponentType,
                                  BuildType,
-                                 StateType>: PluginList<ComponentType, BuildType, StateType> {
+                                 StateType>: PluginList<KeyType, ComponentType, BuildType, StateType> {
 
     /// Defines the default instance to prepend to the collection of `BuildType` instances.
     ///
@@ -182,38 +281,69 @@ open class PluginListWithDefault<ComponentType, // swiftlint:disable:this operat
         preconditionFailure("Method in abstract base class must be overridden")
     }
 
-    /// Calls `create` on all plugins and returns the resulting non-nil `BuildType` instances
-    /// prepended with the default instance returned from ``default(component:state:)``.
+    /// Calls `create` on the plugins for the keys provided by ``creationOrder(component:)`` and returns
+    /// the resulting non-nil `BuildType` instances in creation order prepended with the default instance
+    /// provided by ``default(component:state:)``.
     ///
     /// - Parameter state: The `StateType` instance.
     ///
     /// - Returns: An array of `BuildType` instances.
     override public func createAll(state: StateType) -> [BuildType] {
-        [`default`(component: component, state: state)] + super.createAll(state: state)
+        let component: ComponentType = makeComponent()
+        return [`default`(component: component, state: state)] + createAll(component: component, state: state)
     }
 
-    /// Calls `create` on each plugin in the plugins collection (in reverse order) and
-    /// returns the first non-nil `BuildType` instance, otherwise the default instance
-    /// returned from ``default(component:state:)`` is returned.
+    /// Calls `create` on each plugin in the plugin collection (in reverse creation order) and returns the
+    /// first non-nil `BuildType` instance, otherwise the default instance provided by ``default(component:state:)``
+    /// is returned.
     ///
     /// - Parameter state: The `StateType` instance.
     ///
     /// - Returns: A `BuildType` instance.
     override public func create(state: StateType) -> BuildType {
-        super.create(state: state) ?? `default`(component: component, state: state)
+        let component: ComponentType = makeComponent()
+        return create(component: component, state: state) ?? `default`(component: component, state: state)
+    }
+
+    /// Calls `create` on the plugin for the given `key` and returns the resulting `BuildType` instance,
+    /// otherwise when the `key` is not in the dictionary or the `create` method returns `nil`, the default
+    /// instance provided by ``default(component:state:)`` is returned.
+    ///
+    /// - Parameters:
+    ///   - key: The `KeyType` instance.
+    ///   - state: The `StateType` instance.
+    ///
+    /// - Returns: A `BuildType` instance.
+    override public func create(key: KeyType, state: StateType) -> BuildType {
+        let component: ComponentType = makeComponent()
+        return create(component: component, key: key, state: state) ?? `default`(component: component, state: state)
     }
 }
 
 extension PluginListWithDefault where StateType == Void {
 
-    /// Calls `create` on each plugin in the plugins collection (in reverse order) and
-    /// returns the first non-nil `BuildType` instance, otherwise the default instance
-    /// returned from ``default(component:state:)`` is returned.
+    /// Calls `create` on each plugin in the plugin collection (in reverse creation order) and returns the
+    /// first non-nil `BuildType` instance, otherwise the default instance provided by ``default(component:state:)``
+    /// is returned.
     ///
     /// This convenience method has no parameters since `StateType` is `Void`.
     ///
     /// - Returns: A `BuildType` instance.
     public func create() -> BuildType {
         create(state: ())
+    }
+
+    /// Calls `create` on the plugin for the given `key` and returns the resulting `BuildType` instance,
+    /// otherwise when the `key` is not in the dictionary or the `create` method returns `nil`, the default
+    /// instance provided by ``default(component:state:)`` is returned.
+    ///
+    /// This convenience method has only a `key` parameter since `StateType` is `Void`.
+    ///
+    /// - Parameters:
+    ///   - key: The `KeyType` instance.
+    ///
+    /// - Returns: A `BuildType` instance.
+    public func create(key: KeyType) -> BuildType {
+        create(key: key, state: ())
     }
 }
