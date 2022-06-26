@@ -63,10 +63,9 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
         }
     }
 
-    // swiftlint:disable:next strict_fileprivate
-    fileprivate let componentFactory: () -> ComponentType
-
     private weak var lastComponent: AnyObject?
+
+    private let componentFactory: () -> ComponentType
 
     /// Initializes a new ``PluginList`` instance.
     ///

@@ -17,9 +17,9 @@
  */
 open class Plugin<ComponentType, BuildType, StateType> {
 
-    private let componentFactory: () -> ComponentType
-
     private weak var lastComponent: AnyObject?
+
+    private let componentFactory: () -> ComponentType
 
     /// Initializes a new ``Plugin`` instance.
     ///
