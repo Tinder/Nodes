@@ -123,11 +123,14 @@ internal final class <pluginListName>PluginListImp:
     }
 
     /// The method in which a custom creation order may (optionally) be defined.
+    ///
+    /// There is no need to call `super` when overriding this method unless it is desirable to reference (or modify)
+    /// the default order.
     /// - Parameter component: The component instance
     /// - Returns: The keys defining the plugin creation order.
-    override internal func creationOrder(
-        component: <pluginListName>PluginListComponent
-    ) -> [<pluginListName>PluginListKeyType] {
-        super.creationOrder(component: component)
-    }
+//    override internal func creationOrder(
+//        component: <pluginListName>PluginListComponent
+//    ) -> [<pluginListName>PluginListKeyType] {
+//        super.creationOrder(component: component)
+//    }
 }
