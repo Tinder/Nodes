@@ -94,11 +94,12 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
 
     /// Defines the order plugins are created in.
     ///
-    /// This abstract method may be overridden in subclasses. The default implementation returns the keys in
-    /// order as defined in ``plugins(component:)``
+    /// This method may be overridden in subclasses. The default implementation returns the keys in order as
+    /// defined in ``plugins(component:)``. There is no need to call `super` when overriding this method unless
+    /// it is desirable to reference (or modify) the default order.
     ///
     /// - Tip: If a key for a plugin is not included in the returned array, that plugin will not be created.
-    ///   This can be useful to dynamically filter the plugin collection for example.
+    ///   This can be useful to dynamically filter the plugin collection, for example.
     ///
     /// - Important: This method should never be called directly.
     ///   The ``PluginList`` instance calls this method internally.
