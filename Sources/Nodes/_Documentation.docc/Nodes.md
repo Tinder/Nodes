@@ -40,7 +40,7 @@ Node Creation and Dependency Injection
 
 A Node's `Builder` instance is a factory that non-optionally creates and returns the Node's `Flow` instance.
 
-At that same time, the `Builder` also creates several other objects including the Node's `Context` instance, one or more `Worker` instances, and its ``ViewControllable`s``` instance.
+At that same time, the `Builder` also creates several other objects including the Node's `Context` instance, one or more `Worker` instances, and its ``ViewControllable`` instance.
 
 Every `Builder` is provided a DI graph `Component` whose dependencies are made available for injection into the objects the `Builder` creates.
 
