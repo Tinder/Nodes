@@ -1,5 +1,57 @@
 # Changelog
 
+## [0.0.9](https://github.com/TinderApp/Nodes/releases/tag/0.0.9)
+
+### Added
+
+- Add documentation instructions\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#134](https://github.com/TinderApp/Nodes/pull/134)]
+
+### Improved
+
+- Improve quick start\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#125](https://github.com/TinderApp/Nodes/pull/125)]
+
+- Improve quick start\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#126](https://github.com/TinderApp/Nodes/pull/126)]
+
+- Improve API documentation\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#128](https://github.com/TinderApp/Nodes/pull/128)]
+
+- Improve quick start\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#129](https://github.com/TinderApp/Nodes/pull/129)]
+
+- Improve quick start\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#130](https://github.com/TinderApp/Nodes/pull/130)]
+
+- Improve API documentation\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#133](https://github.com/TinderApp/Nodes/pull/133)]
+
+- Update introduction\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#135](https://github.com/TinderApp/Nodes/pull/135)]
+
+### Removed
+
+- Remove view controller availability attribute\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#127](https://github.com/TinderApp/Nodes/pull/127)]
+
+### Fixed
+
+- Fix documentation\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#137](https://github.com/TinderApp/Nodes/pull/137)]
+
+---
+
 ## [0.0.8](https://github.com/TinderApp/Nodes/releases/tag/0.0.8)
 
 ### Added
