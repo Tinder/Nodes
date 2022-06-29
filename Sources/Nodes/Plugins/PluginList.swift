@@ -187,7 +187,10 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
     private func orderedPlugins(component: ComponentType) -> [KeyValuePair] {
         let plugins: KeyValuePairs<KeyType, AnyPlugin> = plugins(component: component)
         let keys: [KeyType] = creationOrder(component: component)
-        return keys.compactMap { key in plugins.first { $0.key == key } }
+        var store: Set<KeyType> = []
+        let uniqueKeys: [KeyType] = keys.filter { store.insert($0).inserted }
+        assert(uniqueKeys.count == keys.count, "Keys must be unique \(keys)")
+        return uniqueKeys.compactMap { key in plugins.first { $0.key == key } }
     }
 }
 

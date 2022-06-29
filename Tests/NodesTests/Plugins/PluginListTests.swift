@@ -122,6 +122,18 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList.create(key: "plugin2")?.identifier) == "default"
     }
 
+    func testPluginListDuplicateKeys() {
+        let pluginList: TestPluginList = .init { ComponentType() }
+        pluginList.creationOrderOverride = ["plugin1", "plugin1"]
+        expect(pluginList.createAll()).to(throwAssertion())
+    }
+
+    func testPluginListWithDefaultDuplicateKeys() {
+        let pluginList: TestPluginListWithDefault = .init { ComponentType() }
+        pluginList.creationOrderOverride = ["plugin1", "plugin1"]
+        expect(pluginList.createAll()).to(throwAssertion())
+    }
+
     func testPluginListAssertions() {
         let component: ComponentType = .init()
         let pluginList: PluginList<String, ComponentType, BuildType, Void> = .init { component }
