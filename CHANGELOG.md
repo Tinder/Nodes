@@ -1,5 +1,35 @@
 # Changelog
 
+## [0.0.10](https://github.com/TinderApp/Nodes/releases/tag/0.0.10)
+
+### Added
+
+- None
+
+### Improved
+
+- Upgrade Nimble to 10.0.0\
+  [Garric Nahapetian](https://github.com/tinder-garricnahapetian)
+  [[#131](https://github.com/TinderApp/Nodes/pull/131)]
+
+- Improve plugin system\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#136](https://github.com/TinderApp/Nodes/pull/136)]
+
+- Unique Plugin List keys\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#139](https://github.com/TinderApp/Nodes/pull/139)]
+
+### Removed
+
+- None
+
+### Fixed
+
+- None
+
+---
+
 ## [0.0.9](https://github.com/TinderApp/Nodes/releases/tag/0.0.9)
 
 ### Added
