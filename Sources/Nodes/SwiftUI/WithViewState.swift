@@ -15,7 +15,25 @@ import SwiftUI
  * [View](https://developer.apple.com/documentation/swiftui/view) that provides access to view state emitted
  * by a given publisher.
  *
- * > Important: The view state type must conform to the ``InitialStateProviding`` protocol.
+ * Usage Example:
+ * ```
+ * struct ExampleViewState: Equatable {
+ *     let text: String
+ * }
+ *
+ * struct ExampleView: View {
+ *     let viewState: AnyPublisher<ExampleViewState, Never>
+ *     let initialState: ExampleViewState = .init(text: "Hello World")
+ *     var body: some View {
+ *         WithViewState(viewState, initialState: initialState) { viewState in
+ *             Text(viewState.text)
+ *         }
+ *     }
+ * }
+ * ```
+ *
+ * It is also possible to define the initial state within the state type definition by adopting the
+ * ``InitialStateProviding`` protocol.
  *
  * Usage Example:
  * ```
@@ -35,7 +53,7 @@ import SwiftUI
  * ```
  */
 @available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-public struct WithViewState<ViewState: InitialStateProviding, Content: View>: View {
+public struct WithViewState<ViewState, Content: View>: View {
 
     /// The content and behavior of the view.
     public var body: some View {
@@ -45,7 +63,27 @@ public struct WithViewState<ViewState: InitialStateProviding, Content: View>: Vi
     private let publisher: AnyPublisher<ViewState, Never>
     private let content: (ViewState) -> Content
 
-    @State(initialValue: .initialState) private var viewState: ViewState
+    @State private var viewState: ViewState
+
+    /// Initializes a ``WithViewState`` view with the given view state `publisher`, `initialState` and `content`.
+    ///
+    /// - Parameters:
+    ///     - publisher: The view state ``Publisher`` instance to observe.
+    ///     - initialState: The initial view state.
+    ///     - content: A view builder that creates the content of this view.
+    public init<P: Publisher>(
+        _ publisher: P,
+        initialState: ViewState,
+        @ViewBuilder content: @escaping (ViewState) -> Content
+    ) where P.Output == ViewState, P.Failure == Never {
+        self.publisher = publisher.eraseToAnyPublisher()
+        self.content = content
+        _viewState = State(initialValue: initialState)
+    }
+}
+
+@available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension WithViewState where ViewState: InitialStateProviding {
 
     /// Initializes a ``WithViewState`` view with the given view state `publisher` and `content`.
     ///
@@ -56,7 +94,6 @@ public struct WithViewState<ViewState: InitialStateProviding, Content: View>: Vi
         _ publisher: P,
         @ViewBuilder content: @escaping (ViewState) -> Content
     ) where P.Output == ViewState, P.Failure == Never {
-        self.publisher = publisher.eraseToAnyPublisher()
-        self.content = content
+        self.init(publisher, initialState: .initialState, content: content)
     }
 }
