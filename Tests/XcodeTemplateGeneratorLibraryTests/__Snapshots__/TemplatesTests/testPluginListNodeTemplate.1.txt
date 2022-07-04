@@ -29,4 +29,3 @@
     - supportsSwiftPackage: true
   ▿ stencils: 1 element
     - "PluginList"
-  - type: "Plugin"

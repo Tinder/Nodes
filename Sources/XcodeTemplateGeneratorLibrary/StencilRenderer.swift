@@ -67,29 +67,28 @@ public final class StencilRenderer {
     }
 
     public func renderPlugin(context: PluginContext) throws -> String {
-        try render("Plugin", of: "Plugin", with: context.dictionary)
+        try render("Plugin", with: context.dictionary)
     }
 
     public func renderPluginList(context: PluginListContext) throws -> String {
-        try render("PluginList", of: "Plugin", with: context.dictionary)
+        try render("PluginList", with: context.dictionary)
     }
 
     public func renderWorker(context: WorkerContext) throws -> String {
-        try render("Worker", of: "Node", with: context.dictionary)
+        try render("Worker", with: context.dictionary)
     }
 
     private func renderNode(stencils: [String: String], with context: [String: Any]) throws -> [String: String] {
         try Dictionary(uniqueKeysWithValues: stencils.map {
-            try ($0.0, render($0.1, of: "Node", with: context))
+            try ($0.0, render($0.1, with: context))
         })
     }
 
-    internal func render(_ stencil: String, of type: String, with context: [String: Any]) throws -> String {
+    internal func render(_ stencil: String, with context: [String: Any]) throws -> String {
         let bundle: Bundle = .moduleRelativeToExecutable ?? .module
         // swiftlint:disable:next force_unwrapping
         let stencilURL: URL = bundle.resourceURL!
             .appendingPathComponent("Templates")
-            .appendingPathComponent(type)
             .appendingPathComponent(stencil)
             .appendingPathExtension("stencil")
         let template: String = try .init(contentsOf: stencilURL)

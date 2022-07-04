@@ -10,7 +10,6 @@ internal struct NodeTemplate: XcodeTemplate {
     internal typealias Config = XcodeTemplates.Config
 
     internal let name: String
-    internal let type: String = "Node"
     internal let stencils: [String]
     internal let filenames: [String: String]
     internal let context: Context

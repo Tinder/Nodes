@@ -37,4 +37,3 @@
     - supportsSwiftPackage: true
   ▿ stencils: 1 element
     - "Worker"
-  - type: "Node"

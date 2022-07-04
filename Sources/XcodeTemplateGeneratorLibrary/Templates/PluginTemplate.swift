@@ -10,7 +10,6 @@ internal struct PluginTemplate: XcodeTemplate {
     internal typealias Config = XcodeTemplates.Config
 
     internal let name: String = "Plugin"
-    internal let type: String = "Plugin"
     internal let stencils: [String] = ["Plugin"]
     internal let context: Context
 

@@ -29,9 +29,7 @@ internal final class XcodeTemplateGenerator {
     private func renderStencils(for template: XcodeTemplate, into url: URL) throws {
         let stencilRenderer: StencilRenderer = .init()
         try template.stencils.forEach {
-            let contents: String = try stencilRenderer.render($0,
-                                                              of: template.type,
-                                                              with: template.context.dictionary)
+            let contents: String = try stencilRenderer.render($0, with: template.context.dictionary)
             try fileSystem.write(Data(contents.utf8),
                                  to: url
                                     .appendingPathComponent("___FILEBASENAME___\(template.filenames[$0] ?? $0)")

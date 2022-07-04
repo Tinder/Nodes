@@ -79,4 +79,3 @@
     - "Flow"
     - "ViewController"
     - "Worker"
-  - type: "Node"

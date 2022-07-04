@@ -77,4 +77,3 @@
     - "Flow"
     - "ViewController-SwiftUI"
     - "Worker"
-  - type: "Node"
