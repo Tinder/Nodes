@@ -37,6 +37,12 @@ final class PluginTests: XCTestCase, TestCaseHelpers {
         expect(plugin.create()).to(beAKindOf(BuildType.self))
     }
 
+    func testOverride() {
+        let plugin: TestPlugin = .init { ComponentType() }
+        expect(plugin).to(notBeNilAndToDeallocateAfterTest())
+        expect(plugin.override()).to(beAKindOf(BuildType.self))
+    }
+
     func testAssertions() {
         let component: ComponentType = .init()
         let plugin: Plugin<ComponentType, BuildType, Void> = .init { component }
