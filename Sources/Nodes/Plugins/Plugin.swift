@@ -78,10 +78,8 @@ open class Plugin<ComponentType, BuildType, StateType> {
 
     /// Initializes and returns a `BuildType` instance ignoring whether the plugin is enabled.
     ///
-    /// - Parameter state: The `StateType` instance.
-    ///
     /// - Returns: A `BuildType` instance.
-    public func override(state: StateType) -> BuildType {
+    public func override() -> BuildType {
         let component: ComponentType = makeComponent()
         return build(component: component)
     }
@@ -106,14 +104,5 @@ extension Plugin where StateType == Void {
     /// - Returns: An optional `BuildType` instance.
     public func create() -> BuildType? {
         create(state: ())
-    }
-
-    /// Initializes and returns a `BuildType` instance ignoring whether the plugin is enabled.
-    ///
-    /// This convenience method has no parameters since `StateType` is `Void`.
-    ///
-    /// - Returns: An optional `BuildType` instance.
-    public func override() -> BuildType? {
-        override(state: ())
     }
 }
