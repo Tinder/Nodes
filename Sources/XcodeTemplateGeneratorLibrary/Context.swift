@@ -13,14 +13,20 @@ internal protocol Context {
 extension Set where Element == String {
 
     internal func sortedImports() -> [Element] {
+        func prepare(_ string: String) -> [String] {
+            string
+                .components(separatedBy: "//")[0]
+                .trimmingCharacters(in: .whitespaces)
+                .components(separatedBy: " ")
+        }
         func compare(_ lhs: String, _ rhs: String) -> Bool {
             lhs.compare(rhs, options: [.caseInsensitive, .numeric]) == .orderedAscending
         }
         return self
             .filter { !$0.isEmpty }
             .sorted {
-                let lhs: [String] = $0.components(separatedBy: " ")
-                let rhs: [String] = $1.components(separatedBy: " ")
+                let lhs: [String] = prepare($0)
+                let rhs: [String] = prepare($1)
                 switch (lhs.count, rhs.count) {
                 case (2, 2):
                     guard lhs[0] == rhs[0]

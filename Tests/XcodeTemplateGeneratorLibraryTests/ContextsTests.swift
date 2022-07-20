@@ -55,7 +55,7 @@ final class ContextsTests: XCTestCase, TestFactories {
     func testSortedImports() {
         let imports: Set<String> = [
             "Nodes",
-            "struct Combine.AnySubscriber",
+            "struct Combine.AnySubscriber // comment",
             "struct Combine.AnyPublisher",
             "UIKit",
             "lowercase",
@@ -63,7 +63,7 @@ final class ContextsTests: XCTestCase, TestFactories {
             "Combine",
             "Accelerate",
             "Foundation",
-            "protocol Combine.Subscriber",
+            "protocol Combine.Subscriber // comment",
             "protocol Combine.Publisher"
         ]
         expect(imports.sortedImports()) == [
@@ -71,9 +71,9 @@ final class ContextsTests: XCTestCase, TestFactories {
             "Combine",
             "class Combine.AnyCancellable",
             "protocol Combine.Publisher",
-            "protocol Combine.Subscriber",
+            "protocol Combine.Subscriber // comment",
             "struct Combine.AnyPublisher",
-            "struct Combine.AnySubscriber",
+            "struct Combine.AnySubscriber // comment",
             "Foundation",
             "lowercase",
             "Nodes",
