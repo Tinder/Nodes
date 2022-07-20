@@ -110,9 +110,9 @@ internal typealias {{ plugin_list_name }}PluginListType = PluginList
 internal final class {{ plugin_list_name }}PluginListImp:
     {{ plugin_list_name }}PluginListType, {{ plugin_list_name }}PluginList {
 
-    /// The method in which the plugins are paired with keys and wrapped in type erased `AnyPlugin` instances.
+    /// The method in which the Plugins are paired with keys and wrapped in type erased `AnyPlugin` instances.
     /// - Parameter component: The component instance
-    /// - Returns: The plugin collection
+    /// - Returns: The Plugin collection
     override internal func plugins(
         component: {{ plugin_list_name }}PluginListComponent
     ) -> KeyValuePairs<{{ plugin_list_name }}PluginListKeyType, AnyPlugin> {
@@ -126,11 +126,14 @@ internal final class {{ plugin_list_name }}PluginListImp:
     ///
     /// There is no need to call `super` when overriding this method unless it is desirable to reference (or modify)
     /// the default order.
-    /// - Parameter component: The component instance
-    /// - Returns: The keys defining the plugin creation order.
+    /// - Parameters:
+    ///   - component: The component instance
+    ///   - state: The state
+    /// - Returns: The keys defining the Plugin creation order
 //    override internal func creationOrder(
-//        component: {{ plugin_list_name }}PluginListComponent
+//        component: {{ plugin_list_name }}PluginListComponent,
+//        state: {{ plugin_list_name }}PluginListStateType
 //    ) -> [{{ plugin_list_name }}PluginListKeyType] {
-//        super.creationOrder(component: component)
+//        super.creationOrder(component: component, state: state)
 //    }
 }

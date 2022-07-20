@@ -35,8 +35,8 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
             ]
         }
 
-        override func creationOrder(component: ComponentType) -> [String] {
-            creationOrderOverride ?? super.creationOrder(component: component)
+        override func creationOrder(component: ComponentType, state: Void) -> [String] {
+            creationOrderOverride ?? super.creationOrder(component: component, state: state)
         }
     }
 
@@ -57,8 +57,8 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
             ]
         }
 
-        override func creationOrder(component: ComponentType) -> [String] {
-            creationOrderOverride ?? super.creationOrder(component: component)
+        override func creationOrder(component: ComponentType, state: Void) -> [String] {
+            creationOrderOverride ?? super.creationOrder(component: component, state: state)
         }
     }
 
@@ -137,14 +137,14 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
     func testPluginListAssertions() {
         let component: ComponentType = .init()
         let pluginList: PluginList<String, ComponentType, BuildType, Void> = .init { component }
-        expect(pluginList.creationOrder(component: component)).to(throwAssertion())
+        expect(pluginList.creationOrder(component: component, state: ())).to(throwAssertion())
         expect(pluginList.plugins(component: component)).to(throwAssertion())
     }
 
     func testPluginListWithDefaultAssertions() {
         let component: ComponentType = .init()
         let pluginList: PluginListWithDefault<String, ComponentType, BuildType, Void> = .init { component }
-        expect(pluginList.creationOrder(component: component)).to(throwAssertion())
+        expect(pluginList.creationOrder(component: component, state: ())).to(throwAssertion())
         expect(pluginList.plugins(component: component)).to(throwAssertion())
     }
 }

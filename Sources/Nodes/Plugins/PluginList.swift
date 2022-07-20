@@ -104,10 +104,15 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
     /// - Important: This method should never be called directly.
     ///   The ``PluginList`` instance calls this method internally.
     ///
-    /// - Parameter component: The `ComponentType` instance.
+    /// - Parameters:
+    ///   - component: The `ComponentType` instance.
+    ///   - state: The `StateType` instance.
     ///
     /// - Returns: The keys defining the order plugins are created in.
-    open func creationOrder(component: ComponentType) -> [KeyType] {
+    open func creationOrder(
+        component: ComponentType,
+        state: StateType
+    ) -> [KeyType] {
         plugins(component: component).map(\.key)
     }
 
@@ -159,13 +164,13 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
 
     // swiftlint:disable:next strict_fileprivate
     fileprivate func createAll(component: ComponentType, state: StateType) -> [BuildType] {
-        let plugins: [KeyValuePair] = orderedPlugins(component: component)
+        let plugins: [KeyValuePair] = orderedPlugins(component: component, state: state)
         return plugins.map(\.value).compactMap { $0.create(state: state) }
     }
 
     // swiftlint:disable:next strict_fileprivate
     fileprivate func create(component: ComponentType, state: StateType) -> BuildType? {
-        let plugins: [KeyValuePair] = orderedPlugins(component: component)
+        let plugins: [KeyValuePair] = orderedPlugins(component: component, state: state)
         for plugin: AnyPlugin in plugins.map(\.value).reversed() {
             guard let build: BuildType = plugin.create(state: state)
             else { continue }
@@ -176,7 +181,7 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
 
     // swiftlint:disable:next strict_fileprivate
     fileprivate func create(component: ComponentType, key: KeyType, state: StateType) -> BuildType? {
-        let plugins: [KeyValuePair] = orderedPlugins(component: component)
+        let plugins: [KeyValuePair] = orderedPlugins(component: component, state: state)
         guard let plugin: KeyValuePair = plugins.first(where: { $0.key == key })
         else { return nil }
         return plugin.value.create(state: state)
@@ -184,9 +189,9 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
 
     // MARK: - Access Control: private
 
-    private func orderedPlugins(component: ComponentType) -> [KeyValuePair] {
+    private func orderedPlugins(component: ComponentType, state: StateType) -> [KeyValuePair] {
         let plugins: KeyValuePairs<KeyType, AnyPlugin> = plugins(component: component)
-        let keys: [KeyType] = creationOrder(component: component)
+        let keys: [KeyType] = creationOrder(component: component, state: state)
         var store: Set<KeyType> = []
         let uniqueKeys: [KeyType] = keys.filter { store.insert($0).inserted }
         assert(uniqueKeys.count == keys.count, "Keys must be unique \(keys)")
