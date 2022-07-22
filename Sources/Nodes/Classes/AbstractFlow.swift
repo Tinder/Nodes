@@ -12,12 +12,28 @@
  */
 public protocol FlowRetaining: AnyObject {}
 
+#if DEBUG
+
+public struct Node {
+
+    public let name: String
+    public let children: [Node]
+}
+
+#endif
+
 /**
  * The interface used for passing `Flow` instances into ``AbstractFlow`` instance methods which enables
  * attaching and detaching child `Flow` instances within the base class implementation.
  */
 /// @mockable
 public protocol Flow: AnyObject {
+
+    #if DEBUG
+
+    var node: Node { get }
+
+    #endif
 
     /// A Boolean value indicating whether the `Flow` instance has started.
     var isStarted: Bool { get }
@@ -53,6 +69,19 @@ public protocol Flow: AnyObject {
  * | ViewControllerType   | The type of the ``ViewControllable`` instance. |
  */
 open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
+
+    #if DEBUG
+
+    public var node: Node {
+        let type: String = "\(type(of: self))"
+        let suffix: String = "FlowImp"
+        let name: String = type.hasSuffix(suffix)
+            ? String(type.dropLast(suffix.count))
+            : type
+        return Node(name: name, children: flowController.flows.map(\.node))
+    }
+
+    #endif
 
     /// A Boolean value indicating whether the `Flow` instance has started.
     public var isStarted: Bool {
