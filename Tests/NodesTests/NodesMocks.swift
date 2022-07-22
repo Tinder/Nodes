@@ -17,7 +17,7 @@ extension Equatable where Self: AnyObject {
 
 internal final class FlowMock: Flow, Equatable {
 
-    internal let node: Node = .init(name: "mock", children: [])
+    internal let tree: Node = .init(name: "", children: [])
 
     // swiftlint:disable:next redundant_type_annotation
     internal private(set) var isStarted: Bool = false

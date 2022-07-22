@@ -13,6 +13,14 @@
  */
 public final class FlowController {
 
+    #if DEBUG
+
+    public var tree: Node {
+        Node.init(name: "", children: flows.map(\.tree))
+    }
+
+    #endif
+
     /// The array of `Flow` instances managed by the ``FlowController``.
     public private(set) var flows: [Flow] = []
 

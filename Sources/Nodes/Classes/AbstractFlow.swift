@@ -31,7 +31,7 @@ public protocol Flow: AnyObject {
 
     #if DEBUG
 
-    var node: Node { get }
+    var tree: Node { get }
 
     #endif
 
@@ -72,13 +72,13 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
 
     #if DEBUG
 
-    public var node: Node {
+    public var tree: Node {
         let type: String = "\(type(of: self))"
         let suffix: String = "FlowImp"
         let name: String = type.hasSuffix(suffix)
             ? String(type.dropLast(suffix.count))
             : type
-        return Node(name: name, children: flowController.flows.map(\.node))
+        return Node(name: name, children: flowController.tree.children)
     }
 
     #endif
