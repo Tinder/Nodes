@@ -6,7 +6,7 @@
 //  Created by Christopher Fuller on 5/4/21.
 //
 
-import Nodes
+@testable import Nodes
 
 extension Equatable where Self: AnyObject {
 
@@ -16,6 +16,8 @@ extension Equatable where Self: AnyObject {
 }
 
 internal final class FlowMock: Flow, Equatable {
+
+    internal let node: Node = .init(name: "mock", children: [])
 
     // swiftlint:disable:next redundant_type_annotation
     internal private(set) var isStarted: Bool = false
