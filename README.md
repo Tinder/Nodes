@@ -27,6 +27,10 @@ $ make docs
 
 Following these steps will create a new iOS Xcode project set up with Nodes, Needle and Mockolo.
 
+### Requirements
+
+- Xcode version `13.3` or greater
+
 ### Install dependencies
 
 ```
@@ -83,3 +87,18 @@ Xcode templates for Nodes will automatically be installed to:
 To add additional Nodes to the project, scroll to the Nodes templates in the new file dialog. The `` symbol indicates SwiftUI templates.
 
 <img src="./.assets/Xcode-Templates.png" width="690" />
+
+### Known Issues
+
+Only if on a Mac computer with Apple silicon, create the following symbolic links to provision these two dependencies within a `$PATH` that Xcode utilizes:
+
+```
+$ sudo ln -s /opt/homebrew/bin/mockolo /usr/local/bin/mockolo
+$ sudo ln -s /opt/homebrew/bin/needle /usr/local/bin/needle
+```
+
+Only if issues are encountered when executing Mockolo, build from source:
+
+```
+$ brew reinstall --build-from-source mockolo
+```
