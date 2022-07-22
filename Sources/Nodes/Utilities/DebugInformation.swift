@@ -55,7 +55,7 @@ public enum DebugInformation {
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowWillStartNotification.self)")
 
-        @available(iOS 13.0, OSX 10.15, *)
+        @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
                 .compactMap { $0.userInfo }
@@ -87,7 +87,7 @@ public enum DebugInformation {
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowDidEndNotification.self)")
 
-        @available(iOS 13.0, OSX 10.15, *)
+        @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
                 .compactMap { $0.userInfo }
@@ -116,7 +116,7 @@ public enum DebugInformation {
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowWillAttachNotification.self)")
 
-        @available(iOS 13.0, OSX 10.15, *)
+        @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
                 .compactMap { $0.userInfo }
@@ -151,7 +151,7 @@ public enum DebugInformation {
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowDidDetachNotification.self)")
 
-        @available(iOS 13.0, OSX 10.15, *)
+        @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
                 .compactMap { $0.userInfo }
@@ -186,7 +186,7 @@ public enum DebugInformation {
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowControllerWillAttachNotification.self)")
 
-        @available(iOS 13.0, OSX 10.15, *)
+        @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
                 .compactMap { $0.userInfo }
@@ -218,7 +218,7 @@ public enum DebugInformation {
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowControllerDidDetachNotification.self)")
 
-        @available(iOS 13.0, OSX 10.15, *)
+        @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
                 .compactMap { $0.userInfo }
