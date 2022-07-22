@@ -26,6 +26,31 @@ extension NotificationPosting {
 
 public enum DebugInformation {
 
+    case flowWillStart(flowIdentifier: ObjectIdentifier,
+                       flowType: Flow.Type,
+                       factory: Factory)
+
+    case flowDidEnd(flowIdentifier: ObjectIdentifier,
+                    flowType: Flow.Type)
+
+    case flowWillAttachSubFlow(flowIdentifier: ObjectIdentifier,
+                               flowType: Flow.Type,
+                               subFlowIdentifier: ObjectIdentifier,
+                               subFlowType: Flow.Type)
+
+    case flowDidDetachSubFlow(flowIdentifier: ObjectIdentifier,
+                              flowType: Flow.Type,
+                              subFlowIdentifier: ObjectIdentifier,
+                              subFlowType: Flow.Type)
+
+    case flowControllerWillAttachFlow(flowControllerIdentifier: ObjectIdentifier,
+                                      flowIdentifier: ObjectIdentifier,
+                                      flowType: Flow.Type)
+
+    case flowControllerDidDetachFlow(flowControllerIdentifier: ObjectIdentifier,
+                                     flowIdentifier: ObjectIdentifier,
+                                     flowType: Flow.Type)
+
     public class Factory {
 
         private weak var object: AnyObject?
@@ -259,31 +284,6 @@ public enum DebugInformation {
             .receive(on: queue)
             .eraseToAnyPublisher()
     }
-
-    case flowWillStart(flowIdentifier: ObjectIdentifier,
-                       flowType: Flow.Type,
-                       factory: Factory)
-
-    case flowDidEnd(flowIdentifier: ObjectIdentifier,
-                    flowType: Flow.Type)
-
-    case flowWillAttachSubFlow(flowIdentifier: ObjectIdentifier,
-                               flowType: Flow.Type,
-                               subFlowIdentifier: ObjectIdentifier,
-                               subFlowType: Flow.Type)
-
-    case flowDidDetachSubFlow(flowIdentifier: ObjectIdentifier,
-                              flowType: Flow.Type,
-                              subFlowIdentifier: ObjectIdentifier,
-                              subFlowType: Flow.Type)
-
-    case flowControllerWillAttachFlow(flowControllerIdentifier: ObjectIdentifier,
-                                      flowIdentifier: ObjectIdentifier,
-                                      flowType: Flow.Type)
-
-    case flowControllerDidDetachFlow(flowControllerIdentifier: ObjectIdentifier,
-                                     flowIdentifier: ObjectIdentifier,
-                                     flowType: Flow.Type)
 }
 
 #endif
