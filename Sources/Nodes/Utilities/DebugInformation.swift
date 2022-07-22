@@ -18,9 +18,7 @@ internal protocol NotificationPosting {
 extension NotificationPosting {
 
     internal func post() {
-        DispatchQueue.global(qos: .background).async { [notification] in
-            NotificationCenter.default.post(notification)
-        }
+        NotificationCenter.default.post(notification)
     }
 }
 
@@ -50,10 +48,10 @@ public enum DebugInformation {
         }
     }
 
-    internal class FlowDidStartNotification: NotificationPosting {
+    internal class FlowWillStartNotification: NotificationPosting {
 
         private static let name: Notification.Name =
-            .init("Nodes.\(DebugInformation.self).\(FlowDidStartNotification.self)")
+            .init("Nodes.\(DebugInformation.self).\(FlowWillStartNotification.self)")
 
         @available(iOS 13.0, OSX 10.15, *)
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
@@ -64,9 +62,9 @@ public enum DebugInformation {
                           let flowType = $0["flow_type"] as? Flow.Type,
                           let factory = $0["factory"] as? Factory
                     else { return nil }
-                    return .flowDidStart(flowIdentifier: flowIdentifier,
-                                         flowType: flowType,
-                                         factory: factory)
+                    return .flowWillStart(flowIdentifier: flowIdentifier,
+                                          flowType: flowType,
+                                          factory: factory)
                 }
                 .eraseToAnyPublisher()
         }
@@ -111,10 +109,10 @@ public enum DebugInformation {
         }
     }
 
-    internal class FlowDidAttachNotification: NotificationPosting {
+    internal class FlowWillAttachNotification: NotificationPosting {
 
         private static let name: Notification.Name =
-            .init("Nodes.\(DebugInformation.self).\(FlowDidAttachNotification.self)")
+            .init("Nodes.\(DebugInformation.self).\(FlowWillAttachNotification.self)")
 
         @available(iOS 13.0, OSX 10.15, *)
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
@@ -122,12 +120,14 @@ public enum DebugInformation {
                 .compactMap { $0.userInfo }
                 .compactMap {
                     guard let flowIdentifier = $0["flow_identifier"] as? ObjectIdentifier,
+                          let flowType = $0["flow_type"] as? Flow.Type,
                           let subFlowIdentifier = $0["sub_flow_identifier"] as? ObjectIdentifier,
                           let subFlowType = $0["sub_flow_type"] as? Flow.Type
                     else { return nil }
-                    return .flowDidAttach(flowIdentifier: flowIdentifier,
-                                          subFlowIdentifier: subFlowIdentifier,
-                                          subFlowType: subFlowType)
+                    return .flowWillAttachSubFlow(flowIdentifier: flowIdentifier,
+                                                  flowType: flowType,
+                                                  subFlowIdentifier: subFlowIdentifier,
+                                                  subFlowType: subFlowType)
                 }
                 .eraseToAnyPublisher()
         }
@@ -137,16 +137,52 @@ public enum DebugInformation {
         internal init(flow: Flow, subFlow: Flow) {
             notification = Notification(name: Self.name, userInfo: [
                 "flow_identifier": ObjectIdentifier(flow),
+                "flow_type": type(of: flow),
                 "sub_flow_identifier": ObjectIdentifier(subFlow),
                 "sub_flow_type": type(of: subFlow)
             ])
         }
     }
 
-    internal class FlowControllerDidAttachNotification: NotificationPosting {
+    internal class FlowDidDetachNotification: NotificationPosting {
 
         private static let name: Notification.Name =
-            .init("Nodes.\(DebugInformation.self).\(FlowControllerDidAttachNotification.self)")
+            .init("Nodes.\(DebugInformation.self).\(FlowDidDetachNotification.self)")
+
+        @available(iOS 13.0, OSX 10.15, *)
+        fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
+            NotificationCenter.default.publisher(for: name)
+                .compactMap { $0.userInfo }
+                .compactMap {
+                    guard let flowIdentifier = $0["flow_identifier"] as? ObjectIdentifier,
+                          let flowType = $0["flow_type"] as? Flow.Type,
+                          let subFlowIdentifier = $0["sub_flow_identifier"] as? ObjectIdentifier,
+                          let subFlowType = $0["sub_flow_type"] as? Flow.Type
+                    else { return nil }
+                    return .flowDidDetachSubFlow(flowIdentifier: flowIdentifier,
+                                                 flowType: flowType,
+                                                 subFlowIdentifier: subFlowIdentifier,
+                                                 subFlowType: subFlowType)
+                }
+                .eraseToAnyPublisher()
+        }
+
+        internal let notification: Notification
+
+        internal init(flow: Flow, subFlow: Flow) {
+            notification = Notification(name: Self.name, userInfo: [
+                "flow_identifier": ObjectIdentifier(flow),
+                "flow_type": type(of: flow),
+                "sub_flow_identifier": ObjectIdentifier(subFlow),
+                "sub_flow_type": type(of: subFlow)
+            ])
+        }
+    }
+
+    internal class FlowControllerWillAttachNotification: NotificationPosting {
+
+        private static let name: Notification.Name =
+            .init("Nodes.\(DebugInformation.self).\(FlowControllerWillAttachNotification.self)")
 
         @available(iOS 13.0, OSX 10.15, *)
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
@@ -157,9 +193,9 @@ public enum DebugInformation {
                           let flowIdentifier = $0["flow_identifier"] as? ObjectIdentifier,
                           let flowType = $0["flow_type"] as? Flow.Type
                     else { return nil }
-                    return .flowControllerDidAttach(flowControllerIdentifier: flowControllerIdentifier,
-                                                    flowIdentifier: flowIdentifier,
-                                                    flowType: flowType)
+                    return .flowControllerWillAttachFlow(flowControllerIdentifier: flowControllerIdentifier,
+                                                         flowIdentifier: flowIdentifier,
+                                                         flowType: flowType)
                 }
                 .eraseToAnyPublisher()
         }
@@ -175,31 +211,77 @@ public enum DebugInformation {
         }
     }
 
+    internal class FlowControllerDidDetachNotification: NotificationPosting {
+
+        private static let name: Notification.Name =
+            .init("Nodes.\(DebugInformation.self).\(FlowControllerDidDetachNotification.self)")
+
+        @available(iOS 13.0, OSX 10.15, *)
+        fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
+            NotificationCenter.default.publisher(for: name)
+                .compactMap { $0.userInfo }
+                .compactMap {
+                    guard let flowControllerIdentifier = $0["flow_controller_identifier"] as? ObjectIdentifier,
+                          let flowIdentifier = $0["flow_identifier"] as? ObjectIdentifier,
+                          let flowType = $0["flow_type"] as? Flow.Type
+                    else { return nil }
+                    return .flowControllerDidDetachFlow(flowControllerIdentifier: flowControllerIdentifier,
+                                                        flowIdentifier: flowIdentifier,
+                                                        flowType: flowType)
+                }
+                .eraseToAnyPublisher()
+        }
+
+        internal let notification: Notification
+
+        internal init(flowController: FlowController, flow: Flow) {
+            notification = Notification(name: Self.name, userInfo: [
+                "flow_controller_identifier": ObjectIdentifier(flowController),
+                "flow_identifier": ObjectIdentifier(flow),
+                "flow_type": type(of: flow)
+            ])
+        }
+    }
+
+    private static var queue: DispatchQueue = .init(label: "Nodes Debug Notifications",
+                                                    qos: .background)
+
     @available(iOS 13.0, OSX 10.15, *)
     public static func publisher() -> AnyPublisher<DebugInformation, Never> {
-        FlowDidStartNotification.publisher()
+        FlowWillStartNotification.publisher()
             .merge(with: FlowDidEndNotification.publisher())
-            .merge(with: FlowDidAttachNotification.publisher())
-            .merge(with: FlowControllerDidAttachNotification.publisher())
-            .subscribe(on: DispatchQueue.global(qos: .background))
-            .receive(on: DispatchQueue.global(qos: .background))
+            .merge(with: FlowWillAttachNotification.publisher())
+            .merge(with: FlowDidDetachNotification.publisher())
+            .merge(with: FlowControllerWillAttachNotification.publisher())
+            .merge(with: FlowControllerDidDetachNotification.publisher())
+            .receive(on: queue)
             .eraseToAnyPublisher()
     }
 
-    case flowDidStart(flowIdentifier: ObjectIdentifier,
-                      flowType: Flow.Type,
-                      factory: Factory)
+    case flowWillStart(flowIdentifier: ObjectIdentifier,
+                       flowType: Flow.Type,
+                       factory: Factory)
 
     case flowDidEnd(flowIdentifier: ObjectIdentifier,
                     flowType: Flow.Type)
 
-    case flowDidAttach(flowIdentifier: ObjectIdentifier,
-                       subFlowIdentifier: ObjectIdentifier,
-                       subFlowType: Flow.Type)
+    case flowWillAttachSubFlow(flowIdentifier: ObjectIdentifier,
+                               flowType: Flow.Type,
+                               subFlowIdentifier: ObjectIdentifier,
+                               subFlowType: Flow.Type)
 
-    case flowControllerDidAttach(flowControllerIdentifier: ObjectIdentifier,
-                                 flowIdentifier: ObjectIdentifier,
-                                 flowType: Flow.Type)
+    case flowDidDetachSubFlow(flowIdentifier: ObjectIdentifier,
+                              flowType: Flow.Type,
+                              subFlowIdentifier: ObjectIdentifier,
+                              subFlowType: Flow.Type)
+
+    case flowControllerWillAttachFlow(flowControllerIdentifier: ObjectIdentifier,
+                                      flowIdentifier: ObjectIdentifier,
+                                      flowType: Flow.Type)
+
+    case flowControllerDidDetachFlow(flowControllerIdentifier: ObjectIdentifier,
+                                     flowIdentifier: ObjectIdentifier,
+                                     flowType: Flow.Type)
 }
 
 #endif

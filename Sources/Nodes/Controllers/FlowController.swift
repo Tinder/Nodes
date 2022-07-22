@@ -53,10 +53,10 @@ public final class FlowController {
             assertionFailure("Unable to attach")
             return
         }
-        flows.append(flow)
         #if DEBUG
-        DebugInformation.FlowControllerDidAttachNotification(flowController: self, flow: flow).post()
+        DebugInformation.FlowControllerWillAttachNotification(flowController: self, flow: flow).post()
         #endif
+        flows.append(flow)
         flow.start()
     }
 
@@ -75,6 +75,9 @@ public final class FlowController {
         flow.end()
         flows.removeAll { $0 === flow }
         if isFlowLeakDetectionEnabled { LeakDetector.detect(flow) }
+        #if DEBUG
+        DebugInformation.FlowControllerDidDetachNotification(flowController: self, flow: flow).post()
+        #endif
     }
 
     /// Detaches `Flow` instances of the given `type` where the given predicate closure returns `true`.

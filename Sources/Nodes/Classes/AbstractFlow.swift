@@ -111,10 +111,10 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     public final func start() {
         guard !_context.isActive
         else { return }
-        _context.activate()
         #if DEBUG
-        DebugInformation.FlowDidStartNotification(flow: self, viewController: viewController as AnyObject).post()
+        DebugInformation.FlowWillStartNotification(flow: self, viewController: viewController as AnyObject).post()
         #endif
+        _context.activate()
         didStart()
     }
 
@@ -137,10 +137,10 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///
     /// - Parameter subFlow: The `Flow` instance to attach and start.
     public final func attach(starting subFlow: Flow) {
-        flowController.attach(starting: subFlow)
         #if DEBUG
-        DebugInformation.FlowDidAttachNotification(flow: self, subFlow: subFlow).post()
+        DebugInformation.FlowWillAttachNotification(flow: self, subFlow: subFlow).post()
         #endif
+        flowController.attach(starting: subFlow)
     }
 
     /// Calls the end method of the given `Flow` instance and removes it from the `subFlows` array.
@@ -150,6 +150,9 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// - Parameter subFlow: The `Flow` instance to end and detach.
     public final func detach(ending subFlow: Flow) {
         flowController.detach(ending: subFlow)
+        #if DEBUG
+        DebugInformation.FlowDidDetachNotification(flow: self, subFlow: subFlow).post()
+        #endif
     }
 
     /// Detaches `Flow` instances of the given `type` where the given predicate closure returns `true`.
