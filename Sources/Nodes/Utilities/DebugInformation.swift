@@ -1,6 +1,8 @@
 //
-//  Created by Christopher Fuller on 2/23/21.
-//  Copyright © 2021 Tinder. All rights reserved.
+//  DebugInformation.swift
+//  Nodes
+//
+//  Created by Christopher Fuller on 7/22/22.
 //
 
 #if canImport(Combine)
