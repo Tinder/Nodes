@@ -16,7 +16,7 @@ public final class FlowController {
     #if DEBUG
 
     public var tree: Node {
-        Node.init(name: "", children: flows.map(\.tree))
+        Node(name: "", children: flows.map(\.tree))
     }
 
     #endif
