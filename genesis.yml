@@ -2271,10 +2271,10 @@ files:
           private let registration: (_ path: [String], _ dependency: AnyObject) -> Void
 
           fileprivate init(
-              path: [String],
+              scope: Scope,
               registration: @escaping (_ path: [String], _ dependency: AnyObject) -> Void
           ) {
-              self.path = path
+              self.path = scope.path
               self.registration = registration
           }
 
@@ -2315,7 +2315,7 @@ files:
           internal func injectComponents(
               descendingFrom scope: () -> Scope
           ) -> DependencyProviderRegistrationBuilder {
-              DependencyProviderRegistrationBuilder(path: scope().path) { [weak self] in
+              DependencyProviderRegistrationBuilder(scope: scope()) { [weak self] in
                   registry.register(path: $0, dependency: $1) { self?.addTeardownBlock($0) }
               }
           }
