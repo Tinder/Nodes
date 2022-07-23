@@ -2312,10 +2312,18 @@ files:
               return { componentFactory(bootstrap) }
           }
 
-          internal func injectComponents(descendingFrom scope: Scope) -> DependencyProviderRegistrationBuilder {
-              DependencyProviderRegistrationBuilder(path: scope.path) { [weak self] in
+          internal func injectComponents(
+              descendingFrom scope: () -> Scope
+          ) -> DependencyProviderRegistrationBuilder {
+              DependencyProviderRegistrationBuilder(path: scope().path) { [weak self] in
                   registry.register(path: $0, dependency: $1) { self?.addTeardownBlock($0) }
               }
+          }
+
+          internal func injectComponents(
+              descendingFrom scope: @autoclosure () -> Scope
+          ) -> DependencyProviderRegistrationBuilder {
+              injectComponents(descendingFrom: scope)
           }
       }
 
