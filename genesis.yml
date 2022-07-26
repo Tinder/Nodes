@@ -311,10 +311,12 @@ files:
           }
 
           private func bootstrap() {
+              #if DEBUG
               guard appBuilder is AppBuilderImp
               else { return appFlow.start() }
               guard NSClassFromString("XCTestCase") == nil
               else { return }
+              #endif
               registerProviderFactories()
               appFlow.start()
           }
