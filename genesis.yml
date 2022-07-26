@@ -294,7 +294,13 @@ files:
       @main
       internal final class AppDelegate: UIResponder, UIApplicationDelegate {
 
-          private lazy var appFlow: AppFlow = AppBuilderImp { AppComponent() }.build()
+          private lazy var appBuilder: AppBuilder = AppBuilderImp { AppComponent() }
+          private lazy var appFlow: AppFlow = appBuilder.build()
+
+          internal convenience init(appBuilder: AppBuilder) {
+              self.init()
+              self.appBuilder = appBuilder
+          }
 
           internal func application(
               _ application: UIApplication,
@@ -305,6 +311,8 @@ files:
           }
 
           private func bootstrap() {
+              guard appBuilder is AppBuilderImp
+              else { return appFlow.start() }
               guard NSClassFromString("XCTestCase") == nil
               else { return }
               registerProviderFactories()
