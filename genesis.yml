@@ -2283,8 +2283,8 @@ files:
               ofType type: T.Type,
               with dependency: () -> U
           ) -> Self {
-              let parts: [String] = "\(T.self)".components(separatedBy: ".")
-              path.append(parts[parts.count - 1])
+              let pathComponent: String = "\(PathComponent(for: T.self))"
+              path.append(pathComponent)
               registration(path, dependency() as AnyObject)
               return self
           }
@@ -2304,19 +2304,22 @@ files:
               componentFactory: @escaping (_ parent: Scope) -> T,
               with dependency: () -> U
           ) -> () -> T {
-              registry.register(path: ["^", "BootstrapComponent"],
-                                dependencyProviderFactory: EmptyDependencyProvider.init,
-                                addTeardownBlock: addTeardownBlock)
-              let bootstrap: BootstrapComponent = .init()
-              injectComponents(descendingFrom: bootstrap).injectComponent(ofType: T.self, with: dependency)
-              return { componentFactory(bootstrap) }
+              let bootstrap: () -> BootstrapComponent = { BootstrapComponent() }
+              registerBootstrapComponent(componentFactory: bootstrap)
+              injectComponents(descendingFrom: bootstrap)
+                  .injectComponent(ofType: T.self, with: dependency)
+              return { componentFactory(bootstrap()) }
           }
 
           internal func injectComponents(
               descendingFrom scope: () -> Scope
           ) -> DependencyProviderRegistrationBuilder {
-              DependencyProviderRegistrationBuilder(scope: scope()) { [weak self] in
-                  registry.register(path: $0, dependency: $1) { self?.addTeardownBlock($0) }
+              DependencyProviderRegistrationBuilder(scope: scope()) { [weak self] path, dependency in
+                  registry.register(path: path) { _ in
+                      dependency
+                  } onTeardown: {
+                      self?.addTeardownBlock($0)
+                  }
               }
           }
 
@@ -2325,30 +2328,46 @@ files:
           ) -> DependencyProviderRegistrationBuilder {
               injectComponents(descendingFrom: scope)
           }
+
+          private func registerBootstrapComponent<T: Component<EmptyDependency>>(
+              componentFactory: @escaping () -> T
+          ) {
+              let pathComponent: String = "\(PathComponent(for: T.self))"
+              registry.register(path: ["^", pathComponent]) {
+                  EmptyDependencyProvider(component: $0)
+              } onTeardown: {
+                  addTeardownBlock($0)
+              }
+          }
       }
 
       private extension __DependencyProviderRegistry {
 
           func register(
               path: [String],
-              dependencyProviderFactory: @escaping (_ scope: Scope) -> AnyObject,
-              addTeardownBlock: (_ block: @escaping () -> Void) -> Void
+              dependencyProviderFactory dependency: @escaping (_ scope: Scope) -> AnyObject,
+              onTeardown: (@escaping () -> Void) -> Void
           ) {
               let componentPath: String = path.joined(separator: "->")
-              registerDependencyProviderFactory(for: componentPath, dependencyProviderFactory)
-              addTeardownBlock { [weak self] in
-                  self?.unregisterDependencyProviderFactory(for: componentPath)
+              if dependencyProviderFactory(for: componentPath) != nil {
+                  unregisterDependencyProviderFactory(for: componentPath)
+              } else {
+                  onTeardown { [weak self] in
+                      self?.unregisterDependencyProviderFactory(for: componentPath)
+                  }
               }
+              registerDependencyProviderFactory(for: componentPath, dependency)
           }
+      }
 
-          func register(
-              path: [String],
-              dependency: AnyObject,
-              addTeardownBlock: (_ block: @escaping () -> Void) -> Void
-          ) {
-              register(path: path,
-                       dependencyProviderFactory: { _ in dependency },
-                       addTeardownBlock: addTeardownBlock)
+      private class PathComponent: CustomStringConvertible {
+
+          let description: String
+
+          init<T>(for type: T.Type) {
+              description = "\(T.self)"
+                  .components(separatedBy: ".")
+                  .reversed()[0]
           }
       }
 
