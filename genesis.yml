@@ -2289,20 +2289,20 @@ files:
           @discardableResult
           internal func injectComponent<T: Component<U>, U>(
               ofType type: T.Type,
+              with dependency: @autoclosure () -> U
+          ) -> Self {
+              injectComponent(ofType: type, with: dependency)
+          }
+
+          @discardableResult
+          internal func injectComponent<T: Component<U>, U>(
+              ofType type: T.Type,
               with dependency: () -> U
           ) -> Self {
               let pathComponent: String = "\(PathComponent(for: T.self))"
               path.append(pathComponent)
               registration(path, dependency() as AnyObject)
               return self
-          }
-
-          @discardableResult
-          internal func injectComponent<T: Component<U>, U>(
-              ofType type: T.Type,
-              with dependency: @autoclosure () -> U
-          ) -> Self {
-              injectComponent(ofType: type, with: dependency)
           }
       }
 
@@ -2320,6 +2320,12 @@ files:
           }
 
           internal func injectComponents(
+              descendingFrom scope: @autoclosure () -> Scope
+          ) -> DependencyProviderRegistrationBuilder {
+              injectComponents(descendingFrom: scope)
+          }
+
+          internal func injectComponents(
               descendingFrom scope: () -> Scope
           ) -> DependencyProviderRegistrationBuilder {
               DependencyProviderRegistrationBuilder(scope: scope()) { [weak self] path, dependency in
@@ -2329,12 +2335,6 @@ files:
                       self?.addTeardownBlock($0)
                   }
               }
-          }
-
-          internal func injectComponents(
-              descendingFrom scope: @autoclosure () -> Scope
-          ) -> DependencyProviderRegistrationBuilder {
-              injectComponents(descendingFrom: scope)
           }
 
           private func registerBootstrapComponent<T: Component<EmptyDependency>>(
