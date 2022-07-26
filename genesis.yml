@@ -2386,8 +2386,9 @@ files:
           WORKSPACE_DOCUMENT_NAME="{{ project|split:' '|join:'_' }}.xcodeproj"
           osascript \
               -e 'set workspaceDocumentName to "'"${WORKSPACE_DOCUMENT_NAME}"'"' \
-              -e 'tell application "Xcode"' \
-              -e 'if exists workspace document workspaceDocumentName then' \
+              -e 'if application id "com.apple.dt.Xcode" is running then' \
+              -e 'tell application id "com.apple.dt.Xcode"' \
+              -e 'if workspace document workspaceDocumentName exists then' \
               -e 'set workspaceDocument to workspace document workspaceDocumentName' \
               -e 'if loaded of workspaceDocument is false then' \
               -e 'error "workspace not loaded"' \
@@ -2401,7 +2402,8 @@ files:
               -e 'activate' \
               -e 'delay 1.5' \
               -e 'end if' \
-              -e 'end tell'
+              -e 'end tell' \
+              -e 'end if'
           unset WORKSPACE_DOCUMENT_NAME
           NEEDLE_GENERATED="{{ project|split:' '|join:'_' }}/Generated/NeedleGenerated.swift"
           MOCKOLO_GENERATED="{{ project|split:' '|join:'_' }}Tests/Generated/MockoloGenerated.swift"
