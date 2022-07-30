@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'Nodes'
-  s.version  = '0.0.10'
+  s.version  = '0.0.11'
   s.summary  = 'Nodes Architecture Framework - Native Mobile Application Engineering at Scale'
   s.homepage = 'https://github.com/TinderApp/Nodes'
   s.license  = ''

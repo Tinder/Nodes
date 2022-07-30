@@ -1,5 +1,79 @@
 # Changelog
 
+## [0.0.11](https://github.com/TinderApp/Nodes/releases/tag/0.0.11)
+
+### Added
+
+- Add Transform\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#141](https://github.com/TinderApp/Nodes/pull/141)]
+
+- Publish debugging information\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#147](https://github.com/TinderApp/Nodes/pull/147)]
+
+- Add debugging property\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#148](https://github.com/TinderApp/Nodes/pull/148)]
+
+### Improved
+
+- Initialize WithViewState with initial view state\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#142](https://github.com/TinderApp/Nodes/pull/142)]
+
+- Ignore comments when sorting imports\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#144](https://github.com/TinderApp/Nodes/pull/144)]
+
+- Add override method to Plugin\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#145](https://github.com/TinderApp/Nodes/pull/145)]
+
+- Pass state to Plugin List creation order\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#146](https://github.com/TinderApp/Nodes/pull/146)]
+
+- Add additional quick start instructions to README\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#149](https://github.com/TinderApp/Nodes/pull/149)]
+
+- Use scope factory in quick start DI helpers\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#150](https://github.com/TinderApp/Nodes/pull/150)]
+
+- Improve quick start DI helpers\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#151](https://github.com/TinderApp/Nodes/pull/151)]
+
+- Improve AppleScript in quick start project\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#152](https://github.com/TinderApp/Nodes/pull/152)]
+
+- Allow AppBuilder to be injected into AppDelegate in quick start project\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#153](https://github.com/TinderApp/Nodes/pull/153)]
+
+- Reorder quick start DI helpers methods\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#154](https://github.com/TinderApp/Nodes/pull/154)]
+
+- Limit test only implementation in quick start project to DEBUG\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#155](https://github.com/TinderApp/Nodes/pull/155)]
+
+### Removed
+
+- Remove templates sub-directories\
+  [Christopher Fuller](https://github.com/tinder-cfuller)
+  [[#143](https://github.com/TinderApp/Nodes/pull/143)]
+
+### Fixed
+
+- None
+
+---
+
 ## [0.0.10](https://github.com/TinderApp/Nodes/releases/tag/0.0.10)
 
 ### Added
