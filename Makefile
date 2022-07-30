@@ -42,6 +42,7 @@ preview:
 .PHONY: docs
 docs: library ?= Nodes
 docs: destination ?= generic/platform=iOS
+docs: open ?= OPEN
 docs: DERIVED_DATA_PATH = .build/documentation
 docs: DOCUMENTATION_PATH = Documentation/Generated
 docs:
@@ -54,7 +55,7 @@ docs:
 		-type d \
 		-name "$(library).doccarchive" \
 		-exec cp -R {} "$(DOCUMENTATION_PATH)/" \;
-	@open "$(DOCUMENTATION_PATH)/$(library).doccarchive"
+	$(if $(filter $(open),OPEN),@open "$(DOCUMENTATION_PATH)/$(library).doccarchive",)
 
 .PHONY: preflight
 preflight: output ?= pretty
