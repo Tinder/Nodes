@@ -18,6 +18,11 @@ public struct Node {
 
     public let name: String
     public let children: [Node]
+
+    public init(name: String, children: [Node]) {
+        self.name = name
+        self.children = children
+    }
 }
 
 #endif
@@ -73,7 +78,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     #if DEBUG
 
     public var tree: Node {
-        let type: String = "\(type(of: self))"
+        let type: String = "\(type(of: self))".components(separatedBy: ".").reversed()[0]
         let suffix: String = "FlowImp"
         let name: String = type.hasSuffix(suffix)
             ? String(type.dropLast(suffix.count))
