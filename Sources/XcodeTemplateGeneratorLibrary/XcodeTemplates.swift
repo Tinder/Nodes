@@ -52,7 +52,7 @@ public final class XcodeTemplates {
             .appendingPathComponent("Xcode")
             .appendingPathComponent("Templates")
             .appendingPathComponent("File Templates")
-            .appendingPathComponent("Tinder Nodes Architecture Framework (\(identifier))")
+            .appendingPathComponent("Nodes Architecture Framework (\(identifier))")
         try? fileSystem.removeItem(at: url)
         try generate(at: url, using: fileSystem)
     }

@@ -1,127 +1,127 @@
 ▿ 42 elements
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___Analytics.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___Analytics.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___Builder.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___Builder.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___Context.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___Context.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___Flow.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___Flow.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___ViewController.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___ViewController.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___ViewStateWorker.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___ViewStateWorker.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node.xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___Analytics.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___Analytics.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___Builder.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___Builder.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___Context.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___Context.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___Flow.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___Flow.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___ViewController.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___ViewController.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___ViewStateWorker.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___ViewStateWorker.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node.xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/___FILEBASENAME___Analytics.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/___FILEBASENAME___Analytics.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/___FILEBASENAME___Builder.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/___FILEBASENAME___Builder.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/___FILEBASENAME___Context.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/___FILEBASENAME___Context.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/___FILEBASENAME___Flow.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/___FILEBASENAME___Flow.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/___FILEBASENAME___ViewController.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/___FILEBASENAME___ViewController.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/___FILEBASENAME___Worker.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/___FILEBASENAME___Worker.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (without view state).xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/___FILEBASENAME___Analytics.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/___FILEBASENAME___Analytics.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/___FILEBASENAME___Builder.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/___FILEBASENAME___Builder.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/___FILEBASENAME___Context.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/___FILEBASENAME___Context.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/___FILEBASENAME___Flow.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/___FILEBASENAME___Flow.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/___FILEBASENAME___ViewController.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/___FILEBASENAME___ViewController.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/___FILEBASENAME___Worker.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/___FILEBASENAME___Worker.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node (without view state).xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Analytics.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Analytics.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Builder.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Builder.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Context.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Context.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Flow.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Flow.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Worker.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Worker.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/___FILEBASENAME___PluginList.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/___FILEBASENAME___PluginList.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/___FILEBASENAME___Plugin.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/___FILEBASENAME___Plugin.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin.xctemplate/___FILEBASENAME___Plugin.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate/___FILEBASENAME___Plugin.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Plugin.xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Worker.xctemplate/___FILEBASENAME___Worker.swift"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Worker.xctemplate/___FILEBASENAME___Worker.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (identifier)/Worker.xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Worker.xctemplate/TemplateInfo.plist"
     - .1: true

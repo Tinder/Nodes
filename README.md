@@ -96,7 +96,7 @@ Execute the `xcodegen` command any time the `project.yml` file is changed or pro
 
 Xcode templates for Nodes will automatically be installed to:
 
-`~/Library/Developer/Xcode/Templates/File Templates/Tinder Nodes Architecture Framework (Xcode Templates)`
+`~/Library/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (Xcode Templates)`
 
 To add additional Nodes to the project, scroll to the Nodes templates in the new file dialog. The `` symbol indicates SwiftUI templates.
 
