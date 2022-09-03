@@ -19,7 +19,7 @@ extension XCTestCase {
         // swiftlint:disable:next unowned_variable_capture
         Predicate { [unowned self] in
             guard let object: AnyObject = try $0.evaluate()
-            else { return PredicateResult(bool: false, message: .expectedTo("not be nil, got <nil>")) }
+            else { return PredicateResult(status: .fail, message: .expectedTo("not be nil, got <nil>")) }
             addTeardownBlock { [weak object] in
                 if object != nil {
                     let message: String = "Expected object to deallocate after test"
@@ -37,7 +37,7 @@ extension XCTestCase {
         // swiftlint:disable:next unowned_variable_capture
         Predicate { [unowned self] in
             guard let collection: T = try $0.evaluate()
-            else { return PredicateResult(bool: false, message: .expectedTo("not be nil, got <nil>")) }
+            else { return PredicateResult(status: .fail, message: .expectedTo("not be nil, got <nil>")) }
             collection.enumerated().forEach { index, object in
                 let object: T.Element = object
                 addTeardownBlock { [weak object] in
