@@ -25,7 +25,10 @@ internal protocol {{ node_name }}ViewControllable: {{ view_controllable_type }} 
  Responsible for presenting views and starting child Flows, and should not contain business logic.
  */
 internal final class {{ node_name }}FlowImp: AbstractFlow
-    <{{ node_name }}ContextInterface, {{ node_name }}ViewControllable> {
+<
+    {{ node_name }}ContextInterface,
+    {{ node_name }}ViewControllable
+> {
 {% if owns_view %}
     /// Provides the parent Node with access to the View so it can be presented.
     internal var viewControllable: {{ view_controllable_type }} {

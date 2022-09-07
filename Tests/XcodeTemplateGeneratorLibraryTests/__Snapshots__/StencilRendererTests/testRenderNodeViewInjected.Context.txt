@@ -21,7 +21,9 @@ internal protocol <nodeName>FlowInterface: Flow {}
  `didBecomeActive` and `willResignActive` methods.
  */
 internal final class <nodeName>ContextImp: AbstractContext
-    <<cancellableType>> {
+<
+    <cancellableType>
+> {
 
     /// The Flow instance.
     internal weak var flow: <nodeName>FlowInterface?

@@ -26,7 +26,10 @@ internal protocol ___VARIABLE_productName___ViewControllable: ViewControllable {
  Responsible for presenting views and starting child Flows, and should not contain business logic.
  */
 internal final class ___VARIABLE_productName___FlowImp: AbstractFlow
-    <___VARIABLE_productName___ContextInterface, ___VARIABLE_productName___ViewControllable> {
+<
+    ___VARIABLE_productName___ContextInterface,
+    ___VARIABLE_productName___ViewControllable
+> {
 
     /// The initializer.
     ///

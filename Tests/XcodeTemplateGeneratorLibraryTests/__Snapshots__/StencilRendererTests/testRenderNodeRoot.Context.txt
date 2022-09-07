@@ -32,7 +32,10 @@ internal protocol RootPresentable: AnyObject {
  `didBecomeActive` and `willResignActive` methods.
  */
 internal final class RootContextImp: AbstractPresentableContext
-    <<cancellableType>, RootPresentable> {
+<
+    <cancellableType>,
+    RootPresentable
+> {
 
     /// The Flow instance.
     internal weak var flow: RootFlowInterface?

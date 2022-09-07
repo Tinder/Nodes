@@ -33,10 +33,15 @@ internal protocol {{ node_name }}Presentable: AnyObject {
  `didBecomeActive` and `willResignActive` methods.
  */{% if owns_view %}
 internal final class {{ node_name }}ContextImp: AbstractPresentableContext
-    <{{ cancellable_type }}, {{ node_name }}Presentable> {
+<
+    {{ cancellable_type }},
+    {{ node_name }}Presentable
+> {
 {% else %}
 internal final class {{ node_name }}ContextImp: AbstractContext
-    <{{ cancellable_type }}> {
+<
+    {{ cancellable_type }}
+> {
 {% endif %}
     /// The Flow instance.
     internal weak var flow: {{ node_name }}FlowInterface?

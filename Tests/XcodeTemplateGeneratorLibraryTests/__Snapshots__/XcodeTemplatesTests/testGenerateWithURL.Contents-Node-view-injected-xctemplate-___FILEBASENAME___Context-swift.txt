@@ -22,7 +22,9 @@ internal protocol ___VARIABLE_productName___FlowInterface: Flow {}
  `didBecomeActive` and `willResignActive` methods.
  */
 internal final class ___VARIABLE_productName___ContextImp: AbstractContext
-    <AnyCancellable> {
+<
+    AnyCancellable
+> {
 
     /// The Flow instance.
     internal weak var flow: ___VARIABLE_productName___FlowInterface?

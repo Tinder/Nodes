@@ -30,7 +30,10 @@ internal protocol <nodeName>Presentable: AnyObject {
  `didBecomeActive` and `willResignActive` methods.
  */
 internal final class <nodeName>ContextImp: AbstractPresentableContext
-    <<cancellableType>, <nodeName>Presentable> {
+<
+    <cancellableType>,
+    <nodeName>Presentable
+> {
 
     /// The Flow instance.
     internal weak var flow: <nodeName>FlowInterface?

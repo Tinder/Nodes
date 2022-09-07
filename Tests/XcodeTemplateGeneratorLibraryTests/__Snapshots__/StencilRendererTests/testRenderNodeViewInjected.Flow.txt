@@ -25,7 +25,10 @@ internal protocol <nodeName>ViewControllable: <viewControllableType> {}
  Responsible for presenting views and starting child Flows, and should not contain business logic.
  */
 internal final class <nodeName>FlowImp: AbstractFlow
-    <<nodeName>ContextInterface, <nodeName>ViewControllable> {
+<
+    <nodeName>ContextInterface,
+    <nodeName>ViewControllable
+> {
 
     private let <flowPropertiesName>: <flowPropertiesType>
 

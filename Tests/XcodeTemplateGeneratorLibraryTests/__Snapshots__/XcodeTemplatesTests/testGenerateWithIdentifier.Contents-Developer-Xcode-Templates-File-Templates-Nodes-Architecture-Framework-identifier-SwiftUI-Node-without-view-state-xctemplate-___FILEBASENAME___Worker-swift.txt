@@ -13,7 +13,10 @@ internal protocol ___VARIABLE_productName___Worker: Worker {}
  PURPOSE:
  Concrete implementation of the Worker.
  */
-internal final class ___VARIABLE_productName___WorkerImp: AbstractWorker<AnyCancellable> {
+internal final class ___VARIABLE_productName___WorkerImp: AbstractWorker
+<
+    AnyCancellable
+> {
 
     /// The Analytics instance.
     private let analytics: ___VARIABLE_productName___Analytics

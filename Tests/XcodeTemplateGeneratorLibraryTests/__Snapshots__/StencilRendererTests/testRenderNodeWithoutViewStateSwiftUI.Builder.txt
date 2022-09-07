@@ -40,7 +40,9 @@ internal typealias <nodeName>DynamicComponentDependency = Void
  Declares dependencies that are owned by this Node.
  */
 internal final class <nodeName>Component: Component
-    <<nodeName>Dependency> {
+<
+    <nodeName>Dependency
+> {
 
     /*
      Dependencies
@@ -103,19 +105,17 @@ internal protocol <nodeName>Builder: AnyObject {
     func build(withListener listener: <nodeName>Listener) -> <nodeName>Flow
 }
 
-internal typealias <nodeName>BuilderType = AbstractBuilder
-    <
-    <nodeName>Component,
-    <nodeName>Flow,
-    <nodeName>DynamicBuildDependency,
-    <nodeName>DynamicComponentDependency
-    >
-
 /**
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.
  */
-internal final class <nodeName>BuilderImp: <nodeName>BuilderType {
+internal final class <nodeName>BuilderImp: AbstractBuilder
+<
+    <nodeName>Component,
+    <nodeName>Flow,
+    <nodeName>DynamicBuildDependency,
+    <nodeName>DynamicComponentDependency
+> {
 
     /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
     /// the dynamic component dependency.

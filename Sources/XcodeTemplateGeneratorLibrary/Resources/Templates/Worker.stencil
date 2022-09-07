@@ -14,7 +14,10 @@ internal protocol {{ worker_name }}Worker: Worker {{ '{' }}{% if view_state_publ
  PURPOSE:
  Concrete implementation of the Worker.
  */
-internal final class {{ worker_name }}WorkerImp: AbstractWorker<{{ cancellable_type }}> {
+internal final class {{ worker_name }}WorkerImp: AbstractWorker
+<
+    {{ cancellable_type }}
+> {
 {% if view_state_publisher %}
     /// The view state publisher.
     internal let viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>

@@ -25,7 +25,10 @@ internal protocol RootViewControllable: <viewControllableType> {}
  Responsible for presenting views and starting child Flows, and should not contain business logic.
  */
 internal final class RootFlowImp: AbstractFlow
-    <RootContextInterface, RootViewControllable> {
+<
+    RootContextInterface,
+    RootViewControllable
+> {
 
     /// Provides the parent Node with access to the View so it can be presented.
     internal var viewControllable: <viewControllableType> {

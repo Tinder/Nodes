@@ -15,7 +15,10 @@ internal protocol ___VARIABLE_productName___ViewStateWorker: Worker {
  PURPOSE:
  Concrete implementation of the Worker.
  */
-internal final class ___VARIABLE_productName___ViewStateWorkerImp: AbstractWorker<AnyCancellable> {
+internal final class ___VARIABLE_productName___ViewStateWorkerImp: AbstractWorker
+<
+    AnyCancellable
+> {
 
     /// The view state publisher.
     internal let viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>

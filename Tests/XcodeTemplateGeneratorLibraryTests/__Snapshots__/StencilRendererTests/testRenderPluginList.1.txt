@@ -33,7 +33,9 @@ public protocol <pluginListName>PluginListDependency: Dependency {}
  Declares dependencies that are owned by this Plugin List.
  */
 internal final class <pluginListName>PluginListComponent: Component
-    <<pluginListName>PluginListDependency> {
+<
+    <pluginListName>PluginListDependency
+> {
 
     /*
      Dependencies
@@ -95,20 +97,17 @@ internal protocol <pluginListName>PluginList {
     func create(key: <pluginListName>PluginListKeyType) -> <pluginListName>Builder?
 }
 
-internal typealias <pluginListName>PluginListType = PluginList
-    <
-    <pluginListName>PluginListKeyType,
-    <pluginListName>PluginListComponent,
-    <pluginListName>Builder,
-    <pluginListName>PluginListStateType
-    >
-
 /**
  PURPOSE:
  Concrete implementation of the Plugin List providing the Plugin collection and (optionally) the creation order.
  */
-internal final class <pluginListName>PluginListImp:
-    <pluginListName>PluginListType, <pluginListName>PluginList {
+internal final class <pluginListName>PluginListImp: PluginList
+<
+    <pluginListName>PluginListKeyType,
+    <pluginListName>PluginListComponent,
+    <pluginListName>Builder,
+    <pluginListName>PluginListStateType
+> {
 
     /// The method in which the Plugins are paired with keys and wrapped in type erased `AnyPlugin` instances.
     /// - Parameter component: The component instance
@@ -137,3 +136,5 @@ internal final class <pluginListName>PluginListImp:
 //        super.creationOrder(component: component, state: state)
 //    }
 }
+
+extension <pluginListName>PluginListImp: <pluginListName>PluginList {}

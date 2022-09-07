@@ -15,7 +15,9 @@ public protocol ___VARIABLE_productName___PluginDependency: Dependency {}
  Declares dependencies that are owned by this Plugin.
  */
 internal final class ___VARIABLE_productName___PluginComponent: Component
-    <___VARIABLE_productName___PluginDependency> {
+<
+    ___VARIABLE_productName___PluginDependency
+> {
 
     /*
      Dependencies
@@ -73,19 +75,16 @@ internal protocol ___VARIABLE_productName___Plugin {
     func create() -> ___VARIABLE_productName___Builder?
 }
 
-internal typealias ___VARIABLE_productName___PluginType = Plugin
-    <
-    ___VARIABLE_productName___PluginComponent,
-    ___VARIABLE_productName___Builder,
-    ___VARIABLE_productName___PluginStateType
-    >
-
 /**
  PURPOSE:
  Concrete implementation of the Plugin.
  */
-internal final class ___VARIABLE_productName___PluginImp:
-    ___VARIABLE_productName___PluginType, ___VARIABLE_productName___Plugin {
+internal final class ___VARIABLE_productName___PluginImp: Plugin
+<
+    ___VARIABLE_productName___PluginComponent,
+    ___VARIABLE_productName___Builder,
+    ___VARIABLE_productName___PluginStateType
+> {
 
     /// The method in which the Plugin's enabled criteria is defined.
     /// - Parameters:
@@ -108,3 +107,5 @@ internal final class ___VARIABLE_productName___PluginImp:
         ___VARIABLE_productName___BuilderImp(componentFactory: component.componentFactory)
     }
 }
+
+extension ___VARIABLE_productName___PluginImp: ___VARIABLE_productName___Plugin {}

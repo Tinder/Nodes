@@ -13,7 +13,9 @@ public protocol {{ plugin_name }}PluginDependency: Dependency {}
  Declares dependencies that are owned by this Plugin.
  */
 internal final class {{ plugin_name }}PluginComponent: Component
-    <{{ plugin_name }}PluginDependency> {
+<
+    {{ plugin_name }}PluginDependency
+> {
 
     /*
      Dependencies
@@ -71,19 +73,16 @@ internal protocol {{ plugin_name }}Plugin {
     func create() -> {% if return_type %}{{ return_type }}{% else %}{{ plugin_name }}Builder{% endif %}?
 }
 
-internal typealias {{ plugin_name }}PluginType = Plugin
-    <
-    {{ plugin_name }}PluginComponent,
-    {% if return_type %}{{ return_type }}{% else %}{{ plugin_name }}Builder{% endif %},
-    {{ plugin_name }}PluginStateType
-    >
-
 /**
  PURPOSE:
  Concrete implementation of the Plugin.
  */
-internal final class {{ plugin_name }}PluginImp:
-    {{ plugin_name }}PluginType, {{ plugin_name }}Plugin {
+internal final class {{ plugin_name }}PluginImp: Plugin
+<
+    {{ plugin_name }}PluginComponent,
+    {% if return_type %}{{ return_type }}{% else %}{{ plugin_name }}Builder{% endif %},
+    {{ plugin_name }}PluginStateType
+> {
 
     /// The method in which the Plugin's enabled criteria is defined.
     /// - Parameters:
@@ -111,3 +110,5 @@ internal final class {{ plugin_name }}PluginImp:
         {{ plugin_name }}BuilderImp(componentFactory: component.componentFactory)
     }{% endif %}
 }
+
+extension {{ plugin_name }}PluginImp: {{ plugin_name }}Plugin {}

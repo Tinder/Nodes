@@ -13,7 +13,9 @@ public protocol <pluginName>PluginDependency: Dependency {}
  Declares dependencies that are owned by this Plugin.
  */
 internal final class <pluginName>PluginComponent: Component
-    <<pluginName>PluginDependency> {
+<
+    <pluginName>PluginDependency
+> {
 
     /*
      Dependencies
@@ -67,19 +69,16 @@ internal protocol <pluginName>Plugin {
     func create() -> <returnType>?
 }
 
-internal typealias <pluginName>PluginType = Plugin
-    <
-    <pluginName>PluginComponent,
-    <returnType>,
-    <pluginName>PluginStateType
-    >
-
 /**
  PURPOSE:
  Concrete implementation of the Plugin.
  */
-internal final class <pluginName>PluginImp:
-    <pluginName>PluginType, <pluginName>Plugin {
+internal final class <pluginName>PluginImp: Plugin
+<
+    <pluginName>PluginComponent,
+    <returnType>,
+    <pluginName>PluginStateType
+> {
 
     /// The method in which the Plugin's enabled criteria is defined.
     /// - Parameters:
@@ -102,3 +101,5 @@ internal final class <pluginName>PluginImp:
         // TODO: Initialize instance
     }
 }
+
+extension <pluginName>PluginImp: <pluginName>Plugin {}

@@ -43,7 +43,9 @@ internal typealias {{ node_name }}DynamicComponentDependency = Void
  Declares dependencies that are owned by this Node.
  */
 internal final class {{ node_name }}Component: Component
-    <{{ node_name }}Dependency> {
+<
+    {{ node_name }}Dependency
+> {
 
     /*
      Dependencies
@@ -110,19 +112,17 @@ internal protocol {{ node_name }}Builder: AnyObject {
                viewController: {{ node_name }}ViewControllable) -> {{ node_name }}Flow
 }{% endif %}
 
-internal typealias {{ node_name }}BuilderType = AbstractBuilder
-    <
-    {{ node_name }}Component,
-    {{ node_name }}Flow,
-    {{ node_name }}DynamicBuildDependency,
-    {{ node_name }}DynamicComponentDependency
-    >
-
 /**
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.
  */
-internal final class {{ node_name }}BuilderImp: {{ node_name }}BuilderType {
+internal final class {{ node_name }}BuilderImp: AbstractBuilder
+<
+    {{ node_name }}Component,
+    {{ node_name }}Flow,
+    {{ node_name }}DynamicBuildDependency,
+    {{ node_name }}DynamicComponentDependency
+> {
 
     /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
     /// the dynamic component dependency.
