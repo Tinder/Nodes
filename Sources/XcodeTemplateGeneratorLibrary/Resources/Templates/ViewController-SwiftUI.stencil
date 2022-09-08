@@ -26,7 +26,10 @@ internal protocol {{ node_name }}Receiver: AnyObject {}{% endif %}
  PURPOSE:
  Host of the SwiftUI view.
  */
-internal final class {{ node_name }}ViewController: AbstractViewHostingController<{{ node_name }}View> {{ '{' }}{% if view_controller_properties %}
+internal final class {{ node_name }}ViewController: AbstractViewHostingController
+<
+    {{ node_name }}View
+> {{ '{' }}{% if view_controller_properties %}
 
     {{ view_controller_properties|indent:4 }}{% endif %}{% if view_controller_methods %}
 
