@@ -1,3 +1,5 @@
+<p align="center"><img src="Nodes.png" /></p>
+
 # Nodes Architecture Framework
 
 Native Mobile Application Engineering at Scale
