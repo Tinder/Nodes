@@ -1,80 +1,89 @@
 # Changelog
 
-## [0.0.11](https://github.com/TinderApp/Nodes/releases/tag/0.0.11)
+## [v0.0.12](https://github.com/TinderApp/Nodes/releases/tag/0.0.12)
 
 ### Added
 
-- Add Transform\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#141](https://github.com/TinderApp/Nodes/pull/141)]
-
-- Publish debugging information\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#147](https://github.com/TinderApp/Nodes/pull/147)]
-
-- Add debugging property\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#148](https://github.com/TinderApp/Nodes/pull/148)]
+- Add Makefile recipe to list changes
+  - [#168](https://github.com/TinderApp/Nodes/pull/168) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add hero image
+  - [#167](https://github.com/TinderApp/Nodes/pull/167) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add contributing doc
+  - [#162](https://github.com/TinderApp/Nodes/pull/162) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add design goals
+  - [#161](https://github.com/TinderApp/Nodes/pull/161) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add Makefile option to control opening docs
+  - [#158](https://github.com/TinderApp/Nodes/pull/158) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add Swift v5.6
+  - [#157](https://github.com/TinderApp/Nodes/pull/157) by [Christopher Fuller](https://github.com/tinder-cfuller)
 
 ### Improved
 
-- Initialize WithViewState with initial view state\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#142](https://github.com/TinderApp/Nodes/pull/142)]
-
-- Ignore comments when sorting imports\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#144](https://github.com/TinderApp/Nodes/pull/144)]
-
-- Add override method to Plugin\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#145](https://github.com/TinderApp/Nodes/pull/145)]
-
-- Pass state to Plugin List creation order\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#146](https://github.com/TinderApp/Nodes/pull/146)]
-
-- Add additional quick start instructions to README\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#149](https://github.com/TinderApp/Nodes/pull/149)]
-
-- Use scope factory in quick start DI helpers\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#150](https://github.com/TinderApp/Nodes/pull/150)]
-
-- Improve quick start DI helpers\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#151](https://github.com/TinderApp/Nodes/pull/151)]
-
-- Improve AppleScript in quick start project\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#152](https://github.com/TinderApp/Nodes/pull/152)]
-
-- Allow AppBuilder to be injected into AppDelegate in quick start project\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#153](https://github.com/TinderApp/Nodes/pull/153)]
-
-- Reorder quick start DI helpers methods\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#154](https://github.com/TinderApp/Nodes/pull/154)]
-
-- Limit test only implementation in quick start project to DEBUG\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#155](https://github.com/TinderApp/Nodes/pull/155)]
+- Change PredicateResult initializer
+  - [#165](https://github.com/TinderApp/Nodes/pull/165) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Update readme
+  - [#163](https://github.com/TinderApp/Nodes/pull/163) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve debugging property
+  - [#159](https://github.com/TinderApp/Nodes/pull/159) by [Christopher Fuller](https://github.com/tinder-cfuller)
 
 ### Removed
 
-- Remove templates sub-directories\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#143](https://github.com/TinderApp/Nodes/pull/143)]
+- Remove "Tinder" from Xcode templates directory
+  - [#164](https://github.com/TinderApp/Nodes/pull/164) by [Seppe Snoeck](https://github.com/seppesnoeck)
+
+### Fixed
+
+- Template indentation fixes
+  - [#166](https://github.com/TinderApp/Nodes/pull/166) by [Caio Fonseca](https://github.com/tinder-caiofonseca)
+- Fix documentation
+  - [#160](https://github.com/TinderApp/Nodes/pull/160) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+## [v0.0.11](https://github.com/TinderApp/Nodes/releases/tag/0.0.11)
+
+### Added
+
+- Add additional quick start instructions to README
+  - [#149](https://github.com/TinderApp/Nodes/pull/149) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add debugging property
+  - [#148](https://github.com/TinderApp/Nodes/pull/148) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add override method to Plugin
+  - [#145](https://github.com/TinderApp/Nodes/pull/145) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add Transform
+  - [#141](https://github.com/TinderApp/Nodes/pull/141) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Improved
+
+- Limit test only implementation in quick start project to DEBUG
+  - [#155](https://github.com/TinderApp/Nodes/pull/155) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Reorder quick start DI helpers methods
+  - [#154](https://github.com/TinderApp/Nodes/pull/154) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Allow AppBuilder to be injected into AppDelegate in quick start project
+  - [#153](https://github.com/TinderApp/Nodes/pull/153) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve AppleScript in quick start project
+  - [#152](https://github.com/TinderApp/Nodes/pull/152) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve quick start DI helpers
+  - [#151](https://github.com/TinderApp/Nodes/pull/151) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Use scope factory in quick start DI helpers
+  - [#150](https://github.com/TinderApp/Nodes/pull/150) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Publish debugging information
+  - [#147](https://github.com/TinderApp/Nodes/pull/147) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Pass state to Plugin List creation order
+  - [#146](https://github.com/TinderApp/Nodes/pull/146) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Ignore comments when sorting imports
+  - [#144](https://github.com/TinderApp/Nodes/pull/144) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Initialize WithViewState with initial view state
+  - [#142](https://github.com/TinderApp/Nodes/pull/142) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Removed
+
+- Remove templates sub-directories
+  - [#143](https://github.com/TinderApp/Nodes/pull/143) by [Christopher Fuller](https://github.com/tinder-cfuller)
 
 ### Fixed
 
 - None
 
----
-
-## [0.0.10](https://github.com/TinderApp/Nodes/releases/tag/0.0.10)
+## [v0.0.10](https://github.com/TinderApp/Nodes/releases/tag/0.0.10)
 
 ### Added
 
@@ -82,241 +91,8 @@
 
 ### Improved
 
-- Upgrade Nimble to 10.0.0\
-  [Garric Nahapetian](https://github.com/tinder-garricnahapetian)
-  [[#131](https://github.com/TinderApp/Nodes/pull/131)]
-
-- Improve plugin system\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#136](https://github.com/TinderApp/Nodes/pull/136)]
-
-- Unique Plugin List keys\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#139](https://github.com/TinderApp/Nodes/pull/139)]
-
-### Removed
-
-- None
-
-### Fixed
-
-- None
-
----
-
-## [0.0.9](https://github.com/TinderApp/Nodes/releases/tag/0.0.9)
-
-### Added
-
-- Add documentation instructions\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#134](https://github.com/TinderApp/Nodes/pull/134)]
-
-### Improved
-
-- Improve quick start\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#125](https://github.com/TinderApp/Nodes/pull/125)]
-
-- Improve quick start\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#126](https://github.com/TinderApp/Nodes/pull/126)]
-
-- Improve API documentation\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#128](https://github.com/TinderApp/Nodes/pull/128)]
-
-- Improve quick start\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#129](https://github.com/TinderApp/Nodes/pull/129)]
-
-- Improve quick start\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#130](https://github.com/TinderApp/Nodes/pull/130)]
-
-- Improve API documentation\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#133](https://github.com/TinderApp/Nodes/pull/133)]
-
-- Update introduction\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#135](https://github.com/TinderApp/Nodes/pull/135)]
-
-### Removed
-
-- Remove view controller availability attribute\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#127](https://github.com/TinderApp/Nodes/pull/127)]
-
-### Fixed
-
-- Fix documentation\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#137](https://github.com/TinderApp/Nodes/pull/137)]
-
----
-
-## [0.0.8](https://github.com/TinderApp/Nodes/releases/tag/0.0.8)
-
-### Added
-
-- Add root node\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#118](https://github.com/TinderApp/Nodes/pull/118)]
-
-### Improved
-
-- Improve template order\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#119](https://github.com/TinderApp/Nodes/pull/119)]
-
-- Rename "without view" to "view injected"\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#121](https://github.com/TinderApp/Nodes/pull/121)]
-
-- Update screenshot\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#122](https://github.com/TinderApp/Nodes/pull/122)]
-
-- Use "Root" in NodeRootContext\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#123](https://github.com/TinderApp/Nodes/pull/123)]
-
-### Removed
-
-- Remove public config\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#120](https://github.com/TinderApp/Nodes/pull/120)]
-
-### Fixed
-
-- Fix changelog\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#117](https://github.com/TinderApp/Nodes/pull/117)]
-
----
-
-## [0.0.7](https://github.com/TinderApp/Nodes/releases/tag/0.0.7)
-
-### Added
-
-- Add API documentation (w/o abstract classes and ViewControllable)\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#107](https://github.com/TinderApp/Nodes/pull/107)]
-
-- Create docc.yml\
-  [Garric Nahapetian](https://github.com/tinder-garricnahapetian)
-  [[#108](https://github.com/TinderApp/Nodes/pull/108)]
-
-- Add remaining API docs\
-  [Garric Nahapetian](https://github.com/tinder-garricnahapetian)
-  [[#109](https://github.com/TinderApp/Nodes/pull/109)]
-
-- Add quick start\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#110](https://github.com/TinderApp/Nodes/pull/110)]
-
-### Improved
-
-- Improve quick start\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#111](https://github.com/TinderApp/Nodes/pull/111)]
-
-- Improve quick start\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#112](https://github.com/TinderApp/Nodes/pull/112)]
-
-- Improve quick start\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#113](https://github.com/TinderApp/Nodes/pull/113)]
-
-- Improve quick start\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#115](https://github.com/TinderApp/Nodes/pull/115)]
-
-### Removed
-
-- Remove root templates\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#114](https://github.com/TinderApp/Nodes/pull/114)]
-
-### Fixed
-
-- None
-
----
-
-## [0.0.6](https://github.com/TinderApp/Nodes/releases/tag/0.0.6)
-
-### Added
-
-- None
-
-### Improved
-
-- Use view state (to avoid compiler warning)\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#104](https://github.com/TinderApp/Nodes/pull/104)]
-
-- Remove extra line (from SwiftUI view controller template)\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#105](https://github.com/TinderApp/Nodes/pull/105)]
-
-### Removed
-
-- None
-
-### Fixed
-
-- Fix view controller availability attribute\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#103](https://github.com/TinderApp/Nodes/pull/103)]
-
----
-
-## [0.0.5](https://github.com/TinderApp/Nodes/releases/tag/0.0.5)
-
-### Added
-
-- Add documentation recipes to Makefile\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#99](https://github.com/TinderApp/Nodes/pull/99)]
-
-### Improved
-
-- Add view controller availability attribute\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#101](https://github.com/TinderApp/Nodes/pull/101)]
-
-### Removed
-
-- None
-
-### Fixed
-
-- Fix parameter label\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#100](https://github.com/TinderApp/Nodes/pull/100)]
-
----
-
-## [0.0.4](https://github.com/TinderApp/Nodes/releases/tag/0.0.4)
-
-### Added
-
-- Add test for modal style additional configuration\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#90](https://github.com/TinderApp/Nodes/pull/90)]
-
-### Improved
-
-- Add extra asterisk to block comments (for Xcode help compatibility)\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#89](https://github.com/TinderApp/Nodes/pull/89)]
-
-- Update Argument Parser, SwiftLint and other dependencies\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#93](https://github.com/TinderApp/Nodes/pull/93)]
+- Unique Plugin List keys
+  - [#139](https://github.com/TinderApp/Nodes/pull/139) by [Christopher Fuller](https://github.com/tinder-cfuller)
 
 ### Removed
 
@@ -326,321 +102,106 @@
 
 - None
 
----
-
-## [0.0.3](https://github.com/TinderApp/Nodes/releases/tag/0.0.3)
+## [v0.0.9](https://github.com/TinderApp/Nodes/releases/tag/0.0.9)
 
 ### Added
 
-- Add analytics instructions\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#16](https://github.com/TinderApp/Nodes/pull/16)]
-
-- Add reactive view state\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#17](https://github.com/TinderApp/Nodes/pull/17)]
-
-- Add state protocols\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#19](https://github.com/TinderApp/Nodes/pull/19)]
-
-- Add view state to worker protocol\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#29](https://github.com/TinderApp/Nodes/pull/29)]
-
-- Add form sheet modal presentation style\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#31](https://github.com/TinderApp/Nodes/pull/31)]
-
-- Add Xcode template generator\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#53](https://github.com/TinderApp/Nodes/pull/53)]
-
-- Adds Bazel support\
-  [Maxwell Elliott](https://github.com/tinder-maxwellelliott)
-  [[#74](https://github.com/TinderApp/Nodes/pull/74)]
+- Add documentation instructions
+  - [#134](https://github.com/TinderApp/Nodes/pull/134) by [Christopher Fuller](https://github.com/tinder-cfuller)
 
 ### Improved
 
-- Rename templates library and target\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#8](https://github.com/TinderApp/Nodes/pull/8)]
-
-- Initial lint\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#9](https://github.com/TinderApp/Nodes/pull/9)]
-
-- Lint templates\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#10](https://github.com/TinderApp/Nodes/pull/10)]
-
-- Change Analytics to not be a Worker\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#12](https://github.com/TinderApp/Nodes/pull/12)]
-
-- Improve comments\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#13](https://github.com/TinderApp/Nodes/pull/13)]
-
-- Improve Plugin template\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#14](https://github.com/TinderApp/Nodes/pull/14)]
-
-- Pause if debugger attached\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#18](https://github.com/TinderApp/Nodes/pull/18)]
-
-- Make view state equatable\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#20](https://github.com/TinderApp/Nodes/pull/20)]
-
-- Add explicit internal\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#21](https://github.com/TinderApp/Nodes/pull/21)]
-
-- Disable lint warning\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#22](https://github.com/TinderApp/Nodes/pull/22)]
-
-- Allow repeated elements\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#23](https://github.com/TinderApp/Nodes/pull/23)]
-
-- Remove equatable\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#24](https://github.com/TinderApp/Nodes/pull/24)]
-
-- Refactor leak detector\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#26](https://github.com/TinderApp/Nodes/pull/26)]
-
-- Use precondition failure instead of fatal error\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#27](https://github.com/TinderApp/Nodes/pull/27)]
-
-- Use worker name in builder\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#28](https://github.com/TinderApp/Nodes/pull/28)]
-
-- Remove unnecessary willMove/didMove method calls\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#30](https://github.com/TinderApp/Nodes/pull/30)]
-
-- Make analytics weak\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#32](https://github.com/TinderApp/Nodes/pull/32)]
-
-- Store view state\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#33](https://github.com/TinderApp/Nodes/pull/33)]
-
-- Improve access control\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#34](https://github.com/TinderApp/Nodes/pull/34)]
-
-- Improve variable names, types and formatting\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#35](https://github.com/TinderApp/Nodes/pull/35)]
-
-- Simplify conditional view state in Builder\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#36](https://github.com/TinderApp/Nodes/pull/36)]
-
-- Set view state property only when necessary\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#37](https://github.com/TinderApp/Nodes/pull/37)]
-
-- Remove unnecessary self\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#38](https://github.com/TinderApp/Nodes/pull/38)]
-
-- Remove receive(on:)\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#41](https://github.com/TinderApp/Nodes/pull/41)]
-
-- Inject view state operators and the update method comment\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#42](https://github.com/TinderApp/Nodes/pull/42)]
-
-- Remove extraneous method\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#43](https://github.com/TinderApp/Nodes/pull/43)]
-
-- Set analytics property\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#44](https://github.com/TinderApp/Nodes/pull/44)]
-
-- Remove extraneous assignment\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#45](https://github.com/TinderApp/Nodes/pull/45)]
-
-- Refactor plugins\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#46](https://github.com/TinderApp/Nodes/pull/46)]
-
-- Fix indentation\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#47](https://github.com/TinderApp/Nodes/pull/47)]
-
-- Inject super init parameters\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#48](https://github.com/TinderApp/Nodes/pull/48)]
-
-- Duplicate stencils for SwiftUI\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#49](https://github.com/TinderApp/Nodes/pull/49)]
-
-- Update SwiftUI templates\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#50](https://github.com/TinderApp/Nodes/pull/50)]
-
-- Remove line breaks\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#51](https://github.com/TinderApp/Nodes/pull/51)]
-
-- Add SwiftUI types\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#52](https://github.com/TinderApp/Nodes/pull/52)]
-
-- Migrate to result builder\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#54](https://github.com/TinderApp/Nodes/pull/54)]
-
-- Move child component factories comment below initializer\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#55](https://github.com/TinderApp/Nodes/pull/55)]
-
-- Improve component comment\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#56](https://github.com/TinderApp/Nodes/pull/56)]
-
-- Improve conditional platform and SDK availability logic\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#57](https://github.com/TinderApp/Nodes/pull/57)]
-
-- Improve component comment\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#58](https://github.com/TinderApp/Nodes/pull/58)]
-
-- Improve component comment in SwiftUI template\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#59](https://github.com/TinderApp/Nodes/pull/59)]
-
-- Use @main in executable target\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#61](https://github.com/TinderApp/Nodes/pull/61)]
-
-- Use system background color\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#62](https://github.com/TinderApp/Nodes/pull/62)]
-
-- Use system background color\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#63](https://github.com/TinderApp/Nodes/pull/63)]
-
-- Use implicit internal for overridden view controller methods\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#64](https://github.com/TinderApp/Nodes/pull/64)]
-
-- Update component comments\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#65](https://github.com/TinderApp/Nodes/pull/65)]
-
-- Add view state imports\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#66](https://github.com/TinderApp/Nodes/pull/66)]
-
-- Improve modal style\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#67](https://github.com/TinderApp/Nodes/pull/67)]
-
-- Remove delegates from modal style\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#68](https://github.com/TinderApp/Nodes/pull/68)]
-
-- Add additional modal style configuration\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#69](https://github.com/TinderApp/Nodes/pull/69)]
-
-- Add Swift 5.4\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#71](https://github.com/TinderApp/Nodes/pull/71)]
-
-- Change parameter label from path to at\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#72](https://github.com/TinderApp/Nodes/pull/72)]
-
-- Use relative module bundle (when available)\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#73](https://github.com/TinderApp/Nodes/pull/73)]
-
-- Remove NavigationController tests\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#75](https://github.com/TinderApp/Nodes/pull/75)]
-
-- Improve modal style\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#76](https://github.com/TinderApp/Nodes/pull/76)]
-
-- Refactor WorkerController\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#77](https://github.com/TinderApp/Nodes/pull/77)]
-
-- Refactor template contexts\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#78](https://github.com/TinderApp/Nodes/pull/78)]
-
-- Refactor FileSystem\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#79](https://github.com/TinderApp/Nodes/pull/79)]
-
-- Refactor XcodeTemplateGeneratorCommand\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#80](https://github.com/TinderApp/Nodes/pull/80)]
-
-- Update name and tagline\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#81](https://github.com/TinderApp/Nodes/pull/81)]
-
-- Update readme\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#82](https://github.com/TinderApp/Nodes/pull/82)]
-
-- Improve availability checking\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#83](https://github.com/TinderApp/Nodes/pull/83)]
-
-- Improve scripts\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#84](https://github.com/TinderApp/Nodes/pull/84)]
-
-- Update changelog\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#85](https://github.com/TinderApp/Nodes/pull/85)]
+- Improve plugin system
+  - [#136](https://github.com/TinderApp/Nodes/pull/136) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Update introduction
+  - [#135](https://github.com/TinderApp/Nodes/pull/135) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve API documentation
+  - [#133](https://github.com/TinderApp/Nodes/pull/133) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Upgrade Nimble to 10.0.0
+  - [#131](https://github.com/TinderApp/Nodes/pull/131) by [Garric Nahapetian](https://github.com/tinder-garricnahapetian)
+- Improve quick start
+  - [#130](https://github.com/TinderApp/Nodes/pull/130) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve quick start
+  - [#129](https://github.com/TinderApp/Nodes/pull/129) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve API documentation
+  - [#128](https://github.com/TinderApp/Nodes/pull/128) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve quick start
+  - [#126](https://github.com/TinderApp/Nodes/pull/126) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve quick start
+  - [#125](https://github.com/TinderApp/Nodes/pull/125) by [Christopher Fuller](https://github.com/tinder-cfuller)
 
 ### Removed
 
-- Remove convenience initializer from Component\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#11](https://github.com/TinderApp/Nodes/pull/11)]
-
-- Remove @mockable from state protocols\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#25](https://github.com/TinderApp/Nodes/pull/25)]
+- Remove view controller availability attribute
+  - [#127](https://github.com/TinderApp/Nodes/pull/127) by [Christopher Fuller](https://github.com/tinder-cfuller)
 
 ### Fixed
 
-- Unify component comments\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#15](https://github.com/TinderApp/Nodes/pull/15)]
+- Fix documentation
+  - [#137](https://github.com/TinderApp/Nodes/pull/137) by [Christopher Fuller](https://github.com/tinder-cfuller)
 
-- Call completion in guard\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#70](https://github.com/TinderApp/Nodes/pull/70)]
+## [v0.0.8](https://github.com/TinderApp/Nodes/releases/tag/0.0.8)
 
----
+### Added
 
-## [0.0.2](https://github.com/TinderApp/Nodes/releases/tag/0.0.2)
+- Add root node
+  - [#118](https://github.com/TinderApp/Nodes/pull/118) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Improved
+
+- Use "Root" in NodeRootContext
+  - [#123](https://github.com/TinderApp/Nodes/pull/123) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Update screenshot
+  - [#122](https://github.com/TinderApp/Nodes/pull/122) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Rename "without view" to "view injected"
+  - [#121](https://github.com/TinderApp/Nodes/pull/121) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve template order
+  - [#119](https://github.com/TinderApp/Nodes/pull/119) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Removed
+
+- Remove public config
+  - [#120](https://github.com/TinderApp/Nodes/pull/120) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Fixed
+
+- Fix changelog
+  - [#117](https://github.com/TinderApp/Nodes/pull/117) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+## [v0.0.7](https://github.com/TinderApp/Nodes/releases/tag/0.0.7)
+
+### Added
+
+- Improve quick start
+  - [#115](https://github.com/TinderApp/Nodes/pull/115) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add quick start
+  - [#110](https://github.com/TinderApp/Nodes/pull/110) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add remaining API docs
+  - [#109](https://github.com/TinderApp/Nodes/pull/109) by [Garric Nahapetian](https://github.com/tinder-garricnahapetian)
+- Create docc.yml
+  - [#108](https://github.com/TinderApp/Nodes/pull/108) by [Garric Nahapetian](https://github.com/tinder-garricnahapetian)
+- Add API documentation (w/o abstract classes and ViewControllable)
+  - [#107](https://github.com/TinderApp/Nodes/pull/107) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Improved
+
+- Improve quick start
+  - [#113](https://github.com/TinderApp/Nodes/pull/113) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve quick start
+  - [#112](https://github.com/TinderApp/Nodes/pull/112) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve quick start
+  - [#111](https://github.com/TinderApp/Nodes/pull/111) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Removed
+
+- Remove root templates
+  - [#114](https://github.com/TinderApp/Nodes/pull/114) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Fixed
+
+- None
+
+## [v0.0.6](https://github.com/TinderApp/Nodes/releases/tag/0.0.6)
 
 ### Added
 
@@ -648,9 +209,69 @@
 
 ### Improved
 
-- Allow calling uncontain on any descendant view\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
-  [[#6](https://github.com/TinderApp/Nodes/pull/6)]
+- Use view state (to avoid compiler warning)
+  - [#104](https://github.com/TinderApp/Nodes/pull/104) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Removed
+
+- Remove extra line (from SwiftUI view controller template)
+  - [#105](https://github.com/TinderApp/Nodes/pull/105) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Fixed
+
+- Fix view controller availability attribute
+  - [#103](https://github.com/TinderApp/Nodes/pull/103) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+## [v0.0.5](https://github.com/TinderApp/Nodes/releases/tag/0.0.5)
+
+### Added
+
+- Add view controller availability attribute
+  - [#101](https://github.com/TinderApp/Nodes/pull/101) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add documentation recipes to Makefile
+  - [#99](https://github.com/TinderApp/Nodes/pull/99) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Improved
+
+- Use latest macOS in GitHub workflow (and rename Bazel job)
+  - [#98](https://github.com/TinderApp/Nodes/pull/98) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Use latest macOS in GitHub workflow
+  - [#97](https://github.com/TinderApp/Nodes/pull/97) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Removed
+
+- None
+
+### Fixed
+
+- Fix parameter label
+  - [#100](https://github.com/TinderApp/Nodes/pull/100) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+## [v0.0.4](https://github.com/TinderApp/Nodes/releases/tag/0.0.4)
+
+### Added
+
+- Add Swift v5.5
+  - [#95](https://github.com/TinderApp/Nodes/pull/95) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add Bazel version
+  - [#92](https://github.com/TinderApp/Nodes/pull/92) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add test for modal style additional configuration
+  - [#90](https://github.com/TinderApp/Nodes/pull/90) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add extra asterisk to block comments (for Xcode help compatibility)
+  - [#89](https://github.com/TinderApp/Nodes/pull/89) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add Preflight
+  - [#87](https://github.com/TinderApp/Nodes/pull/87) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Improved
+
+- Set Swift tools to v5.5
+  - [#94](https://github.com/TinderApp/Nodes/pull/94) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Update Argument Parser, SwiftLint and other dependencies
+  - [#93](https://github.com/TinderApp/Nodes/pull/93) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Update README
+  - [#91](https://github.com/TinderApp/Nodes/pull/91) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Set Bazel job name
+  - [#88](https://github.com/TinderApp/Nodes/pull/88) by [Christopher Fuller](https://github.com/tinder-cfuller)
 
 ### Removed
 
@@ -660,9 +281,205 @@
 
 - None
 
----
+## [v0.0.3](https://github.com/TinderApp/Nodes/releases/tag/0.0.3)
 
-## [0.0.1](https://github.com/TinderApp/Nodes/releases/tag/0.0.1)
+### Added
 
-- Initial Release\
-  [Christopher Fuller](https://github.com/tinder-cfuller)
+- Adds Bazel support
+  - [#74](https://github.com/TinderApp/Nodes/pull/74) by [Maxwell Elliott](https://github.com/tinder-maxwellelliott)
+- Add Swift 5.4
+  - [#71](https://github.com/TinderApp/Nodes/pull/71) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add additional modal style configuration
+  - [#69](https://github.com/TinderApp/Nodes/pull/69) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add view state imports
+  - [#66](https://github.com/TinderApp/Nodes/pull/66) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add Xcode template generator
+  - [#53](https://github.com/TinderApp/Nodes/pull/53) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add SwiftUI types
+  - [#52](https://github.com/TinderApp/Nodes/pull/52) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add form sheet modal presentation style
+  - [#31](https://github.com/TinderApp/Nodes/pull/31) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add view state to worker protocol
+  - [#29](https://github.com/TinderApp/Nodes/pull/29) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add explicit internal
+  - [#21](https://github.com/TinderApp/Nodes/pull/21) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add state protocols
+  - [#19](https://github.com/TinderApp/Nodes/pull/19) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add reactive view state
+  - [#17](https://github.com/TinderApp/Nodes/pull/17) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add analytics instructions
+  - [#16](https://github.com/TinderApp/Nodes/pull/16) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Improved
+
+- Update changelog
+  - [#85](https://github.com/TinderApp/Nodes/pull/85) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve scripts
+  - [#84](https://github.com/TinderApp/Nodes/pull/84) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve availability checking in modal style
+  - [#83](https://github.com/TinderApp/Nodes/pull/83) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Update readme
+  - [#82](https://github.com/TinderApp/Nodes/pull/82) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Update name and tagline
+  - [#81](https://github.com/TinderApp/Nodes/pull/81) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Refactor XcodeTemplateGeneratorCommand
+  - [#80](https://github.com/TinderApp/Nodes/pull/80) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Refactor FileSystem
+  - [#79](https://github.com/TinderApp/Nodes/pull/79) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Refactor template contexts
+  - [#78](https://github.com/TinderApp/Nodes/pull/78) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Refactor WorkerController
+  - [#77](https://github.com/TinderApp/Nodes/pull/77) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve modal style
+  - [#76](https://github.com/TinderApp/Nodes/pull/76) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Use relative module bundle (when available)
+  - [#73](https://github.com/TinderApp/Nodes/pull/73) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Change parameter label from `path` to `at`
+  - [#72](https://github.com/TinderApp/Nodes/pull/72) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Call completion in guard when dismissing
+  - [#70](https://github.com/TinderApp/Nodes/pull/70) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve modal style
+  - [#67](https://github.com/TinderApp/Nodes/pull/67) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Update Plugin component comments
+  - [#65](https://github.com/TinderApp/Nodes/pull/65) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Use implicit internal for overridden view controller methods
+  - [#64](https://github.com/TinderApp/Nodes/pull/64) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Use system background color
+  - [#63](https://github.com/TinderApp/Nodes/pull/63) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Use system background color
+  - [#62](https://github.com/TinderApp/Nodes/pull/62) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Use @main in executable target
+  - [#61](https://github.com/TinderApp/Nodes/pull/61) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Use macOS 11
+  - [#60](https://github.com/TinderApp/Nodes/pull/60) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve component comment in SwiftUI template
+  - [#59](https://github.com/TinderApp/Nodes/pull/59) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve component comment
+  - [#58](https://github.com/TinderApp/Nodes/pull/58) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve conditional platform and SDK availability logic
+  - [#57](https://github.com/TinderApp/Nodes/pull/57) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve component comment
+  - [#56](https://github.com/TinderApp/Nodes/pull/56) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Move child component factories comment below initializer
+  - [#55](https://github.com/TinderApp/Nodes/pull/55) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Migrate to result builder
+  - [#54](https://github.com/TinderApp/Nodes/pull/54) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Update SwiftUI templates
+  - [#50](https://github.com/TinderApp/Nodes/pull/50) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Duplicate stencils for SwiftUI
+  - [#49](https://github.com/TinderApp/Nodes/pull/49) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Inject super init parameters
+  - [#48](https://github.com/TinderApp/Nodes/pull/48) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Refactor plugins
+  - [#46](https://github.com/TinderApp/Nodes/pull/46) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Set analytics property
+  - [#44](https://github.com/TinderApp/Nodes/pull/44) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Inject view state operators and the update method comment
+  - [#42](https://github.com/TinderApp/Nodes/pull/42) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Upgrade Swift tools version to 5.4
+  - [#40](https://github.com/TinderApp/Nodes/pull/40) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Use XCODE_VERSION
+  - [#39](https://github.com/TinderApp/Nodes/pull/39) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Set view state property only when necessary
+  - [#37](https://github.com/TinderApp/Nodes/pull/37) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Simplify conditional view state in Builder
+  - [#36](https://github.com/TinderApp/Nodes/pull/36) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve variable names, types and formatting in Worker
+  - [#35](https://github.com/TinderApp/Nodes/pull/35) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve access control
+  - [#34](https://github.com/TinderApp/Nodes/pull/34) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Store view state in Worker
+  - [#33](https://github.com/TinderApp/Nodes/pull/33) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Make analytics weak
+  - [#32](https://github.com/TinderApp/Nodes/pull/32) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Use worker name
+  - [#28](https://github.com/TinderApp/Nodes/pull/28) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Use precondition failure instead of fatal error
+  - [#27](https://github.com/TinderApp/Nodes/pull/27) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Refactor leak detector
+  - [#26](https://github.com/TinderApp/Nodes/pull/26) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Allow repeated elements
+  - [#23](https://github.com/TinderApp/Nodes/pull/23) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Disable lint warning
+  - [#22](https://github.com/TinderApp/Nodes/pull/22) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Make view state equatable
+  - [#20](https://github.com/TinderApp/Nodes/pull/20) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Pause when leak detected if debugger attached
+  - [#18](https://github.com/TinderApp/Nodes/pull/18) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Unify component comments
+  - [#15](https://github.com/TinderApp/Nodes/pull/15) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve Plugin template
+  - [#14](https://github.com/TinderApp/Nodes/pull/14) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve comments
+  - [#13](https://github.com/TinderApp/Nodes/pull/13) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Change Analytics to not be a Worker
+  - [#12](https://github.com/TinderApp/Nodes/pull/12) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Lint templates
+  - [#10](https://github.com/TinderApp/Nodes/pull/10) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Initial lint
+  - [#9](https://github.com/TinderApp/Nodes/pull/9) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Rename templates library and target
+  - [#8](https://github.com/TinderApp/Nodes/pull/8) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Removed
+
+- Remove NavigationController tests
+  - [#75](https://github.com/TinderApp/Nodes/pull/75) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Remove delegates from modal style
+  - [#68](https://github.com/TinderApp/Nodes/pull/68) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Remove line breaks
+  - [#51](https://github.com/TinderApp/Nodes/pull/51) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Remove extraneous assignment
+  - [#45](https://github.com/TinderApp/Nodes/pull/45) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Remove extraneous method
+  - [#43](https://github.com/TinderApp/Nodes/pull/43) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Remove receive(on:) from state observer
+  - [#41](https://github.com/TinderApp/Nodes/pull/41) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Remove unnecessary self
+  - [#38](https://github.com/TinderApp/Nodes/pull/38) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Remove unnecessary willMove/didMove method calls
+  - [#30](https://github.com/TinderApp/Nodes/pull/30) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Remove @mockable from state protocols
+  - [#25](https://github.com/TinderApp/Nodes/pull/25) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Remove equatable from state observer
+  - [#24](https://github.com/TinderApp/Nodes/pull/24) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Remove convenience initializer from Component
+  - [#11](https://github.com/TinderApp/Nodes/pull/11) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Fixed
+
+- Fix indentation
+  - [#47](https://github.com/TinderApp/Nodes/pull/47) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+## [v0.0.2](https://github.com/TinderApp/Nodes/releases/tag/0.0.2)
+
+### Added
+
+- Add platforms to package manifest
+  - [#5](https://github.com/TinderApp/Nodes/pull/5) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add Makefile and supporting scripts
+  - [#4](https://github.com/TinderApp/Nodes/pull/4) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Add platform checks
+  - [#3](https://github.com/TinderApp/Nodes/pull/3) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Improved
+
+- Allow calling uncontain on any descendant view
+  - [#6](https://github.com/TinderApp/Nodes/pull/6) by [Christopher Fuller](https://github.com/tinder-cfuller)
+
+### Removed
+
+- None
+
+### Fixed
+
+- None
+
+## [v0.0.1](https://github.com/TinderApp/Nodes/releases/tag/0.0.1)
+
+### Initial Release
+
+- Created by
+  [Christopher Fuller](https://github.com/tinder-cfuller),
+  [Maxwell Elliott](https://github.com/tinder-maxwellelliott) and
+  [Connor Wybranowski](https://github.com/tinder-cwybranowski)
