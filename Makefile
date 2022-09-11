@@ -85,7 +85,10 @@ endif
 .PHONY: changes
 changes: limit ?= 30
 changes:
-	@gh pr list -s "closed" -L "$(limit)" --json "number,title,author" --template "$$TEMPLATE"
+	@gh pr list -L "$(limit)" \
+		--search "is:pr is:merged sort:updated-desc" \
+		--json "number,title,author" \
+		--template "$$TEMPLATE"
 
 export TEMPLATE
 define TEMPLATE
