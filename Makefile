@@ -92,7 +92,7 @@ changes:
 
 export TEMPLATE
 define TEMPLATE
-{{range .}}
-- {{.title}}
-  - [#{{.number}}](https://github.com/TinderApp/Nodes/pull/{{.number}}) by [NAME](https://github.com/{{.author.login}}){{end}}
+{{range .}}- {{.title}}
+  - [#{{.number}}](https://github.com/TinderApp/Nodes/pull/{{.number}}) by [NAME](https://github.com/{{.author.login}})
+{{end}}
 endef
