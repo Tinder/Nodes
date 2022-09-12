@@ -93,6 +93,10 @@
 
 - Unique Plugin List keys
   - [#139](https://github.com/TinderApp/Nodes/pull/139) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Improve plugin system
+  - [#136](https://github.com/TinderApp/Nodes/pull/136) by [Christopher Fuller](https://github.com/tinder-cfuller)
+- Upgrade Nimble to 10.0.0
+  - [#131](https://github.com/TinderApp/Nodes/pull/131) by [Garric Nahapetian](https://github.com/tinder-garricnahapetian)
 
 ### Removed
 
@@ -111,14 +115,10 @@
 
 ### Improved
 
-- Improve plugin system
-  - [#136](https://github.com/TinderApp/Nodes/pull/136) by [Christopher Fuller](https://github.com/tinder-cfuller)
 - Update introduction
   - [#135](https://github.com/TinderApp/Nodes/pull/135) by [Christopher Fuller](https://github.com/tinder-cfuller)
 - Improve API documentation
   - [#133](https://github.com/TinderApp/Nodes/pull/133) by [Christopher Fuller](https://github.com/tinder-cfuller)
-- Upgrade Nimble to 10.0.0
-  - [#131](https://github.com/TinderApp/Nodes/pull/131) by [Garric Nahapetian](https://github.com/tinder-garricnahapetian)
 - Improve quick start
   - [#130](https://github.com/TinderApp/Nodes/pull/130) by [Christopher Fuller](https://github.com/tinder-cfuller)
 - Improve quick start
@@ -172,8 +172,6 @@
 
 ### Added
 
-- Improve quick start
-  - [#115](https://github.com/TinderApp/Nodes/pull/115) by [Christopher Fuller](https://github.com/tinder-cfuller)
 - Add quick start
   - [#110](https://github.com/TinderApp/Nodes/pull/110) by [Christopher Fuller](https://github.com/tinder-cfuller)
 - Add remaining API docs
@@ -185,6 +183,8 @@
 
 ### Improved
 
+- Improve quick start
+  - [#115](https://github.com/TinderApp/Nodes/pull/115) by [Christopher Fuller](https://github.com/tinder-cfuller)
 - Improve quick start
   - [#113](https://github.com/TinderApp/Nodes/pull/113) by [Christopher Fuller](https://github.com/tinder-cfuller)
 - Improve quick start
