@@ -88,7 +88,7 @@ internal final class RootComponent: Component
 
      Declare child component factories as 'fileprivate' methods.
 
-     fileprivate func childComponentFactory() -> ChildComponent {
+     fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
          ChildComponent(parent: self)
      }
 

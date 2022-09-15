@@ -50,7 +50,7 @@ internal final class ___VARIABLE_productName___PluginComponent: Component
 
      Declare child component factories as 'fileprivate' methods.
 
-     fileprivate func childComponentFactory() -> ChildComponent {
+     fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
          ChildComponent(parent: self)
      }
 
