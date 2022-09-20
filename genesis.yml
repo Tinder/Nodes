@@ -251,6 +251,7 @@ files:
   - path: "{{ project|split:' '|join:'_' }}/Generated/.gitignore"
     contents: |
       *
+      !.gitignore
 
   - path: "{{ project|split:' '|join:'_' }}/Resources/Base.lproj/LaunchScreen.storyboard"
     contents: |
@@ -2246,6 +2247,7 @@ files:
   - path: "{{ project|split:' '|join:'_' }}Tests/Generated/.gitignore"
     contents: |
       *
+      !.gitignore
 
   - path: "{{ project|split:' '|join:'_' }}Tests/Tests/{{ project|split:' '|join:'_' }}Tests.swift"
     contents: |
