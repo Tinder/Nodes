@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.7
 
 import PackageDescription
 
@@ -44,7 +44,6 @@ let package = Package(
             url: "https://github.com/Quick/Nimble.git",
             from: "10.0.0"),
         .package(
-            name: "SnapshotTesting",
             url: "https://github.com/pointfreeco/swift-snapshot-testing.git",
             from: "1.9.0"),
     ],
@@ -80,7 +79,7 @@ let package = Package(
             dependencies: [
                 "XcodeTemplateGeneratorLibrary",
                 "Nimble",
-                "SnapshotTesting",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
             ],
             exclude: ["__Snapshots__"]),
     ]
