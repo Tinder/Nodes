@@ -12,7 +12,7 @@ env:
 jobs:
   ci_job:
     name: CI
-    runs-on: macos-latest
+    runs-on: macos-12
     permissions:
       contents: read
       checks: write
