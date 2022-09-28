@@ -34,6 +34,8 @@ site:
 		--disable-indexing \
 		--transform-for-static-hosting \
 		--output-path "$(prefix)/docs"
+	cp docs.html "$(prefix)/docs/index.html"
+	cp docs.html "$(prefix)/docs/documentation/index.html"
 
 .PHONY: docs
 docs: target ?= Nodes
