@@ -19,29 +19,29 @@ else
 endif
 
 .PHONY: preview
-preview: library ?= Nodes
+preview: target ?= Nodes
 preview:
-	swift package --disable-sandbox preview-documentation --target "$(library)"
+	swift package --disable-sandbox preview-documentation --target "$(target)"
 
 .PHONY: site
-site: library ?= Nodes
+site: target ?= Nodes
 site: prefix ?= `pwd`
 site:
 	swift package \
 		--allow-writing-to-directory "$(prefix)/docs" \
 		generate-documentation \
-		--target "$(library)" \
+		--target "$(target)" \
 		--disable-indexing \
 		--transform-for-static-hosting \
 		--output-path "$(prefix)/docs"
 
 .PHONY: docs
-docs: library ?= Nodes
+docs: target ?= Nodes
 docs: open ?= OPEN
 docs: OUTPUT_PATH = .build/plugins/Swift-DocC/outputs
 docs:
-	swift package generate-documentation --target "$(library)"
-	$(if $(filter $(open),OPEN),@open "$(OUTPUT_PATH)/$(library).doccarchive",)
+	swift package generate-documentation --target "$(target)"
+	$(if $(filter $(open),OPEN),@open "$(OUTPUT_PATH)/$(target).doccarchive",)
 
 .PHONY: preflight
 preflight: output ?= pretty
