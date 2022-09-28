@@ -5,4 +5,5 @@ swift_library(
     module_name = "Nodes",
     srcs = glob(["Sources/Nodes/**/*.swift"], allow_empty = False),
     visibility = ["//visibility:public"],
+    copts = ["-whole-module-optimization"],
 )
