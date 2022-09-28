@@ -28,14 +28,14 @@ site: target ?= Nodes
 site: prefix ?= `pwd`
 site:
 	swift package \
-		--allow-writing-to-directory "$(prefix)/docs" \
+		--allow-writing-to-directory "$(prefix)/_site" \
 		generate-documentation \
 		--target "$(target)" \
 		--disable-indexing \
 		--transform-for-static-hosting \
-		--output-path "$(prefix)/docs"
-	cp docs.html "$(prefix)/docs/index.html"
-	cp docs.html "$(prefix)/docs/documentation/index.html"
+		--output-path "$(prefix)/_site"
+	cp docs.html "$(prefix)/_site/index.html"
+	cp docs.html "$(prefix)/_site/documentation/index.html"
 
 .PHONY: docs
 docs: target ?= Nodes

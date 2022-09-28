@@ -1,0 +1,43 @@
+name: Pages
+
+on:
+  push:
+    tags: ['[0-9]+.[0-9]+.[0-9]+']
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode_${{ secrets.XCODE_VERSION }}.app/Contents/Developer
+
+jobs:
+  pages:
+    name: Pages
+    runs-on: macos-12
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+    steps:
+    - name: Add ssh key
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+        ssh-agent -a "$SSH_AUTH_SOCK" > /dev/null
+        ssh-add - <<< "${{ secrets.TINDER_GITHUB_SSH_KEY }}"
+    - name: Checkout source
+      uses: actions/checkout@v3
+    - name: Configure pages
+      uses: actions/configure-pages@v2
+    - name: Build documentation
+      run: make site
+    - name: Upload pages artifact
+      uses: actions/upload-pages-artifact@v1
+    - name: Deploy pages artifact
+      id: deployment
+      uses: actions/deploy-pages@v1

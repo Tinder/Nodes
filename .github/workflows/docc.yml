@@ -24,5 +24,5 @@ jobs:
         ssh-add - <<< "${{ secrets.TINDER_GITHUB_SSH_KEY }}"
     - name: Checkout source
       uses: actions/checkout@v2
-    - name: Build Documentation
-      run: xcodebuild docbuild -scheme "Nodes" -destination "generic/platform=iOS"
+    - name: Build documentation
+      run: make docs open="no"
