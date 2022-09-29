@@ -25,25 +25,34 @@ preview:
 
 .PHONY: site
 site: target ?= Nodes
-site: prefix ?= `pwd`
+site: prefix ?= $(shell pwd)
+site: DOCC_PATH = $(shell xcrun --find docc)
+site: DERIVED_DATA_PATH = .build/documentation
 site:
-	swift package \
-		--allow-writing-to-directory "$(prefix)/_site" \
-		generate-documentation \
-		--target "$(target)" \
-		--disable-indexing \
-		--transform-for-static-hosting \
+	@make docs open="no"
+	"$(DOCC_PATH)" process-archive \
+		transform-for-static-hosting \
+		"$(DERIVED_DATA_PATH)/Archives/$(target).doccarchive" \
 		--output-path "$(prefix)/_site"
 	cp docs.html "$(prefix)/_site/index.html"
 	cp docs.html "$(prefix)/_site/documentation/index.html"
 
 .PHONY: docs
 docs: target ?= Nodes
+docs: destination ?= generic/platform=iOS
 docs: open ?= OPEN
-docs: OUTPUT_PATH = .build/plugins/Swift-DocC/outputs
+docs: DERIVED_DATA_PATH = .build/documentation
 docs:
-	swift package generate-documentation --target "$(target)"
-	$(if $(filter $(open),OPEN),@open "$(OUTPUT_PATH)/$(target).doccarchive",)
+	@mkdir -p "$(DERIVED_DATA_PATH)/Archives"
+	xcodebuild docbuild \
+		-scheme "$(target)" \
+		-destination "$(destination)" \
+		-derivedDataPath "$(DERIVED_DATA_PATH)"
+	@find "$(DERIVED_DATA_PATH)" \
+		-type d \
+		-name "$(target).doccarchive" \
+		-exec cp -R {} "$(DERIVED_DATA_PATH)/Archives/" \;
+	$(if $(filter $(open),OPEN),@open "$(DERIVED_DATA_PATH)/Archives/$(target).doccarchive",)
 
 .PHONY: preflight
 preflight: output ?= pretty
