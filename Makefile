@@ -19,43 +19,40 @@ else
 endif
 
 .PHONY: preview
-preview: library ?= Nodes
-preview: catalog ?= _Documentation
-preview: docc = $(shell xcrun --find docc)
-preview: SYMBOL_GRAPH_PATH = .build/symbol-graphs
-preview: DOCC_SYMBOL_GRAPH_PATH = .build/documentation/symbol-graphs
-preview: OUTPUT_PATH = .build/documentation/html
+preview: target ?= Nodes
 preview:
-	@mkdir -p "$(SYMBOL_GRAPH_PATH)" "$(DOCC_SYMBOL_GRAPH_PATH)" "$(OUTPUT_PATH)"
-	swift build \
-		--target "$(library)" \
-		-Xswiftc -emit-symbol-graph \
-		-Xswiftc -emit-symbol-graph-dir \
-		-Xswiftc "$(SYMBOL_GRAPH_PATH)"
-	@cp "$(SYMBOL_GRAPH_PATH)/$(library)"* "$(DOCC_SYMBOL_GRAPH_PATH)"
-	@open "http://localhost:8000/Documentation/$(library)"
-	"$(docc)" preview \
-		"Sources/$(library)/$(catalog).docc" \
-		--additional-symbol-graph-dir "$(DOCC_SYMBOL_GRAPH_PATH)" \
-		--output-dir "$(OUTPUT_PATH)"
+	swift package --disable-sandbox preview-documentation --target "$(target)"
+
+.PHONY: site
+site: target ?= Nodes
+site: prefix ?= $(shell pwd)
+site: DOCC_PATH = $(shell xcrun --find docc)
+site: DERIVED_DATA_PATH = .build/documentation
+site:
+	@make docs open="no"
+	"$(DOCC_PATH)" process-archive \
+		transform-for-static-hosting \
+		"$(DERIVED_DATA_PATH)/Archives/$(target).doccarchive" \
+		--output-path "$(prefix)/_site"
+	cp docs.html "$(prefix)/_site/index.html"
+	cp docs.html "$(prefix)/_site/documentation/index.html"
 
 .PHONY: docs
-docs: library ?= Nodes
+docs: target ?= Nodes
 docs: destination ?= generic/platform=iOS
 docs: open ?= OPEN
 docs: DERIVED_DATA_PATH = .build/documentation
-docs: DOCUMENTATION_PATH = Documentation/Generated
 docs:
-	@mkdir -p "$(DERIVED_DATA_PATH)" "$(DOCUMENTATION_PATH)"
+	@mkdir -p "$(DERIVED_DATA_PATH)/Archives"
 	xcodebuild docbuild \
-		-scheme "$(library)" \
+		-scheme "$(target)" \
 		-destination "$(destination)" \
 		-derivedDataPath "$(DERIVED_DATA_PATH)"
 	@find "$(DERIVED_DATA_PATH)" \
 		-type d \
-		-name "$(library).doccarchive" \
-		-exec cp -R {} "$(DOCUMENTATION_PATH)/" \;
-	$(if $(filter $(open),OPEN),@open "$(DOCUMENTATION_PATH)/$(library).doccarchive",)
+		-name "$(target).doccarchive" \
+		-exec cp -R {} "$(DERIVED_DATA_PATH)/Archives/" \;
+	$(if $(filter $(open),OPEN),@open "$(DERIVED_DATA_PATH)/Archives/$(target).doccarchive",)
 
 .PHONY: preflight
 preflight: output ?= pretty
