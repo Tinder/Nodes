@@ -12,7 +12,7 @@ env:
 jobs:
   docc:
     name: DocC
-    runs-on: macos-12
+    runs-on: macos-latest
     env:
       SSH_AUTH_SOCK: /tmp/ssh_agent.sock
     steps:

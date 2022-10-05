@@ -10,7 +10,7 @@ env:
 jobs:
   pages:
     name: Pages
-    runs-on: macos-12
+    runs-on: macos-latest
     concurrency:
       group: "pages"
       cancel-in-progress: true
