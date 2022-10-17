@@ -10,11 +10,24 @@ import SwiftUI
 @available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension Binding {
 
-    /// Create a Binding for a value with a async callback listening for a change for the passed value.
+    /// A Binding factory to be used instead of the built-in SwiftUI provided initializer for two reasons:
+    /// - Accepts a value for the getter instead of a closure
+    /// - Allows for `.binding` which is more declarative than `.init`
+    ///
+    /// Example:
+    /// ```
+    /// var body: some View {
+    ///     WithViewState(viewState) { viewState in
+    ///         Slider(value: .binding(to: viewState.sliderValue, onChange: receiver?.didChangeSliderValue), in: 1...100)
+    ///     }
+    /// }
+    /// ```
+    ///
     /// - Parameters:
-    ///   - value: The value you want to create a Binding for.
-    ///   - onChange: The async callback listinging for a change of the passed value.
-    /// - Returns: Returns a SwiftUI Binding for the passed in value.
+    ///   - value: A value for the getter of the binding.
+    ///   - onChange: An escaping closure for the setter of the binding.
+    ///
+    /// - Returns: A SwiftUI Binding instance.
     public static func binding(to value: Value, onChange: @escaping (Value) -> Void) -> Binding<Value> {
         Binding(get: { value }, set: { onChange($0) })
     }
