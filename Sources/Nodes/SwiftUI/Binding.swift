@@ -18,7 +18,10 @@ extension Binding {
     /// ```
     /// var body: some View {
     ///     WithViewState(viewState) { viewState in
-    ///         Slider(value: .binding(to: viewState.sliderValue, onChange: receiver?.didChangeSliderValue), in: 1...100)
+    ///         Slider(
+    ///             value: .binding(to: viewState.sliderValue,
+    ///             onChange: receiver?.didChangeSliderValue),
+    ///             in: 1...100)
     ///     }
     /// }
     /// ```AbstractPresentableContext
@@ -41,7 +44,10 @@ extension Binding {
     /// ```
     /// var body: some View {
     ///     WithViewState(viewState) { viewState in
-    ///         Slider(value: .binding(to: viewState.sliderValue, onChange: receiver?.didChangeSliderValue), in: 1...100)
+    ///         Slider(
+    ///             value: .binding(to: viewState.sliderValue,
+    ///             onChange: receiver?.didChangeSliderValue),
+    ///             in: 1...100)
     ///     }
     /// }
     /// ```
