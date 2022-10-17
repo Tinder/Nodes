@@ -24,8 +24,7 @@ extension Binding {
     ///             in: 1...100)
     ///     }
     /// }
-    /// ```AbstractPresentableContext
-
+    /// ```
     ///
     /// - Parameters:
     ///   - value: A value for the getter of the binding.
