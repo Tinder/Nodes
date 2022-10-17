@@ -5,7 +5,9 @@
 //  Created by Seppe Snoeck on 11/10/22.
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
 @available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension Binding {
