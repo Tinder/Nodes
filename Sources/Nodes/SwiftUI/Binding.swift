@@ -12,7 +12,9 @@ import SwiftUI
 @available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension Binding {
 
-    /// A Binding factory to be used instead of the built-in SwiftUI provided initializer for two reasons:
+    /// Initializes a SwiftUI Binding.
+    ///
+    /// Use instead of the built-in SwiftUI provided initializer for two reasons:
     /// - Accepts a value for the getter instead of a closure
     /// - Allows for `.binding` which is more declarative than `.init`
     ///
@@ -20,10 +22,8 @@ extension Binding {
     /// ```
     /// var body: some View {
     ///     WithViewState(viewState) { viewState in
-    ///         Slider(
-    ///             value: .binding(to: viewState.sliderValue,
-    ///             onChange: receiver?.didChangeSliderValue),
-    ///             in: 1...100)
+    ///         Slider(value: .binding(to: viewState.sliderValue) { _ in },
+    ///                in: 1...100)
     ///     }
     /// }
     /// ```
