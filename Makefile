@@ -42,8 +42,9 @@ docs: target ?= Nodes
 docs: destination ?= generic/platform=iOS
 docs: open ?= OPEN
 docs: DERIVED_DATA_PATH = .build/documentation
+docs: OUTPUT_PATH = Documentation/Generated
 docs:
-	@mkdir -p "$(DERIVED_DATA_PATH)/Archives"
+	@mkdir -p "$(DERIVED_DATA_PATH)" "$(OUTPUT_PATH)"
 	xcodebuild docbuild \
 		-scheme "$(target)" \
 		-destination "$(destination)" \
@@ -51,8 +52,8 @@ docs:
 	@find "$(DERIVED_DATA_PATH)" \
 		-type d \
 		-name "$(target).doccarchive" \
-		-exec cp -R {} "$(DERIVED_DATA_PATH)/Archives/" \;
-	$(if $(filter $(open),OPEN),@open "$(DERIVED_DATA_PATH)/Archives/$(target).doccarchive",)
+		-exec cp -R {} "$(OUTPUT_PATH)/" \;
+	$(if $(filter $(open),OPEN),@open "$(OUTPUT_PATH)/$(target).doccarchive",)
 
 .PHONY: preflight
 preflight: output ?= pretty
