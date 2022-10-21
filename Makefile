@@ -52,7 +52,7 @@ ifeq ($(strip $(workaround)),ENABLED)
 	xcodebuild clean \
 		-scheme "$(target)" \
 		-destination "$(destination)" \
-		-derivedDataPath "$(DERIVED_DATA_PATH)"
+		-derivedDataPath "$(DERIVED_DATA_PATH)" || true
 # END: Temporary Xcode 14 workaround to fix DocC CI issue
 endif
 	xcodebuild docbuild \
