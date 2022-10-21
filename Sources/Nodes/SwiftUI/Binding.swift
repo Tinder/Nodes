@@ -37,7 +37,7 @@ extension Binding {
         Binding(get: { value }, set: { onChange($0) })
     }
 
-    /// Initializes a SwiftUI Binding.
+    /// Initializes a SwiftUI `Binding`.
     ///
     /// Use instead of the built-in SwiftUI provided initializer for two reasons:
     /// - Accepts a value for the getter instead of a closure
