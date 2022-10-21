@@ -32,7 +32,7 @@ extension Binding {
     ///   - value: A value for the getter of the binding.
     ///   - onChange: An escaping closure for the setter of the binding.
     ///
-    /// - Returns: A SwiftUI Binding instance.
+    /// - Returns: A SwiftUI `Binding` instance.
     public static func binding(to value: Value, onChange: @escaping (Value) -> Void) -> Binding<Value> {
         Binding(get: { value }, set: { onChange($0) })
     }
