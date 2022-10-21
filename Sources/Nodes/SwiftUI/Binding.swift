@@ -12,7 +12,7 @@ import SwiftUI
 @available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension Binding {
 
-    /// Initializes a SwiftUI Binding.
+    /// Initializes a SwiftUI `Binding`.
     ///
     /// Use instead of the built-in SwiftUI provided initializer for two reasons:
     /// - Accepts a value for the getter instead of a closure
