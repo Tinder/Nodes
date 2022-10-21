@@ -57,7 +57,7 @@ extension Binding {
     ///   - value: A value for the getter of the binding.
     ///   - onChange: An optional (escaping) closure for the setter of the binding.
     ///
-    /// - Returns: A SwiftUI Binding instance.
+    /// - Returns: A SwiftUI `Binding` instance.
     public static func binding(to value: Value, onChange: ((Value) -> Void)?) -> Binding<Value> {
         guard let onChange: (Value) -> Void = onChange
         else { return .constant(value) }
