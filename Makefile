@@ -27,12 +27,12 @@ preview:
 site: target ?= Nodes
 site: prefix ?= $(shell pwd)
 site: DOCC_PATH = $(shell xcrun --find docc)
-site: DERIVED_DATA_PATH = .build/documentation
+site: ARCHIVE_PATH = .build/documentation/archive
 site:
 	@make docs open="no"
 	"$(DOCC_PATH)" process-archive \
 		transform-for-static-hosting \
-		"$(DERIVED_DATA_PATH)/Archives/$(target).doccarchive" \
+		"$(ARCHIVE_PATH)/$(target).doccarchive" \
 		--output-path "$(prefix)/_site"
 	cp docs.html "$(prefix)/_site/index.html"
 	cp docs.html "$(prefix)/_site/documentation/index.html"
@@ -41,9 +41,20 @@ site:
 docs: target ?= Nodes
 docs: destination ?= generic/platform=iOS
 docs: open ?= OPEN
-docs: DERIVED_DATA_PATH = .build/documentation
+docs: workaround ?= DISABLED
+docs: DERIVED_DATA_PATH = .build/documentation/data
+docs: ARCHIVE_PATH = .build/documentation/archive
 docs:
-	@mkdir -p "$(DERIVED_DATA_PATH)/Archives"
+	@mkdir -p "$(DERIVED_DATA_PATH)" "$(ARCHIVE_PATH)"
+ifeq ($(strip $(workaround)),ENABLED)
+# BEGIN: Temporary Xcode 14 workaround to fix DocC CI issue
+	swift package dump-pif >/dev/null
+	xcodebuild clean \
+		-scheme "$(target)" \
+		-destination "$(destination)" \
+		-derivedDataPath "$(DERIVED_DATA_PATH)" || true
+# END: Temporary Xcode 14 workaround to fix DocC CI issue
+endif
 	xcodebuild docbuild \
 		-scheme "$(target)" \
 		-destination "$(destination)" \
@@ -51,8 +62,8 @@ docs:
 	@find "$(DERIVED_DATA_PATH)" \
 		-type d \
 		-name "$(target).doccarchive" \
-		-exec cp -R {} "$(DERIVED_DATA_PATH)/Archives/" \;
-	$(if $(filter $(open),OPEN),@open "$(DERIVED_DATA_PATH)/Archives/$(target).doccarchive",)
+		-exec cp -R {} "$(ARCHIVE_PATH)/" \;
+	$(if $(filter $(open),OPEN),@open "$(ARCHIVE_PATH)/$(target).doccarchive",)
 
 .PHONY: preflight
 preflight: output ?= pretty
