@@ -289,7 +289,7 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
 
     /// Calls `create` on the plugins for the keys provided by ``creationOrder(component:)`` and returns
     /// the resulting non-nil `BuildType` instances in creation order prepended with the default instance
-    /// provided by ``default(component:state:)``.
+    /// provided by ``default(component:)``.
     ///
     /// - Parameter state: The `StateType` instance.
     ///
@@ -300,7 +300,7 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
     }
 
     /// Calls `create` on each plugin in the plugin collection (in reverse creation order) and returns the
-    /// first non-nil `BuildType` instance, otherwise the default instance provided by ``default(component:state:)``
+    /// first non-nil `BuildType` instance, otherwise the default instance provided by ``default(component:)``
     /// is returned.
     ///
     /// - Parameter state: The `StateType` instance.
@@ -313,7 +313,7 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
 
     /// Calls `create` on the plugin for the given `key` and returns the resulting `BuildType` instance,
     /// otherwise when the `key` is not in the dictionary or the `create` method returns `nil`, the default
-    /// instance provided by ``default(component:state:)`` is returned.
+    /// instance provided by ``default(component:)`` is returned.
     ///
     /// - Parameters:
     ///   - key: The `KeyType` instance.
@@ -329,7 +329,7 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
 extension PluginListWithDefault where StateType == Void {
 
     /// Calls `create` on each plugin in the plugin collection (in reverse creation order) and returns the
-    /// first non-nil `BuildType` instance, otherwise the default instance provided by ``default(component:state:)``
+    /// first non-nil `BuildType` instance, otherwise the default instance provided by ``default(component:)``
     /// is returned.
     ///
     /// This convenience method has no parameters since `StateType` is `Void`.
