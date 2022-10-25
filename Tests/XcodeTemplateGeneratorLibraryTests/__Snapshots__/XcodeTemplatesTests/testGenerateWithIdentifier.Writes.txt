@@ -1,4 +1,4 @@
-▿ 41 elements
+▿ 43 elements
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___Analytics.swift"
     - .1: true
@@ -16,6 +16,9 @@
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___ViewState.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___State.swift"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/TemplateInfo.plist"
@@ -37,6 +40,9 @@
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___ViewState.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___State.swift"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/TemplateInfo.plist"
