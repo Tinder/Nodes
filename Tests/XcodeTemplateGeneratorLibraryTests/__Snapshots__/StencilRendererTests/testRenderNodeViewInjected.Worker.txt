@@ -1,18 +1,17 @@
 <fileHeader>
 
-import <workerImports>
 
 /**
  PURPOSE:
  Encapsulates work to be performed by the Node.
  */
-internal protocol <workerName>Worker: Worker {}
+internal protocol Worker: Worker {}
 
 /**
  PURPOSE:
  Concrete implementation of the Worker.
  */
-internal final class <workerName>WorkerImp: AbstractWorker
+internal final class WorkerImp: AbstractWorker
 <
     <cancellableType>
 > {
@@ -33,4 +32,4 @@ internal final class <workerName>WorkerImp: AbstractWorker
     override internal func willStop() {}
 }
 
-extension <workerName>WorkerImp: <workerName>Worker {}
+extension WorkerImp: Worker {}

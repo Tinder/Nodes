@@ -1,4 +1,4 @@
-▿ 24 key/value pairs
+▿ 23 key/value pairs
   ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
@@ -87,6 +87,3 @@
     - key: "worker_imports"
     ▿ value: 1 element
       - "<workerImports>"
-  ▿ (2 elements)
-    - key: "worker_name"
-    - value: "<workerName>"

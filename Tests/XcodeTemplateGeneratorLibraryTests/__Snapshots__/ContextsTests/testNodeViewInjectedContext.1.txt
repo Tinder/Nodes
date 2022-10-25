@@ -1,4 +1,4 @@
-▿ 14 key/value pairs
+▿ 12 key/value pairs
   ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
@@ -52,10 +52,3 @@
   ▿ (2 elements)
     - key: "view_controllable_type"
     - value: "<viewControllableType>"
-  ▿ (2 elements)
-    - key: "worker_imports"
-    ▿ value: 1 element
-      - "<workerImports>"
-  ▿ (2 elements)
-    - key: "worker_name"
-    - value: "<workerName>"

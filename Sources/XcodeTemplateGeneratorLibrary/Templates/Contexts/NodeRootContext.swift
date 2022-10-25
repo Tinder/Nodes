@@ -8,7 +8,6 @@
 public struct NodeRootContext: Context {
 
     private let fileHeader: String
-    private let workerName: String
     private let builderImports: [String]
     private let contextImports: [String]
     private let flowImports: [String]
@@ -33,7 +32,6 @@ public struct NodeRootContext: Context {
         [
             "file_header": fileHeader,
             "node_name": "Root",
-            "worker_name": workerName,
             "owns_view": true,
             "root_node": true,
             "builder_imports": builderImports,
@@ -60,7 +58,6 @@ public struct NodeRootContext: Context {
 
     public init(
         fileHeader: String,
-        workerName: String,
         builderImports: Set<String>,
         contextImports: Set<String>,
         flowImports: Set<String>,
@@ -82,7 +79,6 @@ public struct NodeRootContext: Context {
         cancellableType: String
     ) {
         self.fileHeader = fileHeader
-        self.workerName = workerName
         self.builderImports = builderImports.sortedImports()
         self.contextImports = contextImports.sortedImports()
         self.flowImports = flowImports.sortedImports()

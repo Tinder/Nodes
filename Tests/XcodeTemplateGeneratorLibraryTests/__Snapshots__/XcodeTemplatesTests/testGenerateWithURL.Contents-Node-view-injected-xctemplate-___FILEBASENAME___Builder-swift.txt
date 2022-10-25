@@ -143,7 +143,7 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
     ) -> ___VARIABLE_productName___Flow {
         let (listener, viewController) = dynamicBuildDependency
         let analytics: ___VARIABLE_productName___AnalyticsImp = .init()
-        let worker: ___VARIABLE_productName___WorkerImp = .init(
+        let worker: WorkerImp = .init(
             analytics: analytics
         )
         let context: ___VARIABLE_productName___ContextImp = .init(

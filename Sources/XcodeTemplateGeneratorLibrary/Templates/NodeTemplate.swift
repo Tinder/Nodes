@@ -25,21 +25,19 @@ internal struct NodeTemplate: XcodeTemplate {
     internal init(config: Config, swiftUI: Bool = false) {
         if swiftUI {
             name = "\(Config.symbolForSwiftUI) Node"
-            stencils = ["Analytics", "Builder-SwiftUI", "Context", "Flow", "ViewController-SwiftUI", "Worker"]
+            stencils = ["Analytics", "Builder-SwiftUI", "Context", "Flow", "ViewController-SwiftUI"]
             filenames = [
                 "Builder-SwiftUI": "Builder",
-                "ViewController-SwiftUI": "ViewController",
-                "Worker": "ViewStateWorker"
+                "ViewController-SwiftUI": "ViewController"
             ]
         } else {
             name = "Node"
-            stencils = ["Analytics", "Builder", "Context", "Flow", "ViewController", "Worker"]
-            filenames = ["Worker": "ViewStateWorker"]
+            stencils = ["Analytics", "Builder", "Context", "Flow", "ViewController"]
+            filenames = [:]
         }
         context = NodeContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
-            workerName: "\(config.variable("productName"))ViewState",
             builderImports: config.imports(for: .diGraph),
             contextImports: config.imports(for: .nodes),
             flowImports: config.imports(for: .nodes),

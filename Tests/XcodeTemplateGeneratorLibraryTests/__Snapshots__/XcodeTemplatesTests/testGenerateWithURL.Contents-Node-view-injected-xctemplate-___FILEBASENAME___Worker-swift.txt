@@ -1,19 +1,17 @@
 //___FILEHEADER___
 
-import Combine
-import Nodes
 
 /**
  PURPOSE:
  Encapsulates work to be performed by the Node.
  */
-internal protocol ___VARIABLE_productName___Worker: Worker {}
+internal protocol Worker: Worker {}
 
 /**
  PURPOSE:
  Concrete implementation of the Worker.
  */
-internal final class ___VARIABLE_productName___WorkerImp: AbstractWorker
+internal final class WorkerImp: AbstractWorker
 <
     AnyCancellable
 > {
@@ -34,4 +32,4 @@ internal final class ___VARIABLE_productName___WorkerImp: AbstractWorker
     override internal func willStop() {}
 }
 
-extension ___VARIABLE_productName___WorkerImp: ___VARIABLE_productName___Worker {}
+extension WorkerImp: Worker {}

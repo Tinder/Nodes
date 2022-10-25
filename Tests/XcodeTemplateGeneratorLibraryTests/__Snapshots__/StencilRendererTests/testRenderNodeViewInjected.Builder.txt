@@ -144,7 +144,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
     ) -> <nodeName>Flow {
         let (listener, viewController) = dynamicBuildDependency
         let analytics: <nodeName>AnalyticsImp = .init()
-        let worker: <workerName>WorkerImp = .init(
+        let worker: WorkerImp = .init(
             analytics: analytics
         )
         let context: <nodeName>ContextImp = .init(

@@ -47,17 +47,13 @@
     ▿ workerImports: 2 elements
       - "<baseImports>"
       - "Nodes"
-    - workerName: "___VARIABLE_productName___ViewState"
-  ▿ filenames: 3 key/value pairs
+  ▿ filenames: 2 key/value pairs
     ▿ (2 elements)
       - key: "Builder-SwiftUI"
       - value: "Builder"
     ▿ (2 elements)
       - key: "ViewController-SwiftUI"
       - value: "ViewController"
-    ▿ (2 elements)
-      - key: "Worker"
-      - value: "ViewStateWorker"
   - name: " Node"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
@@ -78,10 +74,9 @@
     - sortOrder: 1
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 6 elements
+  ▿ stencils: 5 elements
     - "Analytics"
     - "Builder-SwiftUI"
     - "Context"
     - "Flow"
     - "ViewController-SwiftUI"
-    - "Worker"
