@@ -1,0 +1,12 @@
+//___FILEHEADER___
+
+import Combine
+import Nodes
+import SwiftUI
+
+/**
+ PURPOSE:
+ The view state of your View Controller.
+ */
+internal struct ___VARIABLE_productName___ViewState: Equatable {}
+

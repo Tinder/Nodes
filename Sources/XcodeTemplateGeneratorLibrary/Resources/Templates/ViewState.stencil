@@ -1,0 +1,10 @@
+{{ file_header }}
+{% for import in view_controller_imports %}
+import {{ import }}{% endfor %}
+{% if view_state_publisher %}
+/**
+ PURPOSE:
+ The view state of your View Controller.
+ */
+internal struct {{ node_name }}ViewState: Equatable {}
+{% endif %}

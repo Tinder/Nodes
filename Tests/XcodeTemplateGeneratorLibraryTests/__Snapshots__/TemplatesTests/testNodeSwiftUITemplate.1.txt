@@ -74,9 +74,10 @@
     - sortOrder: 1
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 5 elements
+  ▿ stencils: 6 elements
     - "Analytics"
     - "Builder-SwiftUI"
     - "Context"
     - "Flow"
     - "ViewController-SwiftUI"
+    - "ViewState"
