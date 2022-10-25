@@ -10,3 +10,14 @@ import UIKit
  */
 internal struct ___VARIABLE_productName___ViewState: Equatable {}
 
+/**
+ PURPOSE:
+ The factory used to create view state from the state of the Node.
+ */
+internal class ___VARIABLE_productName___ViewStateFactory: Transform {
+
+    internal func callAsFunction(_ state: ___VARIABLE_productName___State) -> ___VARIABLE_productName___ViewState {
+        ___VARIABLE_productName___ViewState()
+    }
+}
+

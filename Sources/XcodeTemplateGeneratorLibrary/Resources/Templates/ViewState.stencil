@@ -7,4 +7,15 @@ import {{ import }}{% endfor %}
  The view state of your View Controller.
  */
 internal struct {{ node_name }}ViewState: Equatable {}
+
+/**
+ PURPOSE:
+ The factory used to create view state from the state of the Node.
+ */
+internal class {{ node_name }}ViewStateFactory: Transform {
+
+    internal func callAsFunction(_ state: {{ node_name }}State) -> {{ node_name }}ViewState {
+        {{ node_name }}ViewState()
+    }
+}
 {% endif %}
