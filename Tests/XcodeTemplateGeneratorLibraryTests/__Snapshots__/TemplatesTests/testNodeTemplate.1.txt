@@ -41,7 +41,7 @@
     - viewControllerType: "<viewControllerType>"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     ▿ viewStateImports: 1 element
-      - "<viewControllerViewStateImports>"
+      - "<viewStateImports>"
     - viewStateOperators: "<viewStateOperators>"
     - viewStatePublisher: "<viewStatePublisher>"
     ▿ workerImports: 1 element

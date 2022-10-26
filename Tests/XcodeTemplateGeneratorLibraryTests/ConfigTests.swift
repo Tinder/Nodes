@@ -68,9 +68,9 @@ final class ConfigTests: XCTestCase {
         viewControllerImportsSwiftUI:
           - viewControllerImportsSwiftUI-1
           - viewControllerImportsSwiftUI-2
-        viewControllerViewStateImports:
-          - viewControllerViewStateImports-1
-          - viewControllerViewStateImports-2
+        viewStateImports:
+          - viewStateImports-1
+          - viewStateImports-2
         workerImports:
           - workerImports-1
           - workerImports-2

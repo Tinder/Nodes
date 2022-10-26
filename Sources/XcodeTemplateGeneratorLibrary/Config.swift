@@ -32,7 +32,7 @@ extension XcodeTemplates {
         public var stateImports: Set<String>
         public var viewControllerImports: Set<String>
         public var viewControllerImportsSwiftUI: Set<String>
-        public var viewControllerViewStateImports: Set<String>
+        public var viewStateImports: Set<String>
         public var workerImports: Set<String>
         public var dependencies: [Variable]
         public var flowProperties: [Variable]
@@ -113,7 +113,7 @@ extension XcodeTemplates.Config {
         stateImports = nodesImports
         viewControllerImports = viewLayerImports.union(["UIKit"])
         viewControllerImportsSwiftUI = viewLayerImports.union(["SwiftUI"])
-        viewControllerViewStateImports = nodesImports
+        viewStateImports = nodesImports
         workerImports = businessLogicLayerImports
         dependencies = []
         flowProperties = []
@@ -221,9 +221,9 @@ extension XcodeTemplates.Config {
         viewControllerImportsSwiftUI =
             (try? decoder.decode("viewControllerImportsSwiftUI"))
             ?? defaults.viewControllerImportsSwiftUI
-        viewControllerViewStateImports =
-            (try? decoder.decode("viewControllerViewStateImports"))
-            ?? defaults.viewControllerViewStateImports
+        viewStateImports =
+            (try? decoder.decode("viewStateImports"))
+            ?? defaults.viewStateImports
         workerImports =
             (try? decoder.decode("workerImports"))
             ?? defaults.workerImports

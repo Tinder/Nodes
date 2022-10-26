@@ -58,9 +58,9 @@
   - viewControllerSuperParameters: "viewControllerSuperParameters"
   - viewControllerType: "viewControllerType"
   - viewControllerUpdateComment: "viewControllerUpdateComment"
-  ▿ viewControllerViewStateImports: 2 members
-    - "viewControllerViewStateImports-1"
-    - "viewControllerViewStateImports-2"
+  ▿ viewStateImports: 2 members
+    - "viewStateImports-1"
+    - "viewStateImports-2"
   - viewStateOperators: "viewStateOperators"
   - viewStatePublisher: "viewStatePublisher"
   ▿ workerImports: 2 members

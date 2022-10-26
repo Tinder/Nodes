@@ -27,7 +27,7 @@ extension TestFactories {
         config.stateImports = ["<stateImports>"]
         config.viewControllerImports = ["<viewControllerImports>"]
         config.viewControllerImportsSwiftUI = ["<viewControllerImportsSwiftUI>"]
-        config.viewControllerViewStateImports = ["<viewControllerViewStateImports>"]
+        config.viewStateImports = ["<viewStateImports>"]
         config.workerImports = ["<workerImports>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
