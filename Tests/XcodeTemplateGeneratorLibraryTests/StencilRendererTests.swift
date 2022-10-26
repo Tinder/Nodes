@@ -20,8 +20,9 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             "Builder",
             "Context",
             "Flow",
+            "State",
             "ViewController",
-            "Worker"
+            "ViewState"
         ]
         assertSnapshot(matching: templates["Analytics"]!,
                        as: .lines,
@@ -35,12 +36,15 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         assertSnapshot(matching: templates["Flow"]!,
                        as: .lines,
                        named: "Flow")
+        assertSnapshot(matching: templates["State"]!,
+                       as: .lines,
+                       named: "State")
         assertSnapshot(matching: templates["ViewController"]!,
                        as: .lines,
                        named: "ViewController")
-        assertSnapshot(matching: templates["Worker"]!,
+        assertSnapshot(matching: templates["ViewState"]!,
                        as: .lines,
-                       named: "Worker")
+                       named: "ViewState")
     }
 
     func testRenderNodeSwiftUI() throws {
@@ -52,8 +56,9 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             "Builder",
             "Context",
             "Flow",
+            "State",
             "ViewController",
-            "Worker"
+            "ViewState"
         ]
         assertSnapshot(matching: templates["Analytics"]!,
                        as: .lines,
@@ -67,12 +72,15 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         assertSnapshot(matching: templates["Flow"]!,
                        as: .lines,
                        named: "Flow")
+        assertSnapshot(matching: templates["State"]!,
+                       as: .lines,
+                       named: "State")
         assertSnapshot(matching: templates["ViewController"]!,
                        as: .lines,
                        named: "ViewController")
-        assertSnapshot(matching: templates["Worker"]!,
+        assertSnapshot(matching: templates["ViewState"]!,
                        as: .lines,
-                       named: "Worker")
+                       named: "ViewState")
     }
 
     func testRenderNodeRoot() throws {
@@ -83,8 +91,9 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             "Builder",
             "Context",
             "Flow",
+            "State",
             "ViewController",
-            "Worker"
+            "ViewState"
         ]
         assertSnapshot(matching: templates["Analytics"]!,
                        as: .lines,
@@ -98,12 +107,15 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         assertSnapshot(matching: templates["Flow"]!,
                        as: .lines,
                        named: "Flow")
+        assertSnapshot(matching: templates["State"]!,
+                       as: .lines,
+                       named: "State")
         assertSnapshot(matching: templates["ViewController"]!,
                        as: .lines,
                        named: "ViewController")
-        assertSnapshot(matching: templates["Worker"]!,
+        assertSnapshot(matching: templates["ViewState"]!,
                        as: .lines,
-                       named: "Worker")
+                       named: "ViewState")
     }
 
     func testRenderNodeViewInjected() throws {
@@ -113,8 +125,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             "Analytics",
             "Builder",
             "Context",
-            "Flow",
-            "Worker"
+            "Flow"
         ]
         assertSnapshot(matching: templates["Analytics"]!,
                        as: .lines,
@@ -128,9 +139,6 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         assertSnapshot(matching: templates["Flow"]!,
                        as: .lines,
                        named: "Flow")
-        assertSnapshot(matching: templates["Worker"]!,
-                       as: .lines,
-                       named: "Worker")
     }
 
     func testRenderNodeWithoutViewState() throws {

@@ -1,0 +1,21 @@
+<fileHeader>
+
+import <viewControllerImports>
+
+/**
+ PURPOSE:
+ The view state of your View Controller.
+ */
+internal struct <nodeName>ViewState: Equatable {}
+
+/**
+ PURPOSE:
+ The factory used to create view state from the state of the Node.
+ */
+internal class <nodeName>ViewStateFactory: Transform {
+
+    internal func callAsFunction(_ state: <nodeName>State) -> <nodeName>ViewState {
+        <nodeName>ViewState()
+    }
+}
+
