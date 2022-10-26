@@ -111,9 +111,12 @@ extension TestFactories {
         NodeViewInjectedContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
+            analyticsImports: ["<analyticsImports>"],
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],
+            stateImports: ["<stateImports>"],
+            workerImports: ["<workerImports>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             viewControllableType: "<viewControllableType>",

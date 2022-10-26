@@ -1,5 +1,6 @@
 <fileHeader>
 
+import <analyticsImports>
 
 /*
  INSTRUCTIONS:

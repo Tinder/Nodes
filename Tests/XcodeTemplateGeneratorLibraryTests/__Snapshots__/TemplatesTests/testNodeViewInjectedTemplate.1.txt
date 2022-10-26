@@ -1,5 +1,7 @@
 ▿ NodeViewInjectedTemplate
   ▿ context: NodeViewInjectedContext
+    ▿ analyticsImports: 1 element
+      - "<analyticsImports>"
     ▿ builderImports: 1 element
       - "<builderImports>"
     - cancellableType: "<cancellableType>"
@@ -25,8 +27,12 @@
           - key: "type"
           - value: "<flowPropertiesType>"
     - nodeName: "___VARIABLE_productName___"
+    ▿ stateImports: 1 element
+      - "<stateImports>"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
+    ▿ workerImports: 1 element
+      - "<workerImports>"
   - name: "Node (view injected)"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
