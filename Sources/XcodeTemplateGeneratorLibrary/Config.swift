@@ -18,13 +18,13 @@ extension XcodeTemplates {
         // swiftlint:disable:next nesting
         internal enum ImportsType {
 
-            case nodes, diGraph, viewController(viewState: Bool, swiftUI: Bool)
+            case nodes, diGraph, viewController(swiftUI: Bool)
         }
 
         // swiftlint:disable:next nesting
         internal enum ViewControllerMethodsType {
 
-            case standard(swiftUI: Bool), root(swiftUI: Bool), withoutViewState(swiftUI: Bool)
+            case standard(swiftUI: Bool), root(swiftUI: Bool)
         }
 
         public var includedTemplates: [String]
@@ -46,9 +46,6 @@ extension XcodeTemplates {
         public var viewControllerMethodsSwiftUI: String
         public var rootViewControllerMethods: String
         public var rootViewControllerMethodsSwiftUI: String
-        public var viewControllerWithoutViewStateMethods: String
-        // swiftlint:disable:next identifier_name
-        public var viewControllerWithoutViewStateMethodsSwiftUI: String
         public var viewControllerUpdateComment: String
         public var viewStatePublisher: String
         public var viewStateOperators: String
@@ -75,11 +72,11 @@ extension XcodeTemplates {
                 return nodesImports
             case .diGraph:
                 return nodesImports.union(diGraphImports)
-            case let .viewController(viewState, swiftUI):
+            case let .viewController(swiftUI):
                 let imports: Set<String> = swiftUI
                     ? nodesImports.union(viewControllerImportsSwiftUI)
                     : nodesImports.union(viewControllerImports)
-                return viewState ? imports.union(viewControllerViewStateImports) : imports
+                return imports.union(viewControllerViewStateImports)
             }
         }
 
@@ -97,10 +94,6 @@ extension XcodeTemplates {
                 return swiftUI
                     ? rootViewControllerMethodsSwiftUI
                     : rootViewControllerMethods
-            case let .withoutViewState(swiftUI):
-                return swiftUI
-                    ? viewControllerWithoutViewStateMethodsSwiftUI
-                    : viewControllerWithoutViewStateMethods
             }
         }
     }
@@ -114,8 +107,6 @@ extension XcodeTemplates.Config {
         includedTemplates = [
             "Node",
             "NodeSwiftUI",
-            "NodeWithoutViewState",
-            "NodeWithoutViewStateSwiftUI",
             "NodeViewInjected",
             "PluginListNode",
             "PluginNode",
@@ -180,13 +171,6 @@ extension XcodeTemplates.Config {
                 receiver?.viewDidAppear()
             }
             """
-        viewControllerWithoutViewStateMethods = """
-            override func viewDidLoad() {
-                super.viewDidLoad()
-                view.backgroundColor = .systemBackground
-            }
-            """
-        viewControllerWithoutViewStateMethodsSwiftUI = ""
         viewControllerUpdateComment = """
             // Add implementation to update the user interface when the view state changes.
             """
@@ -265,12 +249,6 @@ extension XcodeTemplates.Config {
         rootViewControllerMethodsSwiftUI =
             (try? decoder.decodeString("rootViewControllerMethodsSwiftUI"))
             ?? defaults.rootViewControllerMethodsSwiftUI
-        viewControllerWithoutViewStateMethods =
-            (try? decoder.decodeString("viewControllerWithoutViewStateMethods"))
-            ?? defaults.viewControllerWithoutViewStateMethods
-        viewControllerWithoutViewStateMethodsSwiftUI =
-            (try? decoder.decodeString("viewControllerWithoutViewStateMethodsSwiftUI"))
-            ?? defaults.viewControllerWithoutViewStateMethodsSwiftUI
         viewControllerUpdateComment =
             (try? decoder.decodeString("viewControllerUpdateComment"))
             ?? defaults.viewControllerUpdateComment

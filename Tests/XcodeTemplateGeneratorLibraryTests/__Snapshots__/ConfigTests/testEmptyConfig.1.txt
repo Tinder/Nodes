@@ -7,11 +7,9 @@
     - "NeedleFoundation"
   - fileHeader: "//___FILEHEADER___"
   - flowProperties: 0 elements
-  ▿ includedTemplates: 9 elements
+  ▿ includedTemplates: 7 elements
     - "Node"
     - "NodeSwiftUI"
-    - "NodeWithoutViewState"
-    - "NodeWithoutViewStateSwiftUI"
     - "NodeViewInjected"
     - "PluginListNode"
     - "PluginNode"
@@ -35,7 +33,5 @@
   - viewControllerType: "UIViewController"
   - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
   - viewControllerViewStateImports: 0 members
-  - viewControllerWithoutViewStateMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}"
-  - viewControllerWithoutViewStateMethodsSwiftUI: ""
   - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
   - viewStatePublisher: "Just(.initialState).eraseToAnyPublisher()"

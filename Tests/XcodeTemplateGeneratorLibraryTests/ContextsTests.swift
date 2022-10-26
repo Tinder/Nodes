@@ -27,11 +27,6 @@ final class ContextsTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
-    func testNodeWithoutViewStateContext() {
-        assertSnapshot(matching: givenNodeWithoutViewStateContext().dictionary,
-                       as: .dump)
-    }
-
     func testPluginContext() {
         assertSnapshot(matching: givenPluginContext().dictionary,
                        as: .dump)

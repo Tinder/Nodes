@@ -75,8 +75,6 @@ final class ConfigTests: XCTestCase {
         viewControllerMethodsSwiftUI: viewControllerMethodsSwiftUI
         rootViewControllerMethods: rootViewControllerMethods
         rootViewControllerMethodsSwiftUI: rootViewControllerMethodsSwiftUI
-        viewControllerWithoutViewStateMethods: viewControllerWithoutViewStateMethods
-        viewControllerWithoutViewStateMethodsSwiftUI: viewControllerWithoutViewStateMethodsSwiftUI
         viewControllerUpdateComment: viewControllerUpdateComment
         viewStatePublisher: viewStatePublisher
         viewStateOperators: viewStateOperators

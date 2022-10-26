@@ -19,12 +19,6 @@ public final class XcodeTemplates {
         if config.includedTemplates.contains("NodeSwiftUI") {
             templates.append(NodeTemplate(config: config, swiftUI: true))
         }
-        if config.includedTemplates.contains("NodeWithoutViewState") {
-            templates.append(NodeWithoutViewStateTemplate(config: config))
-        }
-        if config.includedTemplates.contains("NodeWithoutViewStateSwiftUI") {
-            templates.append(NodeWithoutViewStateTemplate(config: config, swiftUI: true))
-        }
         if config.includedTemplates.contains("NodeViewInjected") {
             templates.append(NodeViewInjectedTemplate(config: config))
         }
