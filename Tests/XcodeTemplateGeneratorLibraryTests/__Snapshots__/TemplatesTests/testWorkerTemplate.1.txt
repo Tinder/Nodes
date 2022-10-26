@@ -3,9 +3,8 @@
     - cancellableType: "<cancellableType>"
     - fileHeader: "<fileHeader>"
     - nodeName: "___VARIABLE_nodeName___"
-    ▿ workerImports: 2 elements
-      - "<baseImports>"
-      - "Nodes"
+    ▿ workerImports: 1 element
+      - "<workerImports>"
     - workerName: "___VARIABLE_productName___"
   - name: "Worker"
   ▿ propertyList: XcodeTemplatePropertyList

@@ -1,13 +1,12 @@
 ▿ NodeTemplate
   ▿ context: NodeContext
-    ▿ builderImports: 3 elements
-      - "<baseImports>"
-      - "<diGraphImports>"
-      - "Nodes"
+    ▿ analyticsImports: 1 element
+      - "<analyticsImports>"
+    ▿ builderImports: 1 element
+      - "<builderImports>"
     - cancellableType: "<cancellableType>"
-    ▿ contextImports: 2 elements
-      - "<baseImports>"
-      - "Nodes"
+    ▿ contextImports: 1 element
+      - "<contextImports>"
     ▿ dependencies: 1 element
       ▿ 2 key/value pairs
         ▿ (2 elements)
@@ -17,9 +16,8 @@
           - key: "type"
           - value: "<dependenciesType>"
     - fileHeader: "<fileHeader>"
-    ▿ flowImports: 2 elements
-      - "<baseImports>"
-      - "Nodes"
+    ▿ flowImports: 1 element
+      - "<flowImports>"
     ▿ flowProperties: 1 element
       ▿ 2 key/value pairs
         ▿ (2 elements)
@@ -31,22 +29,23 @@
     - nodeName: "___VARIABLE_productName___"
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
+    ▿ stateImports: 1 element
+      - "<stateImports>"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
-    ▿ viewControllerImports: 3 elements
-      - "<baseImports>"
+    ▿ viewControllerImports: 1 element
       - "<viewControllerImportsSwiftUI>"
-      - "Nodes"
     - viewControllerMethods: "<viewControllerMethodsSwiftUI>"
     - viewControllerProperties: "<viewControllerPropertiesSwiftUI>"
     - viewControllerSuperParameters: "<viewControllerSuperParameters>"
     - viewControllerType: "<viewControllerType>"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+    ▿ viewStateImports: 1 element
+      - "<viewControllerViewStateImports>"
     - viewStateOperators: "<viewStateOperators>"
     - viewStatePublisher: "<viewStatePublisher>"
-    ▿ workerImports: 2 elements
-      - "<baseImports>"
-      - "Nodes"
+    ▿ workerImports: 1 element
+      - "<workerImports>"
   ▿ filenames: 2 key/value pairs
     ▿ (2 elements)
       - key: "Builder-SwiftUI"

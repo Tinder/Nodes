@@ -18,10 +18,17 @@ extension TestFactories {
         var config: Config = .init()
         config.includedTemplates = ["<includedTemplates>"]
         config.fileHeader = "<fileHeader>"
-        config.baseImports = ["<baseImports>"]
-        config.diGraphImports = ["<diGraphImports>"]
+        config.analyticsImports = ["<analyticsImports>"]
+        config.builderImports = ["<builderImports>"]
+        config.contextImports = ["<contextImports>"]
+        config.flowImports = ["<flowImports>"]
+        config.pluginImports = ["<pluginImports>"]
+        config.pluginListImports = ["<pluginListImports>"]
+        config.stateImports = ["<stateImports>"]
         config.viewControllerImports = ["<viewControllerImports>"]
         config.viewControllerImportsSwiftUI = ["<viewControllerImportsSwiftUI>"]
+        config.viewControllerViewStateImports = ["<viewControllerViewStateImports>"]
+        config.workerImports = ["<workerImports>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllerType = "<viewControllerType>"
@@ -47,10 +54,13 @@ extension TestFactories {
         NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
+            analyticsImports: ["<analyticsImports>"],
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],
+            stateImports: ["<stateImports>"],
             viewControllerImports: ["<viewControllerImports>"],
+            viewStateImports: ["<viewStateImports>"],
             workerImports: ["<workerImports>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],

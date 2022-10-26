@@ -41,18 +41,39 @@ final class ConfigTests: XCTestCase {
           - includedTemplates-1
           - includedTemplates-2
         fileHeader: fileHeader
-        baseImports:
-          - baseImports-1
-          - baseImports-2
-        diGraphImports:
-          - diGraphImports-1
-          - diGraphImports-2
+        analyticsImports:
+          - analyticsImports-1
+          - analyticsImports-2
+        builderImports:
+          - builderImports-1
+          - builderImports-2
+        contextImports:
+          - contextImports-1
+          - contextImports-2
+        flowImports:
+          - flowImports-1
+          - flowImports-2
+        pluginImports:
+          - pluginImports-1
+          - pluginImports-2
+        pluginListImports:
+          - pluginListImports-1
+          - pluginListImports-2
+        stateImports:
+          - stateImports-1
+          - stateImports-2
         viewControllerImports:
           - viewControllerImports-1
           - viewControllerImports-2
         viewControllerImportsSwiftUI:
           - viewControllerImportsSwiftUI-1
           - viewControllerImportsSwiftUI-2
+        viewControllerViewStateImports:
+          - viewControllerViewStateImports-1
+          - viewControllerViewStateImports-2
+        workerImports:
+          - workerImports-1
+          - workerImports-2
         dependencies:
           - name: dependencies-name-1
             type: dependencies-type-1

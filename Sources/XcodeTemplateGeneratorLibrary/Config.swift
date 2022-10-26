@@ -16,12 +16,6 @@ extension XcodeTemplates {
         internal static let symbolForSwiftUI: String = ""
 
         // swiftlint:disable:next nesting
-        internal enum ImportsType {
-
-            case nodes, diGraph, viewController(swiftUI: Bool)
-        }
-
-        // swiftlint:disable:next nesting
         internal enum ViewControllerMethodsType {
 
             case standard(swiftUI: Bool), root(swiftUI: Bool)
@@ -29,11 +23,17 @@ extension XcodeTemplates {
 
         public var includedTemplates: [String]
         public var fileHeader: String
-        public var baseImports: Set<String>
-        public var diGraphImports: Set<String>
+        public var analyticsImports: Set<String>
+        public var builderImports: Set<String>
+        public var contextImports: Set<String>
+        public var flowImports: Set<String>
+        public var pluginImports: Set<String>
+        public var pluginListImports: Set<String>
+        public var stateImports: Set<String>
         public var viewControllerImports: Set<String>
         public var viewControllerImportsSwiftUI: Set<String>
         public var viewControllerViewStateImports: Set<String>
+        public var workerImports: Set<String>
         public var dependencies: [Variable]
         public var flowProperties: [Variable]
         public var viewControllerType: String
@@ -65,21 +65,6 @@ extension XcodeTemplates {
             "___VARIABLE_\(name)___"
         }
 
-        internal func imports(for type: ImportsType) -> Set<String> {
-            let nodesImports: Set<String> = baseImports.union(["Nodes"])
-            switch type {
-            case .nodes:
-                return nodesImports
-            case .diGraph:
-                return nodesImports.union(diGraphImports)
-            case let .viewController(swiftUI):
-                let imports: Set<String> = swiftUI
-                    ? nodesImports.union(viewControllerImportsSwiftUI)
-                    : nodesImports.union(viewControllerImports)
-                return imports.union(viewControllerViewStateImports)
-            }
-        }
-
         internal func viewControllerProperties(swiftUI: Bool = false) -> String {
             swiftUI ? viewControllerPropertiesSwiftUI : viewControllerProperties
         }
@@ -104,6 +89,11 @@ extension XcodeTemplates.Config {
 
     // swiftlint:disable:next function_body_length
     public init() {
+        let nodesImports: Set<String> = ["Nodes"]
+        let factoryLayerImports: Set<String> = nodesImports.union(["NeedleFoundation"])
+        let baseImports: Set<String> = ["Combine"]
+        let businessLogicLayerImports: Set<String> = nodesImports.union(baseImports)
+        let viewLayerImports: Set<String> = nodesImports.union(baseImports)
         includedTemplates = [
             "Node",
             "NodeSwiftUI",
@@ -114,11 +104,17 @@ extension XcodeTemplates.Config {
             "Worker"
         ]
         fileHeader = "//___FILEHEADER___"
-        baseImports = ["Combine"]
-        diGraphImports = ["NeedleFoundation"]
-        viewControllerImports = ["UIKit"]
-        viewControllerImportsSwiftUI = ["SwiftUI"]
-        viewControllerViewStateImports = []
+        analyticsImports = []
+        builderImports = factoryLayerImports
+        contextImports = businessLogicLayerImports
+        flowImports = nodesImports
+        pluginImports = factoryLayerImports
+        pluginListImports = factoryLayerImports
+        stateImports = nodesImports
+        viewControllerImports = viewLayerImports.union(["UIKit"])
+        viewControllerImportsSwiftUI = viewLayerImports.union(["SwiftUI"])
+        viewControllerViewStateImports = nodesImports
+        workerImports = businessLogicLayerImports
         dependencies = []
         flowProperties = []
         viewControllerType = "UIViewController"
@@ -198,12 +194,27 @@ extension XcodeTemplates.Config {
         fileHeader =
             (try? decoder.decodeString("fileHeader"))
             ?? defaults.fileHeader
-        baseImports =
-            (try? decoder.decode("baseImports"))
-            ?? defaults.baseImports
-        diGraphImports =
-            (try? decoder.decode("diGraphImports"))
-            ?? defaults.diGraphImports
+        analyticsImports =
+            (try? decoder.decode("analyticsImports"))
+            ?? defaults.analyticsImports
+        builderImports =
+            (try? decoder.decode("builderImports"))
+            ?? defaults.builderImports
+        contextImports =
+            (try? decoder.decode("contextImports"))
+            ?? defaults.contextImports
+        flowImports =
+            (try? decoder.decode("flowImports"))
+            ?? defaults.flowImports
+        pluginImports =
+            (try? decoder.decode("pluginImports"))
+            ?? defaults.pluginImports
+        pluginListImports =
+            (try? decoder.decode("pluginListImports"))
+            ?? defaults.pluginListImports
+        stateImports =
+            (try? decoder.decode("stateImports"))
+            ?? defaults.stateImports
         viewControllerImports =
             (try? decoder.decode("viewControllerImports"))
             ?? defaults.viewControllerImports
@@ -213,6 +224,9 @@ extension XcodeTemplates.Config {
         viewControllerViewStateImports =
             (try? decoder.decode("viewControllerViewStateImports"))
             ?? defaults.viewControllerViewStateImports
+        workerImports =
+            (try? decoder.decode("workerImports"))
+            ?? defaults.workerImports
         dependencies =
             (try? decoder.decode("dependencies"))
             ?? defaults.dependencies

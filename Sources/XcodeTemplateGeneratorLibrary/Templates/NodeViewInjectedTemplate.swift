@@ -25,9 +25,9 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
         context = NodeViewInjectedContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
-            builderImports: config.imports(for: .diGraph),
-            contextImports: config.imports(for: .nodes),
-            flowImports: config.imports(for: .nodes),
+            builderImports: config.builderImports,
+            contextImports: config.contextImports,
+            flowImports: config.flowImports,
             dependencies: config.dependencies,
             flowProperties: config.flowProperties,
             viewControllableType: config.viewControllableType,

@@ -1,13 +1,10 @@
 ▿ NodeViewInjectedTemplate
   ▿ context: NodeViewInjectedContext
-    ▿ builderImports: 3 elements
-      - "<baseImports>"
-      - "<diGraphImports>"
-      - "Nodes"
+    ▿ builderImports: 1 element
+      - "<builderImports>"
     - cancellableType: "<cancellableType>"
-    ▿ contextImports: 2 elements
-      - "<baseImports>"
-      - "Nodes"
+    ▿ contextImports: 1 element
+      - "<contextImports>"
     ▿ dependencies: 1 element
       ▿ 2 key/value pairs
         ▿ (2 elements)
@@ -17,9 +14,8 @@
           - key: "type"
           - value: "<dependenciesType>"
     - fileHeader: "<fileHeader>"
-    ▿ flowImports: 2 elements
-      - "<baseImports>"
-      - "Nodes"
+    ▿ flowImports: 1 element
+      - "<flowImports>"
     ▿ flowProperties: 1 element
       ▿ 2 key/value pairs
         ▿ (2 elements)

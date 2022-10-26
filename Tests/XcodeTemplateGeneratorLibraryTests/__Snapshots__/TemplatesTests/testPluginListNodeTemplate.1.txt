@@ -1,10 +1,8 @@
 ▿ PluginListNodeTemplate
   ▿ context: PluginListContext
     - fileHeader: "<fileHeader>"
-    ▿ pluginListImports: 3 elements
-      - "<baseImports>"
-      - "<diGraphImports>"
-      - "Nodes"
+    ▿ pluginListImports: 1 element
+      - "<pluginListImports>"
     - pluginListName: "___VARIABLE_productName___"
     - viewControllableFlowType: "<viewControllableFlowType>"
   - name: "Plugin List (for Node)"
