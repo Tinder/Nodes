@@ -14,7 +14,6 @@ public struct NodeViewInjectedContext: Context {
     private let contextImports: [String]
     private let flowImports: [String]
     private let stateImports: [String]
-    private let workerImports: [String]
     private let dependencies: [[String: Any]]
     private let flowProperties: [[String: Any]]
     private let viewControllableType: String
@@ -32,7 +31,6 @@ public struct NodeViewInjectedContext: Context {
             "context_imports": contextImports,
             "flow_imports": flowImports,
             "state_imports": stateImports,
-            "worker_imports": workerImports,
             "dependencies": dependencies,
             "flow_properties": flowProperties,
             "view_controllable_type": viewControllableType,
@@ -49,7 +47,6 @@ public struct NodeViewInjectedContext: Context {
         contextImports: Set<String>,
         flowImports: Set<String>,
         stateImports: Set<String>,
-        workerImports: Set<String>,
         dependencies: [XcodeTemplates.Variable],
         flowProperties: [XcodeTemplates.Variable],
         viewControllableType: String,
@@ -63,7 +60,6 @@ public struct NodeViewInjectedContext: Context {
         self.contextImports = contextImports.sortedImports()
         self.flowImports = flowImports.sortedImports()
         self.stateImports = stateImports.sortedImports()
-        self.workerImports = workerImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)
         self.viewControllableType = viewControllableType

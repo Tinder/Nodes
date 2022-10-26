@@ -31,8 +31,6 @@
       - "<stateImports>"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
-    ▿ workerImports: 1 element
-      - "<workerImports>"
   - name: "Node (view injected)"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element

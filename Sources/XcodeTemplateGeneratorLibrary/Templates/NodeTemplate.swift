@@ -47,7 +47,6 @@ internal struct NodeTemplate: XcodeTemplate {
             stateImports: config.stateImports,
             viewControllerImports: swiftUI ? config.viewControllerImportsSwiftUI : config.viewControllerImports,
             viewStateImports: config.viewStateImports,
-            workerImports: config.workerImports,
             dependencies: config.dependencies,
             flowProperties: config.flowProperties,
             viewControllerType: config.viewControllerType,

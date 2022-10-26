@@ -44,8 +44,6 @@
       - "<viewStateImports>"
     - viewStateOperators: "<viewStateOperators>"
     - viewStatePublisher: "<viewStatePublisher>"
-    ▿ workerImports: 1 element
-      - "<workerImports>"
   - filenames: 0 key/value pairs
   - name: "Node"
   ▿ propertyList: XcodeTemplatePropertyList

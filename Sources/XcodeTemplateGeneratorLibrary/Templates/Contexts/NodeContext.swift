@@ -16,7 +16,6 @@ public struct NodeContext: Context {
     private let stateImports: [String]
     private let viewControllerImports: [String]
     private let viewStateImports: [String]
-    private let workerImports: [String]
     private let dependencies: [[String: Any]]
     private let flowProperties: [[String: Any]]
     private let viewControllerType: String
@@ -45,7 +44,6 @@ public struct NodeContext: Context {
             "state_imports": stateImports,
             "view_controller_imports": viewControllerImports,
             "view_state_imports": viewStateImports,
-            "worker_imports": workerImports,
             "dependencies": dependencies,
             "flow_properties": flowProperties,
             "view_controller_type": viewControllerType,
@@ -73,7 +71,6 @@ public struct NodeContext: Context {
         stateImports: Set<String>,
         viewControllerImports: Set<String>,
         viewStateImports: Set<String>,
-        workerImports: Set<String>,
         dependencies: [XcodeTemplates.Variable],
         flowProperties: [XcodeTemplates.Variable],
         viewControllerType: String,
@@ -98,7 +95,6 @@ public struct NodeContext: Context {
         self.stateImports = stateImports.sortedImports()
         self.viewControllerImports = viewControllerImports.sortedImports()
         self.viewStateImports = viewStateImports.sortedImports()
-        self.workerImports = workerImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)
         self.viewControllerType = viewControllerType
