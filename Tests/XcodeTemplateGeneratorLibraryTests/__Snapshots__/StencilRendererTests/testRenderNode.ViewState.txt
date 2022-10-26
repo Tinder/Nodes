@@ -1,6 +1,6 @@
 <fileHeader>
 
-import <viewControllerImports>
+import <viewStateImports>
 
 /**
  PURPOSE:

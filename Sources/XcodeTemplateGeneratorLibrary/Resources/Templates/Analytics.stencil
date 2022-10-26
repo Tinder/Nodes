@@ -1,5 +1,5 @@
 {{ file_header }}
-{% for import in worker_imports %}
+{% for import in analytics_imports %}
 import {{ import }}{% endfor %}
 
 /*

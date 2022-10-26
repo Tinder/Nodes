@@ -1,5 +1,5 @@
 {{ file_header }}
-{% for import in view_controller_imports %}
+{% for import in view_state_imports %}
 import {{ import }}{% endfor %}
 {% if view_state_publisher %}
 /**
