@@ -82,10 +82,13 @@ extension TestFactories {
     func givenNodeRootContext() -> NodeRootContext {
         NodeRootContext(
             fileHeader: "<fileHeader>",
+            analyticsImports: ["<analyticsImports>"],
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],
+            stateImports: ["<stateImports>"],
             viewControllerImports: ["<viewControllerImports>"],
+            viewStateImports: ["<viewStateImports>"],
             workerImports: ["<workerImports>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
