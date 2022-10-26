@@ -26,7 +26,7 @@ internal struct NodeTemplate: XcodeTemplate {
         if swiftUI {
             name = "\(Config.symbolForSwiftUI) Node"
             stencils = [
-                "Analytics", "Builder-SwiftUI", "Context", "Flow", "ViewController-SwiftUI", "ViewState", "State"
+                "Analytics", "Builder-SwiftUI", "Context", "Flow", "State", "ViewController-SwiftUI", "ViewState"
             ]
             filenames = [
                 "Builder-SwiftUI": "Builder",
@@ -34,7 +34,7 @@ internal struct NodeTemplate: XcodeTemplate {
             ]
         } else {
             name = "Node"
-            stencils = ["Analytics", "Builder", "Context", "Flow", "ViewController", "ViewState", "State"]
+            stencils = ["Analytics", "Builder", "Context", "Flow", "State", "ViewController", "ViewState"]
             filenames = [:]
         }
         context = NodeContext(

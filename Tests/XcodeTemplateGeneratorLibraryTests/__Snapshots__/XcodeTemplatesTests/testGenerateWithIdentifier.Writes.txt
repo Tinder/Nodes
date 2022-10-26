@@ -12,13 +12,13 @@
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___Flow.swift"
     - .1: true
   ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___State.swift"
+    - .1: true
+  ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___ViewController.swift"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___ViewState.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___State.swift"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/TemplateInfo.plist"
@@ -36,13 +36,13 @@
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___Flow.swift"
     - .1: true
   ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___State.swift"
+    - .1: true
+  ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___ViewController.swift"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___ViewState.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___State.swift"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/TemplateInfo.plist"
