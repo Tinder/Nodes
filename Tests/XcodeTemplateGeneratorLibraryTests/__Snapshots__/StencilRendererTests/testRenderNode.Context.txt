@@ -36,17 +36,14 @@ internal final class <nodeName>ContextImp: AbstractContext
 
     /// The initializer.
     /// - Parameters:
-    ///   - presentable: The Presentable instance
     ///   - workers: The Worker instances
     ///   - analytics: The Analytics instance
     internal init(
-        presentable: <nodeName>Presentable,
         workers: [Worker],
         analytics: <nodeName>Analytics
     ) {
         self.analytics = analytics
-        super.init(presentable: presentable, workers: workers)
-        presentable.receiver = self
+        super.init(workers: workers)
     }
 
     /// Implement logic to execute when the Context becomes active.

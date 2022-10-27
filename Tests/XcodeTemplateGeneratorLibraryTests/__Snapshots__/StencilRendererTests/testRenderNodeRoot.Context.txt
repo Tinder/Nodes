@@ -40,17 +40,14 @@ internal final class RootContextImp: AbstractContext
 
     /// The initializer.
     /// - Parameters:
-    ///   - presentable: The Presentable instance
     ///   - workers: The Worker instances
     ///   - analytics: The Analytics instance
     internal init(
-        presentable: RootPresentable,
         workers: [Worker],
         analytics: RootAnalytics
     ) {
         self.analytics = analytics
-        super.init(presentable: presentable, workers: workers)
-        presentable.receiver = self
+        super.init(workers: workers)
     }
 
     /// Implement logic to execute when the Context becomes active.

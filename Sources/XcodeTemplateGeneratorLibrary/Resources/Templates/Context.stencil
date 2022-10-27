@@ -35,24 +35,9 @@ internal final class {{ node_name }}ContextImp: AbstractContext
     internal weak var listener: {{ node_name }}Listener?
 
     /// The Analytics instance.
-    private let analytics: {{ node_name }}Analytics{% if owns_view %}{% if root_node %}
+    private let analytics: {{ node_name }}Analytics{% if root_node %}
 
     private var isReady: Bool = false{% endif %}
-
-    /// The initializer.
-    /// - Parameters:
-    ///   - presentable: The Presentable instance
-    ///   - workers: The Worker instances
-    ///   - analytics: The Analytics instance
-    internal init(
-        presentable: {{ node_name }}Presentable,
-        workers: [Worker],
-        analytics: {{ node_name }}Analytics
-    ) {
-        self.analytics = analytics
-        super.init(presentable: presentable, workers: workers)
-        presentable.receiver = self
-    }{% else %}
 
     /// The initializer.
     /// - Parameters:
@@ -64,7 +49,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext
     ) {
         self.analytics = analytics
         super.init(workers: workers)
-    }{% endif %}
+    }
 
     /// Implement logic to execute when the Context becomes active.
     override internal func didBecomeActive() {}
