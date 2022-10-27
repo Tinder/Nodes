@@ -1,5 +1,6 @@
 //___FILEHEADER___
 
+import Foundation
 
 /*
  INSTRUCTIONS:

@@ -103,7 +103,7 @@ extension XcodeTemplates.Config {
             "Worker"
         ]
         fileHeader = "//___FILEHEADER___"
-        analyticsImports = []
+        analyticsImports = ["Foundation"]
         builderImports = factoryLayerImports
         contextImports = businessLogicLayerImports
         flowImports = nodesImports
