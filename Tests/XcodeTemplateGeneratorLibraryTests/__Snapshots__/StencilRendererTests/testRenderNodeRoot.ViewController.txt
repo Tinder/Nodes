@@ -52,4 +52,3 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
 }
 
 extension RootViewController: RootViewControllable {}
-

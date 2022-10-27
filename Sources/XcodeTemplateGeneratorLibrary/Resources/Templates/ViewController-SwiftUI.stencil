@@ -27,8 +27,7 @@ internal final class {{ node_name }}ViewController: AbstractViewHostingControlle
 }
 
 extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
-{% if view_controller_availability_attribute %}
-{{ view_controller_availability_attribute }}{% endif %}
+
 /**
  PURPOSE:
  Concrete implementation of the View.
