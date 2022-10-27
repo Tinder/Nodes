@@ -21,10 +21,9 @@ internal protocol ___VARIABLE_productName___FlowInterface: Flow {}
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.
  */
-internal final class ___VARIABLE_productName___ContextImp: AbstractPresentableContext
+internal final class ___VARIABLE_productName___ContextImp: AbstractContext
 <
-    AnyCancellable,
-    ___VARIABLE_productName___Presentable
+    AnyCancellable
 > {
 
     /// The Flow instance.
@@ -38,17 +37,14 @@ internal final class ___VARIABLE_productName___ContextImp: AbstractPresentableCo
 
     /// The initializer.
     /// - Parameters:
-    ///   - presentable: The Presentable instance
     ///   - workers: The Worker instances
     ///   - analytics: The Analytics instance
     internal init(
-        presentable: ___VARIABLE_productName___Presentable,
         workers: [Worker],
         analytics: ___VARIABLE_productName___Analytics
     ) {
         self.analytics = analytics
-        super.init(presentable: presentable, workers: workers)
-        presentable.receiver = self
+        super.init(workers: workers)
     }
 
     /// Implement logic to execute when the Context becomes active.
