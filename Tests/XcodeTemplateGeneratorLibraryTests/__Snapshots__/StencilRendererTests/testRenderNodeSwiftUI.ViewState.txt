@@ -4,9 +4,13 @@ import <viewStateImports>
 
 /**
  PURPOSE:
- The view state of your View Controller.
+ The view state of the view.
  */
-internal struct <nodeName>ViewState: Equatable {}
+internal struct <nodeName>ViewState: Equatable, InitialStateProviding {
+
+    /// The initial state of the view.
+    internal static let initialState: <nodeName>ViewState = <nodeName>ViewStateFactory().initialState
+}
 
 /**
  PURPOSE:
@@ -14,6 +18,10 @@ internal struct <nodeName>ViewState: Equatable {}
  */
 internal class <nodeName>ViewStateFactory: Transform {
 
+    /// The factory method in which state is transformed into view state.
+    ///
+    /// - Parameter state: the state
+    /// - Returns: the view state
     internal func callAsFunction(_ state: <nodeName>State) -> <nodeName>ViewState {
         <nodeName>ViewState()
     }
