@@ -150,7 +150,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
             transform: <nodeName>ViewStateFactory()
         )
         let viewController: <nodeName>ViewController = .init(
-            viewState: viewState
+            viewState: viewState.eraseToAnyPublisher()
         )
         viewController.receiver = context
         viewController.analytics = analytics
