@@ -16,16 +16,7 @@ internal protocol {{ node_name }}Listener: AnyObject {}
 internal protocol {{ node_name }}FlowInterface: Flow {
     func didBecomeReady()
 }{% else %}
-internal protocol {{ node_name }}FlowInterface: Flow {}{% endif %}{% if owns_view %}
-
-/**
- PURPOSE:
- The interface that the Context will speak to the View through. Used to inform the View of any
- state change (i.e. to keep the UI in sync).
- */
-internal protocol {{ node_name }}Presentable: AnyObject {
-    var receiver: {{ node_name }}Receiver? { get set }
-}{% endif %}
+internal protocol {{ node_name }}FlowInterface: Flow {}{% endif %}
 
 /**
  PURPOSE:
