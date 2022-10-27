@@ -41,7 +41,7 @@ internal struct NodeTemplate: XcodeTemplate {
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
             analyticsImports: config.analyticsImports,
-            builderImports: config.builderImports,
+            builderImports: config.importsForBuilder(ownsView: true),
             contextImports: config.contextImports,
             flowImports: config.flowImports,
             stateImports: config.stateImports,

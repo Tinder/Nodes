@@ -26,7 +26,7 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
             analyticsImports: config.analyticsImports,
-            builderImports: config.builderImports,
+            builderImports: config.importsForBuilder(ownsView: false),
             contextImports: config.contextImports,
             flowImports: config.flowImports,
             stateImports: config.stateImports,

@@ -14,6 +14,11 @@ extension XcodeTemplates {
     public struct Config: Equatable, Decodable {
 
         internal static let symbolForSwiftUI: String = ""
+        internal static let nodesImports: Set<String> = ["Nodes"]
+        internal static let factoryLayerImports: Set<String> = nodesImports.union(["NeedleFoundation"])
+        internal static let baseImports: Set<String> = ["Combine"]
+        internal static let businessLogicLayerImports: Set<String> = nodesImports.union(baseImports)
+        internal static let viewLayerImports: Set<String> = nodesImports.union(baseImports)
 
         // swiftlint:disable:next nesting
         internal enum ViewControllerMethodsType {
@@ -80,6 +85,14 @@ extension XcodeTemplates {
                     : rootViewControllerMethods
             }
         }
+
+        internal func importsForBuilder(ownsView: Bool) -> Set<String> {
+            if ownsView {
+                return builderImports.union(Config.baseImports)
+            } else {
+                return builderImports
+            }
+        }
     }
 }
 
@@ -88,11 +101,10 @@ extension XcodeTemplates.Config {
 
     // swiftlint:disable:next function_body_length
     public init() {
-        let nodesImports: Set<String> = ["Nodes"]
-        let factoryLayerImports: Set<String> = nodesImports.union(["NeedleFoundation"])
-        let baseImports: Set<String> = ["Combine"]
-        let businessLogicLayerImports: Set<String> = nodesImports.union(baseImports)
-        let viewLayerImports: Set<String> = nodesImports.union(baseImports)
+        let nodesImports: Set<String> = XcodeTemplates.Config.nodesImports
+        let factoryLayerImports: Set<String> = XcodeTemplates.Config.factoryLayerImports
+        let businessLogicLayerImports: Set<String> = XcodeTemplates.Config.businessLogicLayerImports
+        let viewLayerImports: Set<String> = XcodeTemplates.Config.viewLayerImports
         includedTemplates = [
             "Node",
             "NodeSwiftUI",
