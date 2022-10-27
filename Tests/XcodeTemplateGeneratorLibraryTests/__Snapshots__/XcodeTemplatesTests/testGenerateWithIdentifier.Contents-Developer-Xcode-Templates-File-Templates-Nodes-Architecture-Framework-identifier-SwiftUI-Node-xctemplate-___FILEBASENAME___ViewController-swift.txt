@@ -22,7 +22,6 @@ internal final class ___VARIABLE_productName___ViewController: AbstractViewHosti
 }
 
 extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllable {}
-extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___Presentable {}
 
 /**
  PURPOSE:

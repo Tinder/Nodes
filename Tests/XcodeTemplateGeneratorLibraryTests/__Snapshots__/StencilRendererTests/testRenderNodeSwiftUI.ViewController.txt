@@ -24,7 +24,6 @@ internal final class <nodeName>ViewController: AbstractViewHostingController
 }
 
 extension <nodeName>ViewController: <nodeName>ViewControllable {}
-extension <nodeName>ViewController: <nodeName>Presentable {}
 
 /**
  PURPOSE:
