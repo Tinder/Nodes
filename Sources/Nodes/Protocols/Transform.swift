@@ -67,6 +67,7 @@ extension Publisher {
     }
 }
 
+@available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension Transform where Input: InitialStateProviding {
 
     /// The value of `Output` representing the initial state.
