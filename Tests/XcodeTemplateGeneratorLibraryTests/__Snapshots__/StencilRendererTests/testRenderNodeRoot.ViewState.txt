@@ -18,4 +18,3 @@ internal class RootViewStateFactory: Transform {
         RootViewState()
     }
 }
-

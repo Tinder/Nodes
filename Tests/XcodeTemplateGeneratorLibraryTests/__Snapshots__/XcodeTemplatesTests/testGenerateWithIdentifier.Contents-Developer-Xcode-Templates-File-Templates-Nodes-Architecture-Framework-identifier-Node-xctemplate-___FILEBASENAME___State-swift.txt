@@ -11,4 +11,3 @@ internal struct ___VARIABLE_productName___State: Equatable, InitialStateProvidin
     /// The initial state of the Node.
     internal static var initialState: ___VARIABLE_productName___State = .init()
 }
-

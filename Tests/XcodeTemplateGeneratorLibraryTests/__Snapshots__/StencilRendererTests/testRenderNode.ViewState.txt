@@ -18,4 +18,3 @@ internal class <nodeName>ViewStateFactory: Transform {
         <nodeName>ViewState()
     }
 }
-

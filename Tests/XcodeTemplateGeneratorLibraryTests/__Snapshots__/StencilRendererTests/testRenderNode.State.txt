@@ -11,4 +11,3 @@ internal struct <nodeName>State: Equatable, InitialStateProviding {
     /// The initial state of the Node.
     internal static var initialState: <nodeName>State = .init()
 }
-

@@ -11,4 +11,3 @@ internal struct RootState: Equatable, InitialStateProviding {
     /// The initial state of the Node.
     internal static var initialState: RootState = .init()
 }
-

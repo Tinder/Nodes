@@ -18,4 +18,3 @@ internal class ___VARIABLE_productName___ViewStateFactory: Transform {
         ___VARIABLE_productName___ViewState()
     }
 }
-

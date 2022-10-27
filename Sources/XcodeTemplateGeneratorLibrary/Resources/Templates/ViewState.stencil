@@ -18,4 +18,3 @@ internal class {{ node_name }}ViewStateFactory: Transform {
         {{ node_name }}ViewState()
     }
 }
-
