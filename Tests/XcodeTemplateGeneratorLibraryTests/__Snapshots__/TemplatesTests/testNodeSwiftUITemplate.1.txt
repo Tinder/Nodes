@@ -43,7 +43,6 @@
     ▿ viewStateImports: 1 element
       - "<viewStateImports>"
     - viewStateOperators: "<viewStateOperators>"
-    - viewStatePublisher: "<viewStatePublisher>"
   ▿ filenames: 2 key/value pairs
     ▿ (2 elements)
       - key: "Builder-SwiftUI"

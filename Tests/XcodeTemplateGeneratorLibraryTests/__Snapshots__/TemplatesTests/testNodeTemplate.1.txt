@@ -43,7 +43,6 @@
     ▿ viewStateImports: 1 element
       - "<viewStateImports>"
     - viewStateOperators: "<viewStateOperators>"
-    - viewStatePublisher: "<viewStatePublisher>"
   - filenames: 0 key/value pairs
   - name: "Node"
   ▿ propertyList: XcodeTemplatePropertyList

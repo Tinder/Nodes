@@ -42,7 +42,6 @@ extension TestFactories {
         config.rootViewControllerMethods = "<rootViewControllerMethods>"
         config.rootViewControllerMethodsSwiftUI = "<rootViewControllerMethodsSwiftUI>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
-        config.viewStatePublisher = "<viewStatePublisher>"
         config.viewStateOperators = "<viewStateOperators>"
         config.publisherType = "<publisherType>"
         config.publisherFailureType = "<publisherFailureType>"
@@ -70,7 +69,6 @@ extension TestFactories {
             viewControllerProperties: "<viewControllerProperties>",
             viewControllerMethods: "<viewControllerMethods>",
             viewControllerUpdateComment: "<viewControllerUpdateComment>",
-            viewStatePublisher: "<viewStatePublisher>",
             viewStateOperators: "<viewStateOperators>",
             publisherType: "<publisherType>",
             publisherFailureType: "<publisherFailureType>",
@@ -97,7 +95,6 @@ extension TestFactories {
             viewControllerProperties: "<viewControllerProperties>",
             viewControllerMethods: "<viewControllerMethods>",
             viewControllerUpdateComment: "<viewControllerUpdateComment>",
-            viewStatePublisher: "<viewStatePublisher>",
             viewStateOperators: "<viewStateOperators>",
             publisherType: "<publisherType>",
             publisherFailureType: "<publisherFailureType>",

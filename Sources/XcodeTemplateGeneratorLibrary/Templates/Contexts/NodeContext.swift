@@ -25,7 +25,6 @@ public struct NodeContext: Context {
     private let viewControllerProperties: String
     private let viewControllerMethods: String
     private let viewControllerUpdateComment: String
-    private let viewStatePublisher: String
     private let viewStateOperators: String
     private let publisherType: String
     private let publisherFailureType: String
@@ -53,7 +52,6 @@ public struct NodeContext: Context {
             "view_controller_properties": viewControllerProperties,
             "view_controller_methods": viewControllerMethods,
             "view_controller_update_comment": viewControllerUpdateComment,
-            "view_state_publisher": viewStatePublisher,
             "view_state_operators": viewStateOperators,
             "publisher_type": publisherType,
             "publisher_failure_type": publisherFailureType,
@@ -80,7 +78,6 @@ public struct NodeContext: Context {
         viewControllerProperties: String,
         viewControllerMethods: String,
         viewControllerUpdateComment: String,
-        viewStatePublisher: String,
         viewStateOperators: String,
         publisherType: String,
         publisherFailureType: String,
@@ -104,7 +101,6 @@ public struct NodeContext: Context {
         self.viewControllerProperties = viewControllerProperties
         self.viewControllerMethods = viewControllerMethods
         self.viewControllerUpdateComment = viewControllerUpdateComment
-        self.viewStatePublisher = viewStatePublisher
         self.viewStateOperators = viewStateOperators
         self.publisherType = publisherType
         self.publisherFailureType = publisherFailureType

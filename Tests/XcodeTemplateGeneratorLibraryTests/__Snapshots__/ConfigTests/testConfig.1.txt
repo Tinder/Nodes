@@ -62,7 +62,6 @@
     - "viewStateImports-1"
     - "viewStateImports-2"
   - viewStateOperators: "viewStateOperators"
-  - viewStatePublisher: "viewStatePublisher"
   ▿ workerImports: 2 members
     - "workerImports-1"
     - "workerImports-2"

@@ -56,7 +56,6 @@ internal struct NodeTemplate: XcodeTemplate {
             viewControllerProperties: config.viewControllerProperties(swiftUI: swiftUI),
             viewControllerMethods: config.viewControllerMethods(for: .standard(swiftUI: swiftUI)),
             viewControllerUpdateComment: config.viewControllerUpdateComment,
-            viewStatePublisher: config.viewStatePublisher,
             viewStateOperators: config.viewStateOperators,
             publisherType: config.publisherType,
             publisherFailureType: config.publisherFailureType,

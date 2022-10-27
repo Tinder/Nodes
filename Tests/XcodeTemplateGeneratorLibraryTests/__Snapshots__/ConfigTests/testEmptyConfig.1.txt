@@ -52,7 +52,6 @@
   ▿ viewStateImports: 1 member
     - "Nodes"
   - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
-  - viewStatePublisher: "Just(.initialState).eraseToAnyPublisher()"
   ▿ workerImports: 2 members
     - "Combine"
     - "Nodes"
