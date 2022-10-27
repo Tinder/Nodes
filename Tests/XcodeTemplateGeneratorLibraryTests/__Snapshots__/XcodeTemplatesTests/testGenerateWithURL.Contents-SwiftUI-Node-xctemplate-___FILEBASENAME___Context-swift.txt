@@ -35,6 +35,8 @@ internal final class ___VARIABLE_productName___ContextImp: AbstractContext
     /// The Analytics instance.
     private let analytics: ___VARIABLE_productName___Analytics
 
+    @Published internal private(set) var state: ___VARIABLE_productName___State = .initialState
+
     /// The initializer.
     /// - Parameters:
     ///   - workers: The Worker instances
