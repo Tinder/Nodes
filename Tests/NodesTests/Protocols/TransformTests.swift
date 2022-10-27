@@ -15,16 +15,30 @@ final class TransformTests: XCTestCase {
 
     private class TestTransform: Transform {
 
-        func callAsFunction(_ value: Int) -> String {
-            "output: \(value)"
+        func callAsFunction(_ input: TestInput) -> String {
+            "output: \(input.value)"
         }
     }
 
+    private struct TestInput: InitialStateProviding {
+
+        static var initialState: TestInput = .init(value: 99)
+
+        var value: Int
+    }
+
     func testTransformation() {
+        let input: TestInput = .init(value: 23)
         let transform: TestTransform = .init()
         expect(transform).to(notBeNilAndToDeallocateAfterTest())
         var output: String?
-        _ = Just(23).map(transform).sink { output = $0 }
+        _ = Just(input).map(transform).sink { output = $0 }
         expect(output) == "output: 23"
+    }
+
+    func testInitialState() {
+        let transform: TestTransform = .init()
+        expect(transform).to(notBeNilAndToDeallocateAfterTest())
+        expect(transform.initialState) == "output: 99"
     }
 }

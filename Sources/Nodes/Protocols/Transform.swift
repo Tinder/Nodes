@@ -66,3 +66,11 @@ extension Publisher {
         Publishers.Map(upstream: self, transform: transform)
     }
 }
+
+extension Transform where Input: InitialStateProviding {
+
+    /// The value of `Output` representing the initial state.
+    public var initialState: Output {
+        callAsFunction(.initialState)
+    }
+}
