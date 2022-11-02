@@ -1,13 +1,9 @@
 //___FILEHEADER___
 
-import Nodes
+import Foundation
 
 /**
  PURPOSE:
  The state of the Node.
  */
-internal struct ___VARIABLE_productName___State: Equatable, InitialStateProviding {
-
-    /// The initial state of the Node.
-    internal static var initialState: ___VARIABLE_productName___State = .init()
-}
+internal struct ___VARIABLE_productName___State: Equatable {}

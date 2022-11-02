@@ -43,15 +43,14 @@ internal struct ___VARIABLE_productName___View: NodesView {
     internal weak var analytics: ___VARIABLE_productName___Analytics?
 
     /// The view state publisher.
-    private let viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+    private let viewState: CurrentValuePublisher<___VARIABLE_productName___ViewState>
 
     /// The initializer.
     /// - Parameter viewState: The view state publisher
-    internal init(viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>) {
+    internal init(viewState: CurrentValuePublisher<___VARIABLE_productName___ViewState>) {
         self.viewState = viewState
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
     }
 }
 
@@ -61,8 +60,8 @@ internal struct ___VARIABLE_productName___View: NodesView {
  */
 internal struct ___VARIABLE_productName___View_Previews: PreviewProvider {
 
-    private static let viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never> =
-        Just<___VARIABLE_productName___ViewState>(.initialState).eraseToAnyPublisher()
+    private static let viewState: CurrentValuePublisher<___VARIABLE_productName___ViewState> =
+        Just<___VARIABLE_productName___ViewState>(___VARIABLE_productName___ViewState()).asCurrentValuePublisher()
 
     internal static var previews: some View {
         ___VARIABLE_productName___View(viewState: viewState)

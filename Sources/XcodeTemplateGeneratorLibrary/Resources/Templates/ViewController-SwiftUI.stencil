@@ -64,8 +64,8 @@ internal struct {{ node_name }}View: NodesView {
  */
 internal struct {{ node_name }}View_Previews: PreviewProvider {
 
-    private static let viewState: AnyPublisher<{{ node_name }}ViewState{{ publisher_failure_type }}> =
-        Just<{{ node_name }}ViewState>(.initialState).eraseToAnyPublisher()
+    private static let viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}> =
+        Just<{{ node_name }}ViewState>({{ node_name }}ViewState()).asCurrentValuePublisher()
 
     internal static var previews: some View {
         {{ node_name }}View(viewState: viewState)

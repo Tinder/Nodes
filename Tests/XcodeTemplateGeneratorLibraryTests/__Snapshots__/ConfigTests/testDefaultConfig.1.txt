@@ -27,12 +27,12 @@
   ▿ pluginListImports: 2 members
     - "NeedleFoundation"
     - "Nodes"
-  - publisherFailureType: ", Never"
-  - publisherType: "AnyPublisher"
+  - publisherFailureType: ""
+  - publisherType: "CurrentValuePublisher"
   - rootViewControllerMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
   - rootViewControllerMethodsSwiftUI: "override func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}"
   ▿ stateImports: 1 member
-    - "Nodes"
+    - "Foundation"
   - viewControllableFlowType: "ViewControllableFlow"
   - viewControllableType: "ViewControllable"
   ▿ viewControllerImports: 3 members
@@ -52,7 +52,7 @@
   - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
   ▿ viewStateImports: 1 member
     - "Nodes"
-  - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
+  - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)"
   ▿ workerImports: 2 members
     - "Combine"
     - "Nodes"

@@ -37,7 +37,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext
     /// The Analytics instance.
     private let analytics: {{ node_name }}Analytics{% if owns_view %}
 
-    @Published internal private(set) var state: {{ node_name }}State = .initialState{% endif %}{% if root_node %}
+    @Published internal private(set) var state: {{ node_name }}State{% endif %}{% if root_node %}
 
     private var isReady: Bool = false{% endif %}
 
@@ -50,6 +50,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext
         analytics: {{ node_name }}Analytics
     ) {
         self.analytics = analytics
+        self.state = {{ node_name }}State()
         super.init(workers: workers)
     }
 

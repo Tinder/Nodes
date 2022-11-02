@@ -27,15 +27,14 @@ internal final class ___VARIABLE_productName___ViewController: UIViewController,
     private var cancellables: Set<AnyCancellable> = .init()
 
     /// The view state publisher.
-    private let viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+    private let viewState: CurrentValuePublisher<___VARIABLE_productName___ViewState>
 
     /// The initializer.
     /// - Parameter viewState: The view state publisher
-    internal init(viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>) {
+    internal init(viewState: CurrentValuePublisher<___VARIABLE_productName___ViewState>) {
         self.viewState = viewState
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
         super.init(nibName: nil, bundle: nil)
     }
 

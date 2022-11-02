@@ -6,8 +6,4 @@ import <stateImports>
  PURPOSE:
  The state of the Node.
  */
-internal struct RootState: Equatable, InitialStateProviding {
-
-    /// The initial state of the Node.
-    internal static var initialState: RootState = .init()
-}
+internal struct RootState: Equatable {}

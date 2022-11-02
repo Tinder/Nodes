@@ -6,11 +6,7 @@ import Nodes
  PURPOSE:
  The view state of the view.
  */
-internal struct ___VARIABLE_productName___ViewState: Equatable, InitialStateProviding {
-
-    /// The initial state of the view.
-    internal static let initialState: ___VARIABLE_productName___ViewState = ___VARIABLE_productName___ViewStateFactory().initialState
-}
+internal struct ___VARIABLE_productName___ViewState: Equatable {}
 
 /**
  PURPOSE:

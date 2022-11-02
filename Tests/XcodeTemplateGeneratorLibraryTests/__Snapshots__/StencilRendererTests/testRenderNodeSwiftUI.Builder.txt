@@ -145,12 +145,13 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
             analytics: analytics
         )
         context.listener = listener
+        let viewStateFactory: <nodeName>ViewStateFactory = .init()
         let viewState: Publishers.Map = .init(
             upstream: context.$state.eraseToAnyPublisher(),
-            transform: <nodeName>ViewStateFactory()
+            transform: viewStateFactory
         )
         var view: <nodeName>View = .init(
-            viewState: viewState.eraseToAnyPublisher()
+            viewState: viewState.asCurrentValuePublisher(initialValue: viewStateFactory(context.state))
         )
         view.receiver = context
         view.analytics = analytics

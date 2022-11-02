@@ -14,11 +14,12 @@ extension XcodeTemplates {
     public struct Config: Equatable, Decodable {
 
         internal static let symbolForSwiftUI: String = ""
+        internal static let combineImports: Set<String> = ["Combine"]
+        internal static let foundationImports: Set<String> = ["Foundation"]
         internal static let nodesImports: Set<String> = ["Nodes"]
+        internal static let businessLogicLayerImports: Set<String> = nodesImports.union(combineImports)
         internal static let factoryLayerImports: Set<String> = nodesImports.union(["NeedleFoundation"])
-        internal static let baseImports: Set<String> = ["Combine"]
-        internal static let businessLogicLayerImports: Set<String> = nodesImports.union(baseImports)
-        internal static let viewLayerImports: Set<String> = nodesImports.union(baseImports)
+        internal static let viewLayerImports: Set<String> = nodesImports.union(combineImports)
 
         // swiftlint:disable:next nesting
         internal enum ViewControllerMethodsType {
@@ -88,7 +89,7 @@ extension XcodeTemplates {
 
         internal func importsForBuilder(ownsView: Bool) -> Set<String> {
             if ownsView {
-                return builderImports.union(Config.baseImports)
+                return builderImports.union(Config.combineImports)
             } else {
                 return builderImports
             }
@@ -102,6 +103,7 @@ extension XcodeTemplates.Config {
     // swiftlint:disable:next function_body_length
     public init() {
         let nodesImports: Set<String> = XcodeTemplates.Config.nodesImports
+        let foundationImports: Set<String> = XcodeTemplates.Config.foundationImports
         let factoryLayerImports: Set<String> = XcodeTemplates.Config.factoryLayerImports
         let businessLogicLayerImports: Set<String> = XcodeTemplates.Config.businessLogicLayerImports
         let viewLayerImports: Set<String> = XcodeTemplates.Config.viewLayerImports
@@ -115,13 +117,13 @@ extension XcodeTemplates.Config {
             "Worker"
         ]
         fileHeader = "//___FILEHEADER___"
-        analyticsImports = ["Foundation"]
+        analyticsImports = foundationImports
         builderImports = factoryLayerImports
         contextImports = businessLogicLayerImports
         flowImports = nodesImports
         pluginImports = factoryLayerImports
         pluginListImports = factoryLayerImports
-        stateImports = nodesImports
+        stateImports = foundationImports
         viewControllerImports = viewLayerImports.union(["UIKit"])
         viewControllerImportsSwiftUI = viewLayerImports.union(["SwiftUI"])
         viewStateImports = nodesImports
@@ -184,10 +186,9 @@ extension XcodeTemplates.Config {
         viewStateOperators = """
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
             """
-        publisherType = "AnyPublisher"
-        publisherFailureType = ", Never"
+        publisherType = "CurrentValuePublisher"
+        publisherFailureType = ""
         cancellableType = "AnyCancellable"
     }
 }

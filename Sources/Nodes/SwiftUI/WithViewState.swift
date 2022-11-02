@@ -80,6 +80,19 @@ public struct WithViewState<ViewState, Content: View>: View {
         self.content = content
         _viewState = State(initialValue: initialState)
     }
+
+    /// Initializes a ``WithViewState`` view with the given view state `publisher` and `content`.
+    ///
+    /// - Parameters:
+    ///     - publisher: The view state ``Publisher`` instance to observe.
+    ///     - content: A view builder that creates the content of this view.
+    @available(macOS 11.0, macCatalyst 11.0, iOS 14.0, tvOS 14.0, watchOS 7.0, *)
+    public init(
+        _ publisher: CurrentValuePublisher<ViewState>,
+        @ViewBuilder content: @escaping (ViewState) -> Content
+    ) {
+        self.init(publisher, initialState: publisher.value, content: content)
+    }
 }
 
 @available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)

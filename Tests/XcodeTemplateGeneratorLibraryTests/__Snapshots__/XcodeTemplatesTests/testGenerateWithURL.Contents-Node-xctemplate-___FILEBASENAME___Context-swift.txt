@@ -35,7 +35,7 @@ internal final class ___VARIABLE_productName___ContextImp: AbstractContext
     /// The Analytics instance.
     private let analytics: ___VARIABLE_productName___Analytics
 
-    @Published internal private(set) var state: ___VARIABLE_productName___State = .initialState
+    @Published internal private(set) var state: ___VARIABLE_productName___State
 
     /// The initializer.
     /// - Parameters:
@@ -46,6 +46,7 @@ internal final class ___VARIABLE_productName___ContextImp: AbstractContext
         analytics: ___VARIABLE_productName___Analytics
     ) {
         self.analytics = analytics
+        self.state = ___VARIABLE_productName___State()
         super.init(workers: workers)
     }
 

@@ -6,11 +6,7 @@ import {{ import }}{% endfor %}
  PURPOSE:
  The view state of the view.
  */
-internal struct {{ node_name }}ViewState: Equatable, InitialStateProviding {
-
-    /// The initial state of the view.
-    internal static let initialState: {{ node_name }}ViewState = {{ node_name }}ViewStateFactory().initialState
-}
+internal struct {{ node_name }}ViewState: Equatable {}
 
 /**
  PURPOSE:
