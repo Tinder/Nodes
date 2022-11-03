@@ -1,4 +1,4 @@
-▿ 18 elements
+▿ 14 elements
   ▿ (2 elements)
     - from: ".bundle/Icons/Tinder.png"
     - to: "/Node.xctemplate/TemplateIcon.png"
@@ -11,18 +11,6 @@
   ▿ (2 elements)
     - from: ".bundle/Icons/Tinder@2x.png"
     - to: "/ Node.xctemplate/TemplateIcon@2x.png"
-  ▿ (2 elements)
-    - from: ".bundle/Icons/Tinder.png"
-    - to: "/Node (without view state).xctemplate/TemplateIcon.png"
-  ▿ (2 elements)
-    - from: ".bundle/Icons/Tinder@2x.png"
-    - to: "/Node (without view state).xctemplate/TemplateIcon@2x.png"
-  ▿ (2 elements)
-    - from: ".bundle/Icons/Tinder.png"
-    - to: "/ Node (without view state).xctemplate/TemplateIcon.png"
-  ▿ (2 elements)
-    - from: ".bundle/Icons/Tinder@2x.png"
-    - to: "/ Node (without view state).xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Icons/Tinder.png"
     - to: "/Node (view injected).xctemplate/TemplateIcon.png"

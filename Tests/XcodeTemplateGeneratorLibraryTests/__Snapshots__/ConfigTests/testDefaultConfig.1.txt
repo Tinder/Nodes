@@ -7,11 +7,9 @@
     - "NeedleFoundation"
   - fileHeader: "//___FILEHEADER___"
   - flowProperties: 0 elements
-  ▿ includedTemplates: 9 elements
+  ▿ includedTemplates: 7 elements
     - "Node"
     - "NodeSwiftUI"
-    - "NodeWithoutViewState"
-    - "NodeWithoutViewStateSwiftUI"
     - "NodeViewInjected"
     - "PluginListNode"
     - "PluginNode"

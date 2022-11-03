@@ -114,8 +114,6 @@ extension XcodeTemplates.Config {
         includedTemplates = [
             "Node",
             "NodeSwiftUI",
-            "NodeWithoutViewState",
-            "NodeWithoutViewStateSwiftUI",
             "NodeViewInjected",
             "PluginListNode",
             "PluginNode",
