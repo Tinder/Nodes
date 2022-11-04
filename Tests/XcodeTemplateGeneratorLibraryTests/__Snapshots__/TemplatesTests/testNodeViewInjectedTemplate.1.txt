@@ -1,5 +1,8 @@
 ▿ NodeViewInjectedTemplate
   ▿ context: NodeViewInjectedContext
+    ▿ analyticsImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
     ▿ builderImports: 3 elements
       - "<baseImports>"
       - "<diGraphImports>"
@@ -29,6 +32,9 @@
           - key: "type"
           - value: "<flowPropertiesType>"
     - nodeName: "___VARIABLE_productName___"
+    ▿ stateImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     ▿ workerImports: 2 elements

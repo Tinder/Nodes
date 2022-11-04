@@ -1,5 +1,8 @@
 ▿ NodeTemplate
   ▿ context: NodeContext
+    ▿ analyticsImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
     ▿ builderImports: 3 elements
       - "<baseImports>"
       - "<diGraphImports>"
@@ -31,6 +34,9 @@
     - nodeName: "___VARIABLE_productName___"
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
+    ▿ stateImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     ▿ viewControllerImports: 3 elements
@@ -42,6 +48,9 @@
     - viewControllerSuperParameters: "<viewControllerSuperParameters>"
     - viewControllerType: "<viewControllerType>"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+    ▿ viewStateImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
     - viewStateOperators: "<viewStateOperators>"
     - viewStatePublisher: "<viewStatePublisher>"
     ▿ workerImports: 2 elements
