@@ -73,9 +73,9 @@
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
   ▿ stencils: 6 elements
-    - "Analytics"
-    - "Builder"
-    - "Context"
-    - "Flow"
-    - "ViewController"
-    - "Worker"
+    - StencilTemplate.analytics
+    - StencilTemplate.builder
+    - StencilTemplate.context
+    - StencilTemplate.flow
+    - StencilTemplate.viewController
+    - StencilTemplate.worker

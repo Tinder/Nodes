@@ -10,7 +10,7 @@ internal struct NodeTemplate: XcodeTemplate {
     internal typealias Config = XcodeTemplates.Config
 
     internal let name: String
-    internal let stencils: [String]
+    internal let stencils: [StencilTemplate]
     internal let filenames: [String: String]
     internal let context: Context
 
@@ -25,7 +25,7 @@ internal struct NodeTemplate: XcodeTemplate {
     internal init(config: Config, swiftUI: Bool = false) {
         if swiftUI {
             name = "\(Config.symbolForSwiftUI) Node"
-            stencils = ["Analytics", "Builder-SwiftUI", "Context", "Flow", "ViewController-SwiftUI", "Worker"]
+            stencils = [.analytics, .builderSwiftUI, .context, .flow, .viewControllerSwiftUI, .worker]
             filenames = [
                 "Builder-SwiftUI": "Builder",
                 "ViewController-SwiftUI": "ViewController",
@@ -33,8 +33,8 @@ internal struct NodeTemplate: XcodeTemplate {
             ]
         } else {
             name = "Node"
-            stencils = ["Analytics", "Builder", "Context", "Flow", "ViewController", "Worker"]
             filenames = ["Worker": "ViewStateWorker"]
+            stencils = [.analytics, .builder, .context, .flow, .viewController, .worker]
         }
         context = NodeContext(
             fileHeader: config.fileHeader,

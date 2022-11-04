@@ -17,12 +17,12 @@ public final class StencilRenderer {
         swiftUI: Bool = false
     ) throws -> [String: String] {
         try renderNode(stencils: [
-            "Analytics": "Analytics",
-            "Builder": "Builder\(swiftUI ? "-SwiftUI" : "")",
-            "Context": "Context",
-            "Flow": "Flow",
-            "ViewController": "ViewController\(swiftUI ? "-SwiftUI" : "")",
-            "Worker": "Worker"
+            "Analytics": .analytics,
+            "Builder": swiftUI ? .builderSwiftUI : .builder,
+            "Context": .context,
+            "Flow": .flow,
+            "ViewController": swiftUI ? .viewControllerSwiftUI : .viewController,
+            "Worker": .worker
         ], with: context.dictionary)
     }
 
@@ -31,12 +31,12 @@ public final class StencilRenderer {
         swiftUI: Bool = false
     ) throws -> [String: String] {
         try renderNode(stencils: [
-            "Analytics": "Analytics",
-            "Builder": "Builder\(swiftUI ? "-SwiftUI" : "")",
-            "Context": "Context",
-            "Flow": "Flow",
-            "ViewController": "ViewController\(swiftUI ? "-SwiftUI" : "")",
-            "Worker": "Worker"
+            "Analytics": .analytics,
+            "Builder": swiftUI ? .builderSwiftUI : .builder,
+            "Context": .context,
+            "Flow": .flow,
+            "ViewController": swiftUI ? .viewControllerSwiftUI : .viewController,
+            "Worker": .worker
         ], with: context.dictionary)
     }
 
@@ -44,33 +44,37 @@ public final class StencilRenderer {
         context: NodeViewInjectedContext
     ) throws -> [String: String] {
         try renderNode(stencils: [
-            "Analytics": "Analytics",
-            "Builder": "Builder",
-            "Context": "Context",
-            "Flow": "Flow",
-            "Worker": "Worker"
+            "Analytics": .analytics,
+            "Builder": .builder,
+            "Context": .context,
+            "Flow": .flow,
+            "Worker": .worker
         ], with: context.dictionary)
     }
 
     public func renderPlugin(context: PluginContext) throws -> String {
-        try render("Plugin", with: context.dictionary)
+        try render(.plugin, with: context.dictionary)
     }
 
     public func renderPluginList(context: PluginListContext) throws -> String {
-        try render("PluginList", with: context.dictionary)
+        try render(.pluginList, with: context.dictionary)
     }
 
     public func renderWorker(context: WorkerContext) throws -> String {
-        try render("Worker", with: context.dictionary)
+        try render(.worker, with: context.dictionary)
     }
 
-    private func renderNode(stencils: [String: String], with context: [String: Any]) throws -> [String: String] {
+    private func renderNode(
+        stencils: [String: StencilTemplate],
+        with context: [String: Any]
+    ) throws -> [String: String] {
         try Dictionary(uniqueKeysWithValues: stencils.map {
             try ($0.0, render($0.1, with: context))
         })
     }
 
-    internal func render(_ stencil: String, with context: [String: Any]) throws -> String {
+    internal func render(_ stencil: StencilTemplate, with context: [String: Any]) throws -> String {
+        let stencil: String = stencil.rawValue
         let bundle: Bundle = .moduleRelativeToExecutable ?? .module
         // swiftlint:disable:next force_unwrapping
         let stencilURL: URL = bundle.resourceURL!

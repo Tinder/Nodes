@@ -56,8 +56,8 @@
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
   ▿ stencils: 5 elements
-    - "Analytics"
-    - "Builder"
-    - "Context"
-    - "Flow"
-    - "Worker"
+    - StencilTemplate.analytics
+    - StencilTemplate.builder
+    - StencilTemplate.context
+    - StencilTemplate.flow
+    - StencilTemplate.worker

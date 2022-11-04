@@ -10,7 +10,7 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
     internal typealias Config = XcodeTemplates.Config
 
     internal let name: String = "Node (view injected)"
-    internal let stencils: [String] = ["Analytics", "Builder", "Context", "Flow", "Worker"]
+    internal let stencils: [StencilTemplate] = [.analytics, .builder, .context, .flow, .worker]
     internal let context: Context
 
     internal let propertyList: PropertyList =

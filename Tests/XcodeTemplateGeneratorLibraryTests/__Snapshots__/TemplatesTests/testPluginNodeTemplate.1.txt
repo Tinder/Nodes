@@ -28,4 +28,4 @@
     - summary: "The source file implementing a Plugin for a Node"
     - supportsSwiftPackage: true
   ▿ stencils: 1 element
-    - "Plugin"
+    - StencilTemplate.plugin

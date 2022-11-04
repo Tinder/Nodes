@@ -11,7 +11,7 @@ internal protocol XcodeTemplate {
     typealias Option = PropertyList.Option
 
     var name: String { get }
-    var stencils: [String] { get }
+    var stencils: [StencilTemplate] { get }
     var filenames: [String: String] { get }
     var context: Context { get }
     var propertyList: PropertyList { get }
