@@ -1,6 +1,6 @@
-{{ file_header }}
+{{ file_header }}{% if view_controller_imports %}
 {% for import in view_controller_imports %}
-import {{ import }}{% endfor %}
+import {{ import }}{% endfor %}{% endif %}
 {% if view_state_publisher %}
 /**
  PURPOSE:

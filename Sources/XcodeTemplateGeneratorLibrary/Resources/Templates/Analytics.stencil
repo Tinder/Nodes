@@ -1,6 +1,6 @@
-{{ file_header }}
+{{ file_header }}{% if worker_imports %}
 {% for import in worker_imports %}
-import {{ import }}{% endfor %}
+import {{ import }}{% endfor %}{% endif %}
 
 /*
  INSTRUCTIONS:
