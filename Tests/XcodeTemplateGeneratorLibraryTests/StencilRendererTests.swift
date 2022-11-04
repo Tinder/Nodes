@@ -20,8 +20,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             "Builder",
             "Context",
             "Flow",
-            "ViewController",
-            "Worker"
+            "ViewController"
         ]
         assertSnapshot(matching: templates["Analytics"]!,
                        as: .lines,
@@ -38,9 +37,6 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         assertSnapshot(matching: templates["ViewController"]!,
                        as: .lines,
                        named: "ViewController")
-        assertSnapshot(matching: templates["Worker"]!,
-                       as: .lines,
-                       named: "Worker")
     }
 
     func testRenderNodeSwiftUI() throws {
@@ -52,8 +48,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             "Builder",
             "Context",
             "Flow",
-            "ViewController",
-            "Worker"
+            "ViewController"
         ]
         assertSnapshot(matching: templates["Analytics"]!,
                        as: .lines,
@@ -70,9 +65,6 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         assertSnapshot(matching: templates["ViewController"]!,
                        as: .lines,
                        named: "ViewController")
-        assertSnapshot(matching: templates["Worker"]!,
-                       as: .lines,
-                       named: "Worker")
     }
 
     func testRenderNodeRoot() throws {
@@ -83,8 +75,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             "Builder",
             "Context",
             "Flow",
-            "ViewController",
-            "Worker"
+            "ViewController"
         ]
         assertSnapshot(matching: templates["Analytics"]!,
                        as: .lines,
@@ -101,9 +92,6 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         assertSnapshot(matching: templates["ViewController"]!,
                        as: .lines,
                        named: "ViewController")
-        assertSnapshot(matching: templates["Worker"]!,
-                       as: .lines,
-                       named: "Worker")
     }
 
     func testRenderNodeViewInjected() throws {
@@ -113,8 +101,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             "Analytics",
             "Builder",
             "Context",
-            "Flow",
-            "Worker"
+            "Flow"
         ]
         assertSnapshot(matching: templates["Analytics"]!,
                        as: .lines,
@@ -128,9 +115,6 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         assertSnapshot(matching: templates["Flow"]!,
                        as: .lines,
                        named: "Flow")
-        assertSnapshot(matching: templates["Worker"]!,
-                       as: .lines,
-                       named: "Worker")
     }
 
     func testRenderPlugin() throws {

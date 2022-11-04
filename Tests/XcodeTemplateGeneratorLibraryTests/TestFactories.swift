@@ -49,12 +49,10 @@ extension TestFactories {
         NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
-            workerName: "<workerName>",
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],
             viewControllerImports: ["<viewControllerImports>"],
-            workerImports: ["<workerImports>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             viewControllerType: "<viewControllerType>",
@@ -75,12 +73,10 @@ extension TestFactories {
     func givenNodeRootContext() -> NodeRootContext {
         NodeRootContext(
             fileHeader: "<fileHeader>",
-            workerName: "<workerName>",
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],
             viewControllerImports: ["<viewControllerImports>"],
-            workerImports: ["<workerImports>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             viewControllerType: "<viewControllerType>",
@@ -102,11 +98,9 @@ extension TestFactories {
         NodeViewInjectedContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
-            workerName: "<workerName>",
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],
-            workerImports: ["<workerImports>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             viewControllableType: "<viewControllableType>",

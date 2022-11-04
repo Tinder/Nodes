@@ -140,7 +140,7 @@ internal final class RootBuilderImp: AbstractBuilder
     ) -> RootFlow {
         let listener: RootListener = dynamicBuildDependency
         let analytics: RootAnalyticsImp = .init()
-        let viewStateWorker: <workerName>WorkerImp = .init(
+        let viewStateWorker: WorkerImp = .init(
             analytics: analytics
         )
         let viewController: RootViewController = .init(
