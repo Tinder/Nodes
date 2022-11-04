@@ -25,7 +25,7 @@ internal struct PluginNodeTemplate: XcodeTemplate {
         context = PluginContext(
             fileHeader: config.fileHeader,
             pluginName: config.variable("productName"),
-            pluginImports: config.imports(for: .diGraph)
+            pluginImports: config.imports(for: .plugin)
         )
     }
 }

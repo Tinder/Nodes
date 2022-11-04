@@ -18,10 +18,10 @@ extension TestFactories {
         var config: Config = .init()
         config.includedTemplates = ["<includedTemplates>"]
         config.fileHeader = "<fileHeader>"
-        config.baseImports = ["<baseImports>"]
-        config.diGraphImports = ["<diGraphImports>"]
-        config.viewControllerImports = ["<viewControllerImports>"]
-        config.viewControllerImportsSwiftUI = ["<viewControllerImportsSwiftUI>"]
+        config.reactiveImports = ["<reactiveImports>"]
+        config.dependencyInjectionImports = ["<dependencyInjectionImports>"]
+        config.viewImports = ["<viewImports>"]
+        config.viewImportsSwiftUI = ["<viewImportsSwiftUI>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllerType = "<viewControllerType>"

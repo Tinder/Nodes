@@ -1,7 +1,4 @@
 ▿ Config
-  ▿ baseImports: 2 members
-    - "baseImports-1"
-    - "baseImports-2"
   - cancellableType: "cancellableType"
   ▿ dependencies: 2 elements
     ▿ Variable
@@ -10,9 +7,8 @@
     ▿ Variable
       - name: "dependencies-name-2"
       - type: "dependencies-type-2"
-  ▿ diGraphImports: 2 members
-    - "diGraphImports-1"
-    - "diGraphImports-2"
+  ▿ dependencyInjectionImports: 1 member
+    - "NeedleFoundation"
   - fileHeader: "fileHeader"
   ▿ flowProperties: 2 elements
     ▿ Variable
@@ -26,16 +22,12 @@
     - "includedTemplates-2"
   - publisherFailureType: "publisherFailureType"
   - publisherType: "publisherType"
+  ▿ reactiveImports: 1 member
+    - "Combine"
   - rootViewControllerMethods: "rootViewControllerMethods"
   - rootViewControllerMethodsSwiftUI: "rootViewControllerMethodsSwiftUI"
   - viewControllableFlowType: "viewControllableFlowType"
   - viewControllableType: "viewControllableType"
-  ▿ viewControllerImports: 2 members
-    - "viewControllerImports-1"
-    - "viewControllerImports-2"
-  ▿ viewControllerImportsSwiftUI: 2 members
-    - "viewControllerImportsSwiftUI-1"
-    - "viewControllerImportsSwiftUI-2"
   - viewControllerMethods: "viewControllerMethods"
   - viewControllerMethodsSwiftUI: "viewControllerMethodsSwiftUI"
   - viewControllerProperties: "viewControllerProperties"
@@ -43,8 +35,11 @@
   - viewControllerSuperParameters: "viewControllerSuperParameters"
   - viewControllerType: "viewControllerType"
   - viewControllerUpdateComment: "viewControllerUpdateComment"
-  - viewControllerViewStateImports: 0 members
   - viewControllerWithoutViewStateMethods: "viewControllerWithoutViewStateMethods"
   - viewControllerWithoutViewStateMethodsSwiftUI: "viewControllerWithoutViewStateMethodsSwiftUI"
+  ▿ viewImports: 1 member
+    - "UIKit"
+  ▿ viewImportsSwiftUI: 1 member
+    - "SwiftUI"
   - viewStateOperators: "viewStateOperators"
   - viewStatePublisher: "viewStatePublisher"

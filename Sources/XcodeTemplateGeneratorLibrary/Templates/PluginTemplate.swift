@@ -29,7 +29,7 @@ internal struct PluginTemplate: XcodeTemplate {
             fileHeader: config.fileHeader,
             pluginName: config.variable("productName"),
             returnType: config.variable("returnType"),
-            pluginImports: config.imports(for: .diGraph)
+            pluginImports: config.imports(for: .plugin)
         )
     }
 }

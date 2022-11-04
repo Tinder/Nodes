@@ -1,12 +1,12 @@
 ▿ NodeViewInjectedTemplate
   ▿ context: NodeViewInjectedContext
     ▿ builderImports: 3 elements
-      - "<baseImports>"
-      - "<diGraphImports>"
+      - "<dependencyInjectionImports>"
+      - "<reactiveImports>"
       - "Nodes"
     - cancellableType: "<cancellableType>"
     ▿ contextImports: 2 elements
-      - "<baseImports>"
+      - "<reactiveImports>"
       - "Nodes"
     ▿ dependencies: 1 element
       ▿ 2 key/value pairs
@@ -17,8 +17,7 @@
           - key: "type"
           - value: "<dependenciesType>"
     - fileHeader: "<fileHeader>"
-    ▿ flowImports: 2 elements
-      - "<baseImports>"
+    ▿ flowImports: 1 element
       - "Nodes"
     ▿ flowProperties: 1 element
       ▿ 2 key/value pairs
@@ -32,7 +31,7 @@
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     ▿ workerImports: 2 elements
-      - "<baseImports>"
+      - "<reactiveImports>"
       - "Nodes"
     - workerName: "___VARIABLE_productName___"
   - name: "Node (view injected)"

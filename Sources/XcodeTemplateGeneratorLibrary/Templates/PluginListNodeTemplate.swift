@@ -25,7 +25,7 @@ internal struct PluginListNodeTemplate: XcodeTemplate {
         context = PluginListContext(
             fileHeader: config.fileHeader,
             pluginListName: config.variable("productName"),
-            pluginListImports: config.imports(for: .diGraph),
+            pluginListImports: config.imports(for: .pluginList),
             viewControllableFlowType: config.viewControllableFlowType
         )
     }

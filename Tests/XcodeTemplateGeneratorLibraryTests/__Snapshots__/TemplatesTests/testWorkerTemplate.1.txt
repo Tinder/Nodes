@@ -4,7 +4,7 @@
     - fileHeader: "<fileHeader>"
     - nodeName: "___VARIABLE_nodeName___"
     ▿ workerImports: 2 elements
-      - "<baseImports>"
+      - "<reactiveImports>"
       - "Nodes"
     - workerName: "___VARIABLE_productName___"
   - name: "Worker"

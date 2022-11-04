@@ -29,7 +29,7 @@ internal struct WorkerTemplate: XcodeTemplate {
             fileHeader: config.fileHeader,
             nodeName: config.variable("nodeName"),
             workerName: config.variable("productName"),
-            workerImports: config.imports(for: .nodes),
+            workerImports: config.imports(for: .worker),
             cancellableType: config.cancellableType
         )
     }

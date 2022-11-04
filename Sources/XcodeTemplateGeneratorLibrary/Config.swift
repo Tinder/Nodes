@@ -16,12 +16,6 @@ extension XcodeTemplates {
         internal static let symbolForSwiftUI: String = ""
 
         // swiftlint:disable:next nesting
-        internal enum ImportsType {
-
-            case nodes, diGraph, viewController(viewState: Bool, swiftUI: Bool)
-        }
-
-        // swiftlint:disable:next nesting
         internal enum ViewControllerMethodsType {
 
             case standard(swiftUI: Bool), root(swiftUI: Bool), withoutViewState(swiftUI: Bool)
@@ -29,11 +23,10 @@ extension XcodeTemplates {
 
         public var includedTemplates: [String]
         public var fileHeader: String
-        public var baseImports: Set<String>
-        public var diGraphImports: Set<String>
-        public var viewControllerImports: Set<String>
-        public var viewControllerImportsSwiftUI: Set<String>
-        public var viewControllerViewStateImports: Set<String>
+        public var reactiveImports: Set<String>
+        public var dependencyInjectionImports: Set<String>
+        public var viewImports: Set<String>
+        public var viewImportsSwiftUI: Set<String>
         public var dependencies: [Variable]
         public var flowProperties: [Variable]
         public var viewControllerType: String
@@ -68,18 +61,23 @@ extension XcodeTemplates {
             "___VARIABLE_\(name)___"
         }
 
-        internal func imports(for type: ImportsType) -> Set<String> {
-            let nodesImports: Set<String> = baseImports.union(["Nodes"])
-            switch type {
-            case .nodes:
+        internal func imports(for template: StencilTemplate) -> Set<String> {
+            let nodesImports: Set<String> = ["Nodes"]
+            switch template {
+            case .analytics, .state:
+                return []
+            case .builder, .builderSwiftUI:
+                return nodesImports.union(dependencyInjectionImports).union(reactiveImports)
+            case .context, .worker:
+                return nodesImports.union(reactiveImports)
+            case .flow, .viewState:
                 return nodesImports
-            case .diGraph:
-                return nodesImports.union(diGraphImports)
-            case let .viewController(viewState, swiftUI):
-                let imports: Set<String> = swiftUI
-                    ? nodesImports.union(viewControllerImportsSwiftUI)
-                    : nodesImports.union(viewControllerImports)
-                return viewState ? imports.union(viewControllerViewStateImports) : imports
+            case .plugin, .pluginList:
+                return nodesImports.union(dependencyInjectionImports)
+            case .viewController:
+                return nodesImports.union(reactiveImports).union(viewImports)
+            case .viewControllerSwiftUI:
+                return nodesImports.union(reactiveImports).union(viewImportsSwiftUI)
             }
         }
 
@@ -123,11 +121,10 @@ extension XcodeTemplates.Config {
             "Worker"
         ]
         fileHeader = "//___FILEHEADER___"
-        baseImports = ["Combine"]
-        diGraphImports = ["NeedleFoundation"]
-        viewControllerImports = ["UIKit"]
-        viewControllerImportsSwiftUI = ["SwiftUI"]
-        viewControllerViewStateImports = []
+        reactiveImports = ["Combine"]
+        dependencyInjectionImports = ["NeedleFoundation"]
+        viewImports = ["UIKit"]
+        viewImportsSwiftUI = ["SwiftUI"]
         dependencies = []
         flowProperties = []
         viewControllerType = "UIViewController"
@@ -214,21 +211,18 @@ extension XcodeTemplates.Config {
         fileHeader =
             (try? decoder.decodeString("fileHeader"))
             ?? defaults.fileHeader
-        baseImports =
-            (try? decoder.decode("baseImports"))
-            ?? defaults.baseImports
-        diGraphImports =
-            (try? decoder.decode("diGraphImports"))
-            ?? defaults.diGraphImports
-        viewControllerImports =
-            (try? decoder.decode("viewControllerImports"))
-            ?? defaults.viewControllerImports
-        viewControllerImportsSwiftUI =
-            (try? decoder.decode("viewControllerImportsSwiftUI"))
-            ?? defaults.viewControllerImportsSwiftUI
-        viewControllerViewStateImports =
-            (try? decoder.decode("viewControllerViewStateImports"))
-            ?? defaults.viewControllerViewStateImports
+        reactiveImports =
+            (try? decoder.decode("reactiveImports"))
+            ?? defaults.reactiveImports
+        dependencyInjectionImports =
+            (try? decoder.decode("dependencyInjectionImports"))
+            ?? defaults.dependencyInjectionImports
+        viewImports =
+            (try? decoder.decode("viewImports"))
+            ?? defaults.viewImports
+        viewImportsSwiftUI =
+            (try? decoder.decode("viewImportsSwiftUI"))
+            ?? defaults.viewImportsSwiftUI
         dependencies =
             (try? decoder.decode("dependencies"))
             ?? defaults.dependencies

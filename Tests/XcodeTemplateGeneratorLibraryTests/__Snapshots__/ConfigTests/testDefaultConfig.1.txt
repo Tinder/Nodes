@@ -1,9 +1,7 @@
 ▿ Config
-  ▿ baseImports: 1 member
-    - "Combine"
   - cancellableType: "AnyCancellable"
   - dependencies: 0 elements
-  ▿ diGraphImports: 1 member
+  ▿ dependencyInjectionImports: 1 member
     - "NeedleFoundation"
   - fileHeader: "//___FILEHEADER___"
   - flowProperties: 0 elements
@@ -19,14 +17,12 @@
     - "Worker"
   - publisherFailureType: ", Never"
   - publisherType: "AnyPublisher"
+  ▿ reactiveImports: 1 member
+    - "Combine"
   - rootViewControllerMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
   - rootViewControllerMethodsSwiftUI: "override func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}"
   - viewControllableFlowType: "ViewControllableFlow"
   - viewControllableType: "ViewControllable"
-  ▿ viewControllerImports: 1 member
-    - "UIKit"
-  ▿ viewControllerImportsSwiftUI: 1 member
-    - "SwiftUI"
   - viewControllerMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
   - viewControllerMethodsSwiftUI: ""
   - viewControllerProperties: ""
@@ -34,8 +30,11 @@
   - viewControllerSuperParameters: "nibName: nil, bundle: nil"
   - viewControllerType: "UIViewController"
   - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
-  - viewControllerViewStateImports: 0 members
   - viewControllerWithoutViewStateMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}"
   - viewControllerWithoutViewStateMethodsSwiftUI: ""
+  ▿ viewImports: 1 member
+    - "UIKit"
+  ▿ viewImportsSwiftUI: 1 member
+    - "SwiftUI"
   - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
   - viewStatePublisher: "Just(.initialState).eraseToAnyPublisher()"
