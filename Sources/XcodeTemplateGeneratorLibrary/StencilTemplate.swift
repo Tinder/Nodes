@@ -15,9 +15,7 @@ public enum StencilTemplate: String, CaseIterable {
     case flow = "Flow"
     case plugin = "Plugin"
     case pluginList = "PluginList"
-    case state = "State"
     case viewController = "ViewController"
     case viewControllerSwiftUI = "ViewController-SwiftUI"
-    case viewState = "SiewState"
     case worker = "Worker"
 }
