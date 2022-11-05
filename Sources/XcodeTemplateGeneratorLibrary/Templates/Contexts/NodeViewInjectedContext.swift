@@ -68,11 +68,10 @@ public struct NodeViewInjectedContext: Context {
     }
 
     internal func stencils() -> [StencilTemplate] {
-        stencilDictionary().values.map { $0 }.sorted { $0.outputFilename < $1.outputFilename }
+        [.analytics, .builder, .context, .flow, .worker]
     }
 
     internal func stencilDictionary() -> [String: StencilTemplate] {
-        let stencils: [StencilTemplate] = [.analytics, .builder, .context, .flow, .worker]
-        return stencils.reduce(into: [:]) { $0[$1.outputFilename] = $1 }
+        stencils().reduce(into: [:]) { $0[$1.outputFilename] = $1 }
     }
 }

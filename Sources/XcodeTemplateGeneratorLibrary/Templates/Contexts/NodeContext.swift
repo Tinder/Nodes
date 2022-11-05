@@ -108,18 +108,10 @@ public struct NodeContext: Context {
     }
 
     internal func stencils(swiftUI: Bool) -> [StencilTemplate] {
-        stencilDictionary(swiftUI: swiftUI).values.map { $0 }.sorted { $0.outputFilename < $1.outputFilename }
+        [.analytics, .builder.forSwiftUI(swiftUI), .context, .flow, .viewController.forSwiftUI(swiftUI), .worker]
     }
 
     internal func stencilDictionary(swiftUI: Bool) -> [String: StencilTemplate] {
-        let stencils: [StencilTemplate] = [
-            .analytics,
-            swiftUI ? .builderSwiftUI : .builder,
-            .context,
-            .flow,
-            swiftUI ? .viewControllerSwiftUI : .viewController,
-            .worker
-        ]
-        return stencils.reduce(into: [:]) { $0[$1.outputFilename] = $1 }
+        stencils(swiftUI: swiftUI).reduce(into: [:]) { $0[$1.outputFilename] = $1 }
     }
 }

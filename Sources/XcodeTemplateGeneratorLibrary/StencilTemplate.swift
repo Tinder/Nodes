@@ -67,4 +67,19 @@ public enum StencilTemplate: CaseIterable {
             return filename
         }
     }
+
+    /// The case of Self for SwiftUI.
+    ///
+    /// - Parameter swiftUI: whether the SwiftUI version of Self should be returned
+    /// - Returns: Self
+    public func forSwiftUI(_ swiftUI: Bool) -> Self {
+        switch self {
+        case .analytics, .context, .flow, .plugin, .pluginList, .worker:
+            return self
+        case .builder, .builderSwiftUI:
+            return swiftUI ? .builderSwiftUI : .builder
+        case .viewController, .viewControllerSwiftUI:
+            return swiftUI ? .viewControllerSwiftUI : .viewController
+        }
+    }
 }
