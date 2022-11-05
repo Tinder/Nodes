@@ -16,7 +16,7 @@ extension TestFactories {
 
     func givenConfig() -> Config {
         var config: Config = .init()
-        config.includedTemplates = ["<includedTemplates>"]
+        config.includedTemplates = XcodeFileTemplate.allCases
         config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImports>"]
         config.diGraphImports = ["<diGraphImports>"]

@@ -27,7 +27,7 @@ extension XcodeTemplates {
             case standard(swiftUI: Bool), root(swiftUI: Bool), withoutViewState(swiftUI: Bool)
         }
 
-        public var includedTemplates: [String]
+        public var includedTemplates: [XcodeFileTemplate]
         public var fileHeader: String
         public var baseImports: Set<String>
         public var diGraphImports: Set<String>
@@ -111,15 +111,7 @@ extension XcodeTemplates.Config {
 
     // swiftlint:disable:next function_body_length
     public init() {
-        includedTemplates = [
-            "Node",
-            "NodeSwiftUI",
-            "NodeViewInjected",
-            "PluginListNode",
-            "PluginNode",
-            "Plugin",
-            "Worker"
-        ]
+        includedTemplates = XcodeFileTemplate.allCases
         fileHeader = "//___FILEHEADER___"
         baseImports = ["Combine"]
         diGraphImports = ["NeedleFoundation"]

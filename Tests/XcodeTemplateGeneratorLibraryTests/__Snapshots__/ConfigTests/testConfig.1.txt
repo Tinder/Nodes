@@ -21,9 +21,14 @@
     ▿ Variable
       - name: "flowProperties-name-2"
       - type: "flowProperties-type-2"
-  ▿ includedTemplates: 2 elements
-    - "includedTemplates-1"
-    - "includedTemplates-2"
+  ▿ includedTemplates: 7 elements
+    - Node
+    - NodeSwiftUI
+    - NodeViewInjected
+    - PluginListNode
+    - PluginNode
+    - Plugin
+    - Worker
   - publisherFailureType: "publisherFailureType"
   - publisherType: "publisherType"
   - rootViewControllerMethods: "rootViewControllerMethods"
