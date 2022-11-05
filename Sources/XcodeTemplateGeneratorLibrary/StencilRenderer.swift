@@ -21,8 +21,7 @@ public final class StencilRenderer {
             "Builder": "Builder\(swiftUI ? "-SwiftUI" : "")",
             "Context": "Context",
             "Flow": "Flow",
-            "ViewController": "ViewController\(swiftUI ? "-SwiftUI" : "")",
-            "Worker": "Worker"
+            "ViewController": "ViewController\(swiftUI ? "-SwiftUI" : "")"
         ], with: context.dictionary)
     }
 
@@ -35,8 +34,7 @@ public final class StencilRenderer {
             "Builder": "Builder\(swiftUI ? "-SwiftUI" : "")",
             "Context": "Context",
             "Flow": "Flow",
-            "ViewController": "ViewController\(swiftUI ? "-SwiftUI" : "")",
-            "Worker": "Worker"
+            "ViewController": "ViewController\(swiftUI ? "-SwiftUI" : "")"
         ], with: context.dictionary)
     }
 
@@ -47,8 +45,7 @@ public final class StencilRenderer {
             "Analytics": "Analytics",
             "Builder": "Builder",
             "Context": "Context",
-            "Flow": "Flow",
-            "Worker": "Worker"
+            "Flow": "Flow"
         ], with: context.dictionary)
     }
 

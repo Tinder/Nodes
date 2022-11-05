@@ -1,4 +1,4 @@
-▿ 28 elements
+▿ 25 elements
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___Analytics.swift"
     - .1: true
@@ -13,9 +13,6 @@
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___ViewController.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/___FILEBASENAME___ViewStateWorker.swift"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/TemplateInfo.plist"
@@ -36,9 +33,6 @@
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___ViewController.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/___FILEBASENAME___ViewStateWorker.swift"
-    - .1: true
-  ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/ Node.xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
@@ -52,9 +46,6 @@
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Flow.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Worker.swift"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/TemplateInfo.plist"
