@@ -104,7 +104,11 @@ public struct NodeRootContext: Context {
         self.cancellableType = cancellableType
     }
 
-    internal func stencils(swiftUI: Bool) -> [String: StencilTemplate] {
+    internal func stencils(swiftUI: Bool) -> [StencilTemplate] {
+        stencilDictionary(swiftUI: swiftUI).values.map { $0 }.sorted { $0.outputFilename < $1.outputFilename }
+    }
+
+    internal func stencilDictionary(swiftUI: Bool) -> [String: StencilTemplate] {
         let stencils: [StencilTemplate] = [
             .analytics,
             swiftUI ? .builderSwiftUI : .builder,

@@ -7,6 +7,7 @@
       - "Nodes"
     - pluginName: "___VARIABLE_productName___"
     - returnType: Optional<String>.none
+    - stencil: StencilTemplate.plugin
   - name: "Plugin (for Node)"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element

@@ -10,7 +10,7 @@ internal struct WorkerTemplate: XcodeTemplate {
     internal typealias Config = XcodeTemplates.Config
 
     internal let name: String = StencilTemplate.worker.outputFilename
-    internal let stencils: [StencilTemplate] = [.worker]
+    internal let stencils: [StencilTemplate]
     internal let context: Context
 
     internal let propertyList: PropertyList =
@@ -25,12 +25,14 @@ internal struct WorkerTemplate: XcodeTemplate {
         }
 
     internal init(config: Config) {
-        context = WorkerContext(
+        let workerContext = WorkerContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("nodeName"),
             workerName: config.variable("productName"),
             workerImports: config.imports(for: .nodes),
             cancellableType: config.cancellableType
         )
+        stencils = [workerContext.stencil]
+        context = workerContext
     }
 }

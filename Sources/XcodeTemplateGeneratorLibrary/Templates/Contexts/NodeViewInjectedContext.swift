@@ -67,7 +67,11 @@ public struct NodeViewInjectedContext: Context {
         self.cancellableType = cancellableType
     }
 
-    internal func stencils() -> [String: StencilTemplate] {
+    internal func stencils() -> [StencilTemplate] {
+        stencilDictionary().values.map { $0 }.sorted { $0.outputFilename < $1.outputFilename }
+    }
+
+    internal func stencilDictionary() -> [String: StencilTemplate] {
         let stencils: [StencilTemplate] = [.analytics, .builder, .context, .flow, .worker]
         return stencils.reduce(into: [:]) { $0[$1.outputFilename] = $1 }
     }

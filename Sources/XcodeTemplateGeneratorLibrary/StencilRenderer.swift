@@ -16,32 +16,32 @@ public final class StencilRenderer {
         context: NodeContext,
         swiftUI: Bool = false
     ) throws -> [String: String] {
-        try renderNode(stencils: context.stencils(swiftUI: swiftUI), with: context.dictionary)
+        try renderNode(stencils: context.stencilDictionary(swiftUI: swiftUI), with: context.dictionary)
     }
 
     public func renderNodeRoot(
         context: NodeRootContext,
         swiftUI: Bool = false
     ) throws -> [String: String] {
-        try renderNode(stencils: context.stencils(swiftUI: swiftUI), with: context.dictionary)
+        try renderNode(stencils: context.stencilDictionary(swiftUI: swiftUI), with: context.dictionary)
     }
 
     public func renderNodeViewInjected(
         context: NodeViewInjectedContext
     ) throws -> [String: String] {
-        try renderNode(stencils: context.stencils(), with: context.dictionary)
+        try renderNode(stencils: context.stencilDictionary(), with: context.dictionary)
     }
 
     public func renderPlugin(context: PluginContext) throws -> String {
-        try render(.plugin, with: context.dictionary)
+        try render(context.stencil, with: context.dictionary)
     }
 
     public func renderPluginList(context: PluginListContext) throws -> String {
-        try render(.pluginList, with: context.dictionary)
+        try render(context.stencil, with: context.dictionary)
     }
 
     public func renderWorker(context: WorkerContext) throws -> String {
-        try render(.worker, with: context.dictionary)
+        try render(context.stencil, with: context.dictionary)
     }
 
     private func renderNode(
