@@ -8,7 +8,7 @@
     - pluginName: "___VARIABLE_productName___"
     ▿ returnType: Optional<String>
       - some: "___VARIABLE_returnType___"
-    - stencil: StencilTemplate.plugin
+    - stencil: Plugin
   - name: "Plugin"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
@@ -38,4 +38,4 @@
     - summary: "The source file implementing a Plugin"
     - supportsSwiftPackage: true
   ▿ stencils: 1 element
-    - StencilTemplate.plugin
+    - Plugin

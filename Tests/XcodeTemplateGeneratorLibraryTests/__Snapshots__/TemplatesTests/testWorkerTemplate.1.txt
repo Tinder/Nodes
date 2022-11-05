@@ -3,7 +3,7 @@
     - cancellableType: "<cancellableType>"
     - fileHeader: "<fileHeader>"
     - nodeName: "___VARIABLE_nodeName___"
-    - stencil: StencilTemplate.worker
+    - stencil: Worker
     ▿ workerImports: 2 elements
       - "<baseImports>"
       - "Nodes"
@@ -37,4 +37,4 @@
     - summary: "The source file implementing a Worker"
     - supportsSwiftPackage: true
   ▿ stencils: 1 element
-    - StencilTemplate.worker
+    - Worker

@@ -8,7 +8,7 @@
 import Foundation
 
 /// Contains a list of all Stencil source files used to generate the Xcode template files.
-public enum StencilTemplate: CaseIterable {
+public enum StencilTemplate: CaseIterable, CustomStringConvertible {
     case analytics
     case builder
     case builderSwiftUI
@@ -68,10 +68,13 @@ public enum StencilTemplate: CaseIterable {
         }
     }
 
-    /// The case of Self for SwiftUI.
+    /// A textual representation of self for ``CustomStringConvertible`` conformance.
+    public var description: String { filename }
+
+    /// The case of self for SwiftUI.
     ///
-    /// - Parameter swiftUI: whether the SwiftUI version of Self should be returned
-    /// - Returns: Self
+    /// - Parameter swiftUI: whether the SwiftUI version of self should be returned
+    /// - Returns: self
     public func forSwiftUI(_ swiftUI: Bool) -> Self {
         switch self {
         case .analytics, .context, .flow, .plugin, .pluginList, .worker:
