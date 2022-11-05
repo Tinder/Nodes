@@ -50,32 +50,7 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
             workerName: "<workerName>",
-            builderImports: ["<builderImports>"],
-            contextImports: ["<contextImports>"],
-            flowImports: ["<flowImports>"],
-            viewControllerImports: ["<viewControllerImports>"],
-            workerImports: ["<workerImports>"],
-            dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
-            flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
-            viewControllerType: "<viewControllerType>",
-            viewControllableType: "<viewControllableType>",
-            viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllerSuperParameters: "<viewControllerSuperParameters>",
-            viewControllerProperties: "<viewControllerProperties>",
-            viewControllerMethods: "<viewControllerMethods>",
-            viewControllerUpdateComment: "<viewControllerUpdateComment>",
-            viewStatePublisher: "<viewStatePublisher>",
-            viewStateOperators: "<viewStateOperators>",
-            publisherType: "<publisherType>",
-            publisherFailureType: "<publisherFailureType>",
-            cancellableType: "<cancellableType>"
-        )
-    }
-
-    func givenNodeRootContext() -> NodeRootContext {
-        NodeRootContext(
-            fileHeader: "<fileHeader>",
-            workerName: "<workerName>",
+            rootNode: false,
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],

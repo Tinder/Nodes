@@ -26,20 +26,6 @@ public final class StencilRenderer {
         ], with: context.dictionary)
     }
 
-    public func renderNodeRoot(
-        context: NodeRootContext,
-        swiftUI: Bool = false
-    ) throws -> [String: String] {
-        try renderNode(stencils: [
-            "Analytics": "Analytics",
-            "Builder": "Builder\(swiftUI ? "-SwiftUI" : "")",
-            "Context": "Context",
-            "Flow": "Flow",
-            "ViewController": "ViewController\(swiftUI ? "-SwiftUI" : "")",
-            "Worker": "Worker"
-        ], with: context.dictionary)
-    }
-
     public func renderNodeViewInjected(
         context: NodeViewInjectedContext
     ) throws -> [String: String] {

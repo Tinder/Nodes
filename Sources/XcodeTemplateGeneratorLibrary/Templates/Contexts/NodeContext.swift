@@ -10,6 +10,7 @@ public struct NodeContext: Context {
     private let fileHeader: String
     private let nodeName: String
     private let workerName: String
+    private let rootNode: Bool
     private let builderImports: [String]
     private let contextImports: [String]
     private let flowImports: [String]
@@ -36,7 +37,7 @@ public struct NodeContext: Context {
             "node_name": nodeName,
             "worker_name": workerName,
             "owns_view": true,
-            "root_node": false,
+            "root_node": rootNode,
             "builder_imports": builderImports,
             "context_imports": contextImports,
             "flow_imports": flowImports,
@@ -63,6 +64,7 @@ public struct NodeContext: Context {
         fileHeader: String,
         nodeName: String,
         workerName: String,
+        rootNode: Bool,
         builderImports: Set<String>,
         contextImports: Set<String>,
         flowImports: Set<String>,
@@ -86,6 +88,7 @@ public struct NodeContext: Context {
         self.fileHeader = fileHeader
         self.nodeName = nodeName
         self.workerName = workerName
+        self.rootNode = rootNode
         self.builderImports = builderImports.sortedImports()
         self.contextImports = contextImports.sortedImports()
         self.flowImports = flowImports.sortedImports()

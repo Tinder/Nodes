@@ -75,37 +75,6 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                        named: "Worker")
     }
 
-    func testRenderNodeRoot() throws {
-        let context: NodeRootContext = givenNodeRootContext()
-        let templates: [String: String] = try StencilRenderer().renderNodeRoot(context: context)
-        expect(templates.keys.sorted()) == [
-            "Analytics",
-            "Builder",
-            "Context",
-            "Flow",
-            "ViewController",
-            "Worker"
-        ]
-        assertSnapshot(matching: templates["Analytics"]!,
-                       as: .lines,
-                       named: "Analytics")
-        assertSnapshot(matching: templates["Builder"]!,
-                       as: .lines,
-                       named: "Builder")
-        assertSnapshot(matching: templates["Context"]!,
-                       as: .lines,
-                       named: "Context")
-        assertSnapshot(matching: templates["Flow"]!,
-                       as: .lines,
-                       named: "Flow")
-        assertSnapshot(matching: templates["ViewController"]!,
-                       as: .lines,
-                       named: "ViewController")
-        assertSnapshot(matching: templates["Worker"]!,
-                       as: .lines,
-                       named: "Worker")
-    }
-
     func testRenderNodeViewInjected() throws {
         let context: NodeViewInjectedContext = givenNodeViewInjectedContext()
         let templates: [String: String] = try StencilRenderer().renderNodeViewInjected(context: context)
