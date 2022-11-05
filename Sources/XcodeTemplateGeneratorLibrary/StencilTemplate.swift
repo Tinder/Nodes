@@ -21,7 +21,7 @@ public enum StencilTemplate: CaseIterable {
     case worker
 
     /// The name of the .stencil file in the XcodeTemplateGeneratorLibrary bundle.
-    public var fileName: String {
+    public var filename: String {
         switch self {
         case .analytics:
             return "Analytics"
@@ -50,21 +50,21 @@ public enum StencilTemplate: CaseIterable {
     public var outputFilename: String {
         switch self {
         case .analytics:
-            return fileName
+            return filename
         case .builder, .builderSwiftUI:
-            return fileName.replacingOccurrences(of: "-SwiftUI", with: "")
+            return filename.replacingOccurrences(of: "-SwiftUI", with: "")
         case .context:
-            return fileName
+            return filename
         case .flow:
-            return fileName
+            return filename
         case .plugin:
-            return fileName
+            return filename
         case .pluginList:
-            return fileName
+            return filename
         case .viewController, .viewControllerSwiftUI:
-            return fileName.replacingOccurrences(of: "-SwiftUI", with: "")
+            return filename.replacingOccurrences(of: "-SwiftUI", with: "")
         case .worker:
-            return fileName
+            return filename
         }
     }
 }
