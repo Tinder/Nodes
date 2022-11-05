@@ -9,13 +9,13 @@ import SnapshotTesting
 import XcodeTemplateGeneratorLibrary
 import XCTest
 
-final class StencilTemplateTests: XCTestCase {
+internal final class StencilTemplateTests: XCTestCase {
 
-    func testRawValue() {
+    internal func testRawValue() {
         assertSnapshot(matching: StencilTemplate.allCases.map(\.rawValue), as: .dump)
     }
 
-    func testAllCases() {
+    internal func testAllCases() {
         assertSnapshot(matching: StencilTemplate.allCases, as: .dump)
     }
 }
