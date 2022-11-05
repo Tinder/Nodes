@@ -66,4 +66,9 @@ public struct NodeViewInjectedContext: Context {
         self.viewControllableFlowType = viewControllableFlowType
         self.cancellableType = cancellableType
     }
+
+    internal func stencils() -> [String: StencilTemplate] {
+        let stencils: [StencilTemplate] = [.analytics, .builder, .context, .flow, .worker]
+        return stencils.reduce(into: [:]) { $0[$1.outputFilename] = $1 }
+    }
 }

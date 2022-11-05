@@ -16,40 +16,20 @@ public final class StencilRenderer {
         context: NodeContext,
         swiftUI: Bool = false
     ) throws -> [String: String] {
-        try renderNode(stencils: [
-            "Analytics": .analytics,
-            "Builder": swiftUI ? .builderSwiftUI : .builder,
-            "Context": .context,
-            "Flow": .flow,
-            "ViewController": swiftUI ? .viewControllerSwiftUI : .viewController,
-            "Worker": .worker
-        ], with: context.dictionary)
+        try renderNode(stencils: context.stencils(swiftUI: swiftUI), with: context.dictionary)
     }
 
     public func renderNodeRoot(
         context: NodeRootContext,
         swiftUI: Bool = false
     ) throws -> [String: String] {
-        try renderNode(stencils: [
-            "Analytics": .analytics,
-            "Builder": swiftUI ? .builderSwiftUI : .builder,
-            "Context": .context,
-            "Flow": .flow,
-            "ViewController": swiftUI ? .viewControllerSwiftUI : .viewController,
-            "Worker": .worker
-        ], with: context.dictionary)
+        try renderNode(stencils: context.stencils(swiftUI: swiftUI), with: context.dictionary)
     }
 
     public func renderNodeViewInjected(
         context: NodeViewInjectedContext
     ) throws -> [String: String] {
-        try renderNode(stencils: [
-            "Analytics": .analytics,
-            "Builder": .builder,
-            "Context": .context,
-            "Flow": .flow,
-            "Worker": .worker
-        ], with: context.dictionary)
+        try renderNode(stencils: context.stencils(), with: context.dictionary)
     }
 
     public func renderPlugin(context: PluginContext) throws -> String {
@@ -74,15 +54,15 @@ public final class StencilRenderer {
     }
 
     internal func render(_ stencil: StencilTemplate, with context: [String: Any]) throws -> String {
-        let stencil: String = stencil.rawValue
+        let fileName: String = stencil.fileName
         let bundle: Bundle = .moduleRelativeToExecutable ?? .module
         // swiftlint:disable:next force_unwrapping
         let stencilURL: URL = bundle.resourceURL!
             .appendingPathComponent("Templates")
-            .appendingPathComponent(stencil)
+            .appendingPathComponent(fileName)
             .appendingPathExtension("stencil")
         let template: String = try .init(contentsOf: stencilURL)
-        let environment: Environment = .init(loader: DictionaryLoader(templates: [stencil: template]))
-        return try environment.renderTemplate(name: stencil, context: context)
+        let environment: Environment = .init(loader: DictionaryLoader(templates: [fileName: template]))
+        return try environment.renderTemplate(name: fileName, context: context)
     }
 }

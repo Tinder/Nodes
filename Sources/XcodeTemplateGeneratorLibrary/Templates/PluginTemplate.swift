@@ -9,7 +9,7 @@ internal struct PluginTemplate: XcodeTemplate {
 
     internal typealias Config = XcodeTemplates.Config
 
-    internal let name: String = "Plugin"
+    internal let name: String = StencilTemplate.plugin.outputFilename
     internal let stencils: [StencilTemplate] = [.plugin]
     internal let context: Context
 

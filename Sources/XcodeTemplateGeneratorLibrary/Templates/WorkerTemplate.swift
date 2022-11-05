@@ -9,7 +9,7 @@ internal struct WorkerTemplate: XcodeTemplate {
 
     internal typealias Config = XcodeTemplates.Config
 
-    internal let name: String = "Worker"
+    internal let name: String = StencilTemplate.worker.outputFilename
     internal let stencils: [StencilTemplate] = [.worker]
     internal let context: Context
 

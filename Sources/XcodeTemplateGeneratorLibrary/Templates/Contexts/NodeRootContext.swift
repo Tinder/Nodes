@@ -103,4 +103,16 @@ public struct NodeRootContext: Context {
         self.publisherFailureType = publisherFailureType
         self.cancellableType = cancellableType
     }
+
+    internal func stencils(swiftUI: Bool) -> [String: StencilTemplate] {
+        let stencils: [StencilTemplate] = [
+            .analytics,
+            swiftUI ? .builderSwiftUI : .builder,
+            .context,
+            .flow,
+            swiftUI ? .viewControllerSwiftUI : .viewController,
+            .worker
+        ]
+        return stencils.reduce(into: [:]) { $0[$1.outputFilename] = $1 }
+    }
 }
