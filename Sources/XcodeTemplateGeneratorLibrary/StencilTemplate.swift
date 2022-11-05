@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Contains a list of all Stencil source files used to generate Xcode template files.
 public enum StencilTemplate: String, CaseIterable {
     case analytics = "Analytics"
     case builder = "Builder"
