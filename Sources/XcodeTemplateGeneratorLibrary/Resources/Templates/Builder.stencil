@@ -117,7 +117,7 @@ internal protocol {{ node_name }}Builder: AnyObject {
  Concrete implementation of the Builder, where everything is created and associated.
  */
 internal final class {{ node_name }}BuilderImp: AbstractBuilder
- <
+<
     {{ node_name }}Component,
     {{ node_name }}Flow,
     {{ node_name }}DynamicBuildDependency,

@@ -110,7 +110,7 @@ internal protocol RootBuilder: AnyObject {
  Concrete implementation of the Builder, where everything is created and associated.
  */
 internal final class RootBuilderImp: AbstractBuilder
- <
+<
     RootComponent,
     RootFlow,
     RootDynamicBuildDependency,
