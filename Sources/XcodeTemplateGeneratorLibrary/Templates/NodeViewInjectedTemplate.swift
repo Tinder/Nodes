@@ -10,7 +10,7 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
     internal typealias Config = XcodeTemplates.Config
 
     internal let name: String = "Node (view injected)"
-    internal let stencils: [StencilTemplate]
+    internal let stencils: [StencilTemplate] = StencilTemplate.node(.viewInjected)
     internal let context: Context
 
     internal let propertyList: PropertyList =
@@ -22,7 +22,7 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
         }
 
     internal init(config: Config) {
-        let nodeContext = NodeViewInjectedContext(
+        context = NodeViewInjectedContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
             workerName: config.variable("productName"),
@@ -36,7 +36,5 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
             viewControllableFlowType: config.viewControllableFlowType,
             cancellableType: config.cancellableType
         )
-        stencils = nodeContext.stencils()
-        context = nodeContext
     }
 }

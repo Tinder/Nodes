@@ -10,7 +10,7 @@ internal struct PluginListNodeTemplate: XcodeTemplate {
     internal typealias Config = XcodeTemplates.Config
 
     internal let name: String = "Plugin List (for Node)"
-    internal let stencils: [StencilTemplate]
+    internal let stencils: [StencilTemplate] = [.pluginList]
     internal let context: Context
 
     internal let propertyList: PropertyList =
@@ -22,13 +22,11 @@ internal struct PluginListNodeTemplate: XcodeTemplate {
         }
 
     internal init(config: Config) {
-        let pluginListContext = PluginListContext(
+        context = PluginListContext(
             fileHeader: config.fileHeader,
             pluginListName: config.variable("productName"),
             pluginListImports: config.imports(for: .diGraph),
             viewControllableFlowType: config.viewControllableFlowType
         )
-        stencils = [pluginListContext.stencil]
-        context = pluginListContext
     }
 }

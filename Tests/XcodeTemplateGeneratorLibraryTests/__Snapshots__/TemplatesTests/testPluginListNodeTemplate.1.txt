@@ -6,7 +6,6 @@
       - "<diGraphImports>"
       - "Nodes"
     - pluginListName: "___VARIABLE_productName___"
-    - stencil: PluginList
     - viewControllableFlowType: "<viewControllableFlowType>"
   - name: "Plugin List (for Node)"
   ▿ propertyList: XcodeTemplatePropertyList

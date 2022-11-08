@@ -57,7 +57,9 @@
     - supportsSwiftPackage: true
   ▿ stencils: 5 elements
     - Analytics
-    - Builder
+    ▿ Builder
+      ▿ builder: (1 element)
+        - swiftUI: false
     - Context
     - Flow
     - Worker

@@ -13,8 +13,6 @@ public struct WorkerContext: Context {
     private let workerImports: [String]
     private let cancellableType: String
 
-    internal let stencil: StencilTemplate = .worker
-
     internal var dictionary: [String: Any] {
         [
             "file_header": fileHeader,

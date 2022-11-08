@@ -8,7 +8,6 @@
     - pluginName: "___VARIABLE_productName___"
     ▿ returnType: Optional<String>
       - some: "___VARIABLE_returnType___"
-    - stencil: Plugin
   - name: "Plugin"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element

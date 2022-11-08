@@ -12,8 +12,6 @@ public struct PluginListContext: Context {
     private let pluginListImports: [String]
     private let viewControllableFlowType: String
 
-    internal let stencil: StencilTemplate = .pluginList
-
     internal var dictionary: [String: Any] {
         [
             "file_header": fileHeader,

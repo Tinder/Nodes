@@ -12,8 +12,6 @@ public struct PluginContext: Context {
     private let returnType: String?
     private let pluginImports: [String]
 
-    internal let stencil: StencilTemplate = .plugin
-
     internal var dictionary: [String: Any] {
         guard let returnType = returnType else {
             return [

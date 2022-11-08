@@ -74,8 +74,12 @@
     - supportsSwiftPackage: true
   ▿ stencils: 6 elements
     - Analytics
-    - Builder
+    ▿ Builder
+      ▿ builder: (1 element)
+        - swiftUI: false
     - Context
     - Flow
-    - ViewController
+    ▿ ViewController
+      ▿ viewController: (1 element)
+        - swiftUI: false
     - Worker

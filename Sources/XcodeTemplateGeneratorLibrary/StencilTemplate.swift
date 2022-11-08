@@ -9,26 +9,65 @@ import Foundation
 
 /// Contains a list of all Stencil source files used to generate the Xcode template files.
 public enum StencilTemplate: CaseIterable, CustomStringConvertible {
+
+    public enum NodeKind {
+        case ownsView(swiftUI: Bool)
+        case viewInjected
+    }
+
+    public static let allCases: [StencilTemplate] = [
+        .analytics,
+        .builder(swiftUI: false),
+        .builder(swiftUI: true),
+        .context,
+        .flow,
+        .viewController(swiftUI: false),
+        .viewController(swiftUI: true),
+        .worker
+    ]
+
+    public static func node(_ kind: NodeKind) -> [StencilTemplate] {
+        switch kind {
+        case let .ownsView(swiftUI):
+            return [
+                .analytics,
+                .builder(swiftUI: swiftUI),
+                .context,
+                .flow,
+                .viewController(swiftUI: swiftUI),
+                .worker
+            ]
+        case .viewInjected:
+            return [
+                .analytics,
+                .builder(swiftUI: false),
+                .context,
+                .flow,
+                .worker
+            ]
+        }
+    }
+
+    /// The cases.
     case analytics
-    case builder
-    case builderSwiftUI
+    case builder(swiftUI: Bool)
     case context
     case flow
     case plugin
     case pluginList
-    case viewController
-    case viewControllerSwiftUI
+    case viewController(swiftUI: Bool)
     case worker
+
+    /// A textual representation of self for ``CustomStringConvertible`` conformance.
+    public var description: String { filename }
 
     /// The name of the .stencil file in the XcodeTemplateGeneratorLibrary bundle.
     public var filename: String {
         switch self {
         case .analytics:
             return "Analytics"
-        case .builder:
-            return "Builder"
-        case .builderSwiftUI:
-            return "Builder-SwiftUI"
+        case let .builder(swiftUI):
+            return "Builder".appending(swiftUI ? "-SwiftUI" : "")
         case .context:
             return "Context"
         case .flow:
@@ -37,10 +76,8 @@ public enum StencilTemplate: CaseIterable, CustomStringConvertible {
             return "Plugin"
         case .pluginList:
             return "PluginList"
-        case .viewController:
-            return "ViewController"
-        case .viewControllerSwiftUI:
-            return "ViewController-SwiftUI"
+        case let .viewController(swiftUI):
+            return "ViewController".appending(swiftUI ? "-SwiftUI" : "")
         case .worker:
             return "Worker"
         }
@@ -48,41 +85,6 @@ public enum StencilTemplate: CaseIterable, CustomStringConvertible {
 
     /// The desired name of the Stencil for its rendered Swift file.
     public var outputFilename: String {
-        switch self {
-        case .analytics:
-            return filename
-        case .builder, .builderSwiftUI:
-            return filename.replacingOccurrences(of: "-SwiftUI", with: "")
-        case .context:
-            return filename
-        case .flow:
-            return filename
-        case .plugin:
-            return filename
-        case .pluginList:
-            return filename
-        case .viewController, .viewControllerSwiftUI:
-            return filename.replacingOccurrences(of: "-SwiftUI", with: "")
-        case .worker:
-            return filename
-        }
-    }
-
-    /// A textual representation of self for ``CustomStringConvertible`` conformance.
-    public var description: String { filename }
-
-    /// The case of self for SwiftUI.
-    ///
-    /// - Parameter swiftUI: whether the SwiftUI version of self should be returned
-    /// - Returns: self
-    public func forSwiftUI(_ swiftUI: Bool) -> Self {
-        switch self {
-        case .analytics, .context, .flow, .plugin, .pluginList, .worker:
-            return self
-        case .builder, .builderSwiftUI:
-            return swiftUI ? .builderSwiftUI : .builder
-        case .viewController, .viewControllerSwiftUI:
-            return swiftUI ? .viewControllerSwiftUI : .viewController
-        }
+        filename.replacingOccurrences(of: "-SwiftUI", with: "")
     }
 }

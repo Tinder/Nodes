@@ -3,7 +3,6 @@
     - cancellableType: "<cancellableType>"
     - fileHeader: "<fileHeader>"
     - nodeName: "___VARIABLE_nodeName___"
-    - stencil: Worker
     ▿ workerImports: 2 elements
       - "<baseImports>"
       - "Nodes"

@@ -16,40 +16,43 @@ public final class StencilRenderer {
         context: NodeContext,
         swiftUI: Bool = false
     ) throws -> [String: String] {
-        try renderNode(stencils: context.stencilDictionary(swiftUI: swiftUI), with: context.dictionary)
+        try renderNode(stencils: StencilTemplate.node(.ownsView(swiftUI: swiftUI)),
+                       with: context.dictionary)
     }
 
     public func renderNodeRoot(
         context: NodeRootContext,
         swiftUI: Bool = false
     ) throws -> [String: String] {
-        try renderNode(stencils: context.stencilDictionary(swiftUI: swiftUI), with: context.dictionary)
+        try renderNode(stencils: StencilTemplate.node(.ownsView(swiftUI: swiftUI)),
+                       with: context.dictionary)
     }
 
     public func renderNodeViewInjected(
         context: NodeViewInjectedContext
     ) throws -> [String: String] {
-        try renderNode(stencils: context.stencilDictionary(), with: context.dictionary)
+        try renderNode(stencils: StencilTemplate.node(.viewInjected),
+                       with: context.dictionary)
     }
 
     public func renderPlugin(context: PluginContext) throws -> String {
-        try render(context.stencil, with: context.dictionary)
+        try render(.plugin, with: context.dictionary)
     }
 
     public func renderPluginList(context: PluginListContext) throws -> String {
-        try render(context.stencil, with: context.dictionary)
+        try render(.pluginList, with: context.dictionary)
     }
 
     public func renderWorker(context: WorkerContext) throws -> String {
-        try render(context.stencil, with: context.dictionary)
+        try render(.worker, with: context.dictionary)
     }
 
     private func renderNode(
-        stencils: [String: StencilTemplate],
+        stencils: [StencilTemplate],
         with context: [String: Any]
     ) throws -> [String: String] {
         try Dictionary(uniqueKeysWithValues: stencils.map {
-            try ($0.0, render($0.1, with: context))
+            try ($0.outputFilename, render($0, with: context))
         })
     }
 

@@ -25,12 +25,14 @@ internal struct NodeTemplate: XcodeTemplate {
     internal init(config: Config, swiftUI: Bool = false) {
         if swiftUI {
             name = "\(Config.symbolForSwiftUI) Node"
+            stencils = StencilTemplate.node(.ownsView(swiftUI: true))
             filenames = ["Worker": "ViewStateWorker"]
         } else {
             name = "Node"
+            stencils = StencilTemplate.node(.ownsView(swiftUI: false))
             filenames = ["Worker": "ViewStateWorker"]
         }
-        let nodeContext: NodeContext = .init(
+        context = NodeContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
             workerName: "\(config.variable("productName"))ViewState",
@@ -54,7 +56,5 @@ internal struct NodeTemplate: XcodeTemplate {
             publisherFailureType: config.publisherFailureType,
             cancellableType: config.cancellableType
         )
-        stencils = nodeContext.stencils(swiftUI: swiftUI)
-        context = nodeContext
     }
 }
