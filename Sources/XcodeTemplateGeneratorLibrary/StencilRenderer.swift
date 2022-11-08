@@ -16,7 +16,7 @@ public final class StencilRenderer {
         context: NodeContext,
         swiftUI: Bool = false
     ) throws -> [String: String] {
-        try renderNode(stencils: StencilTemplate.node(.ownsView(swiftUI: swiftUI)),
+        try renderNode(stencils: NodeStencils.get(for: .viewOwned(swiftUI: swiftUI)),
                        with: context.dictionary)
     }
 
@@ -24,14 +24,14 @@ public final class StencilRenderer {
         context: NodeRootContext,
         swiftUI: Bool = false
     ) throws -> [String: String] {
-        try renderNode(stencils: StencilTemplate.node(.ownsView(swiftUI: swiftUI)),
+        try renderNode(stencils: NodeStencils.get(for: .viewOwned(swiftUI: swiftUI)),
                        with: context.dictionary)
     }
 
     public func renderNodeViewInjected(
         context: NodeViewInjectedContext
     ) throws -> [String: String] {
-        try renderNode(stencils: StencilTemplate.node(.viewInjected),
+        try renderNode(stencils: NodeStencils.get(for: .viewInjected),
                        with: context.dictionary)
     }
 

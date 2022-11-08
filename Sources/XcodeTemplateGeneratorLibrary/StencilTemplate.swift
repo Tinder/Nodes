@@ -10,11 +10,6 @@ import Foundation
 /// Contains a list of all Stencil source files used to generate the Xcode template files.
 public enum StencilTemplate: CaseIterable, CustomStringConvertible {
 
-    public enum NodeKind {
-        case ownsView(swiftUI: Bool)
-        case viewInjected
-    }
-
     public static let allCases: [StencilTemplate] = [
         .analytics,
         .builder(swiftUI: false),
@@ -25,28 +20,6 @@ public enum StencilTemplate: CaseIterable, CustomStringConvertible {
         .viewController(swiftUI: true),
         .worker
     ]
-
-    public static func node(_ kind: NodeKind) -> [StencilTemplate] {
-        switch kind {
-        case let .ownsView(swiftUI):
-            return [
-                .analytics,
-                .builder(swiftUI: swiftUI),
-                .context,
-                .flow,
-                .viewController(swiftUI: swiftUI),
-                .worker
-            ]
-        case .viewInjected:
-            return [
-                .analytics,
-                .builder(swiftUI: false),
-                .context,
-                .flow,
-                .worker
-            ]
-        }
-    }
 
     /// The cases.
     case analytics

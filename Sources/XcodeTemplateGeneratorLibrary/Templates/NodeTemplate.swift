@@ -25,11 +25,11 @@ internal struct NodeTemplate: XcodeTemplate {
     internal init(config: Config, swiftUI: Bool = false) {
         if swiftUI {
             name = "\(Config.symbolForSwiftUI) Node"
-            stencils = StencilTemplate.node(.ownsView(swiftUI: true))
+            stencils = NodeStencils.get(for: .viewOwned(swiftUI: true))
             filenames = ["Worker": "ViewStateWorker"]
         } else {
             name = "Node"
-            stencils = StencilTemplate.node(.ownsView(swiftUI: false))
+            stencils = NodeStencils.get(for: .viewOwned(swiftUI: false))
             filenames = ["Worker": "ViewStateWorker"]
         }
         context = NodeContext(
