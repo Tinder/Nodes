@@ -58,8 +58,7 @@
   ▿ stencils: 5 elements
     - Analytics
     ▿ Builder
-      ▿ builder: (1 element)
-        - swiftUI: false
+      - builder: UIFramework.None
     - Context
     - Flow
     - Worker

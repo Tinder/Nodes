@@ -14,10 +14,10 @@ public final class XcodeTemplates {
     public init(config: Config) {
         var templates: [XcodeTemplate] = []
         if config.includedTemplates.contains("Node") {
-            templates.append(NodeTemplate(config: config))
+            templates.append(NodeTemplate(config: config, uiFramework: .UIKit))
         }
         if config.includedTemplates.contains("NodeSwiftUI") {
-            templates.append(NodeTemplate(config: config, swiftUI: true))
+            templates.append(NodeTemplate(config: config, uiFramework: .SwiftUI))
         }
         if config.includedTemplates.contains("NodeViewInjected") {
             templates.append(NodeViewInjectedTemplate(config: config))

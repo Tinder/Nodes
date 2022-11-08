@@ -14,17 +14,17 @@ public final class StencilRenderer {
 
     public func renderNode(
         context: NodeContext,
-        swiftUI: Bool = false
+        uiFramework: UIFramework
     ) throws -> [String: String] {
-        try renderNode(stencils: NodeStencils.get(for: .viewOwned(swiftUI: swiftUI)),
+        try renderNode(stencils: NodeStencils.get(for: .viewOwned(uiFramework)),
                        with: context.dictionary)
     }
 
     public func renderNodeRoot(
         context: NodeRootContext,
-        swiftUI: Bool = false
+        uiFramework: UIFramework
     ) throws -> [String: String] {
-        try renderNode(stencils: NodeStencils.get(for: .viewOwned(swiftUI: swiftUI)),
+        try renderNode(stencils: NodeStencils.get(for: .viewOwned(uiFramework)),
                        with: context.dictionary)
     }
 

@@ -22,14 +22,14 @@ internal struct NodeTemplate: XcodeTemplate {
                    description: "The name of the Node")
         }
 
-    internal init(config: Config, swiftUI: Bool = false) {
-        if swiftUI {
+    internal init(config: Config, uiFramework: UIFramework) {
+        if uiFramework.isSwiftUI {
             name = "\(Config.symbolForSwiftUI) Node"
-            stencils = NodeStencils.get(for: .viewOwned(swiftUI: true))
+            stencils = NodeStencils.get(for: .viewOwned(.SwiftUI))
             filenames = ["Worker": "ViewStateWorker"]
         } else {
             name = "Node"
-            stencils = NodeStencils.get(for: .viewOwned(swiftUI: false))
+            stencils = NodeStencils.get(for: .viewOwned(uiFramework))
             filenames = ["Worker": "ViewStateWorker"]
         }
         context = NodeContext(
@@ -39,7 +39,8 @@ internal struct NodeTemplate: XcodeTemplate {
             builderImports: config.imports(for: .diGraph),
             contextImports: config.imports(for: .nodes),
             flowImports: config.imports(for: .nodes),
-            viewControllerImports: config.imports(for: .viewController(viewState: true, swiftUI: swiftUI)),
+            viewControllerImports: config.imports(for: .viewController(viewState: true,
+                                                                       swiftUI: uiFramework.isSwiftUI)),
             workerImports: config.imports(for: .nodes),
             dependencies: config.dependencies,
             flowProperties: config.flowProperties,
@@ -47,8 +48,8 @@ internal struct NodeTemplate: XcodeTemplate {
             viewControllableType: config.viewControllableType,
             viewControllableFlowType: config.viewControllableFlowType,
             viewControllerSuperParameters: config.viewControllerSuperParameters,
-            viewControllerProperties: config.viewControllerProperties(swiftUI: swiftUI),
-            viewControllerMethods: config.viewControllerMethods(for: .standard(swiftUI: swiftUI)),
+            viewControllerProperties: config.viewControllerProperties(swiftUI: uiFramework.isSwiftUI),
+            viewControllerMethods: config.viewControllerMethods(for: .standard(swiftUI: uiFramework.isSwiftUI)),
             viewControllerUpdateComment: config.viewControllerUpdateComment,
             viewStatePublisher: config.viewStatePublisher,
             viewStateOperators: config.viewStateOperators,

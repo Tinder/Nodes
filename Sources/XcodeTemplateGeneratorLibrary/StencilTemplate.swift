@@ -12,23 +12,27 @@ public enum StencilTemplate: CaseIterable, CustomStringConvertible {
 
     public static let allCases: [StencilTemplate] = [
         .analytics,
-        .builder(swiftUI: false),
-        .builder(swiftUI: true),
+        .builder(.AppKit),
+        .builder(.None),
+        .builder(.SwiftUI),
+        .builder(.UIKit),
         .context,
         .flow,
-        .viewController(swiftUI: false),
-        .viewController(swiftUI: true),
+        .viewController(.AppKit),
+        .viewController(.None),
+        .viewController(.SwiftUI),
+        .viewController(.UIKit),
         .worker
     ]
 
     /// The cases.
     case analytics
-    case builder(swiftUI: Bool)
+    case builder(UIFramework)
     case context
     case flow
     case plugin
     case pluginList
-    case viewController(swiftUI: Bool)
+    case viewController(UIFramework)
     case worker
 
     /// A textual representation of self for ``CustomStringConvertible`` conformance.
@@ -39,8 +43,8 @@ public enum StencilTemplate: CaseIterable, CustomStringConvertible {
         switch self {
         case .analytics:
             return "Analytics"
-        case let .builder(swiftUI):
-            return "Builder".appending(swiftUI ? "-SwiftUI" : "")
+        case let .builder(uiFramework):
+            return "Builder".appending(uiFramework.isSwiftUI ? "-SwiftUI" : "")
         case .context:
             return "Context"
         case .flow:
@@ -49,8 +53,8 @@ public enum StencilTemplate: CaseIterable, CustomStringConvertible {
             return "Plugin"
         case .pluginList:
             return "PluginList"
-        case let .viewController(swiftUI):
-            return "ViewController".appending(swiftUI ? "-SwiftUI" : "")
+        case let .viewController(uiFramework):
+            return "ViewController".appending(uiFramework.isSwiftUI ? "-SwiftUI" : "")
         case .worker:
             return "Worker"
         }
@@ -60,4 +64,10 @@ public enum StencilTemplate: CaseIterable, CustomStringConvertible {
     public var outputFilename: String {
         filename.replacingOccurrences(of: "-SwiftUI", with: "")
     }
+}
+
+public enum UIFramework {
+    case AppKit, None, SwiftUI, UIKit
+
+    public var isSwiftUI: Bool { self == .SwiftUI }
 }

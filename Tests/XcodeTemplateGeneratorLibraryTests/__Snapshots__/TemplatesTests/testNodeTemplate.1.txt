@@ -75,11 +75,9 @@
   ▿ stencils: 6 elements
     - Analytics
     ▿ Builder
-      ▿ builder: (1 element)
-        - swiftUI: false
+      - builder: UIFramework.UIKit
     - Context
     - Flow
     ▿ ViewController
-      ▿ viewController: (1 element)
-        - swiftUI: false
+      - viewController: UIFramework.UIKit
     - Worker

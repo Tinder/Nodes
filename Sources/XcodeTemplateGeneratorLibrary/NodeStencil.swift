@@ -9,24 +9,24 @@ import Foundation
 
 public enum NodeStencils {
 
-    case viewOwned(swiftUI: Bool)
+    case viewOwned(UIFramework)
     case viewInjected
 
     public static func get(for kind: NodeStencils) -> [StencilTemplate] {
         switch kind {
-        case let .viewOwned(swiftUI):
+        case let .viewOwned(uiFramework):
             return [
                 .analytics,
-                .builder(swiftUI: swiftUI),
+                .builder(uiFramework),
                 .context,
                 .flow,
-                .viewController(swiftUI: swiftUI),
+                .viewController(uiFramework),
                 .worker
             ]
         case .viewInjected:
             return [
                 .analytics,
-                .builder(swiftUI: false),
+                .builder(.None),
                 .context,
                 .flow,
                 .worker
