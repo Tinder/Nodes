@@ -22,23 +22,18 @@ internal struct NodeTemplate: XcodeTemplate {
                    description: "The name of the Node")
         }
 
-    internal init(config: Config, framework: UIFramework) {
-        if framework.isSwiftUI {
-            name = "\(Config.symbolForSwiftUI) Node"
+    internal init(for uiFramework: UIFramework, config: Config) {
+        name = "Node - \(uiFramework.name)"
+        if uiFramework.kind == .swiftUI {
             stencils = ["Analytics", "Builder-SwiftUI", "Context", "Flow", "ViewController-SwiftUI", "Worker"]
             filenames = [
                 "Builder-SwiftUI": "Builder",
                 "ViewController-SwiftUI": "ViewController",
                 "Worker": "ViewStateWorker"
             ]
-        } else if framework.isUIKit {
-            name = "Node"
+        } else {
             stencils = ["Analytics", "Builder", "Context", "Flow", "ViewController", "Worker"]
             filenames = ["Worker": "ViewStateWorker"]
-        } else {
-            name = ""
-            stencils = []
-            filenames = [:]
         }
         context = NodeContext(
             fileHeader: config.fileHeader,
@@ -47,16 +42,16 @@ internal struct NodeTemplate: XcodeTemplate {
             builderImports: config.imports(for: .diGraph),
             contextImports: config.imports(for: .nodes),
             flowImports: config.imports(for: .nodes),
-            viewControllerImports: config.imports(for: .viewController(framework)),
+            viewControllerImports: config.imports(for: .viewController(uiFramework)),
             workerImports: config.imports(for: .nodes),
             dependencies: config.dependencies,
             flowProperties: config.flowProperties,
-            viewControllerType: framework.viewControllerType,
+            viewControllerType: uiFramework.viewControllerType,
             viewControllableType: config.viewControllableType,
             viewControllableFlowType: config.viewControllableFlowType,
-            viewControllerSuperParameters: framework.viewControllerSuperParameters,
-            viewControllerProperties: framework.viewControllerProperties,
-            viewControllerMethods: framework.viewControllerMethods,
+            viewControllerSuperParameters: uiFramework.viewControllerSuperParameters,
+            viewControllerProperties: uiFramework.viewControllerProperties,
+            viewControllerMethods: uiFramework.viewControllerMethods,
             viewControllerUpdateComment: config.viewControllerUpdateComment,
             viewStatePublisher: config.viewStatePublisher,
             viewStateOperators: config.viewStateOperators,

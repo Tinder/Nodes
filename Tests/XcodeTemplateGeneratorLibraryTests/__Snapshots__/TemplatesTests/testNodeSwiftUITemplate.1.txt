@@ -40,7 +40,7 @@
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
     - viewControllerSuperParameters: "<viewControllerSuperParameters>"
-    - viewControllerType: "View"
+    - viewControllerType: "AbstractViewHostingController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateOperators: "<viewStateOperators>"
     - viewStatePublisher: "<viewStatePublisher>"
@@ -58,7 +58,7 @@
     ▿ (2 elements)
       - key: "Worker"
       - value: "ViewStateWorker"
-  - name: " Node"
+  - name: "Node - SwiftUI"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"

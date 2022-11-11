@@ -13,11 +13,17 @@ public final class XcodeTemplates {
 
     public init(config: Config) {
         var templates: [XcodeTemplate] = []
-        if let framework = config.uiFrameworks.first(where: { $0.isUIKit }) {
-            templates.append(NodeTemplate(config: config, framework: framework))
+        if let uiFramework = config.uiFramework(for: .appKit) {
+            templates.append(NodeTemplate(for: uiFramework, config: config))
         }
-        if let framework = config.uiFrameworks.first(where: { $0.isSwiftUI }) {
-            templates.append(NodeTemplate(config: config, framework: framework))
+        if let uiFramework = config.uiFramework(for: .uiKit) {
+            templates.append(NodeTemplate(for: uiFramework, config: config))
+        }
+        if let uiFramework = config.uiFramework(for: .swiftUI) {
+            templates.append(NodeTemplate(for: uiFramework, config: config))
+        }
+        if let uiFramework = config.uiFramework(for: .custom) {
+            templates.append(NodeTemplate(for: uiFramework, config: config))
         }
         if config.isViewInjectedNodeEnabled {
             templates.append(NodeViewInjectedTemplate(config: config))

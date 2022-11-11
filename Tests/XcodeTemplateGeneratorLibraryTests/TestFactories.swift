@@ -148,21 +148,21 @@ extension TestFactories {
 
     func givenSwiftUIFramework() -> UIFramework {
         .swiftUI(UIFramework.Options(
-            viewControllerMethods: "<viewControllerMethods>",
-            viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>",
+            viewControllerSuperParameters: "<viewControllerSuperParameters>",
             viewControllerProperties: "<viewControllerProperties>",
-            viewControllerSuperParameters: "<viewControllerSuperParameters>")
+            viewControllerMethods: "<viewControllerMethods>",
+            viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>")
         )
     }
 
     func givenFramework() -> UIFramework {
         .custom(UIFramework.CustomOptions(
             uiFrameworkImport: "<uiFrameworkImport>",
-            viewControllerMethods: "<viewControllerMethods>",
-            viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>",
-            viewControllerProperties: "<viewControllerProperties>",
+            viewControllerType: "<viewControllerType>",
             viewControllerSuperParameters: "<viewControllerSuperParameters>",
-            viewControllerType: "<viewControllerType>")
+            viewControllerProperties: "<viewControllerProperties>",
+            viewControllerMethods: "<viewControllerMethods>",
+            viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>")
         )
     }
 }

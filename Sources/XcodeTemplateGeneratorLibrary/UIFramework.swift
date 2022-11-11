@@ -7,6 +7,52 @@
 
 public enum UIFramework: Equatable, Decodable, CustomStringConvertible, Encodable {
 
+    public struct Options: Equatable, Decodable, Encodable {
+
+        public var viewControllerSuperParameters: String
+        public var viewControllerProperties: String
+        public var viewControllerMethods: String
+        public var viewControllerMethodsForRootNode: String
+
+        public init(
+            viewControllerSuperParameters: String,
+            viewControllerProperties: String,
+            viewControllerMethods: String,
+            viewControllerMethodsForRootNode: String
+        ) {
+            self.viewControllerSuperParameters = viewControllerSuperParameters
+            self.viewControllerProperties = viewControllerProperties
+            self.viewControllerMethods = viewControllerMethods
+            self.viewControllerMethodsForRootNode = viewControllerMethodsForRootNode
+        }
+    }
+
+    public struct CustomOptions: Equatable, Decodable, Encodable {
+
+        public var uiFrameworkImport: String
+        public var viewControllerType: String
+        public var viewControllerSuperParameters: String
+        public var viewControllerProperties: String
+        public var viewControllerMethods: String
+        public var viewControllerMethodsForRootNode: String
+
+        public init(
+            uiFrameworkImport: String,
+            viewControllerType: String,
+            viewControllerSuperParameters: String,
+            viewControllerProperties: String,
+            viewControllerMethods: String,
+            viewControllerMethodsForRootNode: String
+        ) {
+            self.uiFrameworkImport = uiFrameworkImport
+            self.viewControllerType = viewControllerType
+            self.viewControllerSuperParameters = viewControllerSuperParameters
+            self.viewControllerProperties = viewControllerProperties
+            self.viewControllerMethods = viewControllerMethods
+            self.viewControllerMethodsForRootNode = viewControllerMethodsForRootNode
+        }
+    }
+
     case appKit(Options)
     case uiKit(Options)
     case swiftUI(Options)
@@ -22,29 +68,25 @@ public enum UIFramework: Equatable, Decodable, CustomStringConvertible, Encodabl
 
 internal extension UIFramework {
 
-    static let appKitWithDefaultOptions: UIFramework = .appKit(.appKitDefaultOptions)
-    static let uiKitWithDefaultOptions: UIFramework = .uiKit(.uiKitDefaultOptions)
-    static let swiftUIWithDefaultOptions: UIFramework = .swiftUI(.swiftUIDefaultOptions)
-
-    static let allCasesWithDefaultOptions: [UIFramework] = [
-        .appKitWithDefaultOptions,
-        .uiKitWithDefaultOptions,
-        .swiftUIWithDefaultOptions
-    ]
-
-    var isUIKit: Bool {
-        if case .uiKit = self {
-            return true
-        } else {
-            return false
-        }
+    enum Kind: Equatable {
+        case appKit
+        case uiKit
+        case swiftUI
+        case custom
     }
 
-    var isSwiftUI: Bool {
-        if case .swiftUI = self {
-            return true
-        } else {
-            return false
+    var name: String { description }
+
+    var kind: Kind {
+        switch self {
+        case .appKit:
+            return .appKit
+        case .uiKit:
+            return .uiKit
+        case .swiftUI:
+            return .swiftUI
+        case .custom:
+            return .custom
         }
     }
 
@@ -68,19 +110,33 @@ internal extension UIFramework {
         case .uiKit:
             return "UIViewController"
         case .swiftUI:
-            return "View"
+            return "AbstractViewHostingController"
         case let .custom(options):
             return options.viewControllerType
         }
     }
 
+    var viewControllerSuperParameters: String {
+        switch self {
+        case let .appKit(options), let .uiKit(options), let .swiftUI(options):
+            return options.viewControllerSuperParameters
+        case let .custom(options):
+            return options.viewControllerSuperParameters
+        }
+    }
+
+    var viewControllerProperties: String {
+        switch self {
+        case let .appKit(options), let .uiKit(options), let .swiftUI(options):
+            return options.viewControllerProperties
+        case let .custom(options):
+            return options.viewControllerProperties
+        }
+    }
+
     var viewControllerMethods: String {
         switch self {
-        case let .appKit(options):
-            return options.viewControllerMethods
-        case let .uiKit(options):
-            return options.viewControllerMethods
-        case let .swiftUI(options):
+        case let .appKit(options), let .uiKit(options), let .swiftUI(options):
             return options.viewControllerMethods
         case let .custom(options):
             return options.viewControllerMethods
@@ -89,40 +145,10 @@ internal extension UIFramework {
 
     var viewControllerMethodsForRootNode: String {
         switch self {
-        case let .appKit(options):
-            return options.viewControllerMethodsForRootNode
-        case let .uiKit(options):
-            return options.viewControllerMethodsForRootNode
-        case let .swiftUI(options):
+        case let .appKit(options), let .uiKit(options), let .swiftUI(options):
             return options.viewControllerMethodsForRootNode
         case let .custom(options):
             return options.viewControllerMethodsForRootNode
-        }
-    }
-
-    var viewControllerProperties: String {
-        switch self {
-        case let .appKit(options):
-            return options.viewControllerProperties
-        case let .uiKit(options):
-            return options.viewControllerProperties
-        case let .swiftUI(options):
-            return options.viewControllerProperties
-        case let .custom(options):
-            return options.viewControllerProperties
-        }
-    }
-
-    var viewControllerSuperParameters: String {
-        switch self {
-        case let .appKit(options):
-            return options.viewControllerSuperParameters
-        case let .uiKit(options):
-            return options.viewControllerSuperParameters
-        case let .swiftUI(options):
-            return options.viewControllerSuperParameters
-        case let .custom(options):
-            return options.viewControllerSuperParameters
         }
     }
 }
