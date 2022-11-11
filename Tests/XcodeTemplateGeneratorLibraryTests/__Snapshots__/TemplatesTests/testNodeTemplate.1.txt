@@ -35,7 +35,7 @@
     - viewControllableType: "<viewControllableType>"
     ▿ viewControllerImports: 3 elements
       - "<baseImports>"
-      - "<viewControllerImports>"
+      - "<uiFrameworkImport>"
       - "Nodes"
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"

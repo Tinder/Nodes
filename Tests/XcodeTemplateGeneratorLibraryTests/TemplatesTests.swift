@@ -12,12 +12,12 @@ import XCTest
 final class TemplatesTests: XCTestCase, TestFactories {
 
     func testNodeTemplate() {
-        assertSnapshot(matching: NodeTemplate(config: givenConfig()),
+        assertSnapshot(matching: NodeTemplate(config: givenConfig(), framework: givenFramework()),
                        as: .dump)
     }
 
     func testNodeSwiftUITemplate() {
-        assertSnapshot(matching: NodeTemplate(config: givenConfig(), swiftUI: true),
+        assertSnapshot(matching: NodeTemplate(config: givenSwiftUIConfig(), framework: givenSwiftUIFramework()),
                        as: .dump)
     }
 

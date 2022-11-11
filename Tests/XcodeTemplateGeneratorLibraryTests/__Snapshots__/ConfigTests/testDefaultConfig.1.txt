@@ -7,33 +7,24 @@
     - "NeedleFoundation"
   - fileHeader: "//___FILEHEADER___"
   - flowProperties: 0 elements
-  ▿ includedTemplates: 7 elements
-    - "Node"
-    - "NodeSwiftUI"
-    - "NodeViewInjected"
-    - "PluginListNode"
-    - "PluginNode"
-    - "Plugin"
-    - "Worker"
+  - isViewInjectedNodeEnabled: true
   - publisherFailureType: ", Never"
   - publisherType: "AnyPublisher"
-  - rootViewControllerMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
-  - rootViewControllerMethodsSwiftUI: "override func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}"
+  ▿ uiFrameworks: 2 elements
+    ▿ UIKit
+      ▿ uiKit: Options
+        - viewControllerMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
+        - viewControllerMethodsForRootNode: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
+        - viewControllerProperties: ""
+        - viewControllerSuperParameters: "nibName: nil, bundle: nil"
+    ▿ SwiftUI
+      ▿ swiftUI: Options
+        - viewControllerMethods: ""
+        - viewControllerMethodsForRootNode: "override func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}"
+        - viewControllerProperties: ""
+        - viewControllerSuperParameters: ""
   - viewControllableFlowType: "ViewControllableFlow"
   - viewControllableType: "ViewControllable"
-  ▿ viewControllerImports: 1 member
-    - "UIKit"
-  ▿ viewControllerImportsSwiftUI: 1 member
-    - "SwiftUI"
-  - viewControllerMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
-  - viewControllerMethodsSwiftUI: ""
-  - viewControllerProperties: ""
-  - viewControllerPropertiesSwiftUI: ""
-  - viewControllerSuperParameters: "nibName: nil, bundle: nil"
-  - viewControllerType: "UIViewController"
   - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
-  - viewControllerViewStateImports: 0 members
-  - viewControllerWithoutViewStateMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}"
-  - viewControllerWithoutViewStateMethodsSwiftUI: ""
   - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
   - viewStatePublisher: "Just(.initialState).eraseToAnyPublisher()"

@@ -5,7 +5,7 @@
 //  Created by Christopher Fuller on 5/31/21.
 //
 
-import XcodeTemplateGeneratorLibrary
+@testable import XcodeTemplateGeneratorLibrary
 
 protocol TestFactories {}
 
@@ -16,32 +16,27 @@ extension TestFactories {
 
     func givenConfig() -> Config {
         var config: Config = .init()
-        config.includedTemplates = ["<includedTemplates>"]
+        config.uiFrameworks = [givenFramework()]
+        config.isViewInjectedNodeEnabled = true
         config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImports>"]
         config.diGraphImports = ["<diGraphImports>"]
-        config.viewControllerImports = ["<viewControllerImports>"]
-        config.viewControllerImportsSwiftUI = ["<viewControllerImportsSwiftUI>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
-        config.viewControllerType = "<viewControllerType>"
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableFlowType = "<viewControllableFlowType>"
-        config.viewControllerSuperParameters = "<viewControllerSuperParameters>"
-        config.viewControllerProperties = "<viewControllerProperties>"
-        config.viewControllerPropertiesSwiftUI = "<viewControllerPropertiesSwiftUI>"
-        config.viewControllerMethods = "<viewControllerMethods>"
-        config.viewControllerMethodsSwiftUI = "<viewControllerMethodsSwiftUI>"
-        config.rootViewControllerMethods = "<rootViewControllerMethods>"
-        config.rootViewControllerMethodsSwiftUI = "<rootViewControllerMethodsSwiftUI>"
-        config.viewControllerWithoutViewStateMethods = "<viewControllerWithoutViewStateMethods>"
-        config.viewControllerWithoutViewStateMethodsSwiftUI = "<viewControllerWithoutViewStateMethodsSwiftUI>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
         config.viewStatePublisher = "<viewStatePublisher>"
         config.viewStateOperators = "<viewStateOperators>"
         config.publisherType = "<publisherType>"
         config.publisherFailureType = "<publisherFailureType>"
         config.cancellableType = "<cancellableType>"
+        return config
+    }
+
+    func givenSwiftUIConfig() -> Config {
+        var config: Config = givenConfig()
+        config.uiFrameworks = [givenSwiftUIFramework()]
         return config
     }
 
@@ -148,6 +143,26 @@ extension TestFactories {
             workerName: "<workerName>",
             workerImports: ["<workerImports>"],
             cancellableType: "<cancellableType>"
+        )
+    }
+
+    func givenSwiftUIFramework() -> UIFramework {
+        .swiftUI(UIFramework.Options(
+            viewControllerMethods: "<viewControllerMethods>",
+            viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>",
+            viewControllerProperties: "<viewControllerProperties>",
+            viewControllerSuperParameters: "<viewControllerSuperParameters>")
+        )
+    }
+
+    func givenFramework() -> UIFramework {
+        .custom(UIFramework.CustomOptions(
+            uiFrameworkImport: "<uiFrameworkImport>",
+            viewControllerMethods: "<viewControllerMethods>",
+            viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>",
+            viewControllerProperties: "<viewControllerProperties>",
+            viewControllerSuperParameters: "<viewControllerSuperParameters>",
+            viewControllerType: "<viewControllerType>")
         )
     }
 }

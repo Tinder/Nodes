@@ -7,7 +7,7 @@
 
 extension XcodeTemplates {
 
-    public struct Variable: Equatable, Decodable {
+    public struct Variable: Equatable, Decodable, Encodable {
 
         public var name: String
         public var type: String

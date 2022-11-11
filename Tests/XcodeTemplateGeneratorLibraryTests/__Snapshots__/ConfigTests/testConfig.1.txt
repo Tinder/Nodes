@@ -21,30 +21,24 @@
     ▿ Variable
       - name: "flowProperties-name-2"
       - type: "flowProperties-type-2"
-  ▿ includedTemplates: 2 elements
-    - "includedTemplates-1"
-    - "includedTemplates-2"
+  - isViewInjectedNodeEnabled: true
   - publisherFailureType: "publisherFailureType"
   - publisherType: "publisherType"
-  - rootViewControllerMethods: "rootViewControllerMethods"
-  - rootViewControllerMethodsSwiftUI: "rootViewControllerMethodsSwiftUI"
+  ▿ uiFrameworks: 2 elements
+    ▿ UIKit
+      ▿ uiKit: Options
+        - viewControllerMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
+        - viewControllerMethodsForRootNode: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
+        - viewControllerProperties: ""
+        - viewControllerSuperParameters: "nibName: nil, bundle: nil"
+    ▿ SwiftUI
+      ▿ swiftUI: Options
+        - viewControllerMethods: ""
+        - viewControllerMethodsForRootNode: "override func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}"
+        - viewControllerProperties: ""
+        - viewControllerSuperParameters: ""
   - viewControllableFlowType: "viewControllableFlowType"
   - viewControllableType: "viewControllableType"
-  ▿ viewControllerImports: 2 members
-    - "viewControllerImports-1"
-    - "viewControllerImports-2"
-  ▿ viewControllerImportsSwiftUI: 2 members
-    - "viewControllerImportsSwiftUI-1"
-    - "viewControllerImportsSwiftUI-2"
-  - viewControllerMethods: "viewControllerMethods"
-  - viewControllerMethodsSwiftUI: "viewControllerMethodsSwiftUI"
-  - viewControllerProperties: "viewControllerProperties"
-  - viewControllerPropertiesSwiftUI: "viewControllerPropertiesSwiftUI"
-  - viewControllerSuperParameters: "viewControllerSuperParameters"
-  - viewControllerType: "viewControllerType"
   - viewControllerUpdateComment: "viewControllerUpdateComment"
-  - viewControllerViewStateImports: 0 members
-  - viewControllerWithoutViewStateMethods: "viewControllerWithoutViewStateMethods"
-  - viewControllerWithoutViewStateMethodsSwiftUI: "viewControllerWithoutViewStateMethodsSwiftUI"
   - viewStateOperators: "viewStateOperators"
   - viewStatePublisher: "viewStatePublisher"

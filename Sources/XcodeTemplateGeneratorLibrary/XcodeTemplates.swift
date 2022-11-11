@@ -13,27 +13,21 @@ public final class XcodeTemplates {
 
     public init(config: Config) {
         var templates: [XcodeTemplate] = []
-        if config.includedTemplates.contains("Node") {
-            templates.append(NodeTemplate(config: config))
+        if let framework = config.uiFrameworks.first(where: { $0.isUIKit }) {
+            templates.append(NodeTemplate(config: config, framework: framework))
         }
-        if config.includedTemplates.contains("NodeSwiftUI") {
-            templates.append(NodeTemplate(config: config, swiftUI: true))
+        if let framework = config.uiFrameworks.first(where: { $0.isSwiftUI }) {
+            templates.append(NodeTemplate(config: config, framework: framework))
         }
-        if config.includedTemplates.contains("NodeViewInjected") {
+        if config.isViewInjectedNodeEnabled {
             templates.append(NodeViewInjectedTemplate(config: config))
         }
-        if config.includedTemplates.contains("PluginListNode") {
-            templates.append(PluginListNodeTemplate(config: config))
-        }
-        if config.includedTemplates.contains("PluginNode") {
-            templates.append(PluginNodeTemplate(config: config))
-        }
-        if config.includedTemplates.contains("Plugin") {
-            templates.append(PluginTemplate(config: config))
-        }
-        if config.includedTemplates.contains("Worker") {
-            templates.append(WorkerTemplate(config: config))
-        }
+        templates += [
+            PluginListNodeTemplate(config: config),
+            PluginNodeTemplate(config: config),
+            PluginTemplate(config: config),
+            WorkerTemplate(config: config)
+        ]
         self.templates = templates
     }
 
