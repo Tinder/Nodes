@@ -11,13 +11,23 @@ import XCTest
 
 final class TemplatesTests: XCTestCase, TestFactories {
 
-    func testNodeTemplate() {
-        assertSnapshot(matching: NodeTemplate(for: givenFramework(), config: givenConfig()),
+    func testNodeTemplateForAppKit() {
+        assertSnapshot(matching: NodeTemplate(for: givenFramework(for: .appKit), config: givenConfig()),
                        as: .dump)
     }
 
-    func testNodeSwiftUITemplate() {
-        assertSnapshot(matching: NodeTemplate(for: givenSwiftUIFramework(), config: givenSwiftUIConfig()),
+    func testNodeTemplateForUIKit() {
+        assertSnapshot(matching: NodeTemplate(for: givenFramework(for: .uiKit), config: givenConfig()),
+                       as: .dump)
+    }
+
+    func testNodeTemplateForSwiftUI() {
+        assertSnapshot(matching: NodeTemplate(for: givenFramework(for: .swiftUI), config: givenConfig()),
+                       as: .dump)
+    }
+
+    func testNodeTemplateForCustomFramework() {
+        assertSnapshot(matching: NodeTemplate(for: givenFramework(for: .custom), config: givenConfig()),
                        as: .dump)
     }
 

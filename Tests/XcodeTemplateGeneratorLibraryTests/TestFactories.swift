@@ -16,7 +16,7 @@ extension TestFactories {
 
     func givenConfig() -> Config {
         var config: Config = .init()
-        config.uiFrameworks = [givenFramework()]
+        config.uiFrameworks = []
         config.isViewInjectedNodeEnabled = true
         config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImports>"]
@@ -31,12 +31,6 @@ extension TestFactories {
         config.publisherType = "<publisherType>"
         config.publisherFailureType = "<publisherFailureType>"
         config.cancellableType = "<cancellableType>"
-        return config
-    }
-
-    func givenSwiftUIConfig() -> Config {
-        var config: Config = givenConfig()
-        config.uiFrameworks = [givenSwiftUIFramework()]
         return config
     }
 
@@ -146,23 +140,29 @@ extension TestFactories {
         )
     }
 
-    func givenSwiftUIFramework() -> UIFramework {
-        .swiftUI(UIFramework.Options(
+    func givenFramework(for kind: UIFramework.Kind) -> UIFramework {
+        let options: UIFramework.Options = .init(
             viewControllerSuperParameters: "<viewControllerSuperParameters>",
             viewControllerProperties: "<viewControllerProperties>",
             viewControllerMethods: "<viewControllerMethods>",
-            viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>")
+            viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"
         )
-    }
-
-    func givenFramework() -> UIFramework {
-        .custom(UIFramework.CustomOptions(
-            uiFrameworkImport: "<uiFrameworkImport>",
-            viewControllerType: "<viewControllerType>",
-            viewControllerSuperParameters: "<viewControllerSuperParameters>",
-            viewControllerProperties: "<viewControllerProperties>",
-            viewControllerMethods: "<viewControllerMethods>",
-            viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>")
-        )
+        switch kind {
+        case .appKit:
+            return .appKit(options: options)
+        case .uiKit:
+            return .uiKit(options: options)
+        case .swiftUI:
+            return .swiftUI(options: options)
+        case .custom:
+            return .custom(options: UIFramework.CustomOptions(
+                uiFrameworkImport: "<uiFrameworkImport>",
+                viewControllerType: "<viewControllerType>",
+                viewControllerSuperParameters: options.viewControllerSuperParameters,
+                viewControllerProperties: options.viewControllerProperties,
+                viewControllerMethods: options.viewControllerMethods,
+                viewControllerMethodsForRootNode: options.viewControllerMethodsForRootNode)
+            )
+        }
     }
 }

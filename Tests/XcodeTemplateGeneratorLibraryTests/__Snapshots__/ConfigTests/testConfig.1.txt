@@ -26,17 +26,19 @@
   - publisherType: "publisherType"
   ▿ uiFrameworks: 2 elements
     ▿ UIKit
-      ▿ uiKit: Options
-        - viewControllerMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
-        - viewControllerMethodsForRootNode: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
-        - viewControllerProperties: ""
-        - viewControllerSuperParameters: "nibName: nil, bundle: nil"
+      ▿ uiKit: (1 element)
+        ▿ options: Options
+          - viewControllerMethods: "viewControllerMethods"
+          - viewControllerMethodsForRootNode: "viewControllerMethodsForRootNode"
+          - viewControllerProperties: "viewControllerProperties"
+          - viewControllerSuperParameters: "viewControllerSuperParameters"
     ▿ SwiftUI
-      ▿ swiftUI: Options
-        - viewControllerMethods: ""
-        - viewControllerMethodsForRootNode: "override func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}"
-        - viewControllerProperties: ""
-        - viewControllerSuperParameters: ""
+      ▿ swiftUI: (1 element)
+        ▿ options: Options
+          - viewControllerMethods: "viewControllerMethods"
+          - viewControllerMethodsForRootNode: "viewControllerMethodsForRootNode"
+          - viewControllerProperties: "viewControllerProperties"
+          - viewControllerSuperParameters: "viewControllerSuperParameters"
   - viewControllableFlowType: "viewControllableFlowType"
   - viewControllableType: "viewControllableType"
   - viewControllerUpdateComment: "viewControllerUpdateComment"

@@ -11,7 +11,7 @@ import Yams
 
 extension XcodeTemplates {
 
-    public struct Config: Equatable, Decodable, Encodable {
+    public struct Config: Equatable, Decodable {
 
         internal static let symbolForSwiftUI: String = ""
 
@@ -72,7 +72,7 @@ extension XcodeTemplates.Config {
 
     // swiftlint:disable:next function_body_length
     public init() {
-        uiFrameworks = [.uiKit(Self.uiKitOptions()), .swiftUI(Self.swiftUIOptions())]
+        uiFrameworks = [.uiKit(options: Self.uiKitOptions()), .swiftUI(options: Self.swiftUIOptions())]
         isViewInjectedNodeEnabled = true
         fileHeader = "//___FILEHEADER___"
         baseImports = ["Combine"]
@@ -93,6 +93,15 @@ extension XcodeTemplates.Config {
         publisherType = "AnyPublisher"
         publisherFailureType = ", Never"
         cancellableType = "AnyCancellable"
+    }
+
+    private static func appKitOptions() -> UIFramework.Options {
+        UIFramework.Options(
+            viewControllerSuperParameters: "",
+            viewControllerProperties: "",
+            viewControllerMethods: "",
+            viewControllerMethodsForRootNode: ""
+        )
     }
 
     private static func uiKitOptions() -> UIFramework.Options {

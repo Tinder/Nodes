@@ -39,17 +39,17 @@ final class ConfigTests: XCTestCase {
         """
         uiFrameworks:
           - uiKit:
-            _0:
-                - viewControllerMethods: viewControllerMethods
-                - viewControllerMethodsForRootNode: viewControllerMethodsForRootNode
-                - viewControllerProperties: viewControllerProperties
-                - viewControllerSuperParameters: viewControllerSuperParameters
+              options:
+                viewControllerMethods: viewControllerMethods
+                viewControllerMethodsForRootNode: viewControllerMethodsForRootNode
+                viewControllerProperties: viewControllerProperties
+                viewControllerSuperParameters: viewControllerSuperParameters
           - swiftUI:
-            _0:
-                - viewControllerMethods: viewControllerMethods
-                - viewControllerMethodsForRootNode: viewControllerMethodsForRootNode
-                - viewControllerProperties: viewControllerProperties
-                - viewControllerSuperParameters: viewControllerSuperParameters
+              options:
+                viewControllerMethods: viewControllerMethods
+                viewControllerMethodsForRootNode: viewControllerMethodsForRootNode
+                viewControllerProperties: viewControllerProperties
+                viewControllerSuperParameters: viewControllerSuperParameters
         isViewInjectedNodeEnabled: true
         fileHeader: fileHeader
         baseImports:

@@ -1,0 +1,81 @@
+▿ NodeTemplate
+  ▿ context: NodeContext
+    ▿ builderImports: 3 elements
+      - "<baseImports>"
+      - "<diGraphImports>"
+      - "Nodes"
+    - cancellableType: "<cancellableType>"
+    ▿ contextImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
+    ▿ dependencies: 1 element
+      ▿ 2 key/value pairs
+        ▿ (2 elements)
+          - key: "name"
+          - value: "<dependenciesName>"
+        ▿ (2 elements)
+          - key: "type"
+          - value: "<dependenciesType>"
+    - fileHeader: "<fileHeader>"
+    ▿ flowImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
+    ▿ flowProperties: 1 element
+      ▿ 2 key/value pairs
+        ▿ (2 elements)
+          - key: "name"
+          - value: "<flowPropertiesName>"
+        ▿ (2 elements)
+          - key: "type"
+          - value: "<flowPropertiesType>"
+    - nodeName: "___VARIABLE_productName___"
+    - publisherFailureType: "<publisherFailureType>"
+    - publisherType: "<publisherType>"
+    - viewControllableFlowType: "<viewControllableFlowType>"
+    - viewControllableType: "<viewControllableType>"
+    ▿ viewControllerImports: 3 elements
+      - "<baseImports>"
+      - "AppKit"
+      - "Nodes"
+    - viewControllerMethods: "<viewControllerMethods>"
+    - viewControllerProperties: "<viewControllerProperties>"
+    - viewControllerSuperParameters: "<viewControllerSuperParameters>"
+    - viewControllerType: "NSViewController"
+    - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+    - viewStateOperators: "<viewStateOperators>"
+    - viewStatePublisher: "<viewStatePublisher>"
+    ▿ workerImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
+    - workerName: "___VARIABLE_productName___ViewState"
+  ▿ filenames: 1 key/value pair
+    ▿ (2 elements)
+      - key: "Worker"
+      - value: "ViewStateWorker"
+  - name: "Node - AppKit"
+  ▿ propertyList: XcodeTemplatePropertyList
+    ▿ allowedTypes: 1 element
+      - "public.swift-source"
+    - description: "The source files implementing a Node."
+    - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
+    - mainTemplateFile: "___FILEBASENAME___.swift"
+    ▿ options: 1 element
+      ▿ Option
+        - default: Optional<String>.none
+        - description: "The name of the Node"
+        - identifier: "productName"
+        - name: "Node name:"
+        - notPersisted: true
+        - required: true
+        - type: "text"
+    - platforms: 0 elements
+    - sortOrder: 1
+    - summary: "The source files implementing a Node"
+    - supportsSwiftPackage: true
+  ▿ stencils: 6 elements
+    - "Analytics"
+    - "Builder"
+    - "Context"
+    - "Flow"
+    - "ViewController"
+    - "Worker"

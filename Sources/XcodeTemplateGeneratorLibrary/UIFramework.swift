@@ -5,9 +5,10 @@
 //  Created by Garric Nahapetian on 11/10/22.
 //
 
-public enum UIFramework: Equatable, Decodable, CustomStringConvertible, Encodable {
 
-    public struct Options: Equatable, Decodable, Encodable {
+public enum UIFramework: Equatable, Decodable, CustomStringConvertible {
+
+    public struct Options: Equatable, Decodable {
 
         public var viewControllerSuperParameters: String
         public var viewControllerProperties: String
@@ -27,7 +28,7 @@ public enum UIFramework: Equatable, Decodable, CustomStringConvertible, Encodabl
         }
     }
 
-    public struct CustomOptions: Equatable, Decodable, Encodable {
+    public struct CustomOptions: Equatable, Decodable {
 
         public var uiFrameworkImport: String
         public var viewControllerType: String
@@ -53,10 +54,10 @@ public enum UIFramework: Equatable, Decodable, CustomStringConvertible, Encodabl
         }
     }
 
-    case appKit(Options)
-    case uiKit(Options)
-    case swiftUI(Options)
-    case custom(CustomOptions)
+    case appKit(options: Options)
+    case uiKit(options: Options)
+    case swiftUI(options: Options)
+    case custom(options: CustomOptions)
 
     public var description: String {
         guard case .custom = self else {
