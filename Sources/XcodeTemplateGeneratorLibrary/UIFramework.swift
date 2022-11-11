@@ -54,6 +54,13 @@ public enum UIFramework: Equatable, Decodable, CustomStringConvertible {
         }
     }
 
+    public enum Kind: Equatable {
+        case appKit
+        case uiKit
+        case swiftUI
+        case custom
+    }
+
     case appKit(options: Options)
     case uiKit(options: Options)
     case swiftUI(options: Options)
@@ -65,20 +72,8 @@ public enum UIFramework: Equatable, Decodable, CustomStringConvertible {
         }
         return "Custom"
     }
-}
 
-internal extension UIFramework {
-
-    enum Kind: Equatable {
-        case appKit
-        case uiKit
-        case swiftUI
-        case custom
-    }
-
-    var name: String { description }
-
-    var kind: Kind {
+    public var kind: Kind {
         switch self {
         case .appKit:
             return .appKit
@@ -90,6 +85,23 @@ internal extension UIFramework {
             return .custom
         }
     }
+
+    public static func appKit() -> UIFramework {
+        .appKit(options: .appKitDefaultOptions())
+    }
+
+    public static func uiKit() -> UIFramework {
+        .uiKit(options: .uiKitDefaultOptions())
+    }
+
+    public static func swiftUI() -> UIFramework {
+        .swiftUI(options: .swiftUIDefaultOptions())
+    }
+}
+
+public extension UIFramework {
+
+    var name: String { description }
 
     var uiFrameworkImport: String {
         switch self {
@@ -151,5 +163,75 @@ internal extension UIFramework {
         case let .custom(options):
             return options.viewControllerMethodsForRootNode
         }
+    }
+}
+
+extension UIFramework.Options {
+
+    public static func appKitDefaultOptions() -> UIFramework.Options {
+        UIFramework.Options(
+            viewControllerSuperParameters: "",
+            viewControllerProperties: "",
+            viewControllerMethods: "",
+            viewControllerMethodsForRootNode: ""
+        )
+    }
+
+    public static func uiKitDefaultOptions() -> UIFramework.Options {
+        UIFramework.Options(
+            viewControllerSuperParameters: "nibName: nil, bundle: nil",
+            viewControllerProperties: "",
+            viewControllerMethods: """
+                override func viewDidLoad() {
+                    super.viewDidLoad()
+                    view.backgroundColor = .systemBackground
+                }
+
+                override func viewWillAppear(_ animated: Bool) {
+                    super.viewWillAppear(animated)
+                    observe(viewState).store(in: &cancellables)
+                }
+
+                override func viewWillDisappear(_ animated: Bool) {
+                    super.viewWillDisappear(animated)
+                    cancellables.removeAll()
+                }
+                """,
+            viewControllerMethodsForRootNode: """
+                override func viewDidLoad() {
+                    super.viewDidLoad()
+                    view.backgroundColor = .systemBackground
+                }
+
+                override func viewWillAppear(_ animated: Bool) {
+                    super.viewWillAppear(animated)
+                    observe(viewState).store(in: &cancellables)
+                }
+
+                override func viewDidAppear(_ animated: Bool) {
+                    super.viewDidAppear(animated)
+                    receiver?.viewDidAppear()
+                }
+
+                override func viewWillDisappear(_ animated: Bool) {
+                    super.viewWillDisappear(animated)
+                    cancellables.removeAll()
+                }
+                """
+        )
+    }
+
+    public static func swiftUIDefaultOptions() -> UIFramework.Options {
+        UIFramework.Options(
+            viewControllerSuperParameters: "",
+            viewControllerProperties: "",
+            viewControllerMethods: "",
+            viewControllerMethodsForRootNode: """
+                override func viewDidAppear(_ animated: Bool) {
+                    super.viewDidAppear(animated)
+                    receiver?.viewDidAppear()
+                }
+                """
+        )
     }
 }

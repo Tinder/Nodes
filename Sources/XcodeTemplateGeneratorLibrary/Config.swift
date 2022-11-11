@@ -72,7 +72,7 @@ extension XcodeTemplates.Config {
 
     // swiftlint:disable:next function_body_length
     public init() {
-        uiFrameworks = [.uiKit(options: Self.uiKitOptions()), .swiftUI(options: Self.swiftUIOptions())]
+        uiFrameworks = [.uiKit(), .swiftUI()]
         isViewInjectedNodeEnabled = true
         fileHeader = "//___FILEHEADER___"
         baseImports = ["Combine"]
@@ -93,73 +93,6 @@ extension XcodeTemplates.Config {
         publisherType = "AnyPublisher"
         publisherFailureType = ", Never"
         cancellableType = "AnyCancellable"
-    }
-
-    private static func appKitOptions() -> UIFramework.Options {
-        UIFramework.Options(
-            viewControllerSuperParameters: "",
-            viewControllerProperties: "",
-            viewControllerMethods: "",
-            viewControllerMethodsForRootNode: ""
-        )
-    }
-
-    private static func uiKitOptions() -> UIFramework.Options {
-        UIFramework.Options(
-            viewControllerSuperParameters: "nibName: nil, bundle: nil",
-            viewControllerProperties: "",
-            viewControllerMethods: """
-                override func viewDidLoad() {
-                    super.viewDidLoad()
-                    view.backgroundColor = .systemBackground
-                }
-                
-                override func viewWillAppear(_ animated: Bool) {
-                    super.viewWillAppear(animated)
-                    observe(viewState).store(in: &cancellables)
-                }
-                
-                override func viewWillDisappear(_ animated: Bool) {
-                    super.viewWillDisappear(animated)
-                    cancellables.removeAll()
-                }
-                """,
-            viewControllerMethodsForRootNode: """
-                override func viewDidLoad() {
-                    super.viewDidLoad()
-                    view.backgroundColor = .systemBackground
-                }
-                
-                override func viewWillAppear(_ animated: Bool) {
-                    super.viewWillAppear(animated)
-                    observe(viewState).store(in: &cancellables)
-                }
-                
-                override func viewDidAppear(_ animated: Bool) {
-                    super.viewDidAppear(animated)
-                    receiver?.viewDidAppear()
-                }
-                
-                override func viewWillDisappear(_ animated: Bool) {
-                    super.viewWillDisappear(animated)
-                    cancellables.removeAll()
-                }
-                """
-        )
-    }
-
-    private static func swiftUIOptions() -> UIFramework.Options {
-        UIFramework.Options(
-            viewControllerSuperParameters: "",
-            viewControllerProperties: "",
-            viewControllerMethods: "",
-            viewControllerMethodsForRootNode: """
-                override func viewDidAppear(_ animated: Bool) {
-                    super.viewDidAppear(animated)
-                    receiver?.viewDidAppear()
-                }
-                """
-        )
     }
 }
 
