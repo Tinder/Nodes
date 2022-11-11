@@ -7,8 +7,10 @@
 
 import Nimble
 import SnapshotTesting
-import XcodeTemplateGeneratorLibrary
+@testable import XcodeTemplateGeneratorLibrary
 import XCTest
+
+import Yams
 
 final class ConfigTests: XCTestCase {
 
@@ -33,6 +35,32 @@ final class ConfigTests: XCTestCase {
 
     func testDefaultConfig() throws {
         assertSnapshot(matching: Config(), as: .dump)
+    }
+
+    func testFoo() throws {
+        let foo = XcodeTemplates.Config()
+        let bar = try YAMLEncoder().encode(foo)
+        print(bar)
+    }
+
+    func testEncoding() throws {
+        let yaml: String = """
+            uiFrameworks:
+            - kind: UIKit
+              viewControllerSuperParameters: ''
+              viewControllerProperties: ''
+              viewControllerMethods: ''
+              viewControllerMethodsForRootNode: ''
+            - kind:
+                custom:
+                  viewControllerType: ''
+              viewControllerSuperParameters: ''
+              viewControllerProperties: ''
+              viewControllerMethods: ''
+              viewControllerMethodsForRootNode: ''
+            """
+        let config = try YAMLDecoder().decode(Config.self, from: Data(yaml.utf8))
+        dump(config.uiFrameworks)
     }
 
     private func givenConfig() -> String {
@@ -78,4 +106,6 @@ final class ConfigTests: XCTestCase {
         cancellableType: cancellableType
         """
     }
+
+
 }

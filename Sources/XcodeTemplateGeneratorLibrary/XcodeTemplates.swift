@@ -12,19 +12,9 @@ public final class XcodeTemplates {
     private let templates: [XcodeTemplate]
 
     public init(config: Config) {
-        var templates: [XcodeTemplate] = []
-        if let uiFramework = config.uiFramework(for: .appKit) {
-            templates.append(NodeTemplate(for: uiFramework, config: config))
-        }
-        if let uiFramework = config.uiFramework(for: .uiKit) {
-            templates.append(NodeTemplate(for: uiFramework, config: config))
-        }
-        if let uiFramework = config.uiFramework(for: .swiftUI) {
-            templates.append(NodeTemplate(for: uiFramework, config: config))
-        }
-        if let uiFramework = config.uiFramework(for: .custom) {
-            templates.append(NodeTemplate(for: uiFramework, config: config))
-        }
+        var templates: [XcodeTemplate] = UIFramework.Kind.allCases
+            .compactMap { try? config.uiFramework(for: $0) }
+            .map { NodeTemplate(for: $0, config: config) }
         if config.isViewInjectedNodeEnabled {
             templates.append(NodeViewInjectedTemplate(config: config))
         }

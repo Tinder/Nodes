@@ -11,9 +11,13 @@ import Yams
 
 extension XcodeTemplates {
 
-    public struct Config: Equatable, Decodable {
+    public struct Config: Equatable, Decodable, Encodable {
 
         internal static let symbolForSwiftUI: String = ""
+
+        public enum ConfigError: Error {
+            case uiFrameworkNotDefined(UIFramework.Kind)
+        }
 
         // swiftlint:disable:next nesting
         internal enum ImportsType {
@@ -57,12 +61,18 @@ extension XcodeTemplates {
             case .diGraph:
                 return nodesImports.union(diGraphImports)
             case let .viewController(framework):
-                return nodesImports.union([framework.uiFrameworkImport])
+                guard let uiFrameworkImport: String = framework.uiFrameworkImport else {
+                    return nodesImports
+                }
+                return nodesImports.union([uiFrameworkImport])
             }
         }
 
-        internal func uiFramework(for kind: UIFramework.Kind) -> UIFramework? {
-            uiFrameworks.first { $0.kind == kind }
+        internal func uiFramework(for kind: UIFramework.Kind) throws -> UIFramework {
+            guard let uiFramework: UIFramework = uiFrameworks.first(where: { $0.kind == kind }) else {
+                throw ConfigError.uiFrameworkNotDefined(kind)
+            }
+            return uiFramework
         }
     }
 }
@@ -72,7 +82,7 @@ extension XcodeTemplates.Config {
 
     // swiftlint:disable:next function_body_length
     public init() {
-        uiFrameworks = [.uiKit(), .swiftUI()]
+        uiFrameworks = [UIFramework(kind: .uiKit), UIFramework(kind: .swiftUI)]
         isViewInjectedNodeEnabled = true
         fileHeader = "//___FILEHEADER___"
         baseImports = ["Combine"]

@@ -141,28 +141,6 @@ extension TestFactories {
     }
 
     func givenFramework(for kind: UIFramework.Kind) -> UIFramework {
-        let options: UIFramework.Options = .init(
-            viewControllerSuperParameters: "<viewControllerSuperParameters>",
-            viewControllerProperties: "<viewControllerProperties>",
-            viewControllerMethods: "<viewControllerMethods>",
-            viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"
-        )
-        switch kind {
-        case .appKit:
-            return .appKit(options: options)
-        case .uiKit:
-            return .uiKit(options: options)
-        case .swiftUI:
-            return .swiftUI(options: options)
-        case .custom:
-            return .custom(options: UIFramework.CustomOptions(
-                uiFrameworkImport: "<uiFrameworkImport>",
-                viewControllerType: "<viewControllerType>",
-                viewControllerSuperParameters: options.viewControllerSuperParameters,
-                viewControllerProperties: options.viewControllerProperties,
-                viewControllerMethods: options.viewControllerMethods,
-                viewControllerMethodsForRootNode: options.viewControllerMethodsForRootNode)
-            )
-        }
+        UIFramework(kind: kind)
     }
 }
