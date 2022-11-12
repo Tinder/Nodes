@@ -70,10 +70,10 @@ public struct UIFramework: Equatable, Decodable {
 
         public init(from decoder: Decoder) throws {
             let container: SingleValueDecodingContainer
-            let kind: String
+            let framework: String
             do {
                 container = try decoder.singleValueContainer()
-                kind = try container.decode(String.self)
+                framework = try container.decode(String.self)
             } catch {
                 let container: KeyedDecodingContainer<CodingKeys> = try decoder.container(keyedBy: CodingKeys.self)
                 var allKeys: ArraySlice<CodingKeys> = .init(container.allKeys)
@@ -104,12 +104,12 @@ public struct UIFramework: Equatable, Decodable {
                 }
                 return
             }
-            switch kind {
-            case "AppKit":
+            switch framework {
+            case UIFramework.Framework.appKit.name:
                 self = .appKit
-            case "UIKit":
+            case UIFramework.Framework.uiKit.name:
                 self = .uiKit
-            case "SwiftUI":
+            case UIFramework.Framework.swiftUI.name:
                 self = .swiftUI
             default:
                 let debugDescription: String = "Custom framework must be object."
@@ -122,6 +122,7 @@ public struct UIFramework: Equatable, Decodable {
     }
 
     public let framework: Framework
+
     public var viewControllerSuperParameters: String
     public var viewControllerProperties: String
     public var viewControllerMethods: String
