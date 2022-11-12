@@ -11,7 +11,7 @@ import Yams
 
 extension XcodeTemplates {
 
-    public struct Config: Equatable, Decodable, Encodable {
+    public struct Config: Equatable, Decodable {
 
         internal static let symbolForSwiftUI: String = ""
 

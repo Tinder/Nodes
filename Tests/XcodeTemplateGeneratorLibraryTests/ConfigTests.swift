@@ -10,8 +10,6 @@ import SnapshotTesting
 @testable import XcodeTemplateGeneratorLibrary
 import XCTest
 
-import Yams
-
 final class ConfigTests: XCTestCase {
 
     private typealias Config = XcodeTemplates.Config
@@ -37,77 +35,59 @@ final class ConfigTests: XCTestCase {
         assertSnapshot(matching: Config(), as: .dump)
     }
 
-    func testFoo() throws {
-        let foo = XcodeTemplates.Config()
-        let bar = try YAMLEncoder().encode(foo)
-        print(bar)
-    }
-
-    func testEncoding() throws {
-        let yaml: String = """
-            uiFrameworks:
-            - framework: UIKit
-              viewControllerSuperParameters: ''
-              viewControllerProperties: ''
-              viewControllerMethods: ''
-              viewControllerMethodsForRootNode: ''
-            - framework:
-                custom:
-                  name: CommandLine
-                  import: ''
-                  viewControllerType: ''
-              viewControllerSuperParameters: ''
-              viewControllerProperties: ''
-              viewControllerMethods: ''
-              viewControllerMethodsForRootNode: ''
-            """
-        let config = try YAMLDecoder().decode(Config.self, from: Data(yaml.utf8))
-        dump(config.uiFrameworks)
-    }
-
     private func givenConfig() -> String {
         """
         uiFrameworks:
-          - uiKit:
-              options:
-                viewControllerMethods: viewControllerMethods
-                viewControllerMethodsForRootNode: viewControllerMethodsForRootNode
-                viewControllerProperties: viewControllerProperties
-                viewControllerSuperParameters: viewControllerSuperParameters
-          - swiftUI:
-              options:
-                viewControllerMethods: viewControllerMethods
-                viewControllerMethodsForRootNode: viewControllerMethodsForRootNode
-                viewControllerProperties: viewControllerProperties
-                viewControllerSuperParameters: viewControllerSuperParameters
+            - framework: AppKit
+              viewControllerSuperParameters: <viewControllerSuperParameters>
+              viewControllerProperties: <viewControllerProperties>
+              viewControllerMethods: <viewControllerMethods>
+              viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode>
+            - framework: UIKit
+              viewControllerSuperParameters: <viewControllerSuperParameters>
+              viewControllerProperties: <viewControllerProperties>
+              viewControllerMethods: <viewControllerMethods>
+              viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode>
+            - framework: SwiftUI
+              viewControllerSuperParameters: <viewControllerSuperParameters>
+              viewControllerProperties: <viewControllerProperties>
+              viewControllerMethods: <viewControllerMethods>
+              viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode>
+            - framework:
+                custom:
+                  name: <name>
+                  import: <import>
+                  viewControllerType: <viewControllerType>
+              viewControllerSuperParameters: <viewControllerSuperParameters>
+              viewControllerProperties: <viewControllerProperties>
+              viewControllerMethods: <viewControllerMethods>
+              viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode>
         isViewInjectedNodeEnabled: true
-        fileHeader: fileHeader
+        fileHeader: <fileHeader>
         baseImports:
-          - baseImports-1
-          - baseImports-2
+          - <baseImports-1>
+          - <baseImports-2>
         diGraphImports:
-          - diGraphImports-1
-          - diGraphImports-2
+          - <diGraphImports-1>
+          - <diGraphImports-2>
         dependencies:
-          - name: dependencies-name-1
-            type: dependencies-type-1
-          - name: dependencies-name-2
-            type: dependencies-type-2
+          - name: <dependencies-name-1>
+            type: <dependencies-type-1>
+          - name: <dependencies-name-2>
+            type: <dependencies-type-2>
         flowProperties:
-          - name: flowProperties-name-1
-            type: flowProperties-type-1
-          - name: flowProperties-name-2
-            type: flowProperties-type-2
-        viewControllableType: viewControllableType
-        viewControllableFlowType: viewControllableFlowType
-        viewControllerUpdateComment: viewControllerUpdateComment
-        viewStatePublisher: viewStatePublisher
-        viewStateOperators: viewStateOperators
-        publisherType: publisherType
-        publisherFailureType: publisherFailureType
-        cancellableType: cancellableType
+          - name: <flowProperties-name-1>
+            type: <flowProperties-type-1>
+          - name: <flowProperties-name-2>
+            type: <flowProperties-type-2>
+        viewControllableType: <viewControllableType>
+        viewControllableFlowType: <viewControllableFlowType>
+        viewControllerUpdateComment: <viewControllerUpdateComment>
+        viewStatePublisher: <viewStatePublisher>
+        viewStateOperators: <viewStateOperators>
+        publisherType: <publisherType>
+        publisherFailureType: <publisherFailureType>
+        cancellableType: <cancellableType>
         """
     }
-
-
 }

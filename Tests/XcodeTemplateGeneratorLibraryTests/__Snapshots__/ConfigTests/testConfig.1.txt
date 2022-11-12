@@ -1,44 +1,62 @@
 ▿ Config
   ▿ baseImports: 2 members
-    - "baseImports-1"
-    - "baseImports-2"
-  - cancellableType: "cancellableType"
+    - "<baseImports-1>"
+    - "<baseImports-2>"
+  - cancellableType: "<cancellableType>"
   ▿ dependencies: 2 elements
     ▿ Variable
-      - name: "dependencies-name-1"
-      - type: "dependencies-type-1"
+      - name: "<dependencies-name-1>"
+      - type: "<dependencies-type-1>"
     ▿ Variable
-      - name: "dependencies-name-2"
-      - type: "dependencies-type-2"
+      - name: "<dependencies-name-2>"
+      - type: "<dependencies-type-2>"
   ▿ diGraphImports: 2 members
-    - "diGraphImports-1"
-    - "diGraphImports-2"
-  - fileHeader: "fileHeader"
+    - "<diGraphImports-1>"
+    - "<diGraphImports-2>"
+  - fileHeader: "<fileHeader>"
   ▿ flowProperties: 2 elements
     ▿ Variable
-      - name: "flowProperties-name-1"
-      - type: "flowProperties-type-1"
+      - name: "<flowProperties-name-1>"
+      - type: "<flowProperties-type-1>"
     ▿ Variable
-      - name: "flowProperties-name-2"
-      - type: "flowProperties-type-2"
+      - name: "<flowProperties-name-2>"
+      - type: "<flowProperties-type-2>"
   - isViewInjectedNodeEnabled: true
-  - publisherFailureType: "publisherFailureType"
-  - publisherType: "publisherType"
-  ▿ uiFrameworks: 2 elements
+  - publisherFailureType: "<publisherFailureType>"
+  - publisherType: "<publisherType>"
+  ▿ uiFrameworks: 4 elements
+    ▿ UIFramework
+      - framework: Framework.appKit
+      - viewControllerMethods: "<viewControllerMethods>"
+      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"
+      - viewControllerProperties: "<viewControllerProperties>"
+      - viewControllerSuperParameters: "<viewControllerSuperParameters>"
     ▿ UIFramework
       - framework: Framework.uiKit
-      - viewControllerMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
-      - viewControllerMethodsForRootNode: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
-      - viewControllerProperties: ""
-      - viewControllerSuperParameters: "nibName: nil, bundle: nil"
+      - viewControllerMethods: "<viewControllerMethods>"
+      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"
+      - viewControllerProperties: "<viewControllerProperties>"
+      - viewControllerSuperParameters: "<viewControllerSuperParameters>"
     ▿ UIFramework
       - framework: Framework.swiftUI
-      - viewControllerMethods: ""
-      - viewControllerMethodsForRootNode: "override func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}"
-      - viewControllerProperties: ""
-      - viewControllerSuperParameters: ""
-  - viewControllableFlowType: "viewControllableFlowType"
-  - viewControllableType: "viewControllableType"
-  - viewControllerUpdateComment: "viewControllerUpdateComment"
-  - viewStateOperators: "viewStateOperators"
-  - viewStatePublisher: "viewStatePublisher"
+      - viewControllerMethods: "<viewControllerMethods>"
+      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"
+      - viewControllerProperties: "<viewControllerProperties>"
+      - viewControllerSuperParameters: "<viewControllerSuperParameters>"
+    ▿ UIFramework
+      ▿ framework: Framework
+        ▿ custom: (3 elements)
+          ▿ name: Optional<String>
+            - some: "<name>"
+          ▿ import: Optional<String>
+            - some: "<import>"
+          - viewControllerType: "<viewControllerType>"
+      - viewControllerMethods: "<viewControllerMethods>"
+      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"
+      - viewControllerProperties: "<viewControllerProperties>"
+      - viewControllerSuperParameters: "<viewControllerSuperParameters>"
+  - viewControllableFlowType: "<viewControllableFlowType>"
+  - viewControllableType: "<viewControllableType>"
+  - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+  - viewStateOperators: "<viewStateOperators>"
+  - viewStatePublisher: "<viewStatePublisher>"

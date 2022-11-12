@@ -5,13 +5,15 @@
 //  Created by Garric Nahapetian on 11/10/22.
 //
 
-public struct UIFramework: Equatable, Decodable, Encodable {
+import Codextended
+
+public struct UIFramework: Equatable, Decodable {
 
     public enum Kind: CaseIterable {
         case appKit, uiKit, swiftUI, custom
     }
 
-    public enum Framework: Equatable, Decodable, Encodable {
+    public enum Framework: Equatable, Codable {
 
         case appKit
         case uiKit
@@ -67,23 +69,11 @@ public struct UIFramework: Equatable, Decodable, Encodable {
         }
 
         public init(from decoder: Decoder) throws {
+            let container: SingleValueDecodingContainer
+            let kind: String
             do {
-                let container: SingleValueDecodingContainer = try decoder.singleValueContainer()
-                let kind: String = try container.decode(String.self)
-                switch kind {
-                case "AppKit":
-                    self = .appKit
-                case "UIKit":
-                    self = .uiKit
-                case "SwiftUI":
-                    self = .swiftUI
-                default:
-                    let debugDescription: String = "Custom framework must be object."
-                    let error: DecodingError.Context = .init(codingPath: container.codingPath,
-                                                             debugDescription: debugDescription,
-                                                             underlyingError: nil)
-                    throw DecodingError.typeMismatch(Framework.self, error)
-                }
+                container = try decoder.singleValueContainer()
+                kind = try container.decode(String.self)
             } catch {
                 let container: KeyedDecodingContainer<CodingKeys> = try decoder.container(keyedBy: CodingKeys.self)
                 var allKeys: ArraySlice<CodingKeys> = .init(container.allKeys)
@@ -102,20 +92,31 @@ public struct UIFramework: Equatable, Decodable, Encodable {
                 case .swiftUI:
                     self = .swiftUI
                 case .custom:
-                    let nestedContainer: KeyedDecodingContainer<CustomCodingKeys> = try container.nestedContainer(
-                        keyedBy: CustomCodingKeys.self, forKey: CodingKeys.custom
-                    )
-                    let name: String? = try nestedContainer.decodeIfPresent(String.self, forKey: CustomCodingKeys.name)
-                    let `import`: String? = try nestedContainer.decodeIfPresent(
-                        String.self,
-                        forKey: CustomCodingKeys.import
-                    )
-                    let viewControllerType: String = try nestedContainer.decode(
-                        String.self,
-                        forKey: CustomCodingKeys.viewControllerType
-                    )
+                    let nestedContainer: KeyedDecodingContainer<CustomCodingKeys> = try container
+                        .nestedContainer(keyedBy: CustomCodingKeys.self,forKey: .custom)
+                    let name: String? = try nestedContainer.decodeIfPresent(String.self,
+                                                                            forKey: .name)
+                    let `import`: String? = try nestedContainer.decodeIfPresent(String.self,
+                                                                                forKey: .import)
+                    let viewControllerType: String = try nestedContainer.decode(String.self,
+                                                                                forKey: .viewControllerType)
                     self = .custom(name: name, import: `import`, viewControllerType: viewControllerType)
                 }
+                return
+            }
+            switch kind {
+            case "AppKit":
+                self = .appKit
+            case "UIKit":
+                self = .uiKit
+            case "SwiftUI":
+                self = .swiftUI
+            default:
+                let debugDescription: String = "Custom framework must be object."
+                let error: DecodingError.Context = .init(codingPath: container.codingPath,
+                                                         debugDescription: debugDescription,
+                                                         underlyingError: nil)
+                throw DecodingError.typeMismatch(Framework.self, error)
             }
         }
     }
