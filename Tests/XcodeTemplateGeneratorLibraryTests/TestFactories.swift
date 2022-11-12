@@ -23,7 +23,14 @@ extension TestFactories {
             UIFramework(framework: .custom(name: "<name>",
                                            import: "<import>",
                                            viewControllerType: "<viewControllerType>")),
-        ]
+        ].map {
+            var uiFramework: UIFramework = $0
+            uiFramework.viewControllerSuperParameters = "<viewControllerSuperParameters>"
+            uiFramework.viewControllerProperties = "<viewControllerProperties>"
+            uiFramework.viewControllerMethods = "<viewControllerMethods>"
+            uiFramework.viewControllerMethodsForRootNode = "<viewControllerMethodsForRootNode>"
+            return uiFramework
+        }
         config.isViewInjectedNodeEnabled = true
         config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImports>"]

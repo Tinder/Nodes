@@ -7,7 +7,7 @@
 
 import Nimble
 import SnapshotTesting
-@testable import XcodeTemplateGeneratorLibrary
+import XcodeTemplateGeneratorLibrary
 import XCTest
 
 final class ConfigTests: XCTestCase {
