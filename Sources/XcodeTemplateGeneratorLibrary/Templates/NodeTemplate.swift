@@ -22,18 +22,20 @@ internal struct NodeTemplate: XcodeTemplate {
                    description: "The name of the Node")
         }
 
-    internal init(for uiFramework: UIFramework, config: Config) {
+    internal init(for kind: UIFramework.Kind, config: Config) throws {
+        let uiFramework: UIFramework = try config.uiFramework(for: kind)
         name = "Node - \(uiFramework.name)"
-        if uiFramework.kind == .swiftUI {
+        switch uiFramework.kind {
+        case .appKit, .uiKit, .custom:
+            stencils = ["Analytics", "Builder", "Context", "Flow", "ViewController", "Worker"]
+            filenames = ["Worker": "ViewStateWorker"]
+        case .swiftUI:
             stencils = ["Analytics", "Builder-SwiftUI", "Context", "Flow", "ViewController-SwiftUI", "Worker"]
             filenames = [
                 "Builder-SwiftUI": "Builder",
                 "ViewController-SwiftUI": "ViewController",
                 "Worker": "ViewStateWorker"
             ]
-        } else {
-            stencils = ["Analytics", "Builder", "Context", "Flow", "ViewController", "Worker"]
-            filenames = ["Worker": "ViewStateWorker"]
         }
         context = NodeContext(
             fileHeader: config.fileHeader,

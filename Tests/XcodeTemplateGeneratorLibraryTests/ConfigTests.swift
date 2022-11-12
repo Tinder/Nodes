@@ -46,13 +46,15 @@ final class ConfigTests: XCTestCase {
     func testEncoding() throws {
         let yaml: String = """
             uiFrameworks:
-            - kind: UIKit
+            - framework: UIKit
               viewControllerSuperParameters: ''
               viewControllerProperties: ''
               viewControllerMethods: ''
               viewControllerMethodsForRootNode: ''
-            - kind:
+            - framework:
                 custom:
+                  name: CommandLine
+                  import: ''
                   viewControllerType: ''
               viewControllerSuperParameters: ''
               viewControllerProperties: ''

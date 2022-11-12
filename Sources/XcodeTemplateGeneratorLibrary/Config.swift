@@ -16,7 +16,7 @@ extension XcodeTemplates {
         internal static let symbolForSwiftUI: String = ""
 
         public enum ConfigError: Error {
-            case uiFrameworkNotDefined(UIFramework.Kind)
+            case uiFrameworkNotDefined(kind: UIFramework.Kind)
         }
 
         // swiftlint:disable:next nesting
@@ -61,7 +61,7 @@ extension XcodeTemplates {
             case .diGraph:
                 return nodesImports.union(diGraphImports)
             case let .viewController(framework):
-                guard let uiFrameworkImport: String = framework.uiFrameworkImport else {
+                guard let uiFrameworkImport: String = framework.import else {
                     return nodesImports
                 }
                 return nodesImports.union([uiFrameworkImport])
@@ -69,8 +69,8 @@ extension XcodeTemplates {
         }
 
         internal func uiFramework(for kind: UIFramework.Kind) throws -> UIFramework {
-            guard let uiFramework: UIFramework = uiFrameworks.first(where: { $0.kind == kind }) else {
-                throw ConfigError.uiFrameworkNotDefined(kind)
+            guard let uiFramework: UIFramework = uiFrameworks.first(where: { $0.framework.kind == kind }) else {
+                throw ConfigError.uiFrameworkNotDefined(kind: kind)
             }
             return uiFramework
         }
@@ -82,7 +82,7 @@ extension XcodeTemplates.Config {
 
     // swiftlint:disable:next function_body_length
     public init() {
-        uiFrameworks = [UIFramework(kind: .uiKit), UIFramework(kind: .swiftUI)]
+        uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
         isViewInjectedNodeEnabled = true
         fileHeader = "//___FILEHEADER___"
         baseImports = ["Combine"]

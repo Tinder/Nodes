@@ -35,11 +35,11 @@
     - viewControllableType: "<viewControllableType>"
     ▿ viewControllerImports: 3 elements
       - "<baseImports>"
-      - "<uiFrameworkImport>"
+      - "<import>"
       - "Nodes"
-    - viewControllerMethods: "<viewControllerMethods>"
-    - viewControllerProperties: "<viewControllerProperties>"
-    - viewControllerSuperParameters: "<viewControllerSuperParameters>"
+    - viewControllerMethods: ""
+    - viewControllerProperties: ""
+    - viewControllerSuperParameters: ""
     - viewControllerType: "<viewControllerType>"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateOperators: "<viewStateOperators>"
@@ -52,7 +52,7 @@
     ▿ (2 elements)
       - key: "Worker"
       - value: "ViewStateWorker"
-  - name: "Node - Custom"
+  - name: "Node - <name>"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"

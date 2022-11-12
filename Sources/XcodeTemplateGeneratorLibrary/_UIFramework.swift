@@ -1,22 +1,35 @@
 //
-//  File.swift
-//  
+//  UIFramework.swift
+//  XcodeTemplateGeneratorLibrary
 //
 //  Created by Garric Nahapetian on 11/10/22.
 //
 
 public struct UIFramework: Equatable, Decodable, Encodable {
 
-    public enum Kind: Equatable, Decodable, CaseIterable, Encodable {
+    public enum Kind: CaseIterable {
+        case appKit, uiKit, swiftUI, custom
+    }
 
-        public static var allCases: [UIFramework.Kind] {
-            []
-        }
+    public enum Framework: Equatable, Decodable, Encodable {
 
         case appKit
         case uiKit
         case swiftUI
-        case custom(name: String?, uiFrameworkImport: String?, viewControllerType: String)
+        case custom(name: String?, import: String?, viewControllerType: String)
+
+        internal var kind: Kind {
+            switch self {
+            case .appKit:
+                return .appKit
+            case .uiKit:
+                return .uiKit
+            case .swiftUI:
+                return .swiftUI
+            case .custom:
+                return .custom
+            }
+        }
 
         internal var name: String {
             switch self {
@@ -31,12 +44,12 @@ public struct UIFramework: Equatable, Decodable, Encodable {
             }
         }
 
-        internal var uiFrameworkImport: String? {
+        internal var `import`: String? {
             switch self {
             case .appKit, .uiKit, .swiftUI:
                 return name
-            case let .custom(_, uiFrameworkImport, _):
-                return uiFrameworkImport
+            case let .custom(_, `import`, _):
+                return `import`
             }
         }
 
@@ -65,23 +78,21 @@ public struct UIFramework: Equatable, Decodable, Encodable {
                 case "SwiftUI":
                     self = .swiftUI
                 default:
+                    let debugDescription: String = "Custom framework must be object."
                     let error: DecodingError.Context = .init(codingPath: container.codingPath,
-                                                             debugDescription: "Custom UIFramework must be object.",
+                                                             debugDescription: debugDescription,
                                                              underlyingError: nil)
-                    throw DecodingError.typeMismatch(UIFramework.Kind.self, error)
+                    throw DecodingError.typeMismatch(Framework.self, error)
                 }
             } catch {
-                let container: KeyedDecodingContainer<UIFramework.Kind.CodingKeys> = try decoder.container(
-                    keyedBy: UIFramework.Kind.CodingKeys.self
-                )
-                var allKeys: ArraySlice<UIFramework.Kind.CodingKeys> = .init(container.allKeys)
-                guard let onlyKey: UIFramework.Kind.CodingKeys = allKeys.popFirst(), allKeys.isEmpty else {
-                    let error: DecodingError.Context = .init(
-                        codingPath: container.codingPath,
-                        debugDescription: "Invalid number of keys found, expected one.",
-                        underlyingError: nil
-                    )
-                    throw DecodingError.typeMismatch(UIFramework.Kind.self, error)
+                let container: KeyedDecodingContainer<CodingKeys> = try decoder.container(keyedBy: CodingKeys.self)
+                var allKeys: ArraySlice<CodingKeys> = .init(container.allKeys)
+                guard let onlyKey: CodingKeys = allKeys.popFirst(), allKeys.isEmpty else {
+                    let debugDescription: String = "Invalid number of keys found, expected one."
+                    let error: DecodingError.Context = .init(codingPath: container.codingPath,
+                                                             debugDescription: debugDescription,
+                                                             underlyingError: nil)
+                    throw DecodingError.typeMismatch(Framework.self, error)
                 }
                 switch onlyKey {
                 case .appKit:
@@ -91,42 +102,38 @@ public struct UIFramework: Equatable, Decodable, Encodable {
                 case .swiftUI:
                     self = .swiftUI
                 case .custom:
-                    let nestedContainer: KeyedDecodingContainer<UIFramework.Kind.CustomCodingKeys> =
-                    try container.nestedContainer(keyedBy: UIFramework.Kind.CustomCodingKeys.self,
-                                                  forKey: UIFramework.Kind.CodingKeys.custom)
-                    let name: String? = try nestedContainer.decodeIfPresent(
-                        String.self,
-                        forKey: UIFramework.Kind.CustomCodingKeys.name
+                    let nestedContainer: KeyedDecodingContainer<CustomCodingKeys> = try container.nestedContainer(
+                        keyedBy: CustomCodingKeys.self, forKey: CodingKeys.custom
                     )
-                    let uiFrameworkImport: String? = try nestedContainer.decodeIfPresent(
+                    let name: String? = try nestedContainer.decodeIfPresent(String.self, forKey: CustomCodingKeys.name)
+                    let `import`: String? = try nestedContainer.decodeIfPresent(
                         String.self,
-                        forKey: UIFramework.Kind.CustomCodingKeys.uiFrameworkImport
+                        forKey: CustomCodingKeys.import
                     )
                     let viewControllerType: String = try nestedContainer.decode(
                         String.self,
-                        forKey: UIFramework.Kind.CustomCodingKeys.viewControllerType
+                        forKey: CustomCodingKeys.viewControllerType
                     )
-                    self = UIFramework.Kind.custom(name: name,
-                                                   uiFrameworkImport: uiFrameworkImport,
-                                                   viewControllerType: viewControllerType)
+                    self = .custom(name: name, import: `import`, viewControllerType: viewControllerType)
                 }
             }
         }
     }
 
-    public let kind: Kind
+    public let framework: Framework
     public var viewControllerSuperParameters: String
     public var viewControllerProperties: String
     public var viewControllerMethods: String
     public var viewControllerMethodsForRootNode: String
 
-    internal var name: String { kind.name }
-    internal var uiFrameworkImport: String? { kind.uiFrameworkImport }
-    internal var viewControllerType: String { kind.viewControllerType }
+    internal var kind: Kind { framework.kind }
+    internal var name: String { framework.name }
+    internal var `import`: String? { framework.import }
+    internal var viewControllerType: String { framework.viewControllerType }
 
-    public init(kind: Kind) {
-        self.kind = kind
-        switch kind {
+    public init(framework: Framework) {
+        self.framework = framework
+        switch framework {
         case .appKit:
             viewControllerSuperParameters = ""
             viewControllerProperties = ""
@@ -136,42 +143,42 @@ public struct UIFramework: Equatable, Decodable, Encodable {
             viewControllerSuperParameters = "nibName: nil, bundle: nil"
             viewControllerProperties = ""
             viewControllerMethods = """
-            override func viewDidLoad() {
-                super.viewDidLoad()
-                view.backgroundColor = .systemBackground
-            }
+                override func viewDidLoad() {
+                    super.viewDidLoad()
+                    view.backgroundColor = .systemBackground
+                }
 
-            override func viewWillAppear(_ animated: Bool) {
-                super.viewWillAppear(animated)
-                observe(viewState).store(in: &cancellables)
-            }
+                override func viewWillAppear(_ animated: Bool) {
+                    super.viewWillAppear(animated)
+                    observe(viewState).store(in: &cancellables)
+                }
 
-            override func viewWillDisappear(_ animated: Bool) {
-                super.viewWillDisappear(animated)
-                cancellables.removeAll()
-            }
-            """
+                override func viewWillDisappear(_ animated: Bool) {
+                    super.viewWillDisappear(animated)
+                    cancellables.removeAll()
+                }
+                """
             viewControllerMethodsForRootNode = """
-            override func viewDidLoad() {
-                super.viewDidLoad()
-                view.backgroundColor = .systemBackground
-            }
+                override func viewDidLoad() {
+                    super.viewDidLoad()
+                    view.backgroundColor = .systemBackground
+                }
 
-            override func viewWillAppear(_ animated: Bool) {
-                super.viewWillAppear(animated)
-                observe(viewState).store(in: &cancellables)
-            }
+                override func viewWillAppear(_ animated: Bool) {
+                    super.viewWillAppear(animated)
+                    observe(viewState).store(in: &cancellables)
+                }
 
-            override func viewDidAppear(_ animated: Bool) {
-                super.viewDidAppear(animated)
-                receiver?.viewDidAppear()
-            }
+                override func viewDidAppear(_ animated: Bool) {
+                    super.viewDidAppear(animated)
+                    receiver?.viewDidAppear()
+                }
 
-            override func viewWillDisappear(_ animated: Bool) {
-                super.viewWillDisappear(animated)
-                cancellables.removeAll()
-            }
-            """
+                override func viewWillDisappear(_ animated: Bool) {
+                    super.viewWillDisappear(animated)
+                    cancellables.removeAll()
+                }
+                """
         case .swiftUI:
             viewControllerSuperParameters = ""
             viewControllerProperties = ""
@@ -191,8 +198,8 @@ public struct UIFramework: Equatable, Decodable, Encodable {
     }
 
     public init(from decoder: Decoder) throws {
-        kind = try decoder.decode("kind")
-        let defaults: UIFramework = .init(kind: kind)
+        framework = try decoder.decode("framework")
+        let defaults: UIFramework = .init(framework: framework)
         viewControllerSuperParameters =
             (try? decoder.decodeString("viewControllerSuperParameters"))
             ?? defaults.viewControllerSuperParameters

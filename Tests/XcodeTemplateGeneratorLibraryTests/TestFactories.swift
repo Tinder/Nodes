@@ -16,7 +16,14 @@ extension TestFactories {
 
     func givenConfig() -> Config {
         var config: Config = .init()
-        config.uiFrameworks = []
+        config.uiFrameworks = [
+            UIFramework(framework: .appKit),
+            UIFramework(framework: .uiKit),
+            UIFramework(framework: .swiftUI),
+            UIFramework(framework: .custom(name: "<name>",
+                                           import: "<import>",
+                                           viewControllerType: "<viewControllerType>")),
+        ]
         config.isViewInjectedNodeEnabled = true
         config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImports>"]
@@ -138,9 +145,5 @@ extension TestFactories {
             workerImports: ["<workerImports>"],
             cancellableType: "<cancellableType>"
         )
-    }
-
-    func givenFramework(for kind: UIFramework.Kind) -> UIFramework {
-        UIFramework(kind: kind)
     }
 }

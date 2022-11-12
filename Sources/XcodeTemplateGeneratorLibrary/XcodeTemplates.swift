@@ -12,9 +12,9 @@ public final class XcodeTemplates {
     private let templates: [XcodeTemplate]
 
     public init(config: Config) {
-        var templates: [XcodeTemplate] = UIFramework.Kind.allCases
-            .compactMap { try? config.uiFramework(for: $0) }
-            .map { NodeTemplate(for: $0, config: config) }
+        var templates: [XcodeTemplate] = UIFramework.Kind
+            .allCases
+            .compactMap { try? NodeTemplate(for: $0, config: config) }
         if config.isViewInjectedNodeEnabled {
             templates.append(NodeViewInjectedTemplate(config: config))
         }
