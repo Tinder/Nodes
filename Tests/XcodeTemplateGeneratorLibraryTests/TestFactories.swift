@@ -5,7 +5,7 @@
 //  Created by Christopher Fuller on 5/31/21.
 //
 
-@testable import XcodeTemplateGeneratorLibrary
+import XcodeTemplateGeneratorLibrary
 
 protocol TestFactories {}
 
