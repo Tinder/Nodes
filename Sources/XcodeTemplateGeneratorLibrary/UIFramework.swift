@@ -128,10 +128,11 @@ public struct UIFramework: Equatable, Decodable {
     public var viewControllerMethods: String
     public var viewControllerMethodsForRootNode: String
 
+    public var `import`: String? { framework.import }
+    public var viewControllerType: String { framework.viewControllerType }
+
     internal var kind: Kind { framework.kind }
     internal var name: String { framework.name }
-    internal var `import`: String? { framework.import }
-    internal var viewControllerType: String { framework.viewControllerType }
 
     public init(framework: Framework) {
         self.framework = framework

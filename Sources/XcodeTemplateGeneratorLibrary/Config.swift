@@ -68,7 +68,7 @@ extension XcodeTemplates {
             }
         }
 
-        internal func uiFramework(for kind: UIFramework.Kind) throws -> UIFramework {
+        public func uiFramework(for kind: UIFramework.Kind) throws -> UIFramework {
             guard let uiFramework: UIFramework = uiFrameworks.first(where: { $0.framework.kind == kind }) else {
                 throw ConfigError.uiFrameworkNotDefined(kind: kind)
             }
