@@ -13,13 +13,12 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
     internal let stencils: [String] = ["Analytics", "Builder", "Context", "Flow", "Worker"]
     internal let context: Context
 
-    internal let propertyList: PropertyList =
-        .init(description: "The source files implementing a Node.",
-              sortOrder: 3) {
-            Option(identifier: "productName",
-                   name: "Node name:",
-                   description: "The name of the Node")
-        }
+    internal let propertyList: PropertyList = .init(description: "The source files implementing a Node.",
+                                                    sortOrder: 5) {
+        Option(identifier: "productName",
+               name: "Node name:",
+               description: "The name of the Node")
+    }
 
     internal init(config: Config) {
         context = NodeViewInjectedContext(

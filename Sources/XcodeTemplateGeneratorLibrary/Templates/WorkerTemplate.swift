@@ -13,16 +13,15 @@ internal struct WorkerTemplate: XcodeTemplate {
     internal let stencils: [String] = ["Worker"]
     internal let context: Context
 
-    internal let propertyList: PropertyList =
-        .init(description: "The source file implementing a Worker.",
-              sortOrder: 7) {
-            Option(identifier: "productName",
-                   name: "Worker name:",
-                   description: "The name of the Worker")
-            Option(identifier: "nodeName",
-                   name: "Node name:",
-                   description: "The name of the Node")
-        }
+    internal let propertyList: PropertyList = .init(description: "The source file implementing a Worker.",
+                                                    sortOrder: 9) {
+        Option(identifier: "productName",
+               name: "Worker name:",
+               description: "The name of the Worker")
+        Option(identifier: "nodeName",
+               name: "Node name:",
+               description: "The name of the Node")
+    }
 
     internal init(config: Config) {
         context = WorkerContext(

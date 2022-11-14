@@ -13,13 +13,12 @@ internal struct PluginListNodeTemplate: XcodeTemplate {
     internal let stencils: [String] = ["PluginList"]
     internal let context: Context
 
-    internal let propertyList: PropertyList =
-        .init(description: "The source file implementing a Plugin List.",
-              sortOrder: 4) {
-            Option(identifier: "productName",
-                   name: "Plugin List name:",
-                   description: "The name of the Plugin List")
-        }
+    internal let propertyList: PropertyList = .init(description: "The source file implementing a Plugin List.",
+                                                    sortOrder: 6) {
+        Option(identifier: "productName",
+               name: "Plugin List name:",
+               description: "The name of the Plugin List")
+    }
 
     internal init(config: Config) {
         context = PluginListContext(

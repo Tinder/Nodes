@@ -13,14 +13,7 @@ internal struct NodeTemplate: XcodeTemplate {
     internal let stencils: [String]
     internal let filenames: [String: String]
     internal let context: Context
-
-    internal let propertyList: PropertyList =
-        .init(description: "The source files implementing a Node.",
-              sortOrder: 1) {
-            Option(identifier: "productName",
-                   name: "Node name:",
-                   description: "The name of the Node")
-        }
+    internal let propertyList: PropertyList
 
     internal init(for kind: UIFramework.Kind, config: Config) throws {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
@@ -61,5 +54,12 @@ internal struct NodeTemplate: XcodeTemplate {
             publisherFailureType: config.publisherFailureType,
             cancellableType: config.cancellableType
         )
+        let index: Int = UIFramework.Kind.allCases.firstIndex(of: kind)! // swiftlint:disable:this force_unwrapping
+        propertyList = PropertyList(description: "The source files implementing a Node.",
+                                    sortOrder: index + 1) {
+            Option(identifier: "productName",
+                   name: "Node name:",
+                   description: "The name of the Node")
+        }
     }
 }
