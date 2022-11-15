@@ -135,15 +135,15 @@ public struct UIFramework: Equatable, Codable {
 
     public let framework: Framework
 
+    public var kind: Kind { framework.kind }
+    public var name: String { framework.name }
+    public var `import`: String? { framework.import }
+    public var viewControllerType: String { framework.viewControllerType }
+
     public var viewControllerSuperParameters: String
     public var viewControllerProperties: String
     public var viewControllerMethods: String
     public var viewControllerMethodsForRootNode: String
-
-    public var `import`: String? { framework.import }
-    public var viewControllerType: String { framework.viewControllerType }
-    public var kind: Kind { framework.kind }
-    public var name: String { framework.name }
 
     public init(framework: Framework) { // swiftlint:disable:this function_body_length
         self.framework = framework
