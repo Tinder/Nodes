@@ -1,0 +1,7 @@
+▿ DecodingError
+  ▿ typeMismatch: (2 elements)
+    - .0: Framework
+    ▿ .1: Context
+      - codingPath: 0 elements
+      - debugDescription: "Custom framework must be object."
+      - underlyingError: Optional<Error>.none

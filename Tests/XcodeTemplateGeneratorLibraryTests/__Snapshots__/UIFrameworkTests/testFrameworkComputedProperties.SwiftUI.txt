@@ -1,0 +1,6 @@
+▿ (4 elements)
+  - .0: Kind.swiftUI
+  - .1: "SwiftUI"
+  ▿ .2: Optional<String>
+    - some: "SwiftUI"
+  - .3: "AbstractViewHostingController"

@@ -1,0 +1,7 @@
+▿ Framework
+  ▿ custom: (3 elements)
+    ▿ name: Optional<String>
+      - some: "<name>"
+    ▿ import: Optional<String>
+      - some: "<import>"
+    - viewControllerType: "<viewControllerType>"
