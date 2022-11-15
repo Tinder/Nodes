@@ -145,70 +145,13 @@ public struct UIFramework: Equatable, Codable {
     public var viewControllerMethods: String
     public var viewControllerMethodsForRootNode: String
 
-    public init(framework: Framework) { // swiftlint:disable:this function_body_length
+    public init(framework: Framework) {
         self.framework = framework
-        switch framework {
-        case .appKit:
-            viewControllerSuperParameters = ""
-            viewControllerProperties = ""
-            viewControllerMethods = ""
-            viewControllerMethodsForRootNode = ""
-        case .uiKit:
-            viewControllerSuperParameters = "nibName: nil, bundle: nil"
-            viewControllerProperties = ""
-            viewControllerMethods = """
-                override func viewDidLoad() {
-                    super.viewDidLoad()
-                    view.backgroundColor = .systemBackground
-                }
-
-                override func viewWillAppear(_ animated: Bool) {
-                    super.viewWillAppear(animated)
-                    observe(viewState).store(in: &cancellables)
-                }
-
-                override func viewWillDisappear(_ animated: Bool) {
-                    super.viewWillDisappear(animated)
-                    cancellables.removeAll()
-                }
-                """
-            viewControllerMethodsForRootNode = """
-                override func viewDidLoad() {
-                    super.viewDidLoad()
-                    view.backgroundColor = .systemBackground
-                }
-
-                override func viewWillAppear(_ animated: Bool) {
-                    super.viewWillAppear(animated)
-                    observe(viewState).store(in: &cancellables)
-                }
-
-                override func viewDidAppear(_ animated: Bool) {
-                    super.viewDidAppear(animated)
-                    receiver?.viewDidAppear()
-                }
-
-                override func viewWillDisappear(_ animated: Bool) {
-                    super.viewWillDisappear(animated)
-                    cancellables.removeAll()
-                }
-                """
-        case .swiftUI:
-            viewControllerSuperParameters = ""
-            viewControllerProperties = ""
-            viewControllerMethods = ""
-            viewControllerMethodsForRootNode = """
-                override func viewDidAppear(_ animated: Bool) {
-                    super.viewDidAppear(animated)
-                    receiver?.viewDidAppear()
-                }
-                """
-        case .custom:
-            viewControllerSuperParameters = ""
-            viewControllerProperties = ""
-            viewControllerMethods = ""
-            viewControllerMethodsForRootNode = ""
-        }
+        let defaults: UIFrameworkDefaults = Self.defaults(for: framework.kind)
+        viewControllerSuperParameters = defaults.viewControllerSuperParameters
+        viewControllerProperties = defaults.viewControllerProperties
+        viewControllerMethods = defaults.viewControllerMethods
+        viewControllerMethodsForRootNode = defaults.viewControllerMethodsForRootNode
     }
 
     public init(from decoder: Decoder) throws {
@@ -226,5 +169,18 @@ public struct UIFramework: Equatable, Codable {
         viewControllerMethodsForRootNode =
             (try? decoder.decodeString(CodingKeys.viewControllerMethodsForRootNode.stringValue))
             ?? defaults.viewControllerMethodsForRootNode
+    }
+
+    private static func defaults(for kind: UIFramework.Kind) -> UIFrameworkDefaults {
+        switch kind {
+        case .appKit:
+            return UIFrameworkAppKitDefaults()
+        case .uiKit:
+            return UIFrameworkUIKitDefaults()
+        case .swiftUI:
+            return UIFrameworkSwiftUIDefaults()
+        case .custom:
+            return UIFrameworkCustomDefaults()
+        }
     }
 }
