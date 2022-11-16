@@ -74,20 +74,34 @@ public struct UIFramework: Equatable, Codable {
                 container = try decoder.singleValueContainer()
                 framework = try container.decode(String.self)
             } catch {
-                self = try Self.framework(fromKeyedContainer: decoder)
+                self = try Self.decodeUsingKeyedContainer(with: decoder)
                 return
             }
-            self = try Self.framework(fromSingleValueContainer: container, frameworkName: framework)
+            guard let kind: Kind = .init(rawValue: framework) else {
+                throw DecodingError.typeMismatch(Self.self, DecodingError.Context(
+                    codingPath: container.codingPath, debugDescription: "Unsupported framework: \(framework)"
+                ))
+            }
+            switch kind {
+            case .appKit:
+                self = .appKit
+            case .uiKit:
+                self = .uiKit
+            case .swiftUI:
+                self = .swiftUI
+            default:
+                throw DecodingError.typeMismatch(Self.self, DecodingError.Context(
+                    codingPath: container.codingPath, debugDescription: "Custom framework must be object."
+                ))
+            }
         }
 
-        private static func framework(fromKeyedContainer decoder: Decoder) throws -> Self {
+        private static func decodeUsingKeyedContainer(with decoder: Decoder) throws -> Self {
             let container: KeyedDecodingContainer<CodingKeys> = try decoder.container(keyedBy: CodingKeys.self)
-            var allKeys: ArraySlice<CodingKeys> = .init(container.allKeys)
-            guard let onlyKey: CodingKeys = allKeys.popFirst(), allKeys.isEmpty else {
-                let codingPath: [CodingKey] = container.codingPath
-                let debugDescription: String = "Invalid number of keys found, expected one."
-                let error: DecodingError.Context = .init(codingPath: codingPath, debugDescription: debugDescription)
-                throw DecodingError.typeMismatch(Self.self, error)
+            guard container.allKeys.count == 1, let onlyKey: CodingKeys = container.allKeys.first else {
+                throw DecodingError.typeMismatch(Self.self, DecodingError.Context(
+                    codingPath: container.codingPath, debugDescription: "Expected only one key."
+                ))
             }
             switch onlyKey {
             case .appKit:
@@ -100,35 +114,11 @@ public struct UIFramework: Equatable, Codable {
                 let container: KeyedDecodingContainer<CustomCodingKeys> = try container.nestedContainer(
                     keyedBy: CustomCodingKeys.self, forKey: .custom
                 )
-                let name: String? = try container.decodeIfPresent(String.self, forKey: .name)
-                let `import`: String? = try container.decodeIfPresent(String.self, forKey: .import)
-                let viewControllerType: String = try container.decode(String.self, forKey: .viewControllerType)
-                return .custom(name: name, import: `import`, viewControllerType: viewControllerType)
-            }
-        }
-
-        private static func framework(
-            fromSingleValueContainer container: SingleValueDecodingContainer,
-            frameworkName: String
-        ) throws -> Self {
-            guard let kind: UIFramework.Kind = .init(rawValue: frameworkName) else {
-                let codingPath: [CodingKey] = container.codingPath
-                let debugDescription: String = "Unsupported framework: \(frameworkName)"
-                let error: DecodingError.Context = .init(codingPath: codingPath, debugDescription: debugDescription)
-                throw DecodingError.typeMismatch(Self.self, error)
-            }
-            switch kind {
-            case .appKit:
-                return .appKit
-            case .uiKit:
-                return .uiKit
-            case .swiftUI:
-                return .swiftUI
-            default:
-                let codingPath: [CodingKey] = container.codingPath
-                let debugDescription: String = "Custom framework must be object."
-                let error: DecodingError.Context = .init(codingPath: codingPath, debugDescription: debugDescription)
-                throw DecodingError.typeMismatch(Self.self, error)
+                return try .custom(
+                    name: container.decodeIfPresent(String.self, forKey: .name),
+                    import: container.decodeIfPresent(String.self, forKey: .import),
+                    viewControllerType: container.decode(String.self, forKey: .viewControllerType)
+                )
             }
         }
     }

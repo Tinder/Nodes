@@ -54,7 +54,8 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
         let inputs: [(errorName: String, yaml: String)] = [
             ("Custom-Must-Be-Object", "Custom"),
             ("Unsupported-Framework", "AnyUnsupportedFrameworkName"),
-            ("Single-Key-Expected", "custom:\ncustom:\n")
+            ("Single-Key-Expected", "custom:\ncustom:\n"),
+            ("Expected-String", "[]")
         ]
         try inputs.forEach { input in
             let data: Data = .init(input.yaml.utf8)

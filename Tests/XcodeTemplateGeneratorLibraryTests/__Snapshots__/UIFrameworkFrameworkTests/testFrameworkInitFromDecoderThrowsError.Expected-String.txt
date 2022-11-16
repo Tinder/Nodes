@@ -1,7 +1,7 @@
 ▿ DecodingError
   ▿ typeMismatch: (2 elements)
-    - .0: Framework
+    - .0: Mapping
     ▿ .1: Context
       - codingPath: 0 elements
-      - debugDescription: "Expected only one key."
+      - debugDescription: "Expected to decode Mapping but found Node instead."
       - underlyingError: Optional<Error>.none
