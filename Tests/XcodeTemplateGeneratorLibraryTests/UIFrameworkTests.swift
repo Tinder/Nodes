@@ -68,22 +68,6 @@ internal final class UIFrameworkTests: XCTestCase {
         expect(custom.viewControllerMethodsForRootNode) == defaults.viewControllerMethodsForRootNode
     }
 
-    internal func testInitWithCustomDefaults() {
-        let framework: UIFramework.Framework = .custom(
-            name: nil, import: nil, viewControllerType: "<viewControllerType>"
-        )
-        let defaults: UIFramework = .Defaults().makeUIFramework(for: framework)
-        let custom: UIFramework = .init(framework: framework)
-        expect(custom.kind) == defaults.kind
-        expect(custom.name) == defaults.name
-        expect(custom.import).to(beNil())
-        expect(custom.viewControllerType) == "<viewControllerType>"
-        expect(custom.viewControllerSuperParameters) == defaults.viewControllerSuperParameters
-        expect(custom.viewControllerProperties) == defaults.viewControllerProperties
-        expect(custom.viewControllerMethods) == defaults.viewControllerMethods
-        expect(custom.viewControllerMethodsForRootNode) == defaults.viewControllerMethodsForRootNode
-    }
-
     internal func testInitFromDecoderWithYaml() throws {
         try UIFramework.Kind.allCases.forEach {
             let data: Data = .init(givenYaml(for: $0).utf8)

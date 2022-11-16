@@ -1,10 +1,8 @@
 ▿ UIFramework
   ▿ framework: Framework
     ▿ custom: (3 elements)
-      ▿ name: Optional<String>
-        - some: "<name>"
-      ▿ import: Optional<String>
-        - some: "<import>"
+      - name: "<name>"
+      - import: "<import>"
       - viewControllerType: "<viewControllerType>"
   - viewControllerMethods: "<viewControllerMethods>"
   - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"

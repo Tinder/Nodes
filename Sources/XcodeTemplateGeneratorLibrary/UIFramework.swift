@@ -21,7 +21,7 @@ public struct UIFramework: Equatable, Codable {
         case appKit
         case uiKit
         case swiftUI
-        case custom(name: String?, import: String?, viewControllerType: String)
+        case custom(name: String, import: String, viewControllerType: String)
 
         internal var kind: Kind {
             switch self {
@@ -41,11 +41,11 @@ public struct UIFramework: Equatable, Codable {
             case .appKit, .uiKit, .swiftUI:
                 return kind.rawValue
             case let .custom(name, _, _):
-                return name ?? kind.rawValue
+                return name
             }
         }
 
-        internal var `import`: String? {
+        internal var `import`: String {
             switch self {
             case .appKit, .uiKit, .swiftUI:
                 return name
@@ -115,8 +115,8 @@ public struct UIFramework: Equatable, Codable {
                     keyedBy: CustomCodingKeys.self, forKey: .custom
                 )
                 return try .custom(
-                    name: container.decodeIfPresent(String.self, forKey: .name),
-                    import: container.decodeIfPresent(String.self, forKey: .import),
+                    name: container.decode(String.self, forKey: .name),
+                    import: container.decode(String.self, forKey: .import),
                     viewControllerType: container.decode(String.self, forKey: .viewControllerType)
                 )
             }
@@ -127,7 +127,7 @@ public struct UIFramework: Equatable, Codable {
 
     public var kind: Kind { framework.kind }
     public var name: String { framework.name }
-    public var `import`: String? { framework.import }
+    public var `import`: String { framework.import }
     public var viewControllerType: String { framework.viewControllerType }
 
     public var viewControllerSuperParameters: String

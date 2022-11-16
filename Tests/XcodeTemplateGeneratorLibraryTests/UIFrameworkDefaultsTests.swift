@@ -13,7 +13,7 @@ import XCTest
 internal final class UIFrameworkDefaultsTests: XCTestCase {
 
     internal func testDefaults() {
-        let framework: UIFramework.Framework = .custom(name: nil, import: nil, viewControllerType: "")
+        let framework: UIFramework.Framework = .custom(name: "", import: "", viewControllerType: "")
         let uiFramework: UIFramework = .Defaults().makeUIFramework(for: framework)
         expect(uiFramework.viewControllerSuperParameters) == ""
         expect(uiFramework.viewControllerProperties) == ""

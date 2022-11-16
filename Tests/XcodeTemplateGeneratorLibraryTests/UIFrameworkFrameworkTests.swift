@@ -47,14 +47,6 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
         expect(custom.viewControllerType) == "<viewControllerType>"
     }
 
-    internal func testCustomDefaults() {
-        let custom: UIFramework.Framework = .custom(name: nil, import: nil, viewControllerType: "<viewControllerType>")
-        expect(custom.kind) == .custom
-        expect(custom.name) == "Custom"
-        expect(custom.import).to(beNil())
-        expect(custom.viewControllerType) == "<viewControllerType>"
-    }
-
     internal func testFrameworkInitFromDecoder() throws {
         let frameworks: [UIFramework.Framework] = [
             .appKit,
@@ -67,18 +59,6 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
             let framework: UIFramework.Framework = try YAMLDecoder().decode(UIFramework.Framework.self, from: data)
             expect(framework) == $0
         }
-    }
-
-    internal func testFrameworkInitCustomFromDecoderWithDefaults() throws {
-        let framework: UIFramework.Framework = .custom(
-            name: nil, import: nil, viewControllerType: "<viewControllerType>"
-        )
-        let data: Data = .init(givenYaml(for: framework).utf8)
-        let custom: UIFramework.Framework = try YAMLDecoder().decode(UIFramework.Framework.self, from: data)
-        expect(custom.kind) == .custom
-        expect(custom.name) == "Custom"
-        expect(custom.import).to(beNil())
-        expect(custom.viewControllerType) == "<viewControllerType>"
     }
 
     internal func testFrameworkInitFromDecoderThrowsError() throws {
@@ -101,17 +81,12 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
         case .appKit, .uiKit, .swiftUI:
             return framework.name
         case let .custom(name, `import`, viewControllerType):
-            var yaml: String = "custom:"
-            if let name: String = name {
-                yaml.append("\n  name: \(name)")
-            } else {
-                yaml.append("\n  name: \(framework.name)")
-            }
-            if let `import`: String = `import` {
-                yaml.append("\n  import: \(`import`)")
-            }
-            yaml.append("\n  viewControllerType: \(viewControllerType)")
-            return yaml
+            return """
+                custom:
+                  name: \(name)
+                  import: \(`import`)
+                  viewControllerType: \(viewControllerType)
+                """
         }
     }
 }
