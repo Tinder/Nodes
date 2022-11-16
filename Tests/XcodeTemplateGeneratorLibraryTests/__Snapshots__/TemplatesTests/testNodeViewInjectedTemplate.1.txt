@@ -52,7 +52,7 @@
         - required: true
         - type: "text"
     - platforms: 0 elements
-    - sortOrder: 3
+    - sortOrder: 5
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
   ▿ stencils: 5 elements
