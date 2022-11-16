@@ -146,12 +146,16 @@ public struct UIFramework: Equatable, Codable {
     public var viewControllerMethodsForRootNode: String
 
     public init(framework: Framework) {
-        self.framework = framework
-        let defaults: UIFrameworkDefaults = Self.defaults(for: framework.kind)
-        viewControllerSuperParameters = defaults.viewControllerSuperParameters
-        viewControllerProperties = defaults.viewControllerProperties
-        viewControllerMethods = defaults.viewControllerMethods
-        viewControllerMethodsForRootNode = defaults.viewControllerMethodsForRootNode
+        switch framework.kind {
+        case .appKit:
+            self = DefaultsAppKit().makeUIFramework()
+        case .uiKit:
+            self = DefaultsUIKit().makeUIFramework()
+        case .swiftUI:
+            self = DefaultsSwiftUI().makeUIFramework()
+        case .custom:
+            self = Defaults().makeUIFramework(for: framework)
+        }
     }
 
     public init(from decoder: Decoder) throws {
@@ -171,16 +175,17 @@ public struct UIFramework: Equatable, Codable {
             ?? defaults.viewControllerMethodsForRootNode
     }
 
-    private static func defaults(for kind: UIFramework.Kind) -> UIFrameworkDefaults {
-        switch kind {
-        case .appKit:
-            return UIFrameworkAppKitDefaults()
-        case .uiKit:
-            return UIFrameworkUIKitDefaults()
-        case .swiftUI:
-            return UIFrameworkSwiftUIDefaults()
-        case .custom:
-            return UIFrameworkCustomDefaults()
-        }
+    internal init(
+        framework: Framework,
+        viewControllerSuperParameters: String,
+        viewControllerProperties: String,
+        viewControllerMethods: String,
+        viewControllerMethodsForRootNode: String
+    ) {
+        self.framework = framework
+        self.viewControllerSuperParameters = viewControllerSuperParameters
+        self.viewControllerProperties = viewControllerProperties
+        self.viewControllerMethods = viewControllerMethods
+        self.viewControllerMethodsForRootNode = viewControllerMethodsForRootNode
     }
 }
