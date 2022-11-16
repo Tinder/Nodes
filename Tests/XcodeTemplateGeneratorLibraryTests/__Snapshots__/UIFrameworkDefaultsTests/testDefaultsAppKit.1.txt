@@ -1,6 +1,6 @@
 ▿ UIFramework
   - framework: Framework.appKit
-  - viewControllerMethods: ""
-  - viewControllerMethodsForRootNode: ""
+  - viewControllerMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n}\n\noverride func viewWillAppear() {\n    super.viewWillAppear()\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewWillDisappear() {\n    super.viewWillDisappear()\n    cancellables.removeAll()\n}"
+  - viewControllerMethodsForRootNode: "override func viewDidLoad() {\n    super.viewDidLoad()\n}\n\noverride func viewWillAppear() {\n    super.viewWillAppear()\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewDidAppear() {\n    super.viewDidAppear()\n    receiver?.viewDidAppear()\n}\n\noverride func viewWillDisappear() {\n    super.viewWillDisappear()\n    cancellables.removeAll()\n}"
   - viewControllerProperties: ""
-  - viewControllerSuperParameters: ""
+  - viewControllerSuperParameters: "nibName: nil, bundle: nil"
