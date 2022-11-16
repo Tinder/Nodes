@@ -91,19 +91,19 @@ public struct UIFramework: Equatable, Codable {
                 self = .swiftUI
             default:
                 throw DecodingError.typeMismatch(Self.self, DecodingError.Context(
-                    codingPath: container.codingPath, debugDescription: "Custom framework must be object."
+                    codingPath: container.codingPath, debugDescription: "Custom framework must be an object."
                 ))
             }
         }
 
         private static func decodeUsingKeyedContainer(with decoder: Decoder) throws -> Self {
             let container: KeyedDecodingContainer<CodingKeys> = try decoder.container(keyedBy: CodingKeys.self)
-            guard container.allKeys.count == 1, let onlyKey: CodingKeys = container.allKeys.first else {
+            guard container.allKeys.count == 1, let key: CodingKeys = container.allKeys.first else {
                 throw DecodingError.typeMismatch(Self.self, DecodingError.Context(
                     codingPath: container.codingPath, debugDescription: "Expected only one key."
                 ))
             }
-            switch onlyKey {
+            switch key {
             case .appKit:
                 return .appKit
             case .uiKit:
@@ -152,16 +152,16 @@ public struct UIFramework: Equatable, Codable {
         framework = try decoder.decode(CodingKeys.framework.stringValue)
         let defaults: UIFramework = .init(framework: framework)
         viewControllerSuperParameters =
-            (try? decoder.decodeString(CodingKeys.viewControllerSuperParameters.stringValue))
+            (try? decoder.decodeString(CodingKeys.viewControllerSuperParameters))
             ?? defaults.viewControllerSuperParameters
         viewControllerProperties =
-            (try? decoder.decodeString(CodingKeys.viewControllerProperties.stringValue))
+            (try? decoder.decodeString(CodingKeys.viewControllerProperties))
             ?? defaults.viewControllerProperties
         viewControllerMethods =
-            (try? decoder.decodeString(CodingKeys.viewControllerMethods.stringValue))
+            (try? decoder.decodeString(CodingKeys.viewControllerMethods))
             ?? defaults.viewControllerMethods
         viewControllerMethodsForRootNode =
-            (try? decoder.decodeString(CodingKeys.viewControllerMethodsForRootNode.stringValue))
+            (try? decoder.decodeString(CodingKeys.viewControllerMethodsForRootNode))
             ?? defaults.viewControllerMethodsForRootNode
     }
 

@@ -86,7 +86,7 @@ internal final class UIFrameworkTests: XCTestCase {
 
     internal func testInitFromDecoderWithYaml() throws {
         try UIFramework.Kind.allCases.forEach {
-            let data: Data = .init(givenUIFrameworkYaml(for: $0).utf8)
+            let data: Data = .init(givenYaml(for: $0).utf8)
             let uiFramework: UIFramework = try YAMLDecoder().decode(UIFramework.self, from: data)
             assertSnapshot(matching: uiFramework, as: .dump, named: $0.rawValue)
         }
@@ -94,13 +94,13 @@ internal final class UIFrameworkTests: XCTestCase {
 
     internal func testInitFromDecoderWithYamlUsingDefaults() throws {
         try UIFramework.Kind.allCases.forEach {
-            let data: Data = .init(givenEmptyUIFrameworkYaml(for: $0).utf8)
+            let data: Data = .init(givenMinimalYaml(for: $0).utf8)
             let uiFramework: UIFramework = try YAMLDecoder().decode(UIFramework.self, from: data)
             assertSnapshot(matching: uiFramework, as: .dump, named: $0.rawValue)
         }
     }
 
-    private func givenUIFrameworkYaml(for kind: UIFramework.Kind) -> String {
+    private func givenYaml(for kind: UIFramework.Kind) -> String {
         switch kind {
         case .appKit, .uiKit, .swiftUI:
             return """
@@ -125,16 +125,16 @@ internal final class UIFrameworkTests: XCTestCase {
         }
     }
 
-    private func givenEmptyUIFrameworkYaml(for kind: UIFramework.Kind) -> String {
+    private func givenMinimalYaml(for kind: UIFramework.Kind) -> String {
         switch kind {
         case .appKit, .uiKit, .swiftUI:
             return "framework: \(kind.rawValue)"
         case .custom:
             return """
-            framework:
-              custom:
-                viewControllerType: <viewControllerType>
-            """
+                framework:
+                  custom:
+                    viewControllerType: <viewControllerType>
+                """
         }
     }
 }

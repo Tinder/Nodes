@@ -3,5 +3,5 @@
     - .0: Framework
     ▿ .1: Context
       - codingPath: 0 elements
-      - debugDescription: "Custom framework must be object."
+      - debugDescription: "Custom framework must be an object."
       - underlyingError: Optional<Error>.none
