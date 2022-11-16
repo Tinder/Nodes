@@ -33,8 +33,8 @@ internal final class {{ node_name }}ViewController: AbstractViewHostingControlle
 
     {{ view_controller_properties|indent:4 }}{% endif %}{% if view_controller_methods %}
 
-    {{ view_controller_methods|indent:4 }}{% endif %}
-}
+    {{ view_controller_methods|indent:4 }}{% endif %}{% if view_controller_properties and view_controller_methods %}
+{% endif %}{{ '}' }}
 
 extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
 {% if view_controller_availability_attribute %}

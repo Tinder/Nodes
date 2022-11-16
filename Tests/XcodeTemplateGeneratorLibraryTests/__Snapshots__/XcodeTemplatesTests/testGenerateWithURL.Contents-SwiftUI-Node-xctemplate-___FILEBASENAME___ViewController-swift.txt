@@ -28,8 +28,7 @@ internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
 internal final class ___VARIABLE_productName___ViewController: AbstractViewHostingController
 <
     ___VARIABLE_productName___View
-> {
-}
+> {}
 
 extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllable {}
 extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___Presentable {}
