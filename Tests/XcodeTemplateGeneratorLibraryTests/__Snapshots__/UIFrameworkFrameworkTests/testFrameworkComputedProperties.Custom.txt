@@ -1,5 +1,0 @@
-▿ (4 elements)
-  - .0: Kind.custom
-  - .1: "Custom"
-  - .2: Optional<String>.none
-  - .3: "<viewControllerType>"

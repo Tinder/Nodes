@@ -1,6 +1,0 @@
-▿ (4 elements)
-  - .0: Kind.custom
-  - .1: "CustomNonNil"
-  ▿ .2: Optional<String>
-    - some: "<import>"
-  - .3: "<viewControllerType>"

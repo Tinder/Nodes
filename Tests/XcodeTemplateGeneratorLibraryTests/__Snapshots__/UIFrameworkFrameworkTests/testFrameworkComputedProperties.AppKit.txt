@@ -1,6 +1,0 @@
-▿ (4 elements)
-  - .0: Kind.appKit
-  - .1: "AppKit"
-  ▿ .2: Optional<String>
-    - some: "AppKit"
-  - .3: "NSViewController"

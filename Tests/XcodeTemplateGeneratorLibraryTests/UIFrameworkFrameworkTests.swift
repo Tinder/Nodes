@@ -13,19 +13,46 @@ import Yams
 
 internal final class UIFrameworkFrameworkTests: XCTestCase {
 
-    internal func testFrameworkComputedProperties() {
-        let frameworks: [UIFramework.Framework] = [
-            .appKit,
-            .uiKit,
-            .swiftUI,
-            .custom(name: "CustomNonNil", import: "<import>", viewControllerType: "<viewControllerType>"),
-            .custom(name: nil, import: nil, viewControllerType: "<viewControllerType>")
-        ]
-        frameworks.forEach {
-            assertSnapshot(
-                matching: ($0.kind, $0.name, $0.import, $0.viewControllerType), as: .dump, named: $0.name
-            )
-        }
+    internal func testAppKit() {
+        let appKit: UIFramework.Framework = .appKit
+        expect(appKit.kind) == .appKit
+        expect(appKit.name) == "AppKit"
+        expect(appKit.import) == "AppKit"
+        expect(appKit.viewControllerType) == "NSViewController"
+    }
+
+    internal func testUIKit() {
+        let uiKit: UIFramework.Framework = .uiKit
+        expect(uiKit.kind) == .uiKit
+        expect(uiKit.name) == "UIKit"
+        expect(uiKit.import) == "UIKit"
+        expect(uiKit.viewControllerType) == "UIViewController"
+    }
+
+    internal func testSwiftUI() {
+        let swiftUI: UIFramework.Framework = .swiftUI
+        expect(swiftUI.kind) == .swiftUI
+        expect(swiftUI.name) == "SwiftUI"
+        expect(swiftUI.import) == "SwiftUI"
+        expect(swiftUI.viewControllerType) == "AbstractViewHostingController"
+    }
+
+    internal func testCustom() {
+        let custom: UIFramework.Framework = .custom(
+            name: "<name>", import: "<import>", viewControllerType: "<viewControllerType>"
+        )
+        expect(custom.kind) == .custom
+        expect(custom.name) == "<name>"
+        expect(custom.import) == "<import>"
+        expect(custom.viewControllerType) == "<viewControllerType>"
+    }
+
+    internal func testCustomDefaults() {
+        let custom: UIFramework.Framework = .custom(name: nil, import: nil, viewControllerType: "<viewControllerType>")
+        expect(custom.kind) == .custom
+        expect(custom.name) == "Custom"
+        expect(custom.import).to(beNil())
+        expect(custom.viewControllerType) == "<viewControllerType>"
     }
 
     internal func testFrameworkInitFromDecoder() throws {
@@ -33,20 +60,31 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
             .appKit,
             .uiKit,
             .swiftUI,
-            .custom(name: "Custom", import: "<import>", viewControllerType: "<viewControllerType>")
+            .custom(name: "<name>", import: "<import>", viewControllerType: "<viewControllerType>")
         ]
         try frameworks.forEach {
-            let data: Data = .init(givenFrameworkYaml(for: $0.kind).utf8)
+            let data: Data = .init(givenFrameworkYaml(for: $0).utf8)
             let framework: UIFramework.Framework = try YAMLDecoder().decode(UIFramework.Framework.self, from: data)
-            assertSnapshot(matching: framework, as: .dump, named: $0.name)
+            expect(framework) == $0
         }
+    }
+
+    internal func testFrameworkInitCustomFromDecoderWithDefaults() throws {
+        let framework: UIFramework.Framework = .custom(
+            name: nil, import: nil, viewControllerType: "<viewControllerType>"
+        )
+        let data: Data = .init(givenFrameworkYaml(for: framework).utf8)
+        let custom: UIFramework.Framework = try YAMLDecoder().decode(UIFramework.Framework.self, from: data)
+        expect(custom.kind) == .custom
+        expect(custom.name) == "Custom"
+        expect(custom.import).to(beNil())
+        expect(custom.viewControllerType) == "<viewControllerType>"
     }
 
     internal func testFrameworkInitFromDecoderAsObject() throws {
         try UIFramework.Kind.allCases.forEach {
             let data: Data = .init(givenFrameworkYamlAsObject(for: $0).utf8)
-            let framework: UIFramework.Framework = try YAMLDecoder().decode(UIFramework.Framework.self, from: data)
-            assertSnapshot(matching: framework, as: .dump, named: $0.rawValue)
+            try expect(YAMLDecoder().decode(UIFramework.Framework.self, from: data)).toNot(throwError())
         }
     }
 
@@ -65,17 +103,22 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
         }
     }
 
-    private func givenFrameworkYaml(for kind: UIFramework.Kind) -> String {
-        switch kind {
+    private func givenFrameworkYaml(for framework: UIFramework.Framework) -> String {
+        switch framework {
         case .appKit, .uiKit, .swiftUI:
-            return kind.rawValue
-        case .custom:
-            return """
-                custom:
-                  name: <name>
-                  import: <import>
-                  viewControllerType: <viewControllerType>
-                """
+            return framework.name
+        case let .custom(name, `import`, viewControllerType):
+            var yaml: String = "custom:"
+            if let name: String = name {
+                yaml.append("\n  name: \(name)")
+            } else {
+                yaml.append("\n  name: \(framework.name)")
+            }
+            if let `import`: String = `import` {
+                yaml.append("\n  import: \(`import`)")
+            }
+            yaml.append("\n  viewControllerType: \(viewControllerType)")
+            return yaml
         }
     }
 
