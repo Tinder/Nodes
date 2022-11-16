@@ -18,7 +18,7 @@ public struct UIFramework: Equatable, Decodable {
         case appKit
         case uiKit
         case swiftUI
-        case custom(name: String?, import: String?, viewControllerType: String)
+        case custom(name: String, import: String, viewControllerType: String)
 
         internal var kind: Kind {
             switch self {
@@ -42,11 +42,11 @@ public struct UIFramework: Equatable, Decodable {
             case .swiftUI:
                 return "SwiftUI"
             case let .custom(name, _, _):
-                return name ?? "Custom"
+                return name
             }
         }
 
-        internal var `import`: String? {
+        internal var `import`: String {
             switch self {
             case .appKit, .uiKit, .swiftUI:
                 return name
@@ -94,10 +94,8 @@ public struct UIFramework: Equatable, Decodable {
                 case .custom:
                     let nestedContainer: KeyedDecodingContainer<CustomCodingKeys> = try container
                         .nestedContainer(keyedBy: CustomCodingKeys.self,forKey: .custom)
-                    let name: String? = try nestedContainer.decodeIfPresent(String.self,
-                                                                            forKey: .name)
-                    let `import`: String? = try nestedContainer.decodeIfPresent(String.self,
-                                                                                forKey: .import)
+                    let name: String = try nestedContainer.decode(String.self, forKey: .name)
+                    let `import`: String = try nestedContainer.decode(String.self, forKey: .import)
                     let viewControllerType: String = try nestedContainer.decode(String.self,
                                                                                 forKey: .viewControllerType)
                     self = .custom(name: name, import: `import`, viewControllerType: viewControllerType)
