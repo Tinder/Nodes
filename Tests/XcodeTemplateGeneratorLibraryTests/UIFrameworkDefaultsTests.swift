@@ -5,6 +5,7 @@
 //  Created by Garric Nahapetian on 11/14/22.
 //
 
+import Nimble
 import SnapshotTesting
 @testable import XcodeTemplateGeneratorLibrary
 import XCTest
@@ -12,7 +13,12 @@ import XCTest
 internal final class UIFrameworkDefaultsTests: XCTestCase {
 
     internal func testDefaults() {
-        assertSnapshot(matching: UIFramework.Defaults().makeUIFramework(for: .appKit), as: .dump)
+        let framework: UIFramework.Framework = .custom(name: nil, import: nil, viewControllerType: "")
+        let uiFramework: UIFramework = .Defaults().makeUIFramework(for: framework)
+        expect(uiFramework.viewControllerSuperParameters) == ""
+        expect(uiFramework.viewControllerProperties) == ""
+        expect(uiFramework.viewControllerMethods) == ""
+        expect(uiFramework.viewControllerMethodsForRootNode) == ""
     }
 
     internal func testDefaultsAppKit() {

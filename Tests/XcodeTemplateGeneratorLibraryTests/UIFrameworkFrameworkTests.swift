@@ -63,7 +63,7 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
             .custom(name: "<name>", import: "<import>", viewControllerType: "<viewControllerType>")
         ]
         try frameworks.forEach {
-            let data: Data = .init(givenFrameworkYaml(for: $0).utf8)
+            let data: Data = .init(givenYaml(for: $0).utf8)
             let framework: UIFramework.Framework = try YAMLDecoder().decode(UIFramework.Framework.self, from: data)
             expect(framework) == $0
         }
@@ -73,19 +73,12 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
         let framework: UIFramework.Framework = .custom(
             name: nil, import: nil, viewControllerType: "<viewControllerType>"
         )
-        let data: Data = .init(givenFrameworkYaml(for: framework).utf8)
+        let data: Data = .init(givenYaml(for: framework).utf8)
         let custom: UIFramework.Framework = try YAMLDecoder().decode(UIFramework.Framework.self, from: data)
         expect(custom.kind) == .custom
         expect(custom.name) == "Custom"
         expect(custom.import).to(beNil())
         expect(custom.viewControllerType) == "<viewControllerType>"
-    }
-
-    internal func testFrameworkInitFromDecoderAsObject() throws {
-        try UIFramework.Kind.allCases.forEach {
-            let data: Data = .init(givenFrameworkYamlAsObject(for: $0).utf8)
-            try expect(YAMLDecoder().decode(UIFramework.Framework.self, from: data)).toNot(throwError())
-        }
     }
 
     internal func testFrameworkInitFromDecoderThrowsError() throws {
@@ -97,13 +90,13 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
         ]
         try inputs.forEach { input in
             let data: Data = .init(input.yaml.utf8)
-            expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: data)).to(throwError { error in
+            try expect(YAMLDecoder().decode(UIFramework.Framework.self, from: data)).to(throwError { error in
                 assertSnapshot(matching: error, as: .dump, named: input.errorName)
             })
         }
     }
 
-    private func givenFrameworkYaml(for framework: UIFramework.Framework) -> String {
+    private func givenYaml(for framework: UIFramework.Framework) -> String {
         switch framework {
         case .appKit, .uiKit, .swiftUI:
             return framework.name
@@ -119,18 +112,6 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
             }
             yaml.append("\n  viewControllerType: \(viewControllerType)")
             return yaml
-        }
-    }
-
-    private func givenFrameworkYamlAsObject(for kind: UIFramework.Kind) -> String {
-        switch kind {
-        case .appKit, .uiKit, .swiftUI:
-            return "\(kind): {}\n"
-        case .custom:
-            return """
-                custom:
-                  viewControllerType: <viewControllerType>
-                """
         }
     }
 }
