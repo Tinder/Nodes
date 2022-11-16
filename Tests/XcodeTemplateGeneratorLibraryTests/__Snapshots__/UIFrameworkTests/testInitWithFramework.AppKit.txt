@@ -1,6 +1,0 @@
-▿ UIFramework
-  - framework: Framework.appKit
-  - viewControllerMethods: ""
-  - viewControllerMethodsForRootNode: ""
-  - viewControllerProperties: ""
-  - viewControllerSuperParameters: ""
