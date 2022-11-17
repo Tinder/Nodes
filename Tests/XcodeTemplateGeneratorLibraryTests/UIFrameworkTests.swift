@@ -56,12 +56,12 @@ final class UIFrameworkTests: XCTestCase {
         let framework: UIFramework.Framework = .custom(name: "<name>",
                                                        import: "<import>",
                                                        viewControllerType: "<viewControllerType>")
-        let defaults: UIFramework = .Defaults().makeUIFramework(for: framework)
         let custom: UIFramework = .init(framework: framework)
         expect(custom.kind) == framework.kind
         expect(custom.name) == framework.name
         expect(custom.import) == framework.import
         expect(custom.viewControllerType) == framework.viewControllerType
+        let defaults: UIFramework = .Defaults().makeUIFramework(for: framework)
         expect(custom.viewControllerSuperParameters) == defaults.viewControllerSuperParameters
         expect(custom.viewControllerProperties) == defaults.viewControllerProperties
         expect(custom.viewControllerMethods) == defaults.viewControllerMethods
