@@ -149,7 +149,7 @@ public struct UIFramework: Equatable, Codable {
     }
 
     public init(from decoder: Decoder) throws {
-        framework = try decoder.decode(CodingKeys.framework.stringValue)
+        framework = try decoder.decode(CodingKeys.framework)
         let defaults: UIFramework = .init(framework: framework)
         viewControllerSuperParameters =
             (try? decoder.decodeString(CodingKeys.viewControllerSuperParameters))

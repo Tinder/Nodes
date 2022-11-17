@@ -56,8 +56,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         ]
         try frameworks.forEach {
             let data: Data = .init(givenYAML(for: $0).utf8)
-            let framework: UIFramework.Framework = try YAMLDecoder().decode(UIFramework.Framework.self, from: data)
-            expect(framework) == $0
+            try expect(YAMLDecoder().decode(UIFramework.Framework.self, from: data)) == $0
         }
     }
 
