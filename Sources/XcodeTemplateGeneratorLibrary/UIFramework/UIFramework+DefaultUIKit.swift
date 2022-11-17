@@ -1,5 +1,5 @@
 //
-//  DefaultUIKitFramework.swift
+//  UIFramework+DefaultUIKit.swift
 //  XcodeTemplateGeneratorLibrary
 //
 //  Created by Garric Nahapetian on 11/15/22.
@@ -7,12 +7,9 @@
 
 extension UIFramework {
 
-    private struct Defaults {
+    private enum Defaults {
 
-        let viewControllerSuperParameters: String = "nibName: nil, bundle: nil"
-        let viewControllerProperties: String = ""
-
-        let viewControllerMethods: String = """
+        static let viewControllerMethods: String = """
             override func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
@@ -29,7 +26,7 @@ extension UIFramework {
             }
             """
 
-        let viewControllerMethodsForRootNode: String = """
+        static let viewControllerMethodsForRootNode: String = """
             override func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
@@ -53,13 +50,12 @@ extension UIFramework {
     }
 
     internal static func makeDefaultUIKitFramework() -> UIFramework {
-        let defaults: Defaults = .init()
-        return UIFramework(
+        UIFramework(
             framework: .uiKit,
-            viewControllerSuperParameters: defaults.viewControllerSuperParameters,
-            viewControllerProperties: defaults.viewControllerProperties,
-            viewControllerMethods: defaults.viewControllerMethods,
-            viewControllerMethodsForRootNode: defaults.viewControllerMethodsForRootNode
+            viewControllerSuperParameters: "nibName: nil, bundle: nil",
+            viewControllerProperties: "",
+            viewControllerMethods: Defaults.viewControllerMethods,
+            viewControllerMethodsForRootNode: Defaults.viewControllerMethodsForRootNode
         )
     }
 }

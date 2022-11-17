@@ -1,5 +1,5 @@
 //
-//  DefaultSwiftUIFramework.swift
+//  UIFramework+DefaultSwiftUI.swift
 //  XcodeTemplateGeneratorLibrary
 //
 //  Created by Garric Nahapetian on 11/15/22.
@@ -14,11 +14,11 @@ extension UIFramework {
             viewControllerProperties: "",
             viewControllerMethods: "",
             viewControllerMethodsForRootNode: """
-                    override func viewDidAppear(_ animated: Bool) {
-                        super.viewDidAppear(animated)
-                        receiver?.viewDidAppear()
-                    }
-                    """
+                override func viewDidAppear(_ animated: Bool) {
+                    super.viewDidAppear(animated)
+                    receiver?.viewDidAppear()
+                }
+                """
         )
     }
 }
