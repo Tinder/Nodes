@@ -9,11 +9,24 @@ extension UIFramework {
 
     internal enum DefaultUIKitFramework {
 
-        private static var viewControllerSuperParameters: String { "nibName: nil, bundle: nil" }
-        private static var viewControllerProperties: String { "" }
+        internal static func make() -> UIFramework {
+            let defaults: Defaults = .init()
+            return UIFramework(
+                framework: .uiKit,
+                viewControllerSuperParameters: defaults.viewControllerSuperParameters,
+                viewControllerProperties: defaults.viewControllerProperties,
+                viewControllerMethods: defaults.viewControllerMethods,
+                viewControllerMethodsForRootNode: defaults.viewControllerMethodsForRootNode
+            )
+        }
+    }
 
-        private static var viewControllerMethods: String {
-            """
+    private struct Defaults {
+
+        let viewControllerSuperParameters: String = "nibName: nil, bundle: nil"
+        let viewControllerProperties: String = ""
+
+        let viewControllerMethods: String = """
             override func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
@@ -29,10 +42,8 @@ extension UIFramework {
                 cancellables.removeAll()
             }
             """
-        }
 
-        private static var viewControllerMethodsForRootNode: String {
-            """
+        let viewControllerMethodsForRootNode: String = """
             override func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
@@ -53,16 +64,5 @@ extension UIFramework {
                 cancellables.removeAll()
             }
             """
-        }
-
-        internal static func make() -> UIFramework {
-            UIFramework(
-                framework: .uiKit,
-                viewControllerSuperParameters: viewControllerSuperParameters,
-                viewControllerProperties: viewControllerProperties,
-                viewControllerMethods: viewControllerMethods,
-                viewControllerMethodsForRootNode: viewControllerMethodsForRootNode
-            )
-        }
     }
 }
