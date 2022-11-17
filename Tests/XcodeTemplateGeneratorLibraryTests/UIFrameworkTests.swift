@@ -61,7 +61,7 @@ final class UIFrameworkTests: XCTestCase {
         expect(custom.kind) == framework.kind
         expect(custom.name) == framework.name
         expect(custom.import) == framework.import
-        expect(custom.viewControllerType) == defaults.viewControllerType
+        expect(custom.viewControllerType) == framework.viewControllerType
         expect(custom.viewControllerSuperParameters) == defaults.viewControllerSuperParameters
         expect(custom.viewControllerProperties) == defaults.viewControllerProperties
         expect(custom.viewControllerMethods) == defaults.viewControllerMethods
