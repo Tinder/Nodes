@@ -38,9 +38,9 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
     }
 
     internal func testCustom() {
-        let custom: UIFramework.Framework = .custom(
-            name: "<name>", import: "<import>", viewControllerType: "<viewControllerType>"
-        )
+        let custom: UIFramework.Framework = .custom(name: "<name>",
+                                                    import: "<import>",
+                                                    viewControllerType: "<viewControllerType>")
         expect(custom.kind) == .custom
         expect(custom.name) == "<name>"
         expect(custom.import) == "<import>"
