@@ -1,0 +1,10 @@
+▿ UIFramework
+  ▿ framework: Framework
+    ▿ custom: (3 elements)
+      - name: "<name>"
+      - import: "<import>"
+      - viewControllerType: "<viewControllerType>"
+  - viewControllerMethods: ""
+  - viewControllerMethodsForRootNode: ""
+  - viewControllerProperties: ""
+  - viewControllerSuperParameters: ""

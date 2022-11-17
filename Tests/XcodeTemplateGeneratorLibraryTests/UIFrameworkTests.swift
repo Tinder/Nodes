@@ -117,6 +117,8 @@ internal final class UIFrameworkTests: XCTestCase {
             return """
                 framework:
                   custom:
+                    name: <name>
+                    import: <import>
                     viewControllerType: <viewControllerType>
                 """
         }
