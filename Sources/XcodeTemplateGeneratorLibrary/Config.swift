@@ -11,7 +11,7 @@ import Yams
 
 extension XcodeTemplates {
 
-    public struct Config: Equatable, Decodable {
+    public struct Config: Equatable, Codable {
 
         internal static let symbolForSwiftUI: String = ""
 
@@ -207,85 +207,85 @@ extension XcodeTemplates.Config {
     public init(from decoder: Decoder) throws {
         let defaults: XcodeTemplates.Config = .init()
         includedTemplates =
-            (try? decoder.decode("includedTemplates"))
+            (try? decoder.decode(CodingKeys.includedTemplates))
             ?? defaults.includedTemplates
         fileHeader =
-            (try? decoder.decodeString("fileHeader"))
+            (try? decoder.decodeString(CodingKeys.fileHeader))
             ?? defaults.fileHeader
         baseImports =
-            (try? decoder.decode("baseImports"))
+            (try? decoder.decode(CodingKeys.baseImports))
             ?? defaults.baseImports
         diGraphImports =
-            (try? decoder.decode("diGraphImports"))
+            (try? decoder.decode(CodingKeys.diGraphImports))
             ?? defaults.diGraphImports
         viewControllerImports =
-            (try? decoder.decode("viewControllerImports"))
+            (try? decoder.decode(CodingKeys.viewControllerImports))
             ?? defaults.viewControllerImports
         viewControllerImportsSwiftUI =
-            (try? decoder.decode("viewControllerImportsSwiftUI"))
+            (try? decoder.decode(CodingKeys.viewControllerImportsSwiftUI))
             ?? defaults.viewControllerImportsSwiftUI
         viewControllerViewStateImports =
-            (try? decoder.decode("viewControllerViewStateImports"))
+            (try? decoder.decode(CodingKeys.viewControllerViewStateImports))
             ?? defaults.viewControllerViewStateImports
         dependencies =
-            (try? decoder.decode("dependencies"))
+            (try? decoder.decode(CodingKeys.dependencies))
             ?? defaults.dependencies
         flowProperties =
-            (try? decoder.decode("flowProperties"))
+            (try? decoder.decode(CodingKeys.flowProperties))
             ?? defaults.flowProperties
         viewControllerType =
-            (try? decoder.decodeString("viewControllerType"))
+            (try? decoder.decodeString(CodingKeys.viewControllerType))
             ?? defaults.viewControllerType
         viewControllableType =
-            (try? decoder.decodeString("viewControllableType"))
+            (try? decoder.decodeString(CodingKeys.viewControllableType))
             ?? defaults.viewControllableType
         viewControllableFlowType =
-            (try? decoder.decodeString("viewControllableFlowType"))
+            (try? decoder.decodeString(CodingKeys.viewControllableFlowType))
             ?? defaults.viewControllableFlowType
         viewControllerSuperParameters =
-            (try? decoder.decodeString("viewControllerSuperParameters"))
+            (try? decoder.decodeString(CodingKeys.viewControllerSuperParameters))
             ?? defaults.viewControllerSuperParameters
         viewControllerProperties =
-            (try? decoder.decodeString("viewControllerProperties"))
+            (try? decoder.decodeString(CodingKeys.viewControllerProperties))
             ?? defaults.viewControllerProperties
         viewControllerPropertiesSwiftUI =
-            (try? decoder.decodeString("viewControllerPropertiesSwiftUI"))
+            (try? decoder.decodeString(CodingKeys.viewControllerPropertiesSwiftUI))
             ?? defaults.viewControllerPropertiesSwiftUI
         viewControllerMethods =
-            (try? decoder.decodeString("viewControllerMethods"))
+            (try? decoder.decodeString(CodingKeys.viewControllerMethods))
             ?? defaults.viewControllerMethods
         viewControllerMethodsSwiftUI =
-            (try? decoder.decodeString("viewControllerMethodsSwiftUI"))
+            (try? decoder.decodeString(CodingKeys.viewControllerMethodsSwiftUI))
             ?? defaults.viewControllerMethodsSwiftUI
         rootViewControllerMethods =
-            (try? decoder.decodeString("rootViewControllerMethods"))
+            (try? decoder.decodeString(CodingKeys.rootViewControllerMethods))
             ?? defaults.rootViewControllerMethods
         rootViewControllerMethodsSwiftUI =
-            (try? decoder.decodeString("rootViewControllerMethodsSwiftUI"))
+            (try? decoder.decodeString(CodingKeys.rootViewControllerMethodsSwiftUI))
             ?? defaults.rootViewControllerMethodsSwiftUI
         viewControllerWithoutViewStateMethods =
-            (try? decoder.decodeString("viewControllerWithoutViewStateMethods"))
+            (try? decoder.decodeString(CodingKeys.viewControllerWithoutViewStateMethods))
             ?? defaults.viewControllerWithoutViewStateMethods
         viewControllerWithoutViewStateMethodsSwiftUI =
-            (try? decoder.decodeString("viewControllerWithoutViewStateMethodsSwiftUI"))
+            (try? decoder.decodeString(CodingKeys.viewControllerWithoutViewStateMethodsSwiftUI))
             ?? defaults.viewControllerWithoutViewStateMethodsSwiftUI
         viewControllerUpdateComment =
-            (try? decoder.decodeString("viewControllerUpdateComment"))
+            (try? decoder.decodeString(CodingKeys.viewControllerUpdateComment))
             ?? defaults.viewControllerUpdateComment
         viewStatePublisher =
-            (try? decoder.decodeString("viewStatePublisher"))
+            (try? decoder.decodeString(CodingKeys.viewStatePublisher))
             ?? defaults.viewStatePublisher
         viewStateOperators =
-            (try? decoder.decodeString("viewStateOperators"))
+            (try? decoder.decodeString(CodingKeys.viewStateOperators))
             ?? defaults.viewStateOperators
         publisherType =
-            (try? decoder.decodeString("publisherType"))
+            (try? decoder.decodeString(CodingKeys.publisherType))
             ?? defaults.publisherType
         publisherFailureType =
-            (try? decoder.decodeString("publisherFailureType"))
+            (try? decoder.decodeString(CodingKeys.publisherFailureType))
             ?? defaults.publisherFailureType
         cancellableType =
-            (try? decoder.decodeString("cancellableType"))
+            (try? decoder.decodeString(CodingKeys.cancellableType))
             ?? defaults.cancellableType
     }
 }
