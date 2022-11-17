@@ -5,7 +5,6 @@
 //  Created by Garric Nahapetian on 11/14/22.
 //
 
-import Nimble
 import SnapshotTesting
 @testable import XcodeTemplateGeneratorLibrary
 import XCTest
