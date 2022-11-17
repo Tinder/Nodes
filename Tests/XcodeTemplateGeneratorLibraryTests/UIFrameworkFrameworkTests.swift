@@ -61,18 +61,14 @@ final class UIFrameworkFrameworkTests: XCTestCase {
     }
 
     func testFrameworkInitFromDecoderThrowsError() throws {
-        let inputs: [(errorName: String, yaml: String)] = [
-            ("Custom-Must-Be-Object", "Custom"),
-            ("Unsupported-Framework", "AnyUnsupportedFrameworkName"),
-            ("Single-Key-Expected", "custom:\ncustom:\n"),
-            ("Expected-String", "[]")
-        ]
-        try inputs.forEach { input in
-            let data: Data = .init(input.yaml.utf8)
-            try expect(YAMLDecoder().decode(UIFramework.Framework.self, from: data)).to(throwError { error in
-                assertSnapshot(matching: error, as: .dump, named: input.errorName)
-            })
-        }
+        try ["Custom", "AnyUnsupportedFrameworkName", "custom:\ncustom:\n", "[]"]
+            .map(\.utf8)
+            .map(Data.init(_:))
+            .forEach {
+                try expect(YAMLDecoder().decode(UIFramework.Framework.self, from: $0)).to(throwError {
+                    assertSnapshot(matching: $0, as: .dump)
+                })
+            }
     }
 
     private func givenYAML(for framework: UIFramework.Framework) -> String {
