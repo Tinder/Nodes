@@ -68,23 +68,23 @@ internal final class UIFrameworkTests: XCTestCase {
         expect(custom.viewControllerMethodsForRootNode) == defaults.viewControllerMethodsForRootNode
     }
 
-    internal func testInitFromDecoderWithYaml() throws {
+    internal func testInitFromDecoderWithYAML() throws {
         try UIFramework.Kind.allCases.forEach {
-            let data: Data = .init(givenYaml(for: $0).utf8)
+            let data: Data = .init(givenYAML(for: $0).utf8)
             let uiFramework: UIFramework = try YAMLDecoder().decode(UIFramework.self, from: data)
             assertSnapshot(matching: uiFramework, as: .dump, named: $0.rawValue)
         }
     }
 
-    internal func testInitFromDecoderWithYamlUsingDefaults() throws {
+    internal func testInitFromDecoderWithYAMLUsingDefaults() throws {
         try UIFramework.Kind.allCases.forEach {
-            let data: Data = .init(givenMinimalYaml(for: $0).utf8)
+            let data: Data = .init(givenMinimalYAML(for: $0).utf8)
             let uiFramework: UIFramework = try YAMLDecoder().decode(UIFramework.self, from: data)
             assertSnapshot(matching: uiFramework, as: .dump, named: $0.rawValue)
         }
     }
 
-    private func givenYaml(for kind: UIFramework.Kind) -> String {
+    private func givenYAML(for kind: UIFramework.Kind) -> String {
         switch kind {
         case .appKit, .uiKit, .swiftUI:
             return """
@@ -109,7 +109,7 @@ internal final class UIFrameworkTests: XCTestCase {
         }
     }
 
-    private func givenMinimalYaml(for kind: UIFramework.Kind) -> String {
+    private func givenMinimalYAML(for kind: UIFramework.Kind) -> String {
         switch kind {
         case .appKit, .uiKit, .swiftUI:
             return "framework: \(kind.rawValue)"

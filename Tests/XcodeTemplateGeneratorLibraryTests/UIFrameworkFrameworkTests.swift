@@ -55,7 +55,7 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
             .custom(name: "<name>", import: "<import>", viewControllerType: "<viewControllerType>")
         ]
         try frameworks.forEach {
-            let data: Data = .init(givenYaml(for: $0).utf8)
+            let data: Data = .init(givenYAML(for: $0).utf8)
             let framework: UIFramework.Framework = try YAMLDecoder().decode(UIFramework.Framework.self, from: data)
             expect(framework) == $0
         }
@@ -76,7 +76,7 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
         }
     }
 
-    private func givenYaml(for framework: UIFramework.Framework) -> String {
+    private func givenYAML(for framework: UIFramework.Framework) -> String {
         switch framework {
         case .appKit, .uiKit, .swiftUI:
             return framework.name
