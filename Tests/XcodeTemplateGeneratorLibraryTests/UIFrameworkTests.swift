@@ -68,7 +68,7 @@ final class UIFrameworkTests: XCTestCase {
         expect(custom.viewControllerMethodsForRootNode) == defaults.viewControllerMethodsForRootNode
     }
 
-    func testInitFromDecoderWithYAML() throws {
+    func testDecoding() throws {
         try UIFramework.Kind.allCases.forEach {
             let data: Data = .init(givenYAML(for: $0).utf8)
             let uiFramework: UIFramework = try YAMLDecoder().decode(UIFramework.self, from: data)
@@ -76,7 +76,7 @@ final class UIFrameworkTests: XCTestCase {
         }
     }
 
-    func testInitFromDecoderWithYAMLUsingDefaults() throws {
+    func testDecodingWithDefaults() throws {
         try UIFramework.Kind.allCases.forEach {
             let data: Data = .init(givenMinimalYAML(for: $0).utf8)
             let uiFramework: UIFramework = try YAMLDecoder().decode(UIFramework.self, from: data)
