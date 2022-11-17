@@ -7,16 +7,13 @@
 
 extension UIFramework {
 
-    internal enum DefaultFramework {
-
-        internal static func make(for framework: UIFramework.Framework) -> UIFramework {
-            UIFramework(
-                framework: framework,
-                viewControllerSuperParameters: "",
-                viewControllerProperties: "",
-                viewControllerMethods: "",
-                viewControllerMethodsForRootNode: ""
-            )
-        }
+    internal static func makeDefaultFramework(for framework: UIFramework.Framework) -> UIFramework {
+        UIFramework(
+            framework: framework,
+            viewControllerSuperParameters: "",
+            viewControllerProperties: "",
+            viewControllerMethods: "",
+            viewControllerMethodsForRootNode: ""
+        )
     }
 }

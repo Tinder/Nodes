@@ -7,20 +7,6 @@
 
 extension UIFramework {
 
-    internal enum DefaultAppKitFramework {
-
-        internal static func make() -> UIFramework {
-            let defaults: Defaults = .init()
-            return UIFramework(
-                framework: .appKit,
-                viewControllerSuperParameters: defaults.viewControllerSuperParameters,
-                viewControllerProperties: defaults.viewControllerProperties,
-                viewControllerMethods: defaults.viewControllerMethods,
-                viewControllerMethodsForRootNode: defaults.viewControllerMethodsForRootNode
-            )
-        }
-    }
-
     private struct Defaults {
 
         let viewControllerSuperParameters: String = "nibName: nil, bundle: nil"
@@ -54,5 +40,16 @@ extension UIFramework {
                 cancellables.removeAll()
             }
             """
+    }
+
+    internal static func makeDefaultAppKitFramework() -> UIFramework {
+        let defaults: Defaults = .init()
+        return UIFramework(
+            framework: .appKit,
+            viewControllerSuperParameters: defaults.viewControllerSuperParameters,
+            viewControllerProperties: defaults.viewControllerProperties,
+            viewControllerMethods: defaults.viewControllerMethods,
+            viewControllerMethodsForRootNode: defaults.viewControllerMethodsForRootNode
+        )
     }
 }
