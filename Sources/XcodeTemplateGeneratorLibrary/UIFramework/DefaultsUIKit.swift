@@ -1,5 +1,5 @@
 //
-//  DefaultsUIKit.swift
+//  DefaultUIKitFramework.swift
 //  XcodeTemplateGeneratorLibrary
 //
 //  Created by Garric Nahapetian on 11/15/22.

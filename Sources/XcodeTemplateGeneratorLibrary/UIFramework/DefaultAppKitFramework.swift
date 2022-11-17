@@ -1,5 +1,5 @@
 //
-//  DefaultsAppKit.swift
+//  DefaultAppKitFramework.swift
 //  XcodeTemplateGeneratorLibrary
 //
 //  Created by Garric Nahapetian on 11/15/22.
