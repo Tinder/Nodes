@@ -9,13 +9,13 @@ import Nimble
 @testable import XcodeTemplateGeneratorLibrary
 import XCTest
 
-internal final class UIFrameworkKindTests: XCTestCase {
+final class UIFrameworkKindTests: XCTestCase {
 
-    internal func testAllCases() {
+    func testAllCases() {
         expect(UIFramework.Kind.allCases) == [.appKit, .uiKit, .swiftUI, .custom]
     }
 
-    internal func testRawValues() {
+    func testRawValues() {
         expect(UIFramework.Kind.allCases.map(\.rawValue)) == ["AppKit", "UIKit", "SwiftUI", "Custom"]
     }
 }

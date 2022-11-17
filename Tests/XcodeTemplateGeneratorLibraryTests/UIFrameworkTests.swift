@@ -11,9 +11,9 @@ import SnapshotTesting
 import XCTest
 import Yams
 
-internal final class UIFrameworkTests: XCTestCase {
+final class UIFrameworkTests: XCTestCase {
 
-    internal func testInitWithAppKit() {
+    func testInitWithAppKit() {
         let defaults: UIFramework = .DefaultsAppKit().makeUIFramework()
         let appKit: UIFramework = .init(framework: .appKit)
         expect(appKit.kind) == defaults.kind
@@ -26,7 +26,7 @@ internal final class UIFrameworkTests: XCTestCase {
         expect(appKit.viewControllerMethodsForRootNode) == defaults.viewControllerMethodsForRootNode
     }
 
-    internal func testInitWithUIKit() {
+    func testInitWithUIKit() {
         let defaults: UIFramework = .DefaultsUIKit().makeUIFramework()
         let uiKit: UIFramework = .init(framework: .uiKit)
         expect(uiKit.kind) == defaults.kind
@@ -39,7 +39,7 @@ internal final class UIFrameworkTests: XCTestCase {
         expect(uiKit.viewControllerMethodsForRootNode) == defaults.viewControllerMethodsForRootNode
     }
 
-    internal func testInitWithSwiftUI() {
+    func testInitWithSwiftUI() {
         let defaults: UIFramework = .DefaultsSwiftUI().makeUIFramework()
         let swiftUI: UIFramework = .init(framework: .swiftUI)
         expect(swiftUI.kind) == defaults.kind
@@ -52,7 +52,7 @@ internal final class UIFrameworkTests: XCTestCase {
         expect(swiftUI.viewControllerMethodsForRootNode) == defaults.viewControllerMethodsForRootNode
     }
 
-    internal func testInitWithCustom() {
+    func testInitWithCustom() {
         let framework: UIFramework.Framework = .custom(name: "<name>",
                                                        import: "<import>",
                                                        viewControllerType: "<viewControllerType>")
@@ -68,7 +68,7 @@ internal final class UIFrameworkTests: XCTestCase {
         expect(custom.viewControllerMethodsForRootNode) == defaults.viewControllerMethodsForRootNode
     }
 
-    internal func testInitFromDecoderWithYAML() throws {
+    func testInitFromDecoderWithYAML() throws {
         try UIFramework.Kind.allCases.forEach {
             let data: Data = .init(givenYAML(for: $0).utf8)
             let uiFramework: UIFramework = try YAMLDecoder().decode(UIFramework.self, from: data)
@@ -76,7 +76,7 @@ internal final class UIFrameworkTests: XCTestCase {
         }
     }
 
-    internal func testInitFromDecoderWithYAMLUsingDefaults() throws {
+    func testInitFromDecoderWithYAMLUsingDefaults() throws {
         try UIFramework.Kind.allCases.forEach {
             let data: Data = .init(givenMinimalYAML(for: $0).utf8)
             let uiFramework: UIFramework = try YAMLDecoder().decode(UIFramework.self, from: data)

@@ -11,9 +11,9 @@ import SnapshotTesting
 import XCTest
 import Yams
 
-internal final class UIFrameworkFrameworkTests: XCTestCase {
+final class UIFrameworkFrameworkTests: XCTestCase {
 
-    internal func testAppKit() {
+    func testAppKit() {
         let appKit: UIFramework.Framework = .appKit
         expect(appKit.kind) == .appKit
         expect(appKit.name) == "AppKit"
@@ -21,7 +21,7 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
         expect(appKit.viewControllerType) == "NSViewController"
     }
 
-    internal func testUIKit() {
+    func testUIKit() {
         let uiKit: UIFramework.Framework = .uiKit
         expect(uiKit.kind) == .uiKit
         expect(uiKit.name) == "UIKit"
@@ -29,7 +29,7 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
         expect(uiKit.viewControllerType) == "UIViewController"
     }
 
-    internal func testSwiftUI() {
+    func testSwiftUI() {
         let swiftUI: UIFramework.Framework = .swiftUI
         expect(swiftUI.kind) == .swiftUI
         expect(swiftUI.name) == "SwiftUI"
@@ -37,7 +37,7 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
         expect(swiftUI.viewControllerType) == "AbstractViewHostingController"
     }
 
-    internal func testCustom() {
+    func testCustom() {
         let custom: UIFramework.Framework = .custom(name: "<name>",
                                                     import: "<import>",
                                                     viewControllerType: "<viewControllerType>")
@@ -47,7 +47,7 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
         expect(custom.viewControllerType) == "<viewControllerType>"
     }
 
-    internal func testFrameworkInitFromDecoder() throws {
+    func testFrameworkInitFromDecoder() throws {
         let frameworks: [UIFramework.Framework] = [
             .appKit,
             .uiKit,
@@ -61,7 +61,7 @@ internal final class UIFrameworkFrameworkTests: XCTestCase {
         }
     }
 
-    internal func testFrameworkInitFromDecoderThrowsError() throws {
+    func testFrameworkInitFromDecoderThrowsError() throws {
         let inputs: [(errorName: String, yaml: String)] = [
             ("Custom-Must-Be-Object", "Custom"),
             ("Unsupported-Framework", "AnyUnsupportedFrameworkName"),
