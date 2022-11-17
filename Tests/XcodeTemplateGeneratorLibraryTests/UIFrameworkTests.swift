@@ -58,9 +58,9 @@ final class UIFrameworkTests: XCTestCase {
                                                        viewControllerType: "<viewControllerType>")
         let defaults: UIFramework = .Defaults().makeUIFramework(for: framework)
         let custom: UIFramework = .init(framework: framework)
-        expect(custom.kind) == defaults.kind
-        expect(custom.name) == defaults.name
-        expect(custom.import) == defaults.import
+        expect(custom.kind) == framework.kind
+        expect(custom.name) == framework.name
+        expect(custom.import) == framework.import
         expect(custom.viewControllerType) == defaults.viewControllerType
         expect(custom.viewControllerSuperParameters) == defaults.viewControllerSuperParameters
         expect(custom.viewControllerProperties) == defaults.viewControllerProperties
@@ -73,7 +73,7 @@ final class UIFrameworkTests: XCTestCase {
             .allCases
             .map(givenYAML)
             .map(\.utf8)
-            .map { Data($0) }
+            .map(Data.init(_:))
             .map { try YAMLDecoder().decode(UIFramework.self, from: $0) }
             .forEach {
                 assertSnapshot(matching: $0, as: .dump, named: $0.kind.rawValue)
@@ -85,7 +85,7 @@ final class UIFrameworkTests: XCTestCase {
             .allCases
             .map(givenMinimalYAML)
             .map(\.utf8)
-            .map { Data($0) }
+            .map(Data.init(_:))
             .map { try YAMLDecoder().decode(UIFramework.self, from: $0) }
             .forEach {
                 assertSnapshot(matching: $0, as: .dump, named: $0.kind.rawValue)
