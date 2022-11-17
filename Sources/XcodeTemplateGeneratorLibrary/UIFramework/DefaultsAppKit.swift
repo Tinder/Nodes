@@ -13,10 +13,6 @@ extension UIFramework {
         private let viewControllerProperties: String = ""
 
         private let viewControllerMethods: String = """
-            override func viewDidLoad() {
-                super.viewDidLoad()
-            }
-
             override func viewWillAppear() {
                 super.viewWillAppear()
                 observe(viewState).store(in: &cancellables)
@@ -29,10 +25,6 @@ extension UIFramework {
             """
 
         private let viewControllerMethodsForRootNode: String = """
-            override func viewDidLoad() {
-                super.viewDidLoad()
-            }
-
             override func viewWillAppear() {
                 super.viewWillAppear()
                 observe(viewState).store(in: &cancellables)
