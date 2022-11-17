@@ -15,18 +15,18 @@ final class UIFrameworkDefaultsTests: XCTestCase {
         let framework: UIFramework.Framework = .custom(name: "<name>",
                                                        import: "<import>",
                                                        viewControllerType: "<viewControllerType>")
-        assertSnapshot(matching: UIFramework.Defaults().makeUIFramework(for: framework), as: .dump)
+        assertSnapshot(matching: UIFramework.DefaultFramework.make(for: framework), as: .dump)
     }
 
     func testDefaultsAppKit() {
-        assertSnapshot(matching: UIFramework.DefaultsAppKit().makeUIFramework(), as: .dump)
+        assertSnapshot(matching: UIFramework.DefaultAppKitFramework.make(), as: .dump)
     }
 
     func testDefaultsUIKit() {
-        assertSnapshot(matching: UIFramework.DefaultsUIKit().makeUIFramework(), as: .dump)
+        assertSnapshot(matching: UIFramework.DefaultUIKitFramework.make(), as: .dump)
     }
 
     func testDefaultsSwiftUI() {
-        assertSnapshot(matching: UIFramework.DefaultsSwiftUI().makeUIFramework(), as: .dump)
+        assertSnapshot(matching: UIFramework.DefaultSwiftUIFramework.make(), as: .dump)
     }
 }

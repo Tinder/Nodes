@@ -7,20 +7,22 @@
 
 extension UIFramework {
 
-    internal final class DefaultsSwiftUI {
+    internal enum DefaultSwiftUIFramework {
 
-        private let viewControllerSuperParameters: String = ""
-        private let viewControllerProperties: String = ""
-        private let viewControllerMethods: String = ""
+        private static var viewControllerSuperParameters: String { "" }
+        private static var viewControllerProperties: String { "" }
+        private static var viewControllerMethods: String { "" }
 
-        private let viewControllerMethodsForRootNode: String = """
+        private static var viewControllerMethodsForRootNode: String {
+            """
             override func viewDidAppear(_ animated: Bool) {
                 super.viewDidAppear(animated)
                 receiver?.viewDidAppear()
             }
             """
+        }
 
-        internal func makeUIFramework() -> UIFramework {
+        internal static func make() -> UIFramework {
             UIFramework(
                 framework: .swiftUI,
                 viewControllerSuperParameters: viewControllerSuperParameters,

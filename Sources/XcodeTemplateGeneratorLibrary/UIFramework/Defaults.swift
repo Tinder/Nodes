@@ -7,14 +7,14 @@
 
 extension UIFramework {
 
-    internal final class Defaults {
+    internal enum DefaultFramework {
 
-        private let viewControllerSuperParameters: String = ""
-        private let viewControllerProperties: String = ""
-        private let viewControllerMethods: String = ""
-        private let viewControllerMethodsForRootNode: String = ""
+        private static var viewControllerSuperParameters: String { "" }
+        private static var viewControllerProperties: String { "" }
+        private static var viewControllerMethods: String { "" }
+        private static var viewControllerMethodsForRootNode: String { "" }
 
-        internal func makeUIFramework(for framework: UIFramework.Framework) -> UIFramework {
+        internal static func make(for framework: UIFramework.Framework) -> UIFramework {
             UIFramework(
                 framework: framework,
                 viewControllerSuperParameters: viewControllerSuperParameters,

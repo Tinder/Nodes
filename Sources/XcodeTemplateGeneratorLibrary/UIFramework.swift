@@ -138,13 +138,13 @@ public struct UIFramework: Equatable, Codable {
     public init(framework: Framework) {
         switch framework.kind {
         case .appKit:
-            self = DefaultsAppKit().makeUIFramework()
+            self = DefaultAppKitFramework.make()
         case .uiKit:
-            self = DefaultsUIKit().makeUIFramework()
+            self = DefaultUIKitFramework.make()
         case .swiftUI:
-            self = DefaultsSwiftUI().makeUIFramework()
+            self = DefaultSwiftUIFramework.make()
         case .custom:
-            self = Defaults().makeUIFramework(for: framework)
+            self = DefaultFramework.make(for: framework)
         }
     }
 

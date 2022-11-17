@@ -7,12 +7,13 @@
 
 extension UIFramework {
 
-    internal final class DefaultsAppKit {
+    internal enum DefaultAppKitFramework {
 
-        private let viewControllerSuperParameters: String = "nibName: nil, bundle: nil"
-        private let viewControllerProperties: String = ""
+        private static var viewControllerSuperParameters: String { "nibName: nil, bundle: nil" }
+        private static var viewControllerProperties: String { "" }
 
-        private let viewControllerMethods: String = """
+        private static var viewControllerMethods: String {
+            """
             override func viewWillAppear() {
                 super.viewWillAppear()
                 observe(viewState).store(in: &cancellables)
@@ -23,8 +24,10 @@ extension UIFramework {
                 cancellables.removeAll()
             }
             """
+        }
 
-        private let viewControllerMethodsForRootNode: String = """
+        private static var viewControllerMethodsForRootNode: String {
+            """
             override func viewWillAppear() {
                 super.viewWillAppear()
                 observe(viewState).store(in: &cancellables)
@@ -40,8 +43,9 @@ extension UIFramework {
                 cancellables.removeAll()
             }
             """
+        }
 
-        internal func makeUIFramework() -> UIFramework {
+        internal static func make() -> UIFramework {
             UIFramework(
                 framework: .appKit,
                 viewControllerSuperParameters: viewControllerSuperParameters,

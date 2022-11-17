@@ -14,7 +14,7 @@ import Yams
 final class UIFrameworkTests: XCTestCase {
 
     func testInitWithAppKit() {
-        let defaults: UIFramework = .DefaultsAppKit().makeUIFramework()
+        let defaults: UIFramework = .DefaultAppKitFramework.make()
         let appKit: UIFramework = .init(framework: .appKit)
         expect(appKit.kind) == defaults.kind
         expect(appKit.name) == defaults.name
@@ -27,7 +27,7 @@ final class UIFrameworkTests: XCTestCase {
     }
 
     func testInitWithUIKit() {
-        let defaults: UIFramework = .DefaultsUIKit().makeUIFramework()
+        let defaults: UIFramework = .DefaultUIKitFramework.make()
         let uiKit: UIFramework = .init(framework: .uiKit)
         expect(uiKit.kind) == defaults.kind
         expect(uiKit.name) == defaults.name
@@ -40,7 +40,7 @@ final class UIFrameworkTests: XCTestCase {
     }
 
     func testInitWithSwiftUI() {
-        let defaults: UIFramework = .DefaultsSwiftUI().makeUIFramework()
+        let defaults: UIFramework = .DefaultSwiftUIFramework.make()
         let swiftUI: UIFramework = .init(framework: .swiftUI)
         expect(swiftUI.kind) == defaults.kind
         expect(swiftUI.name) == defaults.name
@@ -61,7 +61,7 @@ final class UIFrameworkTests: XCTestCase {
         expect(custom.name) == framework.name
         expect(custom.import) == framework.import
         expect(custom.viewControllerType) == framework.viewControllerType
-        let defaults: UIFramework = .Defaults().makeUIFramework(for: framework)
+        let defaults: UIFramework = .DefaultFramework.make(for: framework)
         expect(custom.viewControllerSuperParameters) == defaults.viewControllerSuperParameters
         expect(custom.viewControllerProperties) == defaults.viewControllerProperties
         expect(custom.viewControllerMethods) == defaults.viewControllerMethods
