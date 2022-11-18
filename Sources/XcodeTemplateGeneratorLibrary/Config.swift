@@ -28,6 +28,7 @@ extension XcodeTemplates {
         }
 
         public var uiFrameworks: [UIFramework]
+        public var isViewInjectedNodeEnabled: Bool
         public var includedTemplates: [String]
         public var fileHeader: String
         public var baseImports: Set<String>
@@ -113,6 +114,7 @@ extension XcodeTemplates.Config {
     // swiftlint:disable:next function_body_length
     public init() {
         uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
+        isViewInjectedNodeEnabled = true
         includedTemplates = [
             "Node",
             "NodeSwiftUI",
@@ -211,6 +213,9 @@ extension XcodeTemplates.Config {
         uiFrameworks =
             (try? decoder.decode(CodingKeys.uiFrameworks))
             ?? defaults.uiFrameworks
+        isViewInjectedNodeEnabled =
+            (try? decoder.decode(CodingKeys.isViewInjectedNodeEnabled))
+            ?? defaults.isViewInjectedNodeEnabled
         includedTemplates =
             (try? decoder.decode(CodingKeys.includedTemplates))
             ?? defaults.includedTemplates

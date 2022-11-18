@@ -24,6 +24,7 @@
   ▿ includedTemplates: 2 elements
     - "includedTemplates-1"
     - "includedTemplates-2"
+  - isViewInjectedNodeEnabled: true
   - publisherFailureType: "publisherFailureType"
   - publisherType: "publisherType"
   - rootViewControllerMethods: "rootViewControllerMethods"

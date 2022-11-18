@@ -62,6 +62,7 @@ final class ConfigTests: XCTestCase {
               viewControllerProperties: <viewControllerProperties-Custom>
               viewControllerMethods: <viewControllerMethods-Custom>
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
+        isViewInjectedNodeEnabled: true
         includedTemplates:
           - includedTemplates-1
           - includedTemplates-2
