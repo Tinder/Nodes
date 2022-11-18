@@ -28,6 +28,35 @@
   - publisherType: "publisherType"
   - rootViewControllerMethods: "rootViewControllerMethods"
   - rootViewControllerMethodsSwiftUI: "rootViewControllerMethodsSwiftUI"
+  ▿ uiFrameworks: 4 elements
+    ▿ UIFramework
+      - framework: Framework.appKit
+      - viewControllerMethods: "<viewControllerMethods-AppKit>"
+      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-AppKit>"
+      - viewControllerProperties: "<viewControllerProperties-AppKit>"
+      - viewControllerSuperParameters: "<viewControllerSuperParameters-AppKit>"
+    ▿ UIFramework
+      - framework: Framework.uiKit
+      - viewControllerMethods: "<viewControllerMethods-UIKit>"
+      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-UIKit>"
+      - viewControllerProperties: "<viewControllerProperties-UIKit>"
+      - viewControllerSuperParameters: "<viewControllerSuperParameters-UIKit>"
+    ▿ UIFramework
+      - framework: Framework.swiftUI
+      - viewControllerMethods: "<viewControllerMethods-SwiftUI>"
+      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-SwiftUI>"
+      - viewControllerProperties: "<viewControllerProperties-SwiftUI>"
+      - viewControllerSuperParameters: "<viewControllerSuperParameters-SwiftUI>"
+    ▿ UIFramework
+      ▿ framework: Framework
+        ▿ custom: (3 elements)
+          - name: "<name>"
+          - import: "<import>"
+          - viewControllerType: "<viewControllerType>"
+      - viewControllerMethods: "<viewControllerMethods-Custom>"
+      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-Custom>"
+      - viewControllerProperties: "<viewControllerProperties-Custom>"
+      - viewControllerSuperParameters: "<viewControllerSuperParameters-Custom>"
   - viewControllableFlowType: "viewControllableFlowType"
   - viewControllableType: "viewControllableType"
   ▿ viewControllerImports: 2 members

@@ -27,6 +27,7 @@ extension XcodeTemplates {
             case standard(swiftUI: Bool), root(swiftUI: Bool), withoutViewState(swiftUI: Bool)
         }
 
+        public var uiFrameworks: [UIFramework]
         public var includedTemplates: [String]
         public var fileHeader: String
         public var baseImports: Set<String>
@@ -111,6 +112,7 @@ extension XcodeTemplates.Config {
 
     // swiftlint:disable:next function_body_length
     public init() {
+        uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
         includedTemplates = [
             "Node",
             "NodeSwiftUI",
@@ -206,6 +208,9 @@ extension XcodeTemplates.Config {
     // swiftlint:disable:next function_body_length
     public init(from decoder: Decoder) throws {
         let defaults: XcodeTemplates.Config = .init()
+        uiFrameworks =
+            (try? decoder.decode(CodingKeys.uiFrameworks))
+            ?? defaults.uiFrameworks
         includedTemplates =
             (try? decoder.decode(CodingKeys.includedTemplates))
             ?? defaults.includedTemplates
