@@ -18,6 +18,7 @@ internal class MockFileSystem: FileSystem {
     internal var writes: [(contents: String, path: String, atomically: Bool)] = []
     internal var copies: [(from: String, to: String)] = []
     internal var deletions: [String] = []
+    internal var files: [String] = []
 
     internal func createDirectory(at url: URL, withIntermediateDirectories createIntermediates: Bool) throws {
         directories.append((path: url.path, createIntermediates: createIntermediates))
@@ -40,5 +41,9 @@ internal class MockFileSystem: FileSystem {
 
     internal func removeItem(at url: URL) throws {
         deletions.append(url.path)
+    }
+
+    internal func fileExists(atPath path: String) -> Bool {
+        files.contains(path)
     }
 }

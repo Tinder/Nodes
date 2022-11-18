@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// @mockable
 public protocol FileSystem {
 
     var libraryURL: URL { get }
@@ -16,6 +17,7 @@ public protocol FileSystem {
     func contents(of url: URL) throws -> Data
     func copyItem(at fromURL: URL, to toURL: URL) throws
     func removeItem(at url: URL) throws
+    func fileExists(atPath path: String) -> Bool
 }
 
 extension FileManager: FileSystem {
