@@ -13,6 +13,11 @@ extension XcodeTemplates {
 
     public struct Config: Equatable, Codable {
 
+        // swiftlint:disable:next nesting
+        public enum ConfigError: Error {
+              case uiFrameworkNotDefined(kind: UIFramework.Kind)
+        }
+
         internal static let symbolForSwiftUI: String = ""
 
         // swiftlint:disable:next nesting
@@ -64,6 +69,12 @@ extension XcodeTemplates {
         ) throws {
             let url: URL = .init(fileURLWithPath: path)
             self = try fileSystem.contents(of: url).decoded(using: YAMLDecoder())
+        }
+
+        public func uiFramework(for kind: UIFramework.Kind) throws -> UIFramework {
+            try uiFrameworks
+                .first { $0.framework.kind == kind }
+                .orThrow(ConfigError.uiFrameworkNotDefined(kind: kind))
         }
 
         internal func variable(_ name: String) -> String {
@@ -297,20 +308,5 @@ extension XcodeTemplates.Config {
         cancellableType =
             (try? decoder.decodeString(CodingKeys.cancellableType))
             ?? defaults.cancellableType
-    }
-}
-
-extension YAMLDecoder: AnyDecoder {}
-
-extension Decoder {
-
-    // Workaround for https://github.com/jpsim/Yams/issues/301
-    internal func decodeString(_ key: String) throws -> String {
-        try decode(key, as: String.self)
-    }
-
-    // Workaround for https://github.com/jpsim/Yams/issues/301
-    internal func decodeString<K: CodingKey>(_ key: K) throws -> String {
-        try decode(key, as: String.self)
     }
 }
