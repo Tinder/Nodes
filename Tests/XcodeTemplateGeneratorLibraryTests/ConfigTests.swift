@@ -48,8 +48,7 @@ final class ConfigTests: XCTestCase {
         ]
         try UIFramework.Kind
             .allCases
-            .map { try (uiFramework: config.uiFramework(for: $0), kind: $0) }
-            .forEach { expect($0.uiFramework.kind) == $0.kind }
+            .forEach { try expect(config.uiFramework(for: $0).kind) == $0 }
     }
 
     func testUIFrameworkForKindThrows() throws {
@@ -57,9 +56,10 @@ final class ConfigTests: XCTestCase {
         config.uiFrameworks = []
         try UIFramework.Kind
             .allCases
-            .forEach {
-                try expect(config.uiFramework(for: $0)).to(throwError {
-                    assertSnapshot(matching: $0, as: .dump)
+            .forEach { kind in
+                try expect(config.uiFramework(for: kind))
+                    .to(throwError(errorType: XcodeTemplates.Config.ConfigError.self) { error in
+                        expect(error) == .uiFrameworkNotDefined(kind: kind)
                 })
             }
     }

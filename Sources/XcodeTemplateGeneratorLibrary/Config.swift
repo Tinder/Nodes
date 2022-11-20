@@ -14,8 +14,8 @@ extension XcodeTemplates {
     public struct Config: Equatable, Codable {
 
         // swiftlint:disable:next nesting
-        public enum ConfigError: Error {
-              case uiFrameworkNotDefined(kind: UIFramework.Kind)
+        public enum ConfigError: Error, Equatable {
+            case uiFrameworkNotDefined(kind: UIFramework.Kind)
         }
 
         internal static let symbolForSwiftUI: String = ""
@@ -67,14 +67,14 @@ extension XcodeTemplates {
             at path: String,
             using fileSystem: FileSystem = FileManager.default
         ) throws {
-            let url: URL = .init(fileURLWithPath: path)
-            self = try fileSystem.contents(of: url).decoded(using: YAMLDecoder())
+            self = try YAMLDecoder().decode(Self.self, from: fileSystem.contents(of: URL(fileURLWithPath: path)))
         }
 
         public func uiFramework(for kind: UIFramework.Kind) throws -> UIFramework {
-            try uiFrameworks
-                .first { $0.framework.kind == kind }
-                .orThrow(ConfigError.uiFrameworkNotDefined(kind: kind))
+            guard let uiFramework: UIFramework = uiFrameworks.first(where: { $0.framework.kind == kind }) else {
+                throw ConfigError.uiFrameworkNotDefined(kind: kind)
+            }
+            return uiFramework
         }
 
         internal func variable(_ name: String) -> String {

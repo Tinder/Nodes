@@ -1,3 +1,0 @@
-▿ ConfigError
-  ▿ uiFrameworkNotDefined: (1 element)
-    - kind: Kind.custom
