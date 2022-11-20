@@ -23,7 +23,7 @@ extension XcodeTemplates {
         // swiftlint:disable:next nesting
         internal enum ImportsType {
 
-            case nodes, diGraph, viewController(viewState: Bool, swiftUI: Bool)
+            case nodes, diGraph, viewController(UIFramework)
         }
 
         // swiftlint:disable:next nesting
@@ -89,11 +89,8 @@ extension XcodeTemplates {
                 return nodesImports
             case .diGraph:
                 return nodesImports.union(diGraphImports)
-            case let .viewController(viewState, swiftUI):
-                let imports: Set<String> = swiftUI
-                    ? nodesImports.union(viewControllerImportsSwiftUI)
-                    : nodesImports.union(viewControllerImports)
-                return viewState ? imports.union(viewControllerViewStateImports) : imports
+            case let .viewController(framework):
+                return nodesImports.union([framework.import])
             }
         }
 
