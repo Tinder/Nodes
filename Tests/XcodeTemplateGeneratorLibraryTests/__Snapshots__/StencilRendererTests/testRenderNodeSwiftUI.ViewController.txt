@@ -23,7 +23,7 @@ internal protocol <nodeName>Receiver: AnyObject {}
  PURPOSE:
  Host of the SwiftUI view.
  */
-internal final class <nodeName>ViewController: AbstractViewHostingController
+internal final class <nodeName>ViewController: <viewControllerType>
 <
     <nodeName>View
 > {
