@@ -22,7 +22,9 @@ internal struct NodeTemplate: XcodeTemplate {
                    description: "The name of the Node")
         }
 
-    internal init(config: Config, swiftUI: Bool = false) {
+    internal init(for kind: UIFramework.Kind, config: Config) throws {
+        let uiFramework: UIFramework = try config.uiFramework(for: kind)
+        let swiftUI: Bool = uiFramework.kind == .swiftUI
         if swiftUI {
             name = "\(Config.symbolForSwiftUI) Node"
             stencils = ["Analytics", "Builder-SwiftUI", "Context", "Flow", "ViewController-SwiftUI", "Worker"]
