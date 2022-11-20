@@ -60,7 +60,7 @@ final class ConfigTests: XCTestCase {
                 try expect(config.uiFramework(for: kind))
                     .to(throwError(errorType: XcodeTemplates.Config.ConfigError.self) { error in
                         expect(error) == .uiFrameworkNotDefined(kind: kind)
-                })
+                    })
             }
     }
 
