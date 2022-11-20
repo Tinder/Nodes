@@ -1,5 +1,5 @@
 //
-//  YAMLDecoderExtensions.swift
+//  YAMLDecoder.swift
 //  XcodeTemplateGeneratorLibrary
 //
 //  Created by Garric Nahapetian on 11/18/22.
