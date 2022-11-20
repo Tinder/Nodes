@@ -51,7 +51,7 @@ final class ConfigTests: XCTestCase {
             .forEach { try expect(config.uiFramework(for: $0).kind) == $0 }
     }
 
-    func testUIFrameworkForKindThrows() throws {
+    func testUIFrameworkForKindIsNotDefined() throws {
         var config: XcodeTemplates.Config = .init()
         config.uiFrameworks = []
         try UIFramework.Kind
