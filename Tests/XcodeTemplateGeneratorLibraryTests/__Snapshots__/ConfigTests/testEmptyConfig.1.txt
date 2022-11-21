@@ -32,7 +32,6 @@
   - viewControllerProperties: ""
   - viewControllerPropertiesSwiftUI: ""
   - viewControllerSuperParameters: "nibName: nil, bundle: nil"
-  - viewControllerType: "UIViewController"
   - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
   - viewControllerWithoutViewStateMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}"
   - viewControllerWithoutViewStateMethodsSwiftUI: ""

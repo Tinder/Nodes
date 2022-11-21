@@ -36,7 +36,6 @@ extension TestFactories {
         config.diGraphImports = ["<diGraphImports>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
-        config.viewControllerType = "<viewControllerType>"
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableFlowType = "<viewControllableFlowType>"
         config.viewControllerSuperParameters = "<viewControllerSuperParameters>"

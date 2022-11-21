@@ -62,7 +62,6 @@
   - viewControllerProperties: "viewControllerProperties"
   - viewControllerPropertiesSwiftUI: "viewControllerPropertiesSwiftUI"
   - viewControllerSuperParameters: "viewControllerSuperParameters"
-  - viewControllerType: "viewControllerType"
   - viewControllerUpdateComment: "viewControllerUpdateComment"
   - viewControllerWithoutViewStateMethods: "viewControllerWithoutViewStateMethods"
   - viewControllerWithoutViewStateMethodsSwiftUI: "viewControllerWithoutViewStateMethodsSwiftUI"

@@ -109,7 +109,6 @@ final class ConfigTests: XCTestCase {
             type: flowProperties-type-1
           - name: flowProperties-name-2
             type: flowProperties-type-2
-        viewControllerType: viewControllerType
         viewControllableType: viewControllableType
         viewControllableFlowType: viewControllableFlowType
         viewControllerAvailabilityAttribute: viewControllerAvailabilityAttribute

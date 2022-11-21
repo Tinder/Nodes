@@ -31,7 +31,6 @@ extension XcodeTemplates {
         public var diGraphImports: Set<String>
         public var dependencies: [Variable]
         public var flowProperties: [Variable]
-        public var viewControllerType: String
         public var viewControllableType: String
         public var viewControllableFlowType: String
         public var viewControllerSuperParameters: String
@@ -96,7 +95,6 @@ extension XcodeTemplates.Config {
         diGraphImports = ["NeedleFoundation"]
         dependencies = []
         flowProperties = []
-        viewControllerType = "UIViewController"
         viewControllableType = "ViewControllable"
         viewControllableFlowType = "ViewControllableFlow"
         viewControllerSuperParameters = "nibName: nil, bundle: nil"
@@ -195,9 +193,6 @@ extension XcodeTemplates.Config {
         flowProperties =
             (try? decoder.decode(CodingKeys.flowProperties))
             ?? defaults.flowProperties
-        viewControllerType =
-            (try? decoder.decodeString(CodingKeys.viewControllerType))
-            ?? defaults.viewControllerType
         viewControllableType =
             (try? decoder.decodeString(CodingKeys.viewControllableType))
             ?? defaults.viewControllableType
