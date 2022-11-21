@@ -29,7 +29,6 @@ extension XcodeTemplates {
         public var fileHeader: String
         public var baseImports: Set<String>
         public var diGraphImports: Set<String>
-        public var viewControllerImports: Set<String>
         public var viewControllerImportsSwiftUI: Set<String>
         public var viewControllerViewStateImports: Set<String>
         public var dependencies: [Variable]
@@ -97,7 +96,6 @@ extension XcodeTemplates.Config {
         fileHeader = "//___FILEHEADER___"
         baseImports = ["Combine"]
         diGraphImports = ["NeedleFoundation"]
-        viewControllerImports = ["UIKit"]
         viewControllerImportsSwiftUI = ["SwiftUI"]
         viewControllerViewStateImports = []
         dependencies = []
@@ -195,9 +193,6 @@ extension XcodeTemplates.Config {
         diGraphImports =
             (try? decoder.decode(CodingKeys.diGraphImports))
             ?? defaults.diGraphImports
-        viewControllerImports =
-            (try? decoder.decode(CodingKeys.viewControllerImports))
-            ?? defaults.viewControllerImports
         viewControllerImportsSwiftUI =
             (try? decoder.decode(CodingKeys.viewControllerImportsSwiftUI))
             ?? defaults.viewControllerImportsSwiftUI
