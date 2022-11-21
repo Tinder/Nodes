@@ -24,12 +24,6 @@ extension XcodeTemplates {
             case nodes, diGraph, viewController(UIFramework)
         }
 
-        // swiftlint:disable:next nesting
-        internal enum ViewControllerMethodsType {
-
-            case standard(swiftUI: Bool), root(swiftUI: Bool), withoutViewState(swiftUI: Bool)
-        }
-
         public var uiFrameworks: [UIFramework]
         public var isViewInjectedNodeEnabled: Bool
         public var fileHeader: String
@@ -88,27 +82,6 @@ extension XcodeTemplates {
                 return nodesImports.union(diGraphImports)
             case let .viewController(uiFramework):
                 return nodesImports.union([uiFramework.import])
-            }
-        }
-
-        internal func viewControllerProperties(swiftUI: Bool = false) -> String {
-            swiftUI ? viewControllerPropertiesSwiftUI : viewControllerProperties
-        }
-
-        internal func viewControllerMethods(for type: ViewControllerMethodsType) -> String {
-            switch type {
-            case let .standard(swiftUI):
-                return swiftUI
-                    ? viewControllerMethodsSwiftUI
-                    : viewControllerMethods
-            case let .root(swiftUI):
-                return swiftUI
-                    ? rootViewControllerMethodsSwiftUI
-                    : rootViewControllerMethods
-            case let .withoutViewState(swiftUI):
-                return swiftUI
-                    ? viewControllerWithoutViewStateMethodsSwiftUI
-                    : viewControllerWithoutViewStateMethods
             }
         }
     }
