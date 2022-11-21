@@ -24,8 +24,6 @@
   - isViewInjectedNodeEnabled: true
   - publisherFailureType: "publisherFailureType"
   - publisherType: "publisherType"
-  - rootViewControllerMethods: "rootViewControllerMethods"
-  - rootViewControllerMethodsSwiftUI: "rootViewControllerMethodsSwiftUI"
   ▿ uiFrameworks: 4 elements
     ▿ UIFramework
       - framework: Framework.appKit
@@ -57,13 +55,6 @@
       - viewControllerSuperParameters: "<viewControllerSuperParameters-Custom>"
   - viewControllableFlowType: "viewControllableFlowType"
   - viewControllableType: "viewControllableType"
-  - viewControllerMethods: "viewControllerMethods"
-  - viewControllerMethodsSwiftUI: "viewControllerMethodsSwiftUI"
-  - viewControllerProperties: "viewControllerProperties"
-  - viewControllerPropertiesSwiftUI: "viewControllerPropertiesSwiftUI"
-  - viewControllerSuperParameters: "viewControllerSuperParameters"
   - viewControllerUpdateComment: "viewControllerUpdateComment"
-  - viewControllerWithoutViewStateMethods: "viewControllerWithoutViewStateMethods"
-  - viewControllerWithoutViewStateMethodsSwiftUI: "viewControllerWithoutViewStateMethodsSwiftUI"
   - viewStateOperators: "viewStateOperators"
   - viewStatePublisher: "viewStatePublisher"

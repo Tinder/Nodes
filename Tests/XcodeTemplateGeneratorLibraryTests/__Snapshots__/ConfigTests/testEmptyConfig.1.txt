@@ -10,8 +10,6 @@
   - isViewInjectedNodeEnabled: true
   - publisherFailureType: ", Never"
   - publisherType: "AnyPublisher"
-  - rootViewControllerMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
-  - rootViewControllerMethodsSwiftUI: "override func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}"
   ▿ uiFrameworks: 2 elements
     ▿ UIFramework
       - framework: Framework.uiKit
@@ -27,13 +25,6 @@
       - viewControllerSuperParameters: ""
   - viewControllableFlowType: "ViewControllableFlow"
   - viewControllableType: "ViewControllable"
-  - viewControllerMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}\n\noverride func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(viewState).store(in: &cancellables)\n}\n\noverride func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.removeAll()\n}"
-  - viewControllerMethodsSwiftUI: ""
-  - viewControllerProperties: ""
-  - viewControllerPropertiesSwiftUI: ""
-  - viewControllerSuperParameters: "nibName: nil, bundle: nil"
   - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
-  - viewControllerWithoutViewStateMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n}"
-  - viewControllerWithoutViewStateMethodsSwiftUI: ""
   - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
   - viewStatePublisher: "Just(.initialState).eraseToAnyPublisher()"

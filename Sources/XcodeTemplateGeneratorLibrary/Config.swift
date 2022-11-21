@@ -33,16 +33,6 @@ extension XcodeTemplates {
         public var flowProperties: [Variable]
         public var viewControllableType: String
         public var viewControllableFlowType: String
-        public var viewControllerSuperParameters: String
-        public var viewControllerProperties: String
-        public var viewControllerPropertiesSwiftUI: String
-        public var viewControllerMethods: String
-        public var viewControllerMethodsSwiftUI: String
-        public var rootViewControllerMethods: String
-        public var rootViewControllerMethodsSwiftUI: String
-        public var viewControllerWithoutViewStateMethods: String
-        // swiftlint:disable:next identifier_name
-        public var viewControllerWithoutViewStateMethodsSwiftUI: String
         public var viewControllerUpdateComment: String
         public var viewStatePublisher: String
         public var viewStateOperators: String
@@ -97,60 +87,6 @@ extension XcodeTemplates.Config {
         flowProperties = []
         viewControllableType = "ViewControllable"
         viewControllableFlowType = "ViewControllableFlow"
-        viewControllerSuperParameters = "nibName: nil, bundle: nil"
-        viewControllerProperties = ""
-        viewControllerPropertiesSwiftUI = ""
-        viewControllerMethods = """
-            override func viewDidLoad() {
-                super.viewDidLoad()
-                view.backgroundColor = .systemBackground
-            }
-
-            override func viewWillAppear(_ animated: Bool) {
-                super.viewWillAppear(animated)
-                observe(viewState).store(in: &cancellables)
-            }
-
-            override func viewWillDisappear(_ animated: Bool) {
-                super.viewWillDisappear(animated)
-                cancellables.removeAll()
-            }
-            """
-        viewControllerMethodsSwiftUI = ""
-        rootViewControllerMethods = """
-            override func viewDidLoad() {
-                super.viewDidLoad()
-                view.backgroundColor = .systemBackground
-            }
-
-            override func viewWillAppear(_ animated: Bool) {
-                super.viewWillAppear(animated)
-                observe(viewState).store(in: &cancellables)
-            }
-
-            override func viewDidAppear(_ animated: Bool) {
-                super.viewDidAppear(animated)
-                receiver?.viewDidAppear()
-            }
-
-            override func viewWillDisappear(_ animated: Bool) {
-                super.viewWillDisappear(animated)
-                cancellables.removeAll()
-            }
-            """
-        rootViewControllerMethodsSwiftUI = """
-            override func viewDidAppear(_ animated: Bool) {
-                super.viewDidAppear(animated)
-                receiver?.viewDidAppear()
-            }
-            """
-        viewControllerWithoutViewStateMethods = """
-            override func viewDidLoad() {
-                super.viewDidLoad()
-                view.backgroundColor = .systemBackground
-            }
-            """
-        viewControllerWithoutViewStateMethodsSwiftUI = ""
         viewControllerUpdateComment = """
             // Add implementation to update the user interface when the view state changes.
             """
@@ -199,33 +135,6 @@ extension XcodeTemplates.Config {
         viewControllableFlowType =
             (try? decoder.decodeString(CodingKeys.viewControllableFlowType))
             ?? defaults.viewControllableFlowType
-        viewControllerSuperParameters =
-            (try? decoder.decodeString(CodingKeys.viewControllerSuperParameters))
-            ?? defaults.viewControllerSuperParameters
-        viewControllerProperties =
-            (try? decoder.decodeString(CodingKeys.viewControllerProperties))
-            ?? defaults.viewControllerProperties
-        viewControllerPropertiesSwiftUI =
-            (try? decoder.decodeString(CodingKeys.viewControllerPropertiesSwiftUI))
-            ?? defaults.viewControllerPropertiesSwiftUI
-        viewControllerMethods =
-            (try? decoder.decodeString(CodingKeys.viewControllerMethods))
-            ?? defaults.viewControllerMethods
-        viewControllerMethodsSwiftUI =
-            (try? decoder.decodeString(CodingKeys.viewControllerMethodsSwiftUI))
-            ?? defaults.viewControllerMethodsSwiftUI
-        rootViewControllerMethods =
-            (try? decoder.decodeString(CodingKeys.rootViewControllerMethods))
-            ?? defaults.rootViewControllerMethods
-        rootViewControllerMethodsSwiftUI =
-            (try? decoder.decodeString(CodingKeys.rootViewControllerMethodsSwiftUI))
-            ?? defaults.rootViewControllerMethodsSwiftUI
-        viewControllerWithoutViewStateMethods =
-            (try? decoder.decodeString(CodingKeys.viewControllerWithoutViewStateMethods))
-            ?? defaults.viewControllerWithoutViewStateMethods
-        viewControllerWithoutViewStateMethodsSwiftUI =
-            (try? decoder.decodeString(CodingKeys.viewControllerWithoutViewStateMethodsSwiftUI))
-            ?? defaults.viewControllerWithoutViewStateMethodsSwiftUI
         viewControllerUpdateComment =
             (try? decoder.decodeString(CodingKeys.viewControllerUpdateComment))
             ?? defaults.viewControllerUpdateComment

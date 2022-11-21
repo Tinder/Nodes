@@ -113,15 +113,6 @@ final class ConfigTests: XCTestCase {
         viewControllableFlowType: viewControllableFlowType
         viewControllerAvailabilityAttribute: viewControllerAvailabilityAttribute
         viewControllerAvailabilityAttributeSwiftUI: viewControllerAvailabilityAttributeSwiftUI
-        viewControllerSuperParameters: viewControllerSuperParameters
-        viewControllerProperties: viewControllerProperties
-        viewControllerPropertiesSwiftUI: viewControllerPropertiesSwiftUI
-        viewControllerMethods: viewControllerMethods
-        viewControllerMethodsSwiftUI: viewControllerMethodsSwiftUI
-        rootViewControllerMethods: rootViewControllerMethods
-        rootViewControllerMethodsSwiftUI: rootViewControllerMethodsSwiftUI
-        viewControllerWithoutViewStateMethods: viewControllerWithoutViewStateMethods
-        viewControllerWithoutViewStateMethodsSwiftUI: viewControllerWithoutViewStateMethodsSwiftUI
         viewControllerUpdateComment: viewControllerUpdateComment
         viewStatePublisher: viewStatePublisher
         viewStateOperators: viewStateOperators
