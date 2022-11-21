@@ -99,9 +99,6 @@ final class ConfigTests: XCTestCase {
         diGraphImports:
           - diGraphImports-1
           - diGraphImports-2
-        viewControllerImportsSwiftUI:
-          - viewControllerImportsSwiftUI-1
-          - viewControllerImportsSwiftUI-2
         dependencies:
           - name: dependencies-name-1
             type: dependencies-type-1

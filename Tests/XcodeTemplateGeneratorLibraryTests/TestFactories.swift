@@ -34,7 +34,6 @@ extension TestFactories {
         config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImports>"]
         config.diGraphImports = ["<diGraphImports>"]
-        config.viewControllerImportsSwiftUI = ["<viewControllerImportsSwiftUI>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllerType = "<viewControllerType>"

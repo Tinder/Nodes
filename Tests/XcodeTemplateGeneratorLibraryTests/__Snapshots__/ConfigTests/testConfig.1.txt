@@ -57,9 +57,6 @@
       - viewControllerSuperParameters: "<viewControllerSuperParameters-Custom>"
   - viewControllableFlowType: "viewControllableFlowType"
   - viewControllableType: "viewControllableType"
-  ▿ viewControllerImportsSwiftUI: 2 members
-    - "viewControllerImportsSwiftUI-1"
-    - "viewControllerImportsSwiftUI-2"
   - viewControllerMethods: "viewControllerMethods"
   - viewControllerMethodsSwiftUI: "viewControllerMethodsSwiftUI"
   - viewControllerProperties: "viewControllerProperties"
