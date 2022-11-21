@@ -33,7 +33,7 @@
         - required: true
         - type: "text"
     - platforms: 0 elements
-    - sortOrder: 6
+    - sortOrder: 8
     - summary: "The source file implementing a Plugin"
     - supportsSwiftPackage: true
   ▿ stencils: 1 element

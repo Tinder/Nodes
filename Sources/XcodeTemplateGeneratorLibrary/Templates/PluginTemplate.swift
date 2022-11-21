@@ -15,7 +15,7 @@ internal struct PluginTemplate: XcodeTemplate {
 
     internal let propertyList: PropertyList =
         .init(description: "The source file implementing a Plugin.",
-              sortOrder: 6) {
+              sortOrder: 8) {
             Option(identifier: "productName",
                    name: "Plugin name:",
                    description: "The name of the Plugin")
