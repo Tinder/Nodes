@@ -18,8 +18,6 @@ extension XcodeTemplates {
             case uiFrameworkNotDefined(kind: UIFramework.Kind)
         }
 
-        internal static let symbolForSwiftUI: String = ""
-
         // swiftlint:disable:next nesting
         internal enum ImportsType {
 

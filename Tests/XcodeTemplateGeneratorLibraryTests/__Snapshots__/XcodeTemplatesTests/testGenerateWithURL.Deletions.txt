@@ -1,6 +1,6 @@
 ▿ 7 elements
-  - "/Node.xctemplate"
-  - "/ Node.xctemplate"
+  - "/Node - UIKit.xctemplate"
+  - "/Node - SwiftUI.xctemplate"
   - "/Node (view injected).xctemplate"
   - "/Plugin List (for Node).xctemplate"
   - "/Plugin (for Node).xctemplate"

@@ -25,8 +25,8 @@ internal struct NodeTemplate: XcodeTemplate {
     internal init(for kind: UIFramework.Kind, config: Config) throws {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
         let swiftUI: Bool = uiFramework.kind == .swiftUI
+        name = "Node - \(uiFramework.name)"
         if swiftUI {
-            name = "\(Config.symbolForSwiftUI) Node"
             stencils = ["Analytics", "Builder-SwiftUI", "Context", "Flow", "ViewController-SwiftUI", "Worker"]
             filenames = [
                 "Builder-SwiftUI": "Builder",
@@ -34,7 +34,6 @@ internal struct NodeTemplate: XcodeTemplate {
                 "Worker": "ViewStateWorker"
             ]
         } else {
-            name = "Node"
             stencils = ["Analytics", "Builder", "Context", "Flow", "ViewController", "Worker"]
             filenames = ["Worker": "ViewStateWorker"]
         }

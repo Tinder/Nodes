@@ -52,7 +52,7 @@
     ▿ (2 elements)
       - key: "Worker"
       - value: "ViewStateWorker"
-  - name: "Node"
+  - name: "Node - UIKit"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"

@@ -42,10 +42,9 @@ final class XcodeTemplatesTests: XCTestCase {
                        as: .dump,
                        named: "Writes")
         fileSystem.writes.forEach {
-            let path: String = $0.path.replacingOccurrences(of: "\(Config.symbolForSwiftUI)", with: "SwiftUI")
             assertSnapshot(matching: $0.contents,
                            as: .lines,
-                           named: "Contents.\(path)")
+                           named: "Contents.\($0.path)")
         }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
@@ -66,10 +65,9 @@ final class XcodeTemplatesTests: XCTestCase {
                        as: .dump,
                        named: "Writes")
         fileSystem.writes.forEach {
-            let path: String = $0.path.replacingOccurrences(of: "\(Config.symbolForSwiftUI)", with: "SwiftUI")
             assertSnapshot(matching: $0.contents,
                            as: .lines,
-                           named: "Contents.\(path)")
+                           named: "Contents.\($0.path)")
         }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
