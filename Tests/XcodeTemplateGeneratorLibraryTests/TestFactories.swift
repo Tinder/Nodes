@@ -5,7 +5,7 @@
 //  Created by Christopher Fuller on 5/31/21.
 //
 
-import XcodeTemplateGeneratorLibrary
+@testable import XcodeTemplateGeneratorLibrary
 
 protocol TestFactories {}
 
@@ -16,6 +16,18 @@ extension TestFactories {
 
     func givenConfig() -> Config {
         var config: Config = .init()
+        config.uiFrameworks = [
+            UIFramework(framework: .uiKit,
+                        viewControllerSuperParameters: "<viewControllerSuperParameters>",
+                        viewControllerProperties: "<viewControllerProperties>",
+                        viewControllerMethods: "<viewControllerMethods>",
+                        viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"),
+            UIFramework(framework: .swiftUI,
+                        viewControllerSuperParameters: "<viewControllerSuperParameters>",
+                        viewControllerProperties: "<viewControllerProperties>",
+                        viewControllerMethods: "<viewControllerMethods>",
+                        viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>")
+        ]
         config.includedTemplates = ["<includedTemplates>"]
         config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImports>"]

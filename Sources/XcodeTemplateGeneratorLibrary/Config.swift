@@ -89,8 +89,8 @@ extension XcodeTemplates {
                 return nodesImports
             case .diGraph:
                 return nodesImports.union(diGraphImports)
-            case let .viewController(framework):
-                return nodesImports.union([framework.import])
+            case let .viewController(uiFramework):
+                return nodesImports.union([uiFramework.import])
             }
         }
 
