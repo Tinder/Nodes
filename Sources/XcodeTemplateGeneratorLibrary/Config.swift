@@ -34,7 +34,6 @@ extension XcodeTemplates {
 
         public var uiFrameworks: [UIFramework]
         public var isViewInjectedNodeEnabled: Bool
-        public var includedTemplates: [String]
         public var fileHeader: String
         public var baseImports: Set<String>
         public var diGraphImports: Set<String>
@@ -124,15 +123,6 @@ extension XcodeTemplates.Config {
     public init() {
         uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
         isViewInjectedNodeEnabled = true
-        includedTemplates = [
-            "Node",
-            "NodeSwiftUI",
-            "NodeViewInjected",
-            "PluginListNode",
-            "PluginNode",
-            "Plugin",
-            "Worker"
-        ]
         fileHeader = "//___FILEHEADER___"
         baseImports = ["Combine"]
         diGraphImports = ["NeedleFoundation"]
@@ -225,9 +215,6 @@ extension XcodeTemplates.Config {
         isViewInjectedNodeEnabled =
             (try? decoder.decode(CodingKeys.isViewInjectedNodeEnabled))
             ?? defaults.isViewInjectedNodeEnabled
-        includedTemplates =
-            (try? decoder.decode(CodingKeys.includedTemplates))
-            ?? defaults.includedTemplates
         fileHeader =
             (try? decoder.decodeString(CodingKeys.fileHeader))
             ?? defaults.fileHeader
