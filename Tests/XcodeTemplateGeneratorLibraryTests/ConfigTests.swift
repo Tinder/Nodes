@@ -121,8 +121,6 @@ final class ConfigTests: XCTestCase {
         viewControllerType: viewControllerType
         viewControllableType: viewControllableType
         viewControllableFlowType: viewControllableFlowType
-        viewControllerAvailabilityAttribute: viewControllerAvailabilityAttribute
-        viewControllerAvailabilityAttributeSwiftUI: viewControllerAvailabilityAttributeSwiftUI
         viewControllerSuperParameters: viewControllerSuperParameters
         viewControllerProperties: viewControllerProperties
         viewControllerPropertiesSwiftUI: viewControllerPropertiesSwiftUI
