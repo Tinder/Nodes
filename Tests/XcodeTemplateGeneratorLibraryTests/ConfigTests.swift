@@ -15,7 +15,7 @@ final class ConfigTests: XCTestCase {
     private typealias Config = XcodeTemplates.Config
 
     func testConfig() throws {
-        let fileSystem: MockFileSystem = .init()
+        let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
         fileSystem.contents[url] = Data(givenConfig().utf8)
         let config: Config = try .init(at: url.path, using: fileSystem)
@@ -23,7 +23,7 @@ final class ConfigTests: XCTestCase {
     }
 
     func testEmptyConfig() throws {
-        let fileSystem: MockFileSystem = .init()
+        let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
         fileSystem.contents[url] = Data("".utf8)
         let config: Config = try .init(at: url.path, using: fileSystem)

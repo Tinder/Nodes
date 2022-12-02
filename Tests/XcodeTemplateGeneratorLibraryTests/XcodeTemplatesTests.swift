@@ -33,7 +33,7 @@ final class XcodeTemplatesTests: XCTestCase {
     }
 
     func testGenerateWithIdentifier() throws {
-        let fileSystem: MockFileSystem = .init()
+        let fileSystem: FileSystemMock = .init()
         try XcodeTemplates(config: Config()).generate(identifier: "identifier", using: fileSystem)
         assertSnapshot(matching: fileSystem.directories,
                        as: .dump,
@@ -56,7 +56,7 @@ final class XcodeTemplatesTests: XCTestCase {
     }
 
     func testGenerateWithURL() throws {
-        let fileSystem: MockFileSystem = .init()
+        let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
         try XcodeTemplates(config: Config()).generate(at: url, using: fileSystem)
         assertSnapshot(matching: fileSystem.directories,
