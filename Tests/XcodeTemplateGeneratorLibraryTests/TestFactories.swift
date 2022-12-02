@@ -17,18 +17,20 @@ extension TestFactories {
     func givenConfig() -> Config {
         var config: Config = .init()
         config.uiFrameworks = [
-            UIFramework(framework: .uiKit,
-                        viewControllerSuperParameters: "<viewControllerSuperParameters>",
-                        viewControllerProperties: "<viewControllerProperties>",
-                        viewControllerMethods: "<viewControllerMethods>",
-                        viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"),
-            UIFramework(framework: .swiftUI,
-                        viewControllerSuperParameters: "<viewControllerSuperParameters>",
-                        viewControllerProperties: "<viewControllerProperties>",
-                        viewControllerMethods: "<viewControllerMethods>",
-                        viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>")
-        ]
-        config.includedTemplates = ["<includedTemplates>"]
+            UIFramework(framework: .appKit),
+            UIFramework(framework: .uiKit),
+            UIFramework(framework: .swiftUI),
+            UIFramework(framework: .custom(name: "<name>",
+                                           import: "<import>",
+                                           viewControllerType: "<viewControllerType>"))
+        ].map {
+            var uiFramework: UIFramework = $0
+            uiFramework.viewControllerSuperParameters = "<viewControllerSuperParameters>"
+            uiFramework.viewControllerProperties = "<viewControllerProperties>"
+            uiFramework.viewControllerMethods = "<viewControllerMethods>"
+            uiFramework.viewControllerMethodsForRootNode = "<viewControllerMethodsForRootNode>"
+            return uiFramework
+        }
         config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImports>"]
         config.diGraphImports = ["<diGraphImports>"]
