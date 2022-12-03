@@ -117,10 +117,36 @@ public final class FlowController {
     /// In the above example, the `where` closure returns `true` if the ``ViewControllable`` of the `flow` exists in
     /// the given `viewControllables` array.
     ///
-    /// - Important: Use this ``detach(endingFlowsOfType:where:)`` method only when ``ViewControllable``
+    /// - Important: Use the ``detach(endingFlowsOfType:where:)`` method only when ``ViewControllable``
     ///   instances are dismissed directly within the UI framework (before the `Context` instance is informed of the
     ///   interaction). And therefore, in normal situations, use the ``detach(ending:)`` method whenever the `Flow`
     ///   instance performs the dismissal.
+    ///
+    /// For a `Flow` to be informed of any view controllers popped off the navigation stack as a result of user
+    /// interactions, the view controller must subclass ``NavigationController`` providing a closure in which to call
+    /// the receiver method.
+    ///
+    /// Example:
+    /// ```
+    /// class ViewController: NavigationController {
+    ///
+    ///     init() {
+    ///         super.init(nibName: nil, bundle: nil)
+    ///         onPopViewControllers { [weak self] in
+    ///             self?.receiver?.didPopViewControllers($0)
+    ///         }
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// The `Context` (receiver) is then responsible for forwarding the view controller collection to the `Flow`.
+    ///
+    /// Example:
+    /// ```
+    /// func didPopViewControllers(_ viewControllers: [ViewControllable]) {
+    ///     flow?.detach(endingFlowsFor: viewControllers)
+    /// }
+    /// ```
     ///
     /// - Parameters:
     ///   - type: The type of the `Flow` instances to detach.
