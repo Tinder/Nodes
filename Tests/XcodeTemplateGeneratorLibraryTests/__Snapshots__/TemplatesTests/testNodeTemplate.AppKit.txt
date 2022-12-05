@@ -39,7 +39,7 @@
       - "Nodes"
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
-    - viewControllerSuperParameters: "<viewControllerSuperParameters>"
+    - viewControllerSuperParameters: "nibName: nil, bundle: nil"
     - viewControllerType: "NSViewController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateOperators: "<viewStateOperators>"
