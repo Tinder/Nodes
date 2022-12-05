@@ -94,7 +94,6 @@ final class UIFrameworkTests: XCTestCase {
         case .appKit, .uiKit, .swiftUI:
             return """
                 framework: \(kind.rawValue)
-                viewControllerSuperParameters: <viewControllerSuperParameters>
                 viewControllerProperties: <viewControllerProperties>
                 viewControllerMethods: <viewControllerMethods>
                 viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode>
@@ -106,7 +105,7 @@ final class UIFrameworkTests: XCTestCase {
                     name: <name>
                     import: <import>
                     viewControllerType: <viewControllerType>
-                viewControllerSuperParameters: <viewControllerSuperParameters>
+                    viewControllerSuperParameters: <viewControllerSuperParameters>
                 viewControllerProperties: <viewControllerProperties>
                 viewControllerMethods: <viewControllerMethods>
                 viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode>
@@ -125,6 +124,7 @@ final class UIFrameworkTests: XCTestCase {
                     name: <name>
                     import: <import>
                     viewControllerType: <viewControllerType>
+                    viewControllerSuperParameters: <viewControllerSuperParameters>
                 """
         }
     }
