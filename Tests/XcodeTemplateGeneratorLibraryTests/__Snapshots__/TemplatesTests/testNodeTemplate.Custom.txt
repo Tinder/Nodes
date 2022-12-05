@@ -1,5 +1,5 @@
-▿ NodeViewInjectedTemplate
-  ▿ context: NodeViewInjectedContext
+▿ NodeTemplate
+  ▿ context: NodeContext
     ▿ builderImports: 3 elements
       - "<baseImports>"
       - "<diGraphImports>"
@@ -29,13 +29,30 @@
           - key: "type"
           - value: "<flowPropertiesType>"
     - nodeName: "___VARIABLE_productName___"
+    - publisherFailureType: "<publisherFailureType>"
+    - publisherType: "<publisherType>"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
+    ▿ viewControllerImports: 3 elements
+      - "<baseImports>"
+      - "<import>"
+      - "Nodes"
+    - viewControllerMethods: "<viewControllerMethods>"
+    - viewControllerProperties: "<viewControllerProperties>"
+    - viewControllerSuperParameters: "<viewControllerSuperParameters>"
+    - viewControllerType: "<viewControllerType>"
+    - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+    - viewStateOperators: "<viewStateOperators>"
+    - viewStatePublisher: "<viewStatePublisher>"
     ▿ workerImports: 2 elements
       - "<baseImports>"
       - "Nodes"
-    - workerName: "___VARIABLE_productName___"
-  - name: "Node (view injected)"
+    - workerName: "___VARIABLE_productName___ViewState"
+  ▿ filenames: 1 key/value pair
+    ▿ (2 elements)
+      - key: "Worker"
+      - value: "ViewStateWorker"
+  - name: "Node - <name>"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"
@@ -52,12 +69,13 @@
         - required: true
         - type: "text"
     - platforms: 0 elements
-    - sortOrder: 5
+    - sortOrder: 4
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 5 elements
+  ▿ stencils: 6 elements
     - "Analytics"
     - "Builder"
     - "Context"
     - "Flow"
+    - "ViewController"
     - "Worker"

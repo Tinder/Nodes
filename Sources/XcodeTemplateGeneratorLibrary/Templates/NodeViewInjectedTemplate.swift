@@ -15,7 +15,7 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
 
     internal let propertyList: PropertyList =
         .init(description: "The source files implementing a Node.",
-              sortOrder: 3) {
+              sortOrder: 5) {
             Option(identifier: "productName",
                    name: "Node name:",
                    description: "The name of the Node")

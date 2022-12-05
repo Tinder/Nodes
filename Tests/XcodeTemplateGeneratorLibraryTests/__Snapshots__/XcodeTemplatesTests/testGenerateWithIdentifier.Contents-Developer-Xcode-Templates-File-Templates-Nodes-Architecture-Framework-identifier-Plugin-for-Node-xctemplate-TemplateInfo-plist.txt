@@ -32,7 +32,7 @@
 	<key>Platforms</key>
 	<array/>
 	<key>SortOrder</key>
-	<integer>5</integer>
+	<integer>7</integer>
 	<key>Summary</key>
 	<string>The source file implementing a Plugin for a Node</string>
 	<key>SupportsSwiftPackage</key>

@@ -35,12 +35,12 @@
     - viewControllableType: "<viewControllableType>"
     ▿ viewControllerImports: 3 elements
       - "<baseImports>"
+      - "AppKit"
       - "Nodes"
-      - "UIKit"
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
-    - viewControllerSuperParameters: "nibName: nil, bundle: nil"
-    - viewControllerType: "UIViewController"
+    - viewControllerSuperParameters: "<viewControllerSuperParameters>"
+    - viewControllerType: "NSViewController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateOperators: "<viewStateOperators>"
     - viewStatePublisher: "<viewStatePublisher>"
@@ -52,7 +52,7 @@
     ▿ (2 elements)
       - key: "Worker"
       - value: "ViewStateWorker"
-  - name: "Node - UIKit"
+  - name: "Node - AppKit"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"
