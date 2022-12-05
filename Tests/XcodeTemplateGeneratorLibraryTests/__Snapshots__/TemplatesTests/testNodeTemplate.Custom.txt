@@ -69,7 +69,7 @@
         - required: true
         - type: "text"
     - platforms: 0 elements
-    - sortOrder: 1
+    - sortOrder: 4
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
   ▿ stencils: 6 elements
