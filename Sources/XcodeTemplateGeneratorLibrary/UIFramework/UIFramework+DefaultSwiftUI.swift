@@ -10,7 +10,6 @@ extension UIFramework {
     internal static func makeDefaultSwiftUIFramework() -> UIFramework {
         UIFramework(
             framework: .swiftUI,
-            viewControllerSuperParameters: "",
             viewControllerProperties: "",
             viewControllerMethods: "",
             viewControllerMethodsForRootNode: """

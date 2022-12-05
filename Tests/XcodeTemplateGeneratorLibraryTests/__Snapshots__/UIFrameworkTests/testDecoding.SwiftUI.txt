@@ -1,6 +1,0 @@
-▿ UIFramework
-  - framework: Framework.swiftUI
-  - viewControllerMethods: "<viewControllerMethods>"
-  - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"
-  - viewControllerProperties: "<viewControllerProperties>"
-  - viewControllerSuperParameters: "<viewControllerSuperParameters>"

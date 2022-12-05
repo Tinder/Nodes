@@ -22,10 +22,10 @@ extension TestFactories {
             UIFramework(framework: .swiftUI),
             UIFramework(framework: .custom(name: "<name>",
                                            import: "<import>",
-                                           viewControllerType: "<viewControllerType>"))
+                                           viewControllerType: "<viewControllerType>",
+                                           viewControllerSuperParameters: "<viewControllerSuperParameters>"))
         ].map {
             var uiFramework: UIFramework = $0
-            uiFramework.viewControllerSuperParameters = "<viewControllerSuperParameters>"
             uiFramework.viewControllerProperties = "<viewControllerProperties>"
             uiFramework.viewControllerMethods = "<viewControllerMethods>"
             uiFramework.viewControllerMethodsForRootNode = "<viewControllerMethodsForRootNode>"

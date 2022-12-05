@@ -21,7 +21,10 @@ public struct UIFramework: Equatable, Codable {
         case appKit
         case uiKit
         case swiftUI
-        case custom(name: String, import: String, viewControllerType: String)
+        case custom(name: String,
+                    import: String,
+                    viewControllerType: String,
+                    viewControllerSuperParameters: String)
 
         internal var kind: Kind {
             switch self {
@@ -40,7 +43,7 @@ public struct UIFramework: Equatable, Codable {
             switch self {
             case .appKit, .uiKit, .swiftUI:
                 return kind.rawValue
-            case let .custom(name, _, _):
+            case let .custom(name, _, _, _):
                 return name
             }
         }
@@ -49,7 +52,7 @@ public struct UIFramework: Equatable, Codable {
             switch self {
             case .appKit, .uiKit, .swiftUI:
                 return name
-            case let .custom(_, `import`, _):
+            case let .custom(_, `import`, _, _):
                 return `import`
             }
         }
@@ -62,8 +65,19 @@ public struct UIFramework: Equatable, Codable {
                 return "UIViewController"
             case .swiftUI:
                 return "AbstractViewHostingController"
-            case let .custom(_, _, viewControllerType):
+            case let .custom(_, _, viewControllerType, _):
                 return viewControllerType
+            }
+        }
+
+        internal var viewControllerSuperParameters: String {
+            switch self {
+            case .appKit, .uiKit:
+                return "nibName: nil, bundle: nil"
+            case .swiftUI:
+                return ""
+            case let .custom(_, _, _, viewControllerSuperParameters):
+                return viewControllerSuperParameters
             }
         }
 
@@ -117,7 +131,8 @@ public struct UIFramework: Equatable, Codable {
                 return try .custom(
                     name: container.decode(String.self, forKey: .name),
                     import: container.decode(String.self, forKey: .import),
-                    viewControllerType: container.decode(String.self, forKey: .viewControllerType)
+                    viewControllerType: container.decode(String.self, forKey: .viewControllerType),
+                    viewControllerSuperParameters: container.decode(String.self, forKey: .viewControllerSuperParameters)
                 )
             }
         }
@@ -129,8 +144,8 @@ public struct UIFramework: Equatable, Codable {
     public var name: String { framework.name }
     public var `import`: String { framework.import }
     public var viewControllerType: String { framework.viewControllerType }
+    public var viewControllerSuperParameters: String { framework.viewControllerSuperParameters }
 
-    public var viewControllerSuperParameters: String
     public var viewControllerProperties: String
     public var viewControllerMethods: String
     public var viewControllerMethodsForRootNode: String
@@ -151,9 +166,6 @@ public struct UIFramework: Equatable, Codable {
     public init(from decoder: Decoder) throws {
         framework = try decoder.decode(CodingKeys.framework)
         let defaults: UIFramework = .init(framework: framework)
-        viewControllerSuperParameters =
-            (try? decoder.decodeString(CodingKeys.viewControllerSuperParameters))
-            ?? defaults.viewControllerSuperParameters
         viewControllerProperties =
             (try? decoder.decodeString(CodingKeys.viewControllerProperties))
             ?? defaults.viewControllerProperties
@@ -167,13 +179,11 @@ public struct UIFramework: Equatable, Codable {
 
     internal init(
         framework: Framework,
-        viewControllerSuperParameters: String,
         viewControllerProperties: String,
         viewControllerMethods: String,
         viewControllerMethodsForRootNode: String
     ) {
         self.framework = framework
-        self.viewControllerSuperParameters = viewControllerSuperParameters
         self.viewControllerProperties = viewControllerProperties
         self.viewControllerMethods = viewControllerMethods
         self.viewControllerMethodsForRootNode = viewControllerMethodsForRootNode

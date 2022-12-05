@@ -40,7 +40,8 @@ final class UIFrameworkFrameworkTests: XCTestCase {
     func testCustom() {
         let custom: UIFramework.Framework = .custom(name: "<name>",
                                                     import: "<import>",
-                                                    viewControllerType: "<viewControllerType>")
+                                                    viewControllerType: "<viewControllerType>",
+                                                    viewControllerSuperParameters: "<viewControllerSuperParameters>")
         expect(custom.kind) == .custom
         expect(custom.name) == "<name>"
         expect(custom.import) == "<import>"
@@ -52,7 +53,10 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             .appKit,
             .uiKit,
             .swiftUI,
-            .custom(name: "<name>", import: "<import>", viewControllerType: "<viewControllerType>")
+            .custom(name: "<name>",
+                    import: "<import>",
+                    viewControllerType: "<viewControllerType>",
+                    viewControllerSuperParameters: "<viewControllerSuperParameters>")
         ]
         try frameworks.forEach {
             let data: Data = .init(givenYAML(for: $0).utf8)
@@ -75,12 +79,13 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         switch framework {
         case .appKit, .uiKit, .swiftUI:
             return framework.name
-        case let .custom(name, `import`, viewControllerType):
+        case let .custom(name, `import`, viewControllerType, viewControllerSuperParameters):
             return """
                 custom:
                   name: \(name)
                   import: \(`import`)
                   viewControllerType: \(viewControllerType)
+                  viewControllerSuperParameters: \(viewControllerSuperParameters)
                 """
         }
     }

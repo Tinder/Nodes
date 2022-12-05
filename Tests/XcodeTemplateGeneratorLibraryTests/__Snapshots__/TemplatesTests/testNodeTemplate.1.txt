@@ -39,7 +39,7 @@
       - "UIKit"
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
-    - viewControllerSuperParameters: "<viewControllerSuperParameters>"
+    - viewControllerSuperParameters: "nibName: nil, bundle: nil"
     - viewControllerType: "UIViewController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateOperators: "<viewStateOperators>"
