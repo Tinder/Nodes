@@ -30,29 +30,26 @@
       - viewControllerMethods: "<viewControllerMethods-AppKit>"
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-AppKit>"
       - viewControllerProperties: "<viewControllerProperties-AppKit>"
-      - viewControllerSuperParameters: "<viewControllerSuperParameters-AppKit>"
     ▿ UIFramework
       - framework: Framework.uiKit
       - viewControllerMethods: "<viewControllerMethods-UIKit>"
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-UIKit>"
       - viewControllerProperties: "<viewControllerProperties-UIKit>"
-      - viewControllerSuperParameters: "<viewControllerSuperParameters-UIKit>"
     ▿ UIFramework
       - framework: Framework.swiftUI
       - viewControllerMethods: "<viewControllerMethods-SwiftUI>"
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-SwiftUI>"
       - viewControllerProperties: "<viewControllerProperties-SwiftUI>"
-      - viewControllerSuperParameters: "<viewControllerSuperParameters-SwiftUI>"
     ▿ UIFramework
       ▿ framework: Framework
-        ▿ custom: (3 elements)
+        ▿ custom: (4 elements)
           - name: "<name>"
           - import: "<import>"
           - viewControllerType: "<viewControllerType>"
+          - viewControllerSuperParameters: "<viewControllerSuperParameters>"
       - viewControllerMethods: "<viewControllerMethods-Custom>"
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-Custom>"
       - viewControllerProperties: "<viewControllerProperties-Custom>"
-      - viewControllerSuperParameters: "<viewControllerSuperParameters-Custom>"
   - viewControllableFlowType: "viewControllableFlowType"
   - viewControllableType: "viewControllableType"
   - viewControllerUpdateComment: "viewControllerUpdateComment"

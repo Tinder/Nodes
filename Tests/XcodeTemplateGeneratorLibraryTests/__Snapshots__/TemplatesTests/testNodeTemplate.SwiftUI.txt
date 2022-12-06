@@ -39,7 +39,7 @@
       - "SwiftUI"
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
-    - viewControllerSuperParameters: "<viewControllerSuperParameters>"
+    - viewControllerSuperParameters: ""
     - viewControllerType: "AbstractViewHostingController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateOperators: "<viewStateOperators>"

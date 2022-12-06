@@ -3,4 +3,3 @@
   - viewControllerMethods: "<viewControllerMethods>"
   - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"
   - viewControllerProperties: "<viewControllerProperties>"
-  - viewControllerSuperParameters: "<viewControllerSuperParameters>"

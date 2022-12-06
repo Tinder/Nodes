@@ -42,7 +42,6 @@ extension UIFramework {
     internal static func makeDefaultAppKitFramework() -> UIFramework {
         UIFramework(
             framework: .appKit,
-            viewControllerSuperParameters: "nibName: nil, bundle: nil",
             viewControllerProperties: "",
             viewControllerMethods: Defaults.viewControllerMethods,
             viewControllerMethodsForRootNode: Defaults.viewControllerMethodsForRootNode

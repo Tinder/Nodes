@@ -43,7 +43,8 @@ final class ConfigTests: XCTestCase {
             UIFramework(framework: .swiftUI),
             UIFramework(framework: .custom(name: "<name>",
                                            import: "<import>",
-                                           viewControllerType: "<viewControllerType>")
+                                           viewControllerType: "<viewControllerType>",
+                                           viewControllerSuperParameters: "<viewControllerSuperParameters>")
             )
         ]
         try UIFramework.Kind
@@ -68,17 +69,14 @@ final class ConfigTests: XCTestCase {
         """
         uiFrameworks:
             - framework: AppKit
-              viewControllerSuperParameters: <viewControllerSuperParameters-AppKit>
               viewControllerProperties: <viewControllerProperties-AppKit>
               viewControllerMethods: <viewControllerMethods-AppKit>
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-AppKit>
             - framework: UIKit
-              viewControllerSuperParameters: <viewControllerSuperParameters-UIKit>
               viewControllerProperties: <viewControllerProperties-UIKit>
               viewControllerMethods: <viewControllerMethods-UIKit>
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-UIKit>
             - framework: SwiftUI
-              viewControllerSuperParameters: <viewControllerSuperParameters-SwiftUI>
               viewControllerProperties: <viewControllerProperties-SwiftUI>
               viewControllerMethods: <viewControllerMethods-SwiftUI>
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-SwiftUI>
@@ -87,7 +85,7 @@ final class ConfigTests: XCTestCase {
                   name: <name>
                   import: <import>
                   viewControllerType: <viewControllerType>
-              viewControllerSuperParameters: <viewControllerSuperParameters-Custom>
+                  viewControllerSuperParameters: <viewControllerSuperParameters>
               viewControllerProperties: <viewControllerProperties-Custom>
               viewControllerMethods: <viewControllerMethods-Custom>
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
