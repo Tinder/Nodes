@@ -22,13 +22,8 @@ internal final class {{ worker_name }}WorkerImp: AbstractWorker
     /// The view state publisher.
     internal let viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
 {% endif %}
-    /// The Analytics instance.
-    private let analytics: {{ node_name }}Analytics
-
     /// The initializer.
-    /// - Parameter analytics: The Analytics instance
-    internal init(analytics: {{ node_name }}Analytics) {
-        self.analytics = analytics{% if view_state_publisher %}
+    internal init() {{ '{' }}{% if view_state_publisher %}
         viewState = {{ view_state_publisher }}{% endif %}
     }
 
