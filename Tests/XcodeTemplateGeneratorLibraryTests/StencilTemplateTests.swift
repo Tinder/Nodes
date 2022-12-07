@@ -26,10 +26,10 @@ final class StencilTemplateTests: XCTestCase {
         UIFramework.Kind.allCases.forEach { uiFrameworkKind in
             let variation: StencilTemplate.Variation = .variation(for: uiFrameworkKind)
             switch uiFrameworkKind {
-            case .swiftUI:
-                expect(variation) == .swiftUI
             case .appKit, .uiKit, .custom:
                 expect(variation) == .default
+            case .swiftUI:
+                expect(variation) == .swiftUI
             }
         }
     }
@@ -53,21 +53,21 @@ final class StencilTemplateTests: XCTestCase {
         StencilTemplate.allCases.forEach { stencilTemplate in
             switch stencilTemplate {
             case .analytics:
-                expect(stencilTemplate.description) == "Analytics"
+                expect("\(stencilTemplate)") == "Analytics"
             case .builder:
-                expect(stencilTemplate.description) == "Builder"
+                expect("\(stencilTemplate)") == "Builder"
             case .context:
-                expect(stencilTemplate.description) == "Context"
+                expect("\(stencilTemplate)") == "Context"
             case .flow:
-                expect(stencilTemplate.description) == "Flow"
+                expect("\(stencilTemplate)") == "Flow"
             case .plugin:
-                expect(stencilTemplate.description) == "Plugin"
+                expect("\(stencilTemplate)") == "Plugin"
             case .pluginList:
-                expect(stencilTemplate.description) == "PluginList"
+                expect("\(stencilTemplate)") == "PluginList"
             case .viewController:
-                expect(stencilTemplate.description) == "ViewController"
+                expect("\(stencilTemplate)") == "ViewController"
             case .worker:
-                expect(stencilTemplate.description) == "Worker"
+                expect("\(stencilTemplate)") == "Worker"
             }
         }
     }
@@ -78,7 +78,12 @@ final class StencilTemplateTests: XCTestCase {
             case .analytics:
                 expect(stencilTemplate.filename) == "Analytics"
             case let .builder(variation):
-                expect(stencilTemplate.filename) == "Builder".appending(variation == .swiftUI ? "-SwiftUI" : "")
+                switch variation {
+                case .default:
+                    expect(stencilTemplate.filename) == "Builder"
+                case .swiftUI:
+                    expect(stencilTemplate.filename) == "Builder-SwiftUI"
+                }
             case .context:
                 expect(stencilTemplate.filename) == "Context"
             case .flow:
@@ -88,7 +93,12 @@ final class StencilTemplateTests: XCTestCase {
             case .pluginList:
                 expect(stencilTemplate.filename) == "PluginList"
             case let .viewController(variation):
-                expect(stencilTemplate.filename) == "ViewController".appending(variation == .swiftUI ? "-SwiftUI" : "")
+                switch variation {
+                case .default:
+                    expect(stencilTemplate.filename) == "ViewController"
+                case .swiftUI:
+                    expect(stencilTemplate.filename) == "ViewController-SwiftUI"
+                }
             case .worker:
                 expect(stencilTemplate.filename) == "Worker"
             }
@@ -97,7 +107,7 @@ final class StencilTemplateTests: XCTestCase {
 
     func testNodeStencils() {
         StencilTemplate.Variation.allCases.forEach { variation in
-            for withViewController in [true, false] {
+            for withViewController: Bool in [true, false] {
                 let stencils: [StencilTemplate] = StencilTemplate.nodeStencils(for: variation,
                                                                                withViewController: withViewController)
                 if withViewController {
