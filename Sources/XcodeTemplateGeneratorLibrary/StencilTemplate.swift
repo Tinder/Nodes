@@ -30,6 +30,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         }
     }
 
+    // An array of StencilTemplate cases for ``CaseIterable`` conformance.
     public static let allCases: [StencilTemplate] = [
         .analytics,
         .builder(.default),
@@ -87,6 +88,13 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         }
     }
 
+    /// The StencilTemplates that represents a Node.
+    ///
+    /// - Parameters:
+    ///   - variation: The variation of the Node.
+    ///   - withViewController: A Boolean indicating whether or not to include the viewController stencil.
+    ///
+    /// - Returns: An array of StencilTemplate.
     public static func nodeStencils(
         for variation: Variation = .default,
         withViewController isViewControllerIncluded: Bool = true
