@@ -162,7 +162,6 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             viewState: viewStateWorker.viewState
         ){% else %}
         var view: {{ node_name }}View = .init(){% endif %}
-        view.analytics = analytics
         let viewController: {{ node_name }}ViewController = .init(
             rootView: view
         )
