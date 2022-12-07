@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// A list of all Stencil source files used to generate Xcode template files. Each case represents a single file.
+/// Every Stencil source file is represented by a case and optional variation.
 public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
 
     case analytics
@@ -44,7 +44,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         .worker
     ]
 
-    /// A textual representation of self for ``CustomStringConvertible`` conformance.
+    /// The name of tbe Stencil template.
     public var description: String {
         switch self {
         case .analytics:
@@ -66,7 +66,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         }
     }
 
-    /// The name of the .stencil file in the XcodeTemplateGeneratorLibrary bundle.
+    /// The Stencil source file name in the XcodeTemplateGeneratorLibrary bundle.
     public var filename: String {
         switch self {
         case .analytics:
@@ -91,10 +91,10 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
     /// The StencilTemplates that represents a Node.
     ///
     /// - Parameters:
-    ///   - variation: The variation of the Node.
-    ///   - withViewController: A Boolean indicating whether or not to include the viewController stencil.
+    ///   - variation: The Stencil variation.
+    ///   - withViewController: A Boolean indicating whether or not to include the `viewController` stencil.
     ///
-    /// - Returns: An array of StencilTemplate.
+    /// - Returns: An array of StencilTemplate cases.
     public static func nodeStencils(
         for variation: Variation = .default,
         withViewController isViewControllerIncluded: Bool = true
