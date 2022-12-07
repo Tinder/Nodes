@@ -30,9 +30,6 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
     /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 
-    /// The Analytics instance.
-    internal weak var analytics: <nodeName>Analytics?
-
     /// The collection of cancellable instances.
     private var cancellables: Set<<cancellableType>> = .init()
 

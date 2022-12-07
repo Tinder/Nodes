@@ -30,9 +30,6 @@ internal final class ___VARIABLE_productName___ViewController: UIViewController,
     /// The view receiver.
     internal weak var receiver: ___VARIABLE_productName___Receiver?
 
-    /// The Analytics instance.
-    internal weak var analytics: ___VARIABLE_productName___Analytics?
-
     /// The collection of cancellable instances.
     private var cancellables: Set<AnyCancellable> = .init()
 

@@ -49,9 +49,6 @@ internal struct ___VARIABLE_productName___View: NodesView {
     /// The view receiver.
     internal weak var receiver: ___VARIABLE_productName___Receiver?
 
-    /// The Analytics instance.
-    internal weak var analytics: ___VARIABLE_productName___Analytics?
-
     /// The view state publisher.
     private let viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>
 
