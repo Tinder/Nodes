@@ -6,17 +6,6 @@ import Nodes
 /*
  INSTRUCTIONS:
 
- Option 1
- ========
- Conform an existing analytics tracker (or client), that is defined outside of the Node, to the
- ___VARIABLE_productName___Analytics protocol.
-
- This option is preferred.
-
- When using this option, delete the class defined in this file (below).
-
- Option 2
- ========
  Inject an existing analytics tracker (or client), that is defined outside of the Node, into the
  class defined in this file (below).
 
