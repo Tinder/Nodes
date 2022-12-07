@@ -146,7 +146,6 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         var view: <nodeName>View = .init(
             viewState: viewStateWorker.viewState
         )
-        view.analytics = analytics
         let viewController: <nodeName>ViewController = .init(
             rootView: view
         )

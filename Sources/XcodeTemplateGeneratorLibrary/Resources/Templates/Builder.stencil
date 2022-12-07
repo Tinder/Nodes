@@ -162,7 +162,6 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             viewState: viewStateWorker.viewState
         ){% else %}
         let viewController: {{ node_name }}ViewController = .init(){% endif %}
-        viewController.analytics = analytics
         let context: {{ node_name }}ContextImp = .init(
             presentable: viewController,
             workers: [{% if view_state_publisher %}viewStateWorker{% else %}worker{% endif %}],
