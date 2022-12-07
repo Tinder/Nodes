@@ -11,14 +11,12 @@ import XCTest
 
 final class TemplatesTests: XCTestCase, TestFactories {
 
-    func testNodeTemplate() {
-        try assertSnapshot(matching: NodeTemplate(for: .uiKit, config: givenConfig()),
-                           as: .dump)
-    }
-
-    func testNodeSwiftUITemplate() {
-        try assertSnapshot(matching: NodeTemplate(for: .swiftUI, config: givenConfig()),
-                           as: .dump)
+    func testNodeTemplate() throws {
+        try UIFramework.Kind.allCases.forEach {
+            try assertSnapshot(matching: NodeTemplate(for: $0, config: givenConfig()),
+                               as: .dump,
+                               named: $0.rawValue)
+        }
     }
 
     func testNodeViewInjectedTemplate() {

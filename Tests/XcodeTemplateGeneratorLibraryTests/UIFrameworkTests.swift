@@ -55,7 +55,8 @@ final class UIFrameworkTests: XCTestCase {
     func testInitWithCustom() {
         let custom: UIFramework.Framework = .custom(name: "<name>",
                                                     import: "<import>",
-                                                    viewControllerType: "<viewControllerType>")
+                                                    viewControllerType: "<viewControllerType>",
+                                                    viewControllerSuperParameters: "<viewControllerSuperParameters>")
         let expected: UIFramework = .makeDefaultFramework(for: custom)
         let framework: UIFramework = .init(framework: custom)
         expect(framework.kind) == expected.kind
@@ -93,7 +94,6 @@ final class UIFrameworkTests: XCTestCase {
         case .appKit, .uiKit, .swiftUI:
             return """
                 framework: \(kind.rawValue)
-                viewControllerSuperParameters: <viewControllerSuperParameters>
                 viewControllerProperties: <viewControllerProperties>
                 viewControllerMethods: <viewControllerMethods>
                 viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode>
@@ -105,7 +105,7 @@ final class UIFrameworkTests: XCTestCase {
                     name: <name>
                     import: <import>
                     viewControllerType: <viewControllerType>
-                viewControllerSuperParameters: <viewControllerSuperParameters>
+                    viewControllerSuperParameters: <viewControllerSuperParameters>
                 viewControllerProperties: <viewControllerProperties>
                 viewControllerMethods: <viewControllerMethods>
                 viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode>
@@ -124,6 +124,7 @@ final class UIFrameworkTests: XCTestCase {
                     name: <name>
                     import: <import>
                     viewControllerType: <viewControllerType>
+                    viewControllerSuperParameters: <viewControllerSuperParameters>
                 """
         }
     }

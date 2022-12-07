@@ -5,7 +5,7 @@
 //  Created by Christopher Fuller on 5/31/21.
 //
 
-import XcodeTemplateGeneratorLibrary
+@testable import XcodeTemplateGeneratorLibrary
 
 protocol TestFactories {}
 
@@ -16,26 +16,28 @@ extension TestFactories {
 
     func givenConfig() -> Config {
         var config: Config = .init()
-        config.includedTemplates = ["<includedTemplates>"]
+        config.uiFrameworks = [
+            UIFramework(framework: .appKit),
+            UIFramework(framework: .uiKit),
+            UIFramework(framework: .swiftUI),
+            UIFramework(framework: .custom(name: "<name>",
+                                           import: "<import>",
+                                           viewControllerType: "<viewControllerType>",
+                                           viewControllerSuperParameters: "<viewControllerSuperParameters>"))
+        ].map {
+            var uiFramework: UIFramework = $0
+            uiFramework.viewControllerProperties = "<viewControllerProperties>"
+            uiFramework.viewControllerMethods = "<viewControllerMethods>"
+            uiFramework.viewControllerMethodsForRootNode = "<viewControllerMethodsForRootNode>"
+            return uiFramework
+        }
         config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImports>"]
         config.diGraphImports = ["<diGraphImports>"]
-        config.viewControllerImports = ["<viewControllerImports>"]
-        config.viewControllerImportsSwiftUI = ["<viewControllerImportsSwiftUI>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
-        config.viewControllerType = "<viewControllerType>"
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableFlowType = "<viewControllableFlowType>"
-        config.viewControllerSuperParameters = "<viewControllerSuperParameters>"
-        config.viewControllerProperties = "<viewControllerProperties>"
-        config.viewControllerPropertiesSwiftUI = "<viewControllerPropertiesSwiftUI>"
-        config.viewControllerMethods = "<viewControllerMethods>"
-        config.viewControllerMethodsSwiftUI = "<viewControllerMethodsSwiftUI>"
-        config.rootViewControllerMethods = "<rootViewControllerMethods>"
-        config.rootViewControllerMethodsSwiftUI = "<rootViewControllerMethodsSwiftUI>"
-        config.viewControllerWithoutViewStateMethods = "<viewControllerWithoutViewStateMethods>"
-        config.viewControllerWithoutViewStateMethodsSwiftUI = "<viewControllerWithoutViewStateMethodsSwiftUI>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
         config.viewStatePublisher = "<viewStatePublisher>"
         config.viewStateOperators = "<viewStateOperators>"

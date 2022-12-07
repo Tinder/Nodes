@@ -35,12 +35,12 @@
     - viewControllableType: "<viewControllableType>"
     ▿ viewControllerImports: 3 elements
       - "<baseImports>"
-      - "<viewControllerImportsSwiftUI>"
       - "Nodes"
-    - viewControllerMethods: "<viewControllerMethodsSwiftUI>"
-    - viewControllerProperties: "<viewControllerPropertiesSwiftUI>"
-    - viewControllerSuperParameters: "<viewControllerSuperParameters>"
-    - viewControllerType: "<viewControllerType>"
+      - "SwiftUI"
+    - viewControllerMethods: "<viewControllerMethods>"
+    - viewControllerProperties: "<viewControllerProperties>"
+    - viewControllerSuperParameters: ""
+    - viewControllerType: "AbstractViewHostingController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateOperators: "<viewStateOperators>"
     - viewStatePublisher: "<viewStatePublisher>"
@@ -58,7 +58,7 @@
     ▿ (2 elements)
       - key: "Worker"
       - value: "ViewStateWorker"
-  - name: " Node"
+  - name: "Node - SwiftUI"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"
@@ -75,7 +75,7 @@
         - required: true
         - type: "text"
     - platforms: 0 elements
-    - sortOrder: 1
+    - sortOrder: 3
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
   ▿ stencils: 6 elements

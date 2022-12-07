@@ -1,5 +1,5 @@
 //
-//  MockFileSystem.swift
+//  FileSystemMock.swift
 //  XcodeTemplateGeneratorLibraryTests
 //
 //  Created by Christopher Fuller on 6/1/21.
@@ -8,16 +8,17 @@
 import Foundation
 import XcodeTemplateGeneratorLibrary
 
-internal class MockFileSystem: FileSystem {
+internal final class FileSystemMock: FileSystem {
 
     internal var contents: [URL: Data] = [:]
 
-    internal let libraryURL: URL = .init(fileURLWithPath: "/")
-    internal var directories: [(path: String, createIntermediates: Bool)] = []
+    internal private(set) var directories: [(path: String, createIntermediates: Bool)] = []
     // swiftlint:disable:next large_tuple
-    internal var writes: [(contents: String, path: String, atomically: Bool)] = []
-    internal var copies: [(from: String, to: String)] = []
-    internal var deletions: [String] = []
+    internal private(set) var writes: [(contents: String, path: String, atomically: Bool)] = []
+    internal private(set) var copies: [(from: String, to: String)] = []
+    internal private(set) var deletions: [String] = []
+
+    internal let libraryURL: URL = .init(fileURLWithPath: "/")
 
     internal func createDirectory(at url: URL, withIntermediateDirectories createIntermediates: Bool) throws {
         directories.append((path: url.path, createIntermediates: createIntermediates))

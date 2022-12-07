@@ -15,7 +15,7 @@ internal struct WorkerTemplate: XcodeTemplate {
 
     internal let propertyList: PropertyList =
         .init(description: "The source file implementing a Worker.",
-              sortOrder: 7) {
+              sortOrder: 9) {
             Option(identifier: "productName",
                    name: "Worker name:",
                    description: "The name of the Worker")
