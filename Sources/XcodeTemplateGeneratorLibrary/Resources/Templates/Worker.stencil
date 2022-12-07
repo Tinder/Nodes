@@ -24,8 +24,8 @@ internal final class {{ worker_name }}WorkerImp: AbstractWorker
 {% endif %}
     /// The initializer.
     internal init() {{ '{' }}{% if view_state_publisher %}
-        viewState = {{ view_state_publisher }}{% endif %}
-    }
+        viewState = {{ view_state_publisher }}
+    {% endif %}{{ '}' }}
 
     /// Implement logic to execute when the Worker is started.
     override internal func didStart() {}
