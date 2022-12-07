@@ -139,9 +139,7 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
     ) -> ___VARIABLE_productName___Flow {
         let listener: ___VARIABLE_productName___Listener = dynamicBuildDependency
         let analytics: ___VARIABLE_productName___AnalyticsImp = .init()
-        let viewStateWorker: ___VARIABLE_productName___ViewStateWorkerImp = .init(
-            analytics: analytics
-        )
+        let viewStateWorker: ___VARIABLE_productName___ViewStateWorkerImp = .init()
         var view: ___VARIABLE_productName___View = .init(
             viewState: viewStateWorker.viewState
         )

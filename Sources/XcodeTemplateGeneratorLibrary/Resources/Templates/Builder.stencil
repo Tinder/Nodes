@@ -155,9 +155,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     ) -> {{ node_name }}Flow {
         let listener: {{ node_name }}Listener = dynamicBuildDependency
         let analytics: {{ node_name }}AnalyticsImp = .init()
-        let {% if view_state_publisher %}viewStateWorker{% else %}worker{% endif %}: {{ worker_name }}WorkerImp = .init(
-            analytics: analytics
-        ){% if view_state_publisher %}
+        let {% if view_state_publisher %}viewStateWorker{% else %}worker{% endif %}: {{ worker_name }}WorkerImp = .init(){% if view_state_publisher %}
         let viewController: {{ node_name }}ViewController = .init(
             viewState: viewStateWorker.viewState
         ){% else %}
