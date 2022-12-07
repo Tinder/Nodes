@@ -23,13 +23,8 @@ internal final class ___VARIABLE_productName___ViewStateWorkerImp: AbstractWorke
     /// The view state publisher.
     internal let viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>
 
-    /// The Analytics instance.
-    private let analytics: ___VARIABLE_productName___Analytics
-
     /// The initializer.
-    /// - Parameter analytics: The Analytics instance
-    internal init(analytics: ___VARIABLE_productName___Analytics) {
-        self.analytics = analytics
+    internal init() {
         viewState = Just(.initialState).eraseToAnyPublisher()
     }
 
