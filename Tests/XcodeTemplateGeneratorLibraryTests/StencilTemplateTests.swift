@@ -51,46 +51,48 @@ final class StencilTemplateTests: XCTestCase {
 
     func testDescription() {
         StencilTemplate.allCases.forEach { stencilTemplate in
+            let description: String = "\(stencilTemplate)"
             switch stencilTemplate {
             case .analytics:
-                expect("\(stencilTemplate)") == "Analytics"
+                expect(description) == "Analytics"
             case .builder:
-                expect("\(stencilTemplate)") == "Builder"
+                expect(description) == "Builder"
             case .context:
-                expect("\(stencilTemplate)") == "Context"
+                expect(description) == "Context"
             case .flow:
-                expect("\(stencilTemplate)") == "Flow"
+                expect(description) == "Flow"
             case .plugin:
-                expect("\(stencilTemplate)") == "Plugin"
+                expect(description) == "Plugin"
             case .pluginList:
-                expect("\(stencilTemplate)") == "PluginList"
+                expect(description) == "PluginList"
             case .viewController:
-                expect("\(stencilTemplate)") == "ViewController"
+                expect(description) == "ViewController"
             case .worker:
-                expect("\(stencilTemplate)") == "Worker"
+                expect(description) == "Worker"
             }
         }
     }
 
     func testFilename() {
         StencilTemplate.allCases.forEach { stencilTemplate in
+            let filename: String = stencilTemplate.filename
             switch stencilTemplate {
             case .analytics:
-                expect(stencilTemplate.filename) == "Analytics"
+                expect(filename) == "Analytics"
             case let .builder(variation):
-                expect(stencilTemplate.filename) == "Builder\(variation == .swiftUI ? "-SwiftUI" : "")"
+                expect(filename) == "Builder\(variation == .swiftUI ? "-SwiftUI" : "")"
             case .context:
-                expect(stencilTemplate.filename) == "Context"
+                expect(filename) == "Context"
             case .flow:
-                expect(stencilTemplate.filename) == "Flow"
+                expect(filename) == "Flow"
             case .plugin:
-                expect(stencilTemplate.filename) == "Plugin"
+                expect(filename) == "Plugin"
             case .pluginList:
-                expect(stencilTemplate.filename) == "PluginList"
+                expect(filename) == "PluginList"
             case let .viewController(variation):
-                expect(stencilTemplate.filename) == "ViewController\(variation == .swiftUI ? "-SwiftUI" : "")"
+                expect(filename) == "ViewController\(variation == .swiftUI ? "-SwiftUI" : "")"
             case .worker:
-                expect(stencilTemplate.filename) == "Worker"
+                expect(filename) == "Worker"
             }
         }
     }
