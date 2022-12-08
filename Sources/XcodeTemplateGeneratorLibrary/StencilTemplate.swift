@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Every Stencil source file is represented by a case and optional variation.
+/// Every Stencil source file is represented by a case. Some cases have a variation.
 public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
 
     case analytics
