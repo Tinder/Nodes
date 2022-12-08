@@ -24,8 +24,8 @@ final class StencilTemplateTests: XCTestCase {
 
     func testVariationForKind() {
         UIFramework.Kind.allCases.forEach { kind in
-            let variation: StencilTemplate.Variation = .variation(for: uiFrameworkKind)
-            switch uiFrameworkKind {
+            let variation: StencilTemplate.Variation = .variation(for: kind)
+            switch kind {
             case .appKit, .uiKit, .custom:
                 expect(variation) == .default
             case .swiftUI:
