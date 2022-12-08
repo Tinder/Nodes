@@ -23,7 +23,7 @@ final class StencilTemplateTests: XCTestCase {
     }
 
     func testVariationForKind() {
-        UIFramework.Kind.allCases.forEach { uiFrameworkKind in
+        UIFramework.Kind.allCases.forEach { kind in
             let variation: StencilTemplate.Variation = .variation(for: uiFrameworkKind)
             switch uiFrameworkKind {
             case .appKit, .uiKit, .custom:
@@ -97,7 +97,7 @@ final class StencilTemplateTests: XCTestCase {
 
     func testNodeStencils() {
         StencilTemplate.Variation.allCases.forEach { variation in
-            for withViewController: Bool in [true, false] {
+            [true, false].forEach { withViewController in
                 let stencils: [StencilTemplate] = StencilTemplate.nodeStencils(for: variation,
                                                                                withViewController: withViewController)
                 if withViewController {
