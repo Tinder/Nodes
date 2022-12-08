@@ -76,7 +76,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         }
     }
 
-    /// The StencilTemplates that represents a Node.
+    /// The StencilTemplate cases that represent a Node.
     ///
     /// - Parameters:
     ///   - variation: The Stencil variation.
