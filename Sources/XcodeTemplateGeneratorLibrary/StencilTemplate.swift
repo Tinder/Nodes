@@ -19,7 +19,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
     case viewController(Variation)
     case worker
 
-    /// Alternate Stencil source files for specific uses cases.
+    /// Alternate Stencil source files for specific use cases.
     public enum Variation: String, Equatable, CaseIterable {
 
         case `default` = ""
