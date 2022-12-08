@@ -19,7 +19,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
     case viewController(Variation)
     case worker
 
-    // Alternate Stencil source files for specific uses cases.
+    /// Alternate Stencil source files for specific uses cases.
     public enum Variation: String, Equatable, CaseIterable {
 
         case `default` = ""
@@ -30,7 +30,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         }
     }
 
-    // An array of StencilTemplate cases for ``CaseIterable`` conformance.
+    /// An array of StencilTemplate cases for ``CaseIterable`` conformance.
     public static let allCases: [StencilTemplate] = [
         .analytics,
         .builder(.default),
