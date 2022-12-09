@@ -31,7 +31,6 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
             contextImports: config.imports(for: .nodes),
             flowImports: config.imports(for: .nodes),
             stateImports: config.imports(for: .nodes),
-            workerImports: config.imports(for: .nodes),
             dependencies: config.dependencies,
             flowProperties: config.flowProperties,
             viewControllableType: config.viewControllableType,
