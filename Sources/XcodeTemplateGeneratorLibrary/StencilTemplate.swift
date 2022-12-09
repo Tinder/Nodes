@@ -44,8 +44,11 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         .worker
     ]
 
+    /// A string representation of the case for ``CustomStringConvertible`` conformance.
+    public var description: String { name }
+
     /// The name of the Stencil template.
-    public var description: String {
+    public var name: String {
         switch self {
         case .analytics:
             return "Analytics"
