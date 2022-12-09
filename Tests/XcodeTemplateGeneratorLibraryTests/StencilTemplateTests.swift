@@ -43,8 +43,10 @@ final class StencilTemplateTests: XCTestCase {
             .flow,
             .plugin,
             .pluginList,
+            .state,
             .viewController(.default),
             .viewController(.swiftUI),
+            .viewState,
             .worker
         ]
     }
@@ -122,8 +124,9 @@ final class StencilTemplateTests: XCTestCase {
                         .builder(variation),
                         .context,
                         .flow,
+                        .state,
                         .viewController(variation),
-                        .worker
+                        .viewState
                     ]
                 } else {
                     expect(stencils) == [
@@ -131,7 +134,7 @@ final class StencilTemplateTests: XCTestCase {
                         .builder(variation),
                         .context,
                         .flow,
-                        .worker
+                        .state
                     ]
                 }
             }
