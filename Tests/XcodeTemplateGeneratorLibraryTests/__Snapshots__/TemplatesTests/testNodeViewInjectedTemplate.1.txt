@@ -1,5 +1,8 @@
 ▿ NodeViewInjectedTemplate
   ▿ context: NodeViewInjectedContext
+    ▿ analyticsImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
     ▿ builderImports: 3 elements
       - "<baseImports>"
       - "<diGraphImports>"
@@ -29,11 +32,11 @@
           - key: "type"
           - value: "<flowPropertiesType>"
     - nodeName: "___VARIABLE_productName___"
-    - viewControllableFlowType: "<viewControllableFlowType>"
-    - viewControllableType: "<viewControllableType>"
-    ▿ workerImports: 2 elements
+    ▿ stateImports: 2 elements
       - "<baseImports>"
       - "Nodes"
+    - viewControllableFlowType: "<viewControllableFlowType>"
+    - viewControllableType: "<viewControllableType>"
     - workerName: "___VARIABLE_productName___"
   - name: "Node (view injected)"
   ▿ propertyList: XcodeTemplatePropertyList
@@ -61,4 +64,4 @@
       - builder: Variation.default
     - Context
     - Flow
-    - Worker
+    - State

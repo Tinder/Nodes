@@ -1,5 +1,8 @@
 ▿ NodeTemplate
   ▿ context: NodeContext
+    ▿ analyticsImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
     ▿ builderImports: 3 elements
       - "<baseImports>"
       - "<diGraphImports>"
@@ -31,6 +34,9 @@
     - nodeName: "___VARIABLE_productName___"
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
+    ▿ stateImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     ▿ viewControllerImports: 3 elements
@@ -42,16 +48,12 @@
     - viewControllerSuperParameters: "nibName: nil, bundle: nil"
     - viewControllerType: "NSViewController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
-    - viewStateOperators: "<viewStateOperators>"
-    - viewStatePublisher: "<viewStatePublisher>"
-    ▿ workerImports: 2 elements
+    ▿ viewStateImports: 2 elements
       - "<baseImports>"
       - "Nodes"
+    - viewStateOperators: "<viewStateOperators>"
+    - viewStatePublisher: "<viewStatePublisher>"
     - workerName: "___VARIABLE_productName___ViewState"
-  ▿ filenames: 1 key/value pair
-    ▿ (2 elements)
-      - key: "Worker"
-      - value: "ViewStateWorker"
   - name: "Node - AppKit"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
@@ -72,12 +74,13 @@
     - sortOrder: 1
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 6 elements
+  ▿ stencils: 7 elements
     - Analytics
     ▿ Builder
       - builder: Variation.default
     - Context
     - Flow
+    - State
     ▿ ViewController
       - viewController: Variation.default
-    - Worker
+    - ViewState
