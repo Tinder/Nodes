@@ -19,19 +19,6 @@ final class XcodeTemplatesTests: XCTestCase {
         let dictionary: [String: Any] = ["key": "value"]
     }
 
-    private struct TestXcodeTemplate: XcodeTemplate {
-
-        let name: String = "name"
-        let type: String = "type"
-        let stencils: [StencilTemplate] = []
-        let context: Context = TestContext()
-        let propertyList: PropertyList = .init(description: "description", sortOrder: 23) {}
-    }
-
-    func testDefaultFilenames() {
-        expect(TestXcodeTemplate().filenames) == [:]
-    }
-
     func testGenerateWithIdentifier() throws {
         let fileSystem: FileSystemMock = .init()
         try XcodeTemplates(config: Config()).generate(identifier: "identifier", using: fileSystem)
