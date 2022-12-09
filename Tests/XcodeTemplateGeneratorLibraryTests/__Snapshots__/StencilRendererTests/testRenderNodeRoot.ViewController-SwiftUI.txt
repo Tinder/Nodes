@@ -1,0 +1,83 @@
+<fileHeader>
+
+import <viewControllerImports>
+
+/**
+ PURPOSE:
+ The view state.
+ */
+internal struct RootViewState: Equatable, InitialStateProviding {
+
+    /// The initial view state.
+    internal static var initialState: RootViewState = .init()
+}
+
+/**
+ PURPOSE:
+ The interface that the View will speak to the Context through. Used for informing the Context of
+ view events and user interactions.
+ */
+internal protocol RootReceiver: AnyObject {
+    func viewDidAppear()
+}
+
+/**
+ PURPOSE:
+ Host of the SwiftUI view.
+ */
+internal final class RootViewController: <viewControllerType>
+<
+    RootView
+> {
+
+    <viewControllerProperties>
+
+    <viewControllerMethods>
+}
+
+extension RootViewController: RootViewControllable {}
+extension RootViewController: RootPresentable {}
+
+/**
+ PURPOSE:
+ Concrete implementation of the View.
+ */
+internal struct RootView: NodesView {
+
+    /// The body of the view.
+    internal var body: some View {
+        WithViewState(viewState) { viewState in
+            Text(verbatim: "\(type(of: viewState))")
+        }
+    }
+
+    /// The view receiver.
+    internal weak var receiver: RootReceiver?
+
+    /// The Analytics instance.
+    internal weak var analytics: RootAnalytics?
+
+    /// The view state publisher.
+    private let viewState: <publisherType><RootViewState<publisherFailureType>>
+
+    /// The initializer.
+    /// - Parameter viewState: The view state publisher
+    internal init(viewState: <publisherType><RootViewState<publisherFailureType>>) {
+        self.viewState = viewState
+            <viewStateOperators>
+    }
+}
+
+/**
+ PURPOSE:
+ The SwiftUI preview (excluded from release builds).
+ */
+internal struct RootView_Previews: PreviewProvider {
+
+    private static let viewState: AnyPublisher<RootViewState<publisherFailureType>> =
+        Just<RootViewState>(.initialState).eraseToAnyPublisher()
+
+    internal static var previews: some View {
+        RootView(viewState: viewState)
+    }
+}
