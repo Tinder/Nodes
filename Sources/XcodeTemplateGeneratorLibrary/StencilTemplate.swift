@@ -16,7 +16,9 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
     case flow
     case plugin
     case pluginList
+    case state
     case viewController(Variation)
+    case viewState
     case worker
 
     /// Alternate Stencil source files for specific use cases.
@@ -39,8 +41,10 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         .flow,
         .plugin,
         .pluginList,
+        .state,
         .viewController(.default),
         .viewController(.swiftUI),
+        .viewState,
         .worker
     ]
 
@@ -62,8 +66,12 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
             return "Plugin"
         case .pluginList:
             return "PluginList"
+        case .state:
+            return "State"
         case .viewController:
             return "ViewController"
+        case .viewState:
+            return "ViewState"
         case .worker:
             return "Worker"
         }
@@ -72,7 +80,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
     /// The name of the Stencil source file in the XcodeTemplateGeneratorLibrary bundle.
     public var filename: String {
         switch self {
-        case .analytics, .context, .flow, .plugin, .pluginList, .worker:
+        case .analytics, .context, .flow, .plugin, .pluginList, .state, .viewState, .worker:
             return description
         case let .builder(variation), let .viewController(variation):
             return description.appending(variation.rawValue)
@@ -96,8 +104,9 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
                 .builder(variation),
                 .context,
                 .flow,
+                .state,
                 .viewController(variation),
-                .worker
+                .viewState
             ]
         } else {
             return [
@@ -105,7 +114,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
                 .builder(variation),
                 .context,
                 .flow,
-                .worker
+                .state
             ]
         }
     }
