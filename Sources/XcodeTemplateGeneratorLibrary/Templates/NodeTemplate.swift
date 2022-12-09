@@ -11,7 +11,7 @@ internal struct NodeTemplate: XcodeTemplate {
 
     internal let name: String
     internal let stencils: [StencilTemplate]
-    internal let filenames: [String: String]
+    internal let filenames: [String: String] = ["Worker": "ViewStateWorker"]
     internal let context: Context
     internal let propertyList: PropertyList
 
@@ -19,7 +19,6 @@ internal struct NodeTemplate: XcodeTemplate {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
         name = "Node - \(uiFramework.name)"
         stencils = StencilTemplate.nodeStencils(for: .variation(for: uiFramework.kind))
-        filenames = ["Worker": "ViewStateWorker"]
         context = NodeContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
