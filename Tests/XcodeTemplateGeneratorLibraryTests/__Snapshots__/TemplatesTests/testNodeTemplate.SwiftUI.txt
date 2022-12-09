@@ -48,13 +48,7 @@
       - "<baseImports>"
       - "Nodes"
     - workerName: "___VARIABLE_productName___ViewState"
-  ▿ filenames: 3 key/value pairs
-    ▿ (2 elements)
-      - key: "Builder-SwiftUI"
-      - value: "Builder"
-    ▿ (2 elements)
-      - key: "ViewController-SwiftUI"
-      - value: "ViewController"
+  ▿ filenames: 1 key/value pair
     ▿ (2 elements)
       - key: "Worker"
       - value: "ViewStateWorker"

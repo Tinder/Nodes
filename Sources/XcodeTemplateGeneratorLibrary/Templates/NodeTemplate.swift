@@ -17,18 +17,9 @@ internal struct NodeTemplate: XcodeTemplate {
 
     internal init(for kind: UIFramework.Kind, config: Config) throws {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
-        let swiftUI: Bool = uiFramework.kind == .swiftUI
         name = "Node - \(uiFramework.name)"
         stencils = StencilTemplate.nodeStencils(for: .variation(for: uiFramework.kind))
-        if swiftUI {
-            filenames = [
-                "Builder-SwiftUI": "Builder",
-                "ViewController-SwiftUI": "ViewController",
-                "Worker": "ViewStateWorker"
-            ]
-        } else {
-            filenames = ["Worker": "ViewStateWorker"]
-        }
+        filenames = ["Worker": "ViewStateWorker"]
         context = NodeContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
