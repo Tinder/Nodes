@@ -1,0 +1,10 @@
+//___FILEHEADER___
+
+import Combine
+import Nodes
+
+/**
+ PURPOSE:
+ The state of the Node.
+ */
+internal struct ___VARIABLE_productName___State: Equatable {}
