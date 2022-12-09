@@ -46,7 +46,7 @@ public final class StencilRenderer {
 
     private func renderNode(stencils: [StencilTemplate], with context: [String: Any]) throws -> [String: String] {
         try Dictionary(uniqueKeysWithValues: stencils.map { stencil in
-            try ("\(stencil)", render(stencil, with: context))
+            try (stencil.name, render(stencil, with: context))
         })
     }
 
@@ -58,7 +58,7 @@ public final class StencilRenderer {
             .appendingPathComponent(stencil.filename)
             .appendingPathExtension("stencil")
         let template: String = try .init(contentsOf: stencilURL)
-        let environment: Environment = .init(loader: DictionaryLoader(templates: ["\(stencil)": template]))
-        return try environment.renderTemplate(name: "\(stencil)", context: context)
+        let environment: Environment = .init(loader: DictionaryLoader(templates: [stencil.name: template]))
+        return try environment.renderTemplate(name: stencil.name, context: context)
     }
 }
