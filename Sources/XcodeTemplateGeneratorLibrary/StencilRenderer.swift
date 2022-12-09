@@ -14,28 +14,28 @@ public final class StencilRenderer {
 
     public func renderNode(
         context: NodeContext,
-        swiftUI: Bool = false
+        kind: UIFramework.Kind
     ) throws -> [String: String] {
         try renderNode(stencils: [
             "Analytics": "Analytics",
-            "Builder": "Builder\(swiftUI ? "-SwiftUI" : "")",
+            "Builder": "Builder\(kind == .swiftUI ? "-SwiftUI" : "")",
             "Context": "Context",
             "Flow": "Flow",
-            "ViewController": "ViewController\(swiftUI ? "-SwiftUI" : "")",
+            "ViewController": "ViewController\(kind == .swiftUI ? "-SwiftUI" : "")",
             "Worker": "Worker"
         ], with: context.dictionary)
     }
 
     public func renderNodeRoot(
         context: NodeRootContext,
-        swiftUI: Bool = false
+        kind: UIFramework.Kind
     ) throws -> [String: String] {
         try renderNode(stencils: [
             "Analytics": "Analytics",
-            "Builder": "Builder\(swiftUI ? "-SwiftUI" : "")",
+            "Builder": "Builder\(kind == .swiftUI ? "-SwiftUI" : "")",
             "Context": "Context",
             "Flow": "Flow",
-            "ViewController": "ViewController\(swiftUI ? "-SwiftUI" : "")",
+            "ViewController": "ViewController\(kind == .swiftUI ? "-SwiftUI" : "")",
             "Worker": "Worker"
         ], with: context.dictionary)
     }

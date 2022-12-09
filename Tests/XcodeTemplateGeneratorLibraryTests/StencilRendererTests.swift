@@ -14,7 +14,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
 
     func testRenderNode() throws {
         let context: NodeContext = givenNodeContext()
-        let templates: [String: String] = try StencilRenderer().renderNode(context: context)
+        let templates: [String: String] = try StencilRenderer().renderNode(context: context, kind: .uiKit)
         expect(templates.keys.sorted()) == [
             "Analytics",
             "Builder",
@@ -45,8 +45,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
 
     func testRenderNodeSwiftUI() throws {
         let context: NodeContext = givenNodeContext()
-        let templates: [String: String] = try StencilRenderer().renderNode(context: context,
-                                                                           swiftUI: true)
+        let templates: [String: String] = try StencilRenderer().renderNode(context: context, kind: .swiftUI)
         expect(templates.keys.sorted()) == [
             "Analytics",
             "Builder",
@@ -77,7 +76,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
 
     func testRenderNodeRoot() throws {
         let context: NodeRootContext = givenNodeRootContext()
-        let templates: [String: String] = try StencilRenderer().renderNodeRoot(context: context)
+        let templates: [String: String] = try StencilRenderer().renderNodeRoot(context: context, kind: .uiKit)
         expect(templates.keys.sorted()) == [
             "Analytics",
             "Builder",
