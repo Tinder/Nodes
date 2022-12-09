@@ -14,7 +14,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
 
     func testRenderNode() throws {
         // swiftlint:disable:next closure_body_length
-        try [UIFramework.Kind.uiKit, .swiftUI].forEach {
+        try UIFramework.Kind.allCases.forEach {
             let context: NodeContext = givenNodeContext()
             let templates: [String: String] = try StencilRenderer().renderNode(context: context, kind: $0)
             expect(templates.keys.sorted()) == [
@@ -48,7 +48,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
 
     func testRenderNodeRoot() throws {
         // swiftlint:disable:next closure_body_length
-        try [UIFramework.Kind.uiKit, .swiftUI].forEach {
+        try UIFramework.Kind.allCases.forEach {
             let context: NodeRootContext = givenNodeRootContext()
             let templates: [String: String] = try StencilRenderer().renderNodeRoot(context: context, kind: $0)
             expect(templates.keys.sorted()) == [
