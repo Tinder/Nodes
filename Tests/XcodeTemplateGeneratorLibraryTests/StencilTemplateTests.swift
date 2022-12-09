@@ -51,24 +51,30 @@ final class StencilTemplateTests: XCTestCase {
 
     func testDescription() {
         StencilTemplate.allCases.forEach { stencilTemplate in
-            let description: String = "\(stencilTemplate)"
+            expect("\(stencilTemplate)") == stencilTemplate.name
+        }
+    }
+
+    func testName() {
+        StencilTemplate.allCases.forEach { stencilTemplate in
+            let name: String = stencilTemplate.name
             switch stencilTemplate {
             case .analytics:
-                expect(description) == "Analytics"
+                expect(name) == "Analytics"
             case .builder:
-                expect(description) == "Builder"
+                expect(name) == "Builder"
             case .context:
-                expect(description) == "Context"
+                expect(name) == "Context"
             case .flow:
-                expect(description) == "Flow"
+                expect(name) == "Flow"
             case .plugin:
-                expect(description) == "Plugin"
+                expect(name) == "Plugin"
             case .pluginList:
-                expect(description) == "PluginList"
+                expect(name) == "PluginList"
             case .viewController:
-                expect(description) == "ViewController"
+                expect(name) == "ViewController"
             case .worker:
-                expect(description) == "Worker"
+                expect(name) == "Worker"
             }
         }
     }
