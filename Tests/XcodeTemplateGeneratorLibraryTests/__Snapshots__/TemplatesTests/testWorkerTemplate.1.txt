@@ -36,4 +36,4 @@
     - summary: "The source file implementing a Worker"
     - supportsSwiftPackage: true
   ▿ stencils: 1 element
-    - "Worker"
+    - Worker

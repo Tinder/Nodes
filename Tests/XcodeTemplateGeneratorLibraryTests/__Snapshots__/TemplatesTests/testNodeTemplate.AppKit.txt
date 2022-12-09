@@ -73,9 +73,11 @@
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
   ▿ stencils: 6 elements
-    - "Analytics"
-    - "Builder"
-    - "Context"
-    - "Flow"
-    - "ViewController"
-    - "Worker"
+    - Analytics
+    ▿ Builder
+      - builder: Variation.default
+    - Context
+    - Flow
+    ▿ ViewController
+      - viewController: Variation.default
+    - Worker
