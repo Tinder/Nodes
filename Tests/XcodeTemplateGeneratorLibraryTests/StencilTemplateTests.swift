@@ -71,8 +71,12 @@ final class StencilTemplateTests: XCTestCase {
                 expect(name) == "Plugin"
             case .pluginList:
                 expect(name) == "PluginList"
+            case .state:
+                expect(name) == "State"
             case .viewController:
                 expect(name) == "ViewController"
+            case .viewState:
+                expect(name) == "ViewState"
             case .worker:
                 expect(name) == "Worker"
             }
@@ -95,8 +99,12 @@ final class StencilTemplateTests: XCTestCase {
                 expect(filename) == "Plugin"
             case .pluginList:
                 expect(filename) == "PluginList"
+            case .state:
+                expect(filename) == "State"
             case let .viewController(variation):
                 expect(filename) == "ViewController\(variation == .swiftUI ? "-SwiftUI" : "")"
+            case .viewState:
+                expect(filename) == "ViewState"
             case .worker:
                 expect(filename) == "Worker"
             }
