@@ -17,22 +17,12 @@ internal protocol <nodeName>FlowInterface: Flow {}
 
 /**
  PURPOSE:
- The interface that the Context will speak to the View through. Used to inform the View of any
- state change (i.e. to keep the UI in sync).
- */
-internal protocol <nodeName>Presentable: AnyObject {
-    var receiver: <nodeName>Receiver? { get set }
-}
-
-/**
- PURPOSE:
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.
  */
-internal final class <nodeName>ContextImp: AbstractPresentableContext
+internal final class <nodeName>ContextImp: AbstractContext
 <
-    <cancellableType>,
-    <nodeName>Presentable
+    <cancellableType>
 > {
 
     /// The Flow instance.
@@ -44,19 +34,19 @@ internal final class <nodeName>ContextImp: AbstractPresentableContext
     /// The Analytics instance.
     private let analytics: <nodeName>Analytics
 
+    @Published internal private(set) var state: <nodeName>State
+
     /// The initializer.
     /// - Parameters:
-    ///   - presentable: The Presentable instance
     ///   - workers: The Worker instances
     ///   - analytics: The Analytics instance
     internal init(
-        presentable: <nodeName>Presentable,
         workers: [Worker],
         analytics: <nodeName>Analytics
     ) {
         self.analytics = analytics
-        super.init(presentable: presentable, workers: workers)
-        presentable.receiver = self
+        self.state = <nodeName>State()
+        super.init(workers: workers)
     }
 
     /// Implement logic to execute when the Context becomes active.

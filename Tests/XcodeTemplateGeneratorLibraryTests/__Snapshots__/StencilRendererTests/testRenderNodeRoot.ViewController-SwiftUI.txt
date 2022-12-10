@@ -1,17 +1,6 @@
 <fileHeader>
 
 import <viewControllerImports>
-
-/**
- PURPOSE:
- The view state.
- */
-internal struct RootViewState: Equatable, InitialStateProviding {
-
-    /// The initial view state.
-    internal static var initialState: RootViewState = .init()
-}
-
 /**
  PURPOSE:
  The interface that the View will speak to the Context through. Used for informing the Context of
@@ -36,7 +25,6 @@ internal final class RootViewController: <viewControllerType>
 }
 
 extension RootViewController: RootViewControllable {}
-extension RootViewController: RootPresentable {}
 
 /**
  PURPOSE:
@@ -46,7 +34,7 @@ internal struct RootView: NodesView {
 
     /// The body of the view.
     internal var body: some View {
-        WithViewState(viewState) { viewState in
+        WithViewState(viewState, initialState: initialState) { viewState in
             Text(verbatim: "\(type(of: viewState))")
         }
     }
@@ -60,11 +48,21 @@ internal struct RootView: NodesView {
     /// The view state publisher.
     private let viewState: <publisherType><RootViewState<publisherFailureType>>
 
+    /// The initial state of the view.
+    private let initialState: RootViewState
+
     /// The initializer.
-    /// - Parameter viewState: The view state publisher
-    internal init(viewState: <publisherType><RootViewState<publisherFailureType>>) {
+    ///
+    /// - Parameters:
+    ///   - viewState: the view state publisher.
+    ///   - initialState: the initial state of the view.
+    internal init(
+        viewState: <publisherType><RootViewState<publisherFailureType>>,
+        initialState: RootViewState
+    ) {
         self.viewState = viewState
             <viewStateOperators>
+        self.initialState = initialState
     }
 }
 
@@ -74,10 +72,12 @@ internal struct RootView: NodesView {
  */
 internal struct RootView_Previews: PreviewProvider {
 
-    private static let viewState: AnyPublisher<RootViewState<publisherFailureType>> =
-        Just<RootViewState>(.initialState).eraseToAnyPublisher()
+    private static let initialState: RootViewState = .init()
 
     internal static var previews: some View {
-        RootView(viewState: viewState)
+        RootView(
+            viewState: Just<RootViewState>(initialState).eraseToAnyPublisher(),
+            initialState: initialState
+        )
     }
 }

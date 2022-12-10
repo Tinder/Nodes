@@ -1,17 +1,6 @@
 <fileHeader>
 
 import <viewControllerImports>
-
-/**
- PURPOSE:
- The view state of your View Controller.
- */
-internal struct RootViewState: Equatable, InitialStateProviding {
-
-    /// The initial view state.
-    internal static var initialState: RootViewState = .init()
-}
-
 /**
  PURPOSE:
  The interface that the View will speak to the Context through. Used for informing the Context of
@@ -41,11 +30,21 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     /// The view state publisher.
     private let viewState: <publisherType><RootViewState<publisherFailureType>>
 
+    /// The initial state of the view.
+    private let initialState: RootViewState
+
     /// The initializer.
-    /// - Parameter viewState: The view state publisher
-    internal init(viewState: <publisherType><RootViewState<publisherFailureType>>) {
+    ///
+    /// - Parameters:
+    ///   - viewState: the view state publisher.
+    ///   - initialState: the initial state of the view.
+    internal init(
+        viewState: <publisherType><RootViewState<publisherFailureType>>,
+        initialState: RootViewState
+    ) {
         self.viewState = viewState
             <viewStateOperators>
+        self.initialState = initialState
         super.init(<viewControllerSuperParameters>)
     }
 
@@ -62,4 +61,3 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
 }
 
 extension RootViewController: RootViewControllable {}
-extension RootViewController: RootPresentable {}
