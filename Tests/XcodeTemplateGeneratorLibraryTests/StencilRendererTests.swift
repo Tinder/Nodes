@@ -57,8 +57,8 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             "Analytics",
             "Builder",
             "Context",
-            "State",
-            "Flow"
+            "Flow",
+            "State"
         ]
         templates.forEach { name, template in
             assertSnapshot(matching: template, as: .lines, named: name)
