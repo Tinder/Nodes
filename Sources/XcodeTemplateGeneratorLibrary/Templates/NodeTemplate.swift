@@ -10,26 +10,15 @@ internal struct NodeTemplate: XcodeTemplate {
     internal typealias Config = XcodeTemplates.Config
 
     internal let name: String
-    internal let stencils: [String]
-    internal let filenames: [String: String]
+    internal let stencils: [StencilTemplate]
+    internal let filenames: [String: String] = ["Worker": "ViewStateWorker"]
     internal let context: Context
     internal let propertyList: PropertyList
 
     internal init(for kind: UIFramework.Kind, config: Config) throws {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
-        let swiftUI: Bool = uiFramework.kind == .swiftUI
         name = "Node - \(uiFramework.name)"
-        if swiftUI {
-            stencils = ["Analytics", "Builder-SwiftUI", "Context", "Flow", "ViewController-SwiftUI", "Worker"]
-            filenames = [
-                "Builder-SwiftUI": "Builder",
-                "ViewController-SwiftUI": "ViewController",
-                "Worker": "ViewStateWorker"
-            ]
-        } else {
-            stencils = ["Analytics", "Builder", "Context", "Flow", "ViewController", "Worker"]
-            filenames = ["Worker": "ViewStateWorker"]
-        }
+        stencils = StencilTemplate.nodeStencils(for: .variation(for: uiFramework.kind))
         context = NodeContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),

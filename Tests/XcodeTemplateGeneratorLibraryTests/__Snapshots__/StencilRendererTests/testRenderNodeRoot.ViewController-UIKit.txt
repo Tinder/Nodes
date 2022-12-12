@@ -1,0 +1,65 @@
+<fileHeader>
+
+import <viewControllerImports>
+
+/**
+ PURPOSE:
+ The view state of your View Controller.
+ */
+internal struct RootViewState: Equatable, InitialStateProviding {
+
+    /// The initial view state.
+    internal static var initialState: RootViewState = .init()
+}
+
+/**
+ PURPOSE:
+ The interface that the View will speak to the Context through. Used for informing the Context of
+ view events and user interactions.
+ */
+internal protocol RootReceiver: AnyObject {
+    func viewDidAppear()
+}
+
+/**
+ PURPOSE:
+ Concrete implementation of the UI.
+ */
+internal final class RootViewController: <viewControllerType>, StateObserver {
+
+    <viewControllerProperties>
+
+    /// The view receiver.
+    internal weak var receiver: RootReceiver?
+
+    /// The Analytics instance.
+    internal weak var analytics: RootAnalytics?
+
+    /// The collection of cancellable instances.
+    private var cancellables: Set<<cancellableType>> = .init()
+
+    /// The view state publisher.
+    private let viewState: <publisherType><RootViewState<publisherFailureType>>
+
+    /// The initializer.
+    /// - Parameter viewState: The view state publisher
+    internal init(viewState: <publisherType><RootViewState<publisherFailureType>>) {
+        self.viewState = viewState
+            <viewStateOperators>
+        super.init(<viewControllerSuperParameters>)
+    }
+
+    @available(*, unavailable)
+    internal required init?(coder: NSCoder) {
+        preconditionFailure("init(coder:) has not been implemented")
+    }
+
+    <viewControllerMethods>
+
+    internal func update(with viewState: RootViewState) {
+        <viewControllerUpdateComment>
+    }
+}
+
+extension RootViewController: RootViewControllable {}
+extension RootViewController: RootPresentable {}
