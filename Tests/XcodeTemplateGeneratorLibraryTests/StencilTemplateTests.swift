@@ -9,7 +9,7 @@ import Nimble
 @testable import XcodeTemplateGeneratorLibrary
 import XCTest
 
-final class StencilTemplateTests: XCTestCase {
+final class StencilTemplateTests: XCTestCase, TestFactories {
 
     func testVariationRawValue() {
         StencilTemplate.Variation.allCases.forEach { variation in
@@ -57,8 +57,9 @@ final class StencilTemplateTests: XCTestCase {
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     func testName() {
-        StencilTemplate.allCases.forEach { stencilTemplate in
+        for stencilTemplate in StencilTemplate.allCases {
             let name: String = stencilTemplate.name
             switch stencilTemplate {
             case .analytics:
@@ -85,8 +86,9 @@ final class StencilTemplateTests: XCTestCase {
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     func testFilename() {
-        StencilTemplate.allCases.forEach { stencilTemplate in
+        for stencilTemplate in StencilTemplate.allCases {
             let filename: String = stencilTemplate.filename
             switch stencilTemplate {
             case .analytics:
@@ -115,27 +117,57 @@ final class StencilTemplateTests: XCTestCase {
 
     func testNodeStencils() {
         StencilTemplate.Variation.allCases.forEach { variation in
-            [true, false].forEach { withViewController in
-                let stencils: [StencilTemplate] = StencilTemplate.nodeStencils(for: variation,
-                                                                               withViewController: withViewController)
-                if withViewController {
-                    expect(stencils) == [
-                        .analytics,
-                        .builder(variation),
-                        .context,
-                        .flow,
-                        .state,
-                        .viewController(variation),
-                        .viewState
-                    ]
-                } else {
-                    expect(stencils) == [
-                        .analytics,
-                        .builder(variation),
-                        .context,
-                        .flow,
-                        .state
-                    ]
+            expect(StencilTemplate.Node(for: variation).stencils) == [
+                .analytics,
+                .builder(variation),
+                .context,
+                .flow,
+                .state,
+                .viewController(variation),
+                .viewState
+            ]
+        }
+    }
+
+    func testNodeViewInjectedStencils() {
+        expect(StencilTemplate.NodeViewInjected().stencils) == [
+            .analytics,
+            .builder(.default),
+            .context,
+            .flow,
+            .state
+        ]
+    }
+
+    // swiftlint:disable:next cyclomatic_complexity
+    func testImports() {
+        for stencilTemplate in StencilTemplate.allCases {
+            for uiFramework in givenConfig().uiFrameworks {
+                let imports: Set<String> = stencilTemplate.imports(for: uiFramework, config: givenConfig())
+                let uiFrameworkImport: String
+                switch uiFramework.kind {
+                case .appKit:
+                    uiFrameworkImport = "AppKit"
+                case .uiKit:
+                    uiFrameworkImport = "UIKit"
+                case .swiftUI:
+                    uiFrameworkImport = "SwiftUI"
+                case .custom:
+                    uiFrameworkImport = "<uiFrameworkImport>"
+                }
+                switch stencilTemplate {
+                case .analytics, .state:
+                    expect(imports) == []
+                case .builder:
+                    expect(imports) == ["Nodes", "<dependencyInjectionImports>", "<reactiveImports>"]
+                case .context, .worker:
+                    expect(imports) == ["Nodes", "<reactiveImports>"]
+                case .flow, .viewState:
+                    expect(imports) == ["Nodes"]
+                case .plugin, .pluginList:
+                    expect(imports) == ["Nodes", "<dependencyInjectionImports>"]
+                case .viewController:
+                    expect(imports) == ["Nodes", "<reactiveImports>", uiFrameworkImport]
                 }
             }
         }

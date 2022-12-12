@@ -1,15 +1,15 @@
 ▿ Config
-  ▿ baseImports: 1 member
-    - "Combine"
   - cancellableType: "AnyCancellable"
   - dependencies: 0 elements
-  ▿ diGraphImports: 1 member
+  ▿ dependencyInjectionImports: 1 member
     - "NeedleFoundation"
   - fileHeader: "//___FILEHEADER___"
   - flowProperties: 0 elements
   - isViewInjectedNodeEnabled: true
   - publisherFailureType: ", Never"
   - publisherType: "AnyPublisher"
+  ▿ reactiveImports: 1 member
+    - "Combine"
   ▿ uiFrameworks: 2 elements
     ▿ UIFramework
       - framework: Framework.uiKit

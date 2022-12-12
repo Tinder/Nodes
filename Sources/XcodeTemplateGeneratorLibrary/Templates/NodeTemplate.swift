@@ -16,19 +16,20 @@ internal struct NodeTemplate: XcodeTemplate {
 
     internal init(for kind: UIFramework.Kind, config: Config) throws {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
+        let node: StencilTemplate.Node = .init(for: .variation(for: uiFramework.kind))
         name = "Node - \(uiFramework.name)"
-        stencils = StencilTemplate.nodeStencils(for: .variation(for: uiFramework.kind))
+        stencils = node.stencils
         context = NodeContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
             workerName: "\(config.variable("productName"))ViewState",
-            analyticsImports: config.imports(for: .nodes),
-            builderImports: config.imports(for: .diGraph),
-            contextImports: config.imports(for: .nodes),
-            flowImports: config.imports(for: .nodes),
-            stateImports: config.imports(for: .nodes),
-            viewControllerImports: config.imports(for: .viewController(uiFramework)),
-            viewStateImports: config.imports(for: .nodes),
+            analyticsImports: node.analytics.imports(for: uiFramework, config: config),
+            builderImports: node.builder.imports(for: uiFramework, config: config),
+            contextImports: node.context.imports(for: uiFramework, config: config),
+            flowImports: node.flow.imports(for: uiFramework, config: config),
+            stateImports: node.state.imports(for: uiFramework, config: config),
+            viewControllerImports: node.viewController.imports(for: uiFramework, config: config),
+            viewStateImports: node.viewState.imports(for: uiFramework, config: config),
             dependencies: config.dependencies,
             flowProperties: config.flowProperties,
             viewControllerType: uiFramework.viewControllerType,

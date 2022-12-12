@@ -20,8 +20,8 @@ extension TestFactories {
             UIFramework(framework: .appKit),
             UIFramework(framework: .uiKit),
             UIFramework(framework: .swiftUI),
-            UIFramework(framework: .custom(name: "<name>",
-                                           import: "<import>",
+            UIFramework(framework: .custom(name: "<uiFrameworkName>",
+                                           import: "<uiFrameworkImport>",
                                            viewControllerType: "<viewControllerType>",
                                            viewControllerSuperParameters: "<viewControllerSuperParameters>"))
         ].map {
@@ -32,8 +32,8 @@ extension TestFactories {
             return uiFramework
         }
         config.fileHeader = "<fileHeader>"
-        config.baseImports = ["<baseImports>"]
-        config.diGraphImports = ["<diGraphImports>"]
+        config.reactiveImports = ["<reactiveImports>"]
+        config.dependencyInjectionImports = ["<dependencyInjectionImports>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllableType = "<viewControllableType>"

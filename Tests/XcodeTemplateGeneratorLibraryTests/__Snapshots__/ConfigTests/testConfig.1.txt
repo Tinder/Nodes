@@ -1,7 +1,4 @@
 ▿ Config
-  ▿ baseImports: 2 members
-    - "baseImports-1"
-    - "baseImports-2"
   - cancellableType: "cancellableType"
   ▿ dependencies: 2 elements
     ▿ Variable
@@ -10,9 +7,9 @@
     ▿ Variable
       - name: "dependencies-name-2"
       - type: "dependencies-type-2"
-  ▿ diGraphImports: 2 members
-    - "diGraphImports-1"
-    - "diGraphImports-2"
+  ▿ dependencyInjectionImports: 2 members
+    - "dependencyInjectionImports-1"
+    - "dependencyInjectionImports-2"
   - fileHeader: "fileHeader"
   ▿ flowProperties: 2 elements
     ▿ Variable
@@ -24,6 +21,9 @@
   - isViewInjectedNodeEnabled: true
   - publisherFailureType: "publisherFailureType"
   - publisherType: "publisherType"
+  ▿ reactiveImports: 2 members
+    - "reactiveImports-1"
+    - "reactiveImports-2"
   ▿ uiFrameworks: 4 elements
     ▿ UIFramework
       - framework: Framework.appKit
@@ -43,8 +43,8 @@
     ▿ UIFramework
       ▿ framework: Framework
         ▿ custom: (4 elements)
-          - name: "<name>"
-          - import: "<import>"
+          - name: "<uiFrameworkName>"
+          - import: "<uiFrameworkImport>"
           - viewControllerType: "<viewControllerType>"
           - viewControllerSuperParameters: "<viewControllerSuperParameters>"
       - viewControllerMethods: "<viewControllerMethods-Custom>"

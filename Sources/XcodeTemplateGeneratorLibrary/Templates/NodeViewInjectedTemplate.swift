@@ -10,7 +10,7 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
     internal typealias Config = XcodeTemplates.Config
 
     internal let name: String = "Node (view injected)"
-    internal let stencils: [StencilTemplate] = StencilTemplate.nodeStencils(withViewController: false)
+    internal let stencils: [StencilTemplate]
     internal let context: Context
 
     internal let propertyList: PropertyList =
@@ -22,15 +22,17 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
         }
 
     internal init(config: Config) {
+        let node: StencilTemplate.NodeViewInjected = .init()
+        stencils = node.stencils
         context = NodeViewInjectedContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
             workerName: config.variable("productName"),
-            analyticsImports: config.imports(for: .nodes),
-            builderImports: config.imports(for: .diGraph),
-            contextImports: config.imports(for: .nodes),
-            flowImports: config.imports(for: .nodes),
-            stateImports: config.imports(for: .nodes),
+            analyticsImports: node.analytics.imports(config: config),
+            builderImports: node.builder.imports(config: config),
+            contextImports: node.context.imports(config: config),
+            flowImports: node.flow.imports(config: config),
+            stateImports: node.state.imports(config: config),
             dependencies: config.dependencies,
             flowProperties: config.flowProperties,
             viewControllableType: config.viewControllableType,

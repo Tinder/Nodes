@@ -10,7 +10,7 @@ import SnapshotTesting
 import XcodeTemplateGeneratorLibrary
 import XCTest
 
-final class ConfigTests: XCTestCase {
+final class ConfigTests: XCTestCase, TestFactories {
 
     private typealias Config = XcodeTemplates.Config
 
@@ -36,17 +36,7 @@ final class ConfigTests: XCTestCase {
     }
 
     func testUIFrameworkForKind() throws {
-        var config: XcodeTemplates.Config = .init()
-        config.uiFrameworks = [
-            UIFramework(framework: .appKit),
-            UIFramework(framework: .uiKit),
-            UIFramework(framework: .swiftUI),
-            UIFramework(framework: .custom(name: "<name>",
-                                           import: "<import>",
-                                           viewControllerType: "<viewControllerType>",
-                                           viewControllerSuperParameters: "<viewControllerSuperParameters>")
-            )
-        ]
+        let config: XcodeTemplates.Config = givenConfig()
         try UIFramework.Kind
             .allCases
             .forEach { try expect(config.uiFramework(for: $0).kind) == $0 }
@@ -82,8 +72,8 @@ final class ConfigTests: XCTestCase {
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-SwiftUI>
             - framework:
                 custom:
-                  name: <name>
-                  import: <import>
+                  name: <uiFrameworkName>
+                  import: <uiFrameworkImport>
                   viewControllerType: <viewControllerType>
                   viewControllerSuperParameters: <viewControllerSuperParameters>
               viewControllerProperties: <viewControllerProperties-Custom>
@@ -91,12 +81,12 @@ final class ConfigTests: XCTestCase {
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
         isViewInjectedNodeEnabled: true
         fileHeader: fileHeader
-        baseImports:
-          - baseImports-1
-          - baseImports-2
-        diGraphImports:
-          - diGraphImports-1
-          - diGraphImports-2
+        reactiveImports:
+          - reactiveImports-1
+          - reactiveImports-2
+        dependencyInjectionImports:
+          - dependencyInjectionImports-1
+          - dependencyInjectionImports-2
         dependencies:
           - name: dependencies-name-1
             type: dependencies-type-1

@@ -38,13 +38,13 @@ final class UIFrameworkFrameworkTests: XCTestCase {
     }
 
     func testCustom() {
-        let custom: UIFramework.Framework = .custom(name: "<name>",
-                                                    import: "<import>",
+        let custom: UIFramework.Framework = .custom(name: "<uiFrameworkName>",
+                                                    import: "<uiFrameworkImport>",
                                                     viewControllerType: "<viewControllerType>",
                                                     viewControllerSuperParameters: "<viewControllerSuperParameters>")
         expect(custom.kind) == .custom
-        expect(custom.name) == "<name>"
-        expect(custom.import) == "<import>"
+        expect(custom.name) == "<uiFrameworkName>"
+        expect(custom.import) == "<uiFrameworkImport>"
         expect(custom.viewControllerType) == "<viewControllerType>"
     }
 
@@ -53,8 +53,8 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             .appKit,
             .uiKit,
             .swiftUI,
-            .custom(name: "<name>",
-                    import: "<import>",
+            .custom(name: "<uiFrameworkName>",
+                    import: "<uiFrameworkImport>",
                     viewControllerType: "<viewControllerType>",
                     viewControllerSuperParameters: "<viewControllerSuperParameters>")
         ]

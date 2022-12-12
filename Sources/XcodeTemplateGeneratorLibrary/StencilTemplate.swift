@@ -32,6 +32,50 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         }
     }
 
+    internal struct Node {
+        internal let analytics: StencilTemplate
+        internal let builder: StencilTemplate
+        internal let context: StencilTemplate
+        internal let flow: StencilTemplate
+        internal let state: StencilTemplate
+        internal let viewController: StencilTemplate
+        internal let viewState: StencilTemplate
+
+        internal var stencils: [StencilTemplate] {
+            [analytics, builder, context, flow, state, viewController, viewState]
+        }
+
+        internal init(for variation: StencilTemplate.Variation) {
+            self.analytics = .analytics
+            self.builder = .builder(variation)
+            self.context = .context
+            self.flow = .flow
+            self.state = .state
+            self.viewController = .viewController(variation)
+            self.viewState = .viewState
+        }
+    }
+
+    internal struct NodeViewInjected {
+        internal let analytics: StencilTemplate
+        internal let builder: StencilTemplate
+        internal let context: StencilTemplate
+        internal let flow: StencilTemplate
+        internal let state: StencilTemplate
+
+        internal var stencils: [StencilTemplate] {
+            [analytics, builder, context, flow, state]
+        }
+
+        internal init() {
+            self.analytics = .analytics
+            self.builder = .builder(.default)
+            self.context = .context
+            self.flow = .flow
+            self.state = .state
+        }
+    }
+
     /// An array of StencilTemplate cases for ``CaseIterable`` conformance.
     public static let allCases: [StencilTemplate] = [
         .analytics,
@@ -87,35 +131,30 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         }
     }
 
-    /// The StencilTemplate cases that represent a Node.
-    ///
-    /// - Parameters:
-    ///   - variation: The Stencil variation.
-    ///   - withViewController: A Boolean indicating whether or not to include the `viewController` stencil.
-    ///
-    /// - Returns: An array of StencilTemplate cases.
-    public static func nodeStencils(
-        for variation: Variation = .default,
-        withViewController isViewControllerIncluded: Bool = true
-    ) -> [StencilTemplate] {
-        if isViewControllerIncluded {
-            return [
-                .analytics,
-                .builder(variation),
-                .context,
-                .flow,
-                .state,
-                .viewController(variation),
-                .viewState
-            ]
-        } else {
-            return [
-                .analytics,
-                .builder(variation),
-                .context,
-                .flow,
-                .state
-            ]
+    internal func imports(for uiFramework: UIFramework, config: XcodeTemplates.Config) -> Set<String> {
+        switch self {
+        case .analytics, .builder, .context, .flow, .plugin, .pluginList, .state, .viewState, .worker:
+            return imports(config: config)
+        case .viewController:
+            return imports(config: config).union([uiFramework.import])
+        }
+    }
+
+    internal func imports(config: XcodeTemplates.Config) -> Set<String> {
+        let nodes: Set<String> = ["Nodes"]
+        switch self {
+        case .analytics, .state:
+            return []
+        case .builder:
+            return nodes.union(config.dependencyInjectionImports).union(config.reactiveImports)
+        case .context, .worker:
+            return nodes.union(config.reactiveImports)
+        case .flow, .viewState:
+            return nodes
+        case .plugin, .pluginList:
+            return nodes.union(config.dependencyInjectionImports)
+        case .viewController:
+            return nodes.union(config.reactiveImports)
         }
     }
 }

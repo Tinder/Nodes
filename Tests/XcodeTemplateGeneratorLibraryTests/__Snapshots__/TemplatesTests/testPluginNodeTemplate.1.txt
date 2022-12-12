@@ -1,9 +1,8 @@
 ▿ PluginNodeTemplate
   ▿ context: PluginContext
     - fileHeader: "<fileHeader>"
-    ▿ pluginImports: 3 elements
-      - "<baseImports>"
-      - "<diGraphImports>"
+    ▿ pluginImports: 2 elements
+      - "<dependencyInjectionImports>"
       - "Nodes"
     - pluginName: "___VARIABLE_productName___"
     - returnType: Optional<String>.none
