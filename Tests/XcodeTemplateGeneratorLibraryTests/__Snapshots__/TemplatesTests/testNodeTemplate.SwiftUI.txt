@@ -48,13 +48,7 @@
       - "<baseImports>"
       - "Nodes"
     - workerName: "___VARIABLE_productName___ViewState"
-  ▿ filenames: 3 key/value pairs
-    ▿ (2 elements)
-      - key: "Builder-SwiftUI"
-      - value: "Builder"
-    ▿ (2 elements)
-      - key: "ViewController-SwiftUI"
-      - value: "ViewController"
+  ▿ filenames: 1 key/value pair
     ▿ (2 elements)
       - key: "Worker"
       - value: "ViewStateWorker"
@@ -79,9 +73,11 @@
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
   ▿ stencils: 6 elements
-    - "Analytics"
-    - "Builder-SwiftUI"
-    - "Context"
-    - "Flow"
-    - "ViewController-SwiftUI"
-    - "Worker"
+    - Analytics
+    ▿ Builder
+      - builder: Variation.swiftUI
+    - Context
+    - Flow
+    ▿ ViewController
+      - viewController: Variation.swiftUI
+    - Worker

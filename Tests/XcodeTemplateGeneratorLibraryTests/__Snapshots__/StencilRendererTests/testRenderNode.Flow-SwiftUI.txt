@@ -1,0 +1,62 @@
+<fileHeader>
+
+import <flowImports>
+
+/**
+ PURPOSE:
+ The interface that the Flow will speak to the Context through. Used for informing the Context of
+ presentation lifecycle events, as an example.
+ */
+internal protocol <nodeName>ContextInterface: Context {
+    var flow: <nodeName>FlowInterface? { get set }
+    var listener: <nodeName>Listener? { get }
+}
+
+/**
+ PURPOSE:
+ The interface of the View used for presenting the View of child Nodes. May inherit additional base
+ protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
+ implementation as necessary.
+ */
+internal protocol <nodeName>ViewControllable: <viewControllableType> {}
+
+/**
+ PURPOSE:
+ Responsible for presenting views and starting child Flows, and should not contain business logic.
+ */
+internal final class <nodeName>FlowImp: AbstractFlow
+<
+    <nodeName>ContextInterface,
+    <nodeName>ViewControllable
+> {
+
+    /// Provides the parent Node with access to the View so it can be presented.
+    internal var viewControllable: <viewControllableType> {
+        viewController
+    }
+
+    private let <flowPropertiesName>: <flowPropertiesType>
+
+    /// The initializer.
+    ///
+    /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
+    /// - Parameters:
+    ///   - context: The Context instance
+    ///   - viewController: The View Controller instance
+    ///   - <flowPropertiesName>: The <flowPropertiesType> instance
+    internal init(
+        context: <nodeName>ContextInterface,
+        viewController: <nodeName>ViewControllable,
+        <flowPropertiesName>: <flowPropertiesType>
+    ) {
+        self.<flowPropertiesName> = <flowPropertiesName>
+        super.init(context: context, viewController: viewController)
+        context.flow = self
+    }
+
+    /// Implement logic to execute when the Flow is started.
+    override internal func didStart() {}
+}
+
+extension <nodeName>FlowImp: <nodeName>Flow {}
+extension <nodeName>FlowImp: <nodeName>FlowInterface {}

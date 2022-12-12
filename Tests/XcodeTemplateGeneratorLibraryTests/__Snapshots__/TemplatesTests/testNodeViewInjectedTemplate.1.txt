@@ -56,8 +56,9 @@
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
   ▿ stencils: 5 elements
-    - "Analytics"
-    - "Builder"
-    - "Context"
-    - "Flow"
-    - "Worker"
+    - Analytics
+    ▿ Builder
+      - builder: Variation.default
+    - Context
+    - Flow
+    - Worker
