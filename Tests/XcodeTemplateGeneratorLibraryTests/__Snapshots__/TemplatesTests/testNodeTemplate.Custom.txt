@@ -1,5 +1,6 @@
 ▿ NodeTemplate
   ▿ context: NodeContext
+    - analyticsImports: 0 elements
     ▿ builderImports: 3 elements
       - "<dependencyInjectionImports>"
       - "<reactiveImports>"
@@ -31,6 +32,7 @@
     - nodeName: "___VARIABLE_productName___"
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
+    - stateImports: 0 elements
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     ▿ viewControllerImports: 3 elements
@@ -42,6 +44,9 @@
     - viewControllerSuperParameters: "<viewControllerSuperParameters>"
     - viewControllerType: "<viewControllerType>"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+    ▿ viewStateImports: 2 elements
+      - "<reactiveImports>"
+      - "Nodes"
     - viewStateOperators: "<viewStateOperators>"
     - viewStatePublisher: "<viewStatePublisher>"
     ▿ workerImports: 2 elements
