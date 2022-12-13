@@ -16,8 +16,8 @@ internal class {{ node_name }}ViewStateFactory: Transform {
 
     /// The factory method in which state is transformed into view state.
     ///
-    /// - Parameter state: the state
-    /// - Returns: the view state
+    /// - Parameter state: The state.
+    /// - Returns: The view state.
     internal func callAsFunction(_ state: {{ node_name }}State) -> {{ node_name }}ViewState {
         {{ node_name }}ViewState()
     }
