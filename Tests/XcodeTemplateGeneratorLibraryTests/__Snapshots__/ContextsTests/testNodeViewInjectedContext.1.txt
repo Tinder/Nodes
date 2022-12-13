@@ -1,4 +1,8 @@
-▿ 14 key/value pairs
+▿ 16 key/value pairs
+  ▿ (2 elements)
+    - key: "analytics_imports"
+    ▿ value: 1 element
+      - "<analyticsImports>"
   ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
@@ -46,6 +50,10 @@
   ▿ (2 elements)
     - key: "root_node"
     - value: false
+  ▿ (2 elements)
+    - key: "state_imports"
+    ▿ value: 1 element
+      - "<stateImports>"
   ▿ (2 elements)
     - key: "view_controllable_flow_type"
     - value: "<viewControllableFlowType>"
