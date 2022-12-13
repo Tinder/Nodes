@@ -53,8 +53,8 @@ final class UIFrameworkTests: XCTestCase {
     }
 
     func testInitWithCustom() {
-        let custom: UIFramework.Framework = .custom(name: "<name>",
-                                                    import: "<import>",
+        let custom: UIFramework.Framework = .custom(name: "<uiFrameworkName>",
+                                                    import: "<uiFrameworkImport>",
                                                     viewControllerType: "<viewControllerType>",
                                                     viewControllerSuperParameters: "<viewControllerSuperParameters>")
         let expected: UIFramework = .makeDefaultFramework(for: custom)
@@ -102,8 +102,8 @@ final class UIFrameworkTests: XCTestCase {
             return """
                 framework:
                   custom:
-                    name: <name>
-                    import: <import>
+                    name: <uiFrameworkName>
+                    import: <uiFrameworkImport>
                     viewControllerType: <viewControllerType>
                     viewControllerSuperParameters: <viewControllerSuperParameters>
                 viewControllerProperties: <viewControllerProperties>
@@ -121,8 +121,8 @@ final class UIFrameworkTests: XCTestCase {
             return """
                 framework:
                   custom:
-                    name: <name>
-                    import: <import>
+                    name: <uiFrameworkName>
+                    import: <uiFrameworkImport>
                     viewControllerType: <viewControllerType>
                     viewControllerSuperParameters: <viewControllerSuperParameters>
                 """

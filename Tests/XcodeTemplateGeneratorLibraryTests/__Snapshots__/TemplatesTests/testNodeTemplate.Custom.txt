@@ -34,8 +34,8 @@
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     ▿ viewControllerImports: 3 elements
-      - "<import>"
       - "<reactiveImports>"
+      - "<uiFrameworkImport>"
       - "Nodes"
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
@@ -52,7 +52,7 @@
     ▿ (2 elements)
       - key: "Worker"
       - value: "ViewStateWorker"
-  - name: "Node - <name>"
+  - name: "Node - <uiFrameworkName>"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"

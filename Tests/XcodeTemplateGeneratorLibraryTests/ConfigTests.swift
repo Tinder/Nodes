@@ -41,8 +41,8 @@ final class ConfigTests: XCTestCase {
             UIFramework(framework: .appKit),
             UIFramework(framework: .uiKit),
             UIFramework(framework: .swiftUI),
-            UIFramework(framework: .custom(name: "<name>",
-                                           import: "<import>",
+            UIFramework(framework: .custom(name: "<uiFrameworkName>",
+                                           import: "<uiFrameworkImport>",
                                            viewControllerType: "<viewControllerType>",
                                            viewControllerSuperParameters: "<viewControllerSuperParameters>")
             )
@@ -82,8 +82,8 @@ final class ConfigTests: XCTestCase {
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-SwiftUI>
             - framework:
                 custom:
-                  name: <name>
-                  import: <import>
+                  name: <uiFrameworkName>
+                  import: <uiFrameworkImport>
                   viewControllerType: <viewControllerType>
                   viewControllerSuperParameters: <viewControllerSuperParameters>
               viewControllerProperties: <viewControllerProperties-Custom>
