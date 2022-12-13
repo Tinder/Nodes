@@ -2,8 +2,8 @@
   ▿ context: PluginListContext
     - fileHeader: "<fileHeader>"
     ▿ pluginListImports: 3 elements
-      - "<baseImports>"
-      - "<diGraphImports>"
+      - "<dependencyInjectionImports>"
+      - "<reactiveImports>"
       - "Nodes"
     - pluginListName: "___VARIABLE_productName___"
     - viewControllableFlowType: "<viewControllableFlowType>"

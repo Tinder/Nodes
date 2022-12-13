@@ -91,12 +91,12 @@ final class ConfigTests: XCTestCase {
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
         isViewInjectedNodeEnabled: true
         fileHeader: fileHeader
-        baseImports:
-          - baseImports-1
-          - baseImports-2
-        diGraphImports:
-          - diGraphImports-1
-          - diGraphImports-2
+        reactiveImports:
+          - reactiveImports-1
+          - reactiveImports-2
+        dependencyInjectionImports:
+          - dependencyInjectionImports-1
+          - dependencyInjectionImports-2
         dependencies:
           - name: dependencies-name-1
             type: dependencies-type-1

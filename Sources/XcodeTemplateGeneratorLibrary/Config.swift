@@ -27,8 +27,8 @@ extension XcodeTemplates {
         public var uiFrameworks: [UIFramework]
         public var isViewInjectedNodeEnabled: Bool
         public var fileHeader: String
-        public var baseImports: Set<String>
-        public var diGraphImports: Set<String>
+        public var reactiveImports: Set<String>
+        public var dependencyInjectionImports: Set<String>
         public var dependencies: [Variable]
         public var flowProperties: [Variable]
         public var viewControllableType: String
@@ -60,12 +60,12 @@ extension XcodeTemplates {
         }
 
         internal func imports(for type: ImportsType) -> Set<String> {
-            let nodesImports: Set<String> = baseImports.union(["Nodes"])
+            let nodesImports: Set<String> = reactiveImports.union(["Nodes"])
             switch type {
             case .nodes:
                 return nodesImports
             case .diGraph:
-                return nodesImports.union(diGraphImports)
+                return nodesImports.union(dependencyInjectionImports)
             case let .viewController(uiFramework):
                 return nodesImports.union([uiFramework.import])
             }
@@ -80,8 +80,8 @@ extension XcodeTemplates.Config {
         uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
         isViewInjectedNodeEnabled = true
         fileHeader = "//___FILEHEADER___"
-        baseImports = ["Combine"]
-        diGraphImports = ["NeedleFoundation"]
+        reactiveImports = ["Combine"]
+        dependencyInjectionImports = ["NeedleFoundation"]
         dependencies = []
         flowProperties = []
         viewControllableType = "ViewControllable"
@@ -116,12 +116,12 @@ extension XcodeTemplates.Config {
         fileHeader =
             (try? decoder.decodeString(CodingKeys.fileHeader))
             ?? defaults.fileHeader
-        baseImports =
-            (try? decoder.decode(CodingKeys.baseImports))
-            ?? defaults.baseImports
-        diGraphImports =
-            (try? decoder.decode(CodingKeys.diGraphImports))
-            ?? defaults.diGraphImports
+        reactiveImports =
+            (try? decoder.decode(CodingKeys.reactiveImports))
+            ?? defaults.reactiveImports
+        dependencyInjectionImports =
+            (try? decoder.decode(CodingKeys.dependencyInjectionImports))
+            ?? defaults.dependencyInjectionImports
         dependencies =
             (try? decoder.decode(CodingKeys.dependencies))
             ?? defaults.dependencies
