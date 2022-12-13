@@ -10,7 +10,7 @@ import SnapshotTesting
 import XcodeTemplateGeneratorLibrary
 import XCTest
 
-final class ConfigTests: XCTestCase {
+final class ConfigTests: XCTestCase, TestFactories {
 
     private typealias Config = XcodeTemplates.Config
 
@@ -36,17 +36,7 @@ final class ConfigTests: XCTestCase {
     }
 
     func testUIFrameworkForKind() throws {
-        var config: XcodeTemplates.Config = .init()
-        config.uiFrameworks = [
-            UIFramework(framework: .appKit),
-            UIFramework(framework: .uiKit),
-            UIFramework(framework: .swiftUI),
-            UIFramework(framework: .custom(name: "<name>",
-                                           import: "<import>",
-                                           viewControllerType: "<viewControllerType>",
-                                           viewControllerSuperParameters: "<viewControllerSuperParameters>")
-            )
-        ]
+        let config: XcodeTemplates.Config = givenConfig()
         try UIFramework.Kind
             .allCases
             .forEach { try expect(config.uiFramework(for: $0).kind) == $0 }
