@@ -18,7 +18,7 @@ internal struct NodeTemplate: XcodeTemplate {
     internal init(for kind: UIFramework.Kind, config: Config) throws {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
         name = "Node - \(uiFramework.name)"
-        stencils = StencilTemplate.nodeStencils(for: .variation(for: uiFramework.kind))
+        stencils = StencilTemplate.Node(for: .variation(for: kind)).stencils
         context = NodeContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),

@@ -30,6 +30,50 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         }
     }
 
+    /// The StencilTemplate cases that represent a Node.
+    internal struct Node {
+        internal let analytics: StencilTemplate
+        internal let builder: StencilTemplate
+        internal let context: StencilTemplate
+        internal let flow: StencilTemplate
+        internal let viewController: StencilTemplate
+        internal let worker: StencilTemplate
+
+        internal var stencils: [StencilTemplate] {
+            [analytics, builder, context, flow, viewController, worker]
+        }
+
+        internal init(for variation: StencilTemplate.Variation) {
+            self.analytics = .analytics
+            self.builder = .builder(variation)
+            self.context = .context
+            self.flow = .flow
+            self.viewController = .viewController(variation)
+            self.worker = .worker
+        }
+    }
+
+    /// The StencilTemplate cases that represent a view injected Node.
+    internal struct NodeViewInjected {
+        internal let analytics: StencilTemplate
+        internal let builder: StencilTemplate
+        internal let context: StencilTemplate
+        internal let flow: StencilTemplate
+        internal let worker: StencilTemplate
+
+        internal var stencils: [StencilTemplate] {
+            [analytics, builder, context, flow, worker]
+        }
+
+        internal init() {
+            self.analytics = .analytics
+            self.builder = .builder(.default)
+            self.context = .context
+            self.flow = .flow
+            self.worker = .worker
+        }
+    }
+
     /// An array of StencilTemplate cases for ``CaseIterable`` conformance.
     public static let allCases: [StencilTemplate] = [
         .analytics,
@@ -76,37 +120,6 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
             return description
         case let .builder(variation), let .viewController(variation):
             return description.appending(variation.rawValue)
-        }
-    }
-
-    /// The StencilTemplate cases that represent a Node.
-    ///
-    /// - Parameters:
-    ///   - variation: The Stencil variation.
-    ///   - withViewController: A Boolean indicating whether or not to include the `viewController` stencil.
-    ///
-    /// - Returns: An array of StencilTemplate cases.
-    public static func nodeStencils(
-        for variation: Variation = .default,
-        withViewController isViewControllerIncluded: Bool = true
-    ) -> [StencilTemplate] {
-        if isViewControllerIncluded {
-            return [
-                .analytics,
-                .builder(variation),
-                .context,
-                .flow,
-                .viewController(variation),
-                .worker
-            ]
-        } else {
-            return [
-                .analytics,
-                .builder(variation),
-                .context,
-                .flow,
-                .worker
-            ]
         }
     }
 }

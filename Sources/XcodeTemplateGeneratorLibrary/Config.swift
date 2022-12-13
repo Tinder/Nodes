@@ -76,7 +76,6 @@ extension XcodeTemplates {
 // swiftlint:disable:next no_grouping_extension
 extension XcodeTemplates.Config {
 
-    // swiftlint:disable:next function_body_length
     public init() {
         uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
         isViewInjectedNodeEnabled = true
