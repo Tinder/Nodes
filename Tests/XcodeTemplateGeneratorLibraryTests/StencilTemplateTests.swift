@@ -56,7 +56,7 @@ final class StencilTemplateTests: XCTestCase {
     }
 
     func testName() {
-        StencilTemplate.allCases.forEach { stencilTemplate in
+        for stencilTemplate in StencilTemplate.allCases {
             let name: String = stencilTemplate.name
             switch stencilTemplate {
             case .analytics:
@@ -80,7 +80,7 @@ final class StencilTemplateTests: XCTestCase {
     }
 
     func testFilename() {
-        StencilTemplate.allCases.forEach { stencilTemplate in
+        for stencilTemplate in StencilTemplate.allCases {
             let filename: String = stencilTemplate.filename
             switch stencilTemplate {
             case .analytics:
