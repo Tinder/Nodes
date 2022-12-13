@@ -32,8 +32,8 @@ extension TestFactories {
             return uiFramework
         }
         config.fileHeader = "<fileHeader>"
-        config.baseImports = ["<baseImports>"]
-        config.diGraphImports = ["<diGraphImports>"]
+        config.reactiveImports = ["<reactiveImports>"]
+        config.dependencyInjectionImports = ["<dependencyInjectionImports>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllableType = "<viewControllableType>"
