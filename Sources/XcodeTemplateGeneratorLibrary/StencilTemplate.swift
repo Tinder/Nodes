@@ -16,6 +16,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
     case flow
     case plugin
     case pluginList
+    case state
     case viewController(Variation)
     case worker
 
@@ -39,6 +40,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         .flow,
         .plugin,
         .pluginList,
+        .state,
         .viewController(.default),
         .viewController(.swiftUI),
         .worker
@@ -62,6 +64,8 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
             return "Plugin"
         case .pluginList:
             return "PluginList"
+        case .state:
+            return "State"
         case .viewController:
             return "ViewController"
         case .worker:
@@ -72,7 +76,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
     /// The name of the Stencil source file in the XcodeTemplateGeneratorLibrary bundle.
     public var filename: String {
         switch self {
-        case .analytics, .context, .flow, .plugin, .pluginList, .worker:
+        case .analytics, .context, .flow, .plugin, .pluginList, .state, .worker:
             return description
         case let .builder(variation), let .viewController(variation):
             return description.appending(variation.rawValue)
