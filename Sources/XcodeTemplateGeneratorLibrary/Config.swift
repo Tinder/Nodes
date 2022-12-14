@@ -27,6 +27,7 @@ extension XcodeTemplates {
         public var uiFrameworks: [UIFramework]
         public var isViewInjectedNodeEnabled: Bool
         public var fileHeader: String
+        public var baseImports: Set<String>
         public var reactiveImports: Set<String>
         public var dependencyInjectionImports: Set<String>
         public var dependencies: [Variable]
@@ -60,7 +61,7 @@ extension XcodeTemplates {
         }
 
         internal func imports(for type: ImportsType) -> Set<String> {
-            let nodesImports: Set<String> = reactiveImports.union(["Nodes"])
+            let nodesImports: Set<String> = baseImports.union(reactiveImports.union(["Nodes"]))
             switch type {
             case .nodes:
                 return nodesImports
@@ -80,6 +81,7 @@ extension XcodeTemplates.Config {
         uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
         isViewInjectedNodeEnabled = true
         fileHeader = "//___FILEHEADER___"
+        baseImports = []
         reactiveImports = ["Combine"]
         dependencyInjectionImports = ["NeedleFoundation"]
         dependencies = []
@@ -116,6 +118,9 @@ extension XcodeTemplates.Config {
         fileHeader =
             (try? decoder.decodeString(CodingKeys.fileHeader))
             ?? defaults.fileHeader
+        baseImports =
+            (try? decoder.decode(CodingKeys.baseImports))
+            ?? defaults.baseImports
         reactiveImports =
             (try? decoder.decode(CodingKeys.reactiveImports))
             ?? defaults.reactiveImports
