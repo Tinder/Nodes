@@ -61,14 +61,14 @@ extension XcodeTemplates {
         }
 
         internal func imports(for type: ImportsType) -> Set<String> {
-            let nodesImports: Set<String> = baseImports.union(reactiveImports.union(["Nodes"]))
+            let baseImports: Set<String> = baseImports.union(reactiveImports).union(["Nodes"])
             switch type {
             case .nodes:
-                return nodesImports
+                return baseImports
             case .diGraph:
-                return nodesImports.union(dependencyInjectionImports)
+                return baseImports.union(dependencyInjectionImports)
             case let .viewController(uiFramework):
-                return nodesImports.union([uiFramework.import])
+                return baseImports.union([uiFramework.import])
             }
         }
     }
