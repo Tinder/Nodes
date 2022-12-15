@@ -32,6 +32,7 @@ extension TestFactories {
             return uiFramework
         }
         config.fileHeader = "<fileHeader>"
+        config.baseImports = ["<baseImports>"]
         config.reactiveImports = ["<reactiveImports>"]
         config.dependencyInjectionImports = ["<dependencyInjectionImports>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]

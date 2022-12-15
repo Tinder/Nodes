@@ -91,6 +91,9 @@ final class ConfigTests: XCTestCase {
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
         isViewInjectedNodeEnabled: true
         fileHeader: fileHeader
+        baseImports:
+          - baseImports-1
+          - baseImports-2
         reactiveImports:
           - reactiveImports-1
           - reactiveImports-2
