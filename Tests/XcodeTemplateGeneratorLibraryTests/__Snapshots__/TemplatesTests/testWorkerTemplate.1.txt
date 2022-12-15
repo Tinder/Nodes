@@ -3,7 +3,8 @@
     - cancellableType: "<cancellableType>"
     - fileHeader: "<fileHeader>"
     - nodeName: "___VARIABLE_nodeName___"
-    ▿ workerImports: 2 elements
+    ▿ workerImports: 3 elements
+      - "<baseImports>"
       - "<reactiveImports>"
       - "Nodes"
     - workerName: "___VARIABLE_productName___"

@@ -1,7 +1,8 @@
 ▿ PluginNodeTemplate
   ▿ context: PluginContext
     - fileHeader: "<fileHeader>"
-    ▿ pluginImports: 3 elements
+    ▿ pluginImports: 4 elements
+      - "<baseImports>"
       - "<dependencyInjectionImports>"
       - "<reactiveImports>"
       - "Nodes"
