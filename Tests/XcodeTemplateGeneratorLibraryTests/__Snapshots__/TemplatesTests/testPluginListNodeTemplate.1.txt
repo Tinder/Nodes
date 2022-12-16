@@ -1,10 +1,9 @@
 ▿ PluginListNodeTemplate
   ▿ context: PluginListContext
     - fileHeader: "<fileHeader>"
-    ▿ pluginListImports: 4 elements
+    ▿ pluginListImports: 3 elements
       - "<baseImports>"
       - "<dependencyInjectionImports>"
-      - "<reactiveImports>"
       - "Nodes"
     - pluginListName: "___VARIABLE_productName___"
     - viewControllableFlowType: "<viewControllableFlowType>"
