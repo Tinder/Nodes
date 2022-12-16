@@ -43,6 +43,7 @@ final class StencilTemplateTests: XCTestCase {
             .flow,
             .plugin,
             .pluginList,
+            .state,
             .viewController(.default),
             .viewController(.swiftUI),
             .worker
@@ -56,7 +57,7 @@ final class StencilTemplateTests: XCTestCase {
     }
 
     func testName() {
-        StencilTemplate.allCases.forEach { stencilTemplate in
+        for stencilTemplate in StencilTemplate.allCases {
             let name: String = stencilTemplate.name
             switch stencilTemplate {
             case .analytics:
@@ -71,6 +72,8 @@ final class StencilTemplateTests: XCTestCase {
                 expect(name) == "Plugin"
             case .pluginList:
                 expect(name) == "PluginList"
+            case .state:
+                expect(name) == "State"
             case .viewController:
                 expect(name) == "ViewController"
             case .worker:
@@ -80,7 +83,7 @@ final class StencilTemplateTests: XCTestCase {
     }
 
     func testFilename() {
-        StencilTemplate.allCases.forEach { stencilTemplate in
+        for stencilTemplate in StencilTemplate.allCases {
             let filename: String = stencilTemplate.filename
             switch stencilTemplate {
             case .analytics:
@@ -95,6 +98,8 @@ final class StencilTemplateTests: XCTestCase {
                 expect(filename) == "Plugin"
             case .pluginList:
                 expect(filename) == "PluginList"
+            case .state:
+                expect(filename) == "State"
             case let .viewController(variation):
                 expect(filename) == "ViewController\(variation == .swiftUI ? "-SwiftUI" : "")"
             case .worker:
@@ -105,28 +110,24 @@ final class StencilTemplateTests: XCTestCase {
 
     func testNodeStencils() {
         StencilTemplate.Variation.allCases.forEach { variation in
-            [true, false].forEach { withViewController in
-                let stencils: [StencilTemplate] = StencilTemplate.nodeStencils(for: variation,
-                                                                               withViewController: withViewController)
-                if withViewController {
-                    expect(stencils) == [
-                        .analytics,
-                        .builder(variation),
-                        .context,
-                        .flow,
-                        .viewController(variation),
-                        .worker
-                    ]
-                } else {
-                    expect(stencils) == [
-                        .analytics,
-                        .builder(variation),
-                        .context,
-                        .flow,
-                        .worker
-                    ]
-                }
-            }
+            expect(StencilTemplate.Node(for: variation).stencils) == [
+                .analytics,
+                .builder(variation),
+                .context,
+                .flow,
+                .viewController(variation),
+                .worker
+            ]
         }
+    }
+
+    func testNodeViewInjectedStencils() {
+        expect(StencilTemplate.NodeViewInjected().stencils) == [
+            .analytics,
+            .builder(.default),
+            .context,
+            .flow,
+            .worker
+        ]
     }
 }
