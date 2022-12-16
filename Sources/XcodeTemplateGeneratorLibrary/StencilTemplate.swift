@@ -141,20 +141,16 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
     }
 
     internal func imports(config: XcodeTemplates.Config) -> Set<String> {
-        let nodes: Set<String> = ["Nodes"]
+        let imports: Set<String> = config.baseImports.union(["Nodes"])
         switch self {
-        case .analytics, .state:
-            return []
+        case .analytics, .flow, .state, .viewState:
+            return imports
         case .builder:
-            return nodes.union(config.dependencyInjectionImports).union(config.reactiveImports)
-        case .context, .worker:
-            return nodes.union(config.reactiveImports)
-        case .flow, .viewState:
-            return nodes
+            return imports.union(config.reactiveImports).union(config.dependencyInjectionImports)
+        case .context, .viewController, .worker:
+            return imports.union(config.reactiveImports)
         case .plugin, .pluginList:
-            return nodes.union(config.dependencyInjectionImports)
-        case .viewController:
-            return nodes.union(config.reactiveImports)
+            return imports.union(config.dependencyInjectionImports)
         }
     }
 }

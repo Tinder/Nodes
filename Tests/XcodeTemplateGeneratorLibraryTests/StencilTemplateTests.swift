@@ -140,9 +140,10 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
 
     // swiftlint:disable:next cyclomatic_complexity
     func testImports() {
+        let config: Config = givenConfig()
         for stencilTemplate in StencilTemplate.allCases {
-            for uiFramework in givenConfig().uiFrameworks {
-                let imports: Set<String> = stencilTemplate.imports(for: uiFramework, config: givenConfig())
+            for uiFramework in config.uiFrameworks {
+                let imports: Set<String> = stencilTemplate.imports(for: uiFramework, config: config)
                 let uiFrameworkImport: String
                 switch uiFramework.kind {
                 case .appKit:
@@ -155,18 +156,16 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     uiFrameworkImport = "<uiFrameworkImport>"
                 }
                 switch stencilTemplate {
-                case .analytics, .state:
-                    expect(imports) == []
+                case .analytics, .flow, .state, .viewState:
+                    expect(imports) == ["Nodes", "<baseImports>"]
                 case .builder:
-                    expect(imports) == ["Nodes", "<dependencyInjectionImports>", "<reactiveImports>"]
+                    expect(imports) == ["Nodes", "<baseImports>", "<reactiveImports>", "<dependencyInjectionImports>"]
                 case .context, .worker:
-                    expect(imports) == ["Nodes", "<reactiveImports>"]
-                case .flow, .viewState:
-                    expect(imports) == ["Nodes"]
-                case .plugin, .pluginList:
-                    expect(imports) == ["Nodes", "<dependencyInjectionImports>"]
+                    expect(imports) == ["Nodes", "<baseImports>", "<reactiveImports>"]
                 case .viewController:
-                    expect(imports) == ["Nodes", "<reactiveImports>", uiFrameworkImport]
+                    expect(imports) == ["Nodes", "<baseImports>", "<reactiveImports>", uiFrameworkImport]
+                case .plugin, .pluginList:
+                    expect(imports) == ["Nodes", "<baseImports>", "<dependencyInjectionImports>"]
                 }
             }
         }
