@@ -1,10 +1,9 @@
 ▿ PluginTemplate
   ▿ context: PluginContext
     - fileHeader: "<fileHeader>"
-    ▿ pluginImports: 4 elements
+    ▿ pluginImports: 3 elements
       - "<baseImports>"
       - "<dependencyInjectionImports>"
-      - "<reactiveImports>"
       - "Nodes"
     - pluginName: "___VARIABLE_productName___"
     ▿ returnType: Optional<String>
