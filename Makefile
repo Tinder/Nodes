@@ -1,7 +1,7 @@
 .PHONY: release
 release: override library = Nodes
 release: override platforms = macos catalyst ios tvos watchos
-release: override bitcode = ENABLED
+release: override bitcode = DISABLED
 release:
 	@make xcframework library="$(library)" platforms="$(platforms)" bitcode="$(bitcode)" version="$(version)"
 
