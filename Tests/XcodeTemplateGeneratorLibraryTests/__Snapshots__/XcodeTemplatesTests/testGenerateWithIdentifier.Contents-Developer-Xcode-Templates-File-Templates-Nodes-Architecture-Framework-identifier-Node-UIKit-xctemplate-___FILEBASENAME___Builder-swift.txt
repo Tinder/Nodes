@@ -145,13 +145,14 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
         let viewController: ___VARIABLE_productName___ViewController = .init(
             viewState: viewStateWorker.viewState
         )
-        viewController.analytics = analytics
         let context: ___VARIABLE_productName___ContextImp = .init(
             presentable: viewController,
             workers: [viewStateWorker],
             analytics: analytics
         )
         context.listener = listener
+        viewController.receiver = context
+        viewController.analytics = analytics
         return ___VARIABLE_productName___FlowImp(
             context: context,
             viewController: viewController

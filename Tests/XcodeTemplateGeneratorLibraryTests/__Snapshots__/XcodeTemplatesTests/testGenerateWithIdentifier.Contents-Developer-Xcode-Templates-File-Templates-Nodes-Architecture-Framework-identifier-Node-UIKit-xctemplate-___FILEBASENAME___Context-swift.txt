@@ -57,7 +57,6 @@ internal final class ___VARIABLE_productName___ContextImp: AbstractPresentableCo
     ) {
         self.analytics = analytics
         super.init(presentable: presentable, workers: workers)
-        presentable.receiver = self
     }
 
     /// Implement logic to execute when the Context becomes active.

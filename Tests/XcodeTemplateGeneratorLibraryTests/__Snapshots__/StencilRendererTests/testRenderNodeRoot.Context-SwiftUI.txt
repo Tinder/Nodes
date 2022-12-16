@@ -60,7 +60,6 @@ internal final class RootContextImp: AbstractPresentableContext
     ) {
         self.analytics = analytics
         super.init(presentable: presentable, workers: workers)
-        presentable.receiver = self
     }
 
     /// Implement logic to execute when the Context becomes active.

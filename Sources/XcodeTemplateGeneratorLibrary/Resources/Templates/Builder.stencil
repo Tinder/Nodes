@@ -161,13 +161,14 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         let viewController: {{ node_name }}ViewController = .init(
             viewState: viewStateWorker.viewState
         )
-        viewController.analytics = analytics
         let context: {{ node_name }}ContextImp = .init(
             presentable: viewController,
             workers: [viewStateWorker],
             analytics: analytics
         )
         context.listener = listener
+        viewController.receiver = context
+        viewController.analytics = analytics
         return {{ node_name }}FlowImp(
             context: context,
             viewController: viewController{% if flow_properties %},{% for property in flow_properties %}

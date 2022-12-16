@@ -161,7 +161,6 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         var view: {{ node_name }}View = .init(
             viewState: viewStateWorker.viewState
         )
-        view.analytics = analytics
         let viewController: {{ node_name }}ViewController = .init(
             rootView: view
         )
@@ -171,6 +170,8 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             analytics: analytics
         )
         context.listener = listener
+        view.receiver = context
+        view.analytics = analytics
         return {{ node_name }}FlowImp(
             context: context,
             viewController: viewController{% if flow_properties %},{% for property in flow_properties %}

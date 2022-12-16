@@ -146,7 +146,6 @@ internal final class RootBuilderImp: AbstractBuilder
         var view: RootView = .init(
             viewState: viewStateWorker.viewState
         )
-        view.analytics = analytics
         let viewController: RootViewController = .init(
             rootView: view
         )
@@ -156,6 +155,8 @@ internal final class RootBuilderImp: AbstractBuilder
             analytics: analytics
         )
         context.listener = listener
+        view.receiver = context
+        view.analytics = analytics
         return RootFlowImp(
             context: context,
             viewController: viewController,

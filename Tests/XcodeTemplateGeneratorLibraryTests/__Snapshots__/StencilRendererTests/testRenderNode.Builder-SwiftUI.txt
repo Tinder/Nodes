@@ -146,7 +146,6 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         var view: <nodeName>View = .init(
             viewState: viewStateWorker.viewState
         )
-        view.analytics = analytics
         let viewController: <nodeName>ViewController = .init(
             rootView: view
         )
@@ -156,6 +155,8 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
             analytics: analytics
         )
         context.listener = listener
+        view.receiver = context
+        view.analytics = analytics
         return <nodeName>FlowImp(
             context: context,
             viewController: viewController,
