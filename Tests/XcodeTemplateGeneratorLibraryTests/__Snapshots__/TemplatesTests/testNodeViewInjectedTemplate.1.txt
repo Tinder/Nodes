@@ -1,6 +1,8 @@
 ▿ NodeViewInjectedTemplate
   ▿ context: NodeViewInjectedContext
-    - analyticsImports: 0 elements
+    ▿ analyticsImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
     ▿ builderImports: 4 elements
       - "<baseImports>"
       - "<dependencyInjectionImports>"
@@ -20,9 +22,8 @@
           - key: "type"
           - value: "<dependenciesType>"
     - fileHeader: "<fileHeader>"
-    ▿ flowImports: 3 elements
+    ▿ flowImports: 2 elements
       - "<baseImports>"
-      - "<reactiveImports>"
       - "Nodes"
     ▿ flowProperties: 1 element
       ▿ 2 key/value pairs
