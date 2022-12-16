@@ -32,6 +32,7 @@ extension TestFactories {
             return uiFramework
         }
         config.fileHeader = "<fileHeader>"
+        config.baseImports = ["<baseImports>"]
         config.reactiveImports = ["<reactiveImports>"]
         config.dependencyInjectionImports = ["<dependencyInjectionImports>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
@@ -78,10 +79,13 @@ extension TestFactories {
         NodeRootContext(
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",
+            analyticsImports: ["<analyticsImports>"],
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],
+            stateImports: ["<stateImports>"],
             viewControllerImports: ["<viewControllerImports>"],
+            viewStateImports: ["<viewStateImports>"],
             workerImports: ["<workerImports>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],

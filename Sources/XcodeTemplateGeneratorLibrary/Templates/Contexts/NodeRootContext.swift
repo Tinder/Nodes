@@ -9,10 +9,13 @@ public struct NodeRootContext: Context {
 
     private let fileHeader: String
     private let workerName: String
+    private let analyticsImports: [String]
     private let builderImports: [String]
     private let contextImports: [String]
     private let flowImports: [String]
+    private let stateImports: [String]
     private let viewControllerImports: [String]
+    private let viewStateImports: [String]
     private let workerImports: [String]
     private let dependencies: [[String: Any]]
     private let flowProperties: [[String: Any]]
@@ -36,10 +39,13 @@ public struct NodeRootContext: Context {
             "worker_name": workerName,
             "owns_view": true,
             "root_node": true,
+            "analytics_imports": analyticsImports,
             "builder_imports": builderImports,
             "context_imports": contextImports,
             "flow_imports": flowImports,
+            "state_imports": stateImports,
             "view_controller_imports": viewControllerImports,
+            "view_state_imports": viewStateImports,
             "worker_imports": workerImports,
             "dependencies": dependencies,
             "flow_properties": flowProperties,
@@ -61,10 +67,13 @@ public struct NodeRootContext: Context {
     public init(
         fileHeader: String,
         workerName: String,
+        analyticsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
         flowImports: Set<String>,
+        stateImports: Set<String>,
         viewControllerImports: Set<String>,
+        viewStateImports: Set<String>,
         workerImports: Set<String>,
         dependencies: [XcodeTemplates.Variable],
         flowProperties: [XcodeTemplates.Variable],
@@ -83,10 +92,13 @@ public struct NodeRootContext: Context {
     ) {
         self.fileHeader = fileHeader
         self.workerName = workerName
+        self.analyticsImports = analyticsImports.sortedImports()
         self.builderImports = builderImports.sortedImports()
         self.contextImports = contextImports.sortedImports()
         self.flowImports = flowImports.sortedImports()
+        self.stateImports = stateImports.sortedImports()
         self.viewControllerImports = viewControllerImports.sortedImports()
+        self.viewStateImports = viewStateImports.sortedImports()
         self.workerImports = workerImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)
