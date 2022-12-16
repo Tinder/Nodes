@@ -89,18 +89,3 @@ ifndef platform
 	$(error required variable: "platform")
 endif
 	@./bin/get-deployment-target "$(platform)"
-
-.PHONY: changes
-changes: limit ?= 30
-changes:
-	@gh pr list -L "$(limit)" \
-		--search "is:pr is:merged sort:updated-desc" \
-		--json "number,title,author" \
-		--template "$$TEMPLATE"
-
-export TEMPLATE
-define TEMPLATE
-{{range .}}- {{.title}}
-  - [#{{.number}}](https://github.com/TinderApp/Nodes/pull/{{.number}}) by [NAME](https://github.com/{{.author.login}})
-{{end}}
-endef
