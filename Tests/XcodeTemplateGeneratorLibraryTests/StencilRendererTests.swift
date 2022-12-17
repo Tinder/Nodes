@@ -56,6 +56,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             "Builder",
             "Context",
             "Flow",
+            "State",
             "Worker"
         ]
         templates.forEach { name, template in

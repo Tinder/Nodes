@@ -34,7 +34,9 @@
           - key: "type"
           - value: "<flowPropertiesType>"
     - nodeName: "___VARIABLE_productName___"
-    - stateImports: 0 elements
+    ▿ stateImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     ▿ workerImports: 3 elements
@@ -62,10 +64,11 @@
     - sortOrder: 5
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 5 elements
+  ▿ stencils: 6 elements
     - Analytics
     ▿ Builder
       - builder: Variation.default
     - Context
     - Flow
+    - State
     - Worker
