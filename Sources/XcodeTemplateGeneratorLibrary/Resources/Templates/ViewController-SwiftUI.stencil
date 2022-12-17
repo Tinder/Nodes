@@ -37,9 +37,6 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 {% endif %}{{ '}' }}
 
 extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
-{% if view_controller_availability_attribute %}
-{{ view_controller_availability_attribute }}
-{% endif %}extension {{ node_name }}ViewController: {{ node_name }}Presentable {}
 
 /**
  PURPOSE:

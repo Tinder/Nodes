@@ -60,4 +60,3 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
 }
 
 extension <nodeName>ViewController: <nodeName>ViewControllable {}
-extension <nodeName>ViewController: <nodeName>Presentable {}

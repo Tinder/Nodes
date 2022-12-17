@@ -36,7 +36,6 @@ internal final class RootViewController: <viewControllerType>
 }
 
 extension RootViewController: RootViewControllable {}
-extension RootViewController: RootPresentable {}
 
 /**
  PURPOSE:

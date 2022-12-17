@@ -34,7 +34,6 @@ internal final class <nodeName>ViewController: <viewControllerType>
 }
 
 extension <nodeName>ViewController: <nodeName>ViewControllable {}
-extension <nodeName>ViewController: <nodeName>Presentable {}
 
 /**
  PURPOSE:
