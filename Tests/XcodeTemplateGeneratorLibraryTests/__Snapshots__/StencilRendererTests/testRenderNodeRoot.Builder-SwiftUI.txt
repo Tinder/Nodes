@@ -143,17 +143,17 @@ internal final class RootBuilderImp: AbstractBuilder
         let viewStateWorker: <workerName>WorkerImp = .init(
             analytics: analytics
         )
+        let context: RootContextImp = .init(
+            workers: [viewStateWorker],
+            analytics: analytics
+        )
+        context.listener = listener
         var view: RootView = .init(
             viewState: viewStateWorker.viewState
         )
         let viewController: RootViewController = .init(
             rootView: view
         )
-        let context: RootContextImp = .init(
-            workers: [viewStateWorker],
-            analytics: analytics
-        )
-        context.listener = listener
         view.receiver = context
         view.analytics = analytics
         return RootFlowImp(

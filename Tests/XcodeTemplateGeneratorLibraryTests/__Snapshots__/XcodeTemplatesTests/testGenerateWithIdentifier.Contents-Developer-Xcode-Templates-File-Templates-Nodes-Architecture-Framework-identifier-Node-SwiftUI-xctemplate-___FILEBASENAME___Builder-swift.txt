@@ -142,17 +142,17 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
         let viewStateWorker: ___VARIABLE_productName___ViewStateWorkerImp = .init(
             analytics: analytics
         )
+        let context: ___VARIABLE_productName___ContextImp = .init(
+            workers: [viewStateWorker],
+            analytics: analytics
+        )
+        context.listener = listener
         var view: ___VARIABLE_productName___View = .init(
             viewState: viewStateWorker.viewState
         )
         let viewController: ___VARIABLE_productName___ViewController = .init(
             rootView: view
         )
-        let context: ___VARIABLE_productName___ContextImp = .init(
-            workers: [viewStateWorker],
-            analytics: analytics
-        )
-        context.listener = listener
         view.receiver = context
         view.analytics = analytics
         return ___VARIABLE_productName___FlowImp(

@@ -158,17 +158,17 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         let viewStateWorker: {{ worker_name }}WorkerImp = .init(
             analytics: analytics
         )
+        let context: {{ node_name }}ContextImp = .init(
+            workers: [viewStateWorker],
+            analytics: analytics
+        )
+        context.listener = listener
         var view: {{ node_name }}View = .init(
             viewState: viewStateWorker.viewState
         )
         let viewController: {{ node_name }}ViewController = .init(
             rootView: view
         )
-        let context: {{ node_name }}ContextImp = .init(
-            workers: [viewStateWorker],
-            analytics: analytics
-        )
-        context.listener = listener
         view.receiver = context
         view.analytics = analytics
         return {{ node_name }}FlowImp(
