@@ -36,7 +36,9 @@
     - nodeName: "___VARIABLE_productName___"
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
-    - stateImports: 0 elements
+    ▿ stateImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     ▿ viewControllerImports: 4 elements
@@ -84,12 +86,13 @@
     - sortOrder: 4
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 6 elements
+  ▿ stencils: 7 elements
     - Analytics
     ▿ Builder
       - builder: Variation.default
     - Context
     - Flow
+    - State
     ▿ ViewController
       - viewController: Variation.default
     - Worker
