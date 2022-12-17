@@ -150,7 +150,6 @@ internal final class RootBuilderImp: AbstractBuilder
             rootView: view
         )
         let context: RootContextImp = .init(
-            presentable: viewController,
             workers: [viewStateWorker],
             analytics: analytics
         )

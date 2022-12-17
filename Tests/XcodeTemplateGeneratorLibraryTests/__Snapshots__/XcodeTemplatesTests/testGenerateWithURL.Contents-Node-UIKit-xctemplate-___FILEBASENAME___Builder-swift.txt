@@ -146,7 +146,6 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
             viewState: viewStateWorker.viewState
         )
         let context: ___VARIABLE_productName___ContextImp = .init(
-            presentable: viewController,
             workers: [viewStateWorker],
             analytics: analytics
         )

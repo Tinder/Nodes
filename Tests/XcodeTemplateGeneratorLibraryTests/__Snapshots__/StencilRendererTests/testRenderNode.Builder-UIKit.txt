@@ -147,7 +147,6 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
             viewState: viewStateWorker.viewState
         )
         let context: <nodeName>ContextImp = .init(
-            presentable: viewController,
             workers: [viewStateWorker],
             analytics: analytics
         )

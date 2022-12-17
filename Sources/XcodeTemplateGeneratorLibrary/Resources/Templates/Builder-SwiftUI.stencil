@@ -165,7 +165,6 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             rootView: view
         )
         let context: {{ node_name }}ContextImp = .init(
-            presentable: viewController,
             workers: [viewStateWorker],
             analytics: analytics
         )

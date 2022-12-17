@@ -29,10 +29,9 @@ internal protocol <nodeName>Presentable: AnyObject {
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.
  */
-internal final class <nodeName>ContextImp: AbstractPresentableContext
+internal final class <nodeName>ContextImp: AbstractContext
 <
-    <cancellableType>,
-    <nodeName>Presentable
+    <cancellableType>
 > {
 
     /// The Flow instance.
@@ -46,16 +45,14 @@ internal final class <nodeName>ContextImp: AbstractPresentableContext
 
     /// The initializer.
     /// - Parameters:
-    ///   - presentable: The Presentable instance
     ///   - workers: The Worker instances
     ///   - analytics: The Analytics instance
     internal init(
-        presentable: <nodeName>Presentable,
         workers: [Worker],
         analytics: <nodeName>Analytics
     ) {
         self.analytics = analytics
-        super.init(presentable: presentable, workers: workers)
+        super.init(workers: workers)
     }
 
     /// Implement logic to execute when the Context becomes active.
