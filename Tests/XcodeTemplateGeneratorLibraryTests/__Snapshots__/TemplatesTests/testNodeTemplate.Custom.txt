@@ -51,9 +51,8 @@
     - viewControllerSuperParameters: "<viewControllerSuperParameters>"
     - viewControllerType: "<viewControllerType>"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
-    ▿ viewStateImports: 3 elements
+    ▿ viewStateImports: 2 elements
       - "<baseImports>"
-      - "<reactiveImports>"
       - "Nodes"
     - viewStateOperators: "<viewStateOperators>"
     - viewStatePublisher: "<viewStatePublisher>"
@@ -86,7 +85,7 @@
     - sortOrder: 4
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 7 elements
+  ▿ stencils: 8 elements
     - Analytics
     ▿ Builder
       - builder: Variation.default
@@ -95,4 +94,5 @@
     - State
     ▿ ViewController
       - viewController: Variation.default
+    - ViewState
     - Worker
