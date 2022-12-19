@@ -34,11 +34,11 @@ internal final class {{ node_name }}ContextImp: AbstractContext
     /// The Listener instance.
     internal weak var listener: {{ node_name }}Listener?
 
-    /// The Analytics instance.
-    private let analytics: {{ node_name }}Analytics
-
     /// The State instance.
-    @Published internal private(set) var state: {{ node_name }}State{% if root_node %}
+    @Published internal private(set) var state: {{ node_name }}State
+
+    /// The Analytics instance.
+    private let analytics: {{ node_name }}Analytics{% if root_node %}
 
     private var isReady: Bool = false{% endif %}
 

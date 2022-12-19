@@ -31,11 +31,11 @@ internal final class <nodeName>ContextImp: AbstractContext
     /// The Listener instance.
     internal weak var listener: <nodeName>Listener?
 
-    /// The Analytics instance.
-    private let analytics: <nodeName>Analytics
-
     /// The State instance.
     @Published internal private(set) var state: <nodeName>State
+
+    /// The Analytics instance.
+    private let analytics: <nodeName>Analytics
 
     /// The initializer.
     /// - Parameters:
