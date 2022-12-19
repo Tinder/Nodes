@@ -23,6 +23,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Flow",
                 "State",
                 "ViewController",
+                "ViewState",
                 "Worker"
             ]
             templates.forEach { name, template in
@@ -42,6 +43,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Flow",
                 "State",
                 "ViewController",
+                "ViewState",
                 "Worker"
             ]
             templates.forEach { name, template in
