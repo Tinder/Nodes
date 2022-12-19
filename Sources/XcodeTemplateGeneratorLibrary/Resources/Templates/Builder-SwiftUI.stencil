@@ -163,6 +163,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             analytics: analytics
         )
         context.listener = listener
+        let viewStateFactory: {{ node_name }}ViewStateFactory = .init()
         var view: {{ node_name }}View = .init(
             viewState: viewStateWorker.viewState
         )

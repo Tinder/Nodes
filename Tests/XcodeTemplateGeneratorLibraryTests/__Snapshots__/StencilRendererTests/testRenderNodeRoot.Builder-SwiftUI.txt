@@ -148,6 +148,7 @@ internal final class RootBuilderImp: AbstractBuilder
             analytics: analytics
         )
         context.listener = listener
+        let viewStateFactory: RootViewStateFactory = .init()
         var view: RootView = .init(
             viewState: viewStateWorker.viewState
         )

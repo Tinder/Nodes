@@ -147,6 +147,7 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
             analytics: analytics
         )
         context.listener = listener
+        let viewStateFactory: ___VARIABLE_productName___ViewStateFactory = .init()
         let viewController: ___VARIABLE_productName___ViewController = .init(
             viewState: viewStateWorker.viewState
         )
