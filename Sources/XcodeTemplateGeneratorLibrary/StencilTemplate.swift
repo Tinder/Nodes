@@ -38,11 +38,12 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         internal let builder: StencilTemplate
         internal let context: StencilTemplate
         internal let flow: StencilTemplate
+        internal let state: StencilTemplate
         internal let viewController: StencilTemplate
         internal let worker: StencilTemplate
 
         internal var stencils: [StencilTemplate] {
-            [analytics, builder, context, flow, viewController, worker]
+            [analytics, builder, context, flow, state, viewController, worker]
         }
 
         internal init(for variation: StencilTemplate.Variation) {
@@ -50,6 +51,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
             self.builder = .builder(variation)
             self.context = .context
             self.flow = .flow
+            self.state = .state
             self.viewController = .viewController(variation)
             self.worker = .worker
         }

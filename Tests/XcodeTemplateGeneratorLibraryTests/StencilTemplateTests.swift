@@ -122,6 +122,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .builder(variation),
                 .context,
                 .flow,
+                .state,
                 .viewController(variation),
                 .worker
             ]

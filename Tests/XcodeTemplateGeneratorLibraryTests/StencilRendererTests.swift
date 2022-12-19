@@ -21,6 +21,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Builder",
                 "Context",
                 "Flow",
+                "State",
                 "ViewController",
                 "Worker"
             ]
@@ -39,6 +40,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Builder",
                 "Context",
                 "Flow",
+                "State",
                 "ViewController",
                 "Worker"
             ]
