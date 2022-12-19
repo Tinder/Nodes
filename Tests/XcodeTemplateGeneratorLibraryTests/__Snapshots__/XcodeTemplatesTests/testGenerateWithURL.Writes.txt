@@ -1,4 +1,4 @@
-▿ 29 elements
+▿ 31 elements
   ▿ (2 elements)
     - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___Analytics.swift"
     - .1: true
@@ -10,6 +10,9 @@
     - .1: true
   ▿ (2 elements)
     - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___State.swift"
     - .1: true
   ▿ (2 elements)
     - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___ViewController.swift"
@@ -31,6 +34,9 @@
     - .1: true
   ▿ (2 elements)
     - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___State.swift"
     - .1: true
   ▿ (2 elements)
     - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___ViewController.swift"
