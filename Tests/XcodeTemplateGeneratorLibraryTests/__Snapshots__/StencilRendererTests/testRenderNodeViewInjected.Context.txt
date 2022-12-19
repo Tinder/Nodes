@@ -45,8 +45,8 @@ internal final class <nodeName>ContextImp: AbstractContext
         workers: [Worker],
         analytics: <nodeName>Analytics
     ) {
-        self.analytics = analytics
         self.state = <nodeName>State()
+        self.analytics = analytics
         super.init(workers: workers)
     }
 

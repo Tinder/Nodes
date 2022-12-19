@@ -46,8 +46,8 @@ internal final class ___VARIABLE_productName___ContextImp: AbstractContext
         workers: [Worker],
         analytics: ___VARIABLE_productName___Analytics
     ) {
-        self.analytics = analytics
         self.state = ___VARIABLE_productName___State()
+        self.analytics = analytics
         super.init(workers: workers)
     }
 

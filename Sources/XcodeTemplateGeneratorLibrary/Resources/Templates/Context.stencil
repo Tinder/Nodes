@@ -50,8 +50,8 @@ internal final class {{ node_name }}ContextImp: AbstractContext
         workers: [Worker],
         analytics: {{ node_name }}Analytics
     ) {
-        self.analytics = analytics
         self.state = {{ node_name }}State()
+        self.analytics = analytics
         super.init(workers: workers)
     }
 
