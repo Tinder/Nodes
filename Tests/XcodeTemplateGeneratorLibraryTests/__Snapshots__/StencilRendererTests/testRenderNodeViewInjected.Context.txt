@@ -34,6 +34,9 @@ internal final class <nodeName>ContextImp: AbstractContext
     /// The Analytics instance.
     private let analytics: <nodeName>Analytics
 
+    /// The State instance.
+    @Published internal private(set) var state: <nodeName>State
+
     /// The initializer.
     /// - Parameters:
     ///   - workers: The Worker instances
@@ -43,6 +46,7 @@ internal final class <nodeName>ContextImp: AbstractContext
         analytics: <nodeName>Analytics
     ) {
         self.analytics = analytics
+        self.state = <nodeName>State()
         super.init(workers: workers)
     }
 

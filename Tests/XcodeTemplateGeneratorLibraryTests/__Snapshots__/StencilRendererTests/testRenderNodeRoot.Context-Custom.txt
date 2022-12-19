@@ -36,6 +36,9 @@ internal final class RootContextImp: AbstractContext
     /// The Analytics instance.
     private let analytics: RootAnalytics
 
+    /// The State instance.
+    @Published internal private(set) var state: RootState
+
     private var isReady: Bool = false
 
     /// The initializer.
@@ -47,6 +50,7 @@ internal final class RootContextImp: AbstractContext
         analytics: RootAnalytics
     ) {
         self.analytics = analytics
+        self.state = RootState()
         super.init(workers: workers)
     }
 

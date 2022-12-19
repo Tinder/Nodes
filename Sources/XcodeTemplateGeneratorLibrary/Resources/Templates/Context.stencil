@@ -35,7 +35,10 @@ internal final class {{ node_name }}ContextImp: AbstractContext
     internal weak var listener: {{ node_name }}Listener?
 
     /// The Analytics instance.
-    private let analytics: {{ node_name }}Analytics{% if root_node %}
+    private let analytics: {{ node_name }}Analytics
+
+    /// The State instance.
+    @Published internal private(set) var state: {{ node_name }}State{% if root_node %}
 
     private var isReady: Bool = false{% endif %}
 
@@ -48,6 +51,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext
         analytics: {{ node_name }}Analytics
     ) {
         self.analytics = analytics
+        self.state = {{ node_name }}State()
         super.init(workers: workers)
     }
 
