@@ -135,6 +135,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .builder(.default),
             .context,
             .flow,
+            .state,
             .worker
         ]
     }
