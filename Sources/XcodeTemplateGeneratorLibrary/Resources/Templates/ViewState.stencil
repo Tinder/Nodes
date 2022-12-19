@@ -6,7 +6,11 @@ import {{ import }}{% endfor %}{% endif %}
  PURPOSE:
  The view state of the view.
  */
-internal struct {{ node_name }}ViewState: Equatable {}
+internal struct {{ node_name }}ViewState: Equatable, InitialStateProviding {
+
+    /// The initial view state.
+    internal static var initialState: {{ node_name }}ViewState = .init()
+}
 
 /**
  PURPOSE:
