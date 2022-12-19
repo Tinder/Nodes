@@ -102,8 +102,6 @@ final class ConfigTests: XCTestCase, TestFactories {
             type: flowProperties-type-2
         viewControllableType: viewControllableType
         viewControllableFlowType: viewControllableFlowType
-        viewControllerAvailabilityAttribute: viewControllerAvailabilityAttribute
-        viewControllerAvailabilityAttributeSwiftUI: viewControllerAvailabilityAttributeSwiftUI
         viewControllerUpdateComment: viewControllerUpdateComment
         viewStatePublisher: viewStatePublisher
         viewStateOperators: viewStateOperators
