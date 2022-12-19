@@ -1,4 +1,4 @@
-▿ 32 elements
+▿ 33 elements
   ▿ (2 elements)
     - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___Analytics.swift"
     - .1: true
@@ -64,6 +64,9 @@
     - .1: true
   ▿ (2 elements)
     - .0: "/Node (view injected).xctemplate/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (view injected).xctemplate/___FILEBASENAME___State.swift"
     - .1: true
   ▿ (2 elements)
     - .0: "/Node (view injected).xctemplate/___FILEBASENAME___Worker.swift"
