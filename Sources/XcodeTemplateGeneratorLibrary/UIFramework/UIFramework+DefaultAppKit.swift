@@ -12,7 +12,7 @@ extension UIFramework {
         static let viewControllerMethods: String = """
             override func viewWillAppear() {
                 super.viewWillAppear()
-                observe(viewState).store(in: &cancellables)
+                observe(statePublisher).store(in: &cancellables)
             }
 
             override func viewWillDisappear() {
@@ -24,7 +24,7 @@ extension UIFramework {
         static let viewControllerMethodsForRootNode: String = """
             override func viewWillAppear() {
                 super.viewWillAppear()
-                observe(viewState).store(in: &cancellables)
+                observe(statePublisher).store(in: &cancellables)
             }
 
             override func viewDidAppear() {
