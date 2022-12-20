@@ -77,8 +77,8 @@ internal struct RootView_Previews: PreviewProvider {
 
     internal static var previews: some View {
         RootView(
-            viewState: Empty().eraseToAnyPublisher(),
-            initialState: initialState
+            initialState: initialState,
+            statePublisher: Empty().eraseToAnyPublisher(),
         )
     }
 }

@@ -74,8 +74,8 @@ internal struct ___VARIABLE_productName___View_Previews: PreviewProvider {
 
     internal static var previews: some View {
         ___VARIABLE_productName___View(
-            viewState: Empty().eraseToAnyPublisher(),
-            initialState: initialState
+            initialState: initialState,
+            statePublisher: Empty().eraseToAnyPublisher(),
         )
     }
 }
