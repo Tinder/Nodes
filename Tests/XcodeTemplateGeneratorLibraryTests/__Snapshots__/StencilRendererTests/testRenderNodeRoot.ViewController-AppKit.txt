@@ -29,22 +29,22 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     private var cancellables: Set<<cancellableType>> = .init()
 
     /// The initial state of the view.
-    private let initialViewState: RootViewState
+    private let initialState: RootViewState
 
     /// The view state publisher.
-    private let viewState: <publisherType><RootViewState<publisherFailureType>>
+    private let statePublisher: <publisherType><RootViewState<publisherFailureType>>
 
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialViewState: the initial state of the view.
-    ///   - viewState: the view state publisher.
+    ///   - statePublisher: the view state publisher.
     internal init(
-        initialViewState: RootViewState,
-        viewState: <publisherType><RootViewState<publisherFailureType>>
+        initialState: RootViewState,
+        statePublisher: <publisherType><RootViewState<publisherFailureType>>
     ) {
-        self.initialViewState = initialViewState
-        self.viewState = viewState
+        self.initialState = initialState
+        self.statePublisher = statePublisher
             <viewStateOperators>
         super.init(<viewControllerSuperParameters>)
     }

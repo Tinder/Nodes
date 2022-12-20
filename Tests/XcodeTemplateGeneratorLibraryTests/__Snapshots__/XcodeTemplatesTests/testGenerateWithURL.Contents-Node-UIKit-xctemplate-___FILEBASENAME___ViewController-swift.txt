@@ -27,22 +27,22 @@ internal final class ___VARIABLE_productName___ViewController: UIViewController,
     private var cancellables: Set<AnyCancellable> = .init()
 
     /// The initial state of the view.
-    private let initialViewState: ___VARIABLE_productName___ViewState
+    private let initialState: ___VARIABLE_productName___ViewState
 
     /// The view state publisher.
-    private let viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+    private let statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
 
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialViewState: the initial state of the view.
-    ///   - viewState: the view state publisher.
+    ///   - statePublisher: the view state publisher.
     internal init(
-        initialViewState: ___VARIABLE_productName___ViewState,
-        viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+        initialState: ___VARIABLE_productName___ViewState,
+        statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
     ) {
-        self.initialViewState = initialViewState
-        self.viewState = viewState
+        self.initialState = initialState
+        self.statePublisher = statePublisher
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()

@@ -30,22 +30,22 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     private var cancellables: Set<{{ cancellable_type }}> = .init()
 
     /// The initial state of the view.
-    private let initialViewState: {{ node_name }}ViewState
+    private let initialState: {{ node_name }}ViewState
 
     /// The view state publisher.
-    private let viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
+    private let statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
 
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialViewState: the initial state of the view.
-    ///   - viewState: the view state publisher.
+    ///   - statePublisher: the view state publisher.
     internal init(
-        initialViewState: {{ node_name }}ViewState,
-        viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
+        initialState: {{ node_name }}ViewState,
+        statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
     ) {
-        self.initialViewState = initialViewState
-        self.viewState = viewState{% if view_state_operators %}
+        self.initialState = initialState
+        self.statePublisher = statePublisher{% if view_state_operators %}
             {{ view_state_operators|indent:12 }}{% endif %}
         super.init({{ view_controller_super_parameters }})
     }
