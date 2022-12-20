@@ -154,8 +154,8 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
             transform: viewStateFactory
         )
         var view: <nodeName>View = .init(
-            viewState: viewState.eraseToAnyPublisher(),
-            initialState: viewStateFactory(context.state)
+            initialState: viewStateFactory(context.state),
+            statePublisher: viewState.eraseToAnyPublisher()
         )
         view.receiver = context
         view.analytics = analytics

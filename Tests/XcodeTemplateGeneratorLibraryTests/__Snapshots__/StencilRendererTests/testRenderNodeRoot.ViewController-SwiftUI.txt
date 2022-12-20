@@ -35,7 +35,7 @@ internal struct RootView: NodesView {
 
     /// The body of the view.
     internal var body: some View {
-        WithViewState(viewState, initialState: initialState) { viewState in
+        WithViewState(statePublisher, initialState: initialState) { viewState in
             Text(verbatim: "\(type(of: viewState))")
         }
     }
@@ -46,24 +46,24 @@ internal struct RootView: NodesView {
     /// The Analytics instance.
     internal weak var analytics: RootAnalytics?
 
-    /// The view state publisher.
-    private let viewState: <publisherType><RootViewState<publisherFailureType>>
-
     /// The initial state of the view.
     private let initialState: RootViewState
+
+    /// The view state publisher.
+    private let statePublisher: <publisherType><RootViewState<publisherFailureType>>
 
     /// The initializer.
     ///
     /// - Parameters:
-    ///   - viewState: the view state publisher.
     ///   - initialState: the initial state of the view.
+    ///   - statePublisher: the view state publisher.
     internal init(
-        viewState: <publisherType><RootViewState<publisherFailureType>>,
-        initialState: RootViewState
+        initialState: RootViewState,
+        statePublisher: <publisherType><RootViewState<publisherFailureType>>
     ) {
-        self.viewState = viewState
-            <viewStateOperators>
         self.initialState = initialState
+        self.statePublisher = statePublisher
+            <viewStateOperators>
     }
 }
 
