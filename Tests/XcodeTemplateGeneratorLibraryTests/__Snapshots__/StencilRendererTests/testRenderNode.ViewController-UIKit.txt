@@ -29,11 +29,21 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
     /// The view state publisher.
     private let viewState: <publisherType><<nodeName>ViewState<publisherFailureType>>
 
+    /// The initial state of the view.
+    private let initialState: <nodeName>ViewState
+
     /// The initializer.
-    /// - Parameter viewState: The view state publisher
-    internal init(viewState: <publisherType><<nodeName>ViewState<publisherFailureType>>) {
+    ///
+    /// - Parameters:
+    ///   - viewState: the view state publisher.
+    ///   - initialState: the initial state of the view.
+    internal init(
+        viewState: <publisherType><<nodeName>ViewState<publisherFailureType>>,
+        initialState: <nodeName>ViewState
+    ) {
         self.viewState = viewState
             <viewStateOperators>
+        self.initialState = initialState
         super.init(<viewControllerSuperParameters>)
     }
 
