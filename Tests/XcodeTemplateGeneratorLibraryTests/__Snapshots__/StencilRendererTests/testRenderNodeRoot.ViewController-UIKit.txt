@@ -37,8 +37,8 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     /// The initializer.
     ///
     /// - Parameters:
-    ///   - initialViewState: the initial view state.
-    ///   - statePublisher: the view state publisher.
+    ///   - initialViewState: The initial view state.
+    ///   - statePublisher: The view state publisher.
     internal init(
         initialState: RootViewState,
         statePublisher: <publisherType><RootViewState<publisherFailureType>>

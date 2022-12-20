@@ -38,8 +38,8 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     /// The initializer.
     ///
     /// - Parameters:
-    ///   - initialViewState: the initial view state.
-    ///   - statePublisher: the view state publisher.
+    ///   - initialViewState: The initial view state.
+    ///   - statePublisher: The view state publisher.
     internal init(
         initialState: {{ node_name }}ViewState,
         statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>

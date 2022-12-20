@@ -35,8 +35,8 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
     /// The initializer.
     ///
     /// - Parameters:
-    ///   - initialViewState: the initial view state.
-    ///   - statePublisher: the view state publisher.
+    ///   - initialViewState: The initial view state.
+    ///   - statePublisher: The view state publisher.
     internal init(
         initialState: <nodeName>ViewState,
         statePublisher: <publisherType><<nodeName>ViewState<publisherFailureType>>
