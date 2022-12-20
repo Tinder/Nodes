@@ -26,7 +26,7 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
     /// The collection of cancellable instances.
     private var cancellables: Set<<cancellableType>> = .init()
 
-    /// The the initial view state.
+    /// The initial view state.
     private let initialState: <nodeName>ViewState
 
     /// The view state publisher.
