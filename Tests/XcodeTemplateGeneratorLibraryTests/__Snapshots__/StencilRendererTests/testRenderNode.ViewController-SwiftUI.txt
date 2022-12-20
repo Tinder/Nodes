@@ -33,7 +33,7 @@ internal struct <nodeName>View: NodesView {
 
     /// The body of the view.
     internal var body: some View {
-        WithViewState(viewState) { viewState in
+        WithViewState(viewState, initialState: initialState) { viewState in
             Text(verbatim: "\(type(of: viewState))")
         }
     }
@@ -47,11 +47,21 @@ internal struct <nodeName>View: NodesView {
     /// The view state publisher.
     private let viewState: <publisherType><<nodeName>ViewState<publisherFailureType>>
 
+    /// The initial state of the view.
+    private let initialState: <nodeName>ViewState
+
     /// The initializer.
-    /// - Parameter viewState: The view state publisher
-    internal init(viewState: <publisherType><<nodeName>ViewState<publisherFailureType>>) {
+    ///
+    /// - Parameters:
+    ///   - viewState: the view state publisher.
+    ///   - initialState: the initial state of the view.
+    internal init(
+        viewState: <publisherType><<nodeName>ViewState<publisherFailureType>>,
+        initialState: <nodeName>ViewState
+    ) {
         self.viewState = viewState
             <viewStateOperators>
+        self.initialState = initialState
     }
 }
 
@@ -61,10 +71,12 @@ internal struct <nodeName>View: NodesView {
  */
 internal struct <nodeName>View_Previews: PreviewProvider {
 
-    private static let viewState: AnyPublisher<<nodeName>ViewState<publisherFailureType>> =
-        Just<<nodeName>ViewState>(.initialState).eraseToAnyPublisher()
+    private static let initialState: <nodeName>ViewState = .init()
 
     internal static var previews: some View {
-        <nodeName>View(viewState: viewState)
+        <nodeName>View(
+            viewState: Just<<nodeName>ViewState>(initialState).eraseToAnyPublisher(),
+            initialState: initialState
+        )
     }
 }
