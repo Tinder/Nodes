@@ -61,7 +61,7 @@ internal final class ___VARIABLE_productName___ViewController: UIViewController,
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        observe(viewState).store(in: &cancellables)
+        observe(statePublisher).store(in: &cancellables)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

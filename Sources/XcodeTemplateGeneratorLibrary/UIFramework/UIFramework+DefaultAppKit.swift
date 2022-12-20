@@ -17,7 +17,7 @@ extension UIFramework {
 
             override func viewWillAppear() {
                 super.viewWillAppear()
-                observe(viewState).store(in: &cancellables)
+                observe(statePublisher).store(in: &cancellables)
             }
 
             override func viewWillDisappear() {
@@ -34,7 +34,7 @@ extension UIFramework {
 
             override func viewWillAppear() {
                 super.viewWillAppear()
-                observe(viewState).store(in: &cancellables)
+                observe(statePublisher).store(in: &cancellables)
             }
 
             override func viewDidAppear() {
