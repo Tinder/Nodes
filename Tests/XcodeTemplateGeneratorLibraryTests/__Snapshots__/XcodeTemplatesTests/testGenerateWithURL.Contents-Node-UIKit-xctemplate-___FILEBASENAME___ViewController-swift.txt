@@ -35,7 +35,7 @@ internal final class ___VARIABLE_productName___ViewController: UIViewController,
     /// The initializer.
     ///
     /// - Parameters:
-    ///   - initialViewState: The initial view state.
+    ///   - initialState: The initial view state.
     ///   - statePublisher: The view state publisher.
     internal init(
         initialState: ___VARIABLE_productName___ViewState,
