@@ -13,6 +13,7 @@ extension UIFramework {
             override func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
+                update(with: initialState)
             }
 
             override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +31,7 @@ extension UIFramework {
             override func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
+                update(with: initialState)
             }
 
             override func viewWillAppear(_ animated: Bool) {
