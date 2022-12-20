@@ -41,7 +41,7 @@ internal struct ___VARIABLE_productName___View: NodesView {
     /// The Analytics instance.
     internal weak var analytics: ___VARIABLE_productName___Analytics?
 
-    /// The initial state of the view.
+    /// The initial view state.
     private let initialState: ___VARIABLE_productName___ViewState
 
     /// The view state publisher.
@@ -50,8 +50,8 @@ internal struct ___VARIABLE_productName___View: NodesView {
     /// The initializer.
     ///
     /// - Parameters:
-    ///   - initialState: the initial state of the view.
-    ///   - statePublisher: the view state publisher.
+    ///   - initialState: The initial view state.
+    ///   - statePublisher: The view state publisher.
     internal init(
         initialState: ___VARIABLE_productName___ViewState,
         statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
@@ -74,7 +74,7 @@ internal struct ___VARIABLE_productName___View_Previews: PreviewProvider {
 
     internal static var previews: some View {
         ___VARIABLE_productName___View(
-            viewState: Just<___VARIABLE_productName___ViewState>(initialState).eraseToAnyPublisher(),
+            viewState: Empty().eraseToAnyPublisher(),
             initialState: initialState
         )
     }
