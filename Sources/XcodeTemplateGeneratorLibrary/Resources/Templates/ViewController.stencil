@@ -29,7 +29,7 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     /// The collection of cancellable instances.
     private var cancellables: Set<{{ cancellable_type }}> = .init()
 
-    /// The initial state of the view.
+    /// The the initial view state.
     private let initialState: {{ node_name }}ViewState
 
     /// The view state publisher.
@@ -38,7 +38,7 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     /// The initializer.
     ///
     /// - Parameters:
-    ///   - initialViewState: the initial state of the view.
+    ///   - initialViewState: the initial view state.
     ///   - statePublisher: the view state publisher.
     internal init(
         initialState: {{ node_name }}ViewState,

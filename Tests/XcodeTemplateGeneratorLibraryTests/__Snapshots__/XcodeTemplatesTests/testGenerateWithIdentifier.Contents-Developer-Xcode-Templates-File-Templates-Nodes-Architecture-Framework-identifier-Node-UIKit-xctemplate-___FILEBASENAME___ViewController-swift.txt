@@ -26,7 +26,7 @@ internal final class ___VARIABLE_productName___ViewController: UIViewController,
     /// The collection of cancellable instances.
     private var cancellables: Set<AnyCancellable> = .init()
 
-    /// The initial state of the view.
+    /// The the initial view state.
     private let initialState: ___VARIABLE_productName___ViewState
 
     /// The view state publisher.
@@ -35,7 +35,7 @@ internal final class ___VARIABLE_productName___ViewController: UIViewController,
     /// The initializer.
     ///
     /// - Parameters:
-    ///   - initialViewState: the initial state of the view.
+    ///   - initialViewState: the initial view state.
     ///   - statePublisher: the view state publisher.
     internal init(
         initialState: ___VARIABLE_productName___ViewState,
