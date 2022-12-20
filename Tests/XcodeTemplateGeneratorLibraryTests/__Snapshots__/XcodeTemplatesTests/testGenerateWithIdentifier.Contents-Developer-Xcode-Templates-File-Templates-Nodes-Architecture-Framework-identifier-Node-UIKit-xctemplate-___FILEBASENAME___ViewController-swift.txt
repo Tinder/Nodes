@@ -26,13 +26,23 @@ internal final class ___VARIABLE_productName___ViewController: UIViewController,
     /// The collection of cancellable instances.
     private var cancellables: Set<AnyCancellable> = .init()
 
+    /// The initial view state.
+    private let initialState: ___VARIABLE_productName___ViewState
+
     /// The view state publisher.
-    private let viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+    private let statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
 
     /// The initializer.
-    /// - Parameter viewState: The view state publisher
-    internal init(viewState: AnyPublisher<___VARIABLE_productName___ViewState, Never>) {
-        self.viewState = viewState
+    ///
+    /// - Parameters:
+    ///   - initialState: The initial view state.
+    ///   - statePublisher: The view state publisher.
+    internal init(
+        initialState: ___VARIABLE_productName___ViewState,
+        statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+    ) {
+        self.initialState = initialState
+        self.statePublisher = statePublisher
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()

@@ -153,7 +153,8 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
             transform: viewStateFactory
         )
         let viewController: ___VARIABLE_productName___ViewController = .init(
-            viewState: viewStateWorker.viewState
+            initialState: viewStateFactory(context.state),
+            statePublisher: viewState.eraseToAnyPublisher()
         )
         viewController.receiver = context
         viewController.analytics = analytics

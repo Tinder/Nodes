@@ -59,18 +59,6 @@ extension XcodeTemplates {
         internal func variable(_ name: String) -> String {
             "___VARIABLE_\(name)___"
         }
-
-        internal func imports(for type: ImportsType) -> Set<String> {
-            let baseImports: Set<String> = baseImports.union(reactiveImports).union(["Nodes"])
-            switch type {
-            case .nodes:
-                return baseImports
-            case .diGraph:
-                return baseImports.union(dependencyInjectionImports)
-            case let .viewController(uiFramework):
-                return baseImports.union([uiFramework.import])
-            }
-        }
     }
 }
 

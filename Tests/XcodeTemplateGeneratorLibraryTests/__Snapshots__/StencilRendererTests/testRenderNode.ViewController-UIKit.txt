@@ -26,13 +26,23 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
     /// The collection of cancellable instances.
     private var cancellables: Set<<cancellableType>> = .init()
 
+    /// The initial view state.
+    private let initialState: <nodeName>ViewState
+
     /// The view state publisher.
-    private let viewState: <publisherType><<nodeName>ViewState<publisherFailureType>>
+    private let statePublisher: <publisherType><<nodeName>ViewState<publisherFailureType>>
 
     /// The initializer.
-    /// - Parameter viewState: The view state publisher
-    internal init(viewState: <publisherType><<nodeName>ViewState<publisherFailureType>>) {
-        self.viewState = viewState
+    ///
+    /// - Parameters:
+    ///   - initialState: The initial view state.
+    ///   - statePublisher: The view state publisher.
+    internal init(
+        initialState: <nodeName>ViewState,
+        statePublisher: <publisherType><<nodeName>ViewState<publisherFailureType>>
+    ) {
+        self.initialState = initialState
+        self.statePublisher = statePublisher
             <viewStateOperators>
         super.init(<viewControllerSuperParameters>)
     }

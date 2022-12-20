@@ -154,7 +154,8 @@ internal final class RootBuilderImp: AbstractBuilder
             transform: viewStateFactory
         )
         let viewController: RootViewController = .init(
-            viewState: viewStateWorker.viewState
+            initialState: viewStateFactory(context.state),
+            statePublisher: viewState.eraseToAnyPublisher()
         )
         viewController.receiver = context
         viewController.analytics = analytics
