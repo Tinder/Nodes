@@ -45,7 +45,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         // swiftlint:disable:next discouraged_optional_collection
         var creationOrderOverride: [String]?
 
-        override func `default`(component: ComponentType, state: Void) -> BuildType {
+        override func `default`(component: ComponentType) -> BuildType {
             BuildType(identifier: "default")
         }
 

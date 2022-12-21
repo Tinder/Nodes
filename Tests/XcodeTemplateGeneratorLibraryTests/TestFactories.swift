@@ -5,7 +5,7 @@
 //  Created by Christopher Fuller on 5/31/21.
 //
 
-import XcodeTemplateGeneratorLibrary
+@testable import XcodeTemplateGeneratorLibrary
 
 protocol TestFactories {}
 
@@ -16,26 +16,29 @@ extension TestFactories {
 
     func givenConfig() -> Config {
         var config: Config = .init()
-        config.includedTemplates = ["<includedTemplates>"]
+        config.uiFrameworks = [
+            UIFramework(framework: .appKit),
+            UIFramework(framework: .uiKit),
+            UIFramework(framework: .swiftUI),
+            UIFramework(framework: .custom(name: "<uiFrameworkName>",
+                                           import: "<uiFrameworkImport>",
+                                           viewControllerType: "<viewControllerType>",
+                                           viewControllerSuperParameters: "<viewControllerSuperParameters>"))
+        ].map {
+            var uiFramework: UIFramework = $0
+            uiFramework.viewControllerProperties = "<viewControllerProperties>"
+            uiFramework.viewControllerMethods = "<viewControllerMethods>"
+            uiFramework.viewControllerMethodsForRootNode = "<viewControllerMethodsForRootNode>"
+            return uiFramework
+        }
         config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImports>"]
-        config.diGraphImports = ["<diGraphImports>"]
-        config.viewControllerImports = ["<viewControllerImports>"]
-        config.viewControllerImportsSwiftUI = ["<viewControllerImportsSwiftUI>"]
+        config.reactiveImports = ["<reactiveImports>"]
+        config.dependencyInjectionImports = ["<dependencyInjectionImports>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
-        config.viewControllerType = "<viewControllerType>"
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableFlowType = "<viewControllableFlowType>"
-        config.viewControllerSuperParameters = "<viewControllerSuperParameters>"
-        config.viewControllerProperties = "<viewControllerProperties>"
-        config.viewControllerPropertiesSwiftUI = "<viewControllerPropertiesSwiftUI>"
-        config.viewControllerMethods = "<viewControllerMethods>"
-        config.viewControllerMethodsSwiftUI = "<viewControllerMethodsSwiftUI>"
-        config.rootViewControllerMethods = "<rootViewControllerMethods>"
-        config.rootViewControllerMethodsSwiftUI = "<rootViewControllerMethodsSwiftUI>"
-        config.viewControllerWithoutViewStateMethods = "<viewControllerWithoutViewStateMethods>"
-        config.viewControllerWithoutViewStateMethodsSwiftUI = "<viewControllerWithoutViewStateMethodsSwiftUI>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
         config.viewStatePublisher = "<viewStatePublisher>"
         config.viewStateOperators = "<viewStateOperators>"
@@ -50,10 +53,13 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
             workerName: "<workerName>",
+            analyticsImports: ["<analyticsImports>"],
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],
+            stateImports: ["<stateImports>"],
             viewControllerImports: ["<viewControllerImports>"],
+            viewStateImports: ["<viewStateImports>"],
             workerImports: ["<workerImports>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
@@ -76,10 +82,13 @@ extension TestFactories {
         NodeRootContext(
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",
+            analyticsImports: ["<analyticsImports>"],
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],
+            stateImports: ["<stateImports>"],
             viewControllerImports: ["<viewControllerImports>"],
+            viewStateImports: ["<viewStateImports>"],
             workerImports: ["<workerImports>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
@@ -103,36 +112,16 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
             workerName: "<workerName>",
+            analyticsImports: ["<analyticsImports>"],
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
             flowImports: ["<flowImports>"],
+            stateImports: ["<stateImports>"],
             workerImports: ["<workerImports>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            cancellableType: "<cancellableType>"
-        )
-    }
-
-    func givenNodeWithoutViewStateContext() -> NodeWithoutViewStateContext {
-        NodeWithoutViewStateContext(
-            fileHeader: "<fileHeader>",
-            nodeName: "<nodeName>",
-            workerName: "<workerName>",
-            builderImports: ["<builderImports>"],
-            contextImports: ["<contextImports>"],
-            flowImports: ["<flowImports>"],
-            viewControllerImports: ["<viewControllerImports>"],
-            workerImports: ["<workerImports>"],
-            dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
-            flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
-            viewControllerType: "<viewControllerType>",
-            viewControllableType: "<viewControllableType>",
-            viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllerSuperParameters: "<viewControllerSuperParameters>",
-            viewControllerProperties: "<viewControllerProperties>",
-            viewControllerMethods: "<viewControllerMethods>",
             cancellableType: "<cancellableType>"
         )
     }

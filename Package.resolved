@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/stencilproject/Stencil.git",
       "state" : {
-        "revision" : "ccd9402682f4c07dac9561befd207c8156e80e20",
-        "version" : "0.14.2"
+        "revision" : "4f222ac85d673f35df29962fc4c36ccfdaf9da5b",
+        "version" : "0.15.1"
       }
     },
     {

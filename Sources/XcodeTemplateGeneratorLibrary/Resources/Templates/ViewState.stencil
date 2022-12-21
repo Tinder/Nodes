@@ -1,0 +1,28 @@
+{{ file_header }}{% if view_state_imports %}
+{% for import in view_state_imports %}
+import {{ import }}{% endfor %}{% endif %}
+
+/**
+ PURPOSE:
+ The view state of the view.
+ */
+internal struct {{ node_name }}ViewState: Equatable, InitialStateProviding {
+
+    /// The initial view state.
+    internal static var initialState: {{ node_name }}ViewState = .init()
+}
+
+/**
+ PURPOSE:
+ The factory used to create view state from the state of the Node.
+ */
+internal class {{ node_name }}ViewStateFactory: Transform {
+
+    /// The factory method in which state is transformed into view state.
+    ///
+    /// - Parameter state: The state.
+    /// - Returns: The view state.
+    internal func callAsFunction(_ state: {{ node_name }}State) -> {{ node_name }}ViewState {
+        {{ node_name }}ViewState()
+    }
+}

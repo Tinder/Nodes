@@ -110,7 +110,7 @@ internal protocol ___VARIABLE_productName___Builder: AnyObject {
  Concrete implementation of the Builder, where everything is created and associated.
  */
 internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
- <
+<
     ___VARIABLE_productName___Component,
     ___VARIABLE_productName___Flow,
     ___VARIABLE_productName___DynamicBuildDependency,

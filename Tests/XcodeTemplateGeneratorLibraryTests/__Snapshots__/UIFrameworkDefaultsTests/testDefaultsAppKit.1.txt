@@ -1,0 +1,5 @@
+▿ UIFramework
+  - framework: Framework.appKit
+  - viewControllerMethods: "override func viewDidLoad() {\n    super.viewDidLoad()\n    update(with: initialState)\n}\n\noverride func viewWillAppear() {\n    super.viewWillAppear()\n    observe(statePublisher).store(in: &cancellables)\n}\n\noverride func viewWillDisappear() {\n    super.viewWillDisappear()\n    cancellables.removeAll()\n}"
+  - viewControllerMethodsForRootNode: "override func viewDidLoad() {\n    super.viewDidLoad()\n    update(with: initialState)\n}\n\noverride func viewWillAppear() {\n    super.viewWillAppear()\n    observe(statePublisher).store(in: &cancellables)\n}\n\noverride func viewDidAppear() {\n    super.viewDidAppear()\n    receiver?.viewDidAppear()\n}\n\noverride func viewWillDisappear() {\n    super.viewWillDisappear()\n    cancellables.removeAll()\n}"
+  - viewControllerProperties: ""

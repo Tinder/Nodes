@@ -3,7 +3,7 @@
     - fileHeader: "<fileHeader>"
     ▿ pluginListImports: 3 elements
       - "<baseImports>"
-      - "<diGraphImports>"
+      - "<dependencyInjectionImports>"
       - "Nodes"
     - pluginListName: "___VARIABLE_productName___"
     - viewControllableFlowType: "<viewControllableFlowType>"
@@ -24,8 +24,8 @@
         - required: true
         - type: "text"
     - platforms: 0 elements
-    - sortOrder: 4
+    - sortOrder: 6
     - summary: "The source file implementing a Plugin List"
     - supportsSwiftPackage: true
   ▿ stencils: 1 element
-    - "PluginList"
+    - PluginList
