@@ -9,7 +9,6 @@ public struct NodeViewInjectedContext: Context {
 
     private let fileHeader: String
     private let nodeName: String
-    private let workerName: String
     private let analyticsImports: [String]
     private let builderImports: [String]
     private let contextImports: [String]
@@ -25,7 +24,6 @@ public struct NodeViewInjectedContext: Context {
         [
             "file_header": fileHeader,
             "node_name": nodeName,
-            "worker_name": workerName,
             "owns_view": false,
             "root_node": false,
             "analytics_imports": analyticsImports,
@@ -44,7 +42,6 @@ public struct NodeViewInjectedContext: Context {
     public init(
         fileHeader: String,
         nodeName: String,
-        workerName: String,
         analyticsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
@@ -58,7 +55,6 @@ public struct NodeViewInjectedContext: Context {
     ) {
         self.fileHeader = fileHeader
         self.nodeName = nodeName
-        self.workerName = workerName
         self.analyticsImports = analyticsImports.sortedImports()
         self.builderImports = builderImports.sortedImports()
         self.contextImports = contextImports.sortedImports()

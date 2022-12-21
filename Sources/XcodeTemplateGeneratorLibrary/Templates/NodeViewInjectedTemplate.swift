@@ -27,7 +27,6 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
         context = NodeViewInjectedContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
-            workerName: config.variable("productName"),
             analyticsImports: node.analytics.imports(config: config),
             builderImports: node.builder.imports(config: config),
             contextImports: node.context.imports(config: config),

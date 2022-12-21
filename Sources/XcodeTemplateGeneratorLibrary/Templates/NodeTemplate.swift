@@ -23,7 +23,6 @@ internal struct NodeTemplate: XcodeTemplate {
         context = NodeContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
-            workerName: "\(config.variable("productName"))ViewState",
             analyticsImports: node.analytics.imports(for: uiFramework, config: config),
             builderImports: node.builder.imports(for: uiFramework, config: config),
             contextImports: node.context.imports(for: uiFramework, config: config),

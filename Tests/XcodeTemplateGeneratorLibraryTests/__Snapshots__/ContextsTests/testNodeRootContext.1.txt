@@ -1,4 +1,4 @@
-▿ 25 key/value pairs
+▿ 24 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -92,6 +92,3 @@
   ▿ (2 elements)
     - key: "view_state_operators"
     - value: "<viewStateOperators>"
-  ▿ (2 elements)
-    - key: "worker_name"
-    - value: "<workerName>"

@@ -51,7 +51,6 @@ extension TestFactories {
         NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
-            workerName: "<workerName>",
             analyticsImports: ["<analyticsImports>"],
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
@@ -78,7 +77,6 @@ extension TestFactories {
     func givenNodeRootContext() -> NodeRootContext {
         NodeRootContext(
             fileHeader: "<fileHeader>",
-            workerName: "<workerName>",
             analyticsImports: ["<analyticsImports>"],
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],
@@ -106,7 +104,6 @@ extension TestFactories {
         NodeViewInjectedContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
-            workerName: "<workerName>",
             analyticsImports: ["<analyticsImports>"],
             builderImports: ["<builderImports>"],
             contextImports: ["<contextImports>"],

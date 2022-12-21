@@ -55,7 +55,6 @@
       - "<baseImports>"
       - "Nodes"
     - viewStateOperators: "<viewStateOperators>"
-    - workerName: "___VARIABLE_productName___ViewState"
   ▿ filenames: 1 key/value pair
     ▿ (2 elements)
       - key: "Worker"
