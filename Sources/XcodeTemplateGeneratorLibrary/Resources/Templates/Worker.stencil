@@ -6,7 +6,7 @@ import {{ import }}{% endfor %}{% endif %}
  PURPOSE:
  Encapsulates work to be performed by the Node.
  */
-internal protocol {{ worker_name }}Worker: Worker {{ '{}' }}
+internal protocol {{ worker_name }}Worker: Worker {}
 
 /**
  PURPOSE:
