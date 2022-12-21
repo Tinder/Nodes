@@ -1,4 +1,4 @@
-▿ 27 key/value pairs
+▿ 26 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -95,10 +95,6 @@
   ▿ (2 elements)
     - key: "view_state_publisher"
     - value: "<viewStatePublisher>"
-  ▿ (2 elements)
-    - key: "worker_imports"
-    ▿ value: 1 element
-      - "<workerImports>"
   ▿ (2 elements)
     - key: "worker_name"
     - value: "<workerName>"

@@ -56,7 +56,6 @@
       - "Nodes"
     - viewStateOperators: "<viewStateOperators>"
     - viewStatePublisher: "<viewStatePublisher>"
-    - workerImports: 0 elements
     - workerName: "___VARIABLE_productName___ViewState"
   ▿ filenames: 1 key/value pair
     ▿ (2 elements)

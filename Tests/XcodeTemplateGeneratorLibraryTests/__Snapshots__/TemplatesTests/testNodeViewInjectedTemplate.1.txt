@@ -39,7 +39,6 @@
       - "Nodes"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
-    - workerImports: 0 elements
     - workerName: "___VARIABLE_productName___"
   - name: "Node (view injected)"
   ▿ propertyList: XcodeTemplatePropertyList

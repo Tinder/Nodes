@@ -31,7 +31,6 @@ internal struct NodeTemplate: XcodeTemplate {
             stateImports: node.state.imports(for: uiFramework, config: config),
             viewControllerImports: node.viewController.imports(for: uiFramework, config: config),
             viewStateImports: node.viewState.imports(for: uiFramework, config: config),
-            workerImports: [],
             dependencies: config.dependencies,
             flowProperties: config.flowProperties,
             viewControllerType: uiFramework.viewControllerType,
