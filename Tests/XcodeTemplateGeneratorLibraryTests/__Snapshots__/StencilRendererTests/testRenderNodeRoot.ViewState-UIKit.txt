@@ -6,11 +6,7 @@ import <viewStateImports>
  PURPOSE:
  The view state of the view.
  */
-internal struct RootViewState: Equatable, InitialStateProviding {
-
-    /// The initial view state.
-    internal static var initialState: RootViewState = .init()
-}
+internal struct RootViewState: Equatable {}
 
 /**
  PURPOSE:
