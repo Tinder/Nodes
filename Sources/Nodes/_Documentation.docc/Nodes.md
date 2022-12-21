@@ -127,7 +127,6 @@ Note that although the `Context` may participate in keeping a Node's user interf
 
 ### View State
 
-- ``InitialStateProviding``
 - ``StateObserver``
 - ``WithViewState``
 
