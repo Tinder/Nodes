@@ -74,11 +74,9 @@ internal struct {{ node_name }}View: NodesView {
  */
 internal struct {{ node_name }}View_Previews: PreviewProvider {
 
-    private static let initialState: {{ node_name }}ViewState = .init()
-
     internal static var previews: some View {
         {{ node_name }}View(
-            initialState: initialState,
+            initialState: {{ node_name }}ViewState(),
             statePublisher: Empty().eraseToAnyPublisher()
         )
     }

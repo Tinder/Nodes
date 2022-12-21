@@ -73,11 +73,9 @@ internal struct RootView: NodesView {
  */
 internal struct RootView_Previews: PreviewProvider {
 
-    private static let initialState: RootViewState = .init()
-
     internal static var previews: some View {
         RootView(
-            initialState: initialState,
+            initialState: RootViewState(),
             statePublisher: Empty().eraseToAnyPublisher()
         )
     }
