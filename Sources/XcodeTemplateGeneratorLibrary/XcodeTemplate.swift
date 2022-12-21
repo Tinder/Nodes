@@ -12,12 +12,6 @@ internal protocol XcodeTemplate {
 
     var name: String { get }
     var stencils: [StencilTemplate] { get }
-    var filenames: [String: String] { get }
     var context: Context { get }
     var propertyList: PropertyList { get }
-}
-
-extension XcodeTemplate {
-
-    internal var filenames: [String: String] { [:] }
 }

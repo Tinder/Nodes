@@ -55,10 +55,6 @@
       - "<baseImports>"
       - "Nodes"
     - viewStateOperators: "<viewStateOperators>"
-  ▿ filenames: 1 key/value pair
-    ▿ (2 elements)
-      - key: "Worker"
-      - value: "ViewStateWorker"
   - name: "Node - UIKit"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element

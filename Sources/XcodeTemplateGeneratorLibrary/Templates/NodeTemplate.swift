@@ -11,7 +11,6 @@ internal struct NodeTemplate: XcodeTemplate {
 
     internal let name: String
     internal let stencils: [StencilTemplate]
-    internal let filenames: [String: String] = ["Worker": "ViewStateWorker"]
     internal let context: Context
     internal let propertyList: PropertyList
 

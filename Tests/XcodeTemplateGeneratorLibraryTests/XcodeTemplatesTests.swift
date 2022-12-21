@@ -28,10 +28,6 @@ final class XcodeTemplatesTests: XCTestCase {
         let propertyList: PropertyList = .init(description: "description", sortOrder: 23) {}
     }
 
-    func testDefaultFilenames() {
-        expect(TestXcodeTemplate().filenames) == [:]
-    }
-
     func testGenerateWithIdentifier() throws {
         let fileSystem: FileSystemMock = .init()
         try XcodeTemplates(config: Config()).generate(identifier: "identifier", using: fileSystem)
