@@ -12,7 +12,7 @@ internal struct ___VARIABLE_productName___ViewState: Equatable {}
  PURPOSE:
  The factory used to create view state from the state of the Node.
  */
-internal class ___VARIABLE_productName___ViewStateFactory: Transform {
+internal class ___VARIABLE_productName___ViewStateFactory: Nodes.Transform {
 
     /// The factory method in which state is transformed into view state.
     ///
