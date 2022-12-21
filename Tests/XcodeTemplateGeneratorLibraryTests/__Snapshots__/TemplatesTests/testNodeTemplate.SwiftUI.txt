@@ -56,10 +56,7 @@
       - "Nodes"
     - viewStateOperators: "<viewStateOperators>"
     - viewStatePublisher: "<viewStatePublisher>"
-    ▿ workerImports: 3 elements
-      - "<baseImports>"
-      - "<reactiveImports>"
-      - "Nodes"
+    - workerImports: 0 elements
     - workerName: "___VARIABLE_productName___ViewState"
   ▿ filenames: 1 key/value pair
     ▿ (2 elements)
@@ -85,7 +82,7 @@
     - sortOrder: 3
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 8 elements
+  ▿ stencils: 7 elements
     - Analytics
     ▿ Builder
       - builder: Variation.swiftUI
@@ -95,4 +92,3 @@
     ▿ ViewController
       - viewController: Variation.swiftUI
     - ViewState
-    - Worker

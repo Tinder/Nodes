@@ -39,10 +39,7 @@
       - "Nodes"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
-    ▿ workerImports: 3 elements
-      - "<baseImports>"
-      - "<reactiveImports>"
-      - "Nodes"
+    - workerImports: 0 elements
     - workerName: "___VARIABLE_productName___"
   - name: "Node (view injected)"
   ▿ propertyList: XcodeTemplatePropertyList
@@ -64,11 +61,10 @@
     - sortOrder: 5
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 6 elements
+  ▿ stencils: 5 elements
     - Analytics
     ▿ Builder
       - builder: Variation.default
     - Context
     - Flow
     - State
-    - Worker
