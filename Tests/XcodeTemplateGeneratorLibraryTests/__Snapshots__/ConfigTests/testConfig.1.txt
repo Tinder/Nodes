@@ -57,4 +57,3 @@
   - viewControllableType: "viewControllableType"
   - viewControllerUpdateComment: "viewControllerUpdateComment"
   - viewStateOperators: "viewStateOperators"
-  - viewStatePublisher: "viewStatePublisher"

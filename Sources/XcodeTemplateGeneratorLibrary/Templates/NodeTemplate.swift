@@ -40,7 +40,6 @@ internal struct NodeTemplate: XcodeTemplate {
             viewControllerProperties: uiFramework.viewControllerProperties,
             viewControllerMethods: uiFramework.viewControllerMethods,
             viewControllerUpdateComment: config.viewControllerUpdateComment,
-            viewStatePublisher: config.viewStatePublisher,
             viewStateOperators: config.viewStateOperators,
             publisherType: config.publisherType,
             publisherFailureType: config.publisherFailureType,

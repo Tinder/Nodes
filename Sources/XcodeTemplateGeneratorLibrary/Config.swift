@@ -35,7 +35,6 @@ extension XcodeTemplates {
         public var viewControllableType: String
         public var viewControllableFlowType: String
         public var viewControllerUpdateComment: String
-        public var viewStatePublisher: String
         public var viewStateOperators: String
         public var publisherType: String
         public var publisherFailureType: String
@@ -79,7 +78,6 @@ extension XcodeTemplates.Config {
         viewControllerUpdateComment = """
             // Add implementation to update the user interface when the view state changes.
             """
-        viewStatePublisher = "Just(.initialState).eraseToAnyPublisher()"
         viewStateOperators = """
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
@@ -130,9 +128,6 @@ extension XcodeTemplates.Config {
         viewControllerUpdateComment =
             (try? decoder.decodeString(CodingKeys.viewControllerUpdateComment))
             ?? defaults.viewControllerUpdateComment
-        viewStatePublisher =
-            (try? decoder.decodeString(CodingKeys.viewStatePublisher))
-            ?? defaults.viewStatePublisher
         viewStateOperators =
             (try? decoder.decodeString(CodingKeys.viewStateOperators))
             ?? defaults.viewStateOperators

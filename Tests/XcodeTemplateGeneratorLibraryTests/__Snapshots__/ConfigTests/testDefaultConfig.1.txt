@@ -26,4 +26,3 @@
   - viewControllableType: "ViewControllable"
   - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
   - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
-  - viewStatePublisher: "Just(.initialState).eraseToAnyPublisher()"
