@@ -108,7 +108,7 @@ final class ViewControllableTests: XCTestCase {
         expect(child.didMoveCallCount) == 0
         expect(viewController.children).to(beEmpty())
         expect(viewController.view.subviews).to(beEmpty())
-        viewController.contain(child) { _ in [] }
+        viewController.contain(child)
         expect(child.willMoveCallCount) == 1
         expect(child.didMoveCallCount) == 1
         expect(viewController.children) == [child]

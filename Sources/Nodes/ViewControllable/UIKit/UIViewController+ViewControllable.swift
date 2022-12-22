@@ -92,38 +92,7 @@ extension UIViewController: ViewControllable {
     ///
     /// - Parameter viewController: The ``ViewControllable`` instance to contain.
     public func contain(_ viewController: ViewControllable) {
-        contain(viewController, in: view.bounds)
-    }
-
-    /// Contains the given ``ViewControllable`` instance within the given frame of the parent
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - frame: The frame in which to contain the ``ViewControllable`` instance.
-    public func contain(_ viewController: ViewControllable, in frame: CGRect) {
-        contain(viewController, in: frame, with: [.flexibleWidth, .flexibleHeight])
-    }
-
-    /// Contains the given ``ViewControllable`` instance within the given frame of the parent
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - frame: The frame in which to contain the ``ViewControllable`` instance.
-    ///   - autoresizingMask: The autoresizing mask to apply to the ``ViewControllable`` instance.
-    public func contain(
-        _ viewController: ViewControllable,
-        in frame: CGRect,
-        with autoresizingMask: UIView.AutoresizingMask
-    ) {
-        let subview: UIView = viewController._asUIViewController().view
-        addChild(viewController)
-        subview.translatesAutoresizingMaskIntoConstraints = true
-        subview.frame = frame
-        subview.autoresizingMask = autoresizingMask
-        view.addSubview(subview)
-        viewController.didMove(toParent: self)
+        contain(viewController, in: view)
     }
 
     /// Contains the given ``ViewControllable`` instance within the given view of the parent
@@ -137,31 +106,13 @@ extension UIViewController: ViewControllable {
         else { return }
         let subview: UIView = viewController._asUIViewController().view
         addChild(viewController)
-        subview.translatesAutoresizingMaskIntoConstraints = true
-        subview.frame = view.bounds
-        subview.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(subview)
-        viewController.didMove(toParent: self)
-    }
-
-    /// Contains the given ``ViewControllable`` instance with the layout constraints provided by the given closure.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - constraints: The closure providing the layout constraints.
-    ///
-    ///     The closure has the following arguments:
-    ///     | Name | Description                                  |
-    ///     | ---- | -------------------------------------------- |
-    ///     | view | The view on which to add layout constraints. |
-    ///
-    ///     The closure returns an array of layout constraints.
-    public func contain(_ viewController: ViewControllable, constraints: (_ view: UIView) -> [NSLayoutConstraint]) {
-        let subview: UIView = viewController._asUIViewController().view
-        addChild(viewController)
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
-        NSLayoutConstraint.activate(constraints(subview))
+        // activate from array
+        subview.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        subview.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        subview.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        subview.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         viewController.didMove(toParent: self)
     }
 
