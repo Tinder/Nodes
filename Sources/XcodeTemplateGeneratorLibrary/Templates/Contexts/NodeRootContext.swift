@@ -8,12 +8,13 @@
 public struct NodeRootContext: Context {
 
     private let fileHeader: String
-    private let workerName: String
+    private let analyticsImports: [String]
     private let builderImports: [String]
     private let contextImports: [String]
     private let flowImports: [String]
+    private let stateImports: [String]
     private let viewControllerImports: [String]
-    private let workerImports: [String]
+    private let viewStateImports: [String]
     private let dependencies: [[String: Any]]
     private let flowProperties: [[String: Any]]
     private let viewControllerType: String
@@ -23,7 +24,6 @@ public struct NodeRootContext: Context {
     private let viewControllerProperties: String
     private let viewControllerMethods: String
     private let viewControllerUpdateComment: String
-    private let viewStatePublisher: String
     private let viewStateOperators: String
     private let publisherType: String
     private let publisherFailureType: String
@@ -33,14 +33,15 @@ public struct NodeRootContext: Context {
         [
             "file_header": fileHeader,
             "node_name": "Root",
-            "worker_name": workerName,
             "owns_view": true,
             "root_node": true,
+            "analytics_imports": analyticsImports,
             "builder_imports": builderImports,
             "context_imports": contextImports,
             "flow_imports": flowImports,
+            "state_imports": stateImports,
             "view_controller_imports": viewControllerImports,
-            "worker_imports": workerImports,
+            "view_state_imports": viewStateImports,
             "dependencies": dependencies,
             "flow_properties": flowProperties,
             "view_controller_type": viewControllerType,
@@ -50,7 +51,6 @@ public struct NodeRootContext: Context {
             "view_controller_properties": viewControllerProperties,
             "view_controller_methods": viewControllerMethods,
             "view_controller_update_comment": viewControllerUpdateComment,
-            "view_state_publisher": viewStatePublisher,
             "view_state_operators": viewStateOperators,
             "publisher_type": publisherType,
             "publisher_failure_type": publisherFailureType,
@@ -60,12 +60,13 @@ public struct NodeRootContext: Context {
 
     public init(
         fileHeader: String,
-        workerName: String,
+        analyticsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
         flowImports: Set<String>,
+        stateImports: Set<String>,
         viewControllerImports: Set<String>,
-        workerImports: Set<String>,
+        viewStateImports: Set<String>,
         dependencies: [XcodeTemplates.Variable],
         flowProperties: [XcodeTemplates.Variable],
         viewControllerType: String,
@@ -75,19 +76,19 @@ public struct NodeRootContext: Context {
         viewControllerProperties: String,
         viewControllerMethods: String,
         viewControllerUpdateComment: String,
-        viewStatePublisher: String,
         viewStateOperators: String,
         publisherType: String,
         publisherFailureType: String,
         cancellableType: String
     ) {
         self.fileHeader = fileHeader
-        self.workerName = workerName
+        self.analyticsImports = analyticsImports.sortedImports()
         self.builderImports = builderImports.sortedImports()
         self.contextImports = contextImports.sortedImports()
         self.flowImports = flowImports.sortedImports()
+        self.stateImports = stateImports.sortedImports()
         self.viewControllerImports = viewControllerImports.sortedImports()
-        self.workerImports = workerImports.sortedImports()
+        self.viewStateImports = viewStateImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)
         self.viewControllerType = viewControllerType
@@ -97,7 +98,6 @@ public struct NodeRootContext: Context {
         self.viewControllerProperties = viewControllerProperties
         self.viewControllerMethods = viewControllerMethods
         self.viewControllerUpdateComment = viewControllerUpdateComment
-        self.viewStatePublisher = viewStatePublisher
         self.viewStateOperators = viewStateOperators
         self.publisherType = publisherType
         self.publisherFailureType = publisherFailureType

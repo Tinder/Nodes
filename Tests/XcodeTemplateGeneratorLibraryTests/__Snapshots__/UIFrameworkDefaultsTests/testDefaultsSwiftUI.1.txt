@@ -3,4 +3,3 @@
   - viewControllerMethods: ""
   - viewControllerMethodsForRootNode: "override func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}"
   - viewControllerProperties: ""
-  - viewControllerSuperParameters: ""

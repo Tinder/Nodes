@@ -12,9 +12,10 @@ import XCTest
 final class UIFrameworkDefaultsTests: XCTestCase {
 
     func testDefaults() {
-        let framework: UIFramework.Framework = .custom(name: "<name>",
-                                                       import: "<import>",
-                                                       viewControllerType: "<viewControllerType>")
+        let framework: UIFramework.Framework = .custom(name: "<uiFrameworkName>",
+                                                       import: "<uiFrameworkImport>",
+                                                       viewControllerType: "<viewControllerType>",
+                                                       viewControllerSuperParameters: "<viewControllerSuperParameters>")
         assertSnapshot(matching: UIFramework.makeDefaultFramework(for: framework), as: .dump)
     }
 

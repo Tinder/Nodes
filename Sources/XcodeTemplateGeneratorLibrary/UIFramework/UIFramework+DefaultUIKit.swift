@@ -13,11 +13,12 @@ extension UIFramework {
             override func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
+                update(with: initialState)
             }
 
             override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
-                observe(viewState).store(in: &cancellables)
+                observe(statePublisher).store(in: &cancellables)
             }
 
             override func viewWillDisappear(_ animated: Bool) {
@@ -30,11 +31,12 @@ extension UIFramework {
             override func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
+                update(with: initialState)
             }
 
             override func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
-                observe(viewState).store(in: &cancellables)
+                observe(statePublisher).store(in: &cancellables)
             }
 
             override func viewDidAppear(_ animated: Bool) {
@@ -52,7 +54,6 @@ extension UIFramework {
     internal static func makeDefaultUIKitFramework() -> UIFramework {
         UIFramework(
             framework: .uiKit,
-            viewControllerSuperParameters: "nibName: nil, bundle: nil",
             viewControllerProperties: "",
             viewControllerMethods: Defaults.viewControllerMethods,
             viewControllerMethodsForRootNode: Defaults.viewControllerMethodsForRootNode

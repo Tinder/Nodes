@@ -10,9 +10,9 @@
     ▿ Variable
       - name: "dependencies-name-2"
       - type: "dependencies-type-2"
-  ▿ diGraphImports: 2 members
-    - "diGraphImports-1"
-    - "diGraphImports-2"
+  ▿ dependencyInjectionImports: 2 members
+    - "dependencyInjectionImports-1"
+    - "dependencyInjectionImports-2"
   - fileHeader: "fileHeader"
   ▿ flowProperties: 2 elements
     ▿ Variable
@@ -24,37 +24,36 @@
   - isViewInjectedNodeEnabled: true
   - publisherFailureType: "publisherFailureType"
   - publisherType: "publisherType"
+  ▿ reactiveImports: 2 members
+    - "reactiveImports-1"
+    - "reactiveImports-2"
   ▿ uiFrameworks: 4 elements
     ▿ UIFramework
       - framework: Framework.appKit
       - viewControllerMethods: "<viewControllerMethods-AppKit>"
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-AppKit>"
       - viewControllerProperties: "<viewControllerProperties-AppKit>"
-      - viewControllerSuperParameters: "<viewControllerSuperParameters-AppKit>"
     ▿ UIFramework
       - framework: Framework.uiKit
       - viewControllerMethods: "<viewControllerMethods-UIKit>"
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-UIKit>"
       - viewControllerProperties: "<viewControllerProperties-UIKit>"
-      - viewControllerSuperParameters: "<viewControllerSuperParameters-UIKit>"
     ▿ UIFramework
       - framework: Framework.swiftUI
       - viewControllerMethods: "<viewControllerMethods-SwiftUI>"
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-SwiftUI>"
       - viewControllerProperties: "<viewControllerProperties-SwiftUI>"
-      - viewControllerSuperParameters: "<viewControllerSuperParameters-SwiftUI>"
     ▿ UIFramework
       ▿ framework: Framework
-        ▿ custom: (3 elements)
-          - name: "<name>"
-          - import: "<import>"
+        ▿ custom: (4 elements)
+          - name: "<uiFrameworkName>"
+          - import: "<uiFrameworkImport>"
           - viewControllerType: "<viewControllerType>"
+          - viewControllerSuperParameters: "<viewControllerSuperParameters>"
       - viewControllerMethods: "<viewControllerMethods-Custom>"
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-Custom>"
       - viewControllerProperties: "<viewControllerProperties-Custom>"
-      - viewControllerSuperParameters: "<viewControllerSuperParameters-Custom>"
   - viewControllableFlowType: "viewControllableFlowType"
   - viewControllableType: "viewControllableType"
   - viewControllerUpdateComment: "viewControllerUpdateComment"
   - viewStateOperators: "viewStateOperators"
-  - viewStatePublisher: "viewStatePublisher"

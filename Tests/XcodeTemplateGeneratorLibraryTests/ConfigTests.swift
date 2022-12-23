@@ -10,7 +10,7 @@ import SnapshotTesting
 import XcodeTemplateGeneratorLibrary
 import XCTest
 
-final class ConfigTests: XCTestCase {
+final class ConfigTests: XCTestCase, TestFactories {
 
     private typealias Config = XcodeTemplates.Config
 
@@ -36,16 +36,7 @@ final class ConfigTests: XCTestCase {
     }
 
     func testUIFrameworkForKind() throws {
-        var config: XcodeTemplates.Config = .init()
-        config.uiFrameworks = [
-            UIFramework(framework: .appKit),
-            UIFramework(framework: .uiKit),
-            UIFramework(framework: .swiftUI),
-            UIFramework(framework: .custom(name: "<name>",
-                                           import: "<import>",
-                                           viewControllerType: "<viewControllerType>")
-            )
-        ]
+        let config: XcodeTemplates.Config = givenConfig()
         try UIFramework.Kind
             .allCases
             .forEach { try expect(config.uiFramework(for: $0).kind) == $0 }
@@ -68,26 +59,23 @@ final class ConfigTests: XCTestCase {
         """
         uiFrameworks:
             - framework: AppKit
-              viewControllerSuperParameters: <viewControllerSuperParameters-AppKit>
               viewControllerProperties: <viewControllerProperties-AppKit>
               viewControllerMethods: <viewControllerMethods-AppKit>
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-AppKit>
             - framework: UIKit
-              viewControllerSuperParameters: <viewControllerSuperParameters-UIKit>
               viewControllerProperties: <viewControllerProperties-UIKit>
               viewControllerMethods: <viewControllerMethods-UIKit>
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-UIKit>
             - framework: SwiftUI
-              viewControllerSuperParameters: <viewControllerSuperParameters-SwiftUI>
               viewControllerProperties: <viewControllerProperties-SwiftUI>
               viewControllerMethods: <viewControllerMethods-SwiftUI>
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-SwiftUI>
             - framework:
                 custom:
-                  name: <name>
-                  import: <import>
+                  name: <uiFrameworkName>
+                  import: <uiFrameworkImport>
                   viewControllerType: <viewControllerType>
-              viewControllerSuperParameters: <viewControllerSuperParameters-Custom>
+                  viewControllerSuperParameters: <viewControllerSuperParameters>
               viewControllerProperties: <viewControllerProperties-Custom>
               viewControllerMethods: <viewControllerMethods-Custom>
               viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
@@ -96,9 +84,12 @@ final class ConfigTests: XCTestCase {
         baseImports:
           - baseImports-1
           - baseImports-2
-        diGraphImports:
-          - diGraphImports-1
-          - diGraphImports-2
+        reactiveImports:
+          - reactiveImports-1
+          - reactiveImports-2
+        dependencyInjectionImports:
+          - dependencyInjectionImports-1
+          - dependencyInjectionImports-2
         dependencies:
           - name: dependencies-name-1
             type: dependencies-type-1
@@ -111,10 +102,7 @@ final class ConfigTests: XCTestCase {
             type: flowProperties-type-2
         viewControllableType: viewControllableType
         viewControllableFlowType: viewControllableFlowType
-        viewControllerAvailabilityAttribute: viewControllerAvailabilityAttribute
-        viewControllerAvailabilityAttributeSwiftUI: viewControllerAvailabilityAttributeSwiftUI
         viewControllerUpdateComment: viewControllerUpdateComment
-        viewStatePublisher: viewStatePublisher
         viewStateOperators: viewStateOperators
         publisherType: publisherType
         publisherFailureType: publisherFailureType

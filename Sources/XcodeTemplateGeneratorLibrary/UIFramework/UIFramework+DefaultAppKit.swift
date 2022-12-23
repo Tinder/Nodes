@@ -10,9 +10,14 @@ extension UIFramework {
     private enum Defaults {
 
         static let viewControllerMethods: String = """
+            override func viewDidLoad() {
+                super.viewDidLoad()
+                update(with: initialState)
+            }
+
             override func viewWillAppear() {
                 super.viewWillAppear()
-                observe(viewState).store(in: &cancellables)
+                observe(statePublisher).store(in: &cancellables)
             }
 
             override func viewWillDisappear() {
@@ -22,9 +27,14 @@ extension UIFramework {
             """
 
         static let viewControllerMethodsForRootNode: String = """
+            override func viewDidLoad() {
+                super.viewDidLoad()
+                update(with: initialState)
+            }
+
             override func viewWillAppear() {
                 super.viewWillAppear()
-                observe(viewState).store(in: &cancellables)
+                observe(statePublisher).store(in: &cancellables)
             }
 
             override func viewDidAppear() {
@@ -42,7 +52,6 @@ extension UIFramework {
     internal static func makeDefaultAppKitFramework() -> UIFramework {
         UIFramework(
             framework: .appKit,
-            viewControllerSuperParameters: "nibName: nil, bundle: nil",
             viewControllerProperties: "",
             viewControllerMethods: Defaults.viewControllerMethods,
             viewControllerMethodsForRootNode: Defaults.viewControllerMethodsForRootNode

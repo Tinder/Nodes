@@ -3,8 +3,9 @@
     - cancellableType: "<cancellableType>"
     - fileHeader: "<fileHeader>"
     - nodeName: "___VARIABLE_nodeName___"
-    ▿ workerImports: 2 elements
+    ▿ workerImports: 3 elements
       - "<baseImports>"
+      - "<reactiveImports>"
       - "Nodes"
     - workerName: "___VARIABLE_productName___"
   - name: "Worker"
@@ -32,8 +33,8 @@
         - required: true
         - type: "text"
     - platforms: 0 elements
-    - sortOrder: 7
+    - sortOrder: 9
     - summary: "The source file implementing a Worker"
     - supportsSwiftPackage: true
   ▿ stencils: 1 element
-    - "Worker"
+    - Worker

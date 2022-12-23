@@ -1,10 +1,10 @@
 ▿ UIFramework
   ▿ framework: Framework
-    ▿ custom: (3 elements)
-      - name: "<name>"
-      - import: "<import>"
+    ▿ custom: (4 elements)
+      - name: "<uiFrameworkName>"
+      - import: "<uiFrameworkImport>"
       - viewControllerType: "<viewControllerType>"
+      - viewControllerSuperParameters: "<viewControllerSuperParameters>"
   - viewControllerMethods: "<viewControllerMethods>"
   - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"
   - viewControllerProperties: "<viewControllerProperties>"
-  - viewControllerSuperParameters: "<viewControllerSuperParameters>"

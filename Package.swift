@@ -42,7 +42,7 @@ let package = Package(
             from: "4.0.0"),
         .package(
             url: "https://github.com/stencilproject/Stencil.git",
-            from: "0.14.0"),
+            from: "0.15.0"),
         .package(
             url: "https://github.com/Quick/Nimble.git",
             from: "10.0.0"),
