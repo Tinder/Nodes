@@ -58,55 +58,55 @@ final class ConfigTests: XCTestCase, TestFactories {
     private func givenConfig() -> String {
         """
         uiFrameworks:
-            - framework: AppKit
-              viewControllerProperties: <viewControllerProperties-AppKit>
-              viewControllerMethods: <viewControllerMethods-AppKit>
-              viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-AppKit>
-            - framework: UIKit
-              viewControllerProperties: <viewControllerProperties-UIKit>
-              viewControllerMethods: <viewControllerMethods-UIKit>
-              viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-UIKit>
-            - framework: SwiftUI
-              viewControllerProperties: <viewControllerProperties-SwiftUI>
-              viewControllerMethods: <viewControllerMethods-SwiftUI>
-              viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-SwiftUI>
-            - framework:
-                custom:
-                  name: <uiFrameworkName>
-                  import: <uiFrameworkImport>
-                  viewControllerType: <viewControllerType>
-                  viewControllerSuperParameters: <viewControllerSuperParameters>
-              viewControllerProperties: <viewControllerProperties-Custom>
-              viewControllerMethods: <viewControllerMethods-Custom>
-              viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
+          - framework: AppKit
+            viewControllerProperties: <viewControllerProperties-AppKit>
+            viewControllerMethods: <viewControllerMethods-AppKit>
+            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-AppKit>
+          - framework: UIKit
+            viewControllerProperties: <viewControllerProperties-UIKit>
+            viewControllerMethods: <viewControllerMethods-UIKit>
+            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-UIKit>
+          - framework: SwiftUI
+            viewControllerProperties: <viewControllerProperties-SwiftUI>
+            viewControllerMethods: <viewControllerMethods-SwiftUI>
+            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-SwiftUI>
+          - framework:
+              custom:
+                name: <uiFrameworkName>
+                import: <uiFrameworkImport>
+                viewControllerType: <viewControllerType>
+                viewControllerSuperParameters: <viewControllerSuperParameters>
+            viewControllerProperties: <viewControllerProperties-Custom>
+            viewControllerMethods: <viewControllerMethods-Custom>
+            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
         isViewInjectedNodeEnabled: true
-        fileHeader: fileHeader
+        fileHeader: <fileHeader>
         baseImports:
-          - baseImports-1
-          - baseImports-2
+          - <baseImports-1>
+          - <baseImports-2>
         reactiveImports:
-          - reactiveImports-1
-          - reactiveImports-2
+          - <reactiveImports-1>
+          - <reactiveImports-2>
         dependencyInjectionImports:
-          - dependencyInjectionImports-1
-          - dependencyInjectionImports-2
+          - <dependencyInjectionImports-1>
+          - <dependencyInjectionImports-2>
         dependencies:
-          - name: dependencies-name-1
-            type: dependencies-type-1
-          - name: dependencies-name-2
-            type: dependencies-type-2
+          - name: <dependencies-name-1>
+            type: <dependencies-type-1>
+          - name: <dependencies-name-2>
+            type: <dependencies-type-2>
         flowProperties:
-          - name: flowProperties-name-1
-            type: flowProperties-type-1
-          - name: flowProperties-name-2
-            type: flowProperties-type-2
-        viewControllableType: viewControllableType
-        viewControllableFlowType: viewControllableFlowType
-        viewControllerUpdateComment: viewControllerUpdateComment
-        viewStateOperators: viewStateOperators
-        publisherType: publisherType
-        publisherFailureType: publisherFailureType
-        cancellableType: cancellableType
+          - name: <flowProperties-name-1>
+            type: <flowProperties-type-1>
+          - name: <flowProperties-name-2>
+            type: <flowProperties-type-2>
+        viewControllableType: <viewControllableType>
+        viewControllableFlowType: <viewControllableFlowType>
+        viewControllerUpdateComment: <viewControllerUpdateComment>
+        viewStateOperators: <viewStateOperators>
+        publisherType: <publisherType>
+        publisherFailureType: <publisherFailureType>
+        cancellableType: <cancellableType>
         """
     }
 }
