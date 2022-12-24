@@ -194,7 +194,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// Under normal circumstances, user interactions do not directly cause ``ViewControllable`` instances to
     /// be dismissed, for example when simply tapping a button. To dismiss a ``ViewControllable`` instance in
     /// these situations, the `Context` instance will be informed of the button tap which then informs the `Flow`
-    /// instance to perform the dismissal. The `Flow` instance retrieves the appropriate child `Flow` instance
+    /// instance to initiate the dismissal. The `Flow` instance retrieves the appropriate child `Flow` instance
     /// (by type) and, only after the dismissal is complete, detaches the child `Flow` instance using the
     /// ``detach(ending:)`` method.
     ///
@@ -203,29 +203,29 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// of a ``UINavigationController``, a user may navigate backward to any point in the navigation history, which
     /// directly causes one or more ``ViewControllable`` instances to be immediately popped off the navigation stack.
     /// In these situations, to detach `Flow` instances corresponding to already dismissed ``ViewControllable``
-    /// instances, the `Context` will be informed of the dismissal (and be provided the ``ViewControllable`` instances)
-    /// which then informs the `Flow` instance to perform the detachment only.
+    /// instances, the `Context` instance will be informed of the dismissal (and be provided the ``ViewControllable``
+    /// instances) which then informs the `Flow` instance to perform the detachment only.
     ///
     /// Example:
     /// ```
-    /// func detach(endingFlowsFor viewControllables: [ViewControllable]) {
+    /// func detach(endingFlowsFor viewControllers: [ViewControllable]) {
     ///     detach(endingSubFlowsOfType: ViewControllableFlow.self) { flow in
-    ///         viewControllables.contains { $0 === flow.viewControllable }
+    ///         viewControllers.contains { $0 === flow.viewController }
     ///     }
     /// }
     /// ```
     ///
     /// In the above example, the `where` closure returns `true` if the ``ViewControllable`` of the `flow` exists in
-    /// the given `viewControllables` array.
+    /// the given `viewControllers` array.
     ///
     /// - Important: Use the ``detach(endingSubFlowsOfType:where:)`` method only when ``ViewControllable``
     ///   instances are dismissed directly within the UI framework (before the `Context` instance is informed of the
     ///   interaction). And therefore, in normal situations, use the ``detach(ending:)`` method whenever the `Flow`
-    ///   instance performs the dismissal.
+    ///   instance initiates the dismissal.
     ///
-    /// For a `Flow` to be informed of any view controllers popped off the navigation stack as a result of user
-    /// interactions, the view controller must subclass ``NavigationController`` providing a closure in which to call
-    /// the receiver method.
+    /// For a `Flow` instance to be informed of any view controllers popped off of a navigation stack as a result of
+    /// user interactions, the view controller must subclass ``NavigationController`` providing a closure in which to
+    /// call the receiver method.
     ///
     /// Example:
     /// ```
@@ -240,7 +240,8 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// }
     /// ```
     ///
-    /// The `Context` (receiver) is then responsible for forwarding the view controller collection to the `Flow`.
+    /// The `Context` (receiver) instance is then responsible for forwarding the view controller collection to
+    /// the `Flow` instance.
     ///
     /// Example:
     /// ```
