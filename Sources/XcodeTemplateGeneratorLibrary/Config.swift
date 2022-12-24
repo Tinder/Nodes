@@ -39,7 +39,7 @@ extension XcodeTemplates {
         public var publisherType: String
         public var publisherFailureType: String
         public var cancellableType: String
-//        public var nodeNameSuffix: String
+        public var nodeNameSuffix: String
 
         public init(
             at path: String,
@@ -87,7 +87,7 @@ extension XcodeTemplates.Config {
         publisherType = "AnyPublisher"
         publisherFailureType = ", Never"
         cancellableType = "AnyCancellable"
-//        nodeNameSuffix = ""
+        nodeNameSuffix = ""
     }
 }
 
@@ -142,8 +142,8 @@ extension XcodeTemplates.Config {
         cancellableType =
             (try? decoder.decodeString(CodingKeys.cancellableType))
             ?? defaults.cancellableType
-//        nodeNameSuffix =
-//            (try? decoder.decodeString(CodingKeys.nodeNameSuffix))
-//            ?? defaults.nodeNameSuffix
+        nodeNameSuffix =
+            (try? decoder.decodeString(CodingKeys.nodeNameSuffix))
+            ?? defaults.nodeNameSuffix
     }
 }

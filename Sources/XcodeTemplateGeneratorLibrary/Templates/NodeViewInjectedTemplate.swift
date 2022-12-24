@@ -26,7 +26,7 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
         stencils = node.stencils
         context = NodeViewInjectedContext(
             fileHeader: config.fileHeader,
-            nodeName: config.variable("productName"),
+            nodeName: "\(config.variable("productName"))\(config.nodeNameSuffix)",
             analyticsImports: node.analytics.imports(config: config),
             builderImports: node.builder.imports(config: config),
             contextImports: node.context.imports(config: config),

@@ -36,7 +36,7 @@ internal struct NodeWizardTemplate {
 
     internal init(config: Config) throws {
         var wizardConfig: Config = config
-//        wizardConfig.nodeNameSuffix = config.nodeNameSuffix.isEmpty ? "V1" : config.nodeNameSuffix
+        wizardConfig.nodeNameSuffix = config.nodeNameSuffix.isEmpty ? "V1" : config.nodeNameSuffix
         let description: String = "A wizard-style template picker for creating a Node."
         propertyList = PropertyList(description: description, sortOrder: 0) {
             Option(identifier: "productName",

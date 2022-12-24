@@ -26,7 +26,7 @@ internal struct PluginNodeTemplate: XcodeTemplate {
         stencils = [plugin]
         context = PluginContext(
             fileHeader: config.fileHeader,
-            pluginName: config.variable("productName"),
+            pluginName: "\(config.variable("productName"))\(config.nodeNameSuffix)",
             pluginImports: plugin.imports(config: config)
         )
     }
