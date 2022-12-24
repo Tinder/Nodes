@@ -122,9 +122,9 @@ public final class FlowController {
     ///   interaction). And therefore, in normal situations, use the ``detach(ending:)`` method whenever the `Flow`
     ///   instance initiates the dismissal.
     ///
-    /// For a `Flow` instance to be informed of any view controllers popped off of a navigation stack as a result of
-    /// user interactions, the view controller must subclass ``NavigationController`` providing a closure in which to
-    /// call the receiver method.
+    /// Within a `UIKit` application (for example), for a `Flow` instance to be informed of any view controllers popped
+    /// off of a navigation stack as a result of user interactions, the view controller must subclass
+    /// ``NavigationController`` providing a closure in which to call the receiver method.
     ///
     /// Example:
     /// ```
