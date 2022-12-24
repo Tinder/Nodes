@@ -240,8 +240,8 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// }
     /// ```
     ///
-    /// The `Context` (receiver) instance is then responsible for forwarding the view controller collection to
-    /// the `Flow` instance.
+    /// The `Context` (receiver) instance is then responsible for forwarding the ``ViewControllable`` collection to the
+    /// `Flow` instance.
     ///
     /// Example:
     /// ```
