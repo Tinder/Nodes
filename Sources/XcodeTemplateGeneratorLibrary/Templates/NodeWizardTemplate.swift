@@ -61,10 +61,11 @@ internal struct NodeWizardTemplate {
                    default: UIFramework.Kind.uiKit.rawValue,
                    values: wizardConfig.uiFrameworks.map(\.kind).map(\.rawValue))
         }
+        let pluginListItemName: String = "\(wizardConfig.variable("productName"))\(wizardConfig.nodeNameSuffix)"
         variations += try wizardConfig.uiFrameworks.map {
             NodeWizardTemplate.Variation.pluginList(
                 "PluginListView-Owned\($0.kind.rawValue)",
-                PluginListNodeTemplate(config: wizardConfig),
+                PluginListNodeTemplate(config: wizardConfig, pluginListItemName: pluginListItemName),
                 PluginNodeTemplate(config: wizardConfig),
                 .viewOwned(try NodeTemplate(for: $0.kind, config: wizardConfig))
             )
@@ -85,11 +86,10 @@ internal struct NodeWizardTemplate {
         guard wizardConfig.isViewInjectedNodeEnabled else {
             return
         }
-
         variations += wizardConfig.uiFrameworks.map {
             NodeWizardTemplate.Variation.pluginList(
                 "PluginListView-Injected\($0.kind.rawValue)",
-                PluginListNodeTemplate(config: wizardConfig),
+                PluginListNodeTemplate(config: wizardConfig, pluginListItemName: pluginListItemName),
                 PluginNodeTemplate(config: wizardConfig),
                 .viewInjected(NodeViewInjectedTemplate(config: wizardConfig))
             )

@@ -21,14 +21,15 @@ internal struct PluginListNodeTemplate: XcodeTemplate {
                    description: "The name of the Plugin List")
         }
 
-    internal init(config: Config) {
+    internal init(config: Config, pluginListItemName: String = "") {
         let pluginList: StencilTemplate = .pluginList
         stencils = [pluginList]
         context = PluginListContext(
             fileHeader: config.fileHeader,
             pluginListName: config.variable("productName"),
             pluginListImports: pluginList.imports(config: config),
-            viewControllableFlowType: config.viewControllableFlowType
+            viewControllableFlowType: config.viewControllableFlowType,
+            pluginListItemName: pluginListItemName
         )
     }
 }

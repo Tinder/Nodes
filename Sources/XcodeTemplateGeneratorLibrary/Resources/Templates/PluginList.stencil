@@ -12,7 +12,7 @@ internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} 
  PURPOSE:
  The common Listener interface.
  */
-internal protocol {{ plugin_list_name }}Listener: AnyObject {}
+internal protocol {{ plugin_list_name }}Listener: {% if plugin_list_item_name %}{{ plugin_list_item_name }}Listener{% else %}AnyObject{% endif %} {}
 
 /**
  PURPOSE:
@@ -72,7 +72,11 @@ internal final class {{ plugin_list_name }}PluginListComponent: Component
          ChildComponent(parent: self)
      }
 
-     */
+     */{% if plugin_list_item_name %}
+
+     fileprivate func {{ plugin_list_item_component_factory_name }}PluginComponentFactory() -> {{ plugin_list_item_name }}PluginComponent {
+         {{ plugin_list_item_name }}PluginComponent(parent: self)
+     }{% endif %}
 }
 
 /**
@@ -115,10 +119,17 @@ internal final class {{ plugin_list_name }}PluginListImp: PluginList
     override internal func plugins(
         component: {{ plugin_list_name }}PluginListComponent
     ) -> KeyValuePairs<{{ plugin_list_name }}PluginListKeyType, AnyPlugin> {
-        [:] // Example:
+        {% if plugin_list_item_name %}[
+            "{{ plugin_list_item_name }}": AnyPlugin(
+                {{ plugin_list_item_name }}PluginImp(
+                    componentFactory: component.{{ plugin_list_item_component_factory_name }}PluginComponentFactory
+                )
+                .create()
+            )
+        ]{% else %}[:] // Example:
 //        [
 //            "example": AnyPlugin(ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create())
-//        ]
+//        ]{% endif %}
     }
 
     /// The method in which a custom creation order may (optionally) be defined.

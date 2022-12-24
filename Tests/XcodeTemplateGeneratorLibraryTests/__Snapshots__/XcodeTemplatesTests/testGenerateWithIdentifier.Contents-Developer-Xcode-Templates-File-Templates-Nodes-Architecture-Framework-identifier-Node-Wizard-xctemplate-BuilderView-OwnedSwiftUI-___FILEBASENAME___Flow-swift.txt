@@ -7,9 +7,9 @@ import Nodes
  The interface that the Flow will speak to the Context through. Used for informing the Context of
  presentation lifecycle events, as an example.
  */
-internal protocol ___VARIABLE_productName___ContextInterface: Context {
-    var flow: ___VARIABLE_productName___FlowInterface? { get set }
-    var listener: ___VARIABLE_productName___Listener? { get }
+internal protocol ___VARIABLE_productName___V1ContextInterface: Context {
+    var flow: ___VARIABLE_productName___V1FlowInterface? { get set }
+    var listener: ___VARIABLE_productName___V1Listener? { get }
 }
 
 /**
@@ -18,16 +18,16 @@ internal protocol ___VARIABLE_productName___ContextInterface: Context {
  protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
  implementation as necessary.
  */
-internal protocol ___VARIABLE_productName___ViewControllable: ViewControllable {}
+internal protocol ___VARIABLE_productName___V1ViewControllable: ViewControllable {}
 
 /**
  PURPOSE:
  Responsible for presenting views and starting child Flows, and should not contain business logic.
  */
-internal final class ___VARIABLE_productName___FlowImp: AbstractFlow
+internal final class ___VARIABLE_productName___V1FlowImp: AbstractFlow
 <
-    ___VARIABLE_productName___ContextInterface,
-    ___VARIABLE_productName___ViewControllable
+    ___VARIABLE_productName___V1ContextInterface,
+    ___VARIABLE_productName___V1ViewControllable
 > {
 
     /// Provides the parent Node with access to the View so it can be presented.
@@ -42,8 +42,8 @@ internal final class ___VARIABLE_productName___FlowImp: AbstractFlow
     ///   - context: The Context instance
     ///   - viewController: The View Controller instance
     override internal init(
-        context: ___VARIABLE_productName___ContextInterface,
-        viewController: ___VARIABLE_productName___ViewControllable
+        context: ___VARIABLE_productName___V1ContextInterface,
+        viewController: ___VARIABLE_productName___V1ViewControllable
     ) {
         super.init(context: context, viewController: viewController)
         context.flow = self
@@ -53,5 +53,5 @@ internal final class ___VARIABLE_productName___FlowImp: AbstractFlow
     override internal func didStart() {}
 }
 
-extension ___VARIABLE_productName___FlowImp: ___VARIABLE_productName___Flow {}
-extension ___VARIABLE_productName___FlowImp: ___VARIABLE_productName___FlowInterface {}
+extension ___VARIABLE_productName___V1FlowImp: ___VARIABLE_productName___V1Flow {}
+extension ___VARIABLE_productName___V1FlowImp: ___VARIABLE_productName___V1FlowInterface {}

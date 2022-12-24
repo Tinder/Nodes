@@ -22,6 +22,7 @@
       - name: "<flowProperties-name-2>"
       - type: "<flowProperties-type-2>"
   - isViewInjectedNodeEnabled: true
+  - nodeNameSuffix: ""
   - publisherFailureType: "<publisherFailureType>"
   - publisherType: "<publisherType>"
   ▿ reactiveImports: 2 members

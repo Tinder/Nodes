@@ -9,24 +9,24 @@ import SwiftUI
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
  */
-internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
+internal protocol ___VARIABLE_productName___V1Receiver: AnyObject {}
 
 /**
  PURPOSE:
  Host of the SwiftUI view.
  */
-internal final class ___VARIABLE_productName___ViewController: AbstractViewHostingController
+internal final class ___VARIABLE_productName___V1ViewController: AbstractViewHostingController
 <
-    ___VARIABLE_productName___View
+    ___VARIABLE_productName___V1View
 > {}
 
-extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllable {}
+extension ___VARIABLE_productName___V1ViewController: ___VARIABLE_productName___V1ViewControllable {}
 
 /**
  PURPOSE:
  Concrete implementation of the View.
  */
-internal struct ___VARIABLE_productName___View: NodesView {
+internal struct ___VARIABLE_productName___V1View: NodesView {
 
     /// The body of the view.
     internal var body: some View {
@@ -36,16 +36,16 @@ internal struct ___VARIABLE_productName___View: NodesView {
     }
 
     /// The view receiver.
-    internal weak var receiver: ___VARIABLE_productName___Receiver?
+    internal weak var receiver: ___VARIABLE_productName___V1Receiver?
 
     /// The Analytics instance.
-    internal weak var analytics: ___VARIABLE_productName___Analytics?
+    internal weak var analytics: ___VARIABLE_productName___V1Analytics?
 
     /// The initial view state.
-    private let initialState: ___VARIABLE_productName___ViewState
+    private let initialState: ___VARIABLE_productName___V1ViewState
 
     /// The view state publisher.
-    private let statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+    private let statePublisher: AnyPublisher<___VARIABLE_productName___V1ViewState, Never>
 
     /// The initializer.
     ///
@@ -53,8 +53,8 @@ internal struct ___VARIABLE_productName___View: NodesView {
     ///   - initialState: The initial view state.
     ///   - statePublisher: The view state publisher.
     internal init(
-        initialState: ___VARIABLE_productName___ViewState,
-        statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+        initialState: ___VARIABLE_productName___V1ViewState,
+        statePublisher: AnyPublisher<___VARIABLE_productName___V1ViewState, Never>
     ) {
         self.initialState = initialState
         self.statePublisher = statePublisher
@@ -68,11 +68,11 @@ internal struct ___VARIABLE_productName___View: NodesView {
  PURPOSE:
  The SwiftUI preview (excluded from release builds).
  */
-internal struct ___VARIABLE_productName___View_Previews: PreviewProvider {
+internal struct ___VARIABLE_productName___V1View_Previews: PreviewProvider {
 
     internal static var previews: some View {
-        ___VARIABLE_productName___View(
-            initialState: ___VARIABLE_productName___ViewState(),
+        ___VARIABLE_productName___V1View(
+            initialState: ___VARIABLE_productName___V1ViewState(),
             statePublisher: Empty().eraseToAnyPublisher()
         )
     }

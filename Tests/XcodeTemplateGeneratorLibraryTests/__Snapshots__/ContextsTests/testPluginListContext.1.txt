@@ -1,4 +1,4 @@
-▿ 4 key/value pairs
+▿ 6 key/value pairs
   ▿ (2 elements)
     - key: "file_header"
     - value: "<fileHeader>"
@@ -6,6 +6,12 @@
     - key: "plugin_list_imports"
     ▿ value: 1 element
       - "<pluginListImports>"
+  ▿ (2 elements)
+    - key: "plugin_list_item_component_factory_name"
+    - value: "<pluginListItemName>"
+  ▿ (2 elements)
+    - key: "plugin_list_item_name"
+    - value: "<pluginListItemName>"
   ▿ (2 elements)
     - key: "plugin_list_name"
     - value: "<pluginListName>"

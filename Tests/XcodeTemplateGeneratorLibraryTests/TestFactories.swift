@@ -139,7 +139,8 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
             pluginListImports: ["<pluginListImports>"],
-            viewControllableFlowType: "<viewControllableFlowType>"
+            viewControllableFlowType: "<viewControllableFlowType>",
+            pluginListItemName: "<pluginListItemName>"
         )
     }
 

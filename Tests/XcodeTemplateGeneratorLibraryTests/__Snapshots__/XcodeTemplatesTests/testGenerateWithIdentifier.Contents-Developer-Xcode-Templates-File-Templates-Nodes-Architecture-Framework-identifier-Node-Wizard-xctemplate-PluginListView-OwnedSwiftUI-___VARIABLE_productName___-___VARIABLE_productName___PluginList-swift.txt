@@ -13,7 +13,7 @@ internal protocol ___VARIABLE_productName___Flow: ViewControllableFlow {}
  PURPOSE:
  The common Listener interface.
  */
-internal protocol ___VARIABLE_productName___Listener: AnyObject {}
+internal protocol ___VARIABLE_productName___Listener: ___VARIABLE_productName___V1Listener {}
 
 /**
  PURPOSE:
@@ -74,6 +74,10 @@ internal final class ___VARIABLE_productName___PluginListComponent: Component
      }
 
      */
+
+     fileprivate func ___VARIABLE_productName___V1PluginComponentFactory() -> ___VARIABLE_productName___V1PluginComponent {
+         ___VARIABLE_productName___V1PluginComponent(parent: self)
+     }
 }
 
 /**
@@ -116,10 +120,14 @@ internal final class ___VARIABLE_productName___PluginListImp: PluginList
     override internal func plugins(
         component: ___VARIABLE_productName___PluginListComponent
     ) -> KeyValuePairs<___VARIABLE_productName___PluginListKeyType, AnyPlugin> {
-        [:] // Example:
-//        [
-//            "example": AnyPlugin(ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create())
-//        ]
+        [
+            "___VARIABLE_productName___V1": AnyPlugin(
+                ___VARIABLE_productName___V1PluginImp(
+                    componentFactory: component.___VARIABLE_productName___V1PluginComponentFactory
+                )
+                .create()
+            )
+        ]
     }
 
     /// The method in which a custom creation order may (optionally) be defined.

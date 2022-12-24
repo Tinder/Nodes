@@ -12,7 +12,7 @@ internal protocol <pluginListName>Flow: <viewControllableFlowType> {}
  PURPOSE:
  The common Listener interface.
  */
-internal protocol <pluginListName>Listener: AnyObject {}
+internal protocol <pluginListName>Listener: <pluginListItemName>Listener {}
 
 /**
  PURPOSE:
@@ -73,6 +73,10 @@ internal final class <pluginListName>PluginListComponent: Component
      }
 
      */
+
+     fileprivate func <pluginListItemName>PluginComponentFactory() -> <pluginListItemName>PluginComponent {
+         <pluginListItemName>PluginComponent(parent: self)
+     }
 }
 
 /**
@@ -115,10 +119,14 @@ internal final class <pluginListName>PluginListImp: PluginList
     override internal func plugins(
         component: <pluginListName>PluginListComponent
     ) -> KeyValuePairs<<pluginListName>PluginListKeyType, AnyPlugin> {
-        [:] // Example:
-//        [
-//            "example": AnyPlugin(ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create())
-//        ]
+        [
+            "<pluginListItemName>": AnyPlugin(
+                <pluginListItemName>PluginImp(
+                    componentFactory: component.<pluginListItemName>PluginComponentFactory
+                )
+                .create()
+            )
+        ]
     }
 
     /// The method in which a custom creation order may (optionally) be defined.

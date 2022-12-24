@@ -8,7 +8,7 @@ import Nodes
  Option 1
  ========
  Conform an existing analytics tracker (or client), that is defined outside of the Node, to the
- ___VARIABLE_productName___Analytics protocol.
+ ___VARIABLE_productName___V1Analytics protocol.
 
  This option is preferred.
 
@@ -34,7 +34,7 @@ import Nodes
  Whether using option 1 or 2, add requirements to this protocol to provide analytics tracking
  methods for this Node.
  */
-internal protocol ___VARIABLE_productName___Analytics: AnyObject {}
+internal protocol ___VARIABLE_productName___V1Analytics: AnyObject {}
 
 /**
  PURPOSE:
@@ -45,7 +45,7 @@ internal protocol ___VARIABLE_productName___Analytics: AnyObject {}
 
  If using option 2, delete this extension.
  */
-internal extension ___VARIABLE_productName___Analytics {}
+internal extension ___VARIABLE_productName___V1Analytics {}
 
 /**
  PURPOSE:
@@ -53,6 +53,6 @@ internal extension ___VARIABLE_productName___Analytics {}
 
  If using option 1, delete this class and extension below.
  */
-internal final class ___VARIABLE_productName___AnalyticsImp {}
+internal final class ___VARIABLE_productName___V1AnalyticsImp {}
 
-extension ___VARIABLE_productName___AnalyticsImp: ___VARIABLE_productName___Analytics {}
+extension ___VARIABLE_productName___V1AnalyticsImp: ___VARIABLE_productName___V1Analytics {}

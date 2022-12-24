@@ -5,6 +5,7 @@
       - "<baseImports>"
       - "<dependencyInjectionImports>"
       - "Nodes"
+    - pluginListItemName: ""
     - pluginListName: "___VARIABLE_productName___"
     - viewControllableFlowType: "<viewControllableFlowType>"
   - name: "Plugin List (for Node)"
