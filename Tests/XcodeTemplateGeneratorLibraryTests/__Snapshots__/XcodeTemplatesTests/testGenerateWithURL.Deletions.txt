@@ -1,4 +1,4 @@
-▿ 7 elements
+▿ 8 elements
   - "/Node - UIKit.xctemplate"
   - "/Node - SwiftUI.xctemplate"
   - "/Node (view injected).xctemplate"
@@ -6,3 +6,4 @@
   - "/Plugin (for Node).xctemplate"
   - "/Plugin.xctemplate"
   - "/Worker.xctemplate"
+  - "/Node Wizard.xctemplate"

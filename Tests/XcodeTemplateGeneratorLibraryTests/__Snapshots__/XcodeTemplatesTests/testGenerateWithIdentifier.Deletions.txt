@@ -1,4 +1,4 @@
-▿ 8 elements
+▿ 9 elements
   - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)"
   - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - UIKit.xctemplate"
   - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - SwiftUI.xctemplate"
@@ -7,3 +7,4 @@
   - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate"
   - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate"
   - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Worker.xctemplate"
+  - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate"

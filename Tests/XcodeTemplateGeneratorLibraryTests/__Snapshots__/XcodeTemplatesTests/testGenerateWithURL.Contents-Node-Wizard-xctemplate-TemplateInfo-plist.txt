@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AllowedTypes</key>
+	<array>
+		<string>public.swift-source</string>
+	</array>
+	<key>Description</key>
+	<string>A wizard-style template picker for creating a Node.</string>
+	<key>Kind</key>
+	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
+	<key>MainTemplateFile</key>
+	<string>___FILEBASENAME___.swift</string>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>The name of the Node</string>
+			<key>Identifier</key>
+			<string>productName</string>
+			<key>Name</key>
+			<string>Node name:</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>text</string>
+			<key>Values</key>
+			<array/>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>PluginList</string>
+			<key>Description</key>
+			<string>What Node Factory Layer type do you want to use?</string>
+			<key>Identifier</key>
+			<string>FactoryLayerSelection</string>
+			<key>Name</key>
+			<string>Factory Layer</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>popup</string>
+			<key>Values</key>
+			<array>
+				<string>PluginList</string>
+				<string>Plugin</string>
+				<string>Builder</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>View-Owned</string>
+			<key>Description</key>
+			<string>What is the source of the Node's view?</string>
+			<key>Identifier</key>
+			<string>ViewSourceSelection</string>
+			<key>Name</key>
+			<string>View Source</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>popup</string>
+			<key>Values</key>
+			<array>
+				<string>View-Owned</string>
+				<string>View-Injected</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>UIKit</string>
+			<key>Description</key>
+			<string>What UI Framework do you want to use?</string>
+			<key>Identifier</key>
+			<string>UIFrameworkSelection</string>
+			<key>Name</key>
+			<string>UI Framework</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>popup</string>
+			<key>Values</key>
+			<array>
+				<string>UIKit</string>
+				<string>SwiftUI</string>
+			</array>
+		</dict>
+	</array>
+	<key>Platforms</key>
+	<array/>
+	<key>SortOrder</key>
+	<integer>0</integer>
+	<key>Summary</key>
+	<string>A wizard-style template picker for creating a Node</string>
+	<key>SupportsSwiftPackage</key>
+	<true/>
+</dict>
+</plist>

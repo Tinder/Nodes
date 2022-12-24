@@ -1,4 +1,7 @@
-▿ 30 elements
+▿ 115 elements
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - UIKit.xctemplate/TemplateInfo.plist"
+    - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - UIKit.xctemplate/___FILEBASENAME___Analytics.swift"
     - .1: true
@@ -21,7 +24,7 @@
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - UIKit.xctemplate/___FILEBASENAME___ViewState.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - UIKit.xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - SwiftUI.xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - SwiftUI.xctemplate/___FILEBASENAME___Analytics.swift"
@@ -45,7 +48,7 @@
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - SwiftUI.xctemplate/___FILEBASENAME___ViewState.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - SwiftUI.xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Analytics.swift"
@@ -63,29 +66,281 @@
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___State.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/___FILEBASENAME___PluginList.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/___FILEBASENAME___Plugin.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate/___FILEBASENAME___Plugin.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Worker.xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
     - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Worker.xctemplate/___FILEBASENAME___Worker.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Worker.xctemplate/TemplateInfo.plist"
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedUIKit/___VARIABLE_productName___/___VARIABLE_productName___PluginList.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Plugin.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1ViewState.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___PluginList.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Plugin.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-OwnedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1ViewState.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedUIKit/___FILEBASENAME___Plugin.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedUIKit/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedUIKit/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedUIKit/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedUIKit/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedUIKit/___FILEBASENAME___State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedUIKit/___FILEBASENAME___ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedUIKit/___FILEBASENAME___ViewState.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedSwiftUI/___FILEBASENAME___Plugin.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedSwiftUI/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedSwiftUI/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedSwiftUI/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedSwiftUI/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedSwiftUI/___FILEBASENAME___State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedSwiftUI/___FILEBASENAME___ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-OwnedSwiftUI/___FILEBASENAME___ViewState.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedUIKit/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedUIKit/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedUIKit/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedUIKit/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedUIKit/___FILEBASENAME___State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedUIKit/___FILEBASENAME___ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedUIKit/___FILEBASENAME___ViewState.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedSwiftUI/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedSwiftUI/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedSwiftUI/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedSwiftUI/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedSwiftUI/___FILEBASENAME___State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedSwiftUI/___FILEBASENAME___ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-OwnedSwiftUI/___FILEBASENAME___ViewState.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedUIKit/___VARIABLE_productName___/___VARIABLE_productName___PluginList.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Plugin.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___PluginList.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Plugin.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginListView-InjectedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1/___FILEBASENAME___V1State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-InjectedUIKit/___FILEBASENAME___Plugin.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-InjectedUIKit/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-InjectedUIKit/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-InjectedUIKit/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-InjectedUIKit/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-InjectedUIKit/___FILEBASENAME___State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-InjectedSwiftUI/___FILEBASENAME___Plugin.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-InjectedSwiftUI/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-InjectedSwiftUI/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-InjectedSwiftUI/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-InjectedSwiftUI/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/PluginView-InjectedSwiftUI/___FILEBASENAME___State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-InjectedUIKit/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-InjectedUIKit/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-InjectedUIKit/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-InjectedUIKit/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-InjectedUIKit/___FILEBASENAME___State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-InjectedSwiftUI/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-InjectedSwiftUI/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-InjectedSwiftUI/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-InjectedSwiftUI/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node Wizard.xctemplate/BuilderView-InjectedSwiftUI/___FILEBASENAME___State.swift"
     - .1: true

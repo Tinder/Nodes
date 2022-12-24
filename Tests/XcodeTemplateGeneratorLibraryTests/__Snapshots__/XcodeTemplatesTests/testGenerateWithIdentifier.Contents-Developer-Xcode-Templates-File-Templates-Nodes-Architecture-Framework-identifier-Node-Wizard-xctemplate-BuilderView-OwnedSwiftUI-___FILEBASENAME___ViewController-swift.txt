@@ -1,0 +1,79 @@
+//___FILEHEADER___
+
+import Combine
+import Nodes
+import SwiftUI
+
+/**
+ PURPOSE:
+ The interface that the View will speak to the Context through. Used for informing the Context of
+ view events and user interactions.
+ */
+internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
+
+/**
+ PURPOSE:
+ Host of the SwiftUI view.
+ */
+internal final class ___VARIABLE_productName___ViewController: AbstractViewHostingController
+<
+    ___VARIABLE_productName___View
+> {}
+
+extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllable {}
+
+/**
+ PURPOSE:
+ Concrete implementation of the View.
+ */
+internal struct ___VARIABLE_productName___View: NodesView {
+
+    /// The body of the view.
+    internal var body: some View {
+        WithViewState(statePublisher, initialState: initialState) { viewState in
+            Text(verbatim: "\(type(of: viewState))")
+        }
+    }
+
+    /// The view receiver.
+    internal weak var receiver: ___VARIABLE_productName___Receiver?
+
+    /// The Analytics instance.
+    internal weak var analytics: ___VARIABLE_productName___Analytics?
+
+    /// The initial view state.
+    private let initialState: ___VARIABLE_productName___ViewState
+
+    /// The view state publisher.
+    private let statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+
+    /// The initializer.
+    ///
+    /// - Parameters:
+    ///   - initialState: The initial view state.
+    ///   - statePublisher: The view state publisher.
+    internal init(
+        initialState: ___VARIABLE_productName___ViewState,
+        statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+    ) {
+        self.initialState = initialState
+        self.statePublisher = statePublisher
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+}
+
+/**
+ PURPOSE:
+ The SwiftUI preview (excluded from release builds).
+ */
+internal struct ___VARIABLE_productName___View_Previews: PreviewProvider {
+
+    internal static var previews: some View {
+        ___VARIABLE_productName___View(
+            initialState: ___VARIABLE_productName___ViewState(),
+            statePublisher: Empty().eraseToAnyPublisher()
+        )
+    }
+}

@@ -10,8 +10,9 @@ import Foundation
 public final class XcodeTemplates {
 
     private let templates: [XcodeTemplate]
+    private let wizard: NodeWizardTemplate
 
-    public init(config: Config) {
+    public init(config: Config) throws {
         var templates: [XcodeTemplate] = UIFramework.Kind
             .allCases
             .compactMap { try? NodeTemplate(for: $0, config: config) }
@@ -25,6 +26,7 @@ public final class XcodeTemplates {
             WorkerTemplate(config: config)
         ]
         self.templates = templates
+        self.wizard = try NodeWizardTemplate(config: config)
     }
 
     public func generate(
@@ -47,5 +49,6 @@ public final class XcodeTemplates {
     ) throws {
         let generator: XcodeTemplateGenerator = .init(fileSystem: fileSystem)
         try templates.forEach { try generator.generate(template: $0, into: url) }
+        try generator.generate(wizard: wizard, into: url)
     }
 }

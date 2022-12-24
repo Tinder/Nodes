@@ -23,6 +23,7 @@
         - notPersisted: true
         - required: true
         - type: "text"
+        - values: 0 elements
     - platforms: 0 elements
     - sortOrder: 7
     - summary: "The source file implementing a Plugin for a Node"

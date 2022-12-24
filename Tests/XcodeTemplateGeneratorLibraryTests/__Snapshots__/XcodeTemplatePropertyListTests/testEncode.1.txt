@@ -29,6 +29,8 @@
 			<true/>
 			<key>Type</key>
 			<string>text</string>
+			<key>Values</key>
+			<array/>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -43,6 +45,8 @@
 			<true/>
 			<key>Type</key>
 			<string>text</string>
+			<key>Values</key>
+			<array/>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -57,6 +61,8 @@
 			<true/>
 			<key>Type</key>
 			<string>text</string>
+			<key>Values</key>
+			<array/>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -71,6 +77,8 @@
 			<true/>
 			<key>Type</key>
 			<string>text</string>
+			<key>Values</key>
+			<array/>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -85,6 +93,8 @@
 			<true/>
 			<key>Type</key>
 			<string>text</string>
+			<key>Values</key>
+			<array/>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -99,6 +109,8 @@
 			<true/>
 			<key>Type</key>
 			<string>text</string>
+			<key>Values</key>
+			<array/>
 		</dict>
 	</array>
 	<key>Platforms</key>

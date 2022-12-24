@@ -24,6 +24,7 @@
         - notPersisted: true
         - required: true
         - type: "text"
+        - values: 0 elements
       ▿ Option
         - default: Optional<String>.none
         - description: "The return type of the Plugin"
@@ -32,6 +33,7 @@
         - notPersisted: true
         - required: true
         - type: "text"
+        - values: 0 elements
     - platforms: 0 elements
     - sortOrder: 8
     - summary: "The source file implementing a Plugin"

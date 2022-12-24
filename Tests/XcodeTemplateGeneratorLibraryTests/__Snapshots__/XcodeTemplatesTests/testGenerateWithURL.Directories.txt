@@ -1,4 +1,4 @@
-▿ 7 elements
+▿ 28 elements
   ▿ (2 elements)
     - path: "/Node - UIKit.xctemplate"
     - createIntermediates: true
@@ -20,3 +20,66 @@
   ▿ (2 elements)
     - path: "/Worker.xctemplate"
     - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginListView-OwnedUIKit"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginListView-OwnedUIKit/___VARIABLE_productName___"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginListView-OwnedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginListView-OwnedSwiftUI"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginListView-OwnedSwiftUI/___VARIABLE_productName___"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginListView-OwnedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginView-OwnedUIKit"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginView-OwnedSwiftUI"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/BuilderView-OwnedUIKit"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/BuilderView-OwnedSwiftUI"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginListView-InjectedUIKit"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginListView-InjectedUIKit/___VARIABLE_productName___"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginListView-InjectedUIKit/___VARIABLE_productName___/___VARIABLE_productName___V1"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginListView-InjectedSwiftUI"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginListView-InjectedSwiftUI/___VARIABLE_productName___"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginListView-InjectedSwiftUI/___VARIABLE_productName___/___VARIABLE_productName___V1"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginView-InjectedUIKit"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/PluginView-InjectedSwiftUI"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/BuilderView-InjectedUIKit"
+    - createIntermediates: false
+  ▿ (2 elements)
+    - path: "/Node Wizard.xctemplate/BuilderView-InjectedSwiftUI"
+    - createIntermediates: false

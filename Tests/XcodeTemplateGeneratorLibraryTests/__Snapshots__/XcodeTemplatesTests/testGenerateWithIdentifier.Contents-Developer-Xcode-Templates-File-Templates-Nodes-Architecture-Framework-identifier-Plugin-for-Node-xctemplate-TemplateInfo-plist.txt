@@ -27,6 +27,8 @@
 			<true/>
 			<key>Type</key>
 			<string>text</string>
+			<key>Values</key>
+			<array/>
 		</dict>
 	</array>
 	<key>Platforms</key>
