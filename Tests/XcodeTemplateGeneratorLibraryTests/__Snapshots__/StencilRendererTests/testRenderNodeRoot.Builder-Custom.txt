@@ -116,52 +116,7 @@ internal final class RootBuilderImp: AbstractBuilder
     RootDynamicBuildDependency,
     RootDynamicComponentDependency
 > {
-
-    /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
-    /// the dynamic component dependency.
-    ///
-    /// The dynamic dependencies can be tuples containing multiple values when necessary.
-    /// - Parameter listener: An object that can listen for signals from the Node
-    /// - Returns: The Flow instance
-    internal func build(withListener listener: RootListener) -> RootFlow {
-        let dynamicBuildDependency: RootDynamicBuildDependency = listener
-        let dynamicComponentDependency: RootDynamicComponentDependency = ()
-        return build(dynamicBuildDependency, dynamicComponentDependency)
-    }
-
-    /// The factory method in which the Context and Flow are initialized.
-    /// - Parameters:
-    ///   - component: The component instance
-    ///   - dynamicBuildDependency: The dynamic build dependency
-    /// - Returns: The Flow instance
-    override internal func build(
-        component: RootComponent,
-        dynamicBuildDependency: RootDynamicBuildDependency
-    ) -> RootFlow {
-        let listener: RootListener = dynamicBuildDependency
-        let analytics: RootAnalyticsImp = .init()
-        let context: RootContextImp = .init(
-            workers: [],
-            analytics: analytics
-        )
-        context.listener = listener
-        let viewStateFactory: RootViewStateFactory = .init()
-        let viewState: Publishers.Map = .init(
-            upstream: context.$state,
-            transform: viewStateFactory
-        )
-        let viewController: RootViewController = .init(
-            initialState: viewStateFactory(context.state),
-            statePublisher: viewState.eraseToAnyPublisher()
-        )
-        viewController.receiver = context
-        viewController.analytics = analytics
-        return RootFlowImp(
-            context: context,
-            viewController: viewController,
-            <flowPropertiesName>: component.dependency.<flowPropertiesName>
-        )
-    }
+    
 }
 
 extension RootBuilderImp: RootBuilder {}

@@ -34,6 +34,7 @@
           - key: "type"
           - value: "<flowPropertiesType>"
     - nodeName: "___VARIABLE_productName___"
+    - pluginListName: ""
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
     ▿ stateImports: 2 elements

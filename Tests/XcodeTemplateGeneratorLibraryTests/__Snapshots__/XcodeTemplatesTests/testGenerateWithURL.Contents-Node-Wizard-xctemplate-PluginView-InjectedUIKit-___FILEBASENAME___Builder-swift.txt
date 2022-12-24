@@ -116,43 +116,7 @@ internal final class ___VARIABLE_productName___V1BuilderImp: AbstractBuilder
     ___VARIABLE_productName___V1DynamicBuildDependency,
     ___VARIABLE_productName___V1DynamicComponentDependency
 > {
-
-    /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
-    /// the dynamic component dependency.
-    ///
-    /// The dynamic dependencies can be tuples containing multiple values when necessary.
-    /// - Parameter listener: An object that can listen for signals from the Node
-    /// - Returns: The Flow instance
-    internal func build(
-        withListener listener: ___VARIABLE_productName___V1Listener,
-        viewController: ___VARIABLE_productName___V1ViewControllable
-    ) -> ___VARIABLE_productName___V1Flow {
-        let dynamicBuildDependency: ___VARIABLE_productName___V1DynamicBuildDependency = (listener, viewController)
-        let dynamicComponentDependency: ___VARIABLE_productName___V1DynamicComponentDependency = ()
-        return build(dynamicBuildDependency, dynamicComponentDependency)
-    }
-
-    /// The factory method in which the Context and Flow are initialized.
-    /// - Parameters:
-    ///   - component: The component instance
-    ///   - dynamicBuildDependency: The dynamic build dependency
-    /// - Returns: The Flow instance
-    override internal func build(
-        component: ___VARIABLE_productName___V1Component,
-        dynamicBuildDependency: ___VARIABLE_productName___V1DynamicBuildDependency
-    ) -> ___VARIABLE_productName___V1Flow {
-        let (listener, viewController) = dynamicBuildDependency
-        let analytics: ___VARIABLE_productName___V1AnalyticsImp = .init()
-        let context: ___VARIABLE_productName___V1ContextImp = .init(
-            workers: [],
-            analytics: analytics
-        )
-        context.listener = listener
-        return ___VARIABLE_productName___V1FlowImp(
-            context: context,
-            viewController: viewController
-        )
-    }
+    
 }
 
 extension ___VARIABLE_productName___V1BuilderImp: ___VARIABLE_productName___V1Builder {}
