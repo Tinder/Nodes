@@ -26,6 +26,30 @@ open class NavigationController: UINavigationController, UINavigationControllerD
 
     private var previousChildren: [UIViewController] = []
 
+    /// Notifies the delegate after the navigation controller displays a view controller’s view and navigation
+    /// item properties.
+    ///
+    /// - Parameters:
+    ///   - navigationController: The navigation controller that is showing the view and properties of a
+    ///     view controller.
+    ///   - viewController: The view controller whose view and navigation item properties are being shown.
+    ///   - animated: `true` to animate the transition; otherwise, `false`.
+    open func navigationController(
+        _ navigationController: UINavigationController,
+        didShow viewController: UIViewController,
+        animated: Bool
+    ) {
+        defer { previousChildren = children }
+        guard let didPopViewControllers: DidPopViewControllersCallback = didPopViewControllers
+        else { return }
+        let endIndex: Int = previousChildren.count - 1
+        guard let index: Int = previousChildren.firstIndex(where: { $0 === viewController }),
+              index < endIndex
+        else { return }
+        let startIndex: Int = index + 1
+        didPopViewControllers(Array(previousChildren[startIndex...endIndex]))
+    }
+
     /// Assigns the closure in which to call the receiver method informing the `Context` instance of the popped
     /// view controllers.
     ///
@@ -92,32 +116,6 @@ open class NavigationController: UINavigationController, UINavigationControllerD
     public func onPopViewControllers(didPopViewControllers: DidPopViewControllersCallback? = nil) {
         self.didPopViewControllers = didPopViewControllers
         delegate = didPopViewControllers == nil ? nil : self
-    }
-
-    // MARK: - UINavigationControllerDelegate
-
-    /// Notifies the delegate after the navigation controller displays a view controller’s view and navigation
-    /// item properties.
-    ///
-    /// - Parameters:
-    ///   - navigationController: The navigation controller that is showing the view and properties of a
-    ///     view controller.
-    ///   - viewController: The view controller whose view and navigation item properties are being shown.
-    ///   - animated: `true` to animate the transition; otherwise, `false`.
-    public func navigationController(
-        _ navigationController: UINavigationController,
-        didShow viewController: UIViewController,
-        animated: Bool
-    ) {
-        defer { previousChildren = children }
-        guard let didPopViewControllers: DidPopViewControllersCallback = didPopViewControllers
-        else { return }
-        let endIndex: Int = previousChildren.count - 1
-        guard let index: Int = previousChildren.firstIndex(where: { $0 === viewController }),
-              index < endIndex
-        else { return }
-        let startIndex: Int = index + 1
-        didPopViewControllers(Array(previousChildren[startIndex...endIndex]))
     }
 }
 
