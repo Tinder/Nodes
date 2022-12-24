@@ -42,6 +42,9 @@ final class NavigationControllerTests: XCTestCase {
         navigationController.navigationController(navigationController, didShow: rootViewController, animated: false)
 
         expect(viewControllers) == [viewController1, viewController2]
+
+        navigationController.onPopViewControllers(didPopViewControllers: nil)
+        expect(navigationController.delegate).to(beNil())
     }
 }
 
