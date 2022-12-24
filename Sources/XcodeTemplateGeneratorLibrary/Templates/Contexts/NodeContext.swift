@@ -29,6 +29,7 @@ public struct NodeContext: Context {
     private let publisherType: String
     private let publisherFailureType: String
     private let cancellableType: String
+    private let pluginListName: String
 
     internal var dictionary: [String: Any] {
         [
@@ -55,7 +56,8 @@ public struct NodeContext: Context {
             "view_state_operators": viewStateOperators,
             "publisher_type": publisherType,
             "publisher_failure_type": publisherFailureType,
-            "cancellable_type": cancellableType
+            "cancellable_type": cancellableType,
+            "plugin_list_name": pluginListName
         ]
     }
 
@@ -81,7 +83,8 @@ public struct NodeContext: Context {
         viewStateOperators: String,
         publisherType: String,
         publisherFailureType: String,
-        cancellableType: String
+        cancellableType: String,
+        pluginListName: String
     ) {
         self.fileHeader = fileHeader
         self.nodeName = nodeName
@@ -105,5 +108,6 @@ public struct NodeContext: Context {
         self.publisherType = publisherType
         self.publisherFailureType = publisherFailureType
         self.cancellableType = cancellableType
+        self.pluginListName = pluginListName
     }
 }

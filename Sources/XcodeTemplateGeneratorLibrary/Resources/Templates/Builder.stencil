@@ -5,7 +5,8 @@ import {{ import }}{% endfor %}{% endif %}
 /**
  PURPOSE:
  The interface of the Flow.
- */{% if owns_view %}
+ */{% if plugin_list_name %}
+internal protocol {{ node_name }}Flow: {{ plugin_list_name }}Flow {}{% elif owns_view %}
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}{% else %}
 internal protocol {{ node_name }}Flow: Flow {}{% endif %}
 
@@ -104,10 +105,10 @@ internal final class {{ node_name }}Component: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */{% if owns_view %}
-internal protocol {{ node_name }}Builder: AnyObject {
+internal protocol {{ node_name }}Builder: {% if plugin_list_name %}{{ plugin_list_name }}Builder{% else %}AnyObject{% endif %} {
     func build(withListener listener: {{ node_name }}Listener) -> {{ node_name }}Flow
 }{% else %}
-internal protocol {{ node_name }}Builder: AnyObject {
+internal protocol {{ node_name }}Builder: {% if plugin_list_name %}{{ plugin_list_name }}Builder{% else %}AnyObject{% endif %} {
     func build(withListener listener: {{ node_name }}Listener,
                viewController: {{ node_name }}ViewControllable) -> {{ node_name }}Flow
 }{% endif %}
@@ -123,32 +124,38 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     {{ node_name }}DynamicBuildDependency,
     {{ node_name }}DynamicComponentDependency
 > {
+    {% if plugin_list_name %}
+    /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
+    /// the dynamic component dependency.
+    ///
+    /// The dynamic dependencies can be tuples containing multiple values when necessary.
+    /// - Parameter listener: An object that can listen for signals from the Node
+    /// - Returns: The Flow instance
+    internal func build(withListener listener: {{ plugin_list_name }}Listener) -> {{ plugin_list_name }}Flow {
+        build(listener: listener)
+    }
 
     /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
     /// the dynamic component dependency.
     ///
     /// The dynamic dependencies can be tuples containing multiple values when necessary.
     /// - Parameter listener: An object that can listen for signals from the Node
-    /// - Returns: The Flow instance{% if owns_view %}
+    /// - Returns: The Flow instance
     internal func build(withListener listener: {{ node_name }}Listener) -> {{ node_name }}Flow {
+        build(listener: listener)
+    }
+
+    private func build(listener: {{ node_name }}Listener) -> {{ node_name }}Flow {
         let dynamicBuildDependency: {{ node_name }}DynamicBuildDependency = listener
         let dynamicComponentDependency: {{ node_name }}DynamicComponentDependency = ()
         return build(dynamicBuildDependency, dynamicComponentDependency)
-    }{% else %}
-    internal func build(
-        withListener listener: {{ node_name }}Listener,
-        viewController: {{ node_name }}ViewControllable
-    ) -> {{ node_name }}Flow {
-        let dynamicBuildDependency: {{ node_name }}DynamicBuildDependency = (listener, viewController)
-        let dynamicComponentDependency: {{ node_name }}DynamicComponentDependency = ()
-        return build(dynamicBuildDependency, dynamicComponentDependency)
-    }{% endif %}
+    }
 
     /// The factory method in which the Context and Flow are initialized.
     /// - Parameters:
     ///   - component: The component instance
     ///   - dynamicBuildDependency: The dynamic build dependency
-    /// - Returns: The Flow instance{% if owns_view %}
+    /// - Returns: The Flow instance
     override internal func build(
         component: {{ node_name }}Component,
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency
@@ -171,23 +178,6 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         )
         viewController.receiver = context
         viewController.analytics = analytics
-        return {{ node_name }}FlowImp(
-            context: context,
-            viewController: viewController{% if flow_properties %},{% for property in flow_properties %}
-            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %},{% endif %}{% endfor %}{% endif %}
-        )
-    }{% else %}
-    override internal func build(
-        component: {{ node_name }}Component,
-        dynamicBuildDependency: {{ node_name }}DynamicBuildDependency
-    ) -> {{ node_name }}Flow {
-        let (listener, viewController) = dynamicBuildDependency
-        let analytics: {{ node_name }}AnalyticsImp = .init()
-        let context: {{ node_name }}ContextImp = .init(
-            workers: [],
-            analytics: analytics
-        )
-        context.listener = listener
         return {{ node_name }}FlowImp(
             context: context,
             viewController: viewController{% if flow_properties %},{% for property in flow_properties %}

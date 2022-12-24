@@ -14,7 +14,7 @@ internal struct NodeTemplate: XcodeTemplate {
     internal let context: Context
     internal let propertyList: PropertyList
 
-    internal init(for kind: UIFramework.Kind, config: Config) throws {
+    internal init(for kind: UIFramework.Kind, config: Config, pluginListName: String = "") throws {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
         let node: StencilTemplate.Node = .init(for: .variation(for: uiFramework.kind))
         name = "Node - \(uiFramework.name)"
@@ -41,7 +41,8 @@ internal struct NodeTemplate: XcodeTemplate {
             viewStateOperators: config.viewStateOperators,
             publisherType: config.publisherType,
             publisherFailureType: config.publisherFailureType,
-            cancellableType: config.cancellableType
+            cancellableType: config.cancellableType,
+            pluginListName: pluginListName
         )
         propertyList = PropertyList(description: "The source files implementing a Node.",
                                     // swiftlint:disable:next force_unwrapping

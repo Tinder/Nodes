@@ -70,7 +70,8 @@ extension TestFactories {
             viewStateOperators: "<viewStateOperators>",
             publisherType: "<publisherType>",
             publisherFailureType: "<publisherFailureType>",
-            cancellableType: "<cancellableType>"
+            cancellableType: "<cancellableType>",
+            pluginListName: "<pluginListName>"
         )
     }
 

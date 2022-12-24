@@ -67,7 +67,7 @@ internal struct NodeWizardTemplate {
                 "PluginListView-Owned\($0.kind.rawValue)",
                 PluginListNodeTemplate(config: wizardConfig, pluginListItemName: pluginListItemName),
                 PluginNodeTemplate(config: wizardConfig),
-                .viewOwned(try NodeTemplate(for: $0.kind, config: wizardConfig))
+                .viewOwned(try NodeTemplate(for: $0.kind, config: wizardConfig, pluginListName: wizardConfig.variable("productName")))
             )
         }
         variations += try wizardConfig.uiFrameworks.map {
