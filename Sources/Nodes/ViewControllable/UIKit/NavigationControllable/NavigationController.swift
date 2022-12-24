@@ -32,7 +32,7 @@ import UIKit
  * instances, the `Context` instance will be informed of the dismissal (and be provided the ``ViewControllable``
  * instances) which then informs the `Flow` instance to perform the detachment only.
  *
- * Example of Flow implementation:
+ * Example of `Flow` implementation:
  * ```swift
  * func detach(endingFlowsFor viewControllers: [ViewControllable]) {
  *     detach(endingSubFlowsOfType: ViewControllableFlow.self) { flow in
@@ -53,7 +53,7 @@ import UIKit
  * navigation stack as a result of user interactions, the view controller must subclass ``NavigationController``
  * and provide the closure in which to call the receiver method.
  *
- * Example of View Controller implementation:
+ * Example of view controller implementation:
  * ```swift
  * class ViewController: NavigationController {
  *
@@ -69,7 +69,7 @@ import UIKit
  * The `Context` (receiver) instance is then responsible for forwarding the ``ViewControllable`` collection to the
  * `Flow` instance.
  *
- * Example of Context implementation:
+ * Example of `Context` implementation:
  * ```swift
  * func didPopViewControllers(_ viewControllers: [ViewControllable]) {
  *     flow?.detach(endingFlowsFor: viewControllers)
@@ -125,7 +125,7 @@ open class NavigationController: UINavigationController, UINavigationControllerD
     /// instances, the `Context` instance will be informed of the dismissal (and be provided the ``ViewControllable``
     /// instances) which then informs the `Flow` instance to perform the detachment only.
     ///
-    /// Example of Flow implementation:
+    /// Example of `Flow` implementation:
     /// ```swift
     /// func detach(endingFlowsFor viewControllers: [ViewControllable]) {
     ///     detach(endingSubFlowsOfType: ViewControllableFlow.self) { flow in
@@ -146,7 +146,7 @@ open class NavigationController: UINavigationController, UINavigationControllerD
     /// navigation stack as a result of user interactions, the view controller must subclass ``NavigationController``
     /// and provide the closure in which to call the receiver method.
     ///
-    /// Example of View Controller implementation:
+    /// Example of view controller implementation:
     /// ```swift
     /// class ViewController: NavigationController {
     ///
@@ -162,7 +162,7 @@ open class NavigationController: UINavigationController, UINavigationControllerD
     /// The `Context` (receiver) instance is then responsible for forwarding the ``ViewControllable`` collection to the
     /// `Flow` instance.
     ///
-    /// Example of Context implementation:
+    /// Example of `Context` implementation:
     /// ```swift
     /// func didPopViewControllers(_ viewControllers: [ViewControllable]) {
     ///     flow?.detach(endingFlowsFor: viewControllers)
