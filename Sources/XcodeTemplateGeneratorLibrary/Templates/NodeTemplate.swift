@@ -14,14 +14,19 @@ internal struct NodeTemplate: XcodeTemplate {
     internal let context: Context
     internal let propertyList: PropertyList
 
-    internal init(for kind: UIFramework.Kind, config: Config, pluginListName: String = "") throws {
+    internal init(
+        for kind: UIFramework.Kind,
+        config: Config,
+        nodeName: String? = nil,
+        pluginListName: String = ""
+    ) throws {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
         let node: StencilTemplate.Node = .init(for: .variation(for: uiFramework.kind))
         name = "Node - \(uiFramework.name)"
         stencils = node.stencils
         context = NodeContext(
             fileHeader: config.fileHeader,
-            nodeName: "\(config.variable("productName"))\(config.nodeNameSuffix)",
+            nodeName: nodeName ?? config.variable("productName"),
             analyticsImports: node.analytics.imports(for: uiFramework, config: config),
             builderImports: node.builder.imports(for: uiFramework, config: config),
             contextImports: node.context.imports(for: uiFramework, config: config),

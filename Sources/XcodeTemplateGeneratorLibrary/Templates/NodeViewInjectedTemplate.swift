@@ -21,12 +21,12 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
                    description: "The name of the Node")
         }
 
-    internal init(config: Config) {
+    internal init(config: Config, nodeName: String? = nil) {
         let node: StencilTemplate.NodeViewInjected = .init()
         stencils = node.stencils
         context = NodeViewInjectedContext(
             fileHeader: config.fileHeader,
-            nodeName: "\(config.variable("productName"))\(config.nodeNameSuffix)",
+            nodeName: nodeName ?? config.variable("productName"),
             analyticsImports: node.analytics.imports(config: config),
             builderImports: node.builder.imports(config: config),
             contextImports: node.context.imports(config: config),

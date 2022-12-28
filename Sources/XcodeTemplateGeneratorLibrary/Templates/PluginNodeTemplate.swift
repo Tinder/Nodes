@@ -21,12 +21,12 @@ internal struct PluginNodeTemplate: XcodeTemplate {
                    description: "The name of the Plugin")
         }
 
-    internal init(config: Config) {
+    internal init(config: Config, pluginName: String? = nil) {
         let plugin: StencilTemplate = .plugin
         stencils = [plugin]
         context = PluginContext(
             fileHeader: config.fileHeader,
-            pluginName: "\(config.variable("productName"))\(config.nodeNameSuffix)",
+            pluginName: pluginName ?? config.variable("productName"),
             pluginImports: plugin.imports(config: config)
         )
     }

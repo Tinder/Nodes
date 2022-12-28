@@ -63,13 +63,13 @@ internal final class XcodeTemplateGenerator {
                                         .appendingPathExtension("swift"),
                                  atomically: true)
         }
-        let nodeVariantPath: URL = nodePath.appendingPathComponent("___VARIABLE_productName___V1", isDirectory: true)
+        let nodeVariantPath: URL = nodePath.appendingPathComponent("___VARIABLE_productName______VARIABLE_suffix___", isDirectory: true)
         try fileSystem.createDirectory(at: nodeVariantPath, withIntermediateDirectories: false)
         try plugin.stencils.forEach { stencil in
             let contents: String = try stencilRenderer.render(stencil, with: plugin.context.dictionary)
             try fileSystem.write(Data(contents.utf8),
                                  to: nodeVariantPath
-                                        .appendingPathComponent("___FILEBASENAME___V1\(stencil.name)")
+                                        .appendingPathComponent("___FILEBASENAME______VARIABLE_suffix___\(stencil.name)")
                                         .appendingPathExtension("swift"),
                                  atomically: true)
         }
@@ -77,7 +77,7 @@ internal final class XcodeTemplateGenerator {
             let contents: String = try stencilRenderer.render(stencil, with: node.template.context.dictionary)
             try fileSystem.write(Data(contents.utf8),
                                  to: nodeVariantPath
-                                        .appendingPathComponent("___FILEBASENAME___V1\(stencil.name)")
+                                        .appendingPathComponent("___FILEBASENAME______VARIABLE_suffix___\(stencil.name)")
                                         .appendingPathExtension("swift"),
                                  atomically: true)
         }

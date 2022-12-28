@@ -21,7 +21,10 @@ internal struct PluginListNodeTemplate: XcodeTemplate {
                    description: "The name of the Plugin List")
         }
 
-    internal init(config: Config, pluginListItemName: String = "") {
+    internal init(
+        config: Config,
+        pluginListItemName: String = ""
+    ) {
         let pluginList: StencilTemplate = .pluginList
         stencils = [pluginList]
         context = PluginListContext(
