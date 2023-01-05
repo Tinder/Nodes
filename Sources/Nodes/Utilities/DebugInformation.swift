@@ -99,11 +99,12 @@ public enum DebugInformation {
         internal let notification: Notification
 
         internal init(flow: Flow, viewController: AnyObject) {
-            notification = Notification(name: Self.name, userInfo: [
+            let userInfo: UserInfo = [
                 .flowIdentifier: ObjectIdentifier(flow),
                 .flowType: type(of: flow),
                 .factory: Factory(viewController)
-            ] as UserInfo)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
         }
     }
 
@@ -129,10 +130,11 @@ public enum DebugInformation {
         internal let notification: Notification
 
         internal init(flow: Flow) {
-            notification = Notification(name: Self.name, userInfo: [
+            let userInfo: UserInfo = [
                 .flowIdentifier: ObjectIdentifier(flow),
                 .flowType: type(of: flow)
-            ] as UserInfo)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
         }
     }
 
@@ -162,12 +164,13 @@ public enum DebugInformation {
         internal let notification: Notification
 
         internal init(flow: Flow, subFlow: Flow) {
-            notification = Notification(name: Self.name, userInfo: [
+            let userInfo: UserInfo = [
                 .flowIdentifier: ObjectIdentifier(flow),
                 .flowType: type(of: flow),
                 .subFlowIdentifier: ObjectIdentifier(subFlow),
                 .subFlowType: type(of: subFlow)
-            ] as UserInfo)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
         }
     }
 
@@ -197,12 +200,13 @@ public enum DebugInformation {
         internal let notification: Notification
 
         internal init(flow: Flow, subFlow: Flow) {
-            notification = Notification(name: Self.name, userInfo: [
+            let userInfo: UserInfo = [
                 .flowIdentifier: ObjectIdentifier(flow),
                 .flowType: type(of: flow),
                 .subFlowIdentifier: ObjectIdentifier(subFlow),
                 .subFlowType: type(of: subFlow)
-            ] as UserInfo)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
         }
     }
 
@@ -230,11 +234,12 @@ public enum DebugInformation {
         internal let notification: Notification
 
         internal init(flowController: FlowController, flow: Flow) {
-            notification = Notification(name: Self.name, userInfo: [
+            let userInfo: UserInfo = [
                 .flowControllerIdentifier: ObjectIdentifier(flowController),
                 .flowIdentifier: ObjectIdentifier(flow),
                 .flowType: type(of: flow)
-            ] as UserInfo)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
         }
     }
 
@@ -262,11 +267,12 @@ public enum DebugInformation {
         internal let notification: Notification
 
         internal init(flowController: FlowController, flow: Flow) {
-            notification = Notification(name: Self.name, userInfo: [
+            let userInfo: UserInfo = [
                 .flowControllerIdentifier: ObjectIdentifier(flowController),
                 .flowIdentifier: ObjectIdentifier(flow),
                 .flowType: type(of: flow)
-            ] as UserInfo)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
         }
     }
 
