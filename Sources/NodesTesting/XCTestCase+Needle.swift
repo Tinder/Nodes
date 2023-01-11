@@ -11,6 +11,13 @@ private let registry: __DependencyProviderRegistry = .instance
 
 extension XCTestCase {
 
+    /// Injects a component using the provided component factory.
+    ///
+    /// - Parameters:
+    ///   - componentFactory: The factory that produces the component.
+    ///   - dependency: A closure that returns the desired dependency.
+    ///
+    /// - Returns: The component factory.
     public func injectComponent<T: Component<U>, U>(
         componentFactory: @escaping (_ parent: Scope) -> T,
         with dependency: () -> U
@@ -22,12 +29,24 @@ extension XCTestCase {
         return { componentFactory(bootstrap()) }
     }
 
+
+    /// Creates a DependencyProviderRegistrationBuilder with a given scope.
+    ///
+    /// - Parameter scope: The scope in which components will be injected.
+    ///
+    /// - Returns: The `DependencyProviderRegistrationBuilder` instance.
     public func injectComponents(
         descendingFrom scope: @autoclosure () -> Scope
     ) -> DependencyProviderRegistrationBuilder {
         injectComponents(descendingFrom: scope)
     }
 
+
+    /// Creates a DependencyProviderRegistrationBuilder with a given scope.
+    ///
+    /// - Parameter scope: The scope in which components will be injected.
+    ///
+    /// - Returns: The `DependencyProviderRegistrationBuilder` instance.
     public func injectComponents(
         descendingFrom scope: () -> Scope
     ) -> DependencyProviderRegistrationBuilder {
@@ -54,6 +73,8 @@ extension XCTestCase {
     }
 }
 
+
+/// Responsible for adding dependencies to a dependence graph.
 public final class DependencyProviderRegistrationBuilder {
 
     private var path: [String]
@@ -67,6 +88,13 @@ public final class DependencyProviderRegistrationBuilder {
         self.registration = registration
     }
 
+    /// Injects a component into the scope.
+    ///
+    /// - Parameters:
+    ///   - type: The component's type.
+    ///   - dependency: An auto-closure that returns the desired dependency.
+    ///
+    /// - Returns: The `DependencyProviderRegistrationBuilder` instance.
     @discardableResult
     public func injectComponent<T: Component<U>, U>(
         ofType type: T.Type,
@@ -75,6 +103,13 @@ public final class DependencyProviderRegistrationBuilder {
         injectComponent(ofType: type, with: dependency)
     }
 
+    /// Injects a component into the scope.
+    ///
+    /// - Parameters:
+    ///   - type: The component's type.
+    ///   - dependency: A closure that returns the desired dependency.
+    ///
+    /// - Returns: The `DependencyProviderRegistrationBuilder` instance.
     @discardableResult
     public func injectComponent<T: Component<U>, U>(
         ofType type: T.Type,
