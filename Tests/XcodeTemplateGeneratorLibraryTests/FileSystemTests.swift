@@ -15,11 +15,13 @@ final class FileSystemTests: XCTestCase {
 
     private let fileManager: FileManager = .default
 
+    #if canImport(macOS)
     func testLibraryURL() {
         let fileSystem: FileSystem = fileManager
         let libraryURL: URL = fileManager.homeDirectoryForCurrentUser.appendingPathComponent("Library")
         expect(fileSystem.libraryURL) == libraryURL
     }
+    #endif
 
     func testCreateDirectory() throws {
         let fileSystem: FileSystem = fileManager

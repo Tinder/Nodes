@@ -15,6 +15,9 @@ let package = Package(
             name: "Nodes",
             targets: ["Nodes"]),
         .library(
+            name: "NodesTesting",
+            targets: ["NodesTesting"]),
+        .library(
             name: "XcodeTemplateGenerator",
             targets: ["XcodeTemplateGeneratorLibrary"]),
         .executable(
@@ -49,11 +52,19 @@ let package = Package(
         .package(
             url: "https://github.com/pointfreeco/swift-snapshot-testing.git",
             from: "1.9.0"),
+        .package(
+            url: "https://github.com/uber/needle.git",
+            from: "0.19.0"),
     ],
     targets: [
         .target(
             name: "Nodes",
             dependencies: []),
+        .target(
+            name: "NodesTesting",
+            dependencies: [
+                .product(name: "NeedleFoundation", package: "needle")
+            ]),
         .target(
             name: "XcodeTemplateGeneratorLibrary",
             dependencies: [
