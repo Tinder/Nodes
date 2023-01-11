@@ -88,6 +88,7 @@ The `Context` can (as desired) delegate data requests, event handling and user i
 
 - ``Context``
 - ``AbstractContext``
+- ``AbstractPresentableContext``
 
 ### Worker
 
