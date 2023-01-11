@@ -29,7 +29,6 @@ extension XCTestCase {
         return { componentFactory(bootstrap()) }
     }
 
-
     /// Creates a DependencyProviderRegistrationBuilder with a given scope.
     ///
     /// - Parameter scope: The scope in which components will be injected.
@@ -40,7 +39,6 @@ extension XCTestCase {
     ) -> DependencyProviderRegistrationBuilder {
         injectComponents(descendingFrom: scope)
     }
-
 
     /// Creates a DependencyProviderRegistrationBuilder with a given scope.
     ///
@@ -72,7 +70,6 @@ extension XCTestCase {
         }
     }
 }
-
 
 /// Responsible for adding dependencies to a dependence graph.
 public final class DependencyProviderRegistrationBuilder {
