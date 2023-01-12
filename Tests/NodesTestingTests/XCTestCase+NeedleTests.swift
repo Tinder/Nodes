@@ -11,7 +11,7 @@ import Nimble
 import SnapshotTesting
 import XCTest
 
-final class XCTestCase_NeedleTests: XCTestCase {
+final class XCTestCaseTests: XCTestCase {
 
     private class ParentDependency: Dependency {}
     private class ChildDependency: Dependency {}
