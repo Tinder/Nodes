@@ -4,7 +4,6 @@
 //
 
 import NeedleFoundation
-import Nodes
 import XCTest
 
 private let registry: __DependencyProviderRegistry = .instance
