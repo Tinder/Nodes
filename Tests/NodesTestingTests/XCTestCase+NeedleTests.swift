@@ -8,7 +8,6 @@
 import NeedleFoundation
 import Nimble
 @testable import NodesTesting
-import SnapshotTesting
 import XCTest
 
 final class XCTestCaseTests: XCTestCase {
