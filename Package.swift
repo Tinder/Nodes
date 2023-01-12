@@ -94,8 +94,7 @@ let package = Package(
                 "NodesTesting",
                 "Nimble",
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
-            ],
-            exclude: ["__Snapshots__"]),
+            ]),
         .testTarget(
             name: "XcodeTemplateGeneratorLibraryTests",
             dependencies: [
