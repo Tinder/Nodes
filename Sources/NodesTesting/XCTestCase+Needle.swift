@@ -11,13 +11,13 @@ private let registry: __DependencyProviderRegistry = .instance
 
 extension XCTestCase {
 
-    /// Injects a component using the provided component factory.
+    /// Injects a Needle component with mock dependencies.
     ///
     /// - Parameters:
-    ///   - componentFactory: The factory that produces the component.
-    ///   - dependency: A closure that returns the desired dependency.
+    ///   - componentFactory: A closure that initializes a Needle component instance.
+    ///   - dependency: A closure that initializes a mocked dependency instance for the component.
     ///
-    /// - Returns: The component factory.
+    /// - Returns: The provided component factory.
     public func injectComponent<T: Component<U>, U>(
         componentFactory: @escaping (_ parent: Scope) -> T,
         with dependency: () -> U
