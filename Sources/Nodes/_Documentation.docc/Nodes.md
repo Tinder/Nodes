@@ -82,7 +82,7 @@ Events and Interactions
 
 A Node's `Context` instance acts as an interactor and is responsible for handling events and responding to user interactions (received through a `Receiver` protocol from the user interface).
 
-To avoid bloating the `Context` instance, business logic may exist in the Node's `Worker` instances, and the `Context` calls methods on those `Worker` instances as needed.
+To avoid bloating the `Context` implementation, one or more `Worker` instances containing business logic may exist in the Node's `Worker` collection, and the `Context` can call methods on these `Worker` instances as needed.
 
 The `Context` can (as desired) delegate data requests, event handling and user interactions to the Node's listener which, in almost every situation, is the `Context` of the parent Node.
 
@@ -94,9 +94,9 @@ The `Context` can (as desired) delegate data requests, event handling and user i
 
 Business Logic
 
-`Worker` instances contain business logic and the Node's `Context` instance calls methods on the `Worker` instances as needed.
+One or more `Worker` instances containing business logic may exist in each Node's `Worker` collection, and the `Context` instance can call methods on these `Worker` instances as needed.
 
-`Worker` instances may also be used by ancestor Node instances as a way to share business logic with other Nodes.
+`Worker` class definitions do not have to be strictly associated to an individual Node. This enables sharing business logic with other Nodes and may be leveraged, for example, to allow a `Worker` defined in one module to be used in the `Worker` collection of a Node in another module. In this case, the `Worker` class definition should be stored separately from any specific Node's source files.
 
 - ``Worker``
 - ``AbstractWorker``
