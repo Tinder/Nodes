@@ -15,6 +15,7 @@ final class XCTestCaseTests: XCTestCase {
 
     private class ParentDependency: Dependency {}
     private class ChildDependency: Dependency {}
+
     private class ParentComponent: Component<ParentDependency> {}
     private class ChildComponent: Component<ChildDependency> {}
 
