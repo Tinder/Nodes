@@ -9,7 +9,7 @@ import NeedleFoundation
 
 extension __DependencyProviderRegistry {
 
-    func register(
+    internal func register(
         path: [String],
         dependencyProviderFactory dependency: @escaping (_ scope: Scope) -> AnyObject,
         onTeardown: (@escaping () -> Void) -> Void

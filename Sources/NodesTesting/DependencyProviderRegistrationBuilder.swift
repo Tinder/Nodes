@@ -7,13 +7,15 @@
 
 import NeedleFoundation
 
-/// Responsible for adding dependencies to a dependence graph.
+/**
+ * A ``DependencyProviderRegistrationBuilder`` instance allows Needle components to be injected descending from a scope.
+ */
 public final class DependencyProviderRegistrationBuilder {
 
     private var path: [String]
     private let registration: (_ path: [String], _ dependency: AnyObject) -> Void
 
-    init(
+    internal init(
         scope: Scope,
         registration: @escaping (_ path: [String], _ dependency: AnyObject) -> Void
     ) {
@@ -21,13 +23,13 @@ public final class DependencyProviderRegistrationBuilder {
         self.registration = registration
     }
 
-    /// Injects a component into the scope.
+    /// Injects a Needle component with mock dependencies.
     ///
     /// - Parameters:
-    ///   - type: The component's type.
-    ///   - dependency: An auto-closure that returns the desired dependency.
+    ///   - type: A Needle component type.
+    ///   - dependency: An auto-closure that returns a mocked dependency instance for the component.
     ///
-    /// - Returns: The `DependencyProviderRegistrationBuilder` instance.
+    /// - Returns: The ``DependencyProviderRegistrationBuilder`` instance.
     @discardableResult
     public func injectComponent<T: Component<U>, U>(
         ofType type: T.Type,
@@ -36,13 +38,13 @@ public final class DependencyProviderRegistrationBuilder {
         injectComponent(ofType: type, with: dependency)
     }
 
-    /// Injects a component into the scope.
+    /// Injects a Needle component with mock dependencies.
     ///
     /// - Parameters:
-    ///   - type: The component's type.
-    ///   - dependency: A closure that returns the desired dependency.
+    ///   - type: A Needle component type.
+    ///   - dependency: A closure that returns a mocked dependency instance for the component.
     ///
-    /// - Returns: The `DependencyProviderRegistrationBuilder` instance.
+    /// - Returns: The ``DependencyProviderRegistrationBuilder`` instance.
     @discardableResult
     public func injectComponent<T: Component<U>, U>(
         ofType type: T.Type,

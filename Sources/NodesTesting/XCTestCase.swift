@@ -28,9 +28,9 @@ extension XCTestCase {
         return { componentFactory(bootstrap()) }
     }
 
-    /// Creates a DependencyProviderRegistrationBuilder with a given scope.
+    /// Creates a ``DependencyProviderRegistrationBuilder`` instance with a given scope.
     ///
-    /// - Parameter scope: The scope in which components will be injected.
+    /// - Parameter scope: The scope from which injected components will descend from.
     ///
     /// - Returns: The `DependencyProviderRegistrationBuilder` instance.
     public func injectComponents(
@@ -39,9 +39,9 @@ extension XCTestCase {
         injectComponents(descendingFrom: scope)
     }
 
-    /// Creates a DependencyProviderRegistrationBuilder with a given scope.
+    /// Creates a ``DependencyProviderRegistrationBuilder`` instance with a given scope.
     ///
-    /// - Parameter scope: The scope in which components will be injected.
+    /// - Parameter scope: The scope from which injected components will descend from.
     ///
     /// - Returns: The `DependencyProviderRegistrationBuilder` instance.
     public func injectComponents(
