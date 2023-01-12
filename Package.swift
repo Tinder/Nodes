@@ -47,14 +47,14 @@ let package = Package(
             url: "https://github.com/stencilproject/Stencil.git",
             from: "0.15.0"),
         .package(
+            url: "https://github.com/uber/needle.git",
+            from: "0.22.0"),
+        .package(
             url: "https://github.com/Quick/Nimble.git",
             from: "10.0.0"),
         .package(
             url: "https://github.com/pointfreeco/swift-snapshot-testing.git",
             from: "1.9.0"),
-        .package(
-            url: "https://github.com/uber/needle.git",
-            from: "0.19.0"),
     ],
     targets: [
         .target(
@@ -93,7 +93,6 @@ let package = Package(
             dependencies: [
                 "NodesTesting",
                 "Nimble",
-                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
             ]),
         .testTarget(
             name: "XcodeTemplateGeneratorLibraryTests",
