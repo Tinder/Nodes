@@ -86,7 +86,7 @@ mv .build/documentation/archive/Nodes.doccarchive ~/Desktop/Nodes-X.X.X.doccarch
 - Upload the `Nodes.xcframework-X.X.X.zip` and `Nodes.doccarchive-X.X.X.zip` files created in Steps 2 and 3
 - Click `Update release`
 
-### Step 4 - Cleanup
+### Step 5 - Cleanup
 
 - Remove files on desktop that are no longer needed:
   - `Nodes.xcframework-X.X.X.zip`
