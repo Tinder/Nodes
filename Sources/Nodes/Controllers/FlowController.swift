@@ -196,6 +196,5 @@ public final class FlowController {
 
     deinit {
         flows.forEach(detach)
-        LeakDetector.detect(self)
     }
 }
