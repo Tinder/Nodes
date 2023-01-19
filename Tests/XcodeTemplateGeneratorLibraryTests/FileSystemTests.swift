@@ -29,7 +29,7 @@ final class FileSystemTests: XCTestCase {
                  appropriateFor: fileSystem.libraryURL,
                  create: true)
             .appendingPathComponent("directory")
-        expect(try fileSystem.createDirectory(at: url, withIntermediateDirectories: false)).toNot(throwAssertion())
+        try expect(fileSystem.createDirectory(at: url, withIntermediateDirectories: false)).toNot(throwAssertion())
     }
 
     func testWriteAndContents() throws {
@@ -41,8 +41,8 @@ final class FileSystemTests: XCTestCase {
                  create: true)
             .appendingPathComponent("file")
         let contents: Data = .init("data".utf8)
-        expect(try fileSystem.write(contents, to: url, atomically: true)).toNot(throwAssertion())
-        expect(try fileSystem.contents(of: url)) == contents
+        try expect(fileSystem.write(contents, to: url, atomically: true)).toNot(throwAssertion())
+        try expect(fileSystem.contents(of: url)) == contents
     }
 }
 
