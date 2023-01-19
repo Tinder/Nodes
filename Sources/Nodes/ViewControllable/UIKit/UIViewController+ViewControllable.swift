@@ -49,44 +49,6 @@ extension UIViewController: ViewControllable {
         dismiss(animated: animated, completion: completion)
     }
 
-    /// Called just before the ``ViewControllable`` instance is added or removed from a container
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameter viewController: The parent ``ViewControllable`` instance, or `nil` if there is no parent.
-    public func willMove(toParent viewController: ViewControllable?) {
-        let viewController: UIViewController? = viewController?._asUIViewController()
-        willMove(toParent: viewController)
-    }
-
-    /// Called after the ``ViewControllable`` instance is added or removed from a container
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameter viewController: The parent ``ViewControllable`` instance, or `nil` if there is no parent.
-    public func didMove(toParent viewController: ViewControllable?) {
-        let viewController: UIViewController? = viewController?._asUIViewController()
-        didMove(toParent: viewController)
-    }
-
-    /// Adds the given ``ViewControllable`` instance as a child.
-    ///
-    /// - Parameter viewController: The ``ViewControllable`` instance to be added as a child.
-    public func addChild(_ viewController: ViewControllable) {
-        let viewController: UIViewController = viewController._asUIViewController()
-        guard !children.contains(viewController)
-        else { return }
-        addChild(viewController)
-    }
-
-    /// Removes the given ``ViewControllable`` instance from its parent.
-    ///
-    /// - Parameter viewController: The ``ViewControllable`` instance to be removed from its parent.
-    public func removeChild(_ viewController: ViewControllable) {
-        let viewController: UIViewController = viewController._asUIViewController()
-        guard children.contains(viewController)
-        else { return }
-        viewController.removeFromParent()
-    }
-
     /// Contains the given ``ViewControllable`` instance within the entire bounds of the parent
     /// ``ViewControllable`` instance.
     ///
@@ -104,8 +66,9 @@ extension UIViewController: ViewControllable {
     public func contain(_ viewController: ViewControllable, in view: UIView) {
         guard view.isDescendant(of: self.view)
         else { return }
-        let subview: UIView = viewController._asUIViewController().view
-        addChild(viewController)
+        let uiViewController = viewController._asUIViewController()
+        let subview: UIView = uiViewController.view
+        addChild(uiViewController)
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
         // activate from array
@@ -113,7 +76,7 @@ extension UIViewController: ViewControllable {
         subview.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         subview.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         subview.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        viewController.didMove(toParent: self)
+        uiViewController.didMove(toParent: self._asUIViewController())
     }
 
     /// Uncontains the given ``ViewControllable`` instance.
@@ -123,9 +86,13 @@ extension UIViewController: ViewControllable {
         let subview: UIView = viewController._asUIViewController().view
         guard subview.isDescendant(of: view)
         else { return }
-        viewController.willMove(toParent: nil)
+        let uiViewController = viewController._asUIViewController()
+        uiViewController.willMove(toParent: nil)
         subview.removeFromSuperview()
-        removeChild(viewController)
+
+        let viewController: UIViewController = viewController._asUIViewController()
+        guard children.contains(viewController) else { return }
+        viewController.removeFromParent()
     }
 
     /// Returns `self` as a ``UIViewController``.
