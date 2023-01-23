@@ -271,6 +271,11 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
                                  BuildType,
                                  StateType>: PluginList<KeyType, ComponentType, BuildType, StateType> {
 
+    /// Defines the key for the default `BuildType` instance.
+    open var defaultKey: KeyType {
+        preconditionFailure("Property in abstract base class must be overridden")
+    }
+
     /// Defines the default instance to prepend to the collection of `BuildType` instances.
     ///
     /// - Important: This abstract method must be overridden in subclasses.
@@ -322,6 +327,9 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
     /// - Returns: A `BuildType` instance.
     override public func create(key: KeyType, state: StateType) -> BuildType {
         let component: ComponentType = makeComponent()
+        if key == defaultKey {
+            return `default`(component: component)
+        }
         return create(component: component, key: key, state: state) ?? `default`(component: component)
     }
 }
