@@ -45,12 +45,8 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         // swiftlint:disable:next discouraged_optional_collection
         var creationOrderOverride: [String]?
 
-        override var defaultKey: String {
-            "default"
-        }
-
-        override func `default`(component: ComponentType) -> BuildType {
-            BuildType(identifier: defaultKey)
+        override func `default`(component: ComponentType) -> (key: String, instance: BuildType) {
+            (key: "default", instance: BuildType(identifier: "default"))
         }
 
         override func plugins(component: ComponentType) -> KeyValuePairs<String, AnyPlugin> {
