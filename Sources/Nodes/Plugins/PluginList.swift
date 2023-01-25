@@ -322,7 +322,7 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
     /// - Returns: A `BuildType` instance.
     override public func create(key: KeyType, state: StateType) -> BuildType {
         let component: ComponentType = makeComponent()
-        let defaultBuildType = `default`(component: component)
+        let defaultBuildType: (key: KeyType, instance: BuildType) = `default`(component: component)
         if key == defaultBuildType.key {
             return defaultBuildType.instance
         }

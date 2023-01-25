@@ -125,7 +125,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
     func testPluginListWithDefaultCreateWithDefaultKey() throws {
         let pluginList: TestPluginListWithDefault = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
-        let defaultBuildType = pluginList.default(component: ComponentType())
+        let defaultBuildType: (key: KeyType, instance: BuildType) = pluginList.default(component: ComponentType())
         expect(pluginList.create(key: defaultBuildType.key)?.identifier) == defaultBuildType.instance.identifier
     }
 
