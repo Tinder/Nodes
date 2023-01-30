@@ -16,7 +16,7 @@ extension XCTestCase {
     ///   - componentFactory: A closure that initializes a Needle component instance.
     ///   - dependency: A closure that initializes a mocked dependency instance for the component.
     ///
-    /// - Returns: The provided component factory.
+    /// - Returns: A factory for the component using ``BootstrapComponent`` as the parent.
     public func injectComponent<T: Component<U>, U>(
         componentFactory: @escaping (_ parent: Scope) -> T,
         with dependency: () -> U
