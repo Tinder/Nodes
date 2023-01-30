@@ -71,7 +71,7 @@ final class XCTestCaseTests: XCTestCase {
         injectComponents(descendingFrom: parentComponent)
             .injectComponent(ofType: ChildComponent.self, with: childDependencyB)
 
-        // then
+        // Then
         let childDependencyBFactory = try XCTUnwrap(Self.registry.dependencyProviderFactory(for: Self.childPath))
         expect(childDependencyBFactory(parentComponent)) === childDependencyB as AnyObject
     }
