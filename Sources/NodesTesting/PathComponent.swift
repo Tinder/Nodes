@@ -11,7 +11,7 @@ internal class PathComponent: CustomStringConvertible {
 
     internal let description: String
 
-    init<T>(for type: T.Type) {
+    internal init<T>(for type: T.Type) {
         description = "\(T.self)"
             .components(separatedBy: ".")
             .reversed()[0]
