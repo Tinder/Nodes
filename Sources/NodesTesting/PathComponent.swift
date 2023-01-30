@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PathComponent: CustomStringConvertible {
+internal class PathComponent: CustomStringConvertible {
 
     let description: String
 
