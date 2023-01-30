@@ -9,7 +9,7 @@ import Foundation
 
 internal class PathComponent: CustomStringConvertible {
 
-    let description: String
+    internal let description: String
 
     init<T>(for type: T.Type) {
         description = "\(T.self)"
