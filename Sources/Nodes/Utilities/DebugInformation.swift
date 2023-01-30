@@ -51,6 +51,8 @@ public enum DebugInformation {
                                      flowIdentifier: ObjectIdentifier,
                                      flowType: Flow.Type)
 
+    private typealias UserInfo = [UserInfoKey: Any]
+
     public final class Factory {
 
         private weak var object: AnyObject?
@@ -275,8 +277,6 @@ public enum DebugInformation {
             notification = Notification(name: Self.name, userInfo: userInfo)
         }
     }
-
-    private typealias UserInfo = [UserInfoKey: Any]
 
     private enum UserInfoKey {
         case flowIdentifier
