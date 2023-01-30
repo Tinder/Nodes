@@ -8,7 +8,7 @@
 import NeedleFoundation
 
 /**
- * A ``DependencyProviderRegistrationBuilder`` instance allows Needle components to be injected descending from a scope.
+ * A ``DependencyProviderRegistrationBuilder`` is used to inject Needle components descending from a scope.
  */
 public final class DependencyProviderRegistrationBuilder {
 
