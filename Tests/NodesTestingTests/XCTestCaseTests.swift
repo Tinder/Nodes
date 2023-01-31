@@ -35,31 +35,31 @@ final class XCTestCaseTests: XCTestCase {
     }
 
     func testInjectComponents() throws {
-        // given
+        // Given
         let childDependencyA: ChildDependency = .init()
         let childDependencyB: ChildDependency = .init()
 
-        // then
+        // Then
         expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)).to(beNil())
         expect(Self.registry.dependencyProviderFactory(for: Self.childPath)).to(beNil())
 
-        // when
+        // When
         let parentComponentFactory: () -> ParentComponent = injectComponent {
             ParentComponent(parent: $0)
         } with: {
             ParentDependency()
         }
 
-        // then
+        // Then
         expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)).toNot(beNil())
 
-        // when
+        // When
         let parentComponent: ParentComponent = parentComponentFactory()
 
-        // then
+        // Then
         expect(parentComponent.path.joined(separator: "->")) == Self.parentPath
 
-        // when
+        // When
         injectComponents(descendingFrom: parentComponent)
             .injectComponent(ofType: ChildComponent.self, with: childDependencyA)
 
