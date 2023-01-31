@@ -64,7 +64,8 @@ final class XCTestCaseTests: XCTestCase {
             .injectComponent(ofType: ChildComponent.self, with: childDependencyA)
 
         // Then
-        let childDependencyAFactory = try XCTUnwrap(Self.registry.dependencyProviderFactory(for: Self.childPath))
+        let dependencyFactoryA: ((Scope) -> AnyObject)? = Self.registry.dependencyProviderFactory(for: Self.childPath)
+        let childDependencyAFactory: ((Scope) -> AnyObject) = try XCTUnwrap(dependencyFactoryA)
         expect(childDependencyAFactory(parentComponent)) === childDependencyA as AnyObject
 
         // When
@@ -72,7 +73,8 @@ final class XCTestCaseTests: XCTestCase {
             .injectComponent(ofType: ChildComponent.self, with: childDependencyB)
 
         // Then
-        let childDependencyBFactory = try XCTUnwrap(Self.registry.dependencyProviderFactory(for: Self.childPath))
+        let dependencyFactoryB: ((Scope) -> AnyObject)? = Self.registry.dependencyProviderFactory(for: Self.childPath)
+        let childDependencyBFactory: ((Scope) -> AnyObject) = try XCTUnwrap(dependencyFactoryB)
         expect(childDependencyBFactory(parentComponent)) === childDependencyB as AnyObject
     }
 }
