@@ -1,6 +1,8 @@
 //
+//  XCTestCase.swift
+//
+//
 //  Created by Christopher Fuller on 6/2/22.
-//  Copyright © 2020 Tinder. All rights reserved.
 //
 
 import NeedleFoundation

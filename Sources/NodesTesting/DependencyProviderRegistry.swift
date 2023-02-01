@@ -1,6 +1,6 @@
 //
 //  DependencyProviderRegistry.swift
-//  
+//
 //
 //  Created by Eman Haroutunian on 1/12/23.
 //
