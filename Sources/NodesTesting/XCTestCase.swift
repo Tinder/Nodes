@@ -43,7 +43,7 @@ extension XCTestCase {
 
     /// Creates a ``DependencyProviderRegistrationBuilder`` instance with a given scope.
     ///
-    /// - Parameter scope: The scope from which injected components will descend from.
+    /// - Parameter scope: The scope from which injected components will descend.
     ///
     /// - Returns: The `DependencyProviderRegistrationBuilder` instance.
     public func injectComponents(
