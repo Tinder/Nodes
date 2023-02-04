@@ -1,6 +1,7 @@
+// swiftlint:disable:this file_name
 //
 //  DependencyProviderRegistry.swift
-//
+//  NodesTesting
 //
 //  Created by Eman Haroutunian on 1/12/23.
 //
