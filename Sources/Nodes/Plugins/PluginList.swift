@@ -280,7 +280,7 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
     /// - Parameters:
     ///   - component: The `ComponentType` instance.
     ///
-    /// - Returns: A tuple containing the key and the `BuildType` instance mapped by it.
+    /// - Returns: A tuple containing the `BuildType` instance and its `KeyType` key.
     open func `default`( // swiftlint:disable:this unavailable_function
         component: ComponentType
     ) -> (key: KeyType, instance: BuildType) {
@@ -322,11 +322,12 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
     /// - Returns: A `BuildType` instance.
     override public func create(key: KeyType, state: StateType) -> BuildType {
         let component: ComponentType = makeComponent()
-        let defaultBuildType: (key: KeyType, instance: BuildType) = `default`(component: component)
-        if key == defaultBuildType.key {
-            return defaultBuildType.instance
+        let `default`: (key: KeyType, instance: BuildType) = `default`(component: component)
+        if key == `default`.key {
+            return `default`.instance
+        } else {
+            return create(component: component, key: key, state: state) ?? `default`.instance
         }
-        return create(component: component, key: key, state: state) ?? defaultBuildType.instance
     }
 }
 
