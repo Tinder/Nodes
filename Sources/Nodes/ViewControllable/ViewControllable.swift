@@ -102,14 +102,6 @@ public protocol ViewControllable: AnyObject {
         with autoresizingMask: UIView.AutoresizingMask
     )
 
-    /// Contains the given ``ViewControllable`` instance within the given view of the parent
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - view: The view in which to contain the ``ViewControllable`` instance.
-    func contain(_ viewController: ViewControllable, in view: UIView)
-
     /// Contains the given ``ViewControllable`` instance with the layout constraints provided by the given closure.
     ///
     /// - Parameters:

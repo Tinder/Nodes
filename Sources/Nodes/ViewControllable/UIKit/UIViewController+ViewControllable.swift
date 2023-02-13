@@ -126,24 +126,6 @@ extension UIViewController: ViewControllable {
         viewController.didMove(toParent: self)
     }
 
-    /// Contains the given ``ViewControllable`` instance within the given view of the parent
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - view: The view in which to contain the ``ViewControllable`` instance.
-    public func contain(_ viewController: ViewControllable, in view: UIView) {
-        guard view.isDescendant(of: self.view)
-        else { return }
-        let subview: UIView = viewController._asUIViewController().view
-        addChild(viewController)
-        subview.translatesAutoresizingMaskIntoConstraints = true
-        subview.frame = view.bounds
-        subview.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(subview)
-        viewController.didMove(toParent: self)
-    }
-
     /// Contains the given ``ViewControllable`` instance with the layout constraints provided by the given closure.
     ///
     /// - Parameters:
