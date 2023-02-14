@@ -147,7 +147,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         context.listener = listener
         let viewStateFactory: <nodeName>ViewStateFactory = .init()
         let viewState: Publishers.Map = .init(
-            upstream: context.$state.eraseToAnyPublisher(),
+            upstream: context.$state,
             transform: viewStateFactory
         )
         let viewController: <nodeName>ViewController = .init(

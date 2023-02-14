@@ -147,7 +147,7 @@ internal final class RootBuilderImp: AbstractBuilder
         context.listener = listener
         let viewStateFactory: RootViewStateFactory = .init()
         let viewState: Publishers.Map = .init(
-            upstream: context.$state.eraseToAnyPublisher(),
+            upstream: context.$state,
             transform: viewStateFactory
         )
         let viewController: RootViewController = .init(

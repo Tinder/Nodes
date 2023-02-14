@@ -29,13 +29,13 @@ jobs:
       uses: actions/checkout@v3
     - name: Build documentation
       run: |
-        make docs open="no"
+        make docs open="no" workaround="ENABLED"
         mkdir Documentation
         mv .build/documentation/archive/Nodes.doccarchive Documentation
     - name: Archive
       run: >
         tar
-        -czf "Nodes-${{ github.ref_name }}.tar.gz"
+        -czf "Nodes-${GITHUB_REF_NAME}.tar.gz"
         --exclude=".swiftlint.yml"
         Sources Documentation
     - name: Upload
@@ -44,5 +44,5 @@ jobs:
         --url="https://tinder.jfrog.io/artifactory"
         --access-token="${{ secrets.ARTIFACTORY_ACCESS_TOKEN }}"
         --flat="true"
-        "Nodes-${{ github.ref_name }}.tar.gz"
+        "Nodes-${GITHUB_REF_NAME}.tar.gz"
         "swift-package-releases/Nodes/"

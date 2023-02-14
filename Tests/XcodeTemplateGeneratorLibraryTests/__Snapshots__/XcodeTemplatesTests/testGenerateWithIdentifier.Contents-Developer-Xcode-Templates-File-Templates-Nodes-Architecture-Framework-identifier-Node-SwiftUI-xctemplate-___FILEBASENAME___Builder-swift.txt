@@ -146,7 +146,7 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
         context.listener = listener
         let viewStateFactory: ___VARIABLE_productName___ViewStateFactory = .init()
         let viewState: Publishers.Map = .init(
-            upstream: context.$state.eraseToAnyPublisher(),
+            upstream: context.$state,
             transform: viewStateFactory
         )
         var view: ___VARIABLE_productName___View = .init(

@@ -9,6 +9,8 @@ import Nimble
 import XcodeTemplateGeneratorLibrary
 import XCTest
 
+#if os(macOS)
+
 final class FileSystemTests: XCTestCase {
 
     private let fileManager: FileManager = .default
@@ -43,3 +45,5 @@ final class FileSystemTests: XCTestCase {
         expect(try fileSystem.contents(of: url)) == contents
     }
 }
+
+#endif

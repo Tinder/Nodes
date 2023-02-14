@@ -10,9 +10,9 @@ Native Mobile Application Engineering at Scale
 
 At Tinder, we create mobile applications ***to keep the magic of human connection alive***. And to do that successfully, we built a large team of mobile engineers who continually deliver numerous concurrent projects to empower, delight and protect our countless members around the globe.
 
-We think [Swift](https://developer.apple.com/swift) and related technologies including [SwiftUI](https://developer.apple.com/documentation/swiftui) and [Swift Concurrency](https://developer.apple.com/documentation/swift/swift_standard_library/concurrency) are simply awesome. However, building a mobile application at Tinder's scale requires a scalable application architecture as well. We created the Nodes Architecture Framework to specifically address how to build a complex app, with a large team, involving many simultaneous initiatives.
+We think [Swift](https://developer.apple.com/swift) and related technologies including [SwiftUI](https://developer.apple.com/xcode/swiftui) and [Swift Concurrency](https://developer.apple.com/documentation/swift/swift_standard_library/concurrency) are simply awesome. However, building a mobile application at Tinder's scale requires a scalable application architecture as well. We created the Nodes Architecture Framework to specifically address how to build a complex app, with a large team, involving many simultaneous initiatives.
 
-Nodes provides a modular and plugin-based approach to assembling an app with countless screens and features. Nodes leverages reactive data streams for state management to allow app state to be distributed, which is essential when many different teams own different parts of the codebase. Nodes is not opinionated about which reactive library to use however, or even which UI framework to use. In fact, Nodes is fully compatible with [SwiftUI](https://developer.apple.com/xcode/swiftui), [UIKit](https://developer.apple.com/documentation/uikit) and [AppKit](https://developer.apple.com/documentation/appkit).
+Nodes provides a modular and plugin-based approach to assembling an app with countless screens and features. Nodes leverages reactive data streams for state management to allow app state to be distributed, which is essential when many different teams own different parts of the codebase. Nodes is not opinionated about which reactive library to use however, or even which UI framework to use. In fact, Nodes is fully compatible with [SwiftUI](https://developer.apple.com/documentation/swiftui), [UIKit](https://developer.apple.com/documentation/uikit) and [AppKit](https://developer.apple.com/documentation/appkit).
 
 Even though the Nodes Architecture Framework leverages some concepts and patterns similar to [Uber's cross-platform mobile architecture framework](https://github.com/uber/RIBs) (RIBs), it was built from the ground up to provide unique benefits purpose built for [Tinder](https://github.com/tinder). ***No source code has been copied from RIBs*** to create this framework. Other open source projects such as [Needle](https://github.com/uber/needle) and [Mockolo](https://github.com/uber/mockolo) are utilized as dependencies when creating an app with Nodes.
 
@@ -82,9 +82,7 @@ Events and Interactions
 
 A Node's `Context` instance acts as an interactor and is responsible for handling events and responding to user interactions (received through a `Receiver` protocol from the user interface).
 
-To avoid bloating the `Context` instance, data transformations and other business logic can exist in the Node's `Worker` instances, and the `Context` may call methods on those `Worker` instances as needed.
-
-The `Context` may participate in keeping the Node's user interface (through a `Presentable` protocol) in sync with the current app state, though the Node's view state `Worker` normally handles this responsibility.
+To avoid bloating the `Context` implementation, one or more `Worker` instances containing business logic may exist in the Node's `Worker` collection, and the `Context` can call methods on these `Worker` instances as needed.
 
 The `Context` can (as desired) delegate data requests, event handling and user interactions to the Node's listener which, in almost every situation, is the `Context` of the parent Node.
 
@@ -94,9 +92,11 @@ The `Context` can (as desired) delegate data requests, event handling and user i
 
 ### Worker
 
-Data Transformations and Business Logic
+Business Logic
 
-Every Node includes a `Worker` instance responsible for transforming app state into view state. Additional `Worker` instances may be used (as needed) for other data transformations or additional business logic. The Node's `Context` instance may call methods on the Node's `Worker` instances as needed.
+One or more `Worker` instances containing business logic may exist in each Node's `Worker` collection, and the `Context` instance can call methods on these `Worker` instances as needed.
+
+`Worker` class definitions do not have to be strictly associated to an individual Node. This enables sharing business logic with other Nodes and may be leveraged, for example, to allow a `Worker` defined in one module to be used in the `Worker` collection of a Node in another module. In this case, the `Worker` class definition should be stored separately from any specific Node's source files.
 
 - ``Worker``
 - ``AbstractWorker``
@@ -106,12 +106,6 @@ Every Node includes a `Worker` instance responsible for transforming app state i
 User Interface
 
 A Node's ``ViewControllable`` instance defines its user interface (for example a [UIViewController](https://developer.apple.com/documentation/uikit/uiviewcontroller) in a [UIKit](https://developer.apple.com/documentation/uikit) app) and is also responsible for displaying or presenting the user interface of child Nodes. A ``ViewControllable`` protocol is used instead of the concrete class type to limit the available API, to avoid the use of UI frameworks (such as [UIKit](https://developer.apple.com/documentation/uikit)) within `Flow` instances and to facilitate testing.
-
-The ``ViewControllable`` instance is injected into the Node's `Context` as well, however a different protocol named `Presentable` is used there.
-
-This means the same exact instance is accessed through a ``ViewControllable`` protocol from within the `Flow` instance (for presentation) and through a `Presentable` protocol from within the `Context` instance (for updating the UI).
-
-Note that although the `Context` may participate in keeping a Node's user interface in sync with the current app state, the Node's view state `Worker` normally handles this responsibility.
 
 - ``ViewControllable``
 - ``ViewControllableFlow``
