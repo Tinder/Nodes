@@ -1,32 +1,32 @@
 ▿ Config
   ▿ baseImports: 2 members
-    - "baseImports-1"
-    - "baseImports-2"
-  - cancellableType: "cancellableType"
+    - "<baseImports-1>"
+    - "<baseImports-2>"
+  - cancellableType: "<cancellableType>"
   ▿ dependencies: 2 elements
     ▿ Variable
-      - name: "dependencies-name-1"
-      - type: "dependencies-type-1"
+      - name: "<dependencies-name-1>"
+      - type: "<dependencies-type-1>"
     ▿ Variable
-      - name: "dependencies-name-2"
-      - type: "dependencies-type-2"
+      - name: "<dependencies-name-2>"
+      - type: "<dependencies-type-2>"
   ▿ dependencyInjectionImports: 2 members
-    - "dependencyInjectionImports-1"
-    - "dependencyInjectionImports-2"
-  - fileHeader: "fileHeader"
+    - "<dependencyInjectionImports-1>"
+    - "<dependencyInjectionImports-2>"
+  - fileHeader: "<fileHeader>"
   ▿ flowProperties: 2 elements
     ▿ Variable
-      - name: "flowProperties-name-1"
-      - type: "flowProperties-type-1"
+      - name: "<flowProperties-name-1>"
+      - type: "<flowProperties-type-1>"
     ▿ Variable
-      - name: "flowProperties-name-2"
-      - type: "flowProperties-type-2"
+      - name: "<flowProperties-name-2>"
+      - type: "<flowProperties-type-2>"
   - isViewInjectedNodeEnabled: true
-  - publisherFailureType: "publisherFailureType"
-  - publisherType: "publisherType"
+  - publisherFailureType: "<publisherFailureType>"
+  - publisherType: "<publisherType>"
   ▿ reactiveImports: 2 members
-    - "reactiveImports-1"
-    - "reactiveImports-2"
+    - "<reactiveImports-1>"
+    - "<reactiveImports-2>"
   ▿ uiFrameworks: 4 elements
     ▿ UIFramework
       - framework: Framework.appKit
@@ -53,7 +53,7 @@
       - viewControllerMethods: "<viewControllerMethods-Custom>"
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-Custom>"
       - viewControllerProperties: "<viewControllerProperties-Custom>"
-  - viewControllableFlowType: "viewControllableFlowType"
-  - viewControllableType: "viewControllableType"
-  - viewControllerUpdateComment: "viewControllerUpdateComment"
-  - viewStateOperators: "viewStateOperators"
+  - viewControllableFlowType: "<viewControllableFlowType>"
+  - viewControllableType: "<viewControllableType>"
+  - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+  - viewStateOperators: "<viewStateOperators>"

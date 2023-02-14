@@ -45,8 +45,8 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         // swiftlint:disable:next discouraged_optional_collection
         var creationOrderOverride: [String]?
 
-        override func `default`(component: ComponentType) -> BuildType {
-            BuildType(identifier: "default")
+        override func `default`(component: ComponentType) -> (key: String, instance: BuildType) {
+            (key: "default", instance: BuildType(identifier: "default"))
         }
 
         override func plugins(component: ComponentType) -> KeyValuePairs<String, AnyPlugin> {
@@ -82,7 +82,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList.createAll().map(\.identifier)) == ["default"]
     }
 
-    func testPluginListCreate() throws {
+    func testPluginListCreate() {
         let pluginList: TestPluginList = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
         expect(pluginList.create()?.identifier) == "plugin3"
@@ -92,7 +92,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList.create()).to(beNil())
     }
 
-    func testPluginListWithDefaultCreate() throws {
+    func testPluginListWithDefaultCreate() {
         let pluginList: TestPluginListWithDefault = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
         expect(pluginList.create()?.identifier) == "plugin3"
@@ -102,7 +102,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList.create()?.identifier) == "default"
     }
 
-    func testPluginListCreateWithKey() throws {
+    func testPluginListCreateWithKey() {
         let pluginList: TestPluginList = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
         expect(pluginList.create(key: "plugin2")?.identifier) == "plugin2"
@@ -112,7 +112,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList.create(key: "plugin2")).to(beNil())
     }
 
-    func testPluginListWithDefaultCreateWithKey() throws {
+    func testPluginListWithDefaultCreateWithKey() {
         let pluginList: TestPluginListWithDefault = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
         expect(pluginList.create(key: "plugin2")?.identifier) == "plugin2"
@@ -120,6 +120,12 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList.create(key: "plugin2")?.identifier) == "default"
         pluginList.creationOrderOverride = []
         expect(pluginList.create(key: "plugin2")?.identifier) == "default"
+    }
+
+    func testPluginListWithDefaultCreateWithDefaultKey() throws {
+        let pluginList: TestPluginListWithDefault = .init { ComponentType() }
+        expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
+        expect(pluginList.create(key: "default")?.identifier) == "default"
     }
 
     func testPluginListDuplicateKeys() {

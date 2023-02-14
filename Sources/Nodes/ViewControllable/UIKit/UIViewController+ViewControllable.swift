@@ -72,11 +72,13 @@ extension UIViewController: ViewControllable {
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
         // activate from array
-        subview.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-        subview.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        subview.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        subview.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        uiViewController.didMove(toParent: self._asUIViewController())
+        NSLayoutConstraint.activate([
+            subview.heightAnchor.constraint(equalTo: view.heightAnchor),
+            subview.widthAnchor.constraint(equalTo: view.widthAnchor),
+            subview.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            subview.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        viewController.didMove(toParent: self)
     }
 
     /// Uncontains the given ``ViewControllable`` instance.

@@ -21,7 +21,7 @@ public protocol ViewControllable: AnyObject {
     ///
     /// - Returns: The `self` instance with the given ``ModalStyle`` applied.
     @discardableResult
-    func withModalStyle(_ style: ModalStyle) -> Self
+    func withModalStyle(_ modalStyle: ModalStyle) -> Self
 
     /// Presents a ``ViewControllable`` instance.
     ///
