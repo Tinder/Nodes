@@ -104,9 +104,8 @@ extension UIViewController: ViewControllable {
     public func contain(_ viewController: ViewControllable, in view: UIView) {
         guard view.isDescendant(of: self.view)
         else { return }
-        let uiViewController = viewController._asUIViewController()
-        let subview: UIView = uiViewController.view
-        addChild(uiViewController)
+        let subview: UIView = viewController._asUIViewController().view
+        addChild(viewController)
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
         // activate from array
@@ -126,13 +125,9 @@ extension UIViewController: ViewControllable {
         let subview: UIView = viewController._asUIViewController().view
         guard subview.isDescendant(of: view)
         else { return }
-        let uiViewController = viewController._asUIViewController()
-        uiViewController.willMove(toParent: nil)
+        viewController.willMove(toParent: nil)
         subview.removeFromSuperview()
-
-        let viewController: UIViewController = viewController._asUIViewController()
-        guard children.contains(viewController) else { return }
-        viewController.removeFromParent()
+        removeChild(viewController)
     }
 
     /// Returns `self` as a ``UIViewController``.
