@@ -22,7 +22,7 @@ internal protocol {{ node_name }}Analytics: AnyObject {}
 
 /**
  PURPOSE:
- Custom analytics implementation for this Node, to be used ONLY when storing state is unavoidable.
+ Custom analytics implementation for this Node.
  */
 internal final class {{ node_name }}AnalyticsImp {}
 
