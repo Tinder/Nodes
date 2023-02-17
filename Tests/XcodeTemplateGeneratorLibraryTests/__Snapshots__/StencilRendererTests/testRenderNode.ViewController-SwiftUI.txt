@@ -4,16 +4,6 @@ import <viewControllerImports>
 
 /**
  PURPOSE:
- The view state.
- */
-internal struct <nodeName>ViewState: Equatable, InitialStateProviding {
-
-    /// The initial view state.
-    internal static var initialState: <nodeName>ViewState = .init()
-}
-
-/**
- PURPOSE:
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
  */
@@ -34,7 +24,6 @@ internal final class <nodeName>ViewController: <viewControllerType>
 }
 
 extension <nodeName>ViewController: <nodeName>ViewControllable {}
-extension <nodeName>ViewController: <nodeName>Presentable {}
 
 /**
  PURPOSE:
@@ -44,7 +33,7 @@ internal struct <nodeName>View: NodesView {
 
     /// The body of the view.
     internal var body: some View {
-        WithViewState(viewState) { viewState in
+        WithViewState(statePublisher, initialState: initialState) { viewState in
             Text(verbatim: "\(type(of: viewState))")
         }
     }
@@ -55,13 +44,23 @@ internal struct <nodeName>View: NodesView {
     /// The Analytics instance.
     internal weak var analytics: <nodeName>Analytics?
 
+    /// The initial view state.
+    private let initialState: <nodeName>ViewState
+
     /// The view state publisher.
-    private let viewState: <publisherType><<nodeName>ViewState<publisherFailureType>>
+    private let statePublisher: <publisherType><<nodeName>ViewState<publisherFailureType>>
 
     /// The initializer.
-    /// - Parameter viewState: The view state publisher
-    internal init(viewState: <publisherType><<nodeName>ViewState<publisherFailureType>>) {
-        self.viewState = viewState
+    ///
+    /// - Parameters:
+    ///   - initialState: The initial view state.
+    ///   - statePublisher: The view state publisher.
+    internal init(
+        initialState: <nodeName>ViewState,
+        statePublisher: <publisherType><<nodeName>ViewState<publisherFailureType>>
+    ) {
+        self.initialState = initialState
+        self.statePublisher = statePublisher
             <viewStateOperators>
     }
 }
@@ -72,10 +71,10 @@ internal struct <nodeName>View: NodesView {
  */
 internal struct <nodeName>View_Previews: PreviewProvider {
 
-    private static let viewState: AnyPublisher<<nodeName>ViewState<publisherFailureType>> =
-        Just<<nodeName>ViewState>(.initialState).eraseToAnyPublisher()
-
     internal static var previews: some View {
-        <nodeName>View(viewState: viewState)
+        <nodeName>View(
+            initialState: <nodeName>ViewState(),
+            statePublisher: Empty().eraseToAnyPublisher()
+        )
     }
 }

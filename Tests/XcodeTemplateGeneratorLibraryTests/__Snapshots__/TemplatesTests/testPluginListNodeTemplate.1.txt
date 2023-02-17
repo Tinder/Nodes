@@ -3,7 +3,7 @@
     - fileHeader: "<fileHeader>"
     ▿ pluginListImports: 3 elements
       - "<baseImports>"
-      - "<diGraphImports>"
+      - "<dependencyInjectionImports>"
       - "Nodes"
     - pluginListName: "___VARIABLE_productName___"
     - viewControllableFlowType: "<viewControllableFlowType>"

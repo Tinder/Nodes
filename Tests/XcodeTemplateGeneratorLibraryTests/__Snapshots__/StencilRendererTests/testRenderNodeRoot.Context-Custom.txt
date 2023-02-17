@@ -19,22 +19,12 @@ internal protocol RootFlowInterface: Flow {
 
 /**
  PURPOSE:
- The interface that the Context will speak to the View through. Used to inform the View of any
- state change (i.e. to keep the UI in sync).
- */
-internal protocol RootPresentable: AnyObject {
-    var receiver: RootReceiver? { get set }
-}
-
-/**
- PURPOSE:
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.
  */
-internal final class RootContextImp: AbstractPresentableContext
+internal final class RootContextImp: AbstractContext
 <
-    <cancellableType>,
-    RootPresentable
+    <cancellableType>
 > {
 
     /// The Flow instance.
@@ -43,6 +33,9 @@ internal final class RootContextImp: AbstractPresentableContext
     /// The Listener instance.
     internal weak var listener: RootListener?
 
+    /// The State instance.
+    @Published internal private(set) var state: RootState
+
     /// The Analytics instance.
     private let analytics: RootAnalytics
 
@@ -50,17 +43,15 @@ internal final class RootContextImp: AbstractPresentableContext
 
     /// The initializer.
     /// - Parameters:
-    ///   - presentable: The Presentable instance
     ///   - workers: The Worker instances
     ///   - analytics: The Analytics instance
     internal init(
-        presentable: RootPresentable,
         workers: [Worker],
         analytics: RootAnalytics
     ) {
+        self.state = RootState()
         self.analytics = analytics
-        super.init(presentable: presentable, workers: workers)
-        presentable.receiver = self
+        super.init(workers: workers)
     }
 
     /// Implement logic to execute when the Context becomes active.

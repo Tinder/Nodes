@@ -16,20 +16,20 @@ public final class StencilRenderer {
         context: NodeContext,
         kind: UIFramework.Kind
     ) throws -> [String: String] {
-        try renderNode(stencils: StencilTemplate.nodeStencils(for: .variation(for: kind)), with: context.dictionary)
+        try renderNode(stencils: StencilTemplate.Node(for: .variation(for: kind)).stencils, with: context.dictionary)
     }
 
     public func renderNodeRoot(
         context: NodeRootContext,
         kind: UIFramework.Kind
     ) throws -> [String: String] {
-        try renderNode(stencils: StencilTemplate.nodeStencils(for: .variation(for: kind)), with: context.dictionary)
+        try renderNode(stencils: StencilTemplate.Node(for: .variation(for: kind)).stencils, with: context.dictionary)
     }
 
     public func renderNodeViewInjected(
         context: NodeViewInjectedContext
     ) throws -> [String: String] {
-        try renderNode(stencils: StencilTemplate.nodeStencils(withViewController: false), with: context.dictionary)
+        try renderNode(stencils: StencilTemplate.NodeViewInjected().stencils, with: context.dictionary)
     }
 
     public func renderPlugin(context: PluginContext) throws -> String {

@@ -1,17 +1,7 @@
 {{ file_header }}{% if view_controller_imports %}
 {% for import in view_controller_imports %}
 import {{ import }}{% endfor %}{% endif %}
-{% if view_state_publisher %}
-/**
- PURPOSE:
- The view state.
- */
-internal struct {{ node_name }}ViewState: Equatable, InitialStateProviding {
 
-    /// The initial view state.
-    internal static var initialState: {{ node_name }}ViewState = .init()
-}
-{% endif %}
 /**
  PURPOSE:
  The interface that the View will speak to the Context through. Used for informing the Context of
@@ -37,9 +27,6 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 {% endif %}{{ '}' }}
 
 extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
-{% if view_controller_availability_attribute %}
-{{ view_controller_availability_attribute }}
-{% endif %}extension {{ node_name }}ViewController: {{ node_name }}Presentable {}
 
 /**
  PURPOSE:
@@ -48,11 +35,10 @@ extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
 internal struct {{ node_name }}View: NodesView {
 
     /// The body of the view.
-    internal var body: some View {{ '{' }}{% if view_state_publisher %}
-        WithViewState(viewState) { viewState in
+    internal var body: some View {{ '{' }}
+        WithViewState(statePublisher, initialState: initialState) { viewState in
             Text(verbatim: "\(type(of: viewState))")
-        }{% else %}
-        Text("{{ node_name }}"){% endif %}
+        }
     }
 
     /// The view receiver.
@@ -60,18 +46,26 @@ internal struct {{ node_name }}View: NodesView {
 
     /// The Analytics instance.
     internal weak var analytics: {{ node_name }}Analytics?
-{% if view_state_publisher %}
+
+    /// The initial view state.
+    private let initialState: {{ node_name }}ViewState
+
     /// The view state publisher.
-    private let viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
+    private let statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
 
     /// The initializer.
-    /// - Parameter viewState: The view state publisher
-    internal init(viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>) {
-        self.viewState = viewState{% if view_state_operators %}
+    ///
+    /// - Parameters:
+    ///   - initialState: The initial view state.
+    ///   - statePublisher: The view state publisher.
+    internal init(
+        initialState: {{ node_name }}ViewState,
+        statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
+    ) {
+        self.initialState = initialState
+        self.statePublisher = statePublisher{% if view_state_operators %}
             {{ view_state_operators|indent:12 }}{% endif %}
-    }{% else %}
-    /// The initializer.
-    internal init() {}{% endif %}
+    }
 }
 
 /**
@@ -79,11 +73,11 @@ internal struct {{ node_name }}View: NodesView {
  The SwiftUI preview (excluded from release builds).
  */
 internal struct {{ node_name }}View_Previews: PreviewProvider {
-{% if view_state_publisher %}
-    private static let viewState: AnyPublisher<{{ node_name }}ViewState{{ publisher_failure_type }}> =
-        Just<{{ node_name }}ViewState>(.initialState).eraseToAnyPublisher()
-{% endif %}
+
     internal static var previews: some View {
-        {{ node_name }}View({% if view_state_publisher %}viewState: viewState{% endif %})
+        {{ node_name }}View(
+            initialState: {{ node_name }}ViewState(),
+            statePublisher: Empty().eraseToAnyPublisher()
+        )
     }
 }

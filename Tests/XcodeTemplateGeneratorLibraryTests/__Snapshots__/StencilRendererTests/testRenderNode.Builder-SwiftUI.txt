@@ -140,22 +140,25 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
     ) -> <nodeName>Flow {
         let listener: <nodeName>Listener = dynamicBuildDependency
         let analytics: <nodeName>AnalyticsImp = .init()
-        let viewStateWorker: <workerName>WorkerImp = .init(
+        let context: <nodeName>ContextImp = .init(
+            workers: [],
             analytics: analytics
         )
-        var view: <nodeName>View = .init(
-            viewState: viewStateWorker.viewState
+        context.listener = listener
+        let viewStateFactory: <nodeName>ViewStateFactory = .init()
+        let viewState: Publishers.Map = .init(
+            upstream: context.$state,
+            transform: viewStateFactory
         )
+        var view: <nodeName>View = .init(
+            initialState: viewStateFactory(context.state),
+            statePublisher: viewState.eraseToAnyPublisher()
+        )
+        view.receiver = context
         view.analytics = analytics
         let viewController: <nodeName>ViewController = .init(
             rootView: view
         )
-        let context: <nodeName>ContextImp = .init(
-            presentable: viewController,
-            workers: [viewStateWorker],
-            analytics: analytics
-        )
-        context.listener = listener
         return <nodeName>FlowImp(
             context: context,
             viewController: viewController,

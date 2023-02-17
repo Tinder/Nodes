@@ -1,12 +1,17 @@
 ▿ NodeTemplate
   ▿ context: NodeContext
-    ▿ builderImports: 3 elements
+    ▿ analyticsImports: 2 elements
       - "<baseImports>"
-      - "<diGraphImports>"
+      - "Nodes"
+    ▿ builderImports: 4 elements
+      - "<baseImports>"
+      - "<dependencyInjectionImports>"
+      - "<reactiveImports>"
       - "Nodes"
     - cancellableType: "<cancellableType>"
-    ▿ contextImports: 2 elements
+    ▿ contextImports: 3 elements
       - "<baseImports>"
+      - "<reactiveImports>"
       - "Nodes"
     ▿ dependencies: 1 element
       ▿ 2 key/value pairs
@@ -31,10 +36,14 @@
     - nodeName: "___VARIABLE_productName___"
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
+    ▿ stateImports: 2 elements
+      - "<baseImports>"
+      - "Nodes"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
-    ▿ viewControllerImports: 3 elements
+    ▿ viewControllerImports: 4 elements
       - "<baseImports>"
+      - "<reactiveImports>"
       - "Nodes"
       - "UIKit"
     - viewControllerMethods: "<viewControllerMethods>"
@@ -42,16 +51,10 @@
     - viewControllerSuperParameters: "nibName: nil, bundle: nil"
     - viewControllerType: "UIViewController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
-    - viewStateOperators: "<viewStateOperators>"
-    - viewStatePublisher: "<viewStatePublisher>"
-    ▿ workerImports: 2 elements
+    ▿ viewStateImports: 2 elements
       - "<baseImports>"
       - "Nodes"
-    - workerName: "___VARIABLE_productName___ViewState"
-  ▿ filenames: 1 key/value pair
-    ▿ (2 elements)
-      - key: "Worker"
-      - value: "ViewStateWorker"
+    - viewStateOperators: "<viewStateOperators>"
   - name: "Node - UIKit"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
@@ -72,12 +75,13 @@
     - sortOrder: 2
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 6 elements
+  ▿ stencils: 7 elements
     - Analytics
     ▿ Builder
       - builder: Variation.default
     - Context
     - Flow
+    - State
     ▿ ViewController
       - viewController: Variation.default
-    - Worker
+    - ViewState

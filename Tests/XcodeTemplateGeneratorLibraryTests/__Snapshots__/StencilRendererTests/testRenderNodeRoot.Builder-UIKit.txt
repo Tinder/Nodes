@@ -140,19 +140,22 @@ internal final class RootBuilderImp: AbstractBuilder
     ) -> RootFlow {
         let listener: RootListener = dynamicBuildDependency
         let analytics: RootAnalyticsImp = .init()
-        let viewStateWorker: <workerName>WorkerImp = .init(
-            analytics: analytics
-        )
-        let viewController: RootViewController = .init(
-            viewState: viewStateWorker.viewState
-        )
-        viewController.analytics = analytics
         let context: RootContextImp = .init(
-            presentable: viewController,
-            workers: [viewStateWorker],
+            workers: [],
             analytics: analytics
         )
         context.listener = listener
+        let viewStateFactory: RootViewStateFactory = .init()
+        let viewState: Publishers.Map = .init(
+            upstream: context.$state,
+            transform: viewStateFactory
+        )
+        let viewController: RootViewController = .init(
+            initialState: viewStateFactory(context.state),
+            statePublisher: viewState.eraseToAnyPublisher()
+        )
+        viewController.receiver = context
+        viewController.analytics = analytics
         return RootFlowImp(
             context: context,
             viewController: viewController,

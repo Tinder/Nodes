@@ -1,5 +1,9 @@
 ▿ 24 key/value pairs
   ▿ (2 elements)
+    - key: "analytics_imports"
+    ▿ value: 1 element
+      - "<analyticsImports>"
+  ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
       - "<builderImports>"
@@ -53,6 +57,10 @@
     - key: "root_node"
     - value: true
   ▿ (2 elements)
+    - key: "state_imports"
+    ▿ value: 1 element
+      - "<stateImports>"
+  ▿ (2 elements)
     - key: "view_controllable_flow_type"
     - value: "<viewControllableFlowType>"
   ▿ (2 elements)
@@ -78,15 +86,9 @@
     - key: "view_controller_update_comment"
     - value: "<viewControllerUpdateComment>"
   ▿ (2 elements)
+    - key: "view_state_imports"
+    ▿ value: 1 element
+      - "<viewStateImports>"
+  ▿ (2 elements)
     - key: "view_state_operators"
     - value: "<viewStateOperators>"
-  ▿ (2 elements)
-    - key: "view_state_publisher"
-    - value: "<viewStatePublisher>"
-  ▿ (2 elements)
-    - key: "worker_imports"
-    ▿ value: 1 element
-      - "<workerImports>"
-  ▿ (2 elements)
-    - key: "worker_name"
-    - value: "<workerName>"

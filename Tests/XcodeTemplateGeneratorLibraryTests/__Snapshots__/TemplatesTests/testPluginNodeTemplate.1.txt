@@ -3,7 +3,7 @@
     - fileHeader: "<fileHeader>"
     ▿ pluginImports: 3 elements
       - "<baseImports>"
-      - "<diGraphImports>"
+      - "<dependencyInjectionImports>"
       - "Nodes"
     - pluginName: "___VARIABLE_productName___"
     - returnType: Optional<String>.none

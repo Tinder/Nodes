@@ -9,7 +9,7 @@ import Nimble
 @testable import XcodeTemplateGeneratorLibrary
 import XCTest
 
-final class StencilTemplateTests: XCTestCase {
+final class StencilTemplateTests: XCTestCase, TestFactories {
 
     func testVariationRawValue() {
         StencilTemplate.Variation.allCases.forEach { variation in
@@ -43,8 +43,10 @@ final class StencilTemplateTests: XCTestCase {
             .flow,
             .plugin,
             .pluginList,
+            .state,
             .viewController(.default),
             .viewController(.swiftUI),
+            .viewState,
             .worker
         ]
     }
@@ -55,8 +57,9 @@ final class StencilTemplateTests: XCTestCase {
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     func testName() {
-        StencilTemplate.allCases.forEach { stencilTemplate in
+        for stencilTemplate in StencilTemplate.allCases {
             let name: String = stencilTemplate.name
             switch stencilTemplate {
             case .analytics:
@@ -71,16 +74,21 @@ final class StencilTemplateTests: XCTestCase {
                 expect(name) == "Plugin"
             case .pluginList:
                 expect(name) == "PluginList"
+            case .state:
+                expect(name) == "State"
             case .viewController:
                 expect(name) == "ViewController"
+            case .viewState:
+                expect(name) == "ViewState"
             case .worker:
                 expect(name) == "Worker"
             }
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     func testFilename() {
-        StencilTemplate.allCases.forEach { stencilTemplate in
+        for stencilTemplate in StencilTemplate.allCases {
             let filename: String = stencilTemplate.filename
             switch stencilTemplate {
             case .analytics:
@@ -95,8 +103,12 @@ final class StencilTemplateTests: XCTestCase {
                 expect(filename) == "Plugin"
             case .pluginList:
                 expect(filename) == "PluginList"
+            case .state:
+                expect(filename) == "State"
             case let .viewController(variation):
                 expect(filename) == "ViewController\(variation == .swiftUI ? "-SwiftUI" : "")"
+            case .viewState:
+                expect(filename) == "ViewState"
             case .worker:
                 expect(filename) == "Worker"
             }
@@ -105,26 +117,56 @@ final class StencilTemplateTests: XCTestCase {
 
     func testNodeStencils() {
         StencilTemplate.Variation.allCases.forEach { variation in
-            [true, false].forEach { withViewController in
-                let stencils: [StencilTemplate] = StencilTemplate.nodeStencils(for: variation,
-                                                                               withViewController: withViewController)
-                if withViewController {
-                    expect(stencils) == [
-                        .analytics,
-                        .builder(variation),
-                        .context,
-                        .flow,
-                        .viewController(variation),
-                        .worker
-                    ]
-                } else {
-                    expect(stencils) == [
-                        .analytics,
-                        .builder(variation),
-                        .context,
-                        .flow,
-                        .worker
-                    ]
+            expect(StencilTemplate.Node(for: variation).stencils) == [
+                .analytics,
+                .builder(variation),
+                .context,
+                .flow,
+                .state,
+                .viewController(variation),
+                .viewState
+            ]
+        }
+    }
+
+    func testNodeViewInjectedStencils() {
+        expect(StencilTemplate.NodeViewInjected().stencils) == [
+            .analytics,
+            .builder(.default),
+            .context,
+            .flow,
+            .state
+        ]
+    }
+
+    // swiftlint:disable:next cyclomatic_complexity
+    func testImports() {
+        let config: Config = givenConfig()
+        for stencilTemplate in StencilTemplate.allCases {
+            for uiFramework in config.uiFrameworks {
+                let imports: Set<String> = stencilTemplate.imports(for: uiFramework, config: config)
+                let uiFrameworkImport: String
+                switch uiFramework.kind {
+                case .appKit:
+                    uiFrameworkImport = "AppKit"
+                case .uiKit:
+                    uiFrameworkImport = "UIKit"
+                case .swiftUI:
+                    uiFrameworkImport = "SwiftUI"
+                case .custom:
+                    uiFrameworkImport = "<uiFrameworkImport>"
+                }
+                switch stencilTemplate {
+                case .analytics, .flow, .state, .viewState:
+                    expect(imports) == ["Nodes", "<baseImports>"]
+                case .builder:
+                    expect(imports) == ["Nodes", "<baseImports>", "<reactiveImports>", "<dependencyInjectionImports>"]
+                case .context, .worker:
+                    expect(imports) == ["Nodes", "<baseImports>", "<reactiveImports>"]
+                case .viewController:
+                    expect(imports) == ["Nodes", "<baseImports>", "<reactiveImports>", uiFrameworkImport]
+                case .plugin, .pluginList:
+                    expect(imports) == ["Nodes", "<baseImports>", "<dependencyInjectionImports>"]
                 }
             }
         }

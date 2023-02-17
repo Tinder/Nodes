@@ -18,22 +18,12 @@ internal protocol ___VARIABLE_productName___FlowInterface: Flow {}
 
 /**
  PURPOSE:
- The interface that the Context will speak to the View through. Used to inform the View of any
- state change (i.e. to keep the UI in sync).
- */
-internal protocol ___VARIABLE_productName___Presentable: AnyObject {
-    var receiver: ___VARIABLE_productName___Receiver? { get set }
-}
-
-/**
- PURPOSE:
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.
  */
-internal final class ___VARIABLE_productName___ContextImp: AbstractPresentableContext
+internal final class ___VARIABLE_productName___ContextImp: AbstractContext
 <
-    AnyCancellable,
-    ___VARIABLE_productName___Presentable
+    AnyCancellable
 > {
 
     /// The Flow instance.
@@ -42,22 +32,23 @@ internal final class ___VARIABLE_productName___ContextImp: AbstractPresentableCo
     /// The Listener instance.
     internal weak var listener: ___VARIABLE_productName___Listener?
 
+    /// The State instance.
+    @Published internal private(set) var state: ___VARIABLE_productName___State
+
     /// The Analytics instance.
     private let analytics: ___VARIABLE_productName___Analytics
 
     /// The initializer.
     /// - Parameters:
-    ///   - presentable: The Presentable instance
     ///   - workers: The Worker instances
     ///   - analytics: The Analytics instance
     internal init(
-        presentable: ___VARIABLE_productName___Presentable,
         workers: [Worker],
         analytics: ___VARIABLE_productName___Analytics
     ) {
+        self.state = ___VARIABLE_productName___State()
         self.analytics = analytics
-        super.init(presentable: presentable, workers: workers)
-        presentable.receiver = self
+        super.init(workers: workers)
     }
 
     /// Implement logic to execute when the Context becomes active.

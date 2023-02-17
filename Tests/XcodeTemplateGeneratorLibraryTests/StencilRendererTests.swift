@@ -21,8 +21,9 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Builder",
                 "Context",
                 "Flow",
+                "State",
                 "ViewController",
-                "Worker"
+                "ViewState"
             ]
             templates.forEach { name, template in
                 assertSnapshot(matching: template, as: .lines, named: "\(name)-\(kind.rawValue)")
@@ -39,8 +40,9 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Builder",
                 "Context",
                 "Flow",
+                "State",
                 "ViewController",
-                "Worker"
+                "ViewState"
             ]
             templates.forEach { name, template in
                 assertSnapshot(matching: template, as: .lines, named: "\(name)-\(kind.rawValue)")
@@ -56,7 +58,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             "Builder",
             "Context",
             "Flow",
-            "Worker"
+            "State"
         ]
         templates.forEach { name, template in
             assertSnapshot(matching: template, as: .lines, named: name)
