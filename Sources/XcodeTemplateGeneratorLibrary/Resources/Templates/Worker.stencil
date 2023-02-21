@@ -17,9 +17,6 @@ internal final class {{ worker_name }}WorkerImp: AbstractWorker
     {{ cancellable_type }}
 > {
 
-    /// The Analytics instance.
-    private let analytics: {{ node_name }}Analytics
-
     /// The initializer.
     /// - Parameter analytics: The Analytics instance
     internal init(analytics: {{ node_name }}Analytics) {
