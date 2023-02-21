@@ -17,12 +17,9 @@ internal final class <workerName>WorkerImp: AbstractWorker
     <cancellableType>
 > {
 
-    /// The Analytics instance.
-    private let analytics: <nodeName>Analytics
-
     /// The initializer.
     /// - Parameter analytics: The Analytics instance
-    internal init(analytics: <nodeName>Analytics) {
+    internal init(analytics: Analytics) {
         self.analytics = analytics
     }
 
