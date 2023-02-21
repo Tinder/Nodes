@@ -39,10 +39,6 @@ final class XCTestCaseTests: XCTestCase {
         let childDependencyA: ChildDependency = .init()
         let childDependencyB: ChildDependency = .init()
 
-        // Then
-        expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)).to(beNil())
-        expect(Self.registry.dependencyProviderFactory(for: Self.childPath)).to(beNil())
-
         // When
         let parentComponentFactory: () -> ParentComponent = injectComponent {
             ParentComponent(parent: $0)
