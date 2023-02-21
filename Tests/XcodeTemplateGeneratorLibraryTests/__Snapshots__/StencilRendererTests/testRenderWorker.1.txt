@@ -19,7 +19,7 @@ internal final class <workerName>WorkerImp: AbstractWorker
 
     /// The initializer.
     /// - Parameter analytics: The Analytics instance
-    internal init(analytics: Analytics) {
+    internal init() {
         self.analytics = analytics
     }
 

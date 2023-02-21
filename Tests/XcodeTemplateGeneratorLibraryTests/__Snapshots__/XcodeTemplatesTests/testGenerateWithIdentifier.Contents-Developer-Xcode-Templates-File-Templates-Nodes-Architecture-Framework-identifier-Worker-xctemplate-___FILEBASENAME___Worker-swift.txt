@@ -20,7 +20,7 @@ internal final class ___VARIABLE_productName___WorkerImp: AbstractWorker
 
     /// The initializer.
     /// - Parameter analytics: The Analytics instance
-    internal init(analytics: Analytics) {
+    internal init() {
         self.analytics = analytics
     }
 
