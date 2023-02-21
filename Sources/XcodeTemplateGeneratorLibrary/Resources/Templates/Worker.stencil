@@ -19,7 +19,7 @@ internal final class {{ worker_name }}WorkerImp: AbstractWorker
 
     /// The initializer.
     /// - Parameter analytics: The Analytics instance
-    internal init(analytics: {{ node_name }}Analytics) {
+    internal init() {
         self.analytics = analytics
     }
 
