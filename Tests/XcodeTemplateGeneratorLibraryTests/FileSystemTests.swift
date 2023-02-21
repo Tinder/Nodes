@@ -21,7 +21,6 @@ final class FileSystemTests: XCTestCase {
         let libraryURL: URL = fileManager.homeDirectoryForCurrentUser.appendingPathComponent("Library")
         expect(fileSystem.libraryURL) == libraryURL
     }
-    #endif
 
     func testCreateDirectory() throws {
         let fileSystem: FileSystem = fileManager
