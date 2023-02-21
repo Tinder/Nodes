@@ -70,7 +70,6 @@ final class XCTestCaseTests: XCTestCase {
         // Then
         let childDependencyFactoryB: ((Scope) -> AnyObject) = try dependencyProviderFactory(path: Self.childPath)
         expect(childDependencyFactoryB(parentComponent)) === childDependencyB as AnyObject
-
     }
 
     private func dependencyProviderFactory(
