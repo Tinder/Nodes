@@ -64,17 +64,22 @@ final class XCTestCaseTests: XCTestCase {
             .injectComponent(ofType: ChildComponent.self, with: childDependencyA)
 
         // Then
-        let dependencyFactoryA: ((Scope) -> AnyObject)? = Self.registry.dependencyProviderFactory(for: Self.childPath)
-        let childDependencyAFactory: ((Scope) -> AnyObject) = try XCTUnwrap(dependencyFactoryA)
-        expect(childDependencyAFactory(parentComponent)) === childDependencyA as AnyObject
+        let childDependencyFactoryA: ((Scope) -> AnyObject) = try dependencyProviderFactory(path: Self.childPath)
+        expect(childDependencyFactoryA(parentComponent)) === childDependencyA as AnyObject
 
         // When
         injectComponents(descendingFrom: parentComponent)
             .injectComponent(ofType: ChildComponent.self, with: childDependencyB)
 
         // Then
-        let dependencyFactoryB: ((Scope) -> AnyObject)? = Self.registry.dependencyProviderFactory(for: Self.childPath)
-        let childDependencyBFactory: ((Scope) -> AnyObject) = try XCTUnwrap(dependencyFactoryB)
-        expect(childDependencyBFactory(parentComponent)) === childDependencyB as AnyObject
+        let childDependencyFactoryB: ((Scope) -> AnyObject) = try dependencyProviderFactory(path: Self.childPath)
+        expect(childDependencyFactoryB(parentComponent)) === childDependencyB as AnyObject
+
+    }
+
+    private func dependencyProviderFactory(
+        path: String
+    ) throws -> (Scope) -> AnyObject {
+        try XCTUnwrap(Self.registry.dependencyProviderFactory(for: path))
     }
 }
