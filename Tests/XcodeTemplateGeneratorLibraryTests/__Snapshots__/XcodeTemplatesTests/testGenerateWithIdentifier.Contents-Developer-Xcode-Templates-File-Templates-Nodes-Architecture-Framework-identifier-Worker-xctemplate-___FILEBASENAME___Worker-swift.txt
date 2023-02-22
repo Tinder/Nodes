@@ -19,10 +19,7 @@ internal final class ___VARIABLE_productName___WorkerImp: AbstractWorker
 > {
 
     /// The initializer.
-    /// - Parameter analytics: The Analytics instance
-    internal init() {
-        self.analytics = analytics
-    }
+    internal init() {}
 
     /// Implement logic to execute when the Worker is started.
     override internal func didStart() {}
