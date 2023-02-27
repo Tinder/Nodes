@@ -170,7 +170,6 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             statePublisher: viewState.eraseToAnyPublisher()
         )
         viewController.receiver = context
-        viewController.analytics = analytics
         return {{ node_name }}FlowImp(
             context: context,
             viewController: viewController{% if flow_properties %},{% for property in flow_properties %}
