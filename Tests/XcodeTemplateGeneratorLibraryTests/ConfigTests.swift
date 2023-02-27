@@ -10,7 +10,7 @@ import SnapshotTesting
 import XcodeTemplateGeneratorLibrary
 import XCTest
 
-final class ConfigTests: XCTestCase {
+final class ConfigTests: XCTestCase, TestFactories {
 
     private typealias Config = XcodeTemplates.Config
 
@@ -31,25 +31,15 @@ final class ConfigTests: XCTestCase {
         assertSnapshot(matching: config, as: .dump)
     }
 
-    func testDefaultConfig() throws {
+    func testDefaultConfig() {
         assertSnapshot(matching: Config(), as: .dump)
     }
 
     func testUIFrameworkForKind() throws {
-        var config: XcodeTemplates.Config = .init()
-        config.uiFrameworks = [
-            UIFramework(framework: .appKit),
-            UIFramework(framework: .uiKit),
-            UIFramework(framework: .swiftUI),
-            UIFramework(framework: .custom(name: "<name>",
-                                           import: "<import>",
-                                           viewControllerType: "<viewControllerType>",
-                                           viewControllerSuperParameters: "<viewControllerSuperParameters>")
-            )
-        ]
+        let config: XcodeTemplates.Config = givenConfig()
         try UIFramework.Kind
             .allCases
-            .forEach { try expect(config.uiFramework(for: $0).kind) == $0 }
+            .forEach { expect(try config.uiFramework(for: $0).kind) == $0 }
     }
 
     func testUIFrameworkForKindIsNotDefined() throws {
@@ -58,7 +48,7 @@ final class ConfigTests: XCTestCase {
         try UIFramework.Kind
             .allCases
             .forEach { kind in
-                try expect(config.uiFramework(for: kind))
+                expect(try config.uiFramework(for: kind))
                     .to(throwError(errorType: XcodeTemplates.Config.ConfigError.self) { error in
                         expect(error) == .uiFrameworkNotDefined(kind: kind)
                     })
@@ -68,55 +58,55 @@ final class ConfigTests: XCTestCase {
     private func givenConfig() -> String {
         """
         uiFrameworks:
-            - framework: AppKit
-              viewControllerProperties: <viewControllerProperties-AppKit>
-              viewControllerMethods: <viewControllerMethods-AppKit>
-              viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-AppKit>
-            - framework: UIKit
-              viewControllerProperties: <viewControllerProperties-UIKit>
-              viewControllerMethods: <viewControllerMethods-UIKit>
-              viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-UIKit>
-            - framework: SwiftUI
-              viewControllerProperties: <viewControllerProperties-SwiftUI>
-              viewControllerMethods: <viewControllerMethods-SwiftUI>
-              viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-SwiftUI>
-            - framework:
-                custom:
-                  name: <name>
-                  import: <import>
-                  viewControllerType: <viewControllerType>
-                  viewControllerSuperParameters: <viewControllerSuperParameters>
-              viewControllerProperties: <viewControllerProperties-Custom>
-              viewControllerMethods: <viewControllerMethods-Custom>
-              viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
+          - framework: AppKit
+            viewControllerProperties: <viewControllerProperties-AppKit>
+            viewControllerMethods: <viewControllerMethods-AppKit>
+            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-AppKit>
+          - framework: UIKit
+            viewControllerProperties: <viewControllerProperties-UIKit>
+            viewControllerMethods: <viewControllerMethods-UIKit>
+            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-UIKit>
+          - framework: SwiftUI
+            viewControllerProperties: <viewControllerProperties-SwiftUI>
+            viewControllerMethods: <viewControllerMethods-SwiftUI>
+            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-SwiftUI>
+          - framework:
+              custom:
+                name: <uiFrameworkName>
+                import: <uiFrameworkImport>
+                viewControllerType: <viewControllerType>
+                viewControllerSuperParameters: <viewControllerSuperParameters>
+            viewControllerProperties: <viewControllerProperties-Custom>
+            viewControllerMethods: <viewControllerMethods-Custom>
+            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
         isViewInjectedNodeEnabled: true
-        fileHeader: fileHeader
+        fileHeader: <fileHeader>
         baseImports:
-          - baseImports-1
-          - baseImports-2
-        diGraphImports:
-          - diGraphImports-1
-          - diGraphImports-2
+          - <baseImports-1>
+          - <baseImports-2>
+        reactiveImports:
+          - <reactiveImports-1>
+          - <reactiveImports-2>
+        dependencyInjectionImports:
+          - <dependencyInjectionImports-1>
+          - <dependencyInjectionImports-2>
         dependencies:
-          - name: dependencies-name-1
-            type: dependencies-type-1
-          - name: dependencies-name-2
-            type: dependencies-type-2
+          - name: <dependencies-name-1>
+            type: <dependencies-type-1>
+          - name: <dependencies-name-2>
+            type: <dependencies-type-2>
         flowProperties:
-          - name: flowProperties-name-1
-            type: flowProperties-type-1
-          - name: flowProperties-name-2
-            type: flowProperties-type-2
-        viewControllableType: viewControllableType
-        viewControllableFlowType: viewControllableFlowType
-        viewControllerAvailabilityAttribute: viewControllerAvailabilityAttribute
-        viewControllerAvailabilityAttributeSwiftUI: viewControllerAvailabilityAttributeSwiftUI
-        viewControllerUpdateComment: viewControllerUpdateComment
-        viewStatePublisher: viewStatePublisher
-        viewStateOperators: viewStateOperators
-        publisherType: publisherType
-        publisherFailureType: publisherFailureType
-        cancellableType: cancellableType
+          - name: <flowProperties-name-1>
+            type: <flowProperties-type-1>
+          - name: <flowProperties-name-2>
+            type: <flowProperties-type-2>
+        viewControllableType: <viewControllableType>
+        viewControllableFlowType: <viewControllableFlowType>
+        viewControllerUpdateComment: <viewControllerUpdateComment>
+        viewStateOperators: <viewStateOperators>
+        publisherType: <publisherType>
+        publisherFailureType: <publisherFailureType>
+        cancellableType: <cancellableType>
         """
     }
 }

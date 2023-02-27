@@ -38,13 +38,13 @@ final class UIFrameworkFrameworkTests: XCTestCase {
     }
 
     func testCustom() {
-        let custom: UIFramework.Framework = .custom(name: "<name>",
-                                                    import: "<import>",
+        let custom: UIFramework.Framework = .custom(name: "<uiFrameworkName>",
+                                                    import: "<uiFrameworkImport>",
                                                     viewControllerType: "<viewControllerType>",
                                                     viewControllerSuperParameters: "<viewControllerSuperParameters>")
         expect(custom.kind) == .custom
-        expect(custom.name) == "<name>"
-        expect(custom.import) == "<import>"
+        expect(custom.name) == "<uiFrameworkName>"
+        expect(custom.import) == "<uiFrameworkImport>"
         expect(custom.viewControllerType) == "<viewControllerType>"
     }
 
@@ -53,14 +53,14 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             .appKit,
             .uiKit,
             .swiftUI,
-            .custom(name: "<name>",
-                    import: "<import>",
+            .custom(name: "<uiFrameworkName>",
+                    import: "<uiFrameworkImport>",
                     viewControllerType: "<viewControllerType>",
                     viewControllerSuperParameters: "<viewControllerSuperParameters>")
         ]
         try frameworks.forEach {
             let data: Data = .init(givenYAML(for: $0).utf8)
-            try expect(YAMLDecoder().decode(UIFramework.Framework.self, from: data)) == $0
+            expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: data)) == $0
         }
     }
 
@@ -69,7 +69,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             .map(\.utf8)
             .map(Data.init(_:))
             .forEach {
-                try expect(YAMLDecoder().decode(UIFramework.Framework.self, from: $0)).to(throwError {
+                expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: $0)).to(throwError {
                     assertSnapshot(matching: $0, as: .dump)
                 })
             }

@@ -6,9 +6,7 @@ import {{ import }}{% endfor %}{% endif %}
  PURPOSE:
  Encapsulates work to be performed by the Node.
  */
-internal protocol {{ worker_name }}Worker: Worker {{ '{' }}{% if view_state_publisher %}
-    var viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}> { get }
-{% endif %}{{ '}' }}
+internal protocol {{ worker_name }}Worker: Worker {}
 
 /**
  PURPOSE:
@@ -18,18 +16,14 @@ internal final class {{ worker_name }}WorkerImp: AbstractWorker
 <
     {{ cancellable_type }}
 > {
-{% if view_state_publisher %}
-    /// The view state publisher.
-    internal let viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
-{% endif %}
+
     /// The Analytics instance.
     private let analytics: {{ node_name }}Analytics
 
     /// The initializer.
     /// - Parameter analytics: The Analytics instance
     internal init(analytics: {{ node_name }}Analytics) {
-        self.analytics = analytics{% if view_state_publisher %}
-        viewState = {{ view_state_publisher }}{% endif %}
+        self.analytics = analytics
     }
 
     /// Implement logic to execute when the Worker is started.

@@ -16,70 +16,44 @@ internal protocol {{ node_name }}Listener: AnyObject {}
 internal protocol {{ node_name }}FlowInterface: Flow {
     func didBecomeReady()
 }{% else %}
-internal protocol {{ node_name }}FlowInterface: Flow {}{% endif %}{% if owns_view %}
-
-/**
- PURPOSE:
- The interface that the Context will speak to the View through. Used to inform the View of any
- state change (i.e. to keep the UI in sync).
- */
-internal protocol {{ node_name }}Presentable: AnyObject {
-    var receiver: {{ node_name }}Receiver? { get set }
-}{% endif %}
+internal protocol {{ node_name }}FlowInterface: Flow {}{% endif %}
 
 /**
  PURPOSE:
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.
- */{% if owns_view %}
-internal final class {{ node_name }}ContextImp: AbstractPresentableContext
-<
-    {{ cancellable_type }},
-    {{ node_name }}Presentable
-> {
-{% else %}
+ */
 internal final class {{ node_name }}ContextImp: AbstractContext
 <
     {{ cancellable_type }}
 > {
-{% endif %}
+
     /// The Flow instance.
     internal weak var flow: {{ node_name }}FlowInterface?
 
     /// The Listener instance.
     internal weak var listener: {{ node_name }}Listener?
 
+    /// The State instance.
+    @Published internal private(set) var state: {{ node_name }}State
+
     /// The Analytics instance.
-    private let analytics: {{ node_name }}Analytics{% if owns_view %}{% if root_node %}
+    private let analytics: {{ node_name }}Analytics{% if root_node %}
 
     private var isReady: Bool = false{% endif %}
 
     /// The initializer.
     /// - Parameters:
-    ///   - presentable: The Presentable instance
-    ///   - workers: The Worker instances
-    ///   - analytics: The Analytics instance
-    internal init(
-        presentable: {{ node_name }}Presentable,
-        workers: [Worker],
-        analytics: {{ node_name }}Analytics
-    ) {
-        self.analytics = analytics
-        super.init(presentable: presentable, workers: workers)
-        presentable.receiver = self
-    }{% else %}
-
-    /// The initializer.
-    /// - Parameters:
     ///   - workers: The Worker instances
     ///   - analytics: The Analytics instance
     internal init(
         workers: [Worker],
         analytics: {{ node_name }}Analytics
     ) {
+        self.state = {{ node_name }}State()
         self.analytics = analytics
         super.init(workers: workers)
-    }{% endif %}
+    }
 
     /// Implement logic to execute when the Context becomes active.
     override internal func didBecomeActive() {}

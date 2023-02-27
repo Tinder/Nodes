@@ -139,18 +139,22 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
     ) -> ___VARIABLE_productName___Flow {
         let listener: ___VARIABLE_productName___Listener = dynamicBuildDependency
         let analytics: ___VARIABLE_productName___AnalyticsImp = .init()
-        let viewStateWorker: ___VARIABLE_productName___ViewStateWorkerImp = .init(
-            analytics: analytics
-        )
-        let viewController: ___VARIABLE_productName___ViewController = .init(
-            viewState: viewStateWorker.viewState
-        )
         let context: ___VARIABLE_productName___ContextImp = .init(
-            presentable: viewController,
-            workers: [viewStateWorker],
+            workers: [],
             analytics: analytics
         )
         context.listener = listener
+        let viewStateFactory: ___VARIABLE_productName___ViewStateFactory = .init()
+        let viewState: Publishers.Map = .init(
+            upstream: context.$state,
+            transform: viewStateFactory
+        )
+        let viewController: ___VARIABLE_productName___ViewController = .init(
+            initialState: viewStateFactory(context.state),
+            statePublisher: viewState.eraseToAnyPublisher()
+        )
+        viewController.receiver = context
+        viewController.analytics = analytics
         return ___VARIABLE_productName___FlowImp(
             context: context,
             viewController: viewController

@@ -280,10 +280,10 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
     /// - Parameters:
     ///   - component: The `ComponentType` instance.
     ///
-    /// - Returns: A `BuildType` instance.
+    /// - Returns: A tuple containing the `BuildType` instance and its `KeyType` key.
     open func `default`( // swiftlint:disable:this unavailable_function
         component: ComponentType
-    ) -> BuildType {
+    ) -> (key: KeyType, instance: BuildType) {
         preconditionFailure("Method in abstract base class must be overridden")
     }
 
@@ -296,7 +296,7 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
     /// - Returns: An array of `BuildType` instances.
     override public func createAll(state: StateType) -> [BuildType] {
         let component: ComponentType = makeComponent()
-        return [`default`(component: component)] + createAll(component: component, state: state)
+        return [`default`(component: component).instance] + createAll(component: component, state: state)
     }
 
     /// Calls `create` on each plugin in the plugin collection (in reverse creation order) and returns the
@@ -308,7 +308,7 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
     /// - Returns: A `BuildType` instance.
     override public func create(state: StateType) -> BuildType {
         let component: ComponentType = makeComponent()
-        return create(component: component, state: state) ?? `default`(component: component)
+        return create(component: component, state: state) ?? `default`(component: component).instance
     }
 
     /// Calls `create` on the plugin for the given `key` and returns the resulting `BuildType` instance,
@@ -322,7 +322,12 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
     /// - Returns: A `BuildType` instance.
     override public func create(key: KeyType, state: StateType) -> BuildType {
         let component: ComponentType = makeComponent()
-        return create(component: component, key: key, state: state) ?? `default`(component: component)
+        let `default`: (key: KeyType, instance: BuildType) = `default`(component: component)
+        if key == `default`.key {
+            return `default`.instance
+        } else {
+            return create(component: component, key: key, state: state) ?? `default`.instance
+        }
     }
 }
 
