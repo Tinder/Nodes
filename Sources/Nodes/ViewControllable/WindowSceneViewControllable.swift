@@ -16,7 +16,7 @@ import UIKit
 public protocol WindowSceneViewControllable: AnyObject {
 
     /// Creates a ``WindowViewControllable`` instance.
-    /// 
+    ///
     /// - Returns: The ``WindowViewControllable`` instance created.
     func makeWindow() -> WindowViewControllable
 }

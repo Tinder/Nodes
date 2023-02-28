@@ -16,7 +16,7 @@ import UIKit
 public protocol WindowViewControllable: AnyObject {
 
     /// Presents a ``ViewControllable`` instance.
-    /// 
+    ///
     /// - Parameter viewControllable: The ``ViewControllable`` instance to present.
     func present(_ viewControllable: ViewControllable)
 }
