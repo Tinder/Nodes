@@ -11,7 +11,8 @@ import UIKit
 
 extension UIWindowScene: WindowSceneViewControllable {
 
-    /// Creates a ``WindowViewControllable`` instance and associates it with the current scene object.
+    /// Creates a ``WindowViewControllable`` instance and associates it with the scene.
+    /// 
     /// - Returns: The ``WindowViewControllable`` instance created.
     public func makeWindow() -> WindowViewControllable {
         UIWindow(windowScene: self)
