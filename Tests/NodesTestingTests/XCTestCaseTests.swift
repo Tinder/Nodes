@@ -35,6 +35,7 @@ final class XCTestCaseTests: XCTestCase {
     }
 
     func testInjectComponents() throws {
+
         // Given
         let childDependencyA: ChildDependency = .init()
         let childDependencyB: ChildDependency = .init()
