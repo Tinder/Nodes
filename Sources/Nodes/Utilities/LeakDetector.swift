@@ -42,7 +42,7 @@ public enum LeakDetector {
     ///
     /// - Parameters:
     ///   - object: The instance with which to detect the expected deallocation.
-    ///   - delay: The delay in seconds to allow time for the objects to be released.
+    ///   - delay: The time interval in seconds to wait before leak detection occurs.
     public static func detect(_ object: AnyObject, delay: TimeInterval = 1) {
         // swiftlint:disable:next discouraged_optional_collection
         let callStackSymbols: [String]? = callStackSymbols()
@@ -72,7 +72,7 @@ public enum LeakDetector {
 
     #else
 
-    public static func detect(_ object: AnyObject, timeInterval: TimeInterval = 1) {}
+    public static func detect(_ object: AnyObject, delay: TimeInterval = 1) {}
 
     #endif
 }
