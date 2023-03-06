@@ -18,7 +18,6 @@ internal final class {{ worker_name }}WorkerImp: AbstractWorker
 > {
 
     /// The initializer.
-    /// - Parameter analytics: The Analytics instance
     internal init() {}
 
     /// Implement logic to execute when the Worker is started.
