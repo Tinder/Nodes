@@ -2179,52 +2179,6 @@ files:
 
       extension Combine.AnyCancellable: Nodes.Cancellable {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/Utility/WindowSceneViewControllable.swift"
-    contents: |
-      //
-      //  WindowSceneViewControllable.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import UIKit
-
-      internal protocol WindowSceneViewControllable: AnyObject {
-          func makeWindow() -> WindowViewControllable
-      }
-
-      extension UIWindowScene: WindowSceneViewControllable {
-
-          internal func makeWindow() -> WindowViewControllable {
-              UIWindow(windowScene: self)
-          }
-      }
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/Utility/WindowViewControllable.swift"
-    contents: |
-      //
-      //  WindowViewControllable.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import Nodes
-      import UIKit
-
-      internal protocol WindowViewControllable: AnyObject {
-          func present(_ viewControllable: ViewControllable)
-      }
-
-      extension UIWindow: WindowViewControllable {
-
-          internal func present(_ viewControllable: ViewControllable) {
-              rootViewController = viewControllable._asUIViewController()
-              makeKeyAndVisible()
-          }
-      }
-
   - path: "{{ project|split:' '|join:'_' }}Tests/BuildSettings/Debug.xcconfig"
     contents: |
       #include "Shared.xcconfig"

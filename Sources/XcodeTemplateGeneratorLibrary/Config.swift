@@ -28,13 +28,13 @@ extension XcodeTemplates {
         public var isViewInjectedNodeEnabled: Bool
         public var fileHeader: String
         public var baseImports: Set<String>
-        public var diGraphImports: Set<String>
+        public var reactiveImports: Set<String>
+        public var dependencyInjectionImports: Set<String>
         public var dependencies: [Variable]
         public var flowProperties: [Variable]
         public var viewControllableType: String
         public var viewControllableFlowType: String
         public var viewControllerUpdateComment: String
-        public var viewStatePublisher: String
         public var viewStateOperators: String
         public var publisherType: String
         public var publisherFailureType: String
@@ -58,31 +58,19 @@ extension XcodeTemplates {
         internal func variable(_ name: String) -> String {
             "___VARIABLE_\(name)___"
         }
-
-        internal func imports(for type: ImportsType) -> Set<String> {
-            let nodesImports: Set<String> = baseImports.union(["Nodes"])
-            switch type {
-            case .nodes:
-                return nodesImports
-            case .diGraph:
-                return nodesImports.union(diGraphImports)
-            case let .viewController(uiFramework):
-                return nodesImports.union([uiFramework.import])
-            }
-        }
     }
 }
 
 // swiftlint:disable:next no_grouping_extension
 extension XcodeTemplates.Config {
 
-    // swiftlint:disable:next function_body_length
     public init() {
         uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
         isViewInjectedNodeEnabled = true
         fileHeader = "//___FILEHEADER___"
-        baseImports = ["Combine"]
-        diGraphImports = ["NeedleFoundation"]
+        baseImports = []
+        reactiveImports = ["Combine"]
+        dependencyInjectionImports = ["NeedleFoundation"]
         dependencies = []
         flowProperties = []
         viewControllableType = "ViewControllable"
@@ -90,7 +78,6 @@ extension XcodeTemplates.Config {
         viewControllerUpdateComment = """
             // Add implementation to update the user interface when the view state changes.
             """
-        viewStatePublisher = "Just(.initialState).eraseToAnyPublisher()"
         viewStateOperators = """
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
@@ -120,9 +107,12 @@ extension XcodeTemplates.Config {
         baseImports =
             (try? decoder.decode(CodingKeys.baseImports))
             ?? defaults.baseImports
-        diGraphImports =
-            (try? decoder.decode(CodingKeys.diGraphImports))
-            ?? defaults.diGraphImports
+        reactiveImports =
+            (try? decoder.decode(CodingKeys.reactiveImports))
+            ?? defaults.reactiveImports
+        dependencyInjectionImports =
+            (try? decoder.decode(CodingKeys.dependencyInjectionImports))
+            ?? defaults.dependencyInjectionImports
         dependencies =
             (try? decoder.decode(CodingKeys.dependencies))
             ?? defaults.dependencies
@@ -138,9 +128,6 @@ extension XcodeTemplates.Config {
         viewControllerUpdateComment =
             (try? decoder.decodeString(CodingKeys.viewControllerUpdateComment))
             ?? defaults.viewControllerUpdateComment
-        viewStatePublisher =
-            (try? decoder.decodeString(CodingKeys.viewStatePublisher))
-            ?? defaults.viewStatePublisher
         viewStateOperators =
             (try? decoder.decodeString(CodingKeys.viewStateOperators))
             ?? defaults.viewStateOperators

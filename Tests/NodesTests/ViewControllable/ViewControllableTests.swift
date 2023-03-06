@@ -101,25 +101,6 @@ final class ViewControllableTests: XCTestCase {
         expect(viewController.view.subviews).to(beEmpty())
     }
 
-    func testContainWithConstraints() {
-        let viewController: TestViewController = givenViewController()
-        let child: TestViewController = givenViewController()
-        expect(child.willMoveCallCount) == 0
-        expect(child.didMoveCallCount) == 0
-        expect(viewController.children).to(beEmpty())
-        expect(viewController.view.subviews).to(beEmpty())
-        viewController.contain(child) { _ in [] }
-        expect(child.willMoveCallCount) == 1
-        expect(child.didMoveCallCount) == 1
-        expect(viewController.children) == [child]
-        expect(viewController.view.subviews).to(contain(child.view))
-        viewController.uncontain(child)
-        expect(child.willMoveCallCount) == 2
-        expect(child.didMoveCallCount) == 2
-        expect(viewController.children).to(beEmpty())
-        expect(viewController.view.subviews).to(beEmpty())
-    }
-
     func testAsUIViewController() {
         let viewController: ViewControllable = givenViewController()
         expect(viewController._asUIViewController()) === viewController

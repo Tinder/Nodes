@@ -5,15 +5,18 @@ import PackageDescription
 let package = Package(
     name: "Nodes",
     platforms: [
-        .macOS(.v10_13),
-        .iOS(.v11),
-        .tvOS(.v11),
-        .watchOS(.v5),
+        .macOS(.v10_15),
+        .iOS(.v13),
+        .tvOS(.v13),
+        .watchOS(.v6),
     ],
     products: [
         .library(
             name: "Nodes",
             targets: ["Nodes"]),
+        .library(
+            name: "NodesTesting",
+            targets: ["NodesTesting"]),
         .library(
             name: "XcodeTemplateGenerator",
             targets: ["XcodeTemplateGeneratorLibrary"]),
@@ -44,6 +47,9 @@ let package = Package(
             url: "https://github.com/stencilproject/Stencil.git",
             from: "0.15.0"),
         .package(
+            url: "https://github.com/uber/needle.git",
+            from: "0.22.0"),
+        .package(
             url: "https://github.com/Quick/Nimble.git",
             from: "10.0.0"),
         .package(
@@ -54,6 +60,11 @@ let package = Package(
         .target(
             name: "Nodes",
             dependencies: []),
+        .target(
+            name: "NodesTesting",
+            dependencies: [
+                .product(name: "NeedleFoundation", package: "needle")
+            ]),
         .target(
             name: "XcodeTemplateGeneratorLibrary",
             dependencies: [
@@ -75,6 +86,12 @@ let package = Package(
             name: "NodesTests",
             dependencies: [
                 "Nodes",
+                "Nimble",
+            ]),
+        .testTarget(
+            name: "NodesTestingTests",
+            dependencies: [
+                "NodesTesting",
                 "Nimble",
             ]),
         .testTarget(

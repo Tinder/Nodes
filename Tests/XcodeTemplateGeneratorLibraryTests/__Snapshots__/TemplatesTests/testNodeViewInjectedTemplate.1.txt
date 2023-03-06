@@ -1,12 +1,17 @@
 ▿ NodeViewInjectedTemplate
   ▿ context: NodeViewInjectedContext
-    ▿ builderImports: 3 elements
+    ▿ analyticsImports: 2 elements
       - "<baseImports>"
-      - "<diGraphImports>"
+      - "Nodes"
+    ▿ builderImports: 4 elements
+      - "<baseImports>"
+      - "<dependencyInjectionImports>"
+      - "<reactiveImports>"
       - "Nodes"
     - cancellableType: "<cancellableType>"
-    ▿ contextImports: 2 elements
+    ▿ contextImports: 3 elements
       - "<baseImports>"
+      - "<reactiveImports>"
       - "Nodes"
     ▿ dependencies: 1 element
       ▿ 2 key/value pairs
@@ -29,12 +34,11 @@
           - key: "type"
           - value: "<flowPropertiesType>"
     - nodeName: "___VARIABLE_productName___"
-    - viewControllableFlowType: "<viewControllableFlowType>"
-    - viewControllableType: "<viewControllableType>"
-    ▿ workerImports: 2 elements
+    ▿ stateImports: 2 elements
       - "<baseImports>"
       - "Nodes"
-    - workerName: "___VARIABLE_productName___"
+    - viewControllableFlowType: "<viewControllableFlowType>"
+    - viewControllableType: "<viewControllableType>"
   - name: "Node (view injected)"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
@@ -56,8 +60,9 @@
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
   ▿ stencils: 5 elements
-    - "Analytics"
-    - "Builder"
-    - "Context"
-    - "Flow"
-    - "Worker"
+    - Analytics
+    ▿ Builder
+      - builder: Variation.default
+    - Context
+    - Flow
+    - State
