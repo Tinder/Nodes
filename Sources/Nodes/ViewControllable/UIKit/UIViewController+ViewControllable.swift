@@ -114,7 +114,7 @@ extension UIViewController: ViewControllable {
             subview.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             subview.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        viewController.didMove(toParent: self)
+        viewController._asUIViewController().didMove(toParent: self)
     }
 
     /// Uncontains the given ``ViewControllable`` instance.
@@ -124,7 +124,7 @@ extension UIViewController: ViewControllable {
         let subview: UIView = viewController._asUIViewController().view
         guard subview.isDescendant(of: view)
         else { return }
-        viewController.willMove(toParent: nil)
+        viewController._asUIViewController().willMove(toParent: nil)
         subview.removeFromSuperview()
         removeChild(viewController)
     }
