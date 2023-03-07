@@ -41,9 +41,6 @@ internal struct <nodeName>View: NodesView {
     /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 
-    /// The Analytics instance.
-    internal weak var analytics: <nodeName>Analytics?
-
     /// The initial view state.
     private let initialState: <nodeName>ViewState
 

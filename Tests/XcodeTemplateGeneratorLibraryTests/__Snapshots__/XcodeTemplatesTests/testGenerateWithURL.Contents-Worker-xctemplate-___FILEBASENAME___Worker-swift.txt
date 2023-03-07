@@ -18,14 +18,8 @@ internal final class ___VARIABLE_productName___WorkerImp: AbstractWorker
     AnyCancellable
 > {
 
-    /// The Analytics instance.
-    private let analytics: ___VARIABLE_nodeName___Analytics
-
     /// The initializer.
-    /// - Parameter analytics: The Analytics instance
-    internal init(analytics: ___VARIABLE_nodeName___Analytics) {
-        self.analytics = analytics
-    }
+    internal init() {}
 
     /// Implement logic to execute when the Worker is started.
     override internal func didStart() {}

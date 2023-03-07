@@ -7,10 +7,6 @@
 
 import Foundation
 
-#if canImport(UIKit) && !os(watchOS)
-import UIKit
-#endif
-
 /**
  * ``LeakDetector`` is used internally (within Nodes' source code) to detect leaks of a Node's objects when the
  * Node is detached.
@@ -44,17 +40,13 @@ public enum LeakDetector {
 
     /// Detects whether the given `object` deallocates from memory as expected.
     ///
-    /// - Parameter object: The instance with which to detect the expected deallocation.
-    public static func detect(_ object: AnyObject) {
+    /// - Parameters:
+    ///   - object: The instance with which to detect the expected deallocation.
+    ///   - delay: The time interval in seconds to wait before leak detection occurs.
+    public static func detect(_ object: AnyObject, delay: TimeInterval = 1) {
         // swiftlint:disable:next discouraged_optional_collection
         let callStackSymbols: [String]? = callStackSymbols()
-        let timeInterval: TimeInterval
-        #if canImport(UIKit) && !os(watchOS)
-        timeInterval = object is UIViewController ? 5 : 1
-        #else
-        timeInterval = 1
-        #endif
-        queue.asyncAfter(deadline: .now() + timeInterval) { [weak object] in
+        queue.asyncAfter(deadline: .now() + delay) { [weak object] in
             guard let object: AnyObject = object
             else { return }
             DispatchQueue.main.async {
@@ -80,7 +72,7 @@ public enum LeakDetector {
 
     #else
 
-    public static func detect(_ object: AnyObject) {}
+    public static func detect(_ object: AnyObject, delay: TimeInterval = 1) {}
 
     #endif
 }

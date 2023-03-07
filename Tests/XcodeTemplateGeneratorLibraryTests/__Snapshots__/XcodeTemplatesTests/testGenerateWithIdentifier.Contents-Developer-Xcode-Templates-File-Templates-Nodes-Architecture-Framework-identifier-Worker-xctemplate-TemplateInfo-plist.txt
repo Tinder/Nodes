@@ -28,20 +28,6 @@
 			<key>Type</key>
 			<string>text</string>
 		</dict>
-		<dict>
-			<key>Description</key>
-			<string>The name of the Node</string>
-			<key>Identifier</key>
-			<string>nodeName</string>
-			<key>Name</key>
-			<string>Node name:</string>
-			<key>NotPersisted</key>
-			<true/>
-			<key>Required</key>
-			<true/>
-			<key>Type</key>
-			<string>text</string>
-		</dict>
 	</array>
 	<key>Platforms</key>
 	<array/>

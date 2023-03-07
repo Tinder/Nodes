@@ -155,7 +155,6 @@ internal final class RootBuilderImp: AbstractBuilder
             statePublisher: viewState.eraseToAnyPublisher()
         )
         viewController.receiver = context
-        viewController.analytics = analytics
         return RootFlowImp(
             context: context,
             viewController: viewController,

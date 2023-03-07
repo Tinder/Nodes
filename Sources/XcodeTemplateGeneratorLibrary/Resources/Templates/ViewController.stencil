@@ -23,9 +23,6 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     /// The view receiver.
     internal weak var receiver: {{ node_name }}Receiver?
 
-    /// The Analytics instance.
-    internal weak var analytics: {{ node_name }}Analytics?
-
     /// The collection of cancellable instances.
     private var cancellables: Set<{{ cancellable_type }}> = .init()
 

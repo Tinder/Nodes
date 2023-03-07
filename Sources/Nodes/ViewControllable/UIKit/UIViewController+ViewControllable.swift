@@ -108,7 +108,6 @@ extension UIViewController: ViewControllable {
         addChild(viewController)
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
-        // activate from array
         NSLayoutConstraint.activate([
             subview.heightAnchor.constraint(equalTo: view.heightAnchor),
             subview.widthAnchor.constraint(equalTo: view.widthAnchor),
