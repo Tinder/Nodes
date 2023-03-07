@@ -13,9 +13,9 @@ extension UIWindow: WindowViewControllable {
 
     /// Presents a ``ViewControllable`` instance.
     ///
-    /// - Parameter viewControllable: The ``ViewControllable`` instance to present.
-    public func present(_ viewControllable: ViewControllable) {
-        rootViewController = viewControllable._asUIViewController()
+    /// - Parameter viewController: The ``ViewControllable`` instance to present.
+    public func present(_ viewController: ViewControllable) {
+        rootViewController = viewController._asUIViewController()
         makeKeyAndVisible()
     }
 }

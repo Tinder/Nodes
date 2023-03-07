@@ -579,8 +579,8 @@ files:
        an example.
        */
       internal protocol AppFlowInterface: Flow {
-          func attachScene(_ viewControllable: WindowSceneViewControllable)
-          func detachScene(_ viewControllable: WindowSceneViewControllable)
+          func attachScene(_ viewController: WindowSceneViewControllable)
+          func detachScene(_ viewController: WindowSceneViewControllable)
       }
 
       /**
@@ -690,16 +690,16 @@ files:
       extension AppFlowImp: AppFlow {}
       extension AppFlowImp: AppFlowInterface {
 
-          func attachScene(_ viewControllable: WindowSceneViewControllable) {
+          func attachScene(_ viewController: WindowSceneViewControllable) {
               let flow: SceneFlow = sceneBuilder.build(withListener: context,
-                                                       viewController: viewControllable)
+                                                       viewController: viewController)
               attach(starting: flow)
           }
 
-          func detachScene(_ viewControllable: WindowSceneViewControllable) {
+          func detachScene(_ viewController: WindowSceneViewControllable) {
               subFlows
                   .compactMap { $0 as? SceneFlow }
-                  .filter { $0.viewControllable === viewControllable }
+                  .filter { $0.viewControllable === viewController }
                   .forEach(detach)
           }
       }
