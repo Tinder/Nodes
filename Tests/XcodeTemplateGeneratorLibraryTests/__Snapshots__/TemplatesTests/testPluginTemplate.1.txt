@@ -3,7 +3,7 @@
     - fileHeader: "<fileHeader>"
     ▿ pluginImports: 3 elements
       - "<baseImports>"
-      - "<diGraphImports>"
+      - "<dependencyInjectionImports>"
       - "Nodes"
     - pluginName: "___VARIABLE_productName___"
     ▿ returnType: Optional<String>
@@ -33,8 +33,8 @@
         - required: true
         - type: "text"
     - platforms: 0 elements
-    - sortOrder: 6
+    - sortOrder: 8
     - summary: "The source file implementing a Plugin"
     - supportsSwiftPackage: true
   ▿ stencils: 1 element
-    - "Plugin"
+    - Plugin

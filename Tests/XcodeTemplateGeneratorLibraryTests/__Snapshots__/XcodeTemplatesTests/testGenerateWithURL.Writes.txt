@@ -1,87 +1,51 @@
-▿ 42 elements
+▿ 30 elements
   ▿ (2 elements)
-    - .0: "/Node.xctemplate/___FILEBASENAME___Analytics.swift"
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___Analytics.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Node.xctemplate/___FILEBASENAME___Builder.swift"
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___Builder.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Node.xctemplate/___FILEBASENAME___Context.swift"
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___Context.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Node.xctemplate/___FILEBASENAME___Flow.swift"
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___Flow.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Node.xctemplate/___FILEBASENAME___ViewController.swift"
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___State.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Node.xctemplate/___FILEBASENAME___ViewStateWorker.swift"
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___ViewController.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Node.xctemplate/TemplateInfo.plist"
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___ViewState.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/ Node.xctemplate/___FILEBASENAME___Analytics.swift"
+    - .0: "/Node - UIKit.xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
-    - .0: "/ Node.xctemplate/___FILEBASENAME___Builder.swift"
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___Analytics.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/ Node.xctemplate/___FILEBASENAME___Context.swift"
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___Builder.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/ Node.xctemplate/___FILEBASENAME___Flow.swift"
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___Context.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/ Node.xctemplate/___FILEBASENAME___ViewController.swift"
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___Flow.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/ Node.xctemplate/___FILEBASENAME___ViewStateWorker.swift"
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___State.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/ Node.xctemplate/TemplateInfo.plist"
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___ViewController.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Node (without view state).xctemplate/___FILEBASENAME___Analytics.swift"
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___ViewState.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Node (without view state).xctemplate/___FILEBASENAME___Builder.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/Node (without view state).xctemplate/___FILEBASENAME___Context.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/Node (without view state).xctemplate/___FILEBASENAME___Flow.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/Node (without view state).xctemplate/___FILEBASENAME___ViewController.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/Node (without view state).xctemplate/___FILEBASENAME___Worker.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/Node (without view state).xctemplate/TemplateInfo.plist"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/ Node (without view state).xctemplate/___FILEBASENAME___Analytics.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/ Node (without view state).xctemplate/___FILEBASENAME___Builder.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/ Node (without view state).xctemplate/___FILEBASENAME___Context.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/ Node (without view state).xctemplate/___FILEBASENAME___Flow.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/ Node (without view state).xctemplate/___FILEBASENAME___ViewController.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/ Node (without view state).xctemplate/___FILEBASENAME___Worker.swift"
-    - .1: true
-  ▿ (2 elements)
-    - .0: "/ Node (without view state).xctemplate/TemplateInfo.plist"
+    - .0: "/Node - SwiftUI.xctemplate/TemplateInfo.plist"
     - .1: true
   ▿ (2 elements)
     - .0: "/Node (view injected).xctemplate/___FILEBASENAME___Analytics.swift"
@@ -96,7 +60,7 @@
     - .0: "/Node (view injected).xctemplate/___FILEBASENAME___Flow.swift"
     - .1: true
   ▿ (2 elements)
-    - .0: "/Node (view injected).xctemplate/___FILEBASENAME___Worker.swift"
+    - .0: "/Node (view injected).xctemplate/___FILEBASENAME___State.swift"
     - .1: true
   ▿ (2 elements)
     - .0: "/Node (view injected).xctemplate/TemplateInfo.plist"

@@ -23,17 +23,13 @@ final class XcodeTemplatesTests: XCTestCase {
 
         let name: String = "name"
         let type: String = "type"
-        let stencils: [String] = ["stencils"]
+        let stencils: [StencilTemplate] = []
         let context: Context = TestContext()
         let propertyList: PropertyList = .init(description: "description", sortOrder: 23) {}
     }
 
-    func testDefaultFilenames() {
-        expect(TestXcodeTemplate().filenames) == [:]
-    }
-
     func testGenerateWithIdentifier() throws {
-        let fileSystem: MockFileSystem = .init()
+        let fileSystem: FileSystemMock = .init()
         try XcodeTemplates(config: Config()).generate(identifier: "identifier", using: fileSystem)
         assertSnapshot(matching: fileSystem.directories,
                        as: .dump,
@@ -42,10 +38,9 @@ final class XcodeTemplatesTests: XCTestCase {
                        as: .dump,
                        named: "Writes")
         fileSystem.writes.forEach {
-            let path: String = $0.path.replacingOccurrences(of: "\(Config.symbolForSwiftUI)", with: "SwiftUI")
             assertSnapshot(matching: $0.contents,
                            as: .lines,
-                           named: "Contents.\(path)")
+                           named: "Contents.\($0.path)")
         }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
@@ -56,7 +51,7 @@ final class XcodeTemplatesTests: XCTestCase {
     }
 
     func testGenerateWithURL() throws {
-        let fileSystem: MockFileSystem = .init()
+        let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
         try XcodeTemplates(config: Config()).generate(at: url, using: fileSystem)
         assertSnapshot(matching: fileSystem.directories,
@@ -66,10 +61,9 @@ final class XcodeTemplatesTests: XCTestCase {
                        as: .dump,
                        named: "Writes")
         fileSystem.writes.forEach {
-            let path: String = $0.path.replacingOccurrences(of: "\(Config.symbolForSwiftUI)", with: "SwiftUI")
             assertSnapshot(matching: $0.contents,
                            as: .lines,
-                           named: "Contents.\(path)")
+                           named: "Contents.\($0.path)")
         }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,

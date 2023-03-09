@@ -31,26 +31,6 @@ import SwiftUI
  *     }
  * }
  * ```
- *
- * It is also possible to define the initial state within the state type definition by adopting the
- * ``InitialStateProviding`` protocol.
- *
- * Usage Example:
- * ```
- * struct ExampleViewState: Equatable, InitialStateProviding {
- *     static let initialState: ExampleViewState = .init(text: "Hello World")
- *     let text: String
- * }
- *
- * struct ExampleView: View {
- *     let viewState: AnyPublisher<ExampleViewState, Never>
- *     var body: some View {
- *         WithViewState(viewState) { viewState in
- *             Text(viewState.text)
- *         }
- *     }
- * }
- * ```
  */
 @available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public struct WithViewState<ViewState, Content: View>: View {
@@ -79,21 +59,5 @@ public struct WithViewState<ViewState, Content: View>: View {
         self.publisher = publisher.eraseToAnyPublisher()
         self.content = content
         _viewState = State(initialValue: initialState)
-    }
-}
-
-@available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-extension WithViewState where ViewState: InitialStateProviding {
-
-    /// Initializes a ``WithViewState`` view with the given view state `publisher` and `content`.
-    ///
-    /// - Parameters:
-    ///     - publisher: The view state ``Publisher`` instance to observe.
-    ///     - content: A view builder that creates the content of this view.
-    public init<P: Publisher>(
-        _ publisher: P,
-        @ViewBuilder content: @escaping (ViewState) -> Content
-    ) where P.Output == ViewState, P.Failure == Never {
-        self.init(publisher, initialState: .initialState, content: content)
     }
 }

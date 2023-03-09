@@ -1,6 +1,6 @@
-{{ file_header }}
+{{ file_header }}{% if builder_imports %}
 {% for import in builder_imports %}
-import {{ import }}{% endfor %}
+import {{ import }}{% endfor %}{% endif %}
 
 /**
  PURPOSE:
@@ -117,7 +117,7 @@ internal protocol {{ node_name }}Builder: AnyObject {
  Concrete implementation of the Builder, where everything is created and associated.
  */
 internal final class {{ node_name }}BuilderImp: AbstractBuilder
- <
+<
     {{ node_name }}Component,
     {{ node_name }}Flow,
     {{ node_name }}DynamicBuildDependency,
@@ -155,20 +155,21 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     ) -> {{ node_name }}Flow {
         let listener: {{ node_name }}Listener = dynamicBuildDependency
         let analytics: {{ node_name }}AnalyticsImp = .init()
-        let {% if view_state_publisher %}viewStateWorker{% else %}worker{% endif %}: {{ worker_name }}WorkerImp = .init(
-            analytics: analytics
-        ){% if view_state_publisher %}
-        let viewController: {{ node_name }}ViewController = .init(
-            viewState: viewStateWorker.viewState
-        ){% else %}
-        let viewController: {{ node_name }}ViewController = .init(){% endif %}
-        viewController.analytics = analytics
         let context: {{ node_name }}ContextImp = .init(
-            presentable: viewController,
-            workers: [{% if view_state_publisher %}viewStateWorker{% else %}worker{% endif %}],
+            workers: [],
             analytics: analytics
         )
         context.listener = listener
+        let viewStateFactory: {{ node_name }}ViewStateFactory = .init()
+        let viewState: Publishers.Map = .init(
+            upstream: context.$state,
+            transform: viewStateFactory
+        )
+        let viewController: {{ node_name }}ViewController = .init(
+            initialState: viewStateFactory(context.state),
+            statePublisher: viewState.eraseToAnyPublisher()
+        )
+        viewController.receiver = context
         return {{ node_name }}FlowImp(
             context: context,
             viewController: viewController{% if flow_properties %},{% for property in flow_properties %}
@@ -181,11 +182,8 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     ) -> {{ node_name }}Flow {
         let (listener, viewController) = dynamicBuildDependency
         let analytics: {{ node_name }}AnalyticsImp = .init()
-        let worker: {{ worker_name }}WorkerImp = .init(
-            analytics: analytics
-        )
         let context: {{ node_name }}ContextImp = .init(
-            workers: [worker],
+            workers: [],
             analytics: analytics
         )
         context.listener = listener

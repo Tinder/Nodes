@@ -2,9 +2,9 @@
   ▿ context: WorkerContext
     - cancellableType: "<cancellableType>"
     - fileHeader: "<fileHeader>"
-    - nodeName: "___VARIABLE_nodeName___"
-    ▿ workerImports: 2 elements
+    ▿ workerImports: 3 elements
       - "<baseImports>"
+      - "<reactiveImports>"
       - "Nodes"
     - workerName: "___VARIABLE_productName___"
   - name: "Worker"
@@ -14,7 +14,7 @@
     - description: "The source file implementing a Worker."
     - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
     - mainTemplateFile: "___FILEBASENAME___.swift"
-    ▿ options: 2 elements
+    ▿ options: 1 element
       ▿ Option
         - default: Optional<String>.none
         - description: "The name of the Worker"
@@ -23,17 +23,9 @@
         - notPersisted: true
         - required: true
         - type: "text"
-      ▿ Option
-        - default: Optional<String>.none
-        - description: "The name of the Node"
-        - identifier: "nodeName"
-        - name: "Node name:"
-        - notPersisted: true
-        - required: true
-        - type: "text"
     - platforms: 0 elements
-    - sortOrder: 7
+    - sortOrder: 9
     - summary: "The source file implementing a Worker"
     - supportsSwiftPackage: true
   ▿ stencils: 1 element
-    - "Worker"
+    - Worker

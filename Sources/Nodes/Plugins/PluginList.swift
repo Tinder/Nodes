@@ -279,30 +279,28 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
     ///
     /// - Parameters:
     ///   - component: The `ComponentType` instance.
-    ///   - state: The `StateType` instance.
     ///
-    /// - Returns: A `BuildType` instance.
+    /// - Returns: A tuple containing the `BuildType` instance and its `KeyType` key.
     open func `default`( // swiftlint:disable:this unavailable_function
-        component: ComponentType,
-        state: StateType
-    ) -> BuildType {
+        component: ComponentType
+    ) -> (key: KeyType, instance: BuildType) {
         preconditionFailure("Method in abstract base class must be overridden")
     }
 
     /// Calls `create` on the plugins for the keys provided by ``creationOrder(component:)`` and returns
     /// the resulting non-nil `BuildType` instances in creation order prepended with the default instance
-    /// provided by ``default(component:state:)``.
+    /// provided by ``default(component:)``.
     ///
     /// - Parameter state: The `StateType` instance.
     ///
     /// - Returns: An array of `BuildType` instances.
     override public func createAll(state: StateType) -> [BuildType] {
         let component: ComponentType = makeComponent()
-        return [`default`(component: component, state: state)] + createAll(component: component, state: state)
+        return [`default`(component: component).instance] + createAll(component: component, state: state)
     }
 
     /// Calls `create` on each plugin in the plugin collection (in reverse creation order) and returns the
-    /// first non-nil `BuildType` instance, otherwise the default instance provided by ``default(component:state:)``
+    /// first non-nil `BuildType` instance, otherwise the default instance provided by ``default(component:)``
     /// is returned.
     ///
     /// - Parameter state: The `StateType` instance.
@@ -310,12 +308,12 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
     /// - Returns: A `BuildType` instance.
     override public func create(state: StateType) -> BuildType {
         let component: ComponentType = makeComponent()
-        return create(component: component, state: state) ?? `default`(component: component, state: state)
+        return create(component: component, state: state) ?? `default`(component: component).instance
     }
 
     /// Calls `create` on the plugin for the given `key` and returns the resulting `BuildType` instance,
     /// otherwise when the `key` is not in the dictionary or the `create` method returns `nil`, the default
-    /// instance provided by ``default(component:state:)`` is returned.
+    /// instance provided by ``default(component:)`` is returned.
     ///
     /// - Parameters:
     ///   - key: The `KeyType` instance.
@@ -324,14 +322,19 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
     /// - Returns: A `BuildType` instance.
     override public func create(key: KeyType, state: StateType) -> BuildType {
         let component: ComponentType = makeComponent()
-        return create(component: component, key: key, state: state) ?? `default`(component: component, state: state)
+        let `default`: (key: KeyType, instance: BuildType) = `default`(component: component)
+        if key == `default`.key {
+            return `default`.instance
+        } else {
+            return create(component: component, key: key, state: state) ?? `default`.instance
+        }
     }
 }
 
 extension PluginListWithDefault where StateType == Void {
 
     /// Calls `create` on each plugin in the plugin collection (in reverse creation order) and returns the
-    /// first non-nil `BuildType` instance, otherwise the default instance provided by ``default(component:state:)``
+    /// first non-nil `BuildType` instance, otherwise the default instance provided by ``default(component:)``
     /// is returned.
     ///
     /// This convenience method has no parameters since `StateType` is `Void`.
@@ -343,7 +346,7 @@ extension PluginListWithDefault where StateType == Void {
 
     /// Calls `create` on the plugin for the given `key` and returns the resulting `BuildType` instance,
     /// otherwise when the `key` is not in the dictionary or the `create` method returns `nil`, the default
-    /// instance provided by ``default(component:state:)`` is returned.
+    /// instance provided by ``default(component:)`` is returned.
     ///
     /// This convenience method has only a `key` parameter since `StateType` is `Void`.
     ///

@@ -1,6 +1,6 @@
-{{ file_header }}
+{{ file_header }}{% if plugin_imports %}
 {% for import in plugin_imports %}
-import {{ import }}{% endfor %}
+import {{ import }}{% endfor %}{% endif %}
 
 /**
  PURPOSE:

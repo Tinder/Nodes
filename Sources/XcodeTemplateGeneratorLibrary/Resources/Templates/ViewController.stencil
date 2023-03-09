@@ -1,17 +1,7 @@
-{{ file_header }}
+{{ file_header }}{% if view_controller_imports %}
 {% for import in view_controller_imports %}
-import {{ import }}{% endfor %}
-{% if view_state_publisher %}
-/**
- PURPOSE:
- The view state of your View Controller.
- */
-internal struct {{ node_name }}ViewState: Equatable, InitialStateProviding {
+import {{ import }}{% endfor %}{% endif %}
 
-    /// The initial view state.
-    internal static var initialState: {{ node_name }}ViewState = .init()
-}
-{% endif %}
 /**
  PURPOSE:
  The interface that the View will speak to the Context through. Used for informing the Context of
@@ -26,46 +16,47 @@ internal protocol {{ node_name }}Receiver: AnyObject {}{% endif %}
  PURPOSE:
  Concrete implementation of the UI.
  */
-internal final class {{ node_name }}ViewController: {{ view_controller_type }}{% if view_state_publisher %}, StateObserver{% endif %} {
+internal final class {{ node_name }}ViewController: {{ view_controller_type }}, StateObserver {
 {% if view_controller_properties %}
     {{ view_controller_properties|indent:4 }}
 {% endif %}
     /// The view receiver.
     internal weak var receiver: {{ node_name }}Receiver?
 
-    /// The Analytics instance.
-    internal weak var analytics: {{ node_name }}Analytics?
-{% if view_state_publisher %}
     /// The collection of cancellable instances.
     private var cancellables: Set<{{ cancellable_type }}> = .init()
 
+    /// The initial view state.
+    private let initialState: {{ node_name }}ViewState
+
     /// The view state publisher.
-    private let viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
-{% endif %}
-    /// The initializer.{% if view_state_publisher %}
-    /// - Parameter viewState: The view state publisher
-    internal init(viewState: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>) {
-        self.viewState = viewState{% if view_state_operators %}
+    private let statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
+
+    /// The initializer.
+    ///
+    /// - Parameters:
+    ///   - initialState: The initial view state.
+    ///   - statePublisher: The view state publisher.
+    internal init(
+        initialState: {{ node_name }}ViewState,
+        statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
+    ) {
+        self.initialState = initialState
+        self.statePublisher = statePublisher{% if view_state_operators %}
             {{ view_state_operators|indent:12 }}{% endif %}
         super.init({{ view_controller_super_parameters }})
-    }{% else %}
-    internal init() {
-        super.init({{ view_controller_super_parameters }})
-    }{% endif %}
+    }
 
     @available(*, unavailable)
     internal required init?(coder: NSCoder) {
         preconditionFailure("init(coder:) has not been implemented")
     }{% if view_controller_methods %}
 
-    {{ view_controller_methods|indent:4 }}{% endif %}{% if view_state_publisher %}
+    {{ view_controller_methods|indent:4 }}{% endif %}
 
     internal func update(with viewState: {{ node_name }}ViewState) {{ '{' }}{% if view_controller_update_comment %}
         {{ view_controller_update_comment|indent:8 }}{% endif %}
-    }{% endif %}
+    }
 }
 
 extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
-{% if view_controller_availability_attribute %}
-{{ view_controller_availability_attribute }}
-{% endif %}extension {{ node_name }}ViewController: {{ node_name }}Presentable {}

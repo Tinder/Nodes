@@ -7,103 +7,47 @@
 
 import Nimble
 import SnapshotTesting
-import XcodeTemplateGeneratorLibrary
+@testable import XcodeTemplateGeneratorLibrary
 import XCTest
 
 final class StencilRendererTests: XCTestCase, TestFactories {
 
     func testRenderNode() throws {
-        let context: NodeContext = givenNodeContext()
-        let templates: [String: String] = try StencilRenderer().renderNode(context: context)
-        expect(templates.keys.sorted()) == [
-            "Analytics",
-            "Builder",
-            "Context",
-            "Flow",
-            "ViewController",
-            "Worker"
-        ]
-        assertSnapshot(matching: templates["Analytics"]!,
-                       as: .lines,
-                       named: "Analytics")
-        assertSnapshot(matching: templates["Builder"]!,
-                       as: .lines,
-                       named: "Builder")
-        assertSnapshot(matching: templates["Context"]!,
-                       as: .lines,
-                       named: "Context")
-        assertSnapshot(matching: templates["Flow"]!,
-                       as: .lines,
-                       named: "Flow")
-        assertSnapshot(matching: templates["ViewController"]!,
-                       as: .lines,
-                       named: "ViewController")
-        assertSnapshot(matching: templates["Worker"]!,
-                       as: .lines,
-                       named: "Worker")
-    }
-
-    func testRenderNodeSwiftUI() throws {
-        let context: NodeContext = givenNodeContext()
-        let templates: [String: String] = try StencilRenderer().renderNode(context: context,
-                                                                           swiftUI: true)
-        expect(templates.keys.sorted()) == [
-            "Analytics",
-            "Builder",
-            "Context",
-            "Flow",
-            "ViewController",
-            "Worker"
-        ]
-        assertSnapshot(matching: templates["Analytics"]!,
-                       as: .lines,
-                       named: "Analytics")
-        assertSnapshot(matching: templates["Builder"]!,
-                       as: .lines,
-                       named: "Builder")
-        assertSnapshot(matching: templates["Context"]!,
-                       as: .lines,
-                       named: "Context")
-        assertSnapshot(matching: templates["Flow"]!,
-                       as: .lines,
-                       named: "Flow")
-        assertSnapshot(matching: templates["ViewController"]!,
-                       as: .lines,
-                       named: "ViewController")
-        assertSnapshot(matching: templates["Worker"]!,
-                       as: .lines,
-                       named: "Worker")
+        try UIFramework.Kind.allCases.forEach { kind in
+            let context: NodeContext = givenNodeContext()
+            let templates: [String: String] = try StencilRenderer().renderNode(context: context, kind: kind)
+            expect(templates.keys.sorted()) == [
+                "Analytics",
+                "Builder",
+                "Context",
+                "Flow",
+                "State",
+                "ViewController",
+                "ViewState"
+            ]
+            templates.forEach { name, template in
+                assertSnapshot(matching: template, as: .lines, named: "\(name)-\(kind.rawValue)")
+            }
+        }
     }
 
     func testRenderNodeRoot() throws {
-        let context: NodeRootContext = givenNodeRootContext()
-        let templates: [String: String] = try StencilRenderer().renderNodeRoot(context: context)
-        expect(templates.keys.sorted()) == [
-            "Analytics",
-            "Builder",
-            "Context",
-            "Flow",
-            "ViewController",
-            "Worker"
-        ]
-        assertSnapshot(matching: templates["Analytics"]!,
-                       as: .lines,
-                       named: "Analytics")
-        assertSnapshot(matching: templates["Builder"]!,
-                       as: .lines,
-                       named: "Builder")
-        assertSnapshot(matching: templates["Context"]!,
-                       as: .lines,
-                       named: "Context")
-        assertSnapshot(matching: templates["Flow"]!,
-                       as: .lines,
-                       named: "Flow")
-        assertSnapshot(matching: templates["ViewController"]!,
-                       as: .lines,
-                       named: "ViewController")
-        assertSnapshot(matching: templates["Worker"]!,
-                       as: .lines,
-                       named: "Worker")
+        try UIFramework.Kind.allCases.forEach { kind in
+            let context: NodeRootContext = givenNodeRootContext()
+            let templates: [String: String] = try StencilRenderer().renderNodeRoot(context: context, kind: kind)
+            expect(templates.keys.sorted()) == [
+                "Analytics",
+                "Builder",
+                "Context",
+                "Flow",
+                "State",
+                "ViewController",
+                "ViewState"
+            ]
+            templates.forEach { name, template in
+                assertSnapshot(matching: template, as: .lines, named: "\(name)-\(kind.rawValue)")
+            }
+        }
     }
 
     func testRenderNodeViewInjected() throws {
@@ -114,86 +58,11 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             "Builder",
             "Context",
             "Flow",
-            "Worker"
+            "State"
         ]
-        assertSnapshot(matching: templates["Analytics"]!,
-                       as: .lines,
-                       named: "Analytics")
-        assertSnapshot(matching: templates["Builder"]!,
-                       as: .lines,
-                       named: "Builder")
-        assertSnapshot(matching: templates["Context"]!,
-                       as: .lines,
-                       named: "Context")
-        assertSnapshot(matching: templates["Flow"]!,
-                       as: .lines,
-                       named: "Flow")
-        assertSnapshot(matching: templates["Worker"]!,
-                       as: .lines,
-                       named: "Worker")
-    }
-
-    func testRenderNodeWithoutViewState() throws {
-        let context: NodeWithoutViewStateContext = givenNodeWithoutViewStateContext()
-        let templates: [String: String] = try StencilRenderer().renderNodeWithoutViewState(context: context)
-        expect(templates.keys.sorted()) == [
-            "Analytics",
-            "Builder",
-            "Context",
-            "Flow",
-            "ViewController",
-            "Worker"
-        ]
-        assertSnapshot(matching: templates["Analytics"]!,
-                       as: .lines,
-                       named: "Analytics")
-        assertSnapshot(matching: templates["Builder"]!,
-                       as: .lines,
-                       named: "Builder")
-        assertSnapshot(matching: templates["Context"]!,
-                       as: .lines,
-                       named: "Context")
-        assertSnapshot(matching: templates["Flow"]!,
-                       as: .lines,
-                       named: "Flow")
-        assertSnapshot(matching: templates["ViewController"]!,
-                       as: .lines,
-                       named: "ViewController")
-        assertSnapshot(matching: templates["Worker"]!,
-                       as: .lines,
-                       named: "Worker")
-    }
-
-    func testRenderNodeWithoutViewStateSwiftUI() throws {
-        let context: NodeWithoutViewStateContext = givenNodeWithoutViewStateContext()
-        let templates: [String: String] = try StencilRenderer().renderNodeWithoutViewState(context: context,
-                                                                                           swiftUI: true)
-        expect(templates.keys.sorted()) == [
-            "Analytics",
-            "Builder",
-            "Context",
-            "Flow",
-            "ViewController",
-            "Worker"
-        ]
-        assertSnapshot(matching: templates["Analytics"]!,
-                       as: .lines,
-                       named: "Analytics")
-        assertSnapshot(matching: templates["Builder"]!,
-                       as: .lines,
-                       named: "Builder")
-        assertSnapshot(matching: templates["Context"]!,
-                       as: .lines,
-                       named: "Context")
-        assertSnapshot(matching: templates["Flow"]!,
-                       as: .lines,
-                       named: "Flow")
-        assertSnapshot(matching: templates["ViewController"]!,
-                       as: .lines,
-                       named: "ViewController")
-        assertSnapshot(matching: templates["Worker"]!,
-                       as: .lines,
-                       named: "Worker")
+        templates.forEach { name, template in
+            assertSnapshot(matching: template, as: .lines, named: name)
+        }
     }
 
     func testRenderPlugin() throws {

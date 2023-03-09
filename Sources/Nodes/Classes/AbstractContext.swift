@@ -211,6 +211,6 @@ open class AbstractPresentableContext<CancellableType: Cancellable, PresentableT
     }
 
     deinit {
-        LeakDetector.detect(presentable as AnyObject)
+        LeakDetector.detect(presentable as AnyObject, delay: 5)
     }
 }
