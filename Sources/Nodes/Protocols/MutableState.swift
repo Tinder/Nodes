@@ -12,7 +12,6 @@ public protocol MutableState {
     func with(_ mutation: (inout Self) throws -> Void) rethrows -> Self
 }
 
-@available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension MutableState {
 
     public mutating func apply(_ mutation: (inout Self) throws -> Void) rethrows {
