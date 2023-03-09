@@ -16,8 +16,9 @@ final class MutableStateTests: XCTestCase {
     }
 
     func testMutableState() {
-        let subject: Combine.CurrentValueSubject<TestState, Never> = .init(TestState(value: -1))
-        subject.value.apply { $0.value = 23 }
-        XCTAssertEqual(subject.value, TestState(value: 23))
+        var state: TestState = .init(value: -1)
+        XCTAssertEqual(state.with { $0.value = 99 }, TestState(value: 99))
+        state.apply { $0.value = 23 }
+        XCTAssertEqual(state, TestState(value: 23))
     }
 }
