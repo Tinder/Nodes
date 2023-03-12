@@ -30,4 +30,25 @@ extension UIViewController {
         return layout
     }
 
+    /// Contains the given ``ViewControllable`` instance within the given view of the parent
+    /// ``ViewControllable`` instance.
+    ///
+    /// - Parameters:
+    ///   - viewController: The ``ViewControllable`` instance to contain.
+    ///   - view: The view in which to contain the ``ViewControllable`` instance.
+    public func contain(_ viewController: ViewControllable, in view: UIView) {
+        guard view.isDescendant(of: self.view)
+        else { return }
+        let subview: UIView = viewController._asUIViewController().view
+        addChild(viewController)
+        subview.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(subview)
+        NSLayoutConstraint.activate([
+            subview.heightAnchor.constraint(equalTo: view.heightAnchor),
+            subview.widthAnchor.constraint(equalTo: view.widthAnchor),
+            subview.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            subview.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        viewController.didMove(toParent: self)
+    }
 }
