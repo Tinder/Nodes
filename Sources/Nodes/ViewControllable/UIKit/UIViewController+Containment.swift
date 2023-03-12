@@ -1,5 +1,5 @@
 //
-//  UIViewController+Containment.swift.swift
+//  UIViewController+Containment.swift
 //  Nodes
 //
 //  Created by Sam Marshall on 2/13/23.
