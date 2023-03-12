@@ -43,9 +43,6 @@ internal struct RootView: NodesView {
     /// The view receiver.
     internal weak var receiver: RootReceiver?
 
-    /// The Analytics instance.
-    internal weak var analytics: RootAnalytics?
-
     /// The initial view state.
     private let initialState: RootViewState
 

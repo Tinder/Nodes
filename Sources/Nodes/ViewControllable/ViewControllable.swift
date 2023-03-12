@@ -21,7 +21,7 @@ public protocol ViewControllable: AnyObject {
     ///
     /// - Returns: The `self` instance with the given ``ModalStyle`` applied.
     @discardableResult
-    func withModalStyle(_ style: ModalStyle) -> Self
+    func withModalStyle(_ modalStyle: ModalStyle) -> Self
 
     /// Presents a ``ViewControllable`` instance.
     ///
@@ -80,41 +80,6 @@ public protocol ViewControllable: AnyObject {
     ///
     /// - Parameter viewController: The ``ViewControllable`` instance to contain.
     func contain(_ viewController: ViewControllable)
-
-    /// Contains the given ``ViewControllable`` instance within the given frame of the parent
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - frame: The frame in which to contain the ``ViewControllable`` instance.
-    func contain(_ viewController: ViewControllable, in frame: CGRect)
-
-    /// Contains the given ``ViewControllable`` instance within the given frame of the parent
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - frame: The frame in which to contain the ``ViewControllable`` instance.
-    ///   - autoresizingMask: The autoresizing mask to apply to the ``ViewControllable`` instance.
-    func contain(
-        _ viewController: ViewControllable,
-        in frame: CGRect,
-        with autoresizingMask: UIView.AutoresizingMask
-    )
-
-    /// Contains the given ``ViewControllable`` instance with the layout constraints provided by the given closure.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - constraints: The closure providing the layout constraints.
-    ///
-    ///     The closure has the following arguments:
-    ///     | Name | Description                                  |
-    ///     | ---- | -------------------------------------------- |
-    ///     | view | The view on which to add layout constraints. |
-    ///
-    ///     The closure returns an array of layout constraints.
-    func contain(_ viewController: ViewControllable, constraints: (_ view: UIView) -> [NSLayoutConstraint])
 
     /// Uncontains the given ``ViewControllable`` instance.
     ///

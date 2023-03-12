@@ -155,7 +155,6 @@ internal final class RootBuilderImp: AbstractBuilder
             statePublisher: viewState.eraseToAnyPublisher()
         )
         view.receiver = context
-        view.analytics = analytics
         let viewController: RootViewController = .init(
             rootView: view
         )

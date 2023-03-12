@@ -579,8 +579,8 @@ files:
        an example.
        */
       internal protocol AppFlowInterface: Flow {
-          func attachScene(_ viewControllable: WindowSceneViewControllable)
-          func detachScene(_ viewControllable: WindowSceneViewControllable)
+          func attachScene(_ viewController: WindowSceneViewControllable)
+          func detachScene(_ viewController: WindowSceneViewControllable)
       }
 
       /**
@@ -690,16 +690,16 @@ files:
       extension AppFlowImp: AppFlow {}
       extension AppFlowImp: AppFlowInterface {
 
-          func attachScene(_ viewControllable: WindowSceneViewControllable) {
+          func attachScene(_ viewController: WindowSceneViewControllable) {
               let flow: SceneFlow = sceneBuilder.build(withListener: context,
-                                                       viewController: viewControllable)
+                                                       viewController: viewController)
               attach(starting: flow)
           }
 
-          func detachScene(_ viewControllable: WindowSceneViewControllable) {
+          func detachScene(_ viewController: WindowSceneViewControllable) {
               subFlows
                   .compactMap { $0 as? SceneFlow }
-                  .filter { $0.viewControllable === viewControllable }
+                  .filter { $0.viewControllable === viewController }
                   .forEach(detach)
           }
       }
@@ -2178,52 +2178,6 @@ files:
       import Nodes
 
       extension Combine.AnyCancellable: Nodes.Cancellable {}
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/Utility/WindowSceneViewControllable.swift"
-    contents: |
-      //
-      //  WindowSceneViewControllable.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import UIKit
-
-      internal protocol WindowSceneViewControllable: AnyObject {
-          func makeWindow() -> WindowViewControllable
-      }
-
-      extension UIWindowScene: WindowSceneViewControllable {
-
-          internal func makeWindow() -> WindowViewControllable {
-              UIWindow(windowScene: self)
-          }
-      }
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/Utility/WindowViewControllable.swift"
-    contents: |
-      //
-      //  WindowViewControllable.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import Nodes
-      import UIKit
-
-      internal protocol WindowViewControllable: AnyObject {
-          func present(_ viewControllable: ViewControllable)
-      }
-
-      extension UIWindow: WindowViewControllable {
-
-          internal func present(_ viewControllable: ViewControllable) {
-              rootViewController = viewControllable._asUIViewController()
-              makeKeyAndVisible()
-          }
-      }
 
   - path: "{{ project|split:' '|join:'_' }}Tests/BuildSettings/Debug.xcconfig"
     contents: |

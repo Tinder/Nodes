@@ -31,7 +31,7 @@ final class ConfigTests: XCTestCase, TestFactories {
         assertSnapshot(matching: config, as: .dump)
     }
 
-    func testDefaultConfig() throws {
+    func testDefaultConfig() {
         assertSnapshot(matching: Config(), as: .dump)
     }
 
@@ -39,7 +39,7 @@ final class ConfigTests: XCTestCase, TestFactories {
         let config: XcodeTemplates.Config = givenConfig()
         try UIFramework.Kind
             .allCases
-            .forEach { try expect(config.uiFramework(for: $0).kind) == $0 }
+            .forEach { expect(try config.uiFramework(for: $0).kind) == $0 }
     }
 
     func testUIFrameworkForKindIsNotDefined() throws {
@@ -48,7 +48,7 @@ final class ConfigTests: XCTestCase, TestFactories {
         try UIFramework.Kind
             .allCases
             .forEach { kind in
-                try expect(config.uiFramework(for: kind))
+                expect(try config.uiFramework(for: kind))
                     .to(throwError(errorType: XcodeTemplates.Config.ConfigError.self) { error in
                         expect(error) == .uiFrameworkNotDefined(kind: kind)
                     })

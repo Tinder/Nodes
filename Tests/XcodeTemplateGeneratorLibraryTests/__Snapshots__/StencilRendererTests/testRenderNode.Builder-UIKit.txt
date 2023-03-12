@@ -155,7 +155,6 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
             statePublisher: viewState.eraseToAnyPublisher()
         )
         viewController.receiver = context
-        viewController.analytics = analytics
         return <nodeName>FlowImp(
             context: context,
             viewController: viewController,

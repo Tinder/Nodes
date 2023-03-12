@@ -146,7 +146,6 @@ extension TestFactories {
     func givenWorkerContext() -> WorkerContext {
         WorkerContext(
             fileHeader: "<fileHeader>",
-            nodeName: "<nodeName>",
             workerName: "<workerName>",
             workerImports: ["<workerImports>"],
             cancellableType: "<cancellableType>"
