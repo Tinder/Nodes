@@ -20,7 +20,7 @@ extension UIViewController {
     ///
     ///     The closure returns an array of layout constraints.
     @discardableResult
-    func contain<T>(_ viewController: ViewControllable, layout: (_ view: UIView) -> T) -> T {
+    public func contain<T>(_ viewController: ViewControllable, layout: (_ view: UIView) -> T) -> T {
         let subview: UIView = viewController._asUIViewController().view
         addChild(viewController)
         subview.translatesAutoresizingMaskIntoConstraints = false
