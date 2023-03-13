@@ -49,44 +49,6 @@ extension UIViewController: ViewControllable {
         dismiss(animated: animated, completion: completion)
     }
 
-    /// Called just before the ``ViewControllable`` instance is added or removed from a container
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameter viewController: The parent ``ViewControllable`` instance, or `nil` if there is no parent.
-    private func willMove(toParent viewController: ViewControllable?) {
-        let viewController: UIViewController? = viewController?._asUIViewController()
-        willMove(toParent: viewController)
-    }
-
-    /// Called after the ``ViewControllable`` instance is added or removed from a container
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameter viewController: The parent ``ViewControllable`` instance, or `nil` if there is no parent.
-    private func didMove(toParent viewController: ViewControllable?) {
-        let viewController: UIViewController? = viewController?._asUIViewController()
-        didMove(toParent: viewController)
-    }
-
-    /// Adds the given ``ViewControllable`` instance as a child.
-    ///
-    /// - Parameter viewController: The ``ViewControllable`` instance to be added as a child.
-    private func addChild(_ viewController: ViewControllable) {
-        let viewController: UIViewController = viewController._asUIViewController()
-        guard !children.contains(viewController)
-        else { return }
-        addChild(viewController)
-    }
-
-    /// Removes the given ``ViewControllable`` instance from its parent.
-    ///
-    /// - Parameter viewController: The ``ViewControllable`` instance to be removed from its parent.
-    private func removeChild(_ viewController: ViewControllable) {
-        let viewController: UIViewController = viewController._asUIViewController()
-        guard children.contains(viewController)
-        else { return }
-        viewController.removeFromParent()
-    }
-
     /// Contains the given ``ViewControllable`` instance within the entire bounds of the parent
     /// ``ViewControllable`` instance.
     ///
@@ -134,6 +96,44 @@ extension UIViewController: ViewControllable {
     /// - Returns: The `self` instance as a ``UIViewController``.
     public func _asUIViewController() -> UIViewController { // swiftlint:disable:this identifier_name
         self
+    }
+
+    /// Called just before the ``ViewControllable`` instance is added or removed from a container
+    /// ``ViewControllable`` instance.
+    ///
+    /// - Parameter viewController: The parent ``ViewControllable`` instance, or `nil` if there is no parent.
+    private func willMove(toParent viewController: ViewControllable?) {
+        let viewController: UIViewController? = viewController?._asUIViewController()
+        willMove(toParent: viewController)
+    }
+
+    /// Called after the ``ViewControllable`` instance is added or removed from a container
+    /// ``ViewControllable`` instance.
+    ///
+    /// - Parameter viewController: The parent ``ViewControllable`` instance, or `nil` if there is no parent.
+    private func didMove(toParent viewController: ViewControllable?) {
+        let viewController: UIViewController? = viewController?._asUIViewController()
+        didMove(toParent: viewController)
+    }
+
+    /// Adds the given ``ViewControllable`` instance as a child.
+    ///
+    /// - Parameter viewController: The ``ViewControllable`` instance to be added as a child.
+    private func addChild(_ viewController: ViewControllable) {
+        let viewController: UIViewController = viewController._asUIViewController()
+        guard !children.contains(viewController)
+        else { return }
+        addChild(viewController)
+    }
+
+    /// Removes the given ``ViewControllable`` instance from its parent.
+    ///
+    /// - Parameter viewController: The ``ViewControllable`` instance to be removed from its parent.
+    private func removeChild(_ viewController: ViewControllable) {
+        let viewController: UIViewController = viewController._asUIViewController()
+        guard children.contains(viewController)
+        else { return }
+        viewController.removeFromParent()
     }
 }
 
