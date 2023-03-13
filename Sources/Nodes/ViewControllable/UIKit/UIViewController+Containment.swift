@@ -5,7 +5,7 @@
 //  Created by Sam Marshall on 2/13/23.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 
 import UIKit
 
