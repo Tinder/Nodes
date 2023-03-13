@@ -5,6 +5,8 @@
 //  Created by Sam Marshall on 2/13/23.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 extension UIViewController {
@@ -52,3 +54,5 @@ extension UIViewController {
         viewController.didMove(toParent: self)
     }
 }
+
+#endif
