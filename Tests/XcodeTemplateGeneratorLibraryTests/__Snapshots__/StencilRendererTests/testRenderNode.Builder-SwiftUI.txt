@@ -13,7 +13,6 @@ internal protocol <nodeName>Flow: <viewControllableFlowType> {}
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
 public protocol <nodeName>Dependency: Dependency {
-
     var <dependenciesName>: <dependenciesType> { get }
 }
 
