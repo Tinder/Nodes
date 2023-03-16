@@ -1521,7 +1521,7 @@ files:
 
           private func attachRoot() {
               let flow: RootFlow = rootBuilder.build(withListener: context)
-              viewController.present(flow.viewControllable)
+              viewController.present(flow.getViewController())
               attach(starting: flow)
           }
       }
