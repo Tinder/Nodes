@@ -12,8 +12,7 @@ internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */{% if dependencies %}
-public protocol {{ node_name }}Dependency: Dependency {
-{% for dependency in dependencies %}
+public protocol {{ node_name }}Dependency: Dependency {{ '{' }}{% for dependency in dependencies %}
     var {{ dependency.name }}: {{ dependency.type }} { get }{% endfor %}
 }{% else %}
 public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
