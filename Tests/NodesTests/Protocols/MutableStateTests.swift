@@ -11,6 +11,7 @@ import Nimble
 import XCTest
 
 final class MutableStateTests: XCTestCase {
+
     private struct TestState: MutableState, Equatable {
         var value: Int
     }
