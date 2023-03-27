@@ -89,3 +89,7 @@ ifndef platform
 	$(error required variable: "platform")
 endif
 	@./bin/get-deployment-target "$(platform)"
+
+.PHONY: delete-snapshots
+delete-snapshots:
+	rm -rf Tests/XcodeTemplateGeneratorLibraryTests/__Snapshots__/*
