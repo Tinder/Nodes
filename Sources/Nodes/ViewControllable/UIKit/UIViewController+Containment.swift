@@ -19,7 +19,8 @@ extension UIViewController {
     ///   - subview: The view to enclose in the parent view
     ///
     ///     The closure has the following arguments:
-    ///     | view | The view on which to add layout constraints. |
+    ///     | view    | The containing view. |
+    ///     | subview | The subview. |
     ///
     ///     The closure returns an array of layout constraints.
     @discardableResult
