@@ -5,6 +5,16 @@
 //  Created by Seppe Snoeck on 21/10/22.
 //
 
+/**
+ * ``MutableState`` specifies methods for applying a mutation to an instance
+ * and creating a new instance with a mutation.
+ *
+ * Protocol extension methods are defined and provide default implementations.
+ *
+ * ``MutableState`` can be used with [Combine](https://developer.apple.com/documentation/combine), to simplify sending
+ * new values with [CurrentValueSubject](https://developer.apple.com/documentation/combine/currentvaluesubject)
+ * and when using [map](https://developer.apple.com/documentation/combine/anypublisher/map(_:)-1mdn8).
+ */
 public protocol MutableState {
 
     /// Applies a mutation to an instance.
