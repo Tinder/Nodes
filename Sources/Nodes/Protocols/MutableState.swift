@@ -11,16 +11,14 @@ public protocol MutableState {
     ///
     /// - Parameter mutation: The mutation itself.
     ///
-    /// Example of sending a new value on a CurrentValueSubject by mutating the current value:
-    /// ```
-    /// let subject: CurrentValueSubject<Example, Never> = .init(Example())
-    /// subject.apply { $0.exampleProperty = 23 }
-    /// ```
-    ///
     /// Example of mutating a struct variable:
     /// ```
     /// var example: Example = .init()
-    /// example.apply { $0.exampleProperty = 23 }
+    ///
+    /// example.apply {
+    ///    $0.exampleProperty = 23
+    ///    $0.anotherExampleProperty = 100
+    /// }
     /// ```
     mutating func apply(_ mutation: (inout Self) throws -> Void) rethrows
 
@@ -30,11 +28,12 @@ public protocol MutableState {
     ///
     /// Example of mutating a struct constant:
     /// ```
-    /// let publisher: AnyPublisher<Example, Never> = ...
+    /// let example: Example = .init()
     ///
-    /// publisher.map { example in
-    ///    example.with { $0.exampleProperty = 23 }
-    /// }
+    /// print(example.with {
+    ///    $0.exampleProperty = 23
+    ///    $0.anotherExampleProperty = 100
+    /// })
     /// ```
     func with(_ mutation: (inout Self) throws -> Void) rethrows -> Self
 }
