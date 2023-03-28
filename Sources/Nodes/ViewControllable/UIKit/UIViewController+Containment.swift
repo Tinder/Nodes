@@ -27,12 +27,12 @@ extension UIViewController {
         _ viewController: ViewControllable,
         layout: (_ view: UIView, _ subview: UIView) -> T
     ) -> T {
-        addChild(viewController)
+        addChild(viewController._asUIViewController())
         let subview: UIView = viewController._asUIViewController().view
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
         let layout: T = layout(view, subview)
-        viewController.didMove(toParent: self)
+        viewController._asUIViewController().didMove(toParent: self)
         return layout
     }
 
@@ -46,7 +46,7 @@ extension UIViewController {
         guard view.isDescendant(of: self.view)
         else { return }
         let subview: UIView = viewController._asUIViewController().view
-        addChild(viewController)
+        addChild(viewController._asUIViewController())
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
         NSLayoutConstraint.activate([
@@ -55,7 +55,7 @@ extension UIViewController {
             subview.widthAnchor.constraint(equalTo: view.widthAnchor),
             subview.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
-        viewController.didMove(toParent: self)
+        viewController._asUIViewController().didMove(toParent: self)
     }
 }
 
