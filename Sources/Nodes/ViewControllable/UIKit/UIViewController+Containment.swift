@@ -50,10 +50,10 @@ extension UIViewController {
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
         NSLayoutConstraint.activate([
-            subview.heightAnchor.constraint(equalTo: view.heightAnchor),
-            subview.widthAnchor.constraint(equalTo: view.widthAnchor),
+            subview.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             subview.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            subview.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            subview.widthAnchor.constraint(equalTo: view.widthAnchor),
+            subview.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
         viewController.didMove(toParent: self)
     }
