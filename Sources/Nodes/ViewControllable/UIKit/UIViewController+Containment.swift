@@ -28,6 +28,7 @@ extension UIViewController {
                            layout: (_ view: UIView, _ subview: UIView) -> T) -> T
     {
         addChild(viewController)
+        let subview: UIView = viewController._asUIViewController().view
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
         let layout: T = layout(view)
