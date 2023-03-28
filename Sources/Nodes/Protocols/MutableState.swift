@@ -7,9 +7,9 @@
 
 public protocol MutableState {
 
-    /// Mutate an instance with a new value.
+    /// Applies a mutation to an instance.
     ///
-    /// - Parameter mutation: The mutation itself.
+    /// - Parameter mutation: The closure in which properties are mutated.
     ///
     /// Example of mutating a struct variable:
     /// ```
@@ -24,9 +24,9 @@ public protocol MutableState {
     /// ```
     mutating func apply(_ mutation: (inout Self) throws -> Void) rethrows
 
-    /// Create a new instance with the desired changes.
+    /// Creates a new mutated instance.
     ///
-    /// - Parameter mutation: The mutation itself.
+    /// - Parameter mutation: The closure in which properties are mutated.
     ///
     /// Example of mutating a struct constant:
     /// ```
