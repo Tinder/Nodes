@@ -15,7 +15,7 @@ extension UIViewController {
     ///
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - layout: The closure providing the layout constraints.
+    ///   - layout: The closure providing the layout.
     ///   - subview: The view to enclose in the parent view
     ///
     ///     The closure has the following arguments:
