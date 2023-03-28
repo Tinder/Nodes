@@ -11,15 +11,16 @@ import UIKit
 
 extension UIViewController {
 
-    /// Contains the given ``ViewControllable`` instance with the layout constraints provided by the given closure.
+    /// Contains the given ``ViewControllable`` instance with the layout provided by the given closure.
     ///
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - layout: The closure providing the layout constraints.
+    ///   - layout: The closure providing the layout.
     ///   - subview: The view to enclose in the parent view
     ///
     ///     The closure has the following arguments:
-    ///     | view | The view on which to add layout constraints. |
+    ///     | view    | The containing view. |
+    ///     | subview | The subview. |
     ///
     ///     The closure returns an array of layout constraints.
     @discardableResult
