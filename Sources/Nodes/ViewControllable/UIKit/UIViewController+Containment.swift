@@ -16,7 +16,6 @@ extension UIViewController {
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to contain.
     ///   - layout: The closure providing the layout.
-    ///   - subview: The view to enclose in the parent view
     ///
     ///     The closure has the following arguments:
     ///     | view    | The containing view. |
@@ -24,14 +23,16 @@ extension UIViewController {
     ///
     ///     The closure returns an array of layout constraints.
     @discardableResult
-    public func contain<T>(_ viewController: ViewControllable,
-                           layout: (_ view: UIView, _ subview: UIView) -> T) -> T
-    {
+    public func contain<T>(
+        _ viewController: ViewControllable,
+                           layout: (_ view: UIView, _ subview: UIView) -> T
+    ) -> T
+     {
         addChild(viewController)
         let subview: UIView = viewController._asUIViewController().view
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
-        let layout: T = layout(view)
+        let layout: T = layout(view, subview)
         viewController.didMove(toParent: self)
         return layout
     }
