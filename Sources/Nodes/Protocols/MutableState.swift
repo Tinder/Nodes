@@ -19,6 +19,8 @@ public protocol MutableState {
     ///    $0.exampleProperty = 23
     ///    $0.anotherExampleProperty = 100
     /// }
+    ///
+    /// print(example)
     /// ```
     mutating func apply(_ mutation: (inout Self) throws -> Void) rethrows
 
