@@ -11,7 +11,7 @@ import UIKit
 
 extension UIViewController {
 
-    /// Contains the given ``ViewControllable`` instance with the layout constraints provided by the given closure.
+    /// Contains the given ``ViewControllable`` instance with the layout provided by the given closure.
     ///
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to contain.
