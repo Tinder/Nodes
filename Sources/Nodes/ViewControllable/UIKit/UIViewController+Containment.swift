@@ -48,8 +48,9 @@ extension UIViewController {
     public func contain(_ viewController: ViewControllable, in view: UIView) {
         guard view.isDescendant(of: self.view)
         else { return }
-        let subview: UIView = viewController._asUIViewController().view
-        addChild(viewController._asUIViewController())
+        let viewController: UIViewController = viewController._asUIViewController()
+        addChild(viewController)
+        let subview: UIView = viewController.view
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
         NSLayoutConstraint.activate([
@@ -58,7 +59,7 @@ extension UIViewController {
             subview.widthAnchor.constraint(equalTo: view.widthAnchor),
             subview.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
-        viewController._asUIViewController().didMove(toParent: self)
+        viewController.didMove(toParent: self)
     }
 }
 
