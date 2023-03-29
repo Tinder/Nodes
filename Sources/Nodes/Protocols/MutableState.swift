@@ -11,9 +11,37 @@
  *
  * Protocol extension methods are defined and provide default implementations.
  *
- * ``MutableState`` can be used with [Combine](https://developer.apple.com/documentation/combine), to simplify sending
- * new values with [CurrentValueSubject](https://developer.apple.com/documentation/combine/currentvaluesubject)
- * and when using [map](https://developer.apple.com/documentation/combine/anypublisher/map(_:)-1mdn8).
+ * ``MutableState`` may be used with [Combine](https://developer.apple.com/documentation/combine)
+ * in the following ways.
+ *
+ * Example of publishing a single value when multiple properties are mutated:
+ * ```swift
+ * extension CurrentValueSubject where Output: MutableState {
+ *
+ *     func apply(_ mutation: (inout Output) throws -> Void) rethrows {
+ *         value = try value.with(mutation)
+ *     }
+ * }
+ * 
+ * let subject: CurrentValueSubject<Example, Never> = .init(Example())
+ *
+ * subject.apply {
+ *     $0.exampleProperty = 23
+ *     $0.anotherExampleProperty = 100
+ * }
+ * ```
+ *
+ * Example of transforming emitted constant values:
+ * ```swift
+ * let publisher: AnyPublisher<Example, Never> = ...
+ *
+ * publisher.map { example in
+ *     example.with {
+ *         $0.exampleProperty = 23
+ *         $0.anotherExampleProperty = 100
+ *     }
+ * }
+ * ```
  */
 public protocol MutableState {
 
