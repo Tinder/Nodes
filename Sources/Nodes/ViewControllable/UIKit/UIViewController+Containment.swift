@@ -17,6 +17,8 @@ extension UIViewController {
     ///   - viewController: The ``ViewControllable`` instance to contain.
     ///   - layout: The closure providing the layout.
     ///
+    /// - Returns: The output of the layout (can be `Void`).
+    ///
     ///     The closure has the following arguments:
     ///     | view    | The containing view. |
     ///     | subview | The subview.         |
