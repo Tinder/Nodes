@@ -20,7 +20,7 @@
  *         value = try value.with(mutation)
  *     }
  * }
- * 
+ *
  * let subject: CurrentValueSubject<Example, Never> = .init(Example())
  *
  * subject.apply {
