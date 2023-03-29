@@ -6,13 +6,11 @@
 //
 
 /**
- * ``MutableState`` specifies methods for applying a mutation to an instance and creating a
- * new instance with a mutation.
+ * ``MutableState`` specifies a method for applying a mutation to an instance and a method for creating a new
+ * instance with a mutation. Protocol extension methods are defined and provide default implementations.
  *
- * Protocol extension methods are defined and provide default implementations.
- *
- * ``MutableState`` may be used with [Combine](https://developer.apple.com/documentation/combine)
- * in the following ways.
+ * ``MutableState`` may also be used with [Combine](https://developer.apple.com/documentation/combine) in
+ * the following ways:
  *
  * Example of publishing a single value when multiple properties are mutated:
  * ```swift
@@ -42,6 +40,8 @@
  *     }
  * }
  * ```
+ *
+ * The above examples assume that the `Example` struct definition declares conformance to ``MutableState``.
  */
 public protocol MutableState {
 
