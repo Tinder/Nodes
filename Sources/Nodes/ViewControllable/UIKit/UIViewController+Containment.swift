@@ -29,12 +29,13 @@ extension UIViewController {
         _ viewController: ViewControllable,
         layout: (_ view: UIView, _ subview: UIView) -> T
     ) -> T {
-        addChild(viewController._asUIViewController())
-        let subview: UIView = viewController._asUIViewController().view
+        let viewController: UIViewController = viewController._asUIViewController()
+        addChild(viewController)
+        let subview: UIView = viewController.view
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
         let layout: T = layout(view, subview)
-        viewController._asUIViewController().didMove(toParent: self)
+        viewController.didMove(toParent: self)
         return layout
     }
 
