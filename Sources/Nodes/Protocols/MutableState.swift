@@ -6,8 +6,8 @@
 //
 
 /**
- * ``MutableState`` specifies methods for applying a mutation to an instance
- * and creating a new instance with a mutation.
+ * ``MutableState`` specifies methods for applying a mutation to an instance and creating a
+ * new instance with a mutation.
  *
  * Protocol extension methods are defined and provide default implementations.
  *
@@ -34,7 +34,7 @@ public protocol MutableState {
     /// ```
     mutating func apply(_ mutation: (inout Self) throws -> Void) rethrows
 
-    /// Creates a new mutated instance.
+    /// Creates a new instance with a mutation.
     ///
     /// - Parameter mutation: The closure in which properties are mutated.
     ///
