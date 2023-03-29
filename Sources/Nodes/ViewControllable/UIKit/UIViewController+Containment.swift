@@ -19,7 +19,7 @@ extension UIViewController {
     ///
     ///     The closure has the following arguments:
     ///     | view    | The containing view. |
-    ///     | subview | The subview. |
+    ///     | subview | The subview.         |
     ///
     ///     The closure returns an array of layout constraints.
     @discardableResult
