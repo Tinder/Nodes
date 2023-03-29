@@ -50,7 +50,7 @@ public protocol MutableState {
     /// - Parameter mutation: The closure in which properties are mutated.
     ///
     /// Example of mutating a struct variable:
-    /// ```
+    /// ```swift
     /// var example: Example = .init()
     ///
     /// example.apply {
@@ -67,7 +67,7 @@ public protocol MutableState {
     /// - Parameter mutation: The closure in which properties are mutated.
     ///
     /// Example of mutating a struct constant:
-    /// ```
+    /// ```swift
     /// let example: Example = .init()
     ///
     /// print(example.with {
