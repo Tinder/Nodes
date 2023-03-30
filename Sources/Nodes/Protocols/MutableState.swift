@@ -60,7 +60,7 @@ public protocol MutableState {
     ///
     /// print(example)
     /// ```
-    mutating func apply(_ mutation: (inout Self) throws -> Void) rethrows
+    mutating func apply(_ changes: (inout Self) throws -> Void) rethrows
 
     /// Creates a new instance with a mutation.
     ///
@@ -75,18 +75,18 @@ public protocol MutableState {
     ///    $0.anotherExampleProperty = 100
     /// })
     /// ```
-    func with(_ mutation: (inout Self) throws -> Void) rethrows -> Self
+    func applying(_ changes: (inout Self) throws -> Void) rethrows -> Self
 }
 
 extension MutableState {
 
-    public mutating func apply(_ mutation: (inout Self) throws -> Void) rethrows {
-        self = try with(mutation)
+    public mutating func apply(_ changes: (inout Self) throws -> Void) rethrows {
+        self = try applying(changes)
     }
 
-    public func with(_ mutation: (inout Self) throws -> Void) rethrows -> Self {
+    public func applying(_ changes: (inout Self) throws -> Void) rethrows -> Self {
         var value: Self = self
-        try mutation(&value)
+        try changes(&value)
         return value
     }
 }

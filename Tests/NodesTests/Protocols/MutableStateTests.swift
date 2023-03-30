@@ -23,6 +23,6 @@ final class MutableStateTests: XCTestCase {
 
     func testConstantWithMutation() {
         let state: TestState = .init(value: -1)
-        expect(state.with { $0.value = 23 }) == TestState(value: 23)
+        expect(state.applying { $0.value = 23 }) == TestState(value: 23)
     }
 }
