@@ -23,7 +23,8 @@ extension UIViewController {
     ///     | view    | The containing view. |
     ///     | subview | The subview.         |
     ///
-    ///     The closure returns an array of layout constraints.
+    ///     The closure may return any type such as an array of layout constraints to
+    ///     be activated (or can simply return `Void`).
     @discardableResult
     public func contain<T>(
         _ viewController: ViewControllable,
