@@ -15,13 +15,13 @@ final class MutableStateTests: XCTestCase {
         var value: Int
     }
 
-    func testVariableApplyingMutation() {
+    func testVariableApplyingChanges() {
         var state: TestState = .init(value: -1)
         state.apply { $0.value = 23 }
         expect(state) == TestState(value: 23)
     }
 
-    func testConstantWithMutation() {
+    func testConstantApplyingChanges() {
         let state: TestState = .init(value: -1)
         expect(state.applying { $0.value = 23 }) == TestState(value: 23)
     }
