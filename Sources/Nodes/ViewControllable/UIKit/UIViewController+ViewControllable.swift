@@ -61,12 +61,13 @@ extension UIViewController: ViewControllable {
     ///
     /// - Parameter viewController: The ``ViewControllable`` instance to uncontain.
     public func uncontain(_ viewController: ViewControllable) {
-        let subview: UIView = viewController._asUIViewController().view
+        let viewController: UIViewController = viewController._asUIViewController()
+        let subview: UIView = viewController.view
         guard subview.isDescendant(of: view)
         else { return }
-        viewController._asUIViewController().willMove(toParent: nil)
+        viewController.willMove(toParent: nil)
         subview.removeFromSuperview()
-        removeChild(viewController)
+        _removeChild(viewController)
     }
 
     /// Returns `self` as a ``UIViewController``.
@@ -74,20 +75,6 @@ extension UIViewController: ViewControllable {
     /// - Returns: The `self` instance as a ``UIViewController``.
     public func _asUIViewController() -> UIViewController { // swiftlint:disable:this identifier_name
         self
-    }
-
-    private func addChild(_ viewController: ViewControllable) {
-        let viewController: UIViewController = viewController._asUIViewController()
-        guard !children.contains(viewController)
-        else { return }
-        addChild(viewController)
-    }
-
-    private func removeChild(_ viewController: ViewControllable) {
-        let viewController: UIViewController = viewController._asUIViewController()
-        guard children.contains(viewController)
-        else { return }
-        viewController.removeFromParent()
     }
 }
 

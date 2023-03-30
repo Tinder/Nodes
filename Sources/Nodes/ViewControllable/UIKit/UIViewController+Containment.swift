@@ -31,7 +31,7 @@ extension UIViewController {
         layout: (_ view: UIView, _ subview: UIView) -> T
     ) -> T {
         let viewController: UIViewController = viewController._asUIViewController()
-        addChild(viewController)
+        _addChild(viewController)
         let subview: UIView = viewController.view
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
@@ -50,7 +50,7 @@ extension UIViewController {
         guard view.isDescendant(of: self.view)
         else { return }
         let viewController: UIViewController = viewController._asUIViewController()
-        addChild(viewController)
+        _addChild(viewController)
         let subview: UIView = viewController.view
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
@@ -61,6 +61,20 @@ extension UIViewController {
             subview.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
         viewController.didMove(toParent: self)
+    }
+
+    private func _addChild(_ viewController: UIViewController) {
+        let viewController: UIViewController = viewController._asUIViewController()
+        guard !children.contains(viewController)
+        else { return }
+        addChild(viewController)
+    }
+
+    private func _removeChild(_ viewController: UIViewController) {
+        let viewController: UIViewController = viewController._asUIViewController()
+        guard children.contains(viewController)
+        else { return }
+        viewController.removeFromParent()
     }
 }
 
