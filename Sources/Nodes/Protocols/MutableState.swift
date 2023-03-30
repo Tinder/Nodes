@@ -6,8 +6,9 @@
 //
 
 /**
- * ``MutableState`` specifies a method for applying a mutation to an instance and a method for creating a new
- * instance with a mutation. Protocol extension methods are defined and provide default implementations.
+ * ``MutableState`` specifies a method for mutating an instance with changes and a method for creating a new
+ * instance by applying changes to a given instance. Protocol extension methods are defined and
+ * provide default implementations.
  *
  * ``MutableState`` may also be used with [Combine](https://developer.apple.com/documentation/combine) in
  * the following ways:
@@ -16,8 +17,8 @@
  * ```swift
  * extension CurrentValueSubject where Output: MutableState {
  *
- *     func apply(_ mutation: (inout Output) throws -> Void) rethrows {
- *         value = try value.with(mutation)
+ *     func apply(_ changes: (inout Output) throws -> Void) rethrows {
+ *         value = try value.applying(changes)
  *     }
  * }
  *
@@ -34,7 +35,7 @@
  * let publisher: AnyPublisher<Example, Never> = ...
  *
  * publisher.map { example in
- *     example.with {
+ *     example.applying {
  *         $0.exampleProperty = 23
  *         $0.anotherExampleProperty = 100
  *     }
