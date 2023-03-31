@@ -1,5 +1,5 @@
 //
-//  XcodeTemplateGeneratorCommand.swift
+//  NodesXcodeTemplatesGeneratorCommand.swift
 //  NodesXcodeTemplatesGeneratorTool
 //
 //  Created by Christopher Fuller on 4/25/21.
@@ -9,10 +9,10 @@ import ArgumentParser
 import NodesXcodeTemplatesGeneratorLibrary
 
 @main
-internal struct XcodeTemplateGeneratorCommand: ParsableCommand {
+internal struct NodesXcodeTemplatesGeneratorCommand: ParsableCommand {
 
-    internal static let configuration: CommandConfiguration = .init(commandName: "xc-template-generator",
-                                                                    abstract: "Xcode Template Generator")
+    internal static let configuration: CommandConfiguration = .init(commandName: "nodes-xcode-templates-gen",
+                                                                    abstract: "Nodes Xcode Templates Generator")
 
     @Option(name: .customLong("id"),
             help: "The Xcode templates identifier.")
