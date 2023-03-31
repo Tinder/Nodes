@@ -67,7 +67,9 @@ extension UIViewController: ViewControllable {
         else { return }
         viewController.willMove(toParent: nil)
         subview.removeFromSuperview()
-        _removeChild(viewController)
+        guard children.contains(viewController)
+        else { return }
+        viewController.removeFromParent()
     }
 
     /// Returns `self` as a ``UIViewController``.
