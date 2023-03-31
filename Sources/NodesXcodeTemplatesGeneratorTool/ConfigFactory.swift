@@ -1,6 +1,6 @@
 //
 //  ConfigFactory.swift
-//  NodesXcodeTemplatesGeneratorTool
+//  NodesXcodeTemplatesGeneratorExecutable
 //
 //  Created by Christopher Fuller on 6/12/21.
 //

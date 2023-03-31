@@ -22,7 +22,7 @@ let package = Package(
             targets: ["NodesXcodeTemplatesGenerator"]),
         .executable(
             name: "nodes-xcode-templates-gen",
-            targets: ["NodesXcodeTemplatesGeneratorTool"]),
+            targets: ["NodesXcodeTemplatesGeneratorExecutable"]),
     ],
     dependencies: [
         .package(
@@ -77,7 +77,7 @@ let package = Package(
                 .copy("Resources/Templates"),
             ]),
         .executableTarget(
-            name: "NodesXcodeTemplatesGeneratorTool",
+            name: "NodesXcodeTemplatesGeneratorExecutable",
             dependencies: [
                 "NodesXcodeTemplatesGenerator",
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
