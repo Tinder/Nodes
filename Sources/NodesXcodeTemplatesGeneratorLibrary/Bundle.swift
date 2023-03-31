@@ -12,7 +12,7 @@ extension Bundle {
     internal static var moduleRelativeToExecutable: Bundle? {
         guard let url: URL = Bundle.main.executableURL
         else { return nil }
-        let name: String = "Nodes_XcodeTemplateGeneratorLibrary.bundle"
+        let name: String = "Nodes_NodesXcodeTemplatesGeneratorLibrary.bundle"
         return Bundle(url: url.deletingLastPathComponent().appendingPathComponent(name))
     }
 }
