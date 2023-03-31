@@ -7,8 +7,8 @@
 
 /**
  * ``MutableState`` specifies a method to apply changes to an instance and a method for creating a new
- * instance by applying changes to the receiver. Protocol extension methods are defined and
- * provide default implementations.
+ * instance by applying changes to the receiver. Protocol extension methods are defined and provide
+ * default implementations.
  *
  * ``MutableState`` may also be used with [Combine](https://developer.apple.com/documentation/combine) in
  * the following ways:
