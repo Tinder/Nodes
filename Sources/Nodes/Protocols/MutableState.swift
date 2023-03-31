@@ -7,7 +7,7 @@
 
 /**
  * ``MutableState`` specifies a method to apply changes to an instance and a method for creating a new
- * instance by applying changes to the existing instance. Protocol extension methods are defined and
+ * instance by applying changes to the receiver. Protocol extension methods are defined and
  * provide default implementations.
  *
  * ``MutableState`` may also be used with [Combine](https://developer.apple.com/documentation/combine) in
@@ -63,7 +63,7 @@ public protocol MutableState {
     /// ```
     mutating func apply(_ changes: (inout Self) throws -> Void) rethrows
 
-    /// Creates a new instance by applying changes to the existing instance.
+    /// Creates a new instance by applying changes to the receiver.
     ///
     /// - Parameter changes: The closure in which properties are mutated.
     ///
