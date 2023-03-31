@@ -1,12 +1,12 @@
 //
 //  FileSystemTests.swift
-//  NodesXcodeTemplatesGeneratorLibraryTests
+//  NodesXcodeTemplatesGeneratorTests
 //
 //  Created by Christopher Fuller on 5/31/21.
 //
 
 import Nimble
-import NodesXcodeTemplatesGeneratorLibrary
+import NodesXcodeTemplatesGenerator
 import XCTest
 
 #if os(macOS)

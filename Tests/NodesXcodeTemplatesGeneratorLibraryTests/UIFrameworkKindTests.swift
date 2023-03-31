@@ -1,12 +1,12 @@
 //
 //  UIFrameworkKindTests.swift
-//  NodesXcodeTemplatesGeneratorLibraryTests
+//  NodesXcodeTemplatesGeneratorTests
 //
 //  Created by Garric Nahapetian on 11/14/22.
 //
 
 import Nimble
-import NodesXcodeTemplatesGeneratorLibrary
+import NodesXcodeTemplatesGenerator
 import XCTest
 
 final class UIFrameworkKindTests: XCTestCase {

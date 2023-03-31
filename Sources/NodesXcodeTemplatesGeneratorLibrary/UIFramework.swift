@@ -1,6 +1,6 @@
 //
 //  UIFramework.swift
-//  NodesXcodeTemplatesGeneratorLibrary
+//  NodesXcodeTemplatesGenerator
 //
 //  Created by Garric Nahapetian on 11/10/22.
 //

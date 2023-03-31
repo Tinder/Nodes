@@ -1,6 +1,6 @@
 //
 //  Context.swift
-//  NodesXcodeTemplatesGeneratorLibrary
+//  NodesXcodeTemplatesGenerator
 //
 //  Created by Christopher Fuller on 6/3/21.
 //

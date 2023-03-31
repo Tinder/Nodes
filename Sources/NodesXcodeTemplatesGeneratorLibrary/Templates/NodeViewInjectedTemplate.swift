@@ -1,6 +1,6 @@
 //
 //  NodeViewInjectedTemplate.swift
-//  NodesXcodeTemplatesGeneratorLibrary
+//  NodesXcodeTemplatesGenerator
 //
 //  Created by Christopher Fuller on 4/25/21.
 //

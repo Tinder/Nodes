@@ -19,7 +19,7 @@ let package = Package(
             targets: ["NodesTesting"]),
         .library(
             name: "NodesXcodeTemplatesGenerator",
-            targets: ["NodesXcodeTemplatesGeneratorLibrary"]),
+            targets: ["NodesXcodeTemplatesGenerator"]),
         .executable(
             name: "nodes-xcode-templates-gen",
             targets: ["NodesXcodeTemplatesGeneratorTool"]),
@@ -66,7 +66,7 @@ let package = Package(
                 .product(name: "NeedleFoundation", package: "needle")
             ]),
         .target(
-            name: "NodesXcodeTemplatesGeneratorLibrary",
+            name: "NodesXcodeTemplatesGenerator",
             dependencies: [
                 "Codextended",
                 "Yams",
@@ -79,7 +79,7 @@ let package = Package(
         .executableTarget(
             name: "NodesXcodeTemplatesGeneratorTool",
             dependencies: [
-                "NodesXcodeTemplatesGeneratorLibrary",
+                "NodesXcodeTemplatesGenerator",
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ]),
         .testTarget(
@@ -95,9 +95,9 @@ let package = Package(
                 "Nimble",
             ]),
         .testTarget(
-            name: "NodesXcodeTemplatesGeneratorLibraryTests",
+            name: "NodesXcodeTemplatesGeneratorTests",
             dependencies: [
-                "NodesXcodeTemplatesGeneratorLibrary",
+                "NodesXcodeTemplatesGenerator",
                 "Nimble",
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
             ],

@@ -1,12 +1,12 @@
 //
 //  FileSystemMock.swift
-//  NodesXcodeTemplatesGeneratorLibraryTests
+//  NodesXcodeTemplatesGeneratorTests
 //
 //  Created by Christopher Fuller on 6/1/21.
 //
 
 import Foundation
-import NodesXcodeTemplatesGeneratorLibrary
+import NodesXcodeTemplatesGenerator
 
 internal final class FileSystemMock: FileSystem {
 
@@ -35,7 +35,7 @@ internal final class FileSystemMock: FileSystem {
 
     internal func copyItem(at fromURL: URL, to toURL: URL) throws {
         let path: String = fromURL.path.replacingOccurrences(of: "/Contents/Resources", with: "")
-        let bundle: String = "Nodes_NodesXcodeTemplatesGeneratorLibrary"
+        let bundle: String = "Nodes_NodesXcodeTemplatesGenerator"
         copies.append((from: path.components(separatedBy: bundle).last!, to: toURL.path))
     }
 

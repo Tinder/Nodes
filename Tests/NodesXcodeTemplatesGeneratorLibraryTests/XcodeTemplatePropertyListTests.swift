@@ -1,11 +1,11 @@
 //
 //  XcodeTemplatePropertyListTests.swift
-//  NodesXcodeTemplatesGeneratorLibraryTests
+//  NodesXcodeTemplatesGeneratorTests
 //
 //  Created by Christopher Fuller on 6/1/21.
 //
 
-@testable import NodesXcodeTemplatesGeneratorLibrary
+@testable import NodesXcodeTemplatesGenerator
 import SnapshotTesting
 import XCTest
 

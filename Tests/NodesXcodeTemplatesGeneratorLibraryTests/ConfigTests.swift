@@ -1,12 +1,12 @@
 //
 //  ConfigTests.swift
-//  NodesXcodeTemplatesGeneratorLibraryTests
+//  NodesXcodeTemplatesGeneratorTests
 //
 //  Created by Christopher Fuller on 6/3/21.
 //
 
 import Nimble
-import NodesXcodeTemplatesGeneratorLibrary
+import NodesXcodeTemplatesGenerator
 import SnapshotTesting
 import XCTest
 

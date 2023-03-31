@@ -1,6 +1,6 @@
 //
 //  PluginListContext.swift
-//  NodesXcodeTemplatesGeneratorLibrary
+//  NodesXcodeTemplatesGenerator
 //
 //  Created by Christopher Fuller on 5/4/21.
 //

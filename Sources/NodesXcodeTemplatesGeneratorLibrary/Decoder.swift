@@ -1,6 +1,6 @@
 //
 //  Decoder.swift
-//  NodesXcodeTemplatesGeneratorLibrary
+//  NodesXcodeTemplatesGenerator
 //
 //  Created by Garric Nahapetian on 11/18/22.
 //

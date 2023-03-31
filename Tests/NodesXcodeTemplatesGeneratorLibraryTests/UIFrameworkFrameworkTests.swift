@@ -1,12 +1,12 @@
 //
 //  UIFrameworkFrameworkTests.swift
-//  NodesXcodeTemplatesGeneratorLibraryTests
+//  NodesXcodeTemplatesGeneratorTests
 //
 //  Created by Garric Nahapetian on 11/14/22.
 //
 
 import Nimble
-@testable import NodesXcodeTemplatesGeneratorLibrary
+@testable import NodesXcodeTemplatesGenerator
 import SnapshotTesting
 import XCTest
 import Yams

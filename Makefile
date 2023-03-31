@@ -82,4 +82,4 @@ endif
 
 .PHONY: delete-snapshots
 delete-snapshots:
-	rm -rf Tests/NodesXcodeTemplatesGeneratorLibraryTests/__Snapshots__/*
+	rm -rf Tests/NodesXcodeTemplatesGeneratorTests/__Snapshots__/*

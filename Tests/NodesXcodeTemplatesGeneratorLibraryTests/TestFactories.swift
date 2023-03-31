@@ -1,11 +1,11 @@
 //
 //  TestFactories.swift
-//  NodesXcodeTemplatesGeneratorLibraryTests
+//  NodesXcodeTemplatesGeneratorTests
 //
 //  Created by Christopher Fuller on 5/31/21.
 //
 
-@testable import NodesXcodeTemplatesGeneratorLibrary
+@testable import NodesXcodeTemplatesGenerator
 
 protocol TestFactories {}
 
