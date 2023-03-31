@@ -6,7 +6,7 @@
 //
 
 import Nimble
-import XcodeTemplateGeneratorLibrary
+import NodesXcodeTemplatesGeneratorLibrary
 import XCTest
 
 final class UIFrameworkKindTests: XCTestCase {

@@ -6,7 +6,7 @@
 //
 
 import SnapshotTesting
-@testable import XcodeTemplateGeneratorLibrary
+@testable import NodesXcodeTemplatesGeneratorLibrary
 import XCTest
 
 final class UIFrameworkDefaultsTests: XCTestCase {

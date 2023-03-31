@@ -6,7 +6,7 @@
 //
 
 import ArgumentParser
-import XcodeTemplateGeneratorLibrary
+import NodesXcodeTemplatesGeneratorLibrary
 
 @main
 internal struct XcodeTemplateGeneratorCommand: ParsableCommand {

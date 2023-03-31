@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import XcodeTemplateGeneratorLibrary
+import NodesXcodeTemplatesGeneratorLibrary
 
 internal final class FileSystemMock: FileSystem {
 

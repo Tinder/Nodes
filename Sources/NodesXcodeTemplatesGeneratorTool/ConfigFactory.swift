@@ -5,7 +5,7 @@
 //  Created by Christopher Fuller on 6/12/21.
 //
 
-import XcodeTemplateGeneratorLibrary
+import NodesXcodeTemplatesGeneratorLibrary
 
 internal final class ConfigFactory {
 

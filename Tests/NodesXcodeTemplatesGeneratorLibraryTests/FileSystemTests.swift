@@ -6,7 +6,7 @@
 //
 
 import Nimble
-import XcodeTemplateGeneratorLibrary
+import NodesXcodeTemplatesGeneratorLibrary
 import XCTest
 
 #if os(macOS)

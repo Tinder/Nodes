@@ -7,7 +7,7 @@
 
 import Nimble
 import SnapshotTesting
-@testable import XcodeTemplateGeneratorLibrary
+@testable import NodesXcodeTemplatesGeneratorLibrary
 import XCTest
 
 final class XcodeTemplatesTests: XCTestCase {

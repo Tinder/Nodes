@@ -6,7 +6,7 @@
 //
 
 import Nimble
-@testable import XcodeTemplateGeneratorLibrary
+@testable import NodesXcodeTemplatesGeneratorLibrary
 import XCTest
 
 final class StencilTemplateTests: XCTestCase, TestFactories {
