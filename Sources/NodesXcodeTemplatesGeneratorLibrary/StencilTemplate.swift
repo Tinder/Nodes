@@ -123,7 +123,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         }
     }
 
-    /// The name of the Stencil source file in the XcodeTemplateGeneratorLibrary bundle.
+    /// The name of the Stencil source file in the bundle.
     public var filename: String {
         switch self {
         case .analytics, .context, .flow, .plugin, .pluginList, .state, .viewState, .worker:
