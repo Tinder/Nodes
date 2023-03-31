@@ -63,14 +63,14 @@ extension UIViewController {
         viewController.didMove(toParent: self)
     }
 
-    private func _addChild(_ viewController: UIViewController) {
+    internal func _addChild(_ viewController: UIViewController) {
         let viewController: UIViewController = viewController._asUIViewController()
         guard !children.contains(viewController)
         else { return }
         addChild(viewController)
     }
 
-    private func _removeChild(_ viewController: UIViewController) {
+    internal func _removeChild(_ viewController: UIViewController) {
         let viewController: UIViewController = viewController._asUIViewController()
         guard children.contains(viewController)
         else { return }
