@@ -5,8 +5,8 @@
 //  Created by Garric Nahapetian on 11/14/22.
 //
 
-import SnapshotTesting
 @testable import NodesXcodeTemplatesGeneratorLibrary
+import SnapshotTesting
 import XCTest
 
 final class UIFrameworkDefaultsTests: XCTestCase {

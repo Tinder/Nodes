@@ -6,8 +6,8 @@
 //
 
 import Nimble
-import SnapshotTesting
 import NodesXcodeTemplatesGeneratorLibrary
+import SnapshotTesting
 import XCTest
 
 final class ConfigTests: XCTestCase, TestFactories {

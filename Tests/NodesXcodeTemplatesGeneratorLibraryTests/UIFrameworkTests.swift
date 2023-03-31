@@ -6,8 +6,8 @@
 //
 
 import Nimble
-import SnapshotTesting
 @testable import NodesXcodeTemplatesGeneratorLibrary
+import SnapshotTesting
 import XCTest
 import Yams
 

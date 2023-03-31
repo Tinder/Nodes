@@ -5,8 +5,8 @@
 //  Created by Christopher Fuller on 6/1/21.
 //
 
-import SnapshotTesting
 @testable import NodesXcodeTemplatesGeneratorLibrary
+import SnapshotTesting
 import XCTest
 
 final class XcodeTemplatePropertyListTests: XCTestCase {
