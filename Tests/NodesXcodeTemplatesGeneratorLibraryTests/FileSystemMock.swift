@@ -1,6 +1,6 @@
 //
 //  FileSystemMock.swift
-//  XcodeTemplateGeneratorLibraryTests
+//  NodesXcodeTemplatesGeneratorLibraryTests
 //
 //  Created by Christopher Fuller on 6/1/21.
 //

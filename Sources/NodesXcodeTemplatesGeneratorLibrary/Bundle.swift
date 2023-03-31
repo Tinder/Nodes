@@ -1,6 +1,6 @@
 //
 //  Bundle.swift
-//  XcodeTemplateGeneratorLibrary
+//  NodesXcodeTemplatesGeneratorLibrary
 //
 //  Created by Christopher Fuller on 9/24/21.
 //

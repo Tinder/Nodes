@@ -1,6 +1,6 @@
 //
 //  XcodeTemplatePropertyList.swift
-//  XcodeTemplateGeneratorLibrary
+//  NodesXcodeTemplatesGeneratorLibrary
 //
 //  Created by Christopher Fuller on 5/4/21.
 //

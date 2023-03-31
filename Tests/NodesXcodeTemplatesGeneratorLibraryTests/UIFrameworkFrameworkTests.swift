@@ -1,6 +1,6 @@
 //
 //  UIFrameworkFrameworkTests.swift
-//  XcodeTemplateGeneratorLibraryTests
+//  NodesXcodeTemplatesGeneratorLibraryTests
 //
 //  Created by Garric Nahapetian on 11/14/22.
 //

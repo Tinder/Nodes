@@ -1,6 +1,6 @@
 //
 //  StencilTemplateTests.swift
-//  XcodeTemplateGeneratorLibraryTests
+//  NodesXcodeTemplatesGeneratorLibraryTests
 //
 //  Created by Garric Nahapetian on 12/6/22.
 //

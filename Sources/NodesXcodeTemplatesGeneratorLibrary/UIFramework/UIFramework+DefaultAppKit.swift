@@ -1,6 +1,6 @@
 //
 //  UIFramework+DefaultAppKit.swift
-//  XcodeTemplateGeneratorLibrary
+//  NodesXcodeTemplatesGeneratorLibrary
 //
 //  Created by Garric Nahapetian on 11/15/22.
 //

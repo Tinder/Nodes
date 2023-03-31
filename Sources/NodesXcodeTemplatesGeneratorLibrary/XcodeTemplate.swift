@@ -1,6 +1,6 @@
 //
 //  XcodeTemplate.swift
-//  XcodeTemplateGeneratorLibrary
+//  NodesXcodeTemplatesGeneratorLibrary
 //
 //  Created by Christopher Fuller on 4/25/21.
 //

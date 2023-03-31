@@ -1,6 +1,6 @@
 //
 //  StencilRendererTests.swift
-//  XcodeTemplateGeneratorLibraryTests
+//  NodesXcodeTemplatesGeneratorLibraryTests
 //
 //  Created by Christopher Fuller on 5/31/21.
 //
