@@ -12,7 +12,8 @@
 /// @mockable
 public protocol ViewControllableFlow: Flow {
 
-    /// Provides the view controller.
-    /// - Returns: The ``ViewControllable`` instance made available to the parent `Flow` instance for display or presentation.
+    /// Provides the parent Node with access to the View so it can be presented.
+    /// - Returns: The ``ViewControllable`` instance made available to the parent `Flow` instance for display or
+    /// presentation.
     func getViewController() -> ViewControllable
 }

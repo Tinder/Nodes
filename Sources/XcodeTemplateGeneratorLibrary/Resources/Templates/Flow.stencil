@@ -29,12 +29,7 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {{ node_name }}ContextInterface,
     {{ node_name }}ViewControllable
 > {
-{% if owns_view %}
-    /// Provides the parent Node with access to the View so it can be presented.
-    internal func getViewController() -> {{ view_controllable_type }} {
-        viewController
-    }
-{% endif %}{% if flow_properties %}{% for property in flow_properties %}
+{% if flow_properties %}{% for property in flow_properties %}
     private let {{ property.name }}: {{ property.type }}{% endfor %}
 {% endif %}
     /// The initializer.
@@ -56,6 +51,15 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
 
     /// Implement logic to execute when the Flow is started.
     override internal func didStart() {}
+
+{% if owns_view %}
+    /// Provides the parent Node with access to the View so it can be presented.
+    /// - Returns: The ``ViewControllable`` instance made available to the parent `Flow` instance for display or
+    /// presentation.
+    internal func getViewController() -> {{ view_controllable_type }} {
+        viewController
+    }
+{% endif %}
 }
 
 extension {{ node_name }}FlowImp: {{ node_name }}Flow {}{% if root_node %}
