@@ -1932,11 +1932,6 @@ files:
        */
       internal final class RootFlowImp: AbstractFlow<RootContextInterface, RootViewControllable> {
 
-          /// Provides the parent Node with access to the View so it can be presented.
-          internal var viewControllable: ViewControllable {
-              viewController
-          }
-
           /// The initializer.
           ///
           /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
@@ -1953,6 +1948,13 @@ files:
 
           /// Implement logic to execute when the Flow is started.
           override internal func didStart() {}
+
+          /// Provides the parent Node with access to the View so it can be presented.
+          /// - Returns: The ``ViewControllable`` instance made available to the parent `Flow` instance for display or
+          /// presentation.
+          internal func getViewController() -> ViewControllable {
+              viewController
+          }
       }
 
       extension RootFlowImp: RootFlow {}
