@@ -47,7 +47,7 @@ extension Binding {
     /// ```
     /// var body: some View {
     ///     WithViewState(viewState) { viewState in
-    ///         Slider(value: .bind(to: viewState.sliderValue, onChange: receiver?.didChangeSliderValue),
+    ///         Slider(value: .bind(to: viewState.sliderValue) { receiver?.didChangeSliderValue($0) },
     ///                in: 1...100)
     ///     }
     /// }
