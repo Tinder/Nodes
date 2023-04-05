@@ -22,7 +22,7 @@ public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
  PURPOSE:
  A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
- Can be a tuple containing multiple values when necessary.
+ Can be a tuple or struct containing multiple values when necessary.
  */{% if owns_view %}
 internal typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listener{% else %}
 internal typealias {{ node_name }}DynamicBuildDependency = ({{ node_name }}Listener, {{ node_name }}ViewControllable){% endif %}
@@ -31,7 +31,7 @@ internal typealias {{ node_name }}DynamicBuildDependency = ({{ node_name }}Liste
  PURPOSE:
  A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 
- Can be a tuple containing multiple values when necessary.
+ Can be a tuple or struct containing multiple values when necessary.
  */
 internal typealias {{ node_name }}DynamicComponentDependency = Void
 

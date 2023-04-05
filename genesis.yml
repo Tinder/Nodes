@@ -426,7 +426,7 @@ files:
        PURPOSE:
        A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias AppDynamicBuildDependency = Void
 
@@ -434,7 +434,7 @@ files:
        PURPOSE:
        A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias AppDynamicComponentDependency = Void
 
@@ -844,7 +844,7 @@ files:
        PURPOSE:
        A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias SceneDynamicBuildDependency = (SceneListener, WindowSceneViewControllable)
 
@@ -852,7 +852,7 @@ files:
        PURPOSE:
        A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias SceneDynamicComponentDependency = Void
 
@@ -1258,7 +1258,7 @@ files:
        PURPOSE:
        A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias WindowDynamicBuildDependency = (WindowListener, WindowViewControllable)
 
@@ -1266,7 +1266,7 @@ files:
        PURPOSE:
        A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias WindowDynamicComponentDependency = Void
 
@@ -1667,7 +1667,7 @@ files:
        PURPOSE:
        A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias RootDynamicBuildDependency = RootListener
 
@@ -1675,7 +1675,7 @@ files:
        PURPOSE:
        A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias RootDynamicComponentDependency = Void
 
