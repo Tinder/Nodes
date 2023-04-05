@@ -33,7 +33,7 @@ internal struct <nodeName>View: NodesView {
 
     /// The body of the view.
     internal var body: some View {
-        WithViewState(statePublisher, initialState: initialState) { viewState in
+        WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
             Text(verbatim: "\(type(of: viewState))")
         }
     }

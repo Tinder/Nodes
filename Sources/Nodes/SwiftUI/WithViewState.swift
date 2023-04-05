@@ -25,7 +25,7 @@ import SwiftUI
  *     let viewState: AnyPublisher<ExampleViewState, Never>
  *     let initialState: ExampleViewState = .init(text: "Hello World")
  *     var body: some View {
- *         WithViewState(viewState, initialState: initialState) { viewState in
+ *         WithViewState(initialState: initialState, statePublisher: viewState) { viewState in
  *             Text(viewState.text)
  *         }
  *     }
@@ -48,12 +48,12 @@ public struct WithViewState<ViewState, Content: View>: View {
     /// Initializes a ``WithViewState`` view with the given view state `publisher`, `initialState` and `content`.
     ///
     /// - Parameters:
-    ///     - publisher: The view state ``Publisher`` instance to observe.
     ///     - initialState: The initial view state.
+    ///     - publisher: The view state ``Publisher`` instance to observe.
     ///     - content: A view builder that creates the content of this view.
     public init<P: Publisher>(
-        _ publisher: P,
         initialState: ViewState,
+        statePublisher publisher: P,
         @ViewBuilder content: @escaping (ViewState) -> Content
     ) where P.Output == ViewState, P.Failure == Never {
         self.publisher = publisher.eraseToAnyPublisher()
