@@ -18,7 +18,7 @@ internal final class <workerName>WorkerImp: AbstractWorker
 > {
 
     /// The initializer.
-    internal init() {}
+    override internal init() {}
 
     /// Implement logic to execute when the Worker is started.
     override internal func didStart() {}

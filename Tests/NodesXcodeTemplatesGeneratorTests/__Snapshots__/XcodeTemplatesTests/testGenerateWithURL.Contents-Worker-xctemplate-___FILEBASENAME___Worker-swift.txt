@@ -19,7 +19,7 @@ internal final class ___VARIABLE_productName___WorkerImp: AbstractWorker
 > {
 
     /// The initializer.
-    internal init() {}
+    override internal init() {}
 
     /// Implement logic to execute when the Worker is started.
     override internal func didStart() {}
