@@ -53,41 +53,11 @@ public protocol ViewControllable: AnyObject {
         completion: (() -> Void)?
     )
 
-    /// Called just before the ``ViewControllable`` instance is added or removed from a container
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameter viewController: The parent ``ViewControllable`` instance, or `nil` if there is no parent.
-    func willMove(toParent viewController: ViewControllable?)
-
-    /// Called after the ``ViewControllable`` instance is added or removed from a container
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameter viewController: The parent ``ViewControllable`` instance, or `nil` if there is no parent.
-    func didMove(toParent viewController: ViewControllable?)
-
-    /// Adds the given ``ViewControllable`` instance as a child.
-    ///
-    /// - Parameter viewController: The ``ViewControllable`` instance to be added as a child.
-    func addChild(_ viewController: ViewControllable)
-
-    /// Removes the given ``ViewControllable`` instance from its parent.
-    ///
-    /// - Parameter viewController: The ``ViewControllable`` instance to be removed from its parent.
-    func removeChild(_ viewController: ViewControllable)
-
     /// Contains the given ``ViewControllable`` instance within the entire bounds of the parent
     /// ``ViewControllable`` instance.
     ///
     /// - Parameter viewController: The ``ViewControllable`` instance to contain.
     func contain(_ viewController: ViewControllable)
-
-    /// Contains the given ``ViewControllable`` instance within the given view of the parent
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - view: The view in which to contain the ``ViewControllable`` instance.
-    func contain(_ viewController: ViewControllable, in view: UIView)
 
     /// Uncontains the given ``ViewControllable`` instance.
     ///

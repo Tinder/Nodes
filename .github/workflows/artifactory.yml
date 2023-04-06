@@ -29,7 +29,7 @@ jobs:
       uses: actions/checkout@v3
     - name: Build documentation
       run: |
-        make docs open="no" workaround="ENABLED"
+        make docs open="no" DERIVED_DATA_PATH="$(mktemp -d)"
         mkdir Documentation
         mv .build/documentation/archive/Nodes.doccarchive Documentation
     - name: Archive
