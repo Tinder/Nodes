@@ -1,5 +1,6 @@
 ▿ NodeTemplate
   ▿ context: NodeContext
+    - analyticsDependencies: 0 elements
     ▿ analyticsImports: 2 elements
       - "<baseImports>"
       - "Nodes"

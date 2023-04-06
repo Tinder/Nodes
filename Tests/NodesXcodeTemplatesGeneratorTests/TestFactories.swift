@@ -59,6 +59,7 @@ extension TestFactories {
             viewControllerImports: ["<viewControllerImports>"],
             viewStateImports: ["<viewStateImports>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
+            analyticsDependencies: [Variable(name: "<analyticsDependenciesName>", type: "<analyticsDependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",

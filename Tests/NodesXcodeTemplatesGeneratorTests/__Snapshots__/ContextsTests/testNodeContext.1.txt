@@ -1,4 +1,14 @@
-▿ 24 key/value pairs
+▿ 25 key/value pairs
+  ▿ (2 elements)
+    - key: "analytics_dependencies"
+    ▿ value: 1 element
+      ▿ 2 key/value pairs
+        ▿ (2 elements)
+          - key: "name"
+          - value: "<analyticsDependenciesName>"
+        ▿ (2 elements)
+          - key: "type"
+          - value: "<analyticsDependenciesType>"
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
