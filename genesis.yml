@@ -2276,7 +2276,7 @@ files:
           unset NEEDLE_GENERATED MOCKOLO_GENERATED
         postGenCommand: |
           set -e
-          swift run -- xc-template-generator --id "Xcode Templates"
+          swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
           xed {{ project|split:' '|join:'_' }}.xcodeproj
       packages:
         Nodes:
