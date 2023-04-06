@@ -7,10 +7,7 @@ import {{ import }}{% endfor %}{% endif %}
  The interface that the Flow will speak to the Context through. Used for informing the Context of
  presentation lifecycle events, as an example.
  */
-internal protocol {{ node_name }}ContextInterface: Context {
-    var flow: {{ node_name }}FlowInterface? { get set }
-    var listener: {{ node_name }}Listener? { get }
-}
+internal protocol {{ node_name }}ContextInterface: Context {}
 
 /**
  PURPOSE:
@@ -51,7 +48,6 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     ) {{ '{' }}{% if flow_properties %}{% for property in flow_properties %}
         self.{{ property.name }} = {{ property.name }}{% endfor %}{% endif %}
         super.init(context: context, viewController: viewController)
-        context.flow = self
     }
 
     /// Implement logic to execute when the Flow is started.
