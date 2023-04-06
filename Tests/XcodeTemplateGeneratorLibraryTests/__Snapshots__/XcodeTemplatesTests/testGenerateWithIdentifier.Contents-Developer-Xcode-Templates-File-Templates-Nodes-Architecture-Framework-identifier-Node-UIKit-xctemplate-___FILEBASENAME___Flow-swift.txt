@@ -7,10 +7,7 @@ import Nodes
  The interface that the Flow will speak to the Context through. Used for informing the Context of
  presentation lifecycle events, as an example.
  */
-internal protocol ___VARIABLE_productName___ContextInterface: Context {
-    var flow: ___VARIABLE_productName___FlowInterface? { get set }
-    var listener: ___VARIABLE_productName___Listener? { get }
-}
+internal protocol ___VARIABLE_productName___ContextInterface: Context {}
 
 /**
  PURPOSE:
@@ -46,7 +43,6 @@ internal final class ___VARIABLE_productName___FlowImp: AbstractFlow
         viewController: ___VARIABLE_productName___ViewControllable
     ) {
         super.init(context: context, viewController: viewController)
-        context.flow = self
     }
 
     /// Implement logic to execute when the Flow is started.

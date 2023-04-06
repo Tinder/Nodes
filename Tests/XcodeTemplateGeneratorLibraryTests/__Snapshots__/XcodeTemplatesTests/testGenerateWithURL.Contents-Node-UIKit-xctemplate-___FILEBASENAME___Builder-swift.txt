@@ -154,10 +154,12 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
             statePublisher: viewState.eraseToAnyPublisher()
         )
         viewController.receiver = context
-        return ___VARIABLE_productName___FlowImp(
+        let flow: ___VARIABLE_productName___FlowImp = .init(
             context: context,
             viewController: viewController
         )
+        context.flow = flow
+        return flow
     }
 }
 

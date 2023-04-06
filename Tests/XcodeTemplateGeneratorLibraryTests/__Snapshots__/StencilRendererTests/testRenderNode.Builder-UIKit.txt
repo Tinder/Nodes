@@ -154,11 +154,13 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
             statePublisher: viewState.eraseToAnyPublisher()
         )
         viewController.receiver = context
-        return <nodeName>FlowImp(
+        let flow: <nodeName>FlowImp = .init(
             context: context,
             viewController: viewController,
             <flowPropertiesName>: component.dependency.<flowPropertiesName>
         )
+        context.flow = flow
+        return flow
     }
 }
 

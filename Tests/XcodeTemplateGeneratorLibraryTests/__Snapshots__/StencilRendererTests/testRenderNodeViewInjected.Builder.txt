@@ -147,12 +147,14 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
             workers: [],
             analytics: analytics
         )
-        context.listener = listener
-        return <nodeName>FlowImp(
+        let flow: <nodeName>FlowImp = .init(
             context: context,
             viewController: viewController,
             <flowPropertiesName>: component.dependency.<flowPropertiesName>
         )
+        context.listener = listener
+        context.flow = flow
+        return flow
     }
 }
 

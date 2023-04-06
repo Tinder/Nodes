@@ -7,10 +7,7 @@ import <flowImports>
  The interface that the Flow will speak to the Context through. Used for informing the Context of
  presentation lifecycle events, as an example.
  */
-internal protocol <nodeName>ContextInterface: Context {
-    var flow: <nodeName>FlowInterface? { get set }
-    var listener: <nodeName>Listener? { get }
-}
+internal protocol <nodeName>ContextInterface: Context {}
 
 /**
  PURPOSE:
@@ -51,7 +48,6 @@ internal final class <nodeName>FlowImp: AbstractFlow
     ) {
         self.<flowPropertiesName> = <flowPropertiesName>
         super.init(context: context, viewController: viewController)
-        context.flow = self
     }
 
     /// Implement logic to execute when the Flow is started.
