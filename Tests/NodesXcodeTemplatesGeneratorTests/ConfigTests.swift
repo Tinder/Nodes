@@ -95,11 +95,11 @@ final class ConfigTests: XCTestCase, TestFactories {
             type: <dependencies-type-1>
           - name: <dependencies-name-2>
             type: <dependencies-type-2>
-        analyticsDependencies:
-          - name: <analyticsDependencies-name-1>
-            type: <analyticsDependencies-type-1>
-          - name: <analyticsDependencies-name-2>
-            type: <analyticsDependencies-type-2>
+        analyticsProperties:
+          - name: <analyticsProperties-name-1>
+            type: <analyticsProperties-type-1>
+          - name: <analyticsProperties-name-2>
+            type: <analyticsProperties-type-2>
         flowProperties:
           - name: <flowProperties-name-1>
             type: <flowProperties-type-1>

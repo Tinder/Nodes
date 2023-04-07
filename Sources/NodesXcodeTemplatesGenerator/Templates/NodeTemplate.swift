@@ -30,7 +30,7 @@ internal struct NodeTemplate: XcodeTemplate {
             viewControllerImports: node.viewController.imports(for: uiFramework, config: config),
             viewStateImports: node.viewState.imports(for: uiFramework, config: config),
             dependencies: config.dependencies,
-            analyticsDependencies: config.analyticsDependencies,
+            analyticsProperties: config.analyticsProperties,
             flowProperties: config.flowProperties,
             viewControllerType: uiFramework.viewControllerType,
             viewControllableType: config.viewControllableType,
