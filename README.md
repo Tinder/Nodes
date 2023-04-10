@@ -46,7 +46,7 @@ Native mobile applications need to be good citizens within their host device and
 
 ## Documentation
 
-Documentation is available online at [https://TinderApp.github.io/Nodes](https://TinderApp.github.io/Nodes)
+Documentation is available online at: [https://TinderApp.github.io/Nodes](https://TinderApp.github.io/Nodes)
 
 To build Nodes' [DocC](https://developer.apple.com/documentation/docc) documentation and open it in Xcode's documentation window:
 
