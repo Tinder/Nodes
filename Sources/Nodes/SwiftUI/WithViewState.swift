@@ -25,7 +25,7 @@ import SwiftUI
  *     let viewState: AnyPublisher<ExampleViewState, Never>
  *     let initialState: ExampleViewState = .init(text: "Hello World")
  *     var body: some View {
- *         WithViewState(initialState: initialState, statePublisher: viewState) { viewState in
+ *         WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
  *             Text(viewState.text)
  *         }
  *     }
