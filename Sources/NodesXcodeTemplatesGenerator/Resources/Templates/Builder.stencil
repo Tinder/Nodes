@@ -187,12 +187,12 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             workers: [],
             analytics: analytics
         )
+        context.listener = listener
         let flow: {{ node_name }}FlowImp = .init(
             context: context,
             viewController: viewController{% if flow_properties %},{% for property in flow_properties %}
             {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %},{% endif %}{% endfor %}{% endif %}
         )
-        context.listener = listener
         context.flow = flow
         return flow
     }{% endif %}
