@@ -40,10 +40,10 @@ public struct WithViewState<ViewState, Content: View>: View {
         content(viewState).onReceive(publisher) { viewState = $0 }
     }
 
+    @State private var viewState: ViewState
+
     private let publisher: AnyPublisher<ViewState, Never>
     private let content: (ViewState) -> Content
-
-    @State private var viewState: ViewState
 
     /// Initializes a ``WithViewState`` view with the given view state `publisher`, `initialState` and `content`.
     ///
@@ -56,8 +56,8 @@ public struct WithViewState<ViewState, Content: View>: View {
         statePublisher publisher: P,
         @ViewBuilder content: @escaping (ViewState) -> Content
     ) where P.Output == ViewState, P.Failure == Never {
+        _viewState = State(initialValue: initialState)
         self.publisher = publisher.eraseToAnyPublisher()
         self.content = content
-        _viewState = State(initialValue: initialState)
     }
 }
