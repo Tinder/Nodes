@@ -147,11 +147,11 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
             workers: [],
             analytics: analytics
         )
+        context.listener = listener
         let flow: ___VARIABLE_productName___FlowImp = .init(
             context: context,
             viewController: viewController
         )
-        context.listener = listener
         context.flow = flow
         return flow
     }
