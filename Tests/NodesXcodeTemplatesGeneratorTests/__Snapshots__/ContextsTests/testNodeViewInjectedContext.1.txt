@@ -1,4 +1,14 @@
-▿ 14 key/value pairs
+▿ 15 key/value pairs
+  ▿ (2 elements)
+    - key: "analyticsProperties"
+    ▿ value: 1 element
+      ▿ 2 key/value pairs
+        ▿ (2 elements)
+          - key: "name"
+          - value: "<analyticsPropertiesName>"
+        ▿ (2 elements)
+          - key: "type"
+          - value: "<analyticsPropertiesType>"
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element

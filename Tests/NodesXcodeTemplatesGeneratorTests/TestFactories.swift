@@ -112,6 +112,7 @@ extension TestFactories {
             flowImports: ["<flowImports>"],
             stateImports: ["<stateImports>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
+            analyticsProperties: [Variable(name: "<analyticsPropertiesName>", type: "<analyticsPropertiesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
