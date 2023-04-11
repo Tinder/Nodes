@@ -29,9 +29,7 @@ internal final class {{ node_name }}AnalyticsImp {
     {% for property in analytics_properties %}
     private let {{ property.name }}: {{ property.type }}{% endfor %}
 
-    /// The initializer.
-    ///
-    /// Inject Plugins or Builders into the Flow in order to create sub-Flows.{% if analytics_properties.count == 1 %}
+    /// The initializer.{% if analytics_properties.count == 1 %}
     /// - Parameter {{ analytics_properties.first.name }}: The {{ analytics_properties.first.type }} instance{% else %}
     /// - Parameters:{% for property in analytics_properties %}
     ///   - {{ property.name }}: The {{ property.type }} instance{% endfor %}{% endif %}
