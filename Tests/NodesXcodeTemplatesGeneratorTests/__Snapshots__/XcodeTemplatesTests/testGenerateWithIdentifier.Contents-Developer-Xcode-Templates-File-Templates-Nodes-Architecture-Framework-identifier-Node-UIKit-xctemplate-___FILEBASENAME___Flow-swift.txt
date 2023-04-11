@@ -48,6 +48,7 @@ internal final class ___VARIABLE_productName___FlowImp: AbstractFlow
     override internal func didStart() {}
 
     /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
+    ///
     /// - Returns: The ``ViewControllable`` instance.
     internal func getViewController() -> ViewControllable {
         viewController
