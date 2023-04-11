@@ -13,6 +13,7 @@
 public protocol ViewControllableFlow: Flow {
 
     /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
+    ///
     /// - Returns: The ``ViewControllable`` instance.
     func getViewController() -> ViewControllable
 }
