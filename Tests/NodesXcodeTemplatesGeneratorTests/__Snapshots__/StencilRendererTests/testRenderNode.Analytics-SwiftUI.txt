@@ -28,6 +28,10 @@ internal final class <nodeName>AnalyticsImp {
     
     private let <analyticsPropertiesName>: <analyticsPropertiesType>
 
+    /// The initializer.
+    ///
+    /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
+    /// - Parameter <analyticsPropertiesName>: The <analyticsPropertiesType> instance
     init(
         <analyticsPropertiesName>: <analyticsPropertiesType>
     ) {
