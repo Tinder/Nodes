@@ -1,4 +1,11 @@
 ▿ Config
+  ▿ analyticsDependencies: 2 elements
+    ▿ Variable
+      - name: "<analyticsDependencies-name-1>"
+      - type: "<analyticsDependencies-type-1>"
+    ▿ Variable
+      - name: "<analyticsDependencies-name-2>"
+      - type: "<analyticsDependencies-type-2>"
   ▿ baseImports: 2 members
     - "<baseImports-1>"
     - "<baseImports-2>"
