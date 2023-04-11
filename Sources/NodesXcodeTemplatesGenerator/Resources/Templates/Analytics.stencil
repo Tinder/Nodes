@@ -23,7 +23,17 @@ internal protocol {{ node_name }}Analytics: AnyObject {}
 /**
  PURPOSE:
  Custom analytics implementation for this Node.
- */
-internal final class {{ node_name }}AnalyticsImp {}
+ */{% if not analytics_properties %}
+internal final class {{ node_name }}AnalyticsImp {}{% else %}
+internal final class {{ node_name }}AnalyticsImp {
+    {% for property in analytics_properties %}
+    private let {{ property.name }}: {{ property.type }}{% endfor %}
+
+    init({% for property in analytics_properties %}
+        {{ property.name }}: {{ property.type }}{% if not forloop.last %},{% endif %}{% endfor %}
+    ) {{ '{' }}{% for property in analytics_properties %}
+        self.{{ property.name }} = {{ property.name }}{% endfor %}
+    }
+}{% endif %}
 
 extension {{ node_name }}AnalyticsImp: {{ node_name }}Analytics {}
