@@ -93,6 +93,12 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         }
     }
 
+    func testRenderNodeDependenciesCount() throws {
+        try [0, 1, 2].forEach { count in
+            let context: NodeContext = givenNodeContext(dependencies: count)
+            let templates: [String: String] = try StencilRenderer().renderNode(context: context, kind: .uiKit)
+            templates[StencilTemplate.builder(.default).name].flatMap { template in
+                assertSnapshot(matching: template, as: .lines, named: "\(count)")
             }
         }
     }
