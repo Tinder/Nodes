@@ -114,4 +114,24 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             }
         }
     }
+
+    func testRenderViewControllerWithEmptyStrings() throws {
+        let context: NodeContext = givenNodeContext(viewControllerProperties: "",
+                                                    viewControllerMethods: "",
+                                                    viewStateOperators: "")
+        let templates: [String: String] = try StencilRenderer().renderNode(context: context, kind: .uiKit)
+        templates[StencilTemplate.viewController(.default).name].flatMap { template in
+            assertSnapshot(matching: template, as: .lines)
+        }
+    }
+
+    func testRenderViewControllerSwfitUIWithEmptyStrings() throws {
+        let context: NodeContext = givenNodeContext(viewControllerProperties: "",
+                                                    viewControllerMethods: "",
+                                                    viewStateOperators: "")
+        let templates: [String: String] = try StencilRenderer().renderNode(context: context, kind: .uiKit)
+        templates[StencilTemplate.viewController(.default).name].flatMap { template in
+            assertSnapshot(matching: template, as: .lines)
+        }
+    }
 }

@@ -47,7 +47,14 @@ extension TestFactories {
         return config
     }
 
-    func givenNodeContext(imports: Int = 1, dependencies: Int = 1, flowProperties: Int = 1) -> NodeContext {
+    func givenNodeContext(
+        imports: Int = 1,
+        dependencies: Int = 1,
+        flowProperties: Int = 1,
+        viewControllerProperties: String = "<viewControllerProperties>",
+        viewControllerMethods: String = "<viewControllerMethods>",
+        viewStateOperators: String = "<viewStateOperators>"
+    ) -> NodeContext {
         NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
@@ -68,10 +75,10 @@ extension TestFactories {
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
             viewControllerSuperParameters: "<viewControllerSuperParameters>",
-            viewControllerProperties: "<viewControllerProperties>",
-            viewControllerMethods: "<viewControllerMethods>",
+            viewControllerProperties: viewControllerProperties,
+            viewControllerMethods: viewControllerMethods,
             viewControllerUpdateComment: "<viewControllerUpdateComment>",
-            viewStateOperators: "<viewStateOperators>",
+            viewStateOperators: viewStateOperators,
             publisherType: "<publisherType>",
             publisherFailureType: "<publisherFailureType>",
             cancellableType: "<cancellableType>"
