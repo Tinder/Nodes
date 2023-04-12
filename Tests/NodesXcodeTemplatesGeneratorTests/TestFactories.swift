@@ -47,17 +47,17 @@ extension TestFactories {
         return config
     }
 
-    func givenNodeContext() -> NodeContext {
+    func givenNodeContext(imports: Int = 1) -> NodeContext {
         NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
-            analyticsImports: ["<analyticsImports>"],
-            builderImports: ["<builderImports>"],
-            contextImports: ["<contextImports>"],
-            flowImports: ["<flowImports>"],
-            stateImports: ["<stateImports>"],
-            viewControllerImports: ["<viewControllerImports>"],
-            viewStateImports: ["<viewStateImports>"],
+            analyticsImports: Set((0..<imports).map { "<analyticsImports\($0 + 1)>" }),
+            builderImports: Set((0..<imports).map { "<builderImports\($0 + 1)>" }),
+            contextImports: Set((0..<imports).map { "<contextImports\($0 + 1)>" }),
+            flowImports: Set((0..<imports).map { "<flowImports\($0 + 1)>" }),
+            stateImports: Set((0..<imports).map { "<stateImports\($0 + 1)>" }),
+            viewControllerImports: Set((0..<imports).map { "<viewControllerImports\($0 + 1)>" }),
+            viewStateImports: Set((0..<imports).map { "<viewStateImports\($0 + 1)>" }),
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             viewControllerType: "<viewControllerType>",
