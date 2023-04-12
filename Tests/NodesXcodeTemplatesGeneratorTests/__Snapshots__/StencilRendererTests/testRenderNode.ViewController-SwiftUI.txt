@@ -1,6 +1,6 @@
 <fileHeader>
 
-import <viewControllerImports1>
+import <viewControllerImport1>
 
 /**
  PURPOSE:
