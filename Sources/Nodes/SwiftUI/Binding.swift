@@ -46,7 +46,7 @@ extension Binding {
     /// Example:
     /// ```
     /// var body: some View {
-    ///     WithViewState(initialState: initialState, statePublisher: viewState) { viewState in
+    ///     WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
     ///         Slider(value: .bind(to: viewState.sliderValue, onChange: receiver?.didChangeSliderValue),
     ///                in: 1...100)
     ///     }
