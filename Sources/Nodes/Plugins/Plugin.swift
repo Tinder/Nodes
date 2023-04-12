@@ -15,6 +15,7 @@
  * | BuildType     | The type of object the `Plugin` instance will create (typically a `Builder`).               |
  * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
  */
+@MainActor
 open class Plugin<ComponentType, BuildType, StateType> {
 
     private weak var lastComponent: AnyObject?

@@ -16,6 +16,7 @@
  * | BuildType     | The type of object created (typically a `Builder`).                                         |
  * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
  */
+@MainActor
 open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
 
     private typealias KeyValuePair = (key: KeyType, value: AnyPlugin)

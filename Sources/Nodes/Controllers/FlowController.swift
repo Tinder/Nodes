@@ -11,6 +11,7 @@
  *
  * > Important: Consider ``FlowController`` to be a private type and avoid its use within application code.
  */
+@MainActor
 public final class FlowController {
 
     #if DEBUG

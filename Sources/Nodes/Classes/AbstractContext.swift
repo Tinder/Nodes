@@ -31,6 +31,7 @@ public protocol Cancellable: AnyObject, Hashable {
  * attaching and detaching child `Flow` instances within the base class implementation.
  */
 /// @mockable
+@MainActor
 public protocol Context: AnyObject {
 
     /// A Boolean value indicating whether the `Context` instance is active.
@@ -59,6 +60,7 @@ public protocol Context: AnyObject {
  * | --------------- | -------------------------------------------------------------------------------------------- |
  * | CancellableType | The type supporting subscription cancellation that conforms to the ``Cancellable`` protocol. |
  */
+@MainActor
 open class AbstractContext<CancellableType: Cancellable>: Context {
 
     /// The set of `CancellableType` instances.

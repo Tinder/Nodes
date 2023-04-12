@@ -32,6 +32,7 @@ public struct Node {
  * attaching and detaching child `Flow` instances within the base class implementation.
  */
 /// @mockable
+@MainActor
 public protocol Flow: AnyObject {
 
     #if DEBUG
@@ -73,6 +74,7 @@ public protocol Flow: AnyObject {
  * | ContextInterfaceType | The type of the `Context` instance.            |
  * | ViewControllerType   | The type of the ``ViewControllable`` instance. |
  */
+@MainActor
 open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
 
     #if DEBUG
