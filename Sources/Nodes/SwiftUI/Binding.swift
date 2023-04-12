@@ -21,7 +21,7 @@ extension Binding {
     /// Example:
     /// ```
     /// var body: some View {
-    ///     WithViewState(viewState) { viewState in
+    ///     WithViewState(initialState: initialState, statePublisher: viewState) { viewState in
     ///         Slider(value: .bind(to: viewState.sliderValue) { receiver?.didChangeSliderValue($0) },
     ///                in: 1...100)
     ///     }
@@ -46,7 +46,7 @@ extension Binding {
     /// Example:
     /// ```
     /// var body: some View {
-    ///     WithViewState(viewState) { viewState in
+    ///     WithViewState(initialState: initialState, statePublisher: viewState) { viewState in
     ///         Slider(value: .bind(to: viewState.sliderValue, onChange: receiver?.didChangeSliderValue),
     ///                in: 1...100)
     ///     }
