@@ -82,4 +82,18 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         assertSnapshot(matching: try StencilRenderer().renderWorker(context: context),
                        as: .lines)
     }
+
+    func testRenderNodeImportsCount() throws {
+        try [0, 1, 2].forEach { count in
+            let context: NodeContext = givenNodeContext(imports: count)
+            let templates: [String: String] = try StencilRenderer().renderNode(context: context, kind: .uiKit)
+            templates.forEach { name, template in
+                assertSnapshot(matching: template, as: .lines, named: "\(name)-\(count + 1)")
+            }
+        }
+    }
+
+            }
+        }
+    }
 }
