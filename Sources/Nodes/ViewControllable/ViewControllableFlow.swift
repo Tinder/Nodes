@@ -10,6 +10,7 @@
  * parent `Flow` instance for display or presentation.
  */
 /// @mockable
+@MainActor
 public protocol ViewControllableFlow: Flow {
 
     /// The ``ViewControllable`` instance made available to the parent `Flow` instance for display or presentation.
