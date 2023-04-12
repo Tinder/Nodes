@@ -1,6 +1,5 @@
 <fileHeader>
 
-
 /**
  PURPOSE:
  The interface that the View will speak to the Context through. Used for informing the Context of

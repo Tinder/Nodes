@@ -1,6 +1,5 @@
 <fileHeader>
 
-
 /**
  PURPOSE:
  The interface that the Flow will speak to the Context through. Used for informing the Context of
@@ -26,11 +25,6 @@ internal final class <nodeName>FlowImp: AbstractFlow
     <nodeName>ViewControllable
 > {
 
-    /// Provides the parent Node with access to the View so it can be presented.
-    internal var viewControllable: <viewControllableType> {
-        viewController
-    }
-
     private let <flowPropertyName1>: <flowPropertyType1>
 
     /// The initializer.
@@ -51,6 +45,13 @@ internal final class <nodeName>FlowImp: AbstractFlow
 
     /// Implement logic to execute when the Flow is started.
     override internal func didStart() {}
+
+    /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
+    ///
+    /// - Returns: The ``ViewControllable`` instance.
+    internal func getViewController() -> <viewControllableType> {
+        viewController
+    }
 }
 
 extension <nodeName>FlowImp: <nodeName>Flow {}

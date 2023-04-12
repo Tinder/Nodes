@@ -27,11 +27,6 @@ internal final class <nodeName>FlowImp: AbstractFlow
     <nodeName>ViewControllable
 > {
 
-    /// Provides the parent Node with access to the View so it can be presented.
-    internal var viewControllable: <viewControllableType> {
-        viewController
-    }
-
     private let <flowPropertyName1>: <flowPropertyType1>
     private let <flowPropertyName2>: <flowPropertyType2>
 
@@ -46,7 +41,8 @@ internal final class <nodeName>FlowImp: AbstractFlow
     internal init(
         context: <nodeName>ContextInterface,
         viewController: <nodeName>ViewControllable,
-        <flowPropertyName1>: <flowPropertyType1>,        <flowPropertyName2>: <flowPropertyType2>
+        <flowPropertyName1>: <flowPropertyType1>,
+        <flowPropertyName2>: <flowPropertyType2>
     ) {
         self.<flowPropertyName1> = <flowPropertyName1>
         self.<flowPropertyName2> = <flowPropertyName2>
@@ -55,6 +51,13 @@ internal final class <nodeName>FlowImp: AbstractFlow
 
     /// Implement logic to execute when the Flow is started.
     override internal func didStart() {}
+
+    /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
+    ///
+    /// - Returns: The ``ViewControllable`` instance.
+    internal func getViewController() -> <viewControllableType> {
+        viewController
+    }
 }
 
 extension <nodeName>FlowImp: <nodeName>Flow {}

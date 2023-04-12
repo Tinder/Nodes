@@ -1,6 +1,5 @@
 <fileHeader>
 
-
 /**
  PURPOSE:
  The view state of the view.
