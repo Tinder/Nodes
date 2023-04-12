@@ -1,6 +1,10 @@
-{{ file_header }}{% if worker_imports %}
+{{ file_header }}
+
+{% if worker_imports %}
 {% for import in worker_imports %}
-import {{ import }}{% endfor %}{% endif %}
+import {{ import }}
+{% endfor %}
+{% endif %}
 
 /**
  PURPOSE:

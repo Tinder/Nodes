@@ -1,6 +1,10 @@
-{{ file_header }}{% if analytics_imports %}
+{{ file_header }}
+
+{% if analytics_imports %}
 {% for import in analytics_imports %}
-import {{ import }}{% endfor %}{% endif %}
+import {{ import }}
+{% endfor %}
+{% endif %}
 
 /*
  INSTRUCTIONS:

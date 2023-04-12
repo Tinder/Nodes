@@ -1,16 +1,23 @@
-{{ file_header }}{% if view_controller_imports %}
+{{ file_header }}
+
+{% if view_controller_imports %}
 {% for import in view_controller_imports %}
-import {{ import }}{% endfor %}{% endif %}
+import {{ import }}
+{% endfor %}
+{% endif %}
 
 /**
  PURPOSE:
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
- */{% if root_node %}
+ */
+{% if root_node %}
 internal protocol {{ node_name }}Receiver: AnyObject {
     func viewDidAppear()
-}{% else %}
-internal protocol {{ node_name }}Receiver: AnyObject {}{% endif %}
+}
+{% else %}
+internal protocol {{ node_name }}Receiver: AnyObject {}
+{% endif %}
 
 /**
  PURPOSE:
@@ -18,8 +25,10 @@ internal protocol {{ node_name }}Receiver: AnyObject {}{% endif %}
  */
 internal final class {{ node_name }}ViewController: {{ view_controller_type }}, StateObserver {
 {% if view_controller_properties %}
+
     {{ view_controller_properties|indent:4 }}
 {% endif %}
+
     /// The view receiver.
     internal weak var receiver: {{ node_name }}Receiver?
 
@@ -42,20 +51,26 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
         statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
     ) {
         self.initialState = initialState
-        self.statePublisher = statePublisher{% if view_state_operators %}
-            {{ view_state_operators|indent:12 }}{% endif %}
+        self.statePublisher = statePublisher
+        {% if view_state_operators %}
+            {{ view_state_operators|indent:12 }}
+        {% endif %}
         super.init({{ view_controller_super_parameters }})
     }
 
     @available(*, unavailable)
     internal required init?(coder: NSCoder) {
         preconditionFailure("init(coder:) has not been implemented")
-    }{% if view_controller_methods %}
+    }
+    {% if view_controller_methods %}
 
-    {{ view_controller_methods|indent:4 }}{% endif %}
+    {{ view_controller_methods|indent:4 }}
+    {% endif %}
 
-    internal func update(with viewState: {{ node_name }}ViewState) {{ '{' }}{% if view_controller_update_comment %}
-        {{ view_controller_update_comment|indent:8 }}{% endif %}
+    internal func update(with viewState: {{ node_name }}ViewState) {
+        {% if view_controller_update_comment %}
+        {{ view_controller_update_comment|indent:8 }}
+        {% endif %}
     }
 }
 
