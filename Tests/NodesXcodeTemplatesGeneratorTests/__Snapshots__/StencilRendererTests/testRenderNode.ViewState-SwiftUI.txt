@@ -1,6 +1,6 @@
 <fileHeader>
 
-import <viewStateImports1>
+import <viewStateImport1>
 
 /**
  PURPOSE:

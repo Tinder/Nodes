@@ -2,18 +2,18 @@
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
-      - "<analyticsImports1>"
+      - "<analyticsImport1>"
   ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
-      - "<builderImports1>"
+      - "<builderImport1>"
   ▿ (2 elements)
     - key: "cancellable_type"
     - value: "<cancellableType>"
   ▿ (2 elements)
     - key: "context_imports"
     ▿ value: 1 element
-      - "<contextImports1>"
+      - "<contextImport1>"
   ▿ (2 elements)
     - key: "dependencies"
     ▿ value: 1 element
@@ -30,7 +30,7 @@
   ▿ (2 elements)
     - key: "flow_imports"
     ▿ value: 1 element
-      - "<flowImports1>"
+      - "<flowImport1>"
   ▿ (2 elements)
     - key: "flow_properties"
     ▿ value: 1 element
@@ -59,7 +59,7 @@
   ▿ (2 elements)
     - key: "state_imports"
     ▿ value: 1 element
-      - "<stateImports1>"
+      - "<stateImport1>"
   ▿ (2 elements)
     - key: "view_controllable_flow_type"
     - value: "<viewControllableFlowType>"
@@ -69,7 +69,7 @@
   ▿ (2 elements)
     - key: "view_controller_imports"
     ▿ value: 1 element
-      - "<viewControllerImports1>"
+      - "<viewControllerImport1>"
   ▿ (2 elements)
     - key: "view_controller_methods"
     - value: "<viewControllerMethods>"
@@ -88,7 +88,7 @@
   ▿ (2 elements)
     - key: "view_state_imports"
     ▿ value: 1 element
-      - "<viewStateImports1>"
+      - "<viewStateImport1>"
   ▿ (2 elements)
     - key: "view_state_operators"
     - value: "<viewStateOperators>"
