@@ -37,10 +37,10 @@
       ▿ 2 key/value pairs
         ▿ (2 elements)
           - key: "name"
-          - value: "<flowPropertiesName>"
+          - value: "<flowPropertyName1>"
         ▿ (2 elements)
           - key: "type"
-          - value: "<flowPropertiesType>"
+          - value: "<flowPropertyType1>"
   ▿ (2 elements)
     - key: "node_name"
     - value: "<nodeName>"

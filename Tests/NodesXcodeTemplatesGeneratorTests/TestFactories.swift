@@ -47,7 +47,7 @@ extension TestFactories {
         return config
     }
 
-    func givenNodeContext(imports: Int = 1, dependencies: Int = 1) -> NodeContext {
+    func givenNodeContext(imports: Int = 1, dependencies: Int = 1, flowProperties: Int = 1) -> NodeContext {
         NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
@@ -58,9 +58,11 @@ extension TestFactories {
             stateImports: Set((0..<imports).map { "<stateImport\($0 + 1)>" }),
             viewControllerImports: Set((0..<imports).map { "<viewControllerImport\($0 + 1)>" }),
             viewStateImports: Set((0..<imports).map { "<viewStateImport\($0 + 1)>" }),
-            flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             dependencies: (0..<dependencies).map {
                 Variable(name: "<dependencyName\($0 + 1)>", type: "<dependencyType\($0 + 1)>")
+            },
+            flowProperties: (0..<flowProperties).map {
+                Variable(name: "<flowPropertyName\($0 + 1)>", type: "<flowPropertyType\($0 + 1)>")
             },
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",

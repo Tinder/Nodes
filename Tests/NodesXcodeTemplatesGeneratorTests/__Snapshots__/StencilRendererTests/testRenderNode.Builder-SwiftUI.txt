@@ -160,7 +160,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         let flow: <nodeName>FlowImp = .init(
             context: context,
             viewController: viewController,
-            <flowPropertiesName>: component.dependency.<flowPropertiesName>
+            <flowPropertyName1>: component.dependency.<flowPropertyName1>
         )
         context.flow = flow
         return flow
