@@ -1,6 +1,6 @@
 {{ file_header }}
-
 {% if builder_imports %}
+
 {% for import in builder_imports %}
 import {{ import }}
 {% endfor %}

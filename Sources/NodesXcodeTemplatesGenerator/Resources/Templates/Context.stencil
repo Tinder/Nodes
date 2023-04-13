@@ -1,6 +1,6 @@
 {{ file_header }}
-
 {% if context_imports %}
+
 {% for import in context_imports %}
 import {{ import }}
 {% endfor %}
