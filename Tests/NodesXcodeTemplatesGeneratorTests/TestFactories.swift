@@ -128,12 +128,12 @@ extension TestFactories {
         )
     }
 
-    func givenPluginContext() -> PluginContext {
+    func givenPluginContext(imports: Int = 1) -> PluginContext {
         PluginContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             returnType: "<returnType>",
-            pluginImports: ["<pluginImports>"]
+            pluginImports: Set((0..<imports).map { "<pluginImport\($0 + 1)>" })
         )
     }
 
