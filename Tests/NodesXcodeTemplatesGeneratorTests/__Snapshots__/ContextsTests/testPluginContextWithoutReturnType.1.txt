@@ -5,7 +5,7 @@
   ▿ (2 elements)
     - key: "plugin_imports"
     ▿ value: 1 element
-      - "<pluginImports>"
+      - "<pluginImport1>"
   ▿ (2 elements)
     - key: "plugin_name"
     - value: "<pluginName>"

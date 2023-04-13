@@ -139,11 +139,11 @@ extension TestFactories {
         )
     }
 
-    func givenPluginContextWithoutReturnType() -> PluginContext {
+    func givenPluginContextWithoutReturnType(imports: Int = 1) -> PluginContext {
         PluginContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
-            pluginImports: ["<pluginImports>"]
+            pluginImports: Set((0..<imports).map { "<pluginImport\($0 + 1)>" })
         )
     }
 
