@@ -8,7 +8,7 @@
   ▿ (2 elements)
     - key: "worker_imports"
     ▿ value: 1 element
-      - "<workerImports>"
+      - "<workerImport1>"
   ▿ (2 elements)
     - key: "worker_name"
     - value: "<workerName>"

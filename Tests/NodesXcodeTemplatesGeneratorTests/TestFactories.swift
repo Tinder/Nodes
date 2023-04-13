@@ -154,11 +154,11 @@ extension TestFactories {
         )
     }
 
-    func givenWorkerContext() -> WorkerContext {
+    func givenWorkerContext(imports: Int = 1) -> WorkerContext {
         WorkerContext(
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",
-            workerImports: ["<workerImports>"],
+            workerImports: Set((0..<imports).map { "<workerImport\($0 + 1)>" }),
             cancellableType: "<cancellableType>"
         )
     }
