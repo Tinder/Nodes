@@ -55,7 +55,8 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
         {% if flow_properties %}
         viewController: {{ node_name }}ViewControllable,
         {% for property in flow_properties %}
-        {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}{% endif %}
+        {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}
+        {% endif %}
         {% endfor %}
 
         {% else %}
