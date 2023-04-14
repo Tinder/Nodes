@@ -172,7 +172,8 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             context: context,
             viewController: viewController,
             {% for property in flow_properties %}
-            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %},{% endif %}
+            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %}{{ ',' }}
+            {% endif %}
             {% endfor %}
 
         )
