@@ -1,7 +1,5 @@
 <fileHeader>
 
-import <pluginListImports>
-
 /**
  PURPOSE:
  The common Flow interface.

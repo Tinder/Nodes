@@ -111,7 +111,7 @@ extension TestFactories {
         )
     }
 
-    func givenNodeViewInjectedContext() -> NodeViewInjectedContext {
+    func givenNodeViewInjectedContext(flowProperties: Int = 1) -> NodeViewInjectedContext {
         NodeViewInjectedContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
@@ -121,7 +121,9 @@ extension TestFactories {
             flowImports: ["<flowImports>"],
             stateImports: ["<stateImports>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
-            flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
+            flowProperties: (0..<flowProperties).map {
+                Variable(name: "<flowPropertyName\($0 + 1)>", type: "<flowPropertyType\($0 + 1)>")
+            },
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
             cancellableType: "<cancellableType>"
@@ -145,11 +147,11 @@ extension TestFactories {
         )
     }
 
-    func givenPluginListContext() -> PluginListContext {
+    func givenPluginListContext(imports: Int = 1) -> PluginListContext {
         PluginListContext(
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
-            pluginListImports: ["<pluginListImports>"],
+            pluginListImports: Set((0..<imports).map { "<pluginListImport\($0 + 1)>" }),
             viewControllableFlowType: "<viewControllableFlowType>"
         )
     }

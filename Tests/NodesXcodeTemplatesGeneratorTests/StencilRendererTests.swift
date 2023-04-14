@@ -74,10 +74,20 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         }
     }
 
+    func testRenderPluginNoReturnType() throws {
+        let context: PluginContext = givenPluginContextWithoutReturnType()
+        assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
+                       as: .lines,
+                       named: "noReturnType")
+    }
+
     func testRenderPluginList() throws {
-        let context: PluginListContext = givenPluginListContext()
-        assertSnapshot(matching: try StencilRenderer().renderPluginList(context: context),
-                       as: .lines)
+        try [0, 1, 2].forEach { count in
+            let context: PluginListContext = givenPluginListContext(imports: count)
+            assertSnapshot(matching: try StencilRenderer().renderPluginList(context: context),
+                           as: .lines,
+                           named: "importsCount-\(count)")
+        }
     }
 
     func testRenderWorker() throws {
@@ -138,6 +148,18 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         let templates: [String: String] = try StencilRenderer().renderNode(context: context, kind: .uiKit)
         templates[StencilTemplate.viewController(.default).name].flatMap { template in
             assertSnapshot(matching: template, as: .lines)
+        }
+    }
+
+    func testRenderNodeViewInjectedFlowProperties() throws {
+        try [0, 1, 2].forEach { count in
+            let context: NodeViewInjectedContext = givenNodeViewInjectedContext(flowProperties: count)
+            let templates: [String: String] = try StencilRenderer().renderNodeViewInjected(context: context)
+            [StencilTemplate.builder(.default).name, StencilTemplate.flow.name].forEach { name in
+                templates[name].flatMap { template in
+                    assertSnapshot(matching: template, as: .lines, named: "\(name)-count-\(count)")
+                }
+            }
         }
     }
 }
