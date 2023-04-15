@@ -74,10 +74,10 @@ $ mint install yonaskolb/genesis
 
 This step may be skipped if the Nodes repository was previously cloned.
 
-> Replace `<nodesPath>` in the command with the path to where the Nodes repository will reside.
+> Replace `<version>` in the command with the latest Nodes version and replace `<nodesPath>` in the command with the path to where the Nodes repository will reside.
 
 ```
-$ git clone git@github.com:TinderApp/Nodes.git <nodesPath>
+$ git clone -b <version> git@github.com:TinderApp/Nodes.git <nodesPath>
 ```
 
 ### Create project directory
@@ -98,7 +98,7 @@ $ mkdir -p <projectPath> && cd "$_"
 $ mint run genesis generate <nodesPath>/genesis.yml --options "author:$(git config user.name), date:$(date +"%-m/%-d/%y")"
 ```
 
-When prompted, enter a name for the new iOS Xcode project and an organization identifier (bundle ID prefix).
+When prompted, enter the latest Nodes version, a name for the new iOS Xcode project and an organization identifier (bundle ID prefix).
 
 **OPTIONAL:** The cloned Nodes repository is no longer needed at this point and may be removed if there is no plan to create additional projects.
 
