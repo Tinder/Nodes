@@ -2301,6 +2301,7 @@ files:
             - package: NeedleFoundation
           preBuildScripts:
             - name: Needle
+              basedOnDependencyAnalysis: false
               script: >
                 env SOURCEKIT_LOGGING=0
                 needle generate {{ project|split:' '|join:'_' }}/Generated/NeedleGenerated.swift
@@ -2353,6 +2354,7 @@ files:
               product: NodesTesting
           preBuildScripts:
             - name: Mockolo
+              basedOnDependencyAnalysis: false
               script: >
                 mockolo
                 -d {{ project|split:' '|join:'_' }}Tests/Generated/MockoloGenerated.swift
