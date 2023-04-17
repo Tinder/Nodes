@@ -174,8 +174,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             {% for property in flow_properties %}
             {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %}{{ ',' }}
             {% endif %}
-            {% endfor %}
-
+            {% endfor +%}
         )
         {% else %}
         let flow: {{ node_name }}FlowImp = .init(
