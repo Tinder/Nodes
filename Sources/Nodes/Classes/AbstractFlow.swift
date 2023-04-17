@@ -28,8 +28,8 @@ public struct Node {
 #endif
 
 /**
- * The interface used for passing `Flow` instances into ``AbstractFlow`` instance methods which enables
- * attaching and detaching child `Flow` instances within the base class implementation.
+ * The interface used by the ``AbstractFlow`` instance methods for attaching and detaching a child
+ * `Flow` instance.
  */
 /// @mockable
 public protocol Flow: AnyObject {

@@ -27,8 +27,7 @@ public protocol Cancellable: AnyObject, Hashable {
 }
 
 /**
- * The interface used for injecting a `Context` instance into an ``AbstractFlow`` instance which enables
- * attaching and detaching child `Flow` instances within the base class implementation.
+ * The interface used by an ``AbstractFlow`` instance to activate and deactivate its `Context` instance.
  */
 /// @mockable
 public protocol Context: AnyObject {
