@@ -116,7 +116,7 @@ Xcode templates for Nodes will automatically be installed to:
 
 `~/Library/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (Xcode Templates)`
 
-To add additional Nodes to the project, scroll to the Nodes templates in the new file dialog. The `` symbol indicates SwiftUI templates.
+To add additional Nodes to the project, scroll to the Nodes templates in the new file dialog.
 
 <img src="./.assets/Xcode-Templates.png" width="690" />
 
