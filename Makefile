@@ -30,7 +30,12 @@ preflight-all:
 
 .PHONY: delete-snapshots
 delete-snapshots:
-	rm -rf Tests/NodesXcodeTemplatesGeneratorTests/__Snapshots__/*
+	@for snapshots in $$(find Tests -type d -name "__Snapshots__"); \
+	do \
+		rm -rf "$$snapshots"; \
+		echo "Deleted $$snapshots"; \
+	done
+
 
 .PHONY: preview
 preview: target ?= Nodes
