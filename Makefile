@@ -36,7 +36,6 @@ delete-snapshots:
 		echo "Deleted $$snapshots"; \
 	done
 
-
 .PHONY: preview
 preview: target ?= Nodes
 preview:
