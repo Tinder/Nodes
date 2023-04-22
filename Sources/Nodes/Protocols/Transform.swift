@@ -1,8 +1,5 @@
 //
-//  Transform.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 6/30/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 #if canImport(Combine)

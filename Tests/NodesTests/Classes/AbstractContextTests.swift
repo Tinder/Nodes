@@ -1,8 +1,5 @@
 //
-//  AbstractContextTests.swift
-//  NodeTests
-//
-//  Created by Christopher Fuller on 5/4/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 import Nimble
@@ -132,7 +129,7 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         cancellables: [CancellableMock] = []
     ) -> TestContext {
         let context: TestContext
-        if let presentable: PresentableType = presentable {
+        if let presentable: PresentableType {
             context = .init(presentable: presentable, workers: workers)
         } else {
             let presentable: PresentableType = .init()

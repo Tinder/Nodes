@@ -1,8 +1,5 @@
 //
-//  StencilTemplate.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Garric Nahapetian on 11/7/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 import Foundation

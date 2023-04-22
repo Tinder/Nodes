@@ -1,8 +1,5 @@
 //
-//  XCTestCase.swift
-//  NodesTesting
-//
-//  Created by Christopher Fuller on 6/2/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 import NeedleFoundation
@@ -50,11 +47,10 @@ extension XCTestCase {
         descendingFrom scope: () -> Scope
     ) -> DependencyProviderRegistrationBuilder {
         DependencyProviderRegistrationBuilder(scope: scope()) { [weak self] path, dependency in
-            // swiftlint:disable:next multiline_arguments
             registry.register(path: path) { _ in
                 dependency
-            } onTeardown: {
-                self?.addTeardownBlock($0)
+            } onTeardown: { teardown in
+                self?.addTeardownBlock(teardown)
             }
         }
     }
@@ -63,11 +59,10 @@ extension XCTestCase {
         componentFactory: @escaping () -> T
     ) {
         let pathComponent: String = "\(PathComponent(for: T.self))"
-        // swiftlint:disable:next multiline_arguments
-        registry.register(path: ["^", pathComponent]) {
-            EmptyDependencyProvider(component: $0)
-        } onTeardown: {
-            addTeardownBlock($0)
+        registry.register(path: ["^", pathComponent]) { scope in
+            EmptyDependencyProvider(component: scope)
+        } onTeardown: { teardown in
+            addTeardownBlock(teardown)
         }
     }
 }

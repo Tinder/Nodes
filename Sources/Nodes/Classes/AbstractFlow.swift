@@ -1,8 +1,5 @@
 //
-//  AbstractFlow.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 10/3/20.
+//  Copyright © 2020 Tinder (Match Group, LLC)
 //
 
 /**
@@ -60,6 +57,8 @@ public protocol Flow: AnyObject {
     ///   This method is called internally within the framework code.
     func end()
 }
+
+// swiftlint:disable period_spacing
 
 /**
  * Nodes’ ``AbstractFlow`` base class.
@@ -321,3 +320,5 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         LeakDetector.detect(flowController)
     }
 }
+
+// swiftlint:enable period_spacing

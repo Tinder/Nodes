@@ -1,8 +1,5 @@
 //
-//  UIViewController+ModalStyle.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 10/3/20.
+//  Copyright © 2020 Tinder (Match Group, LLC)
 //
 
 #if canImport(UIKit) && !os(watchOS)
@@ -35,8 +32,8 @@ public struct ModalStyle: Equatable {
         case custom
     }
 
-    @available(tvOS, unavailable)
     /// The sheet style used to specify the ``ModalStyle`` behavior.
+    @available(tvOS, unavailable)
     public enum SheetStyle: Equatable {
 
         /// The ``UIModalPresentationStyle.pageSheet`` behavior.
@@ -91,9 +88,9 @@ public struct ModalStyle: Equatable {
     /// - Returns: A ``ModalStyle`` instance with `behavior` set to `.cover`, `controlStatusBarAppearance` set to
     ///   `true` and `allowInteractiveDismissal` set to `false`.
     public static func cover() -> ModalStyle {
-        ModalStyle(behavior: .cover,
-                   controlStatusBarAppearance: true,
-                   allowInteractiveDismissal: false)
+        Self(behavior: .cover,
+             controlStatusBarAppearance: true,
+             allowInteractiveDismissal: false)
     }
 
     /// A factory method that creates a ``ModalStyle`` with overlay behavior.
@@ -109,12 +106,11 @@ public struct ModalStyle: Equatable {
     public static func overlay(
         controlStatusBarAppearance: Bool = false
     ) -> ModalStyle {
-        ModalStyle(behavior: .overlay,
-                   controlStatusBarAppearance: controlStatusBarAppearance,
-                   allowInteractiveDismissal: false)
+        Self(behavior: .overlay,
+             controlStatusBarAppearance: controlStatusBarAppearance,
+             allowInteractiveDismissal: false)
     }
 
-    @available(tvOS, unavailable)
     /// A factory method that creates a ``ModalStyle`` with page or form behavior.
     ///
     /// Partially covers the presenting view controller which remains visible.
@@ -129,6 +125,7 @@ public struct ModalStyle: Equatable {
     ///
     /// - Returns: A ``ModalStyle`` instance with `behavior` set to the given `sheetStyle`, the given
     ///   `controlStatusBarAppearance` and the given `allowInteractiveDismissal`.
+    @available(tvOS, unavailable)
     public static func sheet(
         style sheetStyle: SheetStyle = .page,
         controlStatusBarAppearance: Bool = false,
@@ -141,9 +138,9 @@ public struct ModalStyle: Equatable {
         case .form:
             behavior = .form
         }
-        return ModalStyle(behavior: behavior,
-                          controlStatusBarAppearance: controlStatusBarAppearance,
-                          allowInteractiveDismissal: allowInteractiveDismissal)
+        return Self(behavior: behavior,
+                    controlStatusBarAppearance: controlStatusBarAppearance,
+                    allowInteractiveDismissal: allowInteractiveDismissal)
     }
 
     /// A factory method that creates a ``ModalStyle`` with custom behavior.
@@ -159,19 +156,19 @@ public struct ModalStyle: Equatable {
     public static func custom(
         controlStatusBarAppearance: Bool = false
     ) -> ModalStyle {
-        ModalStyle(behavior: .custom,
-                   controlStatusBarAppearance: controlStatusBarAppearance,
-                   allowInteractiveDismissal: false)
+        Self(behavior: .custom,
+             controlStatusBarAppearance: controlStatusBarAppearance,
+             allowInteractiveDismissal: false)
     }
 
     /// DEPRECATED - DO NOT USE
     public func _withAdditionalConfiguration( // swiftlint:disable:this identifier_name
         configuration additionalConfiguration: @escaping (ViewControllable) -> Void
     ) -> ModalStyle {
-        ModalStyle(behavior: behavior,
-                   controlStatusBarAppearance: controlStatusBarAppearance,
-                   allowInteractiveDismissal: allowInteractiveDismissal,
-                   configuration: configuration + [additionalConfiguration])
+        Self(behavior: behavior,
+             controlStatusBarAppearance: controlStatusBarAppearance,
+             allowInteractiveDismissal: allowInteractiveDismissal,
+             configuration: configuration + [additionalConfiguration])
     }
 }
 

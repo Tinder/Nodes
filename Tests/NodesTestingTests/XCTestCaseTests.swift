@@ -1,8 +1,5 @@
 //
-//  XCTestCaseTests.swift
-//  NodesTestingTests
-//
-//  Created by Eman Haroutunian on 1/11/23.
+//  Copyright © 2023 Tinder (Match Group, LLC)
 //
 
 import NeedleFoundation
@@ -24,51 +21,60 @@ final class XCTestCaseTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)).to(beNil())
-        expect(Self.registry.dependencyProviderFactory(for: Self.childPath)).to(beNil())
+        expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)) == nil
+        expect(Self.registry.dependencyProviderFactory(for: Self.childPath)) == nil
     }
 
     override func tearDown() {
-        expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)).to(beNil())
-        expect(Self.registry.dependencyProviderFactory(for: Self.childPath)).to(beNil())
+        expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)) == nil
+        expect(Self.registry.dependencyProviderFactory(for: Self.childPath)) == nil
         super.tearDown()
     }
 
     func testInjectComponents() throws {
 
-        // Given
+        // GIVEN
+
         let childDependencyA: ChildDependency = .init()
         let childDependencyB: ChildDependency = .init()
 
-        // When
-        let parentComponentFactory: () -> ParentComponent = injectComponent {
-            ParentComponent(parent: $0)
+        // WHEN
+
+        let parentComponentFactory: () -> ParentComponent = injectComponent { scope in
+            ParentComponent(parent: scope)
         } with: {
             ParentDependency()
         }
 
-        // Then
-        expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)).toNot(beNil())
+        // THEN
 
-        // When
+        expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)) != nil
+
+        // WHEN
+
         let parentComponent: ParentComponent = parentComponentFactory()
 
-        // Then
+        // THEN
+
         expect(parentComponent.path.joined(separator: "->")) == Self.parentPath
 
-        // When
+        // WHEN
+
         injectComponents(descendingFrom: parentComponent)
             .injectComponent(ofType: ChildComponent.self, with: childDependencyA)
 
-        // Then
+        // THEN
+
         let childDependencyFactoryA: ((Scope) -> AnyObject) = try dependencyProviderFactory(path: Self.childPath)
         expect(childDependencyFactoryA(parentComponent)) === childDependencyA as AnyObject
 
-        // When
+        // WHEN
+
         injectComponents(descendingFrom: parentComponent)
             .injectComponent(ofType: ChildComponent.self, with: childDependencyB)
 
-        // Then
+        // THEN
+
         let childDependencyFactoryB: ((Scope) -> AnyObject) = try dependencyProviderFactory(path: Self.childPath)
         expect(childDependencyFactoryB(parentComponent)) === childDependencyB as AnyObject
     }

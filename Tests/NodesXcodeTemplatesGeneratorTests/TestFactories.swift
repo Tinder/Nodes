@@ -1,8 +1,5 @@
 //
-//  TestFactories.swift
-//  NodesXcodeTemplatesGeneratorTests
-//
-//  Created by Christopher Fuller on 5/31/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 @testable import NodesXcodeTemplatesGenerator
@@ -24,8 +21,8 @@ extension TestFactories {
                                            import: "<uiFrameworkImport>",
                                            viewControllerType: "<viewControllerType>",
                                            viewControllerSuperParameters: "<viewControllerSuperParameters>"))
-        ].map {
-            var uiFramework: UIFramework = $0
+        ].map { uiFramework in
+            var uiFramework: UIFramework = uiFramework
             uiFramework.viewControllerProperties = "<viewControllerProperties>"
             uiFramework.viewControllerMethods = "<viewControllerMethods>"
             uiFramework.viewControllerMethodsForRootNode = "<viewControllerMethodsForRootNode>"

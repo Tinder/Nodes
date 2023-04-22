@@ -1,8 +1,5 @@
 //
-//  StencilTemplateTests.swift
-//  NodesXcodeTemplatesGeneratorTests
-//
-//  Created by Garric Nahapetian on 12/6/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 import Nimble
@@ -15,7 +12,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         StencilTemplate.Variation.allCases.forEach { variation in
             switch variation {
             case .default:
-                expect(variation.rawValue) == ""
+                expect(variation.rawValue).to(beEmpty())
             case .swiftUI:
                 expect(variation.rawValue) == "-SwiftUI"
             }

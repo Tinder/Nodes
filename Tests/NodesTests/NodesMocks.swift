@@ -1,13 +1,11 @@
 // swiftlint:disable:this file_name
 //
-//  NodesMocks.swift
-//  NodeTests
-//
-//  Created by Christopher Fuller on 5/4/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 @testable import Nodes
 
+// swiftlint:disable:next file_types_order
 extension Equatable where Self: AnyObject {
 
     internal static func == (lhs: Self, rhs: Self) -> Bool {
@@ -15,6 +13,7 @@ extension Equatable where Self: AnyObject {
     }
 }
 
+// swiftlint:disable:next file_types_order
 internal final class FlowMock: Flow, Equatable {
 
     internal let tree: Node = .init(name: "", children: [])

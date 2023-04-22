@@ -1,8 +1,5 @@
 //
-//  Decoder.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Garric Nahapetian on 11/18/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 // Workaround for https://github.com/jpsim/Yams/issues/301
