@@ -14,14 +14,14 @@ import XCTest
 final class BindingTests: XCTestCase {
 
     func testBindingFactory() {
-        expect(Binding.binding(to: true) { _ in }).to(beAKindOf(Binding<Bool>.self))
-        expect(Binding.binding(to: 23) { _ in }).to(beAKindOf(Binding<Int>.self))
-        expect(Binding.binding(to: "Hello World") { _ in }).to(beAKindOf(Binding<String>.self))
+        expect(Binding.bind(to: true) { _ in }).to(beAKindOf(Binding<Bool>.self))
+        expect(Binding.bind(to: 23) { _ in }).to(beAKindOf(Binding<Int>.self))
+        expect(Binding.bind(to: "Hello World") { _ in }).to(beAKindOf(Binding<String>.self))
     }
 
     func testBindingFactoryWithOptionalSetter() {
-        expect(Binding.binding(to: true, onChange: nil)).to(beAKindOf(Binding<Bool>.self))
-        expect(Binding.binding(to: 23, onChange: nil)).to(beAKindOf(Binding<Int>.self))
-        expect(Binding.binding(to: "Hello World", onChange: nil)).to(beAKindOf(Binding<String>.self))
+        expect(Binding.bind(to: true, onChange: nil)).to(beAKindOf(Binding<Bool>.self))
+        expect(Binding.bind(to: 23, onChange: nil)).to(beAKindOf(Binding<Int>.self))
+        expect(Binding.bind(to: "Hello World", onChange: nil)).to(beAKindOf(Binding<String>.self))
     }
 }

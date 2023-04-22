@@ -1,0 +1,62 @@
+▿ 14 key/value pairs
+  ▿ (2 elements)
+    - key: "analytics_imports"
+    ▿ value: 1 element
+      - "<analyticsImports>"
+  ▿ (2 elements)
+    - key: "builder_imports"
+    ▿ value: 1 element
+      - "<builderImports>"
+  ▿ (2 elements)
+    - key: "cancellable_type"
+    - value: "<cancellableType>"
+  ▿ (2 elements)
+    - key: "context_imports"
+    ▿ value: 1 element
+      - "<contextImports>"
+  ▿ (2 elements)
+    - key: "dependencies"
+    ▿ value: 1 element
+      ▿ 2 key/value pairs
+        ▿ (2 elements)
+          - key: "name"
+          - value: "<dependenciesName>"
+        ▿ (2 elements)
+          - key: "type"
+          - value: "<dependenciesType>"
+  ▿ (2 elements)
+    - key: "file_header"
+    - value: "<fileHeader>"
+  ▿ (2 elements)
+    - key: "flow_imports"
+    ▿ value: 1 element
+      - "<flowImports>"
+  ▿ (2 elements)
+    - key: "flow_properties"
+    ▿ value: 1 element
+      ▿ 2 key/value pairs
+        ▿ (2 elements)
+          - key: "name"
+          - value: "<flowPropertiesName>"
+        ▿ (2 elements)
+          - key: "type"
+          - value: "<flowPropertiesType>"
+  ▿ (2 elements)
+    - key: "node_name"
+    - value: "<nodeName>"
+  ▿ (2 elements)
+    - key: "owns_view"
+    - value: false
+  ▿ (2 elements)
+    - key: "root_node"
+    - value: false
+  ▿ (2 elements)
+    - key: "state_imports"
+    ▿ value: 1 element
+      - "<stateImports>"
+  ▿ (2 elements)
+    - key: "view_controllable_flow_type"
+    - value: "<viewControllableFlowType>"
+  ▿ (2 elements)
+    - key: "view_controllable_type"
+    - value: "<viewControllableType>"

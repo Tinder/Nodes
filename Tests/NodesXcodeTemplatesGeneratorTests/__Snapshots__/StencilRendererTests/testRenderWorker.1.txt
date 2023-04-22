@@ -1,0 +1,30 @@
+<fileHeader>
+
+import <workerImports>
+
+/**
+ PURPOSE:
+ Encapsulates work to be performed by the Node.
+ */
+internal protocol <workerName>Worker: Worker {}
+
+/**
+ PURPOSE:
+ Concrete implementation of the Worker.
+ */
+internal final class <workerName>WorkerImp: AbstractWorker
+<
+    <cancellableType>
+> {
+
+    /// The initializer.
+    override internal init() {}
+
+    /// Implement logic to execute when the Worker is started.
+    override internal func didStart() {}
+
+    /// Implement logic to execute when the Worker has stopped.
+    override internal func willStop() {}
+}
+
+extension <workerName>WorkerImp: <workerName>Worker {}

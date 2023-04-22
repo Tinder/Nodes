@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "needle",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/uber/needle.git",
+      "state" : {
+        "revision" : "d3eaf696ad2e4c3e25618cfa3643402fdd237f7a",
+        "version" : "0.22.0"
+      }
+    },
+    {
       "identity" : "nimble",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Quick/Nimble.git",
@@ -43,15 +52,6 @@
       "state" : {
         "revision" : "3bfd2737b700b9a36565a8c94f4ad2b050a5e574",
         "version" : "1.0.1"
-      }
-    },
-    {
-      "identity" : "preflight",
-      "kind" : "remoteSourceControl",
-      "location" : "git@github.com:TinderApp/Preflight.git",
-      "state" : {
-        "revision" : "dae833f3aeff1fade6ed92604be189969bae3280",
-        "version" : "0.0.5"
       }
     },
     {

@@ -14,28 +14,20 @@ jobs:
     concurrency:
       group: ${{ github.ref_name }}
       cancel-in-progress: true
-    env:
-      SSH_AUTH_SOCK: /tmp/ssh_agent.sock
     steps:
-    - name: Add ssh key
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
-        ssh-agent -a "$SSH_AUTH_SOCK" > /dev/null
-        ssh-add - <<< "${{ secrets.TINDER_GITHUB_SSH_KEY }}"
     - name: Install dependencies
       run: brew install jfrog-cli
     - name: Checkout source
       uses: actions/checkout@v3
     - name: Build documentation
       run: |
-        make docs open="no"
+        make docs open="no" DERIVED_DATA_PATH="$(mktemp -d)"
         mkdir Documentation
         mv .build/documentation/archive/Nodes.doccarchive Documentation
     - name: Archive
       run: >
         tar
-        -czf "Nodes-${{ github.ref_name }}.tar.gz"
+        -czf "Nodes-${GITHUB_REF_NAME}.tar.gz"
         --exclude=".swiftlint.yml"
         Sources Documentation
     - name: Upload
@@ -44,5 +36,5 @@ jobs:
         --url="https://tinder.jfrog.io/artifactory"
         --access-token="${{ secrets.ARTIFACTORY_ACCESS_TOKEN }}"
         --flat="true"
-        "Nodes-${{ github.ref_name }}.tar.gz"
+        "Nodes-${GITHUB_REF_NAME}.tar.gz"
         "swift-package-releases/Nodes/"

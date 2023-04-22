@@ -51,7 +51,9 @@ public enum DebugInformation {
                                      flowIdentifier: ObjectIdentifier,
                                      flowType: Flow.Type)
 
-    public class Factory {
+    private typealias UserInfo = [UserInfoKey: Any]
+
+    public final class Factory {
 
         private weak var object: AnyObject?
 
@@ -75,7 +77,7 @@ public enum DebugInformation {
         }
     }
 
-    internal class FlowWillStartNotification: NotificationPosting {
+    internal final class FlowWillStartNotification: NotificationPosting {
 
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowWillStartNotification.self)")
@@ -83,11 +85,11 @@ public enum DebugInformation {
         @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
-                .compactMap { $0.userInfo }
+                .compactMap { $0.userInfo as? UserInfo }
                 .compactMap {
-                    guard let flowIdentifier = $0["flow_identifier"] as? ObjectIdentifier,
-                          let flowType = $0["flow_type"] as? Flow.Type,
-                          let factory = $0["factory"] as? Factory
+                    guard let flowIdentifier = $0[.flowIdentifier] as? ObjectIdentifier,
+                          let flowType = $0[.flowType] as? Flow.Type,
+                          let factory = $0[.factory] as? Factory
                     else { return nil }
                     return .flowWillStart(flowIdentifier: flowIdentifier,
                                           flowType: flowType,
@@ -99,15 +101,16 @@ public enum DebugInformation {
         internal let notification: Notification
 
         internal init(flow: Flow, viewController: AnyObject) {
-            notification = Notification(name: Self.name, userInfo: [
-                "flow_identifier": ObjectIdentifier(flow),
-                "flow_type": type(of: flow),
-                "factory": Factory(viewController)
-            ])
+            let userInfo: UserInfo = [
+                .flowIdentifier: ObjectIdentifier(flow),
+                .flowType: type(of: flow),
+                .factory: Factory(viewController)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
         }
     }
 
-    internal class FlowDidEndNotification: NotificationPosting {
+    internal final class FlowDidEndNotification: NotificationPosting {
 
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowDidEndNotification.self)")
@@ -115,10 +118,10 @@ public enum DebugInformation {
         @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
-                .compactMap { $0.userInfo }
+                .compactMap { $0.userInfo as? UserInfo }
                 .compactMap {
-                    guard let flowIdentifier = $0["flow_identifier"] as? ObjectIdentifier,
-                          let flowType = $0["flow_type"] as? Flow.Type
+                    guard let flowIdentifier = $0[.flowIdentifier] as? ObjectIdentifier,
+                          let flowType = $0[.flowType] as? Flow.Type
                     else { return nil }
                     return .flowDidEnd(flowIdentifier: flowIdentifier,
                                        flowType: flowType)
@@ -129,14 +132,15 @@ public enum DebugInformation {
         internal let notification: Notification
 
         internal init(flow: Flow) {
-            notification = Notification(name: Self.name, userInfo: [
-                "flow_identifier": ObjectIdentifier(flow),
-                "flow_type": type(of: flow)
-            ])
+            let userInfo: UserInfo = [
+                .flowIdentifier: ObjectIdentifier(flow),
+                .flowType: type(of: flow)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
         }
     }
 
-    internal class FlowWillAttachNotification: NotificationPosting {
+    internal final class FlowWillAttachNotification: NotificationPosting {
 
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowWillAttachNotification.self)")
@@ -144,12 +148,12 @@ public enum DebugInformation {
         @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
-                .compactMap { $0.userInfo }
+                .compactMap { $0.userInfo as? UserInfo }
                 .compactMap {
-                    guard let flowIdentifier = $0["flow_identifier"] as? ObjectIdentifier,
-                          let flowType = $0["flow_type"] as? Flow.Type,
-                          let subFlowIdentifier = $0["sub_flow_identifier"] as? ObjectIdentifier,
-                          let subFlowType = $0["sub_flow_type"] as? Flow.Type
+                    guard let flowIdentifier = $0[.flowIdentifier] as? ObjectIdentifier,
+                          let flowType = $0[.flowType] as? Flow.Type,
+                          let subFlowIdentifier = $0[.subFlowIdentifier] as? ObjectIdentifier,
+                          let subFlowType = $0[.subFlowType] as? Flow.Type
                     else { return nil }
                     return .flowWillAttachSubFlow(flowIdentifier: flowIdentifier,
                                                   flowType: flowType,
@@ -162,16 +166,17 @@ public enum DebugInformation {
         internal let notification: Notification
 
         internal init(flow: Flow, subFlow: Flow) {
-            notification = Notification(name: Self.name, userInfo: [
-                "flow_identifier": ObjectIdentifier(flow),
-                "flow_type": type(of: flow),
-                "sub_flow_identifier": ObjectIdentifier(subFlow),
-                "sub_flow_type": type(of: subFlow)
-            ])
+            let userInfo: UserInfo = [
+                .flowIdentifier: ObjectIdentifier(flow),
+                .flowType: type(of: flow),
+                .subFlowIdentifier: ObjectIdentifier(subFlow),
+                .subFlowType: type(of: subFlow)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
         }
     }
 
-    internal class FlowDidDetachNotification: NotificationPosting {
+    internal final class FlowDidDetachNotification: NotificationPosting {
 
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowDidDetachNotification.self)")
@@ -179,12 +184,12 @@ public enum DebugInformation {
         @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
-                .compactMap { $0.userInfo }
+                .compactMap { $0.userInfo as? UserInfo }
                 .compactMap {
-                    guard let flowIdentifier = $0["flow_identifier"] as? ObjectIdentifier,
-                          let flowType = $0["flow_type"] as? Flow.Type,
-                          let subFlowIdentifier = $0["sub_flow_identifier"] as? ObjectIdentifier,
-                          let subFlowType = $0["sub_flow_type"] as? Flow.Type
+                    guard let flowIdentifier = $0[.flowIdentifier] as? ObjectIdentifier,
+                          let flowType = $0[.flowType] as? Flow.Type,
+                          let subFlowIdentifier = $0[.subFlowIdentifier] as? ObjectIdentifier,
+                          let subFlowType = $0[.subFlowType] as? Flow.Type
                     else { return nil }
                     return .flowDidDetachSubFlow(flowIdentifier: flowIdentifier,
                                                  flowType: flowType,
@@ -197,16 +202,17 @@ public enum DebugInformation {
         internal let notification: Notification
 
         internal init(flow: Flow, subFlow: Flow) {
-            notification = Notification(name: Self.name, userInfo: [
-                "flow_identifier": ObjectIdentifier(flow),
-                "flow_type": type(of: flow),
-                "sub_flow_identifier": ObjectIdentifier(subFlow),
-                "sub_flow_type": type(of: subFlow)
-            ])
+            let userInfo: UserInfo = [
+                .flowIdentifier: ObjectIdentifier(flow),
+                .flowType: type(of: flow),
+                .subFlowIdentifier: ObjectIdentifier(subFlow),
+                .subFlowType: type(of: subFlow)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
         }
     }
 
-    internal class FlowControllerWillAttachNotification: NotificationPosting {
+    internal final class FlowControllerWillAttachNotification: NotificationPosting {
 
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowControllerWillAttachNotification.self)")
@@ -214,11 +220,11 @@ public enum DebugInformation {
         @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
-                .compactMap { $0.userInfo }
+                .compactMap { $0.userInfo as? UserInfo }
                 .compactMap {
-                    guard let flowControllerIdentifier = $0["flow_controller_identifier"] as? ObjectIdentifier,
-                          let flowIdentifier = $0["flow_identifier"] as? ObjectIdentifier,
-                          let flowType = $0["flow_type"] as? Flow.Type
+                    guard let flowControllerIdentifier = $0[.flowControllerIdentifier] as? ObjectIdentifier,
+                          let flowIdentifier = $0[.flowIdentifier] as? ObjectIdentifier,
+                          let flowType = $0[.flowType] as? Flow.Type
                     else { return nil }
                     return .flowControllerWillAttachFlow(flowControllerIdentifier: flowControllerIdentifier,
                                                          flowIdentifier: flowIdentifier,
@@ -230,15 +236,16 @@ public enum DebugInformation {
         internal let notification: Notification
 
         internal init(flowController: FlowController, flow: Flow) {
-            notification = Notification(name: Self.name, userInfo: [
-                "flow_controller_identifier": ObjectIdentifier(flowController),
-                "flow_identifier": ObjectIdentifier(flow),
-                "flow_type": type(of: flow)
-            ])
+            let userInfo: UserInfo = [
+                .flowControllerIdentifier: ObjectIdentifier(flowController),
+                .flowIdentifier: ObjectIdentifier(flow),
+                .flowType: type(of: flow)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
         }
     }
 
-    internal class FlowControllerDidDetachNotification: NotificationPosting {
+    internal final class FlowControllerDidDetachNotification: NotificationPosting {
 
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowControllerDidDetachNotification.self)")
@@ -246,11 +253,11 @@ public enum DebugInformation {
         @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
-                .compactMap { $0.userInfo }
+                .compactMap { $0.userInfo as? UserInfo }
                 .compactMap {
-                    guard let flowControllerIdentifier = $0["flow_controller_identifier"] as? ObjectIdentifier,
-                          let flowIdentifier = $0["flow_identifier"] as? ObjectIdentifier,
-                          let flowType = $0["flow_type"] as? Flow.Type
+                    guard let flowControllerIdentifier = $0[.flowControllerIdentifier] as? ObjectIdentifier,
+                          let flowIdentifier = $0[.flowIdentifier] as? ObjectIdentifier,
+                          let flowType = $0[.flowType] as? Flow.Type
                     else { return nil }
                     return .flowControllerDidDetachFlow(flowControllerIdentifier: flowControllerIdentifier,
                                                         flowIdentifier: flowIdentifier,
@@ -262,12 +269,22 @@ public enum DebugInformation {
         internal let notification: Notification
 
         internal init(flowController: FlowController, flow: Flow) {
-            notification = Notification(name: Self.name, userInfo: [
-                "flow_controller_identifier": ObjectIdentifier(flowController),
-                "flow_identifier": ObjectIdentifier(flow),
-                "flow_type": type(of: flow)
-            ])
+            let userInfo: UserInfo = [
+                .flowControllerIdentifier: ObjectIdentifier(flowController),
+                .flowIdentifier: ObjectIdentifier(flow),
+                .flowType: type(of: flow)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
         }
+    }
+
+    private enum UserInfoKey {
+        case flowIdentifier
+        case flowType
+        case factory
+        case subFlowIdentifier
+        case subFlowType
+        case flowControllerIdentifier
     }
 
     private static var queue: DispatchQueue = .init(label: "Nodes Debug Notifications",

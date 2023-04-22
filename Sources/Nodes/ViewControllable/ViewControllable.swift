@@ -21,7 +21,7 @@ public protocol ViewControllable: AnyObject {
     ///
     /// - Returns: The `self` instance with the given ``ModalStyle`` applied.
     @discardableResult
-    func withModalStyle(_ style: ModalStyle) -> Self
+    func withModalStyle(_ modalStyle: ModalStyle) -> Self
 
     /// Presents a ``ViewControllable`` instance.
     ///
@@ -53,76 +53,11 @@ public protocol ViewControllable: AnyObject {
         completion: (() -> Void)?
     )
 
-    /// Called just before the ``ViewControllable`` instance is added or removed from a container
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameter viewController: The parent ``ViewControllable`` instance, or `nil` if there is no parent.
-    func willMove(toParent viewController: ViewControllable?)
-
-    /// Called after the ``ViewControllable`` instance is added or removed from a container
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameter viewController: The parent ``ViewControllable`` instance, or `nil` if there is no parent.
-    func didMove(toParent viewController: ViewControllable?)
-
-    /// Adds the given ``ViewControllable`` instance as a child.
-    ///
-    /// - Parameter viewController: The ``ViewControllable`` instance to be added as a child.
-    func addChild(_ viewController: ViewControllable)
-
-    /// Removes the given ``ViewControllable`` instance from its parent.
-    ///
-    /// - Parameter viewController: The ``ViewControllable`` instance to be removed from its parent.
-    func removeChild(_ viewController: ViewControllable)
-
     /// Contains the given ``ViewControllable`` instance within the entire bounds of the parent
     /// ``ViewControllable`` instance.
     ///
     /// - Parameter viewController: The ``ViewControllable`` instance to contain.
     func contain(_ viewController: ViewControllable)
-
-    /// Contains the given ``ViewControllable`` instance within the given frame of the parent
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - frame: The frame in which to contain the ``ViewControllable`` instance.
-    func contain(_ viewController: ViewControllable, in frame: CGRect)
-
-    /// Contains the given ``ViewControllable`` instance within the given frame of the parent
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - frame: The frame in which to contain the ``ViewControllable`` instance.
-    ///   - autoresizingMask: The autoresizing mask to apply to the ``ViewControllable`` instance.
-    func contain(
-        _ viewController: ViewControllable,
-        in frame: CGRect,
-        with autoresizingMask: UIView.AutoresizingMask
-    )
-
-    /// Contains the given ``ViewControllable`` instance within the given view of the parent
-    /// ``ViewControllable`` instance.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - view: The view in which to contain the ``ViewControllable`` instance.
-    func contain(_ viewController: ViewControllable, in view: UIView)
-
-    /// Contains the given ``ViewControllable`` instance with the layout constraints provided by the given closure.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to contain.
-    ///   - constraints: The closure providing the layout constraints.
-    ///
-    ///     The closure has the following arguments:
-    ///     | Name | Description                                  |
-    ///     | ---- | -------------------------------------------- |
-    ///     | view | The view on which to add layout constraints. |
-    ///
-    ///     The closure returns an array of layout constraints.
-    func contain(_ viewController: ViewControllable, constraints: (_ view: UIView) -> [NSLayoutConstraint])
 
     /// Uncontains the given ``ViewControllable`` instance.
     ///

@@ -1,0 +1,91 @@
+▿ 30 elements
+  ▿ (2 elements)
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - UIKit.xctemplate/___FILEBASENAME___ViewState.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - UIKit.xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___ViewController.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - SwiftUI.xctemplate/___FILEBASENAME___ViewState.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node - SwiftUI.xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (view injected).xctemplate/___FILEBASENAME___Analytics.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (view injected).xctemplate/___FILEBASENAME___Builder.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (view injected).xctemplate/___FILEBASENAME___Context.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (view injected).xctemplate/___FILEBASENAME___Flow.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (view injected).xctemplate/___FILEBASENAME___State.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Node (view injected).xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin List (for Node).xctemplate/___FILEBASENAME___PluginList.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin List (for Node).xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin (for Node).xctemplate/___FILEBASENAME___Plugin.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin (for Node).xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin.xctemplate/___FILEBASENAME___Plugin.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Plugin.xctemplate/TemplateInfo.plist"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Worker.xctemplate/___FILEBASENAME___Worker.swift"
+    - .1: true
+  ▿ (2 elements)
+    - .0: "/Worker.xctemplate/TemplateInfo.plist"
+    - .1: true

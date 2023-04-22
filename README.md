@@ -1,4 +1,18 @@
-<p align="center"><img src="Nodes.png" /></p>
+<div align="center">
+
+[![Swift](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml)
+&nbsp;
+[![Bazel](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml)
+&nbsp;
+[![DocC](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml)
+&nbsp;
+[![Pages](https://github.com/TinderApp/Nodes/actions/workflows/pages.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/pages.yml)
+&nbsp;
+[![Artifactory](https://github.com/TinderApp/Nodes/actions/workflows/artifactory.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/artifactory.yml)
+
+<img src="Nodes.png" />
+
+</div>
 
 # Nodes Architecture Framework
 
@@ -8,9 +22,9 @@ Native Mobile Application Engineering at Scale
 
 At Tinder, we create mobile applications ***to keep the magic of human connection alive***. And to do that successfully, we built a large team of mobile engineers who continually deliver numerous concurrent projects to empower, delight and protect our countless members around the globe.
 
-We think [Swift](https://developer.apple.com/swift) and related technologies including [SwiftUI](https://developer.apple.com/documentation/swiftui) and [Swift Concurrency](https://developer.apple.com/documentation/swift/swift_standard_library/concurrency) are simply awesome. However, building a mobile application at Tinder's scale requires a scalable application architecture as well. We created the Nodes Architecture Framework to specifically address how to build a complex app, with a large team, involving many simultaneous initiatives.
+We think [Swift](https://developer.apple.com/swift) and related technologies including [SwiftUI](https://developer.apple.com/xcode/swiftui) and [Swift Concurrency](https://developer.apple.com/documentation/swift/swift_standard_library/concurrency) are simply awesome. However, building a mobile application at Tinder's scale requires a scalable application architecture as well. We created the Nodes Architecture Framework to specifically address how to build a complex app, with a large team, involving many simultaneous initiatives.
 
-Nodes provides a modular and plugin-based approach to assembling an app with countless screens and features. Nodes leverages reactive data streams for state management to allow app state to be distributed, which is essential when many different teams own different parts of the codebase. Nodes is not opinionated about which reactive library to use however, or even which UI framework to use. In fact, Nodes is fully compatible with [SwiftUI](https://developer.apple.com/xcode/swiftui), [UIKit](https://developer.apple.com/documentation/uikit) and [AppKit](https://developer.apple.com/documentation/appkit).
+Nodes provides a modular and plugin-based approach to assembling an app with countless screens and features. Nodes leverages reactive data streams for state management to allow app state to be distributed, which is essential when many different teams own different parts of the codebase. Nodes is not opinionated about which reactive library to use however, or even which UI framework to use. In fact, Nodes is fully compatible with [SwiftUI](https://developer.apple.com/documentation/swiftui), [UIKit](https://developer.apple.com/documentation/uikit) and [AppKit](https://developer.apple.com/documentation/appkit).
 
 Even though the Nodes Architecture Framework leverages some concepts and patterns similar to [Uber's cross-platform mobile architecture framework](https://github.com/uber/RIBs) (RIBs), it was built from the ground up to provide unique benefits purpose built for [Tinder](https://github.com/tinder). ***No source code has been copied from RIBs*** to create this framework. Other open source projects such as [Needle](https://github.com/uber/needle) and [Mockolo](https://github.com/uber/mockolo) are utilized as dependencies when creating an app with Nodes.
 
@@ -31,6 +45,8 @@ The Nodes architecture is backed by the Nodes framework which includes base clas
 Native mobile applications need to be good citizens within their host device and operating system. Memory leaks and even normal memory use must be managed carefully. This can be challenging enough in a small app, and inside a large codebase it can quickly become unmanageable without a clear plan. The Nodes architecture provides controls for the lifecycle of each feature screen in the application which allows all memory of each experience to be reclaimed.
 
 ## Documentation
+
+Documentation is available online at: [https://TinderApp.github.io/Nodes](https://TinderApp.github.io/Nodes)
 
 To build Nodes' [DocC](https://developer.apple.com/documentation/docc) documentation and open it in Xcode's documentation window:
 
@@ -58,10 +74,10 @@ $ mint install yonaskolb/genesis
 
 This step may be skipped if the Nodes repository was previously cloned.
 
-> Replace `<nodesPath>` in the command with the path to where the Nodes repository will reside.
+> Replace `<version>` in the command with the latest Nodes version and replace `<nodesPath>` in the command with the path to where the Nodes repository will reside.
 
 ```
-$ git clone git@github.com:TinderApp/Nodes.git <nodesPath>
+$ git clone -b <version> git@github.com:TinderApp/Nodes.git <nodesPath>
 ```
 
 ### Create project directory
@@ -82,7 +98,7 @@ $ mkdir -p <projectPath> && cd "$_"
 $ mint run genesis generate <nodesPath>/genesis.yml --options "author:$(git config user.name), date:$(date +"%-m/%-d/%y")"
 ```
 
-When prompted, enter a name for the new iOS Xcode project and an organization identifier (bundle ID prefix).
+When prompted, enter the latest Nodes version, a name for the new iOS Xcode project and an organization identifier (bundle ID prefix).
 
 **OPTIONAL:** The cloned Nodes repository is no longer needed at this point and may be removed if there is no plan to create additional projects.
 
@@ -100,7 +116,7 @@ Xcode templates for Nodes will automatically be installed to:
 
 `~/Library/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (Xcode Templates)`
 
-To add additional Nodes to the project, scroll to the Nodes templates in the new file dialog. The `` symbol indicates SwiftUI templates.
+To add additional Nodes to the project, scroll to the Nodes templates in the new file dialog.
 
 <img src="./.assets/Xcode-Templates.png" width="690" />
 

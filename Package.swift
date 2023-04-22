@@ -5,21 +5,24 @@ import PackageDescription
 let package = Package(
     name: "Nodes",
     platforms: [
-        .macOS(.v10_13),
-        .iOS(.v11),
-        .tvOS(.v11),
-        .watchOS(.v5),
+        .macOS(.v10_15),
+        .iOS(.v13),
+        .tvOS(.v13),
+        .watchOS(.v6),
     ],
     products: [
         .library(
             name: "Nodes",
             targets: ["Nodes"]),
         .library(
-            name: "XcodeTemplateGenerator",
-            targets: ["XcodeTemplateGeneratorLibrary"]),
+            name: "NodesTesting",
+            targets: ["NodesTesting"]),
+        .library(
+            name: "NodesXcodeTemplatesGenerator",
+            targets: ["NodesXcodeTemplatesGenerator"]),
         .executable(
-            name: "xc-template-generator",
-            targets: ["XcodeTemplateGeneratorTool"]),
+            name: "nodes-xcode-templates-gen",
+            targets: ["NodesXcodeTemplatesGeneratorExecutable"]),
     ],
     dependencies: [
         .package(
@@ -28,9 +31,6 @@ let package = Package(
         .package(
             url: "https://github.com/apple/swift-docc-plugin.git",
             from: "1.0.0"),
-        .package(
-            url: "git@github.com:TinderApp/Preflight.git",
-            from: "0.0.0"),
         .package(
             url: "https://github.com/realm/SwiftLint.git",
             from: "0.46.0"),
@@ -44,6 +44,9 @@ let package = Package(
             url: "https://github.com/stencilproject/Stencil.git",
             from: "0.15.0"),
         .package(
+            url: "https://github.com/uber/needle.git",
+            from: "0.22.0"),
+        .package(
             url: "https://github.com/Quick/Nimble.git",
             from: "10.0.0"),
         .package(
@@ -55,7 +58,12 @@ let package = Package(
             name: "Nodes",
             dependencies: []),
         .target(
-            name: "XcodeTemplateGeneratorLibrary",
+            name: "NodesTesting",
+            dependencies: [
+                .product(name: "NeedleFoundation", package: "needle")
+            ]),
+        .target(
+            name: "NodesXcodeTemplatesGenerator",
             dependencies: [
                 "Codextended",
                 "Yams",
@@ -66,9 +74,9 @@ let package = Package(
                 .copy("Resources/Templates"),
             ]),
         .executableTarget(
-            name: "XcodeTemplateGeneratorTool",
+            name: "NodesXcodeTemplatesGeneratorExecutable",
             dependencies: [
-                "XcodeTemplateGeneratorLibrary",
+                "NodesXcodeTemplatesGenerator",
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ]),
         .testTarget(
@@ -78,9 +86,15 @@ let package = Package(
                 "Nimble",
             ]),
         .testTarget(
-            name: "XcodeTemplateGeneratorLibraryTests",
+            name: "NodesTestingTests",
             dependencies: [
-                "XcodeTemplateGeneratorLibrary",
+                "NodesTesting",
+                "Nimble",
+            ]),
+        .testTarget(
+            name: "NodesXcodeTemplatesGeneratorTests",
+            dependencies: [
+                "NodesXcodeTemplatesGenerator",
                 "Nimble",
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
             ],
