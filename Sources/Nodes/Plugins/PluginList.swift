@@ -330,6 +330,8 @@ open class PluginListWithDefault<KeyType: Hashable,
     }
 }
 
+// swiftlint:enable period_spacing
+
 extension PluginListWithDefault where StateType == Void {
 
     /// Calls `create` on each plugin in the plugin collection (in reverse creation order) and returns the
@@ -358,4 +360,4 @@ extension PluginListWithDefault where StateType == Void {
     }
 }
 
-// swiftlint:enable file_types_order period_spacing
+// swiftlint:enable file_types_order
