@@ -14,15 +14,7 @@ jobs:
     concurrency:
       group: ${{ github.ref_name }}
       cancel-in-progress: true
-    env:
-      SSH_AUTH_SOCK: /tmp/ssh_agent.sock
     steps:
-    - name: Add ssh key
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
-        ssh-agent -a "$SSH_AUTH_SOCK" > /dev/null
-        ssh-add - <<< "${{ secrets.TINDER_GITHUB_SSH_KEY }}"
     - name: Install dependencies
       run: brew install jfrog-cli
     - name: Checkout source
