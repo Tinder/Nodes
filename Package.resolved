@@ -55,15 +55,6 @@
       }
     },
     {
-      "identity" : "preflight",
-      "kind" : "remoteSourceControl",
-      "location" : "git@github.com:TinderApp/Preflight.git",
-      "state" : {
-        "revision" : "dae833f3aeff1fade6ed92604be189969bae3280",
-        "version" : "0.0.5"
-      }
-    },
-    {
       "identity" : "sourcekitten",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jpsim/SourceKitten.git",

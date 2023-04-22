@@ -9,12 +9,6 @@
 
 - Xcode version `13.3` or greater
 
-### Install dependencies
-
-```
-$ brew install libgit2
-```
-
 ### Clone repository
 
 ```

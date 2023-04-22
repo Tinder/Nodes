@@ -18,16 +18,6 @@ else
 	@./bin/create-xcframework "$(library)" "$(platforms)" BITCODE_DISABLED "$(version)"
 endif
 
-.PHONY: preflight
-preflight: output ?= pretty
-preflight:
-	@./bin/preflight "$(output)"
-
-.PHONY: preflight-all
-preflight-all: output ?= pretty
-preflight-all:
-	@./bin/preflight-all "$(output)"
-
 .PHONY: delete-snapshots
 delete-snapshots:
 	rm -rf Tests/NodesXcodeTemplatesGeneratorTests/__Snapshots__/*

@@ -28,27 +28,6 @@ jobs:
         ssh-add - <<< "${{ secrets.TINDER_GITHUB_SSH_KEY }}"
     - name: Checkout source
       uses: actions/checkout@v2
-    - name: Install preflight dependencies
-      if: github.event.pull_request
-      run: brew install libgit2
-    - name: Build preflight product
-      if: github.event.pull_request
-      run: swift build --product preflight
-    - name: Build swiftlint product
-      if: github.event.pull_request
-      run: swift build --product swiftlint
-    - name: Perform static analysis
-      if: github.event.pull_request
-      run: >
-        curl -fs
-        -H "Authorization: Bearer ${{ github.token }}"
-        -H "Accept: application/vnd.github.v3.diff"
-        "${{ github.event.pull_request.url }}" |
-        swift run --skip-build -- preflight github --diff git --output pretty --verbose
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-        GITHUB_REPOSITORY: ${{ github.repository }}
-        GITHUB_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
     - name: Build
       run: swift build -v
     - name: Run tests
