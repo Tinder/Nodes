@@ -51,8 +51,9 @@ Documentation is available online at: [https://TinderApp.github.io/Nodes](https:
 To build Nodes' [DocC](https://developer.apple.com/documentation/docc) documentation and open it in Xcode's documentation window:
 
 ```
-$ git clone git@github.com:TinderApp/Nodes.git && cd Nodes
-$ make docs
+git clone git@github.com:TinderApp/Nodes.git
+cd Nodes
+make docs
 ```
 
 ## Quick Start
@@ -63,54 +64,54 @@ Following these steps will create a new iOS Xcode project set up with Nodes, Nee
 
 - Xcode version `13.3` or greater
 
-### Install dependencies
+### Install Dependencies
 
 ```
-$ brew install mint xcodegen needle mockolo
-$ mint install yonaskolb/genesis
+brew install mint xcodegen needle mockolo
+mint install yonaskolb/genesis
 ```
 
-### Clone Nodes repository
+### Clone Nodes Repository
 
 This step may be skipped if the Nodes repository was previously cloned.
 
 > Replace `<version>` in the command with the latest Nodes version and replace `<nodesPath>` in the command with the path to where the Nodes repository will reside.
 
 ```
-$ git clone -b <version> git@github.com:TinderApp/Nodes.git <nodesPath>
+git clone -b <version> git@github.com:TinderApp/Nodes.git <nodesPath>
 ```
 
-### Create project directory
+### Create Project Directory
 
 **IMPORTANT:** Do not create the new project within the cloned Nodes repository.
 
 > Replace `<projectPath>` in the command with the path to where the new iOS Xcode project will reside.
 
 ```
-$ mkdir -p <projectPath> && cd "$_"
+mkdir -p <projectPath> && cd "$_"
 ```
 
-### Generate project files
+### Generate Project Files
 
 > Replace `<nodesPath>` in the command with the path to the cloned Nodes repository.
 
 ```
-$ mint run genesis generate <nodesPath>/genesis.yml --options "author:$(git config user.name), date:$(date +"%-m/%-d/%y")"
+mint run genesis generate <nodesPath>/genesis.yml --options "author:$(git config user.name), date:$(date +"%-m/%-d/%y")"
 ```
 
-When prompted, enter the latest Nodes version, a name for the new iOS Xcode project and an organization identifier (bundle ID prefix).
+When prompted, enter the latest Nodes version, a name for the new iOS Xcode project and an organization identifier (which is the bundle ID prefix such as `com.tinder`).
 
 **OPTIONAL:** The cloned Nodes repository is no longer needed at this point and may be removed if there is no plan to create additional projects.
 
-### Generate iOS Xcode project
+### Generate Xcode Project
 
 ```
-$ xcodegen
+xcodegen
 ```
 
 Execute the `xcodegen` command any time the `project.yml` file is changed or project files are added or removed. See the [xcodegen](https://github.com/yonaskolb/XcodeGen) documentation for more information.
 
-### Use Xcode templates
+### Use Xcode Templates
 
 Xcode templates for Nodes will automatically be installed to:
 
@@ -125,12 +126,12 @@ To add additional Nodes to the project, scroll to the Nodes templates in the new
 Only if on a Mac computer with Apple silicon, create the following symbolic links to provision these two dependencies within a `$PATH` that Xcode utilizes:
 
 ```
-$ ln -s /opt/homebrew/bin/needle /usr/local/bin/needle
-$ ln -s /opt/homebrew/bin/mockolo /usr/local/bin/mockolo
+ln -s /opt/homebrew/bin/needle /usr/local/bin/needle
+ln -s /opt/homebrew/bin/mockolo /usr/local/bin/mockolo
 ```
 
 Only if issues are encountered when executing Mockolo, build from source:
 
 ```
-$ brew reinstall --build-from-source mockolo
+brew reinstall --build-from-source mockolo
 ```
