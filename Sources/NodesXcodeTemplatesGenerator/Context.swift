@@ -21,9 +21,9 @@ extension Set where Element == String {
         }
         return self
             .filter { !$0.isEmpty }
-            .sorted { key, value in
-                let lhs: [String] = prepare(key)
-                let rhs: [String] = prepare(value)
+            .sorted { lhs, rhs  in
+                let lhs: [String] = prepare(lhs)
+                let rhs: [String] = prepare(rhs)
                 switch (lhs.count, rhs.count) {
                 case (2, 2):
                     guard lhs[0] == rhs[0]

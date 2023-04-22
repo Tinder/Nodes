@@ -44,8 +44,8 @@ internal struct XcodeTemplatePropertyList: Equatable, Codable {
         }
     }
 
-    @resultBuilder // swiftlint:disable:next convenience_type
-    internal struct OptionBuilder {
+    @resultBuilder
+    internal enum OptionBuilder {
 
         // swiftlint:disable:next nesting
         internal typealias Component = [Option]
