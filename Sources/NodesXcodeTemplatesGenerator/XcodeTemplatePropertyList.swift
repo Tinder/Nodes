@@ -48,13 +48,28 @@ internal struct XcodeTemplatePropertyList: Equatable, Codable {
     internal enum OptionBuilder {
 
         // swiftlint:disable:next nesting
+        internal typealias Expression = Option
+
+        // swiftlint:disable:next nesting
         internal typealias Component = [Option]
 
         // swiftlint:disable:next nesting
-        internal typealias Expression = Option
+        internal typealias FinalResult = [Option]
 
-        internal static func buildExpression(_ element: Expression) -> Component {
-            [element]
+        internal static func buildExpression(_ expression: Expression?) -> Component {
+            guard let expression: Expression
+            else { return [] }
+            return [expression]
+        }
+
+        internal static func buildExpression(_ component: Component?) -> Component {
+            guard let component: Component
+            else { return [] }
+            return component
+        }
+
+        internal static func buildBlock(_ components: Component...) -> Component {
+            components.flatMap { $0 }
         }
 
         internal static func buildOptional(_ component: Component?) -> Component {
@@ -70,11 +85,15 @@ internal struct XcodeTemplatePropertyList: Equatable, Codable {
         }
 
         internal static func buildArray(_ components: [Component]) -> Component {
-            Array(components.joined())
+            components.flatMap { $0 }
         }
 
-        internal static func buildBlock(_ components: Component...) -> Component {
-            Array(components.joined())
+        internal static func buildLimitedAvailability(_ component: Component) -> Component {
+            component
+        }
+
+        internal static func buildFinalResult(_ component: Component) -> FinalResult {
+            component
         }
     }
 
