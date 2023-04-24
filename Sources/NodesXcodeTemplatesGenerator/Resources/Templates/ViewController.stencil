@@ -24,11 +24,11 @@ internal protocol {{ node_name }}Receiver: AnyObject {}
  Concrete implementation of the UI.
  */
 internal final class {{ node_name }}ViewController: {{ view_controller_type }}, StateObserver {
-{% if view_controller_properties %}
 
+    {% if view_controller_properties %}
     {{ view_controller_properties|indent:4 }}
-{% endif %}
 
+    {% endif %}
     /// The view receiver.
     internal weak var receiver: {{ node_name }}Receiver?
 
@@ -52,9 +52,9 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     ) {
         self.initialState = initialState
         self.statePublisher = statePublisher
-        {% if view_state_operators %}
+            {% if view_state_operators %}
             {{ view_state_operators|indent:12 }}
-        {% endif %}
+            {% endif %}
         super.init({{ view_controller_super_parameters }})
     }
 

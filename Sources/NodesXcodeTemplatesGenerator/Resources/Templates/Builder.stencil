@@ -10,7 +10,7 @@ import {{ import }}
  PURPOSE:
  The interface of the Flow.
  */
- {% if owns_view %}
+{% if owns_view %}
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
 {% else %}
 internal protocol {{ node_name }}Flow: Flow {}
@@ -36,7 +36,7 @@ public protocol {{ node_name }}Dependency: Dependency {}
 
  Can be a tuple or struct containing multiple values when necessary.
  */
- {% if owns_view %}
+{% if owns_view %}
 internal typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listener
 {% else %}
 internal typealias {{ node_name }}DynamicBuildDependency = ({{ node_name }}Listener, {{ node_name }}ViewControllable)
@@ -118,7 +118,7 @@ internal final class {{ node_name }}Component: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
- {% if owns_view %}
+{% if owns_view %}
 internal protocol {{ node_name }}Builder: AnyObject {
     func build(withListener listener: {{ node_name }}Listener) -> {{ node_name }}Flow
 }
@@ -196,7 +196,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             context: context,
             viewController: viewController,
             {% for property in flow_properties %}
-            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %}{{ ',' }}
+            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %},
             {% endif %}
             {% endfor +%}
         )
@@ -226,7 +226,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             context: context,
             viewController: viewController,
             {% for property in flow_properties %}
-            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %}{{ ',' }}
+            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %},
             {% endif %}
             {% endfor +%}
         )

@@ -17,7 +17,7 @@ internal protocol {{ node_name }}Listener: AnyObject {}
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
- {% if root_node %}
+{% if root_node %}
 internal protocol {{ node_name }}FlowInterface: Flow {
     func didBecomeReady()
 }

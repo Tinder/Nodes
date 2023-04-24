@@ -38,8 +38,6 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 
     {{ view_controller_methods|indent:4 }}
     {% endif %}
-    {% if view_controller_properties and view_controller_methods %}
-    {% endif %}
 }
 {% endif %}
 
@@ -78,9 +76,9 @@ internal struct {{ node_name }}View: NodesView {
     ) {
         self.initialState = initialState
         self.statePublisher = statePublisher
-        {% if view_state_operators %}
+            {% if view_state_operators %}
             {{ view_state_operators|indent:12 }}
-        {% endif %}
+            {% endif %}
     }
 }
 

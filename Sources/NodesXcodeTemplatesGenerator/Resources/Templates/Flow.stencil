@@ -43,19 +43,21 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     /// - Parameters:
     ///   - context: The Context instance
     ///   - viewController: The View Controller instance
-    {% if flow_properties %}{% for property in flow_properties %}
+    {% if flow_properties %}
+    {% for property in flow_properties %}
     ///   - {{ property.name }}: The {{ property.type }} instance
-    {% endfor %}{% endif %}
-    {% if not flow_properties %}
-    override internal init(
-    {% else %}
+    {% endfor %}
+    {% endif %}
+    {% if flow_properties %}
     internal init(
+    {% else %}
+    override internal init(
     {% endif %}
         context: {{ node_name }}ContextInterface,
         {% if flow_properties %}
         viewController: {{ node_name }}ViewControllable,
         {% for property in flow_properties %}
-        {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}
+        {{ property.name }}: {{ property.type }}{% if not forloop.last %},
         {% endif %}
         {% endfor %}
 
