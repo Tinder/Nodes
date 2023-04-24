@@ -1,8 +1,5 @@
 //
-//  XcodeTemplatePropertyList.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Christopher Fuller on 5/4/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 import Foundation
@@ -48,8 +45,7 @@ internal struct XcodeTemplatePropertyList: Equatable, Codable {
     }
 
     @resultBuilder
-    // swiftlint:disable:next convenience_type
-    internal struct OptionBuilder {
+    internal enum OptionBuilder {
 
         // swiftlint:disable:next nesting
         internal typealias Component = [Option]

@@ -1,8 +1,5 @@
 //
-//  PathComponent.swift
-//  NodesTesting
-//
-//  Created by Eman Haroutunian on 1/12/23.
+//  Copyright © 2023 Tinder (Match Group, LLC)
 //
 
 import Foundation

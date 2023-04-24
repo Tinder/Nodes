@@ -1,8 +1,5 @@
 //
-//  PluginContext.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Christopher Fuller on 5/4/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 public struct PluginContext: Context {
@@ -13,19 +10,20 @@ public struct PluginContext: Context {
     private let pluginImports: [String]
 
     internal var dictionary: [String: Any] {
-        guard let returnType = returnType else {
+        if let returnType: String {
+            return [
+                "file_header": fileHeader,
+                "plugin_name": pluginName,
+                "return_type": returnType,
+                "plugin_imports": pluginImports
+            ]
+        } else {
             return [
                 "file_header": fileHeader,
                 "plugin_name": pluginName,
                 "plugin_imports": pluginImports
             ]
         }
-        return [
-            "file_header": fileHeader,
-            "plugin_name": pluginName,
-            "return_type": returnType,
-            "plugin_imports": pluginImports
-        ]
     }
 
     public init(

@@ -1,13 +1,12 @@
 //
-//  UIViewController+Containment.swift
-//  Nodes
-//
-//  Created by Sam Marshall on 2/13/23.
+//  Copyright © 2023 Tinder (Match Group, LLC)
 //
 
 #if canImport(UIKit) && !os(watchOS)
 
 import UIKit
+
+// swiftlint:disable period_spacing
 
 extension UIViewController {
 
@@ -81,3 +80,5 @@ extension UIViewController {
 }
 
 #endif
+
+// swiftlint:enable period_spacing

@@ -1,8 +1,5 @@
 //
-//  UIFramework+Default.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Garric Nahapetian on 11/15/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 extension UIFramework {

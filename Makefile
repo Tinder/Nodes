@@ -18,6 +18,32 @@ else
 	@./bin/create-xcframework "$(library)" "$(platforms)" BITCODE_DISABLED "$(version)"
 endif
 
+.PHONY: open
+open: fix
+open:
+	xed Package.swift
+
+.PHONY: fix
+fix: XCSHAREDDATA = .swiftpm/xcode/package.xcworkspace/xcshareddata
+fix:
+	@mkdir -p $(XCSHAREDDATA)
+	@/usr/libexec/PlistBuddy -c \
+		"Delete :FILEHEADER" \
+		"$(XCSHAREDDATA)/IDETemplateMacros.plist" >/dev/null 2>&1 || true
+	@header=$$'\n//  Copyright © ___YEAR___ Tinder \(Match Group, LLC\)\n//'; \
+	/usr/libexec/PlistBuddy -c \
+		"Add :FILEHEADER string $$header" \
+		"$(XCSHAREDDATA)/IDETemplateMacros.plist" >/dev/null 2>&1
+
+.PHONY: lint
+lint: format ?= emoji
+lint:
+	@swiftlint lint --strict --progress --reporter "$(format)"
+
+.PHONY: rules
+rules:
+	@swiftlint rules | lint-rules
+
 .PHONY: delete-snapshots
 delete-snapshots:
 	@for snapshots in $$(find Tests -type d -name "__Snapshots__"); \

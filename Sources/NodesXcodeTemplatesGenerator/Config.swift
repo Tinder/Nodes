@@ -1,8 +1,5 @@
 //
-//  Config.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Christopher Fuller on 6/3/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 import Codextended
@@ -92,7 +89,6 @@ extension XcodeTemplates.Config {
 // swiftlint:disable:next no_grouping_extension
 extension XcodeTemplates.Config {
 
-    // swiftlint:disable:next function_body_length
     public init(from decoder: Decoder) throws {
         let defaults: XcodeTemplates.Config = .init()
         uiFrameworks =

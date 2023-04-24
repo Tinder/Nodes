@@ -1,8 +1,5 @@
 //
-//  UIFrameworkFrameworkTests.swift
-//  NodesXcodeTemplatesGeneratorTests
-//
-//  Created by Garric Nahapetian on 11/14/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 import Nimble
@@ -58,9 +55,9 @@ final class UIFrameworkFrameworkTests: XCTestCase {
                     viewControllerType: "<viewControllerType>",
                     viewControllerSuperParameters: "<viewControllerSuperParameters>")
         ]
-        try frameworks.forEach {
-            let data: Data = .init(givenYAML(for: $0).utf8)
-            expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: data)) == $0
+        try frameworks.forEach { framework in
+            let data: Data = .init(givenYAML(for: framework).utf8)
+            expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: data)) == framework
         }
     }
 
@@ -68,9 +65,9 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         try ["Custom", "AnyUnsupportedFrameworkName", "custom:\ncustom:\n", "[]"]
             .map(\.utf8)
             .map(Data.init(_:))
-            .forEach {
-                expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: $0)).to(throwError {
-                    assertSnapshot(matching: $0, as: .dump)
+            .forEach { data in
+                expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: data)).to(throwError { error in
+                    assertSnapshot(matching: error, as: .dump)
                 })
             }
     }

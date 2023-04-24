@@ -1,8 +1,5 @@
 //
-//  XcodeTemplatesTests.swift
-//  NodesXcodeTemplatesGeneratorTests
-//
-//  Created by Christopher Fuller on 5/31/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 import Nimble
@@ -37,10 +34,10 @@ final class XcodeTemplatesTests: XCTestCase {
         assertSnapshot(matching: fileSystem.writes.map { ($0.path, $0.atomically) },
                        as: .dump,
                        named: "Writes")
-        fileSystem.writes.forEach {
-            assertSnapshot(matching: $0.contents,
+        fileSystem.writes.forEach { write in
+            assertSnapshot(matching: write.contents,
                            as: .lines,
-                           named: "Contents.\($0.path)")
+                           named: "Contents.\(write.path)")
         }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
@@ -60,10 +57,10 @@ final class XcodeTemplatesTests: XCTestCase {
         assertSnapshot(matching: fileSystem.writes.map { ($0.path, $0.atomically) },
                        as: .dump,
                        named: "Writes")
-        fileSystem.writes.forEach {
-            assertSnapshot(matching: $0.contents,
+        fileSystem.writes.forEach { write in
+            assertSnapshot(matching: write.contents,
                            as: .lines,
-                           named: "Contents.\($0.path)")
+                           named: "Contents.\(write.path)")
         }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,

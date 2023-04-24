@@ -1,8 +1,5 @@
 //
-//  TemplatesTests.swift
-//  NodesXcodeTemplatesGeneratorTests
-//
-//  Created by Christopher Fuller on 5/31/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 @testable import NodesXcodeTemplatesGenerator
@@ -12,10 +9,10 @@ import XCTest
 final class TemplatesTests: XCTestCase, TestFactories {
 
     func testNodeTemplate() throws {
-        try UIFramework.Kind.allCases.forEach {
-            try assertSnapshot(matching: NodeTemplate(for: $0, config: givenConfig()),
+        try UIFramework.Kind.allCases.forEach { kind in
+            try assertSnapshot(matching: NodeTemplate(for: kind, config: givenConfig()),
                                as: .dump,
-                               named: $0.rawValue)
+                               named: kind.rawValue)
         }
     }
 
