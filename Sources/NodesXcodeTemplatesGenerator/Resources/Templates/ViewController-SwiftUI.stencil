@@ -26,9 +26,7 @@ internal protocol {{ node_name }}Receiver: AnyObject {}
 internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 <
     {{ node_name }}View
-{% if not view_controller_properties and not view_controller_methods %}
-> {}
-{% else %}
+{% if view_controller_properties or view_controller_methods %}
 > {
     {% if view_controller_properties %}
 
@@ -39,6 +37,8 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}
     {{ view_controller_methods|indent:4 }}
     {% endif %}
 }
+{% else %}
+> {}
 {% endif %}
 
 extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
