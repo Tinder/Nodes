@@ -28,7 +28,7 @@ public struct ModalStyle: Equatable {
         /// The ``UIModalPresentationStyle.formSheet`` behavior.
         case form
 
-        /// The `custom` ``UIModalPresentationStyle`` behavior.
+        /// The ``UIModalPresentationStyle.custom`` behavior.
         case custom
     }
 
