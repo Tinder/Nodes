@@ -10,15 +10,13 @@ env:
   DEVELOPER_DIR: /Applications/Xcode_14.2.app/Contents/Developer
 
 jobs:
-  ci_job:
-    name: CI
+  xcode:
+    name: Xcode
     runs-on: macos-12
     env:
       SIMULATOR: iPhone 14
     steps:
     - name: Checkout source
       uses: actions/checkout@v3
-    - name: Build
-      run: xcodebuild build-for-testing -scheme "Nodes" -destination "name=$SIMULATOR,OS=latest"
     - name: Run tests
-      run: xcodebuild test-without-building -scheme "Nodes" -destination "name=$SIMULATOR,OS=latest"
+      run: xcodebuild test -scheme "Nodes" -destination "name=$SIMULATOR,OS=latest"
