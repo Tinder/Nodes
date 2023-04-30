@@ -1,6 +1,10 @@
 <div align="center">
 
+[![Swift](https://github.com/TinderApp/Nodes/actions/workflows/lint.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/lint.yml)
+&nbsp;
 [![Swift](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml)
+&nbsp;
+[![DocC](https://github.com/TinderApp/Nodes/actions/workflows/xcode.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/xcode.yml)
 &nbsp;
 [![Bazel](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml)
 &nbsp;
