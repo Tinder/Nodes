@@ -18,6 +18,8 @@ jobs:
     steps:
     - name: Checkout source
       uses: actions/checkout@v3
+    - name: Resolve package dependencies
+      run: xcodebuild -resolvePackageDependencies
     - name: Build
       run: xcodebuild build-for-testing -scheme "Nodes-Package" -destination "name=$SIMULATOR,OS=latest"
     - name: Run tests
