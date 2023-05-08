@@ -76,7 +76,7 @@ internal typealias {{ plugin_name }}PluginStateType = Void
  The Plugin interface (available to mock for testability).
  */
 internal protocol {{ plugin_name }}Plugin {
-    func create() ->{% if return_type %} {{ return_type }}{% else %} {{ plugin_name }}Builder{% endif %}?
+    func create() ->{{ ' ' }}{% if return_type %}{{ return_type }}{% else %}{{ plugin_name }}Builder{% endif %}?
 }
 
 /**

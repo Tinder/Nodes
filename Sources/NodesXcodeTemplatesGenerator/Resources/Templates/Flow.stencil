@@ -31,12 +31,12 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {{ node_name }}ViewControllable
 > {
 
-{% if flow_properties %}
-{% for property in flow_properties %}
+    {% if flow_properties %}
+    {% for property in flow_properties %}
     private let {{ property.name }}: {{ property.type }}
-{% endfor %}
+    {% endfor %}
 
-{% endif %}
+    {% endif %}
     /// The initializer.
     ///
     /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
@@ -47,8 +47,6 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {% for property in flow_properties %}
     ///   - {{ property.name }}: The {{ property.type }} instance
     {% endfor %}
-    {% endif %}
-    {% if flow_properties %}
     internal init(
     {% else %}
     override internal init(
@@ -64,11 +62,9 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
         viewController: {{ node_name }}ViewControllable
         {% endif %}
     ) {
-        {% if flow_properties %}
         {% for property in flow_properties %}
         self.{{ property.name }} = {{ property.name }}
         {% endfor %}
-        {% endif %}
         super.init(context: context, viewController: viewController)
     }
 
