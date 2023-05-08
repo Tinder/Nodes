@@ -10,7 +10,7 @@ extension UIFramework {
             viewControllerProperties: "",
             viewControllerMethods: "",
             viewControllerMethodsForRootNode: """
-                override func viewDidAppear(_ animated: Bool) {
+                override internal func viewDidAppear(_ animated: Bool) {
                     super.viewDidAppear(animated)
                     receiver?.viewDidAppear()
                 }
