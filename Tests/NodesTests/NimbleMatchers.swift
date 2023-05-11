@@ -19,7 +19,7 @@ extension XCTestCase {
             else { return PredicateResult(status: .fail, message: .expectedTo("not be nil, got <nil>")) }
             addTeardownBlock { [weak object] in
                 if object != nil {
-                    let message: String = "Expected object to deallocate after test"
+                    let message: String = "Expected object of type `\(T.self)` to deallocate after test"
                     XCTFail(message, file: file, line: line)
                 }
             }
