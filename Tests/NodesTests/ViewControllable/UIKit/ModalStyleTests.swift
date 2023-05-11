@@ -1,8 +1,5 @@
 //
-//  ModalStyleTests.swift
-//  NodeTests
-//
-//  Created by Christopher Fuller on 5/4/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 #if canImport(UIKit)
@@ -64,26 +61,6 @@ final class ModalStyleTests: XCTestCase {
         expect(modalStyle.allowInteractiveDismissal) == false
 
         expect(viewController.modalPresentationStyle) == .overFullScreen
-        if #available(macCatalyst 13.0, *) {
-            #if !os(tvOS)
-            expect(viewController.modalPresentationCapturesStatusBarAppearance) == false
-            #endif
-        }
-        if #available(macCatalyst 13.0, iOS 13.0, tvOS 13.0, *) {
-            expect(viewController.isModalInPresentation) == true
-        }
-    }
-
-    func testCustom() {
-
-        let modalStyle: ModalStyle = .custom()
-        let viewController: UIViewController = givenViewController(with: modalStyle)
-
-        expect(modalStyle.behavior) == .custom
-        expect(modalStyle.controlStatusBarAppearance) == false
-        expect(modalStyle.allowInteractiveDismissal) == false
-
-        expect(viewController.modalPresentationStyle) == .custom
         if #available(macCatalyst 13.0, *) {
             #if !os(tvOS)
             expect(viewController.modalPresentationCapturesStatusBarAppearance) == false
@@ -176,6 +153,26 @@ final class ModalStyleTests: XCTestCase {
             #endif
         }
         expect(viewController.isModalInPresentation) == true
+    }
+
+    func testCustom() {
+
+        let modalStyle: ModalStyle = .custom()
+        let viewController: UIViewController = givenViewController(with: modalStyle)
+
+        expect(modalStyle.behavior) == .custom
+        expect(modalStyle.controlStatusBarAppearance) == false
+        expect(modalStyle.allowInteractiveDismissal) == false
+
+        expect(viewController.modalPresentationStyle) == .custom
+        if #available(macCatalyst 13.0, *) {
+            #if !os(tvOS)
+            expect(viewController.modalPresentationCapturesStatusBarAppearance) == false
+            #endif
+        }
+        if #available(macCatalyst 13.0, iOS 13.0, tvOS 13.0, *) {
+            expect(viewController.isModalInPresentation) == true
+        }
     }
 
     func testAdditionalConfiguration() {

@@ -1,6 +1,10 @@
-{{ file_header }}{% if context_imports %}
+{{ file_header }}
+{% if context_imports %}
+
 {% for import in context_imports %}
-import {{ import }}{% endfor %}{% endif %}
+import {{ import }}
+{% endfor %}
+{% endif %}
 
 /**
  PURPOSE:
@@ -12,11 +16,14 @@ internal protocol {{ node_name }}Listener: AnyObject {}
  PURPOSE:
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
- */{% if root_node %}
+ */
+{% if root_node %}
 internal protocol {{ node_name }}FlowInterface: Flow {
     func didBecomeReady()
-}{% else %}
-internal protocol {{ node_name }}FlowInterface: Flow {}{% endif %}
+}
+{% else %}
+internal protocol {{ node_name }}FlowInterface: Flow {}
+{% endif %}
 
 /**
  PURPOSE:
@@ -38,10 +45,12 @@ internal final class {{ node_name }}ContextImp: AbstractContext
     @Published internal private(set) var state: {{ node_name }}State
 
     /// The Analytics instance.
-    private let analytics: {{ node_name }}Analytics{% if root_node %}
+    private let analytics: {{ node_name }}Analytics
 
-    private var isReady: Bool = false{% endif %}
+    {% if root_node %}
+    private var isReady: Bool = false
 
+    {% endif %}
     /// The initializer.
     /// - Parameters:
     ///   - workers: The Worker instances
@@ -66,7 +75,9 @@ internal final class {{ node_name }}ContextImp: AbstractContext
     }
 }
 
-extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}{% if owns_view %}{% if root_node %}
+extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}
+{% if owns_view %}
+{% if root_node %}
 extension {{ node_name }}ContextImp: {{ node_name }}Receiver {
 
     internal func viewDidAppear() {
@@ -75,5 +86,8 @@ extension {{ node_name }}ContextImp: {{ node_name }}Receiver {
         isReady = true
         flow?.didBecomeReady()
     }
-}{% else %}
-extension {{ node_name }}ContextImp: {{ node_name }}Receiver {}{% endif %}{% endif %}
+}
+{% else %}
+extension {{ node_name }}ContextImp: {{ node_name }}Receiver {}
+{% endif %}
+{% endif %}

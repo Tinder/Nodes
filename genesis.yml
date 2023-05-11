@@ -2027,7 +2027,7 @@ files:
 
   - path: Package.swift
     contents: |
-      // swift-tools-version:5.6
+      // swift-tools-version:5.7
 
       import PackageDescription
 
@@ -2056,28 +2056,31 @@ files:
         indentWidth: 4
         preGenCommand: |
           set -e
-          WORKSPACE_DOCUMENT_NAME="{{ project|split:' '|join:'_' }}.xcodeproj"
-          osascript \
-              -e 'set workspaceDocumentName to "'"${WORKSPACE_DOCUMENT_NAME}"'"' \
-              -e 'if application id "com.apple.dt.Xcode" is running then' \
-              -e 'tell application id "com.apple.dt.Xcode"' \
-              -e 'if workspace document workspaceDocumentName exists then' \
-              -e 'set workspaceDocument to workspace document workspaceDocumentName' \
-              -e 'if loaded of workspaceDocument is false then' \
-              -e 'error "workspace not loaded"' \
-              -e 'end if' \
-              -e 'log "⚙️  Closing project..."' \
-              -e 'tell workspaceDocument' \
-              -e 'stop it' \
-              -e 'delay 0.5' \
-              -e 'close it' \
-              -e 'end tell' \
-              -e 'activate' \
-              -e 'delay 1.5' \
-              -e 'end if' \
-              -e 'end tell' \
-              -e 'end if'
-          unset WORKSPACE_DOCUMENT_NAME
+          if test -z "$CI"
+          then
+              WORKSPACE_DOCUMENT_NAME="{{ project|split:' '|join:'_' }}.xcodeproj"
+              osascript \
+                  -e 'set workspaceDocumentName to "'"${WORKSPACE_DOCUMENT_NAME}"'"' \
+                  -e 'if application id "com.apple.dt.Xcode" is running then' \
+                  -e 'tell application id "com.apple.dt.Xcode"' \
+                  -e 'if workspace document workspaceDocumentName exists then' \
+                  -e 'set workspaceDocument to workspace document workspaceDocumentName' \
+                  -e 'if loaded of workspaceDocument is false then' \
+                  -e 'error "workspace not loaded"' \
+                  -e 'end if' \
+                  -e 'log "⚙️  Closing project..."' \
+                  -e 'tell workspaceDocument' \
+                  -e 'stop it' \
+                  -e 'delay 0.5' \
+                  -e 'close it' \
+                  -e 'end tell' \
+                  -e 'activate' \
+                  -e 'delay 1.5' \
+                  -e 'end if' \
+                  -e 'end tell' \
+                  -e 'end if'
+              unset WORKSPACE_DOCUMENT_NAME
+          fi
           NEEDLE_GENERATED="{{ project|split:' '|join:'_' }}/Generated/NeedleGenerated.swift"
           MOCKOLO_GENERATED="{{ project|split:' '|join:'_' }}Tests/Generated/MockoloGenerated.swift"
           [[ -f "${NEEDLE_GENERATED}" ]] || touch "${NEEDLE_GENERATED}"
@@ -2085,8 +2088,11 @@ files:
           unset NEEDLE_GENERATED MOCKOLO_GENERATED
         postGenCommand: |
           set -e
-          swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
-          xed {{ project|split:' '|join:'_' }}.xcodeproj
+          if test -z "$CI"
+          then
+              swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
+              xed {{ project|split:' '|join:'_' }}.xcodeproj
+          fi
       packages:
         Nodes:
           url: git@github.com:TinderApp/Nodes.git
@@ -2105,6 +2111,7 @@ files:
           platform: iOS
           dependencies:
             - package: Nodes
+              product: Nodes
             - package: NeedleFoundation
           preBuildScripts:
             - name: Needle

@@ -1,6 +1,10 @@
-{{ file_header }}{% if builder_imports %}
+{{ file_header }}
+
+{% if builder_imports %}
 {% for import in builder_imports %}
-import {{ import }}{% endfor %}{% endif %}
+import {{ import }}
+{% endfor %}
+{% endif %}
 
 /**
  PURPOSE:
@@ -11,11 +15,16 @@ internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
 /**
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
- */{% if dependencies %}
-public protocol {{ node_name }}Dependency: Dependency {{ '{' }}{% for dependency in dependencies %}
-    var {{ dependency.name }}: {{ dependency.type }} { get }{% endfor %}
-}{% else %}
-public protocol {{ node_name }}Dependency: Dependency {}{% endif %}
+ */
+{% if dependencies %}
+public protocol {{ node_name }}Dependency: Dependency {
+    {% for dependency in dependencies %}
+    var {{ dependency.name }}: {{ dependency.type }} { get }
+    {% endfor %}
+}
+{% else %}
+public protocol {{ node_name }}Dependency: Dependency {}
+{% endif %}
 
 /**
  PURPOSE:
@@ -158,11 +167,21 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         let viewController: {{ node_name }}ViewController = .init(
             rootView: view
         )
+        {% if flow_properties %}
         let flow: {{ node_name }}FlowImp = .init(
             context: context,
-            viewController: viewController{% if flow_properties %},{% for property in flow_properties %}
-            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %},{% endif %}{% endfor %}{% endif %}
+            viewController: viewController,
+            {% for property in flow_properties %}
+            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %}{{ ',' }}
+            {% endif %}
+            {% endfor +%}
         )
+        {% else %}
+        let flow: {{ node_name }}FlowImp = .init(
+            context: context,
+            viewController: viewController
+        )
+        {% endif %}
         context.flow = flow
         return flow
     }

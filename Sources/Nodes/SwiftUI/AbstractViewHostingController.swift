@@ -1,8 +1,5 @@
 //
-//  AbstractViewHostingController.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 5/11/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 #if canImport(SwiftUI)

@@ -1,8 +1,5 @@
 //
-//  StateObserver.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 5/1/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 #if canImport(Combine)
@@ -40,8 +37,8 @@ extension StateObserver {
     public func observe<P: Publisher>(
         _ publisher: P
     ) -> AnyCancellable where P.Output == StateObserverStateType, P.Failure == Never {
-        publisher.sink { [weak self] in
-            self?.update(with: $0)
+        publisher.sink { [weak self] state in
+            self?.update(with: state)
         }
     }
 }

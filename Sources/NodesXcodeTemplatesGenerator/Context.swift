@@ -1,8 +1,5 @@
 //
-//  Context.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Christopher Fuller on 6/3/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 internal protocol Context {
@@ -24,9 +21,9 @@ extension Set where Element == String {
         }
         return self
             .filter { !$0.isEmpty }
-            .sorted {
-                let lhs: [String] = prepare($0)
-                let rhs: [String] = prepare($1)
+            .sorted { lhs, rhs  in
+                let lhs: [String] = prepare(lhs)
+                let rhs: [String] = prepare(rhs)
                 switch (lhs.count, rhs.count) {
                 case (2, 2):
                     guard lhs[0] == rhs[0]

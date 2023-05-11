@@ -1,8 +1,5 @@
 //
-//  PluginListTests.swift
-//  NodeTests
-//
-//  Created by Christopher Fuller on 5/4/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 import Nimble
@@ -69,7 +66,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         pluginList.creationOrderOverride = ["plugin3", "plugin1"]
         expect(pluginList.createAll().map(\.identifier)) == ["plugin3", "plugin1"]
         pluginList.creationOrderOverride = []
-        expect(pluginList.createAll().map(\.identifier)) == []
+        expect(pluginList.createAll().map(\.identifier)).to(beEmpty())
     }
 
     func testPluginListWithDefaultCreateAll() {
@@ -89,7 +86,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         pluginList.creationOrderOverride = ["plugin3", "plugin1"]
         expect(pluginList.create()?.identifier) == "plugin1"
         pluginList.creationOrderOverride = []
-        expect(pluginList.create()).to(beNil())
+        expect(pluginList.create()) == nil
     }
 
     func testPluginListWithDefaultCreate() {
@@ -107,9 +104,9 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
         expect(pluginList.create(key: "plugin2")?.identifier) == "plugin2"
         pluginList.creationOrderOverride = ["plugin3", "plugin1"]
-        expect(pluginList.create(key: "plugin2")).to(beNil())
+        expect(pluginList.create(key: "plugin2")) == nil
         pluginList.creationOrderOverride = []
-        expect(pluginList.create(key: "plugin2")).to(beNil())
+        expect(pluginList.create(key: "plugin2")) == nil
     }
 
     func testPluginListWithDefaultCreateWithKey() {

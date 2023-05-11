@@ -1,8 +1,5 @@
 //
-//  BindingTests.swift
-//  NodesTests
-//
-//  Created by Seppe Snoeck on 21/10/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 import Nimble

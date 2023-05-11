@@ -1,8 +1,5 @@
 //
-//  PluginTests.swift
-//  NodeTests
-//
-//  Created by Christopher Fuller on 5/4/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 import Nimble
@@ -32,7 +29,7 @@ final class PluginTests: XCTestCase, TestCaseHelpers {
     func testCreate() {
         let plugin: TestPlugin = .init { ComponentType() }
         expect(plugin).to(notBeNilAndToDeallocateAfterTest())
-        expect(plugin.create()).to(beNil())
+        expect(plugin.create()) == nil
         plugin.isEnabledOverride = true
         expect(plugin.create()).to(beAKindOf(BuildType.self))
     }

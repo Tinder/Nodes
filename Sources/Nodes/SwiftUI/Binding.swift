@@ -1,8 +1,5 @@
 //
-//  Binding.swift
-//  Nodes
-//
-//  Created by Seppe Snoeck on 11/10/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 #if canImport(SwiftUI)
@@ -59,7 +56,7 @@ extension Binding {
     ///
     /// - Returns: A SwiftUI `Binding` instance.
     public static func bind(to value: Value, onChange: ((Value) -> Void)?) -> Binding<Value> {
-        guard let onChange: (Value) -> Void = onChange
+        guard let onChange: (Value) -> Void
         else { return .constant(value) }
         return bind(to: value, onChange: onChange)
     }

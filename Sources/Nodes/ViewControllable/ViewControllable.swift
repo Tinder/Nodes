@@ -1,13 +1,12 @@
 //
-//  ViewControllable.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 10/3/20.
+//  Copyright © 2020 Tinder (Match Group, LLC)
 //
 
 #if canImport(UIKit) && !os(watchOS)
 
 import UIKit
+
+// swiftlint:disable file_types_order
 
 /**
  * The interface used for injecting a user interface into a `Flow` instance to limit the available API,
@@ -104,3 +103,5 @@ extension ViewControllable {
 public protocol ViewControllable: AnyObject {}
 
 #endif
+
+// swiftlint:enable file_types_order
