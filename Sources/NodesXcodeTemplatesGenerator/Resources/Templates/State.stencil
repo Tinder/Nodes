@@ -1,6 +1,10 @@
-{{ file_header }}{% if state_imports %}
+{{ file_header }}
+{% if state_imports %}
+
 {% for import in state_imports %}
-import {{ import }}{% endfor %}{% endif %}
+import {{ import }}
+{% endfor %}
+{% endif %}
 
 /**
  PURPOSE:
