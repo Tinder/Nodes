@@ -12,7 +12,7 @@ env:
 jobs:
   lint:
     name: Lint
-    runs-on: macos-12
+    runs-on: macos-latest
     steps:
     - name: Checkout source
       uses: actions/checkout@v3
