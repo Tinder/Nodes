@@ -9,7 +9,7 @@
 [![Bazel](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml)
 &nbsp;
 [![DocC](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml)
-&nbsp;
+
 [![Pages](https://github.com/TinderApp/Nodes/actions/workflows/pages.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/pages.yml)
 &nbsp;
 [![Artifactory](https://github.com/TinderApp/Nodes/actions/workflows/artifactory.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/artifactory.yml)
