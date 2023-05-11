@@ -31,6 +31,9 @@ final class StateObserverTests: XCTestCase {
         subject.send()
         subject.send()
         expect(observer.observerCallCount).toEventually(equal(3))
-        waitUntil { $0() }
+        waitUntil { done in
+            usleep(100)
+            done()
+        }
     }
 }
