@@ -29,9 +29,9 @@ extension TestFactories {
             return uiFramework
         }
         config.fileHeader = "<fileHeader>"
-        config.baseImports = ["<baseImports>"]
-        config.reactiveImports = ["<reactiveImports>"]
-        config.dependencyInjectionImports = ["<dependencyInjectionImports>"]
+        config.baseImports = ["<baseImport>"]
+        config.reactiveImports = ["<reactiveImport>"]
+        config.dependencyInjectionImports = ["<dependencyInjectionImport>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllableType = "<viewControllableType>"
@@ -48,13 +48,13 @@ extension TestFactories {
         NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
-            analyticsImports: ["<analyticsImports>"],
-            builderImports: ["<builderImports>"],
-            contextImports: ["<contextImports>"],
-            flowImports: ["<flowImports>"],
-            stateImports: ["<stateImports>"],
-            viewControllerImports: ["<viewControllerImports>"],
-            viewStateImports: ["<viewStateImports>"],
+            analyticsImports: ["<analyticsImport>"],
+            builderImports: ["<builderImport>"],
+            contextImports: ["<contextImport>"],
+            flowImports: ["<flowImport>"],
+            stateImports: ["<stateImport>"],
+            viewControllerImports: ["<viewControllerImport>"],
+            viewStateImports: ["<viewStateImport>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             viewControllerType: "<viewControllerType>",
@@ -74,13 +74,13 @@ extension TestFactories {
     func givenNodeRootContext() -> NodeRootContext {
         NodeRootContext(
             fileHeader: "<fileHeader>",
-            analyticsImports: ["<analyticsImports>"],
-            builderImports: ["<builderImports>"],
-            contextImports: ["<contextImports>"],
-            flowImports: ["<flowImports>"],
-            stateImports: ["<stateImports>"],
-            viewControllerImports: ["<viewControllerImports>"],
-            viewStateImports: ["<viewStateImports>"],
+            analyticsImports: ["<analyticsImport>"],
+            builderImports: ["<builderImport>"],
+            contextImports: ["<contextImport>"],
+            flowImports: ["<flowImport>"],
+            stateImports: ["<stateImport>"],
+            viewControllerImports: ["<viewControllerImport>"],
+            viewStateImports: ["<viewStateImport>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             viewControllerType: "<viewControllerType>",
@@ -101,11 +101,11 @@ extension TestFactories {
         NodeViewInjectedContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
-            analyticsImports: ["<analyticsImports>"],
-            builderImports: ["<builderImports>"],
-            contextImports: ["<contextImports>"],
-            flowImports: ["<flowImports>"],
-            stateImports: ["<stateImports>"],
+            analyticsImports: ["<analyticsImport>"],
+            builderImports: ["<builderImport>"],
+            contextImports: ["<contextImport>"],
+            flowImports: ["<flowImport>"],
+            stateImports: ["<stateImport>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             viewControllableType: "<viewControllableType>",
@@ -119,7 +119,7 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             returnType: "<returnType>",
-            pluginImports: ["<pluginImports>"]
+            pluginImports: ["<pluginImport>"]
         )
     }
 
@@ -127,7 +127,7 @@ extension TestFactories {
         PluginContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
-            pluginImports: ["<pluginImports>"]
+            pluginImports: ["<pluginImport>"]
         )
     }
 
@@ -135,7 +135,7 @@ extension TestFactories {
         PluginListContext(
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
-            pluginListImports: ["<pluginListImports>"],
+            pluginListImports: ["<pluginListImport>"],
             viewControllableFlowType: "<viewControllableFlowType>"
         )
     }
@@ -144,7 +144,7 @@ extension TestFactories {
         WorkerContext(
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",
-            workerImports: ["<workerImports>"],
+            workerImports: ["<workerImport>"],
             cancellableType: "<cancellableType>"
         )
     }

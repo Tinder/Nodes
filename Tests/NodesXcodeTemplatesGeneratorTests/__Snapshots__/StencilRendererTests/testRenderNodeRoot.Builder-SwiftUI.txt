@@ -1,6 +1,6 @@
 <fileHeader>
 
-import <builderImports>
+import <builderImport>
 
 /**
  PURPOSE:

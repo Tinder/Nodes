@@ -1,6 +1,6 @@
 <fileHeader>
 
-import <flowImports>
+import <flowImport>
 
 /**
  PURPOSE:
