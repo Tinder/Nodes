@@ -57,7 +57,7 @@ internal final class {{ plugin_name }}PluginComponent: Component
      }
 
      */
-     {% if not return_type %}
+    {% if not return_type %}
 
     fileprivate func componentFactory() -> {{ plugin_name }}Component {
         {{ plugin_name }}Component(parent: self)
