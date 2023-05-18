@@ -32,7 +32,7 @@ final class StateObserverTests: XCTestCase {
         subject.send()
         expect(observer.observerCallCount).toEventually(equal(3))
         waitUntil { done in
-            usleep(100)
+            usleep(1_000)
             done()
         }
     }
