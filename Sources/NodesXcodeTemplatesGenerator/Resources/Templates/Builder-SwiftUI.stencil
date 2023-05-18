@@ -1,6 +1,6 @@
 {{ file_header }}
-
 {% if builder_imports %}
+
 {% for import in builder_imports %}
 import {{ import }}
 {% endfor %}
@@ -111,7 +111,9 @@ internal final class {{ node_name }}Component: Component
  The Builder interface (available to mock for testability).
  */
 internal protocol {{ node_name }}Builder: AnyObject {
-    func build(withListener listener: {{ node_name }}Listener) -> {{ node_name }}Flow
+    func build(
+        withListener listener: {{ node_name }}Listener
+    ) -> {{ node_name }}Flow
 }
 
 /**
@@ -132,7 +134,9 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
     /// - Parameter listener: An object that can listen for signals from the Node
     /// - Returns: The Flow instance
-    internal func build(withListener listener: {{ node_name }}Listener) -> {{ node_name }}Flow {
+    internal func build(
+        withListener listener: {{ node_name }}Listener
+    ) -> {{ node_name }}Flow {
         let dynamicBuildDependency: {{ node_name }}DynamicBuildDependency = listener
         let dynamicComponentDependency: {{ node_name }}DynamicComponentDependency = ()
         return build(dynamicBuildDependency, dynamicComponentDependency)
@@ -167,21 +171,15 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         let viewController: {{ node_name }}ViewController = .init(
             rootView: view
         )
-        {% if flow_properties %}
         let flow: {{ node_name }}FlowImp = .init(
             context: context,
-            viewController: viewController,
+            viewController: viewController{% if flow_properties %}{{ ',' }}
             {% for property in flow_properties %}
             {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %}{{ ',' }}
             {% endif %}
-            {% endfor +%}
+            {% endfor %}
+            {% endif +%}
         )
-        {% else %}
-        let flow: {{ node_name }}FlowImp = .init(
-            context: context,
-            viewController: viewController
-        )
-        {% endif %}
         context.flow = flow
         return flow
     }

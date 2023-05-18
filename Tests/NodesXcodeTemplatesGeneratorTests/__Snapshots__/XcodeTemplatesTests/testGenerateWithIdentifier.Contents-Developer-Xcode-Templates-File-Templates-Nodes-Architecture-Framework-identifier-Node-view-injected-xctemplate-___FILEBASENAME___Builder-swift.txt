@@ -87,8 +87,8 @@ internal final class ___VARIABLE_productName___Component: Component
 
      Declare child component factories as 'fileprivate' methods.
 
-     fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
-         ChildComponent(parent: self)
+     fileprivate func <name>ComponentFactory() -> <Name>Component {
+         <Name>Component(parent: self)
      }
 
      */
@@ -101,8 +101,10 @@ internal final class ___VARIABLE_productName___Component: Component
  The Builder interface (available to mock for testability).
  */
 internal protocol ___VARIABLE_productName___Builder: AnyObject {
-    func build(withListener listener: ___VARIABLE_productName___Listener,
-               viewController: ___VARIABLE_productName___ViewControllable) -> ___VARIABLE_productName___Flow
+    func build(
+        withListener listener: ___VARIABLE_productName___Listener,
+        viewController: ___VARIABLE_productName___ViewControllable
+    ) -> ___VARIABLE_productName___Flow
 }
 
 /**
@@ -141,7 +143,8 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
         component: ___VARIABLE_productName___Component,
         dynamicBuildDependency: ___VARIABLE_productName___DynamicBuildDependency
     ) -> ___VARIABLE_productName___Flow {
-        let (listener, viewController) = dynamicBuildDependency
+        let listener: ___VARIABLE_productName___Listener = dynamicBuildDependency.0
+        let viewController: ___VARIABLE_productName___ViewController = dynamicBuildDependency.1
         let analytics: ___VARIABLE_productName___AnalyticsImp = .init()
         let context: ___VARIABLE_productName___ContextImp = .init(
             workers: [],

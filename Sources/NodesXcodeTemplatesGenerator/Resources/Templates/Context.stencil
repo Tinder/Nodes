@@ -46,11 +46,11 @@ internal final class {{ node_name }}ContextImp: AbstractContext
 
     /// The Analytics instance.
     private let analytics: {{ node_name }}Analytics
-
     {% if root_node %}
-    private var isReady: Bool = false
 
+    private var isReady: Bool = false
     {% endif %}
+
     /// The initializer.
     /// - Parameters:
     ///   - workers: The Worker instances
