@@ -169,7 +169,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         let listener: {{ node_name }}Listener = dynamicBuildDependency
         {% else %}
         let listener: {{ node_name }}Listener = dynamicBuildDependency.0
-        let viewController: {{ node_name }}ViewController = dynamicBuildDependency.1
+        let viewController: {{ node_name }}ViewControllable = dynamicBuildDependency.1
         {% endif %}
         let analytics: {{ node_name }}AnalyticsImp = .init()
         let context: {{ node_name }}ContextImp = .init(
