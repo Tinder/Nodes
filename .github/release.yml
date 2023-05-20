@@ -1,0 +1,23 @@
+changelog:
+  categories:
+    - title: Framework
+      labels:
+        - framework
+    - title: Generator
+      labels:
+        - generator
+    - title: Templates
+      labels:
+        - templates
+    - title: Maintenance
+      labels:
+        - maintenance
+    - title: Uncategorized
+      labels:
+        - "*"
+      exclude:
+        labels:
+          - framework
+          - generator
+          - templates
+          - maintenance
