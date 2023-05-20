@@ -48,14 +48,16 @@ lint:
 
 .PHONY: analyze
 analyze: target ?= Nodes
-analyze: destination ?= generic/platform=macOS
 analyze: format ?= emoji
 analyze:
+ifndef platform
+	$(error required variable: "platform")
+endif
 	@DERIVED_DATA="$$(mktemp -d)"; \
 	XCODEBUILD_LOG="$$DERIVED_DATA/xcodebuild.log"; \
 	xcodebuild \
 		-scheme "$(target)-Package" \
-		-destination "$(destination)" \
+		-destination "generic/platform=$(platform)" \
 		-derivedDataPath "$$DERIVED_DATA" \
 		-configuration "Debug" \
 		CODE_SIGNING_ALLOWED="NO" \
