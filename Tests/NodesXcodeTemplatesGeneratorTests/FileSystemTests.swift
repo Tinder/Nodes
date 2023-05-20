@@ -2,11 +2,11 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
+#if os(macOS)
+
 import Nimble
 import NodesXcodeTemplatesGenerator
 import XCTest
-
-#if os(macOS)
 
 final class FileSystemTests: XCTestCase {
 
