@@ -1,14 +1,14 @@
 <div align="center">
 
-[![Lint](https://github.com/TinderApp/Nodes/actions/workflows/lint.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/lint.yml)
+[![Lint](https://github.com/TinderApp/Nodes/actions/workflows/lint.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/lint.yml)
 &nbsp;
-[![Swift](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml)
+[![Swift](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml)
 &nbsp;
-[![Xcode](https://github.com/TinderApp/Nodes/actions/workflows/xcode.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/xcode.yml)
+[![Xcode](https://github.com/TinderApp/Nodes/actions/workflows/xcode.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/xcode.yml)
 &nbsp;
-[![Bazel](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml)
+[![Bazel](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml)
 &nbsp;
-[![DocC](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml)
+[![DocC](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml)
 
 [![Pages](https://github.com/TinderApp/Nodes/actions/workflows/pages.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/pages.yml)
 &nbsp;
