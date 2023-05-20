@@ -105,8 +105,8 @@ internal final class {{ node_name }}Component: Component
 
      Declare child component factories as 'fileprivate' methods.
 
-     fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
-         ChildComponent(parent: self)
+     fileprivate func <name>ComponentFactory() -> <Name>Component {
+         <Name>Component(parent: self)
      }
 
      */
@@ -118,16 +118,12 @@ internal final class {{ node_name }}Component: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
-{% if owns_view %}
 internal protocol {{ node_name }}Builder: AnyObject {
-    func build(withListener listener: {{ node_name }}Listener) -> {{ node_name }}Flow
+    func build(
+        withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}
+        viewController: {{ node_name }}ViewControllable{% endif +%}
+    ) -> {{ node_name }}Flow
 }
-{% else %}
-internal protocol {{ node_name }}Builder: AnyObject {
-    func build(withListener listener: {{ node_name }}Listener,
-               viewController: {{ node_name }}ViewControllable) -> {{ node_name }}Flow
-}
-{% endif %}
 
 /**
  PURPOSE:
@@ -147,40 +143,41 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
     /// - Parameter listener: An object that can listen for signals from the Node
     /// - Returns: The Flow instance
-    {% if owns_view %}
-    internal func build(withListener listener: {{ node_name }}Listener) -> {{ node_name }}Flow {
-        let dynamicBuildDependency: {{ node_name }}DynamicBuildDependency = listener
-        let dynamicComponentDependency: {{ node_name }}DynamicComponentDependency = ()
-        return build(dynamicBuildDependency, dynamicComponentDependency)
-    }
-    {% else %}
     internal func build(
-        withListener listener: {{ node_name }}Listener,
-        viewController: {{ node_name }}ViewControllable
+        withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}
+        viewController: {{ node_name }}ViewControllable{% endif +%}
     ) -> {{ node_name }}Flow {
+        {% if owns_view %}
+        let dynamicBuildDependency: {{ node_name }}DynamicBuildDependency = listener
+        {% else %}
         let dynamicBuildDependency: {{ node_name }}DynamicBuildDependency = (listener, viewController)
+        {% endif %}
         let dynamicComponentDependency: {{ node_name }}DynamicComponentDependency = ()
         return build(dynamicBuildDependency, dynamicComponentDependency)
     }
-    {% endif %}
 
     /// The factory method in which the Context and Flow are initialized.
     /// - Parameters:
     ///   - component: The component instance
     ///   - dynamicBuildDependency: The dynamic build dependency
     /// - Returns: The Flow instance
-    {% if owns_view %}
     override internal func build(
         component: {{ node_name }}Component,
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency
     ) -> {{ node_name }}Flow {
+        {% if owns_view %}
         let listener: {{ node_name }}Listener = dynamicBuildDependency
+        {% else %}
+        let listener: {{ node_name }}Listener = dynamicBuildDependency.0
+        let viewController: {{ node_name }}ViewControllable = dynamicBuildDependency.1
+        {% endif %}
         let analytics: {{ node_name }}AnalyticsImp = .init()
         let context: {{ node_name }}ContextImp = .init(
             workers: [],
             analytics: analytics
         )
         context.listener = listener
+        {% if owns_view %}
         let viewStateFactory: {{ node_name }}ViewStateFactory = .init()
         let viewState: Publishers.Map = .init(
             upstream: context.$state,
@@ -191,55 +188,19 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             statePublisher: viewState.eraseToAnyPublisher()
         )
         viewController.receiver = context
-        {% if flow_properties %}
-        let flow: {{ node_name }}FlowImp = .init(
-            context: context,
-            viewController: viewController,
-            {% for property in flow_properties %}
-            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %}{{ ','}}
-            {% endif %}
-            {% endfor +%}
-        )
-        {% else %}
-        let flow: {{ node_name }}FlowImp = .init(
-            context: context,
-            viewController: viewController
-        )
         {% endif %}
-        context.flow = flow
-        return flow
-    }
-    {% else %}
-    override internal func build(
-        component: {{ node_name }}Component,
-        dynamicBuildDependency: {{ node_name }}DynamicBuildDependency
-    ) -> {{ node_name }}Flow {
-        let (listener, viewController) = dynamicBuildDependency
-        let analytics: {{ node_name }}AnalyticsImp = .init()
-        let context: {{ node_name }}ContextImp = .init(
-            workers: [],
-            analytics: analytics
-        )
-        context.listener = listener
-        {% if flow_properties %}
         let flow: {{ node_name }}FlowImp = .init(
             context: context,
-            viewController: viewController,
+            viewController: viewController{% if flow_properties %}{{ ',' }}
             {% for property in flow_properties %}
             {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %}{{ ',' }}
             {% endif %}
-            {% endfor +%}
+            {% endfor %}
+            {% endif +%}
         )
-        {% else %}
-        let flow: {{ node_name }}FlowImp = .init(
-            context: context,
-            viewController: viewController
-        )
-        {% endif %}
         context.flow = flow
         return flow
     }
-    {% endif %}
 }
 
 extension {{ node_name }}BuilderImp: {{ node_name }}Builder {}

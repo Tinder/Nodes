@@ -87,8 +87,8 @@ internal final class <nodeName>Component: Component
 
      Declare child component factories as 'fileprivate' methods.
 
-     fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
-         ChildComponent(parent: self)
+     fileprivate func <name>ComponentFactory() -> <Name>Component {
+         <Name>Component(parent: self)
      }
 
      */
@@ -101,8 +101,10 @@ internal final class <nodeName>Component: Component
  The Builder interface (available to mock for testability).
  */
 internal protocol <nodeName>Builder: AnyObject {
-    func build(withListener listener: <nodeName>Listener,
-               viewController: <nodeName>ViewControllable) -> <nodeName>Flow
+    func build(
+        withListener listener: <nodeName>Listener,
+        viewController: <nodeName>ViewControllable
+    ) -> <nodeName>Flow
 }
 
 /**
@@ -141,7 +143,8 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         component: <nodeName>Component,
         dynamicBuildDependency: <nodeName>DynamicBuildDependency
     ) -> <nodeName>Flow {
-        let (listener, viewController) = dynamicBuildDependency
+        let listener: <nodeName>Listener = dynamicBuildDependency.0
+        let viewController: <nodeName>ViewControllable = dynamicBuildDependency.1
         let analytics: <nodeName>AnalyticsImp = .init()
         let context: <nodeName>ContextImp = .init(
             workers: [],

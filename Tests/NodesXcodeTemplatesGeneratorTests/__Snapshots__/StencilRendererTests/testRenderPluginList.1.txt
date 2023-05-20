@@ -19,7 +19,9 @@ internal protocol <pluginListName>Listener: AnyObject {}
  The common Builder interface.
  */
 internal protocol <pluginListName>Builder: AnyObject {
-    func build(withListener listener: <pluginListName>Listener) -> <pluginListName>Flow
+    func build(
+        withListener listener: <pluginListName>Listener
+    ) -> <pluginListName>Flow
 }
 
 /**
@@ -68,8 +70,8 @@ internal final class <pluginListName>PluginListComponent: Component
 
      Declare child component factories as 'fileprivate' methods.
 
-     fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
-         ChildComponent(parent: self)
+     fileprivate func <name>ComponentFactory() -> <Name>Component {
+         <Name>Component(parent: self)
      }
 
      */

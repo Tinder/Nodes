@@ -52,8 +52,8 @@ internal final class {{ plugin_name }}PluginComponent: Component
 
      Declare child component factories as 'fileprivate' methods.
 
-     fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
-         ChildComponent(parent: self)
+     fileprivate func <name>ComponentFactory() -> <Name>Component {
+         <Name>Component(parent: self)
      }
 
      */
@@ -76,7 +76,11 @@ internal typealias {{ plugin_name }}PluginStateType = Void
  The Plugin interface (available to mock for testability).
  */
 internal protocol {{ plugin_name }}Plugin {
-    func create() ->{{ ' ' }}{% if return_type %}{{ return_type }}{% else %}{{ plugin_name }}Builder{% endif %}?
+    {% if return_type %}
+    func create() -> {{ return_type }}?
+    {% else %}
+    func create() -> {{ plugin_name }}Builder?
+    {% endif %}
 }
 
 /**
@@ -109,19 +113,16 @@ internal final class {{ plugin_name }}PluginImp: Plugin
     /// The factory method in which the instance is initialized.
     /// - Parameter component: The component instance
     /// - Returns: The initialized instance
-    {% if return_type %}
     override internal func build(
         component: {{ plugin_name }}PluginComponent
+    {% if return_type %}
     ) -> {{ return_type }} {
         // TODO: Initialize instance
-    }
     {% else %}
-    override internal func build(
-        component: {{ plugin_name }}PluginComponent
     ) -> {{ plugin_name }}Builder {
         {{ plugin_name }}BuilderImp(componentFactory: component.componentFactory)
-    }
     {% endif %}
+    }
 }
 
 extension {{ plugin_name }}PluginImp: {{ plugin_name }}Plugin {}
