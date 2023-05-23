@@ -12,12 +12,3 @@ changelog:
     - title: Maintenance
       labels:
         - maintenance
-    - title: Uncategorized
-      labels:
-        - "*"
-      exclude:
-        labels:
-          - framework
-          - generator
-          - templates
-          - maintenance
