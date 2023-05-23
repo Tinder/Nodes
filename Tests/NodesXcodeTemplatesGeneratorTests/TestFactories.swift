@@ -1,8 +1,5 @@
 //
-//  TestFactories.swift
-//  NodesXcodeTemplatesGeneratorTests
-//
-//  Created by Christopher Fuller on 5/31/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 @testable import NodesXcodeTemplatesGenerator
@@ -24,17 +21,17 @@ extension TestFactories {
                                            import: "<uiFrameworkImport>",
                                            viewControllerType: "<viewControllerType>",
                                            viewControllerSuperParameters: "<viewControllerSuperParameters>"))
-        ].map {
-            var uiFramework: UIFramework = $0
+        ].map { uiFramework in
+            var uiFramework: UIFramework = uiFramework
             uiFramework.viewControllerProperties = "<viewControllerProperties>"
             uiFramework.viewControllerMethods = "<viewControllerMethods>"
             uiFramework.viewControllerMethodsForRootNode = "<viewControllerMethodsForRootNode>"
             return uiFramework
         }
         config.fileHeader = "<fileHeader>"
-        config.baseImports = ["<baseImports>"]
-        config.reactiveImports = ["<reactiveImports>"]
-        config.dependencyInjectionImports = ["<dependencyInjectionImports>"]
+        config.baseImports = ["<baseImport>"]
+        config.reactiveImports = ["<reactiveImport>"]
+        config.dependencyInjectionImports = ["<dependencyInjectionImport>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllableType = "<viewControllableType>"
@@ -51,13 +48,13 @@ extension TestFactories {
         NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
-            analyticsImports: ["<analyticsImports>"],
-            builderImports: ["<builderImports>"],
-            contextImports: ["<contextImports>"],
-            flowImports: ["<flowImports>"],
-            stateImports: ["<stateImports>"],
-            viewControllerImports: ["<viewControllerImports>"],
-            viewStateImports: ["<viewStateImports>"],
+            analyticsImports: ["<analyticsImport>"],
+            builderImports: ["<builderImport>"],
+            contextImports: ["<contextImport>"],
+            flowImports: ["<flowImport>"],
+            stateImports: ["<stateImport>"],
+            viewControllerImports: ["<viewControllerImport>"],
+            viewStateImports: ["<viewStateImport>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             analyticsProperties: [Variable(name: "<analyticsPropertiesName>", type: "<analyticsPropertiesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
@@ -78,13 +75,13 @@ extension TestFactories {
     func givenNodeRootContext() -> NodeRootContext {
         NodeRootContext(
             fileHeader: "<fileHeader>",
-            analyticsImports: ["<analyticsImports>"],
-            builderImports: ["<builderImports>"],
-            contextImports: ["<contextImports>"],
-            flowImports: ["<flowImports>"],
-            stateImports: ["<stateImports>"],
-            viewControllerImports: ["<viewControllerImports>"],
-            viewStateImports: ["<viewStateImports>"],
+            analyticsImports: ["<analyticsImport>"],
+            builderImports: ["<builderImport>"],
+            contextImports: ["<contextImport>"],
+            flowImports: ["<flowImport>"],
+            stateImports: ["<stateImport>"],
+            viewControllerImports: ["<viewControllerImport>"],
+            viewStateImports: ["<viewStateImport>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             analyticsProperties: [Variable(name: "<analyticsPropertiesName>", type: "<analyticsPropertiesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
@@ -106,11 +103,11 @@ extension TestFactories {
         NodeViewInjectedContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
-            analyticsImports: ["<analyticsImports>"],
-            builderImports: ["<builderImports>"],
-            contextImports: ["<contextImports>"],
-            flowImports: ["<flowImports>"],
-            stateImports: ["<stateImports>"],
+            analyticsImports: ["<analyticsImport>"],
+            builderImports: ["<builderImport>"],
+            contextImports: ["<contextImport>"],
+            flowImports: ["<flowImport>"],
+            stateImports: ["<stateImport>"],
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             analyticsProperties: [Variable(name: "<analyticsPropertiesName>", type: "<analyticsPropertiesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
@@ -125,7 +122,7 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             returnType: "<returnType>",
-            pluginImports: ["<pluginImports>"]
+            pluginImports: ["<pluginImport>"]
         )
     }
 
@@ -133,7 +130,7 @@ extension TestFactories {
         PluginContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
-            pluginImports: ["<pluginImports>"]
+            pluginImports: ["<pluginImport>"]
         )
     }
 
@@ -141,7 +138,7 @@ extension TestFactories {
         PluginListContext(
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
-            pluginListImports: ["<pluginListImports>"],
+            pluginListImports: ["<pluginListImport>"],
             viewControllableFlowType: "<viewControllableFlowType>"
         )
     }
@@ -150,7 +147,7 @@ extension TestFactories {
         WorkerContext(
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",
-            workerImports: ["<workerImports>"],
+            workerImports: ["<workerImport>"],
             cancellableType: "<cancellableType>"
         )
     }

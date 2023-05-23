@@ -1,6 +1,10 @@
-{{ file_header }}{% if plugin_list_imports %}
+{{ file_header }}
+{% if plugin_list_imports %}
+
 {% for import in plugin_list_imports %}
-import {{ import }}{% endfor %}{% endif %}
+import {{ import }}
+{% endfor %}
+{% endif %}
 
 /**
  PURPOSE:
@@ -19,7 +23,9 @@ internal protocol {{ plugin_list_name }}Listener: AnyObject {}
  The common Builder interface.
  */
 internal protocol {{ plugin_list_name }}Builder: AnyObject {
-    func build(withListener listener: {{ plugin_list_name }}Listener) -> {{ plugin_list_name }}Flow
+    func build(
+        withListener listener: {{ plugin_list_name }}Listener
+    ) -> {{ plugin_list_name }}Flow
 }
 
 /**
@@ -68,8 +74,8 @@ internal final class {{ plugin_list_name }}PluginListComponent: Component
 
      Declare child component factories as 'fileprivate' methods.
 
-     fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
-         ChildComponent(parent: self)
+     fileprivate func <name>ComponentFactory() -> <Name>Component {
+         <Name>Component(parent: self)
      }
 
      */

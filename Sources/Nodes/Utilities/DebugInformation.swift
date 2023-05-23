@@ -1,8 +1,5 @@
 //
-//  DebugInformation.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 7/22/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 #if canImport(Combine)
@@ -17,6 +14,7 @@ internal protocol NotificationPosting {
     var notification: Notification { get }
 }
 
+// swiftlint:disable:next file_types_order
 extension NotificationPosting {
 
     internal func post() {
@@ -70,9 +68,11 @@ public enum DebugInformation {
         /// If an identity transform is provided, `nil` will be returned to prevent direct
         /// access to the factory's weak `object` itself.
         public func make<T: AnyObject, U>(_ type: T.Type, _ factory: (T) throws -> U) rethrows -> U? {
-            guard let input = object as? T else { return nil }
+            guard let input = object as? T
+            else { return nil }
             let output: U = try factory(input)
-            guard output as AnyObject !== input else { return nil }
+            guard output as AnyObject !== input
+            else { return nil }
             return output
         }
     }
@@ -86,10 +86,10 @@ public enum DebugInformation {
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
                 .compactMap { $0.userInfo as? UserInfo }
-                .compactMap {
-                    guard let flowIdentifier = $0[.flowIdentifier] as? ObjectIdentifier,
-                          let flowType = $0[.flowType] as? Flow.Type,
-                          let factory = $0[.factory] as? Factory
+                .compactMap { userInfo in
+                    guard let flowIdentifier = userInfo[.flowIdentifier] as? ObjectIdentifier,
+                          let flowType = userInfo[.flowType] as? Flow.Type,
+                          let factory = userInfo[.factory] as? Factory
                     else { return nil }
                     return .flowWillStart(flowIdentifier: flowIdentifier,
                                           flowType: flowType,
@@ -119,9 +119,9 @@ public enum DebugInformation {
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
                 .compactMap { $0.userInfo as? UserInfo }
-                .compactMap {
-                    guard let flowIdentifier = $0[.flowIdentifier] as? ObjectIdentifier,
-                          let flowType = $0[.flowType] as? Flow.Type
+                .compactMap { userInfo in
+                    guard let flowIdentifier = userInfo[.flowIdentifier] as? ObjectIdentifier,
+                          let flowType = userInfo[.flowType] as? Flow.Type
                     else { return nil }
                     return .flowDidEnd(flowIdentifier: flowIdentifier,
                                        flowType: flowType)
@@ -149,11 +149,11 @@ public enum DebugInformation {
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
                 .compactMap { $0.userInfo as? UserInfo }
-                .compactMap {
-                    guard let flowIdentifier = $0[.flowIdentifier] as? ObjectIdentifier,
-                          let flowType = $0[.flowType] as? Flow.Type,
-                          let subFlowIdentifier = $0[.subFlowIdentifier] as? ObjectIdentifier,
-                          let subFlowType = $0[.subFlowType] as? Flow.Type
+                .compactMap { userInfo in
+                    guard let flowIdentifier = userInfo[.flowIdentifier] as? ObjectIdentifier,
+                          let flowType = userInfo[.flowType] as? Flow.Type,
+                          let subFlowIdentifier = userInfo[.subFlowIdentifier] as? ObjectIdentifier,
+                          let subFlowType = userInfo[.subFlowType] as? Flow.Type
                     else { return nil }
                     return .flowWillAttachSubFlow(flowIdentifier: flowIdentifier,
                                                   flowType: flowType,
@@ -185,11 +185,11 @@ public enum DebugInformation {
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
                 .compactMap { $0.userInfo as? UserInfo }
-                .compactMap {
-                    guard let flowIdentifier = $0[.flowIdentifier] as? ObjectIdentifier,
-                          let flowType = $0[.flowType] as? Flow.Type,
-                          let subFlowIdentifier = $0[.subFlowIdentifier] as? ObjectIdentifier,
-                          let subFlowType = $0[.subFlowType] as? Flow.Type
+                .compactMap { userInfo in
+                    guard let flowIdentifier = userInfo[.flowIdentifier] as? ObjectIdentifier,
+                          let flowType = userInfo[.flowType] as? Flow.Type,
+                          let subFlowIdentifier = userInfo[.subFlowIdentifier] as? ObjectIdentifier,
+                          let subFlowType = userInfo[.subFlowType] as? Flow.Type
                     else { return nil }
                     return .flowDidDetachSubFlow(flowIdentifier: flowIdentifier,
                                                  flowType: flowType,
@@ -221,10 +221,10 @@ public enum DebugInformation {
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
                 .compactMap { $0.userInfo as? UserInfo }
-                .compactMap {
-                    guard let flowControllerIdentifier = $0[.flowControllerIdentifier] as? ObjectIdentifier,
-                          let flowIdentifier = $0[.flowIdentifier] as? ObjectIdentifier,
-                          let flowType = $0[.flowType] as? Flow.Type
+                .compactMap { userInfo in
+                    guard let flowControllerIdentifier = userInfo[.flowControllerIdentifier] as? ObjectIdentifier,
+                          let flowIdentifier = userInfo[.flowIdentifier] as? ObjectIdentifier,
+                          let flowType = userInfo[.flowType] as? Flow.Type
                     else { return nil }
                     return .flowControllerWillAttachFlow(flowControllerIdentifier: flowControllerIdentifier,
                                                          flowIdentifier: flowIdentifier,
@@ -254,10 +254,10 @@ public enum DebugInformation {
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
                 .compactMap { $0.userInfo as? UserInfo }
-                .compactMap {
-                    guard let flowControllerIdentifier = $0[.flowControllerIdentifier] as? ObjectIdentifier,
-                          let flowIdentifier = $0[.flowIdentifier] as? ObjectIdentifier,
-                          let flowType = $0[.flowType] as? Flow.Type
+                .compactMap { userInfo in
+                    guard let flowControllerIdentifier = userInfo[.flowControllerIdentifier] as? ObjectIdentifier,
+                          let flowIdentifier = userInfo[.flowIdentifier] as? ObjectIdentifier,
+                          let flowType = userInfo[.flowType] as? Flow.Type
                     else { return nil }
                     return .flowControllerDidDetachFlow(flowControllerIdentifier: flowControllerIdentifier,
                                                         flowIdentifier: flowIdentifier,

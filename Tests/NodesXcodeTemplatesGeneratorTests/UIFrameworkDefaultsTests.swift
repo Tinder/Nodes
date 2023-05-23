@@ -1,8 +1,5 @@
 //
-//  UIFrameworkDefaultsTests.swift
-//  NodesXcodeTemplatesGeneratorTests
-//
-//  Created by Garric Nahapetian on 11/14/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 @testable import NodesXcodeTemplatesGenerator

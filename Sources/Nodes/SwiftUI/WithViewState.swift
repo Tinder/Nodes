@@ -1,8 +1,5 @@
 //
-//  WithViewState.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 5/11/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 #if canImport(Combine) && canImport(SwiftUI)
@@ -22,10 +19,10 @@ import SwiftUI
  * }
  *
  * struct ExampleView: View {
- *     let viewState: AnyPublisher<ExampleViewState, Never>
  *     let initialState: ExampleViewState = .init(text: "Hello World")
+ *     let statePublisher: AnyPublisher<ExampleViewState, Never>
  *     var body: some View {
- *         WithViewState(viewState, initialState: initialState) { viewState in
+ *         WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
  *             Text(viewState.text)
  *         }
  *     }
@@ -40,24 +37,24 @@ public struct WithViewState<ViewState, Content: View>: View {
         content(viewState).onReceive(publisher) { viewState = $0 }
     }
 
+    @State private var viewState: ViewState
+
     private let publisher: AnyPublisher<ViewState, Never>
     private let content: (ViewState) -> Content
-
-    @State private var viewState: ViewState
 
     /// Initializes a ``WithViewState`` view with the given view state `publisher`, `initialState` and `content`.
     ///
     /// - Parameters:
-    ///     - publisher: The view state ``Publisher`` instance to observe.
     ///     - initialState: The initial view state.
+    ///     - publisher: The view state ``Publisher`` instance to observe.
     ///     - content: A view builder that creates the content of this view.
     public init<P: Publisher>(
-        _ publisher: P,
         initialState: ViewState,
+        statePublisher publisher: P,
         @ViewBuilder content: @escaping (ViewState) -> Content
     ) where P.Output == ViewState, P.Failure == Never {
+        _viewState = State(initialValue: initialState)
         self.publisher = publisher.eraseToAnyPublisher()
         self.content = content
-        _viewState = State(initialValue: initialState)
     }
 }

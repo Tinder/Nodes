@@ -1,16 +1,13 @@
 <fileHeader>
 
-import <flowImports>
+import <flowImport>
 
 /**
  PURPOSE:
  The interface that the Flow will speak to the Context through. Used for informing the Context of
  presentation lifecycle events, as an example.
  */
-internal protocol RootContextInterface: Context {
-    var flow: RootFlowInterface? { get set }
-    var listener: RootListener? { get }
-}
+internal protocol RootContextInterface: Context {}
 
 /**
  PURPOSE:
@@ -30,11 +27,6 @@ internal final class RootFlowImp: AbstractFlow
     RootViewControllable
 > {
 
-    /// Provides the parent Node with access to the View so it can be presented.
-    internal var viewControllable: <viewControllableType> {
-        viewController
-    }
-
     private let <flowPropertiesName>: <flowPropertiesType>
 
     /// The initializer.
@@ -51,11 +43,17 @@ internal final class RootFlowImp: AbstractFlow
     ) {
         self.<flowPropertiesName> = <flowPropertiesName>
         super.init(context: context, viewController: viewController)
-        context.flow = self
     }
 
     /// Implement logic to execute when the Flow is started.
     override internal func didStart() {}
+
+    /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
+    ///
+    /// - Returns: The ``ViewControllable`` instance.
+    internal func getViewController() -> <viewControllableType> {
+        viewController
+    }
 }
 
 extension RootFlowImp: RootFlow {}

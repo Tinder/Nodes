@@ -7,10 +7,7 @@ import Nodes
  The interface that the Flow will speak to the Context through. Used for informing the Context of
  presentation lifecycle events, as an example.
  */
-internal protocol ___VARIABLE_productName___ContextInterface: Context {
-    var flow: ___VARIABLE_productName___FlowInterface? { get set }
-    var listener: ___VARIABLE_productName___Listener? { get }
-}
+internal protocol ___VARIABLE_productName___ContextInterface: Context {}
 
 /**
  PURPOSE:
@@ -30,11 +27,6 @@ internal final class ___VARIABLE_productName___FlowImp: AbstractFlow
     ___VARIABLE_productName___ViewControllable
 > {
 
-    /// Provides the parent Node with access to the View so it can be presented.
-    internal var viewControllable: ViewControllable {
-        viewController
-    }
-
     /// The initializer.
     ///
     /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
@@ -46,11 +38,17 @@ internal final class ___VARIABLE_productName___FlowImp: AbstractFlow
         viewController: ___VARIABLE_productName___ViewControllable
     ) {
         super.init(context: context, viewController: viewController)
-        context.flow = self
     }
 
     /// Implement logic to execute when the Flow is started.
     override internal func didStart() {}
+
+    /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
+    ///
+    /// - Returns: The ``ViewControllable`` instance.
+    internal func getViewController() -> ViewControllable {
+        viewController
+    }
 }
 
 extension ___VARIABLE_productName___FlowImp: ___VARIABLE_productName___Flow {}

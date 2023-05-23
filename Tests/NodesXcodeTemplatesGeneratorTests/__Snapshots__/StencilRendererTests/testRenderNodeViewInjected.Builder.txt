@@ -1,6 +1,6 @@
 <fileHeader>
 
-import <builderImports>
+import <builderImport>
 
 /**
  PURPOSE:
@@ -20,7 +20,7 @@ public protocol <nodeName>Dependency: Dependency {
  PURPOSE:
  A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
- Can be a tuple containing multiple values when necessary.
+ Can be a tuple or struct containing multiple values when necessary.
  */
 internal typealias <nodeName>DynamicBuildDependency = (<nodeName>Listener, <nodeName>ViewControllable)
 
@@ -28,7 +28,7 @@ internal typealias <nodeName>DynamicBuildDependency = (<nodeName>Listener, <node
  PURPOSE:
  A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 
- Can be a tuple containing multiple values when necessary.
+ Can be a tuple or struct containing multiple values when necessary.
  */
 internal typealias <nodeName>DynamicComponentDependency = Void
 
@@ -87,8 +87,8 @@ internal final class <nodeName>Component: Component
 
      Declare child component factories as 'fileprivate' methods.
 
-     fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
-         ChildComponent(parent: self)
+     fileprivate func <name>ComponentFactory() -> <Name>Component {
+         <Name>Component(parent: self)
      }
 
      */
@@ -101,8 +101,10 @@ internal final class <nodeName>Component: Component
  The Builder interface (available to mock for testability).
  */
 internal protocol <nodeName>Builder: AnyObject {
-    func build(withListener listener: <nodeName>Listener,
-               viewController: <nodeName>ViewControllable) -> <nodeName>Flow
+    func build(
+        withListener listener: <nodeName>Listener,
+        viewController: <nodeName>ViewControllable
+    ) -> <nodeName>Flow
 }
 
 /**
@@ -120,7 +122,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
     /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
     /// the dynamic component dependency.
     ///
-    /// The dynamic dependencies can be tuples containing multiple values when necessary.
+    /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
     /// - Parameter listener: An object that can listen for signals from the Node
     /// - Returns: The Flow instance
     internal func build(
@@ -141,18 +143,21 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         component: <nodeName>Component,
         dynamicBuildDependency: <nodeName>DynamicBuildDependency
     ) -> <nodeName>Flow {
-        let (listener, viewController) = dynamicBuildDependency
+        let listener: <nodeName>Listener = dynamicBuildDependency.0
+        let viewController: <nodeName>ViewControllable = dynamicBuildDependency.1
         let analytics: <nodeName>AnalyticsImp = .init()
         let context: <nodeName>ContextImp = .init(
             workers: [],
             analytics: analytics
         )
         context.listener = listener
-        return <nodeName>FlowImp(
+        let flow: <nodeName>FlowImp = .init(
             context: context,
             viewController: viewController,
             <flowPropertiesName>: component.dependency.<flowPropertiesName>
         )
+        context.flow = flow
+        return flow
     }
 }
 

@@ -1,6 +1,6 @@
 <fileHeader>
 
-import <pluginImports>
+import <pluginImport>
 
 /**
  PURPOSE:
@@ -48,8 +48,8 @@ internal final class <pluginName>PluginComponent: Component
 
      Declare child component factories as 'fileprivate' methods.
 
-     fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
-         ChildComponent(parent: self)
+     fileprivate func <name>ComponentFactory() -> <Name>Component {
+         <Name>Component(parent: self)
      }
 
      */

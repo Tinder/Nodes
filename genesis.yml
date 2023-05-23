@@ -1,5 +1,10 @@
 options:
 
+  - question: "Nodes Version Requirement (up to next major):"
+    name: nodes
+    type: string
+    required: true
+
   - question: "Project Name:"
     name: project
     type: string
@@ -30,7 +35,6 @@ files:
       # SPM
       .swiftpm/
       .build/
-      Packages/
 
       # Xcode
       *.xcworkspace/
@@ -345,59 +349,29 @@ files:
       //  Created by {{ author }} on {{ date }}.
       //
 
-      import Combine
       import Nodes
 
       /*
        INSTRUCTIONS:
 
-       Option 1
-       ========
-       Conform an existing analytics tracker (or client), that is defined outside of the Node, to the
-       AppAnalytics protocol.
-
-       This option is preferred.
-
-       When using this option, delete the class defined in this file (below).
-
-       Option 2
-       ========
        Inject an existing analytics tracker (or client), that is defined outside of the Node, into the
        class defined in this file (below).
 
-       Only use this option if option 1 is not possible, for example, when the class defined in this
-       file (below) is needed to store state (not recommended).
-
-       When using this option, inject the tracker (or client) via a protocol. The protocol for the
-       injected tracker (or client) can either be an existing one defined outside of the Node or
-       can be a new one added to this file.
+       Inject the tracker (or client) via a protocol. The protocol for the injected tracker (or client)
+       can either be an existing one defined outside of the Node or can be a new one added to this file.
        */
 
       /**
        PURPOSE:
        The interface for analytics tracked by this Node.
 
-       Whether using option 1 or 2, add requirements to this protocol to provide analytics tracking
-       methods for this Node.
+       Add requirements to this protocol to provide analytics tracking methods for this Node.
        */
       internal protocol AppAnalytics: AnyObject {}
 
       /**
        PURPOSE:
-       The implementations of the protocol methods for analytics tracked by this Node.
-
-       If using option 1, add implementations for the methods defined in the protocol that are not
-       implemented by the conforming tracker (or client).
-
-       If using option 2, delete this extension.
-       */
-      internal extension AppAnalytics {}
-
-      /**
-       PURPOSE:
-       Custom analytics implementation for this Node, to be used ONLY when storing state is unavoidable.
-
-       If using option 1, delete this class and extension below.
+       Custom analytics implementation for this Node.
        */
       internal final class AppAnalyticsImp {}
 
@@ -426,7 +400,7 @@ files:
        PURPOSE:
        A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias AppDynamicBuildDependency = Void
 
@@ -434,7 +408,7 @@ files:
        PURPOSE:
        A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias AppDynamicComponentDependency = Void
 
@@ -492,7 +466,7 @@ files:
 
            Declare child component factories as 'fileprivate' methods.
 
-           fileprivate func childComponentFactory() -> ChildComponent {
+           fileprivate func <example>ComponentFactory() -> ChildComponent {
                ChildComponent(parent: self)
            }
 
@@ -513,22 +487,22 @@ files:
           func build() -> AppFlow
       }
 
-      internal typealias AppBuilderType = AbstractBuilder
-          <
-          AppComponent,
-          AppFlow,
-          AppDynamicBuildDependency,
-          AppDynamicComponentDependency
-          >
-
       /**
        PURPOSE:
        Concrete implementation of the Builder, where everything is created and associated.
        */
-      internal final class AppBuilderImp: AppBuilderType {
+      internal final class AppBuilderImp: AbstractBuilder
+      <
+          AppComponent,
+          AppFlow,
+          AppDynamicBuildDependency,
+          AppDynamicComponentDependency
+      > {
 
           /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
           /// the dynamic component dependency.
+          ///
+          /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
           /// - Returns: The Flow instance
           internal func build() -> AppFlow {
               let dynamicBuildDependency: AppDynamicBuildDependency = ()
@@ -546,16 +520,17 @@ files:
               dynamicBuildDependency: AppDynamicBuildDependency
           ) -> AppFlow {
               let analytics: AppAnalyticsImp = .init()
-              let worker: AppWorkerImp = .init(
-                  analytics: analytics
-              )
               let context: AppContextImp = .init(
-                  workers: [worker],
+                  workers: [],
                   analytics: analytics,
                   windowSceneState: component.appService.windowSceneState
               )
-              return AppFlowImp(context: context,
-                                sceneBuilder: SceneBuilderImp(componentFactory: component.sceneComponentFactory))
+              let flow: AppFlowImp = .init(
+                  context: context,
+                  sceneBuilder: SceneBuilderImp(componentFactory: component.sceneComponentFactory)
+              )
+              context.flow = flow
+              return flow
           }
       }
 
@@ -588,7 +563,10 @@ files:
        Contains the business logic of the Node. The lifecycle of the Node is bookended between the
        `didBecomeActive` and `willResignActive` methods.
        */
-      internal final class AppContextImp: AbstractContext<AnyCancellable> {
+      internal final class AppContextImp: AbstractContext
+      <
+          AnyCancellable
+      > {
 
           /// The Flow instance.
           internal weak var flow: AppFlowInterface?
@@ -649,7 +627,6 @@ files:
       //  Created by {{ author }} on {{ date }}.
       //
 
-      import Combine
       import Nodes
 
       /**
@@ -657,30 +634,30 @@ files:
        The interface that the Flow will speak to the Context through. Used for informing the Context of
        presentation lifecycle events, as an example.
        */
-      internal protocol AppContextInterface: Context, SceneListener {
-          var flow: AppFlowInterface? { get set }
-      }
+      internal protocol AppContextInterface: Context, SceneListener {}
 
       /**
        PURPOSE:
        Responsible for presenting views and starting child Flows, and should not contain business logic.
        */
-      internal final class AppFlowImp: AbstractFlow<AppContextInterface, Void> {
+      internal final class AppFlowImp: AbstractFlow
+      <
+          AppContextInterface,
+          Void
+      > {
 
           private let sceneBuilder: SceneBuilder
 
           /// The initializer.
           ///
           /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
-          /// - Parameters:
-          ///   - context: The Context instance
+          /// - Parameter context: The Context instance
           internal init(
               context: AppContextInterface,
               sceneBuilder: SceneBuilder
           ) {
               self.sceneBuilder = sceneBuilder
               super.init(context: context, viewController: ())
-              context.flow = self
           }
 
           /// Implement logic to execute when the Flow is started.
@@ -699,52 +676,10 @@ files:
           func detachScene(_ viewController: WindowSceneViewControllable) {
               subFlows
                   .compactMap { $0 as? SceneFlow }
-                  .filter { $0.viewControllable === viewController }
+                  .filter { $0.getViewController() === viewController }
                   .forEach(detach)
           }
       }
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/1 App/AppWorker.swift"
-    contents: |
-      //
-      //  AppWorker.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import Combine
-      import Nodes
-
-      /**
-       PURPOSE:
-       Encapsulates work to be performed by the Node.
-       */
-      internal protocol AppWorker: Worker {}
-
-      /**
-       PURPOSE:
-       Concrete implementation of the Worker.
-       */
-      internal final class AppWorkerImp: AbstractWorker<AnyCancellable> {
-
-          /// The Analytics instance.
-          private let analytics: AppAnalytics
-
-          /// The initializer.
-          /// - Parameter analytics: The Analytics instance
-          internal init(analytics: AppAnalytics) {
-              self.analytics = analytics
-          }
-
-          /// Implement logic to execute when the Worker is started.
-          override internal func didStart() {}
-
-          /// Implement logic to execute when the Worker has stopped.
-          override internal func willStop() {}
-      }
-
-      extension AppWorkerImp: AppWorker {}
 
   - path: "{{ project|split:' '|join:'_' }}/Sources/2 Scene/SceneAnalytics.swift"
     contents: |
@@ -755,59 +690,29 @@ files:
       //  Created by {{ author }} on {{ date }}.
       //
 
-      import Combine
       import Nodes
 
       /*
        INSTRUCTIONS:
 
-       Option 1
-       ========
-       Conform an existing analytics tracker (or client), that is defined outside of the Node, to the
-       SceneAnalytics protocol.
-
-       This option is preferred.
-
-       When using this option, delete the class defined in this file (below).
-
-       Option 2
-       ========
        Inject an existing analytics tracker (or client), that is defined outside of the Node, into the
        class defined in this file (below).
 
-       Only use this option if option 1 is not possible, for example, when the class defined in this
-       file (below) is needed to store state (not recommended).
-
-       When using this option, inject the tracker (or client) via a protocol. The protocol for the
-       injected tracker (or client) can either be an existing one defined outside of the Node or
-       can be a new one added to this file.
+       Inject the tracker (or client) via a protocol. The protocol for the injected tracker (or client)
+       can either be an existing one defined outside of the Node or can be a new one added to this file.
        */
 
       /**
        PURPOSE:
        The interface for analytics tracked by this Node.
 
-       Whether using option 1 or 2, add requirements to this protocol to provide analytics tracking
-       methods for this Node.
+       Add requirements to this protocol to provide analytics tracking methods for this Node.
        */
       internal protocol SceneAnalytics: AnyObject {}
 
       /**
        PURPOSE:
-       The implementations of the protocol methods for analytics tracked by this Node.
-
-       If using option 1, add implementations for the methods defined in the protocol that are not
-       implemented by the conforming tracker (or client).
-
-       If using option 2, delete this extension.
-       */
-      internal extension SceneAnalytics {}
-
-      /**
-       PURPOSE:
-       Custom analytics implementation for this Node, to be used ONLY when storing state is unavoidable.
-
-       If using option 1, delete this class and extension below.
+       Custom analytics implementation for this Node.
        */
       internal final class SceneAnalyticsImp {}
 
@@ -831,7 +736,7 @@ files:
        The interface of the Flow.
        */
       internal protocol SceneFlow: Flow {
-          var viewControllable: WindowSceneViewControllable { get }
+          func getViewController() -> WindowSceneViewControllable
       }
 
       /**
@@ -844,7 +749,7 @@ files:
        PURPOSE:
        A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias SceneDynamicBuildDependency = (SceneListener, WindowSceneViewControllable)
 
@@ -852,7 +757,7 @@ files:
        PURPOSE:
        A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias SceneDynamicComponentDependency = Void
 
@@ -862,7 +767,10 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
-      internal final class SceneComponent: Component<SceneDependency> {
+      internal final class SceneComponent: Component
+      <
+          SceneDependency
+      > {
 
           /*
            Dependencies
@@ -908,7 +816,7 @@ files:
 
            Declare child component factories as 'fileprivate' methods.
 
-           fileprivate func childComponentFactory() -> ChildComponent {
+           fileprivate func <example>ComponentFactory() -> ChildComponent {
                ChildComponent(parent: self)
            }
 
@@ -930,24 +838,22 @@ files:
                      viewController: WindowSceneViewControllable) -> SceneFlow
       }
 
-      internal typealias SceneBuilderType = AbstractBuilder
-          <
-          SceneComponent,
-          SceneFlow,
-          SceneDynamicBuildDependency,
-          SceneDynamicComponentDependency
-          >
-
       /**
        PURPOSE:
        Concrete implementation of the Builder, where everything is created and associated.
        */
-      internal final class SceneBuilderImp: SceneBuilderType {
+      internal final class SceneBuilderImp: AbstractBuilder
+      <
+          SceneComponent,
+          SceneFlow,
+          SceneDynamicBuildDependency,
+          SceneDynamicComponentDependency
+      > {
 
           /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
           /// the dynamic component dependency.
           ///
-          /// The dynamic dependencies can be tuples containing multiple values when necessary.
+          /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
           /// - Parameter listener: An object that can listen for signals from the Node
           /// - Returns: The Flow instance
           internal func build(
@@ -970,19 +876,18 @@ files:
           ) -> SceneFlow {
               let (listener, viewController) = dynamicBuildDependency
               let analytics: SceneAnalyticsImp = .init()
-              let worker: SceneWorkerImp = .init(
-                  analytics: analytics
-              )
               let context: SceneContextImp = .init(
-                  workers: [worker],
+                  workers: [],
                   analytics: analytics
               )
               context.listener = listener
-              return SceneFlowImp(
+              let flow: SceneFlowImp = .init(
                   context: context,
                   viewController: viewController,
                   windowBuilder: WindowBuilderImp(componentFactory: component.windowComponentFactory)
               )
+              context.flow = flow
+              return flow
           }
       }
 
@@ -1018,7 +923,10 @@ files:
        Contains the business logic of the Node. The lifecycle of the Node is bookended between the
        `didBecomeActive` and `willResignActive` methods.
        */
-      internal final class SceneContextImp: AbstractContext<AnyCancellable> {
+      internal final class SceneContextImp: AbstractContext
+      <
+          AnyCancellable
+      > {
 
           /// The Flow instance.
           internal weak var flow: SceneFlowInterface?
@@ -1063,7 +971,6 @@ files:
       //  Created by {{ author }} on {{ date }}.
       //
 
-      import Combine
       import Nodes
 
       /**
@@ -1071,21 +978,17 @@ files:
        The interface that the Flow will speak to the Context through. Used for informing the Context of
        presentation lifecycle events, as an example.
        */
-      internal protocol SceneContextInterface: Context, WindowListener {
-          var flow: SceneFlowInterface? { get set }
-          var listener: SceneListener? { get }
-      }
+      internal protocol SceneContextInterface: Context, WindowListener {}
 
       /**
        PURPOSE:
        Responsible for presenting views and starting child Flows, and should not contain business logic.
        */
-      internal final class SceneFlowImp: AbstractFlow<SceneContextInterface, WindowSceneViewControllable> {
-
-          /// Provides the parent Node with access to the View so it can be presented.
-          internal var viewControllable: WindowSceneViewControllable {
-              viewController
-          }
+      internal final class SceneFlowImp: AbstractFlow
+      <
+          SceneContextInterface,
+          WindowSceneViewControllable
+      > {
 
           private let windowBuilder: WindowBuilder
 
@@ -1102,12 +1005,15 @@ files:
           ) {
               self.windowBuilder = windowBuilder
               super.init(context: context, viewController: viewController)
-              context.flow = self
           }
 
           /// Implement logic to execute when the Flow is started.
           override internal func didStart() {
               attachWindow()
+          }
+
+          internal func getViewController() -> WindowSceneViewControllable {
+              viewController
           }
 
           private func attachWindow() {
@@ -1120,48 +1026,6 @@ files:
       extension SceneFlowImp: SceneFlow {}
       extension SceneFlowImp: SceneFlowInterface {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/2 Scene/SceneWorker.swift"
-    contents: |
-      //
-      //  SceneWorker.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import Combine
-      import Nodes
-
-      /**
-       PURPOSE:
-       Encapsulates work to be performed by the Node.
-       */
-      internal protocol SceneWorker: Worker {}
-
-      /**
-       PURPOSE:
-       Concrete implementation of the Worker.
-       */
-      internal final class SceneWorkerImp: AbstractWorker<AnyCancellable> {
-
-          /// The Analytics instance.
-          private let analytics: SceneAnalytics
-
-          /// The initializer.
-          /// - Parameter analytics: The Analytics instance
-          internal init(analytics: SceneAnalytics) {
-              self.analytics = analytics
-          }
-
-          /// Implement logic to execute when the Worker is started.
-          override internal func didStart() {}
-
-          /// Implement logic to execute when the Worker has stopped.
-          override internal func willStop() {}
-      }
-
-      extension SceneWorkerImp: SceneWorker {}
-
   - path: "{{ project|split:' '|join:'_' }}/Sources/3 Window/WindowAnalytics.swift"
     contents: |
       //
@@ -1171,59 +1035,29 @@ files:
       //  Created by {{ author }} on {{ date }}.
       //
 
-      import Combine
       import Nodes
 
       /*
        INSTRUCTIONS:
 
-       Option 1
-       ========
-       Conform an existing analytics tracker (or client), that is defined outside of the Node, to the
-       WindowAnalytics protocol.
-
-       This option is preferred.
-
-       When using this option, delete the class defined in this file (below).
-
-       Option 2
-       ========
        Inject an existing analytics tracker (or client), that is defined outside of the Node, into the
        class defined in this file (below).
 
-       Only use this option if option 1 is not possible, for example, when the class defined in this
-       file (below) is needed to store state (not recommended).
-
-       When using this option, inject the tracker (or client) via a protocol. The protocol for the
-       injected tracker (or client) can either be an existing one defined outside of the Node or
-       can be a new one added to this file.
+       Inject the tracker (or client) via a protocol. The protocol for the injected tracker (or client)
+       can either be an existing one defined outside of the Node or can be a new one added to this file.
        */
 
       /**
        PURPOSE:
        The interface for analytics tracked by this Node.
 
-       Whether using option 1 or 2, add requirements to this protocol to provide analytics tracking
-       methods for this Node.
+       Add requirements to this protocol to provide analytics tracking methods for this Node.
        */
       internal protocol WindowAnalytics: AnyObject {}
 
       /**
        PURPOSE:
-       The implementations of the protocol methods for analytics tracked by this Node.
-
-       If using option 1, add implementations for the methods defined in the protocol that are not
-       implemented by the conforming tracker (or client).
-
-       If using option 2, delete this extension.
-       */
-      internal extension WindowAnalytics {}
-
-      /**
-       PURPOSE:
-       Custom analytics implementation for this Node, to be used ONLY when storing state is unavoidable.
-
-       If using option 1, delete this class and extension below.
+       Custom analytics implementation for this Node.
        */
       internal final class WindowAnalyticsImp {}
 
@@ -1258,7 +1092,7 @@ files:
        PURPOSE:
        A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias WindowDynamicBuildDependency = (WindowListener, WindowViewControllable)
 
@@ -1266,7 +1100,7 @@ files:
        PURPOSE:
        A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias WindowDynamicComponentDependency = Void
 
@@ -1276,7 +1110,10 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
-      internal final class WindowComponent: Component<WindowDependency> {
+      internal final class WindowComponent: Component
+      <
+          WindowDependency
+      > {
 
           /*
            Dependencies
@@ -1322,7 +1159,7 @@ files:
 
            Declare child component factories as 'fileprivate' methods.
 
-           fileprivate func childComponentFactory() -> ChildComponent {
+           fileprivate func <example>ComponentFactory() -> ChildComponent {
                ChildComponent(parent: self)
            }
 
@@ -1344,24 +1181,22 @@ files:
                      viewController: WindowViewControllable) -> WindowFlow
       }
 
-      internal typealias WindowBuilderType = AbstractBuilder
-          <
-          WindowComponent,
-          WindowFlow,
-          WindowDynamicBuildDependency,
-          WindowDynamicComponentDependency
-          >
-
       /**
        PURPOSE:
        Concrete implementation of the Builder, where everything is created and associated.
        */
-      internal final class WindowBuilderImp: WindowBuilderType {
+      internal final class WindowBuilderImp: AbstractBuilder
+      <
+          WindowComponent,
+          WindowFlow,
+          WindowDynamicBuildDependency,
+          WindowDynamicComponentDependency
+      > {
 
           /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
           /// the dynamic component dependency.
           ///
-          /// The dynamic dependencies can be tuples containing multiple values when necessary.
+          /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
           /// - Parameter listener: An object that can listen for signals from the Node
           /// - Returns: The Flow instance
           internal func build(
@@ -1384,19 +1219,18 @@ files:
           ) -> WindowFlow {
               let (listener, viewController) = dynamicBuildDependency
               let analytics: WindowAnalyticsImp = .init()
-              let worker: WindowWorkerImp = .init(
-                  analytics: analytics
-              )
               let context: WindowContextImp = .init(
-                  workers: [worker],
+                  workers: [],
                   analytics: analytics
               )
               context.listener = listener
-              return WindowFlowImp(
+              let flow: WindowFlowImp = .init(
                   context: context,
                   viewController: viewController,
                   rootBuilder: RootBuilderImp(componentFactory: component.rootComponentFactory)
               )
+              context.flow = flow
+              return flow
           }
       }
 
@@ -1432,7 +1266,10 @@ files:
        Contains the business logic of the Node. The lifecycle of the Node is bookended between the
        `didBecomeActive` and `willResignActive` methods.
        */
-      internal final class WindowContextImp: AbstractContext<AnyCancellable> {
+      internal final class WindowContextImp: AbstractContext
+      <
+          AnyCancellable
+      > {
 
           /// The Flow instance.
           internal weak var flow: WindowFlowInterface?
@@ -1477,7 +1314,6 @@ files:
       //  Created by {{ author }} on {{ date }}.
       //
 
-      import Combine
       import Nodes
 
       /**
@@ -1485,16 +1321,17 @@ files:
        The interface that the Flow will speak to the Context through. Used for informing the Context of
        presentation lifecycle events, as an example.
        */
-      internal protocol WindowContextInterface: Context, RootListener {
-          var flow: WindowFlowInterface? { get set }
-          var listener: WindowListener? { get }
-      }
+      internal protocol WindowContextInterface: Context, RootListener {}
 
       /**
        PURPOSE:
        Responsible for presenting views and starting child Flows, and should not contain business logic.
        */
-      internal final class WindowFlowImp: AbstractFlow<WindowContextInterface, WindowViewControllable> {
+      internal final class WindowFlowImp: AbstractFlow
+      <
+          WindowContextInterface,
+          WindowViewControllable
+      > {
 
           private let rootBuilder: RootBuilder
 
@@ -1511,7 +1348,6 @@ files:
           ) {
               self.rootBuilder = rootBuilder
               super.init(context: context, viewController: viewController)
-              context.flow = self
           }
 
           /// Implement logic to execute when the Flow is started.
@@ -1521,55 +1357,13 @@ files:
 
           private func attachRoot() {
               let flow: RootFlow = rootBuilder.build(withListener: context)
-              viewController.present(flow.viewControllable)
+              viewController.present(flow.getViewController())
               attach(starting: flow)
           }
       }
 
       extension WindowFlowImp: WindowFlow {}
       extension WindowFlowImp: WindowFlowInterface {}
-
-  - path: "{{ project|split:' '|join:'_' }}/Sources/3 Window/WindowWorker.swift"
-    contents: |
-      //
-      //  WindowWorker.swift
-      //  {{ project|split:' '|join:'_' }}
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import Combine
-      import Nodes
-
-      /**
-       PURPOSE:
-       Encapsulates work to be performed by the Node.
-       */
-      internal protocol WindowWorker: Worker {}
-
-      /**
-       PURPOSE:
-       Concrete implementation of the Worker.
-       */
-      internal final class WindowWorkerImp: AbstractWorker<AnyCancellable> {
-
-          /// The Analytics instance.
-          private let analytics: WindowAnalytics
-
-          /// The initializer.
-          /// - Parameter analytics: The Analytics instance
-          internal init(analytics: WindowAnalytics) {
-              self.analytics = analytics
-          }
-
-          /// Implement logic to execute when the Worker is started.
-          override internal func didStart() {}
-
-          /// Implement logic to execute when the Worker has stopped.
-          override internal func willStop() {}
-      }
-
-      extension WindowWorkerImp: WindowWorker {}
 
   - path: "{{ project|split:' '|join:'_' }}/Sources/4 Root/RootAnalytics.swift"
     contents: |
@@ -1580,59 +1374,29 @@ files:
       //  Created by {{ author }} on {{ date }}.
       //
 
-      import Combine
       import Nodes
 
       /*
        INSTRUCTIONS:
 
-       Option 1
-       ========
-       Conform an existing analytics tracker (or client), that is defined outside of the Node, to the
-       RootAnalytics protocol.
-
-       This option is preferred.
-
-       When using this option, delete the class defined in this file (below).
-
-       Option 2
-       ========
        Inject an existing analytics tracker (or client), that is defined outside of the Node, into the
        class defined in this file (below).
 
-       Only use this option if option 1 is not possible, for example, when the class defined in this
-       file (below) is needed to store state (not recommended).
-
-       When using this option, inject the tracker (or client) via a protocol. The protocol for the
-       injected tracker (or client) can either be an existing one defined outside of the Node or
-       can be a new one added to this file.
+       Inject the tracker (or client) via a protocol. The protocol for the injected tracker (or client)
+       can either be an existing one defined outside of the Node or can be a new one added to this file.
        */
 
       /**
        PURPOSE:
        The interface for analytics tracked by this Node.
 
-       Whether using option 1 or 2, add requirements to this protocol to provide analytics tracking
-       methods for this Node.
+       Add requirements to this protocol to provide analytics tracking methods for this Node.
        */
       internal protocol RootAnalytics: AnyObject {}
 
       /**
        PURPOSE:
-       The implementations of the protocol methods for analytics tracked by this Node.
-
-       If using option 1, add implementations for the methods defined in the protocol that are not
-       implemented by the conforming tracker (or client).
-
-       If using option 2, delete this extension.
-       */
-      internal extension RootAnalytics {}
-
-      /**
-       PURPOSE:
-       Custom analytics implementation for this Node, to be used ONLY when storing state is unavoidable.
-
-       If using option 1, delete this class and extension below.
+       Custom analytics implementation for this Node.
        */
       internal final class RootAnalyticsImp {}
 
@@ -1667,7 +1431,7 @@ files:
        PURPOSE:
        A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias RootDynamicBuildDependency = RootListener
 
@@ -1675,7 +1439,7 @@ files:
        PURPOSE:
        A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 
-       Can be a tuple containing multiple values when necessary.
+       Can be a tuple or struct containing multiple values when necessary.
        */
       internal typealias RootDynamicComponentDependency = Void
 
@@ -1685,7 +1449,10 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
-      internal final class RootComponent: Component<RootDependency> {
+      internal final class RootComponent: Component
+      <
+          RootDependency
+      > {
 
           /*
            Dependencies
@@ -1731,7 +1498,7 @@ files:
 
            Declare child component factories as 'fileprivate' methods.
 
-           fileprivate func childComponentFactory() -> ChildComponent {
+           fileprivate func <example>ComponentFactory() -> ChildComponent {
                ChildComponent(parent: self)
            }
 
@@ -1748,24 +1515,22 @@ files:
           func build(withListener listener: RootListener) -> RootFlow
       }
 
-      internal typealias RootBuilderType = AbstractBuilder
-          <
-          RootComponent,
-          RootFlow,
-          RootDynamicBuildDependency,
-          RootDynamicComponentDependency
-          >
-
       /**
        PURPOSE:
        Concrete implementation of the Builder, where everything is created and associated.
        */
-      internal final class RootBuilderImp: RootBuilderType {
+      internal final class RootBuilderImp: AbstractBuilder
+      <
+          RootComponent,
+          RootFlow,
+          RootDynamicBuildDependency,
+          RootDynamicComponentDependency
+      > {
 
           /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
           /// the dynamic component dependency.
           ///
-          /// The dynamic dependencies can be tuples containing multiple values when necessary.
+          /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
           /// - Parameter listener: An object that can listen for signals from the Node
           /// - Returns: The Flow instance
           internal func build(withListener listener: RootListener) -> RootFlow {
@@ -1785,21 +1550,27 @@ files:
           ) -> RootFlow {
               let listener: RootListener = dynamicBuildDependency
               let analytics: RootAnalyticsImp = .init()
-              let worker: RootWorkerImp = .init(
-                  analytics: analytics
-              )
-              let viewController: RootViewController = .init()
-              viewController.analytics = analytics
               let context: RootContextImp = .init(
-                  presentable: viewController,
-                  workers: [worker],
+                  workers: [],
                   analytics: analytics
               )
               context.listener = listener
-              return RootFlowImp(
+              let viewStateFactory: RootViewStateFactory = .init()
+              let viewState: Publishers.Map = .init(
+                  upstream: context.$state,
+                  transform: viewStateFactory
+              )
+              let viewController: RootViewController = .init(
+                  initialState: viewStateFactory(context.state),
+                  statePublisher: viewState.eraseToAnyPublisher()
+              )
+              viewController.receiver = context
+              let flow: RootFlowImp = .init(
                   context: context,
                   viewController: viewController
               )
+              context.flow = flow
+              return flow
           }
       }
 
@@ -1834,25 +1605,22 @@ files:
 
       /**
        PURPOSE:
-       The interface that the Context will speak to the View through. Used to inform the View of any
-       state change (i.e. to keep the UI in sync).
-       */
-      internal protocol RootPresentable: AnyObject {
-          var receiver: RootReceiver? { get set }
-      }
-
-      /**
-       PURPOSE:
        Contains the business logic of the Node. The lifecycle of the Node is bookended between the
        `didBecomeActive` and `willResignActive` methods.
        */
-      internal final class RootContextImp: AbstractPresentableContext<AnyCancellable, RootPresentable> {
+      internal final class RootContextImp: AbstractContext
+      <
+          AnyCancellable
+      > {
 
           /// The Flow instance.
           internal weak var flow: RootFlowInterface?
 
           /// The Listener instance.
           internal weak var listener: RootListener?
+
+          /// The State instance.
+          @Published internal private(set) var state: RootState
 
           /// The Analytics instance.
           private let analytics: RootAnalytics
@@ -1861,17 +1629,15 @@ files:
 
           /// The initializer.
           /// - Parameters:
-          ///   - presentable: The Presentable instance
           ///   - workers: The Worker instances
           ///   - analytics: The Analytics instance
           internal init(
-              presentable: RootPresentable,
               workers: [Worker],
               analytics: RootAnalytics
           ) {
+              self.state = RootState(name: "{{ project }}")
               self.analytics = analytics
-              super.init(presentable: presentable, workers: workers)
-              presentable.receiver = self
+              super.init(workers: workers)
           }
 
           /// Implement logic to execute when the Context becomes active.
@@ -1905,7 +1671,6 @@ files:
       //  Created by {{ author }} on {{ date }}.
       //
 
-      import Combine
       import Nodes
 
       /**
@@ -1913,10 +1678,7 @@ files:
        The interface that the Flow will speak to the Context through. Used for informing the Context of
        presentation lifecycle events, as an example.
        */
-      internal protocol RootContextInterface: Context {
-          var flow: RootFlowInterface? { get set }
-          var listener: RootListener? { get }
-      }
+      internal protocol RootContextInterface: Context {}
 
       /**
        PURPOSE:
@@ -1930,12 +1692,11 @@ files:
        PURPOSE:
        Responsible for presenting views and starting child Flows, and should not contain business logic.
        */
-      internal final class RootFlowImp: AbstractFlow<RootContextInterface, RootViewControllable> {
-
-          /// Provides the parent Node with access to the View so it can be presented.
-          internal var viewControllable: ViewControllable {
-              viewController
-          }
+      internal final class RootFlowImp: AbstractFlow
+      <
+          RootContextInterface,
+          RootViewControllable
+      > {
 
           /// The initializer.
           ///
@@ -1948,11 +1709,17 @@ files:
               viewController: RootViewControllable
           ) {
               super.init(context: context, viewController: viewController)
-              context.flow = self
           }
 
           /// Implement logic to execute when the Flow is started.
           override internal func didStart() {}
+
+          /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
+          ///
+          /// - Returns: The ``ViewControllable`` instance.
+          internal func getViewController() -> ViewControllable {
+              viewController
+          }
       }
 
       extension RootFlowImp: RootFlow {}
@@ -1960,6 +1727,26 @@ files:
 
           /// Implement logic to execute when the Root Flow is ready to attach child Flows.
           internal func didBecomeReady() {}
+      }
+
+  - path: "{{ project|split:' '|join:'_' }}/Sources/4 Root/RootState.swift"
+    contents: |
+      //
+      //  RootState.swift
+      //  {{ project|split:' '|join:'_' }}
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import Nodes
+
+      /**
+       PURPOSE:
+       The state of the Node.
+       */
+      internal struct RootState: Equatable {
+
+          internal var name: String
       }
 
   - path: "{{ project|split:' '|join:'_' }}/Sources/4 Root/RootViewController.swift"
@@ -1988,23 +1775,36 @@ files:
        PURPOSE:
        Concrete implementation of the UI.
        */
-      internal final class RootViewController: UIViewController {
+      internal final class RootViewController: UIViewController, StateObserver {
 
           /// The view receiver.
           internal weak var receiver: RootReceiver?
 
-          /// The Analytics instance.
-          internal weak var analytics: RootAnalytics?
+          /// The collection of cancellable instances.
+          private var cancellables: Set<AnyCancellable> = .init()
 
-          private let label: UILabel = {
-              let label: UILabel = .init()
-              label.translatesAutoresizingMaskIntoConstraints = false
-              label.text = "{{ project }}"
-              return label
-          }()
+          /// The initial view state.
+          private let initialState: RootViewState
+
+          /// The view state publisher.
+          private let statePublisher: AnyPublisher<RootViewState, Never>
+
+          private let label: UILabel = .init()
 
           /// The initializer.
-          internal init() {
+          ///
+          /// - Parameters:
+          ///   - initialState: The initial view state.
+          ///   - statePublisher: The view state publisher.
+          internal init(
+              initialState: RootViewState,
+              statePublisher: AnyPublisher<RootViewState, Never>
+          ) {
+              self.initialState = initialState
+              self.statePublisher = statePublisher
+                  .removeDuplicates()
+                  .receive(on: DispatchQueue.main)
+                  .eraseToAnyPublisher()
               super.init(nibName: nil, bundle: nil)
           }
 
@@ -2016,63 +1816,72 @@ files:
           override func viewDidLoad() {
               super.viewDidLoad()
               view.backgroundColor = .systemBackground
+              label.translatesAutoresizingMaskIntoConstraints = false
               view.addSubview(label)
               view.addConstraints([
                   label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                   label.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20)
               ])
+              update(with: initialState)
+          }
+
+          override func viewWillAppear(_ animated: Bool) {
+              super.viewWillAppear(animated)
+              observe(statePublisher).store(in: &cancellables)
           }
 
           override func viewDidAppear(_ animated: Bool) {
               super.viewDidAppear(animated)
               receiver?.viewDidAppear()
           }
+
+          override func viewWillDisappear(_ animated: Bool) {
+              super.viewWillDisappear(animated)
+              cancellables.removeAll()
+          }
+
+          internal func update(with viewState: RootViewState) {
+              // Add implementation to update the user interface when the view state changes.
+              label.text = viewState.title
+          }
       }
 
       extension RootViewController: RootViewControllable {}
-      extension RootViewController: RootPresentable {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/4 Root/RootWorker.swift"
+  - path: "{{ project|split:' '|join:'_' }}/Sources/4 Root/RootViewState.swift"
     contents: |
       //
-      //  RootWorker.swift
+      //  RootViewState.swift
       //  {{ project|split:' '|join:'_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
 
-      import Combine
       import Nodes
 
       /**
        PURPOSE:
-       Encapsulates work to be performed by the Node.
+       The view state of the view.
        */
-      internal protocol RootWorker: Worker {}
+      internal struct RootViewState: Equatable {
+
+          internal let title: String
+      }
 
       /**
        PURPOSE:
-       Concrete implementation of the Worker.
+       The factory used to create view state from the state of the Node.
        */
-      internal final class RootWorkerImp: AbstractWorker<AnyCancellable> {
+      internal class RootViewStateFactory: Nodes.Transform {
 
-          /// The Analytics instance.
-          private let analytics: RootAnalytics
-
-          /// The initializer.
-          /// - Parameter analytics: The Analytics instance
-          internal init(analytics: RootAnalytics) {
-              self.analytics = analytics
+          /// The factory method in which state is transformed into view state.
+          ///
+          /// - Parameter state: The state.
+          /// - Returns: The view state.
+          internal func callAsFunction(_ state: RootState) -> RootViewState {
+              RootViewState(title: state.name)
           }
-
-          /// Implement logic to execute when the Worker is started.
-          override internal func didStart() {}
-
-          /// Implement logic to execute when the Worker has stopped.
-          override internal func willStop() {}
       }
-
-      extension RootWorkerImp: RootWorker {}
 
   - path: "{{ project|split:' '|join:'_' }}/Sources/Services/AppService.swift"
     contents: |
@@ -2218,7 +2027,7 @@ files:
 
   - path: Package.swift
     contents: |
-      // swift-tools-version:5.6
+      // swift-tools-version:5.7
 
       import PackageDescription
 
@@ -2228,7 +2037,7 @@ files:
           dependencies: [
               .package(
                   url: "git@github.com:TinderApp/Nodes.git",
-                  from: "0.0.0"),
+                  from: "{{ nodes }}"),
           ],
           targets: []
       )
@@ -2247,28 +2056,31 @@ files:
         indentWidth: 4
         preGenCommand: |
           set -e
-          WORKSPACE_DOCUMENT_NAME="{{ project|split:' '|join:'_' }}.xcodeproj"
-          osascript \
-              -e 'set workspaceDocumentName to "'"${WORKSPACE_DOCUMENT_NAME}"'"' \
-              -e 'if application id "com.apple.dt.Xcode" is running then' \
-              -e 'tell application id "com.apple.dt.Xcode"' \
-              -e 'if workspace document workspaceDocumentName exists then' \
-              -e 'set workspaceDocument to workspace document workspaceDocumentName' \
-              -e 'if loaded of workspaceDocument is false then' \
-              -e 'error "workspace not loaded"' \
-              -e 'end if' \
-              -e 'log "⚙️  Closing project..."' \
-              -e 'tell workspaceDocument' \
-              -e 'stop it' \
-              -e 'delay 0.5' \
-              -e 'close it' \
-              -e 'end tell' \
-              -e 'activate' \
-              -e 'delay 1.5' \
-              -e 'end if' \
-              -e 'end tell' \
-              -e 'end if'
-          unset WORKSPACE_DOCUMENT_NAME
+          if test -z "$CI"
+          then
+              WORKSPACE_DOCUMENT_NAME="{{ project|split:' '|join:'_' }}.xcodeproj"
+              osascript \
+                  -e 'set workspaceDocumentName to "'"${WORKSPACE_DOCUMENT_NAME}"'"' \
+                  -e 'if application id "com.apple.dt.Xcode" is running then' \
+                  -e 'tell application id "com.apple.dt.Xcode"' \
+                  -e 'if workspace document workspaceDocumentName exists then' \
+                  -e 'set workspaceDocument to workspace document workspaceDocumentName' \
+                  -e 'if loaded of workspaceDocument is false then' \
+                  -e 'error "workspace not loaded"' \
+                  -e 'end if' \
+                  -e 'log "⚙️  Closing project..."' \
+                  -e 'tell workspaceDocument' \
+                  -e 'stop it' \
+                  -e 'delay 0.5' \
+                  -e 'close it' \
+                  -e 'end tell' \
+                  -e 'activate' \
+                  -e 'delay 1.5' \
+                  -e 'end if' \
+                  -e 'end tell' \
+                  -e 'end if'
+              unset WORKSPACE_DOCUMENT_NAME
+          fi
           NEEDLE_GENERATED="{{ project|split:' '|join:'_' }}/Generated/NeedleGenerated.swift"
           MOCKOLO_GENERATED="{{ project|split:' '|join:'_' }}Tests/Generated/MockoloGenerated.swift"
           [[ -f "${NEEDLE_GENERATED}" ]] || touch "${NEEDLE_GENERATED}"
@@ -2276,12 +2088,15 @@ files:
           unset NEEDLE_GENERATED MOCKOLO_GENERATED
         postGenCommand: |
           set -e
-          swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
-          xed {{ project|split:' '|join:'_' }}.xcodeproj
+          if test -z "$CI"
+          then
+              swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
+              xed {{ project|split:' '|join:'_' }}.xcodeproj
+          fi
       packages:
         Nodes:
           url: git@github.com:TinderApp/Nodes.git
-          from: 0.0.0
+          from: {{ nodes }}
         NeedleFoundation:
           url: https://github.com/uber/needle.git
           from: 0.18.0
@@ -2296,9 +2111,11 @@ files:
           platform: iOS
           dependencies:
             - package: Nodes
+              product: Nodes
             - package: NeedleFoundation
           preBuildScripts:
             - name: Needle
+              basedOnDependencyAnalysis: false
               script: >
                 env SOURCEKIT_LOGGING=0
                 needle generate {{ project|split:' '|join:'_' }}/Generated/NeedleGenerated.swift
@@ -2351,6 +2168,7 @@ files:
               product: NodesTesting
           preBuildScripts:
             - name: Mockolo
+              basedOnDependencyAnalysis: false
               script: >
                 mockolo
                 -d {{ project|split:' '|join:'_' }}Tests/Generated/MockoloGenerated.swift

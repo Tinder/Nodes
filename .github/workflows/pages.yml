@@ -5,12 +5,12 @@ on:
     tags: ['[0-9]+.[0-9]+.[0-9]+']
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_${{ secrets.XCODE_VERSION }}.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_14.2.app/Contents/Developer
 
 jobs:
   pages:
     name: Pages
-    runs-on: macos-12
+    runs-on: macos-latest
     concurrency:
       group: "pages"
       cancel-in-progress: true
@@ -21,15 +21,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    env:
-      SSH_AUTH_SOCK: /tmp/ssh_agent.sock
     steps:
-    - name: Add ssh key
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
-        ssh-agent -a "$SSH_AUTH_SOCK" > /dev/null
-        ssh-add - <<< "${{ secrets.TINDER_GITHUB_SSH_KEY }}"
     - name: Checkout source
       uses: actions/checkout@v3
     - name: Configure pages

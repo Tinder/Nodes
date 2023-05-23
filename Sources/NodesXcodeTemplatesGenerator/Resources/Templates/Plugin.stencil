@@ -1,6 +1,10 @@
-{{ file_header }}{% if plugin_imports %}
+{{ file_header }}
+{% if plugin_imports %}
+
 {% for import in plugin_imports %}
-import {{ import }}{% endfor %}{% endif %}
+import {{ import }}
+{% endfor %}
+{% endif %}
 
 /**
  PURPOSE:
@@ -48,15 +52,17 @@ internal final class {{ plugin_name }}PluginComponent: Component
 
      Declare child component factories as 'fileprivate' methods.
 
-     fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
-         ChildComponent(parent: self)
+     fileprivate func <name>ComponentFactory() -> <Name>Component {
+         <Name>Component(parent: self)
      }
 
-     */{% if not return_type %}
+     */
+    {% if not return_type %}
 
     fileprivate func componentFactory() -> {{ plugin_name }}Component {
         {{ plugin_name }}Component(parent: self)
-    }{% endif %}
+    }
+    {% endif %}
 }
 
 /**
@@ -70,7 +76,11 @@ internal typealias {{ plugin_name }}PluginStateType = Void
  The Plugin interface (available to mock for testability).
  */
 internal protocol {{ plugin_name }}Plugin {
-    func create() -> {% if return_type %}{{ return_type }}{% else %}{{ plugin_name }}Builder{% endif %}?
+    {% if return_type %}
+    func create() -> {{ return_type }}?
+    {% else %}
+    func create() -> {{ plugin_name }}Builder?
+    {% endif %}
 }
 
 /**
@@ -80,7 +90,11 @@ internal protocol {{ plugin_name }}Plugin {
 internal final class {{ plugin_name }}PluginImp: Plugin
 <
     {{ plugin_name }}PluginComponent,
-    {% if return_type %}{{ return_type }}{% else %}{{ plugin_name }}Builder{% endif %},
+    {% if return_type %}
+    {{ return_type }},
+    {% else %}
+    {{ plugin_name }}Builder,
+    {% endif %}
     {{ plugin_name }}PluginStateType
 > {
 
@@ -98,17 +112,17 @@ internal final class {{ plugin_name }}PluginImp: Plugin
 
     /// The factory method in which the instance is initialized.
     /// - Parameter component: The component instance
-    /// - Returns: The initialized instance{% if return_type %}
+    /// - Returns: The initialized instance
     override internal func build(
         component: {{ plugin_name }}PluginComponent
+    {% if return_type %}
     ) -> {{ return_type }} {
         // TODO: Initialize instance
-    }{% else %}
-    override internal func build(
-        component: {{ plugin_name }}PluginComponent
+    {% else %}
     ) -> {{ plugin_name }}Builder {
         {{ plugin_name }}BuilderImp(componentFactory: component.componentFactory)
-    }{% endif %}
+    {% endif %}
+    }
 }
 
 extension {{ plugin_name }}PluginImp: {{ plugin_name }}Plugin {}

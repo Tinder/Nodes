@@ -1,8 +1,5 @@
 //
-//  StencilRenderer.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Christopher Fuller on 4/25/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 import Foundation
@@ -58,7 +55,8 @@ public final class StencilRenderer {
             .appendingPathComponent(stencil.filename)
             .appendingPathExtension("stencil")
         let template: String = try .init(contentsOf: stencilURL)
-        let environment: Environment = .init(loader: DictionaryLoader(templates: [stencil.name: template]))
+        let environment: Environment = .init(loader: DictionaryLoader(templates: [stencil.name: template]),
+                                             trimBehaviour: .smart)
         return try environment.renderTemplate(name: stencil.name, context: context)
     }
 }

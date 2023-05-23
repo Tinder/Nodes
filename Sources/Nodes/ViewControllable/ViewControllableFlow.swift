@@ -1,8 +1,5 @@
 //
-//  ViewControllableFlow.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 10/3/20.
+//  Copyright © 2020 Tinder (Match Group, LLC)
 //
 
 /**
@@ -12,6 +9,8 @@
 /// @mockable
 public protocol ViewControllableFlow: Flow {
 
-    /// The ``ViewControllable`` instance made available to the parent `Flow` instance for display or presentation.
-    var viewControllable: ViewControllable { get }
+    /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
+    ///
+    /// - Returns: The ``ViewControllable`` instance.
+    func getViewController() -> ViewControllable
 }

@@ -1,8 +1,5 @@
 //
-//  StateObserverTests.swift
-//  NodeTests
-//
-//  Created by Christopher Fuller on 5/4/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 import Combine
@@ -34,6 +31,9 @@ final class StateObserverTests: XCTestCase {
         subject.send()
         subject.send()
         expect(observer.observerCallCount).toEventually(equal(3))
-        waitUntil { $0() }
+        waitUntil { done in
+            usleep(10_000)
+            done()
+        }
     }
 }

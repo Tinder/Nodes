@@ -1,13 +1,8 @@
 //
-//  WindowSceneViewControllable.swift
-//  Nodes
-//
-//  Created by Caio Fonseca on 2/23/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 #if canImport(UIKit) && !os(watchOS)
-
-import UIKit
 
 /**
  * The interface used for injecting a window scene into a `Flow` instance to limit the available API,

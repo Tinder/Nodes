@@ -1,8 +1,5 @@
 //
-//  UIFrameworkTests.swift
-//  NodesXcodeTemplatesGeneratorTests
-//
-//  Created by Garric Nahapetian on 11/14/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 import Nimble

@@ -1,9 +1,8 @@
 //
-//  AbstractBuilder.swift
-//  Nodes
+//  Copyright © 2020 Tinder (Match Group, LLC)
 //
-//  Created by Christopher Fuller on 10/3/20.
-//
+
+// swiftlint:disable period_spacing
 
 /**
  * Nodes’ ``AbstractBuilder`` base class.
@@ -18,7 +17,7 @@
  * | DynamicBuildDependencyType     | The type of dependency provided dynamically to the `BuildType` instance.     |
  * | DynamicComponentDependencyType | The type of dependency provided dynamically to the `ComponentType` instance. |
  */
-open class AbstractBuilder<ComponentType, // swiftlint:disable:this operator_usage_whitespace
+open class AbstractBuilder<ComponentType,
                            BuildType,
                            DynamicBuildDependencyType, // swiftlint:disable:this generic_type_name
                            DynamicComponentDependencyType> { // swiftlint:disable:this generic_type_name
@@ -82,3 +81,5 @@ open class AbstractBuilder<ComponentType, // swiftlint:disable:this operator_usa
         return build(component: component, dynamicBuildDependency: dynamicBuildDependency)
     }
 }
+
+// swiftlint:enable period_spacing

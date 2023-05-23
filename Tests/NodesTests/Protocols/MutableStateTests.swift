@@ -1,8 +1,5 @@
 //
-//  MutableStateTests.swift
-//  NodeTest
-//
-//  Created by Seppe Snoeck on 09/03/23.
+//  Copyright © 2023 Tinder (Match Group, LLC)
 //
 
 import Nimble

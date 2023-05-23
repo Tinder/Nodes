@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-
-PREFLIGHT="swift run --skip-build -- preflight"
-FORMATTER="${1:-pretty}"
-
-$PREFLIGHT --output "$FORMATTER" --strict

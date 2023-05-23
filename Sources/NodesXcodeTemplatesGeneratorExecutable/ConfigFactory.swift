@@ -1,8 +1,5 @@
 //
-//  ConfigFactory.swift
-//  NodesXcodeTemplatesGeneratorExecutable
-//
-//  Created by Christopher Fuller on 6/12/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 import NodesXcodeTemplatesGenerator
@@ -12,7 +9,7 @@ internal final class ConfigFactory {
     internal typealias Config = XcodeTemplates.Config
 
     internal func callAsFunction(at path: String?) throws -> Config {
-        guard let path = path
+        guard let path: String
         else { return Config() }
         return try Config(at: path)
     }

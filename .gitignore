@@ -4,7 +4,6 @@
 # SPM
 .swiftpm/
 .build/
-Packages/
 
 # Xcode
 *.xcworkspace/

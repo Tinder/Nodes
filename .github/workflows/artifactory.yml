@@ -5,24 +5,16 @@ on:
     tags: ['[0-9]+.[0-9]+.[0-9]+']
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_${{ secrets.XCODE_VERSION }}.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_14.2.app/Contents/Developer
 
 jobs:
   artifactory:
     name: Artifactory
-    runs-on: macos-12
+    runs-on: macos-latest
     concurrency:
       group: ${{ github.ref_name }}
       cancel-in-progress: true
-    env:
-      SSH_AUTH_SOCK: /tmp/ssh_agent.sock
     steps:
-    - name: Add ssh key
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
-        ssh-agent -a "$SSH_AUTH_SOCK" > /dev/null
-        ssh-add - <<< "${{ secrets.TINDER_GITHUB_SSH_KEY }}"
     - name: Install dependencies
       run: brew install jfrog-cli
     - name: Checkout source
@@ -33,11 +25,7 @@ jobs:
         mkdir Documentation
         mv .build/documentation/archive/Nodes.doccarchive Documentation
     - name: Archive
-      run: >
-        tar
-        -czf "Nodes-${GITHUB_REF_NAME}.tar.gz"
-        --exclude=".swiftlint.yml"
-        Sources Documentation
+      run: tar -czf "Nodes-${GITHUB_REF_NAME}.tar.gz" Sources Documentation
     - name: Upload
       run: >
         jf rt u
