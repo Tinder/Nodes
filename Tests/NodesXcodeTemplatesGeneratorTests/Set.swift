@@ -4,7 +4,7 @@
 
 extension Set where Element == String {
 
-    internal static func mocks(with identifier: String, count: Int) -> Self {
+    internal static func mock(with identifier: String, count: Int) -> Self {
         guard count > 0
         else { return [] }
         guard count > 1
