@@ -140,11 +140,11 @@ extension TestFactories {
         )
     }
 
-    func givenWorkerContext() -> WorkerContext {
+    func givenWorkerContext(importsCount: Int = 1) -> WorkerContext {
         WorkerContext(
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",
-            workerImports: ["<workerImport>"],
+            workerImports: .mock(with: "workerImport", count: importsCount),
             cancellableType: "<cancellableType>"
         )
     }

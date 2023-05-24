@@ -75,8 +75,11 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderWorker() throws {
-        let context: WorkerContext = givenWorkerContext()
-        assertSnapshot(matching: try StencilRenderer().renderWorker(context: context),
-                       as: .lines)
+        try [0, 1, 2].forEach { count in
+            let context: WorkerContext = givenWorkerContext(importsCount: count)
+            assertSnapshot(matching: try StencilRenderer().renderWorker(context: context),
+                           as: .lines,
+                           named: "importsCount-\(count)")
+        }
     }
 }
