@@ -148,12 +148,4 @@ extension TestFactories {
             cancellableType: "<cancellableType>"
         )
     }
-
-    private func givenSet(containing string: String, count: Int) -> Set<String> {
-        guard count > 0
-        else { return Set() }
-        guard count > 1
-        else { return Set(["<" + string + ">"]) }
-        return Set((1...count).map { "<" + string + "\($0)" + ">" })
-    }
 }
