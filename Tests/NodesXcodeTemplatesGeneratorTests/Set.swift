@@ -8,7 +8,7 @@ extension Set where Element == String {
         guard count > 0
         else { return [] }
         guard count > 1
-        else { return Set(["<\(identifier)>"]) }
+        else { return ["<\(identifier)>"] }
         let strings: [String] = (1...count).map { "<\(identifier)\($0)>" }
         return Set(strings)
     }
