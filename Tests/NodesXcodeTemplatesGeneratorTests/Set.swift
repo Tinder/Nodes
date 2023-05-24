@@ -4,12 +4,12 @@
 
 extension Set where Element == String {
 
-    internal static func mockStrings(_ string: String, count: Int) -> Self {
+    internal static func mocks(with identifier: String, count: Int) -> Self {
         guard count > 0
         else { return [] }
         guard count > 1
-        else { return ["<\(string)>"] }
-        let strings: [String] = (1...count).map { "<\(string)\($0)>" }
+        else { return Set(["<\(identifier)>"]) }
+        let strings: [String] = (1...count).map { "<\(identifier)\($0)>" }
         return Set(strings)
     }
 }
