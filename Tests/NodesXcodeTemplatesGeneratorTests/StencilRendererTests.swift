@@ -71,6 +71,15 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         }
     }
 
+    func testRenderPluginWithoutReturnType() throws {
+        try (0...2).forEach { count in
+            let context: PluginContext = givenPluginContextWithoutReturnType(importsCount: count)
+            assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
+                           as: .lines,
+                           named: "importsCount-\(count)")
+        }
+    }
+
     func testRenderPluginList() throws {
         try (0...2).forEach { count in
             let context: PluginListContext = givenPluginListContext(importsCount: count)
