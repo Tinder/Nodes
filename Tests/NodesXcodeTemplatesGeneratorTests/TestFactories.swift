@@ -114,12 +114,12 @@ extension TestFactories {
         )
     }
 
-    func givenPluginContext() -> PluginContext {
+    func givenPluginContext(importsCount: Int = 1) -> PluginContext {
         PluginContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             returnType: "<returnType>",
-            pluginImports: ["<pluginImport>"]
+            pluginImports: .mock(with: "pluginImport", count: importsCount)
         )
     }
 
