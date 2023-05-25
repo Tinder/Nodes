@@ -65,7 +65,6 @@ extension UIViewController {
 
     // swiftlint:disable:next identifier_name
     internal func _addChild(_ viewController: UIViewController) {
-        let viewController: UIViewController = viewController._asUIViewController()
         guard !children.contains(viewController)
         else { return }
         addChild(viewController)
@@ -73,7 +72,6 @@ extension UIViewController {
 
     // swiftlint:disable:next identifier_name
     internal func _removeChild(_ viewController: UIViewController) {
-        let viewController: UIViewController = viewController._asUIViewController()
         guard children.contains(viewController)
         else { return }
         viewController.removeFromParent()
