@@ -131,11 +131,11 @@ extension TestFactories {
         )
     }
 
-    func givenPluginListContext() -> PluginListContext {
+    func givenPluginListContext(importsCount: Int = 1) -> PluginListContext {
         PluginListContext(
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
-            pluginListImports: ["<pluginListImport>"],
+            pluginListImports: .mock(with: "pluginListImport", count: importsCount),
             viewControllableFlowType: "<viewControllableFlowType>"
         )
     }
