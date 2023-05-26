@@ -1,0 +1,66 @@
+<fileHeader>
+
+import <contextImport1>
+import <contextImport2>
+
+/**
+ PURPOSE:
+ The Context delegates callbacks to its (external) Listener, typically the parent Context.
+ */
+internal protocol <nodeName>Listener: AnyObject {}
+
+/**
+ PURPOSE:
+ The interface that the Context will speak to the Flow through. Used to initiate navigation as
+ an example.
+ */
+internal protocol <nodeName>FlowInterface: Flow {}
+
+/**
+ PURPOSE:
+ Contains the business logic of the Node. The lifecycle of the Node is bookended between the
+ `didBecomeActive` and `willResignActive` methods.
+ */
+internal final class <nodeName>ContextImp: AbstractContext
+<
+    <cancellableType>
+> {
+
+    /// The Flow instance.
+    internal weak var flow: <nodeName>FlowInterface?
+
+    /// The Listener instance.
+    internal weak var listener: <nodeName>Listener?
+
+    /// The State instance.
+    @Published internal private(set) var state: <nodeName>State
+
+    /// The Analytics instance.
+    private let analytics: <nodeName>Analytics
+
+    /// The initializer.
+    /// - Parameters:
+    ///   - workers: The Worker instances
+    ///   - analytics: The Analytics instance
+    internal init(
+        workers: [Worker],
+        analytics: <nodeName>Analytics
+    ) {
+        self.state = <nodeName>State()
+        self.analytics = analytics
+        super.init(workers: workers)
+    }
+
+    /// Implement logic to execute when the Context becomes active.
+    override internal func didBecomeActive() {}
+
+    /// Implement logic to execute when the Context will become inactive.
+    override internal func willResignActive() {}
+
+    deinit {
+        LeakDetector.detect(analytics)
+    }
+}
+
+extension <nodeName>ContextImp: <nodeName>ContextInterface {}
+extension <nodeName>ContextImp: <nodeName>Receiver {}

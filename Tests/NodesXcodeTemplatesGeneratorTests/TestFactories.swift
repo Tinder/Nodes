@@ -44,17 +44,17 @@ extension TestFactories {
         return config
     }
 
-    func givenNodeContext() -> NodeContext {
+    func givenNodeContext(importsCount: Int = 1) -> NodeContext {
         NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
-            analyticsImports: ["<analyticsImport>"],
-            builderImports: ["<builderImport>"],
-            contextImports: ["<contextImport>"],
-            flowImports: ["<flowImport>"],
-            stateImports: ["<stateImport>"],
-            viewControllerImports: ["<viewControllerImport>"],
-            viewStateImports: ["<viewStateImport>"],
+            analyticsImports: .mock(with: "analyticsImport", count: importsCount),
+            builderImports: .mock(with: "builderImport", count: importsCount),
+            contextImports: .mock(with: "contextImport", count: importsCount),
+            flowImports: .mock(with: "flowImport", count: importsCount),
+            stateImports: .mock(with: "stateImport", count: importsCount),
+            viewControllerImports: .mock(with: "viewControllerImport", count: importsCount),
+            viewStateImports: .mock(with: "viewStateImport", count: importsCount),
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             viewControllerType: "<viewControllerType>",
