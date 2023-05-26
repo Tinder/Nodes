@@ -27,8 +27,10 @@ internal protocol {{ node_name }}Analytics: AnyObject {}
 /**
  PURPOSE:
  Custom analytics implementation for this Node.
- */{% if not analytics_properties %}
-internal final class {{ node_name }}AnalyticsImp {}{% else %}
+ */
+ {% if not analytics_properties %}
+internal final class {{ node_name }}AnalyticsImp {}
+{% else %}
 internal final class {{ node_name }}AnalyticsImp {
     {% if analytics_properties %}
 
@@ -54,6 +56,7 @@ internal final class {{ node_name }}AnalyticsImp {
         self.{{ property.name }} = {{ property.name }}
     {% endfor %}
     }
-}{% endif %}
+}
+{% endif %}
 
 extension {{ node_name }}AnalyticsImp: {{ node_name }}Analytics {}
