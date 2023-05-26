@@ -30,17 +30,29 @@ internal protocol {{ node_name }}Analytics: AnyObject {}
  */{% if not analytics_properties %}
 internal final class {{ node_name }}AnalyticsImp {}{% else %}
 internal final class {{ node_name }}AnalyticsImp {
-    {% for property in analytics_properties %}
-    private let {{ property.name }}: {{ property.type }}{% endfor %}
+    {% if analytics_properties %}
 
-    /// The initializer.{% if analytics_properties.count == 1 %}
-    /// - Parameter {{ analytics_properties.first.name }}: The {{ analytics_properties.first.type }} instance{% else %}
-    /// - Parameters:{% for property in analytics_properties %}
-    ///   - {{ property.name }}: The {{ property.type }} instance{% endfor %}{% endif %}
-    init({% for property in analytics_properties %}
-        {{ property.name }}: {{ property.type }}{% if not forloop.last %},{% endif %}{% endfor %}
-    ) {{ '{' }}{% for property in analytics_properties %}
-        self.{{ property.name }} = {{ property.name }}{% endfor %}
+    {% for property in analytics_properties %}
+    private let {{ property.name }}: {{ property.type }}
+    {% endfor %}
+    {% endif %}
+
+    /// The initializer.
+    {% if analytics_properties.count == 1 %}
+    /// - Parameter {{ analytics_properties.first.name }}: The {{ analytics_properties.first.type }} instance
+    {% else %}
+    /// - Parameters:
+    {% for property in analytics_properties %}
+    ///   - {{ property.name }}: The {{ property.type }} instance
+    {% endfor %}
+    {% endif %}
+    init(
+    {% for property in analytics_properties %}
+        {{ property.name }}: {{ property.type }}{% if not forloop.last %},{% endif %}
+    {% endfor +%}
+    ) {{ '{' }}{% for property in analytics_properties +%}
+        self.{{ property.name }} = {{ property.name }}
+    {% endfor %}
     }
 }{% endif %}
 
