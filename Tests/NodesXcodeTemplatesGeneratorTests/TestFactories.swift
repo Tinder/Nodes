@@ -71,16 +71,16 @@ extension TestFactories {
         )
     }
 
-    func givenNodeRootContext() -> NodeRootContext {
+    func givenNodeRootContext(importsCount: Int = 1) -> NodeRootContext {
         NodeRootContext(
             fileHeader: "<fileHeader>",
-            analyticsImports: ["<analyticsImport>"],
-            builderImports: ["<builderImport>"],
-            contextImports: ["<contextImport>"],
-            flowImports: ["<flowImport>"],
-            stateImports: ["<stateImport>"],
-            viewControllerImports: ["<viewControllerImport>"],
-            viewStateImports: ["<viewStateImport>"],
+            analyticsImports: .mock(with: "analyticsImport", count: importsCount),
+            builderImports: .mock(with: "builderImport", count: importsCount),
+            contextImports: .mock(with: "contextImport", count: importsCount),
+            flowImports: .mock(with: "flowImport", count: importsCount),
+            stateImports: .mock(with: "stateImport", count: importsCount),
+            viewControllerImports: .mock(with: "viewControllerImport", count: importsCount),
+            viewStateImports: .mock(with: "viewStateImport", count: importsCount),
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],
             viewControllerType: "<viewControllerType>",
