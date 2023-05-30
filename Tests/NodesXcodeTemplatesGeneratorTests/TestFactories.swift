@@ -117,37 +117,37 @@ extension TestFactories {
         )
     }
 
-    func givenPluginContext() -> PluginContext {
+    func givenPluginContext(importsCount: Int = 1) -> PluginContext {
         PluginContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             returnType: "<returnType>",
-            pluginImports: ["<pluginImport>"]
+            pluginImports: .mock(with: "pluginImport", count: importsCount)
         )
     }
 
-    func givenPluginContextWithoutReturnType() -> PluginContext {
+    func givenPluginContextWithoutReturnType(importsCount: Int = 1) -> PluginContext {
         PluginContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
-            pluginImports: ["<pluginImport>"]
+            pluginImports: .mock(with: "pluginImport", count: importsCount)
         )
     }
 
-    func givenPluginListContext() -> PluginListContext {
+    func givenPluginListContext(importsCount: Int = 1) -> PluginListContext {
         PluginListContext(
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
-            pluginListImports: ["<pluginListImport>"],
+            pluginListImports: .mock(with: "pluginListImport", count: importsCount),
             viewControllableFlowType: "<viewControllableFlowType>"
         )
     }
 
-    func givenWorkerContext() -> WorkerContext {
+    func givenWorkerContext(importsCount: Int = 1) -> WorkerContext {
         WorkerContext(
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",
-            workerImports: ["<workerImport>"],
+            workerImports: .mock(with: "workerImport", count: importsCount),
             cancellableType: "<cancellableType>"
         )
     }

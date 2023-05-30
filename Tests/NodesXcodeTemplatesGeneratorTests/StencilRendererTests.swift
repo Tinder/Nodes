@@ -63,20 +63,38 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderPlugin() throws {
-        let context: PluginContext = givenPluginContext()
-        assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
-                       as: .lines)
+        try (0...2).forEach { count in
+            let context: PluginContext = givenPluginContext(importsCount: count)
+            assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
+                           as: .lines,
+                           named: "importsCount-\(count)")
+        }
+    }
+
+    func testRenderPluginWithoutReturnType() throws {
+        try (0...2).forEach { count in
+            let context: PluginContext = givenPluginContextWithoutReturnType(importsCount: count)
+            assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
+                           as: .lines,
+                           named: "importsCount-\(count)")
+        }
     }
 
     func testRenderPluginList() throws {
-        let context: PluginListContext = givenPluginListContext()
-        assertSnapshot(matching: try StencilRenderer().renderPluginList(context: context),
-                       as: .lines)
+        try (0...2).forEach { count in
+            let context: PluginListContext = givenPluginListContext(importsCount: count)
+            assertSnapshot(matching: try StencilRenderer().renderPluginList(context: context),
+                           as: .lines,
+                           named: "importsCount-\(count)")
+        }
     }
 
     func testRenderWorker() throws {
-        let context: WorkerContext = givenWorkerContext()
-        assertSnapshot(matching: try StencilRenderer().renderWorker(context: context),
-                       as: .lines)
+        try (0...2).forEach { count in
+            let context: WorkerContext = givenWorkerContext(importsCount: count)
+            assertSnapshot(matching: try StencilRenderer().renderWorker(context: context),
+                           as: .lines,
+                           named: "importsCount-\(count)")
+        }
     }
 }

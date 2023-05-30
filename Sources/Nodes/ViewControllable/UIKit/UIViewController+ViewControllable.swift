@@ -51,6 +51,7 @@ extension UIViewController: ViewControllable {
     ///
     /// - Parameter viewController: The ``ViewControllable`` instance to contain.
     public func contain(_ viewController: ViewControllable) {
+        let viewController: UIViewController = viewController._asUIViewController()
         contain(viewController, in: view)
     }
 
