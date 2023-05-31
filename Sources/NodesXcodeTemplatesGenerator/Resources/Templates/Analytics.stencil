@@ -44,13 +44,12 @@ internal final class {{ node_name }}AnalyticsImp {
     ///   - {{ property.name }}: The `{{ property.type }}` instance
     {% endfor %}
     {% endif %}
-
     init(
         {% for property in analytics_properties %}
         {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}
         {% endif %}
         {% endfor +%}
-    ) {{ '{' }}
+    ) {
         {% for property in analytics_properties %}
         self.{{ property.name }} = {{ property.name }}
         {% endfor %}
