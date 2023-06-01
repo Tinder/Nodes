@@ -30,7 +30,6 @@ internal final class <nodeName>AnalyticsImp {
 
     /// The initializer.
     /// - Parameter <analyticsPropertiesName>: The `<analyticsPropertiesType>` instance
-
     init(
         <analyticsPropertiesName>: <analyticsPropertiesType>
     ) {
