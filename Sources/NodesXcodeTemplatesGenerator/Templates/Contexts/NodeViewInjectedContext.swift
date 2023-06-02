@@ -30,7 +30,7 @@ public struct NodeViewInjectedContext: Context {
             "flow_imports": flowImports,
             "state_imports": stateImports,
             "dependencies": dependencies,
-            "analyticsProperties": analyticsProperties,
+            "analytics_properties": analyticsProperties,
             "flow_properties": flowProperties,
             "view_controllable_type": viewControllableType,
             "view_controllable_flow_type": viewControllableFlowType,
