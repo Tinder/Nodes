@@ -1,6 +1,10 @@
 ▿ 15 key/value pairs
   ▿ (2 elements)
-    - key: "analyticsProperties"
+    - key: "analytics_imports"
+    ▿ value: 1 element
+      - "<analyticsImport>"
+  ▿ (2 elements)
+    - key: "analytics_properties"
     ▿ value: 1 element
       ▿ 2 key/value pairs
         ▿ (2 elements)
@@ -9,10 +13,6 @@
         ▿ (2 elements)
           - key: "type"
           - value: "<analyticsPropertiesType>"
-  ▿ (2 elements)
-    - key: "analytics_imports"
-    ▿ value: 1 element
-      - "<analyticsImport>"
   ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
