@@ -9,7 +9,7 @@ import XCTest
 
 final class StencilRendererTests: XCTestCase, TestFactories {
 
-    private let importCountg: ClosedRange<Int> = 0...2
+    private let importCount: ClosedRange<Int> = 0...2
 
     func testRenderNode() throws {
         try UIFramework.Kind.allCases.forEach { kind in
