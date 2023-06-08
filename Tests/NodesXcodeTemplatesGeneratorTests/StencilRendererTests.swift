@@ -64,37 +64,37 @@ final class StencilRendererTests: XCTestCase, TestFactories {
 
     func testRenderPlugin() throws {
         try (0...2).forEach { count in
-            let context: PluginContext = givenPluginContext(importsCount: count)
+            let context: PluginContext = givenPluginContext(importCount: count)
             assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
                            as: .lines,
-                           named: "importsCount-\(count)")
+                           named: "importCount-\(count)")
         }
     }
 
     func testRenderPluginWithoutReturnType() throws {
         try (0...2).forEach { count in
-            let context: PluginContext = givenPluginContextWithoutReturnType(importsCount: count)
+            let context: PluginContext = givenPluginContextWithoutReturnType(importCount: count)
             assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
                            as: .lines,
-                           named: "importsCount-\(count)")
+                           named: "importCount-\(count)")
         }
     }
 
     func testRenderPluginList() throws {
         try (0...2).forEach { count in
-            let context: PluginListContext = givenPluginListContext(importsCount: count)
+            let context: PluginListContext = givenPluginListContext(importCount: count)
             assertSnapshot(matching: try StencilRenderer().renderPluginList(context: context),
                            as: .lines,
-                           named: "importsCount-\(count)")
+                           named: "importCount-\(count)")
         }
     }
 
     func testRenderWorker() throws {
         try (0...2).forEach { count in
-            let context: WorkerContext = givenWorkerContext(importsCount: count)
+            let context: WorkerContext = givenWorkerContext(importCount: count)
             assertSnapshot(matching: try StencilRenderer().renderWorker(context: context),
                            as: .lines,
-                           named: "importsCount-\(count)")
+                           named: "importCount-\(count)")
         }
     }
 }
