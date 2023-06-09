@@ -9,7 +9,7 @@ import XCTest
 
 final class StencilRendererTests: XCTestCase, TestFactories {
 
-    private let importCount: ClosedRange<Int> = 0...2
+    private let importCounts: ClosedRange<Int> = 0...2
 
     func testRenderNode() throws {
         try UIFramework.Kind.allCases.forEach { kind in
@@ -65,7 +65,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderPlugin() throws {
-        try importCount.forEach { count in
+        try importCounts.forEach { count in
             let context: PluginContext = givenPluginContext(importCount: count)
             assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
                            as: .lines,
@@ -74,7 +74,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderPluginWithoutReturnType() throws {
-        try importCount.forEach { count in
+        try importCounts.forEach { count in
             let context: PluginContext = givenPluginContextWithoutReturnType(importCount: count)
             assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
                            as: .lines,
@@ -83,7 +83,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderPluginList() throws {
-        try importCount.forEach { count in
+        try importCounts.forEach { count in
             let context: PluginListContext = givenPluginListContext(importCount: count)
             assertSnapshot(matching: try StencilRenderer().renderPluginList(context: context),
                            as: .lines,
@@ -92,7 +92,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderWorker() throws {
-        try importCount.forEach { count in
+        try importCounts.forEach { count in
             let context: WorkerContext = givenWorkerContext(importCount: count)
             assertSnapshot(matching: try StencilRenderer().renderWorker(context: context),
                            as: .lines,
