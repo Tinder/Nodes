@@ -50,7 +50,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderNodeViewInjected() throws {
-        try (0...2).forEach { count in
+        try importCounts.forEach { count in
             let context: NodeViewInjectedContext = givenNodeViewInjectedContext(importsCount: count)
             let templates: [String: String] = try StencilRenderer().renderNodeViewInjected(context: context)
             expect(templates.keys.sorted()) == [
@@ -61,7 +61,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "State"
             ]
             templates.forEach { name, template in
-                assertSnapshot(matching: template, as: .lines, named: "\(name)-importsCount-\(count)")
+                assertSnapshot(matching: template, as: .lines, named: "\(name)-importCount-\(count)")
             }
         }
     }
