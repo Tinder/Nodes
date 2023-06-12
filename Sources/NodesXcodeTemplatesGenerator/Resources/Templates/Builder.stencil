@@ -171,7 +171,16 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         let listener: {{ node_name }}Listener = dynamicBuildDependency.0
         let viewController: {{ node_name }}ViewControllable = dynamicBuildDependency.1
         {% endif %}
+        {% if analytics_properties %}
+        let analytics: {{ node_name }}AnalyticsImp = .init(
+            {% for property in analytics_properties %}
+            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %}{{ ',' }}
+            {% endif %}
+            {% endfor +%}
+        )
+        {% else %}
         let analytics: {{ node_name }}AnalyticsImp = .init()
+        {% endif %}
         let context: {{ node_name }}ContextImp = .init(
             workers: [],
             analytics: analytics

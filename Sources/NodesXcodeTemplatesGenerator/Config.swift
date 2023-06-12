@@ -28,6 +28,7 @@ extension XcodeTemplates {
         public var reactiveImports: Set<String>
         public var dependencyInjectionImports: Set<String>
         public var dependencies: [Variable]
+        public var analyticsProperties: [Variable]
         public var flowProperties: [Variable]
         public var viewControllableType: String
         public var viewControllableFlowType: String
@@ -69,6 +70,7 @@ extension XcodeTemplates.Config {
         reactiveImports = ["Combine"]
         dependencyInjectionImports = ["NeedleFoundation"]
         dependencies = []
+        analyticsProperties = []
         flowProperties = []
         viewControllableType = "ViewControllable"
         viewControllableFlowType = "ViewControllableFlow"
@@ -112,6 +114,9 @@ extension XcodeTemplates.Config {
         dependencies =
             (try? decoder.decode(CodingKeys.dependencies))
             ?? defaults.dependencies
+        analyticsProperties =
+            (try? decoder.decode(CodingKeys.analyticsProperties))
+            ?? defaults.analyticsProperties
         flowProperties =
             (try? decoder.decode(CodingKeys.flowProperties))
             ?? defaults.flowProperties

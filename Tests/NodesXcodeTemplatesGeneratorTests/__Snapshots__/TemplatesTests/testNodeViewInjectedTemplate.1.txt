@@ -3,6 +3,7 @@
     ▿ analyticsImports: 2 elements
       - "<baseImport>"
       - "Nodes"
+    - analyticsProperties: 0 elements
     ▿ builderImports: 4 elements
       - "<baseImport>"
       - "<dependencyInjectionImport>"
