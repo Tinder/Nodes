@@ -51,7 +51,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
 
     func testRenderNodeViewInjected() throws {
         try importCounts.forEach { count in
-            let context: NodeViewInjectedContext = givenNodeViewInjectedContext(importsCount: count)
+            let context: NodeViewInjectedContext = givenNodeViewInjectedContext(importCount: count)
             let templates: [String: String] = try StencilRenderer().renderNodeViewInjected(context: context)
             expect(templates.keys.sorted()) == [
                 "Analytics",
