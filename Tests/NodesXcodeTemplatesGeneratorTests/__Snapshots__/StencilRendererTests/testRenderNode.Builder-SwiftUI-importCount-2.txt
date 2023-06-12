@@ -1,5 +1,8 @@
 <fileHeader>
 
+import <builderImport1>
+import <builderImport2>
+
 /**
  PURPOSE:
  The interface of the Flow.
@@ -140,7 +143,9 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         dynamicBuildDependency: <nodeName>DynamicBuildDependency
     ) -> <nodeName>Flow {
         let listener: <nodeName>Listener = dynamicBuildDependency
-        let analytics: <nodeName>AnalyticsImp = .init()
+        let analytics: <nodeName>AnalyticsImp = .init(
+            <analyticsPropertiesName>: component.dependency.<analyticsPropertiesName>
+        )
         let context: <nodeName>ContextImp = .init(
             workers: [],
             analytics: analytics
