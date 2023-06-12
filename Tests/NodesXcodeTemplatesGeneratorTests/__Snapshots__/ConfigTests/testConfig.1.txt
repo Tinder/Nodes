@@ -1,4 +1,11 @@
 ▿ Config
+  ▿ analyticsProperties: 2 elements
+    ▿ Variable
+      - name: "<analyticsProperties-name-1>"
+      - type: "<analyticsProperties-type-1>"
+    ▿ Variable
+      - name: "<analyticsProperties-name-2>"
+      - type: "<analyticsProperties-type-2>"
   ▿ baseImports: 2 members
     - "<baseImports-1>"
     - "<baseImports-2>"

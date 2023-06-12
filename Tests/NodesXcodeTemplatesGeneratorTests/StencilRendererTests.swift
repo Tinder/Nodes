@@ -9,6 +9,8 @@ import XCTest
 
 final class StencilRendererTests: XCTestCase, TestFactories {
 
+    private let importCounts: ClosedRange<Int> = 0...2
+
     func testRenderNode() throws {
         try UIFramework.Kind.allCases.forEach { kind in
             let context: NodeContext = givenNodeContext()
@@ -65,38 +67,38 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderPlugin() throws {
-        try (0...2).forEach { count in
-            let context: PluginContext = givenPluginContext(importsCount: count)
+        try importCounts.forEach { count in
+            let context: PluginContext = givenPluginContext(importCount: count)
             assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
                            as: .lines,
-                           named: "importsCount-\(count)")
+                           named: "importCount-\(count)")
         }
     }
 
     func testRenderPluginWithoutReturnType() throws {
-        try (0...2).forEach { count in
-            let context: PluginContext = givenPluginContextWithoutReturnType(importsCount: count)
+        try importCounts.forEach { count in
+            let context: PluginContext = givenPluginContextWithoutReturnType(importCount: count)
             assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
                            as: .lines,
-                           named: "importsCount-\(count)")
+                           named: "importCount-\(count)")
         }
     }
 
     func testRenderPluginList() throws {
-        try (0...2).forEach { count in
-            let context: PluginListContext = givenPluginListContext(importsCount: count)
+        try importCounts.forEach { count in
+            let context: PluginListContext = givenPluginListContext(importCount: count)
             assertSnapshot(matching: try StencilRenderer().renderPluginList(context: context),
                            as: .lines,
-                           named: "importsCount-\(count)")
+                           named: "importCount-\(count)")
         }
     }
 
     func testRenderWorker() throws {
-        try (0...2).forEach { count in
-            let context: WorkerContext = givenWorkerContext(importsCount: count)
+        try importCounts.forEach { count in
+            let context: WorkerContext = givenWorkerContext(importCount: count)
             assertSnapshot(matching: try StencilRenderer().renderWorker(context: context),
                            as: .lines,
-                           named: "importsCount-\(count)")
+                           named: "importCount-\(count)")
         }
     }
 }

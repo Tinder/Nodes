@@ -3,12 +3,15 @@ changelog:
     - title: Framework
       labels:
         - framework
-    - title: Templates
-      labels:
-        - templates
     - title: Generator
       labels:
         - generator
+    - title: Templates
+      labels:
+        - templates
+    - title: Tests
+      labels:
+        - tests
     - title: Maintenance
       labels:
         - maintenance
