@@ -44,17 +44,17 @@ extension TestFactories {
         return config
     }
 
-    func givenNodeContext(importCount: Int = 1) -> NodeContext {
+    func givenNodeContext(mockCount: Int = 1) -> NodeContext {
         NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
-            analyticsImports: .mock(with: "analyticsImport", count: importCount),
-            builderImports: .mock(with: "builderImport", count: importCount),
-            contextImports: .mock(with: "contextImport", count: importCount),
-            flowImports: .mock(with: "flowImport", count: importCount),
-            stateImports: .mock(with: "stateImport", count: importCount),
-            viewControllerImports: .mock(with: "viewControllerImport", count: importCount),
-            viewStateImports: .mock(with: "viewStateImport", count: importCount),
+            analyticsImports: .mock(with: "analyticsImport", count: mockCount),
+            builderImports: .mock(with: "builderImport", count: mockCount),
+            contextImports: .mock(with: "contextImport", count: mockCount),
+            flowImports: .mock(with: "flowImport", count: mockCount),
+            stateImports: .mock(with: "stateImport", count: mockCount),
+            viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
+            viewStateImports: .mock(with: "viewStateImport", count: mockCount),
             dependencies: [Variable(name: "<dependencyName>", type: "<dependencyType>")],
             analyticsProperties: [Variable(name: "<analyticsPropertyName>", type: "<analyticsPropertyType>")],
             flowProperties: [Variable(name: "<flowPropertyName>", type: "<flowPropertyType>")],
@@ -72,16 +72,16 @@ extension TestFactories {
         )
     }
 
-    func givenNodeRootContext(importCount: Int = 1) -> NodeRootContext {
+    func givenNodeRootContext(mockCount: Int = 1) -> NodeRootContext {
         NodeRootContext(
             fileHeader: "<fileHeader>",
-            analyticsImports: .mock(with: "analyticsImport", count: importCount),
-            builderImports: .mock(with: "builderImport", count: importCount),
-            contextImports: .mock(with: "contextImport", count: importCount),
-            flowImports: .mock(with: "flowImport", count: importCount),
-            stateImports: .mock(with: "stateImport", count: importCount),
-            viewControllerImports: .mock(with: "viewControllerImport", count: importCount),
-            viewStateImports: .mock(with: "viewStateImport", count: importCount),
+            analyticsImports: .mock(with: "analyticsImport", count: mockCount),
+            builderImports: .mock(with: "builderImport", count: mockCount),
+            contextImports: .mock(with: "contextImport", count: mockCount),
+            flowImports: .mock(with: "flowImport", count: mockCount),
+            stateImports: .mock(with: "stateImport", count: mockCount),
+            viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
+            viewStateImports: .mock(with: "viewStateImport", count: mockCount),
             dependencies: [Variable(name: "<dependencyName>", type: "<dependencyType>")],
             analyticsProperties: [Variable(name: "<analyticsPropertyName>", type: "<analyticsPropertyType>")],
             flowProperties: [Variable(name: "<flowPropertyName>", type: "<flowPropertyType>")],
@@ -99,15 +99,15 @@ extension TestFactories {
         )
     }
 
-    func givenNodeViewInjectedContext(importCount: Int = 1) -> NodeViewInjectedContext {
+    func givenNodeViewInjectedContext(mockCount: Int = 1) -> NodeViewInjectedContext {
         NodeViewInjectedContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
-            analyticsImports: .mock(with: "analyticsImport", count: importCount),
-            builderImports: .mock(with: "builderImport", count: importCount),
-            contextImports: .mock(with: "contextImport", count: importCount),
-            flowImports: .mock(with: "flowImport", count: importCount),
-            stateImports: .mock(with: "stateImport", count: importCount),
+            analyticsImports: .mock(with: "analyticsImport", count: mockCount),
+            builderImports: .mock(with: "builderImport", count: mockCount),
+            contextImports: .mock(with: "contextImport", count: mockCount),
+            flowImports: .mock(with: "flowImport", count: mockCount),
+            stateImports: .mock(with: "stateImport", count: mockCount),
             dependencies: [Variable(name: "<dependencyName>", type: "<dependencyType>")],
             analyticsProperties: [Variable(name: "<analyticsPropertyName>", type: "<analyticsPropertyType>")],
             flowProperties: [Variable(name: "<flowPropertyName>", type: "<flowPropertyType>")],
@@ -117,37 +117,37 @@ extension TestFactories {
         )
     }
 
-    func givenPluginContext(importCount: Int = 1) -> PluginContext {
+    func givenPluginContext(mockCount: Int = 1) -> PluginContext {
         PluginContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             returnType: "<returnType>",
-            pluginImports: .mock(with: "pluginImport", count: importCount)
+            pluginImports: .mock(with: "pluginImport", count: mockCount)
         )
     }
 
-    func givenPluginContextWithoutReturnType(importCount: Int = 1) -> PluginContext {
+    func givenPluginContextWithoutReturnType(mockCount: Int = 1) -> PluginContext {
         PluginContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
-            pluginImports: .mock(with: "pluginImport", count: importCount)
+            pluginImports: .mock(with: "pluginImport", count: mockCount)
         )
     }
 
-    func givenPluginListContext(importCount: Int = 1) -> PluginListContext {
+    func givenPluginListContext(mockCount: Int = 1) -> PluginListContext {
         PluginListContext(
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
-            pluginListImports: .mock(with: "pluginListImport", count: importCount),
+            pluginListImports: .mock(with: "pluginListImport", count: mockCount),
             viewControllableFlowType: "<viewControllableFlowType>"
         )
     }
 
-    func givenWorkerContext(importCount: Int = 1) -> WorkerContext {
+    func givenWorkerContext(mockCount: Int = 1) -> WorkerContext {
         WorkerContext(
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",
-            workerImports: .mock(with: "workerImport", count: importCount),
+            workerImports: .mock(with: "workerImport", count: mockCount),
             cancellableType: "<cancellableType>"
         )
     }
