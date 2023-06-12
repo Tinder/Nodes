@@ -25,7 +25,7 @@ internal final class <nodeName>FlowImp: AbstractFlow
     <nodeName>ViewControllable
 > {
 
-    private let <flowPropertiesName>: <flowPropertiesType>
+    private let <flowPropertyName>: <flowPropertyType>
 
     /// The initializer.
     ///
@@ -33,13 +33,13 @@ internal final class <nodeName>FlowImp: AbstractFlow
     /// - Parameters:
     ///   - context: The Context instance
     ///   - viewController: The View Controller instance
-    ///   - <flowPropertiesName>: The <flowPropertiesType> instance
+    ///   - <flowPropertyName>: The <flowPropertyType> instance
     internal init(
         context: <nodeName>ContextInterface,
         viewController: <nodeName>ViewControllable,
-        <flowPropertiesName>: <flowPropertiesType>
+        <flowPropertyName>: <flowPropertyType>
     ) {
-        self.<flowPropertiesName> = <flowPropertiesName>
+        self.<flowPropertyName> = <flowPropertyName>
         super.init(context: context, viewController: viewController)
     }
 

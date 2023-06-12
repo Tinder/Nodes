@@ -11,7 +11,7 @@ internal protocol RootFlow: <viewControllableFlowType> {}
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
 public protocol RootDependency: Dependency {
-    var <dependenciesName>: <dependenciesType> { get }
+    var <dependencyName>: <dependencyType> { get }
 }
 
 /**
@@ -141,7 +141,7 @@ internal final class RootBuilderImp: AbstractBuilder
     ) -> RootFlow {
         let listener: RootListener = dynamicBuildDependency
         let analytics: RootAnalyticsImp = .init(
-            <analyticsPropertiesName>: component.dependency.<analyticsPropertiesName>
+            <analyticsPropertyName>: component.dependency.<analyticsPropertyName>
         )
         let context: RootContextImp = .init(
             workers: [],
@@ -164,7 +164,7 @@ internal final class RootBuilderImp: AbstractBuilder
         let flow: RootFlowImp = .init(
             context: context,
             viewController: viewController,
-            <flowPropertiesName>: component.dependency.<flowPropertiesName>
+            <flowPropertyName>: component.dependency.<flowPropertyName>
         )
         context.flow = flow
         return flow

@@ -27,14 +27,14 @@ internal protocol <nodeName>Analytics: AnyObject {}
  */
 internal final class <nodeName>AnalyticsImp {
 
-    private let <analyticsPropertiesName>: <analyticsPropertiesType>
+    private let <analyticsPropertyName>: <analyticsPropertyType>
 
     /// The initializer.
-    /// - Parameter <analyticsPropertiesName>: The `<analyticsPropertiesType>` instance
+    /// - Parameter <analyticsPropertyName>: The `<analyticsPropertyType>` instance
     init(
-        <analyticsPropertiesName>: <analyticsPropertiesType>
+        <analyticsPropertyName>: <analyticsPropertyType>
     ) {
-        self.<analyticsPropertiesName> = <analyticsPropertiesName>
+        self.<analyticsPropertyName> = <analyticsPropertyName>
     }
 }
 

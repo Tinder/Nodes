@@ -9,10 +9,10 @@
       ▿ 2 key/value pairs
         ▿ (2 elements)
           - key: "name"
-          - value: "<analyticsPropertiesName>"
+          - value: "<analyticsPropertyName>"
         ▿ (2 elements)
           - key: "type"
-          - value: "<analyticsPropertiesType>"
+          - value: "<analyticsPropertyType>"
   ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
@@ -30,10 +30,10 @@
       ▿ 2 key/value pairs
         ▿ (2 elements)
           - key: "name"
-          - value: "<dependenciesName>"
+          - value: "<dependencyName>"
         ▿ (2 elements)
           - key: "type"
-          - value: "<dependenciesType>"
+          - value: "<dependencyType>"
   ▿ (2 elements)
     - key: "file_header"
     - value: "<fileHeader>"
@@ -47,10 +47,10 @@
       ▿ 2 key/value pairs
         ▿ (2 elements)
           - key: "name"
-          - value: "<flowPropertiesName>"
+          - value: "<flowPropertyName>"
         ▿ (2 elements)
           - key: "type"
-          - value: "<flowPropertiesType>"
+          - value: "<flowPropertyType>"
   ▿ (2 elements)
     - key: "node_name"
     - value: "<nodeName>"
