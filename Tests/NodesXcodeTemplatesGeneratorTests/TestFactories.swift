@@ -72,16 +72,16 @@ extension TestFactories {
         )
     }
 
-    func givenNodeRootContext(importsCount: Int = 1) -> NodeRootContext {
+    func givenNodeRootContext(importCount: Int = 1) -> NodeRootContext {
         NodeRootContext(
             fileHeader: "<fileHeader>",
-            analyticsImports: .mock(with: "analyticsImport", count: importsCount),
-            builderImports: .mock(with: "builderImport", count: importsCount),
-            contextImports: .mock(with: "contextImport", count: importsCount),
-            flowImports: .mock(with: "flowImport", count: importsCount),
-            stateImports: .mock(with: "stateImport", count: importsCount),
-            viewControllerImports: .mock(with: "viewControllerImport", count: importsCount),
-            viewStateImports: .mock(with: "viewStateImport", count: importsCount),
+            analyticsImports: .mock(with: "analyticsImport", count: importCount),
+            builderImports: .mock(with: "builderImport", count: importCount),
+            contextImports: .mock(with: "contextImport", count: importCount),
+            flowImports: .mock(with: "flowImport", count: importCount),
+            stateImports: .mock(with: "stateImport", count: importCount),
+            viewControllerImports: .mock(with: "viewControllerImport", count: importCount),
+            viewStateImports: .mock(with: "viewStateImport", count: importCount),
             dependencies: [Variable(name: "<dependenciesName>", type: "<dependenciesType>")],
             analyticsProperties: [Variable(name: "<analyticsPropertiesName>", type: "<analyticsPropertiesType>")],
             flowProperties: [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")],

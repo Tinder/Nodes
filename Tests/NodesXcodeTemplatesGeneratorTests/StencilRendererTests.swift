@@ -31,9 +31,9 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderNodeRoot() throws {
-        try (0...2).forEach { count in
+        try importCounts.forEach { count in
             try UIFramework.Kind.allCases.forEach { kind in
-                let context: NodeRootContext = givenNodeRootContext(importsCount: count)
+                let context: NodeRootContext = givenNodeRootContext(importCount: count)
                 let templates: [String: String] = try StencilRenderer().renderNodeRoot(context: context, kind: kind)
                 expect(templates.keys.sorted()) == [
                     "Analytics",
@@ -47,7 +47,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 templates.forEach { name, template in
                     assertSnapshot(matching: template,
                                    as: .lines,
-                                   named: "\(name)-\(kind.rawValue)-importsCount-\(count)")
+                                   named: "\(name)-\(kind.rawValue)-importCount-\(count)")
                 }
             }
         }

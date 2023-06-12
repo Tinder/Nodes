@@ -88,8 +88,8 @@ internal final class RootComponent: Component
 
      Declare child component factories as 'fileprivate' methods.
 
-     fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
-         ChildComponent(parent: self)
+     fileprivate func <name>ComponentFactory() -> <Name>Component {
+         <Name>Component(parent: self)
      }
 
      */
@@ -143,7 +143,9 @@ internal final class RootBuilderImp: AbstractBuilder
         dynamicBuildDependency: RootDynamicBuildDependency
     ) -> RootFlow {
         let listener: RootListener = dynamicBuildDependency
-        let analytics: RootAnalyticsImp = .init()
+        let analytics: RootAnalyticsImp = .init(
+            <analyticsPropertiesName>: component.dependency.<analyticsPropertiesName>
+        )
         let context: RootContextImp = .init(
             workers: [],
             analytics: analytics
@@ -154,14 +156,11 @@ internal final class RootBuilderImp: AbstractBuilder
             upstream: context.$state,
             transform: viewStateFactory
         )
-        var view: RootView = .init(
+        let viewController: RootViewController = .init(
             initialState: viewStateFactory(context.state),
             statePublisher: viewState.eraseToAnyPublisher()
         )
-        view.receiver = context
-        let viewController: RootViewController = .init(
-            rootView: view
-        )
+        viewController.receiver = context
         let flow: RootFlowImp = .init(
             context: context,
             viewController: viewController,
