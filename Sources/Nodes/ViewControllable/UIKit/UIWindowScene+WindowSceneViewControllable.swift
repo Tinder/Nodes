@@ -1,8 +1,5 @@
 //
-//  UIWindowScene+WindowSceneViewControllable.swift
-//  Nodes
-//
-//  Created by Caio Fonseca on 2/23/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 #if canImport(UIKit) && !os(watchOS)

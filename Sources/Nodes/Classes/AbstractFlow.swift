@@ -1,8 +1,5 @@
 //
-//  AbstractFlow.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 10/3/20.
+//  Copyright © 2020 Tinder (Match Group, LLC)
 //
 
 /**
@@ -28,8 +25,7 @@ public struct Node {
 #endif
 
 /**
- * The interface used for passing `Flow` instances into ``AbstractFlow`` instance methods which enables
- * attaching and detaching child `Flow` instances within the base class implementation.
+ * The interface used by the ``AbstractFlow`` instance methods for attaching and detaching a child `Flow` instance.
  */
 /// @mockable
 @MainActor
@@ -62,6 +58,8 @@ public protocol Flow: AnyObject {
     ///   This method is called internally within the framework code.
     func end()
 }
+
+// swiftlint:disable period_spacing
 
 /**
  * Nodes’ ``AbstractFlow`` base class.
@@ -326,3 +324,5 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         LeakDetector.detect(flowController)
     }
 }
+
+// swiftlint:enable period_spacing

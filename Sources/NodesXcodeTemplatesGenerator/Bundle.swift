@@ -1,8 +1,5 @@
 //
-//  Bundle.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Christopher Fuller on 9/24/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 import Foundation

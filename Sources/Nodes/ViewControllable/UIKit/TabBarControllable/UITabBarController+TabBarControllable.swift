@@ -1,8 +1,5 @@
 //
-//  UITabBarController+TabBarControllable.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 10/3/20.
+//  Copyright © 2020 Tinder (Match Group, LLC)
 //
 
 #if canImport(UIKit) && !os(watchOS)

@@ -1,17 +1,18 @@
 ▿ NodeViewInjectedTemplate
   ▿ context: NodeViewInjectedContext
     ▿ analyticsImports: 2 elements
-      - "<baseImports>"
+      - "<baseImport>"
       - "Nodes"
+    - analyticsProperties: 0 elements
     ▿ builderImports: 4 elements
-      - "<baseImports>"
-      - "<dependencyInjectionImports>"
-      - "<reactiveImports>"
+      - "<baseImport>"
+      - "<dependencyInjectionImport>"
+      - "<reactiveImport>"
       - "Nodes"
     - cancellableType: "<cancellableType>"
     ▿ contextImports: 3 elements
-      - "<baseImports>"
-      - "<reactiveImports>"
+      - "<baseImport>"
+      - "<reactiveImport>"
       - "Nodes"
     ▿ dependencies: 1 element
       ▿ 2 key/value pairs
@@ -23,7 +24,7 @@
           - value: "<dependenciesType>"
     - fileHeader: "<fileHeader>"
     ▿ flowImports: 2 elements
-      - "<baseImports>"
+      - "<baseImport>"
       - "Nodes"
     ▿ flowProperties: 1 element
       ▿ 2 key/value pairs
@@ -35,7 +36,7 @@
           - value: "<flowPropertiesType>"
     - nodeName: "___VARIABLE_productName___"
     ▿ stateImports: 2 elements
-      - "<baseImports>"
+      - "<baseImport>"
       - "Nodes"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"

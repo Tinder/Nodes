@@ -1,8 +1,5 @@
 //
-//  Config.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Christopher Fuller on 6/3/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 import Codextended
@@ -31,6 +28,7 @@ extension XcodeTemplates {
         public var reactiveImports: Set<String>
         public var dependencyInjectionImports: Set<String>
         public var dependencies: [Variable]
+        public var analyticsProperties: [Variable]
         public var flowProperties: [Variable]
         public var viewControllableType: String
         public var viewControllableFlowType: String
@@ -72,6 +70,7 @@ extension XcodeTemplates.Config {
         reactiveImports = ["Combine"]
         dependencyInjectionImports = ["NeedleFoundation"]
         dependencies = []
+        analyticsProperties = []
         flowProperties = []
         viewControllableType = "ViewControllable"
         viewControllableFlowType = "ViewControllableFlow"
@@ -92,7 +91,6 @@ extension XcodeTemplates.Config {
 // swiftlint:disable:next no_grouping_extension
 extension XcodeTemplates.Config {
 
-    // swiftlint:disable:next function_body_length
     public init(from decoder: Decoder) throws {
         let defaults: XcodeTemplates.Config = .init()
         uiFrameworks =
@@ -116,6 +114,9 @@ extension XcodeTemplates.Config {
         dependencies =
             (try? decoder.decode(CodingKeys.dependencies))
             ?? defaults.dependencies
+        analyticsProperties =
+            (try? decoder.decode(CodingKeys.analyticsProperties))
+            ?? defaults.analyticsProperties
         flowProperties =
             (try? decoder.decode(CodingKeys.flowProperties))
             ?? defaults.flowProperties

@@ -1,46 +1,56 @@
-▿ 24 key/value pairs
+▿ 25 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
-      - "<analyticsImports>"
+      - "<analyticsImport>"
+  ▿ (2 elements)
+    - key: "analytics_properties"
+    ▿ value: 1 element
+      ▿ 2 key/value pairs
+        ▿ (2 elements)
+          - key: "name"
+          - value: "<analyticsPropertyName>"
+        ▿ (2 elements)
+          - key: "type"
+          - value: "<analyticsPropertyType>"
   ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
-      - "<builderImports>"
+      - "<builderImport>"
   ▿ (2 elements)
     - key: "cancellable_type"
     - value: "<cancellableType>"
   ▿ (2 elements)
     - key: "context_imports"
     ▿ value: 1 element
-      - "<contextImports>"
+      - "<contextImport>"
   ▿ (2 elements)
     - key: "dependencies"
     ▿ value: 1 element
       ▿ 2 key/value pairs
         ▿ (2 elements)
           - key: "name"
-          - value: "<dependenciesName>"
+          - value: "<dependencyName>"
         ▿ (2 elements)
           - key: "type"
-          - value: "<dependenciesType>"
+          - value: "<dependencyType>"
   ▿ (2 elements)
     - key: "file_header"
     - value: "<fileHeader>"
   ▿ (2 elements)
     - key: "flow_imports"
     ▿ value: 1 element
-      - "<flowImports>"
+      - "<flowImport>"
   ▿ (2 elements)
     - key: "flow_properties"
     ▿ value: 1 element
       ▿ 2 key/value pairs
         ▿ (2 elements)
           - key: "name"
-          - value: "<flowPropertiesName>"
+          - value: "<flowPropertyName>"
         ▿ (2 elements)
           - key: "type"
-          - value: "<flowPropertiesType>"
+          - value: "<flowPropertyType>"
   ▿ (2 elements)
     - key: "node_name"
     - value: "Root"
@@ -59,7 +69,7 @@
   ▿ (2 elements)
     - key: "state_imports"
     ▿ value: 1 element
-      - "<stateImports>"
+      - "<stateImport>"
   ▿ (2 elements)
     - key: "view_controllable_flow_type"
     - value: "<viewControllableFlowType>"
@@ -69,7 +79,7 @@
   ▿ (2 elements)
     - key: "view_controller_imports"
     ▿ value: 1 element
-      - "<viewControllerImports>"
+      - "<viewControllerImport>"
   ▿ (2 elements)
     - key: "view_controller_methods"
     - value: "<viewControllerMethods>"
@@ -88,7 +98,7 @@
   ▿ (2 elements)
     - key: "view_state_imports"
     ▿ value: 1 element
-      - "<viewStateImports>"
+      - "<viewStateImport>"
   ▿ (2 elements)
     - key: "view_state_operators"
     - value: "<viewStateOperators>"

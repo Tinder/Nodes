@@ -1,8 +1,5 @@
 //
-//  NavigationControllerTests.swift
-//  NodeTests
-//
-//  Created by Christopher Fuller on 12/2/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 #if canImport(UIKit)
@@ -25,7 +22,7 @@ final class NavigationControllerTests: XCTestCase {
         var viewControllers: [UIViewController] = []
         expect(viewControllers).to(notBeNilAndElementsToDeallocateAfterTest())
 
-        expect(navigationController.delegate).to(beNil())
+        expect(navigationController.delegate) == nil
         navigationController.onPopViewControllers { viewControllers += $0 }
         expect(navigationController.delegate) === navigationController
 
@@ -44,7 +41,7 @@ final class NavigationControllerTests: XCTestCase {
         expect(viewControllers) == [viewController1, viewController2]
 
         navigationController.onPopViewControllers(didPopViewControllers: nil)
-        expect(navigationController.delegate).to(beNil())
+        expect(navigationController.delegate) == nil
     }
 }
 

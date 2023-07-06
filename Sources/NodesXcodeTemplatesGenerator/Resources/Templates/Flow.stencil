@@ -1,6 +1,10 @@
-{{ file_header }}{% if flow_imports %}
+{{ file_header }}
+{% if flow_imports %}
+
 {% for import in flow_imports %}
-import {{ import }}{% endfor %}{% endif %}
+import {{ import }}
+{% endfor %}
+{% endif %}
 
 /**
  PURPOSE:
@@ -26,38 +30,61 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {{ node_name }}ContextInterface,
     {{ node_name }}ViewControllable
 > {
-{% if owns_view %}
-    /// Provides the parent Node with access to the View so it can be presented.
-    internal var viewControllable: {{ view_controllable_type }} {
-        viewController
-    }
-{% endif %}{% if flow_properties %}{% for property in flow_properties %}
-    private let {{ property.name }}: {{ property.type }}{% endfor %}
-{% endif %}
+    {% if flow_properties %}
+
+    {% for property in flow_properties %}
+    private let {{ property.name }}: {{ property.type }}
+    {% endfor %}
+    {% endif %}
+
     /// The initializer.
     ///
     /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
     /// - Parameters:
     ///   - context: The Context instance
-    ///   - viewController: The View Controller instance{% if flow_properties %}{% for property in flow_properties %}
-    ///   - {{ property.name }}: The {{ property.type }} instance{% endfor %}{% endif %}
-    {% if not flow_properties %}override {% endif %}internal init(
+    ///   - viewController: The View Controller instance
+    {% if flow_properties %}
+    {% for property in flow_properties %}
+    ///   - {{ property.name }}: The {{ property.type }} instance
+    {% endfor %}
+    internal init(
+    {% else %}
+    override internal init(
+    {% endif %}
         context: {{ node_name }}ContextInterface,
-        viewController: {{ node_name }}ViewControllable{% if flow_properties %},{% for property in flow_properties %}
-        {{ property.name }}: {{ property.type }}{% if not forloop.last %},{% endif %}{% endfor %}{% endif %}
-    ) {{ '{' }}{% if flow_properties %}{% for property in flow_properties %}
-        self.{{ property.name }} = {{ property.name }}{% endfor %}{% endif %}
+        viewController: {{ node_name }}ViewControllable{% if flow_properties %}{{ ',' }}
+        {% endif %}
+        {% for property in flow_properties %}
+        {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}
+        {% endif %}
+        {% endfor +%}
+    ) {
+        {% for property in flow_properties %}
+        self.{{ property.name }} = {{ property.name }}
+        {% endfor %}
         super.init(context: context, viewController: viewController)
     }
 
     /// Implement logic to execute when the Flow is started.
     override internal func didStart() {}
+    {% if owns_view %}
+
+    /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
+    ///
+    /// - Returns: The ``ViewControllable`` instance.
+    internal func getViewController() -> {{ view_controllable_type }} {
+        viewController
+    }
+    {% endif %}
 }
 
-extension {{ node_name }}FlowImp: {{ node_name }}Flow {}{% if root_node %}
+extension {{ node_name }}FlowImp: {{ node_name }}Flow {}
+{% if root_node %}
 extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {
 
     /// Implement logic to execute when the Root Flow is ready to attach sub-Flows.
     internal func didBecomeReady() {}
-}{% else %}
-extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {}{% endif %}
+}
+{% else %}
+extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {}
+{% endif %}

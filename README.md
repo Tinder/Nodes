@@ -1,11 +1,15 @@
 <div align="center">
 
-[![Swift](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml)
+[![Lint](https://github.com/TinderApp/Nodes/actions/workflows/lint.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/lint.yml)
 &nbsp;
-[![Bazel](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml)
+[![Swift](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml)
 &nbsp;
-[![DocC](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml/badge.svg)](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml)
+[![Xcode](https://github.com/TinderApp/Nodes/actions/workflows/xcode.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/xcode.yml)
 &nbsp;
+[![Bazel](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml)
+&nbsp;
+[![DocC](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml)
+
 [![Pages](https://github.com/TinderApp/Nodes/actions/workflows/pages.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/pages.yml)
 &nbsp;
 [![Artifactory](https://github.com/TinderApp/Nodes/actions/workflows/artifactory.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/artifactory.yml)
@@ -20,7 +24,7 @@ Native Mobile Application Engineering at Scale
 
 [https://github.com/TinderApp/Nodes](https://github.com/TinderApp/Nodes)
 
-At Tinder, we create mobile applications ***to keep the magic of human connection alive***. And to do that successfully, we built a large team of mobile engineers who continually deliver numerous concurrent projects to empower, delight and protect our countless members around the globe.
+At Tinder, we create mobile applications ***to power and inspire real connections by making it easy and fun for every new generation of singles***. And to do that successfully, we built a large team of mobile engineers who continually deliver numerous concurrent projects to empower, delight and protect our countless members around the globe.
 
 We think [Swift](https://developer.apple.com/swift) and related technologies including [SwiftUI](https://developer.apple.com/xcode/swiftui) and [Swift Concurrency](https://developer.apple.com/documentation/swift/swift_standard_library/concurrency) are simply awesome. However, building a mobile application at Tinder's scale requires a scalable application architecture as well. We created the Nodes Architecture Framework to specifically address how to build a complex app, with a large team, involving many simultaneous initiatives.
 
@@ -51,8 +55,9 @@ Documentation is available online at: [https://TinderApp.github.io/Nodes](https:
 To build Nodes' [DocC](https://developer.apple.com/documentation/docc) documentation and open it in Xcode's documentation window:
 
 ```
-$ git clone git@github.com:TinderApp/Nodes.git && cd Nodes
-$ make docs
+git clone git@github.com:TinderApp/Nodes.git
+cd Nodes
+make docs
 ```
 
 ## Quick Start
@@ -63,60 +68,60 @@ Following these steps will create a new iOS Xcode project set up with Nodes, Nee
 
 - Xcode version `13.3` or greater
 
-### Install dependencies
+### Install Dependencies
 
 ```
-$ brew install mint xcodegen needle mockolo
-$ mint install yonaskolb/genesis
+brew install mint xcodegen needle mockolo
+mint install yonaskolb/genesis
 ```
 
-### Clone Nodes repository
+### Clone Nodes Repository
 
 This step may be skipped if the Nodes repository was previously cloned.
 
-> Replace `<nodesPath>` in the command with the path to where the Nodes repository will reside.
+> Replace `<version>` in the command with the latest Nodes version and replace `<nodesPath>` in the command with the path to where the Nodes repository will reside.
 
 ```
-$ git clone git@github.com:TinderApp/Nodes.git <nodesPath>
+git clone -b <version> git@github.com:TinderApp/Nodes.git <nodesPath>
 ```
 
-### Create project directory
+### Create Project Directory
 
 **IMPORTANT:** Do not create the new project within the cloned Nodes repository.
 
 > Replace `<projectPath>` in the command with the path to where the new iOS Xcode project will reside.
 
 ```
-$ mkdir -p <projectPath> && cd "$_"
+mkdir -p <projectPath> && cd "$_"
 ```
 
-### Generate project files
+### Generate Project Files
 
 > Replace `<nodesPath>` in the command with the path to the cloned Nodes repository.
 
 ```
-$ mint run genesis generate <nodesPath>/genesis.yml --options "author:$(git config user.name), date:$(date +"%-m/%-d/%y")"
+mint run genesis generate <nodesPath>/genesis.yml --options "author:$(git config user.name), date:$(date +"%-m/%-d/%y")"
 ```
 
-When prompted, enter a name for the new iOS Xcode project and an organization identifier (bundle ID prefix).
+When prompted, enter the latest Nodes version, a name for the new iOS Xcode project and an organization identifier (which is the bundle ID prefix such as `com.tinder`).
 
 **OPTIONAL:** The cloned Nodes repository is no longer needed at this point and may be removed if there is no plan to create additional projects.
 
-### Generate iOS Xcode project
+### Generate Xcode Project
 
 ```
-$ xcodegen
+xcodegen
 ```
 
 Execute the `xcodegen` command any time the `project.yml` file is changed or project files are added or removed. See the [xcodegen](https://github.com/yonaskolb/XcodeGen) documentation for more information.
 
-### Use Xcode templates
+### Use Xcode Templates
 
 Xcode templates for Nodes will automatically be installed to:
 
 `~/Library/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (Xcode Templates)`
 
-To add additional Nodes to the project, scroll to the Nodes templates in the new file dialog. The `` symbol indicates SwiftUI templates.
+To add additional Nodes to the project, scroll to the Nodes templates in the new file dialog.
 
 <img src="./.assets/Xcode-Templates.png" width="690" />
 
@@ -125,12 +130,12 @@ To add additional Nodes to the project, scroll to the Nodes templates in the new
 Only if on a Mac computer with Apple silicon, create the following symbolic links to provision these two dependencies within a `$PATH` that Xcode utilizes:
 
 ```
-$ ln -s /opt/homebrew/bin/needle /usr/local/bin/needle
-$ ln -s /opt/homebrew/bin/mockolo /usr/local/bin/mockolo
+ln -s /opt/homebrew/bin/needle /usr/local/bin/needle
+ln -s /opt/homebrew/bin/mockolo /usr/local/bin/mockolo
 ```
 
 Only if issues are encountered when executing Mockolo, build from source:
 
 ```
-$ brew reinstall --build-from-source mockolo
+brew reinstall --build-from-source mockolo
 ```

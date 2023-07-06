@@ -1,8 +1,5 @@
 //
-//  XcodeTemplatePropertyListTests.swift
-//  NodesXcodeTemplatesGeneratorTests
-//
-//  Created by Christopher Fuller on 6/1/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 @testable import NodesXcodeTemplatesGenerator

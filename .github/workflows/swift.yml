@@ -7,48 +7,15 @@ on:
     branches: [ main ]
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_${{ secrets.XCODE_VERSION }}.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_14.2.app/Contents/Developer
 
 jobs:
-  ci_job:
-    name: CI
-    runs-on: macos-12
-    permissions:
-      contents: read
-      checks: write
-      pull-requests: write
-    env:
-      SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+  swift:
+    name: Swift
+    runs-on: macos-latest
     steps:
-    - name: Add ssh key
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
-        ssh-agent -a "$SSH_AUTH_SOCK" > /dev/null
-        ssh-add - <<< "${{ secrets.TINDER_GITHUB_SSH_KEY }}"
     - name: Checkout source
-      uses: actions/checkout@v2
-    - name: Install preflight dependencies
-      if: github.event.pull_request
-      run: brew install libgit2
-    - name: Build preflight product
-      if: github.event.pull_request
-      run: swift build --product preflight
-    - name: Build swiftlint product
-      if: github.event.pull_request
-      run: swift build --product swiftlint
-    - name: Perform static analysis
-      if: github.event.pull_request
-      run: >
-        curl -fs
-        -H "Authorization: Bearer ${{ github.token }}"
-        -H "Accept: application/vnd.github.v3.diff"
-        "${{ github.event.pull_request.url }}" |
-        swift run --skip-build -- preflight github --diff git --output pretty --verbose
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-        GITHUB_REPOSITORY: ${{ github.repository }}
-        GITHUB_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      uses: actions/checkout@v3
     - name: Build
       run: swift build -v
     - name: Run tests

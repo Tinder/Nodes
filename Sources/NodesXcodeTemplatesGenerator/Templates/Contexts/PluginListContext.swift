@@ -1,8 +1,5 @@
 //
-//  PluginListContext.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Christopher Fuller on 5/4/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 public struct PluginListContext: Context {

@@ -1,8 +1,5 @@
 //
-//  ConfigTests.swift
-//  NodesXcodeTemplatesGeneratorTests
-//
-//  Created by Christopher Fuller on 6/3/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 import Nimble
@@ -95,6 +92,11 @@ final class ConfigTests: XCTestCase, TestFactories {
             type: <dependencies-type-1>
           - name: <dependencies-name-2>
             type: <dependencies-type-2>
+        analyticsProperties:
+          - name: <analyticsProperties-name-1>
+            type: <analyticsProperties-type-1>
+          - name: <analyticsProperties-name-2>
+            type: <analyticsProperties-type-2>
         flowProperties:
           - name: <flowProperties-name-1>
             type: <flowProperties-type-1>

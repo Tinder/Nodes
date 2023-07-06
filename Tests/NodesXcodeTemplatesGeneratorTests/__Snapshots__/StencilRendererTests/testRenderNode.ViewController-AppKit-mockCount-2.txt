@@ -1,0 +1,60 @@
+<fileHeader>
+
+import <viewControllerImport1>
+import <viewControllerImport2>
+
+/**
+ PURPOSE:
+ The interface that the View will speak to the Context through. Used for informing the Context of
+ view events and user interactions.
+ */
+internal protocol <nodeName>Receiver: AnyObject {}
+
+/**
+ PURPOSE:
+ Concrete implementation of the UI.
+ */
+internal final class <nodeName>ViewController: <viewControllerType>, StateObserver {
+
+    <viewControllerProperties>
+
+    /// The view receiver.
+    internal weak var receiver: <nodeName>Receiver?
+
+    /// The collection of cancellable instances.
+    private var cancellables: Set<<cancellableType>> = .init()
+
+    /// The initial view state.
+    private let initialState: <nodeName>ViewState
+
+    /// The view state publisher.
+    private let statePublisher: <publisherType><<nodeName>ViewState<publisherFailureType>>
+
+    /// The initializer.
+    ///
+    /// - Parameters:
+    ///   - initialState: The initial view state.
+    ///   - statePublisher: The view state publisher.
+    internal init(
+        initialState: <nodeName>ViewState,
+        statePublisher: <publisherType><<nodeName>ViewState<publisherFailureType>>
+    ) {
+        self.initialState = initialState
+        self.statePublisher = statePublisher
+            <viewStateOperators>
+        super.init(<viewControllerSuperParameters>)
+    }
+
+    @available(*, unavailable)
+    internal required init?(coder: NSCoder) {
+        preconditionFailure("init(coder:) has not been implemented")
+    }
+
+    <viewControllerMethods>
+
+    internal func update(with viewState: <nodeName>ViewState) {
+        <viewControllerUpdateComment>
+    }
+}
+
+extension <nodeName>ViewController: <nodeName>ViewControllable {}

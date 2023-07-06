@@ -1,8 +1,5 @@
 //
-//  TransformTests.swift
-//  NodeTests
-//
-//  Created by Christopher Fuller on 6/30/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 import Combine

@@ -1,8 +1,5 @@
 //
-//  AbstractWorker.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 10/3/20.
+//  Copyright © 2020 Tinder (Match Group, LLC)
 //
 
 /**
@@ -84,9 +81,9 @@ open class AbstractWorker<CancellableType: Cancellable>: Worker {
         guard isWorking
         else { return }
         willStop()
-        cancellables.forEach {
-            $0.cancel()
-            LeakDetector.detect($0)
+        cancellables.forEach { cancellable in
+            cancellable.cancel()
+            LeakDetector.detect(cancellable)
         }
         cancellables.removeAll()
         isWorking = false

@@ -1,9 +1,8 @@
 //
-//  AbstractContext.swift
-//  Nodes
+//  Copyright © 2020 Tinder (Match Group, LLC)
 //
-//  Created by Christopher Fuller on 10/3/20.
-//
+
+// swiftlint:disable file_types_order period_spacing
 
 /**
  * A Nodes application can use [Combine](https://developer.apple.com/documentation/combine), or any other
@@ -27,8 +26,7 @@ public protocol Cancellable: AnyObject, Hashable {
 }
 
 /**
- * The interface used for injecting a `Context` instance into an ``AbstractFlow`` instance which enables
- * attaching and detaching child `Flow` instances within the base class implementation.
+ * The interface used by an ``AbstractFlow`` instance to activate and deactivate its `Context` instance.
  */
 /// @mockable
 @MainActor
@@ -120,9 +118,9 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
         else { return }
         workerController.stopWorkers()
         willResignActive()
-        cancellables.forEach {
-            $0.cancel()
-            LeakDetector.detect($0)
+        cancellables.forEach { cancellable in
+            cancellable.cancel()
+            LeakDetector.detect(cancellable)
         }
         cancellables.removeAll()
         isActive = false
@@ -216,3 +214,5 @@ open class AbstractPresentableContext<CancellableType: Cancellable, PresentableT
         LeakDetector.detect(presentable as AnyObject, delay: 5)
     }
 }
+
+// swiftlint:enable file_types_order period_spacing

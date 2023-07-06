@@ -1,8 +1,5 @@
 //
-//  LeakDetector.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 10/3/20.
+//  Copyright © 2020 Tinder (Match Group, LLC)
 //
 
 import Foundation
@@ -47,7 +44,7 @@ public enum LeakDetector {
         // swiftlint:disable:next discouraged_optional_collection
         let callStackSymbols: [String]? = callStackSymbols()
         queue.asyncAfter(deadline: .now() + delay) { [weak object] in
-            guard let object: AnyObject = object
+            guard let object: AnyObject
             else { return }
             DispatchQueue.main.async {
                 if let callStack: String = callStackSymbols?.joined(separator: "\n") {

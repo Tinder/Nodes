@@ -1,8 +1,5 @@
 //
-//  NodeViewInjectedTemplate.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Christopher Fuller on 4/25/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 internal struct NodeViewInjectedTemplate: XcodeTemplate {
@@ -33,6 +30,7 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
             flowImports: node.flow.imports(config: config),
             stateImports: node.state.imports(config: config),
             dependencies: config.dependencies,
+            analyticsProperties: config.analyticsProperties,
             flowProperties: config.flowProperties,
             viewControllableType: config.viewControllableType,
             viewControllableFlowType: config.viewControllableFlowType,

@@ -1,8 +1,5 @@
 //
-//  WorkerTemplate.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Christopher Fuller on 4/25/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 internal struct WorkerTemplate: XcodeTemplate {

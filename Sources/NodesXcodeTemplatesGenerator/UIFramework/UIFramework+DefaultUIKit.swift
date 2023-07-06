@@ -1,8 +1,5 @@
 //
-//  UIFramework+DefaultUIKit.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Garric Nahapetian on 11/15/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 extension UIFramework {
@@ -10,41 +7,41 @@ extension UIFramework {
     private enum Defaults {
 
         static let viewControllerMethods: String = """
-            override func viewDidLoad() {
+            override internal func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
                 update(with: initialState)
             }
 
-            override func viewWillAppear(_ animated: Bool) {
+            override internal func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
                 observe(statePublisher).store(in: &cancellables)
             }
 
-            override func viewWillDisappear(_ animated: Bool) {
+            override internal func viewWillDisappear(_ animated: Bool) {
                 super.viewWillDisappear(animated)
                 cancellables.removeAll()
             }
             """
 
         static let viewControllerMethodsForRootNode: String = """
-            override func viewDidLoad() {
+            override internal func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
                 update(with: initialState)
             }
 
-            override func viewWillAppear(_ animated: Bool) {
+            override internal func viewWillAppear(_ animated: Bool) {
                 super.viewWillAppear(animated)
                 observe(statePublisher).store(in: &cancellables)
             }
 
-            override func viewDidAppear(_ animated: Bool) {
+            override internal func viewDidAppear(_ animated: Bool) {
                 super.viewDidAppear(animated)
                 receiver?.viewDidAppear()
             }
 
-            override func viewWillDisappear(_ animated: Bool) {
+            override internal func viewWillDisappear(_ animated: Bool) {
                 super.viewWillDisappear(animated)
                 cancellables.removeAll()
             }

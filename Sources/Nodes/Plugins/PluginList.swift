@@ -1,9 +1,8 @@
 //
-//  PluginList.swift
-//  Nodes
+//  Copyright © 2020 Tinder (Match Group, LLC)
 //
-//  Created by Christopher Fuller on 10/3/20.
-//
+
+// swiftlint:disable file_types_order period_spacing
 
 /**
  * Nodes’ abstract ``PluginList`` base class.
@@ -267,7 +266,7 @@ extension PluginList where StateType == Void {
  * | BuildType     | The type of object created (typically a `Builder`).                                         |
  * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
  */
-open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this operator_usage_whitespace
+open class PluginListWithDefault<KeyType: Hashable,
                                  ComponentType,
                                  BuildType,
                                  StateType>: PluginList<KeyType, ComponentType, BuildType, StateType> {
@@ -332,6 +331,8 @@ open class PluginListWithDefault<KeyType: Hashable, // swiftlint:disable:this op
     }
 }
 
+// swiftlint:enable period_spacing
+
 extension PluginListWithDefault where StateType == Void {
 
     /// Calls `create` on each plugin in the plugin collection (in reverse creation order) and returns the
@@ -359,3 +360,5 @@ extension PluginListWithDefault where StateType == Void {
         create(key: key, state: ())
     }
 }
+
+// swiftlint:enable file_types_order

@@ -1,8 +1,5 @@
 //
-//  NavigationController.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 12/2/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 #if canImport(UIKit) && !os(watchOS)
@@ -98,7 +95,7 @@ open class NavigationController: UINavigationController, UINavigationControllerD
         animated: Bool
     ) {
         defer { previousChildren = children }
-        guard let didPopViewControllers: DidPopViewControllersCallback = didPopViewControllers
+        guard let didPopViewControllers: DidPopViewControllersCallback
         else { return }
         let endIndex: Int = previousChildren.count - 1
         guard let index: Int = previousChildren.firstIndex(where: { $0 === viewController }),

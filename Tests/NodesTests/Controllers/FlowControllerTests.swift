@@ -1,8 +1,5 @@
 //
-//  FlowControllerTests.swift
-//  NodeTests
-//
-//  Created by Christopher Fuller on 5/4/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 import Nimble
@@ -33,9 +30,9 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         expect(flowController.isFlowLeakDetectionEnabled) == true
         // swiftlint:disable:next redundant_type_annotation
         var called: Bool = false
-        flowController.withoutFlowLeakDetection {
+        flowController.withoutFlowLeakDetection { flowController in
             called = true
-            expect($0.isFlowLeakDetectionEnabled) == false
+            expect(flowController.isFlowLeakDetectionEnabled) == false
         }
         expect(called) == true
         expect(flowController.isFlowLeakDetectionEnabled) == true

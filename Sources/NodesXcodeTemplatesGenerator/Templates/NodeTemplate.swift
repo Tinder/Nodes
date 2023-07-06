@@ -1,8 +1,5 @@
 //
-//  NodeTemplate.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Christopher Fuller on 4/25/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 internal struct NodeTemplate: XcodeTemplate {
@@ -30,6 +27,7 @@ internal struct NodeTemplate: XcodeTemplate {
             viewControllerImports: node.viewController.imports(for: uiFramework, config: config),
             viewStateImports: node.viewState.imports(for: uiFramework, config: config),
             dependencies: config.dependencies,
+            analyticsProperties: config.analyticsProperties,
             flowProperties: config.flowProperties,
             viewControllerType: uiFramework.viewControllerType,
             viewControllableType: config.viewControllableType,

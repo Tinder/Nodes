@@ -1,0 +1,17 @@
+changelog:
+  categories:
+    - title: Framework
+      labels:
+        - framework
+    - title: Generator
+      labels:
+        - generator
+    - title: Templates
+      labels:
+        - templates
+    - title: Tests
+      labels:
+        - tests
+    - title: Maintenance
+      labels:
+        - maintenance

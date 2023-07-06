@@ -1,16 +1,23 @@
-{{ file_header }}{% if view_controller_imports %}
+{{ file_header }}
+{% if view_controller_imports %}
+
 {% for import in view_controller_imports %}
-import {{ import }}{% endfor %}{% endif %}
+import {{ import }}
+{% endfor %}
+{% endif %}
 
 /**
  PURPOSE:
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
- */{% if root_node %}
+ */
+{% if root_node %}
 internal protocol {{ node_name }}Receiver: AnyObject {
     func viewDidAppear()
-}{% else %}
-internal protocol {{ node_name }}Receiver: AnyObject {}{% endif %}
+}
+{% else %}
+internal protocol {{ node_name }}Receiver: AnyObject {}
+{% endif %}
 
 /**
  PURPOSE:
@@ -19,12 +26,20 @@ internal protocol {{ node_name }}Receiver: AnyObject {}{% endif %}
 internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 <
     {{ node_name }}View
-> {{ '{' }}{% if view_controller_properties %}
+{% if view_controller_properties or view_controller_methods %}
+> {
+    {% if view_controller_properties %}
 
-    {{ view_controller_properties|indent:4 }}{% endif %}{% if view_controller_methods %}
+    {{ view_controller_properties|indent:4 }}
+    {% endif %}
+    {% if view_controller_methods %}
 
-    {{ view_controller_methods|indent:4 }}{% endif %}{% if view_controller_properties and view_controller_methods %}
-{% endif %}{{ '}' }}
+    {{ view_controller_methods|indent:4 }}
+    {% endif %}
+}
+{% else %}
+> {}
+{% endif %}
 
 extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
 
@@ -35,7 +50,7 @@ extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
 internal struct {{ node_name }}View: NodesView {
 
     /// The body of the view.
-    internal var body: some View {{ '{' }}
+    internal var body: some View {
         WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
             Text(verbatim: "\(type(of: viewState))")
         }
@@ -60,8 +75,10 @@ internal struct {{ node_name }}View: NodesView {
         statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
     ) {
         self.initialState = initialState
-        self.statePublisher = statePublisher{% if view_state_operators %}
-            {{ view_state_operators|indent:12 }}{% endif %}
+        self.statePublisher = statePublisher
+            {% if view_state_operators %}
+            {{ view_state_operators|indent:12 }}
+            {% endif %}
     }
 }
 

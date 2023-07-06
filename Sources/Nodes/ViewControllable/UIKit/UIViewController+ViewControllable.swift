@@ -1,8 +1,5 @@
 //
-//  UIViewController+ViewControllable.swift
-//  Nodes
-//
-//  Created by Christopher Fuller on 10/3/20.
+//  Copyright © 2020 Tinder (Match Group, LLC)
 //
 
 #if canImport(UIKit) && !os(watchOS)
@@ -54,6 +51,7 @@ extension UIViewController: ViewControllable {
     ///
     /// - Parameter viewController: The ``ViewControllable`` instance to contain.
     public func contain(_ viewController: ViewControllable) {
+        let viewController: UIViewController = viewController._asUIViewController()
         contain(viewController, in: view)
     }
 

@@ -1,8 +1,5 @@
 //
-//  NodeRootContext.swift
-//  NodesXcodeTemplatesGenerator
-//
-//  Created by Christopher Fuller on 5/4/21.
+//  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
 public struct NodeRootContext: Context {
@@ -16,6 +13,7 @@ public struct NodeRootContext: Context {
     private let viewControllerImports: [String]
     private let viewStateImports: [String]
     private let dependencies: [[String: Any]]
+    private let analyticsProperties: [[String: Any]]
     private let flowProperties: [[String: Any]]
     private let viewControllerType: String
     private let viewControllableType: String
@@ -43,6 +41,7 @@ public struct NodeRootContext: Context {
             "view_controller_imports": viewControllerImports,
             "view_state_imports": viewStateImports,
             "dependencies": dependencies,
+            "analytics_properties": analyticsProperties,
             "flow_properties": flowProperties,
             "view_controller_type": viewControllerType,
             "view_controllable_type": viewControllableType,
@@ -68,6 +67,7 @@ public struct NodeRootContext: Context {
         viewControllerImports: Set<String>,
         viewStateImports: Set<String>,
         dependencies: [XcodeTemplates.Variable],
+        analyticsProperties: [XcodeTemplates.Variable],
         flowProperties: [XcodeTemplates.Variable],
         viewControllerType: String,
         viewControllableType: String,
@@ -90,6 +90,7 @@ public struct NodeRootContext: Context {
         self.viewControllerImports = viewControllerImports.sortedImports()
         self.viewStateImports = viewStateImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)
+        self.analyticsProperties = analyticsProperties.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)
         self.viewControllerType = viewControllerType
         self.viewControllableType = viewControllableType

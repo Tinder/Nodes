@@ -1,5 +1,5 @@
 ▿ UIFramework
   - framework: Framework.swiftUI
   - viewControllerMethods: ""
-  - viewControllerMethodsForRootNode: "override func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}"
+  - viewControllerMethodsForRootNode: "override internal func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}"
   - viewControllerProperties: ""

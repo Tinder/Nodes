@@ -1,9 +1,8 @@
 //
-//  Plugin.swift
-//  Nodes
+//  Copyright © 2020 Tinder (Match Group, LLC)
 //
-//  Created by Christopher Fuller on 10/3/20.
-//
+
+// swiftlint:disable period_spacing
 
 /**
  * Nodes’ abstract ``Plugin`` base class.
@@ -95,6 +94,8 @@ open class Plugin<ComponentType, BuildType, StateType> {
         return component
     }
 }
+
+// swiftlint:enable period_spacing
 
 extension Plugin where StateType == Void {
 

@@ -1,8 +1,5 @@
 //
-//  Binding.swift
-//  Nodes
-//
-//  Created by Seppe Snoeck on 11/10/22.
+//  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
 #if canImport(SwiftUI)
@@ -21,7 +18,7 @@ extension Binding {
     /// Example:
     /// ```
     /// var body: some View {
-    ///     WithViewState(viewState) { viewState in
+    ///     WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
     ///         Slider(value: .bind(to: viewState.sliderValue) { receiver?.didChangeSliderValue($0) },
     ///                in: 1...100)
     ///     }
@@ -46,7 +43,7 @@ extension Binding {
     /// Example:
     /// ```
     /// var body: some View {
-    ///     WithViewState(viewState) { viewState in
+    ///     WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
     ///         Slider(value: .bind(to: viewState.sliderValue, onChange: receiver?.didChangeSliderValue),
     ///                in: 1...100)
     ///     }
@@ -59,7 +56,7 @@ extension Binding {
     ///
     /// - Returns: A SwiftUI `Binding` instance.
     public static func bind(to value: Value, onChange: ((Value) -> Void)?) -> Binding<Value> {
-        guard let onChange: (Value) -> Void = onChange
+        guard let onChange: (Value) -> Void
         else { return .constant(value) }
         return bind(to: value, onChange: onChange)
     }

@@ -27,11 +27,6 @@ internal final class ___VARIABLE_productName___FlowImp: AbstractFlow
     ___VARIABLE_productName___ViewControllable
 > {
 
-    /// Provides the parent Node with access to the View so it can be presented.
-    internal var viewControllable: ViewControllable {
-        viewController
-    }
-
     /// The initializer.
     ///
     /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
@@ -47,6 +42,13 @@ internal final class ___VARIABLE_productName___FlowImp: AbstractFlow
 
     /// Implement logic to execute when the Flow is started.
     override internal func didStart() {}
+
+    /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
+    ///
+    /// - Returns: The ``ViewControllable`` instance.
+    internal func getViewController() -> ViewControllable {
+        viewController
+    }
 }
 
 extension ___VARIABLE_productName___FlowImp: ___VARIABLE_productName___Flow {}
