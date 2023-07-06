@@ -32,6 +32,7 @@ final class WorkerControllerTests: XCTestCase, TestCaseHelpers {
         expect(workerController.workers).toNot(allBeWorking())
         workerController.startWorkers()
         expect(workerController.workers).to(allBeWorking())
+        workerController.stopWorkers()
     }
 
     func testStopWorkers() {
@@ -69,6 +70,7 @@ final class WorkerControllerTests: XCTestCase, TestCaseHelpers {
         var workerController: WorkerController! = givenWorkerController(with: mockWorkers, start: true)
         let workers: [Worker] = workerController.workers
         expect(workers).to(allBeWorking())
+        workerController.stopWorkers()
         workerController = nil
         expect(workers).toNot(allBeWorking())
     }

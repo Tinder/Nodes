@@ -71,6 +71,7 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         expect(context).to(beActive())
         expect(context.didBecomeActiveCallCount) == 1
         expect(context.workers).to(allBeWorking())
+        context.deactivate()
     }
 
     func testDeactivate() {
@@ -121,6 +122,7 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         expect(cancellables).toNot(allBeCancelled())
         context.activate()
         expect(workers).to(allBeWorking())
+        context.deactivate()
         context = nil
         expect(workers).toNot(allBeWorking())
         expect(cancellables).to(allBeCancelled())

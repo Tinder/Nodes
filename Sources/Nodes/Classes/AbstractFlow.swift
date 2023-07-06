@@ -145,7 +145,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// - Important: This method should never be called directly within application code.
     ///   This method is called internally within the framework code.
     public final func start() {
-        guard !_context.isActive
+        guard !isStarted
         else { return }
         #if DEBUG
         DebugInformation.FlowWillStartNotification(flow: self, viewController: viewController as AnyObject).post()
@@ -159,8 +159,9 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// - Important: This method should never be called directly within application code.
     ///   This method is called internally within the framework code.
     public final func end() {
-        guard _context.isActive
+        guard isStarted
         else { return }
+        subFlows.forEach(detach)
         _context.deactivate()
         #if DEBUG
         DebugInformation.FlowDidEndNotification(flow: self).post()
@@ -173,6 +174,8 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///
     /// - Parameter subFlow: The `Flow` instance to attach and start.
     public final func attach(starting subFlow: Flow) {
+        guard isStarted
+        else { return }
         #if DEBUG
         DebugInformation.FlowWillAttachNotification(flow: self, subFlow: subFlow).post()
         #endif
@@ -318,8 +321,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     }
 
     deinit {
-        subFlows.forEach(detach)
-        _context.deactivate()
+        assert(!isStarted, "Lifecycle Violation: Expected `AbstractFlow` to end before it is deallocated.")
         LeakDetector.detect(_context)
         LeakDetector.detect(flowController)
     }

@@ -222,6 +222,8 @@ public final class FlowController {
     }
 
     deinit {
-        flows.forEach(detach)
+        assert(flows.isEmpty, """
+            Lifecycle Violation: Expected `Flow` instances to be detached before `FlowController` is deallocated.
+            """)
     }
 }

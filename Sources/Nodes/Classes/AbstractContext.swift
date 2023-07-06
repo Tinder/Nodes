@@ -181,7 +181,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     }
 
     deinit {
-        deactivate()
+        assert(!isActive, "Lifecycle Violation: Expected `AbstractContext` to deactivate before it is deallocated.")
         LeakDetector.detect(workerController)
     }
 }
