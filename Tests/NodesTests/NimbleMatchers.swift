@@ -48,10 +48,12 @@ extension XCTestCase {
         }
     }
 
+    @MainActor
     internal func allBeStarted() -> Predicate<[Flow]> {
         allPass(beStarted())
     }
 
+    @MainActor
     internal func beStarted() -> Predicate<Flow> {
         Predicate.simple("be started") { expression in
             let flow: Flow? = try expression.evaluate()
@@ -59,10 +61,12 @@ extension XCTestCase {
         }
     }
 
+    @MainActor
     internal func allBeActive() -> Predicate<[Context]> {
         allPass(beActive())
     }
 
+    @MainActor
     internal func beActive() -> Predicate<Context> {
         Predicate.simple("be active") { expression in
             let context: Context? = try expression.evaluate()
@@ -70,10 +74,12 @@ extension XCTestCase {
         }
     }
 
+    @MainActor
     internal func allBeWorking() -> Predicate<[Worker]> {
         allPass(beWorking())
     }
 
+    @MainActor
     internal func beWorking() -> Predicate<Worker> {
         Predicate.simple("be working") { expression in
             let worker: Worker? = try expression.evaluate()
@@ -81,10 +87,12 @@ extension XCTestCase {
         }
     }
 
+    @MainActor
     internal func allBeCancelled() -> Predicate<[CancellableMock]> {
         allPass(beCancelled())
     }
 
+    @MainActor
     internal func beCancelled() -> Predicate<CancellableMock> {
         Predicate.simple("be cancelled") { expression in
             let cancellable: CancellableMock? = try expression.evaluate()

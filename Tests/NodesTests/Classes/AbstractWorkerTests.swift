@@ -6,6 +6,7 @@ import Nimble
 @testable import Nodes
 import XCTest
 
+@MainActor
 final class AbstractWorkerTests: XCTestCase, TestCaseHelpers {
 
     private class TestWorker: AbstractWorker<CancellableMock> {

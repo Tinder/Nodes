@@ -6,6 +6,7 @@ import Nimble
 @testable import Nodes
 import XCTest
 
+@MainActor
 final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
 
     private class ViewControllerType: Equatable {}

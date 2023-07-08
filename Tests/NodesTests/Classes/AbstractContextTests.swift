@@ -6,6 +6,7 @@ import Nimble
 @testable import Nodes
 import XCTest
 
+@MainActor
 final class AbstractContextTests: XCTestCase, TestCaseHelpers {
 
     private class PresentableType: Equatable {}

@@ -6,6 +6,7 @@ import Nimble
 @testable import Nodes
 import XCTest
 
+@MainActor
 final class WorkerControllerTests: XCTestCase, TestCaseHelpers {
 
     private var mockWorkers: [WorkerMock]!
