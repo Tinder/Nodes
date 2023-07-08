@@ -37,10 +37,17 @@ public enum LeakDetector {
 
     /// Detects whether the given `object` deallocates from memory as expected.
     ///
+    /// - Parameter object: The instance with which to detect the expected deallocation.
+    public static func detect(_ object: AnyObject) {
+        detect(object, delay: 1)
+    }
+
+    /// Detects whether the given `object` deallocates from memory as expected.
+    ///
     /// - Parameters:
     ///   - object: The instance with which to detect the expected deallocation.
     ///   - delay: The time interval in seconds to wait before leak detection occurs.
-    public static func detect(_ object: AnyObject, delay: TimeInterval = 1) {
+    public static func detect(_ object: AnyObject, delay: TimeInterval) {
         // swiftlint:disable:next discouraged_optional_collection
         let callStackSymbols: [String]? = callStackSymbols()
         queue.asyncAfter(deadline: .now() + delay) { [weak object] in
