@@ -219,8 +219,12 @@ public final class FlowController {
     }
 
     deinit {
-        assert(flows.isEmpty, """
-            Lifecycle Violation: Expected `Flow` instances to be detached before `FlowController` is deallocated.
-            """)
+        #if DEBUG
+        if !flows.isEmpty {
+            assertionFailure("""
+                Lifecycle Violation: Expected `Flow` instances to be detached before `FlowController` is deallocated.
+                """)
+        }
+        #endif
     }
 }

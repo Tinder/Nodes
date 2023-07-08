@@ -90,6 +90,10 @@ open class AbstractWorker<CancellableType: Cancellable>: Worker {
     }
 
     deinit {
-        assert(!isWorking, "Lifecycle Violation: Expected `AbstractWorker` to stop before it is deallocated.")
+        #if DEBUG
+        if isWorking {
+            assertionFailure("Lifecycle Violation: Expected `AbstractWorker` to stop before it is deallocated.")
+        }
+        #endif
     }
 }
