@@ -39,24 +39,26 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
 
     func testAssertions() {
         let flowController: FlowController = .init()
-        let flow: FlowMock = .init()
-        flowController.attach(starting: flow)
-        expect(flowController.attach(starting: flow)).to(throwAssertion())
-        expect(flowController.detach(ending: FlowMock())).to(throwAssertion())
+        let flowA: FlowMock = .init()
+        let flowB: FlowMock = .init()
+        flowController.attach(starting: flowA)
+        expect(flowController.attach(starting: flowA)).to(throwAssertion())
+        expect(flowController.detach(ending: flowB)).to(throwAssertion())
     }
 
     func testAttach() {
         let flowController: FlowController = givenFlowController()
+        let flow: FlowMock = mockFlows[0]
         expect(flowController.flows).to(beEmpty())
-        flowController.attach(starting: FlowMock())
+        flowController.attach(starting: flow)
         expect(flowController.flows).to(haveCount(1))
     }
 
     func testDetach() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
-        let subFlow: FlowMock = mockFlows[1]
+        let flow: FlowMock = mockFlows[1]
         expect(flowController.flows).to(haveCount(3))
-        flowController.detach(ending: subFlow)
+        flowController.detach(ending: flow)
         expect(flowController.flows).to(haveCount(2))
     }
 
