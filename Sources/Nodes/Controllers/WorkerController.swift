@@ -86,7 +86,7 @@ public final class WorkerController {
 
     deinit {
         #if DEBUG
-        for worker: Worker in workers where worker.isWorking {
+        for worker: Worker in workers {
             if worker.isWorking {
                 assertionFailure("""
                     Lifecycle Violation: Expected `Worker` to stop before `WorkerController` is deallocated.
