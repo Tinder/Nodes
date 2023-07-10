@@ -112,18 +112,6 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         expect(workers) == mockWorkers
     }
 
-    func testDeinit() {
-        var context: TestContext! = givenContext(workers: mockWorkers, cancellables: mockCancellables)
-        let workers: [Worker] = context.workers
-        let cancellables: [CancellableMock] = Array(context.cancellables)
-        expect(cancellables).toNot(allBeCancelled())
-        context.activate()
-        expect(workers).to(allBeWorking())
-        context = nil
-        expect(workers).toNot(allBeWorking())
-        expect(cancellables).to(allBeCancelled())
-    }
-
     private func givenContext(
         presentable: PresentableType? = nil,
         workers: [Worker] = [],
@@ -139,6 +127,7 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         }
         expect(context).to(notBeNilAndToDeallocateAfterTest())
         context.cancellables.formUnion(cancellables)
+        addTeardownBlock(with: context) { $0.deactivate() }
         return context
     }
 }

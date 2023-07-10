@@ -97,18 +97,11 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         expect(flows) == mockFlows
     }
 
-    func testDeinit() {
-        var flowController: FlowController! = givenFlowController(with: mockFlows)
-        let flows: [Flow] = flowController.flows
-        expect(flows).to(allBeStarted())
-        flowController = nil
-        expect(flows).toNot(allBeStarted())
-    }
-
     private func givenFlowController(with flows: [Flow] = []) -> FlowController {
         let flowController: FlowController = .init()
         expect(flowController).to(notBeNilAndToDeallocateAfterTest())
         flows.forEach(flowController.attach)
+        addTeardownBlock(with: flowController) { $0.flows.forEach($0.detach) }
         return flowController
     }
 }

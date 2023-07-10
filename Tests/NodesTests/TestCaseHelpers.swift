@@ -4,9 +4,31 @@
 
 import XCTest
 
+private class ObjectReference<T: AnyObject> {
+
+    private var object: T!
+
+    init(_ object: T) {
+        self.object = object
+    }
+
+    func callAsFunction() -> T {
+        defer { object = nil }
+        return object
+    }
+}
+
 internal protocol TestCaseHelpers {}
 
 extension TestCaseHelpers where Self: XCTestCase {
+
+    internal func addTeardownBlock<T: AnyObject>(
+        with object: T,
+        _ block: @escaping (T) -> Void
+    ) {
+        let reference: ObjectReference = .init(object)
+        addTeardownBlock { block(reference()) }
+    }
 
     internal func tearDown<T>(
         keyPath: ReferenceWritableKeyPath<Self, T?>,

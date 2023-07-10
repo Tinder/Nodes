@@ -126,17 +126,6 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         expect(flows) == mockFlows
     }
 
-    func testDeinit() {
-        var flow: TestFlow! = givenStartedFlow(subFlows: mockFlows)
-        let context: ContextMock = flow.context
-        let subFlows: [Flow] = flow.subFlows
-        expect(context).to(beActive())
-        expect(subFlows.map { $0._context }).to(allBeActive())
-        flow = nil
-        expect(context).toNot(beActive())
-        expect(subFlows.map { $0._context }).toNot(allBeActive())
-    }
-
     private func givenFlow(
         context: ContextMock? = nil,
         viewController: ViewControllerType? = nil
@@ -161,6 +150,7 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
             flow = .init(context: context, viewController: viewController)
         }
         expect(flow).to(notBeNilAndToDeallocateAfterTest())
+        addTeardownBlock(with: flow) { $0.end() }
         return flow
     }
 
