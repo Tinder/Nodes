@@ -23,7 +23,6 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
     func testFlows() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         expect(flowController.flows as? [FlowMock]) == mockFlows
-        flowController.flows.forEach(flowController.detach)
     }
 
     func testFlowLeakDetection() {
@@ -37,7 +36,6 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         }
         expect(called) == true
         expect(flowController.isFlowLeakDetectionEnabled) == true
-        flowController.flows.forEach(flowController.detach)
     }
 
     func testAssertions() {
@@ -53,7 +51,6 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         expect(flowController.flows).to(beEmpty())
         flowController.attach(starting: FlowMock())
         expect(flowController.flows).to(haveCount(1))
-        flowController.flows.forEach(flowController.detach)
     }
 
     func testDetach() {
@@ -62,7 +59,6 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         expect(flowController.flows).to(haveCount(3))
         flowController.detach(ending: subFlow)
         expect(flowController.flows).to(haveCount(2))
-        flowController.flows.forEach(flowController.detach)
     }
 
     func testDetachEndingFlowsOfType() {
@@ -78,7 +74,6 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
     func testFirstFlowOfType() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         expect(flowController.firstFlow(ofType: FlowMock.self)) == mockFlows.first
-        flowController.flows.forEach(flowController.detach)
     }
 
     func testWithFirstFlowOfType() {
@@ -86,13 +81,11 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         var flow: FlowMock?
         flowController.withFirstFlow(ofType: FlowMock.self) { flow = $0 }
         expect(flow) == mockFlows.first
-        flowController.flows.forEach(flowController.detach)
     }
 
     func testFlowsOfType() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         expect(flowController.flows(ofType: FlowMock.self)) == mockFlows
-        flowController.flows.forEach(flowController.detach)
     }
 
     func testWithFlowsOfType() {
@@ -100,14 +93,12 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         var flows: [FlowMock] = []
         flowController.withFlows(ofType: FlowMock.self) { flows.append($0) }
         expect(flows) == mockFlows
-        flowController.flows.forEach(flowController.detach)
     }
 
     func testDeinit() {
         var flowController: FlowController! = givenFlowController(with: mockFlows)
         let flows: [Flow] = flowController.flows
         expect(flows).to(allBeStarted())
-        flowController.flows.forEach(flowController.detach)
         flowController = nil
         expect(flows).toNot(allBeStarted())
     }

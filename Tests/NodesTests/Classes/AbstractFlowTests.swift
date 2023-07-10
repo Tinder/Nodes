@@ -50,7 +50,6 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
     func testSubFlows() {
         let flow: TestFlow = givenStartedFlow(subFlows: mockFlows)
         expect(flow.subFlows as? [FlowMock]) == mockFlows
-        flow.end()
     }
 
     func testAssertion() {
@@ -66,7 +65,6 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         expect(flow).to(beStarted())
         expect(flow.didStartCallCount) == 1
         expect(flow.context).to(beActive())
-        flow.end()
     }
 
     func testEnd() {
@@ -83,7 +81,6 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         expect(flow.subFlows).to(beEmpty())
         flow.attach(starting: givenFlow())
         expect(flow.subFlows).to(haveCount(1))
-        flow.end()
     }
 
     func testDetach() {
@@ -92,7 +89,6 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         expect(flow.subFlows).to(haveCount(3))
         flow.detach(ending: subFlow)
         expect(flow.subFlows).to(haveCount(2))
-        flow.end()
     }
 
     func testDetachEndingSubFlowsOfType() {
@@ -103,13 +99,11 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         flow.detach(endingSubFlowsOfType: FlowMock.self) { _ in true }
         expect(subFlows).toNot(allBeStarted())
         expect(flow.subFlows).to(beEmpty())
-        flow.end()
     }
 
     func testFirstFlowOfType() {
         let flow: TestFlow = givenStartedFlow(subFlows: mockFlows)
         expect(flow.firstSubFlow(ofType: FlowMock.self)) == mockFlows.first
-        flow.end()
     }
 
     func testWithFirstFlowOfType() {
@@ -117,13 +111,11 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         var subFlow: FlowMock?
         flow.withFirstSubFlow(ofType: FlowMock.self) { subFlow = $0 }
         expect(subFlow) == mockFlows.first
-        flow.end()
     }
 
     func testFlowsOfType() {
         let flow: TestFlow = givenStartedFlow(subFlows: mockFlows)
         expect(flow.subFlows(ofType: FlowMock.self)) == mockFlows
-        flow.end()
     }
 
     func testWithFlowsOfType() {
@@ -131,7 +123,6 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         var flows: [FlowMock] = []
         flow.withSubFlows(ofType: FlowMock.self) { flows.append($0) }
         expect(flows) == mockFlows
-        flow.end()
     }
 
     func testDeinit() {
@@ -140,7 +131,6 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         let subFlows: [Flow] = flow.subFlows
         expect(context).to(beActive())
         expect(subFlows.map { $0._context }).to(allBeActive())
-        flow.end()
         flow = nil
         expect(context).toNot(beActive())
         expect(subFlows.map { $0._context }).toNot(allBeActive())

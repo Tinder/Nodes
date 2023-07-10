@@ -43,7 +43,6 @@ final class AbstractWorkerTests: XCTestCase, TestCaseHelpers {
         worker.start()
         expect(worker).to(beWorking())
         expect(worker.didStartCallCount) == 1
-        worker.stop()
     }
 
     func testStop() {
