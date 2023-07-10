@@ -78,8 +78,9 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
 
     func testAttach() {
         let flow: TestFlow = givenStartedFlow()
+        let subFlow: FlowMock = mockFlows[0]
         expect(flow.subFlows).to(beEmpty())
-        flow.attach(starting: givenFlow())
+        flow.attach(starting: subFlow)
         expect(flow.subFlows).to(haveCount(1))
     }
 
