@@ -127,7 +127,11 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         }
         expect(context).to(notBeNilAndToDeallocateAfterTest())
         context.cancellables.formUnion(cancellables)
-        addTeardownBlock(with: context) { $0.deactivate() }
+        addTeardownBlock(with: context) { context in
+            guard context.isActive
+            else { return }
+            context.deactivate()
+        }
         return context
     }
 }

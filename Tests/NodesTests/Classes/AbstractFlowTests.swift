@@ -150,7 +150,11 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
             flow = .init(context: context, viewController: viewController)
         }
         expect(flow).to(notBeNilAndToDeallocateAfterTest())
-        addTeardownBlock(with: flow) { $0.end() }
+        addTeardownBlock(with: flow) { flow in
+            guard flow.isStarted
+            else { return }
+            flow.end()
+        }
         return flow
     }
 
