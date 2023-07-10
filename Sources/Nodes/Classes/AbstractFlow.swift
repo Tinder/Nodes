@@ -142,7 +142,10 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///   This method is called internally within the framework code.
     public final func start() {
         guard !isStarted
-        else { return }
+        else {
+            assertionFailure("Unable to start")
+            return
+        }
         #if DEBUG
         DebugInformation.FlowWillStartNotification(flow: self, viewController: viewController as AnyObject).post()
         #endif
@@ -156,7 +159,10 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///   This method is called internally within the framework code.
     public final func end() {
         guard isStarted
-        else { return }
+        else {
+            assertionFailure("Unable to end")
+            return
+        }
         _context.deactivate()
         #if DEBUG
         DebugInformation.FlowDidEndNotification(flow: self).post()
@@ -169,6 +175,11 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///
     /// - Parameter subFlow: The `Flow` instance to attach and start.
     public final func attach(starting subFlow: Flow) {
+        guard isStarted
+        else {
+            assertionFailure("Unable to attach")
+            return
+        }
         #if DEBUG
         DebugInformation.FlowWillAttachNotification(flow: self, subFlow: subFlow).post()
         #endif
@@ -181,6 +192,11 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///
     /// - Parameter subFlow: The `Flow` instance to end and detach.
     public final func detach(ending subFlow: Flow) {
+        guard isStarted
+        else {
+            assertionFailure("Unable to detach")
+            return
+        }
         flowController.detach(ending: subFlow)
         #if DEBUG
         DebugInformation.FlowDidDetachNotification(flow: self, subFlow: subFlow).post()
@@ -315,7 +331,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
 
     deinit {
         subFlows.forEach(detach)
-        _context.deactivate()
+        if _context.isActive { _context.deactivate() }
         LeakDetector.detect(_context)
         LeakDetector.detect(flowController)
     }

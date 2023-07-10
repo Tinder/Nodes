@@ -68,7 +68,10 @@ open class AbstractWorker<CancellableType: Cancellable>: Worker {
     ///   This method is called internally within the framework code.
     public final func start() {
         guard !isWorking
-        else { return }
+        else {
+            assertionFailure("Unable to start")
+            return
+        }
         isWorking = true
         didStart()
     }
@@ -79,7 +82,10 @@ open class AbstractWorker<CancellableType: Cancellable>: Worker {
     ///   This method is called internally within the framework code.
     public final func stop() {
         guard isWorking
-        else { return }
+        else {
+            assertionFailure("Unable to stop")
+            return
+        }
         willStop()
         cancellables.forEach { cancellable in
             cancellable.cancel()
@@ -90,6 +96,6 @@ open class AbstractWorker<CancellableType: Cancellable>: Worker {
     }
 
     deinit {
-        stop()
+        if isWorking { stop() }
     }
 }

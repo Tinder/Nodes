@@ -101,7 +101,10 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     ///   This method is called internally within the framework code.
     public final func activate() {
         guard !isActive
-        else { return }
+        else {
+            assertionFailure("Unable to activate")
+            return
+        }
         isActive = true
         didBecomeActive()
         workerController.startWorkers()
@@ -113,7 +116,10 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     ///   This method is called internally within the framework code.
     public final func deactivate() {
         guard isActive
-        else { return }
+        else {
+            assertionFailure("Unable to deactivate")
+            return
+        }
         workerController.stopWorkers()
         willResignActive()
         cancellables.forEach { cancellable in
@@ -177,7 +183,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     }
 
     deinit {
-        deactivate()
+        if isActive { deactivate() }
         LeakDetector.detect(workerController)
     }
 }
