@@ -67,7 +67,7 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         let flows: [Flow] = flowController.flows
         expect(flowController.flows).to(haveCount(3))
         expect(flows).to(allBeStarted())
-        flowController.detachAllEndingFlows()
+        flowController.detachEndingAllFlows()
         expect(flows).toNot(allBeStarted())
         expect(flowController.flows).to(beEmpty())
     }

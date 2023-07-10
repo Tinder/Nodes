@@ -86,7 +86,7 @@ public final class FlowController {
     }
 
     /// Detaches all `Flow` instances (in LIFO order) existing in the `flows` array.
-    public func detachAllEndingFlows() {
+    public func detachEndingAllFlows() {
         flows.reversed().forEach(detach)
     }
 
