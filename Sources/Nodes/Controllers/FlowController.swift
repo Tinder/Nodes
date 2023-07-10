@@ -54,7 +54,7 @@ public final class FlowController {
     /// - Parameter flow: The `Flow` instance to attach and start.
     public func attach(starting flow: Flow) {
         guard !flows.contains(where: { $0 === flow }),
-              !flow._context.isActive
+              !flow.isStarted
         else {
             assertionFailure("Unable to attach")
             return
@@ -73,7 +73,7 @@ public final class FlowController {
     /// - Parameter flow: The `Flow` instance to end and detach.
     public func detach(ending flow: Flow) {
         guard flows.contains(where: { $0 === flow }),
-              flow._context.isActive
+              flow.isStarted
         else {
             assertionFailure("Unable to detach")
             return
