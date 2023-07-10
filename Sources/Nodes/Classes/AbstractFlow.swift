@@ -141,7 +141,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// - Important: This method should never be called directly within application code.
     ///   This method is called internally within the framework code.
     public final func start() {
-        guard !_context.isActive
+        guard !isStarted
         else { return }
         #if DEBUG
         DebugInformation.FlowWillStartNotification(flow: self, viewController: viewController as AnyObject).post()
@@ -155,7 +155,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     /// - Important: This method should never be called directly within application code.
     ///   This method is called internally within the framework code.
     public final func end() {
-        guard _context.isActive
+        guard isStarted
         else { return }
         _context.deactivate()
         #if DEBUG
