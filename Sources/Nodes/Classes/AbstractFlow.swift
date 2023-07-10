@@ -173,7 +173,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
             assertionFailure("Unable to end")
             return
         }
-        subFlows.forEach(detach)
+        subFlows.reverse().forEach(detach)
         _context.deactivate()
         #if DEBUG
         _isStarted = false
