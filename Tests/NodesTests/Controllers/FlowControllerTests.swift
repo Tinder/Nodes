@@ -111,7 +111,7 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         let flowController: FlowController = .init()
         expect(flowController).to(notBeNilAndToDeallocateAfterTest())
         flows.forEach(flowController.attach)
-        addTeardownBlock(with: flowController) { $0.flows.forEach($0.detach) }
+        addTeardownBlock(with: flowController) { $0.detachEndingAllFlows() }
         return flowController
     }
 }
