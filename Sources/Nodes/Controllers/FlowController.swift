@@ -86,7 +86,12 @@ public final class FlowController {
         #endif
     }
 
-    /// Detaches `Flow` instances of the given `type` where the given predicate closure returns `true`.
+    /// Detaches all `Flow` instances (in LIFO order) existing in the `flows` array.
+    public func detachEndingAllFlows() {
+        flows.reversed().forEach(detach)
+    }
+
+    /// Detaches `Flow` instances of the given `type` (in LIFO order) where the given predicate closure returns `true`.
     ///
     /// Under normal circumstances, user interactions do not directly cause ``ViewControllable`` instances to be
     /// dismissed, for example when simply tapping a button. To dismiss a ``ViewControllable`` instance in these

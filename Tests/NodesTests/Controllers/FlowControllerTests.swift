@@ -63,6 +63,16 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         expect(flowController.flows).to(haveCount(2))
     }
 
+    func testDetachEndingAllFlows() {
+        let flowController: FlowController = givenFlowController(with: mockFlows)
+        let flows: [Flow] = flowController.flows
+        expect(flowController.flows).to(haveCount(3))
+        expect(flows).to(allBeStarted())
+        flowController.detachEndingAllFlows()
+        expect(flows).toNot(allBeStarted())
+        expect(flowController.flows).to(beEmpty())
+    }
+
     func testDetachEndingFlowsOfType() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         let flows: [Flow] = flowController.flows
