@@ -1,0 +1,55 @@
+<fileHeader>
+
+// add @testable import 'your_module' and delete this comment
+// add @testable import 'your_module'_GeneratedMocks and delete this comment
+import XCTest
+// MOVE THESE TEST FILES TO YOUR MODULE'S LIBRARY TESTS FOLDER
+
+final class <nodeName>FlowTests: XCTestCase {
+
+    private class <nodeName>ViewControllerMock: UIViewController, <nodeName>ViewControllable {
+        static func viewControllerNavigationKey() -> String {
+            "<nodeName>ViewControllerMock"
+        }
+    }
+
+    private var flow: <nodeName>FlowImp!
+    private var contextMock: <nodeName>ContextInterfaceMock!
+    private var viewControllerMock: <nodeName>ViewControllerMock!
+
+    override func setUp() {
+        super.setUp()
+        contextMock = <nodeName>ContextInterfaceMock()
+        viewControllerMock = <nodeName>ViewControllerMock()
+        flow = .init(
+            context: contextMock,
+            viewController: viewControllerMock
+        )
+    }
+
+    override func tearDown() {
+        flow = nil
+        contextMock = nil
+        viewControllerMock = nil
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        XCTAssertNotNil(flow)
+    }
+
+    func testMockInstancesPresent() {
+        XCTAssertTrue(flow.context is <nodeName>ContextInterfaceMock)
+        XCTAssertTrue(flow.viewController is <nodeName>ViewControllerMock)
+    }
+
+    func testStart() {
+        flow.start()
+        // add assertions here as needed
+    }
+
+    func testStop() {
+        flow.end()
+        // add assertions here as needed
+    }
+}
