@@ -1,0 +1,32 @@
+<fileHeader>
+
+import LibraryTestKit
+// add @testable import 'your_module' and delete this comment
+// add @testable import 'your_module'_GeneratedMocks and delete this comment
+import ServiceTestKit
+import XCTest
+// MOVE THESE TEST FILES TO YOUR MODULE'S LIBRARY TESTS FOLDER
+
+final class RootViewControllerTests: ServiceTestCase {
+
+    override func setUp() {
+        super.setUp()
+        recordMode = false
+    }
+
+    override func tearDown() {
+        super.tearDown()
+    }
+
+    func testInitialState() {
+        assertSnapshot(matching: RootViewController(viewState: publish(RootViewState())),
+                       as: .image)
+    }
+
+    func testPublisher() {
+        let publisher = PassthroughSubject<RootViewState, Never>().eraseToAnyPublisher()
+
+        assertSnapshot(matching: RootViewController(viewState: publisher),
+                       as: .image)
+    }
+}
