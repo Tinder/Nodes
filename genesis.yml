@@ -2061,8 +2061,8 @@ files:
               WORKSPACE_DOCUMENT_NAME="{{ project|split:' '|join:'_' }}.xcodeproj"
               osascript \
                   -e 'set workspaceDocumentName to "'"${WORKSPACE_DOCUMENT_NAME}"'"' \
-                  -e 'if application id "com.apple.dt.Xcode" is running then' \
-                  -e 'tell application id "com.apple.dt.Xcode"' \
+                  -e 'if app id "com.apple.dt.Xcode" is running then' \
+                  -e 'tell app id "com.apple.dt.Xcode"' \
                   -e 'if workspace document workspaceDocumentName exists then' \
                   -e 'set workspaceDocument to workspace document workspaceDocumentName' \
                   -e 'if loaded of workspaceDocument is false then' \
