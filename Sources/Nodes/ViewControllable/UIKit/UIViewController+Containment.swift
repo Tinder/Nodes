@@ -63,6 +63,38 @@ extension UIViewController {
         return layout
     }
 
+    /// Contains the view of the given ``UIViewController`` instance within the given view of the containing
+    /// ``UIViewController`` instance using a layout provided by the given closure.
+    ///
+    /// - Parameters:
+    ///   - viewController: The ``UIViewController`` instance providing the subview to contain.
+    ///   - view: The containing view in which to contain the subview.
+    ///   - layout: The closure providing the layout.
+    ///
+    /// - Returns: The output of the layout (can be `Void`).
+    ///
+    ///     The closure has the following arguments:
+    ///     | view    | The containing view. |
+    ///     | subview | The subview.         |
+    ///
+    ///     The closure may return any type such as an array of layout constraints to
+    ///     be activated (or can simply return `Void`).
+    @discardableResult
+    public func contain<T, V: UIView>(
+        _ viewController: UIViewController,
+        in view: V,
+        layout: (_ view: V, _ subview: UIView) -> T
+    ) -> T {
+        guard view.isDescendant(of: self.view)
+        else { fatalError("Execpted \(view) to be descendent of \(String(describing: self.view))") }
+        let subview: UIView = viewController.view
+        subview.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(subview)
+        let layout: T = layout(view, subview)
+        viewController.didMove(toParent: self)
+        return layout
+    }
+
     // swiftlint:disable:next identifier_name
     internal func _addChild(_ viewController: UIViewController) {
         guard !children.contains(viewController)
