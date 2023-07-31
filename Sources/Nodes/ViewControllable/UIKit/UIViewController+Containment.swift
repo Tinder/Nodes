@@ -10,6 +10,29 @@ import UIKit
 
 extension UIViewController {
 
+    /// Contains the view of the given ``UIViewController`` instance within the given view of the containing
+    /// ``UIViewController`` instance.
+    ///
+    /// - Parameters:
+    ///   - viewController: The ``UIViewController`` instance providing the subview to contain.
+    ///   - view: The containing view in which to contain the subview.
+    public func contain(_ viewController: UIViewController, in view: UIView) {
+        guard view.isDescendant(of: self.view)
+        else { return }
+        let viewController: UIViewController = viewController._asUIViewController()
+        _addChild(viewController)
+        let subview: UIView = viewController.view
+        subview.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(subview)
+        NSLayoutConstraint.activate([
+            subview.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            subview.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            subview.widthAnchor.constraint(equalTo: view.widthAnchor),
+            subview.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+        viewController.didMove(toParent: self)
+    }
+
     /// Contains the view of the given ``UIViewController`` instance within the containing ``UIViewController``
     /// instance using a layout provided by the given closure.
     ///
@@ -38,29 +61,6 @@ extension UIViewController {
         let layout: T = layout(view, subview)
         viewController.didMove(toParent: self)
         return layout
-    }
-
-    /// Contains the view of the given ``UIViewController`` instance within the given view of the containing
-    /// ``UIViewController`` instance.
-    ///
-    /// - Parameters:
-    ///   - viewController: The ``UIViewController`` instance providing the subview to contain.
-    ///   - view: The containing view in which to contain the subview.
-    public func contain(_ viewController: UIViewController, in view: UIView) {
-        guard view.isDescendant(of: self.view)
-        else { return }
-        let viewController: UIViewController = viewController._asUIViewController()
-        _addChild(viewController)
-        let subview: UIView = viewController.view
-        subview.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(subview)
-        NSLayoutConstraint.activate([
-            subview.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            subview.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            subview.widthAnchor.constraint(equalTo: view.widthAnchor),
-            subview.heightAnchor.constraint(equalTo: view.heightAnchor)
-        ])
-        viewController.didMove(toParent: self)
     }
 
     // swiftlint:disable:next identifier_name
