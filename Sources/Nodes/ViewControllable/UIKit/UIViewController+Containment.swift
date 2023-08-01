@@ -63,6 +63,22 @@ extension UIViewController {
         viewController.didMove(toParent: self)
     }
 
+    /// Contains the view of the given ``UIViewController`` instance within the given stack view of the containing
+    /// ``UIViewController`` instance.
+    ///
+    /// - Parameters:
+    ///   - viewController: The ``UIViewController`` instance providing the subview to contain.
+    ///   - stackView: The stack view in which to add the view of the given view controller as an arranged subview.
+    public func contain(_ viewController: UIViewController, in stackView: UIStackView) {
+        guard stackView.isDescendant(of: self.view)
+        else { return }
+        _addChild(viewController)
+        let subview: UIView = viewController.view
+        subview.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(subview)
+        viewController.didMove(toParent: self)
+    }
+
     // swiftlint:disable:next identifier_name
     internal func _addChild(_ viewController: UIViewController) {
         guard !children.contains(viewController)
