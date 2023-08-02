@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 set -euo pipefail
 
@@ -10,19 +10,19 @@ PLATFORMS="${2}"
 BITCODE="${3}"
 RELEASE_VERSION="${4}"
 
-libraries ()
+libraries()
 {
     echo "$(make get-libraries)"
 }
 
-deployment_target ()
+deployment_target()
 {
     local PLATFORM="${1}"
 
     echo "$(make get-deployment-target platform="${PLATFORM}")"
 }
 
-includes_platform ()
+includes_platform()
 {
     local PLATFORM="${1}"
     local PLATFORMS="${2}"
@@ -30,7 +30,7 @@ includes_platform ()
     grep -q "[[:space:]]${PLATFORM}[[:space:]]" <<< " ${PLATFORMS} " && echo "YES" || echo "NO"
 }
 
-regex_replace ()
+regex_replace()
 {
     local FILE_PATH="${1}"
     local PATTERN="${2}"
@@ -39,14 +39,14 @@ regex_replace ()
     perl -0777 -i\~ -pe "s/${PATTERN}/${REPLACE}/" "${FILE_PATH}"
 }
 
-restore_package_manifest ()
+restore_package_manifest()
 {
     rm -f Package.swift
     mv Package.swift\~ Package.swift
     echo "restored package manifest"
 }
 
-archive_path ()
+archive_path()
 {
     local BUILD_PATH="${1}"
     local LIBRARY_NAME="${2}"
@@ -55,7 +55,7 @@ archive_path ()
     echo "${BUILD_PATH}/${LIBRARY_NAME}-${DESTINATION//[,= ]/-}.xcarchive"
 }
 
-framework_path ()
+framework_path()
 {
     local BUILD_PATH="${1}"
     local LIBRARY_NAME="${2}"
@@ -66,7 +66,7 @@ framework_path ()
     echo "${ARCHIVE_PATH}/Products/usr/local/lib/${LIBRARY_NAME}.framework"
 }
 
-copy_swift_module ()
+copy_swift_module()
 {
     local DERIVED_DATA_PATH="${1}"
     local BUILD_PATH="${2}"
@@ -81,7 +81,7 @@ copy_swift_module ()
     cp -a "${SWIFT_MODULE_PATH}" "${FRAMEWORK_PATH}/Modules"
 }
 
-archive_framework ()
+archive_framework()
 {
     local DERIVED_DATA_PATH=$(mktemp -d)
 
@@ -130,7 +130,7 @@ archive_framework ()
         "$(find "${FRAMEWORK_PATH}" -type f -name "Info.plist" | head -1)"
 }
 
-xcframework_options ()
+xcframework_options()
 {
     local BUILD_PATH="${1}"
     local LIBRARY_NAME="${2}"
