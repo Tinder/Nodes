@@ -66,7 +66,7 @@ extension UIViewController {
     ///
     /// - Parameters:
     ///   - viewController: The ``UIViewController`` instance providing the subview to contain.
-    ///   - stackView: The stack view in which to add the view of the given view controller as an arranged subview.
+    ///   - stackView: The stack view in which to add the arranged subview.
     public func contain(_ viewController: UIViewController, in stackView: UIStackView) {
         guard stackView.isDescendant(of: self.view)
         else { return }
