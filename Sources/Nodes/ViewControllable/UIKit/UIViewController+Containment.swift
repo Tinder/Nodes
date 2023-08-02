@@ -68,12 +68,10 @@ extension UIViewController {
     ///   - viewController: The ``UIViewController`` instance providing the subview to contain.
     ///   - stackView: The stack view in which to add the arranged subview.
     public func contain(_ viewController: UIViewController, in stackView: UIStackView) {
-        guard stackView.isDescendant(of: self.view)
+        guard stackView.isDescendant(of: view)
         else { return }
         _addChild(viewController)
-        let subview: UIView = viewController.view
-        subview.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubview(subview)
+        stackView.addArrangedSubview(viewController.view)
         viewController.didMove(toParent: self)
     }
 
