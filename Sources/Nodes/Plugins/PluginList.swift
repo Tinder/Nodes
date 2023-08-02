@@ -322,11 +322,9 @@ open class PluginListWithDefault<KeyType: Hashable,
     override public func create(key: KeyType, state: StateType) -> BuildType {
         let component: ComponentType = makeComponent()
         let `default`: (key: KeyType, instance: BuildType) = `default`(component: component)
-        if key == `default`.key {
-            return `default`.instance
-        } else {
-            return create(component: component, key: key, state: state) ?? `default`.instance
-        }
+        return key == `default`.key
+            ? `default`.instance
+            : create(component: component, key: key, state: state) ?? `default`.instance
     }
 }
 

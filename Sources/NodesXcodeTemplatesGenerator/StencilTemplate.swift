@@ -76,7 +76,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
     }
 
     /// An array of StencilTemplate cases for ``CaseIterable`` conformance.
-    public static let allCases: [StencilTemplate] = [
+    public static let allCases: [Self] = [
         .analytics,
         .builder(.default),
         .builder(.swiftUI),

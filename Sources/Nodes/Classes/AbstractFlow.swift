@@ -14,9 +14,9 @@ public protocol FlowRetaining: AnyObject {}
 public struct Node {
 
     public let name: String
-    public let children: [Node]
+    public let children: [Self]
 
-    public init(name: String, children: [Node]) {
+    public init(name: String, children: [Self]) {
         self.name = name
         self.children = children
     }

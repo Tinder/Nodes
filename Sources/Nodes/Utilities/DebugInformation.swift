@@ -291,7 +291,7 @@ public enum DebugInformation {
                                                     qos: .background)
 
     @available(iOS 13.0, OSX 10.15, *)
-    public static func publisher() -> AnyPublisher<DebugInformation, Never> {
+    public static func publisher() -> AnyPublisher<Self, Never> {
         FlowWillStartNotification.publisher()
             .merge(with: FlowDidEndNotification.publisher())
             .merge(with: FlowWillAttachNotification.publisher())
