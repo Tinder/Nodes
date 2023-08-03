@@ -101,10 +101,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     ///   This method is called internally within the framework code.
     public final func activate() {
         guard !isActive
-        else {
-            assertionFailure("Unable to activate")
-            return
-        }
+        else { return }
         isActive = true
         didBecomeActive()
         workerController.startWorkers()
@@ -116,10 +113,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     ///   This method is called internally within the framework code.
     public final func deactivate() {
         guard isActive
-        else {
-            assertionFailure("Unable to deactivate")
-            return
-        }
+        else { return }
         workerController.stopWorkers()
         willResignActive()
         cancellables.forEach { cancellable in

@@ -142,10 +142,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///   This method is called internally within the framework code.
     public final func start() {
         guard !isStarted
-        else {
-            assertionFailure("Unable to start")
-            return
-        }
+        else { return }
         #if DEBUG
         DebugInformation.FlowWillStartNotification(flow: self, viewController: viewController as AnyObject).post()
         #endif
@@ -159,10 +156,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///   This method is called internally within the framework code.
     public final func end() {
         guard isStarted
-        else {
-            assertionFailure("Unable to end")
-            return
-        }
+        else { return }
         _context.deactivate()
         #if DEBUG
         DebugInformation.FlowDidEndNotification(flow: self).post()
