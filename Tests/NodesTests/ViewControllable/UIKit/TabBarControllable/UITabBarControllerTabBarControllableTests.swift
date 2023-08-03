@@ -9,7 +9,8 @@ import Nimble
 import UIKit
 import XCTest
 
-final class TabBarControllableTests: XCTestCase {
+// swiftlint:disable:next type_name
+final class UITabBarControllerTabBarControllableTests: XCTestCase {
 
     func testSet() {
         let tabBarController: TabBarControllable = givenTabBarController()

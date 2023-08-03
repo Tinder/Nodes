@@ -9,7 +9,8 @@ import Nimble
 import UIKit
 import XCTest
 
-final class NavigationControllableTests: XCTestCase {
+// swiftlint:disable:next type_name
+final class UINavigationControllerNavigationControllableTests: XCTestCase {
 
     func testSet() {
         let navigationController: NavigationControllable = givenNavigationController()
