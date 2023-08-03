@@ -20,5 +20,6 @@ jobs:
       run: swift package resolve
     - name: Lint
       run: >
-        $(find .build -type f -name swiftlint -perm +111 -print -quit)
+        DIRECTORY_NAME=$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]');
+        $(find ".build/artifacts/${DIRECTORY_NAME}" -type f -name swiftlint -perm +111 -print -quit)
         lint --strict --reporter github-actions-logging
