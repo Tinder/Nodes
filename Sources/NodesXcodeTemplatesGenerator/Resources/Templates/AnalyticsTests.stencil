@@ -1,9 +1,8 @@
 {{ file_header }}
 
-// add @testable import 'your_module' and delete this comment
-// add @testable import 'your_module'_GeneratedMocks and delete this comment
+#warning("Manually move this test file to the corresponding test target.")
+
 import XCTest
-// MOVE THESE TEST FILES TO YOUR MODULE'S LIBRARY TESTS FOLDER
 
 final class {{ node_name }}AnalyticsTests: XCTestCase {
 
@@ -11,7 +10,7 @@ final class {{ node_name }}AnalyticsTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        analytics = .init()
+        analytics = {{ node_name }}AnalyticsImp()
     }
 
     override func tearDown() {

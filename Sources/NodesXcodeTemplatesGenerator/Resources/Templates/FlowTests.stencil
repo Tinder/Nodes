@@ -1,36 +1,41 @@
 {{ file_header }}
 
-// add @testable import 'your_module' and delete this comment
-// add @testable import 'your_module'_GeneratedMocks and delete this comment
+#warning("Manually move this test file to the corresponding test target.")
+
 import XCTest
-// MOVE THESE TEST FILES TO YOUR MODULE'S LIBRARY TESTS FOLDER
 
 final class {{ node_name }}FlowTests: XCTestCase {
 
-    private class {{ node_name }}ViewControllerMock: UIViewController, {{ node_name }}ViewControllable {
-        static func viewControllerNavigationKey() -> String {
-            "{{ node_name }}ViewControllerMock"
-        }
+    private final class {{ node_name }}ViewControllerMock: UIViewController, {{ node_name }}ViewControllable {
+        {% if view_controller_properties %}
+
+            {{ view_controller_properties|indent:4 }}
+        {% endif %}
+
+        {% if view_controller_methods %}
+
+            {{ view_controller_methods|indent:4 }}
+        {% endif %}
     }
 
-    private var flow: {{ node_name }}FlowImp!
     private var contextMock: {{ node_name }}ContextInterfaceMock!
     private var viewControllerMock: {{ node_name }}ViewControllerMock!
+    private var flow: {{ node_name }}FlowImp!
 
     override func setUp() {
         super.setUp()
         contextMock = {{ node_name }}ContextInterfaceMock()
         viewControllerMock = {{ node_name }}ViewControllerMock()
-        flow = .init(
+        flow = {{ node_name }}FlowImp(
             context: contextMock,
             viewController: viewControllerMock
         )
     }
 
     override func tearDown() {
-        flow = nil
         contextMock = nil
         viewControllerMock = nil
+        flow = nil
         super.tearDown()
     }
 
@@ -38,18 +43,13 @@ final class {{ node_name }}FlowTests: XCTestCase {
         XCTAssertNotNil(flow)
     }
 
-    func testMockInstancesPresent() {
-        XCTAssertTrue(flow.context is {{ node_name }}ContextInterfaceMock)
-        XCTAssertTrue(flow.viewController is {{ node_name }}ViewControllerMock)
-    }
-
     func testStart() {
         flow.start()
-        // add assertions here as needed
+        // TODO: Add assertions here.
     }
 
     func testStop() {
         flow.end()
-        // add assertions here as needed
+        // TODO: Add assertions here.
     }
 }
