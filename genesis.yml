@@ -1903,6 +1903,7 @@ files:
           /// The Analytics instance.
           private let analytics: RootAnalytics
 
+          // swiftlint:disable:next redundant_type_annotation
           private var isReady: Bool = false
 
           /// The initializer.
