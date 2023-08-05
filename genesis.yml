@@ -2025,6 +2025,9 @@ files:
 
       class {{ project|split:' '|join:'_' }}Tests: XCTestCase {}
 
+  - path: Makefile
+    contents: ".PHONY: open\nopen:\n\txcodegen\n"
+
   - path: Package.swift
     contents: |
       // swift-tools-version:5.7
