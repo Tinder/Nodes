@@ -141,7 +141,13 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     /// the dynamic component dependency.
     ///
     /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
+    {% if owns_view %}
     /// - Parameter listener: An object that can listen for signals from the Node
+    {% else %}
+    /// - Parameters:
+    ///   - listener: An object that can listen for signals from the Node
+    ///   - viewController: The injected view controller
+    {% endif %}
     /// - Returns: The Flow instance
     internal func build(
         withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}
