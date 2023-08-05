@@ -667,13 +667,13 @@ files:
       extension AppFlowImp: AppFlow {}
       extension AppFlowImp: AppFlowInterface {
 
-          func attachScene(_ viewController: WindowSceneViewControllable) {
+          internal func attachScene(_ viewController: WindowSceneViewControllable) {
               let flow: SceneFlow = sceneBuilder.build(withListener: context,
                                                        viewController: viewController)
               attach(starting: flow)
           }
 
-          func detachScene(_ viewController: WindowSceneViewControllable) {
+          internal func detachScene(_ viewController: WindowSceneViewControllable) {
               subFlows
                   .compactMap { $0 as? SceneFlow }
                   .filter { $0.getViewController() === viewController }
