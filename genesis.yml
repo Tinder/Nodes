@@ -1961,7 +1961,7 @@ files:
       import Foundation
 
       /// @mockable(module: prefix = {{ project|split:' '|join:'_' }})
-      protocol NotificationCenter {
+      internal protocol NotificationCenter {
           func publisher(for name: Notification.Name, object: AnyObject?) -> Foundation.NotificationCenter.Publisher
       }
 
@@ -2023,11 +2023,12 @@ files:
 
       import XCTest
 
-      class {{ project|split:' '|join:'_' }}Tests: XCTestCase {}
+      final class {{ project|split:' '|join:'_' }}Tests: XCTestCase {}
+
 
   - path: Package.swift
     contents: |
-      // swift-tools-version:5.7
+      // swift-tools-version:5.8
 
       import PackageDescription
 
