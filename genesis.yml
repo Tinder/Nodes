@@ -2191,3 +2191,23 @@ files:
               CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
               CFBundleShortVersionString: "1.0"
               CFBundleVersion: "1"
+
+  - path: README.md
+    contents: |
+      # {{ project }}
+
+      ## Project Setup
+
+      ### Install dependencies
+
+      ```
+      brew install xcodegen needle mockolo
+      ```
+
+      ### Generate Xcode project
+
+      ```
+      xcodegen
+      ```
+
+      Execute the `xcodegen` command any time the `project.yml` file is changed or project files are added or removed. See the [xcodegen](https://github.com/yonaskolb/XcodeGen) documentation for more information.
