@@ -466,8 +466,8 @@ files:
 
            Declare child component factories as 'fileprivate' methods.
 
-           fileprivate func <example>ComponentFactory() -> ChildComponent {
-               ChildComponent(parent: self)
+           fileprivate func <name>ComponentFactory() -> <Name>Component {
+               <Name>Component(parent: self)
            }
 
            */
@@ -743,7 +743,7 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
-      internal protocol SceneDependency: Dependency {}
+      public protocol SceneDependency: Dependency {}
 
       /**
        PURPOSE:
@@ -816,8 +816,8 @@ files:
 
            Declare child component factories as 'fileprivate' methods.
 
-           fileprivate func <example>ComponentFactory() -> ChildComponent {
-               ChildComponent(parent: self)
+           fileprivate func <name>ComponentFactory() -> <Name>Component {
+               <Name>Component(parent: self)
            }
 
            */
@@ -834,8 +834,10 @@ files:
        The Builder interface (available to mock for testability).
        */
       internal protocol SceneBuilder: AnyObject {
-          func build(withListener listener: SceneListener,
-                     viewController: WindowSceneViewControllable) -> SceneFlow
+          func build(
+              withListener listener: SceneListener,
+              viewController: WindowSceneViewControllable
+          ) -> SceneFlow
       }
 
       /**
@@ -874,7 +876,8 @@ files:
               component: SceneComponent,
               dynamicBuildDependency: SceneDynamicBuildDependency
           ) -> SceneFlow {
-              let (listener, viewController) = dynamicBuildDependency
+              let listener: SceneListener = dynamicBuildDependency.0
+              let viewController: WindowSceneViewControllable = dynamicBuildDependency.1
               let analytics: SceneAnalyticsImp = .init()
               let context: SceneContextImp = .init(
                   workers: [],
@@ -1086,7 +1089,7 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
-      internal protocol WindowDependency: Dependency {}
+      public protocol WindowDependency: Dependency {}
 
       /**
        PURPOSE:
@@ -1159,8 +1162,8 @@ files:
 
            Declare child component factories as 'fileprivate' methods.
 
-           fileprivate func <example>ComponentFactory() -> ChildComponent {
-               ChildComponent(parent: self)
+           fileprivate func <name>ComponentFactory() -> <Name>Component {
+               <Name>Component(parent: self)
            }
 
            */
@@ -1177,8 +1180,10 @@ files:
        The Builder interface (available to mock for testability).
        */
       internal protocol WindowBuilder: AnyObject {
-          func build(withListener listener: WindowListener,
-                     viewController: WindowViewControllable) -> WindowFlow
+          func build(
+              withListener listener: WindowListener,
+              viewController: WindowViewControllable
+          ) -> WindowFlow
       }
 
       /**
@@ -1217,7 +1222,8 @@ files:
               component: WindowComponent,
               dynamicBuildDependency: WindowDynamicBuildDependency
           ) -> WindowFlow {
-              let (listener, viewController) = dynamicBuildDependency
+              let listener: WindowListener = dynamicBuildDependency.0
+              let viewController: WindowViewControllable = dynamicBuildDependency.1
               let analytics: WindowAnalyticsImp = .init()
               let context: WindowContextImp = .init(
                   workers: [],
@@ -1425,7 +1431,7 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
-      internal protocol RootDependency: Dependency {}
+      public protocol RootDependency: Dependency {}
 
       /**
        PURPOSE:
@@ -1498,8 +1504,8 @@ files:
 
            Declare child component factories as 'fileprivate' methods.
 
-           fileprivate func <example>ComponentFactory() -> ChildComponent {
-               ChildComponent(parent: self)
+           fileprivate func <name>ComponentFactory() -> <Name>Component {
+               <Name>Component(parent: self)
            }
 
            */
@@ -1512,7 +1518,9 @@ files:
        The Builder interface (available to mock for testability).
        */
       internal protocol RootBuilder: AnyObject {
-          func build(withListener listener: RootListener) -> RootFlow
+          func build(
+              withListener listener: RootListener
+          ) -> RootFlow
       }
 
       /**
@@ -1533,7 +1541,9 @@ files:
           /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
           /// - Parameter listener: An object that can listen for signals from the Node
           /// - Returns: The Flow instance
-          internal func build(withListener listener: RootListener) -> RootFlow {
+          internal func build(
+              withListener listener: RootListener
+          ) -> RootFlow {
               let dynamicBuildDependency: RootDynamicBuildDependency = listener
               let dynamicComponentDependency: RootDynamicComponentDependency = ()
               return build(dynamicBuildDependency, dynamicComponentDependency)
@@ -1813,7 +1823,7 @@ files:
               preconditionFailure("init(coder:) has not been implemented")
           }
 
-          override func viewDidLoad() {
+          override internal func viewDidLoad() {
               super.viewDidLoad()
               view.backgroundColor = .systemBackground
               label.translatesAutoresizingMaskIntoConstraints = false
@@ -1825,17 +1835,17 @@ files:
               update(with: initialState)
           }
 
-          override func viewWillAppear(_ animated: Bool) {
+          override internal func viewWillAppear(_ animated: Bool) {
               super.viewWillAppear(animated)
               observe(statePublisher).store(in: &cancellables)
           }
 
-          override func viewDidAppear(_ animated: Bool) {
+          override internal func viewDidAppear(_ animated: Bool) {
               super.viewDidAppear(animated)
               receiver?.viewDidAppear()
           }
 
-          override func viewWillDisappear(_ animated: Bool) {
+          override internal func viewWillDisappear(_ animated: Bool) {
               super.viewWillDisappear(animated)
               cancellables.removeAll()
           }
