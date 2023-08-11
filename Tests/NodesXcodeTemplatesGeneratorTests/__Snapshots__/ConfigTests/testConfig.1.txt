@@ -28,7 +28,7 @@
     ▿ Variable
       - name: "<flowProperties-name-2>"
       - type: "<flowProperties-type-2>"
-  - isViewInjectedNodeEnabled: true
+  - isViewInjectedTemplateEnabled: true
   - publisherFailureType: "<publisherFailureType>"
   - publisherType: "<publisherType>"
   ▿ reactiveImports: 2 members

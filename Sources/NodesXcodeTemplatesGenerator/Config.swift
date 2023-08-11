@@ -22,7 +22,7 @@ extension XcodeTemplates {
         }
 
         public var uiFrameworks: [UIFramework]
-        public var isViewInjectedNodeEnabled: Bool
+        public var isViewInjectedTemplateEnabled: Bool
         public var fileHeader: String
         public var baseImports: Set<String>
         public var reactiveImports: Set<String>
@@ -64,7 +64,7 @@ extension XcodeTemplates.Config {
 
     public init() {
         uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
-        isViewInjectedNodeEnabled = true
+        isViewInjectedTemplateEnabled = true
         fileHeader = "//___FILEHEADER___"
         baseImports = []
         reactiveImports = ["Combine"]
@@ -96,9 +96,9 @@ extension XcodeTemplates.Config {
         uiFrameworks =
             (try? decoder.decode(CodingKeys.uiFrameworks))
             ?? defaults.uiFrameworks
-        isViewInjectedNodeEnabled =
-            (try? decoder.decode(CodingKeys.isViewInjectedNodeEnabled))
-            ?? defaults.isViewInjectedNodeEnabled
+        isViewInjectedTemplateEnabled =
+            (try? decoder.decode(CodingKeys.isViewInjectedTemplateEnabled))
+            ?? defaults.isViewInjectedTemplateEnabled
         fileHeader =
             (try? decoder.decodeString(CodingKeys.fileHeader))
             ?? defaults.fileHeader

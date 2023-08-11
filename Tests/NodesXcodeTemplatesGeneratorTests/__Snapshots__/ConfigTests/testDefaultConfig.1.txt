@@ -7,7 +7,7 @@
     - "NeedleFoundation"
   - fileHeader: "//___FILEHEADER___"
   - flowProperties: 0 elements
-  - isViewInjectedNodeEnabled: true
+  - isViewInjectedTemplateEnabled: true
   - publisherFailureType: ", Never"
   - publisherType: "AnyPublisher"
   ▿ reactiveImports: 1 member
