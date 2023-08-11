@@ -4,7 +4,7 @@
 
 Configure the Nodes Xcode templates generator for RxSwift.
 
-Provide a path to a custom config file with the `--config` option when executing `nodes-xcode-templates-gen`.
+Specify a path to a custom config file by providing the `--config` option when executing `nodes-xcode-templates-gen`.
 
 ### Sample Config File
 
