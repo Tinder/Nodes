@@ -8,7 +8,7 @@
   - fileHeader: "//___FILEHEADER___"
   - flowProperties: 0 elements
   - isViewInjectedNodeEnabled: true
-  - publisherFailureType: ", Never"
+  - publisherFailureType: "Never"
   - publisherType: "AnyPublisher"
   ▿ reactiveImports: 1 member
     - "Combine"

@@ -39,7 +39,7 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     private let initialState: {{ node_name }}ViewState
 
     /// The view state publisher.
-    private let statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
+    private let statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
 
     /// The initializer.
     ///
@@ -48,7 +48,7 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     ///   - statePublisher: The view state publisher.
     internal init(
         initialState: {{ node_name }}ViewState,
-        statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{{ publisher_failure_type }}>
+        statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
     ) {
         self.initialState = initialState
         self.statePublisher = statePublisher
