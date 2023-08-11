@@ -6,6 +6,12 @@ Configure the Nodes Xcode templates generator for RxSwift.
 
 Specify a path to a custom config file by providing the `--config` option when executing `nodes-xcode-templates-gen`.
 
+If utlizing the [quick start project setup](https://github.com/TinderApp/Nodes#quick-start), the path can be set in the `project.yml` file, for example:
+
+```
+swift run -- nodes-xcode-templates-gen --id "Xcode Templates" --config nodes.yml
+```
+
 ### Sample Config File
 
 ```yaml
