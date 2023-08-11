@@ -48,19 +48,11 @@ public protocol Context: AnyObject {
 }
 
 /**
- * Nodes’ ``AbstractContext`` base class.
+ * Nodes’ ``_BaseContext`` base class.
  *
  * > Note: This abstract class should never be instantiated directly and must therefore always be subclassed.
- *
- * ``AbstractContext`` has the following generic parameter:
- * | Name            | Description                                                                                  |
- * | --------------- | -------------------------------------------------------------------------------------------- |
- * | CancellableType | The type supporting subscription cancellation that conforms to the ``Cancellable`` protocol. |
  */
-open class AbstractContext<CancellableType: Cancellable>: Context {
-
-    /// The set of `CancellableType` instances.
-    public var cancellables: Set<CancellableType> = .init()
+open class _BaseContext: Context { // swiftlint:disable:this type_name
 
     /// A Boolean value indicating whether the `Context` instance is active.
     public private(set) var isActive: Bool = false // swiftlint:disable:this redundant_type_annotation
@@ -72,7 +64,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
 
     private let workerController: WorkerController
 
-    /// Initializes an ``AbstractContext`` instance.
+    /// Initializes a ``_BaseContext`` instance.
     ///
     /// - Parameter workers: The array of `Worker` instances.
     public init(workers: [Worker]) {
@@ -84,7 +76,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     /// - Note: The default implementation of this method does nothing.
     ///
     /// - Important: This method should never be called directly.
-    ///   The ``AbstractContext`` instance calls this method internally.
+    ///   The ``_BaseContext`` instance calls this method internally.
     open func didBecomeActive() {}
 
     /// Subclasses may override this method to define logic to be performed when the `Context` deactivates.
@@ -92,8 +84,19 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     /// - Note: The default implementation of this method does nothing.
     ///
     /// - Important: This method should never be called directly.
-    ///   The ``AbstractContext`` instance calls this method internally.
+    ///   The ``_BaseContext`` instance calls this method internally.
     open func willResignActive() {}
+
+    /// Subclasses may override this method to reset state when the `Context` deactivates.
+    ///
+    /// This method is prefixed with an underscore to indicate that it should only be overridden
+    /// in another abstract class definition.
+    ///
+    /// - Note: The default implementation of this method does nothing.
+    ///
+    /// - Important: This method should never be called directly.
+    ///   The ``_BaseContext`` instance calls this method internally.
+    open func _reset() {} // swiftlint:disable:this identifier_name
 
     /// Activates the `Context` instance.
     ///
@@ -116,11 +119,7 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
         else { return }
         workerController.stopWorkers()
         willResignActive()
-        cancellables.forEach { cancellable in
-            cancellable.cancel()
-            LeakDetector.detect(cancellable)
-        }
-        cancellables.removeAll()
+        _reset()
         isActive = false
     }
 
@@ -179,6 +178,34 @@ open class AbstractContext<CancellableType: Cancellable>: Context {
     deinit {
         if isActive { deactivate() }
         LeakDetector.detect(workerController)
+    }
+}
+
+/**
+ * Nodes’ ``AbstractContext`` base class.
+ *
+ * > Note: This abstract class should never be instantiated directly and must therefore always be subclassed.
+ *
+ * ``AbstractContext`` has the following generic parameter:
+ * | Name            | Description                                                                                  |
+ * | --------------- | -------------------------------------------------------------------------------------------- |
+ * | CancellableType | The type supporting subscription cancellation that conforms to the ``Cancellable`` protocol. |
+ */
+open class AbstractContext<CancellableType: Cancellable>: _BaseContext {
+
+    /// The set of `CancellableType` instances.
+    public var cancellables: Set<CancellableType> = .init()
+
+    /// Subclasses may not override this method.
+    ///
+    /// - Important: This method should never be called directly.
+    ///   The ``AbstractContext`` instance calls this method internally.
+    override public final func _reset() {
+        cancellables.forEach { cancellable in
+            cancellable.cancel()
+            LeakDetector.detect(cancellable)
+        }
+        cancellables.removeAll()
     }
 }
 
