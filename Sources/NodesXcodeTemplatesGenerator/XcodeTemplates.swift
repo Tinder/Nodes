@@ -12,7 +12,7 @@ public final class XcodeTemplates {
         var templates: [XcodeTemplate] = UIFramework.Kind
             .allCases
             .compactMap { try? NodeTemplate(for: $0, config: config) }
-        if config.isViewInjectedNodeEnabled {
+        if config.isViewInjectedTemplateEnabled {
             templates.append(NodeViewInjectedTemplate(config: config))
         }
         templates += [
