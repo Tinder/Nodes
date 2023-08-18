@@ -5,12 +5,12 @@ on:
     tags: ['[0-9]+.[0-9]+.[0-9]+']
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_14.2.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_14.3.app/Contents/Developer
 
 jobs:
   pages:
     name: Pages
-    runs-on: macos-latest
+    runs-on: macos-13
     concurrency:
       group: "pages"
       cancel-in-progress: true

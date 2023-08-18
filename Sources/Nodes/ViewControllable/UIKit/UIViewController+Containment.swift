@@ -30,7 +30,6 @@ extension UIViewController {
         _ viewController: UIViewController,
         layout: (_ view: UIView, _ subview: UIView) -> T
     ) -> T {
-        let viewController: UIViewController = viewController._asUIViewController()
         _addChild(viewController)
         let subview: UIView = viewController.view
         subview.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +48,6 @@ extension UIViewController {
     public func contain(_ viewController: UIViewController, in view: UIView) {
         guard view.isDescendant(of: self.view)
         else { return }
-        let viewController: UIViewController = viewController._asUIViewController()
         _addChild(viewController)
         let subview: UIView = viewController.view
         subview.translatesAutoresizingMaskIntoConstraints = false

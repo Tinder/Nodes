@@ -19,6 +19,10 @@ extension UIFramework {
 
             override internal func viewWillDisappear() {
                 super.viewWillDisappear()
+                cancellables.forEach { cancellable in
+                    cancellable.cancel()
+                    LeakDetector.detect(cancellable)
+                }
                 cancellables.removeAll()
             }
             """
@@ -41,6 +45,10 @@ extension UIFramework {
 
             override internal func viewWillDisappear() {
                 super.viewWillDisappear()
+                cancellables.forEach { cancellable in
+                    cancellable.cancel()
+                    LeakDetector.detect(cancellable)
+                }
                 cancellables.removeAll()
             }
             """

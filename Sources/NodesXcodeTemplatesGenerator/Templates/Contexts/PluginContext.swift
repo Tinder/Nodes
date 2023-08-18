@@ -10,20 +10,22 @@ public struct PluginContext: Context {
     private let pluginImports: [String]
 
     internal var dictionary: [String: Any] {
+        let dictionary: [String: Any]
         if let returnType: String {
-            return [
+            dictionary = [
                 "file_header": fileHeader,
                 "plugin_name": pluginName,
                 "return_type": returnType,
                 "plugin_imports": pluginImports
             ]
         } else {
-            return [
+            dictionary = [
                 "file_header": fileHeader,
                 "plugin_name": pluginName,
                 "plugin_imports": pluginImports
             ]
         }
+        return dictionary
     }
 
     public init(

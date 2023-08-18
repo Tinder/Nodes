@@ -162,7 +162,7 @@ public struct UIFramework: Equatable, Codable {
 
     public init(from decoder: Decoder) throws {
         framework = try decoder.decode(CodingKeys.framework)
-        let defaults: UIFramework = .init(framework: framework)
+        let defaults: Self = .init(framework: framework)
         viewControllerProperties =
             (try? decoder.decodeString(CodingKeys.viewControllerProperties))
             ?? defaults.viewControllerProperties

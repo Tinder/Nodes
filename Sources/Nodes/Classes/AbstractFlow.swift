@@ -14,9 +14,9 @@ public protocol FlowRetaining: AnyObject {}
 public struct Node {
 
     public let name: String
-    public let children: [Node]
+    public let children: [Self]
 
-    public init(name: String, children: [Node]) {
+    public init(name: String, children: [Self]) {
         self.name = name
         self.children = children
     }
@@ -151,10 +151,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///   This method is called internally within the framework code.
     public final func start() {
         guard !isStarted
-        else {
-            assertionFailure("Unable to start")
-            return
-        }
+        else { return }
         #if DEBUG
         DebugInformation.FlowWillStartNotification(flow: self, viewController: viewController as AnyObject).post()
         _isStarted = true
@@ -169,10 +166,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///   This method is called internally within the framework code.
     public final func end() {
         guard isStarted
-        else {
-            assertionFailure("Unable to end")
-            return
-        }
+        else { return }
         subFlows.reversed().forEach(detach)
         _context.deactivate()
         #if DEBUG

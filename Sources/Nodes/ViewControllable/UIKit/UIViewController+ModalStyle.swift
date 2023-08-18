@@ -75,7 +75,7 @@ public struct ModalStyle: Equatable {
     ///   - rhs: The ``ModalStyle`` instance to compare.
     ///
     /// - Returns: Whether the behavior of `lhs` is equal to the behavior of `rhs`.
-    public static func == (lhs: ModalStyle, rhs: ModalStyle) -> Bool {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.behavior == rhs.behavior
     }
 
@@ -87,7 +87,7 @@ public struct ModalStyle: Equatable {
     ///
     /// - Returns: A ``ModalStyle`` instance with `behavior` set to `.cover`, `controlStatusBarAppearance` set to
     ///   `true` and `allowInteractiveDismissal` set to `false`.
-    public static func cover() -> ModalStyle {
+    public static func cover() -> Self {
         Self(behavior: .cover,
              controlStatusBarAppearance: true,
              allowInteractiveDismissal: false)
@@ -105,7 +105,7 @@ public struct ModalStyle: Equatable {
     ///   `controlStatusBarAppearance` and `allowInteractiveDismissal` set to `false`.
     public static func overlay(
         controlStatusBarAppearance: Bool = false
-    ) -> ModalStyle {
+    ) -> Self {
         Self(behavior: .overlay,
              controlStatusBarAppearance: controlStatusBarAppearance,
              allowInteractiveDismissal: false)
@@ -130,7 +130,7 @@ public struct ModalStyle: Equatable {
         style sheetStyle: SheetStyle = .page,
         controlStatusBarAppearance: Bool = false,
         allowInteractiveDismissal: Bool = false
-    ) -> ModalStyle {
+    ) -> Self {
         let behavior: Behavior
         switch sheetStyle {
         case .page:
@@ -155,7 +155,7 @@ public struct ModalStyle: Equatable {
     ///   `controlStatusBarAppearance` and `allowInteractiveDismissal` set to `false`.
     public static func custom(
         controlStatusBarAppearance: Bool = false
-    ) -> ModalStyle {
+    ) -> Self {
         Self(behavior: .custom,
              controlStatusBarAppearance: controlStatusBarAppearance,
              allowInteractiveDismissal: false)
@@ -164,7 +164,7 @@ public struct ModalStyle: Equatable {
     /// DEPRECATED - DO NOT USE
     public func _withAdditionalConfiguration( // swiftlint:disable:this identifier_name
         configuration additionalConfiguration: @escaping (ViewControllable) -> Void
-    ) -> ModalStyle {
+    ) -> Self {
         Self(behavior: behavior,
              controlStatusBarAppearance: controlStatusBarAppearance,
              allowInteractiveDismissal: allowInteractiveDismissal,
