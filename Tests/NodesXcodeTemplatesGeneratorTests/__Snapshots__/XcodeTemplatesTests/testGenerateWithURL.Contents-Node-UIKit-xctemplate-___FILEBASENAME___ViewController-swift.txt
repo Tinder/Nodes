@@ -59,7 +59,6 @@ internal final class ___VARIABLE_productName___ViewController: UIViewController,
 
     override internal func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        cancelSubscriptions()
         observe(statePublisher).store(in: &cancellables)
     }
 
