@@ -14,11 +14,16 @@ extension UIFramework {
 
             override internal func viewWillAppear() {
                 super.viewWillAppear()
+                cancelSubscriptions()
                 observe(statePublisher).store(in: &cancellables)
             }
 
             override internal func viewWillDisappear() {
                 super.viewWillDisappear()
+                cancelSubscriptions()
+            }
+
+            private func cancelSubscriptions() {
                 cancellables.forEach { cancellable in
                     cancellable.cancel()
                     LeakDetector.detect(cancellable)
@@ -35,6 +40,7 @@ extension UIFramework {
 
             override internal func viewWillAppear() {
                 super.viewWillAppear()
+                cancelSubscriptions()
                 observe(statePublisher).store(in: &cancellables)
             }
 
@@ -45,6 +51,10 @@ extension UIFramework {
 
             override internal func viewWillDisappear() {
                 super.viewWillDisappear()
+                cancelSubscriptions()
+            }
+
+            private func cancelSubscriptions() {
                 cancellables.forEach { cancellable in
                     cancellable.cancel()
                     LeakDetector.detect(cancellable)
