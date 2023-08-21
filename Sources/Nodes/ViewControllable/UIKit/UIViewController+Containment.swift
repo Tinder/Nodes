@@ -45,7 +45,10 @@ extension UIViewController {
     /// - Parameters:
     ///   - viewController: The ``UIViewController`` instance providing the subview to contain.
     ///   - view: The containing view in which to contain the subview.
-    public func contain(_ viewController: UIViewController, in view: UIView) {
+    public func contain(
+        _ viewController: UIViewController,
+        in view: UIView
+    ) {
         guard view.isDescendant(of: self.view)
         else { return }
         _addChild(viewController)
@@ -53,10 +56,10 @@ extension UIViewController {
         subview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subview)
         NSLayoutConstraint.activate([
-            subview.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            subview.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            subview.widthAnchor.constraint(equalTo: view.widthAnchor),
-            subview.heightAnchor.constraint(equalTo: view.heightAnchor)
+            subview.topAnchor.constraint(equalTo: view.topAnchor),
+            subview.leftAnchor.constraint(equalTo: view.leftAnchor),
+            subview.rightAnchor.constraint(equalTo: view.rightAnchor),
+            subview.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         viewController.didMove(toParent: self)
     }
