@@ -13,7 +13,6 @@ final class UIViewControllerContainmentTests: XCTestCase {
 
     private class TestViewController: UIViewController {
 
-        private(set) var dismissCallCount: Int = 0
         private(set) var willMoveCallCount: Int = 0
         private(set) var didMoveCallCount: Int = 0
 
