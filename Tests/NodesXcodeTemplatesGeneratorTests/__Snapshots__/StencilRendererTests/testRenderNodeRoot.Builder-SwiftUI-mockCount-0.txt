@@ -140,9 +140,7 @@ internal final class RootBuilderImp: AbstractBuilder
         dynamicBuildDependency: RootDynamicBuildDependency
     ) -> RootFlow {
         let listener: RootListener = dynamicBuildDependency
-        let analytics: RootAnalyticsImp = .init(
-            <analyticsPropertyName>: component.dependency.<analyticsPropertyName>
-        )
+        let analytics: RootAnalyticsImp = .init()
         let context: RootContextImp = .init(
             workers: [],
             analytics: analytics

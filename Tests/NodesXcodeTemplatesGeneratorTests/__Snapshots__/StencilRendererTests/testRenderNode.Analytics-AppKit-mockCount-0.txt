@@ -22,17 +22,6 @@ internal protocol <nodeName>Analytics: AnyObject {}
  PURPOSE:
  Custom analytics implementation for this Node.
  */
-internal final class <nodeName>AnalyticsImp {
-
-    private let <analyticsPropertyName>: <analyticsPropertyType>
-
-    /// The initializer.
-    /// - Parameter <analyticsPropertyName>: The `<analyticsPropertyType>` instance
-    init(
-        <analyticsPropertyName>: <analyticsPropertyType>
-    ) {
-        self.<analyticsPropertyName> = <analyticsPropertyName>
-    }
-}
+internal final class <nodeName>AnalyticsImp {}
 
 extension <nodeName>AnalyticsImp: <nodeName>Analytics {}

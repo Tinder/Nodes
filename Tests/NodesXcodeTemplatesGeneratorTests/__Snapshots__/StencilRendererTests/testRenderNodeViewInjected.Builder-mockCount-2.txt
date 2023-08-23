@@ -149,7 +149,8 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         let listener: <nodeName>Listener = dynamicBuildDependency.0
         let viewController: <nodeName>ViewControllable = dynamicBuildDependency.1
         let analytics: <nodeName>AnalyticsImp = .init(
-            <analyticsPropertyName>: component.dependency.<analyticsPropertyName>
+            <analyticsPropertyName1>: component.dependency.<analyticsPropertyName1>,
+            <analyticsPropertyName2>: component.dependency.<analyticsPropertyName2>
         )
         let context: <nodeName>ContextImp = .init(
             workers: [],

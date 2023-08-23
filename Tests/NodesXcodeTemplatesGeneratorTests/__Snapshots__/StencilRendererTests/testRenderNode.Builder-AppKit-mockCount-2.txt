@@ -144,7 +144,8 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
     ) -> <nodeName>Flow {
         let listener: <nodeName>Listener = dynamicBuildDependency
         let analytics: <nodeName>AnalyticsImp = .init(
-            <analyticsPropertyName>: component.dependency.<analyticsPropertyName>
+            <analyticsPropertyName1>: component.dependency.<analyticsPropertyName1>,
+            <analyticsPropertyName2>: component.dependency.<analyticsPropertyName2>
         )
         let context: <nodeName>ContextImp = .init(
             workers: [],
