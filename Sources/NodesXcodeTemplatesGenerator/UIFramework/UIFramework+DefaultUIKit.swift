@@ -7,6 +7,11 @@ extension UIFramework {
     private enum Defaults {
 
         static let viewControllerMethods: String = """
+            @available(*, unavailable)
+            internal required init?(coder: NSCoder) {
+                preconditionFailure("init(coder:) has not been implemented")
+            }
+
             override internal func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
@@ -33,6 +38,11 @@ extension UIFramework {
             """
 
         static let viewControllerMethodsForRootNode: String = """
+            @available(*, unavailable)
+            internal required init?(coder: NSCoder) {
+                preconditionFailure("init(coder:) has not been implemented")
+            }
+
             override internal func viewDidLoad() {
                 super.viewDidLoad()
                 view.backgroundColor = .systemBackground
