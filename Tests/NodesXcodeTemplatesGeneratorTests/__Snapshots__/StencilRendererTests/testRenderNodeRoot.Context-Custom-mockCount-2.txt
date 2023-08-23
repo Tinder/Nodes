@@ -14,7 +14,7 @@ internal protocol RootListener: AnyObject {}
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
-internal protocol RootFlowInterface: Flow {
+internal protocol RootFlowInterface: AnyObject {
     func didBecomeReady()
 }
 

@@ -831,7 +831,7 @@ files:
        The interface that the Context will speak to the Flow through. Used to initiate navigation as
        an example.
        */
-      internal protocol AppFlowInterface: Flow {
+      internal protocol AppFlowInterface: AnyObject {
           func attachScene(_ viewController: WindowSceneViewControllable)
           func detachScene(_ viewController: WindowSceneViewControllable)
       }
@@ -1199,7 +1199,7 @@ files:
        The interface that the Context will speak to the Flow through. Used to initiate navigation as
        an example.
        */
-      internal protocol SceneFlowInterface: Flow {}
+      internal protocol SceneFlowInterface: AnyObject {}
 
       /**
        PURPOSE:
@@ -1550,7 +1550,7 @@ files:
        The interface that the Context will speak to the Flow through. Used to initiate navigation as
        an example.
        */
-      internal protocol WindowFlowInterface: Flow {}
+      internal protocol WindowFlowInterface: AnyObject {}
 
       /**
        PURPOSE:
@@ -1894,7 +1894,7 @@ files:
        The interface that the Context will speak to the Flow through. Used to initiate navigation as
        an example.
        */
-      internal protocol RootFlowInterface: Flow {
+      internal protocol RootFlowInterface: AnyObject {
           func didBecomeReady()
       }
 

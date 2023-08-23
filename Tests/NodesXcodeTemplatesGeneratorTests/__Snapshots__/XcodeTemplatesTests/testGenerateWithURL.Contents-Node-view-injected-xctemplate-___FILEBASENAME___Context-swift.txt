@@ -14,7 +14,7 @@ internal protocol ___VARIABLE_productName___Listener: AnyObject {}
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
-internal protocol ___VARIABLE_productName___FlowInterface: Flow {}
+internal protocol ___VARIABLE_productName___FlowInterface: AnyObject {}
 
 /**
  PURPOSE:

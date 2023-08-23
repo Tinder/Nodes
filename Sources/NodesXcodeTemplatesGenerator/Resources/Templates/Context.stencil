@@ -18,11 +18,11 @@ internal protocol {{ node_name }}Listener: AnyObject {}
  an example.
  */
 {% if root_node %}
-internal protocol {{ node_name }}FlowInterface: Flow {
+internal protocol {{ node_name }}FlowInterface: AnyObject {
     func didBecomeReady()
 }
 {% else %}
-internal protocol {{ node_name }}FlowInterface: Flow {}
+internal protocol {{ node_name }}FlowInterface: AnyObject {}
 {% endif %}
 
 /**
