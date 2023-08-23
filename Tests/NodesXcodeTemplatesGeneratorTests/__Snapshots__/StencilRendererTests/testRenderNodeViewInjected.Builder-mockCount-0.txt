@@ -10,9 +10,7 @@ internal protocol <nodeName>Flow: Flow {}
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
-public protocol <nodeName>Dependency: Dependency {
-    var <dependencyName>: <dependencyType> { get }
-}
+public protocol <nodeName>Dependency: Dependency {}
 
 /**
  PURPOSE:

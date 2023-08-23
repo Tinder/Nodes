@@ -10,9 +10,7 @@ internal protocol RootFlow: <viewControllableFlowType> {}
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
-public protocol RootDependency: Dependency {
-    var <dependencyName>: <dependencyType> { get }
-}
+public protocol RootDependency: Dependency {}
 
 /**
  PURPOSE:
