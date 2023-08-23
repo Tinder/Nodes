@@ -33,6 +33,7 @@ extension TestFactories {
         config.reactiveImports = ["<reactiveImport>"]
         config.dependencyInjectionImports = ["<dependencyInjectionImport>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
+        config.analyticsProperties = [Variable(name: "<analyticsPropertiesName>", type: "<analyticsPropertiesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableFlowType = "<viewControllableFlowType>"
