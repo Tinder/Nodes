@@ -14,7 +14,8 @@ internal protocol RootFlow: <viewControllableFlowType> {}
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
 public protocol RootDependency: Dependency {
-    var <dependencyName>: <dependencyType> { get }
+    var <dependencyName1>: <dependencyType1> { get }
+    var <dependencyName2>: <dependencyType2> { get }
 }
 
 /**
