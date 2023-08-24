@@ -2436,6 +2436,8 @@ files:
             - name: SwiftLint
               basedOnDependencyAnalysis: false
               script: |
+                unset BUILD_WORKSPACE_DIRECTORY # Ignores Bazel environment variable (if set).
+
                 DIRECTORY_NAME=$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]')
 
                 "$(find ".build/artifacts/${DIRECTORY_NAME}" -type f -name swiftlint -perm +111 -print -quit)"
