@@ -4,21 +4,17 @@
 
 import XCTest
 
-internal final class SamsSuperCoolNodeViewStateWorkerTests: XCTestCase {
+internal final class {{ node_name }}ViewStateFactoryTests: XCTestCase {
 
-    private var worker: SamsSuperCoolNodeViewStateWorkerImp!
+    private var factory: {{ node_name }}ViewStateFactory!
 
     override func setUp() {
         super.setUp()
-        worker = .init(analytics: SamsSuperCoolNodeAnalyticsMock())
+        factory = .init()
     }
 
     override func tearDown() {
-        worker = nil
+        factory = nil
         super.tearDown()
-    }
-
-    func testViewStateCreates() {
-        XCTAssertNotNil(worker)
     }
 }

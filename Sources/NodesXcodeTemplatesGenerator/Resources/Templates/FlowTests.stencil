@@ -6,7 +6,7 @@ import XCTest
 
 final class {{ node_name }}FlowTests: XCTestCase {
 
-    private final class {{ node_name }}ViewControllerMock: UIViewController, {{ node_name }}ViewControllable {
+    private final class {{ node_name }}ViewControllableMock: UIViewController, {{ node_name }}ViewControllable {
         {% if view_controller_properties %}
 
             {{ view_controller_properties|indent:4 }}
@@ -24,7 +24,7 @@ final class {{ node_name }}FlowTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        contextMock = {{ node_name }}ContextInterfaceMock()
+        contextMock = {{ node_name }}ContextInterfaceMock(isActive: true)
         viewControllerMock = {{ node_name }}ViewControllableMock()
         flow = {{ node_name }}FlowImp(
             context: contextMock,
@@ -35,9 +35,10 @@ final class {{ node_name }}FlowTests: XCTestCase {
         {% endif %}
         {% endfor +%}
     )
-    }
+`    }
 
     override func tearDown() {
+        contextMock.flow = nil
         contextMock = nil
         viewControllerMock = nil
         flow = nil
@@ -50,7 +51,7 @@ final class {{ node_name }}FlowTests: XCTestCase {
 
     func testStart() {
         flow.start()
-        // TODO: Add assertions here.
+        XCTAssertTrue(flow.isStarted)
     }
 
     func testStop() {
