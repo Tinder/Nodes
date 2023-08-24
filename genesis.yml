@@ -2438,6 +2438,7 @@ files:
               script: |
                 # Ignore Bazel environment variable
                 # https://bazel.build/docs/user-manual#running-executables
+                # https://github.com/realm/SwiftLint/blob/0.52.4/Source/swiftlint/Commands/SwiftLint.swift#L8
                 unset BUILD_WORKSPACE_DIRECTORY
 
                 DIRECTORY_NAME=$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]')
