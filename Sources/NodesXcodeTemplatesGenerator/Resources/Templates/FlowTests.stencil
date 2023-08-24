@@ -25,7 +25,7 @@ final class {{ node_name }}FlowTests: XCTestCase {
     override func setUp() {
         super.setUp()
         contextMock = {{ node_name }}ContextInterfaceMock()
-        viewControllerMock = {{ node_name }}ViewControllerMock()
+        viewControllerMock = {{ node_name }}ViewControllableMock()
         flow = {{ node_name }}FlowImp(
             context: contextMock,
         viewController: viewControllerMock{% if flow_properties %}{{ ',' }}
