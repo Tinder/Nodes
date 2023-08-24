@@ -18,9 +18,9 @@ final class {{ node_name }}FlowTests: XCTestCase {
         {% endif %}
     }
 
-    private var contextMock: {{ node_name }}ContextInterfaceMock!
-    private var viewControllerMock: {{ node_name }}ViewControllerMock!
     private var flow: {{ node_name }}FlowImp!
+    private var contextMock: {{ node_name }}ContextInterfaceMock!
+    private var viewControllableMock: {{ node_name }}ViewControllableMock!
 
     override func setUp() {
         super.setUp()
