@@ -28,8 +28,13 @@ final class {{ node_name }}FlowTests: XCTestCase {
         viewControllerMock = {{ node_name }}ViewControllerMock()
         flow = {{ node_name }}FlowImp(
             context: contextMock,
-            viewController: viewControllerMock
-        )
+        viewController: viewControllerMock{% if flow_properties %}{{ ',' }}
+        {% endif %}
+        {% for property in flow_properties %}
+        {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}
+        {% endif %}
+        {% endfor +%}
+    )
     }
 
     override func tearDown() {
