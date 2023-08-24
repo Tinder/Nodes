@@ -6,9 +6,9 @@ import XCTest
 
 final class {{ node_name }}ContextTests: XCTestCase {
 
-    private var analyticsMock: {{ node_name }}AnalyticsMock!
-    private var presentableMock: {{ node_name }}PresentableMock!
     private var context: {{ node_name }}ContextImp!
+    private var presentableMock: {{ node_name }}PresentableMock!
+    private var analyticsMock: {{ node_name }}AnalyticsMock!
 
     override func setUp() {
         super.setUp()
