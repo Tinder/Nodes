@@ -2436,7 +2436,9 @@ files:
             - name: SwiftLint
               basedOnDependencyAnalysis: false
               script: |
-                unset BUILD_WORKSPACE_DIRECTORY # Ignores Bazel environment variable (if set).
+                # Ignore Bazel environment variable
+                # https://bazel.build/docs/user-manual#running-executables
+                unset BUILD_WORKSPACE_DIRECTORY
 
                 DIRECTORY_NAME=$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]')
 
