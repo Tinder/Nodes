@@ -60,6 +60,9 @@ let package = Package(
     targets: [
         .target(
             name: "Nodes",
+            swiftSettings: [
+                .unsafeFlags(["-strict-concurrency=complete"]),
+            ],
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
@@ -67,6 +70,9 @@ let package = Package(
             name: "NodesTesting",
             dependencies: [
                 .product(name: "NeedleFoundation", package: "needle")
+            ],
+            swiftSettings: [
+                .unsafeFlags(["-strict-concurrency=complete"]),
             ],
             plugins: [
                 .plugin(name: SwiftLint.plugin),
@@ -81,6 +87,9 @@ let package = Package(
             resources: [
                 .copy("Resources/Icons"),
                 .copy("Resources/Templates"),
+            ],
+            swiftSettings: [
+                .unsafeFlags(["-strict-concurrency=complete"]),
             ],
             plugins: [
                 .plugin(name: SwiftLint.plugin),
