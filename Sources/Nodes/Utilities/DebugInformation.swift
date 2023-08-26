@@ -287,7 +287,7 @@ public enum DebugInformation {
         case flowControllerIdentifier
     }
 
-    private static var queue: DispatchQueue = .init(label: "Nodes Debug Notifications",
+    private static let queue: DispatchQueue = .init(label: "Nodes Debug Notifications",
                                                     qos: .background)
 
     @available(iOS 13.0, OSX 10.15, *)
