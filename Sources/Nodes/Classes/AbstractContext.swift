@@ -183,7 +183,6 @@ open class _BaseContext: Context { // swiftlint:disable:this type_name
             assertionFailure("Lifecycle Violation: Expected `AbstractContext` to deactivate before it is deallocated.")
         }
         #endif
-        LeakDetector.detect(workerController)
     }
 }
 
@@ -241,10 +240,6 @@ open class AbstractPresentableContext<CancellableType: Cancellable, PresentableT
     public init(presentable: PresentableType, workers: [Worker]) {
         self.presentable = presentable
         super.init(workers: workers)
-    }
-
-    deinit {
-        LeakDetector.detect(presentable as AnyObject, delay: 5)
     }
 }
 

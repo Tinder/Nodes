@@ -222,14 +222,4 @@ public final class FlowController {
     public func withFlows<T>(ofType type: T.Type, perform: (_ flow: T) throws -> Void) rethrows {
         try flows(ofType: type).forEach(perform)
     }
-
-    deinit {
-        #if DEBUG
-        if !flows.isEmpty {
-            assertionFailure("""
-                Lifecycle Violation: Expected `Flow` instances to be detached before `FlowController` is deallocated.
-                """)
-        }
-        #endif
-    }
 }
