@@ -6,12 +6,14 @@ import <builderImport>
  PURPOSE:
  The interface of the Flow.
  */
+@MainActor
 internal protocol <nodeName>Flow: <viewControllableFlowType> {}
 
 /**
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
+@MainActor
 public protocol <nodeName>Dependency: Dependency {
     var <dependencyName>: <dependencyType> { get }
 }
@@ -38,6 +40,7 @@ internal typealias <nodeName>DynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
+@MainActor
 internal final class <nodeName>Component: Component
 <
     <nodeName>Dependency
@@ -100,6 +103,7 @@ internal final class <nodeName>Component: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
+@MainActor
 internal protocol <nodeName>Builder: AnyObject {
     func build(
         withListener listener: <nodeName>Listener

@@ -11,6 +11,7 @@ import UIKit
  * a `Flow` instance to limit the available API, to avoid the use of UI frameworks within the `Flow`
  * instance and to facilitate testing.
  */
+@MainActor
 public protocol TabBarControllable: ViewControllable {
 
     /// An array of the ``ViewControllable`` instances displayed in the tab bar interface.

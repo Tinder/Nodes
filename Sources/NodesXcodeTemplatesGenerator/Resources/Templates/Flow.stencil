@@ -11,6 +11,7 @@ import {{ import }}
  The interface that the Flow will speak to the Context through. Used for informing the Context of
  presentation lifecycle events, as an example.
  */
+@MainActor
 internal protocol {{ node_name }}ContextInterface: Context {}
 
 /**
@@ -19,6 +20,7 @@ internal protocol {{ node_name }}ContextInterface: Context {}
  protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
  implementation as necessary.
  */
+@MainActor
 internal protocol {{ node_name }}ViewControllable: {{ view_controllable_type }} {}
 
 /**

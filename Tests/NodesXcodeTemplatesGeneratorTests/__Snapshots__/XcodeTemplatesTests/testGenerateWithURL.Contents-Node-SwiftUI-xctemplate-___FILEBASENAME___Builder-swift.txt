@@ -8,12 +8,14 @@ import Nodes
  PURPOSE:
  The interface of the Flow.
  */
+@MainActor
 internal protocol ___VARIABLE_productName___Flow: ViewControllableFlow {}
 
 /**
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
+@MainActor
 public protocol ___VARIABLE_productName___Dependency: Dependency {}
 
 /**
@@ -38,6 +40,7 @@ internal typealias ___VARIABLE_productName___DynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
+@MainActor
 internal final class ___VARIABLE_productName___Component: Component
 <
     ___VARIABLE_productName___Dependency
@@ -100,6 +103,7 @@ internal final class ___VARIABLE_productName___Component: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
+@MainActor
 internal protocol ___VARIABLE_productName___Builder: AnyObject {
     func build(
         withListener listener: ___VARIABLE_productName___Listener

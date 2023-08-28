@@ -26,6 +26,7 @@ public protocol NodesView: View {
  * [SwiftUI](https://developer.apple.com/documentation/swiftui)).
  */
 @available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+@MainActor
 public protocol NodesViewHostingController {
 
     /// The type of the `rootView` instance which must be a ``NodesView``.

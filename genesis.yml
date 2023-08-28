@@ -697,6 +697,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
+      @MainActor
       internal final class AppComponent: BootstrapComponent {
 
           /*
@@ -762,6 +763,7 @@ files:
        PURPOSE:
        The Builder interface (available to mock for testability).
        */
+      @MainActor
       internal protocol AppBuilder: AnyObject {
           func build() -> AppFlow
       }
@@ -832,6 +834,7 @@ files:
        The interface that the Context will speak to the Flow through. Used to initiate navigation as
        an example.
        */
+      @MainActor
       internal protocol AppFlowInterface: Flow {
           func attachScene(_ viewController: WindowSceneViewControllable)
           func detachScene(_ viewController: WindowSceneViewControllable)
@@ -876,10 +879,6 @@ files:
 
           /// Implement logic to execute when the Context will become inactive.
           override internal func willResignActive() {}
-
-          deinit {
-              LeakDetector.detect(analytics)
-          }
 
           private func subscribe(to windowSceneState: AnyPublisher<WindowSceneState, Never>) {
               windowSceneState
@@ -1014,6 +1013,7 @@ files:
        PURPOSE:
        The interface of the Flow.
        */
+      @MainActor
       internal protocol SceneFlow: Flow {
           func getViewController() -> WindowSceneViewControllable
       }
@@ -1112,6 +1112,7 @@ files:
        PURPOSE:
        The Builder interface (available to mock for testability).
        */
+      @MainActor
       internal protocol SceneBuilder: AnyObject {
           func build(
               withListener listener: SceneListener,
@@ -1238,10 +1239,6 @@ files:
 
           /// Implement logic to execute when the Context will become inactive.
           override internal func willResignActive() {}
-
-          deinit {
-              LeakDetector.detect(analytics)
-          }
       }
 
       extension SceneContextImp: SceneContextInterface {}
@@ -1463,6 +1460,7 @@ files:
        PURPOSE:
        The Builder interface (available to mock for testability).
        */
+      @MainActor
       internal protocol WindowBuilder: AnyObject {
           func build(
               withListener listener: WindowListener,
@@ -1589,10 +1587,6 @@ files:
 
           /// Implement logic to execute when the Context will become inactive.
           override internal func willResignActive() {}
-
-          deinit {
-              LeakDetector.detect(analytics)
-          }
       }
 
       extension WindowContextImp: WindowContextInterface {}
@@ -1803,6 +1797,7 @@ files:
        PURPOSE:
        The Builder interface (available to mock for testability).
        */
+      @MainActor
       internal protocol RootBuilder: AnyObject {
           func build(
               withListener listener: RootListener
@@ -1895,6 +1890,7 @@ files:
        The interface that the Context will speak to the Flow through. Used to initiate navigation as
        an example.
        */
+      @MainActor
       internal protocol RootFlowInterface: Flow {
           func didBecomeReady()
       }
@@ -1942,10 +1938,6 @@ files:
 
           /// Implement logic to execute when the Context will become inactive.
           override internal func willResignActive() {}
-
-          deinit {
-              LeakDetector.detect(analytics)
-          }
       }
 
       extension RootContextImp: RootContextInterface {}
@@ -2064,6 +2056,7 @@ files:
        The interface that the View will speak to the Context through. Used for informing the Context of
        view events and user interactions.
        */
+      @MainActor
       internal protocol RootReceiver: AnyObject {
           func viewDidAppear()
       }
@@ -2193,6 +2186,7 @@ files:
       import UIKit
 
       /// @mockable
+      @MainActor
       internal protocol AppService {
           var windowSceneState: AnyPublisher<WindowSceneState, Never> { get }
       }

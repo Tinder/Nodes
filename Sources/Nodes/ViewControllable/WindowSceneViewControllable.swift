@@ -8,6 +8,7 @@
  * The interface used for injecting a window scene into a `Flow` instance to limit the available API,
  * to avoid the use of UI frameworks within the `Flow` instance and to facilitate testing.
  */
+@MainActor
 public protocol WindowSceneViewControllable: AnyObject {
 
     /// Creates a ``WindowViewControllable`` instance.

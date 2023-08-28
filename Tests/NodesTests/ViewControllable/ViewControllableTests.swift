@@ -9,6 +9,7 @@ import Nimble
 import UIKit
 import XCTest
 
+@MainActor
 final class ViewControllableTests: XCTestCase {
 
     private class TestViewController: UIViewController {

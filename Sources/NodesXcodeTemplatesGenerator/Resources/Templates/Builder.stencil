@@ -10,6 +10,7 @@ import {{ import }}
  PURPOSE:
  The interface of the Flow.
  */
+@MainActor
 {% if owns_view %}
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
 {% else %}
@@ -20,6 +21,7 @@ internal protocol {{ node_name }}Flow: Flow {}
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
+@MainActor
 {% if dependencies %}
 public protocol {{ node_name }}Dependency: Dependency {
     {% for dependency in dependencies %}
@@ -56,6 +58,7 @@ internal typealias {{ node_name }}DynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
+@MainActor
 internal final class {{ node_name }}Component: Component
 <
     {{ node_name }}Dependency
@@ -118,6 +121,7 @@ internal final class {{ node_name }}Component: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
+@MainActor
 internal protocol {{ node_name }}Builder: AnyObject {
     func build(
         withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}

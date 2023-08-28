@@ -11,6 +11,7 @@ import {{ import }}
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
  */
+@MainActor
 {% if root_node %}
 internal protocol {{ node_name }}Receiver: AnyObject {
     func viewDidAppear()

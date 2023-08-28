@@ -6,6 +6,7 @@ import <contextImport>
  PURPOSE:
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
+@MainActor
 internal protocol RootListener: AnyObject {}
 
 /**
@@ -13,6 +14,7 @@ internal protocol RootListener: AnyObject {}
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
+@MainActor
 internal protocol RootFlowInterface: Flow {
     func didBecomeReady()
 }
@@ -59,10 +61,6 @@ internal final class RootContextImp: AbstractContext
 
     /// Implement logic to execute when the Context will become inactive.
     override internal func willResignActive() {}
-
-    deinit {
-        LeakDetector.detect(analytics)
-    }
 }
 
 extension RootContextImp: RootContextInterface {}

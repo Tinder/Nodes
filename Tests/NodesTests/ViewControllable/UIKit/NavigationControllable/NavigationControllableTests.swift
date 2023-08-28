@@ -9,6 +9,7 @@ import Nimble
 import UIKit
 import XCTest
 
+@MainActor
 final class NavigationControllableTests: XCTestCase {
 
     func testSet() {

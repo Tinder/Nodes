@@ -7,6 +7,7 @@ import Nodes
  The interface that the Flow will speak to the Context through. Used for informing the Context of
  presentation lifecycle events, as an example.
  */
+@MainActor
 internal protocol ___VARIABLE_productName___ContextInterface: Context {}
 
 /**
@@ -15,6 +16,7 @@ internal protocol ___VARIABLE_productName___ContextInterface: Context {}
  protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
  implementation as necessary.
  */
+@MainActor
 internal protocol ___VARIABLE_productName___ViewControllable: ViewControllable {}
 
 /**

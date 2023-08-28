@@ -9,6 +9,7 @@ import UIKit
 /**
  * Nodes' convenience modal presentation styles for [UIKit](https://developer.apple.com/documentation/uikit).
  */
+@MainActor
 public struct ModalStyle: Equatable {
 
     /// The ``ModalStyle`` behavior.
