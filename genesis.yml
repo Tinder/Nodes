@@ -387,6 +387,7 @@ files:
       GCC_WARN_UNUSED_VARIABLE = YES
       MTL_FAST_MATH = YES
       SDKROOT = iphoneos
+      SWIFT_STRICT_CONCURRENCY = complete
 
   - path: "{{ project|split:' '|join:'_' }}/Assets/Assets.xcassets/AccentColor.colorset/Contents.json"
     contents: |
