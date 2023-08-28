@@ -64,6 +64,10 @@ internal final class ___VARIABLE_productName___ViewController: UIViewController,
 
     override internal func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        cancelSubscriptions()
+    }
+
+    private func cancelSubscriptions() {
         cancellables.forEach { cancellable in
             cancellable.cancel()
             LeakDetector.detect(cancellable)

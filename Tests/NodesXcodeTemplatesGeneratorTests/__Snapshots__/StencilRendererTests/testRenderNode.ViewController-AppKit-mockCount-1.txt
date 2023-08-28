@@ -44,11 +44,6 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
         super.init(<viewControllerSuperParameters>)
     }
 
-    @available(*, unavailable)
-    internal required init?(coder: NSCoder) {
-        preconditionFailure("init(coder:) has not been implemented")
-    }
-
     <viewControllerMethods>
 
     internal func update(with viewState: <nodeName>ViewState) {
