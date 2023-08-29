@@ -28,6 +28,7 @@ public struct Node {
  * The interface used by the ``AbstractFlow`` instance methods for attaching and detaching a child `Flow` instance.
  */
 /// @mockable
+@preconcurrency
 @MainActor
 public protocol Flow: AnyObject {
 
@@ -72,6 +73,7 @@ public protocol Flow: AnyObject {
  * | ContextInterfaceType | The type of the `Context` instance.            |
  * | ViewControllerType   | The type of the ``ViewControllable`` instance. |
  */
+@preconcurrency
 @MainActor
 open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
 

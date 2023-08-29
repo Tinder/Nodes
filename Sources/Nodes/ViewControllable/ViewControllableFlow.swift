@@ -7,6 +7,7 @@
  * parent `Flow` instance for display or presentation.
  */
 /// @mockable
+@preconcurrency
 @MainActor
 public protocol ViewControllableFlow: Flow {
 

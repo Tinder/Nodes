@@ -15,6 +15,7 @@
  * | BuildType     | The type of object created (typically a `Builder`).                                         |
  * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
  */
+@preconcurrency
 @MainActor
 open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
 
@@ -266,6 +267,7 @@ extension PluginList where StateType == Void {
  * | BuildType     | The type of object created (typically a `Builder`).                                         |
  * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
  */
+@preconcurrency
 @MainActor
 open class PluginListWithDefault<KeyType: Hashable,
                                  ComponentType,

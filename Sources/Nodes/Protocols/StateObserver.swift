@@ -15,6 +15,7 @@ import Combine
  *
  * > Important: For [SwiftUI](https://developer.apple.com/documentation/swiftui) use ``WithViewState`` instead.
  */
+@preconcurrency
 @MainActor
 public protocol StateObserver: AnyObject {
 
