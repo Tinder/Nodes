@@ -673,6 +673,7 @@ files:
        PURPOSE:
        The interface of the Flow.
        */
+      @MainActor
       internal protocol AppFlow: Flow {}
 
       /**
@@ -912,6 +913,7 @@ files:
        The interface that the Flow will speak to the Context through. Used for informing the Context of
        presentation lifecycle events, as an example.
        */
+      @MainActor
       internal protocol AppContextInterface: Context, SceneListener {}
 
       /**
@@ -1022,6 +1024,7 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
+      @MainActor
       public protocol SceneDependency: Dependency {}
 
       /**
@@ -1046,6 +1049,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
+      @MainActor
       internal final class SceneComponent: Component
       <
           SceneDependency
@@ -1194,6 +1198,7 @@ files:
        PURPOSE:
        The Context delegates callbacks to its (external) Listener, typically the parent Context.
        */
+      @MainActor
       internal protocol SceneListener: AnyObject {}
 
       /**
@@ -1201,6 +1206,7 @@ files:
        The interface that the Context will speak to the Flow through. Used to initiate navigation as
        an example.
        */
+      @MainActor
       internal protocol SceneFlowInterface: Flow {}
 
       /**
@@ -1259,6 +1265,7 @@ files:
        The interface that the Flow will speak to the Context through. Used for informing the Context of
        presentation lifecycle events, as an example.
        */
+      @MainActor
       internal protocol SceneContextInterface: Context, WindowListener {}
 
       /**
@@ -1364,12 +1371,14 @@ files:
        PURPOSE:
        The interface of the Flow.
        */
+      @MainActor
       internal protocol WindowFlow: Flow {}
 
       /**
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
+      @MainActor
       public protocol WindowDependency: Dependency {}
 
       /**
@@ -1394,6 +1403,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
+      @MainActor
       internal final class WindowComponent: Component
       <
           WindowDependency
@@ -1542,6 +1552,7 @@ files:
        PURPOSE:
        The Context delegates callbacks to its (external) Listener, typically the parent Context.
        */
+      @MainActor
       internal protocol WindowListener: AnyObject {}
 
       /**
@@ -1549,6 +1560,7 @@ files:
        The interface that the Context will speak to the Flow through. Used to initiate navigation as
        an example.
        */
+      @MainActor
       internal protocol WindowFlowInterface: Flow {}
 
       /**
@@ -1607,6 +1619,7 @@ files:
        The interface that the Flow will speak to the Context through. Used for informing the Context of
        presentation lifecycle events, as an example.
        */
+      @MainActor
       internal protocol WindowContextInterface: Context, RootListener {}
 
       /**
@@ -1705,12 +1718,14 @@ files:
        PURPOSE:
        The interface of the Flow.
        */
+      @MainActor
       internal protocol RootFlow: ViewControllableFlow {}
 
       /**
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
+      @MainActor
       public protocol RootDependency: Dependency {}
 
       /**
@@ -1735,6 +1750,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
+      @MainActor
       internal final class RootComponent: Component
       <
           RootDependency
@@ -1883,6 +1899,7 @@ files:
        PURPOSE:
        The Context delegates callbacks to its (external) Listener, typically the parent Context.
        */
+      @MainActor
       internal protocol RootListener: AnyObject {}
 
       /**
@@ -1967,6 +1984,7 @@ files:
        The interface that the Flow will speak to the Context through. Used for informing the Context of
        presentation lifecycle events, as an example.
        */
+      @MainActor
       internal protocol RootContextInterface: Context {}
 
       /**
@@ -1975,6 +1993,7 @@ files:
        protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
        implementation as necessary.
        */
+      @MainActor
       internal protocol RootViewControllable: ViewControllable {}
 
       /**
