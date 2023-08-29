@@ -9,10 +9,10 @@ import UIKit
 /**
  * Nodes' convenience modal presentation styles for [UIKit](https://developer.apple.com/documentation/uikit).
  */
-public struct ModalStyle: Equatable {
+public struct ModalStyle {
 
     /// The ``ModalStyle`` behavior.
-    public enum Behavior: Equatable {
+    public enum Behavior {
 
         /// The ``UIModalPresentationStyle.fullScreen`` behavior.
         case cover
@@ -34,7 +34,7 @@ public struct ModalStyle: Equatable {
 
     /// The sheet style used to specify the ``ModalStyle`` behavior.
     @available(tvOS, unavailable)
-    public enum SheetStyle: Equatable {
+    public enum SheetStyle {
 
         /// The ``UIModalPresentationStyle.pageSheet`` behavior.
         case page
@@ -66,17 +66,6 @@ public struct ModalStyle: Equatable {
         self.controlStatusBarAppearance = controlStatusBarAppearance
         self.allowInteractiveDismissal = allowInteractiveDismissal
         self.configuration = configuration
-    }
-
-    /// Returns a Boolean value indicating whether two ``ModalStyle`` instances are equal.
-    ///
-    /// - Parameters:
-    ///   - lhs: The ``ModalStyle`` instance to compare.
-    ///   - rhs: The ``ModalStyle`` instance to compare.
-    ///
-    /// - Returns: Whether the behavior of `lhs` is equal to the behavior of `rhs`.
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        lhs.behavior == rhs.behavior
     }
 
     /// A factory method that creates a ``ModalStyle`` with cover behavior.
