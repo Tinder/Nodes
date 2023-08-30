@@ -150,8 +150,10 @@ public struct ModalStyle {
              allowInteractiveDismissal: false)
     }
 
+    // swiftlint:disable identifier_name
+
     /// DEPRECATED - DO NOT USE
-    public func _withAdditionalConfiguration( // swiftlint:disable:this identifier_name
+    public func _withAdditionalConfiguration(
         configuration additionalConfiguration: @escaping (ViewControllable) -> Void
     ) -> Self {
         Self(behavior: behavior,
@@ -159,6 +161,8 @@ public struct ModalStyle {
              allowInteractiveDismissal: allowInteractiveDismissal,
              configuration: configuration + [additionalConfiguration])
     }
+
+    // swiftlint:enable identifier_name
 }
 
 extension UIViewController {
