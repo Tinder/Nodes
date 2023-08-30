@@ -25,22 +25,21 @@ final class {{ node_name }}FlowTests: XCTestCase {
     override func setUp() {
         super.setUp()
         contextMock = {{ node_name }}ContextInterfaceMock(isActive: true)
-        viewControllerMock = {{ node_name }}ViewControllableMock()
+        viewControllableMock = {{ node_name }}ViewControllableMock()
         flow = {{ node_name }}FlowImp(
             context: contextMock,
-        viewController: viewControllerMock{% if flow_properties %}{{ ',' }}
-        {% endif %}
-        {% for property in flow_properties %}
-        {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}
-        {% endif %}
-        {% endfor +%}
-    )
-`    }
+            viewController: viewControllableMock{% if flow_properties %}{{ ',' }}
+            {% endif %}
+            {% for property in flow_properties %}
+            {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}
+            {% endif %}
+            {% endfor +%}
+        )
+    }
 
     override func tearDown() {
-        contextMock.flow = nil
         contextMock = nil
-        viewControllerMock = nil
+        viewControllableMock = nil
         flow = nil
         super.tearDown()
     }
