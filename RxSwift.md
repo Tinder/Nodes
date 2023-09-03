@@ -1,6 +1,6 @@
 # Using RxSwift with Nodes
 
-Using [RxSwift](https://github.com/ReactiveX/RxSwift) with Nodes requires custom configuration and setup. 
+Using [RxSwift](https://github.com/ReactiveX/RxSwift) with Nodes requires custom configuration and setup.
 
 ## Step 1 - Configure the Nodes Xcode Templates Generator for RxSwift
 

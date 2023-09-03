@@ -139,3 +139,9 @@ Only if issues are encountered when executing Mockolo, build from source:
 ```
 brew reinstall --build-from-source mockolo
 ```
+
+## Optional Customization
+
+### Using RxSwift with Nodes
+
+While Nodes works out-of-the-box with Combine, using [RxSwift](https://github.com/ReactiveX/RxSwift) with Nodes requires [custom configuration and setup](RxSwift.md).
