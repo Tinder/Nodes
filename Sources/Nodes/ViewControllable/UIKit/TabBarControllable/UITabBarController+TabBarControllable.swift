@@ -26,12 +26,16 @@ extension UITabBarController: TabBarControllable {
         setViewControllers(viewControllers?.map { $0._asUIViewController() }, animated: animated)
     }
 
+    // swiftlint:disable identifier_name
+
     /// Returns `self` as a ``UITabBarController``.
     ///
     /// - Returns: The `self` instance as a ``UITabBarController``.
-    public func _asUITabBarController() -> UITabBarController {  // swiftlint:disable:this identifier_name
+    public func _asUITabBarController() -> UITabBarController {
         self
     }
+
+    // swiftlint:enable identifier_name
 }
 
 #endif

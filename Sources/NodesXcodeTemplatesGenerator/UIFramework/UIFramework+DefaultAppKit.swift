@@ -7,6 +7,11 @@ extension UIFramework {
     private enum Defaults {
 
         static let viewControllerMethods: String = """
+            @available(*, unavailable)
+            internal required init?(coder: NSCoder) {
+                preconditionFailure("init(coder:) has not been implemented")
+            }
+
             override internal func viewDidLoad() {
                 super.viewDidLoad()
                 update(with: initialState)
@@ -19,11 +24,24 @@ extension UIFramework {
 
             override internal func viewWillDisappear() {
                 super.viewWillDisappear()
+                cancelSubscriptions()
+            }
+
+            private func cancelSubscriptions() {
+                cancellables.forEach { cancellable in
+                    cancellable.cancel()
+                    LeakDetector.detect(cancellable)
+                }
                 cancellables.removeAll()
             }
             """
 
         static let viewControllerMethodsForRootNode: String = """
+            @available(*, unavailable)
+            internal required init?(coder: NSCoder) {
+                preconditionFailure("init(coder:) has not been implemented")
+            }
+
             override internal func viewDidLoad() {
                 super.viewDidLoad()
                 update(with: initialState)
@@ -41,6 +59,14 @@ extension UIFramework {
 
             override internal func viewWillDisappear() {
                 super.viewWillDisappear()
+                cancelSubscriptions()
+            }
+
+            private func cancelSubscriptions() {
+                cancellables.forEach { cancellable in
+                    cancellable.cancel()
+                    LeakDetector.detect(cancellable)
+                }
                 cancellables.removeAll()
             }
             """

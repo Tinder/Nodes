@@ -33,6 +33,7 @@ extension TestFactories {
         config.reactiveImports = ["<reactiveImport>"]
         config.dependencyInjectionImports = ["<dependencyInjectionImport>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
+        config.analyticsProperties = [Variable(name: "<analyticsPropertiesName>", type: "<analyticsPropertiesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableFlowType = "<viewControllableFlowType>"
@@ -55,9 +56,9 @@ extension TestFactories {
             stateImports: .mock(with: "stateImport", count: mockCount),
             viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
             viewStateImports: .mock(with: "viewStateImport", count: mockCount),
-            dependencies: [Variable(name: "<dependencyName>", type: "<dependencyType>")],
-            analyticsProperties: [Variable(name: "<analyticsPropertyName>", type: "<analyticsPropertyType>")],
-            flowProperties: [Variable(name: "<flowPropertyName>", type: "<flowPropertyType>")],
+            dependencies: .mock(with: "dependency", count: mockCount),
+            analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
+            flowProperties: .mock(with: "flowProperty", count: mockCount),
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
@@ -82,9 +83,9 @@ extension TestFactories {
             stateImports: .mock(with: "stateImport", count: mockCount),
             viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
             viewStateImports: .mock(with: "viewStateImport", count: mockCount),
-            dependencies: [Variable(name: "<dependencyName>", type: "<dependencyType>")],
-            analyticsProperties: [Variable(name: "<analyticsPropertyName>", type: "<analyticsPropertyType>")],
-            flowProperties: [Variable(name: "<flowPropertyName>", type: "<flowPropertyType>")],
+            dependencies: .mock(with: "dependency", count: mockCount),
+            analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
+            flowProperties: .mock(with: "flowProperty", count: mockCount),
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
@@ -108,9 +109,9 @@ extension TestFactories {
             contextImports: .mock(with: "contextImport", count: mockCount),
             flowImports: .mock(with: "flowImport", count: mockCount),
             stateImports: .mock(with: "stateImport", count: mockCount),
-            dependencies: [Variable(name: "<dependencyName>", type: "<dependencyType>")],
-            analyticsProperties: [Variable(name: "<analyticsPropertyName>", type: "<analyticsPropertyType>")],
-            flowProperties: [Variable(name: "<flowPropertyName>", type: "<flowPropertyType>")],
+            dependencies: .mock(with: "dependency", count: mockCount),
+            analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
+            flowProperties: .mock(with: "flowProperty", count: mockCount),
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
             cancellableType: "<cancellableType>"

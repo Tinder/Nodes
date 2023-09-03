@@ -45,12 +45,16 @@ extension UINavigationController: NavigationControllable {
         popViewController(animated: animated)
     }
 
+    // swiftlint:disable identifier_name
+
     /// Returns `self` as a ``UINavigationController``.
     ///
     /// - Returns: The `self` instance as a ``UINavigationController``.
-    public func _asUINavigationController() -> UINavigationController { // swiftlint:disable:this identifier_name
+    public func _asUINavigationController() -> UINavigationController {
         self
     }
+
+    // swiftlint:enable identifier_name
 }
 
 #endif
