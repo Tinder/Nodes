@@ -6,12 +6,14 @@ import <pluginImport>
  PURPOSE:
  Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
  */
+@MainActor
 public protocol <pluginName>PluginDependency: Dependency {}
 
 /**
  PURPOSE:
  Declares dependencies that are owned by this Plugin.
  */
+@MainActor
 internal final class <pluginName>PluginComponent: Component
 <
     <pluginName>PluginDependency
@@ -69,6 +71,7 @@ internal typealias <pluginName>PluginStateType = Void
  PURPOSE:
  The Plugin interface (available to mock for testability).
  */
+@MainActor
 internal protocol <pluginName>Plugin {
     func create() -> <pluginName>Builder?
 }

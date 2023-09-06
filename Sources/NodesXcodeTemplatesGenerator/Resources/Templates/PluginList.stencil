@@ -10,18 +10,21 @@ import {{ import }}
  PURPOSE:
  The common Flow interface.
  */
+@MainActor
 internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} {}
 
 /**
  PURPOSE:
  The common Listener interface.
  */
+@MainActor
 internal protocol {{ plugin_list_name }}Listener: AnyObject {}
 
 /**
  PURPOSE:
  The common Builder interface.
  */
+@MainActor
 internal protocol {{ plugin_list_name }}Builder: AnyObject {
     func build(
         withListener listener: {{ plugin_list_name }}Listener
@@ -32,12 +35,14 @@ internal protocol {{ plugin_list_name }}Builder: AnyObject {
  PURPOSE:
  Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
  */
+@MainActor
 public protocol {{ plugin_list_name }}PluginListDependency: Dependency {}
 
 /**
  PURPOSE:
  Declares dependencies that are owned by this Plugin List.
  */
+@MainActor
 internal final class {{ plugin_list_name }}PluginListComponent: Component
 <
     {{ plugin_list_name }}PluginListDependency
@@ -97,6 +102,7 @@ internal typealias {{ plugin_list_name }}PluginListStateType = Void
  PURPOSE:
  The Plugin List protocol (available to mock for testability).
  */
+@MainActor
 internal protocol {{ plugin_list_name }}PluginList {
     func createAll() -> [{{ plugin_list_name }}Builder]
     func create() -> {{ plugin_list_name }}Builder?

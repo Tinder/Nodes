@@ -10,12 +10,14 @@ import {{ import }}
  PURPOSE:
  Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
  */
+@MainActor
 public protocol {{ plugin_name }}PluginDependency: Dependency {}
 
 /**
  PURPOSE:
  Declares dependencies that are owned by this Plugin.
  */
+@MainActor
 internal final class {{ plugin_name }}PluginComponent: Component
 <
     {{ plugin_name }}PluginDependency
@@ -75,6 +77,7 @@ internal typealias {{ plugin_name }}PluginStateType = Void
  PURPOSE:
  The Plugin interface (available to mock for testability).
  */
+@MainActor
 internal protocol {{ plugin_name }}Plugin {
     {% if return_type %}
     func create() -> {{ return_type }}?
