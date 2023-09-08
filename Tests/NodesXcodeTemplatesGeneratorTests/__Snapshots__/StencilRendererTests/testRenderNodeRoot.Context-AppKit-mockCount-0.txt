@@ -32,7 +32,8 @@ internal final class RootContextImp: AbstractContext
     internal weak var listener: RootListener?
 
     /// The State instance.
-    @Published internal private(set) var state: RootState
+    @Published
+    internal private(set) var state: RootState
 
     /// The Analytics instance.
     private let analytics: RootAnalytics
