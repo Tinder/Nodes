@@ -57,10 +57,6 @@ internal final class ___VARIABLE_productName___ContextImp: AbstractContext
 
     /// Implement logic to execute when the Context will become inactive.
     override internal func willResignActive() {}
-
-    deinit {
-        LeakDetector.detect(analytics)
-    }
 }
 
 extension ___VARIABLE_productName___ContextImp: ___VARIABLE_productName___ContextInterface {}

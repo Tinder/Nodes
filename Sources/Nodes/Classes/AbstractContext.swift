@@ -177,7 +177,6 @@ open class _BaseContext: Context { // swiftlint:disable:this type_name
 
     deinit {
         if isActive { deactivate() }
-        LeakDetector.detect(workerController)
     }
 }
 
@@ -233,10 +232,6 @@ open class AbstractPresentableContext<CancellableType: Cancellable, PresentableT
     public init(presentable: PresentableType, workers: [Worker]) {
         self.presentable = presentable
         super.init(workers: workers)
-    }
-
-    deinit {
-        LeakDetector.detect(presentable as AnyObject, delay: 5)
     }
 }
 

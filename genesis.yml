@@ -876,10 +876,6 @@ files:
           /// Implement logic to execute when the Context will become inactive.
           override internal func willResignActive() {}
 
-          deinit {
-              LeakDetector.detect(analytics)
-          }
-
           private func subscribe(to windowSceneState: AnyPublisher<WindowSceneState, Never>) {
               windowSceneState
                   .filter(\.isAdded)
@@ -1237,10 +1233,6 @@ files:
 
           /// Implement logic to execute when the Context will become inactive.
           override internal func willResignActive() {}
-
-          deinit {
-              LeakDetector.detect(analytics)
-          }
       }
 
       extension SceneContextImp: SceneContextInterface {}
@@ -1588,10 +1580,6 @@ files:
 
           /// Implement logic to execute when the Context will become inactive.
           override internal func willResignActive() {}
-
-          deinit {
-              LeakDetector.detect(analytics)
-          }
       }
 
       extension WindowContextImp: WindowContextInterface {}
@@ -1942,10 +1930,6 @@ files:
 
           /// Implement logic to execute when the Context will become inactive.
           override internal func willResignActive() {}
-
-          deinit {
-              LeakDetector.detect(analytics)
-          }
       }
 
       extension RootContextImp: RootContextInterface {}

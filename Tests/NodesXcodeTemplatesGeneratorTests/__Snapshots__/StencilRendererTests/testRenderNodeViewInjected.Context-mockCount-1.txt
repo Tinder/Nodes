@@ -56,10 +56,6 @@ internal final class <nodeName>ContextImp: AbstractContext
 
     /// Implement logic to execute when the Context will become inactive.
     override internal func willResignActive() {}
-
-    deinit {
-        LeakDetector.detect(analytics)
-    }
 }
 
 extension <nodeName>ContextImp: <nodeName>ContextInterface {}

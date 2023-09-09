@@ -86,6 +86,5 @@ public final class WorkerController {
 
     deinit {
         stopWorkers()
-        workers.forEach { LeakDetector.detect($0) }
     }
 }
