@@ -110,6 +110,13 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
 
     private let flowController: FlowController = .init()
 
+    #if DEBUG
+
+    // swiftlint:disable:next redundant_type_annotation
+    private var _isStarted: Bool = false
+
+    #endif
+
     /// Initializes an ``AbstractFlow`` instance.
     ///
     /// - Parameters:
@@ -145,6 +152,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         else { return }
         #if DEBUG
         DebugInformation.FlowWillStartNotification(flow: self, viewController: viewController as AnyObject).post()
+        _isStarted = true
         #endif
         _context.activate()
         didStart()
@@ -157,8 +165,10 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     public final func end() {
         guard isStarted
         else { return }
+        subFlows.reversed().forEach(detach)
         _context.deactivate()
         #if DEBUG
+        _isStarted = false
         DebugInformation.FlowDidEndNotification(flow: self).post()
         #endif
     }
@@ -314,8 +324,11 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     }
 
     deinit {
-        subFlows.forEach(detach)
-        if _context.isActive { _context.deactivate() }
+        #if DEBUG
+        if _isStarted {
+            assertionFailure("Lifecycle Violation: Expected `AbstractFlow` to end before it is deallocated.")
+        }
+        #endif
     }
 }
 

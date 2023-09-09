@@ -62,18 +62,11 @@ final class WorkerControllerTests: XCTestCase, TestCaseHelpers {
         expect(workers) == mockWorkers
     }
 
-    func testDeinit() {
-        var workerController: WorkerController! = givenWorkerController(with: mockWorkers, start: true)
-        let workers: [Worker] = workerController.workers
-        expect(workers).to(allBeWorking())
-        workerController = nil
-        expect(workers).toNot(allBeWorking())
-    }
-
     private func givenWorkerController(with workers: [Worker], start startWorkers: Bool = false) -> WorkerController {
         let workerController: WorkerController = .init(workers: workers)
         expect(workerController).to(notBeNilAndToDeallocateAfterTest())
         if startWorkers { workerController.startWorkers() }
+        addTeardownBlock(with: workerController) { $0.stopWorkers() }
         return workerController
     }
 }
