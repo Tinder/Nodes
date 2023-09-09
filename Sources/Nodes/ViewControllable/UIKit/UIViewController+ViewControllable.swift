@@ -68,12 +68,16 @@ extension UIViewController: ViewControllable {
         _removeChild(viewController)
     }
 
+    // swiftlint:disable identifier_name
+
     /// Returns `self` as a ``UIViewController``.
     ///
     /// - Returns: The `self` instance as a ``UIViewController``.
-    public func _asUIViewController() -> UIViewController { // swiftlint:disable:this identifier_name
+    public func _asUIViewController() -> UIViewController {
         self
     }
+
+    // swiftlint:enable identifier_name
 }
 
 #endif

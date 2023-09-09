@@ -39,10 +39,14 @@ public protocol NavigationControllable: ViewControllable {
     ///   - animated: A Boolean value specifying whether the navigation stack transition is animated.
     func pop(_ viewController: ViewControllable, animated: Bool)
 
+    // swiftlint:disable identifier_name
+
     /// Returns `self` as a ``UINavigationController``.
     ///
     /// - Returns: The `self` instance as a ``UINavigationController``.
-    func _asUINavigationController() -> UINavigationController // swiftlint:disable:this identifier_name
+    func _asUINavigationController() -> UINavigationController
+
+    // swiftlint:enable identifier_name
 }
 
 #endif

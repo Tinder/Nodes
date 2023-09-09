@@ -55,7 +55,7 @@ files:
       - anonymous_argument_in_multiline_closure
       - anyobject_protocol
       - array_init
-      - attributes
+      # - attributes
       - balanced_xctest_lifecycle
       - blanket_disable_command
       - block_based_kvo
@@ -1929,7 +1929,8 @@ files:
           internal weak var listener: RootListener?
 
           /// The State instance.
-          @Published internal private(set) var state: RootState
+          @Published
+          internal private(set) var state: RootState
 
           /// The Analytics instance.
           private let analytics: RootAnalytics

@@ -28,10 +28,14 @@ public protocol TabBarControllable: ViewControllable {
         animated: Bool
     )
 
+    // swiftlint:disable identifier_name
+
     /// Returns `self` as a ``UITabBarController``.
     ///
     /// - Returns: The `self` instance as a ``UITabBarController``.
-    func _asUITabBarController() -> UITabBarController // swiftlint:disable:this identifier_name
+    func _asUITabBarController() -> UITabBarController
+
+    // swiftlint:enable identifier_name
 }
 
 #endif
