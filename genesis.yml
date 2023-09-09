@@ -2146,20 +2146,12 @@ files:
 
           override internal func viewWillDisappear(_ animated: Bool) {
               super.viewWillDisappear(animated)
-              cancelSubscriptions()
+              cancellables.removeAll()
           }
 
           internal func update(with viewState: RootViewState) {
               // Add implementation to update the user interface when the view state changes.
               label.text = viewState.title
-          }
-
-          private func cancelSubscriptions() {
-              cancellables.forEach { cancellable in
-                  cancellable.cancel()
-                  LeakDetector.detect(cancellable)
-              }
-              cancellables.removeAll()
           }
       }
 
