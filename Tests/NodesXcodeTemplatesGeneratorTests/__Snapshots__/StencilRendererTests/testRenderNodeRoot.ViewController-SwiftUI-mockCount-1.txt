@@ -47,7 +47,7 @@ internal struct RootView: NodesView {
     private let initialState: RootViewState
 
     /// The view state publisher.
-    private let statePublisher: <publisherType><RootViewState<publisherFailureType>>
+    private let statePublisher: <publisherType><RootViewState, <publisherFailureType>>
 
     /// The initializer.
     ///
@@ -56,7 +56,7 @@ internal struct RootView: NodesView {
     ///   - statePublisher: The view state publisher.
     internal init(
         initialState: RootViewState,
-        statePublisher: <publisherType><RootViewState<publisherFailureType>>
+        statePublisher: <publisherType><RootViewState, <publisherFailureType>>
     ) {
         self.initialState = initialState
         self.statePublisher = statePublisher

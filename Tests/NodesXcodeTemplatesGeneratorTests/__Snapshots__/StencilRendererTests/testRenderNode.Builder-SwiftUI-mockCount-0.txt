@@ -10,9 +10,7 @@ internal protocol <nodeName>Flow: <viewControllableFlowType> {}
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
-public protocol <nodeName>Dependency: Dependency {
-    var <dependencyName>: <dependencyType> { get }
-}
+public protocol <nodeName>Dependency: Dependency {}
 
 /**
  PURPOSE:
@@ -140,9 +138,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         dynamicBuildDependency: <nodeName>DynamicBuildDependency
     ) -> <nodeName>Flow {
         let listener: <nodeName>Listener = dynamicBuildDependency
-        let analytics: <nodeName>AnalyticsImp = .init(
-            <analyticsPropertyName>: component.dependency.<analyticsPropertyName>
-        )
+        let analytics: <nodeName>AnalyticsImp = .init()
         let context: <nodeName>ContextImp = .init(
             workers: [],
             analytics: analytics
@@ -163,8 +159,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         )
         let flow: <nodeName>FlowImp = .init(
             context: context,
-            viewController: viewController,
-            <flowPropertyName>: component.dependency.<flowPropertyName>
+            viewController: viewController
         )
         context.flow = flow
         return flow

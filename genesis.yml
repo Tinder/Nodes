@@ -40,6 +40,284 @@ files:
       *.xcworkspace/
       *.xcodeproj/
 
+  - path: .swiftlint-rules.yml
+    contents: |
+      analyzer_rules:
+      - capture_variable
+      # - explicit_self
+      - typesafe_array_init
+      # - unused_declaration
+      - unused_import
+
+      only_rules:
+      - accessibility_label_for_image
+      - accessibility_trait_for_button
+      - anonymous_argument_in_multiline_closure
+      - anyobject_protocol
+      - array_init
+      # - attributes
+      - balanced_xctest_lifecycle
+      - blanket_disable_command
+      - block_based_kvo
+      - class_delegate_protocol
+      - closing_brace
+      - closure_body_length
+      - closure_end_indentation
+      - closure_parameter_position
+      - closure_spacing
+      - collection_alignment
+      - colon
+      - comma
+      - comma_inheritance
+      - comment_spacing
+      - compiler_protocol_init
+      - computed_accessors_order
+      - conditional_returns_on_newline
+      - contains_over_filter_count
+      - contains_over_filter_is_empty
+      - contains_over_first_not_nil
+      - contains_over_range_nil_comparison
+      - control_statement
+      - convenience_type
+      - custom_rules
+      - cyclomatic_complexity
+      - deployment_target
+      - direct_return
+      - discarded_notification_center_observer
+      - discouraged_assert
+      - discouraged_direct_init
+      - discouraged_none_name
+      - discouraged_object_literal
+      - discouraged_optional_boolean
+      - discouraged_optional_collection
+      - duplicate_conditions
+      - duplicate_enum_cases
+      - duplicate_imports
+      - duplicated_key_in_dictionary_literal
+      - dynamic_inline
+      - empty_collection_literal
+      - empty_count
+      - empty_enum_arguments
+      - empty_parameters
+      - empty_parentheses_with_trailing_closure
+      - empty_string
+      - empty_xctest_method
+      - enum_case_associated_values_count
+      - expiring_todo
+      - explicit_acl
+      - explicit_enum_raw_value
+      - explicit_init
+      - explicit_top_level_acl
+      - explicit_type_interface
+      # - extension_access_modifier
+      - fallthrough
+      - fatal_error_message
+      - file_header
+      - file_length
+      # - file_name
+      - file_name_no_space
+      # - file_types_order
+      - first_where
+      - flatmap_over_map_reduce
+      - for_where
+      - force_cast
+      - force_try
+      - force_unwrapping
+      - function_body_length
+      - function_default_parameter_at_end
+      - function_parameter_count
+      - generic_type_name
+      - given_when_then # custom_rule
+      - ibinspectable_in_extension
+      - identical_operands
+      - identifier_name
+      - implicit_getter
+      - implicit_return
+      - implicitly_unwrapped_optional
+      - inclusive_language
+      # - indentation_width
+      - inert_defer
+      - invalid_swiftlint_command
+      - is_disjoint
+      - joined_default_parameter
+      - large_tuple
+      - last_where
+      - leading_whitespace
+      - legacy_cggeometry_functions
+      - legacy_constant
+      - legacy_constructor
+      - legacy_hashing
+      - legacy_multiple
+      - legacy_nsgeometry_functions
+      - legacy_objc_type
+      - legacy_random
+      - let_var_whitespace
+      - line_length
+      - literal_expression_end_indentation
+      - local_doc_comment
+      - lower_acl_than_parent
+      - mark
+      # - missing_docs
+      - modifier_order
+      - multiline_arguments
+      # - multiline_arguments_brackets
+      - multiline_function_chains
+      - multiline_literal_brackets
+      - multiline_parameters
+      - multiline_parameters_brackets
+      - multiple_closures_with_trailing_closure
+      - nesting
+      - nimble_operator
+      - no_extension_access_modifier
+      - no_fallthrough_only
+      # - no_grouping_extension
+      # - no_magic_numbers
+      - no_space_in_method_call
+      - notification_center_detachment
+      - ns_number_init_as_function_reference
+      - nslocalizedstring_key
+      - nslocalizedstring_require_bundle
+      - nsobject_prefer_isequal
+      - number_separator
+      # - object_literal
+      - opening_brace
+      - operator_usage_whitespace
+      - operator_whitespace
+      - optional_enum_case_matching
+      - orphaned_doc_comment
+      - overridden_super_call
+      - override_in_extension
+      - pattern_matching_keywords
+      - period_spacing
+      - prefer_nimble
+      - prefer_self_in_static_references
+      - prefer_self_type_over_type_of_self
+      - prefer_zero_over_explicit_init
+      # - prefixed_toplevel_constant
+      - private_action
+      - private_outlet
+      - private_over_fileprivate
+      - private_subject
+      - private_unit_test
+      - prohibited_interface_builder
+      - prohibited_super_call
+      - protocol_property_accessors_order
+      - quick_discouraged_call
+      - quick_discouraged_focused_test
+      - quick_discouraged_pending_test
+      - raw_value_for_camel_cased_codable_enum
+      - reduce_boolean
+      - reduce_into
+      - redundant_discardable_let
+      - redundant_nil_coalescing
+      - redundant_objc_attribute
+      - redundant_optional_initialization
+      - redundant_self_in_closure
+      - redundant_set_access_control
+      # - redundant_string_enum_value
+      - redundant_type_annotation
+      - redundant_void_return
+      # - required_deinit
+      - required_enum_case
+      - return_arrow_whitespace
+      # - return_value_from_void_function
+      - self_binding
+      - self_in_property_initialization
+      - shorthand_operator
+      - shorthand_optional_binding
+      - single_test_class
+      # - sorted_enum_cases
+      - sorted_first_last
+      - sorted_imports
+      - statement_position
+      - static_operator
+      # - strict_fileprivate
+      - strong_iboutlet
+      - superfluous_disable_command
+      - superfluous_else
+      - switch_case_alignment
+      - switch_case_on_newline
+      - syntactic_sugar
+      - test_case_accessibility
+      - todo
+      - toggle_bool
+      - trailing_closure
+      - trailing_comma
+      - trailing_newline
+      - trailing_semicolon
+      - trailing_whitespace
+      - type_body_length
+      # - type_contents_order
+      - type_name
+      - unavailable_condition
+      - unavailable_function
+      - unhandled_throwing_task
+      - unneeded_break_in_switch
+      - unneeded_parentheses_in_closure_argument
+      - unneeded_synthesized_initializer
+      - unowned_variable_capture
+      - untyped_error_in_catch
+      - unused_capture_list
+      - unused_closure_parameter
+      - unused_control_flow_label
+      - unused_enumerated
+      - unused_optional_binding
+      - unused_setter_value
+      - valid_ibinspectable
+      - vertical_parameter_alignment
+      - vertical_parameter_alignment_on_call
+      - vertical_whitespace
+      # - vertical_whitespace_between_cases
+      # - vertical_whitespace_closing_braces
+      # - vertical_whitespace_opening_braces
+      - void_function_in_ternary
+      - void_return
+      - weak_delegate
+      - xct_specific_matcher
+      - xctfail_message
+      - yoda_condition
+
+  - path: .swiftlint.yml
+    contents: |
+      included:
+      - {{ project|split:' '|join:'_' }}/Sources
+      - {{ project|split:' '|join:'_' }}Tests/Tests
+
+      excluded:
+      - {{ project|split:' '|join:'_' }}/Generated
+      - {{ project|split:' '|join:'_' }}Tests/Generated
+
+      child_config: .swiftlint-rules.yml
+
+      empty_count:
+        only_after_dot: true
+
+      file_header:
+        required_pattern: |
+          \/\/
+          \/\/ {2}.+\.swift
+          \/\/ {2}.+
+          \/\/
+          \/\/ {2}Created by .+ on \d{1,2}\/\d{1,2}\/\d{2}\.
+          \/\/
+
+      private_over_fileprivate:
+        validate_extensions: true
+
+      trailing_whitespace:
+        ignores_comments: false
+
+      type_name:
+        max_length: 50
+
+      custom_rules:
+        given_when_then:
+          name: GIVEN / WHEN / THEN
+          message: |
+            "GIVEN / WHEN / THEN" comments must be uppercase, without punctuation and both preceded and followed by an empty line.
+          regex: |
+            ((?<=\n) +\/\/ (Given|given|When|when|Then|then)(?= *\n))|((?<=\n) +[^ ]\/\/ (GIVEN|WHEN|THEN))|((?<=\n) +\/\/  +(GIVEN|WHEN|THEN))|((?<=[^\n]\n) +\/\/ (GIVEN|WHEN|THEN))|((?<=\n) +\/\/ (GIVEN|WHEN|THEN)(?!\n\n))
+
   - path: BuildSettings/Debug.xcconfig
     contents: |
       #include "Shared.xcconfig"
@@ -308,7 +586,7 @@ files:
           }
 
           internal func application(
-              _ application: UIApplication,
+              _ application: UIApplication, // swiftlint:disable:next discouraged_optional_collection
               didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
           ) -> Bool {
               bootstrap()
@@ -466,8 +744,8 @@ files:
 
            Declare child component factories as 'fileprivate' methods.
 
-           fileprivate func <example>ComponentFactory() -> ChildComponent {
-               ChildComponent(parent: self)
+           fileprivate func <name>ComponentFactory() -> <Name>Component {
+               <Name>Component(parent: self)
            }
 
            */
@@ -667,13 +945,13 @@ files:
       extension AppFlowImp: AppFlow {}
       extension AppFlowImp: AppFlowInterface {
 
-          func attachScene(_ viewController: WindowSceneViewControllable) {
+          internal func attachScene(_ viewController: WindowSceneViewControllable) {
               let flow: SceneFlow = sceneBuilder.build(withListener: context,
                                                        viewController: viewController)
               attach(starting: flow)
           }
 
-          func detachScene(_ viewController: WindowSceneViewControllable) {
+          internal func detachScene(_ viewController: WindowSceneViewControllable) {
               subFlows
                   .compactMap { $0 as? SceneFlow }
                   .filter { $0.getViewController() === viewController }
@@ -743,7 +1021,7 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
-      internal protocol SceneDependency: Dependency {}
+      public protocol SceneDependency: Dependency {}
 
       /**
        PURPOSE:
@@ -816,8 +1094,8 @@ files:
 
            Declare child component factories as 'fileprivate' methods.
 
-           fileprivate func <example>ComponentFactory() -> ChildComponent {
-               ChildComponent(parent: self)
+           fileprivate func <name>ComponentFactory() -> <Name>Component {
+               <Name>Component(parent: self)
            }
 
            */
@@ -834,8 +1112,10 @@ files:
        The Builder interface (available to mock for testability).
        */
       internal protocol SceneBuilder: AnyObject {
-          func build(withListener listener: SceneListener,
-                     viewController: WindowSceneViewControllable) -> SceneFlow
+          func build(
+              withListener listener: SceneListener,
+              viewController: WindowSceneViewControllable
+          ) -> SceneFlow
       }
 
       /**
@@ -854,7 +1134,9 @@ files:
           /// the dynamic component dependency.
           ///
           /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
-          /// - Parameter listener: An object that can listen for signals from the Node
+          /// - Parameters:
+          ///   - listener: An object that can listen for signals from the Node
+          ///   - viewController: The injected view controller
           /// - Returns: The Flow instance
           internal func build(
               withListener listener: SceneListener,
@@ -874,7 +1156,8 @@ files:
               component: SceneComponent,
               dynamicBuildDependency: SceneDynamicBuildDependency
           ) -> SceneFlow {
-              let (listener, viewController) = dynamicBuildDependency
+              let listener: SceneListener = dynamicBuildDependency.0
+              let viewController: WindowSceneViewControllable = dynamicBuildDependency.1
               let analytics: SceneAnalyticsImp = .init()
               let context: SceneContextImp = .init(
                   workers: [],
@@ -1012,6 +1295,9 @@ files:
               attachWindow()
           }
 
+          /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
+          ///
+          /// - Returns: The ``ViewControllable`` instance.
           internal func getViewController() -> WindowSceneViewControllable {
               viewController
           }
@@ -1086,7 +1372,7 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
-      internal protocol WindowDependency: Dependency {}
+      public protocol WindowDependency: Dependency {}
 
       /**
        PURPOSE:
@@ -1159,8 +1445,8 @@ files:
 
            Declare child component factories as 'fileprivate' methods.
 
-           fileprivate func <example>ComponentFactory() -> ChildComponent {
-               ChildComponent(parent: self)
+           fileprivate func <name>ComponentFactory() -> <Name>Component {
+               <Name>Component(parent: self)
            }
 
            */
@@ -1177,8 +1463,10 @@ files:
        The Builder interface (available to mock for testability).
        */
       internal protocol WindowBuilder: AnyObject {
-          func build(withListener listener: WindowListener,
-                     viewController: WindowViewControllable) -> WindowFlow
+          func build(
+              withListener listener: WindowListener,
+              viewController: WindowViewControllable
+          ) -> WindowFlow
       }
 
       /**
@@ -1197,7 +1485,9 @@ files:
           /// the dynamic component dependency.
           ///
           /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
-          /// - Parameter listener: An object that can listen for signals from the Node
+          /// - Parameters:
+          ///   - listener: An object that can listen for signals from the Node
+          ///   - viewController: The injected view controller
           /// - Returns: The Flow instance
           internal func build(
               withListener listener: WindowListener,
@@ -1217,7 +1507,8 @@ files:
               component: WindowComponent,
               dynamicBuildDependency: WindowDynamicBuildDependency
           ) -> WindowFlow {
-              let (listener, viewController) = dynamicBuildDependency
+              let listener: WindowListener = dynamicBuildDependency.0
+              let viewController: WindowViewControllable = dynamicBuildDependency.1
               let analytics: WindowAnalyticsImp = .init()
               let context: WindowContextImp = .init(
                   workers: [],
@@ -1425,7 +1716,7 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
-      internal protocol RootDependency: Dependency {}
+      public protocol RootDependency: Dependency {}
 
       /**
        PURPOSE:
@@ -1498,8 +1789,8 @@ files:
 
            Declare child component factories as 'fileprivate' methods.
 
-           fileprivate func <example>ComponentFactory() -> ChildComponent {
-               ChildComponent(parent: self)
+           fileprivate func <name>ComponentFactory() -> <Name>Component {
+               <Name>Component(parent: self)
            }
 
            */
@@ -1512,7 +1803,9 @@ files:
        The Builder interface (available to mock for testability).
        */
       internal protocol RootBuilder: AnyObject {
-          func build(withListener listener: RootListener) -> RootFlow
+          func build(
+              withListener listener: RootListener
+          ) -> RootFlow
       }
 
       /**
@@ -1533,7 +1826,9 @@ files:
           /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
           /// - Parameter listener: An object that can listen for signals from the Node
           /// - Returns: The Flow instance
-          internal func build(withListener listener: RootListener) -> RootFlow {
+          internal func build(
+              withListener listener: RootListener
+          ) -> RootFlow {
               let dynamicBuildDependency: RootDynamicBuildDependency = listener
               let dynamicComponentDependency: RootDynamicComponentDependency = ()
               return build(dynamicBuildDependency, dynamicComponentDependency)
@@ -1620,11 +1915,13 @@ files:
           internal weak var listener: RootListener?
 
           /// The State instance.
-          @Published internal private(set) var state: RootState
+          @Published
+          internal private(set) var state: RootState
 
           /// The Analytics instance.
           private let analytics: RootAnalytics
 
+          // swiftlint:disable:next redundant_type_annotation
           private var isReady: Bool = false
 
           /// The initializer.
@@ -1813,7 +2110,7 @@ files:
               preconditionFailure("init(coder:) has not been implemented")
           }
 
-          override func viewDidLoad() {
+          override internal func viewDidLoad() {
               super.viewDidLoad()
               view.backgroundColor = .systemBackground
               label.translatesAutoresizingMaskIntoConstraints = false
@@ -1825,17 +2122,17 @@ files:
               update(with: initialState)
           }
 
-          override func viewWillAppear(_ animated: Bool) {
+          override internal func viewWillAppear(_ animated: Bool) {
               super.viewWillAppear(animated)
               observe(statePublisher).store(in: &cancellables)
           }
 
-          override func viewDidAppear(_ animated: Bool) {
+          override internal func viewDidAppear(_ animated: Bool) {
               super.viewDidAppear(animated)
               receiver?.viewDidAppear()
           }
 
-          override func viewWillDisappear(_ animated: Bool) {
+          override internal func viewWillDisappear(_ animated: Bool) {
               super.viewWillDisappear(animated)
               cancellables.removeAll()
           }
@@ -1961,7 +2258,7 @@ files:
       import Foundation
 
       /// @mockable(module: prefix = {{ project|split:' '|join:'_' }})
-      protocol NotificationCenter {
+      internal protocol NotificationCenter {
           func publisher(for name: Notification.Name, object: AnyObject?) -> Foundation.NotificationCenter.Publisher
       }
 
@@ -1987,6 +2284,20 @@ files:
       import Nodes
 
       extension Combine.AnyCancellable: Nodes.Cancellable {}
+
+  - path: "{{ project|split:' '|join:'_' }}Tests/.swiftlint.yml"
+    contents: |
+      disabled_rules:
+      - explicit_acl
+      - explicit_top_level_acl
+      - file_length
+      - force_cast
+      - force_try
+      - force_unwrapping
+      - function_body_length
+      - implicitly_unwrapped_optional
+      - type_body_length
+      - weak_delegate
 
   - path: "{{ project|split:' '|join:'_' }}Tests/BuildSettings/Debug.xcconfig"
     contents: |
@@ -2023,11 +2334,15 @@ files:
 
       import XCTest
 
-      class {{ project|split:' '|join:'_' }}Tests: XCTestCase {}
+      final class {{ project|split:' '|join:'_' }}Tests: XCTestCase {}
+
+
+  - path: Makefile
+    contents: ".PHONY: open\nopen:\n\txcodegen\n"
 
   - path: Package.swift
     contents: |
-      // swift-tools-version:5.7
+      // swift-tools-version:5.8
 
       import PackageDescription
 
@@ -2039,7 +2354,12 @@ files:
                   url: "git@github.com:TinderApp/Nodes.git",
                   from: "{{ nodes }}"),
           ],
-          targets: []
+          targets: [
+              .binaryTarget(
+                  name: "SwiftLintBinary-Investigations",
+                  url: "https://github.com/realm/SwiftLint/releases/download/0.52.4/SwiftLintBinary-macos.artifactbundle.zip",
+                  checksum: "8a8095e6235a07d00f34a9e500e7568b359f6f66a249f36d12cd846017a8c6f5"),
+          ]
       )
 
   - path: project.yml
@@ -2114,6 +2434,17 @@ files:
               product: Nodes
             - package: NeedleFoundation
           preBuildScripts:
+            - name: SwiftLint
+              basedOnDependencyAnalysis: false
+              script: |
+                # Ignore Bazel environment variable (if set)
+                # https://bazel.build/docs/user-manual#running-executables
+                # https://github.com/realm/SwiftLint/blob/0.52.4/Source/swiftlint/Commands/SwiftLint.swift#L8
+                unset BUILD_WORKSPACE_DIRECTORY
+
+                DIRECTORY_NAME=$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]')
+
+                "$(find ".build/artifacts/${DIRECTORY_NAME}" -type f -name swiftlint -perm +111 -print -quit)"
             - name: Needle
               basedOnDependencyAnalysis: false
               script: >
@@ -2191,3 +2522,23 @@ files:
               CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
               CFBundleShortVersionString: "1.0"
               CFBundleVersion: "1"
+
+  - path: README.md
+    contents: |
+      # {{ project }}
+
+      ## Project Setup
+
+      ### Install dependencies
+
+      ```
+      brew install xcodegen needle mockolo
+      ```
+
+      ### Generate Xcode project
+
+      ```
+      xcodegen
+      ```
+
+      Execute the `xcodegen` command any time the `project.yml` file is changed or project files are added or removed. See the [xcodegen](https://github.com/yonaskolb/XcodeGen) documentation for more information.

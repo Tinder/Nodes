@@ -30,14 +30,12 @@ final class XcodeTemplatesTests: XCTestCase {
         assertSnapshot(matching: fileSystem.directories,
                        as: .dump,
                        named: "Directories")
-        assertSnapshot(matching: fileSystem.writes.map { ($0.path, $0.atomically) },
+        // swiftlint:disable:next large_tuple
+        let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
+        assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) },
                        as: .dump,
                        named: "Writes")
-        fileSystem.writes.forEach { write in
-            assertSnapshot(matching: write.contents,
-                           as: .lines,
-                           named: "Contents.\(write.path)")
-        }
+        writes.forEach { assertSnapshot(matching: $0.contents, as: .lines, named: "Contents.\($0.path)") }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
                        named: "Copies")
@@ -53,14 +51,12 @@ final class XcodeTemplatesTests: XCTestCase {
         assertSnapshot(matching: fileSystem.directories,
                        as: .dump,
                        named: "Directories")
-        assertSnapshot(matching: fileSystem.writes.map { ($0.path, $0.atomically) },
+        // swiftlint:disable:next large_tuple
+        let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
+        assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) },
                        as: .dump,
                        named: "Writes")
-        fileSystem.writes.forEach { write in
-            assertSnapshot(matching: write.contents,
-                           as: .lines,
-                           named: "Contents.\(write.path)")
-        }
+        writes.forEach { assertSnapshot(matching: $0.contents, as: .lines, named: "Contents.\($0.path)") }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
                        named: "Copies")

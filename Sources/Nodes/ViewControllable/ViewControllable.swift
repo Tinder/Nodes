@@ -63,10 +63,14 @@ public protocol ViewControllable: AnyObject {
     /// - Parameter viewController: The ``ViewControllable`` instance to uncontain.
     func uncontain(_ viewController: ViewControllable)
 
+    // swiftlint:disable identifier_name
+
     /// Returns `self` as a ``UIViewController``.
     ///
     /// - Returns: The `self` instance as a ``UIViewController``.
-    func _asUIViewController() -> UIViewController // swiftlint:disable:this identifier_name
+    func _asUIViewController() -> UIViewController
+
+    // swiftlint:enable identifier_name
 }
 
 extension ViewControllable {

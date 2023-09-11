@@ -169,11 +169,6 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///
     /// - Parameter subFlow: The `Flow` instance to attach and start.
     public final func attach(starting subFlow: Flow) {
-        guard isStarted
-        else {
-            assertionFailure("Unable to attach")
-            return
-        }
         #if DEBUG
         DebugInformation.FlowWillAttachNotification(flow: self, subFlow: subFlow).post()
         #endif
@@ -186,11 +181,6 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///
     /// - Parameter subFlow: The `Flow` instance to end and detach.
     public final func detach(ending subFlow: Flow) {
-        guard isStarted
-        else {
-            assertionFailure("Unable to detach")
-            return
-        }
         flowController.detach(ending: subFlow)
         #if DEBUG
         DebugInformation.FlowDidDetachNotification(flow: self, subFlow: subFlow).post()

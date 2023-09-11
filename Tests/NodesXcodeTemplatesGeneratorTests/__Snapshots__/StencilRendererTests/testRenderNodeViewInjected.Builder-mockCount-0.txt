@@ -10,9 +10,7 @@ internal protocol <nodeName>Flow: Flow {}
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
-public protocol <nodeName>Dependency: Dependency {
-    var <dependencyName>: <dependencyType> { get }
-}
+public protocol <nodeName>Dependency: Dependency {}
 
 /**
  PURPOSE:
@@ -121,7 +119,9 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
     /// the dynamic component dependency.
     ///
     /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
-    /// - Parameter listener: An object that can listen for signals from the Node
+    /// - Parameters:
+    ///   - listener: An object that can listen for signals from the Node
+    ///   - viewController: The injected view controller
     /// - Returns: The Flow instance
     internal func build(
         withListener listener: <nodeName>Listener,
@@ -143,9 +143,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
     ) -> <nodeName>Flow {
         let listener: <nodeName>Listener = dynamicBuildDependency.0
         let viewController: <nodeName>ViewControllable = dynamicBuildDependency.1
-        let analytics: <nodeName>AnalyticsImp = .init(
-            <analyticsPropertyName>: component.dependency.<analyticsPropertyName>
-        )
+        let analytics: <nodeName>AnalyticsImp = .init()
         let context: <nodeName>ContextImp = .init(
             workers: [],
             analytics: analytics
@@ -153,8 +151,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         context.listener = listener
         let flow: <nodeName>FlowImp = .init(
             context: context,
-            viewController: viewController,
-            <flowPropertyName>: component.dependency.<flowPropertyName>
+            viewController: viewController
         )
         context.flow = flow
         return flow
