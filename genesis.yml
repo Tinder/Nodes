@@ -2147,7 +2147,7 @@ files:
 
           override internal func viewWillDisappear(_ animated: Bool) {
               super.viewWillDisappear(animated)
-              cancellables.removeAll()
+              cancellables.cancelAll()
           }
 
           internal func update(with viewState: RootViewState) {
