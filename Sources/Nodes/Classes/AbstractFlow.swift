@@ -152,9 +152,11 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         else { return }
         #if DEBUG
         DebugInformation.FlowWillStartNotification(flow: self, viewController: viewController as AnyObject).post()
-        _isStarted = true
         #endif
         _context.activate()
+        #if DEBUG
+        _isStarted = true
+        #endif
         didStart()
     }
 
