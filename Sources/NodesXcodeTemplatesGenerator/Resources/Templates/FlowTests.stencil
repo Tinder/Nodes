@@ -51,9 +51,4 @@ final class {{ node_name }}FlowTests: XCTestCase {
         flow.start()
         XCTAssertTrue(flow.isStarted)
     }
-
-    func testStop() {
-        flow.end()
-        // TODO: Add assertions here.
-    }
 }
