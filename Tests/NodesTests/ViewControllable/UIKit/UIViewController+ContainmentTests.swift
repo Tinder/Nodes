@@ -31,6 +31,7 @@ final class UIViewControllerContainmentTests: XCTestCase {
     func testContainLayout() {
         let viewController: TestViewController = givenViewController()
         let child: TestViewController = givenViewController()
+        expect(child.view.translatesAutoresizingMaskIntoConstraints) == true
         expect(child.willMoveCallCount) == 0
         expect(child.didMoveCallCount) == 0
         expect(viewController.children).to(beEmpty())
@@ -53,11 +54,13 @@ final class UIViewControllerContainmentTests: XCTestCase {
     func testContainInView() {
         let viewController: TestViewController = givenViewController()
         let child: TestViewController = givenViewController()
+        expect(child.view.translatesAutoresizingMaskIntoConstraints) == true
         expect(child.willMoveCallCount) == 0
         expect(child.didMoveCallCount) == 0
         expect(viewController.children).to(beEmpty())
         expect(viewController.view.subviews).to(beEmpty())
         viewController.contain(child, in: viewController.view)
+        expect(child.view.translatesAutoresizingMaskIntoConstraints) == false
         expect(child.willMoveCallCount) == 1
         expect(child.didMoveCallCount) == 1
         expect(viewController.children) == [child]
