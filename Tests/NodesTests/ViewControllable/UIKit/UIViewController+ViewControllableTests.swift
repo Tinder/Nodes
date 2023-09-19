@@ -19,6 +19,7 @@ final class UIViewControllerViewControllableTests: XCTestCase {
         }
 
         private(set) var presentedViewControllers: [UIViewController] = []
+
         private(set) var dismissCallCount: Int = 0
         private(set) var willMoveCallCount: Int = 0
         private(set) var didMoveCallCount: Int = 0
