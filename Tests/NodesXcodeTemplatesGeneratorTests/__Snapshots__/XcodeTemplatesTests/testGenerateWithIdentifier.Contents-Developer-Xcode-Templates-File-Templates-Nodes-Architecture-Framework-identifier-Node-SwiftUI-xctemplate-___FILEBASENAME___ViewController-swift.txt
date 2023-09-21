@@ -15,10 +15,14 @@ internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
  PURPOSE:
  Host of the SwiftUI view.
  */
-internal final class ___VARIABLE_productName___ViewController: AbstractViewHostingController
+internal final class ___VARIABLE_productName___ViewController: UIHostingController
 <
     ___VARIABLE_productName___View
-> {}
+> {
+
+    /// The view receiver.
+    internal weak var receiver: ___VARIABLE_productName___Receiver?
+}
 
 extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllable {}
 
@@ -26,7 +30,7 @@ extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___Vi
  PURPOSE:
  Concrete implementation of the View.
  */
-internal struct ___VARIABLE_productName___View: NodesView {
+internal struct ___VARIABLE_productName___View: View {
 
     /// The body of the view.
     internal var body: some View {

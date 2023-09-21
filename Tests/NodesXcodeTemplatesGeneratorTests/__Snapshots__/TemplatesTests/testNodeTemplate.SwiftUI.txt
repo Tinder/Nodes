@@ -57,7 +57,7 @@
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
     - viewControllerSuperParameters: ""
-    - viewControllerType: "AbstractViewHostingController"
+    - viewControllerType: "UIHostingController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     ▿ viewStateImports: 2 elements
       - "<baseImport>"

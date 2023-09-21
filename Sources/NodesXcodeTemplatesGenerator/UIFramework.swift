@@ -61,7 +61,7 @@ public struct UIFramework: Equatable, Codable {
             case .uiKit:
                 return "UIViewController"
             case .swiftUI:
-                return "AbstractViewHostingController"
+                return "UIHostingController"
             case let .custom(_, _, viewControllerType, _):
                 return viewControllerType
             }

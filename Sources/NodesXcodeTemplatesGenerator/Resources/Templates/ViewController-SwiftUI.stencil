@@ -32,13 +32,20 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 
     {{ view_controller_properties|indent:4 }}
     {% endif %}
+
+    /// The view receiver.
+    internal weak var receiver: {{ node_name }}Receiver?
     {% if view_controller_methods %}
 
     {{ view_controller_methods|indent:4 }}
     {% endif %}
 }
 {% else %}
-> {}
+> {
+
+    /// The view receiver.
+    internal weak var receiver: {{ node_name }}Receiver?
+}
 {% endif %}
 
 extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
@@ -47,7 +54,7 @@ extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
  PURPOSE:
  Concrete implementation of the View.
  */
-internal struct {{ node_name }}View: NodesView {
+internal struct {{ node_name }}View: View {
 
     /// The body of the view.
     internal var body: some View {

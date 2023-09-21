@@ -161,6 +161,7 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
         let viewController: ___VARIABLE_productName___ViewController = .init(
             rootView: view
         )
+        viewController.receiver = context
         let flow: ___VARIABLE_productName___FlowImp = .init(
             context: context,
             viewController: viewController

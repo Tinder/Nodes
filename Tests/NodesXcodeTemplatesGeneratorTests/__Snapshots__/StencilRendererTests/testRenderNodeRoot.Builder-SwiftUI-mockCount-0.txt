@@ -157,6 +157,7 @@ internal final class RootBuilderImp: AbstractBuilder
         let viewController: RootViewController = .init(
             rootView: view
         )
+        viewController.receiver = context
         let flow: RootFlowImp = .init(
             context: context,
             viewController: viewController

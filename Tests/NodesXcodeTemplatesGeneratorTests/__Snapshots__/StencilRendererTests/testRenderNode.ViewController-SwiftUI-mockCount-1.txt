@@ -20,6 +20,9 @@ internal final class <nodeName>ViewController: <viewControllerType>
 
     <viewControllerProperties>
 
+    /// The view receiver.
+    internal weak var receiver: <nodeName>Receiver?
+
     <viewControllerMethods>
 }
 
@@ -29,7 +32,7 @@ extension <nodeName>ViewController: <nodeName>ViewControllable {}
  PURPOSE:
  Concrete implementation of the View.
  */
-internal struct <nodeName>View: NodesView {
+internal struct <nodeName>View: View {
 
     /// The body of the view.
     internal var body: some View {
