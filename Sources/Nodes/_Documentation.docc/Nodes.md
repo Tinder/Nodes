@@ -115,14 +115,14 @@ A Node's ``ViewControllable`` instance defines its user interface (for example a
 
 ### SwiftUI
 
-- ``NodesView``
-- ``NodesViewHostingController``
-- ``AbstractViewHostingController``
+- ``WithViewState``
+- ``Binding``
 
 ### View State
 
 - ``StateObserver``
-- ``WithViewState``
+- ``Transform``
+- ``MutableState``
 
 ### Reactive
 
