@@ -15,8 +15,6 @@ internal protocol RootReceiver: AnyObject {
  */
 internal final class RootViewController: <viewControllerType>, StateObserver {
 
-    <viewControllerProperties>
-
     /// The view receiver.
     internal weak var receiver: RootReceiver?
 
@@ -27,7 +25,7 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     private let initialState: RootViewState
 
     /// The view state publisher.
-    private let statePublisher: <publisherType><RootViewState, <publisherFailureType>>
+    private let statePublisher: <publisherType><RootViewState>
 
     /// The initializer.
     ///
@@ -36,18 +34,14 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     ///   - statePublisher: The view state publisher.
     internal init(
         initialState: RootViewState,
-        statePublisher: <publisherType><RootViewState, <publisherFailureType>>
+        statePublisher: <publisherType><RootViewState>
     ) {
         self.initialState = initialState
         self.statePublisher = statePublisher
-            <viewStateOperators>
-        super.init(<viewControllerSuperParameters>)
+        super.init()
     }
 
-    <viewControllerMethods>
-
     internal func update(with viewState: RootViewState) {
-        <viewControllerUpdateComment>
     }
 }
 

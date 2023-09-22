@@ -62,13 +62,13 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllerSuperParameters: "<viewControllerSuperParameters>",
-            viewControllerProperties: "<viewControllerProperties>",
-            viewControllerMethods: "<viewControllerMethods>",
-            viewControllerUpdateComment: "<viewControllerUpdateComment>",
-            viewStateOperators: "<viewStateOperators>",
+            viewControllerSuperParameters: .mock(with: "viewControllerSuperParameters", count: mockCount),
+            viewControllerProperties: .mock(with: "viewControllerProperties", count: mockCount),
+            viewControllerMethods: .mock(with: "viewControllerMethods", count: mockCount),
+            viewControllerUpdateComment: .mock(with: "viewControllerUpdateComment", count: mockCount),
+            viewStateOperators: .mock(with: "viewStateOperators", count: mockCount),
             publisherType: "<publisherType>",
-            publisherFailureType: "<publisherFailureType>",
+            publisherFailureType: .mock(with: "publisherFailureType", count: mockCount),
             cancellableType: "<cancellableType>"
         )
     }
@@ -89,13 +89,13 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllerSuperParameters: "<viewControllerSuperParameters>",
-            viewControllerProperties: "<viewControllerProperties>",
-            viewControllerMethods: "<viewControllerMethods>",
-            viewControllerUpdateComment: "<viewControllerUpdateComment>",
-            viewStateOperators: "<viewStateOperators>",
+            viewControllerSuperParameters: .mock(with: "viewControllerSuperParameters", count: mockCount),
+            viewControllerProperties: .mock(with: "viewControllerProperties", count: mockCount),
+            viewControllerMethods: .mock(with: "viewControllerMethods", count: mockCount),
+            viewControllerUpdateComment: .mock(with: "viewControllerUpdateComment", count: mockCount),
+            viewStateOperators: .mock(with: "viewStateOperators", count: mockCount),
             publisherType: "<publisherType>",
-            publisherFailureType: "<publisherFailureType>",
+            publisherFailureType: .mock(with: "publisherFailureType", count: mockCount),
             cancellableType: "<cancellableType>"
         )
     }
