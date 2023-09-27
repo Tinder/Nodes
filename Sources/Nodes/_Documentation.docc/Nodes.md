@@ -115,8 +115,6 @@ A Node's ``ViewControllable`` instance defines its user interface (for example a
 
 ### SwiftUI
 
-- ``WithViewState``
-- ``Binding``
 
 ### View State
 
