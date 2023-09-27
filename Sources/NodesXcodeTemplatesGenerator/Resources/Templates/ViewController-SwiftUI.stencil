@@ -35,7 +35,10 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}
     {% if root_node %}
 
     /// The view receiver.
-    internal weak var receiver: {{ node_name }}Receiver?
+    internal var receiver: {{ node_name }}Receiver {
+        get { rootView.receiver }
+        set { rootView.receiver = newValue }
+    }
     {% endif %}
     {% if view_controller_methods %}
 
