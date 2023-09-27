@@ -4,8 +4,8 @@
 
 extension String {
 
-    internal static func mock(with identifier: String, count: Int) -> Self {
-        guard count > 0
+    internal static func mock(with identifier: String, when condition: @autoclosure () -> Bool) -> Self {
+        guard condition()
         else { return "" }
         return "<\(identifier)>"
     }

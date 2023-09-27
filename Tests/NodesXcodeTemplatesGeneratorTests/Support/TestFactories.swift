@@ -46,7 +46,8 @@ extension TestFactories {
     }
 
     func givenNodeContext(mockCount: Int = 1) -> NodeContext {
-        NodeContext(
+        let isStringIdentifierMocked: Bool = mockCount > 0
+        return NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
@@ -62,19 +63,20 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllerSuperParameters: .mock(with: "viewControllerSuperParameters", count: mockCount),
-            viewControllerProperties: .mock(with: "viewControllerProperties", count: mockCount),
-            viewControllerMethods: .mock(with: "viewControllerMethods", count: mockCount),
-            viewControllerUpdateComment: .mock(with: "viewControllerUpdateComment", count: mockCount),
-            viewStateOperators: .mock(with: "viewStateOperators", count: mockCount),
+            viewControllerSuperParameters: .mock(with: "viewControllerSuperParameters", when: isStringIdentifierMocked),
+            viewControllerProperties: .mock(with: "viewControllerProperties", when: isStringIdentifierMocked),
+            viewControllerMethods: .mock(with: "viewControllerMethods", when: isStringIdentifierMocked),
+            viewControllerUpdateComment: .mock(with: "viewControllerUpdateComment", when: isStringIdentifierMocked),
+            viewStateOperators: .mock(with: "viewStateOperators", when: isStringIdentifierMocked),
             publisherType: "<publisherType>",
-            publisherFailureType: .mock(with: "publisherFailureType", count: mockCount),
+            publisherFailureType: .mock(with: "publisherFailureType", when: isStringIdentifierMocked),
             cancellableType: "<cancellableType>"
         )
     }
 
     func givenNodeRootContext(mockCount: Int = 1) -> NodeRootContext {
-        NodeRootContext(
+        let isStringIdentifierMocked: Bool = mockCount > 0
+        return NodeRootContext(
             fileHeader: "<fileHeader>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
@@ -89,13 +91,13 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllerSuperParameters: .mock(with: "viewControllerSuperParameters", count: mockCount),
-            viewControllerProperties: .mock(with: "viewControllerProperties", count: mockCount),
-            viewControllerMethods: .mock(with: "viewControllerMethods", count: mockCount),
-            viewControllerUpdateComment: .mock(with: "viewControllerUpdateComment", count: mockCount),
-            viewStateOperators: .mock(with: "viewStateOperators", count: mockCount),
+            viewControllerSuperParameters: .mock(with: "viewControllerSuperParameters", when: isStringIdentifierMocked),
+            viewControllerProperties: .mock(with: "viewControllerProperties", when: isStringIdentifierMocked),
+            viewControllerMethods: .mock(with: "viewControllerMethods", when: isStringIdentifierMocked),
+            viewControllerUpdateComment: .mock(with: "viewControllerUpdateComment", when: isStringIdentifierMocked),
+            viewStateOperators: .mock(with: "viewStateOperators", when: isStringIdentifierMocked),
             publisherType: "<publisherType>",
-            publisherFailureType: .mock(with: "publisherFailureType", count: mockCount),
+            publisherFailureType: .mock(with: "publisherFailureType", when: isStringIdentifierMocked),
             cancellableType: "<cancellableType>"
         )
     }
