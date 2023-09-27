@@ -119,8 +119,7 @@ A Node's ``ViewControllable`` instance defines its user interface (for example a
 ### View State
 
 - ``StateObserver``
-- ``Transform``
-- ``MutableState``
+- ``WithViewState``
 
 ### Reactive
 
