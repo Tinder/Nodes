@@ -63,13 +63,13 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllerSuperParameters: .mock(with: "viewControllerSuperParameters", when: isStringIdentifierMocked),
-            viewControllerProperties: .mock(with: "viewControllerProperties", when: isStringIdentifierMocked),
-            viewControllerMethods: .mock(with: "viewControllerMethods", when: isStringIdentifierMocked),
-            viewControllerUpdateComment: .mock(with: "viewControllerUpdateComment", when: isStringIdentifierMocked),
-            viewStateOperators: .mock(with: "viewStateOperators", when: isStringIdentifierMocked),
+            viewControllerSuperParameters: isStringIdentifierMocked ? "<viewControllerSuperParameters>" : "",
+            viewControllerProperties: isStringIdentifierMocked ? "<viewControllerProperties>" : "",
+            viewControllerMethods: isStringIdentifierMocked ? "<viewControllerMethods>" : "",
+            viewControllerUpdateComment: isStringIdentifierMocked ? "<viewControllerUpdateComment>" : "",
+            viewStateOperators: isStringIdentifierMocked ? "<viewStateOperators>" : "",
             publisherType: "<publisherType>",
-            publisherFailureType: .mock(with: "publisherFailureType", when: isStringIdentifierMocked),
+            publisherFailureType: isStringIdentifierMocked ? "<publisherFailureType>" : "",
             cancellableType: "<cancellableType>"
         )
     }
@@ -91,13 +91,13 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllerSuperParameters: .mock(with: "viewControllerSuperParameters", when: isStringIdentifierMocked),
-            viewControllerProperties: .mock(with: "viewControllerProperties", when: isStringIdentifierMocked),
-            viewControllerMethods: .mock(with: "viewControllerMethods", when: isStringIdentifierMocked),
-            viewControllerUpdateComment: .mock(with: "viewControllerUpdateComment", when: isStringIdentifierMocked),
-            viewStateOperators: .mock(with: "viewStateOperators", when: isStringIdentifierMocked),
+            viewControllerSuperParameters: isStringIdentifierMocked ? "<viewControllerSuperParameters>" : "",
+            viewControllerProperties: isStringIdentifierMocked ? "<viewControllerProperties>" : "",
+            viewControllerMethods: isStringIdentifierMocked ? "<viewControllerMethods>" : "",
+            viewControllerUpdateComment: isStringIdentifierMocked ? "<viewControllerUpdateComment>" : "",
+            viewStateOperators: isStringIdentifierMocked ? "<viewStateOperators>" : "",
             publisherType: "<publisherType>",
-            publisherFailureType: .mock(with: "publisherFailureType", when: isStringIdentifierMocked),
+            publisherFailureType: isStringIdentifierMocked ? "<publisherFailureType>" : "",
             cancellableType: "<cancellableType>"
         )
     }
