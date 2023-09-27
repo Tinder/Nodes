@@ -16,7 +16,11 @@ internal protocol RootReceiver: AnyObject {
 internal final class RootViewController: <viewControllerType>
 <
     RootView
-> {}
+> {
+
+    /// The view receiver.
+    internal weak var receiver: RootReceiver?
+}
 
 extension RootViewController: RootViewControllable {}
 
@@ -24,7 +28,7 @@ extension RootViewController: RootViewControllable {}
  PURPOSE:
  Concrete implementation of the View.
  */
-internal struct RootView: NodesView {
+internal struct RootView: View {
 
     /// The body of the view.
     internal var body: some View {
