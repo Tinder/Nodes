@@ -18,11 +18,7 @@ internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
 internal final class ___VARIABLE_productName___ViewController: UIHostingController
 <
     ___VARIABLE_productName___View
-> {
-
-    /// The view receiver.
-    internal weak var receiver: ___VARIABLE_productName___Receiver?
-}
+> {}
 
 extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllable {}
 

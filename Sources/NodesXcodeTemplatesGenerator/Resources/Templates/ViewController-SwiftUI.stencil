@@ -26,26 +26,24 @@ internal protocol {{ node_name }}Receiver: AnyObject {}
 internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 <
     {{ node_name }}View
-{% if view_controller_properties or view_controller_methods %}
+{% if view_controller_properties or view_controller_methods or root_node %}
 > {
     {% if view_controller_properties %}
 
     {{ view_controller_properties|indent:4 }}
     {% endif %}
+    {% if root_node %}
 
     /// The view receiver.
     internal weak var receiver: {{ node_name }}Receiver?
+    {% endif %}
     {% if view_controller_methods %}
 
     {{ view_controller_methods|indent:4 }}
     {% endif %}
 }
 {% else %}
-> {
-
-    /// The view receiver.
-    internal weak var receiver: {{ node_name }}Receiver?
-}
+> {}
 {% endif %}
 
 extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}

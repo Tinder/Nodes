@@ -21,9 +21,6 @@ internal final class <nodeName>ViewController: <viewControllerType>
 
     <viewControllerProperties>
 
-    /// The view receiver.
-    internal weak var receiver: <nodeName>Receiver?
-
     <viewControllerMethods>
 }
 

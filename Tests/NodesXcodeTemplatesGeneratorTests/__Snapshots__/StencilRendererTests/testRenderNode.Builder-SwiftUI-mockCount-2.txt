@@ -166,7 +166,6 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         let viewController: <nodeName>ViewController = .init(
             rootView: view
         )
-        viewController.receiver = context
         let flow: <nodeName>FlowImp = .init(
             context: context,
             viewController: viewController,
