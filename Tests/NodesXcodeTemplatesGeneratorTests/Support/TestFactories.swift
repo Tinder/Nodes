@@ -46,7 +46,8 @@ extension TestFactories {
     }
 
     func givenNodeContext(mockCount: Int = 1) -> NodeContext {
-        NodeContext(
+        let isStringIdentifierMocked: Bool = mockCount > 0
+        return NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
@@ -62,19 +63,20 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllerSuperParameters: "<viewControllerSuperParameters>",
-            viewControllerProperties: "<viewControllerProperties>",
-            viewControllerMethods: "<viewControllerMethods>",
-            viewControllerUpdateComment: "<viewControllerUpdateComment>",
-            viewStateOperators: "<viewStateOperators>",
+            viewControllerSuperParameters: isStringIdentifierMocked ? "<viewControllerSuperParameters>" : "",
+            viewControllerProperties: isStringIdentifierMocked ? "<viewControllerProperties>" : "",
+            viewControllerMethods: isStringIdentifierMocked ? "<viewControllerMethods>" : "",
+            viewControllerUpdateComment: isStringIdentifierMocked ? "<viewControllerUpdateComment>" : "",
+            viewStateOperators: isStringIdentifierMocked ? "<viewStateOperators>" : "",
             publisherType: "<publisherType>",
-            publisherFailureType: "<publisherFailureType>",
+            publisherFailureType: isStringIdentifierMocked ? "<publisherFailureType>" : "",
             cancellableType: "<cancellableType>"
         )
     }
 
     func givenNodeRootContext(mockCount: Int = 1) -> NodeRootContext {
-        NodeRootContext(
+        let isStringIdentifierMocked: Bool = mockCount > 0
+        return NodeRootContext(
             fileHeader: "<fileHeader>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
@@ -89,13 +91,13 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllerSuperParameters: "<viewControllerSuperParameters>",
-            viewControllerProperties: "<viewControllerProperties>",
-            viewControllerMethods: "<viewControllerMethods>",
-            viewControllerUpdateComment: "<viewControllerUpdateComment>",
-            viewStateOperators: "<viewStateOperators>",
+            viewControllerSuperParameters: isStringIdentifierMocked ? "<viewControllerSuperParameters>" : "",
+            viewControllerProperties: isStringIdentifierMocked ? "<viewControllerProperties>" : "",
+            viewControllerMethods: isStringIdentifierMocked ? "<viewControllerMethods>" : "",
+            viewControllerUpdateComment: isStringIdentifierMocked ? "<viewControllerUpdateComment>" : "",
+            viewStateOperators: isStringIdentifierMocked ? "<viewStateOperators>" : "",
             publisherType: "<publisherType>",
-            publisherFailureType: "<publisherFailureType>",
+            publisherFailureType: isStringIdentifierMocked ? "<publisherFailureType>" : "",
             cancellableType: "<cancellableType>"
         )
     }

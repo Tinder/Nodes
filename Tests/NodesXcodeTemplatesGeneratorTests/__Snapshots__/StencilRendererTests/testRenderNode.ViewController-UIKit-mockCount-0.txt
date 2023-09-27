@@ -13,8 +13,6 @@ internal protocol <nodeName>Receiver: AnyObject {}
  */
 internal final class <nodeName>ViewController: <viewControllerType>, StateObserver {
 
-    <viewControllerProperties>
-
     /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 
@@ -25,7 +23,7 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
     private let initialState: <nodeName>ViewState
 
     /// The view state publisher.
-    private let statePublisher: <publisherType><<nodeName>ViewState, <publisherFailureType>>
+    private let statePublisher: <publisherType><<nodeName>ViewState>
 
     /// The initializer.
     ///
@@ -34,18 +32,14 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
     ///   - statePublisher: The view state publisher.
     internal init(
         initialState: <nodeName>ViewState,
-        statePublisher: <publisherType><<nodeName>ViewState, <publisherFailureType>>
+        statePublisher: <publisherType><<nodeName>ViewState>
     ) {
         self.initialState = initialState
         self.statePublisher = statePublisher
-            <viewStateOperators>
-        super.init(<viewControllerSuperParameters>)
+        super.init()
     }
 
-    <viewControllerMethods>
-
     internal func update(with viewState: <nodeName>ViewState) {
-        <viewControllerUpdateComment>
     }
 }
 

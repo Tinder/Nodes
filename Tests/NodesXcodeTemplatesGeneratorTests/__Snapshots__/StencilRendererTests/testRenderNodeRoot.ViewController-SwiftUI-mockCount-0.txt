@@ -16,15 +16,7 @@ internal protocol RootReceiver: AnyObject {
 internal final class RootViewController: <viewControllerType>
 <
     RootView
-> {
-
-    <viewControllerProperties>
-
-    /// The view receiver.
-    internal weak var receiver: RootReceiver?
-
-    <viewControllerMethods>
-}
+> {}
 
 extension RootViewController: RootViewControllable {}
 
@@ -32,7 +24,7 @@ extension RootViewController: RootViewControllable {}
  PURPOSE:
  Concrete implementation of the View.
  */
-internal struct RootView: View {
+internal struct RootView: NodesView {
 
     /// The body of the view.
     internal var body: some View {
@@ -48,7 +40,7 @@ internal struct RootView: View {
     private let initialState: RootViewState
 
     /// The view state publisher.
-    private let statePublisher: <publisherType><RootViewState, <publisherFailureType>>
+    private let statePublisher: <publisherType><RootViewState>
 
     /// The initializer.
     ///
@@ -57,11 +49,10 @@ internal struct RootView: View {
     ///   - statePublisher: The view state publisher.
     internal init(
         initialState: RootViewState,
-        statePublisher: <publisherType><RootViewState, <publisherFailureType>>
+        statePublisher: <publisherType><RootViewState>
     ) {
         self.initialState = initialState
         self.statePublisher = statePublisher
-            <viewStateOperators>
     }
 }
 
