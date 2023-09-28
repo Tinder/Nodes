@@ -32,14 +32,6 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 
     {{ view_controller_properties|indent:4 }}
     {% endif %}
-    {% if root_node %}
-
-    /// The view receiver.
-    internal var receiver: {{ node_name }}Receiver {
-        get { rootView.receiver }
-        set { rootView.receiver = newValue }
-    }
-    {% endif %}
     {% if view_controller_methods %}
 
     {{ view_controller_methods|indent:4 }}

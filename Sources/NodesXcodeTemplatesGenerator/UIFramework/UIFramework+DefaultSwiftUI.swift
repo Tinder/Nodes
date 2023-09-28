@@ -12,7 +12,7 @@ extension UIFramework {
             viewControllerMethodsForRootNode: """
                 override internal func viewDidAppear(_ animated: Bool) {
                     super.viewDidAppear(animated)
-                    receiver?.viewDidAppear()
+                    rootView.receiver?.viewDidAppear()
                 }
                 """
         )
