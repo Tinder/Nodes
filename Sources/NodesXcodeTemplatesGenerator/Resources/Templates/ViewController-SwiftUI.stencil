@@ -26,7 +26,7 @@ internal protocol {{ node_name }}Receiver: AnyObject {}
 internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 <
     {{ node_name }}View
-{% if root_node or view_controller_properties or view_controller_methods %}
+{% if view_controller_properties or view_controller_methods %}
 > {
     {% if view_controller_properties %}
 

@@ -22,9 +22,6 @@ internal final class RootViewController: <viewControllerType>
 
     <viewControllerProperties>
 
-    /// The view receiver.
-    internal weak var receiver: RootReceiver?
-
     <viewControllerMethods>
 }
 

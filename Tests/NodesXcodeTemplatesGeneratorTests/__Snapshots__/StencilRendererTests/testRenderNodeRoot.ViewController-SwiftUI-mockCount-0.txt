@@ -16,11 +16,7 @@ internal protocol RootReceiver: AnyObject {
 internal final class RootViewController: <viewControllerType>
 <
     RootView
-> {
-
-    /// The view receiver.
-    internal weak var receiver: RootReceiver?
-}
+> {}
 
 extension RootViewController: RootViewControllable {}
 
