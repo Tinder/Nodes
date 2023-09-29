@@ -5,9 +5,7 @@
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
  */
-internal protocol RootReceiver: AnyObject {
-    func viewDidAppear()
-}
+internal protocol RootReceiver: AnyObject {}
 
 /**
  PURPOSE:
