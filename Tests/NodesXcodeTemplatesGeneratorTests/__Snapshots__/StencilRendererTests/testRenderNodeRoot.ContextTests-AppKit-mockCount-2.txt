@@ -1,0 +1,43 @@
+<fileHeader>
+
+#warning("Manually move this test file to the corresponding test target.")
+
+import XCTest
+
+final class RootContextTests: XCTestCase {
+
+    private var analyticsMock: RootAnalyticsMock!
+    private var context: RootContextImp!
+
+    override func setUp() {
+        super.setUp()
+        analyticsMock = RootAnalyticsMock()
+        context = RootContextImp(
+            workers: [],
+            analytics: analyticsMock
+        )
+    }
+
+    override func tearDown() {
+        analyticsMock = nil
+        context = nil
+        
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        XCTAssertNotNil(context)
+    }
+
+    func testWorkersEmpty() {
+        XCTAssertTrue(context.workers.isEmpty)
+    }
+
+    func testActivation() {
+        XCTAssertFalse(context.isActive)
+        context.activate()
+        XCTAssertTrue(context.isActive)
+        context.deactivate()
+        XCTAssertFalse(context.isActive)
+    }
+}

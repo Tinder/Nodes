@@ -83,7 +83,7 @@
     - sortOrder: 1
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 7 elements
+  ▿ stencils: 12 elements
     - Analytics
     ▿ Builder
       - builder: Variation.default
@@ -93,3 +93,8 @@
     ▿ ViewController
       - viewController: Variation.default
     - ViewState
+    - AnalyticsTests
+    - ContextTests
+    - FlowTests
+    - ViewControllerTests
+    - ViewStateTests
