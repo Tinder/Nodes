@@ -17,11 +17,11 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
     case viewController(Variation)
     case viewState
     case worker
-    case contextTests
     case analyticsTests
+    case contextTests
+    case flowTests
     case viewControllerTests
     case viewStateTests
-    case flowTests
 
     /// Alternate Stencil source files for specific use cases.
     public enum Variation: String, Equatable, CaseIterable {
@@ -43,11 +43,11 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         internal let state: StencilTemplate
         internal let viewController: StencilTemplate
         internal let viewState: StencilTemplate
-        internal let viewStateTests: StencilTemplate
-        internal let viewControllerTests: StencilTemplate
         internal let analyticsTests: StencilTemplate
-        internal let flowTests: StencilTemplate
         internal let contextTests: StencilTemplate
+        internal let flowTests: StencilTemplate
+        internal let viewControllerTests: StencilTemplate
+        internal let viewStateTests: StencilTemplate
 
         internal var stencils: [StencilTemplate] {
             [
@@ -58,11 +58,11 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
                 state,
                 viewController,
                 viewState,
-                viewStateTests,
-                viewControllerTests,
                 analyticsTests,
+                contextTests,
                 flowTests,
-                contextTests
+                viewControllerTests,
+                viewStateTests
             ]
         }
 
@@ -74,11 +74,11 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
             self.state = .state
             self.viewController = .viewController(variation)
             self.viewState = .viewState
-            self.viewStateTests = .viewStateTests
-            self.viewControllerTests = .viewControllerTests
             self.analyticsTests = .analyticsTests
-            self.flowTests = .flowTests
             self.contextTests = .contextTests
+            self.flowTests = .flowTests
+            self.viewControllerTests = .viewControllerTests
+            self.viewStateTests = .viewStateTests
         }
     }
 
