@@ -119,8 +119,8 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         .worker,
         .analyticsTests,
         .contextTests,
-        .viewControllerTests,
         .flowTests,
+        .viewControllerTests,
         .viewStateTests
     ]
 
@@ -156,10 +156,10 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
             return "ContextTests"
         case .flowTests:
             return "FlowTests"
-        case .viewStateTests:
-            return "ViewStateTests"
         case .viewControllerTests:
             return "ViewControllerTests"
+        case .viewStateTests:
+            return "ViewStateTests"
         }
     }
 
@@ -174,11 +174,11 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
                 .state,
                 .viewState,
                 .worker,
-                .viewStateTests,
-                .flowTests,
-                .contextTests,
                 .analyticsTests,
-                .viewControllerTests:
+                .contextTests,
+                .flowTests,
+                .viewControllerTests,
+                .viewStateTests:
             return description
         case let .builder(variation), let .viewController(variation):
             return description.appending(variation.rawValue)
@@ -196,11 +196,11 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
                 .state,
                 .viewState,
                 .worker,
-                .viewStateTests,
-                .flowTests,
-                .contextTests,
                 .analyticsTests,
-                .viewControllerTests:
+                .contextTests,
+                .flowTests,
+                .viewControllerTests,
+                .viewStateTests:
             return imports(config: config)
         case .viewController:
             return imports(config: config).union([uiFramework.import])
@@ -214,10 +214,10 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
                 .flow,
                 .state,
                 .viewState,
+                .analyticsTests,
                 .contextTests,
                 .flowTests,
                 .viewControllerTests,
-                .analyticsTests,
                 .viewStateTests:
             return imports
         case .builder:
