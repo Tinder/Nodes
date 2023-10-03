@@ -159,7 +159,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         case .viewStateTests:
             return "ViewStateTests"
         case .viewControllerTests:
-            return "viewControllerTests"
+            return "ViewControllerTests"
         }
     }
 
