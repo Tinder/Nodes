@@ -36,9 +36,8 @@ final class UIViewControllerContainmentTests: XCTestCase {
         expect(child.didMoveCallCount) == 0
         expect(viewController.children).to(beEmpty())
         expect(viewController.view.subviews).to(beEmpty())
-        let expectedUUID: UUID = .init()
-        let actualUUID: UUID = viewController.contain(child) { _, _ in expectedUUID }
-        expect(actualUUID) == expectedUUID
+        let uuid: UUID = .init()
+        expect(viewController.contain(child) { _, _ in uuid }) == uuid
         expect(child.view.translatesAutoresizingMaskIntoConstraints) == false
         expect(child.willMoveCallCount) == 1
         expect(child.didMoveCallCount) == 1
