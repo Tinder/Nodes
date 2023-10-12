@@ -196,7 +196,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         case .analytics, .flow, .state, .viewState:
             return imports
         case .analyticsTests, .contextTests, .flowTests, .viewControllerTests, .viewStateTests:
-            return config.baseImports
+            return config.baseTestImports
         case .builder:
             return imports.union(config.reactiveImports).union(config.dependencyInjectionImports)
         case .context, .viewController, .worker:
