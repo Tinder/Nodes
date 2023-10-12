@@ -17,6 +17,8 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
     case viewController(Variation)
     case viewState
     case worker
+
+    // Test stencils
     case analyticsTests
     case contextTests
     case flowTests
@@ -43,6 +45,8 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         internal let state: StencilTemplate
         internal let viewController: StencilTemplate
         internal let viewState: StencilTemplate
+
+        // Test stencils
         internal let analyticsTests: StencilTemplate
         internal let contextTests: StencilTemplate
         internal let flowTests: StencilTemplate
@@ -166,19 +170,9 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
     /// The name of the Stencil source file in the bundle.
     public var filename: String {
         switch self {
-        case .analytics,
-                .context,
-                .flow,
-                .plugin,
-                .pluginList,
-                .state,
-                .viewState,
-                .worker,
-                .analyticsTests,
-                .contextTests,
-                .flowTests,
-                .viewControllerTests,
-                .viewStateTests:
+        case .analytics, .context, .flow, .plugin, .pluginList, .state, .viewState, .worker:
+            return description
+        case .analyticsTests, .contextTests, .flowTests, .viewControllerTests, .viewStateTests:
             return description
         case let .builder(variation), let .viewController(variation):
             return description.appending(variation.rawValue)
@@ -187,20 +181,9 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
 
     internal func imports(for uiFramework: UIFramework, config: XcodeTemplates.Config) -> Set<String> {
         switch self {
-        case .analytics,
-                .builder,
-                .context,
-                .flow,
-                .plugin,
-                .pluginList,
-                .state,
-                .viewState,
-                .worker,
-                .analyticsTests,
-                .contextTests,
-                .flowTests,
-                .viewControllerTests,
-                .viewStateTests:
+        case .analytics, .builder, .context, .flow, .plugin, .pluginList, .state, .viewState, .worker:
+            return imports(config: config)
+        case .analyticsTests, .contextTests, .flowTests, .viewControllerTests, .viewStateTests:
             return imports(config: config)
         case .viewController:
             return imports(config: config).union([uiFramework.import])
@@ -210,16 +193,10 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
     internal func imports(config: XcodeTemplates.Config) -> Set<String> {
         let imports: Set<String> = config.baseImports.union(["Nodes"])
         switch self {
-        case .analytics,
-                .flow,
-                .state,
-                .viewState,
-                .analyticsTests,
-                .contextTests,
-                .flowTests,
-                .viewControllerTests,
-                .viewStateTests:
+        case .analytics, .flow, .state, .viewState:
             return imports
+        case .analyticsTests, .contextTests, .flowTests, .viewControllerTests, .viewStateTests:
+            return config.baseImports
         case .builder:
             return imports.union(config.reactiveImports).union(config.dependencyInjectionImports)
         case .context, .viewController, .worker:
