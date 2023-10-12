@@ -27,6 +27,7 @@ extension XcodeTemplates {
         public var baseImports: Set<String>
         public var reactiveImports: Set<String>
         public var dependencyInjectionImports: Set<String>
+        public var baseTestImports: Set<String>
         public var dependencies: [Variable]
         public var analyticsProperties: [Variable]
         public var flowProperties: [Variable]
@@ -68,6 +69,7 @@ extension XcodeTemplates.Config {
         baseImports = []
         reactiveImports = ["Combine"]
         dependencyInjectionImports = ["NeedleFoundation"]
+        baseTestImports = ["XCTest"]
         dependencies = []
         analyticsProperties = []
         flowProperties = []
@@ -90,6 +92,7 @@ extension XcodeTemplates.Config {
 // swiftlint:disable:next no_grouping_extension
 extension XcodeTemplates.Config {
 
+    // swiftlint:disable:next function_body_length
     public init(from decoder: Decoder) throws {
         let defaults: XcodeTemplates.Config = .init()
         uiFrameworks =
@@ -110,6 +113,9 @@ extension XcodeTemplates.Config {
         dependencyInjectionImports =
             (try? decoder.decode(CodingKeys.dependencyInjectionImports))
             ?? defaults.dependencyInjectionImports
+        baseTestImports =
+            (try? decoder.decode(CodingKeys.baseTestImports))
+            ?? defaults.baseTestImports
         dependencies =
             (try? decoder.decode(CodingKeys.dependencies))
             ?? defaults.dependencies
