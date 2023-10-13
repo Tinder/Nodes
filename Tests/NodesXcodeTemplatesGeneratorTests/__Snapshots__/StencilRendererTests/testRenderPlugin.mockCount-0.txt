@@ -10,7 +10,7 @@ public protocol <pluginName>PluginDependency: Dependency {}
  PURPOSE:
  Declares dependencies that are owned by this Plugin.
  */
-internal final class <pluginName>PluginComponent: Component
+public final class <pluginName>PluginComponent: Component
 <
     <pluginName>PluginDependency
 > {

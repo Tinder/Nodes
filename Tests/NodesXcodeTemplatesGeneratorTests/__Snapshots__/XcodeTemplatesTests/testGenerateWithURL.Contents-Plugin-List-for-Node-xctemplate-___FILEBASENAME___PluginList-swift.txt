@@ -35,7 +35,7 @@ public protocol ___VARIABLE_productName___PluginListDependency: Dependency {}
  PURPOSE:
  Declares dependencies that are owned by this Plugin List.
  */
-internal final class ___VARIABLE_productName___PluginListComponent: Component
+public final class ___VARIABLE_productName___PluginListComponent: Component
 <
     ___VARIABLE_productName___PluginListDependency
 > {
