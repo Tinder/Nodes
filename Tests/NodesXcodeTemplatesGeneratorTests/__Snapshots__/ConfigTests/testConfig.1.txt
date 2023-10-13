@@ -9,6 +9,8 @@
   ▿ baseImports: 2 members
     - "<baseImports-1>"
     - "<baseImports-2>"
+  ▿ baseTestImports: 1 member
+    - "XCTest"
   - cancellableType: "<cancellableType>"
   ▿ dependencies: 2 elements
     ▿ Variable
