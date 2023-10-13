@@ -25,9 +25,9 @@ extension XcodeTemplates {
         public var isViewInjectedTemplateEnabled: Bool
         public var fileHeader: String
         public var baseImports: Set<String>
+        public var baseTestImports: Set<String>
         public var reactiveImports: Set<String>
         public var dependencyInjectionImports: Set<String>
-        public var baseTestImports: Set<String>
         public var dependencies: [Variable]
         public var analyticsProperties: [Variable]
         public var flowProperties: [Variable]
@@ -67,9 +67,9 @@ extension XcodeTemplates.Config {
         isViewInjectedTemplateEnabled = true
         fileHeader = "//___FILEHEADER___"
         baseImports = []
+        baseTestImports = ["XCTest"]
         reactiveImports = ["Combine"]
         dependencyInjectionImports = ["NeedleFoundation"]
-        baseTestImports = ["XCTest"]
         dependencies = []
         analyticsProperties = []
         flowProperties = []
@@ -107,15 +107,15 @@ extension XcodeTemplates.Config {
         baseImports =
             (try? decoder.decode(CodingKeys.baseImports))
             ?? defaults.baseImports
+        baseTestImports =
+            (try? decoder.decode(CodingKeys.baseTestImports))
+            ?? defaults.baseTestImports
         reactiveImports =
             (try? decoder.decode(CodingKeys.reactiveImports))
             ?? defaults.reactiveImports
         dependencyInjectionImports =
             (try? decoder.decode(CodingKeys.dependencyInjectionImports))
             ?? defaults.dependencyInjectionImports
-        baseTestImports =
-            (try? decoder.decode(CodingKeys.baseTestImports))
-            ?? defaults.baseTestImports
         dependencies =
             (try? decoder.decode(CodingKeys.dependencies))
             ?? defaults.dependencies
