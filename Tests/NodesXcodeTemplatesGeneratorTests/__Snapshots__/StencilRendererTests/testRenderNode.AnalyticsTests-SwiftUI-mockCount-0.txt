@@ -2,8 +2,6 @@
 
 #warning("Manually move this test file to the corresponding test target.")
 
-import XCTest
-
 final class <nodeName>AnalyticsTests: XCTestCase {
 
     private var analytics: <nodeName>AnalyticsImp!

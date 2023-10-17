@@ -2,8 +2,6 @@
 
 #warning("Manually move this test file to the corresponding test target.")
 
-import XCTest
-
 internal final class <nodeName>ViewStateFactoryTests: XCTestCase {
 
     private var factory: <nodeName>ViewStateFactory!

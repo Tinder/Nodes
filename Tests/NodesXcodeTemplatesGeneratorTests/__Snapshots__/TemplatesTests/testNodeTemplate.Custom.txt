@@ -47,6 +47,8 @@
     ▿ stateImports: 2 elements
       - "<baseImport>"
       - "Nodes"
+    ▿ testImports: 1 element
+      - "XCTest"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     ▿ viewControllerImports: 4 elements

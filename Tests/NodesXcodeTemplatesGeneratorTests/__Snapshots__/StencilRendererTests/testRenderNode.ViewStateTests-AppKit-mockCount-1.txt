@@ -2,7 +2,7 @@
 
 #warning("Manually move this test file to the corresponding test target.")
 
-import XCTest
+import <testImport>
 
 internal final class <nodeName>ViewStateFactoryTests: XCTestCase {
 
