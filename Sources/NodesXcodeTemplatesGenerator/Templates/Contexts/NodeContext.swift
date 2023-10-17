@@ -13,6 +13,7 @@ public struct NodeContext: Context {
     private let stateImports: [String]
     private let viewControllerImports: [String]
     private let viewStateImports: [String]
+    private let testImports: [String]
     private let dependencies: [[String: Any]]
     private let analyticsProperties: [[String: Any]]
     private let flowProperties: [[String: Any]]
@@ -41,6 +42,7 @@ public struct NodeContext: Context {
             "state_imports": stateImports,
             "view_controller_imports": viewControllerImports,
             "view_state_imports": viewStateImports,
+            "test_imports": testImports,
             "dependencies": dependencies,
             "analytics_properties": analyticsProperties,
             "flow_properties": flowProperties,
@@ -68,6 +70,7 @@ public struct NodeContext: Context {
         stateImports: Set<String>,
         viewControllerImports: Set<String>,
         viewStateImports: Set<String>,
+        testImports: Set<String>,
         dependencies: [XcodeTemplates.Variable],
         analyticsProperties: [XcodeTemplates.Variable],
         flowProperties: [XcodeTemplates.Variable],
@@ -92,6 +95,7 @@ public struct NodeContext: Context {
         self.stateImports = stateImports.sortedImports()
         self.viewControllerImports = viewControllerImports.sortedImports()
         self.viewStateImports = viewStateImports.sortedImports()
+        self.testImports = testImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)
         self.analyticsProperties = analyticsProperties.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)

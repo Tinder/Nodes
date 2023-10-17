@@ -2,7 +2,12 @@
 
 #warning("Manually move this test file to the corresponding test target.")
 
-import XCTest
+{% if test_imports %}
+
+{% for import in test_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
 
 final class {{ node_name }}ViewControllerTests: XCTestCase {
 
