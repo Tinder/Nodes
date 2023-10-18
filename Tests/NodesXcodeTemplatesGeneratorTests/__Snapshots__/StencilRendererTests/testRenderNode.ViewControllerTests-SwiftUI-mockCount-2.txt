@@ -1,0 +1,21 @@
+<fileHeader>
+
+#warning("Manually move this test file to the corresponding test target.")
+
+import <testImport1>
+import <testImport2>
+
+final class <nodeName>ViewControllerTests: XCTestCase {
+
+    override func setUp() {
+        super.setUp()
+    }
+
+    override func tearDown() {
+        super.tearDown()
+    }
+
+    func testInitialState() {
+        // TODO: Add assertions
+    }
+}

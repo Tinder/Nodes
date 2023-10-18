@@ -47,6 +47,8 @@
     ▿ stateImports: 2 elements
       - "<baseImport>"
       - "Nodes"
+    ▿ testImports: 1 element
+      - "XCTest"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     ▿ viewControllerImports: 4 elements
@@ -83,7 +85,7 @@
     - sortOrder: 3
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 7 elements
+  ▿ stencils: 12 elements
     - Analytics
     ▿ Builder
       - builder: Variation.swiftUI
@@ -93,3 +95,8 @@
     ▿ ViewController
       - viewController: Variation.swiftUI
     - ViewState
+    - AnalyticsTests
+    - ContextTests
+    - FlowTests
+    - ViewControllerTests
+    - ViewStateTests

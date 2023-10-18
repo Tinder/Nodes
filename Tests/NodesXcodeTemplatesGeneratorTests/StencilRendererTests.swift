@@ -18,12 +18,17 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 let templates: [String: String] = try StencilRenderer().renderNode(context: context, kind: kind)
                 expect(templates.keys.sorted()) == [
                     "Analytics",
+                    "AnalyticsTests",
                     "Builder",
                     "Context",
+                    "ContextTests",
                     "Flow",
+                    "FlowTests",
                     "State",
                     "ViewController",
-                    "ViewState"
+                    "ViewControllerTests",
+                    "ViewState",
+                    "ViewStateTests"
                 ]
                 templates.forEach { name, template in
                     assertSnapshot(matching: template,
@@ -41,12 +46,17 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 let templates: [String: String] = try StencilRenderer().renderNodeRoot(context: context, kind: kind)
                 expect(templates.keys.sorted()) == [
                     "Analytics",
+                    "AnalyticsTests",
                     "Builder",
                     "Context",
+                    "ContextTests",
                     "Flow",
+                    "FlowTests",
                     "State",
                     "ViewController",
-                    "ViewState"
+                    "ViewControllerTests",
+                    "ViewState",
+                    "ViewStateTests"
                 ]
                 templates.forEach { name, template in
                     assertSnapshot(matching: template,

@@ -44,7 +44,12 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .viewController(.default),
             .viewController(.swiftUI),
             .viewState,
-            .worker
+            .worker,
+            .analyticsTests,
+            .contextTests,
+            .flowTests,
+            .viewControllerTests,
+            .viewStateTests
         ]
     }
 
@@ -79,6 +84,16 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(name) == "ViewState"
             case .worker:
                 expect(name) == "Worker"
+            case .analyticsTests:
+                expect(name) == "AnalyticsTests"
+            case .contextTests:
+                expect(name) == "ContextTests"
+            case .flowTests:
+                expect(name) == "FlowTests"
+            case .viewControllerTests:
+                expect(name) == "ViewControllerTests"
+            case .viewStateTests:
+                expect(name) == "ViewStateTests"
             }
         }
     }
@@ -108,6 +123,16 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(filename) == "ViewState"
             case .worker:
                 expect(filename) == "Worker"
+            case .analyticsTests:
+                expect(filename) == "AnalyticsTests"
+            case .contextTests:
+                expect(filename) == "ContextTests"
+            case .flowTests:
+                expect(filename) == "FlowTests"
+            case .viewControllerTests:
+                expect(filename) == "ViewControllerTests"
+            case .viewStateTests:
+                expect(filename) == "ViewStateTests"
             }
         }
     }
@@ -121,7 +146,12 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .flow,
                 .state,
                 .viewController(variation),
-                .viewState
+                .viewState,
+                .analyticsTests,
+                .contextTests,
+                .flowTests,
+                .viewControllerTests,
+                .viewStateTests
             ]
         }
     }
@@ -164,6 +194,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>", uiFrameworkImport]
                 case .plugin, .pluginList:
                     expect(imports) == ["Nodes", "<baseImport>", "<dependencyInjectionImport>"]
+                case .contextTests, .analyticsTests, .viewControllerTests, .viewStateTests, .flowTests:
+                    expect(imports) == ["<testImport>"]
                 }
             }
         }

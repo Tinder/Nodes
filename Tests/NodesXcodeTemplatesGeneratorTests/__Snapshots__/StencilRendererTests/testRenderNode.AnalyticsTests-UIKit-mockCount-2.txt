@@ -1,0 +1,25 @@
+<fileHeader>
+
+#warning("Manually move this test file to the corresponding test target.")
+
+import <testImport1>
+import <testImport2>
+
+final class <nodeName>AnalyticsTests: XCTestCase {
+
+    private var analytics: <nodeName>AnalyticsImp!
+
+    override func setUp() {
+        super.setUp()
+        analytics = <nodeName>AnalyticsImp()
+    }
+
+    override func tearDown() {
+        analytics = nil
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        XCTAssertNotNil(analytics)
+    }
+}

@@ -1,0 +1,39 @@
+<fileHeader>
+
+#warning("Manually move this test file to the corresponding test target.")
+
+final class <nodeName>FlowTests: XCTestCase {
+
+    private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {
+    }
+
+    private var flow: <nodeName>FlowImp!
+    private var contextMock: <nodeName>ContextInterfaceMock!
+    private var viewControllableMock: <nodeName>ViewControllableMock!
+
+    override func setUp() {
+        super.setUp()
+        contextMock = <nodeName>ContextInterfaceMock(isActive: true)
+        viewControllableMock = <nodeName>ViewControllableMock()
+        flow = <nodeName>FlowImp(
+            context: contextMock,
+            viewController: viewControllableMock
+        )
+    }
+
+    override func tearDown() {
+        contextMock = nil
+        viewControllableMock = nil
+        flow = nil
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        XCTAssertNotNil(flow)
+    }
+
+    func testStart() {
+        flow.start()
+        XCTAssertTrue(flow.isStarted)
+    }
+}
