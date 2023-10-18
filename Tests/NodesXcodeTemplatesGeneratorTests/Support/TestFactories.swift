@@ -57,6 +57,7 @@ extension TestFactories {
             stateImports: .mock(with: "stateImport", count: mockCount),
             viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
             viewStateImports: .mock(with: "viewStateImport", count: mockCount),
+            testImports: .mock(with: "testImport", count: mockCount),
             dependencies: .mock(with: "dependency", count: mockCount),
             analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
             flowProperties: .mock(with: "flowProperty", count: mockCount),
