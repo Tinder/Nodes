@@ -16,7 +16,7 @@ public protocol {{ plugin_name }}PluginDependency: Dependency {}
  PURPOSE:
  Declares dependencies that are owned by this Plugin.
  */
-internal final class {{ plugin_name }}PluginComponent: Component
+public final class {{ plugin_name }}PluginComponent: Component
 <
     {{ plugin_name }}PluginDependency
 > {

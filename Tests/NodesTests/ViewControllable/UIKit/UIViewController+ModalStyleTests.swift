@@ -1,3 +1,4 @@
+// swiftlint:disable:this file_name
 //
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
@@ -9,7 +10,7 @@ import Nimble
 import UIKit
 import XCTest
 
-final class ModalStyleTests: XCTestCase {
+final class UIViewControllerModalStyleTests: XCTestCase {
 
     func testCover() {
 

@@ -1041,7 +1041,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
-      internal final class SceneComponent: Component
+      public final class SceneComponent: Component
       <
           SceneDependency
       > {
@@ -1388,7 +1388,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
-      internal final class WindowComponent: Component
+      public final class WindowComponent: Component
       <
           WindowDependency
       > {
@@ -1728,7 +1728,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
-      internal final class RootComponent: Component
+      public final class RootComponent: Component
       <
           RootDependency
       > {

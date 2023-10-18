@@ -38,6 +38,7 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
 
     /// The StencilTemplate cases that represent a Node.
     internal struct Node {
+
         internal let analytics: StencilTemplate
         internal let builder: StencilTemplate
         internal let context: StencilTemplate

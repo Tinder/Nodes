@@ -7,6 +7,7 @@ import Codextended
 public struct UIFramework: Equatable, Codable {
 
     public enum Kind: String, CaseIterable {
+
         case appKit = "AppKit"
         case uiKit = "UIKit"
         case swiftUI = "SwiftUI"

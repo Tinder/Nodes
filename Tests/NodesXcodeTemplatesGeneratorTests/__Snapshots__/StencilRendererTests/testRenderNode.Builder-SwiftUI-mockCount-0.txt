@@ -34,7 +34,7 @@ internal typealias <nodeName>DynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
-internal final class <nodeName>Component: Component
+public final class <nodeName>Component: Component
 <
     <nodeName>Dependency
 > {
