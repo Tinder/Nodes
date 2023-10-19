@@ -76,6 +76,11 @@ delete-snapshots:
 		echo "Deleted $$snapshots"; \
 	done
 
+.PHONY: record-snapshots
+record-snapshots: delete-snapshots	
+record-snapshots:
+	xcodebuild test -quiet -scheme "Nodes-Package" -destination "name=iPhone 14 Pro,OS=latest"
+
 .PHONY: preview
 preview: target ?= Nodes
 preview:
