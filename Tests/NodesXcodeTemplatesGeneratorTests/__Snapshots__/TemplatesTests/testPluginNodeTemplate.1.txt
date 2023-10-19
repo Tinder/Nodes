@@ -1,6 +1,7 @@
 ▿ PluginNodeTemplate
   ▿ context: PluginContext
     - fileHeader: "<fileHeader>"
+    - includePeripheryIgnores: false
     ▿ pluginImports: 3 elements
       - "<baseImport>"
       - "<dependencyInjectionImport>"

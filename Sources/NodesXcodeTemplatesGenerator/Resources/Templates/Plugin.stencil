@@ -71,6 +71,9 @@ public final class {{ plugin_name }}PluginComponent: Component
  */
 internal typealias {{ plugin_name }}PluginStateType = Void
 
+{% if include_periphery_ignores %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  The Plugin interface (available to mock for testability).
@@ -83,6 +86,9 @@ internal protocol {{ plugin_name }}Plugin {
     {% endif %}
 }
 
+{% if include_periphery_ignores %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  Concrete implementation of the Plugin.

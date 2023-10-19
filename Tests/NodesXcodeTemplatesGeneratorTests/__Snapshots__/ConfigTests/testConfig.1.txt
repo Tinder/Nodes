@@ -28,6 +28,7 @@
     ▿ Variable
       - name: "<flowProperties-name-2>"
       - type: "<flowProperties-type-2>"
+  - includePeripheryIgnores: false
   - isViewInjectedTemplateEnabled: true
   - publisherFailureType: "<publisherFailureType>"
   - publisherType: "<publisherType>"

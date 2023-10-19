@@ -22,7 +22,7 @@ extension XcodeTemplates {
         }
 
         public var uiFrameworks: [UIFramework]
-        public var isViewInjectedTemplateEnabled: Bool
+        public var includePeripheryIgnores: Bool
         public var fileHeader: String
         public var baseImports: Set<String>
         public var reactiveImports: Set<String>
@@ -37,6 +37,7 @@ extension XcodeTemplates {
         public var publisherType: String
         public var publisherFailureType: String
         public var cancellableType: String
+        public var isViewInjectedTemplateEnabled: Bool
 
         public init(
             at path: String,
@@ -84,12 +85,14 @@ extension XcodeTemplates.Config {
         publisherType = "AnyPublisher"
         publisherFailureType = "Never"
         cancellableType = "AnyCancellable"
+        includePeripheryIgnores = false
     }
 }
 
 // swiftlint:disable:next no_grouping_extension
 extension XcodeTemplates.Config {
 
+    // swiftlint:disable:next function_body_length
     public init(from decoder: Decoder) throws {
         let defaults: XcodeTemplates.Config = .init()
         uiFrameworks =
@@ -140,5 +143,8 @@ extension XcodeTemplates.Config {
         cancellableType =
             (try? decoder.decodeString(CodingKeys.cancellableType))
             ?? defaults.cancellableType
+        includePeripheryIgnores =
+            (try? decoder.decode(CodingKeys.includePeripheryIgnores))
+            ?? defaults.includePeripheryIgnores
     }
 }

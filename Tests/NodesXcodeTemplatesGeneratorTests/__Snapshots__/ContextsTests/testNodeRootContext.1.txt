@@ -1,4 +1,4 @@
-▿ 25 key/value pairs
+▿ 26 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -51,6 +51,9 @@
         ▿ (2 elements)
           - key: "type"
           - value: "<flowPropertyType>"
+  ▿ (2 elements)
+    - key: "include_periphery_ignores"
+    - value: true
   ▿ (2 elements)
     - key: "node_name"
     - value: "Root"

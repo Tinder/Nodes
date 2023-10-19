@@ -40,6 +40,7 @@ internal struct RootView: View {
         }
     }
 
+    // periphery:ignore
     /// The view receiver.
     internal weak var receiver: RootReceiver?
 
@@ -64,6 +65,7 @@ internal struct RootView: View {
     }
 }
 
+// periphery:ignore
 /**
  PURPOSE:
  The SwiftUI preview (excluded from release builds).

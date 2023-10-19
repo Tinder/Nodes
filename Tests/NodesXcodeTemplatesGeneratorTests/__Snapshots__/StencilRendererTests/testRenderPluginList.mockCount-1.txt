@@ -2,12 +2,14 @@
 
 import <pluginListImport>
 
+// periphery:ignore
 /**
  PURPOSE:
  The common Flow interface.
  */
 internal protocol <pluginListName>Flow: <viewControllableFlowType> {}
 
+// periphery:ignore
 /**
  PURPOSE:
  The common Listener interface.
@@ -19,6 +21,7 @@ internal protocol <pluginListName>Listener: AnyObject {}
  The common Builder interface.
  */
 internal protocol <pluginListName>Builder: AnyObject {
+    // periphery:ignore
     func build(
         withListener listener: <pluginListName>Listener
     ) -> <pluginListName>Flow
@@ -89,6 +92,7 @@ internal typealias <pluginListName>PluginListKeyType = String
  */
 internal typealias <pluginListName>PluginListStateType = Void
 
+// periphery:ignore
 /**
  PURPOSE:
  The Plugin List protocol (available to mock for testability).
@@ -99,6 +103,7 @@ internal protocol <pluginListName>PluginList {
     func create(key: <pluginListName>PluginListKeyType) -> <pluginListName>Builder?
 }
 
+// periphery:ignore
 /**
  PURPOSE:
  Concrete implementation of the Plugin List providing the Plugin collection and (optionally) the creation order.

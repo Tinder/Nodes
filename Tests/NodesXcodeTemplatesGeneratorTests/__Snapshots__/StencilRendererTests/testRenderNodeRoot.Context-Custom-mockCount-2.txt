@@ -28,9 +28,11 @@ internal final class RootContextImp: AbstractContext
     <cancellableType>
 > {
 
+    // periphery:ignore
     /// The Flow instance.
     internal weak var flow: RootFlowInterface?
 
+    // periphery:ignore
     /// The Listener instance.
     internal weak var listener: RootListener?
 
@@ -38,6 +40,7 @@ internal final class RootContextImp: AbstractContext
     @Published
     internal private(set) var state: RootState
 
+    // periphery:ignore
     /// The Analytics instance.
     private let analytics: RootAnalytics
 

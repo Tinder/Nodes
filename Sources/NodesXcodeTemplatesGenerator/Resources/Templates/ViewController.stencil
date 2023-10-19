@@ -29,6 +29,9 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     {{ view_controller_properties|indent:4 }}
     {% endif %}
 
+    {% if include_periphery_ignores %}
+    // periphery:ignore
+    {% endif %}
     /// The view receiver.
     internal weak var receiver: {{ node_name }}Receiver?
 

@@ -24,7 +24,8 @@ internal struct PluginNodeTemplate: XcodeTemplate {
         context = PluginContext(
             fileHeader: config.fileHeader,
             pluginName: config.variable("productName"),
-            pluginImports: plugin.imports(config: config)
+            pluginImports: plugin.imports(config: config),
+            includePeripheryIgnores: config.includePeripheryIgnores
         )
     }
 }

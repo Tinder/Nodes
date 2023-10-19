@@ -68,8 +68,10 @@ public final class <nodeName>Component: Component
 
      */
 
+    // periphery:ignore
     private let dynamicDependency: <nodeName>DynamicComponentDependency
 
+    // periphery:ignore
     /// The initializer.
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
@@ -101,12 +103,14 @@ public final class <nodeName>Component: Component
  The Builder interface (available to mock for testability).
  */
 internal protocol <nodeName>Builder: AnyObject {
+    // periphery:ignore
     func build(
         withListener listener: <nodeName>Listener,
         viewController: <nodeName>ViewControllable
     ) -> <nodeName>Flow
 }
 
+// periphery:ignore
 /**
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.

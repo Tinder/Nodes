@@ -27,6 +27,7 @@ public struct NodeContext: Context {
     private let publisherType: String
     private let publisherFailureType: String
     private let cancellableType: String
+    private let includePeripheryIgnores: Bool
 
     internal var dictionary: [String: Any] {
         [
@@ -34,6 +35,7 @@ public struct NodeContext: Context {
             "node_name": nodeName,
             "owns_view": true,
             "root_node": false,
+            "include_periphery_ignores": includePeripheryIgnores,
             "analytics_imports": analyticsImports,
             "builder_imports": builderImports,
             "context_imports": contextImports,
@@ -81,7 +83,8 @@ public struct NodeContext: Context {
         viewStateOperators: String,
         publisherType: String,
         publisherFailureType: String,
-        cancellableType: String
+        cancellableType: String,
+        includePeripheryIgnores: Bool
     ) {
         self.fileHeader = fileHeader
         self.nodeName = nodeName
@@ -106,5 +109,6 @@ public struct NodeContext: Context {
         self.publisherType = publisherType
         self.publisherFailureType = publisherFailureType
         self.cancellableType = cancellableType
+        self.includePeripheryIgnores = includePeripheryIgnores
     }
 }

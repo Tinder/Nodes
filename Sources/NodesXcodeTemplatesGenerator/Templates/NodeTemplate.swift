@@ -39,7 +39,8 @@ internal struct NodeTemplate: XcodeTemplate {
             viewStateOperators: config.viewStateOperators,
             publisherType: config.publisherType,
             publisherFailureType: config.publisherFailureType,
-            cancellableType: config.cancellableType
+            cancellableType: config.cancellableType,
+            includePeripheryIgnores: config.includePeripheryIgnores
         )
         propertyList = PropertyList(description: "The source files implementing a Node.",
                                     // swiftlint:disable:next force_unwrapping

@@ -26,9 +26,11 @@ internal final class <nodeName>ContextImp: AbstractContext
     <cancellableType>
 > {
 
+    // periphery:ignore
     /// The Flow instance.
     internal weak var flow: <nodeName>FlowInterface?
 
+    // periphery:ignore
     /// The Listener instance.
     internal weak var listener: <nodeName>Listener?
 
@@ -36,6 +38,7 @@ internal final class <nodeName>ContextImp: AbstractContext
     @Published
     internal private(set) var state: <nodeName>State
 
+    // periphery:ignore
     /// The Analytics instance.
     private let analytics: <nodeName>Analytics
 

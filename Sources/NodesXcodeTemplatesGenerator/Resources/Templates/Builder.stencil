@@ -86,8 +86,14 @@ public final class {{ node_name }}Component: Component
 
      */
 
+    {% if include_periphery_ignores %}
+    // periphery:ignore
+    {% endif %}
     private let dynamicDependency: {{ node_name }}DynamicComponentDependency
 
+    {% if include_periphery_ignores %}
+    // periphery:ignore
+    {% endif %}
     /// The initializer.
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
@@ -119,12 +125,18 @@ public final class {{ node_name }}Component: Component
  The Builder interface (available to mock for testability).
  */
 internal protocol {{ node_name }}Builder: AnyObject {
+    {% if include_periphery_ignores %}
+    // periphery:ignore
+    {% endif %}
     func build(
         withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}
         viewController: {{ node_name }}ViewControllable{% endif +%}
     ) -> {{ node_name }}Flow
 }
 
+{% if include_periphery_ignores %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.

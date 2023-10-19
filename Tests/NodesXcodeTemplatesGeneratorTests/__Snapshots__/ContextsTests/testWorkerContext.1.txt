@@ -1,10 +1,13 @@
-▿ 4 key/value pairs
+▿ 5 key/value pairs
   ▿ (2 elements)
     - key: "cancellable_type"
     - value: "<cancellableType>"
   ▿ (2 elements)
     - key: "file_header"
     - value: "<fileHeader>"
+  ▿ (2 elements)
+    - key: "include_periphery_ignores"
+    - value: true
   ▿ (2 elements)
     - key: "worker_imports"
     ▿ value: 1 element

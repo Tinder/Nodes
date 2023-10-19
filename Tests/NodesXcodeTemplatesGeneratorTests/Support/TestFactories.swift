@@ -70,7 +70,8 @@ extension TestFactories {
             viewStateOperators: isStringIdentifierMocked ? "<viewStateOperators>" : "",
             publisherType: "<publisherType>",
             publisherFailureType: isStringIdentifierMocked ? "<publisherFailureType>" : "",
-            cancellableType: "<cancellableType>"
+            cancellableType: "<cancellableType>",
+            includePeripheryIgnores: mockCount > 0
         )
     }
 
@@ -98,7 +99,8 @@ extension TestFactories {
             viewStateOperators: isStringIdentifierMocked ? "<viewStateOperators>" : "",
             publisherType: "<publisherType>",
             publisherFailureType: isStringIdentifierMocked ? "<publisherFailureType>" : "",
-            cancellableType: "<cancellableType>"
+            cancellableType: "<cancellableType>",
+            includePeripheryIgnores: mockCount > 0
         )
     }
 
@@ -116,7 +118,8 @@ extension TestFactories {
             flowProperties: .mock(with: "flowProperty", count: mockCount),
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            cancellableType: "<cancellableType>"
+            cancellableType: "<cancellableType>",
+            includePeripheryIgnores: mockCount > 0
         )
     }
 
@@ -125,7 +128,8 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             returnType: "<returnType>",
-            pluginImports: .mock(with: "pluginImport", count: mockCount)
+            pluginImports: .mock(with: "pluginImport", count: mockCount),
+            includePeripheryIgnores: mockCount > 0
         )
     }
 
@@ -133,7 +137,8 @@ extension TestFactories {
         PluginContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
-            pluginImports: .mock(with: "pluginImport", count: mockCount)
+            pluginImports: .mock(with: "pluginImport", count: mockCount),
+            includePeripheryIgnores: mockCount > 0
         )
     }
 
@@ -142,7 +147,8 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
             pluginListImports: .mock(with: "pluginListImport", count: mockCount),
-            viewControllableFlowType: "<viewControllableFlowType>"
+            viewControllableFlowType: "<viewControllableFlowType>",
+            includePeripheryIgnores: mockCount > 0
         )
     }
 
@@ -151,7 +157,8 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",
             workerImports: .mock(with: "workerImport", count: mockCount),
-            cancellableType: "<cancellableType>"
+            cancellableType: "<cancellableType>",
+            includePeripheryIgnores: mockCount > 0
         )
     }
 }
