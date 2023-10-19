@@ -22,7 +22,6 @@ extension XcodeTemplates {
         }
 
         public var uiFrameworks: [UIFramework]
-        public var includePeripheryIgnores: Bool
         public var fileHeader: String
         public var baseImports: Set<String>
         public var reactiveImports: Set<String>
@@ -37,6 +36,7 @@ extension XcodeTemplates {
         public var publisherType: String
         public var publisherFailureType: String
         public var cancellableType: String
+        public var includePeripheryIgnores: Bool
         public var isViewInjectedTemplateEnabled: Bool
 
         public init(
@@ -64,7 +64,6 @@ extension XcodeTemplates.Config {
 
     public init() {
         uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
-        isViewInjectedTemplateEnabled = true
         fileHeader = "//___FILEHEADER___"
         baseImports = []
         reactiveImports = ["Combine"]
@@ -86,6 +85,7 @@ extension XcodeTemplates.Config {
         publisherFailureType = "Never"
         cancellableType = "AnyCancellable"
         includePeripheryIgnores = false
+        isViewInjectedTemplateEnabled = true
     }
 }
 
@@ -98,9 +98,6 @@ extension XcodeTemplates.Config {
         uiFrameworks =
             (try? decoder.decode(CodingKeys.uiFrameworks))
             ?? defaults.uiFrameworks
-        isViewInjectedTemplateEnabled =
-            (try? decoder.decode(CodingKeys.isViewInjectedTemplateEnabled))
-            ?? defaults.isViewInjectedTemplateEnabled
         fileHeader =
             (try? decoder.decodeString(CodingKeys.fileHeader))
             ?? defaults.fileHeader
@@ -146,5 +143,8 @@ extension XcodeTemplates.Config {
         includePeripheryIgnores =
             (try? decoder.decode(CodingKeys.includePeripheryIgnores))
             ?? defaults.includePeripheryIgnores
+        isViewInjectedTemplateEnabled =
+            (try? decoder.decode(CodingKeys.isViewInjectedTemplateEnabled))
+            ?? defaults.isViewInjectedTemplateEnabled
     }
 }

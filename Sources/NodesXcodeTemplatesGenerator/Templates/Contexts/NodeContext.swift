@@ -35,7 +35,6 @@ public struct NodeContext: Context {
             "node_name": nodeName,
             "owns_view": true,
             "root_node": false,
-            "include_periphery_ignores": includePeripheryIgnores,
             "analytics_imports": analyticsImports,
             "builder_imports": builderImports,
             "context_imports": contextImports,
@@ -56,7 +55,8 @@ public struct NodeContext: Context {
             "view_state_operators": viewStateOperators,
             "publisher_type": publisherType,
             "publisher_failure_type": publisherFailureType,
-            "cancellable_type": cancellableType
+            "cancellable_type": cancellableType,
+            "include_periphery_ignores": includePeripheryIgnores
         ]
     }
 
