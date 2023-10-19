@@ -100,12 +100,12 @@ public final class RootComponent: Component
 
 // MARK: - Builder
 
+// periphery:ignore
 /**
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
 internal protocol RootBuilder: AnyObject {
-    // periphery:ignore
     func build(
         withListener listener: RootListener
     ) -> RootFlow

@@ -8,7 +8,7 @@ public struct PluginContext: Context {
     private let pluginName: String
     private let returnType: String?
     private let pluginImports: [String]
-    private let includePeripheryIgnores: Bool
+    private let isPeripheryCommentEnabled: Bool
 
     internal var dictionary: [String: Any] {
         let dictionary: [String: Any]
@@ -18,14 +18,14 @@ public struct PluginContext: Context {
                 "plugin_name": pluginName,
                 "return_type": returnType,
                 "plugin_imports": pluginImports,
-                "include_periphery_ignores": includePeripheryIgnores
+                "is_periphery_comment_enabled": isPeripheryCommentEnabled
             ]
         } else {
             dictionary = [
                 "file_header": fileHeader,
                 "plugin_name": pluginName,
                 "plugin_imports": pluginImports,
-                "include_periphery_ignores": includePeripheryIgnores
+                "is_periphery_comment_enabled": isPeripheryCommentEnabled
             ]
         }
         return dictionary
@@ -35,13 +35,13 @@ public struct PluginContext: Context {
         fileHeader: String,
         pluginName: String,
         pluginImports: Set<String>,
-        includePeripheryIgnores: Bool
+        isPeripheryCommentEnabled: Bool
     ) {
         self.fileHeader = fileHeader
         self.pluginName = pluginName
         self.returnType = nil
         self.pluginImports = pluginImports.sortedImports()
-        self.includePeripheryIgnores = includePeripheryIgnores
+        self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
     }
 
     public init(
@@ -49,12 +49,12 @@ public struct PluginContext: Context {
         pluginName: String,
         returnType: String,
         pluginImports: Set<String>,
-        includePeripheryIgnores: Bool
+        isPeripheryCommentEnabled: Bool
     ) {
         self.fileHeader = fileHeader
         self.pluginName = pluginName
         self.returnType = returnType
         self.pluginImports = pluginImports.sortedImports()
-        self.includePeripheryIgnores = includePeripheryIgnores
+        self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
     }
 }

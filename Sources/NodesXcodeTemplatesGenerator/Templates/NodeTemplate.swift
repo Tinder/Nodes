@@ -40,7 +40,7 @@ internal struct NodeTemplate: XcodeTemplate {
             publisherType: config.publisherType,
             publisherFailureType: config.publisherFailureType,
             cancellableType: config.cancellableType,
-            includePeripheryIgnores: config.includePeripheryIgnores
+            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
         )
         propertyList = PropertyList(description: "The source files implementing a Node.",
                                     // swiftlint:disable:next force_unwrapping

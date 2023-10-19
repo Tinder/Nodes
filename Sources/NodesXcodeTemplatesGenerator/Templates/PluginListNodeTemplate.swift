@@ -26,7 +26,7 @@ internal struct PluginListNodeTemplate: XcodeTemplate {
             pluginListName: config.variable("productName"),
             pluginListImports: pluginList.imports(config: config),
             viewControllableFlowType: config.viewControllableFlowType,
-            includePeripheryIgnores: config.includePeripheryIgnores
+            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
         )
     }
 }

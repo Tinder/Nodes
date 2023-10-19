@@ -36,7 +36,7 @@ extension XcodeTemplates {
         public var publisherType: String
         public var publisherFailureType: String
         public var cancellableType: String
-        public var includePeripheryIgnores: Bool
+        public var isPeripheryCommentEnabled: Bool
         public var isViewInjectedTemplateEnabled: Bool
 
         public init(
@@ -84,7 +84,7 @@ extension XcodeTemplates.Config {
         publisherType = "AnyPublisher"
         publisherFailureType = "Never"
         cancellableType = "AnyCancellable"
-        includePeripheryIgnores = false
+        isPeripheryCommentEnabled = false
         isViewInjectedTemplateEnabled = true
     }
 }
@@ -140,9 +140,9 @@ extension XcodeTemplates.Config {
         cancellableType =
             (try? decoder.decodeString(CodingKeys.cancellableType))
             ?? defaults.cancellableType
-        includePeripheryIgnores =
-            (try? decoder.decode(CodingKeys.includePeripheryIgnores))
-            ?? defaults.includePeripheryIgnores
+        isPeripheryCommentEnabled =
+            (try? decoder.decode(CodingKeys.isPeripheryCommentEnabled))
+            ?? defaults.isPeripheryCommentEnabled
         isViewInjectedTemplateEnabled =
             (try? decoder.decode(CodingKeys.isViewInjectedTemplateEnabled))
             ?? defaults.isViewInjectedTemplateEnabled

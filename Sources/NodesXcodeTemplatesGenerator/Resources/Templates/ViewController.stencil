@@ -29,7 +29,7 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     {{ view_controller_properties|indent:4 }}
     {% endif %}
 
-    {% if include_periphery_ignores %}
+    {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
     /// The view receiver.

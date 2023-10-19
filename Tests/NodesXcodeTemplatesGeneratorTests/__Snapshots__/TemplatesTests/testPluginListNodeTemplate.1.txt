@@ -1,7 +1,7 @@
 ▿ PluginListNodeTemplate
   ▿ context: PluginListContext
     - fileHeader: "<fileHeader>"
-    - includePeripheryIgnores: false
+    - isPeripheryCommentEnabled: false
     ▿ pluginListImports: 3 elements
       - "<baseImport>"
       - "<dependencyInjectionImport>"

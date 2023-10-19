@@ -6,7 +6,7 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-{% if include_periphery_ignores %}
+{% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
 /**
@@ -15,7 +15,7 @@ import {{ import }}
  */
 internal protocol {{ worker_name }}Worker: Worker {}
 
-{% if include_periphery_ignores %}
+{% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
 /**

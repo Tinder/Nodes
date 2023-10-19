@@ -86,12 +86,12 @@ public final class {{ node_name }}Component: Component
 
      */
 
-    {% if include_periphery_ignores %}
+    {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
     private let dynamicDependency: {{ node_name }}DynamicComponentDependency
 
-    {% if include_periphery_ignores %}
+    {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
     /// The initializer.
@@ -120,21 +120,21 @@ public final class {{ node_name }}Component: Component
 
 // MARK: - Builder
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
 internal protocol {{ node_name }}Builder: AnyObject {
-    {% if include_periphery_ignores %}
-    // periphery:ignore
-    {% endif %}
     func build(
         withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}
         viewController: {{ node_name }}ViewControllable{% endif +%}
     ) -> {{ node_name }}Flow
 }
 
-{% if include_periphery_ignores %}
+{% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
 /**

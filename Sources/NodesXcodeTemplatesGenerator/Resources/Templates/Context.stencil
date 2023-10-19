@@ -35,26 +35,26 @@ internal final class {{ node_name }}ContextImp: AbstractContext
     {{ cancellable_type }}
 > {
 
-    {% if include_periphery_ignores %}
+    {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
     /// The Flow instance.
     internal weak var flow: {{ node_name }}FlowInterface?
 
-    {% if include_periphery_ignores %}
+    {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
     /// The Listener instance.
     internal weak var listener: {{ node_name }}Listener?
 
-    {% if include_periphery_ignores and not owns_view %}
+    {% if is_periphery_comment_enabled and not owns_view %}
     // periphery:ignore
     {% endif %}
     /// The State instance.
     @Published
     internal private(set) var state: {{ node_name }}State
 
-    {% if include_periphery_ignores %}
+    {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
     /// The Analytics instance.

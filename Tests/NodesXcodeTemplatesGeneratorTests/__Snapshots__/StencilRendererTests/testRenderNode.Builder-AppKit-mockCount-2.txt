@@ -100,12 +100,12 @@ public final class <nodeName>Component: Component
 
 // MARK: - Builder
 
+// periphery:ignore
 /**
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
 internal protocol <nodeName>Builder: AnyObject {
-    // periphery:ignore
     func build(
         withListener listener: <nodeName>Listener
     ) -> <nodeName>Flow

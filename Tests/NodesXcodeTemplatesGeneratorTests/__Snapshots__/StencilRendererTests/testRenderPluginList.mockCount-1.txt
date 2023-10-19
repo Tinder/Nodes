@@ -16,12 +16,12 @@ internal protocol <pluginListName>Flow: <viewControllableFlowType> {}
  */
 internal protocol <pluginListName>Listener: AnyObject {}
 
+// periphery:ignore
 /**
  PURPOSE:
  The common Builder interface.
  */
 internal protocol <pluginListName>Builder: AnyObject {
-    // periphery:ignore
     func build(
         withListener listener: <pluginListName>Listener
     ) -> <pluginListName>Flow

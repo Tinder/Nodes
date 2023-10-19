@@ -78,12 +78,12 @@ public final class {{ node_name }}Component: Component
 
      */
 
-    {% if include_periphery_ignores %}
+    {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
     private let dynamicDependency: {{ node_name }}DynamicComponentDependency
 
-    {% if include_periphery_ignores %}
+    {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
     /// The initializer.
@@ -112,7 +112,7 @@ public final class {{ node_name }}Component: Component
 
 // MARK: - Builder
 
-{% if include_periphery_ignores %}
+{% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
 /**
@@ -125,7 +125,7 @@ internal protocol {{ node_name }}Builder: AnyObject {
     ) -> {{ node_name }}Flow
 }
 
-{% if include_periphery_ignores %}
+{% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
 /**

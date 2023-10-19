@@ -56,7 +56,7 @@ internal struct {{ node_name }}View: View {
         }
     }
 
-    {% if include_periphery_ignores %}
+    {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
     /// The view receiver.
@@ -85,7 +85,7 @@ internal struct {{ node_name }}View: View {
     }
 }
 
-{% if include_periphery_ignores %}
+{% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
 /**

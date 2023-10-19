@@ -25,7 +25,7 @@ internal struct PluginNodeTemplate: XcodeTemplate {
             fileHeader: config.fileHeader,
             pluginName: config.variable("productName"),
             pluginImports: plugin.imports(config: config),
-            includePeripheryIgnores: config.includePeripheryIgnores
+            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
         )
     }
 }
