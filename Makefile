@@ -68,6 +68,12 @@ endif
 rules:
 	@swiftlint rules | lint-rules
 
+.PHONY: test
+test: target ?= Nodes
+test: simulator ?= iPhone 14
+test:
+	xcodebuild test $(flags) -scheme "$(target)-Package" -destination "name=$(simulator),OS=latest"
+
 .PHONY: delete-snapshots
 delete-snapshots:
 	@for snapshots in $$(find Tests -type d -name "__Snapshots__"); \
@@ -75,11 +81,6 @@ delete-snapshots:
 		rm -rf "$$snapshots"; \
 		echo "Deleted $$snapshots"; \
 	done
-
-.PHONY: record-snapshots
-record-snapshots: delete-snapshots	
-record-snapshots:
-	xcodebuild test -quiet -scheme "Nodes-Package" -destination "name=iPhone 14 Pro,OS=latest"
 
 .PHONY: preview
 preview: target ?= Nodes
