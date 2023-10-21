@@ -6,17 +6,21 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
+{% endif %}
 internal protocol {{ node_name }}Listener: AnyObject {}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
+{% endif %}
 {% if root_node %}
 internal protocol {{ node_name }}FlowInterface: Flow {
     func didBecomeReady()
@@ -25,11 +29,13 @@ internal protocol {{ node_name }}FlowInterface: Flow {
 internal protocol {{ node_name }}FlowInterface: Flow {}
 {% endif %}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.
  */
+{% endif %}
 internal final class {{ node_name }}ContextImp: AbstractContext
 <
     {{ cancellable_type }}

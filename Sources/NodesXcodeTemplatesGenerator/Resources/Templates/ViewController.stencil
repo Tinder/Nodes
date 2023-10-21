@@ -6,11 +6,13 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
  */
+{% endif %}
 {% if root_node %}
 internal protocol {{ node_name }}Receiver: AnyObject {
     func viewDidAppear()
@@ -19,10 +21,12 @@ internal protocol {{ node_name }}Receiver: AnyObject {
 internal protocol {{ node_name }}Receiver: AnyObject {}
 {% endif %}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Concrete implementation of the UI.
  */
+{% endif %}
 internal final class {{ node_name }}ViewController: {{ view_controller_type }}, StateObserver {
     {% if view_controller_properties %}
 

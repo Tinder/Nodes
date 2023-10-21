@@ -1,39 +1,15 @@
 <fileHeader>
 
-/**
- PURPOSE:
- The interface of the Flow.
- */
 internal protocol RootFlow: <viewControllableFlowType> {}
 
-/**
- PURPOSE:
- Declares the dependencies required by this Node that will be injected (not created by this Node itself).
- */
 public protocol RootDependency: Dependency {}
 
-/**
- PURPOSE:
- A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
-
- Can be a tuple or struct containing multiple values when necessary.
- */
 internal typealias RootDynamicBuildDependency = RootListener
 
-/**
- PURPOSE:
- A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
-
- Can be a tuple or struct containing multiple values when necessary.
- */
 internal typealias RootDynamicComponentDependency = Void
 
 // MARK: - Component
 
-/**
- PURPOSE:
- Declares dependencies that are owned by this Node.
- */
 public final class RootComponent: Component
 <
     RootDependency
@@ -92,20 +68,12 @@ public final class RootComponent: Component
 
 // MARK: - Builder
 
-/**
- PURPOSE:
- The Builder interface (available to mock for testability).
- */
 internal protocol RootBuilder: AnyObject {
     func build(
         withListener listener: RootListener
     ) -> RootFlow
 }
 
-/**
- PURPOSE:
- Concrete implementation of the Builder, where everything is created and associated.
- */
 internal final class RootBuilderImp: AbstractBuilder
 <
     RootComponent,

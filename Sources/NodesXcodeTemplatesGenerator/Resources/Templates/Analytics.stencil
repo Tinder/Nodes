@@ -16,18 +16,22 @@ import {{ import }}
  can either be an existing one defined outside of the Node or can be a new one added to this file.
  */
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The interface for analytics tracked by this Node.
 
  Add requirements to this protocol to provide analytics tracking methods for this Node.
  */
+{% endif %}
 internal protocol {{ node_name }}Analytics: AnyObject {}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Custom analytics implementation for this Node.
  */
+{% endif %}
 {% if analytics_properties %}
 internal final class {{ node_name }}AnalyticsImp {
 

@@ -1,37 +1,17 @@
 <fileHeader>
 
-/**
- PURPOSE:
- The common Flow interface.
- */
 internal protocol <pluginListName>Flow: <viewControllableFlowType> {}
 
-/**
- PURPOSE:
- The common Listener interface.
- */
 internal protocol <pluginListName>Listener: AnyObject {}
 
-/**
- PURPOSE:
- The common Builder interface.
- */
 internal protocol <pluginListName>Builder: AnyObject {
     func build(
         withListener listener: <pluginListName>Listener
     ) -> <pluginListName>Flow
 }
 
-/**
- PURPOSE:
- Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
- */
 public protocol <pluginListName>PluginListDependency: Dependency {}
 
-/**
- PURPOSE:
- Declares dependencies that are owned by this Plugin List.
- */
 public final class <pluginListName>PluginListComponent: Component
 <
     <pluginListName>PluginListDependency
@@ -75,32 +55,16 @@ public final class <pluginListName>PluginListComponent: Component
      */
 }
 
-/**
- PURPOSE:
- The type used for the keys of the Plugin List (can be any `Hashable` type such as `String` or an enumeration).
- */
 internal typealias <pluginListName>PluginListKeyType = String
 
-/**
- PURPOSE:
- To provide additional state used in determining if the plugins are enabled (can be any type relevant to the plugins).
- */
 internal typealias <pluginListName>PluginListStateType = Void
 
-/**
- PURPOSE:
- The Plugin List protocol (available to mock for testability).
- */
 internal protocol <pluginListName>PluginList {
     func createAll() -> [<pluginListName>Builder]
     func create() -> <pluginListName>Builder?
     func create(key: <pluginListName>PluginListKeyType) -> <pluginListName>Builder?
 }
 
-/**
- PURPOSE:
- Concrete implementation of the Plugin List providing the Plugin collection and (optionally) the creation order.
- */
 internal final class <pluginListName>PluginListImp: PluginList
 <
     <pluginListName>PluginListKeyType,

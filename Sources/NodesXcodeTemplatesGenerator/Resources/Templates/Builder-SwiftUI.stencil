@@ -6,16 +6,20 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The interface of the Flow.
  */
+{% endif %}
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
+{% endif %}
 {% if dependencies %}
 public protocol {{ node_name }}Dependency: Dependency {
     {% for dependency in dependencies %}
@@ -26,28 +30,34 @@ public protocol {{ node_name }}Dependency: Dependency {
 public protocol {{ node_name }}Dependency: Dependency {}
 {% endif %}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
  Can be a tuple or struct containing multiple values when necessary.
  */
+{% endif %}
 internal typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listener
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 
  Can be a tuple or struct containing multiple values when necessary.
  */
+{% endif %}
 internal typealias {{ node_name }}DynamicComponentDependency = Void
 
 // MARK: - Component
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
+{% endif %}
 public final class {{ node_name }}Component: Component
 <
     {{ node_name }}Dependency
@@ -115,10 +125,12 @@ public final class {{ node_name }}Component: Component
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
+{% endif %}
 internal protocol {{ node_name }}Builder: AnyObject {
     func build(
         withListener listener: {{ node_name }}Listener
@@ -128,10 +140,12 @@ internal protocol {{ node_name }}Builder: AnyObject {
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.
  */
+{% endif %}
 internal final class {{ node_name }}BuilderImp: AbstractBuilder
 <
     {{ node_name }}Component,

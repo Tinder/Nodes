@@ -9,19 +9,23 @@ import {{ import }}
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Encapsulates work to be performed by the Node.
  */
+{% endif %}
 internal protocol {{ worker_name }}Worker: Worker {}
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Concrete implementation of the Worker.
  */
+{% endif %}
 internal final class {{ worker_name }}WorkerImp: AbstractWorker
 <
     {{ cancellable_type }}

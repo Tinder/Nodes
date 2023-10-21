@@ -9,44 +9,54 @@ import {{ import }}
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The common Flow interface.
  */
+{% endif %}
 internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} {}
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The common Listener interface.
  */
+{% endif %}
 internal protocol {{ plugin_list_name }}Listener: AnyObject {}
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The common Builder interface.
  */
+{% endif %}
 internal protocol {{ plugin_list_name }}Builder: AnyObject {
     func build(
         withListener listener: {{ plugin_list_name }}Listener
     ) -> {{ plugin_list_name }}Flow
 }
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
  */
+{% endif %}
 public protocol {{ plugin_list_name }}PluginListDependency: Dependency {}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Declares dependencies that are owned by this Plugin List.
  */
+{% endif %}
 public final class {{ plugin_list_name }}PluginListComponent: Component
 <
     {{ plugin_list_name }}PluginListDependency
@@ -90,25 +100,31 @@ public final class {{ plugin_list_name }}PluginListComponent: Component
      */
 }
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The type used for the keys of the Plugin List (can be any `Hashable` type such as `String` or an enumeration).
  */
+{% endif %}
 internal typealias {{ plugin_list_name }}PluginListKeyType = String
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  To provide additional state used in determining if the plugins are enabled (can be any type relevant to the plugins).
  */
+{% endif %}
 internal typealias {{ plugin_list_name }}PluginListStateType = Void
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The Plugin List protocol (available to mock for testability).
  */
+{% endif %}
 internal protocol {{ plugin_list_name }}PluginList {
     func createAll() -> [{{ plugin_list_name }}Builder]
     func create() -> {{ plugin_list_name }}Builder?
@@ -118,10 +134,12 @@ internal protocol {{ plugin_list_name }}PluginList {
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Concrete implementation of the Plugin List providing the Plugin collection and (optionally) the creation order.
  */
+{% endif %}
 internal final class {{ plugin_list_name }}PluginListImp: PluginList
 <
     {{ plugin_list_name }}PluginListKeyType,

@@ -7,7 +7,7 @@
     - "NeedleFoundation"
   - fileHeader: "//___FILEHEADER___"
   - flowProperties: 0 elements
-  - isDocumentationEnabled: false
+  - isDocumentationEnabled: true
   - isPeripheryCommentEnabled: false
   - isViewInjectedTemplateEnabled: true
   - publisherFailureType: "Never"

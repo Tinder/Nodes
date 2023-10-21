@@ -6,25 +6,31 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The interface that the Flow will speak to the Context through. Used for informing the Context of
  presentation lifecycle events, as an example.
  */
+{% endif %}
 internal protocol {{ node_name }}ContextInterface: Context {}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The interface of the View used for presenting the View of child Nodes. May inherit additional base
  protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
  implementation as necessary.
  */
+{% endif %}
 internal protocol {{ node_name }}ViewControllable: {{ view_controllable_type }} {}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Responsible for presenting views and starting child Flows, and should not contain business logic.
  */
+{% endif %}
 internal final class {{ node_name }}FlowImp: AbstractFlow
 <
     {{ node_name }}ContextInterface,

@@ -6,16 +6,20 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
  */
+{% endif %}
 public protocol {{ plugin_name }}PluginDependency: Dependency {}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Declares dependencies that are owned by this Plugin.
  */
+{% endif %}
 public final class {{ plugin_name }}PluginComponent: Component
 <
     {{ plugin_name }}PluginDependency
@@ -65,19 +69,23 @@ public final class {{ plugin_name }}PluginComponent: Component
     {% endif %}
 }
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the Plugin).
  */
+{% endif %}
 internal typealias {{ plugin_name }}PluginStateType = Void
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The Plugin interface (available to mock for testability).
  */
+{% endif %}
 internal protocol {{ plugin_name }}Plugin {
     {% if return_type %}
     func create() -> {{ return_type }}?
@@ -89,10 +97,12 @@ internal protocol {{ plugin_name }}Plugin {
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Concrete implementation of the Plugin.
  */
+{% endif %}
 internal final class {{ plugin_name }}PluginImp: Plugin
 <
     {{ plugin_name }}PluginComponent,

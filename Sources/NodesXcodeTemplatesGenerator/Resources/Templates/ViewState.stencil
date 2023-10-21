@@ -6,16 +6,20 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The view state of the view.
  */
+{% endif %}
 internal struct {{ node_name }}ViewState: Equatable {}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The factory used to create view state from the state of the Node.
  */
+{% endif %}
 internal class {{ node_name }}ViewStateFactory: Nodes.Transform {
 
     /// The factory method in which state is transformed into view state.

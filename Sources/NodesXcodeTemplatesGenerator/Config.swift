@@ -85,7 +85,7 @@ extension XcodeTemplates.Config {
         publisherType = "AnyPublisher"
         publisherFailureType = "Never"
         cancellableType = "AnyCancellable"
-        isDocumentationEnabled = false
+        isDocumentationEnabled = true
         isPeripheryCommentEnabled = false
         isViewInjectedTemplateEnabled = true
     }

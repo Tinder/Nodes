@@ -6,8 +6,10 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The state of the Node.
  */
+{% endif %}
 internal struct {{ node_name }}State: Equatable {}

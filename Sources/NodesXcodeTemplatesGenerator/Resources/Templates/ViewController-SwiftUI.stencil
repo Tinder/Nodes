@@ -6,11 +6,13 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
  */
+{% endif %}
 {% if root_node and view_controller_methods %}
 internal protocol {{ node_name }}Receiver: AnyObject {
     func viewDidAppear()
@@ -19,10 +21,12 @@ internal protocol {{ node_name }}Receiver: AnyObject {
 internal protocol {{ node_name }}Receiver: AnyObject {}
 {% endif %}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Host of the SwiftUI view.
  */
+{% endif %}
 internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 <
     {{ node_name }}View
@@ -43,10 +47,12 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 
 extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
 
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Concrete implementation of the View.
  */
+{% endif %}
 internal struct {{ node_name }}View: View {
 
     /// The body of the view.
@@ -88,10 +94,12 @@ internal struct {{ node_name }}View: View {
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
+{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The SwiftUI preview (excluded from release builds).
  */
+{% endif %}
 internal struct {{ node_name }}View_Previews: PreviewProvider {
 
     internal static var previews: some View {

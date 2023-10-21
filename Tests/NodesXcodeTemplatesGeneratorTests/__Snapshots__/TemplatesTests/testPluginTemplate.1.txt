@@ -1,7 +1,7 @@
 ▿ PluginTemplate
   ▿ context: PluginContext
     - fileHeader: "<fileHeader>"
-    - isDocumentationEnabled: false
+    - isDocumentationEnabled: true
     - isPeripheryCommentEnabled: false
     ▿ pluginImports: 3 elements
       - "<baseImport>"

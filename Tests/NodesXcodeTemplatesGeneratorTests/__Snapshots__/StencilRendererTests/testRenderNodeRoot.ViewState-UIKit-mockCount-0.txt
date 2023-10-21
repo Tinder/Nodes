@@ -1,15 +1,7 @@
 <fileHeader>
 
-/**
- PURPOSE:
- The view state of the view.
- */
 internal struct RootViewState: Equatable {}
 
-/**
- PURPOSE:
- The factory used to create view state from the state of the Node.
- */
 internal class RootViewStateFactory: Nodes.Transform {
 
     /// The factory method in which state is transformed into view state.
