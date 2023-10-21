@@ -8,8 +8,6 @@ internal typealias <nodeName>DynamicBuildDependency = <nodeName>Listener
 
 internal typealias <nodeName>DynamicComponentDependency = Void
 
-// MARK: - Component
-
 public final class <nodeName>Component: Component
 <
     <nodeName>Dependency
@@ -59,8 +57,6 @@ public final class <nodeName>Component: Component
 
      */
 }
-
-// MARK: - Builder
 
 internal protocol <nodeName>Builder: AnyObject {
     func build(

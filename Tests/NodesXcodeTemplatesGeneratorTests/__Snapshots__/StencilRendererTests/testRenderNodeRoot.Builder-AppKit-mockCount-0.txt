@@ -8,8 +8,6 @@ internal typealias RootDynamicBuildDependency = RootListener
 
 internal typealias RootDynamicComponentDependency = Void
 
-// MARK: - Component
-
 public final class RootComponent: Component
 <
     RootDependency
@@ -59,8 +57,6 @@ public final class RootComponent: Component
 
      */
 }
-
-// MARK: - Builder
 
 internal protocol RootBuilder: AnyObject {
     func build(

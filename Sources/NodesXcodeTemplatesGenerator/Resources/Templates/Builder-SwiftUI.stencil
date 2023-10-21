@@ -50,9 +50,9 @@ internal typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listen
 {% endif %}
 internal typealias {{ node_name }}DynamicComponentDependency = Void
 
+{% if is_documentation_enabled %}
 // MARK: - Component
 
-{% if is_documentation_enabled %}
 /**
  PURPOSE:
  Declares dependencies that are owned by this Node.
@@ -122,8 +122,10 @@ public final class {{ node_name }}Component: Component
      */
 }
 
+{% if is_documentation_enabled %}
 // MARK: - Builder
 
+{% endif %}
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
