@@ -6,6 +6,7 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
+{% if is_documentation_enabled %}
 /*
  INSTRUCTIONS:
 
@@ -16,7 +17,6 @@ import {{ import }}
  can either be an existing one defined outside of the Node or can be a new one added to this file.
  */
 
-{% if is_documentation_enabled %}
 /**
  PURPOSE:
  The interface for analytics tracked by this Node.
