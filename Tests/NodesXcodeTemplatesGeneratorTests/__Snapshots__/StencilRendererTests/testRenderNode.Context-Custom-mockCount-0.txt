@@ -9,23 +9,14 @@ internal final class <nodeName>ContextImp: AbstractContext
     <cancellableType>
 > {
 
-    /// The Flow instance.
     internal weak var flow: <nodeName>FlowInterface?
 
-    /// The Listener instance.
     internal weak var listener: <nodeName>Listener?
 
-    /// The State instance.
-    @Published
     internal private(set) var state: <nodeName>State
 
-    /// The Analytics instance.
     private let analytics: <nodeName>Analytics
 
-    /// The initializer.
-    /// - Parameters:
-    ///   - workers: The Worker instances
-    ///   - analytics: The Analytics instance
     internal init(
         workers: [Worker],
         analytics: <nodeName>Analytics
@@ -35,10 +26,8 @@ internal final class <nodeName>ContextImp: AbstractContext
         super.init(workers: workers)
     }
 
-    /// Implement logic to execute when the Context becomes active.
     override internal func didBecomeActive() {}
 
-    /// Implement logic to execute when the Context will become inactive.
     override internal func willResignActive() {}
 }
 

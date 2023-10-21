@@ -44,36 +44,46 @@ internal final class {{ node_name }}ContextImp: AbstractContext
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
+    {% if is_documentation_enabled %}
     /// The Flow instance.
+    {% endif %}
     internal weak var flow: {{ node_name }}FlowInterface?
 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
+    {% if is_documentation_enabled %}
     /// The Listener instance.
+    {% endif %}
     internal weak var listener: {{ node_name }}Listener?
 
     {% if is_periphery_comment_enabled and not owns_view %}
     // periphery:ignore
     {% endif %}
+    {% if is_documentation_enabled %}
     /// The State instance.
     @Published
+    {% endif %}
     internal private(set) var state: {{ node_name }}State
 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
+    {% if is_documentation_enabled %}
     /// The Analytics instance.
+    {% endif %}
     private let analytics: {{ node_name }}Analytics
     {% if root_node %}
 
     private var isReady: Bool = false
     {% endif %}
 
+    {% if is_documentation_enabled %}
     /// The initializer.
     /// - Parameters:
     ///   - workers: The Worker instances
     ///   - analytics: The Analytics instance
+    {% endif %}
     internal init(
         workers: [Worker],
         analytics: {{ node_name }}Analytics
@@ -83,10 +93,14 @@ internal final class {{ node_name }}ContextImp: AbstractContext
         super.init(workers: workers)
     }
 
+    {% if is_documentation_enabled %}
     /// Implement logic to execute when the Context becomes active.
+    {% endif %}
     override internal func didBecomeActive() {}
 
+    {% if is_documentation_enabled %}
     /// Implement logic to execute when the Context will become inactive.
+    {% endif %}
     override internal func willResignActive() {}
 }
 

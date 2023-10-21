@@ -36,23 +36,33 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
+    {% if is_documentation_enabled %}
     /// The view receiver.
+    {% endif %}
     internal weak var receiver: {{ node_name }}Receiver?
 
+    {% if is_documentation_enabled %}
     /// The collection of cancellable instances.
+    {% endif %}
     private var cancellables: Set<{{ cancellable_type }}> = .init()
 
+    {% if is_documentation_enabled %}
     /// The initial view state.
+    {% endif %}
     private let initialState: {{ node_name }}ViewState
 
+    {% if is_documentation_enabled %}
     /// The view state publisher.
+    {% endif %}
     private let statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
 
+    {% if is_documentation_enabled %}
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialState: The initial view state.
     ///   - statePublisher: The view state publisher.
+    {% endif %}
     internal init(
         initialState: {{ node_name }}ViewState,
         statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>

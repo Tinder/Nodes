@@ -10,20 +10,12 @@ internal final class <nodeName>FlowImp: AbstractFlow
     <nodeName>ViewControllable
 > {
 
-    /// The initializer.
-    ///
-    /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
-    /// - Parameters:
-    ///   - context: The Context instance
-    ///   - viewController: The View Controller instance
-    override internal init(
         context: <nodeName>ContextInterface,
         viewController: <nodeName>ViewControllable
     ) {
         super.init(context: context, viewController: viewController)
     }
 
-    /// Implement logic to execute when the Flow is started.
     override internal func didStart() {}
 }
 

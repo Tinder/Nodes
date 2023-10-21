@@ -4,23 +4,14 @@ internal protocol <nodeName>Receiver: AnyObject {}
 
 internal final class <nodeName>ViewController: <viewControllerType>, StateObserver {
 
-    /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 
-    /// The collection of cancellable instances.
     private var cancellables: Set<<cancellableType>> = .init()
 
-    /// The initial view state.
     private let initialState: <nodeName>ViewState
 
-    /// The view state publisher.
     private let statePublisher: <publisherType><<nodeName>ViewState>
 
-    /// The initializer.
-    ///
-    /// - Parameters:
-    ///   - initialState: The initial view state.
-    ///   - statePublisher: The view state publisher.
     internal init(
         initialState: <nodeName>ViewState,
         statePublisher: <publisherType><<nodeName>ViewState>

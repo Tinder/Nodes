@@ -22,10 +22,12 @@ internal struct {{ node_name }}ViewState: Equatable {}
 {% endif %}
 internal class {{ node_name }}ViewStateFactory: Nodes.Transform {
 
+    {% if is_documentation_enabled %}
     /// The factory method in which state is transformed into view state.
     ///
     /// - Parameter state: The state.
     /// - Returns: The view state.
+    {% endif %}
     internal func callAsFunction(_ state: {{ node_name }}State) -> {{ node_name }}ViewState {
         {{ node_name }}ViewState()
     }

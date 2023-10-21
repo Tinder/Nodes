@@ -43,6 +43,7 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {% endfor %}
     {% endif %}
 
+    {% if is_documentation_enabled %}
     /// The initializer.
     ///
     /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
@@ -56,6 +57,7 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     internal init(
     {% else %}
     override internal init(
+    {% endif %}
     {% endif %}
         context: {{ node_name }}ContextInterface,
         viewController: {{ node_name }}ViewControllable{% if flow_properties %}{{ ',' }}
@@ -71,13 +73,17 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
         super.init(context: context, viewController: viewController)
     }
 
+    {% if is_documentation_enabled %}
     /// Implement logic to execute when the Flow is started.
+    {% endif %}
     override internal func didStart() {}
     {% if owns_view %}
 
+    {% if is_documentation_enabled %}
     /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
     ///
     /// - Returns: The ``ViewControllable`` instance.
+    {% endif %}
     internal func getViewController() -> {{ view_controllable_type }} {
         viewController
     }
@@ -88,7 +94,9 @@ extension {{ node_name }}FlowImp: {{ node_name }}Flow {}
 {% if root_node %}
 extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {
 
+    {% if is_documentation_enabled %}
     /// Implement logic to execute when the Root Flow is ready to attach sub-Flows.
+    {% endif %}
     internal func didBecomeReady() {}
 }
 {% else %}

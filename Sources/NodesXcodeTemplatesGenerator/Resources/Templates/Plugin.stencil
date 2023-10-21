@@ -114,11 +114,13 @@ internal final class {{ plugin_name }}PluginImp: Plugin
     {{ plugin_name }}PluginStateType
 > {
 
+    {% if is_documentation_enabled %}
     /// The method in which the Plugin's enabled criteria is defined.
     /// - Parameters:
     ///   - component: The component instance
     ///   - state: The state
     /// - Returns: The enabled status of the Plugin
+    {% endif %}
     override internal func isEnabled(
         component: {{ plugin_name }}PluginComponent,
         state: {{ plugin_name }}PluginStateType
@@ -126,9 +128,11 @@ internal final class {{ plugin_name }}PluginImp: Plugin
         false
     }
 
+    {% if is_documentation_enabled %}
     /// The factory method in which the instance is initialized.
     /// - Parameter component: The component instance
     /// - Returns: The initialized instance
+    {% endif %}
     override internal func build(
         component: {{ plugin_name }}PluginComponent
     {% if return_type %}

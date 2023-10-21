@@ -148,9 +148,11 @@ internal final class {{ plugin_list_name }}PluginListImp: PluginList
     {{ plugin_list_name }}PluginListStateType
 > {
 
+    {% if is_documentation_enabled %}
     /// The method in which the Plugins are paired with keys and wrapped in type erased `AnyPlugin` instances.
     /// - Parameter component: The component instance
     /// - Returns: The Plugin collection
+    {% endif %}
     override internal func plugins(
         component: {{ plugin_list_name }}PluginListComponent
     ) -> KeyValuePairs<{{ plugin_list_name }}PluginListKeyType, AnyPlugin> {

@@ -73,9 +73,6 @@ internal final class <pluginListName>PluginListImp: PluginList
     <pluginListName>PluginListStateType
 > {
 
-    /// The method in which the Plugins are paired with keys and wrapped in type erased `AnyPlugin` instances.
-    /// - Parameter component: The component instance
-    /// - Returns: The Plugin collection
     override internal func plugins(
         component: <pluginListName>PluginListComponent
     ) -> KeyValuePairs<<pluginListName>PluginListKeyType, AnyPlugin> {

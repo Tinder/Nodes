@@ -6,23 +6,14 @@ internal protocol RootReceiver: AnyObject {
 
 internal final class RootViewController: <viewControllerType>, StateObserver {
 
-    /// The view receiver.
     internal weak var receiver: RootReceiver?
 
-    /// The collection of cancellable instances.
     private var cancellables: Set<<cancellableType>> = .init()
 
-    /// The initial view state.
     private let initialState: RootViewState
 
-    /// The view state publisher.
     private let statePublisher: <publisherType><RootViewState>
 
-    /// The initializer.
-    ///
-    /// - Parameters:
-    ///   - initialState: The initial view state.
-    ///   - statePublisher: The view state publisher.
     internal init(
         initialState: RootViewState,
         statePublisher: <publisherType><RootViewState>

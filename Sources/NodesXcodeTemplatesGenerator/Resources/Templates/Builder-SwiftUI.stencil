@@ -96,12 +96,14 @@ public final class {{ node_name }}Component: Component
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
+    {% if is_documentation_enabled %}
     /// The initializer.
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
     ///
     /// - Parameter parent: The parent scope
     /// - Parameter dynamicDependency: The dynamic component dependency
+    {% endif %}
     internal init(parent: Scope, dynamicDependency: {{ node_name }}DynamicComponentDependency = ()) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
@@ -154,12 +156,14 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     {{ node_name }}DynamicComponentDependency
 > {
 
+    {% if is_documentation_enabled %}
     /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
     /// the dynamic component dependency.
     ///
     /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
     /// - Parameter listener: An object that can listen for signals from the Node
     /// - Returns: The Flow instance
+    {% endif %}
     internal func build(
         withListener listener: {{ node_name }}Listener
     ) -> {{ node_name }}Flow {
@@ -168,11 +172,13 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         return build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
+    {% if is_documentation_enabled %}
     /// The factory method in which the Context and Flow are initialized.
     /// - Parameters:
     ///   - component: The component instance
     ///   - dynamicBuildDependency: The dynamic build dependency
     /// - Returns: The Flow instance
+    {% endif %}
     override internal func build(
         component: {{ node_name }}Component,
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency

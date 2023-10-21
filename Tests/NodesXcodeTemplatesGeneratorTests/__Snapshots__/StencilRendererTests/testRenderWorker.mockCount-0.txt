@@ -7,13 +7,10 @@ internal final class <workerName>WorkerImp: AbstractWorker
     <cancellableType>
 > {
 
-    /// The initializer.
     override internal init() {}
 
-    /// Implement logic to execute when the Worker is started.
     override internal func didStart() {}
 
-    /// Implement logic to execute when the Worker has stopped.
     override internal func willStop() {}
 }
 

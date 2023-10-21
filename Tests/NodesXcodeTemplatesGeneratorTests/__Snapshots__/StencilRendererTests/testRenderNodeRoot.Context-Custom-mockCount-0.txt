@@ -11,25 +11,16 @@ internal final class RootContextImp: AbstractContext
     <cancellableType>
 > {
 
-    /// The Flow instance.
     internal weak var flow: RootFlowInterface?
 
-    /// The Listener instance.
     internal weak var listener: RootListener?
 
-    /// The State instance.
-    @Published
     internal private(set) var state: RootState
 
-    /// The Analytics instance.
     private let analytics: RootAnalytics
 
     private var isReady: Bool = false
 
-    /// The initializer.
-    /// - Parameters:
-    ///   - workers: The Worker instances
-    ///   - analytics: The Analytics instance
     internal init(
         workers: [Worker],
         analytics: RootAnalytics
@@ -39,10 +30,8 @@ internal final class RootContextImp: AbstractContext
         super.init(workers: workers)
     }
 
-    /// Implement logic to execute when the Context becomes active.
     override internal func didBecomeActive() {}
 
-    /// Implement logic to execute when the Context will become inactive.
     override internal func willResignActive() {}
 }
 

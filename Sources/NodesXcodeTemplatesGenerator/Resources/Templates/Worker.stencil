@@ -31,13 +31,19 @@ internal final class {{ worker_name }}WorkerImp: AbstractWorker
     {{ cancellable_type }}
 > {
 
+    {% if is_documentation_enabled %}
     /// The initializer.
+    {% endif %}
     override internal init() {}
 
+    {% if is_documentation_enabled %}
     /// Implement logic to execute when the Worker is started.
+    {% endif %}
     override internal func didStart() {}
 
+    {% if is_documentation_enabled %}
     /// Implement logic to execute when the Worker has stopped.
+    {% endif %}
     override internal func willStop() {}
 }
 

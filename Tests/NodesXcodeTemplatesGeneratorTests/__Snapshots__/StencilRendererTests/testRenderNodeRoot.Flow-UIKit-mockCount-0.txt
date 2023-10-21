@@ -10,25 +10,14 @@ internal final class RootFlowImp: AbstractFlow
     RootViewControllable
 > {
 
-    /// The initializer.
-    ///
-    /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
-    /// - Parameters:
-    ///   - context: The Context instance
-    ///   - viewController: The View Controller instance
-    override internal init(
         context: RootContextInterface,
         viewController: RootViewControllable
     ) {
         super.init(context: context, viewController: viewController)
     }
 
-    /// Implement logic to execute when the Flow is started.
     override internal func didStart() {}
 
-    /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
-    ///
-    /// - Returns: The ``ViewControllable`` instance.
     internal func getViewController() -> <viewControllableType> {
         viewController
     }
@@ -37,6 +26,5 @@ internal final class RootFlowImp: AbstractFlow
 extension RootFlowImp: RootFlow {}
 extension RootFlowImp: RootFlowInterface {
 
-    /// Implement logic to execute when the Root Flow is ready to attach sub-Flows.
     internal func didBecomeReady() {}
 }

@@ -11,27 +11,18 @@ extension <nodeName>ViewController: <nodeName>ViewControllable {}
 
 internal struct <nodeName>View: View {
 
-    /// The body of the view.
     internal var body: some View {
         WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
             Text(verbatim: "\(type(of: viewState))")
         }
     }
 
-    /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 
-    /// The initial view state.
     private let initialState: <nodeName>ViewState
 
-    /// The view state publisher.
     private let statePublisher: <publisherType><<nodeName>ViewState>
 
-    /// The initializer.
-    ///
-    /// - Parameters:
-    ///   - initialState: The initial view state.
-    ///   - statePublisher: The view state publisher.
     internal init(
         initialState: <nodeName>ViewState,
         statePublisher: <publisherType><<nodeName>ViewState>
