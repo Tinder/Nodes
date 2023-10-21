@@ -70,6 +70,7 @@ public final class {{ node_name }}Component: Component
 <
     {{ node_name }}Dependency
 > {
+    {% if is_documentation_enabled %}
 
     /*
      Dependencies
@@ -95,6 +96,7 @@ public final class {{ node_name }}Component: Component
      }
 
      */
+    {% endif %}
 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
@@ -116,6 +118,7 @@ public final class {{ node_name }}Component: Component
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
     }
+    {% if is_documentation_enabled %}
 
     /*
      Child Components
@@ -128,6 +131,7 @@ public final class {{ node_name }}Component: Component
      }
 
      */
+    {% endif %}
 }
 
 {% if is_documentation_enabled %}

@@ -13,49 +13,12 @@ public final class RootComponent: Component
     RootDependency
 > {
 
-    /*
-     Dependencies
-     ============
-
-     Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
-
-     fileprivate let example: Example = .init()
-
-     Whenever possible, for example when the dependency does not provide shared state, define the property as a
-     factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
-     Needle compatibility whenever the access control is increased.
-
-     fileprivate var exampleFactory: Example {
-         Example()
-     }
-
-     When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
-     that always returns the same instance from a computed property.
-
-     fileprivate var example: Example {
-         shared { Example(otherDependency: dependency.otherDependency) }
-     }
-
-     */
-
     private let dynamicDependency: RootDynamicComponentDependency
 
     internal init(parent: Scope, dynamicDependency: RootDynamicComponentDependency = ()) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
     }
-
-    /*
-     Child Components
-     ================
-
-     Declare child component factories as 'fileprivate' methods.
-
-     fileprivate func <name>ComponentFactory() -> <Name>Component {
-         <Name>Component(parent: self)
-     }
-
-     */
 }
 
 internal protocol RootBuilder: AnyObject {
