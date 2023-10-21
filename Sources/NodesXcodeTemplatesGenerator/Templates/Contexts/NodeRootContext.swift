@@ -26,6 +26,7 @@ public struct NodeRootContext: Context {
     private let publisherType: String
     private let publisherFailureType: String
     private let cancellableType: String
+    private let isDocumentationEnabled: Bool
     private let isPeripheryCommentEnabled: Bool
 
     internal var dictionary: [String: Any] {
@@ -55,6 +56,7 @@ public struct NodeRootContext: Context {
             "publisher_type": publisherType,
             "publisher_failure_type": publisherFailureType,
             "cancellable_type": cancellableType,
+            "is_documentation_enabled": isDocumentationEnabled,
             "is_periphery_comment_enabled": isPeripheryCommentEnabled
         ]
     }
@@ -82,6 +84,7 @@ public struct NodeRootContext: Context {
         publisherType: String,
         publisherFailureType: String,
         cancellableType: String,
+        isDocumentationEnabled: Bool,
         isPeripheryCommentEnabled: Bool
     ) {
         self.fileHeader = fileHeader
@@ -106,6 +109,7 @@ public struct NodeRootContext: Context {
         self.publisherType = publisherType
         self.publisherFailureType = publisherFailureType
         self.cancellableType = cancellableType
+        self.isDocumentationEnabled = isDocumentationEnabled
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
     }
 }

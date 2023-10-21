@@ -71,6 +71,7 @@ extension TestFactories {
             publisherType: "<publisherType>",
             publisherFailureType: isStringIdentifierMocked ? "<publisherFailureType>" : "",
             cancellableType: "<cancellableType>",
+            isDocumentationEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
@@ -100,6 +101,7 @@ extension TestFactories {
             publisherType: "<publisherType>",
             publisherFailureType: isStringIdentifierMocked ? "<publisherFailureType>" : "",
             cancellableType: "<cancellableType>",
+            isDocumentationEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
@@ -119,6 +121,7 @@ extension TestFactories {
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
             cancellableType: "<cancellableType>",
+            isDocumentationEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
@@ -129,6 +132,7 @@ extension TestFactories {
             pluginName: "<pluginName>",
             returnType: "<returnType>",
             pluginImports: .mock(with: "pluginImport", count: mockCount),
+            isDocumentationEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
@@ -138,6 +142,7 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             pluginImports: .mock(with: "pluginImport", count: mockCount),
+            isDocumentationEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
@@ -148,6 +153,7 @@ extension TestFactories {
             pluginListName: "<pluginListName>",
             pluginListImports: .mock(with: "pluginListImport", count: mockCount),
             viewControllableFlowType: "<viewControllableFlowType>",
+            isDocumentationEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
@@ -158,6 +164,7 @@ extension TestFactories {
             workerName: "<workerName>",
             workerImports: .mock(with: "workerImport", count: mockCount),
             cancellableType: "<cancellableType>",
+            isDocumentationEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0
         )
     }

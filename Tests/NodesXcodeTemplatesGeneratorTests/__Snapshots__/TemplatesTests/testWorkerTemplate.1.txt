@@ -2,6 +2,7 @@
   ▿ context: WorkerContext
     - cancellableType: "<cancellableType>"
     - fileHeader: "<fileHeader>"
+    - isDocumentationEnabled: false
     - isPeripheryCommentEnabled: false
     ▿ workerImports: 3 elements
       - "<baseImport>"

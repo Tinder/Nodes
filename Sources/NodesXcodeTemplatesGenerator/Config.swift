@@ -36,6 +36,7 @@ extension XcodeTemplates {
         public var publisherType: String
         public var publisherFailureType: String
         public var cancellableType: String
+        public var isDocumentationEnabled: Bool
         public var isPeripheryCommentEnabled: Bool
         public var isViewInjectedTemplateEnabled: Bool
 
@@ -84,6 +85,7 @@ extension XcodeTemplates.Config {
         publisherType = "AnyPublisher"
         publisherFailureType = "Never"
         cancellableType = "AnyCancellable"
+        isDocumentationEnabled = false
         isPeripheryCommentEnabled = false
         isViewInjectedTemplateEnabled = true
     }
@@ -140,6 +142,9 @@ extension XcodeTemplates.Config {
         cancellableType =
             (try? decoder.decodeString(CodingKeys.cancellableType))
             ?? defaults.cancellableType
+        isDocumentationEnabled =
+            (try? decoder.decode(CodingKeys.isDocumentationEnabled))
+            ?? defaults.isDocumentationEnabled
         isPeripheryCommentEnabled =
             (try? decoder.decode(CodingKeys.isPeripheryCommentEnabled))
             ?? defaults.isPeripheryCommentEnabled

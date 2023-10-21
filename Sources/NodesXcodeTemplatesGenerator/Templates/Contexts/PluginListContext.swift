@@ -8,6 +8,7 @@ public struct PluginListContext: Context {
     private let pluginListName: String
     private let pluginListImports: [String]
     private let viewControllableFlowType: String
+    private let isDocumentationEnabled: Bool
     private let isPeripheryCommentEnabled: Bool
 
     internal var dictionary: [String: Any] {
@@ -16,6 +17,7 @@ public struct PluginListContext: Context {
             "plugin_list_name": pluginListName,
             "plugin_list_imports": pluginListImports,
             "view_controllable_flow_type": viewControllableFlowType,
+            "is_documentation_enabled": isDocumentationEnabled,
             "is_periphery_comment_enabled": isPeripheryCommentEnabled
         ]
     }
@@ -25,12 +27,14 @@ public struct PluginListContext: Context {
         pluginListName: String,
         pluginListImports: Set<String>,
         viewControllableFlowType: String,
+        isDocumentationEnabled: Bool,
         isPeripheryCommentEnabled: Bool
     ) {
         self.fileHeader = fileHeader
         self.pluginListName = pluginListName
         self.pluginListImports = pluginListImports.sortedImports()
         self.viewControllableFlowType = viewControllableFlowType
+        self.isDocumentationEnabled = isDocumentationEnabled
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
     }
 }

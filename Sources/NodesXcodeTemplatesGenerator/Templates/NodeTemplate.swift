@@ -40,6 +40,7 @@ internal struct NodeTemplate: XcodeTemplate {
             publisherType: config.publisherType,
             publisherFailureType: config.publisherFailureType,
             cancellableType: config.cancellableType,
+            isDocumentationEnabled: config.isDocumentationEnabled,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
         )
         propertyList = PropertyList(description: "The source files implementing a Node.",

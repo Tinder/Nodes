@@ -17,6 +17,7 @@ public struct NodeViewInjectedContext: Context {
     private let viewControllableType: String
     private let viewControllableFlowType: String
     private let cancellableType: String
+    private let isDocumentationEnabled: Bool
     private let isPeripheryCommentEnabled: Bool
 
     internal var dictionary: [String: Any] {
@@ -36,6 +37,7 @@ public struct NodeViewInjectedContext: Context {
             "view_controllable_type": viewControllableType,
             "view_controllable_flow_type": viewControllableFlowType,
             "cancellable_type": cancellableType,
+            "is_documentation_enabled": isDocumentationEnabled,
             "is_periphery_comment_enabled": isPeripheryCommentEnabled
         ]
     }
@@ -54,6 +56,7 @@ public struct NodeViewInjectedContext: Context {
         viewControllableType: String,
         viewControllableFlowType: String,
         cancellableType: String,
+        isDocumentationEnabled: Bool,
         isPeripheryCommentEnabled: Bool
     ) {
         self.fileHeader = fileHeader
@@ -69,6 +72,7 @@ public struct NodeViewInjectedContext: Context {
         self.viewControllableType = viewControllableType
         self.viewControllableFlowType = viewControllableFlowType
         self.cancellableType = cancellableType
+        self.isDocumentationEnabled = isDocumentationEnabled
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
     }
 }

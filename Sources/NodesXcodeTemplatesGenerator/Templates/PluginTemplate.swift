@@ -29,6 +29,7 @@ internal struct PluginTemplate: XcodeTemplate {
             pluginName: config.variable("productName"),
             returnType: config.variable("returnType"),
             pluginImports: plugin.imports(config: config),
+            isDocumentationEnabled: config.isDocumentationEnabled,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
         )
     }

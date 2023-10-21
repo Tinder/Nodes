@@ -26,6 +26,7 @@ internal struct WorkerTemplate: XcodeTemplate {
             workerName: config.variable("productName"),
             workerImports: worker.imports(config: config),
             cancellableType: config.cancellableType,
+            isDocumentationEnabled: config.isDocumentationEnabled,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
         )
     }
