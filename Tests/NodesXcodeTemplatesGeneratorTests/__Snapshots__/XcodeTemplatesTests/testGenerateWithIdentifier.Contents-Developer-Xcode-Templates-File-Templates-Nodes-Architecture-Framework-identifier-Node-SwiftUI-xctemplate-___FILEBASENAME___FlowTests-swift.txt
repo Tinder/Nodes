@@ -6,8 +6,7 @@ import XCTest
 
 final class ___VARIABLE_productName___FlowTests: XCTestCase {
 
-    private final class ___VARIABLE_productName___ViewControllableMock: UIViewController, ___VARIABLE_productName___ViewControllable {
-    }
+    private final class ___VARIABLE_productName___ViewControllableMock: UIViewController, ___VARIABLE_productName___ViewControllable {}
 
     private var flow: ___VARIABLE_productName___FlowImp!
     private var contextMock: ___VARIABLE_productName___ContextInterfaceMock!

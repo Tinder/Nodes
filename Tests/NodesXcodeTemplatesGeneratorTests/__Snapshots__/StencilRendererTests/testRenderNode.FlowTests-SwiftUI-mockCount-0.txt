@@ -2,6 +2,8 @@
 
 #warning("Manually move this test file to the corresponding test target.")
 
+import XCTest
+
 final class <nodeName>FlowTests: XCTestCase {
 
     private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {}
