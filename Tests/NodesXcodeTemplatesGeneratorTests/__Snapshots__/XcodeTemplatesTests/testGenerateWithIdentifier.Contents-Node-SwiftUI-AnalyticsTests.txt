@@ -1,0 +1,24 @@
+//___FILEHEADER___
+
+#warning("Manually move this test file to the corresponding test target.")
+
+import XCTest
+
+final class ___VARIABLE_productName___AnalyticsTests: XCTestCase {
+
+    private var analytics: ___VARIABLE_productName___AnalyticsImp!
+
+    override func setUp() {
+        super.setUp()
+        analytics = ___VARIABLE_productName___AnalyticsImp()
+    }
+
+    override func tearDown() {
+        analytics = nil
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        XCTAssertNotNil(analytics)
+    }
+}
