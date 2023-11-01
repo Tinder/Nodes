@@ -1,8 +1,12 @@
 {{ file_header }}
 
 #warning("Manually move this test file to the corresponding test target.")
+{% if test_imports %}
 
-import XCTest
+{% for import in test_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
 
 final class {{ node_name }}FlowTests: XCTestCase {
 
@@ -10,11 +14,11 @@ final class {{ node_name }}FlowTests: XCTestCase {
     private final class {{ node_name }}ViewControllableMock: UIViewController, {{ node_name }}ViewControllable {
         {% if view_controller_properties %}
 
-            {{ view_controller_properties|indent:4 }}
+        {{ view_controller_properties|indent:4 }}
         {% endif %}
         {% if view_controller_methods %}
 
-            {{ view_controller_methods|indent:4 }}
+        {{ view_controller_methods|indent:4 }}
         {% endif %}
     }
     {% else %}

@@ -2,15 +2,13 @@
 
 #warning("Manually move this test file to the corresponding test target.")
 
-import XCTest
-
 final class RootFlowTests: XCTestCase {
 
     private final class RootViewControllableMock: UIViewController, RootViewControllable {
 
-            <viewControllerProperties>
+        <viewControllerProperties>
 
-            <viewControllerMethods>
+        <viewControllerMethods>
     }
 
     private var flow: RootFlowImp!
