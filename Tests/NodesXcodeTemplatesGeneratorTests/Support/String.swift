@@ -10,8 +10,6 @@ extension String {
         of targets: [String],
         with replacement: String
     ) -> String {
-        targets.reduce(self) { partialResult, target in
-            partialResult.replacingOccurrences(of: target, with: replacement)
-        }
+        targets.reduce(self) { $0.replacingOccurrences(of: $1, with: replacement) }
     }
 }
