@@ -6,7 +6,7 @@ import Foundation
 
 extension String {
 
-    public func replacingOccurrences(
+    internal func replacingOccurrences(
         of targets: [String],
         with replacement: String
     ) -> String {
