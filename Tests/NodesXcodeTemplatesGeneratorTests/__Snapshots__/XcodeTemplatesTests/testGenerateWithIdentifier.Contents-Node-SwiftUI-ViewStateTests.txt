@@ -1,0 +1,20 @@
+//___FILEHEADER___
+
+#warning("Manually move this test file to the corresponding test target.")
+
+import XCTest
+
+internal final class ___VARIABLE_productName___ViewStateFactoryTests: XCTestCase {
+
+    private var factory: ___VARIABLE_productName___ViewStateFactory!
+
+    override func setUp() {
+        super.setUp()
+        factory = .init()
+    }
+
+    override func tearDown() {
+        factory = nil
+        super.tearDown()
+    }
+}
