@@ -6,18 +6,27 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  The common Flow interface.
  */
 internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} {}
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  The common Listener interface.
  */
 internal protocol {{ plugin_list_name }}Listener: AnyObject {}
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  The common Builder interface.
@@ -93,6 +102,9 @@ internal typealias {{ plugin_list_name }}PluginListKeyType = String
  */
 internal typealias {{ plugin_list_name }}PluginListStateType = Void
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  The Plugin List protocol (available to mock for testability).
@@ -103,6 +115,9 @@ internal protocol {{ plugin_list_name }}PluginList {
     func create(key: {{ plugin_list_name }}PluginListKeyType) -> {{ plugin_list_name }}Builder?
 }
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  Concrete implementation of the Plugin List providing the Plugin collection and (optionally) the creation order.

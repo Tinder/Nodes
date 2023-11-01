@@ -28,7 +28,8 @@ internal struct PluginTemplate: XcodeTemplate {
             fileHeader: config.fileHeader,
             pluginName: config.variable("productName"),
             returnType: config.variable("returnType"),
-            pluginImports: plugin.imports(config: config)
+            pluginImports: plugin.imports(config: config),
+            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
         )
     }
 }

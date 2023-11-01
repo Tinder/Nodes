@@ -6,12 +6,18 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  Encapsulates work to be performed by the Node.
  */
 internal protocol {{ worker_name }}Worker: Worker {}
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  Concrete implementation of the Worker.

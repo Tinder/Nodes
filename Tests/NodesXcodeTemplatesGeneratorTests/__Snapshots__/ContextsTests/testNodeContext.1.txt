@@ -52,6 +52,9 @@
           - key: "type"
           - value: "<flowPropertyType>"
   ▿ (2 elements)
+    - key: "is_periphery_comment_enabled"
+    - value: true
+  ▿ (2 elements)
     - key: "node_name"
     - value: "<nodeName>"
   ▿ (2 elements)

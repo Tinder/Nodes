@@ -39,6 +39,7 @@ internal struct <nodeName>View: View {
         }
     }
 
+    // periphery:ignore
     /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 
@@ -63,6 +64,7 @@ internal struct <nodeName>View: View {
     }
 }
 
+// periphery:ignore
 /**
  PURPOSE:
  The SwiftUI preview (excluded from release builds).

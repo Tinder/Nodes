@@ -17,6 +17,7 @@ public struct NodeViewInjectedContext: Context {
     private let viewControllableType: String
     private let viewControllableFlowType: String
     private let cancellableType: String
+    private let isPeripheryCommentEnabled: Bool
 
     internal var dictionary: [String: Any] {
         [
@@ -34,7 +35,8 @@ public struct NodeViewInjectedContext: Context {
             "flow_properties": flowProperties,
             "view_controllable_type": viewControllableType,
             "view_controllable_flow_type": viewControllableFlowType,
-            "cancellable_type": cancellableType
+            "cancellable_type": cancellableType,
+            "is_periphery_comment_enabled": isPeripheryCommentEnabled
         ]
     }
 
@@ -51,7 +53,8 @@ public struct NodeViewInjectedContext: Context {
         flowProperties: [XcodeTemplates.Variable],
         viewControllableType: String,
         viewControllableFlowType: String,
-        cancellableType: String
+        cancellableType: String,
+        isPeripheryCommentEnabled: Bool
     ) {
         self.fileHeader = fileHeader
         self.nodeName = nodeName
@@ -66,5 +69,6 @@ public struct NodeViewInjectedContext: Context {
         self.viewControllableType = viewControllableType
         self.viewControllableFlowType = viewControllableFlowType
         self.cancellableType = cancellableType
+        self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
     }
 }

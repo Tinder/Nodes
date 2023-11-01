@@ -8,6 +8,7 @@ public struct PluginContext: Context {
     private let pluginName: String
     private let returnType: String?
     private let pluginImports: [String]
+    private let isPeripheryCommentEnabled: Bool
 
     internal var dictionary: [String: Any] {
         let dictionary: [String: Any]
@@ -16,13 +17,15 @@ public struct PluginContext: Context {
                 "file_header": fileHeader,
                 "plugin_name": pluginName,
                 "return_type": returnType,
-                "plugin_imports": pluginImports
+                "plugin_imports": pluginImports,
+                "is_periphery_comment_enabled": isPeripheryCommentEnabled
             ]
         } else {
             dictionary = [
                 "file_header": fileHeader,
                 "plugin_name": pluginName,
-                "plugin_imports": pluginImports
+                "plugin_imports": pluginImports,
+                "is_periphery_comment_enabled": isPeripheryCommentEnabled
             ]
         }
         return dictionary
@@ -31,23 +34,27 @@ public struct PluginContext: Context {
     public init(
         fileHeader: String,
         pluginName: String,
-        pluginImports: Set<String>
+        pluginImports: Set<String>,
+        isPeripheryCommentEnabled: Bool
     ) {
         self.fileHeader = fileHeader
         self.pluginName = pluginName
         self.returnType = nil
         self.pluginImports = pluginImports.sortedImports()
+        self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
     }
 
     public init(
         fileHeader: String,
         pluginName: String,
         returnType: String,
-        pluginImports: Set<String>
+        pluginImports: Set<String>,
+        isPeripheryCommentEnabled: Bool
     ) {
         self.fileHeader = fileHeader
         self.pluginName = pluginName
         self.returnType = returnType
         self.pluginImports = pluginImports.sortedImports()
+        self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
     }
 }

@@ -2,12 +2,14 @@
 
 import <workerImport>
 
+// periphery:ignore
 /**
  PURPOSE:
  Encapsulates work to be performed by the Node.
  */
 internal protocol <workerName>Worker: Worker {}
 
+// periphery:ignore
 /**
  PURPOSE:
  Concrete implementation of the Worker.

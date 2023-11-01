@@ -19,6 +19,7 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
 
     <viewControllerProperties>
 
+    // periphery:ignore
     /// The view receiver.
     internal weak var receiver: RootReceiver?
 

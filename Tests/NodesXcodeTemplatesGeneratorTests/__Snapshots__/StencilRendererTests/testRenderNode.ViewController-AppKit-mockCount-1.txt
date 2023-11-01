@@ -17,6 +17,7 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
 
     <viewControllerProperties>
 
+    // periphery:ignore
     /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 

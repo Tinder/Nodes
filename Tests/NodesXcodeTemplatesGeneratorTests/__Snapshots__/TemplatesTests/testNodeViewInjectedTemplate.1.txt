@@ -41,6 +41,7 @@
         ▿ (2 elements)
           - key: "type"
           - value: "<flowPropertiesType>"
+    - isPeripheryCommentEnabled: false
     - nodeName: "___VARIABLE_productName___"
     ▿ stateImports: 2 elements
       - "<baseImport>"

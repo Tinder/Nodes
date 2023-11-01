@@ -70,8 +70,10 @@ public final class RootComponent: Component
 
      */
 
+    // periphery:ignore
     private let dynamicDependency: RootDynamicComponentDependency
 
+    // periphery:ignore
     /// The initializer.
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
@@ -98,6 +100,7 @@ public final class RootComponent: Component
 
 // MARK: - Builder
 
+// periphery:ignore
 /**
  PURPOSE:
  The Builder interface (available to mock for testability).
@@ -108,6 +111,7 @@ internal protocol RootBuilder: AnyObject {
     ) -> RootFlow
 }
 
+// periphery:ignore
 /**
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.

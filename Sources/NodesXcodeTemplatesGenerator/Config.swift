@@ -22,7 +22,6 @@ extension XcodeTemplates {
         }
 
         public var uiFrameworks: [UIFramework]
-        public var isViewInjectedTemplateEnabled: Bool
         public var fileHeader: String
         public var baseImports: Set<String>
         public var baseTestImports: Set<String>
@@ -38,6 +37,8 @@ extension XcodeTemplates {
         public var publisherType: String
         public var publisherFailureType: String
         public var cancellableType: String
+        public var isPeripheryCommentEnabled: Bool
+        public var isViewInjectedTemplateEnabled: Bool
 
         public init(
             at path: String,
@@ -64,7 +65,6 @@ extension XcodeTemplates.Config {
 
     public init() {
         uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
-        isViewInjectedTemplateEnabled = true
         fileHeader = "//___FILEHEADER___"
         baseImports = []
         baseTestImports = ["XCTest"]
@@ -86,6 +86,8 @@ extension XcodeTemplates.Config {
         publisherType = "AnyPublisher"
         publisherFailureType = "Never"
         cancellableType = "AnyCancellable"
+        isPeripheryCommentEnabled = false
+        isViewInjectedTemplateEnabled = true
     }
 }
 
@@ -98,9 +100,6 @@ extension XcodeTemplates.Config {
         uiFrameworks =
             (try? decoder.decode(CodingKeys.uiFrameworks))
             ?? defaults.uiFrameworks
-        isViewInjectedTemplateEnabled =
-            (try? decoder.decode(CodingKeys.isViewInjectedTemplateEnabled))
-            ?? defaults.isViewInjectedTemplateEnabled
         fileHeader =
             (try? decoder.decodeString(CodingKeys.fileHeader))
             ?? defaults.fileHeader
@@ -146,5 +145,11 @@ extension XcodeTemplates.Config {
         cancellableType =
             (try? decoder.decodeString(CodingKeys.cancellableType))
             ?? defaults.cancellableType
+        isPeripheryCommentEnabled =
+            (try? decoder.decode(CodingKeys.isPeripheryCommentEnabled))
+            ?? defaults.isPeripheryCommentEnabled
+        isViewInjectedTemplateEnabled =
+            (try? decoder.decode(CodingKeys.isViewInjectedTemplateEnabled))
+            ?? defaults.isViewInjectedTemplateEnabled
     }
 }

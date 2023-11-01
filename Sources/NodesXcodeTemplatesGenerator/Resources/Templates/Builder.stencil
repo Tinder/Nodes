@@ -86,8 +86,14 @@ public final class {{ node_name }}Component: Component
 
      */
 
+    {% if is_periphery_comment_enabled %}
+    // periphery:ignore
+    {% endif %}
     private let dynamicDependency: {{ node_name }}DynamicComponentDependency
 
+    {% if is_periphery_comment_enabled %}
+    // periphery:ignore
+    {% endif %}
     /// The initializer.
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
@@ -114,6 +120,9 @@ public final class {{ node_name }}Component: Component
 
 // MARK: - Builder
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  The Builder interface (available to mock for testability).
@@ -125,6 +134,9 @@ internal protocol {{ node_name }}Builder: AnyObject {
     ) -> {{ node_name }}Flow
 }
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.
