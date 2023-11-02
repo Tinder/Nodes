@@ -37,6 +37,7 @@ extension TestFactories {
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableFlowType = "<viewControllableFlowType>"
+        config.viewControllerSubscriptionsProperty = "<viewControllerSubscriptionsProperty>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
         config.viewStateOperators = "<viewStateOperators>"
         config.publisherType = "<publisherType>"

@@ -26,5 +26,6 @@
       - viewControllerProperties: ""
   - viewControllableFlowType: "ViewControllableFlow"
   - viewControllableType: "ViewControllable"
+  - viewControllerSubscriptionsProperty: "/// The collection of cancellable instances.\nprivate var cancellables: Set<AnyCancellable> = .init()"
   - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
   - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"

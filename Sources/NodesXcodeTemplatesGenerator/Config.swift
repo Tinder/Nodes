@@ -31,6 +31,7 @@ extension XcodeTemplates {
         public var flowProperties: [Variable]
         public var viewControllableType: String
         public var viewControllableFlowType: String
+        public var viewControllerSubscriptionsProperty: String
         public var viewControllerUpdateComment: String
         public var viewStateOperators: String
         public var publisherType: String
@@ -73,6 +74,10 @@ extension XcodeTemplates.Config {
         flowProperties = []
         viewControllableType = "ViewControllable"
         viewControllableFlowType = "ViewControllableFlow"
+        viewControllerSubscriptionsProperty = """
+            /// The collection of cancellable instances.
+            private var cancellables: Set<AnyCancellable> = .init()
+            """
         viewControllerUpdateComment = """
             // Add implementation to update the user interface when the view state changes.
             """
@@ -125,6 +130,9 @@ extension XcodeTemplates.Config {
         viewControllableFlowType =
             (try? decoder.decodeString(CodingKeys.viewControllableFlowType))
             ?? defaults.viewControllableFlowType
+        viewControllerSubscriptionsProperty =
+            (try? decoder.decodeString(CodingKeys.viewControllerSubscriptionsProperty))
+            ?? defaults.viewControllerSubscriptionsProperty
         viewControllerUpdateComment =
             (try? decoder.decodeString(CodingKeys.viewControllerUpdateComment))
             ?? defaults.viewControllerUpdateComment

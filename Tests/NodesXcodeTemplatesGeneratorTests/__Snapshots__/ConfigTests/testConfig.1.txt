@@ -63,5 +63,6 @@
       - viewControllerProperties: "<viewControllerProperties-Custom>"
   - viewControllableFlowType: "<viewControllableFlowType>"
   - viewControllableType: "<viewControllableType>"
+  - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
   - viewControllerUpdateComment: "<viewControllerUpdateComment>"
   - viewStateOperators: "<viewStateOperators>"
