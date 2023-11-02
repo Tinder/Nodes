@@ -64,4 +64,5 @@
   - viewControllableFlowType: "<viewControllableFlowType>"
   - viewControllableType: "<viewControllableType>"
   - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+  - viewStateEmptyFactory: "<viewStateEmptyFactory>"
   - viewStateOperators: "<viewStateOperators>"
