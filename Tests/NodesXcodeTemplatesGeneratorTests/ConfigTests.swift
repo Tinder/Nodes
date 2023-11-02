@@ -106,6 +106,7 @@ final class ConfigTests: XCTestCase, TestFactories {
         viewControllableFlowType: <viewControllableFlowType>
         viewControllerUpdateComment: <viewControllerUpdateComment>
         viewStateOperators: <viewStateOperators>
+        viewStatePropertyName: <viewStatePropertyName>
         publisherType: <publisherType>
         publisherFailureType: <publisherFailureType>
         cancellableType: <cancellableType>

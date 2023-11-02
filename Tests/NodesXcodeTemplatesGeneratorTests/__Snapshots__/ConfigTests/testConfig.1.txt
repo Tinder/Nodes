@@ -65,3 +65,4 @@
   - viewControllableType: "<viewControllableType>"
   - viewControllerUpdateComment: "<viewControllerUpdateComment>"
   - viewStateOperators: "<viewStateOperators>"
+  - viewStatePropertyName: "<viewStatePropertyName>"
