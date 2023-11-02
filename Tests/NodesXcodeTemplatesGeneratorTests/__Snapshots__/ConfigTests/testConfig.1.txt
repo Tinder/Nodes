@@ -9,7 +9,8 @@
   ▿ baseImports: 2 members
     - "<baseImports-1>"
     - "<baseImports-2>"
-  - cancellableType: "<cancellableType>"
+  ▿ contextGenericTypes: 1 element
+    - "AnyCancellable"
   ▿ dependencies: 2 elements
     ▿ Variable
       - name: "<dependencies-name-1>"
@@ -65,3 +66,5 @@
   - viewControllableType: "<viewControllableType>"
   - viewControllerUpdateComment: "<viewControllerUpdateComment>"
   - viewStateOperators: "<viewStateOperators>"
+  ▿ workerGenericTypes: 1 element
+    - "AnyCancellable"

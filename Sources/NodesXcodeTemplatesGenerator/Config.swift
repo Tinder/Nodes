@@ -35,7 +35,8 @@ extension XcodeTemplates {
         public var viewStateOperators: String
         public var publisherType: String
         public var publisherFailureType: String
-        public var cancellableType: String
+        public var contextGenericTypes: [String]
+        public var workerGenericTypes: [String]
         public var isPeripheryCommentEnabled: Bool
         public var isViewInjectedTemplateEnabled: Bool
 
@@ -83,7 +84,8 @@ extension XcodeTemplates.Config {
             """
         publisherType = "AnyPublisher"
         publisherFailureType = "Never"
-        cancellableType = "AnyCancellable"
+        contextGenericTypes = ["AnyCancellable"]
+        workerGenericTypes = ["AnyCancellable"]
         isPeripheryCommentEnabled = false
         isViewInjectedTemplateEnabled = true
     }
@@ -137,9 +139,12 @@ extension XcodeTemplates.Config {
         publisherFailureType =
             (try? decoder.decodeString(CodingKeys.publisherFailureType))
             ?? defaults.publisherFailureType
-        cancellableType =
-            (try? decoder.decodeString(CodingKeys.cancellableType))
-            ?? defaults.cancellableType
+        contextGenericTypes =
+            (try? decoder.decode(CodingKeys.contextGenericTypes))
+            ?? defaults.contextGenericTypes
+        workerGenericTypes =
+            (try? decoder.decode(CodingKeys.workerGenericTypes))
+            ?? defaults.workerGenericTypes
         isPeripheryCommentEnabled =
             (try? decoder.decode(CodingKeys.isPeripheryCommentEnabled))
             ?? defaults.isPeripheryCommentEnabled

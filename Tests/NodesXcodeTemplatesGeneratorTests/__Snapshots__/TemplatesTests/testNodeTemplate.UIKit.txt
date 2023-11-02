@@ -16,7 +16,8 @@
       - "<dependencyInjectionImport>"
       - "<reactiveImport>"
       - "Nodes"
-    - cancellableType: "<cancellableType>"
+    ▿ contextGenericTypes: 1 element
+      - "<contextGenericType>"
     ▿ contextImports: 3 elements
       - "<baseImport>"
       - "<reactiveImport>"
@@ -64,6 +65,8 @@
       - "<baseImport>"
       - "Nodes"
     - viewStateOperators: "<viewStateOperators>"
+    ▿ workerGenericTypes: 1 element
+      - "<workerGenericType>"
   - name: "Node - UIKit"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
