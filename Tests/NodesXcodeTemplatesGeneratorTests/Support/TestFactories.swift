@@ -39,6 +39,7 @@ extension TestFactories {
         config.viewControllableFlowType = "<viewControllableFlowType>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
         config.viewStateOperators = "<viewStateOperators>"
+        config.viewStatePropertyComment = "<viewStatePropertyComment>"
         config.publisherType = "<publisherType>"
         config.publisherFailureType = "<publisherFailureType>"
         config.cancellableType = "<cancellableType>"

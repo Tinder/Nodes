@@ -33,6 +33,7 @@ extension XcodeTemplates {
         public var viewControllableFlowType: String
         public var viewControllerUpdateComment: String
         public var viewStateOperators: String
+        public var viewStatePropertyComment: String
         public var publisherType: String
         public var publisherFailureType: String
         public var cancellableType: String
@@ -81,6 +82,7 @@ extension XcodeTemplates.Config {
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
             """
+        viewStatePropertyComment = "The view state publisher"
         publisherType = "AnyPublisher"
         publisherFailureType = "Never"
         cancellableType = "AnyCancellable"
@@ -131,6 +133,9 @@ extension XcodeTemplates.Config {
         viewStateOperators =
             (try? decoder.decodeString(CodingKeys.viewStateOperators))
             ?? defaults.viewStateOperators
+        viewStatePropertyComment =
+            (try? decoder.decodeString(CodingKeys.viewStatePropertyComment))
+            ?? defaults.viewStatePropertyComment
         publisherType =
             (try? decoder.decodeString(CodingKeys.publisherType))
             ?? defaults.publisherType
