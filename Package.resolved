@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/uber/needle.git",
       "state" : {
-        "revision" : "6db73ae873952794b94fd6bb5111554e23c160af",
-        "version" : "0.24.0"
+        "revision" : "2f2856d4fbe8f8828ebda86e69960007f5577f37",
+        "version" : "0.23.0"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Quick/Nimble.git",
       "state" : {
-        "revision" : "edaedc1ec86f14ac6e2ca495b94f0ff7150d98d0",
-        "version" : "12.3.0"
+        "revision" : "f552a16f434eef1f18b62985172489f41d37a18e",
+        "version" : "12.2.0"
       }
     },
     {
@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-argument-parser.git",
       "state" : {
-        "revision" : "8f4d2753f0e4778c76d5f05ad16c74f707390531",
-        "version" : "1.2.3"
+        "revision" : "fee6933f37fde9a5e12a1e4aeaa93fe60116ff2a",
+        "version" : "1.2.2"
       }
     },
     {
@@ -104,17 +104,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-snapshot-testing.git",
       "state" : {
-        "revision" : "bb0ea08db8e73324fe6c3727f755ca41a23ff2f4",
-        "version" : "1.14.2"
-      }
-    },
-    {
-      "identity" : "swift-syntax",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-syntax.git",
-      "state" : {
-        "revision" : "ffa3cd6fc2aa62adbedd31d3efaf7c0d86a9f029",
-        "version" : "509.0.1"
+        "revision" : "dc46eeb3928a75390651fac6c1ef7f93ad59a73b",
+        "version" : "1.11.1"
       }
     },
     {
