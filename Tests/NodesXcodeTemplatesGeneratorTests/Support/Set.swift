@@ -5,6 +5,7 @@
 extension Set where Element == String {
 
     internal static func mock(with identifier: String, count: Int) -> Self {
-        Set([String].mock(with: identifier, count: count))
+        let strings: [String] = .mock(with: identifier, count: count)
+        return Set(strings)
     }
 }
