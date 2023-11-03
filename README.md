@@ -32,7 +32,7 @@ Nodes provides a modular and plugin-based approach to assembling an app with cou
 
 Even though the Nodes Architecture Framework leverages some concepts and patterns similar to [Uber's cross-platform mobile architecture framework](https://github.com/uber/RIBs) (RIBs), it was built from the ground up to provide unique benefits purpose built for [Tinder](https://github.com/tinder). ***No source code has been copied from RIBs*** to create this framework. Other open source projects such as [Needle](https://github.com/uber/needle) and [Mockolo](https://github.com/uber/mockolo) are utilized as dependencies when creating an app with Nodes.
 
-We ❤️ building mobile applications with Nodes and we hope you ~~will~~ do to.
+We ❤️ building mobile applications with Nodes and we hope you ~~will~~ do too.
 
 ## Design Goals
 
