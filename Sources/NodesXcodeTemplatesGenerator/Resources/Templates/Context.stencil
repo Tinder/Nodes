@@ -30,10 +30,18 @@ internal protocol {{ node_name }}FlowInterface: Flow {}
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.
  */
+{% if context_generic_types %}
 internal final class {{ node_name }}ContextImp: AbstractContext
 <
-    {{ cancellable_type }}
+    {% for generic_type in context_generic_types %}
+    {{ generic_type }}{% if not forloop.last %},
+    {% endif %}
+    {% endfor %}
+
 > {
+{% else %}
+internal final class {{ node_name }}ContextImp: AbstractContext {
+{% endif %}
 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore

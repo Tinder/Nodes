@@ -18,10 +18,7 @@ internal protocol <nodeName>FlowInterface: Flow {}
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.
  */
-internal final class <nodeName>ContextImp: AbstractContext
-<
-    <cancellableType>
-> {
+internal final class <nodeName>ContextImp: AbstractContext {
 
     /// The Flow instance.
     internal weak var flow: <nodeName>FlowInterface?

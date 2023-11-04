@@ -31,12 +31,15 @@ extension XcodeTemplates {
         public var flowProperties: [Variable]
         public var viewControllableType: String
         public var viewControllableFlowType: String
+        public var viewControllerSubscriptionsProperty: String
         public var viewControllerUpdateComment: String
+        public var viewStateEmptyFactory: String
         public var viewStateOperators: String
         public var viewStatePropertyComment: String
         public var publisherType: String
         public var publisherFailureType: String
-        public var cancellableType: String
+        public var contextGenericTypes: [String]
+        public var workerGenericTypes: [String]
         public var isPeripheryCommentEnabled: Bool
         public var isViewInjectedTemplateEnabled: Bool
 
@@ -74,9 +77,14 @@ extension XcodeTemplates.Config {
         flowProperties = []
         viewControllableType = "ViewControllable"
         viewControllableFlowType = "ViewControllableFlow"
+        viewControllerSubscriptionsProperty = """
+            /// The collection of cancellable instances.
+            private var cancellables: Set<AnyCancellable> = .init()
+            """
         viewControllerUpdateComment = """
             // Add implementation to update the user interface when the view state changes.
             """
+        viewStateEmptyFactory = "Empty().eraseToAnyPublisher()"
         viewStateOperators = """
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
@@ -85,7 +93,8 @@ extension XcodeTemplates.Config {
         viewStatePropertyComment = "The view state publisher"
         publisherType = "AnyPublisher"
         publisherFailureType = "Never"
-        cancellableType = "AnyCancellable"
+        contextGenericTypes = ["AnyCancellable"]
+        workerGenericTypes = ["AnyCancellable"]
         isPeripheryCommentEnabled = false
         isViewInjectedTemplateEnabled = true
     }
@@ -127,9 +136,15 @@ extension XcodeTemplates.Config {
         viewControllableFlowType =
             (try? decoder.decodeString(CodingKeys.viewControllableFlowType))
             ?? defaults.viewControllableFlowType
+        viewControllerSubscriptionsProperty =
+            (try? decoder.decodeString(CodingKeys.viewControllerSubscriptionsProperty))
+            ?? defaults.viewControllerSubscriptionsProperty
         viewControllerUpdateComment =
             (try? decoder.decodeString(CodingKeys.viewControllerUpdateComment))
             ?? defaults.viewControllerUpdateComment
+        viewStateEmptyFactory =
+            (try? decoder.decodeString(CodingKeys.viewStateEmptyFactory))
+            ?? defaults.viewStateEmptyFactory
         viewStateOperators =
             (try? decoder.decodeString(CodingKeys.viewStateOperators))
             ?? defaults.viewStateOperators
@@ -142,9 +157,12 @@ extension XcodeTemplates.Config {
         publisherFailureType =
             (try? decoder.decodeString(CodingKeys.publisherFailureType))
             ?? defaults.publisherFailureType
-        cancellableType =
-            (try? decoder.decodeString(CodingKeys.cancellableType))
-            ?? defaults.cancellableType
+        contextGenericTypes =
+            (try? decoder.decode(CodingKeys.contextGenericTypes))
+            ?? defaults.contextGenericTypes
+        workerGenericTypes =
+            (try? decoder.decode(CodingKeys.workerGenericTypes))
+            ?? defaults.workerGenericTypes
         isPeripheryCommentEnabled =
             (try? decoder.decode(CodingKeys.isPeripheryCommentEnabled))
             ?? defaults.isPeripheryCommentEnabled

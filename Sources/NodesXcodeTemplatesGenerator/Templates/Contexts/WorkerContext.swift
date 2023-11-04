@@ -7,7 +7,8 @@ public struct WorkerContext: Context {
     private let fileHeader: String
     private let workerName: String
     private let workerImports: [String]
-    private let cancellableType: String
+    private let workerGenericTypes: [String]
+
     private let isPeripheryCommentEnabled: Bool
 
     internal var dictionary: [String: Any] {
@@ -15,7 +16,7 @@ public struct WorkerContext: Context {
             "file_header": fileHeader,
             "worker_name": workerName,
             "worker_imports": workerImports,
-            "cancellable_type": cancellableType,
+            "worker_generic_types": workerGenericTypes,
             "is_periphery_comment_enabled": isPeripheryCommentEnabled
         ]
     }
@@ -24,13 +25,13 @@ public struct WorkerContext: Context {
         fileHeader: String,
         workerName: String,
         workerImports: Set<String>,
-        cancellableType: String,
+        workerGenericTypes: [String],
         isPeripheryCommentEnabled: Bool
     ) {
         self.fileHeader = fileHeader
         self.workerName = workerName
         self.workerImports = workerImports.sortedImports()
-        self.cancellableType = cancellableType
+        self.workerGenericTypes = workerGenericTypes
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
     }
 }

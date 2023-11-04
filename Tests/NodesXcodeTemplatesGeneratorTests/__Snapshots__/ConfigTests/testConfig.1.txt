@@ -9,7 +9,8 @@
   ▿ baseImports: 2 members
     - "<baseImports-1>"
     - "<baseImports-2>"
-  - cancellableType: "<cancellableType>"
+  ▿ contextGenericTypes: 1 element
+    - "AnyCancellable"
   ▿ dependencies: 2 elements
     ▿ Variable
       - name: "<dependencies-name-1>"
@@ -63,6 +64,13 @@
       - viewControllerProperties: "<viewControllerProperties-Custom>"
   - viewControllableFlowType: "<viewControllableFlowType>"
   - viewControllableType: "<viewControllableType>"
+  - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
   - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+  - viewStateEmptyFactory: "<viewStateEmptyFactory>"
   - viewStateOperators: "<viewStateOperators>"
+<<<<<<< HEAD
   - viewStatePropertyComment: "<viewStatePropertyComment>"
+=======
+  ▿ workerGenericTypes: 1 element
+    - "AnyCancellable"
+>>>>>>> main
