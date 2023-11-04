@@ -16,7 +16,8 @@ public struct NodeViewInjectedContext: Context {
     private let flowProperties: [[String: Any]]
     private let viewControllableType: String
     private let viewControllableFlowType: String
-    private let cancellableType: String
+    private let contextGenericTypes: [String]
+    private let workerGenericTypes: [String]
     private let isPeripheryCommentEnabled: Bool
 
     internal var dictionary: [String: Any] {
@@ -35,7 +36,8 @@ public struct NodeViewInjectedContext: Context {
             "flow_properties": flowProperties,
             "view_controllable_type": viewControllableType,
             "view_controllable_flow_type": viewControllableFlowType,
-            "cancellable_type": cancellableType,
+            "context_generic_types": contextGenericTypes,
+            "worker_generic_types": workerGenericTypes,
             "is_periphery_comment_enabled": isPeripheryCommentEnabled
         ]
     }
@@ -53,7 +55,8 @@ public struct NodeViewInjectedContext: Context {
         flowProperties: [XcodeTemplates.Variable],
         viewControllableType: String,
         viewControllableFlowType: String,
-        cancellableType: String,
+        contextGenericTypes: [String],
+        workerGenericTypes: [String],
         isPeripheryCommentEnabled: Bool
     ) {
         self.fileHeader = fileHeader
@@ -68,7 +71,8 @@ public struct NodeViewInjectedContext: Context {
         self.flowProperties = flowProperties.map(\.dictionary)
         self.viewControllableType = viewControllableType
         self.viewControllableFlowType = viewControllableFlowType
-        self.cancellableType = cancellableType
+        self.contextGenericTypes = contextGenericTypes
+        self.workerGenericTypes = workerGenericTypes
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
     }
 }

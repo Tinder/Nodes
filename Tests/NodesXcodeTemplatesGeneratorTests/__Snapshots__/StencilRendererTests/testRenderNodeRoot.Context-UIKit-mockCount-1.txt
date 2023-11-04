@@ -24,7 +24,7 @@ internal protocol RootFlowInterface: Flow {
  */
 internal final class RootContextImp: AbstractContext
 <
-    <cancellableType>
+    <contextGenericType>
 > {
 
     // periphery:ignore

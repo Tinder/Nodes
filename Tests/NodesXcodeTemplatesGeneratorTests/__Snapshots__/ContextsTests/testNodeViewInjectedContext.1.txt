@@ -1,4 +1,4 @@
-▿ 16 key/value pairs
+▿ 17 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -18,8 +18,9 @@
     ▿ value: 1 element
       - "<builderImport>"
   ▿ (2 elements)
-    - key: "cancellable_type"
-    - value: "<cancellableType>"
+    - key: "context_generic_types"
+    ▿ value: 1 element
+      - "<contextGenericType>"
   ▿ (2 elements)
     - key: "context_imports"
     ▿ value: 1 element
@@ -73,3 +74,7 @@
   ▿ (2 elements)
     - key: "view_controllable_type"
     - value: "<viewControllableType>"
+  ▿ (2 elements)
+    - key: "worker_generic_types"
+    ▿ value: 1 element
+      - "<workerGenericType>"
