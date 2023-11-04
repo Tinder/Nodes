@@ -22,10 +22,18 @@ internal protocol {{ worker_name }}Worker: Worker {}
  PURPOSE:
  Concrete implementation of the Worker.
  */
+{% if worker_generic_types %}
 internal final class {{ worker_name }}WorkerImp: AbstractWorker
 <
-    {{ cancellable_type }}
+    {% for generic_type in worker_generic_types %}
+    {{ generic_type }}{% if not forloop.last %},
+    {% endif %}
+    {% endfor %}
+
 > {
+{% else %}
+internal final class {{ worker_name }}WorkerImp: AbstractWorker {
+{% endif %}
 
     /// The initializer.
     override internal init() {}

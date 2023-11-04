@@ -17,7 +17,8 @@ internal protocol <workerName>Worker: Worker {}
  */
 internal final class <workerName>WorkerImp: AbstractWorker
 <
-    <cancellableType>
+    <workerGenericType1>,
+    <workerGenericType2>
 > {
 
     /// The initializer.
