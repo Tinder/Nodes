@@ -31,9 +31,6 @@
   - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
   - viewStateEmptyFactory: "Empty().eraseToAnyPublisher()"
   - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
-<<<<<<< HEAD
   - viewStatePropertyComment: "The view state publisher"
-=======
   ▿ workerGenericTypes: 1 element
     - "AnyCancellable"
->>>>>>> main
