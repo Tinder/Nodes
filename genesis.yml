@@ -2316,6 +2316,7 @@ files:
       //  Created by {{ author }} on {{ date }}.
       //
 
+      import Nimble
       import XCTest
 
       final class {{ project|split:' '|join:'_' }}Tests: XCTestCase {}
@@ -2404,6 +2405,9 @@ files:
         NeedleFoundation:
           url: https://github.com/uber/needle.git
           from: 0.18.0
+        Nimble:
+          url: https://github.com/Quick/Nimble
+          from: 13.0.0
       configFiles:
         Debug: BuildSettings/Debug.xcconfig
         Release: BuildSettings/Release.xcconfig
@@ -2481,6 +2485,7 @@ files:
             - target: {{ project|split:' '|join:'_' }}
             - package: Nodes
               product: NodesTesting
+            - package: Nimble
           preBuildScripts:
             - name: Mockolo
               basedOnDependencyAnalysis: false
