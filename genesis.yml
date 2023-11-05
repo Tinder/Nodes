@@ -2403,7 +2403,7 @@ files:
           from: {{ nodes }}
         NeedleFoundation:
           url: https://github.com/uber/needle.git
-          from: 0.18.0
+          from: 0.24.0
       configFiles:
         Debug: BuildSettings/Debug.xcconfig
         Release: BuildSettings/Release.xcconfig
