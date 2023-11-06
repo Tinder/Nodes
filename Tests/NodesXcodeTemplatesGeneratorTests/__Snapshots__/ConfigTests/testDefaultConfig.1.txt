@@ -32,5 +32,6 @@
   - viewStateEmptyFactory: "Empty().eraseToAnyPublisher()"
   - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
   - viewStatePropertyComment: "The view state publisher"
+  - viewStatePropertyName: "statePublisher"
   ▿ workerGenericTypes: 1 element
     - "AnyCancellable"
