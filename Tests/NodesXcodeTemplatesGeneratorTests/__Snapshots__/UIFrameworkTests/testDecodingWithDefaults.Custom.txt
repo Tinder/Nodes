@@ -5,6 +5,7 @@
       - import: "<uiFrameworkImport>"
       - viewControllerType: "<viewControllerType>"
       - viewControllerSuperParameters: "<viewControllerSuperParameters>"
+  - viewControllableMockContents: ""
   - viewControllerMethods: ""
   - viewControllerMethodsForRootNode: ""
   - viewControllerProperties: ""

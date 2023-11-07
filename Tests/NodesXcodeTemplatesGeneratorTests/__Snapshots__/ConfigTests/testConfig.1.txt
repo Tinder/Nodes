@@ -40,16 +40,19 @@
   ▿ uiFrameworks: 4 elements
     ▿ UIFramework
       - framework: Framework.appKit
+      - viewControllableMockContents: ""
       - viewControllerMethods: "<viewControllerMethods-AppKit>"
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-AppKit>"
       - viewControllerProperties: "<viewControllerProperties-AppKit>"
     ▿ UIFramework
       - framework: Framework.uiKit
+      - viewControllableMockContents: ""
       - viewControllerMethods: "<viewControllerMethods-UIKit>"
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-UIKit>"
       - viewControllerProperties: "<viewControllerProperties-UIKit>"
     ▿ UIFramework
       - framework: Framework.swiftUI
+      - viewControllableMockContents: ""
       - viewControllerMethods: "<viewControllerMethods-SwiftUI>"
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-SwiftUI>"
       - viewControllerProperties: "<viewControllerProperties-SwiftUI>"
@@ -60,6 +63,7 @@
           - import: "<uiFrameworkImport>"
           - viewControllerType: "<viewControllerType>"
           - viewControllerSuperParameters: "<viewControllerSuperParameters>"
+      - viewControllableMockContents: ""
       - viewControllerMethods: "<viewControllerMethods-Custom>"
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-Custom>"
       - viewControllerProperties: "<viewControllerProperties-Custom>"

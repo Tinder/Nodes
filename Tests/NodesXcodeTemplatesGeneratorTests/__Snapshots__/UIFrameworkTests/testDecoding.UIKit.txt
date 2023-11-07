@@ -1,5 +1,6 @@
 ▿ UIFramework
   - framework: Framework.uiKit
+  - viewControllableMockContents: ""
   - viewControllerMethods: "<viewControllerMethods>"
   - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"
   - viewControllerProperties: "<viewControllerProperties>"

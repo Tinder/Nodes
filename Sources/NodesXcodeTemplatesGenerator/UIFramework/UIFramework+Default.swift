@@ -9,7 +9,8 @@ extension UIFramework {
             framework: framework,
             viewControllerProperties: "",
             viewControllerMethods: "",
-            viewControllerMethodsForRootNode: ""
+            viewControllerMethodsForRootNode: "",
+            viewControllableMockContents: ""
         )
     }
 }

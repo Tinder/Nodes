@@ -14,7 +14,8 @@ extension UIFramework {
                     super.viewDidAppear(animated)
                     rootView.receiver?.viewDidAppear()
                 }
-                """
+                """,
+            viewControllableMockContents: ""
         )
     }
 }

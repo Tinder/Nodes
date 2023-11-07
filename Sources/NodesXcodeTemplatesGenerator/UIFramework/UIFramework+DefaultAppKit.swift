@@ -54,6 +54,8 @@ extension UIFramework {
                 cancellables.cancelAll()
             }
             """
+
+        static let viewControllableMockContents: String = ""
     }
 
     internal static func makeDefaultAppKitFramework() -> UIFramework {
@@ -61,7 +63,8 @@ extension UIFramework {
             framework: .appKit,
             viewControllerProperties: "",
             viewControllerMethods: Defaults.viewControllerMethods,
-            viewControllerMethodsForRootNode: Defaults.viewControllerMethodsForRootNode
+            viewControllerMethodsForRootNode: Defaults.viewControllerMethodsForRootNode,
+            viewControllableMockContents: Defaults.viewControllableMockContents
         )
     }
 }
