@@ -33,6 +33,7 @@ internal struct NodeTemplate: XcodeTemplate {
             viewControllerType: uiFramework.viewControllerType,
             viewControllableType: config.viewControllableType,
             viewControllableFlowType: config.viewControllableFlowType,
+            viewControllableMockContents: config.viewControllableMockContents,
             viewControllerSuperParameters: uiFramework.viewControllerSuperParameters,
             viewControllerProperties: uiFramework.viewControllerProperties,
             viewControllerMethods: uiFramework.viewControllerMethods,

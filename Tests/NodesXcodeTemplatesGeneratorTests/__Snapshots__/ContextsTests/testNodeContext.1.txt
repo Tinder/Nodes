@@ -1,4 +1,4 @@
-▿ 27 key/value pairs
+▿ 28 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -80,6 +80,9 @@
   ▿ (2 elements)
     - key: "view_controllable_flow_type"
     - value: "<viewControllableFlowType>"
+  ▿ (2 elements)
+    - key: "view_controllable_mock_contents"
+    - value: "<viewControllableMockContents>"
   ▿ (2 elements)
     - key: "view_controllable_type"
     - value: "<viewControllableType>"

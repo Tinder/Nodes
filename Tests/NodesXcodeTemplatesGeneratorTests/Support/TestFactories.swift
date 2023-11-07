@@ -37,6 +37,7 @@ extension TestFactories {
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableFlowType = "<viewControllableFlowType>"
+        config.viewControllableMockContents = "<viewControllableMockContents>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
         config.viewStateOperators = "<viewStateOperators>"
         config.publisherType = "<publisherType>"
@@ -64,6 +65,7 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllableMockContents: isStringIdentifierMocked ? "<viewControllableMockContents>" : "",
             viewControllerSuperParameters: isStringIdentifierMocked ? "<viewControllerSuperParameters>" : "",
             viewControllerProperties: isStringIdentifierMocked ? "<viewControllerProperties>" : "",
             viewControllerMethods: isStringIdentifierMocked ? "<viewControllerMethods>" : "",
@@ -93,6 +95,7 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllableMockContents: isStringIdentifierMocked ? "<viewControllableMockContents>" : "",
             viewControllerSuperParameters: isStringIdentifierMocked ? "<viewControllerSuperParameters>" : "",
             viewControllerProperties: isStringIdentifierMocked ? "<viewControllerProperties>" : "",
             viewControllerMethods: isStringIdentifierMocked ? "<viewControllerMethods>" : "",

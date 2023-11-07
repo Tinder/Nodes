@@ -64,6 +64,7 @@
       - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-Custom>"
       - viewControllerProperties: "<viewControllerProperties-Custom>"
   - viewControllableFlowType: "<viewControllableFlowType>"
+  - viewControllableMockContents: ""
   - viewControllableType: "<viewControllableType>"
   - viewControllerUpdateComment: "<viewControllerUpdateComment>"
   - viewStateOperators: "<viewStateOperators>"

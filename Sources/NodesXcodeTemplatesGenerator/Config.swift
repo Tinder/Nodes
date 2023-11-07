@@ -32,6 +32,7 @@ extension XcodeTemplates {
         public var flowProperties: [Variable]
         public var viewControllableType: String
         public var viewControllableFlowType: String
+        public var viewControllableMockContents: String
         public var viewControllerUpdateComment: String
         public var viewStateOperators: String
         public var publisherType: String
@@ -75,6 +76,7 @@ extension XcodeTemplates.Config {
         flowProperties = []
         viewControllableType = "ViewControllable"
         viewControllableFlowType = "ViewControllableFlow"
+        viewControllableMockContents = ""
         viewControllerUpdateComment = """
             // Add implementation to update the user interface when the view state changes.
             """
@@ -130,6 +132,9 @@ extension XcodeTemplates.Config {
         viewControllableFlowType =
             (try? decoder.decodeString(CodingKeys.viewControllableFlowType))
             ?? defaults.viewControllableFlowType
+        viewControllableMockContents =
+            (try? decoder.decodeString(CodingKeys.viewControllableMockContents))
+            ?? defaults.viewControllableMockContents
         viewControllerUpdateComment =
             (try? decoder.decodeString(CodingKeys.viewControllerUpdateComment))
             ?? defaults.viewControllerUpdateComment
