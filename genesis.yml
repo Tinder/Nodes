@@ -2316,7 +2316,6 @@ files:
       //  Created by {{ author }} on {{ date }}.
       //
 
-      import Nimble
       import XCTest
 
       final class {{ project|split:' '|join:'_' }}Tests: XCTestCase {}
