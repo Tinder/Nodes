@@ -5,8 +5,10 @@
 final class RootFlowTests: XCTestCase {
 
     private final class RootViewControllableMock: UIViewController, RootViewControllable {
-        
-        <viewControllableMockContents>
+
+        <viewControllerProperties>
+
+        <viewControllerMethods>
     }
 
     private var flow: RootFlowImp!

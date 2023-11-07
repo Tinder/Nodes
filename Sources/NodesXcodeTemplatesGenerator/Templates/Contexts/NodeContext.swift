@@ -20,7 +20,6 @@ public struct NodeContext: Context {
     private let viewControllerType: String
     private let viewControllableType: String
     private let viewControllableFlowType: String
-    private let viewControllableMockContents: String
     private let viewControllerSuperParameters: String
     private let viewControllerProperties: String
     private let viewControllerMethods: String
@@ -51,7 +50,6 @@ public struct NodeContext: Context {
             "view_controller_type": viewControllerType,
             "view_controllable_type": viewControllableType,
             "view_controllable_flow_type": viewControllableFlowType,
-            "view_controllable_mock_contents": viewControllableMockContents,
             "view_controller_super_parameters": viewControllerSuperParameters,
             "view_controller_properties": viewControllerProperties,
             "view_controller_methods": viewControllerMethods,
@@ -81,7 +79,6 @@ public struct NodeContext: Context {
         viewControllerType: String,
         viewControllableType: String,
         viewControllableFlowType: String,
-        viewControllableMockContents: String,
         viewControllerSuperParameters: String,
         viewControllerProperties: String,
         viewControllerMethods: String,
@@ -108,7 +105,6 @@ public struct NodeContext: Context {
         self.viewControllerType = viewControllerType
         self.viewControllableType = viewControllableType
         self.viewControllableFlowType = viewControllableFlowType
-        self.viewControllableMockContents = viewControllableMockContents
         self.viewControllerSuperParameters = viewControllerSuperParameters
         self.viewControllerProperties = viewControllerProperties
         self.viewControllerMethods = viewControllerMethods

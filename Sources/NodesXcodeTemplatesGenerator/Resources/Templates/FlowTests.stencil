@@ -10,10 +10,16 @@ import {{ import }}
 
 final class {{ node_name }}FlowTests: XCTestCase {
 
-    {% if view_controllable_mock_contents %}
+    {% if view_controller_properties or view_controller_methods %}
     private final class {{ node_name }}ViewControllableMock: UIViewController, {{ node_name }}ViewControllable {
-        
-        {{ view_controllable_mock_contents|indent:8 }}
+        {% if view_controller_properties %}
+
+        {{ view_controller_properties|indent:8 }}
+        {% endif %}
+        {% if view_controller_methods %}
+
+        {{ view_controller_methods|indent:8 }}
+        {% endif %}
     }
     {% else %}
     private final class {{ node_name }}ViewControllableMock: UIViewController, {{ node_name }}ViewControllable {}

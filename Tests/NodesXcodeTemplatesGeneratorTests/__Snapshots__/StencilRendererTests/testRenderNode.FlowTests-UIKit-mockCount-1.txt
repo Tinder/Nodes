@@ -7,8 +7,10 @@ import <testImport>
 final class <nodeName>FlowTests: XCTestCase {
 
     private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {
-        
-        <viewControllableMockContents>
+
+        <viewControllerProperties>
+
+        <viewControllerMethods>
     }
 
     private var flow: <nodeName>FlowImp!
