@@ -68,5 +68,7 @@
   - viewControllerUpdateComment: "<viewControllerUpdateComment>"
   - viewStateEmptyFactory: "<viewStateEmptyFactory>"
   - viewStateOperators: "<viewStateOperators>"
+  - viewStatePropertyComment: "<viewStatePropertyComment>"
+  - viewStatePropertyName: "<viewStatePropertyName>"
   ▿ workerGenericTypes: 1 element
     - "AnyCancellable"

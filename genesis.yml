@@ -2403,7 +2403,7 @@ files:
           from: {{ nodes }}
         NeedleFoundation:
           url: https://github.com/uber/needle.git
-          from: 0.18.0
+          from: 0.24.0
         Nimble:
           url: https://github.com/Quick/Nimble
           from: 13.0.0
