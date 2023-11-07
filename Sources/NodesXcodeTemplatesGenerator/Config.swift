@@ -35,9 +35,9 @@ extension XcodeTemplates {
         public var viewControllerUpdateComment: String
         public var viewStateEmptyFactory: String
         public var viewStateOperators: String
-        public var viewStateTransform: String
         public var viewStatePropertyComment: String
         public var viewStatePropertyName: String
+        public var viewStateTransform: String
         public var publisherType: String
         public var publisherFailureType: String
         public var contextGenericTypes: [String]
@@ -92,11 +92,11 @@ extension XcodeTemplates.Config {
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
             """
+        viewStatePropertyComment = "The view state publisher"
+        viewStatePropertyName = "statePublisher"
         viewStateTransform = """
             Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()
             """
-        viewStatePropertyComment = "The view state publisher"
-        viewStatePropertyName = "statePublisher"
         publisherType = "AnyPublisher"
         publisherFailureType = "Never"
         contextGenericTypes = ["AnyCancellable"]
@@ -154,15 +154,15 @@ extension XcodeTemplates.Config {
         viewStateOperators =
             (try? decoder.decodeString(CodingKeys.viewStateOperators))
             ?? defaults.viewStateOperators
-        viewStateTransform =
-            (try? decoder.decodeString(CodingKeys.viewStateTransform))
-            ?? defaults.viewStateTransform
         viewStatePropertyComment =
             (try? decoder.decodeString(CodingKeys.viewStatePropertyComment))
             ?? defaults.viewStatePropertyComment
         viewStatePropertyName =
             (try? decoder.decodeString(CodingKeys.viewStatePropertyName))
             ?? defaults.viewStatePropertyName
+        viewStateTransform =
+            (try? decoder.decodeString(CodingKeys.viewStateTransform))
+            ?? defaults.viewStateTransform
         publisherType =
             (try? decoder.decodeString(CodingKeys.publisherType))
             ?? defaults.publisherType

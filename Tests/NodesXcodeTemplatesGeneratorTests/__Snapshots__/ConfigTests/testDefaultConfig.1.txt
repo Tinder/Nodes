@@ -31,8 +31,8 @@
   - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
   - viewStateEmptyFactory: "Empty().eraseToAnyPublisher()"
   - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
-  - viewStateTransform: "Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()"
   - viewStatePropertyComment: "The view state publisher"
   - viewStatePropertyName: "statePublisher"
+  - viewStateTransform: "Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()"
   ▿ workerGenericTypes: 1 element
     - "AnyCancellable"
