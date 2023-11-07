@@ -25,6 +25,11 @@ options:
     type: string
     required: true
 
+  - question: "Absolute path to local Nodes (optional - overrides Nodes Version Requirement):"
+    name: path
+    type: string
+    required: false
+
 files:
 
   - path: .gitignore
@@ -2335,8 +2340,12 @@ files:
           products: [],
           dependencies: [
               .package(
+                  {% if path %}
+                  path: "{{ path }}"),
+                  {% else %}
                   url: "git@github.com:TinderApp/Nodes.git",
                   from: "{{ nodes }}"),
+                  {% endif %}
           ],
           targets: [
               .binaryTarget(
@@ -2399,8 +2408,12 @@ files:
           fi
       packages:
         Nodes:
+          {% if path %}
+          path: {{ path }}
+          {% else %}
           url: git@github.com:TinderApp/Nodes.git
           from: {{ nodes }}
+          {% endif %}
         NeedleFoundation:
           url: https://github.com/uber/needle.git
           from: 0.24.0
@@ -2489,7 +2502,11 @@ files:
                 -d {{ project|split:' '|join:'_' }}Tests/Generated/MockoloGenerated.swift
                 -i {{ project|split:' '|join:'_' }}
                 -s {{ project|split:' '|join:'_' }}/Sources
+                {% if path %}
+                -s {{ path }}Sources/Nodes
+                {% else %}
                 -s ${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes
+                {% endif %}
                 --custom-imports Nodes
           sources: {{ project|split:' '|join:'_' }}Tests
           configFiles:
