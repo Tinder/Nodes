@@ -42,6 +42,8 @@ extension TestFactories {
         config.viewStateEmptyFactory = "<viewStateEmptyFactory>"
         config.viewStateOperators = "<viewStateOperators>"
         config.viewStateTransform = "<viewStateTransform>"
+        config.viewStatePropertyComment = "<viewStatePropertyComment>"
+        config.viewStatePropertyName = "<viewStatePropertyName>"
         config.publisherType = "<publisherType>"
         config.publisherFailureType = "<publisherFailureType>"
         config.contextGenericTypes = ["<contextGenericType>"]

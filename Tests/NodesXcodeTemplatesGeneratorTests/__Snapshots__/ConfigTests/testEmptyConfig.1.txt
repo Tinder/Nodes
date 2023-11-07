@@ -32,5 +32,7 @@
   - viewStateEmptyFactory: "Empty().eraseToAnyPublisher()"
   - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
   - viewStateTransform: "Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()"
+  - viewStatePropertyComment: "The view state publisher"
+  - viewStatePropertyName: "statePublisher"
   ▿ workerGenericTypes: 1 element
     - "AnyCancellable"
