@@ -20,11 +20,11 @@ public struct NodeContext: Context {
     private let viewControllerType: String
     private let viewControllableType: String
     private let viewControllableFlowType: String
-    private let viewControllableMockContents: String
     private let viewControllerSubscriptionsProperty: String
     private let viewControllerSuperParameters: String
     private let viewControllerProperties: String
     private let viewControllerMethods: String
+    private let viewControllableMockContents: String
     private let viewControllerUpdateComment: String
     private let viewStateOperators: String
     private let publisherType: String
