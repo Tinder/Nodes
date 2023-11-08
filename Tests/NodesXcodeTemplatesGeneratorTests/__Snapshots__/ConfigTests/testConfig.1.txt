@@ -9,9 +9,14 @@
   ▿ baseImports: 2 members
     - "<baseImports-1>"
     - "<baseImports-2>"
+<<<<<<< HEAD
   ▿ baseTestImports: 1 member
     - "XCTest"
   - cancellableType: "<cancellableType>"
+=======
+  ▿ contextGenericTypes: 1 element
+    - "AnyCancellable"
+>>>>>>> main
   ▿ dependencies: 2 elements
     ▿ Variable
       - name: "<dependencies-name-1>"
@@ -69,5 +74,12 @@
       - viewControllerProperties: "<viewControllerProperties-Custom>"
   - viewControllableFlowType: "<viewControllableFlowType>"
   - viewControllableType: "<viewControllableType>"
+  - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
   - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+  - viewStateEmptyFactory: "<viewStateEmptyFactory>"
   - viewStateOperators: "<viewStateOperators>"
+  - viewStatePropertyComment: "<viewStatePropertyComment>"
+  - viewStatePropertyName: "<viewStatePropertyName>"
+  - viewStateTransform: "<viewStateTransform>"
+  ▿ workerGenericTypes: 1 element
+    - "AnyCancellable"

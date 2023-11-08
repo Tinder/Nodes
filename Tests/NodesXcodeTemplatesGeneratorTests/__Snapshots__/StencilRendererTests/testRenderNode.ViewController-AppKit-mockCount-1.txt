@@ -22,7 +22,7 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
     internal weak var receiver: <nodeName>Receiver?
 
     /// The collection of cancellable instances.
-    private var cancellables: Set<<cancellableType>> = .init()
+    private var cancellables: Set<AnyCancellable> = .init()
 
     /// The initial view state.
     private let initialState: <nodeName>ViewState

@@ -33,6 +33,7 @@ internal struct NodeTemplate: XcodeTemplate {
             viewControllerType: uiFramework.viewControllerType,
             viewControllableType: config.viewControllableType,
             viewControllableFlowType: config.viewControllableFlowType,
+            viewControllerSubscriptionsProperty: config.viewControllerSubscriptionsProperty,
             viewControllerSuperParameters: uiFramework.viewControllerSuperParameters,
             viewControllerProperties: uiFramework.viewControllerProperties,
             viewControllerMethods: uiFramework.viewControllerMethods,
@@ -40,7 +41,8 @@ internal struct NodeTemplate: XcodeTemplate {
             viewStateOperators: config.viewStateOperators,
             publisherType: config.publisherType,
             publisherFailureType: config.publisherFailureType,
-            cancellableType: config.cancellableType,
+            contextGenericTypes: config.contextGenericTypes,
+            workerGenericTypes: config.workerGenericTypes,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
         )
         propertyList = PropertyList(description: "The source files implementing a Node.",

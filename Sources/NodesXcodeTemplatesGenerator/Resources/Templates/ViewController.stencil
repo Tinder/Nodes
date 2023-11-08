@@ -36,7 +36,7 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     internal weak var receiver: {{ node_name }}Receiver?
 
     /// The collection of cancellable instances.
-    private var cancellables: Set<{{ cancellable_type }}> = .init()
+    private var cancellables: Set<AnyCancellable> = .init()
 
     /// The initial view state.
     private let initialState: {{ node_name }}ViewState

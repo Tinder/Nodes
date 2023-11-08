@@ -20,6 +20,7 @@ public struct NodeContext: Context {
     private let viewControllerType: String
     private let viewControllableType: String
     private let viewControllableFlowType: String
+    private let viewControllerSubscriptionsProperty: String
     private let viewControllerSuperParameters: String
     private let viewControllerProperties: String
     private let viewControllerMethods: String
@@ -27,7 +28,8 @@ public struct NodeContext: Context {
     private let viewStateOperators: String
     private let publisherType: String
     private let publisherFailureType: String
-    private let cancellableType: String
+    private let contextGenericTypes: [String]
+    private let workerGenericTypes: [String]
     private let isPeripheryCommentEnabled: Bool
 
     internal var dictionary: [String: Any] {
@@ -50,6 +52,7 @@ public struct NodeContext: Context {
             "view_controller_type": viewControllerType,
             "view_controllable_type": viewControllableType,
             "view_controllable_flow_type": viewControllableFlowType,
+            "view_controller_subscriptions_property": viewControllerSubscriptionsProperty,
             "view_controller_super_parameters": viewControllerSuperParameters,
             "view_controller_properties": viewControllerProperties,
             "view_controller_methods": viewControllerMethods,
@@ -57,7 +60,8 @@ public struct NodeContext: Context {
             "view_state_operators": viewStateOperators,
             "publisher_type": publisherType,
             "publisher_failure_type": publisherFailureType,
-            "cancellable_type": cancellableType,
+            "context_generic_types": contextGenericTypes,
+            "worker_generic_types": workerGenericTypes,
             "is_periphery_comment_enabled": isPeripheryCommentEnabled
         ]
     }
@@ -79,6 +83,7 @@ public struct NodeContext: Context {
         viewControllerType: String,
         viewControllableType: String,
         viewControllableFlowType: String,
+        viewControllerSubscriptionsProperty: String,
         viewControllerSuperParameters: String,
         viewControllerProperties: String,
         viewControllerMethods: String,
@@ -86,7 +91,8 @@ public struct NodeContext: Context {
         viewStateOperators: String,
         publisherType: String,
         publisherFailureType: String,
-        cancellableType: String,
+        contextGenericTypes: [String],
+        workerGenericTypes: [String],
         isPeripheryCommentEnabled: Bool
     ) {
         self.fileHeader = fileHeader
@@ -105,6 +111,7 @@ public struct NodeContext: Context {
         self.viewControllerType = viewControllerType
         self.viewControllableType = viewControllableType
         self.viewControllableFlowType = viewControllableFlowType
+        self.viewControllerSubscriptionsProperty = viewControllerSubscriptionsProperty
         self.viewControllerSuperParameters = viewControllerSuperParameters
         self.viewControllerProperties = viewControllerProperties
         self.viewControllerMethods = viewControllerMethods
@@ -112,7 +119,8 @@ public struct NodeContext: Context {
         self.viewStateOperators = viewStateOperators
         self.publisherType = publisherType
         self.publisherFailureType = publisherFailureType
-        self.cancellableType = cancellableType
+        self.contextGenericTypes = contextGenericTypes
+        self.workerGenericTypes = workerGenericTypes
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
     }
 }

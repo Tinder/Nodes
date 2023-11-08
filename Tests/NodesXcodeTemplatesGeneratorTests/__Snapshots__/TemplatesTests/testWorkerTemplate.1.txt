@@ -1,8 +1,9 @@
 ▿ WorkerTemplate
   ▿ context: WorkerContext
-    - cancellableType: "<cancellableType>"
     - fileHeader: "<fileHeader>"
     - isPeripheryCommentEnabled: false
+    ▿ workerGenericTypes: 1 element
+      - "<workerGenericType>"
     ▿ workerImports: 3 elements
       - "<baseImport>"
       - "<reactiveImport>"

@@ -38,11 +38,17 @@ extension TestFactories {
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableFlowType = "<viewControllableFlowType>"
+        config.viewControllerSubscriptionsProperty = "<viewControllerSubscriptionsProperty>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
+        config.viewStateEmptyFactory = "<viewStateEmptyFactory>"
         config.viewStateOperators = "<viewStateOperators>"
+        config.viewStatePropertyComment = "<viewStatePropertyComment>"
+        config.viewStatePropertyName = "<viewStatePropertyName>"
+        config.viewStateTransform = "<viewStateTransform>"
         config.publisherType = "<publisherType>"
         config.publisherFailureType = "<publisherFailureType>"
-        config.cancellableType = "<cancellableType>"
+        config.contextGenericTypes = ["<contextGenericType>"]
+        config.workerGenericTypes = ["<workerGenericType>"]
         return config
     }
 
@@ -65,6 +71,7 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>",
             viewControllerSuperParameters: isStringIdentifierMocked ? "<viewControllerSuperParameters>" : "",
             viewControllerProperties: isStringIdentifierMocked ? "<viewControllerProperties>" : "",
             viewControllerMethods: isStringIdentifierMocked ? "<viewControllerMethods>" : "",
@@ -72,7 +79,8 @@ extension TestFactories {
             viewStateOperators: isStringIdentifierMocked ? "<viewStateOperators>" : "",
             publisherType: "<publisherType>",
             publisherFailureType: isStringIdentifierMocked ? "<publisherFailureType>" : "",
-            cancellableType: "<cancellableType>",
+            contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
+            workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
@@ -94,6 +102,7 @@ extension TestFactories {
             viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>",
             viewControllerSuperParameters: isStringIdentifierMocked ? "<viewControllerSuperParameters>" : "",
             viewControllerProperties: isStringIdentifierMocked ? "<viewControllerProperties>" : "",
             viewControllerMethods: isStringIdentifierMocked ? "<viewControllerMethods>" : "",
@@ -101,7 +110,8 @@ extension TestFactories {
             viewStateOperators: isStringIdentifierMocked ? "<viewStateOperators>" : "",
             publisherType: "<publisherType>",
             publisherFailureType: isStringIdentifierMocked ? "<publisherFailureType>" : "",
-            cancellableType: "<cancellableType>",
+            contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
+            workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
@@ -120,7 +130,8 @@ extension TestFactories {
             flowProperties: .mock(with: "flowProperty", count: mockCount),
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
-            cancellableType: "<cancellableType>",
+            contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
+            workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
@@ -159,7 +170,7 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",
             workerImports: .mock(with: "workerImport", count: mockCount),
-            cancellableType: "<cancellableType>",
+            workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
