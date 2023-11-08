@@ -26,6 +26,7 @@ extension TestFactories {
             uiFramework.viewControllerProperties = "<viewControllerProperties>"
             uiFramework.viewControllerMethods = "<viewControllerMethods>"
             uiFramework.viewControllerMethodsForRootNode = "<viewControllerMethodsForRootNode>"
+            uiFramework.viewControllableMockContents = "<viewControllableMockContents>"
             return uiFramework
         }
         config.fileHeader = "<fileHeader>"
