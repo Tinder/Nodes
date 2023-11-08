@@ -75,6 +75,7 @@ extension TestFactories {
             viewControllerSuperParameters: isStringIdentifierMocked ? "<viewControllerSuperParameters>" : "",
             viewControllerProperties: isStringIdentifierMocked ? "<viewControllerProperties>" : "",
             viewControllerMethods: isStringIdentifierMocked ? "<viewControllerMethods>" : "",
+            viewControllableMockContents: isStringIdentifierMocked ? "<viewControllableMockContents>" : "",
             viewControllerUpdateComment: isStringIdentifierMocked ? "<viewControllerUpdateComment>" : "",
             viewStateOperators: isStringIdentifierMocked ? "<viewStateOperators>" : "",
             publisherType: "<publisherType>",

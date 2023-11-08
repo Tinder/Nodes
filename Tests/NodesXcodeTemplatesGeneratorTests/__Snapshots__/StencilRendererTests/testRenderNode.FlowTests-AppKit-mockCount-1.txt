@@ -6,7 +6,10 @@ import <testImport>
 
 final class <nodeName>FlowTests: XCTestCase {
 
-    private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {}
+    private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {
+        
+        <viewControllableMockContents>
+    }
 
     private var flow: <nodeName>FlowImp!
     private var contextMock: <nodeName>ContextInterfaceMock!

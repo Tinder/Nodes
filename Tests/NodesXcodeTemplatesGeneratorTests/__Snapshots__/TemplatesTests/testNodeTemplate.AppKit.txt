@@ -52,6 +52,7 @@
     ▿ testImports: 1 element
       - "XCTest"
     - viewControllableFlowType: "<viewControllableFlowType>"
+    - viewControllableMockContents: "<viewControllableMockContents>"
     - viewControllableType: "<viewControllableType>"
     ▿ viewControllerImports: 4 elements
       - "<baseImport>"

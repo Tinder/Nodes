@@ -37,6 +37,7 @@ internal struct NodeTemplate: XcodeTemplate {
             viewControllerSuperParameters: uiFramework.viewControllerSuperParameters,
             viewControllerProperties: uiFramework.viewControllerProperties,
             viewControllerMethods: uiFramework.viewControllerMethods,
+            viewControllableMockContents: uiFramework.viewControllableMockContents,
             viewControllerUpdateComment: config.viewControllerUpdateComment,
             viewStateOperators: config.viewStateOperators,
             publisherType: config.publisherType,
