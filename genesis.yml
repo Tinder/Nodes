@@ -2503,7 +2503,7 @@ files:
                 -i {{ project|split:' '|join:'_' }}
                 -s {{ project|split:' '|join:'_' }}/Sources
                 {% if path %}
-                -s {{ path }}Sources/Nodes
+                -s {{ path }}/Sources/Nodes
                 {% else %}
                 -s ${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes
                 {% endif %}
