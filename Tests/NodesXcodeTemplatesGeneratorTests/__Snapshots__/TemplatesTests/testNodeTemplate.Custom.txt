@@ -58,6 +58,7 @@
       - "Nodes"
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
+    - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
     - viewControllerSuperParameters: "<viewControllerSuperParameters>"
     - viewControllerType: "<viewControllerType>"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"

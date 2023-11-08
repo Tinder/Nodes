@@ -58,6 +58,7 @@
       - "Nodes"
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
+    - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
     - viewControllerSuperParameters: "nibName: nil, bundle: nil"
     - viewControllerType: "NSViewController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"

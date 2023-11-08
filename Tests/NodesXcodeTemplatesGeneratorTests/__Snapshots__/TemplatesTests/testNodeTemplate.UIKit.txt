@@ -58,6 +58,7 @@
       - "UIKit"
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
+    - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
     - viewControllerSuperParameters: "nibName: nil, bundle: nil"
     - viewControllerType: "UIViewController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"

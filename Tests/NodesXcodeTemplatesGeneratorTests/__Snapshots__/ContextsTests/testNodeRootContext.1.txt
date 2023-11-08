@@ -1,4 +1,4 @@
-▿ 27 key/value pairs
+▿ 28 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -90,6 +90,9 @@
   ▿ (2 elements)
     - key: "view_controller_properties"
     - value: "<viewControllerProperties>"
+  ▿ (2 elements)
+    - key: "view_controller_subscriptions_property"
+    - value: "<viewControllerSubscriptionsProperty>"
   ▿ (2 elements)
     - key: "view_controller_super_parameters"
     - value: "<viewControllerSuperParameters>"

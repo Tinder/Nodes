@@ -58,6 +58,7 @@
       - "SwiftUI"
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
+    - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
     - viewControllerSuperParameters: ""
     - viewControllerType: "UIHostingController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
