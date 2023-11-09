@@ -12,29 +12,29 @@ extension XCTestCase {
     internal func notBeNilAndToDeallocateAfterTest<T: AnyObject>(
         file: StaticString = #file,
         line: UInt = #line
-    ) -> Predicate<T> {
+    ) -> Matcher<T> {
         // swiftlint:disable:next unowned_variable_capture
-        Predicate { [unowned self] expression in
+        Matcher { [unowned self] expression in
             guard let object: AnyObject = try expression.evaluate()
-            else { return PredicateResult(status: .fail, message: .expectedTo("not be nil, got <nil>")) }
+            else { return MatcherResult(status: .fail, message: .expectedTo("not be nil, got <nil>")) }
             addTeardownBlock { [weak object] in
                 if object != nil {
                     let message: String = "Expected object of type `\(T.self)` to deallocate after test"
                     XCTFail(message, file: file, line: line)
                 }
             }
-            return PredicateResult(bool: true, message: .fail(""))
+            return MatcherResult(bool: true, message: .fail(""))
         }
     }
 
     internal func notBeNilAndElementsToDeallocateAfterTest<T: Collection>(
         file: StaticString = #file,
         line: UInt = #line
-    ) -> Predicate<T> where T.Element: AnyObject {
+    ) -> Matcher<T> where T.Element: AnyObject {
         // swiftlint:disable:next unowned_variable_capture
-        Predicate { [unowned self] expression in
+        Matcher { [unowned self] expression in
             guard let collection: T = try expression.evaluate()
-            else { return PredicateResult(status: .fail, message: .expectedTo("not be nil, got <nil>")) }
+            else { return MatcherResult(status: .fail, message: .expectedTo("not be nil, got <nil>")) }
             collection.enumerated().forEach { index, object in
                 let object: T.Element = object
                 addTeardownBlock { [weak object] in
@@ -44,51 +44,51 @@ extension XCTestCase {
                     }
                 }
             }
-            return PredicateResult(bool: true, message: .fail(""))
+            return MatcherResult(bool: true, message: .fail(""))
         }
     }
 
-    internal func allBeStarted() -> Predicate<[Flow]> {
+    internal func allBeStarted() -> Matcher<[Flow]> {
         allPass(beStarted())
     }
 
-    internal func beStarted() -> Predicate<Flow> {
-        Predicate.simple("be started") { expression in
+    internal func beStarted() -> Matcher<Flow> {
+        Matcher.simple("be started") { expression in
             let flow: Flow? = try expression.evaluate()
-            return PredicateStatus(bool: flow?.isStarted ?? false)
+            return MatcherStatus(bool: flow?.isStarted ?? false)
         }
     }
 
-    internal func allBeActive() -> Predicate<[Context]> {
+    internal func allBeActive() -> Matcher<[Context]> {
         allPass(beActive())
     }
 
-    internal func beActive() -> Predicate<Context> {
-        Predicate.simple("be active") { expression in
+    internal func beActive() -> Matcher<Context> {
+        Matcher.simple("be active") { expression in
             let context: Context? = try expression.evaluate()
-            return PredicateStatus(bool: context?.isActive ?? false)
+            return MatcherStatus(bool: context?.isActive ?? false)
         }
     }
 
-    internal func allBeWorking() -> Predicate<[Worker]> {
+    internal func allBeWorking() -> Matcher<[Worker]> {
         allPass(beWorking())
     }
 
-    internal func beWorking() -> Predicate<Worker> {
-        Predicate.simple("be working") { expression in
+    internal func beWorking() -> Matcher<Worker> {
+        Matcher.simple("be working") { expression in
             let worker: Worker? = try expression.evaluate()
-            return PredicateStatus(bool: worker?.isWorking ?? false)
+            return MatcherStatus(bool: worker?.isWorking ?? false)
         }
     }
 
-    internal func allBeCancelled() -> Predicate<[CancellableMock]> {
+    internal func allBeCancelled() -> Matcher<[CancellableMock]> {
         allPass(beCancelled())
     }
 
-    internal func beCancelled() -> Predicate<CancellableMock> {
-        Predicate.simple("be cancelled") { expression in
+    internal func beCancelled() -> Matcher<CancellableMock> {
+        Matcher.simple("be cancelled") { expression in
             let cancellable: CancellableMock? = try expression.evaluate()
-            return PredicateStatus(bool: cancellable?.isCancelled ?? false)
+            return MatcherStatus(bool: cancellable?.isCancelled ?? false)
         }
     }
 }
