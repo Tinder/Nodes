@@ -69,6 +69,7 @@
       - "<baseImport>"
       - "Nodes"
     - viewStateOperators: "<viewStateOperators>"
+    - viewStateTransform: "<viewStateTransform>"
     ▿ workerGenericTypes: 1 element
       - "<workerGenericType>"
   - name: "Node - UIKit"

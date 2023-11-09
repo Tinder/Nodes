@@ -27,6 +27,7 @@ public struct NodeContext: Context {
     private let viewControllableMockContents: String
     private let viewControllerUpdateComment: String
     private let viewStateOperators: String
+    private let viewStateTransform: String
     private let publisherType: String
     private let publisherFailureType: String
     private let contextGenericTypes: [String]
@@ -60,6 +61,7 @@ public struct NodeContext: Context {
             "view_controllable_mock_contents": viewControllableMockContents,
             "view_controller_update_comment": viewControllerUpdateComment,
             "view_state_operators": viewStateOperators,
+            "view_state_transform": viewStateTransform,
             "publisher_type": publisherType,
             "publisher_failure_type": publisherFailureType,
             "context_generic_types": contextGenericTypes,
@@ -92,6 +94,7 @@ public struct NodeContext: Context {
         viewControllableMockContents: String,
         viewControllerUpdateComment: String,
         viewStateOperators: String,
+        viewStateTransform: String,
         publisherType: String,
         publisherFailureType: String,
         contextGenericTypes: [String],
@@ -121,6 +124,7 @@ public struct NodeContext: Context {
         self.viewControllableMockContents = viewControllableMockContents
         self.viewControllerUpdateComment = viewControllerUpdateComment
         self.viewStateOperators = viewStateOperators
+        self.viewStateTransform = viewStateTransform
         self.publisherType = publisherType
         self.publisherFailureType = publisherFailureType
         self.contextGenericTypes = contextGenericTypes

@@ -40,6 +40,7 @@ internal struct NodeTemplate: XcodeTemplate {
             viewControllableMockContents: uiFramework.viewControllableMockContents,
             viewControllerUpdateComment: config.viewControllerUpdateComment,
             viewStateOperators: config.viewStateOperators,
+            viewStateTransform: config.viewStateTransform,
             publisherType: config.publisherType,
             publisherFailureType: config.publisherFailureType,
             contextGenericTypes: config.contextGenericTypes,
