@@ -65,10 +65,14 @@
     - viewControllerSuperParameters: "nibName: nil, bundle: nil"
     - viewControllerType: "NSViewController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+    - viewStateEmptyFactory: "<viewStateEmptyFactory>"
     ▿ viewStateImports: 2 elements
       - "<baseImport>"
       - "Nodes"
     - viewStateOperators: "<viewStateOperators>"
+    - viewStatePropertyComment: "<viewStatePropertyComment>"
+    - viewStatePropertyName: "<viewStatePropertyName>"
+    - viewStateTransform: "<viewStateTransform>"
     ▿ workerGenericTypes: 1 element
       - "<workerGenericType>"
   - name: "Node - AppKit"

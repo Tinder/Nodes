@@ -2,6 +2,8 @@
 
 #warning("Manually move this test file to the corresponding test target.")
 
+import <testImport>
+
 final class RootViewControllerTests: XCTestCase {
 
     override func setUp() {

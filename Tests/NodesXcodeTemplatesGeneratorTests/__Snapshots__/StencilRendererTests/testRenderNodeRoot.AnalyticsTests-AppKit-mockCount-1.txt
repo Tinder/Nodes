@@ -2,6 +2,8 @@
 
 #warning("Manually move this test file to the corresponding test target.")
 
+import <testImport>
+
 final class RootAnalyticsTests: XCTestCase {
 
     private var analytics: RootAnalyticsImp!

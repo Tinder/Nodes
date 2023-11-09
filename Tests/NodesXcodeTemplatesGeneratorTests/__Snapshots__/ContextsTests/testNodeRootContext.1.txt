@@ -1,4 +1,4 @@
-▿ 28 key/value pairs
+▿ 34 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -75,8 +75,15 @@
     ▿ value: 1 element
       - "<stateImport>"
   ▿ (2 elements)
+    - key: "test_imports"
+    ▿ value: 1 element
+      - "<testImport>"
+  ▿ (2 elements)
     - key: "view_controllable_flow_type"
     - value: "<viewControllableFlowType>"
+  ▿ (2 elements)
+    - key: "view_controllable_mock_contents"
+    - value: "<viewControllableMockContents>"
   ▿ (2 elements)
     - key: "view_controllable_type"
     - value: "<viewControllableType>"
@@ -103,12 +110,24 @@
     - key: "view_controller_update_comment"
     - value: "<viewControllerUpdateComment>"
   ▿ (2 elements)
+    - key: "view_state_empty_factory"
+    - value: "<viewStateEmptyFactory>"
+  ▿ (2 elements)
     - key: "view_state_imports"
     ▿ value: 1 element
       - "<viewStateImport>"
   ▿ (2 elements)
     - key: "view_state_operators"
     - value: "<viewStateOperators>"
+  ▿ (2 elements)
+    - key: "view_state_property_Ccmment"
+    - value: "<viewStatePropertyComment>"
+  ▿ (2 elements)
+    - key: "view_state_property_name"
+    - value: "<viewStatePropertyName>"
+  ▿ (2 elements)
+    - key: "view_state_transform"
+    - value: "<viewStateTransform>"
   ▿ (2 elements)
     - key: "worker_generic_types"
     ▿ value: 1 element
