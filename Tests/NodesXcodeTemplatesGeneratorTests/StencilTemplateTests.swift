@@ -201,3 +201,27 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         }
     }
 }
+
+extension StencilTemplate {
+
+    // swiftlint:disable:next strict_fileprivate
+    fileprivate static let allCases: [Self] = [
+        .analytics,
+        .builder(.default),
+        .builder(.swiftUI),
+        .context,
+        .flow,
+        .plugin,
+        .pluginList,
+        .state,
+        .viewController(.default),
+        .viewController(.swiftUI),
+        .viewState,
+        .worker,
+        .analyticsTests,
+        .contextTests,
+        .flowTests,
+        .viewControllerTests,
+        .viewStateTests
+    ]
+}

@@ -5,7 +5,7 @@
 import Foundation
 
 /// Every Stencil source file is represented by a case. Some cases have a variation.
-public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
+public enum StencilTemplate: Equatable, CustomStringConvertible {
 
     case analytics
     case builder(Variation)
@@ -107,27 +107,6 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
             self.state = .state
         }
     }
-
-    /// An array of StencilTemplate cases for ``CaseIterable`` conformance.
-    public static let allCases: [Self] = [
-        .analytics,
-        .builder(.default),
-        .builder(.swiftUI),
-        .context,
-        .flow,
-        .plugin,
-        .pluginList,
-        .state,
-        .viewController(.default),
-        .viewController(.swiftUI),
-        .viewState,
-        .worker,
-        .analyticsTests,
-        .contextTests,
-        .flowTests,
-        .viewControllerTests,
-        .viewStateTests
-    ]
 
     /// A string representation of the case for ``CustomStringConvertible`` conformance.
     public var description: String { name }
