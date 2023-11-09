@@ -50,6 +50,9 @@ extension TestFactories {
         config.publisherFailureType = "<publisherFailureType>"
         config.contextGenericTypes = ["<contextGenericType>"]
         config.workerGenericTypes = ["<workerGenericType>"]
+        config.isViewInjectedTemplateEnabled = true
+        config.isTestTemplatesGenerationEnabled = false
+        config.isPeripheryCommentEnabled = false
         return config
     }
 

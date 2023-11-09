@@ -11,22 +11,28 @@ public final class StencilRenderer {
 
     public func renderNode(
         context: NodeContext,
-        kind: UIFramework.Kind
+        kind: UIFramework.Kind,
+        includeTests: Bool
     ) throws -> [String: String] {
-        try renderNode(stencils: StencilTemplate.Node(for: .variation(for: kind)).stencils, with: context.dictionary)
+        let node: StencilTemplate.Node = .init(for: .variation(for: kind))
+        return try renderNode(stencils: node.stencils(includeTests: includeTests), with: context.dictionary)
     }
 
     public func renderNodeRoot(
         context: NodeRootContext,
-        kind: UIFramework.Kind
+        kind: UIFramework.Kind,
+        includeTests: Bool
     ) throws -> [String: String] {
-        try renderNode(stencils: StencilTemplate.Node(for: .variation(for: kind)).stencils, with: context.dictionary)
+        let node: StencilTemplate.Node = .init(for: .variation(for: kind))
+        return try renderNode(stencils: node.stencils(includeTests: includeTests), with: context.dictionary)
     }
 
     public func renderNodeViewInjected(
-        context: NodeViewInjectedContext
+        context: NodeViewInjectedContext,
+        includeTests: Bool
     ) throws -> [String: String] {
-        try renderNode(stencils: StencilTemplate.NodeViewInjected().stencils, with: context.dictionary)
+        let nodeViewInjected: StencilTemplate.NodeViewInjected = .init()
+        return try renderNode(stencils: nodeViewInjected.stencils(includeTests: includeTests), with: context.dictionary)
     }
 
     public func renderPlugin(context: PluginContext) throws -> String {

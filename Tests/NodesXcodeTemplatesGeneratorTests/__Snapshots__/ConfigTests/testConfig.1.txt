@@ -32,6 +32,7 @@
       - name: "<flowProperties-name-2>"
       - type: "<flowProperties-type-2>"
   - isPeripheryCommentEnabled: false
+  - isTestTemplatesGenerationEnabled: false
   - isViewInjectedTemplateEnabled: true
   - publisherFailureType: "<publisherFailureType>"
   - publisherType: "<publisherType>"

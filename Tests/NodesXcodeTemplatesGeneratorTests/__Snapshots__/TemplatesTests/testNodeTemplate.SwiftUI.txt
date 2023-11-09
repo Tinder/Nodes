@@ -95,7 +95,7 @@
     - sortOrder: 3
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 12 elements
+  ▿ stencils: 7 elements
     - Analytics
     ▿ Builder
       - builder: Variation.swiftUI
@@ -105,8 +105,3 @@
     ▿ ViewController
       - viewController: Variation.swiftUI
     - ViewState
-    - AnalyticsTests
-    - ContextTests
-    - FlowTests
-    - ViewControllerTests
-    - ViewStateTests

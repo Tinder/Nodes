@@ -20,7 +20,7 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
 
     internal init(config: Config) {
         let node: StencilTemplate.NodeViewInjected = .init()
-        stencils = node.stencils
+        stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
         context = NodeViewInjectedContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),

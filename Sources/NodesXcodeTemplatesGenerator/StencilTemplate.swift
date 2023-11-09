@@ -54,23 +54,6 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         internal let viewControllerTests: StencilTemplate
         internal let viewStateTests: StencilTemplate
 
-        internal var stencils: [StencilTemplate] {
-            [
-                analytics,
-                builder,
-                context,
-                flow,
-                state,
-                viewController,
-                viewState,
-                analyticsTests,
-                contextTests,
-                flowTests,
-                viewControllerTests,
-                viewStateTests
-            ]
-        }
-
         internal init(for variation: StencilTemplate.Variation) {
             self.analytics = .analytics
             self.builder = .builder(variation)
@@ -85,6 +68,27 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             self.viewControllerTests = .viewControllerTests
             self.viewStateTests = .viewStateTests
         }
+
+        internal func stencils(includeTests: Bool = false) -> [StencilTemplate] {
+            let stencils: [StencilTemplate] = [
+                analytics,
+                builder,
+                context,
+                flow,
+                state,
+                viewController,
+                viewState
+            ]
+            guard includeTests
+            else { return stencils }
+            return stencils + [
+                analyticsTests,
+                contextTests,
+                flowTests,
+                viewControllerTests,
+                viewStateTests
+            ]
+        }
     }
 
     /// The StencilTemplate cases that represent a view injected Node.
@@ -95,25 +99,29 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         internal let flow: StencilTemplate
         internal let state: StencilTemplate
 
-        internal var stencils: [StencilTemplate] {
-            [
-                analytics,
-                builder,
-                context,
-                flow,
-                state,
-                analyticsTests,
-                contextTests,
-                flowTests
-            ]
-        }
-
         internal init() {
             self.analytics = .analytics
             self.builder = .builder(.default)
             self.context = .context
             self.flow = .flow
             self.state = .state
+        }
+
+        internal func stencils(includeTests: Bool = false) -> [StencilTemplate] {
+            let stencils: [StencilTemplate] = [
+                analytics,
+                builder,
+                context,
+                flow,
+                state
+            ]
+            guard includeTests
+            else { return stencils }
+            return stencils + [
+                analyticsTests,
+                contextTests,
+                flowTests
+            ]
         }
     }
 
