@@ -89,6 +89,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
 
     /// The StencilTemplate cases that represent a view injected Node.
     internal struct NodeViewInjected {
+
         internal let analytics: StencilTemplate
         internal let builder: StencilTemplate
         internal let context: StencilTemplate
