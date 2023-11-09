@@ -31,6 +31,7 @@ extension TestFactories {
         }
         config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImport>"]
+        config.baseTestImports = ["<baseTestImports>"]
         config.reactiveImports = ["<reactiveImport>"]
         config.dependencyInjectionImports = ["<dependencyInjectionImport>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]

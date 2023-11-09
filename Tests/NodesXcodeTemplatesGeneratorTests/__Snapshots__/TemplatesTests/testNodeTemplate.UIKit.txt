@@ -50,7 +50,7 @@
       - "<baseImport>"
       - "Nodes"
     ▿ testImports: 1 element
-      - "XCTest"
+      - "<baseTestImports>"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableMockContents: "<viewControllableMockContents>"
     - viewControllableType: "<viewControllableType>"
