@@ -120,7 +120,7 @@
     - key: "view_state_operators"
     - value: "<viewStateOperators>"
   ▿ (2 elements)
-    - key: "view_state_property_Ccmment"
+    - key: "view_state_property_comment"
     - value: "<viewStatePropertyComment>"
   ▿ (2 elements)
     - key: "view_state_property_name"

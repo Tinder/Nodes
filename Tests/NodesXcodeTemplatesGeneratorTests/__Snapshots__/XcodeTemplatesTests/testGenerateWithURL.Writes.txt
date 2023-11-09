@@ -1,4 +1,4 @@
-▿ 40 elements
+▿ 43 elements
   ▿ (2 elements)
     - path: "/Node - UIKit.xctemplate/___FILEBASENAME___Analytics.swift"
     - atomically: true
@@ -91,6 +91,15 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Node (view injected).xctemplate/___FILEBASENAME___State.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node (view injected).xctemplate/___FILEBASENAME___AnalyticsTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node (view injected).xctemplate/___FILEBASENAME___ContextTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node (view injected).xctemplate/___FILEBASENAME___FlowTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node (view injected).xctemplate/TemplateInfo.plist"
