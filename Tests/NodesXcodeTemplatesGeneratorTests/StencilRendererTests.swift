@@ -73,9 +73,12 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             let templates: [String: String] = try StencilRenderer().renderNodeViewInjected(context: context)
             expect(templates.keys.sorted()) == [
                 "Analytics",
+                "AnalyticsTests",
                 "Builder",
                 "Context",
+                "ContextTests",
                 "Flow",
+                "FlowTests",
                 "State"
             ]
             templates.forEach { name, template in

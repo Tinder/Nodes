@@ -96,7 +96,16 @@ public enum StencilTemplate: Equatable, CaseIterable, CustomStringConvertible {
         internal let state: StencilTemplate
 
         internal var stencils: [StencilTemplate] {
-            [analytics, builder, context, flow, state]
+            [
+                analytics,
+                builder,
+                context,
+                flow,
+                state,
+                analyticsTests,
+                contextTests,
+                flowTests
+            ]
         }
 
         internal init() {
