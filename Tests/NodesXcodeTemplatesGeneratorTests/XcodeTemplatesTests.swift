@@ -64,7 +64,15 @@ final class XcodeTemplatesTests: XCTestCase {
         assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) },
                        as: .dump,
                        named: "Writes")
-        writes.forEach { assertSnapshot(matching: $0.contents, as: .lines, named: "Contents.\($0.path)") }
+        writes.forEach { write in
+            let name: String = write.path
+                .split(separator: "/")
+                .reversed()[0...1]
+                .reversed()
+                .joined(separator: "-")
+                .replacingOccurrences(of: [".xctemplate", "___FILEBASENAME___", ".swift", ".plist"], with: "")
+            assertSnapshot(matching: write.contents, as: .lines, named: "Contents.\(name)")
+        }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
                        named: "Copies")
