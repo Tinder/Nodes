@@ -42,7 +42,6 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     }
 
     internal func update(with viewState: RootViewState) {
-        <viewControllerUpdateComment>
     }
 }
 
