@@ -65,7 +65,7 @@ public struct NodeContext: Context {
             "view_controller_update_comment": viewControllerUpdateComment,
             "view_state_empty_factory": viewStateEmptyFactory,
             "view_state_operators": viewStateOperators,
-            "view_state_property_Ccmment": viewStatePropertyComment,
+            "view_state_property_comment": viewStatePropertyComment,
             "view_state_property_name": viewStatePropertyName,
             "view_state_transform": viewStateTransform,
             "publisher_type": publisherType,
