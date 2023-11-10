@@ -19,10 +19,6 @@ internal final class <nodeName>ViewStateFactoryTests: XCTestCase {
     }
 
     func testNotNil() {
-        XCTAssertNotNil(viewStateFactory)
-    }
-
-    func testTransform() {
-        XCTAssertTrue(viewStateFactory(<nodeName>State()) is <nodeName>ViewState)
+        XCTAssertNotNil(viewStateFactory(<nodeName>State()))
     }
 }

@@ -28,7 +28,6 @@ final class RootFlowTests: XCTestCase {
 
     override func tearDown() {
         contextMock = nil
-        contextMock.flow = nil
         viewControllableMock = nil
         flow = nil
         super.tearDown()
@@ -40,6 +39,5 @@ final class RootFlowTests: XCTestCase {
 
     func testDidStart() {
         flow.didStart()
-        // TODO: Add assertions
     }
 }

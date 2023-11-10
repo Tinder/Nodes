@@ -7,23 +7,16 @@ import <testImport2>
 
 final class RootViewControllerTests: XCTestCase {
 
-    private var viewController: RootViewController!
-
-    override func setUp() {
-        super.setUp()
-        viewController = RootViewController()
-    }
-
-    override func tearDown() {
-        viewController = nil
-        super.tearDown()
-    }
-
     func testNotNil() {
-        XCTAssertNotNil(viewController)
+        XCTAssertNotNil(givenViewController(with: RootViewState()))
     }
 
-    func testInitialState() {
-        // TODO: Add assertions
+    private func givenViewController(
+        with state: RootViewState
+    ) -> RootViewController {
+        RootViewController(
+            initialState: state,
+            statePublisher: Empty().eraseToAnyPublisher()
+        )
     }
 }
