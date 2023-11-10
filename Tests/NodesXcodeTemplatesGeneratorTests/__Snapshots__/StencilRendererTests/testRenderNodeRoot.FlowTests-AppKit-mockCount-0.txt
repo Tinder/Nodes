@@ -18,6 +18,7 @@ final class RootFlowTests: XCTestCase {
             context: contextMock,
             viewController: viewControllableMock
         )
+        XCTAssertTrue(flow.isStarted)
     }
 
     override func tearDown() {
@@ -29,9 +30,5 @@ final class RootFlowTests: XCTestCase {
 
     func testNotNil() {
         XCTAssertNotNil(flow)
-    }
-
-    func testDidStart() {
-        flow.didStart()
     }
 }
