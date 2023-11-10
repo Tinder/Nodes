@@ -36,13 +36,7 @@ final class XcodeTemplatesTests: XCTestCase {
                        as: .dump,
                        named: "Writes")
         writes.forEach { write in
-            let name: String = write.path
-                .split(separator: "/")
-                .reversed()[0...1]
-                .reversed()
-                .joined(separator: "-")
-                .replacingOccurrences(of: [".xctemplate", "___FILEBASENAME___", ".swift", ".plist"], with: "")
-            assertSnapshot(matching: write.contents, as: .lines, named: "Contents.\(name)")
+            assertSnapshot(matching: write.contents, as: .lines, named: "Contents.\(name(fromPath: write.path))")
         }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
@@ -65,13 +59,7 @@ final class XcodeTemplatesTests: XCTestCase {
                        as: .dump,
                        named: "Writes")
         writes.forEach { write in
-            let name: String = write.path
-                .split(separator: "/")
-                .reversed()[0...1]
-                .reversed()
-                .joined(separator: "-")
-                .replacingOccurrences(of: [".xctemplate", "___FILEBASENAME___", ".swift", ".plist"], with: "")
-            assertSnapshot(matching: write.contents, as: .lines, named: "Contents.\(name)")
+            assertSnapshot(matching: write.contents, as: .lines, named: "Contents.\(name(fromPath: write.path))")
         }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
@@ -79,5 +67,13 @@ final class XcodeTemplatesTests: XCTestCase {
         assertSnapshot(matching: fileSystem.deletions,
                        as: .dump,
                        named: "Deletions")
+    }
+
+    private func name(fromPath path: String) -> String {
+        path.split(separator: "/")
+            .reversed()[0...1]
+            .reversed()
+            .joined(separator: "-")
+            .replacingOccurrences(of: [".xctemplate", "___FILEBASENAME___", ".swift", ".plist"], with: "")
     }
 }
