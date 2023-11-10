@@ -139,7 +139,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
 
     func testNodeStencils() {
         StencilTemplate.Variation.allCases.forEach { variation in
-            expect(StencilTemplate.Node(for: variation).stencils) == [
+            expect(StencilTemplate.Node(for: variation).stencils(includeTests: true)) == [
                 .analytics,
                 .builder(variation),
                 .context,
@@ -157,12 +157,15 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
     }
 
     func testNodeViewInjectedStencils() {
-        expect(StencilTemplate.NodeViewInjected().stencils) == [
+        expect(StencilTemplate.NodeViewInjected().stencils(includeTests: true)) == [
             .analytics,
             .builder(.default),
             .context,
             .flow,
-            .state
+            .state,
+            .analyticsTests,
+            .contextTests,
+            .flowTests
         ]
     }
 
@@ -195,7 +198,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 case .plugin, .pluginList:
                     expect(imports) == ["Nodes", "<baseImport>", "<dependencyInjectionImport>"]
                 case .contextTests, .analyticsTests, .viewControllerTests, .viewStateTests, .flowTests:
-                    expect(imports) == ["XCTest"]
+                    expect(imports) == ["<baseTestImports>"]
                 }
             }
         }

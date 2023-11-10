@@ -2,25 +2,22 @@
 
 #warning("Manually move this test file to the corresponding test target.")
 
-import <testImport1>
-import <testImport2>
+import <testImports1>
+import <testImports2>
 
-final class RootFlowTests: XCTestCase {
+final class <nodeName>FlowTests: XCTestCase {
 
-    private final class RootViewControllableMock: UIViewController, RootViewControllable {
-        
-        <viewControllableMockContents>
-    }
+    private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {}
 
-    private var flow: RootFlowImp!
-    private var contextMock: RootContextInterfaceMock!
-    private var viewControllableMock: RootViewControllableMock!
+    private var flow: <nodeName>FlowImp!
+    private var contextMock: <nodeName>ContextInterfaceMock!
+    private var viewControllableMock: <nodeName>ViewControllableMock!
 
     override func setUp() {
         super.setUp()
-        contextMock = RootContextInterfaceMock(isActive: true)
-        viewControllableMock = RootViewControllableMock()
-        flow = RootFlowImp(
+        contextMock = <nodeName>ContextInterfaceMock(isActive: true)
+        viewControllableMock = <nodeName>ViewControllableMock()
+        flow = <nodeName>FlowImp(
             context: contextMock,
             viewController: viewControllableMock,
             <flowPropertyName1>: <flowPropertyType1>,

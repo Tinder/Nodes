@@ -31,6 +31,7 @@ extension TestFactories {
         }
         config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImport>"]
+        config.baseTestImports = ["<baseTestImports>"]
         config.reactiveImports = ["<reactiveImport>"]
         config.dependencyInjectionImports = ["<dependencyInjectionImport>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
@@ -49,12 +50,14 @@ extension TestFactories {
         config.publisherFailureType = "<publisherFailureType>"
         config.contextGenericTypes = ["<contextGenericType>"]
         config.workerGenericTypes = ["<workerGenericType>"]
+        config.isViewInjectedTemplateEnabled = true
+        config.isTestTemplatesGenerationEnabled = false
+        config.isPeripheryCommentEnabled = false
         return config
     }
 
     func givenNodeContext(mockCount: Int = 1) -> NodeContext {
-        let isStringIdentifierMocked: Bool = mockCount > 0
-        return NodeContext(
+        NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
@@ -68,18 +71,22 @@ extension TestFactories {
             dependencies: .mock(with: "dependency", count: mockCount),
             analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
             flowProperties: .mock(with: "flowProperty", count: mockCount),
-            viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllerType: "<viewControllerType>",
+            viewControllerSuperParameters: mockCount > 0 ? "<viewControllerSuperParameters>" : "",
+            viewControllerProperties: mockCount > 0 ? "<viewControllerProperties>" : "",
+            viewControllerMethods: mockCount > 0 ? "<viewControllerMethods>" : "",
+            viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
             viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>",
-            viewControllerSuperParameters: isStringIdentifierMocked ? "<viewControllerSuperParameters>" : "",
-            viewControllerProperties: isStringIdentifierMocked ? "<viewControllerProperties>" : "",
-            viewControllerMethods: isStringIdentifierMocked ? "<viewControllerMethods>" : "",
-            viewControllableMockContents: isStringIdentifierMocked ? "<viewControllableMockContents>" : "",
-            viewControllerUpdateComment: isStringIdentifierMocked ? "<viewControllerUpdateComment>" : "",
-            viewStateOperators: isStringIdentifierMocked ? "<viewStateOperators>" : "",
+            viewControllerUpdateComment: mockCount > 0 ? "<viewControllerUpdateComment>" : "",
+            viewStateEmptyFactory: "<viewStateEmptyFactory>",
+            viewStateOperators: mockCount > 0 ? "<viewStateOperators>" : "",
+            viewStatePropertyComment: "<viewStatePropertyComment>",
+            viewStatePropertyName: "<viewStatePropertyName>",
+            viewStateTransform: "<viewStateTransform>",
             publisherType: "<publisherType>",
-            publisherFailureType: isStringIdentifierMocked ? "<publisherFailureType>" : "",
+            publisherFailureType: mockCount > 0 ? "<publisherFailureType>" : "",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0
@@ -87,8 +94,7 @@ extension TestFactories {
     }
 
     func givenNodeRootContext(mockCount: Int = 1) -> NodeRootContext {
-        let isStringIdentifierMocked: Bool = mockCount > 0
-        return NodeRootContext(
+        NodeRootContext(
             fileHeader: "<fileHeader>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
@@ -97,20 +103,26 @@ extension TestFactories {
             stateImports: .mock(with: "stateImport", count: mockCount),
             viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
             viewStateImports: .mock(with: "viewStateImport", count: mockCount),
+            testImports: .mock(with: "testImport", count: mockCount),
             dependencies: .mock(with: "dependency", count: mockCount),
             analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
             flowProperties: .mock(with: "flowProperty", count: mockCount),
-            viewControllerType: "<viewControllerType>",
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllerType: "<viewControllerType>",
+            viewControllerSuperParameters: mockCount > 0 ? "<viewControllerSuperParameters>" : "",
+            viewControllerProperties: mockCount > 0 ? "<viewControllerProperties>" : "",
+            viewControllerMethods: mockCount > 0 ? "<viewControllerMethods>" : "",
+            viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
             viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>",
-            viewControllerSuperParameters: isStringIdentifierMocked ? "<viewControllerSuperParameters>" : "",
-            viewControllerProperties: isStringIdentifierMocked ? "<viewControllerProperties>" : "",
-            viewControllerMethods: isStringIdentifierMocked ? "<viewControllerMethods>" : "",
-            viewControllerUpdateComment: isStringIdentifierMocked ? "<viewControllerUpdateComment>" : "",
-            viewStateOperators: isStringIdentifierMocked ? "<viewStateOperators>" : "",
+            viewControllerUpdateComment: mockCount > 0 ? "<viewControllerUpdateComment>" : "",
+            viewStateEmptyFactory: "<viewStateEmptyFactory>",
+            viewStateOperators: mockCount > 0 ? "<viewStateOperators>" : "",
+            viewStatePropertyComment: "<viewStatePropertyComment>",
+            viewStatePropertyName: "<viewStatePropertyName>",
+            viewStateTransform: "<viewStateTransform>",
             publisherType: "<publisherType>",
-            publisherFailureType: isStringIdentifierMocked ? "<publisherFailureType>" : "",
+            publisherFailureType: mockCount > 0 ? "<publisherFailureType>" : "",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0
@@ -126,6 +138,7 @@ extension TestFactories {
             contextImports: .mock(with: "contextImport", count: mockCount),
             flowImports: .mock(with: "flowImport", count: mockCount),
             stateImports: .mock(with: "stateImport", count: mockCount),
+            testImports: .mock(with: "testImports", count: mockCount),
             dependencies: .mock(with: "dependency", count: mockCount),
             analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
             flowProperties: .mock(with: "flowProperty", count: mockCount),

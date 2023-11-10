@@ -1,4 +1,4 @@
-▿ 40 elements
+▿ 30 elements
   ▿ (2 elements)
     - path: "/Node - UIKit.xctemplate/___FILEBASENAME___Analytics.swift"
     - atomically: true
@@ -19,21 +19,6 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Node - UIKit.xctemplate/___FILEBASENAME___ViewState.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Node - UIKit.xctemplate/___FILEBASENAME___AnalyticsTests.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Node - UIKit.xctemplate/___FILEBASENAME___ContextTests.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Node - UIKit.xctemplate/___FILEBASENAME___FlowTests.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Node - UIKit.xctemplate/___FILEBASENAME___ViewControllerTests.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Node - UIKit.xctemplate/___FILEBASENAME___ViewStateTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node - UIKit.xctemplate/TemplateInfo.plist"
@@ -58,21 +43,6 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Node - SwiftUI.xctemplate/___FILEBASENAME___ViewState.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Node - SwiftUI.xctemplate/___FILEBASENAME___AnalyticsTests.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Node - SwiftUI.xctemplate/___FILEBASENAME___ContextTests.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Node - SwiftUI.xctemplate/___FILEBASENAME___FlowTests.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Node - SwiftUI.xctemplate/___FILEBASENAME___ViewControllerTests.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Node - SwiftUI.xctemplate/___FILEBASENAME___ViewStateTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node - SwiftUI.xctemplate/TemplateInfo.plist"

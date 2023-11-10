@@ -12,10 +12,13 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     private let mockCounts: ClosedRange<Int> = 0...2
 
     func testRenderNode() throws {
+        let renderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             try UIFramework.Kind.allCases.forEach { kind in
                 let context: NodeContext = givenNodeContext(mockCount: count)
-                let templates: [String: String] = try StencilRenderer().renderNode(context: context, kind: kind)
+                let templates: [String: String] = try renderer.renderNode(context: context,
+                                                                          kind: kind,
+                                                                          includeTests: true)
                 expect(templates.keys.sorted()) == [
                     "Analytics",
                     "AnalyticsTests",
@@ -40,10 +43,13 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderNodeRoot() throws {
+        let renderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             try UIFramework.Kind.allCases.forEach { kind in
                 let context: NodeRootContext = givenNodeRootContext(mockCount: count)
-                let templates: [String: String] = try StencilRenderer().renderNodeRoot(context: context, kind: kind)
+                let templates: [String: String] = try renderer.renderNodeRoot(context: context,
+                                                                              kind: kind,
+                                                                              includeTests: true)
                 expect(templates.keys.sorted()) == [
                     "Analytics",
                     "AnalyticsTests",
@@ -68,14 +74,18 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderNodeViewInjected() throws {
+        let renderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: NodeViewInjectedContext = givenNodeViewInjectedContext(mockCount: count)
-            let templates: [String: String] = try StencilRenderer().renderNodeViewInjected(context: context)
+            let templates: [String: String] = try renderer.renderNodeViewInjected(context: context, includeTests: true)
             expect(templates.keys.sorted()) == [
                 "Analytics",
+                "AnalyticsTests",
                 "Builder",
                 "Context",
+                "ContextTests",
                 "Flow",
+                "FlowTests",
                 "State"
             ]
             templates.forEach { name, template in

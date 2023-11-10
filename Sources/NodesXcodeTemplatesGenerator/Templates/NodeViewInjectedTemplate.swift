@@ -20,7 +20,7 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
 
     internal init(config: Config) {
         let node: StencilTemplate.NodeViewInjected = .init()
-        stencils = node.stencils
+        stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
         context = NodeViewInjectedContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
@@ -29,6 +29,7 @@ internal struct NodeViewInjectedTemplate: XcodeTemplate {
             contextImports: node.context.imports(config: config),
             flowImports: node.flow.imports(config: config),
             stateImports: node.state.imports(config: config),
+            testImports: config.baseTestImports,
             dependencies: config.dependencies,
             analyticsProperties: config.analyticsProperties,
             flowProperties: config.flowProperties,

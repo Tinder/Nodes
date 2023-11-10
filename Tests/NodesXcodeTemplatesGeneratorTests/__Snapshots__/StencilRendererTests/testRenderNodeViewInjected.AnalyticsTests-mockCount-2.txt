@@ -1,16 +1,17 @@
-//___FILEHEADER___
+<fileHeader>
 
 #warning("Manually move this test file to the corresponding test target.")
 
-import XCTest
+import <testImports1>
+import <testImports2>
 
-final class ___VARIABLE_productName___AnalyticsTests: XCTestCase {
+final class <nodeName>AnalyticsTests: XCTestCase {
 
-    private var analytics: ___VARIABLE_productName___AnalyticsImp!
+    private var analytics: <nodeName>AnalyticsImp!
 
     override func setUp() {
         super.setUp()
-        analytics = ___VARIABLE_productName___AnalyticsImp()
+        analytics = <nodeName>AnalyticsImp()
     }
 
     override func tearDown() {

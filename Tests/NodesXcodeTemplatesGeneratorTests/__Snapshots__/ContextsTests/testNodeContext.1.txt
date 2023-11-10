@@ -1,4 +1,4 @@
-▿ 30 key/value pairs
+▿ 34 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -110,12 +110,24 @@
     - key: "view_controller_update_comment"
     - value: "<viewControllerUpdateComment>"
   ▿ (2 elements)
+    - key: "view_state_empty_factory"
+    - value: "<viewStateEmptyFactory>"
+  ▿ (2 elements)
     - key: "view_state_imports"
     ▿ value: 1 element
       - "<viewStateImport>"
   ▿ (2 elements)
     - key: "view_state_operators"
     - value: "<viewStateOperators>"
+  ▿ (2 elements)
+    - key: "view_state_property_comment"
+    - value: "<viewStatePropertyComment>"
+  ▿ (2 elements)
+    - key: "view_state_property_name"
+    - value: "<viewStatePropertyName>"
+  ▿ (2 elements)
+    - key: "view_state_transform"
+    - value: "<viewStateTransform>"
   ▿ (2 elements)
     - key: "worker_generic_types"
     ▿ value: 1 element

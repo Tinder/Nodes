@@ -15,7 +15,7 @@ internal struct NodeTemplate: XcodeTemplate {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
         let node: StencilTemplate.Node = .init(for: .variation(for: uiFramework.kind))
         name = "Node - \(uiFramework.name)"
-        stencils = node.stencils
+        stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
         context = NodeContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
@@ -30,16 +30,20 @@ internal struct NodeTemplate: XcodeTemplate {
             dependencies: config.dependencies,
             analyticsProperties: config.analyticsProperties,
             flowProperties: config.flowProperties,
-            viewControllerType: uiFramework.viewControllerType,
             viewControllableType: config.viewControllableType,
             viewControllableFlowType: config.viewControllableFlowType,
-            viewControllerSubscriptionsProperty: config.viewControllerSubscriptionsProperty,
+            viewControllerType: uiFramework.viewControllerType,
             viewControllerSuperParameters: uiFramework.viewControllerSuperParameters,
             viewControllerProperties: uiFramework.viewControllerProperties,
             viewControllerMethods: uiFramework.viewControllerMethods,
             viewControllableMockContents: uiFramework.viewControllableMockContents,
+            viewControllerSubscriptionsProperty: config.viewControllerSubscriptionsProperty,
             viewControllerUpdateComment: config.viewControllerUpdateComment,
+            viewStateEmptyFactory: config.viewStateEmptyFactory,
             viewStateOperators: config.viewStateOperators,
+            viewStatePropertyComment: config.viewStatePropertyComment,
+            viewStatePropertyName: config.viewStatePropertyName,
+            viewStateTransform: config.viewStateTransform,
             publisherType: config.publisherType,
             publisherFailureType: config.publisherFailureType,
             contextGenericTypes: config.contextGenericTypes,

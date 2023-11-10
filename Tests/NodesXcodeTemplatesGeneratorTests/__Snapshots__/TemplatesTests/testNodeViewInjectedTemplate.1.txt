@@ -47,6 +47,8 @@
     ▿ stateImports: 2 elements
       - "<baseImport>"
       - "Nodes"
+    ▿ testImports: 1 element
+      - "<baseTestImports>"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     ▿ workerGenericTypes: 1 element

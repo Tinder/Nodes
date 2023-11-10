@@ -43,8 +43,10 @@ extension XcodeTemplates {
         public var publisherFailureType: String
         public var contextGenericTypes: [String]
         public var workerGenericTypes: [String]
-        public var isPeripheryCommentEnabled: Bool
+
         public var isViewInjectedTemplateEnabled: Bool
+        public var isTestTemplatesGenerationEnabled: Bool
+        public var isPeripheryCommentEnabled: Bool
 
         public init(
             at path: String,
@@ -103,8 +105,9 @@ extension XcodeTemplates.Config {
         publisherFailureType = "Never"
         contextGenericTypes = ["AnyCancellable"]
         workerGenericTypes = ["AnyCancellable"]
-        isPeripheryCommentEnabled = false
         isViewInjectedTemplateEnabled = true
+        isTestTemplatesGenerationEnabled = false
+        isPeripheryCommentEnabled = false
     }
 }
 
@@ -180,11 +183,14 @@ extension XcodeTemplates.Config {
         workerGenericTypes =
             (try? decoder.decode(CodingKeys.workerGenericTypes))
             ?? defaults.workerGenericTypes
-        isPeripheryCommentEnabled =
-            (try? decoder.decode(CodingKeys.isPeripheryCommentEnabled))
-            ?? defaults.isPeripheryCommentEnabled
         isViewInjectedTemplateEnabled =
             (try? decoder.decode(CodingKeys.isViewInjectedTemplateEnabled))
             ?? defaults.isViewInjectedTemplateEnabled
+        isTestTemplatesGenerationEnabled =
+            (try? decoder.decode(CodingKeys.isTestTemplatesGenerationEnabled))
+            ?? defaults.isTestTemplatesGenerationEnabled
+        isPeripheryCommentEnabled =
+            (try? decoder.decode(CodingKeys.isPeripheryCommentEnabled))
+            ?? defaults.isPeripheryCommentEnabled
     }
 }

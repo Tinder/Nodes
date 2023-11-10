@@ -17,16 +17,20 @@ public struct NodeContext: Context {
     private let dependencies: [[String: Any]]
     private let analyticsProperties: [[String: Any]]
     private let flowProperties: [[String: Any]]
-    private let viewControllerType: String
     private let viewControllableType: String
     private let viewControllableFlowType: String
-    private let viewControllerSubscriptionsProperty: String
+    private let viewControllerType: String
     private let viewControllerSuperParameters: String
     private let viewControllerProperties: String
     private let viewControllerMethods: String
     private let viewControllableMockContents: String
+    private let viewControllerSubscriptionsProperty: String
     private let viewControllerUpdateComment: String
+    private let viewStateEmptyFactory: String
     private let viewStateOperators: String
+    private let viewStatePropertyComment: String
+    private let viewStatePropertyName: String
+    private let viewStateTransform: String
     private let publisherType: String
     private let publisherFailureType: String
     private let contextGenericTypes: [String]
@@ -50,16 +54,20 @@ public struct NodeContext: Context {
             "dependencies": dependencies,
             "analytics_properties": analyticsProperties,
             "flow_properties": flowProperties,
-            "view_controller_type": viewControllerType,
             "view_controllable_type": viewControllableType,
             "view_controllable_flow_type": viewControllableFlowType,
-            "view_controller_subscriptions_property": viewControllerSubscriptionsProperty,
+            "view_controller_type": viewControllerType,
             "view_controller_super_parameters": viewControllerSuperParameters,
             "view_controller_properties": viewControllerProperties,
             "view_controller_methods": viewControllerMethods,
             "view_controllable_mock_contents": viewControllableMockContents,
+            "view_controller_subscriptions_property": viewControllerSubscriptionsProperty,
             "view_controller_update_comment": viewControllerUpdateComment,
+            "view_state_empty_factory": viewStateEmptyFactory,
             "view_state_operators": viewStateOperators,
+            "view_state_property_comment": viewStatePropertyComment,
+            "view_state_property_name": viewStatePropertyName,
+            "view_state_transform": viewStateTransform,
             "publisher_type": publisherType,
             "publisher_failure_type": publisherFailureType,
             "context_generic_types": contextGenericTypes,
@@ -82,16 +90,20 @@ public struct NodeContext: Context {
         dependencies: [XcodeTemplates.Variable],
         analyticsProperties: [XcodeTemplates.Variable],
         flowProperties: [XcodeTemplates.Variable],
-        viewControllerType: String,
         viewControllableType: String,
         viewControllableFlowType: String,
-        viewControllerSubscriptionsProperty: String,
+        viewControllerType: String,
         viewControllerSuperParameters: String,
         viewControllerProperties: String,
         viewControllerMethods: String,
         viewControllableMockContents: String,
+        viewControllerSubscriptionsProperty: String,
         viewControllerUpdateComment: String,
+        viewStateEmptyFactory: String,
         viewStateOperators: String,
+        viewStatePropertyComment: String,
+        viewStatePropertyName: String,
+        viewStateTransform: String,
         publisherType: String,
         publisherFailureType: String,
         contextGenericTypes: [String],
@@ -111,16 +123,20 @@ public struct NodeContext: Context {
         self.dependencies = dependencies.map(\.dictionary)
         self.analyticsProperties = analyticsProperties.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)
-        self.viewControllerType = viewControllerType
         self.viewControllableType = viewControllableType
         self.viewControllableFlowType = viewControllableFlowType
-        self.viewControllerSubscriptionsProperty = viewControllerSubscriptionsProperty
+        self.viewControllerType = viewControllerType
         self.viewControllerSuperParameters = viewControllerSuperParameters
         self.viewControllerProperties = viewControllerProperties
         self.viewControllerMethods = viewControllerMethods
         self.viewControllableMockContents = viewControllableMockContents
+        self.viewControllerSubscriptionsProperty = viewControllerSubscriptionsProperty
         self.viewControllerUpdateComment = viewControllerUpdateComment
+        self.viewStateEmptyFactory = viewStateEmptyFactory
         self.viewStateOperators = viewStateOperators
+        self.viewStatePropertyComment = viewStatePropertyComment
+        self.viewStatePropertyName = viewStatePropertyName
+        self.viewStateTransform = viewStateTransform
         self.publisherType = publisherType
         self.publisherFailureType = publisherFailureType
         self.contextGenericTypes = contextGenericTypes

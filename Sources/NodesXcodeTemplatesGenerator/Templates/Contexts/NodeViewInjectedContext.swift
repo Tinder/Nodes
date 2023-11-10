@@ -11,6 +11,7 @@ public struct NodeViewInjectedContext: Context {
     private let contextImports: [String]
     private let flowImports: [String]
     private let stateImports: [String]
+    private let testImports: [String]
     private let dependencies: [[String: Any]]
     private let analyticsProperties: [[String: Any]]
     private let flowProperties: [[String: Any]]
@@ -31,6 +32,7 @@ public struct NodeViewInjectedContext: Context {
             "context_imports": contextImports,
             "flow_imports": flowImports,
             "state_imports": stateImports,
+            "test_imports": testImports,
             "dependencies": dependencies,
             "analytics_properties": analyticsProperties,
             "flow_properties": flowProperties,
@@ -50,6 +52,7 @@ public struct NodeViewInjectedContext: Context {
         contextImports: Set<String>,
         flowImports: Set<String>,
         stateImports: Set<String>,
+        testImports: Set<String>,
         dependencies: [XcodeTemplates.Variable],
         analyticsProperties: [XcodeTemplates.Variable],
         flowProperties: [XcodeTemplates.Variable],
@@ -66,6 +69,7 @@ public struct NodeViewInjectedContext: Context {
         self.contextImports = contextImports.sortedImports()
         self.flowImports = flowImports.sortedImports()
         self.stateImports = stateImports.sortedImports()
+        self.testImports = testImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)
         self.analyticsProperties = analyticsProperties.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)

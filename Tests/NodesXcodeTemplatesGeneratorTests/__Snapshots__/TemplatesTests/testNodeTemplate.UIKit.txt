@@ -50,7 +50,7 @@
       - "<baseImport>"
       - "Nodes"
     ▿ testImports: 1 element
-      - "XCTest"
+      - "<baseTestImports>"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableMockContents: "<viewControllableMockContents>"
     - viewControllableType: "<viewControllableType>"
@@ -65,10 +65,14 @@
     - viewControllerSuperParameters: "nibName: nil, bundle: nil"
     - viewControllerType: "UIViewController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+    - viewStateEmptyFactory: "<viewStateEmptyFactory>"
     ▿ viewStateImports: 2 elements
       - "<baseImport>"
       - "Nodes"
     - viewStateOperators: "<viewStateOperators>"
+    - viewStatePropertyComment: "<viewStatePropertyComment>"
+    - viewStatePropertyName: "<viewStatePropertyName>"
+    - viewStateTransform: "<viewStateTransform>"
     ▿ workerGenericTypes: 1 element
       - "<workerGenericType>"
   - name: "Node - UIKit"
@@ -91,7 +95,7 @@
     - sortOrder: 2
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 12 elements
+  ▿ stencils: 7 elements
     - Analytics
     ▿ Builder
       - builder: Variation.default
@@ -101,8 +105,3 @@
     ▿ ViewController
       - viewController: Variation.default
     - ViewState
-    - AnalyticsTests
-    - ContextTests
-    - FlowTests
-    - ViewControllerTests
-    - ViewStateTests

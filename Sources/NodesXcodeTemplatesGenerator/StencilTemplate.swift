@@ -18,7 +18,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
     case viewState
     case worker
 
-    // Test stencils
+    // Tests
     case analyticsTests
     case contextTests
     case flowTests
@@ -47,29 +47,12 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         internal let viewController: StencilTemplate
         internal let viewState: StencilTemplate
 
-        // Test stencils
+        // Tests
         internal let analyticsTests: StencilTemplate
         internal let contextTests: StencilTemplate
         internal let flowTests: StencilTemplate
         internal let viewControllerTests: StencilTemplate
         internal let viewStateTests: StencilTemplate
-
-        internal var stencils: [StencilTemplate] {
-            [
-                analytics,
-                builder,
-                context,
-                flow,
-                state,
-                viewController,
-                viewState,
-                analyticsTests,
-                contextTests,
-                flowTests,
-                viewControllerTests,
-                viewStateTests
-            ]
-        }
 
         internal init(for variation: StencilTemplate.Variation) {
             self.analytics = .analytics
@@ -85,19 +68,37 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             self.viewControllerTests = .viewControllerTests
             self.viewStateTests = .viewStateTests
         }
+
+        internal func stencils(includeTests: Bool = false) -> [StencilTemplate] {
+            let stencils: [StencilTemplate] = [
+                analytics,
+                builder,
+                context,
+                flow,
+                state,
+                viewController,
+                viewState
+            ]
+            guard includeTests
+            else { return stencils }
+            return stencils + [
+                analyticsTests,
+                contextTests,
+                flowTests,
+                viewControllerTests,
+                viewStateTests
+            ]
+        }
     }
 
     /// The StencilTemplate cases that represent a view injected Node.
     internal struct NodeViewInjected {
+
         internal let analytics: StencilTemplate
         internal let builder: StencilTemplate
         internal let context: StencilTemplate
         internal let flow: StencilTemplate
         internal let state: StencilTemplate
-
-        internal var stencils: [StencilTemplate] {
-            [analytics, builder, context, flow, state]
-        }
 
         internal init() {
             self.analytics = .analytics
@@ -105,6 +106,23 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             self.context = .context
             self.flow = .flow
             self.state = .state
+        }
+
+        internal func stencils(includeTests: Bool = false) -> [StencilTemplate] {
+            let stencils: [StencilTemplate] = [
+                analytics,
+                builder,
+                context,
+                flow,
+                state
+            ]
+            guard includeTests
+            else { return stencils }
+            return stencils + [
+                analyticsTests,
+                contextTests,
+                flowTests
+            ]
         }
     }
 
