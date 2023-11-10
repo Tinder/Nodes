@@ -36,6 +36,7 @@ final class {{ node_name }}FlowTests: XCTestCase {
             {% endif %}
             {% endfor +%}
         )
+        XCTAssertTrue(flow.isStarted)
     }
 
     override func tearDown() {
