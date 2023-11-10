@@ -10,23 +10,16 @@ import {{ import }}
 
 final class {{ node_name }}ViewControllerTests: XCTestCase {
 
-    private var viewController: {{ node_name }}ViewController!
-
-    override func setUp() {
-        super.setUp()
-        viewController = {{ node_name }}ViewController()
-    }
-
-    override func tearDown() {
-        viewController = nil
-        super.tearDown()
-    }
-
     func testNotNil() {
-        XCTAssertNotNil(viewController)
+        XCTAssertNotNil(givenViewController(with: {{ node_name }}ViewState()))
     }
 
-    func testInitialState() {
-        // TODO: Add assertions
+    private func givenViewController(
+        with state: {{ node_name }}ViewState
+    ) -> {{ node_name }}ViewController {
+        {{ node_name }}ViewController(
+            initialState: state,
+            statePublisher: Empty().eraseToAnyPublisher()
+        )
     }
 }
