@@ -10,15 +10,23 @@ import {{ import }}
 
 internal final class {{ node_name }}ViewStateFactoryTests: XCTestCase {
 
-    private var factory: {{ node_name }}ViewStateFactory!
+    private var viewStateFactory: {{ node_name }}ViewStateFactory!
 
     override func setUp() {
         super.setUp()
-        factory = .init()
+        viewStateFactory = {{ node_name }}ViewStateFactory()
     }
 
     override func tearDown() {
-        factory = nil
+        viewStateFactory = nil
         super.tearDown()
+    }
+
+    func testNotNil() {
+        XCTAssertNotNil(viewStateFactory)
+    }
+
+    func testTransform() {
+        XCTAssertTrue(viewStateFactory({{ node_name }}State()) is {{ node_name }}ViewState)
     }
 }

@@ -6,12 +6,20 @@ import <testImport>
 
 final class <nodeName>ViewControllerTests: XCTestCase {
 
+    private var viewController: <nodeName>ViewController!
+
     override func setUp() {
         super.setUp()
+        viewController = <nodeName>ViewController()
     }
 
     override func tearDown() {
+        viewController = nil
         super.tearDown()
+    }
+
+    func testNotNil() {
+        XCTAssertNotNil(viewController)
     }
 
     func testInitialState() {

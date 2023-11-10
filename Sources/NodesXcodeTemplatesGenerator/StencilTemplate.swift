@@ -23,7 +23,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
     case contextTests
     case flowTests
     case viewControllerTests
-    case viewStateTests
+    case viewStateFactoryTests
 
     /// Alternate Stencil source files for specific use cases.
     public enum Variation: String, Equatable, CaseIterable {
@@ -52,7 +52,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         internal let contextTests: StencilTemplate
         internal let flowTests: StencilTemplate
         internal let viewControllerTests: StencilTemplate
-        internal let viewStateTests: StencilTemplate
+        internal let viewStateFactoryTests: StencilTemplate
 
         internal init(for variation: StencilTemplate.Variation) {
             self.analytics = .analytics
@@ -66,7 +66,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             self.contextTests = .contextTests
             self.flowTests = .flowTests
             self.viewControllerTests = .viewControllerTests
-            self.viewStateTests = .viewStateTests
+            self.viewStateFactoryTests = .viewStateFactoryTests
         }
 
         internal func stencils(includeTests: Bool = false) -> [StencilTemplate] {
@@ -86,7 +86,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
                 contextTests,
                 flowTests,
                 viewControllerTests,
-                viewStateTests
+                viewStateFactoryTests
             ]
         }
     }
@@ -160,8 +160,8 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             return "FlowTests"
         case .viewControllerTests:
             return "ViewControllerTests"
-        case .viewStateTests:
-            return "ViewStateTests"
+        case .viewStateFactoryTests:
+            return "ViewStateFactoryTests"
         }
     }
 
@@ -172,7 +172,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             return description
         case let .builder(variation), let .viewController(variation):
             return description.appending(variation.rawValue)
-        case .analyticsTests, .contextTests, .flowTests, .viewControllerTests, .viewStateTests:
+        case .analyticsTests, .contextTests, .flowTests, .viewControllerTests, .viewStateFactoryTests:
             return description
         }
     }
@@ -183,7 +183,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             return imports(config: config)
         case .viewController:
             return imports(config: config).union([uiFramework.import])
-        case .analyticsTests, .contextTests, .flowTests, .viewControllerTests, .viewStateTests:
+        case .analyticsTests, .contextTests, .flowTests, .viewControllerTests, .viewStateFactoryTests:
             return imports(config: config)
         }
     }
@@ -199,7 +199,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             return baseImports.union(config.reactiveImports)
         case .plugin, .pluginList:
             return baseImports.union(config.dependencyInjectionImports)
-        case .analyticsTests, .contextTests, .flowTests, .viewControllerTests, .viewStateTests:
+        case .analyticsTests, .contextTests, .flowTests, .viewControllerTests, .viewStateFactoryTests:
             return config.baseTestImports
         }
     }

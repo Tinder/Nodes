@@ -49,7 +49,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .contextTests,
             .flowTests,
             .viewControllerTests,
-            .viewStateTests
+            .viewStateFactoryTests
         ]
     }
 
@@ -92,8 +92,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(name) == "FlowTests"
             case .viewControllerTests:
                 expect(name) == "ViewControllerTests"
-            case .viewStateTests:
-                expect(name) == "ViewStateTests"
+            case .viewStateFactoryTests:
+                expect(name) == "ViewStateFactoryTests"
             }
         }
     }
@@ -131,8 +131,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(filename) == "FlowTests"
             case .viewControllerTests:
                 expect(filename) == "ViewControllerTests"
-            case .viewStateTests:
-                expect(filename) == "ViewStateTests"
+            case .viewStateFactoryTests:
+                expect(filename) == "ViewStateFactoryTests"
             }
         }
     }
@@ -151,7 +151,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .contextTests,
                 .flowTests,
                 .viewControllerTests,
-                .viewStateTests
+                .viewStateFactoryTests
             ]
         }
     }
@@ -197,7 +197,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>", uiFrameworkImport]
                 case .plugin, .pluginList:
                     expect(imports) == ["Nodes", "<baseImport>", "<dependencyInjectionImport>"]
-                case .contextTests, .analyticsTests, .viewControllerTests, .viewStateTests, .flowTests:
+                case .contextTests, .analyticsTests, .viewControllerTests, .viewStateFactoryTests, .flowTests:
                     expect(imports) == ["<baseTestImports>"]
                 }
             }
@@ -225,6 +225,6 @@ extension StencilTemplate {
         .contextTests,
         .flowTests,
         .viewControllerTests,
-        .viewStateTests
+        .viewStateFactoryTests
     ]
 }

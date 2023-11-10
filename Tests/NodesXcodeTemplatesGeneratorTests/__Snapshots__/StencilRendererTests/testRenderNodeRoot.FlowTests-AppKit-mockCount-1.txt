@@ -11,9 +11,9 @@ final class RootFlowTests: XCTestCase {
         <viewControllableMockContents>
     }
 
-    private var flow: RootFlowImp!
     private var contextMock: RootContextInterfaceMock!
     private var viewControllableMock: RootViewControllableMock!
+    private var flow: RootFlowImp!
 
     override func setUp() {
         super.setUp()
@@ -28,6 +28,7 @@ final class RootFlowTests: XCTestCase {
 
     override func tearDown() {
         contextMock = nil
+        contextMock.flow = nil
         viewControllableMock = nil
         flow = nil
         super.tearDown()
@@ -37,8 +38,8 @@ final class RootFlowTests: XCTestCase {
         XCTAssertNotNil(flow)
     }
 
-    func testStart() {
-        flow.start()
-        XCTAssertTrue(flow.isStarted)
+    func testDidStart() {
+        flow.didStart()
+        // TODO: Add assertions
     }
 }

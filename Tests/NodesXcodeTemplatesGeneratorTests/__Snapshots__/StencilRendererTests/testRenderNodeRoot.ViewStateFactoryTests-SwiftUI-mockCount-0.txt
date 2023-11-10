@@ -1,0 +1,26 @@
+<fileHeader>
+
+#warning("Manually move this test file to the corresponding test target.")
+
+internal final class RootViewStateFactoryTests: XCTestCase {
+
+    private var viewStateFactory: RootViewStateFactory!
+
+    override func setUp() {
+        super.setUp()
+        viewStateFactory = RootViewStateFactory()
+    }
+
+    override func tearDown() {
+        viewStateFactory = nil
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        XCTAssertNotNil(viewStateFactory)
+    }
+
+    func testTransform() {
+        XCTAssertTrue(viewStateFactory(RootState()) is RootViewState)
+    }
+}
