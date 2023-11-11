@@ -36,7 +36,7 @@ final class XcodeTemplatesTests: XCTestCase {
                        as: .dump,
                        named: "Writes")
         writes.forEach { write in
-            assertSnapshot(matching: write.contents, as: .lines, named: "Contents.\(name(fromPath: write.path))")
+            assertSnapshot(matching: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))")
         }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
@@ -58,9 +58,7 @@ final class XcodeTemplatesTests: XCTestCase {
         assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) },
                        as: .dump,
                        named: "Writes")
-        writes.forEach { write in
-            assertSnapshot(matching: write.contents, as: .lines, named: "Contents.\(name(fromPath: write.path))")
-        }
+        writes.forEach { assertSnapshot(matching: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))") }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
                        named: "Copies")
@@ -69,8 +67,9 @@ final class XcodeTemplatesTests: XCTestCase {
                        named: "Deletions")
     }
 
-    private func name(fromPath path: String) -> String {
-        path.split(separator: "/")
+    private func name(from path: String) -> String {
+        path
+            .split(separator: "/")
             .reversed()[0...1]
             .reversed()
             .joined(separator: "-")
