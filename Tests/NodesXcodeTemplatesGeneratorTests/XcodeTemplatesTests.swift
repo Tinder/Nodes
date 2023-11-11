@@ -35,9 +35,7 @@ final class XcodeTemplatesTests: XCTestCase {
         assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) },
                        as: .dump,
                        named: "Writes")
-        writes.forEach { write in
-            assertSnapshot(matching: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))")
-        }
+        writes.forEach { assertSnapshot(matching: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))") }
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
                        named: "Copies")
