@@ -2369,8 +2369,10 @@ files:
         indentWidth: 4
         preGenCommand: |
           set -e
-          if test -z "$CI"
+          if test -n "$CI"
           then
+              echo "AppleScript to close Xcode project is skipped in CI."
+          else
               WORKSPACE_DOCUMENT_NAME="{{ project|split:' '|join:'_' }}.xcodeproj"
               osascript \
                   -e 'set workspaceDocumentName to "'"${WORKSPACE_DOCUMENT_NAME}"'"' \
@@ -2401,8 +2403,11 @@ files:
           unset NEEDLE_GENERATED MOCKOLO_GENERATED
         postGenCommand: |
           set -e
-          if test -z "$CI"
+          if test -n "$CI"
           then
+              echo "Xcode templates are not installed in CI."
+              echo "Xcode project is not opened in CI."
+          else
               swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
               xed {{ project|split:' '|join:'_' }}.xcodeproj
           fi
@@ -2437,15 +2442,19 @@ files:
             - name: SwiftLint
               basedOnDependencyAnalysis: false
               script: |
-                # Ignore Bazel environment variable (if set)
-                # https://bazel.build/docs/user-manual#running-executables
-                # https://github.com/realm/SwiftLint/blob/0.52.4/Source/swiftlint/Commands/SwiftLint.swift#L8
-                unset BUILD_WORKSPACE_DIRECTORY
+                if test -n "$CI"
+                then
+                    echo "SwiftLint is skipped in CI."
+                else
+                    # Ignore Bazel environment variable (if set)
+                    # https://bazel.build/docs/user-manual#running-executables
+                    # https://github.com/realm/SwiftLint/blob/0.52.4/Source/swiftlint/Commands/SwiftLint.swift#L8
+                    unset BUILD_WORKSPACE_DIRECTORY
 
-                DIRECTORY_NAME=$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]')
+                    DIRECTORY_NAME=$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]')
 
-                echo "GGN DEBUG: $CI"
-                "$(find ".build/artifacts/${DIRECTORY_NAME}" -type f -name swiftlint -perm +111 -print -quit)"
+                    "$(find ".build/artifacts/${DIRECTORY_NAME}" -type f -name swiftlint -perm +111 -print -quit)"
+                fi
             - name: Needle
               basedOnDependencyAnalysis: false
               script: >
