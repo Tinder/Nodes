@@ -2371,7 +2371,7 @@ files:
           set -e
           if test -n "$CI"
           then
-              echo "AppleScript that closes Xcode project is skipped in CI."
+              echo "AppleScript is not executed in CI."
           else
               WORKSPACE_DOCUMENT_NAME="{{ project|split:' '|join:'_' }}.xcodeproj"
               osascript \
@@ -2405,7 +2405,7 @@ files:
           set -e
           if test -n "$CI"
           then
-              echo "Xcode templates are not installed in CI."
+              echo "Nodes Xcode templates are not installed in CI."
               echo "Xcode project is not opened in CI."
           else
               swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
