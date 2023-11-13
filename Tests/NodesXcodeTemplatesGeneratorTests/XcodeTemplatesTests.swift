@@ -38,18 +38,10 @@ final class XcodeTemplatesTests: XCTestCase {
                 .replacingOccurrences(of: [".xctemplate", "___FILEBASENAME___", ".swift", ".plist"], with: "")
             assertSnapshot(matching: write.contents, as: .lines, named: "Contents.\(name)")
         }
-        assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) },
-                       as: .dump,
-                       named: "Writes")
-        assertSnapshot(matching: fileSystem.directories,
-                       as: .dump,
-                       named: "Directories")
-        assertSnapshot(matching: fileSystem.copies,
-                       as: .dump,
-                       named: "Copies")
-        assertSnapshot(matching: fileSystem.deletions,
-                       as: .dump,
-                       named: "Deletions")
+        assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) }, as: .dump, named: "Writes")
+        assertSnapshot(matching: fileSystem.directories, as: .dump, named: "Directories")
+        assertSnapshot(matching: fileSystem.copies, as: .dump, named: "Copies")
+        assertSnapshot(matching: fileSystem.deletions, as: .dump, named: "Deletions")
     }
 
     func testGenerateWithURL() throws {
@@ -59,17 +51,9 @@ final class XcodeTemplatesTests: XCTestCase {
         // swiftlint:disable:next large_tuple
         let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
         writes.forEach { assertSnapshot(matching: $0.contents, as: .lines, named: "Contents.\($0.path)") }
-        assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) },
-                       as: .dump,
-                       named: "Writes")
-        assertSnapshot(matching: fileSystem.directories,
-                       as: .dump,
-                       named: "Directories")
-        assertSnapshot(matching: fileSystem.copies,
-                       as: .dump,
-                       named: "Copies")
-        assertSnapshot(matching: fileSystem.deletions,
-                       as: .dump,
-                       named: "Deletions")
+        assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) }, as: .dump, named: "Writes")
+        assertSnapshot(matching: fileSystem.directories, as: .dump, named: "Directories")
+        assertSnapshot(matching: fileSystem.copies, as: .dump, named: "Copies")
+        assertSnapshot(matching: fileSystem.deletions, as: .dump, named: "Deletions")
     }
 }
