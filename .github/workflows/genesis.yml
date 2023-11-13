@@ -23,28 +23,36 @@ jobs:
     - name: Checkout source
       uses: actions/checkout@v3
     - name: Create temporary directory
-      run: mkdir QuickStart
+      id: mktemp
+      run: echo "directory=$(mktemp -d)" >> "$GITHUB_OUTPUT"
     - name: Generate project files
-      working-directory: QuickStart
+      working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
-        git config user.name 'Test User';
         mint run genesis generate "${{ github.workspace }}/genesis.yml" --options
-        "nodes:0.0.0, project:QuickStart, prefix:com.tinder, author:$(git config user.name), date:$(date +"%-m/%-d/%y"), path:${{ github.workspace }}"
-    - name: Generate Xcode project
-      working-directory: QuickStart
-      run: xcodegen
-    - name: Resolve Swift package
-      working-directory: QuickStart
+        "nodes:0.0.0, project:QuickStart, prefix:com.tinder, author:Author, date:$(date +"%-m/%-d/%y"), path:${{ github.workspace }}"
+    - name: Download swiftlint binary
+      working-directory: ${{ steps.mktemp.outputs.directory }}
       run: swift package resolve
-    - name: Resolve package dependencies
-      working-directory: QuickStart
-      run: xcodebuild -resolvePackageDependencies
-    - name: Run SwiftLint
-      working-directory: QuickStart
-      run: $(find ".build/artifacts/quickstart" -type f -name swiftlint -perm +111 -print -quit) --strict
+    - name: Lint
+      working-directory: ${{ steps.mktemp.outputs.directory }}
+      run: >
+        $(find .build -type f -name swiftlint -perm +111 -print -quit)
+        lint --strict --reporter github-actions-logging
+    - name: Generate project
+      working-directory: ${{ steps.mktemp.outputs.directory }}
+      run: xcodegen
     - name: Build
-      working-directory: QuickStart
-      run: xcodebuild build-for-testing -scheme "QuickStart" -destination "name=$SIMULATOR,OS=latest"
+      working-directory: ${{ steps.mktemp.outputs.directory }}
+      run: >
+        xcodebuild build-for-testing
+        -scheme "QuickStart"
+        -destination "name=$SIMULATOR,OS=latest"
+        -configuration "Debug"
+        -skipPackagePluginValidation
     - name: Run tests
-      working-directory: QuickStart
-      run: xcodebuild test-without-building -scheme "QuickStart" -destination "name=$SIMULATOR,OS=latest"
+      working-directory: ${{ steps.mktemp.outputs.directory }}
+      run: >
+        xcodebuild test-without-building
+        -scheme "QuickStart"
+        -destination "name=$SIMULATOR,OS=latest"
+        -configuration "Debug"
