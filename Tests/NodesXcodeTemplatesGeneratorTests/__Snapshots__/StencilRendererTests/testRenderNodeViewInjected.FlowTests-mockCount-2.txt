@@ -9,9 +9,9 @@ final class <nodeName>FlowTests: XCTestCase {
 
     private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {}
 
-    private var flow: <nodeName>FlowImp!
     private var contextMock: <nodeName>ContextInterfaceMock!
     private var viewControllableMock: <nodeName>ViewControllableMock!
+    private var flow: <nodeName>FlowImp!
 
     override func setUp() {
         super.setUp()
@@ -23,6 +23,7 @@ final class <nodeName>FlowTests: XCTestCase {
             <flowPropertyName1>: <flowPropertyType1>,
             <flowPropertyName2>: <flowPropertyType2>
         )
+        XCTAssertTrue(flow.isStarted)
     }
 
     override func tearDown() {
@@ -34,10 +35,5 @@ final class <nodeName>FlowTests: XCTestCase {
 
     func testNotNil() {
         XCTAssertNotNil(flow)
-    }
-
-    func testStart() {
-        flow.start()
-        XCTAssertTrue(flow.isStarted)
     }
 }

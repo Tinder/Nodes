@@ -31,7 +31,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                     "ViewController",
                     "ViewControllerTests",
                     "ViewState",
-                    "ViewStateTests"
+                    "ViewStateFactoryTests"
                 ]
                 templates.forEach { name, template in
                     assertSnapshot(matching: template,
@@ -62,7 +62,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                     "ViewController",
                     "ViewControllerTests",
                     "ViewState",
-                    "ViewStateTests"
+                    "ViewStateFactoryTests"
                 ]
                 templates.forEach { name, template in
                     assertSnapshot(matching: template,

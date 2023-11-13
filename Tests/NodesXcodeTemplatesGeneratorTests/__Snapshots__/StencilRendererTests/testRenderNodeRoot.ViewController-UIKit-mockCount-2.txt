@@ -24,8 +24,7 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     /// The view receiver.
     internal weak var receiver: RootReceiver?
 
-    /// The collection of cancellable instances.
-    private var cancellables: Set<AnyCancellable> = .init()
+    <viewControllerSubscriptionsProperty>
 
     /// The initial view state.
     private let initialState: RootViewState

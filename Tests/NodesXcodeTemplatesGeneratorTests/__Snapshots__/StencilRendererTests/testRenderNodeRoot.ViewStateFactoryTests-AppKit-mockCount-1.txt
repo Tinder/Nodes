@@ -2,20 +2,23 @@
 
 #warning("Manually move this test file to the corresponding test target.")
 
-import <testImport1>
-import <testImport2>
+import <testImport>
 
 internal final class RootViewStateFactoryTests: XCTestCase {
 
-    private var factory: RootViewStateFactory!
+    private var viewStateFactory: RootViewStateFactory!
 
     override func setUp() {
         super.setUp()
-        factory = .init()
+        viewStateFactory = RootViewStateFactory()
     }
 
     override func tearDown() {
-        factory = nil
+        viewStateFactory = nil
         super.tearDown()
+    }
+
+    func testNotNil() {
+        XCTAssertNotNil(viewStateFactory(RootState()))
     }
 }

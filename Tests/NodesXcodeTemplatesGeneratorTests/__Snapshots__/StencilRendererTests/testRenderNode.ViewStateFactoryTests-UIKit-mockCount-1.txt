@@ -6,15 +6,19 @@ import <testImport>
 
 internal final class <nodeName>ViewStateFactoryTests: XCTestCase {
 
-    private var factory: <nodeName>ViewStateFactory!
+    private var viewStateFactory: <nodeName>ViewStateFactory!
 
     override func setUp() {
         super.setUp()
-        factory = .init()
+        viewStateFactory = <nodeName>ViewStateFactory()
     }
 
     override func tearDown() {
-        factory = nil
+        viewStateFactory = nil
         super.tearDown()
+    }
+
+    func testNotNil() {
+        XCTAssertNotNil(viewStateFactory(<nodeName>State()))
     }
 }

@@ -6,15 +6,16 @@ import <testImport>
 
 final class <nodeName>ViewControllerTests: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
+    func testNotNil() {
+        XCTAssertNotNil(givenViewController(with: <nodeName>ViewState()))
     }
 
-    override func tearDown() {
-        super.tearDown()
-    }
-
-    func testInitialState() {
-        // TODO: Add assertions
+    private func givenViewController(
+        with state: <nodeName>ViewState
+    ) -> <nodeName>ViewController {
+        <nodeName>ViewController(
+            initialState: state,
+            statePublisher: Empty().eraseToAnyPublisher()
+        )
     }
 }

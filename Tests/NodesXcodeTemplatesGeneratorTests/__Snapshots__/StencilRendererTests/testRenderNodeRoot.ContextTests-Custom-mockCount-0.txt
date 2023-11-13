@@ -19,7 +19,6 @@ final class RootContextTests: XCTestCase {
     override func tearDown() {
         analyticsMock = nil
         context = nil
-        
         super.tearDown()
     }
 
@@ -27,7 +26,7 @@ final class RootContextTests: XCTestCase {
         XCTAssertNotNil(context)
     }
 
-    func testWorkersEmpty() {
+    func testWorkersIsEmpty() {
         XCTAssertTrue(context.workers.isEmpty)
     }
 
