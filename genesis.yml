@@ -2371,7 +2371,7 @@ files:
           set -e
           if test -n "$CI"
           then
-              echo "AppleScript to close Xcode project is skipped in CI."
+              echo "AppleScript that closes Xcode project is skipped in CI."
           else
               WORKSPACE_DOCUMENT_NAME="{{ project|split:' '|join:'_' }}.xcodeproj"
               osascript \
