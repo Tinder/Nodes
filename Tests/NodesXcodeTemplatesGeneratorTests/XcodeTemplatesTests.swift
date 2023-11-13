@@ -27,14 +27,8 @@ final class XcodeTemplatesTests: XCTestCase {
     func testGenerateWithIdentifier() throws {
         let fileSystem: FileSystemMock = .init()
         try XcodeTemplates(config: Config()).generate(identifier: "identifier", using: fileSystem)
-        assertSnapshot(matching: fileSystem.directories,
-                       as: .dump,
-                       named: "Directories")
         // swiftlint:disable:next large_tuple
         let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
-        assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) },
-                       as: .dump,
-                       named: "Writes")
         writes.forEach { write in
             let name: String = write.path
                 .split(separator: "/")
@@ -44,6 +38,12 @@ final class XcodeTemplatesTests: XCTestCase {
                 .replacingOccurrences(of: [".xctemplate", "___FILEBASENAME___", ".swift", ".plist"], with: "")
             assertSnapshot(matching: write.contents, as: .lines, named: "Contents.\(name)")
         }
+        assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) },
+                       as: .dump,
+                       named: "Writes")
+        assertSnapshot(matching: fileSystem.directories,
+                       as: .dump,
+                       named: "Directories")
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
                        named: "Copies")
@@ -56,15 +56,15 @@ final class XcodeTemplatesTests: XCTestCase {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
         try XcodeTemplates(config: Config()).generate(at: url, using: fileSystem)
-        assertSnapshot(matching: fileSystem.directories,
-                       as: .dump,
-                       named: "Directories")
         // swiftlint:disable:next large_tuple
         let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
+        writes.forEach { assertSnapshot(matching: $0.contents, as: .lines, named: "Contents.\($0.path)") }
         assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) },
                        as: .dump,
                        named: "Writes")
-        writes.forEach { assertSnapshot(matching: $0.contents, as: .lines, named: "Contents.\($0.path)") }
+        assertSnapshot(matching: fileSystem.directories,
+                       as: .dump,
+                       named: "Directories")
         assertSnapshot(matching: fileSystem.copies,
                        as: .dump,
                        named: "Copies")
