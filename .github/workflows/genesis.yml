@@ -38,7 +38,7 @@ jobs:
       run: >
         $(find .build -type f -name swiftlint -perm +111 -print -quit)
         lint --strict --reporter github-actions-logging
-    - name: Generate project
+    - name: Generate Xcode project
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: xcodegen
     - name: Build
