@@ -208,7 +208,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         let viewStateFactory: {{ node_name }}ViewStateFactory = .init()
         let viewController: {{ node_name }}ViewController = .init(
             initialState: viewStateFactory(context.state),
-            statePublisher: {{ view_state_transform|indent:12 }}
+            statePublisher: {{ view_state_transform }}
         )
         viewController.receiver = context
         {% endif %}
