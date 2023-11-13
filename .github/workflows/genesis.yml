@@ -29,23 +29,23 @@ jobs:
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
         mint run genesis generate "${{ github.workspace }}/genesis.yml" --options
-        "nodes:0.0.0, project:QuickStart, prefix:com.tinder, author:Author, date:$(date +"%-m/%-d/%y"), path:${{ github.workspace }}"
+        "nodes:0.0.0, project:Tinder, prefix:com.tinder, author:Author, date:$(date +"%-m/%-d/%y"), path:${{ github.workspace }}"
     - name: Generate Xcode project
       working-directory: ${{ steps.mktemp.outputs.directory }}
-      run: xcodegen        
+      run: xcodegen
     - name: Download swiftlint binary
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: swift package resolve
     - name: Lint
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
-        $(find .build -type f -name swiftlint -perm +111 -print -quit)
+        $(find .build/artifacts/tinder -type f -name swiftlint -perm +111 -print -quit)
         lint --strict --reporter github-actions-logging
     - name: Build
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
         xcodebuild build-for-testing
-        -scheme "QuickStart"
+        -scheme "Tinder"
         -destination "name=$SIMULATOR,OS=latest"
         -configuration "Debug"
         -skipPackagePluginValidation
@@ -53,6 +53,6 @@ jobs:
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
         xcodebuild test-without-building
-        -scheme "QuickStart"
+        -scheme "Tinder"
         -destination "name=$SIMULATOR,OS=latest"
         -configuration "Debug"
