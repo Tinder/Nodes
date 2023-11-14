@@ -2369,10 +2369,8 @@ files:
         indentWidth: 4
         preGenCommand: |
           set -e
-          if test -n "$CI"
+          if test -z "$CI"
           then
-              echo "AppleScript is not executed in CI."
-          else
               WORKSPACE_DOCUMENT_NAME="{{ project|split:' '|join:'_' }}.xcodeproj"
               osascript \
                   -e 'set workspaceDocumentName to "'"${WORKSPACE_DOCUMENT_NAME}"'"' \
@@ -2395,6 +2393,8 @@ files:
                   -e 'end tell' \
                   -e 'end if'
               unset WORKSPACE_DOCUMENT_NAME
+          else
+              echo "AppleScript is not executed in CI."
           fi
           NEEDLE_GENERATED="{{ project|split:' '|join:'_' }}/Generated/NeedleGenerated.swift"
           MOCKOLO_GENERATED="{{ project|split:' '|join:'_' }}Tests/Generated/MockoloGenerated.swift"
@@ -2405,11 +2405,11 @@ files:
           set -e
           if test -n "$CI"
           then
-              echo "Nodes Xcode templates are not installed in CI."
-              echo "Xcode project is not opened in CI."
-          else
               swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
               xed {{ project|split:' '|join:'_' }}.xcodeproj
+          else
+              echo "Nodes Xcode templates are not installed in CI."
+              echo "Xcode project is not opened in CI."
           fi
       packages:
         Nodes:
@@ -2442,10 +2442,8 @@ files:
             - name: SwiftLint
               basedOnDependencyAnalysis: false
               script: |
-                if test -n "$CI"
+                if test -z "$CI"
                 then
-                    echo "SwiftLint is skipped in CI."
-                else
                     # Ignore Bazel environment variable (if set)
                     # https://bazel.build/docs/user-manual#running-executables
                     # https://github.com/realm/SwiftLint/blob/0.52.4/Source/swiftlint/Commands/SwiftLint.swift#L8
@@ -2454,6 +2452,8 @@ files:
                     DIRECTORY_NAME=$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]')
 
                     "$(find ".build/artifacts/${DIRECTORY_NAME}" -type f -name swiftlint -perm +111 -print -quit)"
+                else
+                    echo "SwiftLint is skipped in CI."                    
                 fi
             - name: Needle
               basedOnDependencyAnalysis: false
