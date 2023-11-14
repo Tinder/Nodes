@@ -160,7 +160,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         let viewStateFactory: <nodeName>ViewStateFactory = .init()
         let viewController: <nodeName>ViewController = .init(
             initialState: viewStateFactory(context.state),
-            statePublisher: <viewStateTransform>
+            <viewStatePropertyName>: <viewStateTransform>
         )
         viewController.receiver = context
         let flow: <nodeName>FlowImp = .init(

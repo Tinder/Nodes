@@ -19,7 +19,7 @@ final class {{ node_name }}ViewControllerTests: XCTestCase {
     ) -> {{ node_name }}ViewController {
         {{ node_name }}ViewController(
             initialState: state,
-            statePublisher: Empty().eraseToAnyPublisher()
+            {{ view_state_property_name }}: Empty().eraseToAnyPublisher()
         )
     }
 }

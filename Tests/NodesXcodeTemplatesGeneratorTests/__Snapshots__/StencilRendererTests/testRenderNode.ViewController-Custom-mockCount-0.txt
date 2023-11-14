@@ -22,19 +22,19 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
     private let initialState: <nodeName>ViewState
 
     /// <viewStatePropertyComment>.
-    private let statePublisher: <publisherType><<nodeName>ViewState>
+    private let <viewStatePropertyName>: <publisherType><<nodeName>ViewState>
 
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialState: The initial view state.
-    ///   - statePublisher: <viewStatePropertyComment>.
+    ///   - <viewStatePropertyName>: <viewStatePropertyComment>.
     internal init(
         initialState: <nodeName>ViewState,
-        statePublisher: <publisherType><<nodeName>ViewState>
+        <viewStatePropertyName>: <publisherType><<nodeName>ViewState>
     ) {
         self.initialState = initialState
-        self.statePublisher = statePublisher
+        self.<viewStatePropertyName> = <viewStatePropertyName>
         super.init()
     }
 

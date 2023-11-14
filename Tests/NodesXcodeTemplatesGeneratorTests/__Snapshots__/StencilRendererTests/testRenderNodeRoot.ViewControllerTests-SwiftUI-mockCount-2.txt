@@ -16,7 +16,7 @@ final class RootViewControllerTests: XCTestCase {
     ) -> RootViewController {
         RootViewController(
             initialState: state,
-            statePublisher: Empty().eraseToAnyPublisher()
+            <viewStatePropertyName>: Empty().eraseToAnyPublisher()
         )
     }
 }

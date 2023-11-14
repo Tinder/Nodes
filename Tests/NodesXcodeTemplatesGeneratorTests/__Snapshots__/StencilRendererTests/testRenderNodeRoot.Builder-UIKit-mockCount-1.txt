@@ -157,7 +157,7 @@ internal final class RootBuilderImp: AbstractBuilder
         let viewStateFactory: RootViewStateFactory = .init()
         let viewController: RootViewController = .init(
             initialState: viewStateFactory(context.state),
-            statePublisher: <viewStateTransform>
+            <viewStatePropertyName>: <viewStateTransform>
         )
         viewController.receiver = context
         let flow: RootFlowImp = .init(

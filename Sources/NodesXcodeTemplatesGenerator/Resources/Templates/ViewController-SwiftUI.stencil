@@ -51,7 +51,7 @@ internal struct {{ node_name }}View: View {
 
     /// The body of the view.
     internal var body: some View {
-        WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
+        WithViewState(initialState: initialState, {{ view_state_property_name }}: {{ view_state_property_name }}) { viewState in
             Text(verbatim: "\(type(of: viewState))")
         }
     }
@@ -66,19 +66,19 @@ internal struct {{ node_name }}View: View {
     private let initialState: {{ node_name }}ViewState
 
     /// {{ view_state_property_comment }}.
-    private let statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
+    private let {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
 
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialState: The initial view state.
-    ///   - statePublisher: {{ view_state_property_comment }}.
+    ///   - {{ view_state_property_name }}: {{ view_state_property_comment }}.
     internal init(
         initialState: {{ node_name }}ViewState,
-        statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
+        {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
     ) {
         self.initialState = initialState
-        self.statePublisher = statePublisher
+        self.{{ view_state_property_name }} = {{ view_state_property_name }}
             {% if view_state_operators %}
             {{ view_state_operators|indent:12 }}
             {% endif %}
@@ -97,7 +97,7 @@ internal struct {{ node_name }}View_Previews: PreviewProvider {
     internal static var previews: some View {
         {{ node_name }}View(
             initialState: {{ node_name }}ViewState(),
-            statePublisher: Empty().eraseToAnyPublisher()
+            {{ view_state_property_name }}: Empty().eraseToAnyPublisher()
         )
     }
 }

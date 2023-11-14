@@ -160,7 +160,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         let viewStateFactory: <nodeName>ViewStateFactory = .init()
         var view: <nodeName>View = .init(
             initialState: viewStateFactory(context.state),
-            statePublisher: <viewStateTransform>
+            <viewStatePropertyName>: <viewStateTransform>
         )
         view.receiver = context
         let viewController: <nodeName>ViewController = .init(
