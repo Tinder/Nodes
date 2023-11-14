@@ -13,7 +13,7 @@ final class <nodeName>ViewControllerTests: XCTestCase {
     ) -> <nodeName>ViewController {
         <nodeName>ViewController(
             initialState: state,
-            <viewStatePropertyName>: Empty().eraseToAnyPublisher()
+            <viewStatePropertyName>: <viewStateEmptyFactory>
         )
     }
 }
