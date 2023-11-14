@@ -1,7 +1,8 @@
 ▿ Config
   - analyticsProperties: 0 elements
   - baseImports: 0 members
-  ▿ baseTestImports: 1 member
+  ▿ baseTestImports: 2 members
+    - "Nimble"
     - "XCTest"
   ▿ contextGenericTypes: 1 element
     - "AnyCancellable"

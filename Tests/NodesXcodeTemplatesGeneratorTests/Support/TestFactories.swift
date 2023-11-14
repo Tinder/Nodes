@@ -89,6 +89,7 @@ extension TestFactories {
             publisherFailureType: mockCount > 0 ? "<publisherFailureType>" : "",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            isNimbleEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
@@ -125,6 +126,7 @@ extension TestFactories {
             publisherFailureType: mockCount > 0 ? "<publisherFailureType>" : "",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            isNimbleEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
@@ -146,6 +148,7 @@ extension TestFactories {
             viewControllableFlowType: "<viewControllableFlowType>",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            isNimbleEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0
         )
     }

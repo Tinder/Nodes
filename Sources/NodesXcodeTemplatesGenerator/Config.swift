@@ -48,6 +48,8 @@ extension XcodeTemplates {
         public var isTestTemplatesGenerationEnabled: Bool
         public var isPeripheryCommentEnabled: Bool
 
+        internal var isNimbleEnabled: Bool { baseTestImports.contains("Nimble") }
+
         public init(
             at path: String,
             using fileSystem: FileSystem = FileManager.default
@@ -75,7 +77,7 @@ extension XcodeTemplates.Config {
         uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
         fileHeader = "//___FILEHEADER___"
         baseImports = []
-        baseTestImports = ["XCTest"]
+        baseTestImports = ["Nimble", "XCTest"]
         reactiveImports = ["Combine"]
         dependencyInjectionImports = ["NeedleFoundation"]
         dependencies = []

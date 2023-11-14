@@ -42,6 +42,7 @@
         ▿ (2 elements)
           - key: "type"
           - value: "<flowPropertiesType>"
+    - isNimbleEnabled: false
     - isPeripheryCommentEnabled: false
     - nodeName: "___VARIABLE_productName___"
     - publisherFailureType: "<publisherFailureType>"

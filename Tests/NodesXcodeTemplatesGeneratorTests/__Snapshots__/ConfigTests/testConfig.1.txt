@@ -9,7 +9,8 @@
   ▿ baseImports: 2 members
     - "<baseImports-1>"
     - "<baseImports-2>"
-  ▿ baseTestImports: 1 member
+  ▿ baseTestImports: 2 members
+    - "Nimble"
     - "XCTest"
   ▿ contextGenericTypes: 1 element
     - "AnyCancellable"

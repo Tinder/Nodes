@@ -1,4 +1,4 @@
-▿ 34 key/value pairs
+▿ 35 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -52,6 +52,9 @@
         ▿ (2 elements)
           - key: "type"
           - value: "<flowPropertyType>"
+  ▿ (2 elements)
+    - key: "is_nimble_enabled"
+    - value: true
   ▿ (2 elements)
     - key: "is_periphery_comment_enabled"
     - value: true
