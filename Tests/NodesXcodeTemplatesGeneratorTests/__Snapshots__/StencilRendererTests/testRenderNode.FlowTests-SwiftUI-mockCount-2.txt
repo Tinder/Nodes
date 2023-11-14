@@ -8,7 +8,7 @@ import <testImport2>
 final class <nodeName>FlowTests: XCTestCase {
 
     private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {
-        
+
         <viewControllableMockContents>
     }
 
