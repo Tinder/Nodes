@@ -52,7 +52,6 @@ jobs:
         -scheme "Tinder"
         -destination "name=$SIMULATOR,OS=latest"
         -configuration "Debug"
-        -skipPackagePluginValidation
     - name: Run tests
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
