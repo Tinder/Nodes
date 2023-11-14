@@ -20,6 +20,6 @@ internal final class RootViewStateFactoryTests: XCTestCase {
     }
 
     func testNotNil() {
-        XCTAssertNotNil(viewStateFactory(RootState()))
+        expect(self.viewStateFactory(RootState())) != nil
     }
 }

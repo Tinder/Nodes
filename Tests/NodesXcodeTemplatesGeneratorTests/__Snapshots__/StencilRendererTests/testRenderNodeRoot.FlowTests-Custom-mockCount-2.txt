@@ -8,7 +8,7 @@ import <testImport2>
 final class RootFlowTests: XCTestCase {
 
     private final class RootViewControllableMock: UIViewController, RootViewControllable {
-        
+
         <viewControllableMockContents>
     }
 
@@ -37,6 +37,6 @@ final class RootFlowTests: XCTestCase {
     }
 
     func testNotNil() {
-        XCTAssertNotNil(flow)
+        expect(self.flow) != nil
     }
 }

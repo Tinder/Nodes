@@ -8,7 +8,7 @@ import <testImport2>
 final class <nodeName>ViewControllerTests: XCTestCase {
 
     func testNotNil() {
-        XCTAssertNotNil(givenViewController(with: <nodeName>ViewState()))
+        expect(self.givenViewController(with: <nodeName>ViewState())) != nil
     }
 
     private func givenViewController(

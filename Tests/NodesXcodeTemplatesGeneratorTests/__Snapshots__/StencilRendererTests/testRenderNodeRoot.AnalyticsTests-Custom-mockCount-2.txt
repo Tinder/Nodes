@@ -20,6 +20,6 @@ final class RootAnalyticsTests: XCTestCase {
     }
 
     func testNotNil() {
-        XCTAssertNotNil(analytics)
+        expect(self.analytics) != nil
     }
 }

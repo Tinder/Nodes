@@ -26,18 +26,18 @@ final class RootContextTests: XCTestCase {
     }
 
     func testNotNil() {
-        XCTAssertNotNil(context)
+        expect(self.context) != nil
     }
 
     func testWorkersIsEmpty() {
-        XCTAssertTrue(context.workers.isEmpty)
+        expect(self.context.workers.isEmpty) == true
     }
 
     func testActivation() {
-        XCTAssertFalse(context.isActive)
+        expect(self.context.isActive) == false
         context.activate()
-        XCTAssertTrue(context.isActive)
+        expect(self.context.isActive) == true
         context.deactivate()
-        XCTAssertFalse(context.isActive)
+        expect(self.context.isActive) == false
     }
 }

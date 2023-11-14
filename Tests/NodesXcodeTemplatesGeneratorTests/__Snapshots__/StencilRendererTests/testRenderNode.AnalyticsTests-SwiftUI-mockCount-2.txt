@@ -20,6 +20,6 @@ final class <nodeName>AnalyticsTests: XCTestCase {
     }
 
     func testNotNil() {
-        XCTAssertNotNil(analytics)
+        expect(self.analytics) != nil
     }
 }
