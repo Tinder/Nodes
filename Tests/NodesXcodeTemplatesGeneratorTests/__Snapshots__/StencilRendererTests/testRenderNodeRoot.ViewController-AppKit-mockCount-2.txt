@@ -29,14 +29,14 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     /// The initial view state.
     private let initialState: RootViewState
 
-    /// The view state publisher.
+    /// <viewStatePropertyComment>.
     private let statePublisher: <publisherType><RootViewState, <publisherFailureType>>
 
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialState: The initial view state.
-    ///   - statePublisher: The view state publisher.
+    ///   - statePublisher: <viewStatePropertyComment>.
     internal init(
         initialState: RootViewState,
         statePublisher: <publisherType><RootViewState, <publisherFailureType>>

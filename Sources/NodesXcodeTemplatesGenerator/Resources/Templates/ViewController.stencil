@@ -40,14 +40,14 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     /// The initial view state.
     private let initialState: {{ node_name }}ViewState
 
-    /// The view state publisher.
+    /// {{ view_state_property_comment }}.
     private let statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
 
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialState: The initial view state.
-    ///   - statePublisher: The view state publisher.
+    ///   - statePublisher: {{ view_state_property_comment }}.
     internal init(
         initialState: {{ node_name }}ViewState,
         statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>

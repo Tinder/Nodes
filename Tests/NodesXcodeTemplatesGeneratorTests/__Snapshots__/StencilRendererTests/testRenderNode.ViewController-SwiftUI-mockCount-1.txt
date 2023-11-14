@@ -45,14 +45,14 @@ internal struct <nodeName>View: View {
     /// The initial view state.
     private let initialState: <nodeName>ViewState
 
-    /// The view state publisher.
+    /// <viewStatePropertyComment>.
     private let statePublisher: <publisherType><<nodeName>ViewState, <publisherFailureType>>
 
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialState: The initial view state.
-    ///   - statePublisher: The view state publisher.
+    ///   - statePublisher: <viewStatePropertyComment>.
     internal init(
         initialState: <nodeName>ViewState,
         statePublisher: <publisherType><<nodeName>ViewState, <publisherFailureType>>
