@@ -2403,7 +2403,7 @@ files:
           unset NEEDLE_GENERATED MOCKOLO_GENERATED
         postGenCommand: |
           set -e
-          if test -n "$CI"
+          if test -z "$CI"
           then
               swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
               xed {{ project|split:' '|join:'_' }}.xcodeproj
