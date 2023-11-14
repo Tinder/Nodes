@@ -38,8 +38,7 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
         super.init()
     }
 
-    internal func update(with viewState: <nodeName>ViewState) {
-    }
+    internal func update(with viewState: <nodeName>ViewState) {}
 }
 
 extension <nodeName>ViewController: <nodeName>ViewControllable {}

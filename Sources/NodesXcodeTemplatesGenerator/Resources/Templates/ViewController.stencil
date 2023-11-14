@@ -64,11 +64,13 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     {{ view_controller_methods|indent:4 }}
     {% endif %}
 
+    {% if view_controller_update_comment %}
     internal func update(with viewState: {{ node_name }}ViewState) {
-        {% if view_controller_update_comment %}
         {{ view_controller_update_comment|indent:8 }}
-        {% endif %}
     }
+    {% else %}
+    internal func update(with viewState: {{ node_name }}ViewState) {}
+    {% endif %}
 }
 
 extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
