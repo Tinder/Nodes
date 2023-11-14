@@ -48,8 +48,8 @@ internal struct NodeTemplate: XcodeTemplate {
             publisherFailureType: config.publisherFailureType,
             contextGenericTypes: config.contextGenericTypes,
             workerGenericTypes: config.workerGenericTypes,
-            isNimbleEnabled: config.isNimbleEnabled,
-            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
+            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
+            isNimbleEnabled: config.isNimbleEnabled
         )
         propertyList = PropertyList(description: "The source files implementing a Node.",
                                     // swiftlint:disable:next force_unwrapping
