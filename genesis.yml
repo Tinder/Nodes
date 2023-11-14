@@ -1844,13 +1844,9 @@ files:
               )
               context.listener = listener
               let viewStateFactory: RootViewStateFactory = .init()
-              let viewState: Publishers.Map = .init(
-                  upstream: context.$state,
-                  transform: viewStateFactory
-              )
               let viewController: RootViewController = .init(
                   initialState: viewStateFactory(context.state),
-                  statePublisher: viewState.eraseToAnyPublisher()
+                  statePublisher: Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()
               )
               viewController.receiver = context
               let flow: RootFlowImp = .init(
@@ -2453,7 +2449,7 @@ files:
 
                     "$(find ".build/artifacts/${DIRECTORY_NAME}" -type f -name swiftlint -perm +111 -print -quit)"
                 else
-                    echo "SwiftLint is skipped in CI."                    
+                    echo "SwiftLint is skipped in CI."
                 fi
             - name: Needle
               basedOnDependencyAnalysis: false
