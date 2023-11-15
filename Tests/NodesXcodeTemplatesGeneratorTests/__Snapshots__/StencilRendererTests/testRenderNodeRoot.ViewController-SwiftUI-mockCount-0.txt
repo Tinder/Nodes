@@ -60,16 +60,9 @@ extension RootView: View {
 
 // MARK: - Preview
 
-/**
- PURPOSE:
- The SwiftUI preview (excluded from release builds).
- */
-internal struct RootView_Previews: PreviewProvider {
-
-    internal static var previews: some View {
-        RootView(
-            initialState: RootViewState(),
-            <viewStatePropertyName>: <viewStateEmptyFactory>
-        )
-    }
+#Preview {
+    RootView(
+        initialState: RootViewState(),
+        <viewStatePropertyName>: <viewStateEmptyFactory>
+    )
 }

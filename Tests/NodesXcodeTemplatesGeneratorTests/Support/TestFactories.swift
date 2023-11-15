@@ -10,7 +10,7 @@ extension TestFactories {
 
     private typealias Variable = Config.Variable
 
-    func givenConfig() -> Config {
+    internal func givenConfig() -> Config {
         var config: Config = .init()
         config.uiFrameworks = [
             UIFramework(framework: .appKit),
@@ -50,12 +50,13 @@ extension TestFactories {
         config.contextGenericTypes = ["<contextGenericType>"]
         config.workerGenericTypes = ["<workerGenericType>"]
         config.isViewInjectedTemplateEnabled = true
+        config.isPreviewProviderEnabled = false
         config.isTestTemplatesGenerationEnabled = false
         config.isPeripheryCommentEnabled = false
         return config
     }
 
-    func givenNodeContext(mockCount: Int = 1) -> NodeContext {
+    internal func givenNodeContext(mockCount: Int = 1) -> NodeContext {
         NodeContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
@@ -88,12 +89,13 @@ extension TestFactories {
             publisherFailureType: mockCount > 0 ? "<publisherFailureType>" : "",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            isPreviewProviderEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0,
             isNimbleEnabled: mockCount > 0
         )
     }
 
-    func givenNodeRootContext(mockCount: Int = 1) -> NodeRootContext {
+    internal func givenNodeRootContext(mockCount: Int = 1) -> NodeRootContext {
         NodeRootContext(
             fileHeader: "<fileHeader>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
@@ -125,12 +127,13 @@ extension TestFactories {
             publisherFailureType: mockCount > 0 ? "<publisherFailureType>" : "",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            isPreviewProviderEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0,
             isNimbleEnabled: mockCount > 0
         )
     }
 
-    func givenNodeViewInjectedContext(mockCount: Int = 1) -> NodeViewInjectedContext {
+    internal func givenNodeViewInjectedContext(mockCount: Int = 1) -> NodeViewInjectedContext {
         NodeViewInjectedContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
@@ -152,7 +155,7 @@ extension TestFactories {
         )
     }
 
-    func givenPluginContext(mockCount: Int = 1) -> PluginContext {
+    internal func givenPluginContext(mockCount: Int = 1) -> PluginContext {
         PluginContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
@@ -162,7 +165,7 @@ extension TestFactories {
         )
     }
 
-    func givenPluginContextWithoutReturnType(mockCount: Int = 1) -> PluginContext {
+    internal func givenPluginContextWithoutReturnType(mockCount: Int = 1) -> PluginContext {
         PluginContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
@@ -171,7 +174,7 @@ extension TestFactories {
         )
     }
 
-    func givenPluginListContext(mockCount: Int = 1) -> PluginListContext {
+    internal func givenPluginListContext(mockCount: Int = 1) -> PluginListContext {
         PluginListContext(
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
@@ -181,7 +184,7 @@ extension TestFactories {
         )
     }
 
-    func givenWorkerContext(mockCount: Int = 1) -> WorkerContext {
+    internal func givenWorkerContext(mockCount: Int = 1) -> WorkerContext {
         WorkerContext(
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",

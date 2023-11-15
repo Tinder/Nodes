@@ -34,6 +34,7 @@ public struct NodeRootContext: Context {
     private let publisherFailureType: String
     private let contextGenericTypes: [String]
     private let workerGenericTypes: [String]
+    private let isPreviewProviderEnabled: Bool
     private let isPeripheryCommentEnabled: Bool
     private let isNimbleEnabled: Bool
 
@@ -72,6 +73,7 @@ public struct NodeRootContext: Context {
             "publisher_failure_type": publisherFailureType,
             "context_generic_types": contextGenericTypes,
             "worker_generic_types": workerGenericTypes,
+            "is_preview_provider_enabled": isPreviewProviderEnabled,
             "is_periphery_comment_enabled": isPeripheryCommentEnabled,
             "is_nimble_enabled": isNimbleEnabled
         ]
@@ -108,6 +110,7 @@ public struct NodeRootContext: Context {
         publisherFailureType: String,
         contextGenericTypes: [String],
         workerGenericTypes: [String],
+        isPreviewProviderEnabled: Bool,
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
     ) {
@@ -141,6 +144,7 @@ public struct NodeRootContext: Context {
         self.publisherFailureType = publisherFailureType
         self.contextGenericTypes = contextGenericTypes
         self.workerGenericTypes = workerGenericTypes
+        self.isPreviewProviderEnabled = isPreviewProviderEnabled
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
         self.isNimbleEnabled = isNimbleEnabled
     }

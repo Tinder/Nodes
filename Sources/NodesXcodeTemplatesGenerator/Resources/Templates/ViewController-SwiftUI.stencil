@@ -91,6 +91,7 @@ extension {{ node_name }}View: View {
 
 // MARK: - Preview
 
+{% if is_preview_provider_enabled %}
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
@@ -107,3 +108,11 @@ internal struct {{ node_name }}View_Previews: PreviewProvider {
         )
     }
 }
+{% else %}
+#Preview {
+    {{ node_name }}View(
+        initialState: {{ node_name }}ViewState(),
+        {{ view_state_property_name }}: {{ view_state_empty_factory }}
+    )
+}
+{% endif %}

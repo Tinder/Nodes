@@ -12,6 +12,7 @@
   - fileHeader: "//___FILEHEADER___"
   - flowProperties: 0 elements
   - isPeripheryCommentEnabled: false
+  - isPreviewProviderEnabled: false
   - isTestTemplatesGenerationEnabled: false
   - isViewInjectedTemplateEnabled: true
   - publisherFailureType: "Never"
