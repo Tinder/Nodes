@@ -140,7 +140,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
     func testNodeStencils() {
         StencilTemplate.Variation.allCases.forEach { variation in
             let node: StencilTemplate.Node = .init(for: variation)
-            expect(node.stencilTemplates(includeTests: false)) == [
+            expect(node.stencils(includeTests: false)) == [
                 .analytics,
                 .builder(variation),
                 .context,
@@ -149,7 +149,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .viewController(variation),
                 .viewState
             ]
-            expect(node.stencilTemplates(includeTests: true)) == [
+            expect(node.stencils(includeTests: true)) == [
                 .analytics,
                 .builder(variation),
                 .context,
@@ -168,14 +168,14 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
 
     func testNodeViewInjectedStencils() {
         let nodeViewInjected: StencilTemplate.NodeViewInjected = .init()
-        expect(nodeViewInjected.stencilTemplates(includeTests: false)) == [
+        expect(nodeViewInjected.stencils(includeTests: false)) == [
             .analytics,
             .builder(.default),
             .context,
             .flow,
             .state
         ]
-        expect(nodeViewInjected.stencilTemplates(includeTests: true)) == [
+        expect(nodeViewInjected.stencils(includeTests: true)) == [
             .analytics,
             .builder(.default),
             .context,

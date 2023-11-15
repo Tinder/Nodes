@@ -97,7 +97,7 @@
     - viewStateTransform: "<viewStateTransform>"
     ▿ workerGenericTypes: 1 element
       - "<workerGenericType>"
-  ▿ stencilTemplates: 7 elements
+  ▿ stencils: 7 elements
     - Analytics
     ▿ Builder
       - builder: Variation.swiftUI

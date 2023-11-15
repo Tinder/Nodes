@@ -69,8 +69,8 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             self.viewStateFactoryTests = .viewStateFactoryTests
         }
 
-        internal func stencilTemplates(includeTests: Bool = false) -> [StencilTemplate] {
-            let stencilTemplates: [StencilTemplate] = [
+        internal func stencils(includeTests: Bool = false) -> [StencilTemplate] {
+            let stencils: [StencilTemplate] = [
                 analytics,
                 builder,
                 context,
@@ -80,8 +80,8 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
                 viewState
             ]
             guard includeTests
-            else { return stencilTemplates }
-            return stencilTemplates + [
+            else { return stencils }
+            return stencils + [
                 analyticsTests,
                 contextTests,
                 flowTests,
@@ -108,8 +108,8 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             self.state = .state
         }
 
-        internal func stencilTemplates(includeTests: Bool = false) -> [StencilTemplate] {
-            let stencilTemplates: [StencilTemplate] = [
+        internal func stencils(includeTests: Bool = false) -> [StencilTemplate] {
+            let stencils: [StencilTemplate] = [
                 analytics,
                 builder,
                 context,
@@ -117,8 +117,8 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
                 state
             ]
             guard includeTests
-            else { return stencilTemplates }
-            return stencilTemplates + [
+            else { return stencils }
+            return stencils + [
                 analyticsTests,
                 contextTests,
                 flowTests

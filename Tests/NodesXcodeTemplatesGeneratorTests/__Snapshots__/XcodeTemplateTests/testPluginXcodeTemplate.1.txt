@@ -37,5 +37,5 @@
     - pluginName: "___VARIABLE_productName___"
     ▿ returnType: Optional<String>
       - some: "___VARIABLE_returnType___"
-  ▿ stencilTemplates: 1 element
+  ▿ stencils: 1 element
     - Plugin

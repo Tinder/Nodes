@@ -5,7 +5,7 @@
 internal struct NodeViewInjectedXcodeTemplate: XcodeTemplate {
 
     internal let name: String = "Node (view injected)"
-    internal let stencilTemplates: [StencilTemplate]
+    internal let stencils: [StencilTemplate]
     internal let stencilContext: StencilContext
 
     internal let propertyList: PropertyList =
@@ -18,7 +18,7 @@ internal struct NodeViewInjectedXcodeTemplate: XcodeTemplate {
 
     internal init(config: Config) {
         let node: StencilTemplate.NodeViewInjected = .init()
-        stencilTemplates = node.stencilTemplates(includeTests: config.isTestTemplatesGenerationEnabled)
+        stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
         stencilContext = NodeViewInjectedStencilContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),

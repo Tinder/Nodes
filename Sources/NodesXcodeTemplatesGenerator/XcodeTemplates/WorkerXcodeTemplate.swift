@@ -5,7 +5,7 @@
 internal struct WorkerXcodeTemplate: XcodeTemplate {
 
     internal let name: String = "Worker"
-    internal let stencilTemplates: [StencilTemplate]
+    internal let stencils: [StencilTemplate]
     internal let stencilContext: StencilContext
 
     internal let propertyList: PropertyList =
@@ -18,7 +18,7 @@ internal struct WorkerXcodeTemplate: XcodeTemplate {
 
     internal init(config: Config) {
         let worker: StencilTemplate = .worker
-        stencilTemplates = [worker]
+        stencils = [worker]
         stencilContext = WorkerStencilContext(
             fileHeader: config.fileHeader,
             workerName: config.variable("productName"),

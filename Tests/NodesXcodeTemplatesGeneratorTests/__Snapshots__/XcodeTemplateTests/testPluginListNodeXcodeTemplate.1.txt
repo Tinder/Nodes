@@ -28,5 +28,5 @@
       - "Nodes"
     - pluginListName: "___VARIABLE_productName___"
     - viewControllableFlowType: "<viewControllableFlowType>"
-  ▿ stencilTemplates: 1 element
+  ▿ stencils: 1 element
     - PluginList

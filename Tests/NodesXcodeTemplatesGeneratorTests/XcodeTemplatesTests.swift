@@ -17,7 +17,7 @@ final class XcodeTemplatesTests: XCTestCase {
 
         let name: String = "name"
         let type: String = "type"
-        let stencilTemplates: [StencilTemplate] = []
+        let stencils: [StencilTemplate] = []
         let stencilContext: StencilContext = TestStencilContext()
         let propertyList: PropertyList = .init(description: "description", sortOrder: 23) {}
     }

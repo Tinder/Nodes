@@ -5,7 +5,7 @@
 internal struct PluginXcodeTemplate: XcodeTemplate {
 
     internal let name: String = "Plugin"
-    internal let stencilTemplates: [StencilTemplate]
+    internal let stencils: [StencilTemplate]
     internal let stencilContext: StencilContext
 
     internal let propertyList: PropertyList =
@@ -21,7 +21,7 @@ internal struct PluginXcodeTemplate: XcodeTemplate {
 
     internal init(config: Config) {
         let plugin: StencilTemplate = .plugin
-        stencilTemplates = [plugin]
+        stencils = [plugin]
         stencilContext = PluginStencilContext(
             fileHeader: config.fileHeader,
             pluginName: config.variable("productName"),

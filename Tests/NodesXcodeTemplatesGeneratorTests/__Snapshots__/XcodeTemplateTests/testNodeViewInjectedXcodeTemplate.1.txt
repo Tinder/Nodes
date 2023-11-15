@@ -74,7 +74,7 @@
     - viewControllableType: "<viewControllableType>"
     ▿ workerGenericTypes: 1 element
       - "<workerGenericType>"
-  ▿ stencilTemplates: 5 elements
+  ▿ stencils: 5 elements
     - Analytics
     ▿ Builder
       - builder: Variation.default

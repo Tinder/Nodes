@@ -5,7 +5,7 @@
 internal struct NodeXcodeTemplate: XcodeTemplate {
 
     internal let name: String
-    internal let stencilTemplates: [StencilTemplate]
+    internal let stencils: [StencilTemplate]
     internal let stencilContext: StencilContext
     internal let propertyList: PropertyList
 
@@ -13,7 +13,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
         let node: StencilTemplate.Node = .init(for: .variation(for: uiFramework.kind))
         name = "Node - \(uiFramework.name)"
-        stencilTemplates = node.stencilTemplates(includeTests: config.isTestTemplatesGenerationEnabled)
+        stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
         stencilContext = NodeStencilContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
