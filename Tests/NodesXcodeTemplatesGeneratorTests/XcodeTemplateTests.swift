@@ -9,6 +9,10 @@ import XCTest
 
 final class XcodeTemplateTests: XCTestCase, TestFactories {
 
+    func testProductName() throws {
+        expect(TestXcodeTemplate.productName) == "productName"
+    }
+
     func testVariable() throws {
         expect(TestXcodeTemplate.variable("Hello World")) == "___VARIABLE_Hello World___"
     }

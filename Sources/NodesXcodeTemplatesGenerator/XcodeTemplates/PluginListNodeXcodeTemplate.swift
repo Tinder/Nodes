@@ -11,7 +11,7 @@ internal struct PluginListNodeXcodeTemplate: XcodeTemplate {
     internal let propertyList: PropertyList =
         .init(description: "The source file implementing a Plugin List.",
               sortOrder: 6) {
-            Option(identifier: "productName",
+            Option(identifier: Self.productName,
                    name: "Plugin List name:",
                    description: "The name of the Plugin List")
         }
@@ -21,7 +21,7 @@ internal struct PluginListNodeXcodeTemplate: XcodeTemplate {
         stencils = [pluginList]
         stencilContext = PluginListStencilContext(
             fileHeader: config.fileHeader,
-            pluginListName: Self.variable("productName"),
+            pluginListName: Self.variable(Self.productName),
             pluginListImports: pluginList.imports(config: config),
             viewControllableFlowType: config.viewControllableFlowType,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled

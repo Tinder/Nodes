@@ -15,6 +15,10 @@ internal protocol XcodeTemplate {
 
 extension XcodeTemplate {
 
+    internal static var productName: String {
+        "productName"
+    }
+
     internal static func variable(_ name: String) -> String {
         "___VARIABLE_\(name)___"
     }

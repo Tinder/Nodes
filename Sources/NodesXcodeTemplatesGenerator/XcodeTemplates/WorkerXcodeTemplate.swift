@@ -11,7 +11,7 @@ internal struct WorkerXcodeTemplate: XcodeTemplate {
     internal let propertyList: PropertyList =
         .init(description: "The source file implementing a Worker.",
               sortOrder: 9) {
-            Option(identifier: "productName",
+            Option(identifier: Self.productName,
                    name: "Worker name:",
                    description: "The name of the Worker")
         }
@@ -21,7 +21,7 @@ internal struct WorkerXcodeTemplate: XcodeTemplate {
         stencils = [worker]
         stencilContext = WorkerStencilContext(
             fileHeader: config.fileHeader,
-            workerName: Self.variable("productName"),
+            workerName: Self.variable(Self.productName),
             workerImports: worker.imports(config: config),
             workerGenericTypes: config.workerGenericTypes,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
