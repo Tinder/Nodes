@@ -21,7 +21,7 @@ internal struct PluginListNodeXcodeTemplate: XcodeTemplate {
         stencils = [pluginList]
         stencilContext = PluginListStencilContext(
             fileHeader: config.fileHeader,
-            pluginListName: config.variable("productName"),
+            pluginListName: Self.variable("productName"),
             pluginListImports: pluginList.imports(config: config),
             viewControllableFlowType: config.viewControllableFlowType,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled

@@ -61,10 +61,6 @@ public struct Config: Equatable, Codable {
         else { throw ConfigError.uiFrameworkNotDefined(kind: kind) }
         return uiFramework
     }
-
-    internal func variable(_ name: String) -> String {
-        "___VARIABLE_\(name)___"
-    }
 }
 
 // swiftlint:disable:next no_grouping_extension

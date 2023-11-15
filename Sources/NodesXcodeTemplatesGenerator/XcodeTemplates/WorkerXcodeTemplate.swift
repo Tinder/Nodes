@@ -21,7 +21,7 @@ internal struct WorkerXcodeTemplate: XcodeTemplate {
         stencils = [worker]
         stencilContext = WorkerStencilContext(
             fileHeader: config.fileHeader,
-            workerName: config.variable("productName"),
+            workerName: Self.variable("productName"),
             workerImports: worker.imports(config: config),
             workerGenericTypes: config.workerGenericTypes,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled

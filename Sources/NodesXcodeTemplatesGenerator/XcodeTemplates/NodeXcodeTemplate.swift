@@ -16,7 +16,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
         stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
         stencilContext = NodeStencilContext(
             fileHeader: config.fileHeader,
-            nodeName: config.variable("productName"),
+            nodeName: Self.variable("productName"),
             analyticsImports: node.analytics.imports(for: uiFramework, config: config),
             builderImports: node.builder.imports(for: uiFramework, config: config),
             contextImports: node.context.imports(for: uiFramework, config: config),

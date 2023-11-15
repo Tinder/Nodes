@@ -24,8 +24,8 @@ internal struct PluginXcodeTemplate: XcodeTemplate {
         stencils = [plugin]
         stencilContext = PluginStencilContext(
             fileHeader: config.fileHeader,
-            pluginName: config.variable("productName"),
-            returnType: config.variable("returnType"),
+            pluginName: Self.variable("productName"),
+            returnType: Self.variable("returnType"),
             pluginImports: plugin.imports(config: config),
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
         )
