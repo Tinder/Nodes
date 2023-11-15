@@ -51,12 +51,12 @@ public final class StencilRenderer {
     internal func render(_ stencil: StencilTemplate, with context: [String: Any]) throws -> String {
         let bundle: Bundle = .moduleRelativeToExecutable ?? .module
         // swiftlint:disable:next force_unwrapping
-        let url: URL = bundle.resourceURL!
+        let stencilURL: URL = bundle.resourceURL!
             .appendingPathComponent("StencilTemplates")
             .appendingPathComponent(stencil.filename)
             .appendingPathExtension("stencil")
-        let contents: String = try .init(contentsOf: url)
-        let environment: Environment = .init(loader: DictionaryLoader(templates: [stencil.name: contents]),
+        let template: String = try .init(contentsOf: stencilURL)
+        let environment: Environment = .init(loader: DictionaryLoader(templates: [stencil.name: template]),
                                              trimBehaviour: .smart)
         return try environment.renderTemplate(name: stencil.name, context: context)
     }
