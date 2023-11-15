@@ -52,7 +52,7 @@ public final class StencilRenderer {
         let bundle: Bundle = .moduleRelativeToExecutable ?? .module
         // swiftlint:disable:next force_unwrapping
         let stencilURL: URL = bundle.resourceURL!
-            .appendingPathComponent("StencilTemplates")
+            .appendingPathComponent("Stencils")
             .appendingPathComponent(stencil.filename)
             .appendingPathExtension("stencil")
         let template: String = try .init(contentsOf: stencilURL)
