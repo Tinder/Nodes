@@ -38,7 +38,7 @@ final class {{ node_name }}ContextTests: XCTestCase {
 
     func testWorkersIsEmpty() {
         {% if is_nimble_enabled %}
-        expect(self.context.workers.isEmpty) == true
+        expect(self.context.workers).to(beEmpty())
         {% else %}
         XCTAssertTrue(context.workers.isEmpty)
         {% endif %}
