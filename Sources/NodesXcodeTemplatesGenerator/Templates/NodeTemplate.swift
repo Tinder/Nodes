@@ -4,8 +4,6 @@
 
 internal struct NodeTemplate: XcodeTemplate {
 
-    internal typealias Config = XcodeTemplates.Config
-
     internal let name: String
     internal let stencils: [StencilTemplate]
     internal let context: Context

@@ -4,8 +4,6 @@
 
 internal struct WorkerTemplate: XcodeTemplate {
 
-    internal typealias Config = XcodeTemplates.Config
-
     internal let name: String = "Worker"
     internal let stencils: [StencilTemplate]
     internal let context: Context

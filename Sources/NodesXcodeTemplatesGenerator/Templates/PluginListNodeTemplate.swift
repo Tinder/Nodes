@@ -4,8 +4,6 @@
 
 internal struct PluginListNodeTemplate: XcodeTemplate {
 
-    internal typealias Config = XcodeTemplates.Config
-
     internal let name: String = "Plugin List (for Node)"
     internal let stencils: [StencilTemplate]
     internal let context: Context

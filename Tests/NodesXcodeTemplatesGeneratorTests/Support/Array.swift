@@ -15,15 +15,15 @@ extension Array where Element == String {
     }
 }
 
-extension Array where Element == XcodeTemplates.Config.Variable {
+extension Array where Element == Config.Variable {
 
     internal static func mock(with identifier: String, count: Int) -> Self {
         guard count > 0
         else { return [] }
         guard count > 1
-        else { return [XcodeTemplates.Config.Variable(name: "<\(identifier)Name>", type: "<\(identifier)Type>")] }
+        else { return [Config.Variable(name: "<\(identifier)Name>", type: "<\(identifier)Type>")] }
         return (1...count).map { count in
-            XcodeTemplates.Config.Variable(name: "<\(identifier)Name\(count)>", type: "<\(identifier)Type\(count)>")
+            Config.Variable(name: "<\(identifier)Name\(count)>", type: "<\(identifier)Type\(count)>")
         }
     }
 }

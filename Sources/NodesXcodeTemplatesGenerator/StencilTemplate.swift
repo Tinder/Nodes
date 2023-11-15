@@ -177,7 +177,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         }
     }
 
-    internal func imports(for uiFramework: UIFramework, config: XcodeTemplates.Config) -> Set<String> {
+    internal func imports(for uiFramework: UIFramework, config: Config) -> Set<String> {
         switch self {
         case .analytics, .builder, .context, .flow, .plugin, .pluginList, .state, .viewState, .worker:
             return imports(config: config)
@@ -188,7 +188,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         }
     }
 
-    internal func imports(config: XcodeTemplates.Config) -> Set<String> {
+    internal func imports(config: Config) -> Set<String> {
         let baseImports: Set<String> = config.baseImports.union(["Nodes"])
         switch self {
         case .analytics, .flow, .state, .viewState:
