@@ -30,14 +30,7 @@ extension <nodeName>ViewController: <nodeName>ViewControllable {}
  PURPOSE:
  Concrete implementation of the View.
  */
-internal struct <nodeName>View: View {
-
-    /// The body of the view.
-    internal var body: some View {
-        WithViewState(initialState: initialState, <viewStatePropertyName>: <viewStatePropertyName>) { viewState in
-            Text(verbatim: "\(type(of: viewState))")
-        }
-    }
+internal struct <nodeName>View {
 
     // periphery:ignore
     /// The view receiver.
@@ -63,6 +56,19 @@ internal struct <nodeName>View: View {
             <viewStateOperators>
     }
 }
+
+// MARK: - View
+
+extension <nodeName>View: View {
+
+    internal var body: some View {
+        WithViewState(initialState: initialState, <viewStatePropertyName>: <viewStatePropertyName>) { viewState in
+            Text(verbatim: "\(type(of: viewState))")
+        }
+    }
+}
+
+// MARK: - Preview
 
 // periphery:ignore
 /**
