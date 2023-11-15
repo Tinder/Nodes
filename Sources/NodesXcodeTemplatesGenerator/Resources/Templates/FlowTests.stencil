@@ -36,7 +36,11 @@ final class {{ node_name }}FlowTests: XCTestCase {
             {% endif %}
             {% endfor +%}
         )
+        {% if is_nimble_enabled %}
+        expect { self.flow.isStarted } == true
+        {% else %}
         XCTAssertTrue(flow.isStarted)
+        {% endif %}
     }
 
     override func tearDown() {

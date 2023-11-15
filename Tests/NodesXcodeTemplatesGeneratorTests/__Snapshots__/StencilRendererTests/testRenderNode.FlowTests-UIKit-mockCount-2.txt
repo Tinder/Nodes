@@ -26,7 +26,7 @@ final class <nodeName>FlowTests: XCTestCase {
             <flowPropertyName1>: <flowPropertyType1>,
             <flowPropertyName2>: <flowPropertyType2>
         )
-        XCTAssertTrue(flow.isStarted)
+        expect { self.flow.isStarted } == true
     }
 
     override func tearDown() {

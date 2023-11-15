@@ -21,7 +21,7 @@ final class <nodeName>FlowTests: XCTestCase {
             viewController: viewControllableMock,
             <flowPropertyName>: <flowPropertyType>
         )
-        XCTAssertTrue(flow.isStarted)
+        expect { self.flow.isStarted } == true
     }
 
     override func tearDown() {
