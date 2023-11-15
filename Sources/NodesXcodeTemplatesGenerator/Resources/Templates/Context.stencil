@@ -103,8 +103,6 @@ extension {{ node_name }}ContextImp: {{ node_name }}Receiver {
         flow?.didBecomeReady()
     }
 }
-{% else %}
-{% if owns_view %}
+{% elif owns_view %}
 extension {{ node_name }}ContextImp: {{ node_name }}Receiver {}
-{% endif %}
 {% endif %}
