@@ -60,16 +60,9 @@ extension <nodeName>View: View {
 
 // MARK: - Preview
 
-/**
- PURPOSE:
- The SwiftUI preview (excluded from release builds).
- */
-internal struct <nodeName>View_Previews: PreviewProvider {
-
-    internal static var previews: some View {
-        <nodeName>View(
-            initialState: <nodeName>ViewState(),
-            <viewStatePropertyName>: <viewStateEmptyFactory>
-        )
-    }
+#Preview {
+    <nodeName>View(
+        initialState: <nodeName>ViewState(),
+        <viewStatePropertyName>: <viewStateEmptyFactory>
+    )
 }

@@ -50,6 +50,7 @@ extension TestFactories {
         config.contextGenericTypes = ["<contextGenericType>"]
         config.workerGenericTypes = ["<workerGenericType>"]
         config.isViewInjectedTemplateEnabled = true
+        config.isPreviewProviderEnabled = false
         config.isTestTemplatesGenerationEnabled = false
         config.isPeripheryCommentEnabled = false
         return config
@@ -88,6 +89,7 @@ extension TestFactories {
             publisherFailureType: mockCount > 0 ? "<publisherFailureType>" : "",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            isPreviewProviderEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0,
             isNimbleEnabled: mockCount > 0
         )
@@ -125,6 +127,7 @@ extension TestFactories {
             publisherFailureType: mockCount > 0 ? "<publisherFailureType>" : "",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            isPreviewProviderEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0,
             isNimbleEnabled: mockCount > 0
         )

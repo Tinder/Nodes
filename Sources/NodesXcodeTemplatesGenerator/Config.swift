@@ -45,6 +45,7 @@ extension XcodeTemplates {
         public var workerGenericTypes: [String]
 
         public var isViewInjectedTemplateEnabled: Bool
+        public var isPreviewProviderEnabled: Bool
         public var isTestTemplatesGenerationEnabled: Bool
         public var isPeripheryCommentEnabled: Bool
 
@@ -108,6 +109,7 @@ extension XcodeTemplates.Config {
         contextGenericTypes = ["AnyCancellable"]
         workerGenericTypes = ["AnyCancellable"]
         isViewInjectedTemplateEnabled = true
+        isPreviewProviderEnabled = false
         isTestTemplatesGenerationEnabled = false
         isPeripheryCommentEnabled = false
     }
@@ -188,6 +190,9 @@ extension XcodeTemplates.Config {
         isViewInjectedTemplateEnabled =
             (try? decoder.decode(CodingKeys.isViewInjectedTemplateEnabled))
             ?? defaults.isViewInjectedTemplateEnabled
+        isPreviewProviderEnabled =
+            (try? decoder.decode(CodingKeys.isPreviewProviderEnabled))
+            ?? defaults.isPreviewProviderEnabled
         isTestTemplatesGenerationEnabled =
             (try? decoder.decode(CodingKeys.isTestTemplatesGenerationEnabled))
             ?? defaults.isTestTemplatesGenerationEnabled
