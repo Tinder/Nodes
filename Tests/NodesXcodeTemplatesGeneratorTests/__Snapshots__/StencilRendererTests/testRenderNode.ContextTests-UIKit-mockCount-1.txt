@@ -25,18 +25,18 @@ final class <nodeName>ContextTests: XCTestCase {
     }
 
     func testNotNil() {
-        expect(self.context) != nil
+        expect { self.context } != nil
     }
 
     func testWorkersIsEmpty() {
-        expect(self.context.workers).to(beEmpty())
+        expect { self.context.workers }.to(beEmpty())
     }
 
     func testActivation() {
-        expect(self.context.isActive) == false
+        expect { self.context.isActive } == false
         context.activate()
-        expect(self.context.isActive) == true
+        expect { self.context.isActive } == true
         context.deactivate()
-        expect(self.context.isActive) == false
+        expect { self.context.isActive } == false
     }
 }

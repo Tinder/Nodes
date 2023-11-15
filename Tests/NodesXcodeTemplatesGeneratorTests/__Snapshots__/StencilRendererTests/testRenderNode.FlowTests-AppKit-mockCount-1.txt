@@ -35,6 +35,6 @@ final class <nodeName>FlowTests: XCTestCase {
     }
 
     func testNotNil() {
-        expect(self.flow) != nil
+        expect { self.flow } != nil
     }
 }

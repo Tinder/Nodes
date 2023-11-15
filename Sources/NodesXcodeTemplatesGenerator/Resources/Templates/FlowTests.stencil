@@ -48,7 +48,7 @@ final class {{ node_name }}FlowTests: XCTestCase {
 
     func testNotNil() {
         {% if is_nimble_enabled %}
-        expect(self.flow) != nil
+        expect { self.flow } != nil
         {% else %}
         XCTAssertNotNil(flow)
         {% endif %}

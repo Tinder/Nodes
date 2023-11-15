@@ -24,7 +24,7 @@ final class {{ node_name }}AnalyticsTests: XCTestCase {
 
     func testNotNil() {
         {% if is_nimble_enabled %}
-        expect(self.analytics) != nil
+        expect { self.analytics } != nil
         {% else %}
         XCTAssertNotNil(analytics)
         {% endif %}
