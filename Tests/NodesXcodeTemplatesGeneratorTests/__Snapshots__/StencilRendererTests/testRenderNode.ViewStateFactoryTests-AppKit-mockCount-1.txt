@@ -19,6 +19,6 @@ internal final class <nodeName>ViewStateFactoryTests: XCTestCase {
     }
 
     func testNotNil() {
-        XCTAssertNotNil(viewStateFactory(<nodeName>State()))
+        expect { self.viewStateFactory(<nodeName>State()) } != nil
     }
 }

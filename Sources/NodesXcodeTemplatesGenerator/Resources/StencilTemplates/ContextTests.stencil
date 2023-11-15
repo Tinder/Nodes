@@ -29,18 +29,38 @@ final class {{ node_name }}ContextTests: XCTestCase {
     }
 
     func testNotNil() {
+        {% if is_nimble_enabled %}
+        expect { self.context } != nil
+        {% else %}
         XCTAssertNotNil(context)
+        {% endif %}
     }
 
     func testWorkersIsEmpty() {
+        {% if is_nimble_enabled %}
+        expect { self.context.workers }.to(beEmpty())
+        {% else %}
         XCTAssertTrue(context.workers.isEmpty)
+        {% endif %}
     }
 
     func testActivation() {
+        {% if is_nimble_enabled %}
+        expect { self.context.isActive } == false
+        {% else %}
         XCTAssertFalse(context.isActive)
+        {% endif %}
         context.activate()
+        {% if is_nimble_enabled %}
+        expect { self.context.isActive } == true
+        {% else %}
         XCTAssertTrue(context.isActive)
+        {% endif %}
         context.deactivate()
+        {% if is_nimble_enabled %}
+        expect { self.context.isActive } == false
+        {% else %}
         XCTAssertFalse(context.isActive)
+        {% endif %}
     }
 }

@@ -23,6 +23,10 @@ internal final class {{ node_name }}ViewStateFactoryTests: XCTestCase {
     }
 
     func testNotNil() {
+        {% if is_nimble_enabled %}
+        expect { self.viewStateFactory({{ node_name }}State()) } != nil
+        {% else %}
         XCTAssertNotNil(viewStateFactory({{ node_name }}State()))
+        {% endif %}
     }
 }
