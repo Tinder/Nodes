@@ -28,34 +28,6 @@ extension UIFramework {
                 cancellables.cancelAll()
             }
             """
-
-        static let viewControllerMethodsForRootNode: String = """
-            @available(*, unavailable)
-            internal required init?(coder: NSCoder) {
-                preconditionFailure("init(coder:) has not been implemented")
-            }
-
-            override internal func viewDidLoad() {
-                super.viewDidLoad()
-                view.backgroundColor = .systemBackground
-                update(with: initialState)
-            }
-
-            override internal func viewWillAppear(_ animated: Bool) {
-                super.viewWillAppear(animated)
-                observe(statePublisher).store(in: &cancellables)
-            }
-
-            override internal func viewDidAppear(_ animated: Bool) {
-                super.viewDidAppear(animated)
-                receiver?.viewDidAppear()
-            }
-
-            override internal func viewWillDisappear(_ animated: Bool) {
-                super.viewWillDisappear(animated)
-                cancellables.cancelAll()
-            }
-            """
     }
 
     internal static func makeDefaultUIKitFramework() -> UIFramework {
@@ -63,7 +35,6 @@ extension UIFramework {
             framework: .uiKit,
             viewControllerProperties: "",
             viewControllerMethods: Defaults.viewControllerMethods,
-            viewControllerMethodsForRootNode: Defaults.viewControllerMethodsForRootNode,
             viewControllableMockContents: ""
         )
     }

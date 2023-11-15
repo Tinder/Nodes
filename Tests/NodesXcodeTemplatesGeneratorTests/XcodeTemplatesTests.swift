@@ -8,8 +8,6 @@ import XCTest
 
 final class XcodeTemplatesTests: XCTestCase {
 
-    private typealias Config = XcodeTemplates.Config
-
     private struct TestContext: Context {
 
         let dictionary: [String: Any] = ["key": "value"]

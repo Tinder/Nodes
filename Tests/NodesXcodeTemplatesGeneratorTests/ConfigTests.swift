@@ -9,8 +9,6 @@ import XCTest
 
 final class ConfigTests: XCTestCase, TestFactories {
 
-    private typealias Config = XcodeTemplates.Config
-
     func testConfig() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
@@ -33,20 +31,20 @@ final class ConfigTests: XCTestCase, TestFactories {
     }
 
     func testUIFrameworkForKind() throws {
-        let config: XcodeTemplates.Config = givenConfig()
+        let config: Config = givenConfig()
         try UIFramework.Kind
             .allCases
             .forEach { expect(try config.uiFramework(for: $0).kind) == $0 }
     }
 
     func testUIFrameworkForKindIsNotDefined() throws {
-        var config: XcodeTemplates.Config = .init()
+        var config: Config = .init()
         config.uiFrameworks = []
         try UIFramework.Kind
             .allCases
             .forEach { kind in
                 expect(try config.uiFramework(for: kind))
-                    .to(throwError(errorType: XcodeTemplates.Config.ConfigError.self) { error in
+                    .to(throwError(errorType: Config.ConfigError.self) { error in
                         expect(error) == .uiFrameworkNotDefined(kind: kind)
                     })
             }
@@ -58,15 +56,15 @@ final class ConfigTests: XCTestCase, TestFactories {
           - framework: AppKit
             viewControllerProperties: <viewControllerProperties-AppKit>
             viewControllerMethods: <viewControllerMethods-AppKit>
-            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-AppKit>
+            viewControllableMockContents: <viewControllableMockContents-AppKit>
           - framework: UIKit
             viewControllerProperties: <viewControllerProperties-UIKit>
             viewControllerMethods: <viewControllerMethods-UIKit>
-            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-UIKit>
+            viewControllableMockContents: <viewControllableMockContents-UIKit>
           - framework: SwiftUI
             viewControllerProperties: <viewControllerProperties-SwiftUI>
             viewControllerMethods: <viewControllerMethods-SwiftUI>
-            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-SwiftUI>
+            viewControllableMockContents: <viewControllableMockContents-SwiftUI>
           - framework:
               custom:
                 name: <uiFrameworkName>
@@ -75,7 +73,7 @@ final class ConfigTests: XCTestCase, TestFactories {
                 viewControllerSuperParameters: <viewControllerSuperParameters>
             viewControllerProperties: <viewControllerProperties-Custom>
             viewControllerMethods: <viewControllerMethods-Custom>
-            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
+            viewControllableMockContents: <viewControllableMockContents-Custom>
         fileHeader: <fileHeader>
         baseImports:
           - <baseImports-1>
@@ -122,6 +120,7 @@ final class ConfigTests: XCTestCase, TestFactories {
           - <workerGenericTypes-1>
           - <workerGenericTypes-2>
         isViewInjectedTemplateEnabled: true
+        isPreviewProviderEnabled: true
         isTestTemplatesGenerationEnabled: true
         isPeripheryCommentEnabled: true
         """

@@ -45,30 +45,21 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     func testRenderNodeRoot() throws {
         let renderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
-            try UIFramework.Kind.allCases.forEach { kind in
-                let context: NodeRootContext = givenNodeRootContext(mockCount: count)
-                let templates: [String: String] = try renderer.renderNodeRoot(context: context,
-                                                                              kind: kind,
-                                                                              includeTests: true)
-                expect(templates.keys.sorted()) == [
-                    "Analytics",
-                    "AnalyticsTests",
-                    "Builder",
-                    "Context",
-                    "ContextTests",
-                    "Flow",
-                    "FlowTests",
-                    "State",
-                    "ViewController",
-                    "ViewControllerTests",
-                    "ViewState",
-                    "ViewStateFactoryTests"
-                ]
-                templates.forEach { name, template in
-                    assertSnapshot(matching: template,
-                                   as: .lines,
-                                   named: "\(name)-\(kind.rawValue)-mockCount-\(count)")
-                }
+            let context: NodeRootContext = givenNodeRootContext(mockCount: count)
+            let templates: [String: String] = try renderer.renderNodeRoot(context: context)
+            expect(templates.keys.sorted()) == [
+                "Analytics",
+                "Builder",
+                "Context",
+                "Flow",
+                "State",
+                "ViewController",
+                "ViewState"
+            ]
+            templates.forEach { name, template in
+                assertSnapshot(matching: template,
+                               as: .lines,
+                               named: "\(name)-UIKit-mockCount-\(count)")
             }
         }
     }

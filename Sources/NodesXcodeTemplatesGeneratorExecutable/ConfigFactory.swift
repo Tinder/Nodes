@@ -6,8 +6,6 @@ import NodesXcodeTemplatesGenerator
 
 internal final class ConfigFactory {
 
-    internal typealias Config = XcodeTemplates.Config
-
     internal func callAsFunction(at path: String?) throws -> Config {
         guard let path: String
         else { return Config() }

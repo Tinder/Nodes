@@ -34,6 +34,7 @@
       - name: "<flowProperties-name-2>"
       - type: "<flowProperties-type-2>"
   - isPeripheryCommentEnabled: true
+  - isPreviewProviderEnabled: true
   - isTestTemplatesGenerationEnabled: true
   - isViewInjectedTemplateEnabled: true
   - publisherFailureType: "<publisherFailureType>"
@@ -44,21 +45,18 @@
   ▿ uiFrameworks: 4 elements
     ▿ UIFramework
       - framework: Framework.appKit
-      - viewControllableMockContents: ""
+      - viewControllableMockContents: "<viewControllableMockContents-AppKit>"
       - viewControllerMethods: "<viewControllerMethods-AppKit>"
-      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-AppKit>"
       - viewControllerProperties: "<viewControllerProperties-AppKit>"
     ▿ UIFramework
       - framework: Framework.uiKit
-      - viewControllableMockContents: ""
+      - viewControllableMockContents: "<viewControllableMockContents-UIKit>"
       - viewControllerMethods: "<viewControllerMethods-UIKit>"
-      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-UIKit>"
       - viewControllerProperties: "<viewControllerProperties-UIKit>"
     ▿ UIFramework
       - framework: Framework.swiftUI
-      - viewControllableMockContents: ""
+      - viewControllableMockContents: "<viewControllableMockContents-SwiftUI>"
       - viewControllerMethods: "<viewControllerMethods-SwiftUI>"
-      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-SwiftUI>"
       - viewControllerProperties: "<viewControllerProperties-SwiftUI>"
     ▿ UIFramework
       ▿ framework: Framework
@@ -67,9 +65,8 @@
           - import: "<uiFrameworkImport>"
           - viewControllerType: "<viewControllerType>"
           - viewControllerSuperParameters: "<viewControllerSuperParameters>"
-      - viewControllableMockContents: ""
+      - viewControllableMockContents: "<viewControllableMockContents-Custom>"
       - viewControllerMethods: "<viewControllerMethods-Custom>"
-      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-Custom>"
       - viewControllerProperties: "<viewControllerProperties-Custom>"
   - viewControllableFlowType: "<viewControllableFlowType>"
   - viewControllableType: "<viewControllableType>"

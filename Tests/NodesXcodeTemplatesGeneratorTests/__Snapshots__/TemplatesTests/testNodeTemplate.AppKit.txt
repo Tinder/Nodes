@@ -44,6 +44,7 @@
           - value: "<flowPropertiesType>"
     - isNimbleEnabled: false
     - isPeripheryCommentEnabled: false
+    - isPreviewProviderEnabled: false
     - nodeName: "___VARIABLE_productName___"
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"

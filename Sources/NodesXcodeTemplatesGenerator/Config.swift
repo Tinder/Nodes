@@ -6,72 +6,69 @@ import Codextended
 import Foundation
 import Yams
 
-extension XcodeTemplates {
+public struct Config: Equatable, Codable {
 
-    public struct Config: Equatable, Codable {
+    public enum ConfigError: Error, Equatable {
 
-        // swiftlint:disable:next nesting
-        public enum ConfigError: Error, Equatable {
-            case uiFrameworkNotDefined(kind: UIFramework.Kind)
-        }
+        case uiFrameworkNotDefined(kind: UIFramework.Kind)
+    }
 
-        // swiftlint:disable:next nesting
-        internal enum ImportsType {
+    internal enum ImportsType {
 
-            case nodes, diGraph, viewController(UIFramework)
-        }
+        case nodes, diGraph, viewController(UIFramework)
+    }
 
-        public var uiFrameworks: [UIFramework]
-        public var fileHeader: String
-        public var baseImports: Set<String>
-        public var baseTestImports: Set<String>
-        public var reactiveImports: Set<String>
-        public var dependencyInjectionImports: Set<String>
-        public var dependencies: [Variable]
-        public var analyticsProperties: [Variable]
-        public var flowProperties: [Variable]
-        public var viewControllableType: String
-        public var viewControllableFlowType: String
-        public var viewControllerSubscriptionsProperty: String
-        public var viewControllerUpdateComment: String
-        public var viewStateEmptyFactory: String
-        public var viewStateOperators: String
-        public var viewStatePropertyComment: String
-        public var viewStatePropertyName: String
-        public var viewStateTransform: String
-        public var publisherType: String
-        public var publisherFailureType: String
-        public var contextGenericTypes: [String]
-        public var workerGenericTypes: [String]
+    public var uiFrameworks: [UIFramework]
+    public var fileHeader: String
+    public var baseImports: Set<String>
+    public var baseTestImports: Set<String>
+    public var reactiveImports: Set<String>
+    public var dependencyInjectionImports: Set<String>
+    public var dependencies: [Variable]
+    public var analyticsProperties: [Variable]
+    public var flowProperties: [Variable]
+    public var viewControllableType: String
+    public var viewControllableFlowType: String
+    public var viewControllerSubscriptionsProperty: String
+    public var viewControllerUpdateComment: String
+    public var viewStateEmptyFactory: String
+    public var viewStateOperators: String
+    public var viewStatePropertyComment: String
+    public var viewStatePropertyName: String
+    public var viewStateTransform: String
+    public var publisherType: String
+    public var publisherFailureType: String
+    public var contextGenericTypes: [String]
+    public var workerGenericTypes: [String]
 
-        public var isViewInjectedTemplateEnabled: Bool
-        public var isTestTemplatesGenerationEnabled: Bool
-        public var isPeripheryCommentEnabled: Bool
+    public var isViewInjectedTemplateEnabled: Bool
+    public var isPreviewProviderEnabled: Bool
+    public var isTestTemplatesGenerationEnabled: Bool
+    public var isPeripheryCommentEnabled: Bool
 
-        internal var isNimbleEnabled: Bool { baseTestImports.contains("Nimble") }
+    internal var isNimbleEnabled: Bool { baseTestImports.contains("Nimble") }
 
-        public init(
-            at path: String,
-            using fileSystem: FileSystem = FileManager.default
-        ) throws {
-            let url: URL = .init(fileURLWithPath: path)
-            self = try fileSystem.contents(of: url).decoded(using: YAMLDecoder())
-        }
+    public init(
+        at path: String,
+        using fileSystem: FileSystem = FileManager.default
+    ) throws {
+        let url: URL = .init(fileURLWithPath: path)
+        self = try fileSystem.contents(of: url).decoded(using: YAMLDecoder())
+    }
 
-        public func uiFramework(for kind: UIFramework.Kind) throws -> UIFramework {
-            guard let uiFramework: UIFramework = uiFrameworks.first(where: { $0.framework.kind == kind })
-            else { throw ConfigError.uiFrameworkNotDefined(kind: kind) }
-            return uiFramework
-        }
+    public func uiFramework(for kind: UIFramework.Kind) throws -> UIFramework {
+        guard let uiFramework: UIFramework = uiFrameworks.first(where: { $0.framework.kind == kind })
+        else { throw ConfigError.uiFrameworkNotDefined(kind: kind) }
+        return uiFramework
+    }
 
-        internal func variable(_ name: String) -> String {
-            "___VARIABLE_\(name)___"
-        }
+    internal func variable(_ name: String) -> String {
+        "___VARIABLE_\(name)___"
     }
 }
 
 // swiftlint:disable:next no_grouping_extension
-extension XcodeTemplates.Config {
+extension Config {
 
     public init() {
         uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
@@ -108,17 +105,18 @@ extension XcodeTemplates.Config {
         contextGenericTypes = ["AnyCancellable"]
         workerGenericTypes = ["AnyCancellable"]
         isViewInjectedTemplateEnabled = true
+        isPreviewProviderEnabled = false
         isTestTemplatesGenerationEnabled = false
         isPeripheryCommentEnabled = false
     }
 }
 
 // swiftlint:disable:next no_grouping_extension
-extension XcodeTemplates.Config {
+extension Config {
 
     // swiftlint:disable:next function_body_length
     public init(from decoder: Decoder) throws {
-        let defaults: XcodeTemplates.Config = .init()
+        let defaults: Config = .init()
         uiFrameworks =
             (try? decoder.decode(CodingKeys.uiFrameworks))
             ?? defaults.uiFrameworks
@@ -188,6 +186,9 @@ extension XcodeTemplates.Config {
         isViewInjectedTemplateEnabled =
             (try? decoder.decode(CodingKeys.isViewInjectedTemplateEnabled))
             ?? defaults.isViewInjectedTemplateEnabled
+        isPreviewProviderEnabled =
+            (try? decoder.decode(CodingKeys.isPreviewProviderEnabled))
+            ?? defaults.isPreviewProviderEnabled
         isTestTemplatesGenerationEnabled =
             (try? decoder.decode(CodingKeys.isTestTemplatesGenerationEnabled))
             ?? defaults.isTestTemplatesGenerationEnabled

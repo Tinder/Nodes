@@ -2,5 +2,4 @@
   - framework: Framework.swiftUI
   - viewControllableMockContents: ""
   - viewControllerMethods: "<viewControllerMethods>"
-  - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"
   - viewControllerProperties: "<viewControllerProperties>"
