@@ -15,16 +15,14 @@ public final class StencilRenderer {
         includeTests: Bool
     ) throws -> [String: String] {
         let node: StencilTemplate.Node = .init(for: .variation(for: kind))
-        return try renderNode(stencils: node.stencils(includeTests: includeTests),
-                              with: context.dictionary)
+        return try renderNode(stencils: node.stencils(includeTests: includeTests), with: context.dictionary)
     }
 
     public func renderNodeRoot(
         context: NodeRootStencilContext
     ) throws -> [String: String] {
         let node: StencilTemplate.Node = .init(for: .variation(for: .uiKit))
-        return try renderNode(stencils: node.stencils(includeTests: false),
-                              with: context.dictionary)
+        return try renderNode(stencils: node.stencils(includeTests: false), with: context.dictionary)
     }
 
     public func renderNodeViewInjected(
@@ -32,8 +30,7 @@ public final class StencilRenderer {
         includeTests: Bool
     ) throws -> [String: String] {
         let nodeViewInjected: StencilTemplate.NodeViewInjected = .init()
-        return try renderNode(stencils: nodeViewInjected.stencils(includeTests: includeTests),
-                              with: context.dictionary)
+        return try renderNode(stencils: nodeViewInjected.stencils(includeTests: includeTests), with: context.dictionary)
     }
 
     public func renderPlugin(context: PluginStencilContext) throws -> String {
