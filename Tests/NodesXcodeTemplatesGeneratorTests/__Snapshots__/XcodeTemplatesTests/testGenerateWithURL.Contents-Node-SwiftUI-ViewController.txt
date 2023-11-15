@@ -26,14 +26,7 @@ extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___Vi
  PURPOSE:
  Concrete implementation of the View.
  */
-internal struct ___VARIABLE_productName___View: View {
-
-    /// The body of the view.
-    internal var body: some View {
-        WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
-            Text(verbatim: "\(type(of: viewState))")
-        }
-    }
+internal struct ___VARIABLE_productName___View {
 
     /// The view receiver.
     internal weak var receiver: ___VARIABLE_productName___Receiver?
@@ -60,6 +53,19 @@ internal struct ___VARIABLE_productName___View: View {
             .eraseToAnyPublisher()
     }
 }
+
+// MARK: - View
+
+extension ___VARIABLE_productName___View: View {
+
+    internal var body: some View {
+        WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
+            Text(verbatim: "\(type(of: viewState))")
+        }
+    }
+}
+
+// MARK: - Preview
 
 /**
  PURPOSE:

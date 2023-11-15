@@ -47,14 +47,7 @@ extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
  PURPOSE:
  Concrete implementation of the View.
  */
-internal struct {{ node_name }}View: View {
-
-    /// The body of the view.
-    internal var body: some View {
-        WithViewState(initialState: initialState, {{ view_state_property_name }}: {{ view_state_property_name }}) { viewState in
-            Text(verbatim: "\(type(of: viewState))")
-        }
-    }
+internal struct {{ node_name }}View {
 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
@@ -84,6 +77,19 @@ internal struct {{ node_name }}View: View {
             {% endif %}
     }
 }
+
+// MARK: - View
+
+extension {{ node_name }}View: View {
+
+    internal var body: some View {
+        WithViewState(initialState: initialState, {{ view_state_property_name }}: {{ view_state_property_name }}) { viewState in
+            Text(verbatim: "\(type(of: viewState))")
+        }
+    }
+}
+
+// MARK: - Preview
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore

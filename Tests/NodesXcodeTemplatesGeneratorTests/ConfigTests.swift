@@ -76,11 +76,13 @@ final class ConfigTests: XCTestCase, TestFactories {
             viewControllerProperties: <viewControllerProperties-Custom>
             viewControllerMethods: <viewControllerMethods-Custom>
             viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
-        isViewInjectedTemplateEnabled: true
         fileHeader: <fileHeader>
         baseImports:
           - <baseImports-1>
           - <baseImports-2>
+        baseTestImports:
+          - <baseTestImports-1>
+          - <baseTestImports-2>
         reactiveImports:
           - <reactiveImports-1>
           - <reactiveImports-2>
@@ -113,7 +115,15 @@ final class ConfigTests: XCTestCase, TestFactories {
         viewStateTransform: <viewStateTransform>
         publisherType: <publisherType>
         publisherFailureType: <publisherFailureType>
-        cancellableType: <cancellableType>
+        contextGenericTypes:
+          - <contextGenericTypes-1>
+          - <contextGenericTypes-2>
+        workerGenericTypes:
+          - <workerGenericTypes-1>
+          - <workerGenericTypes-2>
+        isViewInjectedTemplateEnabled: true
+        isTestTemplatesGenerationEnabled: true
+        isPeripheryCommentEnabled: true
         """
     }
 }

@@ -31,14 +31,7 @@ extension RootViewController: RootViewControllable {}
  PURPOSE:
  Concrete implementation of the View.
  */
-internal struct RootView: View {
-
-    /// The body of the view.
-    internal var body: some View {
-        WithViewState(initialState: initialState, <viewStatePropertyName>: <viewStatePropertyName>) { viewState in
-            Text(verbatim: "\(type(of: viewState))")
-        }
-    }
+internal struct RootView {
 
     // periphery:ignore
     /// The view receiver.
@@ -64,6 +57,19 @@ internal struct RootView: View {
             <viewStateOperators>
     }
 }
+
+// MARK: - View
+
+extension RootView: View {
+
+    internal var body: some View {
+        WithViewState(initialState: initialState, <viewStatePropertyName>: <viewStatePropertyName>) { viewState in
+            Text(verbatim: "\(type(of: viewState))")
+        }
+    }
+}
+
+// MARK: - Preview
 
 // periphery:ignore
 /**
