@@ -30,7 +30,7 @@ final class RootContextTests: XCTestCase {
     }
 
     func testWorkersIsEmpty() {
-        expect(self.context.workers.isEmpty) == true
+        expect(self.context.workers).to(beEmpty())
     }
 
     func testActivation() {
