@@ -10,10 +10,11 @@
     - "<baseImports-1>"
     - "<baseImports-2>"
   ▿ baseTestImports: 2 members
-    - "Nimble"
-    - "XCTest"
-  ▿ contextGenericTypes: 1 element
-    - "AnyCancellable"
+    - "<baseTestImports-1>"
+    - "<baseTestImports-2>"
+  ▿ contextGenericTypes: 2 elements
+    - "<contextGenericTypes-1>"
+    - "<contextGenericTypes-2>"
   ▿ dependencies: 2 elements
     ▿ Variable
       - name: "<dependencies-name-1>"
@@ -32,8 +33,8 @@
     ▿ Variable
       - name: "<flowProperties-name-2>"
       - type: "<flowProperties-type-2>"
-  - isPeripheryCommentEnabled: false
-  - isTestTemplatesGenerationEnabled: false
+  - isPeripheryCommentEnabled: true
+  - isTestTemplatesGenerationEnabled: true
   - isViewInjectedTemplateEnabled: true
   - publisherFailureType: "<publisherFailureType>"
   - publisherType: "<publisherType>"
@@ -79,5 +80,6 @@
   - viewStatePropertyComment: "<viewStatePropertyComment>"
   - viewStatePropertyName: "<viewStatePropertyName>"
   - viewStateTransform: "<viewStateTransform>"
-  ▿ workerGenericTypes: 1 element
-    - "AnyCancellable"
+  ▿ workerGenericTypes: 2 elements
+    - "<workerGenericTypes-1>"
+    - "<workerGenericTypes-2>"
