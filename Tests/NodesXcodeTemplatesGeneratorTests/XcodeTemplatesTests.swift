@@ -8,20 +8,6 @@ import XCTest
 
 final class XcodeTemplatesTests: XCTestCase {
 
-    private struct TestStencilContext: StencilContext {
-
-        let dictionary: [String: Any] = ["key": "value"]
-    }
-
-    private struct TestXcodeTemplate: XcodeTemplate {
-
-        let name: String = "name"
-        let type: String = "type"
-        let stencils: [StencilTemplate] = []
-        let stencilContext: StencilContext = TestStencilContext()
-        let propertyList: PropertyList = .init(description: "description", sortOrder: 23) {}
-    }
-
     func testGenerateWithIdentifier() throws {
         let fileSystem: FileSystemMock = .init()
         try XcodeTemplates(config: Config()).generate(identifier: "identifier", using: fileSystem)
