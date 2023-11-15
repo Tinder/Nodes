@@ -19,12 +19,10 @@ public final class StencilRenderer {
     }
 
     public func renderNodeRoot(
-        context: NodeRootContext,
-        kind: UIFramework.Kind,
-        includeTests: Bool
+        context: NodeRootContext
     ) throws -> [String: String] {
-        let node: StencilTemplate.Node = .init(for: .variation(for: kind))
-        return try renderNode(stencils: node.stencils(includeTests: includeTests), with: context.dictionary)
+        let node: StencilTemplate.Node = .init(for: .variation(for: .uiKit))
+        return try renderNode(stencils: node.stencils(includeTests: false), with: context.dictionary)
     }
 
     public func renderNodeViewInjected(

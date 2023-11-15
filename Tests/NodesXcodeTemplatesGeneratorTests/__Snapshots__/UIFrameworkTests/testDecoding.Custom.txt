@@ -7,5 +7,4 @@
       - viewControllerSuperParameters: "<viewControllerSuperParameters>"
   - viewControllableMockContents: ""
   - viewControllerMethods: "<viewControllerMethods>"
-  - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"
   - viewControllerProperties: "<viewControllerProperties>"

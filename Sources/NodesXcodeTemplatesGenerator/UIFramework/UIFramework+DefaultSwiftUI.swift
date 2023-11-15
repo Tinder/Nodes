@@ -9,12 +9,6 @@ extension UIFramework {
             framework: .swiftUI,
             viewControllerProperties: "",
             viewControllerMethods: "",
-            viewControllerMethodsForRootNode: """
-                override internal func viewDidAppear(_ animated: Bool) {
-                    super.viewDidAppear(animated)
-                    rootView.receiver?.viewDidAppear()
-                }
-                """,
             viewControllableMockContents: ""
         )
     }

@@ -2,5 +2,4 @@
   - framework: Framework.swiftUI
   - viewControllableMockContents: ""
   - viewControllerMethods: ""
-  - viewControllerMethodsForRootNode: "override internal func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    rootView.receiver?.viewDidAppear()\n}"
   - viewControllerProperties: ""

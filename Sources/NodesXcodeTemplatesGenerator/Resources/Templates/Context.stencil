@@ -93,7 +93,6 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
 }
 
 extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}
-{% if owns_view %}
 {% if root_node %}
 extension {{ node_name }}ContextImp: {{ node_name }}Receiver {
 
@@ -105,6 +104,7 @@ extension {{ node_name }}ContextImp: {{ node_name }}Receiver {
     }
 }
 {% else %}
+{% if owns_view %}
 extension {{ node_name }}ContextImp: {{ node_name }}Receiver {}
 {% endif %}
 {% endif %}

@@ -58,15 +58,15 @@ final class ConfigTests: XCTestCase, TestFactories {
           - framework: AppKit
             viewControllerProperties: <viewControllerProperties-AppKit>
             viewControllerMethods: <viewControllerMethods-AppKit>
-            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-AppKit>
+            viewControllableMockContents: <viewControllableMockContents-AppKit>
           - framework: UIKit
             viewControllerProperties: <viewControllerProperties-UIKit>
             viewControllerMethods: <viewControllerMethods-UIKit>
-            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-UIKit>
+            viewControllableMockContents: <viewControllableMockContents-UIKit>
           - framework: SwiftUI
             viewControllerProperties: <viewControllerProperties-SwiftUI>
             viewControllerMethods: <viewControllerMethods-SwiftUI>
-            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-SwiftUI>
+            viewControllableMockContents: <viewControllableMockContents-SwiftUI>
           - framework:
               custom:
                 name: <uiFrameworkName>
@@ -75,7 +75,7 @@ final class ConfigTests: XCTestCase, TestFactories {
                 viewControllerSuperParameters: <viewControllerSuperParameters>
             viewControllerProperties: <viewControllerProperties-Custom>
             viewControllerMethods: <viewControllerMethods-Custom>
-            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
+            viewControllableMockContents: <viewControllableMockContents-Custom>
         isViewInjectedTemplateEnabled: true
         fileHeader: <fileHeader>
         baseImports:

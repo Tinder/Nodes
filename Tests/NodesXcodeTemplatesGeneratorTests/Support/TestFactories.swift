@@ -25,7 +25,6 @@ extension TestFactories {
             var uiFramework: UIFramework = uiFramework
             uiFramework.viewControllerProperties = "<viewControllerProperties>"
             uiFramework.viewControllerMethods = "<viewControllerMethods>"
-            uiFramework.viewControllerMethodsForRootNode = "<viewControllerMethodsForRootNode>"
             uiFramework.viewControllableMockContents = "<viewControllableMockContents>"
             return uiFramework
         }

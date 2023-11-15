@@ -146,7 +146,6 @@ public struct UIFramework: Equatable, Codable {
 
     public var viewControllerProperties: String
     public var viewControllerMethods: String
-    public var viewControllerMethodsForRootNode: String
     public var viewControllableMockContents: String
 
     public init(framework: Framework) {
@@ -171,9 +170,6 @@ public struct UIFramework: Equatable, Codable {
         viewControllerMethods =
             (try? decoder.decodeString(CodingKeys.viewControllerMethods))
             ?? defaults.viewControllerMethods
-        viewControllerMethodsForRootNode =
-            (try? decoder.decodeString(CodingKeys.viewControllerMethodsForRootNode))
-            ?? defaults.viewControllerMethodsForRootNode
         viewControllableMockContents =
             (try? decoder.decodeString(CodingKeys.viewControllableMockContents))
             ?? defaults.viewControllableMockContents
@@ -183,13 +179,11 @@ public struct UIFramework: Equatable, Codable {
         framework: Framework,
         viewControllerProperties: String,
         viewControllerMethods: String,
-        viewControllerMethodsForRootNode: String,
         viewControllableMockContents: String
     ) {
         self.framework = framework
         self.viewControllerProperties = viewControllerProperties
         self.viewControllerMethods = viewControllerMethods
-        self.viewControllerMethodsForRootNode = viewControllerMethodsForRootNode
         self.viewControllableMockContents = viewControllableMockContents
     }
 }

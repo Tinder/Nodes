@@ -23,13 +23,11 @@
       - framework: Framework.uiKit
       - viewControllableMockContents: ""
       - viewControllerMethods: "@available(*, unavailable)\ninternal required init?(coder: NSCoder) {\n    preconditionFailure(\"init(coder:) has not been implemented\")\n}\n\noverride internal func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n    update(with: initialState)\n}\n\noverride internal func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(statePublisher).store(in: &cancellables)\n}\n\noverride internal func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.cancelAll()\n}"
-      - viewControllerMethodsForRootNode: "@available(*, unavailable)\ninternal required init?(coder: NSCoder) {\n    preconditionFailure(\"init(coder:) has not been implemented\")\n}\n\noverride internal func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n    update(with: initialState)\n}\n\noverride internal func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(statePublisher).store(in: &cancellables)\n}\n\noverride internal func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    receiver?.viewDidAppear()\n}\n\noverride internal func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.cancelAll()\n}"
       - viewControllerProperties: ""
     ▿ UIFramework
       - framework: Framework.swiftUI
       - viewControllableMockContents: ""
       - viewControllerMethods: ""
-      - viewControllerMethodsForRootNode: "override internal func viewDidAppear(_ animated: Bool) {\n    super.viewDidAppear(animated)\n    rootView.receiver?.viewDidAppear()\n}"
       - viewControllerProperties: ""
   - viewControllableFlowType: "ViewControllableFlow"
   - viewControllableType: "ViewControllable"
