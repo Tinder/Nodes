@@ -60,7 +60,7 @@ public final class StencilRenderer {
 
     private func renderNode(stencils: [StencilTemplate], with context: [String: Any]) throws -> [String: String] {
         try Dictionary(uniqueKeysWithValues: stencils.map { stencil in
-            (stencil.name, try render(stencil, with: context))
+            try (stencil.name, render(stencil, with: context))
         })
     }
 }
