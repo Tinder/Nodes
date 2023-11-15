@@ -8,8 +8,8 @@ protocol TestFactories {}
 
 extension TestFactories {
 
-    typealias Variable = XcodeTemplates.Variable
     typealias Config = XcodeTemplates.Config
+    typealias Variable = Config.Variable
 
     func givenConfig() -> Config {
         var config: Config = .init()

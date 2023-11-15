@@ -2,7 +2,7 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
-extension XcodeTemplates {
+extension XcodeTemplates.Config {
 
     public struct Variable: Equatable, Codable {
 
