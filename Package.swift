@@ -80,7 +80,7 @@ let package = Package(
             ],
             resources: [
                 .copy("Resources/Icons"),
-                .copy("Resources/Templates"),
+                .copy("Resources/StencilTemplates"),
             ],
             plugins: [
                 .plugin(name: SwiftLint.plugin),

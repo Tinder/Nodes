@@ -2,7 +2,7 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
-internal protocol Context {
+internal protocol StencilContext {
 
     var dictionary: [String: Any] { get }
 }

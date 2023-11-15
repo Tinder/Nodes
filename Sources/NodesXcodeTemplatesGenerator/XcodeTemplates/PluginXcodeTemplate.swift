@@ -2,11 +2,11 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
-internal struct PluginTemplate: XcodeTemplate {
+internal struct PluginXcodeTemplate: XcodeTemplate {
 
     internal let name: String = "Plugin"
-    internal let stencils: [StencilTemplate]
-    internal let context: Context
+    internal let stencilTemplates: [StencilTemplate]
+    internal let stencilContext: StencilContext
 
     internal let propertyList: PropertyList =
         .init(description: "The source file implementing a Plugin.",
@@ -21,8 +21,8 @@ internal struct PluginTemplate: XcodeTemplate {
 
     internal init(config: Config) {
         let plugin: StencilTemplate = .plugin
-        stencils = [plugin]
-        context = PluginContext(
+        stencilTemplates = [plugin]
+        stencilContext = PluginStencilContext(
             fileHeader: config.fileHeader,
             pluginName: config.variable("productName"),
             returnType: config.variable("returnType"),

@@ -8,7 +8,7 @@ import XCTest
 
 final class XcodeTemplatesTests: XCTestCase {
 
-    private struct TestContext: Context {
+    private struct TestStencilContext: StencilContext {
 
         let dictionary: [String: Any] = ["key": "value"]
     }
@@ -17,8 +17,8 @@ final class XcodeTemplatesTests: XCTestCase {
 
         let name: String = "name"
         let type: String = "type"
-        let stencils: [StencilTemplate] = []
-        let context: Context = TestContext()
+        let stencilTemplates: [StencilTemplate] = []
+        let stencilContext: StencilContext = TestStencilContext()
         let propertyList: PropertyList = .init(description: "description", sortOrder: 23) {}
     }
 

@@ -2,19 +2,19 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
-internal struct NodeTemplate: XcodeTemplate {
+internal struct NodeXcodeTemplate: XcodeTemplate {
 
     internal let name: String
-    internal let stencils: [StencilTemplate]
-    internal let context: Context
+    internal let stencilTemplates: [StencilTemplate]
+    internal let stencilContext: StencilContext
     internal let propertyList: PropertyList
 
     internal init(for kind: UIFramework.Kind, config: Config) throws {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
         let node: StencilTemplate.Node = .init(for: .variation(for: uiFramework.kind))
         name = "Node - \(uiFramework.name)"
-        stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
-        context = NodeContext(
+        stencilTemplates = node.stencilTemplates(includeTests: config.isTestTemplatesGenerationEnabled)
+        stencilContext = NodeStencilContext(
             fileHeader: config.fileHeader,
             nodeName: config.variable("productName"),
             analyticsImports: node.analytics.imports(for: uiFramework, config: config),

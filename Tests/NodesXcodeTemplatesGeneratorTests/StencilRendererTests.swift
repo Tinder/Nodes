@@ -11,14 +11,14 @@ final class StencilRendererTests: XCTestCase, TestFactories {
 
     private let mockCounts: ClosedRange<Int> = 0...2
 
-    func testRenderNode() throws {
+    func testRenderNodeStencil() throws {
         let renderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             try UIFramework.Kind.allCases.forEach { kind in
-                let context: NodeContext = givenNodeContext(mockCount: count)
-                let templates: [String: String] = try renderer.renderNode(context: context,
-                                                                          kind: kind,
-                                                                          includeTests: true)
+                let context: NodeStencilContext = givenNodeStencilContext(mockCount: count)
+                let templates: [String: String] = try renderer.renderNodeStencil(context: context,
+                                                                                 kind: kind,
+                                                                                 includeTests: true)
                 expect(templates.keys.sorted()) == [
                     "Analytics",
                     "AnalyticsTests",
@@ -42,11 +42,11 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         }
     }
 
-    func testRenderNodeRoot() throws {
+    func testRenderNodeRootStencil() throws {
         let renderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
-            let context: NodeRootContext = givenNodeRootContext(mockCount: count)
-            let templates: [String: String] = try renderer.renderNodeRoot(context: context)
+            let context: NodeRootStencilContext = givenNodeRootStencilContext(mockCount: count)
+            let templates: [String: String] = try renderer.renderNodeRootStencil(context: context)
             expect(templates.keys.sorted()) == [
                 "Analytics",
                 "Builder",
@@ -64,11 +64,12 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         }
     }
 
-    func testRenderNodeViewInjected() throws {
+    func testRenderNodeViewInjectedStencil() throws {
         let renderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
-            let context: NodeViewInjectedContext = givenNodeViewInjectedContext(mockCount: count)
-            let templates: [String: String] = try renderer.renderNodeViewInjected(context: context, includeTests: true)
+            let context: NodeViewInjectedStencilContext = givenNodeViewInjectedStencilContext(mockCount: count)
+            let templates: [String: String] = try renderer.renderNodeViewInjectedStencil(context: context,
+                                                                                         includeTests: true)
             expect(templates.keys.sorted()) == [
                 "Analytics",
                 "AnalyticsTests",
@@ -85,37 +86,37 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         }
     }
 
-    func testRenderPlugin() throws {
+    func testRenderPluginStencil() throws {
         try mockCounts.forEach { count in
-            let context: PluginContext = givenPluginContext(mockCount: count)
-            assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
+            let context: PluginStencilContext = givenPluginStencilContext(mockCount: count)
+            assertSnapshot(matching: try StencilRenderer().renderPluginStencil(context: context),
                            as: .lines,
                            named: "mockCount-\(count)")
         }
     }
 
-    func testRenderPluginWithoutReturnType() throws {
+    func testRenderPluginStencilWithoutReturnType() throws {
         try mockCounts.forEach { count in
-            let context: PluginContext = givenPluginContextWithoutReturnType(mockCount: count)
-            assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
+            let context: PluginStencilContext = givenPluginStencilContextWithoutReturnType(mockCount: count)
+            assertSnapshot(matching: try StencilRenderer().renderPluginStencil(context: context),
                            as: .lines,
                            named: "mockCount-\(count)")
         }
     }
 
-    func testRenderPluginList() throws {
+    func testRenderPluginListStencil() throws {
         try mockCounts.forEach { count in
-            let context: PluginListContext = givenPluginListContext(mockCount: count)
-            assertSnapshot(matching: try StencilRenderer().renderPluginList(context: context),
+            let context: PluginListStencilContext = givenPluginListStencilContext(mockCount: count)
+            assertSnapshot(matching: try StencilRenderer().renderPluginListStencil(context: context),
                            as: .lines,
                            named: "mockCount-\(count)")
         }
     }
 
-    func testRenderWorker() throws {
+    func testRenderWorkerStencil() throws {
         try mockCounts.forEach { count in
-            let context: WorkerContext = givenWorkerContext(mockCount: count)
-            assertSnapshot(matching: try StencilRenderer().renderWorker(context: context),
+            let context: WorkerStencilContext = givenWorkerStencilContext(mockCount: count)
+            assertSnapshot(matching: try StencilRenderer().renderWorkerStencil(context: context),
                            as: .lines,
                            named: "mockCount-\(count)")
         }

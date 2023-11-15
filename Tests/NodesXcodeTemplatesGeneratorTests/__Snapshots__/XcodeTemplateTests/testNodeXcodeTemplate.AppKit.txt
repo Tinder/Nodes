@@ -1,5 +1,25 @@
-▿ NodeTemplate
-  ▿ context: NodeContext
+▿ NodeXcodeTemplate
+  - name: "Node - AppKit"
+  ▿ propertyList: XcodeTemplatePropertyList
+    ▿ allowedTypes: 1 element
+      - "public.swift-source"
+    - description: "The source files implementing a Node."
+    - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
+    - mainTemplateFile: "___FILEBASENAME___.swift"
+    ▿ options: 1 element
+      ▿ Option
+        - default: Optional<String>.none
+        - description: "The name of the Node"
+        - identifier: "productName"
+        - name: "Node name:"
+        - notPersisted: true
+        - required: true
+        - type: "text"
+    - platforms: 0 elements
+    - sortOrder: 1
+    - summary: "The source files implementing a Node"
+    - supportsSwiftPackage: true
+  ▿ stencilContext: NodeStencilContext
     ▿ analyticsImports: 2 elements
       - "<baseImport>"
       - "Nodes"
@@ -59,13 +79,13 @@
     ▿ viewControllerImports: 4 elements
       - "<baseImport>"
       - "<reactiveImport>"
-      - "<uiFrameworkImport>"
+      - "AppKit"
       - "Nodes"
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
     - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
-    - viewControllerSuperParameters: "<viewControllerSuperParameters>"
-    - viewControllerType: "<viewControllerType>"
+    - viewControllerSuperParameters: "nibName: nil, bundle: nil"
+    - viewControllerType: "NSViewController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateEmptyFactory: "<viewStateEmptyFactory>"
     ▿ viewStateImports: 2 elements
@@ -77,27 +97,7 @@
     - viewStateTransform: "<viewStateTransform>"
     ▿ workerGenericTypes: 1 element
       - "<workerGenericType>"
-  - name: "Node - <uiFrameworkName>"
-  ▿ propertyList: XcodeTemplatePropertyList
-    ▿ allowedTypes: 1 element
-      - "public.swift-source"
-    - description: "The source files implementing a Node."
-    - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
-    - mainTemplateFile: "___FILEBASENAME___.swift"
-    ▿ options: 1 element
-      ▿ Option
-        - default: Optional<String>.none
-        - description: "The name of the Node"
-        - identifier: "productName"
-        - name: "Node name:"
-        - notPersisted: true
-        - required: true
-        - type: "text"
-    - platforms: 0 elements
-    - sortOrder: 4
-    - summary: "The source files implementing a Node"
-    - supportsSwiftPackage: true
-  ▿ stencils: 7 elements
+  ▿ stencilTemplates: 7 elements
     - Analytics
     ▿ Builder
       - builder: Variation.default

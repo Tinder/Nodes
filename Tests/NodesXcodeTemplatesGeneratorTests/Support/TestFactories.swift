@@ -55,8 +55,8 @@ extension TestFactories {
         return config
     }
 
-    internal func givenNodeContext(mockCount: Int = 1) -> NodeContext {
-        NodeContext(
+    internal func givenNodeStencilContext(mockCount: Int = 1) -> NodeStencilContext {
+        NodeStencilContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
@@ -94,8 +94,8 @@ extension TestFactories {
         )
     }
 
-    internal func givenNodeRootContext(mockCount: Int = 1) -> NodeRootContext {
-        NodeRootContext(
+    internal func givenNodeRootStencilContext(mockCount: Int = 1) -> NodeRootStencilContext {
+        NodeRootStencilContext(
             fileHeader: "<fileHeader>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
@@ -132,8 +132,8 @@ extension TestFactories {
         )
     }
 
-    internal func givenNodeViewInjectedContext(mockCount: Int = 1) -> NodeViewInjectedContext {
-        NodeViewInjectedContext(
+    internal func givenNodeViewInjectedStencilContext(mockCount: Int = 1) -> NodeViewInjectedStencilContext {
+        NodeViewInjectedStencilContext(
             fileHeader: "<fileHeader>",
             nodeName: "<nodeName>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
@@ -154,8 +154,8 @@ extension TestFactories {
         )
     }
 
-    internal func givenPluginContext(mockCount: Int = 1) -> PluginContext {
-        PluginContext(
+    internal func givenPluginStencilContext(mockCount: Int = 1) -> PluginStencilContext {
+        PluginStencilContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             returnType: "<returnType>",
@@ -164,8 +164,8 @@ extension TestFactories {
         )
     }
 
-    internal func givenPluginContextWithoutReturnType(mockCount: Int = 1) -> PluginContext {
-        PluginContext(
+    internal func givenPluginStencilContextWithoutReturnType(mockCount: Int = 1) -> PluginStencilContext {
+        PluginStencilContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             pluginImports: .mock(with: "pluginImport", count: mockCount),
@@ -173,8 +173,8 @@ extension TestFactories {
         )
     }
 
-    internal func givenPluginListContext(mockCount: Int = 1) -> PluginListContext {
-        PluginListContext(
+    internal func givenPluginListStencilContext(mockCount: Int = 1) -> PluginListStencilContext {
+        PluginListStencilContext(
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
             pluginListImports: .mock(with: "pluginListImport", count: mockCount),
@@ -183,8 +183,8 @@ extension TestFactories {
         )
     }
 
-    internal func givenWorkerContext(mockCount: Int = 1) -> WorkerContext {
-        WorkerContext(
+    internal func givenWorkerStencilContext(mockCount: Int = 1) -> WorkerStencilContext {
+        WorkerStencilContext(
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",
             workerImports: .mock(with: "workerImport", count: mockCount),

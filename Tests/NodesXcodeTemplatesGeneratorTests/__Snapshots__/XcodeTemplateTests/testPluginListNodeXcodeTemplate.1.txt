@@ -1,13 +1,4 @@
-▿ PluginListNodeTemplate
-  ▿ context: PluginListContext
-    - fileHeader: "<fileHeader>"
-    - isPeripheryCommentEnabled: false
-    ▿ pluginListImports: 3 elements
-      - "<baseImport>"
-      - "<dependencyInjectionImport>"
-      - "Nodes"
-    - pluginListName: "___VARIABLE_productName___"
-    - viewControllableFlowType: "<viewControllableFlowType>"
+▿ PluginListNodeXcodeTemplate
   - name: "Plugin List (for Node)"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
@@ -28,5 +19,14 @@
     - sortOrder: 6
     - summary: "The source file implementing a Plugin List"
     - supportsSwiftPackage: true
-  ▿ stencils: 1 element
+  ▿ stencilContext: PluginListStencilContext
+    - fileHeader: "<fileHeader>"
+    - isPeripheryCommentEnabled: false
+    ▿ pluginListImports: 3 elements
+      - "<baseImport>"
+      - "<dependencyInjectionImport>"
+      - "Nodes"
+    - pluginListName: "___VARIABLE_productName___"
+    - viewControllableFlowType: "<viewControllableFlowType>"
+  ▿ stencilTemplates: 1 element
     - PluginList

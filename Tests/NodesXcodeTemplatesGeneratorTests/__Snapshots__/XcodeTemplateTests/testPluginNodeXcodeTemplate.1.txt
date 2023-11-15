@@ -1,13 +1,4 @@
-▿ PluginNodeTemplate
-  ▿ context: PluginContext
-    - fileHeader: "<fileHeader>"
-    - isPeripheryCommentEnabled: false
-    ▿ pluginImports: 3 elements
-      - "<baseImport>"
-      - "<dependencyInjectionImport>"
-      - "Nodes"
-    - pluginName: "___VARIABLE_productName___"
-    - returnType: Optional<String>.none
+▿ PluginNodeXcodeTemplate
   - name: "Plugin (for Node)"
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
@@ -28,5 +19,14 @@
     - sortOrder: 7
     - summary: "The source file implementing a Plugin for a Node"
     - supportsSwiftPackage: true
-  ▿ stencils: 1 element
+  ▿ stencilContext: PluginStencilContext
+    - fileHeader: "<fileHeader>"
+    - isPeripheryCommentEnabled: false
+    ▿ pluginImports: 3 elements
+      - "<baseImport>"
+      - "<dependencyInjectionImport>"
+      - "Nodes"
+    - pluginName: "___VARIABLE_productName___"
+    - returnType: Optional<String>.none
+  ▿ stencilTemplates: 1 element
     - Plugin

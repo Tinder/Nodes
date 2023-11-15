@@ -2,7 +2,7 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
-public struct NodeContext: Context {
+public struct NodeStencilContext: StencilContext {
 
     private let fileHeader: String
     private let nodeName: String

@@ -2,7 +2,7 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
-public struct PluginListContext: Context {
+public struct PluginListStencilContext: StencilContext {
 
     private let fileHeader: String
     private let pluginListName: String

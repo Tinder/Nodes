@@ -7,40 +7,40 @@ import Nimble
 import SnapshotTesting
 import XCTest
 
-final class ContextsTests: XCTestCase, TestFactories {
+final class StencilContextsTests: XCTestCase, TestFactories {
 
-    func testNodeContext() {
-        assertSnapshot(matching: givenNodeContext().dictionary,
+    func testNodeStencilContext() {
+        assertSnapshot(matching: givenNodeStencilContext().dictionary,
                        as: .dump)
     }
 
-    func testNodeRootContext() {
-        assertSnapshot(matching: givenNodeRootContext().dictionary,
+    func testNodeRootStencilContext() {
+        assertSnapshot(matching: givenNodeRootStencilContext().dictionary,
                        as: .dump)
     }
 
-    func testNodeViewInjectedContext() {
-        assertSnapshot(matching: givenNodeViewInjectedContext().dictionary,
+    func testNodeViewInjectedStencilContext() {
+        assertSnapshot(matching: givenNodeViewInjectedStencilContext().dictionary,
                        as: .dump)
     }
 
-    func testPluginContext() {
-        assertSnapshot(matching: givenPluginContext().dictionary,
+    func testPluginStencilContext() {
+        assertSnapshot(matching: givenPluginStencilContext().dictionary,
                        as: .dump)
     }
 
-    func testPluginContextWithoutReturnType() {
-        assertSnapshot(matching: givenPluginContextWithoutReturnType().dictionary,
+    func testPluginStencilContextWithoutReturnType() {
+        assertSnapshot(matching: givenPluginStencilContextWithoutReturnType().dictionary,
                        as: .dump)
     }
 
-    func testPluginListContext() {
-        assertSnapshot(matching: givenPluginListContext().dictionary,
+    func testPluginListStencilContext() {
+        assertSnapshot(matching: givenPluginListStencilContext().dictionary,
                        as: .dump)
     }
 
-    func testWorkerContext() {
-        assertSnapshot(matching: givenWorkerContext().dictionary,
+    func testWorkerStencilContext() {
+        assertSnapshot(matching: givenWorkerStencilContext().dictionary,
                        as: .dump)
     }
 

@@ -1,5 +1,25 @@
-▿ NodeTemplate
-  ▿ context: NodeContext
+▿ NodeXcodeTemplate
+  - name: "Node - SwiftUI"
+  ▿ propertyList: XcodeTemplatePropertyList
+    ▿ allowedTypes: 1 element
+      - "public.swift-source"
+    - description: "The source files implementing a Node."
+    - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
+    - mainTemplateFile: "___FILEBASENAME___.swift"
+    ▿ options: 1 element
+      ▿ Option
+        - default: Optional<String>.none
+        - description: "The name of the Node"
+        - identifier: "productName"
+        - name: "Node name:"
+        - notPersisted: true
+        - required: true
+        - type: "text"
+    - platforms: 0 elements
+    - sortOrder: 3
+    - summary: "The source files implementing a Node"
+    - supportsSwiftPackage: true
+  ▿ stencilContext: NodeStencilContext
     ▿ analyticsImports: 2 elements
       - "<baseImport>"
       - "Nodes"
@@ -60,12 +80,12 @@
       - "<baseImport>"
       - "<reactiveImport>"
       - "Nodes"
-      - "UIKit"
+      - "SwiftUI"
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
     - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
-    - viewControllerSuperParameters: "nibName: nil, bundle: nil"
-    - viewControllerType: "UIViewController"
+    - viewControllerSuperParameters: ""
+    - viewControllerType: "UIHostingController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateEmptyFactory: "<viewStateEmptyFactory>"
     ▿ viewStateImports: 2 elements
@@ -77,33 +97,13 @@
     - viewStateTransform: "<viewStateTransform>"
     ▿ workerGenericTypes: 1 element
       - "<workerGenericType>"
-  - name: "Node - UIKit"
-  ▿ propertyList: XcodeTemplatePropertyList
-    ▿ allowedTypes: 1 element
-      - "public.swift-source"
-    - description: "The source files implementing a Node."
-    - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
-    - mainTemplateFile: "___FILEBASENAME___.swift"
-    ▿ options: 1 element
-      ▿ Option
-        - default: Optional<String>.none
-        - description: "The name of the Node"
-        - identifier: "productName"
-        - name: "Node name:"
-        - notPersisted: true
-        - required: true
-        - type: "text"
-    - platforms: 0 elements
-    - sortOrder: 2
-    - summary: "The source files implementing a Node"
-    - supportsSwiftPackage: true
-  ▿ stencils: 7 elements
+  ▿ stencilTemplates: 7 elements
     - Analytics
     ▿ Builder
-      - builder: Variation.default
+      - builder: Variation.swiftUI
     - Context
     - Flow
     - State
     ▿ ViewController
-      - viewController: Variation.default
+      - viewController: Variation.swiftUI
     - ViewState
