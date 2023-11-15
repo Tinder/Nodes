@@ -12,7 +12,7 @@ final class {{ node_name }}FlowTests: XCTestCase {
 
     {% if view_controllable_mock_contents %}
     private final class {{ node_name }}ViewControllableMock: UIViewController, {{ node_name }}ViewControllable {
-        
+
         {{ view_controllable_mock_contents|indent:8 }}
     }
     {% else %}

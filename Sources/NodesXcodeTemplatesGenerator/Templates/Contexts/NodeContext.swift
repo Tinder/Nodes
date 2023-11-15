@@ -4,6 +4,8 @@
 
 public struct NodeContext: Context {
 
+    public typealias Variable = XcodeTemplates.Config.Variable
+
     private let fileHeader: String
     private let nodeName: String
     private let analyticsImports: [String]
@@ -89,9 +91,9 @@ public struct NodeContext: Context {
         viewControllerImports: Set<String>,
         viewStateImports: Set<String>,
         testImports: Set<String>,
-        dependencies: [XcodeTemplates.Variable],
-        analyticsProperties: [XcodeTemplates.Variable],
-        flowProperties: [XcodeTemplates.Variable],
+        dependencies: [Variable],
+        analyticsProperties: [Variable],
+        flowProperties: [Variable],
         viewControllableType: String,
         viewControllableFlowType: String,
         viewControllerType: String,
