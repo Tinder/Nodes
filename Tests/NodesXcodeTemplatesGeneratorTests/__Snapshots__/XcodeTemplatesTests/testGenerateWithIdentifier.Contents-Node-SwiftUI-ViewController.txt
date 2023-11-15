@@ -61,16 +61,9 @@ internal struct ___VARIABLE_productName___View: View {
     }
 }
 
-/**
- PURPOSE:
- The SwiftUI preview (excluded from release builds).
- */
-internal struct ___VARIABLE_productName___View_Previews: PreviewProvider {
-
-    internal static var previews: some View {
-        ___VARIABLE_productName___View(
-            initialState: ___VARIABLE_productName___ViewState(),
-            statePublisher: Empty().eraseToAnyPublisher()
-        )
-    }
+#Preview {
+    ___VARIABLE_productName___View(
+        initialState: ___VARIABLE_productName___ViewState(),
+        statePublisher: Empty().eraseToAnyPublisher()
+    )
 }

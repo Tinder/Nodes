@@ -122,6 +122,7 @@ final class ConfigTests: XCTestCase, TestFactories {
           - <workerGenericTypes-1>
           - <workerGenericTypes-2>
         isViewInjectedTemplateEnabled: true
+        isPreviewProviderEnabled: true
         isTestTemplatesGenerationEnabled: true
         isPeripheryCommentEnabled: true
         """

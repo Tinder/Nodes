@@ -48,6 +48,7 @@ internal struct NodeTemplate: XcodeTemplate {
             publisherFailureType: config.publisherFailureType,
             contextGenericTypes: config.contextGenericTypes,
             workerGenericTypes: config.workerGenericTypes,
+            isPreviewProviderEnabled: config.isPreviewProviderEnabled,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
             isNimbleEnabled: config.isNimbleEnabled
         )
