@@ -2,9 +2,43 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
-public struct NodeRootStencilContext: StencilContext {
+import Foundation
+
+public struct NodePresetStencilContext: StencilContext {
+
+    public enum NodePresetStencilContextError: LocalizedError {
+
+        case reservedNodeName(String)
+
+        public var errorDescription: String? {
+            switch self {
+            case let .reservedNodeName(nodeName):
+                return "ERROR: Reserved Node Name (\(nodeName)"
+            }
+        }
+    }
+
+    public enum Preset: String {
+
+        case root = "Root"
+
+        public var nodeName: String {
+            rawValue
+        }
+
+        public var ownsView: Bool {
+            switch self {
+            case .root:
+                return true
+            }
+        }
+    }
+
+    internal var preset: Preset
 
     private let fileHeader: String
+    private let nodeName: String
+    private let ownsView: Bool
     private let analyticsImports: [String]
     private let builderImports: [String]
     private let contextImports: [String]
@@ -41,9 +75,8 @@ public struct NodeRootStencilContext: StencilContext {
     internal var dictionary: [String: Any] {
         [
             "file_header": fileHeader,
-            "node_name": "Root",
-            "owns_view": true,
-            "root_node": true,
+            "node_name": nodeName,
+            "owns_view": ownsView,
             "analytics_imports": analyticsImports,
             "builder_imports": builderImports,
             "context_imports": contextImports,
@@ -81,6 +114,7 @@ public struct NodeRootStencilContext: StencilContext {
 
     public init(
         fileHeader: String,
+        preset: Preset,
         analyticsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
@@ -114,7 +148,10 @@ public struct NodeRootStencilContext: StencilContext {
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
     ) {
+        self.preset = preset
         self.fileHeader = fileHeader
+        self.nodeName = preset.nodeName
+        self.ownsView = preset.ownsView
         self.analyticsImports = analyticsImports.sortedImports()
         self.builderImports = builderImports.sortedImports()
         self.contextImports = contextImports.sortedImports()

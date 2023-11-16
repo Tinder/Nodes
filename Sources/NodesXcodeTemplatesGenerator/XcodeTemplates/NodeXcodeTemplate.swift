@@ -14,7 +14,8 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
         let node: StencilTemplate.Node = .init(for: .variation(for: uiFramework.kind))
         name = "Node - \(uiFramework.name)"
         stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
-        stencilContext = NodeStencilContext(
+        // swiftlint:disable:next force_try
+        stencilContext = try! NodeStencilContext(
             fileHeader: config.fileHeader,
             nodeName: Self.variable(Self.productName),
             analyticsImports: node.analytics.imports(for: uiFramework, config: config),

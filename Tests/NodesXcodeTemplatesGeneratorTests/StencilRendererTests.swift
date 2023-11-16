@@ -42,28 +42,6 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         }
     }
 
-    func testRenderNodeRoot() throws {
-        let stencilRenderer: StencilRenderer = .init()
-        try mockCounts.forEach { count in
-            let context: NodeRootStencilContext = givenNodeRootStencilContext(mockCount: count)
-            let templates: [String: String] = try stencilRenderer.renderNodeRoot(context: context)
-            expect(templates.keys.sorted()) == [
-                "Analytics",
-                "Builder",
-                "Context",
-                "Flow",
-                "State",
-                "ViewController",
-                "ViewState"
-            ]
-            templates.forEach { name, template in
-                assertSnapshot(matching: template,
-                               as: .lines,
-                               named: "\(name)-UIKit-mockCount-\(count)")
-            }
-        }
-    }
-
     func testRenderNodeViewInjected() throws {
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
@@ -82,6 +60,28 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             ]
             templates.forEach { name, template in
                 assertSnapshot(matching: template, as: .lines, named: "\(name)-mockCount-\(count)")
+            }
+        }
+    }
+
+    func testRenderNodePresetRoot() throws {
+        let stencilRenderer: StencilRenderer = .init()
+        try mockCounts.forEach { count in
+            let context: NodePresetStencilContext = givenNodePresetStencilContext(preset: .root, mockCount: count)
+            let templates: [String: String] = try stencilRenderer.renderNodePreset(context: context)
+            expect(templates.keys.sorted()) == [
+                "Analytics",
+                "Builder",
+                "Context",
+                "Flow",
+                "State",
+                "ViewController",
+                "ViewState"
+            ]
+            templates.forEach { name, template in
+                assertSnapshot(matching: template,
+                               as: .lines,
+                               named: "\(name)-UIKit-mockCount-\(count)")
             }
         }
     }

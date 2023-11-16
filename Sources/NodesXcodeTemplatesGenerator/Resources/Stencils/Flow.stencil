@@ -79,7 +79,7 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
 }
 
 extension {{ node_name }}FlowImp: {{ node_name }}Flow {}
-{% if root_node %}
+{% if node_name == "Root" %}
 extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {
 
     /// Implement logic to execute when the Root Flow is ready to attach sub-Flows.

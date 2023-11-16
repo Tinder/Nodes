@@ -15,14 +15,8 @@ public final class StencilRenderer {
         includeTests: Bool
     ) throws -> [String: String] {
         let node: StencilTemplate.Node = .init(for: .variation(for: kind))
-        return try renderNode(stencils: node.stencils(includeTests: includeTests), with: context.dictionary)
-    }
-
-    public func renderNodeRoot(
-        context: NodeRootStencilContext
-    ) throws -> [String: String] {
-        let node: StencilTemplate.Node = .init(for: .variation(for: .uiKit))
-        return try renderNode(stencils: node.stencils(includeTests: false), with: context.dictionary)
+        let stencils: [StencilTemplate] = node.stencils(includeTests: includeTests)
+        return try renderNode(stencils: stencils, with: context.dictionary)
     }
 
     public func renderNodeViewInjected(
@@ -30,7 +24,20 @@ public final class StencilRenderer {
         includeTests: Bool
     ) throws -> [String: String] {
         let nodeViewInjected: StencilTemplate.NodeViewInjected = .init()
-        return try renderNode(stencils: nodeViewInjected.stencils(includeTests: includeTests), with: context.dictionary)
+        let stencils: [StencilTemplate] = nodeViewInjected.stencils(includeTests: includeTests)
+        return try renderNode(stencils: stencils, with: context.dictionary)
+    }
+
+    public func renderNodePreset(
+        context: NodePresetStencilContext
+    ) throws -> [String: String] {
+        let stencils: [StencilTemplate]
+        if context.preset.ownsView {
+            stencils = StencilTemplate.Node(for: .variation(for: .uiKit)).stencils(includeTests: false)
+        } else {
+            stencils = StencilTemplate.NodeViewInjected().stencils(includeTests: false)
+        }
+        return try renderNode(stencils: stencils, with: context.dictionary)
     }
 
     public func renderPlugin(context: PluginStencilContext) throws -> String {

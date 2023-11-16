@@ -1,4 +1,4 @@
-▿ 36 key/value pairs
+▿ 35 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -73,9 +73,6 @@
   ▿ (2 elements)
     - key: "publisher_type"
     - value: "<publisherType>"
-  ▿ (2 elements)
-    - key: "root_node"
-    - value: true
   ▿ (2 elements)
     - key: "state_imports"
     ▿ value: 1 element

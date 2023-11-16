@@ -14,13 +14,13 @@ final class StencilContextsTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
-    func testNodeRootStencilContext() {
-        assertSnapshot(matching: givenNodeRootStencilContext().dictionary,
+    func testNodeViewInjectedStencilContext() {
+        assertSnapshot(matching: givenNodeViewInjectedStencilContext().dictionary,
                        as: .dump)
     }
 
-    func testNodeViewInjectedStencilContext() {
-        assertSnapshot(matching: givenNodeViewInjectedStencilContext().dictionary,
+    func testNodePresetRootStencilContext() {
+        assertSnapshot(matching: givenNodePresetStencilContext(preset: .root).dictionary,
                        as: .dump)
     }
 
