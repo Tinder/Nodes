@@ -100,12 +100,20 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         internal let flow: StencilTemplate
         internal let state: StencilTemplate
 
+        // Tests
+        internal let analyticsTests: StencilTemplate
+        internal let contextTests: StencilTemplate
+        internal let flowTests: StencilTemplate
+
         internal init() {
             self.analytics = .analytics
             self.builder = .builder(.default)
             self.context = .context
             self.flow = .flow
             self.state = .state
+            self.analyticsTests = .analyticsTests
+            self.contextTests = .contextTests
+            self.flowTests = .flowTests
         }
 
         internal func stencils(includeTests: Bool = false) -> [StencilTemplate] {
