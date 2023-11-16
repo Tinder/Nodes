@@ -117,10 +117,6 @@ extension Config {
     // swiftlint:disable:next function_body_length
     public init(from decoder: Decoder) throws {
         let defaults: Config = .init()
-        if let yaml: String = try? decoder.decodeSingleValue(as: String.self), yaml.isEmpty {
-            self = defaults
-            return
-        }
         uiFrameworks =
             (try? decoder.decode(CodingKeys.uiFrameworks))
             ?? defaults.uiFrameworks
