@@ -8,9 +8,16 @@ import Yams
 
 public struct Config: Equatable, Codable {
 
-    public enum ConfigError: Error, Equatable {
+    public enum ConfigError: LocalizedError, Equatable {
 
         case uiFrameworkNotDefined(kind: UIFramework.Kind)
+
+        public var errorDescription: String? {
+            switch self {
+            case let .uiFrameworkNotDefined(kind):
+                return "ERROR: UIFramework Not Defined (\(kind)"
+            }
+        }
     }
 
     internal enum ImportsType {
