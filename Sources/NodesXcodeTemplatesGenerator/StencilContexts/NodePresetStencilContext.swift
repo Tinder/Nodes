@@ -37,8 +37,6 @@ public struct NodePresetStencilContext: StencilContext {
     internal let preset: Preset
 
     private let fileHeader: String
-    private let nodeName: String
-    private let ownsView: Bool
     private let analyticsImports: [String]
     private let builderImports: [String]
     private let contextImports: [String]
@@ -75,8 +73,8 @@ public struct NodePresetStencilContext: StencilContext {
     internal var dictionary: [String: Any] {
         [
             "file_header": fileHeader,
-            "node_name": nodeName,
-            "owns_view": ownsView,
+            "node_name": preset.nodeName,
+            "owns_view": preset.ownsView,
             "analytics_imports": analyticsImports,
             "builder_imports": builderImports,
             "context_imports": contextImports,
@@ -150,8 +148,6 @@ public struct NodePresetStencilContext: StencilContext {
     ) {
         self.fileHeader = fileHeader
         self.preset = preset
-        self.nodeName = preset.nodeName
-        self.ownsView = preset.ownsView
         self.analyticsImports = analyticsImports.sortedImports()
         self.builderImports = builderImports.sortedImports()
         self.contextImports = contextImports.sortedImports()
