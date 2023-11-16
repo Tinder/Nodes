@@ -71,7 +71,7 @@
   ▿ (2 elements)
     - key: "test_imports"
     ▿ value: 1 element
-      - "<testImports>"
+      - "<testImport>"
   ▿ (2 elements)
     - key: "view_controllable_flow_type"
     - value: "<viewControllableFlowType>"
