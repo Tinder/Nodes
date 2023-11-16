@@ -53,7 +53,12 @@ public struct Config: Equatable, Codable {
         using fileSystem: FileSystem = FileManager.default
     ) throws {
         let url: URL = .init(fileURLWithPath: path)
-        self = try fileSystem.contents(of: url).decoded(using: YAMLDecoder())
+        let contents: Data = try fileSystem.contents(of: url)
+        guard !contents.isEmpty else {
+            self = Self()
+            return
+        }
+        self = try contents.decoded(using: YAMLDecoder())
     }
 
     public func uiFramework(for kind: UIFramework.Kind) throws -> UIFramework {
