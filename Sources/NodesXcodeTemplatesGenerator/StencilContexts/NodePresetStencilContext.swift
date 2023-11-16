@@ -41,6 +41,19 @@ public struct NodePresetStencilContext: StencilContext {
                 return true
             }
         }
+
+        public var includeState: Bool {
+            switch self {
+            case .app:
+                return false
+            case .scene:
+                return false
+            case .window:
+                return false
+            case .root:
+                return true
+            }
+        }
     }
 
     internal let preset: Preset
