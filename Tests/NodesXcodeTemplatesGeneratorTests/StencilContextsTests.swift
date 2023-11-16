@@ -19,6 +19,21 @@ final class StencilContextsTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
+    func testNodePresetAppStencilContext() {
+        assertSnapshot(matching: givenNodePresetStencilContext(preset: .app).dictionary,
+                       as: .dump)
+    }
+
+    func testNodePresetSceneStencilContext() {
+        assertSnapshot(matching: givenNodePresetStencilContext(preset: .scene).dictionary,
+                       as: .dump)
+    }
+
+    func testNodePresetWindowStencilContext() {
+        assertSnapshot(matching: givenNodePresetStencilContext(preset: .window).dictionary,
+                       as: .dump)
+    }
+
     func testNodePresetRootStencilContext() {
         assertSnapshot(matching: givenNodePresetStencilContext(preset: .root).dictionary,
                        as: .dump)

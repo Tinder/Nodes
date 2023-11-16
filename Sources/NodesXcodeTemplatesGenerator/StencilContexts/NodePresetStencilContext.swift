@@ -20,6 +20,9 @@ public struct NodePresetStencilContext: StencilContext {
 
     public enum Preset: String {
 
+        case app = "App"
+        case scene = "Scene"
+        case window = "Window"
         case root = "Root"
 
         public var nodeName: String {
@@ -28,6 +31,12 @@ public struct NodePresetStencilContext: StencilContext {
 
         public var ownsView: Bool {
             switch self {
+            case .app:
+                return false
+            case .scene:
+                return false
+            case .window:
+                return true
             case .root:
                 return true
             }
