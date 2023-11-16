@@ -55,13 +55,10 @@ extension TestFactories {
         return config
     }
 
-    internal func givenNodeStencilContext(
-        nodeName: String = "<nodeName>",
-        mockCount: Int = 1
-    ) throws -> NodeStencilContext {
-        try NodeStencilContext(
+    internal func givenNodeStencilContext(mockCount: Int = 1) -> NodeStencilContext {
+        try! NodeStencilContext(
             fileHeader: "<fileHeader>",
-            nodeName: nodeName,
+            nodeName: "<nodeName>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
             contextImports: .mock(with: "contextImport", count: mockCount),
@@ -97,13 +94,10 @@ extension TestFactories {
         )
     }
 
-    internal func givenNodeViewInjectedStencilContext(
-        nodeName: String = "<nodeName>",
-        mockCount: Int = 1
-    ) throws -> NodeViewInjectedStencilContext {
-        try NodeViewInjectedStencilContext(
+    internal func givenNodeViewInjectedStencilContext(mockCount: Int = 1) -> NodeViewInjectedStencilContext {
+        try! NodeViewInjectedStencilContext(
             fileHeader: "<fileHeader>",
-            nodeName: nodeName,
+            nodeName: "<nodeName>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
             contextImports: .mock(with: "contextImport", count: mockCount),

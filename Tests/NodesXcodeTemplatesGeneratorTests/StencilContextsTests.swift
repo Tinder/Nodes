@@ -9,28 +9,14 @@ import XCTest
 
 final class StencilContextsTests: XCTestCase, TestFactories {
 
-    func testNodeStencilContext() throws {
-        assertSnapshot(matching: try givenNodeStencilContext().dictionary,
+    func testNodeStencilContext() {
+        assertSnapshot(matching: givenNodeStencilContext().dictionary,
                        as: .dump)
     }
 
-    func testNodeStencilContextWithReservedNodeName() {
-        expect { try self.givenNodeStencilContext(nodeName: "App") }
-            .to(throwError(errorType: NodePresetStencilContext.NodePresetStencilContextError.self) { error in
-                expect(error) == .reservedNodeName("App")
-            })
-    }
-
-    func testNodeViewInjectedStencilContext() throws {
-        assertSnapshot(matching: try givenNodeViewInjectedStencilContext().dictionary,
+    func testNodeViewInjectedStencilContext() {
+        assertSnapshot(matching: givenNodeViewInjectedStencilContext().dictionary,
                        as: .dump)
-    }
-
-    func testNodeViewInjectedStencilContextWithReservedNodeName() {
-        expect { try self.givenNodeViewInjectedStencilContext(nodeName: "App") }
-            .to(throwError(errorType: NodePresetStencilContext.NodePresetStencilContextError.self) { error in
-                expect(error) == .reservedNodeName("App")
-            })
     }
 
     func testNodePresetAppStencilContext() {

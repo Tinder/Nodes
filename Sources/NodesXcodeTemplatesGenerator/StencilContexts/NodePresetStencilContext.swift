@@ -6,7 +6,7 @@ import Foundation
 
 public struct NodePresetStencilContext: StencilContext {
 
-    public enum NodePresetStencilContextError: LocalizedError, Equatable {
+    public enum NodePresetStencilContextError: LocalizedError {
 
         case reservedNodeName(String)
 
