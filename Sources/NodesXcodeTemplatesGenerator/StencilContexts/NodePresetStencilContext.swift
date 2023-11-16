@@ -34,7 +34,7 @@ public struct NodePresetStencilContext: StencilContext {
         }
     }
 
-    internal var preset: Preset
+    internal let preset: Preset
 
     private let fileHeader: String
     private let nodeName: String
@@ -148,8 +148,8 @@ public struct NodePresetStencilContext: StencilContext {
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
     ) {
-        self.preset = preset
         self.fileHeader = fileHeader
+        self.preset = preset
         self.nodeName = preset.nodeName
         self.ownsView = preset.ownsView
         self.analyticsImports = analyticsImports.sortedImports()
