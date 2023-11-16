@@ -121,8 +121,8 @@ extension TestFactories {
         mockCount: Int = 1
     ) -> NodePresetStencilContext {
         NodePresetStencilContext(
-            fileHeader: "<fileHeader>",
             preset: preset,
+            fileHeader: "<fileHeader>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
             contextImports: .mock(with: "contextImport", count: mockCount),

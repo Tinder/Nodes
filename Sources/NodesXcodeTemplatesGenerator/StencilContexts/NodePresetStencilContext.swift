@@ -111,8 +111,8 @@ public struct NodePresetStencilContext: StencilContext {
     }
 
     public init(
-        fileHeader: String,
         preset: Preset,
+        fileHeader: String,
         analyticsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
@@ -146,8 +146,8 @@ public struct NodePresetStencilContext: StencilContext {
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
     ) {
-        self.fileHeader = fileHeader
         self.preset = preset
+        self.fileHeader = fileHeader
         self.analyticsImports = analyticsImports.sortedImports()
         self.builderImports = builderImports.sortedImports()
         self.contextImports = contextImports.sortedImports()
