@@ -11,6 +11,7 @@ public struct Config: Equatable, Codable {
     public enum ConfigError: Error, Equatable {
 
         case uiFrameworkNotDefined(kind: UIFramework.Kind)
+        case nonEmptyStringRequired(key: String)
     }
 
     internal enum ImportsType {
@@ -191,5 +192,22 @@ extension Config {
         isPeripheryCommentEnabled =
             (try? decoder.decode(CodingKeys.isPeripheryCommentEnabled))
             ?? defaults.isPeripheryCommentEnabled
+
+        guard !publisherType.isEmpty
+        else { throw ConfigError.nonEmptyStringRequired(key: "publisherType")}
+        guard !viewControllableFlowType.isEmpty
+        else { throw ConfigError.nonEmptyStringRequired(key: "viewControllableFlowType")}
+        guard !viewControllableType.isEmpty
+        else { throw ConfigError.nonEmptyStringRequired(key: "viewControllableType")}
+        guard !viewControllerSubscriptionsProperty.isEmpty
+        else { throw ConfigError.nonEmptyStringRequired(key: "viewControllerSubscriptionsProperty")}
+        guard !viewStateEmptyFactory.isEmpty
+        else { throw ConfigError.nonEmptyStringRequired(key: "viewStateEmptyFactory")}
+        guard !viewStatePropertyComment.isEmpty
+        else { throw ConfigError.nonEmptyStringRequired(key: "viewStatePropertyComment")}
+        guard !viewStatePropertyName.isEmpty
+        else { throw ConfigError.nonEmptyStringRequired(key: "viewStatePropertyName")}
+        guard !viewStateTransform.isEmpty
+        else { throw ConfigError.nonEmptyStringRequired(key: "viewStateTransform")}
     }
 }

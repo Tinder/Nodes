@@ -9,6 +9,12 @@ import XCTest
 
 final class ConfigTests: XCTestCase, TestFactories {
 
+    func testInitializeFromDecoder() throws {
+        let config: Config = .init()
+        let data: Data = try JSONEncoder().encode(config)
+        expect(try JSONDecoder().decode(Config.self, from: data)) == config
+    }
+
     func testConfig() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
@@ -48,6 +54,41 @@ final class ConfigTests: XCTestCase, TestFactories {
                         expect(error) == .uiFrameworkNotDefined(kind: kind)
                     })
             }
+    }
+
+    func testNonEmptyStringRequired() throws {
+        let keys: [String] = [
+            "publisherType",
+            "viewControllableFlowType",
+            "viewControllableType",
+            "viewControllerSubscriptionsProperty",
+            "viewStateEmptyFactory",
+            "viewStatePropertyComment",
+            "viewStatePropertyName",
+            "viewStateTransform"
+        ]
+        var yaml: String = ""
+        for expectedKey: String in keys {
+            yaml.append("\(expectedKey): ")
+            let fileSystem: FileSystemMock = .init()
+            let url: URL = .init(fileURLWithPath: "/")
+            fileSystem.contents[url] = Data(yaml.utf8)
+            expect(try Config(at: url.path, using: fileSystem)).to(throwError(errorType: DecodingError.self) { error in
+                guard case let .dataCorrupted(context) = error else {
+                    XCTFail("Expected DecodingError.dataCorrupted, got \(error) instead")
+                    return
+                }
+                guard case let .nonEmptyStringRequired(key) = context.underlyingError as? Config.ConfigError else {
+                    let underlyingError: String = .init(describing: context.underlyingError)
+                    XCTFail("Expected ConfigError.nonEmptyStringRequired, got \(underlyingError) instead")
+                    return
+                }
+                expect(context.codingPath.isEmpty) == true
+                expect(context.debugDescription) == "The given data was not valid YAML."
+                expect(key) == expectedKey
+                yaml.append("<\(expectedKey)>\n")
+            })
+        }
     }
 
     private func givenConfig() -> String {
