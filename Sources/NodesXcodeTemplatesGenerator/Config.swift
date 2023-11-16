@@ -54,11 +54,11 @@ public struct Config: Equatable, Codable {
     ) throws {
         let url: URL = .init(fileURLWithPath: path)
         let contents: Data = try fileSystem.contents(of: url)
-        guard !contents.isEmpty else {
-            self = Self()
-            return
+        if contents.isEmpty {
+            self.init()
+        } else {
+            self = try contents.decoded(using: YAMLDecoder())
         }
-        self = try contents.decoded(using: YAMLDecoder())
     }
 
     public func uiFramework(for kind: UIFramework.Kind) throws -> UIFramework {
