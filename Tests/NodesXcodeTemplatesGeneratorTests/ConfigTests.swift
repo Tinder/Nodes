@@ -74,18 +74,7 @@ final class ConfigTests: XCTestCase, TestFactories {
             let url: URL = .init(fileURLWithPath: "/")
             fileSystem.contents[url] = Data(yaml.utf8)
             expect(try Config(at: url.path, using: fileSystem)).to(throwError(errorType: DecodingError.self) { error in
-                guard case let .dataCorrupted(context) = error else {
-                    XCTFail("Expected DecodingError.dataCorrupted, got \(error) instead")
-                    return
-                }
-                guard case let .nonEmptyStringRequired(key) = context.underlyingError as? Config.ConfigError else {
-                    let underlyingError: String = .init(describing: context.underlyingError)
-                    XCTFail("Expected ConfigError.nonEmptyStringRequired, got \(underlyingError) instead")
-                    return
-                }
-                expect(context.codingPath.isEmpty) == true
-                expect(context.debugDescription) == "The given data was not valid YAML."
-                expect(key) == expectedKey
+                assertSnapshot(matching: error, as: .dump)
                 yaml.append("<\(expectedKey)>\n")
             })
         }

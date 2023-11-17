@@ -1,0 +1,8 @@
+▿ DecodingError
+  ▿ dataCorrupted: Context
+    - codingPath: 0 elements
+    - debugDescription: "The given data was not valid YAML."
+    ▿ underlyingError: Optional<Error>
+      ▿ some: ConfigError
+        ▿ nonEmptyStringRequired: (1 element)
+          - key: "viewStatePropertyComment"
