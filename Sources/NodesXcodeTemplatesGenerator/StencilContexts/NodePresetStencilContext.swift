@@ -29,20 +29,7 @@ public struct NodePresetStencilContext: StencilContext {
             rawValue
         }
 
-        public var ownsView: Bool {
-            switch self {
-            case .app:
-                return false
-            case .scene:
-                return false
-            case .window:
-                return true
-            case .root:
-                return true
-            }
-        }
-
-        public var includeState: Bool {
+        public var isUserInterface: Bool {
             switch self {
             case .app:
                 return false
@@ -96,7 +83,7 @@ public struct NodePresetStencilContext: StencilContext {
         [
             "file_header": fileHeader,
             "node_name": preset.nodeName,
-            "owns_view": preset.ownsView,
+            "owns_view": preset.isUserInterface,
             "analytics_imports": analyticsImports,
             "builder_imports": builderImports,
             "context_imports": contextImports,

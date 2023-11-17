@@ -35,6 +35,7 @@ internal final class WindowContextImp: AbstractContext
     /// The Listener instance.
     internal weak var listener: WindowListener?
 
+    // periphery:ignore
     /// The State instance.
     @Published
     internal private(set) var state: WindowState
@@ -64,4 +65,3 @@ internal final class WindowContextImp: AbstractContext
 }
 
 extension WindowContextImp: WindowContextInterface {}
-extension WindowContextImp: WindowReceiver {}

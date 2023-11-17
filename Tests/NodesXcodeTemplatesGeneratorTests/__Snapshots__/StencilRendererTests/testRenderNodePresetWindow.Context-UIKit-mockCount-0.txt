@@ -54,4 +54,3 @@ internal final class WindowContextImp: AbstractContext {
 }
 
 extension WindowContextImp: WindowContextInterface {}
-extension WindowContextImp: WindowReceiver {}

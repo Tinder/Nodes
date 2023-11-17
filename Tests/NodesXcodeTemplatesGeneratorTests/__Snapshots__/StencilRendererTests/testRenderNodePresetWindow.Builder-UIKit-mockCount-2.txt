@@ -7,7 +7,7 @@ import <builderImport2>
  PURPOSE:
  The interface of the Flow.
  */
-internal protocol WindowFlow: <viewControllableFlowType> {}
+internal protocol WindowFlow: Flow {}
 
 /**
  PURPOSE:
@@ -24,7 +24,7 @@ public protocol WindowDependency: Dependency {
 
  Can be a tuple or struct containing multiple values when necessary.
  */
-internal typealias WindowDynamicBuildDependency = WindowListener
+internal typealias WindowDynamicBuildDependency = (WindowListener, WindowViewControllable)
 
 /**
  PURPOSE:
@@ -107,7 +107,8 @@ public final class WindowComponent: Component
  */
 internal protocol WindowBuilder: AnyObject {
     func build(
-        withListener listener: WindowListener
+        withListener listener: WindowListener,
+        viewController: WindowViewControllable
     ) -> WindowFlow
 }
 
@@ -128,12 +129,15 @@ internal final class WindowBuilderImp: AbstractBuilder
     /// the dynamic component dependency.
     ///
     /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
-    /// - Parameter listener: An object that can listen for signals from the Node
+    /// - Parameters:
+    ///   - listener: An object that can listen for signals from the Node
+    ///   - viewController: The injected view controller
     /// - Returns: The Flow instance
     internal func build(
-        withListener listener: WindowListener
+        withListener listener: WindowListener,
+        viewController: WindowViewControllable
     ) -> WindowFlow {
-        let dynamicBuildDependency: WindowDynamicBuildDependency = listener
+        let dynamicBuildDependency: WindowDynamicBuildDependency = (listener, viewController)
         let dynamicComponentDependency: WindowDynamicComponentDependency = ()
         return build(dynamicBuildDependency, dynamicComponentDependency)
     }
@@ -147,7 +151,8 @@ internal final class WindowBuilderImp: AbstractBuilder
         component: WindowComponent,
         dynamicBuildDependency: WindowDynamicBuildDependency
     ) -> WindowFlow {
-        let listener: WindowListener = dynamicBuildDependency
+        let listener: WindowListener = dynamicBuildDependency.0
+        let viewController: WindowViewControllable = dynamicBuildDependency.1
         let analytics: WindowAnalyticsImp = .init(
             <analyticsPropertyName1>: component.dependency.<analyticsPropertyName1>,
             <analyticsPropertyName2>: component.dependency.<analyticsPropertyName2>
@@ -157,12 +162,6 @@ internal final class WindowBuilderImp: AbstractBuilder
             analytics: analytics
         )
         context.listener = listener
-        let viewStateFactory: WindowViewStateFactory = .init()
-        let viewController: WindowViewController = .init(
-            initialState: viewStateFactory(context.state),
-            <viewStatePropertyName>: <viewStateTransform>
-        )
-        viewController.receiver = context
         let flow: WindowFlowImp = .init(
             context: context,
             viewController: viewController,
