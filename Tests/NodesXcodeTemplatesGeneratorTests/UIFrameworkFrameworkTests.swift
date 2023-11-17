@@ -83,6 +83,14 @@ final class UIFrameworkFrameworkTests: XCTestCase {
                 .to(throwError(errorType: DecodingError.self) { error in
                     assertSnapshot(matching: error, as: .dump)
                     yaml.append("<\(expectedKey)>")
+                    guard
+                        let error: Config.ConfigError = error.context?.underlyingError as? Config.ConfigError,
+                        let errorDescription: String = error.errorDescription
+                    else { return }
+                    expect(errorDescription) == """
+                        ERROR: Non-Empty String Required for key \(expectedKey) if present.
+                        Provide non-empty string or omit key to for default.
+                        """
                 })
         }
     }
