@@ -2,8 +2,6 @@
 //  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
-import Foundation
-
 /// Every Stencil source file is represented by a case. Some cases have a variation.
 public enum StencilTemplate: Equatable, CustomStringConvertible {
 
