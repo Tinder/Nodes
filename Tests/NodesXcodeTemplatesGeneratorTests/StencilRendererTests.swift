@@ -111,9 +111,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Analytics",
                 "Builder",
                 "Context",
-                "Flow",
-                "ViewController",
-                "ViewState"
+                "Flow"
             ]
             templates.forEach { name, template in
                 assertSnapshot(matching: template,
