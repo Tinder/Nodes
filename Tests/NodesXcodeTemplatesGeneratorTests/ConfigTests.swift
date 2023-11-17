@@ -42,6 +42,15 @@ final class ConfigTests: XCTestCase, TestFactories {
         assertSnapshot(matching: config, as: .dump)
     }
 
+    func testConfigWithUnsupportedKey() throws {
+        let fileSystem: FileSystemMock = .init()
+        let url: URL = .init(fileURLWithPath: "/")
+        fileSystem.contents[url] = Data("unsupportedKey".utf8)
+        let config: Config = try .init(at: url.path, using: fileSystem)
+        expect(config) == Config()
+        assertSnapshot(matching: config, as: .dump)
+    }
+
     func testDefaultConfig() {
         assertSnapshot(matching: Config(), as: .dump)
     }
