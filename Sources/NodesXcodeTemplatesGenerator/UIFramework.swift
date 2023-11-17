@@ -127,18 +127,18 @@ public struct UIFramework: Equatable, Codable {
                     keyedBy: CustomCodingKeys.self, forKey: .custom
                 )
                 let name: String = try container.decode(String.self, forKey: .name)
-                let `import`: String = try container.decode(String.self, forKey: .import)
-                let viewControllerType: String = try container.decode(String.self, forKey: .viewControllerType)
                 guard !name.isEmpty
                 else { throw Config.ConfigError.nonEmptyStringRequired(key: "name")}
+                let `import`: String = try container.decode(String.self, forKey: .import)
                 guard !`import`.isEmpty
-                else { throw Config.ConfigError.nonEmptyStringRequired(key: "`import`")}
+                else { throw Config.ConfigError.nonEmptyStringRequired(key: "import")}
+                let viewControllerType: String = try container.decode(String.self, forKey: .viewControllerType)
                 guard !viewControllerType.isEmpty
                 else { throw Config.ConfigError.nonEmptyStringRequired(key: "viewControllerType")}
                 return try .custom(
-                    name: container.decode(String.self, forKey: .name),
-                    import: container.decode(String.self, forKey: .import),
-                    viewControllerType: container.decode(String.self, forKey: .viewControllerType),
+                    name: name,
+                    import: `import`,
+                    viewControllerType: viewControllerType,
                     viewControllerSuperParameters: container.decode(String.self, forKey: .viewControllerSuperParameters)
                 )
             }
