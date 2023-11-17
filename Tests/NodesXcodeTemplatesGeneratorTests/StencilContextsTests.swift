@@ -16,7 +16,7 @@ final class StencilContextsTests: XCTestCase, TestFactories {
 
     func testNodeStencilContextWithReservedNodeName() {
         expect { try self.givenNodeStencilContext(nodeName: "Root") }
-            .to(throwError(errorType: NodePresetStencilContext.NodePresetStencilContextError.self) { error in
+            .to(throwError(errorType: StencilContextError.self) { error in
                 expect(error) == .reservedNodeName("Root")
             })
     }
@@ -28,7 +28,7 @@ final class StencilContextsTests: XCTestCase, TestFactories {
 
     func testNodeViewInjectedStencilContextWithReservedNodeName() {
         expect { try self.givenNodeViewInjectedStencilContext(nodeName: "Root") }
-            .to(throwError(errorType: NodePresetStencilContext.NodePresetStencilContextError.self) { error in
+            .to(throwError(errorType: StencilContextError.self) { error in
                 expect(error) == .reservedNodeName("Root")
             })
     }

@@ -2,6 +2,20 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
+import Foundation
+
+public enum StencilContextError: LocalizedError, Equatable {
+
+    case reservedNodeName(String)
+
+    public var errorDescription: String? {
+        switch self {
+        case let .reservedNodeName(nodeName):
+            return "ERROR: Reserved Node Name (\(nodeName))"
+        }
+    }
+}
+
 internal protocol StencilContext {
 
     var dictionary: [String: Any] { get }
