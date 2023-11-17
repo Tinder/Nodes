@@ -9,6 +9,13 @@ import XCTest
 
 final class ConfigTests: XCTestCase, TestFactories {
 
+    func testInitializeFromDecoder() throws {
+        let config: Config = .init()
+        let data: Data = try JSONEncoder().encode(config)
+        expect(try JSONDecoder().decode(Config.self, from: data)) == config
+        assertSnapshot(matching: config, as: .dump)
+    }
+
     func testConfig() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
@@ -21,6 +28,15 @@ final class ConfigTests: XCTestCase, TestFactories {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
         fileSystem.contents[url] = Data("".utf8)
+        let config: Config = try .init(at: url.path, using: fileSystem)
+        expect(config) == Config()
+        assertSnapshot(matching: config, as: .dump)
+    }
+
+    func testEffectivelyEmptyConfig() throws {
+        let fileSystem: FileSystemMock = .init()
+        let url: URL = .init(fileURLWithPath: "/")
+        fileSystem.contents[url] = Data(" ".utf8)
         let config: Config = try .init(at: url.path, using: fileSystem)
         expect(config) == Config()
         assertSnapshot(matching: config, as: .dump)
