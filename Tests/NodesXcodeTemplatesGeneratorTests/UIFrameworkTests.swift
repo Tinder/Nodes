@@ -86,6 +86,33 @@ final class UIFrameworkTests: XCTestCase {
             .forEach { assertSnapshot(matching: $0, as: .dump, named: $0.kind.rawValue) }
     }
 
+    func testDecodingWithEmpty() {
+        let keys: [String] = ["name", "import", "viewControllerType"]
+        var yaml: String = """
+            framework:
+              custom:
+            """
+        for expectedKey: String in keys {
+            yaml.append("\n    \(expectedKey): ")
+            expect(try YAMLDecoder().decode(UIFramework.self, from: Data(yaml.utf8)))
+                .to(throwError(errorType: DecodingError.self) { error in
+                    guard case let .dataCorrupted(context) = error else {
+                        XCTFail("Expected DecodingError.dataCorrupted, got \(error) instead")
+                        return
+                    }
+                    guard case let .nonEmptyStringRequired(key) = context.underlyingError as? Config.ConfigError else {
+                        let underlyingError: String = .init(describing: context.underlyingError)
+                        XCTFail("Expected ConfigError.nonEmptyStringRequired, got \(underlyingError) instead")
+                        return
+                    }
+                    expect(context.codingPath.isEmpty) == true
+                    expect(context.debugDescription) == "The given data was not valid YAML."
+                    expect(key) == expectedKey
+                    yaml.append("<\(key)>")
+                })
+        }
+    }
+
     private func givenYAML(for kind: UIFramework.Kind) -> String {
         switch kind {
         case .appKit, .uiKit, .swiftUI:
