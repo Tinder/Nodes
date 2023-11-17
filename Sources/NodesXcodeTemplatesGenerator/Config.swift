@@ -8,10 +8,22 @@ import Yams
 
 public struct Config: Equatable, Codable {
 
-    public enum ConfigError: Error, Equatable {
+    public enum ConfigError: LocalizedError, Equatable {
 
         case uiFrameworkNotDefined(kind: UIFramework.Kind)
         case nonEmptyStringRequired(key: String)
+
+        public var errorDescription: String? {
+            switch self {
+            case let .uiFrameworkNotDefined(kind):
+                return "ERROR: UIFramework Not Defined (\(kind)"
+            case let .nonEmptyStringRequired(key):
+                return """
+                    ERROR: Non-Empty String Required for key \(key) if present.
+                    Provide non-empty string or omit key to for default.
+                    """
+            }
+        }
     }
 
     internal enum ImportsType {
