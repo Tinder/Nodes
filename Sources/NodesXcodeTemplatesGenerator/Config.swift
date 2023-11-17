@@ -8,9 +8,16 @@ import Yams
 
 public struct Config: Equatable, Codable {
 
-    public enum ConfigError: Error, Equatable {
+    public enum ConfigError: LocalizedError, Equatable {
 
         case uiFrameworkNotDefined(kind: UIFramework.Kind)
+
+        public var errorDescription: String? {
+            switch self {
+            case let .uiFrameworkNotDefined(kind):
+                return "ERROR: UIFramework Not Defined (\(kind))"
+            }
+        }
     }
 
     internal enum ImportsType {
@@ -53,7 +60,12 @@ public struct Config: Equatable, Codable {
         using fileSystem: FileSystem = FileManager.default
     ) throws {
         let url: URL = .init(fileURLWithPath: path)
-        self = try fileSystem.contents(of: url).decoded(using: YAMLDecoder())
+        let contents: Data = try fileSystem.contents(of: url)
+        if contents.isEmpty {
+            self.init()
+        } else {
+            self = try contents.decoded(using: YAMLDecoder())
+        }
     }
 
     public func uiFramework(for kind: UIFramework.Kind) throws -> UIFramework {

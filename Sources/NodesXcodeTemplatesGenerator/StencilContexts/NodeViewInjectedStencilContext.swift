@@ -65,7 +65,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         isNimbleEnabled: Bool
     ) throws {
         guard NodePresetStencilContext.Preset(rawValue: nodeName) == nil
-        else { throw NodePresetStencilContext.NodePresetStencilContextError.reservedNodeName(nodeName) }
+        else { throw StencilContextError.reservedNodeName(nodeName) }
         self.fileHeader = fileHeader
         self.nodeName = nodeName
         self.analyticsImports = analyticsImports.sortedImports()
