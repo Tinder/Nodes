@@ -72,6 +72,21 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             }
     }
 
+    func testDecodingWithEmpty() {
+        let keys: [String] = ["name", "import", "viewControllerType"]
+        var yaml: String = """
+            custom:
+            """
+        for expectedKey: String in keys {
+            yaml.append("\n  \(expectedKey): ")
+            expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: Data(yaml.utf8)))
+                .to(throwError(errorType: DecodingError.self) { error in
+                    assertSnapshot(matching: error, as: .dump)
+                    yaml.append("<\(expectedKey)>")
+                })
+        }
+    }
+
     private func givenYAML(for framework: UIFramework.Framework) -> String {
         switch framework {
         case .appKit, .uiKit, .swiftUI:
