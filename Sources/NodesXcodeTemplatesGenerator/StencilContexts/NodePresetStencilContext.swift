@@ -13,7 +13,7 @@ public struct NodePresetStencilContext: StencilContext {
         public var errorDescription: String? {
             switch self {
             case let .reservedNodeName(nodeName):
-                return "ERROR: Reserved Node Name (\(nodeName)"
+                return "ERROR: Reserved Node Name (\(nodeName))"
             }
         }
     }
