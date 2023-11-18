@@ -117,30 +117,14 @@ extension StateObserver {
     }
 }
 
-public struct WithViewState
-<
-    ViewState,
-    Content: View
->
-: View {
+extension WithViewState {
 
-    public var body: some View {
-        content(viewState).onReceive(observable) { viewState = $0 }
-    }
-
-    @State private var viewState: ViewState
-
-    private let observable: Observable<ViewState>
-    private let content: (ViewState) -> Content
-
-    public init<O: Observable<ViewState>>(
+    public init<P: Publisher>(
         initialState: ViewState,
-        stateObservable observable: O,
+        stateObservable publisher: P,
         @ViewBuilder content: @escaping (ViewState) -> Content
-    ) {
-        _viewState = State(initialValue: initialState)
-        self.observable = observable
-        self.content = content
+    ) where P.Output == ViewState, P.Failure == Never {
+        self.init(initialState: initialState, statePublisher: publisher, content: content)
     }
 }
 
@@ -159,13 +143,13 @@ private final class ObservableSubscription
     T,
     S: Subscriber
 >
-: NSObject, Subscription where S.Input == T,
-                               S.Failure == Never {
+: Subscription where S.Input == T,
+                     S.Failure == Never {
 
     private var disposeBag: DisposeBag = .init()
 
     private var subscriber: S?
-    private var observable: Observable<T>
+    private let observable: Observable<T>
 
     init(subscriber: S, observable: Observable<T>) {
         self.subscriber = subscriber
