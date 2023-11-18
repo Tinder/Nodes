@@ -19,7 +19,8 @@ internal struct NodeViewInjectedXcodeTemplate: XcodeTemplate {
     internal init(config: Config) {
         let node: StencilTemplate.NodeViewInjected = .init()
         stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
-        stencilContext = NodeViewInjectedStencilContext(
+        // swiftlint:disable:next force_try
+        stencilContext = try! NodeViewInjectedStencilContext(
             fileHeader: config.fileHeader,
             nodeName: Self.variable(Self.productName),
             analyticsImports: node.analytics.imports(config: config),

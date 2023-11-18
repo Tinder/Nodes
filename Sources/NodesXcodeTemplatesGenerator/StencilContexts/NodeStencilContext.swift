@@ -44,7 +44,6 @@ public struct NodeStencilContext: StencilContext {
             "file_header": fileHeader,
             "node_name": nodeName,
             "owns_view": true,
-            "root_node": false,
             "analytics_imports": analyticsImports,
             "builder_imports": builderImports,
             "context_imports": contextImports,
@@ -115,7 +114,9 @@ public struct NodeStencilContext: StencilContext {
         isPreviewProviderEnabled: Bool,
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
-    ) {
+    ) throws {
+        guard NodePresetStencilContext.Preset(rawValue: nodeName) == nil
+        else { throw StencilContextError.reservedNodeName(nodeName) }
         self.fileHeader = fileHeader
         self.nodeName = nodeName
         self.analyticsImports = analyticsImports.sortedImports()

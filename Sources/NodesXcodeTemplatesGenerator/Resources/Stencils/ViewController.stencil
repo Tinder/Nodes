@@ -11,7 +11,7 @@ import {{ import }}
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
  */
-{% if root_node %}
+{% if node_name == "Root" %}
 internal protocol {{ node_name }}Receiver: AnyObject {
     func viewDidAppear()
 }
@@ -59,7 +59,7 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
             {% endif %}
         super.init({{ view_controller_super_parameters }})
     }
-    {% if root_node %}
+    {% if node_name == "Root" %}
 
     @available(*, unavailable)
     internal required init?(coder: NSCoder) {

@@ -2,8 +2,8 @@
 
 #warning("Manually move this test file to the corresponding test target.")
 
-import <testImports1>
-import <testImports2>
+import <testImport1>
+import <testImport2>
 
 final class <nodeName>FlowTests: XCTestCase {
 

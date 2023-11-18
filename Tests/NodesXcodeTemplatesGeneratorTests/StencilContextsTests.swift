@@ -9,18 +9,47 @@ import XCTest
 
 final class StencilContextsTests: XCTestCase, TestFactories {
 
-    func testNodeStencilContext() {
-        assertSnapshot(matching: givenNodeStencilContext().dictionary,
+    func testNodeStencilContext() throws {
+        assertSnapshot(matching: try givenNodeStencilContext().dictionary,
                        as: .dump)
     }
 
-    func testNodeRootStencilContext() {
-        assertSnapshot(matching: givenNodeRootStencilContext().dictionary,
+    func testNodeStencilContextWithReservedNodeName() {
+        expect { try self.givenNodeStencilContext(nodeName: "Root") }
+            .to(throwError(errorType: StencilContextError.self) { error in
+                expect(error) == .reservedNodeName("Root")
+            })
+    }
+
+    func testNodeViewInjectedStencilContext() throws {
+        assertSnapshot(matching: try givenNodeViewInjectedStencilContext().dictionary,
                        as: .dump)
     }
 
-    func testNodeViewInjectedStencilContext() {
-        assertSnapshot(matching: givenNodeViewInjectedStencilContext().dictionary,
+    func testNodeViewInjectedStencilContextWithReservedNodeName() {
+        expect { try self.givenNodeViewInjectedStencilContext(nodeName: "Root") }
+            .to(throwError(errorType: StencilContextError.self) { error in
+                expect(error) == .reservedNodeName("Root")
+            })
+    }
+
+    func testNodePresetAppStencilContext() {
+        assertSnapshot(matching: givenNodePresetStencilContext(preset: .app).dictionary,
+                       as: .dump)
+    }
+
+    func testNodePresetSceneStencilContext() {
+        assertSnapshot(matching: givenNodePresetStencilContext(preset: .scene).dictionary,
+                       as: .dump)
+    }
+
+    func testNodePresetWindowStencilContext() {
+        assertSnapshot(matching: givenNodePresetStencilContext(preset: .window).dictionary,
+                       as: .dump)
+    }
+
+    func testNodePresetRootStencilContext() {
+        assertSnapshot(matching: givenNodePresetStencilContext(preset: .root).dictionary,
                        as: .dump)
     }
 

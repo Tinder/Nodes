@@ -2,7 +2,34 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
-public struct NodeRootStencilContext: StencilContext {
+public struct NodePresetStencilContext: StencilContext {
+
+    public enum Preset: String {
+
+        case app = "App"
+        case scene = "Scene"
+        case window = "Window"
+        case root = "Root"
+
+        public var nodeName: String {
+            rawValue
+        }
+
+        public var isUserInterface: Bool {
+            switch self {
+            case .app:
+                return false
+            case .scene:
+                return false
+            case .window:
+                return false
+            case .root:
+                return true
+            }
+        }
+    }
+
+    internal let preset: Preset
 
     private let fileHeader: String
     private let analyticsImports: [String]
@@ -41,9 +68,8 @@ public struct NodeRootStencilContext: StencilContext {
     internal var dictionary: [String: Any] {
         [
             "file_header": fileHeader,
-            "node_name": "Root",
-            "owns_view": true,
-            "root_node": true,
+            "node_name": preset.nodeName,
+            "owns_view": preset.isUserInterface,
             "analytics_imports": analyticsImports,
             "builder_imports": builderImports,
             "context_imports": contextImports,
@@ -80,6 +106,7 @@ public struct NodeRootStencilContext: StencilContext {
     }
 
     public init(
+        preset: Preset,
         fileHeader: String,
         analyticsImports: Set<String>,
         builderImports: Set<String>,
@@ -114,6 +141,7 @@ public struct NodeRootStencilContext: StencilContext {
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
     ) {
+        self.preset = preset
         self.fileHeader = fileHeader
         self.analyticsImports = analyticsImports.sortedImports()
         self.builderImports = builderImports.sortedImports()

@@ -17,7 +17,7 @@ internal protocol {{ node_name }}Listener: AnyObject {}
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
-{% if root_node %}
+{% if node_name == "Root" %}
 internal protocol {{ node_name }}FlowInterface: Flow {
     func didBecomeReady()
 }
@@ -67,7 +67,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     {% endif %}
     /// The Analytics instance.
     private let analytics: {{ node_name }}Analytics
-    {% if root_node %}
+    {% if node_name == "Root" %}
 
     private var isReady: Bool = false
     {% endif %}
@@ -93,7 +93,8 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
 }
 
 extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}
-{% if root_node %}
+{% if owns_view %}
+{% if node_name == "Root" %}
 extension {{ node_name }}ContextImp: {{ node_name }}Receiver {
 
     internal func viewDidAppear() {
@@ -103,6 +104,7 @@ extension {{ node_name }}ContextImp: {{ node_name }}Receiver {
         flow?.didBecomeReady()
     }
 }
-{% elif owns_view %}
+{% else %}
 extension {{ node_name }}ContextImp: {{ node_name }}Receiver {}
+{% endif %}
 {% endif %}
