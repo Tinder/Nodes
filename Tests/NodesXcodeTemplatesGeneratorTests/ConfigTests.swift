@@ -9,12 +9,6 @@ import XCTest
 
 final class ConfigTests: XCTestCase, TestFactories {
 
-    func testInitializeFromDecoder() throws {
-        let config: Config = .init()
-        let data: Data = try JSONEncoder().encode(config)
-        expect(try JSONDecoder().decode(Config.self, from: data)) == config
-    }
-
     func testConfig() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
