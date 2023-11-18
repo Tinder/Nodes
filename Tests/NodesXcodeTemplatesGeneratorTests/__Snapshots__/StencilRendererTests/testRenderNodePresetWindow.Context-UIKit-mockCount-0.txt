@@ -1,0 +1,56 @@
+<fileHeader>
+
+/**
+ PURPOSE:
+ The Context delegates callbacks to its (external) Listener, typically the parent Context.
+ */
+internal protocol WindowListener: AnyObject {}
+
+/**
+ PURPOSE:
+ The interface that the Context will speak to the Flow through. Used to initiate navigation as
+ an example.
+ */
+internal protocol WindowFlowInterface: Flow {}
+
+/**
+ PURPOSE:
+ Contains the business logic of the Node. The lifecycle of the Node is bookended between the
+ `didBecomeActive` and `willResignActive` methods.
+ */
+internal final class WindowContextImp: AbstractContext {
+
+    /// The Flow instance.
+    internal weak var flow: WindowFlowInterface?
+
+    /// The Listener instance.
+    internal weak var listener: WindowListener?
+
+    /// The State instance.
+    @Published
+    internal private(set) var state: WindowState
+
+    /// The Analytics instance.
+    private let analytics: WindowAnalytics
+
+    /// The initializer.
+    /// - Parameters:
+    ///   - workers: The Worker instances
+    ///   - analytics: The Analytics instance
+    internal init(
+        workers: [Worker],
+        analytics: WindowAnalytics
+    ) {
+        self.state = WindowState()
+        self.analytics = analytics
+        super.init(workers: workers)
+    }
+
+    /// Implement logic to execute when the Context becomes active.
+    override internal func didBecomeActive() {}
+
+    /// Implement logic to execute when the Context will become inactive.
+    override internal func willResignActive() {}
+}
+
+extension WindowContextImp: WindowContextInterface {}

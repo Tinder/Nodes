@@ -55,10 +55,13 @@ extension TestFactories {
         return config
     }
 
-    internal func givenNodeStencilContext(mockCount: Int = 1) -> NodeStencilContext {
-        NodeStencilContext(
+    internal func givenNodeStencilContext(
+        nodeName: String = "<nodeName>",
+        mockCount: Int = 1
+    ) throws -> NodeStencilContext {
+        try NodeStencilContext(
             fileHeader: "<fileHeader>",
-            nodeName: "<nodeName>",
+            nodeName: nodeName,
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
             contextImports: .mock(with: "contextImport", count: mockCount),
@@ -94,8 +97,37 @@ extension TestFactories {
         )
     }
 
-    internal func givenNodeRootStencilContext(mockCount: Int = 1) -> NodeRootStencilContext {
-        NodeRootStencilContext(
+    internal func givenNodeViewInjectedStencilContext(
+        nodeName: String = "<nodeName>",
+        mockCount: Int = 1
+    ) throws -> NodeViewInjectedStencilContext {
+        try NodeViewInjectedStencilContext(
+            fileHeader: "<fileHeader>",
+            nodeName: nodeName,
+            analyticsImports: .mock(with: "analyticsImport", count: mockCount),
+            builderImports: .mock(with: "builderImport", count: mockCount),
+            contextImports: .mock(with: "contextImport", count: mockCount),
+            flowImports: .mock(with: "flowImport", count: mockCount),
+            stateImports: .mock(with: "stateImport", count: mockCount),
+            testImports: .mock(with: "testImport", count: mockCount),
+            dependencies: .mock(with: "dependency", count: mockCount),
+            analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
+            flowProperties: .mock(with: "flowProperty", count: mockCount),
+            viewControllableType: "<viewControllableType>",
+            viewControllableFlowType: "<viewControllableFlowType>",
+            contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
+            workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            isPeripheryCommentEnabled: mockCount > 0,
+            isNimbleEnabled: mockCount > 0
+        )
+    }
+
+    internal func givenNodePresetStencilContext(
+        preset: NodePresetStencilContext.Preset,
+        mockCount: Int = 1
+    ) -> NodePresetStencilContext {
+        NodePresetStencilContext(
+            preset: preset,
             fileHeader: "<fileHeader>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
@@ -127,28 +159,6 @@ extension TestFactories {
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             isPreviewProviderEnabled: mockCount > 0,
-            isPeripheryCommentEnabled: mockCount > 0,
-            isNimbleEnabled: mockCount > 0
-        )
-    }
-
-    internal func givenNodeViewInjectedStencilContext(mockCount: Int = 1) -> NodeViewInjectedStencilContext {
-        NodeViewInjectedStencilContext(
-            fileHeader: "<fileHeader>",
-            nodeName: "<nodeName>",
-            analyticsImports: .mock(with: "analyticsImport", count: mockCount),
-            builderImports: .mock(with: "builderImport", count: mockCount),
-            contextImports: .mock(with: "contextImport", count: mockCount),
-            flowImports: .mock(with: "flowImport", count: mockCount),
-            stateImports: .mock(with: "stateImport", count: mockCount),
-            testImports: .mock(with: "testImports", count: mockCount),
-            dependencies: .mock(with: "dependency", count: mockCount),
-            analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
-            flowProperties: .mock(with: "flowProperty", count: mockCount),
-            viewControllableType: "<viewControllableType>",
-            viewControllableFlowType: "<viewControllableFlowType>",
-            contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
-            workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0,
             isNimbleEnabled: mockCount > 0
         )
