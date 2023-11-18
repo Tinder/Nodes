@@ -206,16 +206,22 @@ extension Config {
         isPeripheryCommentEnabled =
             (try? decoder.decode(CodingKeys.isPeripheryCommentEnabled))
             ?? defaults.isPeripheryCommentEnabled
+        try validateRequiredStrings()
+    }
+
+    private func validateRequiredStrings() throws {
         let required: [(key: String, value: String)] = [
             (key: "publisherType", value: publisherType),
+            (key: "viewControllableFlowType", value: viewControllableFlowType),
             (key: "viewControllableType", value: viewControllableType),
+            (key: "viewControllerSubscriptionsProperty", value: viewControllerSubscriptionsProperty),
             (key: "viewStateEmptyFactory", value: viewStateEmptyFactory),
+            (key: "viewStatePropertyComment", value: viewStatePropertyComment),
             (key: "viewStatePropertyName", value: viewStatePropertyName),
             (key: "viewStateTransform", value: viewStateTransform)
         ]
-        for (key, value) in required {
-            guard !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-            else { throw ConfigError.emptyStringNotAllowed(key: key)}
+        for (key, value) in required where value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            throw ConfigError.emptyStringNotAllowed(key: key)
         }
     }
 }
