@@ -126,15 +126,23 @@ public struct UIFramework: Equatable, Codable {
                 let container: KeyedDecodingContainer<CustomCodingKeys> = try container.nestedContainer(
                     keyedBy: CustomCodingKeys.self, forKey: .custom
                 )
-                let name: String = try container.decode(String.self, forKey: .name)
-                guard !name.isEmpty
-                else { throw Config.ConfigError.nonEmptyStringRequired(key: "name")}
-                let `import`: String = try container.decode(String.self, forKey: .import)
-                guard !`import`.isEmpty
-                else { throw Config.ConfigError.nonEmptyStringRequired(key: "import")}
-                let viewControllerType: String = try container.decode(String.self, forKey: .viewControllerType)
-                guard !viewControllerType.isEmpty
-                else { throw Config.ConfigError.nonEmptyStringRequired(key: "viewControllerType")}
+                let name: String = try container
+                    .decode(String.self, forKey: .name)
+                let `import`: String = try container
+                    .decode(String.self, forKey: .import)
+                let viewControllerType: String = try container
+                    .decode(String.self, forKey: .viewControllerType)
+                let viewControllerSuperParameters: String = try container
+                    .decode(String.self, forKey: .viewControllerSuperParameters)
+                let required: [(key: String, value: String)] = [
+                    (key: "name", value: name),
+                    (key: "import", value: `import`),
+                    (key: "viewControllerType", value: viewControllerType)
+                ]
+                for (key, value) in required {
+                    guard !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                    else { throw ConfigError.emptyStringNotAllowed(key: key)}
+                }
                 return try .custom(
                     name: name,
                     import: `import`,
