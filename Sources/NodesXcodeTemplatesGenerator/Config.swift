@@ -11,17 +11,14 @@ public struct Config: Equatable, Codable {
     public enum ConfigError: LocalizedError, Equatable {
 
         case uiFrameworkNotDefined(kind: UIFramework.Kind)
-        case nonEmptyStringRequired(key: String)
+        case emptyStringNotAllowed(key: String)
 
         public var errorDescription: String? {
             switch self {
             case let .uiFrameworkNotDefined(kind):
                 return "ERROR: UIFramework Not Defined [`kind: \(kind)`]"
             case let .nonEmptyStringRequired(key):
-                return """
-                    ERROR: Non-Empty String Required for key \(key) if present.
-                    Provide non-empty string or omit key to for default.
-                    """
+                return "ERROR: Empty String Not Allowed [`key: \(key)`] (TIP: Omit from config for default value to be used)"
             }
         }
     }
