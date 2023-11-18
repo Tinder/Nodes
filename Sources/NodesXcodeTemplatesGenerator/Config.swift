@@ -206,22 +206,16 @@ extension Config {
         isPeripheryCommentEnabled =
             (try? decoder.decode(CodingKeys.isPeripheryCommentEnabled))
             ?? defaults.isPeripheryCommentEnabled
-
-        guard !publisherType.isEmpty
-        else { throw ConfigError.nonEmptyStringRequired(key: "publisherType")}
-        guard !viewControllableFlowType.isEmpty
-        else { throw ConfigError.nonEmptyStringRequired(key: "viewControllableFlowType")}
-        guard !viewControllableType.isEmpty
-        else { throw ConfigError.nonEmptyStringRequired(key: "viewControllableType")}
-        guard !viewControllerSubscriptionsProperty.isEmpty
-        else { throw ConfigError.nonEmptyStringRequired(key: "viewControllerSubscriptionsProperty")}
-        guard !viewStateEmptyFactory.isEmpty
-        else { throw ConfigError.nonEmptyStringRequired(key: "viewStateEmptyFactory")}
-        guard !viewStatePropertyComment.isEmpty
-        else { throw ConfigError.nonEmptyStringRequired(key: "viewStatePropertyComment")}
-        guard !viewStatePropertyName.isEmpty
-        else { throw ConfigError.nonEmptyStringRequired(key: "viewStatePropertyName")}
-        guard !viewStateTransform.isEmpty
-        else { throw ConfigError.nonEmptyStringRequired(key: "viewStateTransform")}
+        let required: [(key: String, value: String)] = [
+            (key: "publisherType", value: publisherType),
+            (key: "viewControllableType", value: viewControllableType),
+            (key: "viewStateEmptyFactory", value: viewStateEmptyFactory),
+            (key: "viewStatePropertyName", value: viewStatePropertyName),
+            (key: "viewStateTransform", value: viewStateTransform)
+        ]
+        for (key, value) in required {
+            guard !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            else { throw ConfigError.emptyStringNotAllowed(key: key)}
+        }
     }
 }
