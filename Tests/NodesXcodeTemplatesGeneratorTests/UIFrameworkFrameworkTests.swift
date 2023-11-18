@@ -72,7 +72,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             }
     }
 
-    func testDecodingWithEmptyForRequiredStrings() throws {
+    func testDecodingWithEmptyRequiredStrings() throws {
         let decoder: YAMLDecoder = .init()
         let type: UIFramework.Framework.Type = UIFramework.Framework.self
         let required: [(key: String, yaml: String)] = [
