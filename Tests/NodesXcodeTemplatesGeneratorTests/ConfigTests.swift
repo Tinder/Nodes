@@ -6,13 +6,13 @@ import Nimble
 import NodesXcodeTemplatesGenerator
 import SnapshotTesting
 import XCTest
+import Yams
 
 final class ConfigTests: XCTestCase, TestFactories {
 
     func testInitializeFromDecoder() throws {
-        let config: Config = .init()
-        let data: Data = try JSONEncoder().encode(config)
-        expect(try JSONDecoder().decode(Config.self, from: data)) == config
+        let config: Config = try YAMLDecoder().decode(Config.self, from: Data("".utf8))
+        expect(config) == Config()
         assertSnapshot(matching: config, as: .dump)
     }
 
