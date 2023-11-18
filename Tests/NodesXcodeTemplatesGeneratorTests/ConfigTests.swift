@@ -53,6 +53,7 @@ final class ConfigTests: XCTestCase, TestFactories {
     }
 
     func testNonEmptyStringRequired() throws {
+        let decoder: YAMLDecoder = .init()
         let keys: [String] = [
             "publisherType",
             "viewControllableFlowType",
@@ -65,7 +66,6 @@ final class ConfigTests: XCTestCase, TestFactories {
         ]
         for key: String in keys {
             let data: Data = .init("\(key):".utf8)
-            let decoder: YAMLDecoder = .init()
             expect(try decoder.decode(Config.self, from: data)).to(throwError(errorType: DecodingError.self) { error in
                 expect(error.context?.underlyingError?.localizedDescription) == """
                     ERROR: Empty String Not Allowed [`key: \(key)`] (TIP: Omit key config for default value)
