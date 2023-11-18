@@ -146,9 +146,11 @@ private final class ObservableSubscription
 : Subscription where S.Input == T,
                      S.Failure == Never {
 
-    private var disposeBag: DisposeBag = .init()
+    private var disposeBag: DisposeBag? = .init()
 
     init(subscriber: S, observable: Observable<T>) {
+        guard let disposeBag: DisposeBag
+        else { return }
         observable
             .subscribe { _ = subscriber.receive($0) }
             .disposed(by: disposeBag)
@@ -157,7 +159,7 @@ private final class ObservableSubscription
     func request(_ demand: Subscribers.Demand) {}
 
     func cancel() {
-        disposeBag = DisposeBag()
+        disposeBag = nil
     }
 }
 ```
