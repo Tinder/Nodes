@@ -1,0 +1,60 @@
+{{ file_header }}
+
+#warning("Manually move this test file to the corresponding test target.")
+{% if test_imports %}
+
+{% for import in test_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+final class {{ node_name }}FlowTests: XCTestCase {
+
+    {% if view_controllable_mock_contents %}
+    private final class {{ node_name }}ViewControllableMock: UIViewController, {{ node_name }}ViewControllable {
+
+        {{ view_controllable_mock_contents|indent:8 }}
+    }
+    {% else %}
+    private final class {{ node_name }}ViewControllableMock: UIViewController, {{ node_name }}ViewControllable {}
+    {% endif %}
+
+    private var contextMock: {{ node_name }}ContextInterfaceMock!
+    private var viewControllableMock: {{ node_name }}ViewControllableMock!
+    private var flow: {{ node_name }}FlowImp!
+
+    override func setUp() {
+        super.setUp()
+        contextMock = {{ node_name }}ContextInterfaceMock(isActive: true)
+        viewControllableMock = {{ node_name }}ViewControllableMock()
+        flow = {{ node_name }}FlowImp(
+            context: contextMock,
+            viewController: viewControllableMock{% if flow_properties %}{{ ',' }}
+            {% endif %}
+            {% for property in flow_properties %}
+            {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}
+            {% endif %}
+            {% endfor +%}
+        )
+        {% if is_nimble_enabled %}
+        expect { self.flow.isStarted } == true
+        {% else %}
+        XCTAssertTrue(flow.isStarted)
+        {% endif %}
+    }
+
+    override func tearDown() {
+        contextMock = nil
+        viewControllableMock = nil
+        flow = nil
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        {% if is_nimble_enabled %}
+        expect { self.flow } != nil
+        {% else %}
+        XCTAssertNotNil(flow)
+        {% endif %}
+    }
+}

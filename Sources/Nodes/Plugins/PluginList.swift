@@ -30,7 +30,7 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
         ///
         /// Example:
         /// ```
-        /// Plugin { state in
+        /// AnyPlugin { state in
         ///     ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create(state: state)
         /// }
         /// ```
@@ -204,7 +204,7 @@ extension PluginList.AnyPlugin where StateType == Void {
     ///
     /// Example:
     /// ```
-    /// Plugin(ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create())
+    /// AnyPlugin(ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create())
     /// ```
     ///
     /// - Parameters:

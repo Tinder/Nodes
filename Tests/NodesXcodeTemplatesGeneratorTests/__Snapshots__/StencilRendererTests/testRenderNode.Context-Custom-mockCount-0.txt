@@ -18,10 +18,7 @@ internal protocol <nodeName>FlowInterface: Flow {}
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.
  */
-internal final class <nodeName>ContextImp: AbstractContext
-<
-    <cancellableType>
-> {
+internal final class <nodeName>ContextImp: AbstractContext {
 
     /// The Flow instance.
     internal weak var flow: <nodeName>FlowInterface?
@@ -30,7 +27,8 @@ internal final class <nodeName>ContextImp: AbstractContext
     internal weak var listener: <nodeName>Listener?
 
     /// The State instance.
-    @Published internal private(set) var state: <nodeName>State
+    @Published
+    internal private(set) var state: <nodeName>State
 
     /// The Analytics instance.
     private let analytics: <nodeName>Analytics
@@ -53,10 +51,6 @@ internal final class <nodeName>ContextImp: AbstractContext
 
     /// Implement logic to execute when the Context will become inactive.
     override internal func willResignActive() {}
-
-    deinit {
-        LeakDetector.detect(analytics)
-    }
 }
 
 extension <nodeName>ContextImp: <nodeName>ContextInterface {}

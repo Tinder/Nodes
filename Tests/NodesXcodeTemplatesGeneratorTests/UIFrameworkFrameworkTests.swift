@@ -31,7 +31,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         expect(swiftUI.kind) == .swiftUI
         expect(swiftUI.name) == "SwiftUI"
         expect(swiftUI.import) == "SwiftUI"
-        expect(swiftUI.viewControllerType) == "AbstractViewHostingController"
+        expect(swiftUI.viewControllerType) == "UIHostingController"
     }
 
     func testCustom() {

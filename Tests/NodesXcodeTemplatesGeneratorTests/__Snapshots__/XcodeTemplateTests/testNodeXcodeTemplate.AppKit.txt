@@ -1,0 +1,109 @@
+▿ NodeXcodeTemplate
+  - name: "Node - AppKit"
+  ▿ propertyList: XcodeTemplatePropertyList
+    ▿ allowedTypes: 1 element
+      - "public.swift-source"
+    - description: "The source files implementing a Node."
+    - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
+    - mainTemplateFile: "___FILEBASENAME___.swift"
+    ▿ options: 1 element
+      ▿ Option
+        - default: Optional<String>.none
+        - description: "The name of the Node"
+        - identifier: "productName"
+        - name: "Node name:"
+        - notPersisted: true
+        - required: true
+        - type: "text"
+    - platforms: 0 elements
+    - sortOrder: 1
+    - summary: "The source files implementing a Node"
+    - supportsSwiftPackage: true
+  ▿ stencilContext: NodeStencilContext
+    ▿ analyticsImports: 2 elements
+      - "<baseImport>"
+      - "Nodes"
+    ▿ analyticsProperties: 1 element
+      ▿ 2 key/value pairs
+        ▿ (2 elements)
+          - key: "name"
+          - value: "<analyticsPropertiesName>"
+        ▿ (2 elements)
+          - key: "type"
+          - value: "<analyticsPropertiesType>"
+    ▿ builderImports: 4 elements
+      - "<baseImport>"
+      - "<dependencyInjectionImport>"
+      - "<reactiveImport>"
+      - "Nodes"
+    ▿ contextGenericTypes: 1 element
+      - "<contextGenericType>"
+    ▿ contextImports: 3 elements
+      - "<baseImport>"
+      - "<reactiveImport>"
+      - "Nodes"
+    ▿ dependencies: 1 element
+      ▿ 2 key/value pairs
+        ▿ (2 elements)
+          - key: "name"
+          - value: "<dependenciesName>"
+        ▿ (2 elements)
+          - key: "type"
+          - value: "<dependenciesType>"
+    - fileHeader: "<fileHeader>"
+    ▿ flowImports: 2 elements
+      - "<baseImport>"
+      - "Nodes"
+    ▿ flowProperties: 1 element
+      ▿ 2 key/value pairs
+        ▿ (2 elements)
+          - key: "name"
+          - value: "<flowPropertiesName>"
+        ▿ (2 elements)
+          - key: "type"
+          - value: "<flowPropertiesType>"
+    - isNimbleEnabled: false
+    - isPeripheryCommentEnabled: false
+    - isPreviewProviderEnabled: false
+    - nodeName: "___VARIABLE_productName___"
+    - publisherFailureType: "<publisherFailureType>"
+    - publisherType: "<publisherType>"
+    ▿ stateImports: 2 elements
+      - "<baseImport>"
+      - "Nodes"
+    ▿ testImports: 1 element
+      - "<baseTestImports>"
+    - viewControllableFlowType: "<viewControllableFlowType>"
+    - viewControllableMockContents: "<viewControllableMockContents>"
+    - viewControllableType: "<viewControllableType>"
+    ▿ viewControllerImports: 4 elements
+      - "<baseImport>"
+      - "<reactiveImport>"
+      - "AppKit"
+      - "Nodes"
+    - viewControllerMethods: "<viewControllerMethods>"
+    - viewControllerProperties: "<viewControllerProperties>"
+    - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
+    - viewControllerSuperParameters: "nibName: nil, bundle: nil"
+    - viewControllerType: "NSViewController"
+    - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+    - viewStateEmptyFactory: "<viewStateEmptyFactory>"
+    ▿ viewStateImports: 2 elements
+      - "<baseImport>"
+      - "Nodes"
+    - viewStateOperators: "<viewStateOperators>"
+    - viewStatePropertyComment: "<viewStatePropertyComment>"
+    - viewStatePropertyName: "<viewStatePropertyName>"
+    - viewStateTransform: "<viewStateTransform>"
+    ▿ workerGenericTypes: 1 element
+      - "<workerGenericType>"
+  ▿ stencils: 7 elements
+    - Analytics
+    ▿ Builder
+      - builder: Variation.default
+    - Context
+    - Flow
+    - State
+    ▿ ViewController
+      - viewController: Variation.default
+    - ViewState

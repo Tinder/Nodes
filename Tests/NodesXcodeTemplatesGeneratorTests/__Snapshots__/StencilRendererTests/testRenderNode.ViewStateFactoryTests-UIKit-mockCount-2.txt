@@ -1,0 +1,25 @@
+<fileHeader>
+
+#warning("Manually move this test file to the corresponding test target.")
+
+import <testImport1>
+import <testImport2>
+
+internal final class <nodeName>ViewStateFactoryTests: XCTestCase {
+
+    private var viewStateFactory: <nodeName>ViewStateFactory!
+
+    override func setUp() {
+        super.setUp()
+        viewStateFactory = <nodeName>ViewStateFactory()
+    }
+
+    override func tearDown() {
+        viewStateFactory = nil
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        expect { self.viewStateFactory(<nodeName>State()) } != nil
+    }
+}

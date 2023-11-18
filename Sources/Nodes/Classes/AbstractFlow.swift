@@ -316,8 +316,6 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     deinit {
         subFlows.forEach(detach)
         if _context.isActive { _context.deactivate() }
-        LeakDetector.detect(_context)
-        LeakDetector.detect(flowController)
     }
 }
 

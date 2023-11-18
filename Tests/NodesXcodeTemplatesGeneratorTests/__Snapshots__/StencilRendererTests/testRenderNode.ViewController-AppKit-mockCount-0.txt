@@ -13,40 +13,32 @@ internal protocol <nodeName>Receiver: AnyObject {}
  */
 internal final class <nodeName>ViewController: <viewControllerType>, StateObserver {
 
-    <viewControllerProperties>
-
     /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 
-    /// The collection of cancellable instances.
-    private var cancellables: Set<<cancellableType>> = .init()
+    <viewControllerSubscriptionsProperty>
 
     /// The initial view state.
     private let initialState: <nodeName>ViewState
 
-    /// The view state publisher.
-    private let statePublisher: <publisherType><<nodeName>ViewState, <publisherFailureType>>
+    /// <viewStatePropertyComment>.
+    private let <viewStatePropertyName>: <publisherType><<nodeName>ViewState>
 
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialState: The initial view state.
-    ///   - statePublisher: The view state publisher.
+    ///   - <viewStatePropertyName>: <viewStatePropertyComment>.
     internal init(
         initialState: <nodeName>ViewState,
-        statePublisher: <publisherType><<nodeName>ViewState, <publisherFailureType>>
+        <viewStatePropertyName>: <publisherType><<nodeName>ViewState>
     ) {
         self.initialState = initialState
-        self.statePublisher = statePublisher
-            <viewStateOperators>
-        super.init(<viewControllerSuperParameters>)
+        self.<viewStatePropertyName> = <viewStatePropertyName>
+        super.init()
     }
 
-    <viewControllerMethods>
-
-    internal func update(with viewState: <nodeName>ViewState) {
-        <viewControllerUpdateComment>
-    }
+    internal func update(with viewState: <nodeName>ViewState) {}
 }
 
 extension <nodeName>ViewController: <nodeName>ViewControllable {}

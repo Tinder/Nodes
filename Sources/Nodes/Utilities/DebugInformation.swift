@@ -279,6 +279,7 @@ public enum DebugInformation {
     }
 
     private enum UserInfoKey {
+
         case flowIdentifier
         case flowType
         case factory

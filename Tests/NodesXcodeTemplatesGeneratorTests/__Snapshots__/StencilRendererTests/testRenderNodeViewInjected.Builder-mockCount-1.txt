@@ -38,7 +38,7 @@ internal typealias <nodeName>DynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
-internal final class <nodeName>Component: Component
+public final class <nodeName>Component: Component
 <
     <nodeName>Dependency
 > {
@@ -68,8 +68,10 @@ internal final class <nodeName>Component: Component
 
      */
 
+    // periphery:ignore
     private let dynamicDependency: <nodeName>DynamicComponentDependency
 
+    // periphery:ignore
     /// The initializer.
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
@@ -96,6 +98,7 @@ internal final class <nodeName>Component: Component
 
 // MARK: - Builder
 
+// periphery:ignore
 /**
  PURPOSE:
  The Builder interface (available to mock for testability).
@@ -107,6 +110,7 @@ internal protocol <nodeName>Builder: AnyObject {
     ) -> <nodeName>Flow
 }
 
+// periphery:ignore
 /**
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.

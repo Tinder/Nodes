@@ -9,7 +9,12 @@
   ▿ baseImports: 2 members
     - "<baseImports-1>"
     - "<baseImports-2>"
-  - cancellableType: "<cancellableType>"
+  ▿ baseTestImports: 2 members
+    - "<baseTestImports-1>"
+    - "<baseTestImports-2>"
+  ▿ contextGenericTypes: 2 elements
+    - "<contextGenericTypes-1>"
+    - "<contextGenericTypes-2>"
   ▿ dependencies: 2 elements
     ▿ Variable
       - name: "<dependencies-name-1>"
@@ -28,6 +33,9 @@
     ▿ Variable
       - name: "<flowProperties-name-2>"
       - type: "<flowProperties-type-2>"
+  - isPeripheryCommentEnabled: true
+  - isPreviewProviderEnabled: true
+  - isTestTemplatesGenerationEnabled: true
   - isViewInjectedTemplateEnabled: true
   - publisherFailureType: "<publisherFailureType>"
   - publisherType: "<publisherType>"
@@ -37,18 +45,18 @@
   ▿ uiFrameworks: 4 elements
     ▿ UIFramework
       - framework: Framework.appKit
+      - viewControllableMockContents: "<viewControllableMockContents-AppKit>"
       - viewControllerMethods: "<viewControllerMethods-AppKit>"
-      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-AppKit>"
       - viewControllerProperties: "<viewControllerProperties-AppKit>"
     ▿ UIFramework
       - framework: Framework.uiKit
+      - viewControllableMockContents: "<viewControllableMockContents-UIKit>"
       - viewControllerMethods: "<viewControllerMethods-UIKit>"
-      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-UIKit>"
       - viewControllerProperties: "<viewControllerProperties-UIKit>"
     ▿ UIFramework
       - framework: Framework.swiftUI
+      - viewControllableMockContents: "<viewControllableMockContents-SwiftUI>"
       - viewControllerMethods: "<viewControllerMethods-SwiftUI>"
-      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-SwiftUI>"
       - viewControllerProperties: "<viewControllerProperties-SwiftUI>"
     ▿ UIFramework
       ▿ framework: Framework
@@ -57,10 +65,18 @@
           - import: "<uiFrameworkImport>"
           - viewControllerType: "<viewControllerType>"
           - viewControllerSuperParameters: "<viewControllerSuperParameters>"
+      - viewControllableMockContents: "<viewControllableMockContents-Custom>"
       - viewControllerMethods: "<viewControllerMethods-Custom>"
-      - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode-Custom>"
       - viewControllerProperties: "<viewControllerProperties-Custom>"
   - viewControllableFlowType: "<viewControllableFlowType>"
   - viewControllableType: "<viewControllableType>"
+  - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
   - viewControllerUpdateComment: "<viewControllerUpdateComment>"
+  - viewStateEmptyFactory: "<viewStateEmptyFactory>"
   - viewStateOperators: "<viewStateOperators>"
+  - viewStatePropertyComment: "<viewStatePropertyComment>"
+  - viewStatePropertyName: "<viewStatePropertyName>"
+  - viewStateTransform: "<viewStateTransform>"
+  ▿ workerGenericTypes: 2 elements
+    - "<workerGenericTypes-1>"
+    - "<workerGenericTypes-2>"

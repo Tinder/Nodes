@@ -14,12 +14,7 @@ internal protocol <nodeName>Receiver: AnyObject {}
 internal final class <nodeName>ViewController: <viewControllerType>
 <
     <nodeName>View
-> {
-
-    <viewControllerProperties>
-
-    <viewControllerMethods>
-}
+> {}
 
 extension <nodeName>ViewController: <nodeName>ViewControllable {}
 
@@ -27,14 +22,7 @@ extension <nodeName>ViewController: <nodeName>ViewControllable {}
  PURPOSE:
  Concrete implementation of the View.
  */
-internal struct <nodeName>View: NodesView {
-
-    /// The body of the view.
-    internal var body: some View {
-        WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
-            Text(verbatim: "\(type(of: viewState))")
-        }
-    }
+internal struct <nodeName>View {
 
     /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
@@ -42,34 +30,39 @@ internal struct <nodeName>View: NodesView {
     /// The initial view state.
     private let initialState: <nodeName>ViewState
 
-    /// The view state publisher.
-    private let statePublisher: <publisherType><<nodeName>ViewState, <publisherFailureType>>
+    /// <viewStatePropertyComment>.
+    private let <viewStatePropertyName>: <publisherType><<nodeName>ViewState>
 
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialState: The initial view state.
-    ///   - statePublisher: The view state publisher.
+    ///   - <viewStatePropertyName>: <viewStatePropertyComment>.
     internal init(
         initialState: <nodeName>ViewState,
-        statePublisher: <publisherType><<nodeName>ViewState, <publisherFailureType>>
+        <viewStatePropertyName>: <publisherType><<nodeName>ViewState>
     ) {
         self.initialState = initialState
-        self.statePublisher = statePublisher
-            <viewStateOperators>
+        self.<viewStatePropertyName> = <viewStatePropertyName>
     }
 }
 
-/**
- PURPOSE:
- The SwiftUI preview (excluded from release builds).
- */
-internal struct <nodeName>View_Previews: PreviewProvider {
+// MARK: - View
 
-    internal static var previews: some View {
-        <nodeName>View(
-            initialState: <nodeName>ViewState(),
-            statePublisher: Empty().eraseToAnyPublisher()
-        )
+extension <nodeName>View: View {
+
+    internal var body: some View {
+        WithViewState(initialState: initialState, <viewStatePropertyName>: <viewStatePropertyName>) { viewState in
+            Text(verbatim: "\(type(of: viewState))")
+        }
     }
+}
+
+// MARK: - Preview
+
+#Preview {
+    <nodeName>View(
+        initialState: <nodeName>ViewState(),
+        <viewStatePropertyName>: <viewStateEmptyFactory>
+    )
 }

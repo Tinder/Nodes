@@ -25,6 +25,11 @@ options:
     type: string
     required: true
 
+  - question: "[OPTIONAL] Nodes repository absolute file path (overrides Nodes version requirement):"
+    name: path
+    type: string
+    required: false
+
 files:
 
   - path: .gitignore
@@ -55,7 +60,7 @@ files:
       - anonymous_argument_in_multiline_closure
       - anyobject_protocol
       - array_init
-      - attributes
+      # - attributes
       - balanced_xctest_lifecycle
       - blanket_disable_command
       - block_based_kvo
@@ -876,10 +881,6 @@ files:
           /// Implement logic to execute when the Context will become inactive.
           override internal func willResignActive() {}
 
-          deinit {
-              LeakDetector.detect(analytics)
-          }
-
           private func subscribe(to windowSceneState: AnyPublisher<WindowSceneState, Never>) {
               windowSceneState
                   .filter(\.isAdded)
@@ -1045,7 +1046,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
-      internal final class SceneComponent: Component
+      public final class SceneComponent: Component
       <
           SceneDependency
       > {
@@ -1237,10 +1238,6 @@ files:
 
           /// Implement logic to execute when the Context will become inactive.
           override internal func willResignActive() {}
-
-          deinit {
-              LeakDetector.detect(analytics)
-          }
       }
 
       extension SceneContextImp: SceneContextInterface {}
@@ -1396,7 +1393,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
-      internal final class WindowComponent: Component
+      public final class WindowComponent: Component
       <
           WindowDependency
       > {
@@ -1588,10 +1585,6 @@ files:
 
           /// Implement logic to execute when the Context will become inactive.
           override internal func willResignActive() {}
-
-          deinit {
-              LeakDetector.detect(analytics)
-          }
       }
 
       extension WindowContextImp: WindowContextInterface {}
@@ -1740,7 +1733,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
-      internal final class RootComponent: Component
+      public final class RootComponent: Component
       <
           RootDependency
       > {
@@ -1851,13 +1844,9 @@ files:
               )
               context.listener = listener
               let viewStateFactory: RootViewStateFactory = .init()
-              let viewState: Publishers.Map = .init(
-                  upstream: context.$state,
-                  transform: viewStateFactory
-              )
               let viewController: RootViewController = .init(
                   initialState: viewStateFactory(context.state),
-                  statePublisher: viewState.eraseToAnyPublisher()
+                  statePublisher: Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()
               )
               viewController.receiver = context
               let flow: RootFlowImp = .init(
@@ -1915,7 +1904,8 @@ files:
           internal weak var listener: RootListener?
 
           /// The State instance.
-          @Published internal private(set) var state: RootState
+          @Published
+          internal private(set) var state: RootState
 
           /// The Analytics instance.
           private let analytics: RootAnalytics
@@ -1941,10 +1931,6 @@ files:
 
           /// Implement logic to execute when the Context will become inactive.
           override internal func willResignActive() {}
-
-          deinit {
-              LeakDetector.detect(analytics)
-          }
       }
 
       extension RootContextImp: RootContextInterface {}
@@ -2133,7 +2119,7 @@ files:
 
           override internal func viewWillDisappear(_ animated: Bool) {
               super.viewWillDisappear(animated)
-              cancellables.removeAll()
+              cancellables.cancelAll()
           }
 
           internal func update(with viewState: RootViewState) {
@@ -2350,12 +2336,16 @@ files:
           products: [],
           dependencies: [
               .package(
+                  {% if path %}
+                  path: "{{ path }}"),
+                  {% else %}
                   url: "git@github.com:TinderApp/Nodes.git",
                   from: "{{ nodes }}"),
+                  {% endif %}
           ],
           targets: [
               .binaryTarget(
-                  name: "SwiftLintBinary-Investigations",
+                  name: "SwiftLintBinary-{{ project|split:' '|join:'_' }}",
                   url: "https://github.com/realm/SwiftLint/releases/download/0.52.4/SwiftLintBinary-macos.artifactbundle.zip",
                   checksum: "8a8095e6235a07d00f34a9e500e7568b359f6f66a249f36d12cd846017a8c6f5"),
           ]
@@ -2399,6 +2389,8 @@ files:
                   -e 'end tell' \
                   -e 'end if'
               unset WORKSPACE_DOCUMENT_NAME
+          else
+              echo "AppleScript is not executed in CI."
           fi
           NEEDLE_GENERATED="{{ project|split:' '|join:'_' }}/Generated/NeedleGenerated.swift"
           MOCKOLO_GENERATED="{{ project|split:' '|join:'_' }}Tests/Generated/MockoloGenerated.swift"
@@ -2411,14 +2403,24 @@ files:
           then
               swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
               xed {{ project|split:' '|join:'_' }}.xcodeproj
+          else
+              echo "Nodes Xcode templates are not installed in CI."
+              echo "Xcode project is not opened in CI."
           fi
       packages:
         Nodes:
+          {% if path %}
+          path: {{ path }}
+          {% else %}
           url: git@github.com:TinderApp/Nodes.git
           from: {{ nodes }}
+          {% endif %}
         NeedleFoundation:
           url: https://github.com/uber/needle.git
-          from: 0.18.0
+          from: 0.24.0
+        Nimble:
+          url: https://github.com/Quick/Nimble
+          from: 13.0.0
       configFiles:
         Debug: BuildSettings/Debug.xcconfig
         Release: BuildSettings/Release.xcconfig
@@ -2436,14 +2438,19 @@ files:
             - name: SwiftLint
               basedOnDependencyAnalysis: false
               script: |
-                # Ignore Bazel environment variable (if set)
-                # https://bazel.build/docs/user-manual#running-executables
-                # https://github.com/realm/SwiftLint/blob/0.52.4/Source/swiftlint/Commands/SwiftLint.swift#L8
-                unset BUILD_WORKSPACE_DIRECTORY
+                if test -z "$CI"
+                then
+                    # Ignore Bazel environment variable (if set)
+                    # https://bazel.build/docs/user-manual#running-executables
+                    # https://github.com/realm/SwiftLint/blob/0.52.4/Source/swiftlint/Commands/SwiftLint.swift#L8
+                    unset BUILD_WORKSPACE_DIRECTORY
 
-                DIRECTORY_NAME=$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]')
+                    DIRECTORY_NAME=$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]')
 
-                "$(find ".build/artifacts/${DIRECTORY_NAME}" -type f -name swiftlint -perm +111 -print -quit)"
+                    "$(find ".build/artifacts/${DIRECTORY_NAME}" -type f -name swiftlint -perm +111 -print -quit)"
+                else
+                    echo "SwiftLint is skipped in CI."
+                fi
             - name: Needle
               basedOnDependencyAnalysis: false
               script: >
@@ -2496,6 +2503,7 @@ files:
             - target: {{ project|split:' '|join:'_' }}
             - package: Nodes
               product: NodesTesting
+            - package: Nimble
           preBuildScripts:
             - name: Mockolo
               basedOnDependencyAnalysis: false
@@ -2504,7 +2512,11 @@ files:
                 -d {{ project|split:' '|join:'_' }}Tests/Generated/MockoloGenerated.swift
                 -i {{ project|split:' '|join:'_' }}
                 -s {{ project|split:' '|join:'_' }}/Sources
+                {% if path %}
+                -s {{ path }}/Sources/Nodes
+                {% else %}
                 -s ${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes
+                {% endif %}
                 --custom-imports Nodes
           sources: {{ project|split:' '|join:'_' }}Tests
           configFiles:

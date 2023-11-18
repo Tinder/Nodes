@@ -10,10 +10,7 @@ internal protocol <workerName>Worker: Worker {}
  PURPOSE:
  Concrete implementation of the Worker.
  */
-internal final class <workerName>WorkerImp: AbstractWorker
-<
-    <cancellableType>
-> {
+internal final class <workerName>WorkerImp: AbstractWorker {
 
     /// The initializer.
     override internal init() {}

@@ -23,18 +23,23 @@ internal protocol <nodeName>FlowInterface: Flow {}
  */
 internal final class <nodeName>ContextImp: AbstractContext
 <
-    <cancellableType>
+    <contextGenericType1>,
+    <contextGenericType2>
 > {
 
+    // periphery:ignore
     /// The Flow instance.
     internal weak var flow: <nodeName>FlowInterface?
 
+    // periphery:ignore
     /// The Listener instance.
     internal weak var listener: <nodeName>Listener?
 
     /// The State instance.
-    @Published internal private(set) var state: <nodeName>State
+    @Published
+    internal private(set) var state: <nodeName>State
 
+    // periphery:ignore
     /// The Analytics instance.
     private let analytics: <nodeName>Analytics
 
@@ -56,10 +61,6 @@ internal final class <nodeName>ContextImp: AbstractContext
 
     /// Implement logic to execute when the Context will become inactive.
     override internal func willResignActive() {}
-
-    deinit {
-        LeakDetector.detect(analytics)
-    }
 }
 
 extension <nodeName>ContextImp: <nodeName>ContextInterface {}

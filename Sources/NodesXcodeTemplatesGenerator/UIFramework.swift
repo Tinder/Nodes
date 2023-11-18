@@ -7,6 +7,7 @@ import Codextended
 public struct UIFramework: Equatable, Codable {
 
     public enum Kind: String, CaseIterable {
+
         case appKit = "AppKit"
         case uiKit = "UIKit"
         case swiftUI = "SwiftUI"
@@ -61,7 +62,7 @@ public struct UIFramework: Equatable, Codable {
             case .uiKit:
                 return "UIViewController"
             case .swiftUI:
-                return "AbstractViewHostingController"
+                return "UIHostingController"
             case let .custom(_, _, viewControllerType, _):
                 return viewControllerType
             }
@@ -145,7 +146,7 @@ public struct UIFramework: Equatable, Codable {
 
     public var viewControllerProperties: String
     public var viewControllerMethods: String
-    public var viewControllerMethodsForRootNode: String
+    public var viewControllableMockContents: String
 
     public init(framework: Framework) {
         switch framework.kind {
@@ -169,20 +170,20 @@ public struct UIFramework: Equatable, Codable {
         viewControllerMethods =
             (try? decoder.decodeString(CodingKeys.viewControllerMethods))
             ?? defaults.viewControllerMethods
-        viewControllerMethodsForRootNode =
-            (try? decoder.decodeString(CodingKeys.viewControllerMethodsForRootNode))
-            ?? defaults.viewControllerMethodsForRootNode
+        viewControllableMockContents =
+            (try? decoder.decodeString(CodingKeys.viewControllableMockContents))
+            ?? defaults.viewControllableMockContents
     }
 
     internal init(
         framework: Framework,
         viewControllerProperties: String,
         viewControllerMethods: String,
-        viewControllerMethodsForRootNode: String
+        viewControllableMockContents: String
     ) {
         self.framework = framework
         self.viewControllerProperties = viewControllerProperties
         self.viewControllerMethods = viewControllerMethods
-        self.viewControllerMethodsForRootNode = viewControllerMethodsForRootNode
+        self.viewControllableMockContents = viewControllableMockContents
     }
 }

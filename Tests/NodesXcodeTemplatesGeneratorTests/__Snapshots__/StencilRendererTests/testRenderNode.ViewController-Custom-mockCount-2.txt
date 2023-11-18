@@ -18,29 +18,29 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
 
     <viewControllerProperties>
 
+    // periphery:ignore
     /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 
-    /// The collection of cancellable instances.
-    private var cancellables: Set<<cancellableType>> = .init()
+    <viewControllerSubscriptionsProperty>
 
     /// The initial view state.
     private let initialState: <nodeName>ViewState
 
-    /// The view state publisher.
-    private let statePublisher: <publisherType><<nodeName>ViewState, <publisherFailureType>>
+    /// <viewStatePropertyComment>.
+    private let <viewStatePropertyName>: <publisherType><<nodeName>ViewState, <publisherFailureType>>
 
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialState: The initial view state.
-    ///   - statePublisher: The view state publisher.
+    ///   - <viewStatePropertyName>: <viewStatePropertyComment>.
     internal init(
         initialState: <nodeName>ViewState,
-        statePublisher: <publisherType><<nodeName>ViewState, <publisherFailureType>>
+        <viewStatePropertyName>: <publisherType><<nodeName>ViewState, <publisherFailureType>>
     ) {
         self.initialState = initialState
-        self.statePublisher = statePublisher
+        self.<viewStatePropertyName> = <viewStatePropertyName>
             <viewStateOperators>
         super.init(<viewControllerSuperParameters>)
     }

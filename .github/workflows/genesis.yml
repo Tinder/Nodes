@@ -1,0 +1,61 @@
+name: Genesis
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode_14.3.app/Contents/Developer
+
+jobs:
+  genesis:
+    name: Genesis
+    runs-on: macos-13
+    env:
+      SIMULATOR: iPhone 14
+    steps:
+    - name: Install dependencies
+      run: |
+        brew install mint xcodegen needle mockolo
+        mint install yonaskolb/genesis
+    - name: Checkout source
+      uses: actions/checkout@v3
+    - name: Create temporary directory
+      id: mktemp
+      run: echo "directory=$(mktemp -d)" >> "$GITHUB_OUTPUT"
+    - name: Generate project files
+      working-directory: ${{ steps.mktemp.outputs.directory }}
+      run: >
+        mint run genesis generate "${{ github.workspace }}/genesis.yml" --options
+        "nodes:0.0.0, project:Tinder, prefix:com.tinder, author:Author, date:$(date +"%-m/%-d/%y"), path:${{ github.workspace }}"
+    - name: Generate Xcode project
+      working-directory: ${{ steps.mktemp.outputs.directory }}
+      run: xcodegen
+    - name: Download swiftlint binary
+      working-directory: ${{ steps.mktemp.outputs.directory }}
+      run: swift package resolve
+    - name: Lint
+      working-directory: ${{ steps.mktemp.outputs.directory }}
+      run: |
+        DIRECTORY_NAME=$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]')
+        "$(find ".build/artifacts/${DIRECTORY_NAME}" -type f -name swiftlint -perm +111 -print -quit)" \
+        lint --strict --reporter github-actions-logging
+    - name: Resolve package dependencies
+      working-directory: ${{ steps.mktemp.outputs.directory }}
+      run: xcodebuild -resolvePackageDependencies
+    - name: Build
+      working-directory: ${{ steps.mktemp.outputs.directory }}
+      run: >
+        xcodebuild build-for-testing
+        -scheme "Tinder"
+        -destination "name=$SIMULATOR,OS=latest"
+        -configuration "Debug"
+    - name: Run tests
+      working-directory: ${{ steps.mktemp.outputs.directory }}
+      run: >
+        xcodebuild test-without-building
+        -scheme "Tinder"
+        -destination "name=$SIMULATOR,OS=latest"
+        -configuration "Debug"

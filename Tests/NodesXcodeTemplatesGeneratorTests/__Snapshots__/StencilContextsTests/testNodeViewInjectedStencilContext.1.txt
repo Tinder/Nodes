@@ -1,0 +1,84 @@
+▿ 18 key/value pairs
+  ▿ (2 elements)
+    - key: "analytics_imports"
+    ▿ value: 1 element
+      - "<analyticsImport>"
+  ▿ (2 elements)
+    - key: "analytics_properties"
+    ▿ value: 1 element
+      ▿ 2 key/value pairs
+        ▿ (2 elements)
+          - key: "name"
+          - value: "<analyticsPropertyName>"
+        ▿ (2 elements)
+          - key: "type"
+          - value: "<analyticsPropertyType>"
+  ▿ (2 elements)
+    - key: "builder_imports"
+    ▿ value: 1 element
+      - "<builderImport>"
+  ▿ (2 elements)
+    - key: "context_generic_types"
+    ▿ value: 1 element
+      - "<contextGenericType>"
+  ▿ (2 elements)
+    - key: "context_imports"
+    ▿ value: 1 element
+      - "<contextImport>"
+  ▿ (2 elements)
+    - key: "dependencies"
+    ▿ value: 1 element
+      ▿ 2 key/value pairs
+        ▿ (2 elements)
+          - key: "name"
+          - value: "<dependencyName>"
+        ▿ (2 elements)
+          - key: "type"
+          - value: "<dependencyType>"
+  ▿ (2 elements)
+    - key: "file_header"
+    - value: "<fileHeader>"
+  ▿ (2 elements)
+    - key: "flow_imports"
+    ▿ value: 1 element
+      - "<flowImport>"
+  ▿ (2 elements)
+    - key: "flow_properties"
+    ▿ value: 1 element
+      ▿ 2 key/value pairs
+        ▿ (2 elements)
+          - key: "name"
+          - value: "<flowPropertyName>"
+        ▿ (2 elements)
+          - key: "type"
+          - value: "<flowPropertyType>"
+  ▿ (2 elements)
+    - key: "is_nimble_enabled"
+    - value: true
+  ▿ (2 elements)
+    - key: "is_periphery_comment_enabled"
+    - value: true
+  ▿ (2 elements)
+    - key: "node_name"
+    - value: "<nodeName>"
+  ▿ (2 elements)
+    - key: "owns_view"
+    - value: false
+  ▿ (2 elements)
+    - key: "state_imports"
+    ▿ value: 1 element
+      - "<stateImport>"
+  ▿ (2 elements)
+    - key: "test_imports"
+    ▿ value: 1 element
+      - "<testImport>"
+  ▿ (2 elements)
+    - key: "view_controllable_flow_type"
+    - value: "<viewControllableFlowType>"
+  ▿ (2 elements)
+    - key: "view_controllable_type"
+    - value: "<viewControllableType>"
+  ▿ (2 elements)
+    - key: "worker_generic_types"
+    ▿ value: 1 element
+      - "<workerGenericType>"

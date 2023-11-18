@@ -41,16 +41,20 @@ public enum LeakDetector {
     ///   - object: The instance with which to detect the expected deallocation.
     ///   - delay: The time interval in seconds to wait before leak detection occurs.
     public static func detect(_ object: AnyObject, delay: TimeInterval = 1) {
+        struct WeakBox {
+            weak var object: AnyObject?
+        }
+        let box: WeakBox = .init(object: object)
         // swiftlint:disable:next discouraged_optional_collection
         let callStackSymbols: [String]? = callStackSymbols()
-        queue.asyncAfter(deadline: .now() + delay) { [weak object] in
-            guard let object: AnyObject
+        queue.asyncAfter(deadline: .now() + delay) {
+            guard let object: AnyObject = box.object
             else { return }
+            let message: String = "Expected object to deallocate: \(object)"
             DispatchQueue.main.async {
                 if let callStack: String = callStackSymbols?.joined(separator: "\n") {
                     print(callStack)
                 }
-                let message: String = "Expected object to deallocate: \(object)"
                 guard isDebuggedProcessBeingTraced
                 else { return assertionFailure(message) }
                 print(message)

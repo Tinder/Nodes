@@ -1,0 +1,18 @@
+▿ 5 key/value pairs
+  ▿ (2 elements)
+    - key: "file_header"
+    - value: "<fileHeader>"
+  ▿ (2 elements)
+    - key: "is_periphery_comment_enabled"
+    - value: true
+  ▿ (2 elements)
+    - key: "worker_generic_types"
+    ▿ value: 1 element
+      - "<workerGenericType>"
+  ▿ (2 elements)
+    - key: "worker_imports"
+    ▿ value: 1 element
+      - "<workerImport>"
+  ▿ (2 elements)
+    - key: "worker_name"
+    - value: "<workerName>"
