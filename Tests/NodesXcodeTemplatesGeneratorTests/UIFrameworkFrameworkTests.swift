@@ -75,16 +75,16 @@ final class UIFrameworkFrameworkTests: XCTestCase {
     func testDecodingWithEmptyForRequiredStrings() throws {
         let decoder: YAMLDecoder = .init()
         let type: UIFramework.Framework.Type = UIFramework.Framework.self
-        let requiredStrings: [(key: String, yaml: String)] = [
+        let required: [(key: String, yaml: String)] = [
             ("name", givenCustomYAML(name: "")),
             ("import", givenCustomYAML(import: "")),
             ("viewControllerType", givenCustomYAML(viewControllerType: ""))
         ]
-        for string in requiredStrings {
-            let data: Data = .init(string.yaml.utf8)
+        for (key, yaml) in required {
+            let data: Data = .init(yaml.utf8)
             expect(try decoder.decode(type, from: data)).to(throwError(errorType: DecodingError.self) { error in
                 expect(error.context?.underlyingError?.localizedDescription) == """
-                    ERROR: Empty String Not Allowed [`key: \(string.key)`] (TIP: Omit key for default value)
+                    ERROR: Empty String Not Allowed [`key: \(key)`] (TIP: Omit key for default value)
                     """
             })
         }
