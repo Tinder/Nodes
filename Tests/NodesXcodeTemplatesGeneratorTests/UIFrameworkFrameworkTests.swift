@@ -72,26 +72,21 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             }
     }
 
-    func testDecodingWithEmpty() {
-        let keys: [String] = ["name", "import", "viewControllerType"]
-        var yaml: String = """
-            custom:
-            """
-        for expectedKey: String in keys {
-            yaml.append("\n  \(expectedKey): ")
-            expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: Data(yaml.utf8)))
-                .to(throwError(errorType: DecodingError.self) { error in
-                    assertSnapshot(matching: error, as: .dump)
-                    yaml.append("<\(expectedKey)>")
-                    guard
-                        let error: Config.ConfigError = error.context?.underlyingError as? Config.ConfigError,
-                        let errorDescription: String = error.errorDescription
-                    else { return }
-                    expect(errorDescription) == """
-                        ERROR: Non-Empty String Required for key \(expectedKey) if present.
-                        Provide non-empty string or omit key to for default.
-                        """
-                })
+    func testDecodingWithEmptyForRequiredStrings() throws {
+        let keys: [(key: String, yaml: String)] = [
+            ("name", givenCustomYAML(name: "")),
+            ("import", givenCustomYAML(import: "")),
+            ("viewControllerType", givenCustomYAML(viewControllerType: ""))
+        ]
+        for key in keys {
+            let decoder: YAMLDecoder = .init()
+            let type: UIFramework.Framework.Type = UIFramework.Framework.self
+            let data: Data = .init(key.yaml.utf8)
+            expect(try decoder.decode(type, from: data)).to(throwError(errorType: DecodingError.self) { error in
+                expect(error.context?.underlyingError?.localizedDescription) == """
+                    ERROR: Empty String Not Allowed [`key: \(key)`] (TIP: Omit key config for default value)
+                    """
+            })
         }
     }
 
@@ -108,5 +103,20 @@ final class UIFrameworkFrameworkTests: XCTestCase {
                   viewControllerSuperParameters: \(viewControllerSuperParameters)
                 """
         }
+    }
+
+    private func givenCustomYAML(
+        name: String = "<name>",
+        import: String = "<import>",
+        viewControllerType: String = "<viewControllerType>",
+        viewControllerSuperParameters: String = "<viewControllerSuperParameters>"
+    ) -> String {
+        """
+        custom:
+          name: \(name)
+          import: \(`import`)
+          viewControllerType: \(viewControllerType)
+          viewControllerSuperParameters: \(viewControllerSuperParameters)
+        """
     }
 }

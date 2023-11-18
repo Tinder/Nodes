@@ -6,6 +6,7 @@ import Nimble
 import NodesXcodeTemplatesGenerator
 import SnapshotTesting
 import XCTest
+import Yams
 
 final class ConfigTests: XCTestCase, TestFactories {
 
@@ -62,22 +63,12 @@ final class ConfigTests: XCTestCase, TestFactories {
             "viewStatePropertyName",
             "viewStateTransform"
         ]
-        var yaml: String = ""
-        for expectedKey: String in keys {
-            yaml.append("\(expectedKey): ")
-            let fileSystem: FileSystemMock = .init()
-            let url: URL = .init(fileURLWithPath: "/")
-            fileSystem.contents[url] = Data(yaml.utf8)
-            expect(try Config(at: url.path, using: fileSystem)).to(throwError(errorType: DecodingError.self) { error in
-                assertSnapshot(matching: error, as: .dump)
-                yaml.append("<\(expectedKey)>\n")
-                guard
-                    let error: Config.ConfigError = error.context?.underlyingError as? Config.ConfigError,
-                    let errorDescription: String = error.errorDescription
-                else { return }
-                expect(errorDescription) == """
-                    ERROR: Non-Empty String Required for key \(expectedKey) if present.
-                    Provide non-empty string or omit key to for default.
+        for key: String in keys {
+            let data: Data = .init("\(key):".utf8)
+            let decoder: YAMLDecoder = .init()
+            expect(try decoder.decode(Config.self, from: data)).to(throwError(errorType: DecodingError.self) { error in
+                expect(error.context?.underlyingError?.localizedDescription) == """
+                    ERROR: Empty String Not Allowed [`key: \(key)`] (TIP: Omit key config for default value)
                     """
             })
         }
