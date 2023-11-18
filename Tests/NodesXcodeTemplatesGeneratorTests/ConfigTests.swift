@@ -52,7 +52,7 @@ final class ConfigTests: XCTestCase, TestFactories {
             }
     }
 
-    func testNonEmptyStringRequired() throws {
+    func testDecodingThrowsEmptyStringNotAllowed() throws {
         let decoder: YAMLDecoder = .init()
         let keys: [String] = [
             "publisherType",
