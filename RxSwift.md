@@ -64,8 +64,10 @@ isPreviewProviderEnabled: true
 Add the following types to the application:
 
 ```swift
+import Combine
 import Nodes
 import RxSwift
+import SwiftUI
 
 public class AbstractContext: _BaseContext {
 
@@ -113,6 +115,75 @@ extension StateObserver {
         observable.subscribe { [weak self] state in
             self?.update(with: state)
         }
+    }
+}
+
+public struct WithViewState
+<
+    ViewState,
+    Content: View
+>
+: View {
+
+    public var body: some View {
+        content(viewState).onReceive(observable) { viewState = $0 }
+    }
+
+    @State private var viewState: ViewState
+
+    private let observable: Observable<ViewState>
+    private let content: (ViewState) -> Content
+
+    public init<O: Observable<ViewState>>(
+        initialState: ViewState,
+        stateObservable observable: O,
+        @ViewBuilder content: @escaping (ViewState) -> Content
+    ) {
+        _viewState = State(initialValue: initialState)
+        self.observable = observable
+        self.content = content
+    }
+}
+
+extension Observable: Publisher {
+
+    public typealias Output = Element
+    public typealias Failure = Never
+
+    public func receive<S>(subscriber: S) where S: Subscriber, S.Input == Element, S.Failure == Never {
+        subscriber.receive(subscription: ObservableSubscription(subscriber: subscriber, observable: self))
+    }
+}
+
+internal final class ObservableSubscription
+<
+    T,
+    S: Subscriber
+>
+: NSObject, Subscription where S.Input == T,
+                               S.Failure == Never {
+
+    private var disposeBag: DisposeBag = .init()
+
+    private var subscriber: S?
+    private var observable: Observable<T>
+
+    internal init(subscriber: S, observable: Observable<T>) {
+        self.subscriber = subscriber
+        self.observable = observable
+    }
+
+    internal func request(_ demand: Subscribers.Demand) {
+        guard subscriber != nil
+        else { return }
+        observable
+            .subscribe { [weak self] in _ = self?.subscriber?.receive($0) }
+            .disposed(by: disposeBag)
+    }
+
+    internal func cancel() {
+        disposeBag = .init()
+        subscriber = nil
     }
 }
 ```
