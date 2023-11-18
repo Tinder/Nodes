@@ -67,9 +67,7 @@ final class ConfigTests: XCTestCase, TestFactories {
             .map { (key: $0, data: Data("\($0):".utf8)) }
             .forEach { key, data in
                 expect(try YAMLDecoder().decode(Config.self, from: data)).to(throwError { error in
-                    expect(error.context?.underlyingError?.localizedDescription) == """
-                        ERROR: Empty String Not Allowed [`key: \(key)`] (TIP: Omit key for default value)
-                        """
+                    assertSnapshot(matching: (key: key, error: error), as: .dump)
                 })
             }
     }

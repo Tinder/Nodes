@@ -82,9 +82,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             .map { (key: $0.key, data: Data($0.yaml.utf8)) }
             .forEach { key, data in
                 expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: data)).to(throwError { error in
-                    expect(error.context?.underlyingError?.localizedDescription) == """
-                        ERROR: Empty String Not Allowed [`key: \(key)`] (TIP: Omit key for default value)
-                        """
+                    assertSnapshot(matching: (key: key, error: error), as: .dump)
                 })
             }
     }
