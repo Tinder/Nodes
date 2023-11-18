@@ -181,7 +181,7 @@ private final class ObservableSubscription
     }
 
     func cancel() {
-        disposeBag = .init()
+        disposeBag = DisposeBag()
         subscriber = nil
     }
 }
