@@ -141,14 +141,12 @@ public struct UIFramework: Equatable, Codable {
                 ]
                 for (key, value) in required {
                     guard !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                    else { throw ConfigError.emptyStringNotAllowed(key: key)}
+                    else { throw Config.ConfigError.emptyStringNotAllowed(key: key)}
                 }
-                return try .custom(
-                    name: name,
-                    import: `import`,
-                    viewControllerType: viewControllerType,
-                    viewControllerSuperParameters: container.decode(String.self, forKey: .viewControllerSuperParameters)
-                )
+                return .custom(name: name,
+                               import: `import`,
+                               viewControllerType: viewControllerType,
+                               viewControllerSuperParameters: viewControllerSuperParameters)
             }
         }
     }
