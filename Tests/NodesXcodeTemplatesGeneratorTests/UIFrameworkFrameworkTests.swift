@@ -84,7 +84,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             let data: Data = .init(string.yaml.utf8)
             expect(try decoder.decode(type, from: data)).to(throwError(errorType: DecodingError.self) { error in
                 expect(error.context?.underlyingError?.localizedDescription) == """
-                    ERROR: Empty String Not Allowed [`key: \(string.key)`] (TIP: Omit key config for default value)
+                    ERROR: Empty String Not Allowed [`key: \(string.key)`] (TIP: Omit key for default value)
                     """
             })
         }

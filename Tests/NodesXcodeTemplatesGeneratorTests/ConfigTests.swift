@@ -68,7 +68,7 @@ final class ConfigTests: XCTestCase, TestFactories {
             let data: Data = .init("\(key):".utf8)
             expect(try decoder.decode(Config.self, from: data)).to(throwError(errorType: DecodingError.self) { error in
                 expect(error.context?.underlyingError?.localizedDescription) == """
-                    ERROR: Empty String Not Allowed [`key: \(key)`] (TIP: Omit key config for default value)
+                    ERROR: Empty String Not Allowed [`key: \(key)`] (TIP: Omit key for default value)
                     """
             })
         }
