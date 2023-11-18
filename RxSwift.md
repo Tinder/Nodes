@@ -148,25 +148,16 @@ private final class ObservableSubscription
 
     private var disposeBag: DisposeBag = .init()
 
-    private var subscriber: S?
-    private let observable: Observable<T>
-
     init(subscriber: S, observable: Observable<T>) {
-        self.subscriber = subscriber
-        self.observable = observable
-    }
-
-    func request(_ demand: Subscribers.Demand) {
-        guard subscriber != nil
-        else { return }
         observable
-            .subscribe { [weak self] in _ = self?.subscriber?.receive($0) }
+            .subscribe { _ = subscriber.receive($0) }
             .disposed(by: disposeBag)
     }
 
+    func request(_ demand: Subscribers.Demand) {}
+
     func cancel() {
         disposeBag = DisposeBag()
-        subscriber = nil
     }
 }
 ```
