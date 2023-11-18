@@ -155,7 +155,7 @@ extension Observable: Publisher {
     }
 }
 
-internal final class ObservableSubscription
+private final class ObservableSubscription
 <
     T,
     S: Subscriber
@@ -168,12 +168,12 @@ internal final class ObservableSubscription
     private var subscriber: S?
     private var observable: Observable<T>
 
-    internal init(subscriber: S, observable: Observable<T>) {
+    init(subscriber: S, observable: Observable<T>) {
         self.subscriber = subscriber
         self.observable = observable
     }
 
-    internal func request(_ demand: Subscribers.Demand) {
+    func request(_ demand: Subscribers.Demand) {
         guard subscriber != nil
         else { return }
         observable
@@ -181,7 +181,7 @@ internal final class ObservableSubscription
             .disposed(by: disposeBag)
     }
 
-    internal func cancel() {
+    func cancel() {
         disposeBag = .init()
         subscriber = nil
     }
