@@ -56,7 +56,6 @@ publisherType: Observable
 publisherFailureType: ""
 contextGenericTypes: []
 workerGenericTypes: []
-isPreviewProviderEnabled: true
 ```
 
 ## Step 2 - Add Supporting Types
