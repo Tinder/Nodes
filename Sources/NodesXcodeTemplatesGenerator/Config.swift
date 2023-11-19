@@ -221,7 +221,9 @@ extension Config {
             (key: "viewStateTransform", value: viewStateTransform)
         ]
         for (key, value) in required where value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            throw ConfigError.emptyStringNotAllowed(key: key)
+            let error: ConfigError = .emptyStringNotAllowed(key: key)
+            print(error.localizedDescription)
+            throw error
         }
     }
 }
