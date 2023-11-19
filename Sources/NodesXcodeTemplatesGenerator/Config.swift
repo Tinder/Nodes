@@ -128,9 +128,14 @@ extension Config {
     // swiftlint:disable:next function_body_length
     public init(from decoder: Decoder) throws {
         let defaults: Config = .init()
-        uiFrameworks =
-            (try? decoder.decode(CodingKeys.uiFrameworks))
-            ?? defaults.uiFrameworks
+        do {
+            uiFrameworks = try decoder.decode(CodingKeys.uiFrameworks)
+        } catch let error as ConfigError {
+            print(error.localizedDescription)
+            throw error
+        } catch {
+            uiFrameworks = defaults.uiFrameworks
+        }
         fileHeader =
             (try? decoder.decodeString(CodingKeys.fileHeader))
             ?? defaults.fileHeader
