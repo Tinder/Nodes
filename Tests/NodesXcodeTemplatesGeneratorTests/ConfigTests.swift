@@ -47,7 +47,7 @@ final class ConfigTests: XCTestCase, TestFactories {
                 expect(try config.uiFramework(for: kind))
                     .to(throwError(errorType: Config.ConfigError.self) { error in
                         expect(error) == .uiFrameworkNotDefined(kind: kind)
-                        expect(error.localizedDescription) == "ERROR: UIFramework Not Defined [`kind: \(kind)`]"
+                        expect(error.localizedDescription) == "ERROR: UIFramework Not Defined [kind: \(kind)]"
                     })
             }
     }
