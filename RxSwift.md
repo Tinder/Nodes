@@ -6,7 +6,7 @@ Using [RxSwift](https://github.com/ReactiveX/RxSwift) with Nodes requires custom
 
 Specify a path to a custom config file by providing the `--config` option when executing `nodes-xcode-templates-gen`.
 
-If utlizing the [quick start project setup](https://github.com/TinderApp/Nodes#quick-start), the path can be set in the `project.yml` file, for example:
+If utilizing the [quick start project setup](https://github.com/TinderApp/Nodes#quick-start), the path can be set in the `project.yml` file, for example:
 
 ```
 swift run -- nodes-xcode-templates-gen --id "RxSwift" --config "nodes.yml"
