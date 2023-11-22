@@ -72,7 +72,7 @@
       - "<baseImport>"
       - "Nodes"
     ▿ testImports: 1 element
-      - "<baseTestImports>"
+      - "<baseTestImport>"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableMockContents: "<viewControllableMockContents>"
     - viewControllableType: "<viewControllableType>"
