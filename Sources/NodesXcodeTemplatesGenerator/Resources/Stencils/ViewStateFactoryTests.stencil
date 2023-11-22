@@ -1,9 +1,9 @@
 {{ file_header }}
 
 #warning("Manually move this test file to the corresponding test target.")
-{% if test_imports %}
+{% if view_state_factory_tests_imports %}
 
-{% for import in test_imports %}
+{% for import in view_state_factory_tests_imports %}
 import {{ import }}
 {% endfor %}
 {% endif %}

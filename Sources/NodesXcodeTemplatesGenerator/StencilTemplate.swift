@@ -233,8 +233,10 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             return baseImports.union(config.reactiveImports)
         case .plugin, .pluginList:
             return baseImports.union(config.dependencyInjectionImports)
-        case .analyticsTests, .contextTests, .flowTests, .viewControllerTests, .viewStateFactoryTests:
+        case .analyticsTests, .contextTests, .flowTests, .viewStateFactoryTests:
             return config.baseTestImports
+        case .viewControllerTests:
+            return config.baseTestImports.union(config.reactiveImports)
         }
     }
 }

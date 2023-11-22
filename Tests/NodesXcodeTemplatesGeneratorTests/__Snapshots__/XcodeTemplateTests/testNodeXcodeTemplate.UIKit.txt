@@ -31,6 +31,8 @@
         ▿ (2 elements)
           - key: "type"
           - value: "<analyticsPropertiesType>"
+    ▿ analyticsTestsImports: 1 element
+      - "<baseTestImport>"
     ▿ builderImports: 4 elements
       - "<baseImport>"
       - "<dependencyInjectionImport>"
@@ -42,6 +44,8 @@
       - "<baseImport>"
       - "<reactiveImport>"
       - "Nodes"
+    ▿ contextTestsImports: 1 element
+      - "<baseTestImport>"
     ▿ dependencies: 1 element
       ▿ 2 key/value pairs
         ▿ (2 elements)
@@ -62,6 +66,8 @@
         ▿ (2 elements)
           - key: "type"
           - value: "<flowPropertiesType>"
+    ▿ flowTestsImports: 1 element
+      - "<baseTestImport>"
     - isNimbleEnabled: false
     - isPeripheryCommentEnabled: false
     - isPreviewProviderEnabled: false
@@ -71,8 +77,6 @@
     ▿ stateImports: 2 elements
       - "<baseImport>"
       - "Nodes"
-    ▿ testImports: 1 element
-      - "<baseTestImports>"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableMockContents: "<viewControllableMockContents>"
     - viewControllableType: "<viewControllableType>"
@@ -85,9 +89,14 @@
     - viewControllerProperties: "<viewControllerProperties>"
     - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
     - viewControllerSuperParameters: "nibName: nil, bundle: nil"
+    ▿ viewControllerTestsImports: 2 elements
+      - "<baseTestImport>"
+      - "<reactiveImport>"
     - viewControllerType: "UIViewController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateEmptyFactory: "<viewStateEmptyFactory>"
+    ▿ viewStateFactoryTestsImports: 1 element
+      - "<baseTestImport>"
     ▿ viewStateImports: 2 elements
       - "<baseImport>"
       - "Nodes"

@@ -2,8 +2,8 @@
 
 #warning("Manually move this test file to the corresponding test target.")
 
-import <testImport1>
-import <testImport2>
+import <analyticsTestsImport1>
+import <analyticsTestsImport2>
 
 final class <nodeName>AnalyticsTests: XCTestCase {
 

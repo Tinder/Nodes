@@ -11,7 +11,9 @@ public struct NodeViewInjectedStencilContext: StencilContext {
     private let contextImports: [String]
     private let flowImports: [String]
     private let stateImports: [String]
-    private let testImports: [String]
+    private let analyticsTestsImports: [String]
+    private let contextTestsImports: [String]
+    private let flowTestsImports: [String]
     private let dependencies: [[String: Any]]
     private let analyticsProperties: [[String: Any]]
     private let flowProperties: [[String: Any]]
@@ -32,7 +34,9 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             "context_imports": contextImports,
             "flow_imports": flowImports,
             "state_imports": stateImports,
-            "test_imports": testImports,
+            "analytics_tests_imports": analyticsTestsImports,
+            "context_tests_imports": contextTestsImports,
+            "flow_tests_imports": flowTestsImports,
             "dependencies": dependencies,
             "analytics_properties": analyticsProperties,
             "flow_properties": flowProperties,
@@ -53,7 +57,9 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         contextImports: Set<String>,
         flowImports: Set<String>,
         stateImports: Set<String>,
-        testImports: Set<String>,
+        analyticsTestsImports: Set<String>,
+        contextTestsImports: Set<String>,
+        flowTestsImports: Set<String>,
         dependencies: [Config.Variable],
         analyticsProperties: [Config.Variable],
         flowProperties: [Config.Variable],
@@ -73,7 +79,9 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         self.contextImports = contextImports.sortedImports()
         self.flowImports = flowImports.sortedImports()
         self.stateImports = stateImports.sortedImports()
-        self.testImports = testImports.sortedImports()
+        self.analyticsTestsImports = analyticsTestsImports.sortedImports()
+        self.contextTestsImports = contextTestsImports.sortedImports()
+        self.flowTestsImports = flowTestsImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)
         self.analyticsProperties = analyticsProperties.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)
