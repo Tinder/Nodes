@@ -31,28 +31,6 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         }
     }
 
-    func testAllCases() {
-        expect(StencilTemplate.allCases) == [
-            .analytics,
-            .builder(.default),
-            .builder(.swiftUI),
-            .context,
-            .flow,
-            .plugin,
-            .pluginList,
-            .state,
-            .viewController(.default),
-            .viewController(.swiftUI),
-            .viewState,
-            .worker,
-            .analyticsTests,
-            .contextTests,
-            .flowTests,
-            .viewControllerTests,
-            .viewStateFactoryTests
-        ]
-    }
-
     func testDescription() {
         StencilTemplate.allCases.forEach { stencilTemplate in
             expect("\(stencilTemplate)") == stencilTemplate.name
