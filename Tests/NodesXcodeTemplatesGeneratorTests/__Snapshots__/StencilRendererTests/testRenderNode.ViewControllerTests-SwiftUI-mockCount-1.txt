@@ -13,9 +13,9 @@ final class <nodeName>ViewControllerTests: XCTestCase {
     private func givenViewController(
         with state: <nodeName>ViewState
     ) -> <nodeName>ViewController {
-        <nodeName>ViewController(
+        <nodeName>ViewController(rootView: <nodeName>View(
             initialState: state,
-            <viewStatePropertyName>: <viewStateEmptyFactory>
-        )
+            statePublisher: Empty().eraseToAnyPublisher()
+        ))
     }
 }

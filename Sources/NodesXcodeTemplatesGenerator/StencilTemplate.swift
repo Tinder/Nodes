@@ -20,7 +20,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
     case analyticsTests
     case contextTests
     case flowTests
-    case viewControllerTests
+    case viewControllerTests(Variation)
     case viewStateFactoryTests
 
     /// Alternate Stencil source files for specific use cases.
@@ -63,7 +63,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             self.analyticsTests = .analyticsTests
             self.contextTests = .contextTests
             self.flowTests = .flowTests
-            self.viewControllerTests = .viewControllerTests
+            self.viewControllerTests = .viewControllerTests(variation)
             self.viewStateFactoryTests = .viewStateFactoryTests
         }
 
@@ -206,8 +206,10 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             return description
         case let .builder(variation), let .viewController(variation):
             return description.appending(variation.rawValue)
-        case .analyticsTests, .contextTests, .flowTests, .viewControllerTests, .viewStateFactoryTests:
+        case .analyticsTests, .contextTests, .flowTests, .viewStateFactoryTests:
             return description
+        case let .viewControllerTests(variation):
+            return description.appending(variation.rawValue)
         }
     }
 
