@@ -69,7 +69,7 @@
       - "<baseImport>"
       - "Nodes"
     ▿ testImports: 1 element
-      - "<baseTestImports>"
+      - "<baseTestImport>"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableType: "<viewControllableType>"
     ▿ workerGenericTypes: 1 element

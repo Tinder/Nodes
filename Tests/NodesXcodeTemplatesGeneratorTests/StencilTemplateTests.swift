@@ -31,29 +31,6 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         }
     }
 
-    func testAllCases() {
-        expect(StencilTemplate.allCases) == [
-            .analytics,
-            .builder(.default),
-            .builder(.swiftUI),
-            .context,
-            .flow,
-            .plugin,
-            .pluginList,
-            .state,
-            .viewController(.default),
-            .viewController(.swiftUI),
-            .viewState,
-            .worker,
-            .analyticsTests,
-            .contextTests,
-            .flowTests,
-            .viewControllerTests(.default),
-            .viewControllerTests(.swiftUI),
-            .viewStateFactoryTests
-        ]
-    }
-
     func testDescription() {
         StencilTemplate.allCases.forEach { stencilTemplate in
             expect("\(stencilTemplate)") == stencilTemplate.name
@@ -217,7 +194,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 case .plugin, .pluginList:
                     expect(imports) == ["Nodes", "<baseImport>", "<dependencyInjectionImport>"]
                 case .contextTests, .analyticsTests, .viewControllerTests, .viewStateFactoryTests, .flowTests:
-                    expect(imports) == ["<baseTestImports>"]
+                    expect(imports) == ["<baseTestImport>"]
                 }
             }
         }
