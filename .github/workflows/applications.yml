@@ -1,0 +1,13 @@
+name: Applications
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  applications:
+    name: Applications
+    runs-on: macos-13
+    steps:
+    - name: Applications
+      run: ls -lA /Applications
