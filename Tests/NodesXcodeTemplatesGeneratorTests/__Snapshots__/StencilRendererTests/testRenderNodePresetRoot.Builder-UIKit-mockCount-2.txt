@@ -78,8 +78,9 @@ public final class RootComponent: Component
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
     ///
-    /// - Parameter parent: The parent scope
-    /// - Parameter dynamicDependency: The dynamic component dependency
+    /// - Parameters:
+    ///   - parent: The parent scope
+    ///   - dynamicDependency: The dynamic component dependency
     internal init(parent: Scope, dynamicDependency: RootDynamicComponentDependency = ()) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)

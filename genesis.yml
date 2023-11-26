@@ -736,8 +736,9 @@ files:
           ///
           /// Remove `dynamicDependency` default parameter when its type is not `Void`.
           ///
-          /// - Parameter parent: The parent scope
-          /// - Parameter dynamicDependency: The dynamic component dependency
+          /// - Parameters:
+          ///   - parent: The parent scope
+          ///   - dynamicDependency: The dynamic component dependency
           internal init(dynamicDependency: AppDynamicComponentDependency = ()) {
               self.dynamicDependency = dynamicDependency
               super.init()
@@ -1082,8 +1083,9 @@ files:
           ///
           /// Remove `dynamicDependency` default parameter when its type is not `Void`.
           ///
-          /// - Parameter parent: The parent scope
-          /// - Parameter dynamicDependency: The dynamic component dependency
+          /// - Parameters:
+          ///   - parent: The parent scope
+          ///   - dynamicDependency: The dynamic component dependency
           internal init(parent: Scope, dynamicDependency: SceneDynamicComponentDependency = ()) {
               self.dynamicDependency = dynamicDependency
               super.init(parent: parent)
@@ -1429,8 +1431,9 @@ files:
           ///
           /// Remove `dynamicDependency` default parameter when its type is not `Void`.
           ///
-          /// - Parameter parent: The parent scope
-          /// - Parameter dynamicDependency: The dynamic component dependency
+          /// - Parameters:
+          ///   - parent: The parent scope
+          ///   - dynamicDependency: The dynamic component dependency
           internal init(parent: Scope, dynamicDependency: WindowDynamicComponentDependency = ()) {
               self.dynamicDependency = dynamicDependency
               super.init(parent: parent)
@@ -1769,8 +1772,9 @@ files:
           ///
           /// Remove `dynamicDependency` default parameter when its type is not `Void`.
           ///
-          /// - Parameter parent: The parent scope
-          /// - Parameter dynamicDependency: The dynamic component dependency
+          /// - Parameters:
+          ///   - parent: The parent scope
+          ///   - dynamicDependency: The dynamic component dependency
           internal init(parent: Scope, dynamicDependency: RootDynamicComponentDependency = ()) {
               self.dynamicDependency = dynamicDependency
               super.init(parent: parent)
