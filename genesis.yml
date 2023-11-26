@@ -2540,13 +2540,13 @@ files:
 
       ## Project Setup
 
-      ### Install dependencies
+      ### Install Dependencies
 
       ```
       brew install xcodegen needle mockolo
       ```
 
-      ### Generate Xcode project
+      ### Generate Xcode Project
 
       ```
       xcodegen
