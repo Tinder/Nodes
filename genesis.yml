@@ -285,12 +285,12 @@ files:
   - path: .swiftlint.yml
     contents: |
       included:
-      - {{ project|split:' '|join:'_' }}/Sources
-      - {{ project|split:' '|join:'_' }}Tests/Tests
+      - {{ project|replace:' ','_' }}/Sources
+      - {{ project|replace:' ','_' }}Tests/Tests
 
       excluded:
-      - {{ project|split:' '|join:'_' }}/Generated
-      - {{ project|split:' '|join:'_' }}Tests/Generated
+      - {{ project|replace:' ','_' }}/Generated
+      - {{ project|replace:' ','_' }}Tests/Generated
 
       child_config: .swiftlint-rules.yml
 
@@ -393,7 +393,7 @@ files:
       MTL_FAST_MATH = YES
       SDKROOT = iphoneos
 
-  - path: "{{ project|split:' '|join:'_' }}/Assets/Assets.xcassets/AccentColor.colorset/Contents.json"
+  - path: "{{ project|replace:' ','_' }}/Assets/Assets.xcassets/AccentColor.colorset/Contents.json"
     contents: |
       {
         "colors" : [
@@ -407,7 +407,7 @@ files:
         }
       }
 
-  - path: "{{ project|split:' '|join:'_' }}/Assets/Assets.xcassets/AppIcon.appiconset/Contents.json"
+  - path: "{{ project|replace:' ','_' }}/Assets/Assets.xcassets/AppIcon.appiconset/Contents.json"
     contents: |
       {
         "images" : [
@@ -508,7 +508,7 @@ files:
         }
       }
 
-  - path: "{{ project|split:' '|join:'_' }}/Assets/Assets.xcassets/Contents.json"
+  - path: "{{ project|replace:' ','_' }}/Assets/Assets.xcassets/Contents.json"
     contents: |
       {
         "info" : {
@@ -517,15 +517,15 @@ files:
         }
       }
 
-  - path: "{{ project|split:' '|join:'_' }}/BuildSettings/Debug.xcconfig"
+  - path: "{{ project|replace:' ','_' }}/BuildSettings/Debug.xcconfig"
     contents: |
       #include "Shared.xcconfig"
 
-  - path: "{{ project|split:' '|join:'_' }}/BuildSettings/Release.xcconfig"
+  - path: "{{ project|replace:' ','_' }}/BuildSettings/Release.xcconfig"
     contents: |
       #include "Shared.xcconfig"
 
-  - path: "{{ project|split:' '|join:'_' }}/BuildSettings/Shared.xcconfig"
+  - path: "{{ project|replace:' ','_' }}/BuildSettings/Shared.xcconfig"
     contents: |
       ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon
       ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor
@@ -535,12 +535,12 @@ files:
       SWIFT_VERSION = 5.0
       TARGETED_DEVICE_FAMILY = 1,2
 
-  - path: "{{ project|split:' '|join:'_' }}/Generated/.gitignore"
+  - path: "{{ project|replace:' ','_' }}/Generated/.gitignore"
     contents: |
       *
       !.gitignore
 
-  - path: "{{ project|split:' '|join:'_' }}/Resources/Base.lproj/LaunchScreen.storyboard"
+  - path: "{{ project|replace:' ','_' }}/Resources/Base.lproj/LaunchScreen.storyboard"
     contents: |
       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
       <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
@@ -568,11 +568,11 @@ files:
           </scenes>
       </document>
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/AppDelegate.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/AppDelegate.swift"
     contents: |
       //
       //  AppDelegate.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -610,11 +610,11 @@ files:
           }
       }
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/SceneDelegate.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/SceneDelegate.swift"
     contents: |
       //
       //  SceneDelegate.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -623,11 +623,11 @@ files:
 
       internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/1 App/AppAnalytics.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/1 App/AppAnalytics.swift"
     contents: |
       //
       //  AppAnalytics.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -660,11 +660,11 @@ files:
 
       extension AppAnalyticsImp: AppAnalytics {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/1 App/AppBuilder.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/1 App/AppBuilder.swift"
     contents: |
       //
       //  AppBuilder.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -819,11 +819,11 @@ files:
 
       extension AppBuilderImp: AppBuilder {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/1 App/AppContext.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/1 App/AppContext.swift"
     contents: |
       //
       //  AppContext.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -897,11 +897,11 @@ files:
 
       extension AppContextImp: AppContextInterface {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/1 App/AppFlow.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/1 App/AppFlow.swift"
     contents: |
       //
       //  AppFlow.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -960,11 +960,11 @@ files:
           }
       }
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/2 Scene/SceneAnalytics.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/2 Scene/SceneAnalytics.swift"
     contents: |
       //
       //  SceneAnalytics.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -997,11 +997,11 @@ files:
 
       extension SceneAnalyticsImp: SceneAnalytics {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/2 Scene/SceneBuilder.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/2 Scene/SceneBuilder.swift"
     contents: |
       //
       //  SceneBuilder.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -1177,11 +1177,11 @@ files:
 
       extension SceneBuilderImp: SceneBuilder {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/2 Scene/SceneContext.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/2 Scene/SceneContext.swift"
     contents: |
       //
       //  SceneContext.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -1242,11 +1242,11 @@ files:
 
       extension SceneContextImp: SceneContextInterface {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/2 Scene/SceneFlow.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/2 Scene/SceneFlow.swift"
     contents: |
       //
       //  SceneFlow.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -1309,11 +1309,11 @@ files:
       extension SceneFlowImp: SceneFlow {}
       extension SceneFlowImp: SceneFlowInterface {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/3 Window/WindowAnalytics.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/3 Window/WindowAnalytics.swift"
     contents: |
       //
       //  WindowAnalytics.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -1346,11 +1346,11 @@ files:
 
       extension WindowAnalyticsImp: WindowAnalytics {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/3 Window/WindowBuilder.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/3 Window/WindowBuilder.swift"
     contents: |
       //
       //  WindowBuilder.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -1524,11 +1524,11 @@ files:
 
       extension WindowBuilderImp: WindowBuilder {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/3 Window/WindowContext.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/3 Window/WindowContext.swift"
     contents: |
       //
       //  WindowContext.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -1589,11 +1589,11 @@ files:
 
       extension WindowContextImp: WindowContextInterface {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/3 Window/WindowFlow.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/3 Window/WindowFlow.swift"
     contents: |
       //
       //  WindowFlow.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -1649,11 +1649,11 @@ files:
       extension WindowFlowImp: WindowFlow {}
       extension WindowFlowImp: WindowFlowInterface {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/4 Root/RootAnalytics.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/4 Root/RootAnalytics.swift"
     contents: |
       //
       //  RootAnalytics.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -1686,11 +1686,11 @@ files:
 
       extension RootAnalyticsImp: RootAnalytics {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/4 Root/RootBuilder.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/4 Root/RootBuilder.swift"
     contents: |
       //
       //  RootBuilder.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -1860,11 +1860,11 @@ files:
 
       extension RootBuilderImp: RootBuilder {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/4 Root/RootContext.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/4 Root/RootContext.swift"
     contents: |
       //
       //  RootContext.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -1944,11 +1944,11 @@ files:
           }
       }
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/4 Root/RootFlow.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/4 Root/RootFlow.swift"
     contents: |
       //
       //  RootFlow.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -2011,11 +2011,11 @@ files:
           internal func didBecomeReady() {}
       }
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/4 Root/RootState.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/4 Root/RootState.swift"
     contents: |
       //
       //  RootState.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -2031,11 +2031,11 @@ files:
           internal var name: String
       }
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/4 Root/RootViewController.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/4 Root/RootViewController.swift"
     contents: |
       //
       //  RootViewController.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -2130,11 +2130,11 @@ files:
 
       extension RootViewController: RootViewControllable {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/4 Root/RootViewState.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/4 Root/RootViewState.swift"
     contents: |
       //
       //  RootViewState.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -2165,11 +2165,11 @@ files:
           }
       }
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/Services/AppService.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/Services/AppService.swift"
     contents: |
       //
       //  AppService.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -2231,18 +2231,18 @@ files:
           }
       }
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/System/NotificationCenter.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/System/NotificationCenter.swift"
     contents: |
       //
       //  NotificationCenter.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
 
       import Foundation
 
-      /// @mockable(module: prefix = {{ project|split:' '|join:'_' }})
+      /// @mockable(module: prefix = {{ project|replace:' ','_' }})
       internal protocol NotificationCenter {
           func publisher(for name: Notification.Name, object: AnyObject?) -> Foundation.NotificationCenter.Publisher
       }
@@ -2256,11 +2256,11 @@ files:
 
       extension Foundation.NotificationCenter: NotificationCenter {}
 
-  - path: "{{ project|split:' '|join:'_' }}/Sources/Utility/AnyCancellable+Cancellable.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/Utility/AnyCancellable+Cancellable.swift"
     contents: |
       //
       //  AnyCancellable+Cancellable.swift
-      //  {{ project|split:' '|join:'_' }}
+      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -2270,7 +2270,7 @@ files:
 
       extension Combine.AnyCancellable: Nodes.Cancellable {}
 
-  - path: "{{ project|split:' '|join:'_' }}Tests/.swiftlint.yml"
+  - path: "{{ project|replace:' ','_' }}Tests/.swiftlint.yml"
     contents: |
       disabled_rules:
       - explicit_acl
@@ -2284,15 +2284,15 @@ files:
       - type_body_length
       - weak_delegate
 
-  - path: "{{ project|split:' '|join:'_' }}Tests/BuildSettings/Debug.xcconfig"
+  - path: "{{ project|replace:' ','_' }}Tests/BuildSettings/Debug.xcconfig"
     contents: |
       #include "Shared.xcconfig"
 
-  - path: "{{ project|split:' '|join:'_' }}Tests/BuildSettings/Release.xcconfig"
+  - path: "{{ project|replace:' ','_' }}Tests/BuildSettings/Release.xcconfig"
     contents: |
       #include "Shared.xcconfig"
 
-  - path: "{{ project|split:' '|join:'_' }}Tests/BuildSettings/Shared.xcconfig"
+  - path: "{{ project|replace:' ','_' }}Tests/BuildSettings/Shared.xcconfig"
     contents: |
       ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
       BUNDLE_LOADER = $(TEST_HOST)
@@ -2301,25 +2301,25 @@ files:
       PRODUCT_NAME = $(TARGET_NAME)
       SWIFT_VERSION = 5.0
       TARGETED_DEVICE_FAMILY = 1,2
-      TEST_HOST = $(BUILT_PRODUCTS_DIR)/{{ project|split:' '|join:'_' }}.app/{{ project|split:' '|join:'_' }}
+      TEST_HOST = $(BUILT_PRODUCTS_DIR)/{{ project|replace:' ','_' }}.app/{{ project|replace:' ','_' }}
 
-  - path: "{{ project|split:' '|join:'_' }}Tests/Generated/.gitignore"
+  - path: "{{ project|replace:' ','_' }}Tests/Generated/.gitignore"
     contents: |
       *
       !.gitignore
 
-  - path: "{{ project|split:' '|join:'_' }}Tests/Tests/{{ project|split:' '|join:'_' }}Tests.swift"
+  - path: "{{ project|replace:' ','_' }}Tests/Tests/{{ project|replace:' ','_' }}Tests.swift"
     contents: |
       //
-      //  {{ project|split:' '|join:'_' }}Tests.swift
-      //  {{ project|split:' '|join:'_' }}Tests
+      //  {{ project|replace:' ','_' }}Tests.swift
+      //  {{ project|replace:' ','_' }}Tests
       //
       //  Created by {{ author }} on {{ date }}.
       //
 
       import XCTest
 
-      final class {{ project|split:' '|join:'_' }}Tests: XCTestCase {}
+      final class {{ project|replace:' ','_' }}Tests: XCTestCase {}
 
 
   - path: Makefile
@@ -2332,7 +2332,7 @@ files:
       import PackageDescription
 
       let package = Package(
-          name: "{{ project|split:' '|join:'_' }}",
+          name: "{{ project|replace:' ','_' }}",
           products: [],
           dependencies: [
               .package(
@@ -2345,7 +2345,7 @@ files:
           ],
           targets: [
               .binaryTarget(
-                  name: "SwiftLintBinary-{{ project|split:' '|join:'_' }}",
+                  name: "SwiftLintBinary-{{ project|replace:' ','_' }}",
                   url: "https://github.com/realm/SwiftLint/releases/download/0.52.4/SwiftLintBinary-macos.artifactbundle.zip",
                   checksum: "8a8095e6235a07d00f34a9e500e7568b359f6f66a249f36d12cd846017a8c6f5"),
           ]
@@ -2353,7 +2353,7 @@ files:
 
   - path: project.yml
     contents: |
-      name: {{ project|split:' '|join:'_' }}
+      name: {{ project|replace:' ','_' }}
       options:
         bundleIdPrefix: {{ prefix }}
         deploymentTarget:
@@ -2367,7 +2367,7 @@ files:
           set -e
           if test -z "$CI"
           then
-              WORKSPACE_DOCUMENT_NAME="{{ project|split:' '|join:'_' }}.xcodeproj"
+              WORKSPACE_DOCUMENT_NAME="{{ project|replace:' ','_' }}.xcodeproj"
               osascript \
                   -e 'set workspaceDocumentName to "'"${WORKSPACE_DOCUMENT_NAME}"'"' \
                   -e 'if app id "com.apple.dt.Xcode" is running then' \
@@ -2392,8 +2392,8 @@ files:
           else
               echo "AppleScript is not executed in CI."
           fi
-          NEEDLE_GENERATED="{{ project|split:' '|join:'_' }}/Generated/NeedleGenerated.swift"
-          MOCKOLO_GENERATED="{{ project|split:' '|join:'_' }}Tests/Generated/MockoloGenerated.swift"
+          NEEDLE_GENERATED="{{ project|replace:' ','_' }}/Generated/NeedleGenerated.swift"
+          MOCKOLO_GENERATED="{{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift"
           [[ -f "${NEEDLE_GENERATED}" ]] || touch "${NEEDLE_GENERATED}"
           [[ -f "${MOCKOLO_GENERATED}" ]] || touch "${MOCKOLO_GENERATED}"
           unset NEEDLE_GENERATED MOCKOLO_GENERATED
@@ -2402,7 +2402,7 @@ files:
           if test -z "$CI"
           then
               swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
-              xed {{ project|split:' '|join:'_' }}.xcodeproj
+              xed {{ project|replace:' ','_' }}.xcodeproj
           else
               echo "Nodes Xcode templates are not installed in CI."
               echo "Xcode project is not opened in CI."
@@ -2427,7 +2427,7 @@ files:
       fileGroups:
         - BuildSettings
       targets:
-        {{ project|split:' '|join:'_' }}:
+        {{ project|replace:' ','_' }}:
           type: application
           platform: iOS
           dependencies:
@@ -2455,20 +2455,20 @@ files:
               basedOnDependencyAnalysis: false
               script: >
                 env SOURCEKIT_LOGGING=0
-                needle generate {{ project|split:' '|join:'_' }}/Generated/NeedleGenerated.swift
-                {{ project|split:' '|join:'_' }}/Sources
-          sources: {{ project|split:' '|join:'_' }}
+                needle generate {{ project|replace:' ','_' }}/Generated/NeedleGenerated.swift
+                {{ project|replace:' ','_' }}/Sources
+          sources: {{ project|replace:' ','_' }}
           scheme:
             testTargets:
-              - {{ project|split:' '|join:'_' }}Tests
+              - {{ project|replace:' ','_' }}Tests
           configFiles:
-            Debug: {{ project|split:' '|join:'_' }}/BuildSettings/Debug.xcconfig
-            Release: {{ project|split:' '|join:'_' }}/BuildSettings/Release.xcconfig
+            Debug: {{ project|replace:' ','_' }}/BuildSettings/Debug.xcconfig
+            Release: {{ project|replace:' ','_' }}/BuildSettings/Release.xcconfig
           info:
-            path: {{ project|split:' '|join:'_' }}/Generated/Info.plist
+            path: {{ project|replace:' ','_' }}/Generated/Info.plist
             properties:
               CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
-              CFBundleDisplayName: {{ project|split:' '|join:'_' }}
+              CFBundleDisplayName: {{ project|replace:' ','_' }}
               CFBundleExecutable: $(EXECUTABLE_NAME)
               CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
               CFBundleInfoDictionaryVersion: "6.0"
@@ -2496,11 +2496,11 @@ files:
                 - UIInterfaceOrientationPortraitUpsideDown
                 - UIInterfaceOrientationLandscapeLeft
                 - UIInterfaceOrientationLandscapeRight
-        {{ project|split:' '|join:'_' }}Tests:
+        {{ project|replace:' ','_' }}Tests:
           type: bundle.unit-test
           platform: iOS
           dependencies:
-            - target: {{ project|split:' '|join:'_' }}
+            - target: {{ project|replace:' ','_' }}
             - package: Nodes
               product: NodesTesting
             - package: Nimble
@@ -2509,21 +2509,21 @@ files:
               basedOnDependencyAnalysis: false
               script: >
                 mockolo
-                -d {{ project|split:' '|join:'_' }}Tests/Generated/MockoloGenerated.swift
-                -i {{ project|split:' '|join:'_' }}
-                -s {{ project|split:' '|join:'_' }}/Sources
+                -d {{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift
+                -i {{ project|replace:' ','_' }}
+                -s {{ project|replace:' ','_' }}/Sources
                 {% if path %}
                 -s {{ path }}/Sources/Nodes
                 {% else %}
                 -s ${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes
                 {% endif %}
                 --custom-imports Nodes
-          sources: {{ project|split:' '|join:'_' }}Tests
+          sources: {{ project|replace:' ','_' }}Tests
           configFiles:
-            Debug: {{ project|split:' '|join:'_' }}Tests/BuildSettings/Debug.xcconfig
-            Release: {{ project|split:' '|join:'_' }}Tests/BuildSettings/Release.xcconfig
+            Debug: {{ project|replace:' ','_' }}Tests/BuildSettings/Debug.xcconfig
+            Release: {{ project|replace:' ','_' }}Tests/BuildSettings/Release.xcconfig
           info:
-            path: {{ project|split:' '|join:'_' }}Tests/Generated/Info.plist
+            path: {{ project|replace:' ','_' }}Tests/Generated/Info.plist
             properties:
               CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
               CFBundleExecutable: $(EXECUTABLE_NAME)
