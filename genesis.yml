@@ -2319,7 +2319,7 @@ files:
 
       import XCTest
 
-      final class {{ project|replace:' ','_' }}Tests: XCTestCase {}
+      final class {{ project|replace:' ','' }}Tests: XCTestCase {}
 
 
   - path: Makefile
