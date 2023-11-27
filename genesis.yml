@@ -29,6 +29,7 @@ options:
     name: path
     type: string
     required: false
+    value: " "
 
 files:
 
@@ -2336,7 +2337,7 @@ files:
           products: [],
           dependencies: [
               .package(
-                  {% if path %}
+                  {% if path|replace:' ','' %}
                   path: "{{ path }}"),
                   {% else %}
                   url: "git@github.com:TinderApp/Nodes.git",
@@ -2409,7 +2410,7 @@ files:
           fi
       packages:
         Nodes:
-          {% if path %}
+          {% if path|replace:' ','' %}
           path: {{ path }}
           {% else %}
           url: git@github.com:TinderApp/Nodes.git
@@ -2512,7 +2513,7 @@ files:
                 -d {{ project|split:' '|join:'_' }}Tests/Generated/MockoloGenerated.swift
                 -i {{ project|split:' '|join:'_' }}
                 -s {{ project|split:' '|join:'_' }}/Sources
-                {% if path %}
+                {% if path|replace:' ','' %}
                 -s {{ path }}/Sources/Nodes
                 {% else %}
                 -s ${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes
