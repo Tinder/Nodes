@@ -29,6 +29,7 @@ options:
     name: path
     type: string
     required: false
+    value: " "
 
 files:
 
@@ -736,8 +737,9 @@ files:
           ///
           /// Remove `dynamicDependency` default parameter when its type is not `Void`.
           ///
-          /// - Parameter parent: The parent scope
-          /// - Parameter dynamicDependency: The dynamic component dependency
+          /// - Parameters:
+          ///   - parent: The parent scope
+          ///   - dynamicDependency: The dynamic component dependency
           internal init(dynamicDependency: AppDynamicComponentDependency = ()) {
               self.dynamicDependency = dynamicDependency
               super.init()
@@ -1082,8 +1084,9 @@ files:
           ///
           /// Remove `dynamicDependency` default parameter when its type is not `Void`.
           ///
-          /// - Parameter parent: The parent scope
-          /// - Parameter dynamicDependency: The dynamic component dependency
+          /// - Parameters:
+          ///   - parent: The parent scope
+          ///   - dynamicDependency: The dynamic component dependency
           internal init(parent: Scope, dynamicDependency: SceneDynamicComponentDependency = ()) {
               self.dynamicDependency = dynamicDependency
               super.init(parent: parent)
@@ -1429,8 +1432,9 @@ files:
           ///
           /// Remove `dynamicDependency` default parameter when its type is not `Void`.
           ///
-          /// - Parameter parent: The parent scope
-          /// - Parameter dynamicDependency: The dynamic component dependency
+          /// - Parameters:
+          ///   - parent: The parent scope
+          ///   - dynamicDependency: The dynamic component dependency
           internal init(parent: Scope, dynamicDependency: WindowDynamicComponentDependency = ()) {
               self.dynamicDependency = dynamicDependency
               super.init(parent: parent)
@@ -1769,8 +1773,9 @@ files:
           ///
           /// Remove `dynamicDependency` default parameter when its type is not `Void`.
           ///
-          /// - Parameter parent: The parent scope
-          /// - Parameter dynamicDependency: The dynamic component dependency
+          /// - Parameters:
+          ///   - parent: The parent scope
+          ///   - dynamicDependency: The dynamic component dependency
           internal init(parent: Scope, dynamicDependency: RootDynamicComponentDependency = ()) {
               self.dynamicDependency = dynamicDependency
               super.init(parent: parent)
@@ -2336,7 +2341,7 @@ files:
           products: [],
           dependencies: [
               .package(
-                  {% if path %}
+                  {% if path|replace:' ','' %}
                   path: "{{ path }}"),
                   {% else %}
                   url: "git@github.com:TinderApp/Nodes.git",
@@ -2409,7 +2414,7 @@ files:
           fi
       packages:
         Nodes:
-          {% if path %}
+          {% if path|replace:' ','' %}
           path: {{ path }}
           {% else %}
           url: git@github.com:TinderApp/Nodes.git
@@ -2512,7 +2517,7 @@ files:
                 -d {{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift
                 -i {{ project|replace:' ','_' }}
                 -s {{ project|replace:' ','_' }}/Sources
-                {% if path %}
+                {% if path|replace:' ','' %}
                 -s {{ path }}/Sources/Nodes
                 {% else %}
                 -s ${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes
@@ -2540,13 +2545,13 @@ files:
 
       ## Project Setup
 
-      ### Install dependencies
+      ### Install Dependencies
 
       ```
       brew install xcodegen needle mockolo
       ```
 
-      ### Generate Xcode project
+      ### Generate Xcode Project
 
       ```
       xcodegen

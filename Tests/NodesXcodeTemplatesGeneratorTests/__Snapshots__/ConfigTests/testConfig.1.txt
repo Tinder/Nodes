@@ -36,7 +36,7 @@
   - isPeripheryCommentEnabled: true
   - isPreviewProviderEnabled: true
   - isTestTemplatesGenerationEnabled: true
-  - isViewInjectedTemplateEnabled: true
+  - isViewInjectedTemplateEnabled: false
   - publisherFailureType: "<publisherFailureType>"
   - publisherType: "<publisherType>"
   ▿ reactiveImports: 2 members
