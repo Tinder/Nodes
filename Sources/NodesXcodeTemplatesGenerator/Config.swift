@@ -53,7 +53,7 @@ public struct Config: Equatable, Codable {
     public var isTestTemplatesGenerationEnabled: Bool
     public var isPeripheryCommentEnabled: Bool
 
-    internal var isNimbleEnabled: Bool { baseTestImports.contains("Nimble") }
+    public var isNimbleEnabled: Bool { baseTestImports.contains("Nimble") }
 
     public init(
         at path: String,
