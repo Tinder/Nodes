@@ -54,13 +54,7 @@ Native mobile applications need to be good citizens within their host device and
 
 Documentation is available online at: [https://TinderApp.github.io/Nodes](https://TinderApp.github.io/Nodes)
 
-To build Nodes' [DocC](https://developer.apple.com/documentation/docc) documentation and open it in Xcode's documentation window:
-
-```
-git clone git@github.com:TinderApp/Nodes.git
-cd Nodes
-make docs
-```
+After following the [Quick Start](#quick-start) setup (below), documentation is viewable in Xcode by selecting `Build Documentation` from the `Product` menu.
 
 ## Quick Start
 
