@@ -54,7 +54,7 @@ Native mobile applications need to be good citizens within their host device and
 
 Documentation is available online at: [https://TinderApp.github.io/Nodes](https://TinderApp.github.io/Nodes)
 
-After following the [Quick Start](#quick-start) setup (below), documentation is viewable in Xcode by selecting `Build Documentation` from the `Product` menu.
+After completing the [Quick Start](#quick-start) setup (below), documentation is viewable in Xcode by selecting `Build Documentation` from the `Product` menu.
 
 ## Quick Start
 
