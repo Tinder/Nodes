@@ -76,7 +76,7 @@ public final class StencilRenderer {
 
     private func extensions() -> [Extension] {
         let ext: Extension = .init()
-        ext.registerFilter("lowercaseFirst") { value in
+        ext.registerFilter("decapitalize") { value in
             guard let string = value as? String
             else { return value }
             return string.prefix(1).lowercased() + string.dropFirst()
