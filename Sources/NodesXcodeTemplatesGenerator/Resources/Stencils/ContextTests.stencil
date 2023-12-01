@@ -1,6 +1,6 @@
 {{ file_header }}
 
-#warning("Manually move this test file to the corresponding test target.")
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
 {% if context_tests_imports %}
 
 {% for import in context_tests_imports %}
