@@ -21,18 +21,24 @@ final class {{ node_name }}FlowTests: XCTestCase {
 
     private var contextMock: {{ node_name }}ContextInterfaceMock!
     private var viewControllableMock: {{ node_name }}ViewControllableMock!
+    {% for property in flow_properties %}
+    private var {{ property.name }}Mock: {{ property.type }}Mock!
+    {% endfor %}
     private var flow: {{ node_name }}FlowImp!
 
     override func setUp() {
         super.setUp()
         contextMock = {{ node_name }}ContextInterfaceMock(isActive: true)
         viewControllableMock = {{ node_name }}ViewControllableMock()
+        {% for property in flow_properties %}
+        {{ property.name }}Mock = {{ property.type }}Mock()
+        {% endfor %}
         flow = {{ node_name }}FlowImp(
             context: contextMock,
             viewController: viewControllableMock{% if flow_properties %}{{ ',' }}
             {% endif %}
             {% for property in flow_properties %}
-            {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}
+            {{ property.name }}: {{ property.name }}Mock{% if not forloop.last %}{{ ',' }}
             {% endif %}
             {% endfor +%}
         )
@@ -46,6 +52,9 @@ final class {{ node_name }}FlowTests: XCTestCase {
     override func tearDown() {
         contextMock = nil
         viewControllableMock = nil
+        {% for property in flow_properties %}
+        {{ property.name }}Mock = nil
+        {% endfor %}
         flow = nil
         super.tearDown()
     }
