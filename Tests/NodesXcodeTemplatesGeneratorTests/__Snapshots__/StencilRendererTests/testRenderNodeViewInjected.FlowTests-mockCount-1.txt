@@ -10,18 +10,18 @@ final class <nodeName>FlowTests: XCTestCase {
 
     private var contextMock: <nodeName>ContextInterfaceMock!
     private var viewControllableMock: <nodeName>ViewControllableMock!
-    private var <flowPropertyName>Mock: <flowPropertyType>Mock!
+    private var <flowPropertyType>Mock: <flowPropertyType>Mock!
     private var flow: <nodeName>FlowImp!
 
     override func setUp() {
         super.setUp()
         contextMock = <nodeName>ContextInterfaceMock(isActive: true)
         viewControllableMock = <nodeName>ViewControllableMock()
-        <flowPropertyName>Mock = <flowPropertyType>Mock()
+        <flowPropertyType>Mock = <flowPropertyType>Mock()
         flow = <nodeName>FlowImp(
             context: contextMock,
             viewController: viewControllableMock,
-            <flowPropertyName>: <flowPropertyName>Mock
+            <flowPropertyName>: <flowPropertyType>Mock
         )
         expect { self.flow.isStarted } == true
     }
@@ -29,7 +29,7 @@ final class <nodeName>FlowTests: XCTestCase {
     override func tearDown() {
         contextMock = nil
         viewControllableMock = nil
-        <flowPropertyName>Mock = nil
+        <flowPropertyType>Mock = nil
         flow = nil
         super.tearDown()
     }
