@@ -39,7 +39,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
             viewControllerSuperParameters: uiFramework.viewControllerSuperParameters,
             viewControllerProperties: uiFramework.viewControllerProperties,
             viewControllerMethods: uiFramework.viewControllerMethods,
-            viewControllableMockContents: uiFramework.viewControllableMockContents,
+            viewControllableMockContents: config.viewControllableMockContents,
             viewControllerSubscriptionsProperty: config.viewControllerSubscriptionsProperty,
             viewControllerUpdateComment: config.viewControllerUpdateComment,
             viewStateEmptyFactory: config.viewStateEmptyFactory,

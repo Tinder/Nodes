@@ -34,8 +34,7 @@ extension UIFramework {
         UIFramework(
             framework: .uiKit,
             viewControllerProperties: "",
-            viewControllerMethods: Defaults.viewControllerMethods,
-            viewControllableMockContents: ""
+            viewControllerMethods: Defaults.viewControllerMethods
         )
     }
 }

@@ -24,7 +24,6 @@ extension TestFactories {
             var uiFramework: UIFramework = uiFramework
             uiFramework.viewControllerProperties = "<viewControllerProperties>"
             uiFramework.viewControllerMethods = "<viewControllerMethods>"
-            uiFramework.viewControllableMockContents = "<viewControllableMockContents>"
             return uiFramework
         }
         config.fileHeader = "<fileHeader>"
@@ -37,6 +36,7 @@ extension TestFactories {
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableFlowType = "<viewControllableFlowType>"
+        config.viewControllableMockContents = "<viewControllableMockContents>"
         config.viewControllerSubscriptionsProperty = "<viewControllerSubscriptionsProperty>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
         config.viewStateEmptyFactory = "<viewStateEmptyFactory>"
@@ -121,6 +121,7 @@ extension TestFactories {
             flowProperties: .mock(with: "flowProperty", count: mockCount),
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0,
