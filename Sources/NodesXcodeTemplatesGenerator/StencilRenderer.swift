@@ -63,7 +63,7 @@ public final class StencilRenderer {
             .appendingPathExtension("stencil")
         let template: String = try .init(contentsOf: stencilURL)
         let environment: Environment = .init(loader: DictionaryLoader(templates: [stencil.name: template]),
-                                             extensions: extensions(),
+                                             extensions: stencilExtensions(),
                                              trimBehaviour: .smart)
         return try environment.renderTemplate(name: stencil.name, context: context)
     }
@@ -74,7 +74,7 @@ public final class StencilRenderer {
         })
     }
 
-    private func extensions() -> [Extension] {
+    private func stencilExtensions() -> [Extension] {
         let stencilExtension: Extension = .init()
         stencilExtension.registerFilter("decapitalize") { value in
             guard let string = value as? String
