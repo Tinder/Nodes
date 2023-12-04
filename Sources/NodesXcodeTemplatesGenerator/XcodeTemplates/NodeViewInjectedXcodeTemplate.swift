@@ -36,6 +36,7 @@ internal struct NodeViewInjectedXcodeTemplate: XcodeTemplate {
             flowProperties: config.flowProperties,
             viewControllableType: config.viewControllableType,
             viewControllableFlowType: config.viewControllableFlowType,
+            viewControllableMockContents: config.viewControllableMockContents,
             contextGenericTypes: config.contextGenericTypes,
             workerGenericTypes: config.workerGenericTypes,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,

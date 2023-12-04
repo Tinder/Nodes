@@ -19,6 +19,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
     private let flowProperties: [[String: Any]]
     private let viewControllableType: String
     private let viewControllableFlowType: String
+    private let viewControllableMockContents: String
     private let contextGenericTypes: [String]
     private let workerGenericTypes: [String]
     private let isPeripheryCommentEnabled: Bool
@@ -42,6 +43,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             "flow_properties": flowProperties,
             "view_controllable_type": viewControllableType,
             "view_controllable_flow_type": viewControllableFlowType,
+            "view_controllable_mock_contents": viewControllableMockContents,
             "context_generic_types": contextGenericTypes,
             "worker_generic_types": workerGenericTypes,
             "is_periphery_comment_enabled": isPeripheryCommentEnabled,
@@ -65,6 +67,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         flowProperties: [Config.Variable],
         viewControllableType: String,
         viewControllableFlowType: String,
+        viewControllableMockContents: String,
         contextGenericTypes: [String],
         workerGenericTypes: [String],
         isPeripheryCommentEnabled: Bool,
@@ -87,6 +90,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         self.flowProperties = flowProperties.map(\.dictionary)
         self.viewControllableType = viewControllableType
         self.viewControllableFlowType = viewControllableFlowType
+        self.viewControllableMockContents = viewControllableMockContents
         self.contextGenericTypes = contextGenericTypes
         self.workerGenericTypes = workerGenericTypes
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled

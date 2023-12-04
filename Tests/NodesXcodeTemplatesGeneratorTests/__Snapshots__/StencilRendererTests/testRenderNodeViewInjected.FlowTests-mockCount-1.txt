@@ -1,12 +1,15 @@
 <fileHeader>
 
-#warning("Manually move this test file to the corresponding test target.")
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
 
 import <flowTestsImport>
 
 final class <nodeName>FlowTests: XCTestCase {
 
-    private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {}
+    private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {
+
+        <viewControllableMockContents>
+    }
 
     private var contextMock: <nodeName>ContextInterfaceMock!
     private var viewControllableMock: <nodeName>ViewControllableMock!

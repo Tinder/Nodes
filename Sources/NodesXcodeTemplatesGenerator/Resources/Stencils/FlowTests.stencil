@@ -1,6 +1,6 @@
 {{ file_header }}
 
-#warning("Manually move this test file to the corresponding test target.")
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
 {% if flow_tests_imports %}
 
 {% for import in flow_tests_imports %}

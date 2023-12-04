@@ -1,5 +1,4 @@
 ▿ UIFramework
   - framework: Framework.swiftUI
-  - viewControllableMockContents: ""
   - viewControllerMethods: "<viewControllerMethods>"
   - viewControllerProperties: "<viewControllerProperties>"

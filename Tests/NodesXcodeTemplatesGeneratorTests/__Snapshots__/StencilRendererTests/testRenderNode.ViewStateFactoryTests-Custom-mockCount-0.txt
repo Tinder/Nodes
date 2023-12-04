@@ -1,6 +1,6 @@
 <fileHeader>
 
-#warning("Manually move this test file to the corresponding test target.")
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
 
 internal final class <nodeName>ViewStateFactoryTests: XCTestCase {
 
