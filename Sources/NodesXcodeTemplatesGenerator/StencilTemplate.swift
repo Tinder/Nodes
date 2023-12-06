@@ -29,7 +29,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         case `default` = ""
         case swiftUI = "-SwiftUI"
 
-        internal static func variation(for kind: UIFramework.Kind) -> Self {
+        public static func variation(for kind: UIFramework.Kind) -> Self {
             kind == .swiftUI ? .swiftUI : .default
         }
     }
