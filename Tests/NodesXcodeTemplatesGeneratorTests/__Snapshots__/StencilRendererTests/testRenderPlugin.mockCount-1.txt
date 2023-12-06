@@ -12,7 +12,7 @@ public protocol <pluginName>PluginDependency: Dependency {}
  PURPOSE:
  Declares dependencies that are owned by this Plugin.
  */
-internal final class <pluginName>PluginComponent: Component
+public final class <pluginName>PluginComponent: Component
 <
     <pluginName>PluginDependency
 > {
@@ -61,6 +61,7 @@ internal final class <pluginName>PluginComponent: Component
  */
 internal typealias <pluginName>PluginStateType = Void
 
+// periphery:ignore
 /**
  PURPOSE:
  The Plugin interface (available to mock for testability).
@@ -69,6 +70,7 @@ internal protocol <pluginName>Plugin {
     func create() -> <returnType>?
 }
 
+// periphery:ignore
 /**
  PURPOSE:
  Concrete implementation of the Plugin.

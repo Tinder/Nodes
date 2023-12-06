@@ -1,0 +1,48 @@
+{{ file_header }}
+{% if worker_imports %}
+
+{% for import in worker_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
+/**
+ PURPOSE:
+ Encapsulates work to be performed by the Node.
+ */
+internal protocol {{ worker_name }}Worker: Worker {}
+
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
+/**
+ PURPOSE:
+ Concrete implementation of the Worker.
+ */
+{% if worker_generic_types %}
+internal final class {{ worker_name }}WorkerImp: AbstractWorker
+<
+    {% for generic_type in worker_generic_types %}
+    {{ generic_type }}{% if not forloop.last %},
+    {% endif %}
+    {% endfor %}
+
+> {
+{% else %}
+internal final class {{ worker_name }}WorkerImp: AbstractWorker {
+{% endif %}
+
+    /// The initializer.
+    override internal init() {}
+
+    /// Implement logic to execute when the Worker is started.
+    override internal func didStart() {}
+
+    /// Implement logic to execute when the Worker has stopped.
+    override internal func willStop() {}
+}
+
+extension {{ worker_name }}WorkerImp: {{ worker_name }}Worker {}

@@ -1,0 +1,143 @@
+//___FILEHEADER___
+
+import NeedleFoundation
+import Nodes
+
+/**
+ PURPOSE:
+ The common Flow interface.
+ */
+internal protocol ___VARIABLE_productName___Flow: ViewControllableFlow {}
+
+/**
+ PURPOSE:
+ The common Listener interface.
+ */
+internal protocol ___VARIABLE_productName___Listener: AnyObject {}
+
+/**
+ PURPOSE:
+ The common Builder interface.
+ */
+internal protocol ___VARIABLE_productName___Builder: AnyObject {
+    func build(
+        withListener listener: ___VARIABLE_productName___Listener
+    ) -> ___VARIABLE_productName___Flow
+}
+
+/**
+ PURPOSE:
+ Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
+ */
+public protocol ___VARIABLE_productName___PluginListDependency: Dependency {}
+
+/**
+ PURPOSE:
+ Declares dependencies that are owned by this Plugin List.
+ */
+public final class ___VARIABLE_productName___PluginListComponent: Component
+<
+    ___VARIABLE_productName___PluginListDependency
+> {
+
+    /*
+     Dependencies
+     ============
+
+     Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
+
+     fileprivate let example: Example = .init()
+
+     Whenever possible, for example when the dependency does not provide shared state, define the property as a
+     factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
+     Needle compatibility whenever the access control is increased.
+
+     fileprivate var exampleFactory: Example {
+         Example()
+     }
+
+     When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
+     that always returns the same instance from a computed property.
+
+     fileprivate var example: Example {
+         shared { Example(otherDependency: dependency.otherDependency) }
+     }
+
+     */
+
+    /*
+     Child Components
+     ================
+
+     Declare child component factories as 'fileprivate' methods.
+
+     fileprivate func <name>ComponentFactory() -> <Name>Component {
+         <Name>Component(parent: self)
+     }
+
+     */
+}
+
+/**
+ PURPOSE:
+ The type used for the keys of the Plugin List (can be any `Hashable` type such as `String` or an enumeration).
+ */
+internal typealias ___VARIABLE_productName___PluginListKeyType = String
+
+/**
+ PURPOSE:
+ To provide additional state used in determining if the plugins are enabled (can be any type relevant to the plugins).
+ */
+internal typealias ___VARIABLE_productName___PluginListStateType = Void
+
+/**
+ PURPOSE:
+ The Plugin List protocol (available to mock for testability).
+ */
+internal protocol ___VARIABLE_productName___PluginList {
+    func createAll() -> [___VARIABLE_productName___Builder]
+    func create() -> ___VARIABLE_productName___Builder?
+    func create(key: ___VARIABLE_productName___PluginListKeyType) -> ___VARIABLE_productName___Builder?
+}
+
+/**
+ PURPOSE:
+ Concrete implementation of the Plugin List providing the Plugin collection and (optionally) the creation order.
+ */
+internal final class ___VARIABLE_productName___PluginListImp: PluginList
+<
+    ___VARIABLE_productName___PluginListKeyType,
+    ___VARIABLE_productName___PluginListComponent,
+    ___VARIABLE_productName___Builder,
+    ___VARIABLE_productName___PluginListStateType
+> {
+
+    /// The method in which the Plugins are paired with keys and wrapped in type erased `AnyPlugin` instances.
+    /// - Parameter component: The component instance
+    /// - Returns: The Plugin collection
+    override internal func plugins(
+        component: ___VARIABLE_productName___PluginListComponent
+    ) -> KeyValuePairs<___VARIABLE_productName___PluginListKeyType, AnyPlugin> {
+        [:] // Example:
+//        [
+//            "example": AnyPlugin(ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create())
+//        ]
+    }
+
+    /// The method in which a custom creation order may (optionally) be defined.
+    ///
+    /// There is no need to call `super` when overriding this method unless it is desirable to reference (or modify)
+    /// the default order.
+    /// - Parameters:
+    ///   - component: The component instance
+    ///   - state: The state
+    /// - Returns: The keys defining the Plugin creation order
+    override internal func creationOrder(
+        component: ___VARIABLE_productName___PluginListComponent,
+        state: ___VARIABLE_productName___PluginListStateType
+    ) -> [___VARIABLE_productName___PluginListKeyType] {
+        super.creationOrder(component: component, state: state)
+    }
+}
+
+extension ___VARIABLE_productName___PluginListImp: ___VARIABLE_productName___PluginList {}

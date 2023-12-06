@@ -34,7 +34,7 @@ internal typealias <nodeName>DynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
-internal final class <nodeName>Component: Component
+public final class <nodeName>Component: Component
 <
     <nodeName>Dependency
 > {
@@ -70,8 +70,9 @@ internal final class <nodeName>Component: Component
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
     ///
-    /// - Parameter parent: The parent scope
-    /// - Parameter dynamicDependency: The dynamic component dependency
+    /// - Parameters:
+    ///   - parent: The parent scope
+    ///   - dynamicDependency: The dynamic component dependency
     internal init(parent: Scope, dynamicDependency: <nodeName>DynamicComponentDependency = ()) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
@@ -145,13 +146,9 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         )
         context.listener = listener
         let viewStateFactory: <nodeName>ViewStateFactory = .init()
-        let viewState: Publishers.Map = .init(
-            upstream: context.$state,
-            transform: viewStateFactory
-        )
         let viewController: <nodeName>ViewController = .init(
             initialState: viewStateFactory(context.state),
-            statePublisher: viewState.eraseToAnyPublisher()
+            <viewStatePropertyName>: <viewStateTransform>
         )
         viewController.receiver = context
         let flow: <nodeName>FlowImp = .init(

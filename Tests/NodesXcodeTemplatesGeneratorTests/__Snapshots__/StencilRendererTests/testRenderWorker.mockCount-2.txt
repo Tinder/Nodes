@@ -3,19 +3,22 @@
 import <workerImport1>
 import <workerImport2>
 
+// periphery:ignore
 /**
  PURPOSE:
  Encapsulates work to be performed by the Node.
  */
 internal protocol <workerName>Worker: Worker {}
 
+// periphery:ignore
 /**
  PURPOSE:
  Concrete implementation of the Worker.
  */
 internal final class <workerName>WorkerImp: AbstractWorker
 <
-    <cancellableType>
+    <workerGenericType1>,
+    <workerGenericType2>
 > {
 
     /// The initializer.

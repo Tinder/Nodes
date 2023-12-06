@@ -1,0 +1,105 @@
+{{ file_header }}
+{% if view_controller_imports %}
+
+{% for import in view_controller_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+/**
+ PURPOSE:
+ The interface that the View will speak to the Context through. Used for informing the Context of
+ view events and user interactions.
+ */
+{% if node_name == "Root" %}
+internal protocol {{ node_name }}Receiver: AnyObject {
+    func viewDidAppear()
+}
+{% else %}
+internal protocol {{ node_name }}Receiver: AnyObject {}
+{% endif %}
+
+/**
+ PURPOSE:
+ Concrete implementation of the UI.
+ */
+internal final class {{ node_name }}ViewController: {{ view_controller_type }}, StateObserver {
+    {% if view_controller_properties %}
+
+    {{ view_controller_properties|indent:4 }}
+    {% endif %}
+
+    {% if is_periphery_comment_enabled %}
+    // periphery:ignore
+    {% endif %}
+    /// The view receiver.
+    internal weak var receiver: {{ node_name }}Receiver?
+
+    {{ view_controller_subscriptions_property|indent:4 }}
+
+    /// The initial view state.
+    private let initialState: {{ node_name }}ViewState
+
+    /// {{ view_state_property_comment }}.
+    private let {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
+
+    /// The initializer.
+    ///
+    /// - Parameters:
+    ///   - initialState: The initial view state.
+    ///   - {{ view_state_property_name }}: {{ view_state_property_comment }}.
+    internal init(
+        initialState: {{ node_name }}ViewState,
+        {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
+    ) {
+        self.initialState = initialState
+        self.{{ view_state_property_name }} = {{ view_state_property_name }}
+            {% if view_state_operators %}
+            {{ view_state_operators|indent:12 }}
+            {% endif %}
+        super.init({{ view_controller_super_parameters }})
+    }
+    {% if node_name == "Root" %}
+
+    @available(*, unavailable)
+    internal required init?(coder: NSCoder) {
+        preconditionFailure("init(coder:) has not been implemented")
+    }
+
+    override internal func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        update(with: initialState)
+    }
+
+    override internal func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        observe(statePublisher).store(in: &cancellables)
+    }
+
+    override internal func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        receiver?.viewDidAppear()
+    }
+
+    override internal func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cancellables.cancelAll()
+    }
+    {% else %}
+    {% if view_controller_methods %}
+
+    {{ view_controller_methods|indent:4 }}
+    {% endif %}
+    {% endif %}
+
+    {% if view_controller_update_comment %}
+    internal func update(with viewState: {{ node_name }}ViewState) {
+        {{ view_controller_update_comment|indent:8 }}
+    }
+    {% else %}
+    internal func update(with viewState: {{ node_name }}ViewState) {}
+    {% endif %}
+}
+
+extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}

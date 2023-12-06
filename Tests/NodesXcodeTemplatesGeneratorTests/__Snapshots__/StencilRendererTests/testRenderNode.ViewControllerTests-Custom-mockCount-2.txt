@@ -1,0 +1,22 @@
+<fileHeader>
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+
+import <viewControllerTestsImport1>
+import <viewControllerTestsImport2>
+
+final class <nodeName>ViewControllerTests: XCTestCase {
+
+    func testNotNil() {
+        expect { self.givenViewController(with: <nodeName>ViewState()) } != nil
+    }
+
+    private func givenViewController(
+        with state: <nodeName>ViewState
+    ) -> <nodeName>ViewController {
+        <nodeName>ViewController(
+            initialState: state,
+            <viewStatePropertyName>: <viewStateEmptyFactory>
+        )
+    }
+}

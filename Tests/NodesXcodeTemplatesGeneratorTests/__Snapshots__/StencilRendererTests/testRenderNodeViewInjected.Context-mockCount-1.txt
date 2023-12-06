@@ -22,19 +22,23 @@ internal protocol <nodeName>FlowInterface: Flow {}
  */
 internal final class <nodeName>ContextImp: AbstractContext
 <
-    <cancellableType>
+    <contextGenericType>
 > {
 
+    // periphery:ignore
     /// The Flow instance.
     internal weak var flow: <nodeName>FlowInterface?
 
+    // periphery:ignore
     /// The Listener instance.
     internal weak var listener: <nodeName>Listener?
 
+    // periphery:ignore
     /// The State instance.
     @Published
     internal private(set) var state: <nodeName>State
 
+    // periphery:ignore
     /// The Analytics instance.
     private let analytics: <nodeName>Analytics
 

@@ -9,8 +9,6 @@ import XCTest
 
 final class ConfigTests: XCTestCase, TestFactories {
 
-    private typealias Config = XcodeTemplates.Config
-
     func testConfig() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
@@ -33,21 +31,22 @@ final class ConfigTests: XCTestCase, TestFactories {
     }
 
     func testUIFrameworkForKind() throws {
-        let config: XcodeTemplates.Config = givenConfig()
+        let config: Config = givenConfig()
         try UIFramework.Kind
             .allCases
             .forEach { expect(try config.uiFramework(for: $0).kind) == $0 }
     }
 
     func testUIFrameworkForKindIsNotDefined() throws {
-        var config: XcodeTemplates.Config = .init()
+        var config: Config = .init()
         config.uiFrameworks = []
         try UIFramework.Kind
             .allCases
             .forEach { kind in
                 expect(try config.uiFramework(for: kind))
-                    .to(throwError(errorType: XcodeTemplates.Config.ConfigError.self) { error in
+                    .to(throwError(errorType: Config.ConfigError.self) { error in
                         expect(error) == .uiFrameworkNotDefined(kind: kind)
+                        expect(error.localizedDescription) == "ERROR: UIFramework Not Defined [`kind: \(kind)`]"
                     })
             }
     }
@@ -58,15 +57,12 @@ final class ConfigTests: XCTestCase, TestFactories {
           - framework: AppKit
             viewControllerProperties: <viewControllerProperties-AppKit>
             viewControllerMethods: <viewControllerMethods-AppKit>
-            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-AppKit>
           - framework: UIKit
             viewControllerProperties: <viewControllerProperties-UIKit>
             viewControllerMethods: <viewControllerMethods-UIKit>
-            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-UIKit>
           - framework: SwiftUI
             viewControllerProperties: <viewControllerProperties-SwiftUI>
             viewControllerMethods: <viewControllerMethods-SwiftUI>
-            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-SwiftUI>
           - framework:
               custom:
                 name: <uiFrameworkName>
@@ -75,12 +71,13 @@ final class ConfigTests: XCTestCase, TestFactories {
                 viewControllerSuperParameters: <viewControllerSuperParameters>
             viewControllerProperties: <viewControllerProperties-Custom>
             viewControllerMethods: <viewControllerMethods-Custom>
-            viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode-Custom>
-        isViewInjectedTemplateEnabled: true
         fileHeader: <fileHeader>
         baseImports:
           - <baseImports-1>
           - <baseImports-2>
+        baseTestImports:
+          - <baseTestImports-1>
+          - <baseTestImports-2>
         reactiveImports:
           - <reactiveImports-1>
           - <reactiveImports-2>
@@ -104,11 +101,26 @@ final class ConfigTests: XCTestCase, TestFactories {
             type: <flowProperties-type-2>
         viewControllableType: <viewControllableType>
         viewControllableFlowType: <viewControllableFlowType>
+        viewControllableMockContents: <viewControllableMockContents>
+        viewControllerSubscriptionsProperty: <viewControllerSubscriptionsProperty>
         viewControllerUpdateComment: <viewControllerUpdateComment>
+        viewStateEmptyFactory: <viewStateEmptyFactory>
         viewStateOperators: <viewStateOperators>
+        viewStatePropertyComment: <viewStatePropertyComment>
+        viewStatePropertyName: <viewStatePropertyName>
+        viewStateTransform: <viewStateTransform>
         publisherType: <publisherType>
         publisherFailureType: <publisherFailureType>
-        cancellableType: <cancellableType>
+        contextGenericTypes:
+          - <contextGenericTypes-1>
+          - <contextGenericTypes-2>
+        workerGenericTypes:
+          - <workerGenericTypes-1>
+          - <workerGenericTypes-2>
+        isViewInjectedTemplateEnabled: false
+        isPreviewProviderEnabled: true
+        isTestTemplatesGenerationEnabled: true
+        isPeripheryCommentEnabled: true
         """
     }
 }

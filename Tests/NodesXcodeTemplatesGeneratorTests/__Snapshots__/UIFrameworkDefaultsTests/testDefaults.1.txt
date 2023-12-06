@@ -6,5 +6,4 @@
       - viewControllerType: "<viewControllerType>"
       - viewControllerSuperParameters: "<viewControllerSuperParameters>"
   - viewControllerMethods: ""
-  - viewControllerMethodsForRootNode: ""
   - viewControllerProperties: ""

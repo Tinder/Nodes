@@ -1,0 +1,32 @@
+{{ file_header }}
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+{% if analytics_tests_imports %}
+
+{% for import in analytics_tests_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+final class {{ node_name }}AnalyticsTests: XCTestCase {
+
+    private var analytics: {{ node_name }}AnalyticsImp!
+
+    override func setUp() {
+        super.setUp()
+        analytics = {{ node_name }}AnalyticsImp()
+    }
+
+    override func tearDown() {
+        analytics = nil
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        {% if is_nimble_enabled %}
+        expect { self.analytics } != nil
+        {% else %}
+        XCTAssertNotNil(analytics)
+        {% endif %}
+    }
+}

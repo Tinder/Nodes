@@ -8,13 +8,7 @@ extension UIFramework {
         UIFramework(
             framework: .swiftUI,
             viewControllerProperties: "",
-            viewControllerMethods: "",
-            viewControllerMethodsForRootNode: """
-                override internal func viewDidAppear(_ animated: Bool) {
-                    super.viewDidAppear(animated)
-                    receiver?.viewDidAppear()
-                }
-                """
+            viewControllerMethods: ""
         )
     }
 }
