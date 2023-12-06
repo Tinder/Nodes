@@ -225,16 +225,18 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
     }
 
     public func imports(config: Config) -> Set<String> {
-        let baseImports: Set<String> = config.baseImports.union(["Nodes"])
+        let baseWithNodes: Set<String> = config.baseImports.union(["Nodes"])
         switch self {
-        case .analytics, .flow, .state, .viewState:
-            return baseImports
-        case .builder:
-            return baseImports.union(config.reactiveImports).union(config.dependencyInjectionImports)
+        case .analytics, .state:
+            return config.baseImports
+        case .flow, .viewState:
+            return baseWithNodes
         case .context, .viewController, .worker:
-            return baseImports.union(config.reactiveImports)
+            return baseWithNodes.union(config.reactiveImports)
         case .plugin, .pluginList:
-            return baseImports.union(config.dependencyInjectionImports)
+            return baseWithNodes.union(config.dependencyInjectionImports)
+        case .builder:
+            return baseWithNodes.union(config.reactiveImports).union(config.dependencyInjectionImports)
         case .analyticsTests, .contextTests, .flowTests, .viewStateFactoryTests:
             return config.baseTestImports
         case .viewControllerTests:
