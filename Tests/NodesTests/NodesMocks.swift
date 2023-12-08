@@ -6,14 +6,6 @@
 @testable import Nodes
 
 // swiftlint:disable:next file_types_order
-extension Equatable where Self: AnyObject {
-
-    internal static func == (lhs: Self, rhs: Self) -> Bool {
-        lhs === rhs
-    }
-}
-
-// swiftlint:disable:next file_types_order
 internal final class FlowMock: Flow, Equatable {
 
     internal let tree: Node = .init(name: "", children: [])
@@ -23,6 +15,10 @@ internal final class FlowMock: Flow, Equatable {
 
     // swiftlint:disable:next identifier_name
     internal let _context: Context = ContextMock()
+
+    internal static func == (lhs: FlowMock, rhs: FlowMock) -> Bool {
+        lhs === rhs
+    }
 
     internal func start() {
         isStarted = true
@@ -35,7 +31,7 @@ internal final class FlowMock: Flow, Equatable {
     }
 }
 
-internal final class ContextMock: Context, Equatable {
+internal final class ContextMock: Context {
 
     // swiftlint:disable:next redundant_type_annotation
     internal private(set) var isActive: Bool = false
@@ -54,6 +50,10 @@ internal final class WorkerMock: Worker, Equatable {
     // swiftlint:disable:next redundant_type_annotation
     internal private(set) var isWorking: Bool = false
 
+    internal static func == (lhs: WorkerMock, rhs: WorkerMock) -> Bool {
+        lhs === rhs
+    }
+
     internal func start() {
         isWorking = true
     }
@@ -67,6 +67,10 @@ internal final class CancellableMock: Cancellable {
 
     // swiftlint:disable:next redundant_type_annotation
     internal private(set) var isCancelled: Bool = false
+
+    internal static func == (lhs: CancellableMock, rhs: CancellableMock) -> Bool {
+        lhs === rhs
+    }
 
     internal func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(self))

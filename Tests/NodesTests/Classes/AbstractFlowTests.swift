@@ -8,7 +8,7 @@ import XCTest
 
 final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
 
-    private class ViewControllerType: Equatable {}
+    private class ViewControllerType {}
 
     private class TestFlow: AbstractFlow<ContextMock, ViewControllerType> {
 
@@ -35,15 +35,15 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         let context: ContextMock = .init()
         expect(context).to(notBeNilAndToDeallocateAfterTest())
         let flow: TestFlow = givenFlow(context: context)
-        expect(flow._context as? ContextMock) == context
-        expect(flow.context) == context
+        expect(flow._context as? ContextMock) === context
+        expect(flow.context) === context
     }
 
     func testViewController() {
         let viewController: ViewControllerType = .init()
         expect(viewController).to(notBeNilAndToDeallocateAfterTest())
         let flow: TestFlow = givenFlow(viewController: viewController)
-        expect(flow.viewController) == viewController
+        expect(flow.viewController) === viewController
     }
 
     func testSubFlows() {

@@ -8,7 +8,7 @@ import XCTest
 
 final class AbstractContextTests: XCTestCase, TestCaseHelpers {
 
-    private class PresentableType: Equatable {}
+    private class PresentableType {}
 
     private class TestContext: AbstractPresentableContext<CancellableMock, PresentableType> {
 
@@ -43,7 +43,7 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         let presentable: PresentableType = .init()
         expect(presentable).to(notBeNilAndToDeallocateAfterTest())
         let context: TestContext = givenContext(presentable: presentable)
-        expect(context.presentable) == presentable
+        expect(context.presentable) === presentable
     }
 
     func testCancellables() {
