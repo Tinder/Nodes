@@ -4,7 +4,7 @@
 
 import Combine
 import Nimble
-@testable import Nodes
+import Nodes
 import SwiftUI
 import XCTest
 
