@@ -13,7 +13,7 @@ import SwiftUI
  * by a given publisher.
  *
  * Usage Example:
- * ```
+ * ```swift
  * struct ExampleViewState: Equatable {
  *     let text: String
  * }
