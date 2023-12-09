@@ -17,7 +17,7 @@ internal final class FlowMock: Flow, Equatable {
     internal let _context: Context = ContextMock()
 
     internal static func == (lhs: FlowMock, rhs: FlowMock) -> Bool {
-        lhs === rhs
+        ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
 
     internal func start() {
@@ -51,7 +51,7 @@ internal final class WorkerMock: Worker, Equatable {
     internal private(set) var isWorking: Bool = false
 
     internal static func == (lhs: WorkerMock, rhs: WorkerMock) -> Bool {
-        lhs === rhs
+        ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
 
     internal func start() {
@@ -69,7 +69,7 @@ internal final class CancellableMock: Cancellable {
     internal private(set) var isCancelled: Bool = false
 
     internal static func == (lhs: CancellableMock, rhs: CancellableMock) -> Bool {
-        lhs === rhs
+        ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
 
     internal func hash(into hasher: inout Hasher) {
