@@ -2457,7 +2457,8 @@ files:
                     echo "SwiftLint is skipped in CI."
                 fi
             - name: Needle
-              basedOnDependencyAnalysis: false
+              outputFiles:
+                - $(SRCROOT)/Generated/NeedleGenerated.swift
               script: >
                 env SOURCEKIT_LOGGING=0
                 needle generate {{ project|replace:' ','_' }}/Generated/NeedleGenerated.swift
@@ -2511,7 +2512,8 @@ files:
             - package: Nimble
           preBuildScripts:
             - name: Mockolo
-              basedOnDependencyAnalysis: false
+              outputFiles:
+                - $(SRCROOT)/Generated/MockoloGenerated.swift
               script: >
                 mockolo
                 -d {{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift
