@@ -3,9 +3,9 @@
 //
 
 #if canImport(Combine) && canImport(SwiftUI)
+
 import Combine
 import SwiftUI
-#endif
 
 /**
  * A [SwiftUI](https://developer.apple.com/documentation/swiftui) helper
@@ -58,3 +58,5 @@ public struct WithViewState<ViewState, Content: View>: View {
         self.content = content
     }
 }
+
+#endif
