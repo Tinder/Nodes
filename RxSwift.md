@@ -68,7 +68,7 @@ import Nodes
 import RxSwift
 import SwiftUI
 
-public class AbstractContext: _BaseContext {
+open class AbstractContext: _BaseContext {
 
     public var disposeBag: DisposeBag = .init()
 
@@ -78,7 +78,7 @@ public class AbstractContext: _BaseContext {
     }
 }
 
-public class AbstractWorker: _BaseWorker {
+open class AbstractWorker: _BaseWorker {
 
     public var disposeBag: DisposeBag = .init()
 
@@ -160,6 +160,20 @@ private final class ObservableSubscription
 
     func cancel() {
         disposeBag = nil
+    }
+}
+```
+
+Optionally add the following type to the application to additionally support the presentable context pattern.
+
+```swift
+open class AbstractPresentableContext<PresentableType>: AbstractContext {
+
+    public let presentable: PresentableType
+
+    public init(presentable: PresentableType, workers: [Worker]) {
+        self.presentable = presentable
+        super.init(workers: workers)
     }
 }
 ```
