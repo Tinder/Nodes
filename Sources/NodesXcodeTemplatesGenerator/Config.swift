@@ -18,7 +18,7 @@ public struct Config: Equatable, Codable {
             case let .uiFrameworkNotDefined(kind):
                 return "ERROR: UIFramework Not Defined [kind: \(kind)]"
             case let .emptyStringNotAllowed(key):
-                return "ERROR: Empty String Not Allowed [key: \(key)] (TIP: Omit key for default value)"
+                return "ERROR: Empty String Not Allowed [key: \(key)] (TIP: Omit from config for default to be used)"
             }
         }
     }
