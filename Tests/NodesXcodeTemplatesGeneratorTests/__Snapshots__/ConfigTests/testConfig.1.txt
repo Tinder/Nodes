@@ -36,7 +36,7 @@
   - isPeripheryCommentEnabled: true
   - isPreviewProviderEnabled: true
   - isTestTemplatesGenerationEnabled: true
-  - isViewInjectedTemplateEnabled: true
+  - isViewInjectedTemplateEnabled: false
   - publisherFailureType: "<publisherFailureType>"
   - publisherType: "<publisherType>"
   ▿ reactiveImports: 2 members
@@ -45,17 +45,14 @@
   ▿ uiFrameworks: 4 elements
     ▿ UIFramework
       - framework: Framework.appKit
-      - viewControllableMockContents: "<viewControllableMockContents-AppKit>"
       - viewControllerMethods: "<viewControllerMethods-AppKit>"
       - viewControllerProperties: "<viewControllerProperties-AppKit>"
     ▿ UIFramework
       - framework: Framework.uiKit
-      - viewControllableMockContents: "<viewControllableMockContents-UIKit>"
       - viewControllerMethods: "<viewControllerMethods-UIKit>"
       - viewControllerProperties: "<viewControllerProperties-UIKit>"
     ▿ UIFramework
       - framework: Framework.swiftUI
-      - viewControllableMockContents: "<viewControllableMockContents-SwiftUI>"
       - viewControllerMethods: "<viewControllerMethods-SwiftUI>"
       - viewControllerProperties: "<viewControllerProperties-SwiftUI>"
     ▿ UIFramework
@@ -65,10 +62,10 @@
           - import: "<uiFrameworkImport>"
           - viewControllerType: "<viewControllerType>"
           - viewControllerSuperParameters: "<viewControllerSuperParameters>"
-      - viewControllableMockContents: "<viewControllableMockContents-Custom>"
       - viewControllerMethods: "<viewControllerMethods-Custom>"
       - viewControllerProperties: "<viewControllerProperties-Custom>"
   - viewControllableFlowType: "<viewControllableFlowType>"
+  - viewControllableMockContents: "<viewControllableMockContents>"
   - viewControllableType: "<viewControllableType>"
   - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
   - viewControllerUpdateComment: "<viewControllerUpdateComment>"

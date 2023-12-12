@@ -20,7 +20,6 @@ final class UIFrameworkTests: XCTestCase {
         expect(framework.viewControllerSuperParameters) == expected.viewControllerSuperParameters
         expect(framework.viewControllerProperties) == expected.viewControllerProperties
         expect(framework.viewControllerMethods) == expected.viewControllerMethods
-        expect(framework.viewControllableMockContents) == expected.viewControllableMockContents
     }
 
     func testInitWithUIKit() {
@@ -33,7 +32,6 @@ final class UIFrameworkTests: XCTestCase {
         expect(framework.viewControllerSuperParameters) == expected.viewControllerSuperParameters
         expect(framework.viewControllerProperties) == expected.viewControllerProperties
         expect(framework.viewControllerMethods) == expected.viewControllerMethods
-        expect(framework.viewControllableMockContents) == expected.viewControllableMockContents
     }
 
     func testInitWithSwiftUI() {
@@ -46,7 +44,6 @@ final class UIFrameworkTests: XCTestCase {
         expect(framework.viewControllerSuperParameters) == expected.viewControllerSuperParameters
         expect(framework.viewControllerProperties) == expected.viewControllerProperties
         expect(framework.viewControllerMethods) == expected.viewControllerMethods
-        expect(framework.viewControllableMockContents) == expected.viewControllableMockContents
     }
 
     func testInitWithCustom() {
@@ -63,7 +60,6 @@ final class UIFrameworkTests: XCTestCase {
         expect(framework.viewControllerSuperParameters) == expected.viewControllerSuperParameters
         expect(framework.viewControllerProperties) == expected.viewControllerProperties
         expect(framework.viewControllerMethods) == expected.viewControllerMethods
-        expect(framework.viewControllableMockContents) == expected.viewControllableMockContents
     }
 
     func testDecoding() throws {

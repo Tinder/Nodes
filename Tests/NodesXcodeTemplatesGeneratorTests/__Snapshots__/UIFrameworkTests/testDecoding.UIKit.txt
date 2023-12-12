@@ -1,5 +1,4 @@
 ▿ UIFramework
   - framework: Framework.uiKit
-  - viewControllableMockContents: ""
   - viewControllerMethods: "<viewControllerMethods>"
   - viewControllerProperties: "<viewControllerProperties>"

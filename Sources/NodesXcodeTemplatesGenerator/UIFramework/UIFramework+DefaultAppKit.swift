@@ -33,8 +33,7 @@ extension UIFramework {
         UIFramework(
             framework: .appKit,
             viewControllerProperties: "",
-            viewControllerMethods: Defaults.viewControllerMethods,
-            viewControllableMockContents: ""
+            viewControllerMethods: Defaults.viewControllerMethods
         )
     }
 }

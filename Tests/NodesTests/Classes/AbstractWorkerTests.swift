@@ -61,6 +61,11 @@ final class AbstractWorkerTests: XCTestCase, TestCaseHelpers {
     private func givenWorker() -> TestWorker {
         let worker: TestWorker = .init()
         expect(worker).to(notBeNilAndToDeallocateAfterTest())
+        addTeardownBlock(with: worker) { worker in
+            guard worker.isWorking
+            else { return }
+            worker.stop()
+        }
         return worker
     }
 

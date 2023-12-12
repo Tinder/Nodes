@@ -39,7 +39,11 @@ public struct NodePresetStencilContext: StencilContext {
     private let stateImports: [String]
     private let viewControllerImports: [String]
     private let viewStateImports: [String]
-    private let testImports: [String]
+    private let analyticsTestsImports: [String]
+    private let contextTestsImports: [String]
+    private let flowTestsImports: [String]
+    private let viewControllerTestsImports: [String]
+    private let viewStateFactoryTestsImports: [String]
     private let dependencies: [[String: Any]]
     private let analyticsProperties: [[String: Any]]
     private let flowProperties: [[String: Any]]
@@ -77,7 +81,11 @@ public struct NodePresetStencilContext: StencilContext {
             "state_imports": stateImports,
             "view_controller_imports": viewControllerImports,
             "view_state_imports": viewStateImports,
-            "test_imports": testImports,
+            "analytics_tests_imports": analyticsTestsImports,
+            "context_tests_imports": contextTestsImports,
+            "flow_tests_imports": flowTestsImports,
+            "view_controller_tests_imports": viewControllerTestsImports,
+            "view_state_factory_tests_imports": viewStateFactoryTestsImports,
             "dependencies": dependencies,
             "analytics_properties": analyticsProperties,
             "flow_properties": flowProperties,
@@ -115,7 +123,11 @@ public struct NodePresetStencilContext: StencilContext {
         stateImports: Set<String>,
         viewControllerImports: Set<String>,
         viewStateImports: Set<String>,
-        testImports: Set<String>,
+        analyticsTestsImports: Set<String>,
+        contextTestsImports: Set<String>,
+        flowTestsImports: Set<String>,
+        viewControllerTestsImports: Set<String>,
+        viewStateFactoryTestsImports: Set<String>,
         dependencies: [Config.Variable],
         analyticsProperties: [Config.Variable],
         flowProperties: [Config.Variable],
@@ -150,7 +162,11 @@ public struct NodePresetStencilContext: StencilContext {
         self.stateImports = stateImports.sortedImports()
         self.viewControllerImports = viewControllerImports.sortedImports()
         self.viewStateImports = viewStateImports.sortedImports()
-        self.testImports = testImports.sortedImports()
+        self.analyticsTestsImports = analyticsTestsImports.sortedImports()
+        self.contextTestsImports = contextTestsImports.sortedImports()
+        self.flowTestsImports = flowTestsImports.sortedImports()
+        self.viewControllerTestsImports = viewControllerTestsImports.sortedImports()
+        self.viewStateFactoryTestsImports = viewStateFactoryTestsImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)
         self.analyticsProperties = analyticsProperties.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)

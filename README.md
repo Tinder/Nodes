@@ -26,7 +26,7 @@ Native Mobile Application Engineering at Scale
 
 [https://github.com/TinderApp/Nodes](https://github.com/TinderApp/Nodes)
 
-At Tinder, we create mobile applications ***to power and inspire real connections by making it easy and fun for every new generation of singles***. And to do that successfully, we assembled a large team of mobile engineers who continually deliver numerous concurrent projects to empower, delight and protect our countless members around the globe.
+At Tinder, we create mobile applications ***to power and inspire real connections by making it easy and fun to meet for every new generation of singles***. And to do that successfully, we assembled a large team of mobile engineers who continually deliver numerous concurrent projects to empower, delight and protect our countless members around the globe.
 
 We think [Swift](https://developer.apple.com/swift) and related technologies including [SwiftUI](https://developer.apple.com/xcode/swiftui) and [Swift Concurrency](https://developer.apple.com/documentation/swift/swift_standard_library/concurrency) are simply awesome. However, creating mobile applications at Tinder's scale requires a scalable application architecture as well. We designed the Nodes Architecture Framework to specifically address how to build a complex app, with a large team, involving many simultaneous initiatives.
 
@@ -54,13 +54,7 @@ Native mobile applications need to be good citizens within their host device and
 
 Documentation is available online at: [https://TinderApp.github.io/Nodes](https://TinderApp.github.io/Nodes)
 
-To build Nodes' [DocC](https://developer.apple.com/documentation/docc) documentation and open it in Xcode's documentation window:
-
-```
-git clone git@github.com:TinderApp/Nodes.git
-cd Nodes
-make docs
-```
+After completing the [Quick Start](#quick-start) setup (below), documentation is viewable in Xcode by selecting `Build Documentation` from the `Product` menu.
 
 ## Quick Start
 
@@ -81,28 +75,28 @@ mint install yonaskolb/genesis
 
 This step may be skipped if the Nodes repository was previously cloned.
 
-> Replace `<version>` in the command with the latest Nodes version and replace `<nodesPath>` in the command with the path to where the Nodes repository will reside.
+> Replace `<version>` in the command with the latest Nodes version.
 
 ```
-git clone -b <version> git@github.com:TinderApp/Nodes.git <nodesPath>
+git clone -b <version> git@github.com:TinderApp/Nodes.git
 ```
 
 ### Create Project Directory
 
 **IMPORTANT:** Do not create the new project within the cloned Nodes repository.
 
-> Replace `<projectPath>` in the command with the path to where the new iOS Xcode project will reside.
+> Replace `<path>` in the command with the path to where the new iOS Xcode project will reside.
 
 ```
-mkdir -p <projectPath> && cd "$_"
+mkdir -p <path> && cd "$_"
 ```
 
 ### Generate Project Files
 
-> Replace `<nodesPath>` in the command with the path to the cloned Nodes repository.
+> Replace `<path>` in the command with the path to the cloned Nodes repository.
 
 ```
-mint run genesis generate <nodesPath>/genesis.yml --options "author:$(git config user.name), date:$(date +"%-m/%-d/%y")"
+mint run genesis generate <path>/genesis.yml --options "author:$(git config user.name), date:$(date +"%-m/%-d/%y")"
 ```
 
 When prompted, enter the latest Nodes version, a name for the new iOS Xcode project and an organization identifier (which is the bundle ID prefix such as `com.tinder`).
@@ -141,3 +135,9 @@ Only if issues are encountered when executing Mockolo, build from source:
 ```
 brew reinstall --build-from-source mockolo
 ```
+
+## Optional Customization
+
+### Using RxSwift with Nodes
+
+While Nodes works out-of-the-box with Combine, using [RxSwift](https://github.com/ReactiveX/RxSwift) with Nodes requires [custom configuration and setup](RxSwift.md).

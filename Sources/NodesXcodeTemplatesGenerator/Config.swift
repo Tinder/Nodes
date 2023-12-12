@@ -36,6 +36,7 @@ public struct Config: Equatable, Codable {
     public var flowProperties: [Variable]
     public var viewControllableType: String
     public var viewControllableFlowType: String
+    public var viewControllableMockContents: String
     public var viewControllerSubscriptionsProperty: String
     public var viewControllerUpdateComment: String
     public var viewStateEmptyFactory: String
@@ -53,7 +54,7 @@ public struct Config: Equatable, Codable {
     public var isTestTemplatesGenerationEnabled: Bool
     public var isPeripheryCommentEnabled: Bool
 
-    internal var isNimbleEnabled: Bool { baseTestImports.contains("Nimble") }
+    public var isNimbleEnabled: Bool { baseTestImports.contains("Nimble") }
 
     public init(
         at path: String,
@@ -90,6 +91,7 @@ extension Config {
         flowProperties = []
         viewControllableType = "ViewControllable"
         viewControllableFlowType = "ViewControllableFlow"
+        viewControllableMockContents = ""
         viewControllerSubscriptionsProperty = """
             /// The collection of cancellable instances.
             private var cancellables: Set<AnyCancellable> = .init()
@@ -158,6 +160,9 @@ extension Config {
         viewControllableFlowType =
             (try? decoder.decodeString(CodingKeys.viewControllableFlowType))
             ?? defaults.viewControllableFlowType
+        viewControllableMockContents =
+            (try? decoder.decodeString(CodingKeys.viewControllableMockContents))
+            ?? defaults.viewControllableMockContents
         viewControllerSubscriptionsProperty =
             (try? decoder.decodeString(CodingKeys.viewControllerSubscriptionsProperty))
             ?? defaults.viewControllerSubscriptionsProperty

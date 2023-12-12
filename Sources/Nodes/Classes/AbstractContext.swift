@@ -176,7 +176,11 @@ open class _BaseContext: Context { // swiftlint:disable:this type_name
     }
 
     deinit {
-        if isActive { deactivate() }
+        #if DEBUG
+        if isActive {
+            assertionFailure("Lifecycle Violation: Expected `AbstractContext` to deactivate before it is deallocated.")
+        }
+        #endif
     }
 }
 
