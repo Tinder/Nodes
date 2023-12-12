@@ -133,7 +133,6 @@ extension Config {
         do {
             uiFrameworks = try decoder.decode(CodingKeys.uiFrameworks)
         } catch let error as ConfigError {
-            print(error.localizedDescription)
             throw error
         } catch {
             uiFrameworks = defaults.uiFrameworks
@@ -232,7 +231,6 @@ extension Config {
         ]
         for (key, value) in required where value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             let error: ConfigError = .emptyStringNotAllowed(key: key)
-            print(error.localizedDescription)
             throw error
         }
     }
