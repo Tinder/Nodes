@@ -140,7 +140,7 @@ brew reinstall --build-from-source mockolo
 
 ### Using other UI frameworks with Nodes
 
-While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/documentation/uikit), using other UI frameworks with Nodes (such as [AppKit](https://developer.apple.com/documentation/appkit)) requires [custom configuration](Configuration.md).
+While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui) (for iOS), using other UI frameworks with Nodes (such as [AppKit](https://developer.apple.com/documentation/appkit)) requires [custom configuration](Configuration.md).
 
 ### Using RxSwift with Nodes
 

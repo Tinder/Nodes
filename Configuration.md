@@ -1,8 +1,8 @@
 # Nodes Configuration
 
-The Nodes Xcode Templates Generator may be customized, for example in order to use other UI frameworks with Nodes (such as [AppKit](https://developer.apple.com/documentation/appkit)).
+While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui) (for iOS), using other UI frameworks with Nodes (such as [AppKit](https://developer.apple.com/documentation/appkit)) requires the following custom configuration.
 
-## Configure the Nodes Xcode Templates Generator
+## Configure the Xcode Template Generator
 
 Specify a path to a custom config file by providing the `--config` option when executing `nodes-xcode-templates-gen`.
 
@@ -61,7 +61,7 @@ isTestTemplatesGenerationEnabled: false
 isPeripheryCommentEnabled: false
 ```
 
-To control which UI Frameworks are made available in the new file dialog in Xcode, include configuration for AppKit, UIKit, or SwiftUI as shown below; or a fully custom UI framework may be configured for unique use cases. More than one UI framework can be included in the configuration.
+To control which UI Frameworks are made available within the new file dialog in Xcode, include configuration for AppKit, UIKit, or SwiftUI as shown below; or a fully custom UI framework may be configured for unique use cases. More than one UI framework can be included in the configuration. And by default, without providing any UI framework configuration, UIKit and SwiftUI (for iOS) are automatically configured. 
 
 > TIP: For use in an iOS app that allows both UIKit and SwiftUI, both may be enabled simultaneously if desired.
 
