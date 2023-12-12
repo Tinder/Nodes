@@ -10,12 +10,6 @@ import Yams
 
 final class ConfigTests: XCTestCase, TestFactories {
 
-    func testInitializeFromDecoder() throws {
-        let config: Config = try YAMLDecoder().decode(Config.self, from: Data("".utf8))
-        expect(config) == Config()
-        assertSnapshot(matching: config, as: .dump)
-    }
-
     func testConfig() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
@@ -33,8 +27,10 @@ final class ConfigTests: XCTestCase, TestFactories {
         assertSnapshot(matching: config, as: .dump)
     }
 
-    func testDefaultConfig() {
-        assertSnapshot(matching: Config(), as: .dump)
+    func testDecodeFromEmptyString() throws {
+        let config: Config = try YAMLDecoder().decode(Config.self, from: Data("".utf8))
+        expect(config) == Config()
+        assertSnapshot(matching: config, as: .dump)
     }
 
     func testUIFrameworkForKind() throws {
