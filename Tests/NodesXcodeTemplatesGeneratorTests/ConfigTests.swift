@@ -72,6 +72,15 @@ final class ConfigTests: XCTestCase, TestFactories {
             }
     }
 
+    func testConfigErrorLocalizedDescription() {
+        expect(Config.ConfigError.uiFrameworkNotDefined(kind: .uiKit).localizedDescription) == """
+            ERROR: UIFramework Not Defined [kind: uiKit]
+            """
+        expect(Config.ConfigError.emptyStringNotAllowed(key: "<key>").localizedDescription) == """
+            ERROR: Empty String Not Allowed [key: <key>] (TIP: Omit from config for default to be used)
+            """
+    }
+
     private func givenConfig() -> String {
         """
         uiFrameworks:
