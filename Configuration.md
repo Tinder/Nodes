@@ -65,8 +65,6 @@ To control which UI Frameworks are made available within the new file dialog in 
 
 > TIP: For use in an iOS app that allows both UIKit and SwiftUI, both may be enabled simultaneously if desired.
 
-> IMPORTANT: SwiftUI is only supported in iOS apps currently (SwiftUI support for macOS apps may be added in the future).
-
 #### AppKit
 
 ```yaml
@@ -125,6 +123,8 @@ uiFrameworks:
 ```
 
 #### SwiftUI
+
+> IMPORTANT: SwiftUI is only supported in iOS apps currently (SwiftUI support for macOS apps may be added in the future).
 
 ```yaml
 uiFrameworks:
