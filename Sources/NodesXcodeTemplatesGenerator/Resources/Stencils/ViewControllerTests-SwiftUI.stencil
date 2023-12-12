@@ -21,9 +21,9 @@ final class {{ node_name }}ViewControllerTests: XCTestCase {
     private func givenViewController(
         with state: {{ node_name }}ViewState
     ) -> {{ node_name }}ViewController {
-        {{ node_name }}ViewController(
+        {{ node_name }}ViewController(rootView: {{ node_name }}View(
             initialState: state,
             {{ view_state_property_name }}: {{ view_state_empty_factory }}
-        )
+        ))
     }
 }

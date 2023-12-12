@@ -24,12 +24,11 @@ extension TestFactories {
             var uiFramework: UIFramework = uiFramework
             uiFramework.viewControllerProperties = "<viewControllerProperties>"
             uiFramework.viewControllerMethods = "<viewControllerMethods>"
-            uiFramework.viewControllableMockContents = "<viewControllableMockContents>"
             return uiFramework
         }
         config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImport>"]
-        config.baseTestImports = ["<baseTestImports>"]
+        config.baseTestImports = ["<baseTestImport>"]
         config.reactiveImports = ["<reactiveImport>"]
         config.dependencyInjectionImports = ["<dependencyInjectionImport>"]
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
@@ -37,6 +36,7 @@ extension TestFactories {
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableFlowType = "<viewControllableFlowType>"
+        config.viewControllableMockContents = "<viewControllableMockContents>"
         config.viewControllerSubscriptionsProperty = "<viewControllerSubscriptionsProperty>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
         config.viewStateEmptyFactory = "<viewStateEmptyFactory>"
@@ -69,7 +69,11 @@ extension TestFactories {
             stateImports: .mock(with: "stateImport", count: mockCount),
             viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
             viewStateImports: .mock(with: "viewStateImport", count: mockCount),
-            testImports: .mock(with: "testImport", count: mockCount),
+            analyticsTestsImports: .mock(with: "analyticsTestsImport", count: mockCount),
+            contextTestsImports: .mock(with: "contextTestsImport", count: mockCount),
+            flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
+            viewControllerTestsImports: .mock(with: "viewControllerTestsImport", count: mockCount),
+            viewStateFactoryTestsImports: .mock(with: "viewStateFactoryTestsImport", count: mockCount),
             dependencies: .mock(with: "dependency", count: mockCount),
             analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
             flowProperties: .mock(with: "flowProperty", count: mockCount),
@@ -109,12 +113,15 @@ extension TestFactories {
             contextImports: .mock(with: "contextImport", count: mockCount),
             flowImports: .mock(with: "flowImport", count: mockCount),
             stateImports: .mock(with: "stateImport", count: mockCount),
-            testImports: .mock(with: "testImport", count: mockCount),
+            analyticsTestsImports: .mock(with: "analyticsTestsImport", count: mockCount),
+            contextTestsImports: .mock(with: "contextTestsImport", count: mockCount),
+            flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
             dependencies: .mock(with: "dependency", count: mockCount),
             analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
             flowProperties: .mock(with: "flowProperty", count: mockCount),
             viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0,
@@ -136,7 +143,11 @@ extension TestFactories {
             stateImports: .mock(with: "stateImport", count: mockCount),
             viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
             viewStateImports: .mock(with: "viewStateImport", count: mockCount),
-            testImports: .mock(with: "testImport", count: mockCount),
+            analyticsTestsImports: .mock(with: "analyticsTestsImport", count: mockCount),
+            contextTestsImports: .mock(with: "contextTestsImport", count: mockCount),
+            flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
+            viewControllerTestsImports: .mock(with: "viewControllerTestsImport", count: mockCount),
+            viewStateFactoryTestsImports: .mock(with: "viewStateFactoryTestsImport", count: mockCount),
             dependencies: .mock(with: "dependency", count: mockCount),
             analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
             flowProperties: .mock(with: "flowProperty", count: mockCount),

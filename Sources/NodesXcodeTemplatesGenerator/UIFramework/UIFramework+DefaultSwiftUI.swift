@@ -8,8 +8,7 @@ extension UIFramework {
         UIFramework(
             framework: .swiftUI,
             viewControllerProperties: "",
-            viewControllerMethods: "",
-            viewControllableMockContents: ""
+            viewControllerMethods: ""
         )
     }
 }

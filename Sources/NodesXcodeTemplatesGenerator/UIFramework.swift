@@ -157,7 +157,6 @@ public struct UIFramework: Equatable, Codable {
 
     public var viewControllerProperties: String
     public var viewControllerMethods: String
-    public var viewControllableMockContents: String
 
     public init(framework: Framework) {
         switch framework.kind {
@@ -181,20 +180,15 @@ public struct UIFramework: Equatable, Codable {
         viewControllerMethods =
             (try? decoder.decodeString(CodingKeys.viewControllerMethods))
             ?? defaults.viewControllerMethods
-        viewControllableMockContents =
-            (try? decoder.decodeString(CodingKeys.viewControllableMockContents))
-            ?? defaults.viewControllableMockContents
     }
 
     internal init(
         framework: Framework,
         viewControllerProperties: String,
-        viewControllerMethods: String,
-        viewControllableMockContents: String
+        viewControllerMethods: String
     ) {
         self.framework = framework
         self.viewControllerProperties = viewControllerProperties
         self.viewControllerMethods = viewControllerMethods
-        self.viewControllableMockContents = viewControllableMockContents
     }
 }

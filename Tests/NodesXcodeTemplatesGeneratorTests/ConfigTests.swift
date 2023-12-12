@@ -78,15 +78,12 @@ final class ConfigTests: XCTestCase, TestFactories {
           - framework: AppKit
             viewControllerProperties: <viewControllerProperties-AppKit>
             viewControllerMethods: <viewControllerMethods-AppKit>
-            viewControllableMockContents: <viewControllableMockContents-AppKit>
           - framework: UIKit
             viewControllerProperties: <viewControllerProperties-UIKit>
             viewControllerMethods: <viewControllerMethods-UIKit>
-            viewControllableMockContents: <viewControllableMockContents-UIKit>
           - framework: SwiftUI
             viewControllerProperties: <viewControllerProperties-SwiftUI>
             viewControllerMethods: <viewControllerMethods-SwiftUI>
-            viewControllableMockContents: <viewControllableMockContents-SwiftUI>
           - framework:
               custom:
                 name: <uiFrameworkName>
@@ -95,7 +92,6 @@ final class ConfigTests: XCTestCase, TestFactories {
                 viewControllerSuperParameters: <viewControllerSuperParameters>
             viewControllerProperties: <viewControllerProperties-Custom>
             viewControllerMethods: <viewControllerMethods-Custom>
-            viewControllableMockContents: <viewControllableMockContents-Custom>
         fileHeader: <fileHeader>
         baseImports:
           - <baseImports-1>
@@ -126,6 +122,7 @@ final class ConfigTests: XCTestCase, TestFactories {
             type: <flowProperties-type-2>
         viewControllableType: <viewControllableType>
         viewControllableFlowType: <viewControllableFlowType>
+        viewControllableMockContents: <viewControllableMockContents>
         viewControllerSubscriptionsProperty: <viewControllerSubscriptionsProperty>
         viewControllerUpdateComment: <viewControllerUpdateComment>
         viewStateEmptyFactory: <viewStateEmptyFactory>
@@ -141,7 +138,7 @@ final class ConfigTests: XCTestCase, TestFactories {
         workerGenericTypes:
           - <workerGenericTypes-1>
           - <workerGenericTypes-2>
-        isViewInjectedTemplateEnabled: true
+        isViewInjectedTemplateEnabled: false
         isPreviewProviderEnabled: true
         isTestTemplatesGenerationEnabled: true
         isPeripheryCommentEnabled: true

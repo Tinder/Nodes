@@ -85,7 +85,15 @@ public final class WorkerController {
     }
 
     deinit {
-        stopWorkers()
-        workers.forEach { LeakDetector.detect($0) }
+        #if DEBUG
+        for worker: Worker in workers {
+            if worker.isWorking {
+                assertionFailure("""
+                    Lifecycle Violation: Expected `Worker` to stop before `WorkerController` is deallocated.
+                    """)
+            }
+            LeakDetector.detect(worker)
+        }
+        #endif
     }
 }

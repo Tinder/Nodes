@@ -1,25 +1,30 @@
 <fileHeader>
 
-#warning("Manually move this test file to the corresponding test target.")
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
 
-import <testImport>
+import <flowTestsImport>
 
 final class <nodeName>FlowTests: XCTestCase {
 
-    private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {}
+    private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {
+
+        <viewControllableMockContents>
+    }
 
     private var contextMock: <nodeName>ContextInterfaceMock!
     private var viewControllableMock: <nodeName>ViewControllableMock!
+    private var <flowPropertyType>Mock: <flowPropertyType>Mock!
     private var flow: <nodeName>FlowImp!
 
     override func setUp() {
         super.setUp()
         contextMock = <nodeName>ContextInterfaceMock(isActive: true)
         viewControllableMock = <nodeName>ViewControllableMock()
+        <flowPropertyType>Mock = <flowPropertyType>Mock()
         flow = <nodeName>FlowImp(
             context: contextMock,
             viewController: viewControllableMock,
-            <flowPropertyName>: <flowPropertyType>
+            <flowPropertyName>: <flowPropertyType>Mock
         )
         expect { self.flow.isStarted } == true
     }
@@ -27,6 +32,7 @@ final class <nodeName>FlowTests: XCTestCase {
     override func tearDown() {
         contextMock = nil
         viewControllableMock = nil
+        <flowPropertyType>Mock = nil
         flow = nil
         super.tearDown()
     }

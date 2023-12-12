@@ -31,6 +31,8 @@
         ▿ (2 elements)
           - key: "type"
           - value: "<analyticsPropertiesType>"
+    ▿ analyticsTestsImports: 1 element
+      - "<baseTestImport>"
     ▿ builderImports: 4 elements
       - "<baseImport>"
       - "<dependencyInjectionImport>"
@@ -42,6 +44,8 @@
       - "<baseImport>"
       - "<reactiveImport>"
       - "Nodes"
+    ▿ contextTestsImports: 1 element
+      - "<baseTestImport>"
     ▿ dependencies: 1 element
       ▿ 2 key/value pairs
         ▿ (2 elements)
@@ -62,15 +66,16 @@
         ▿ (2 elements)
           - key: "type"
           - value: "<flowPropertiesType>"
+    ▿ flowTestsImports: 1 element
+      - "<baseTestImport>"
     - isNimbleEnabled: false
     - isPeripheryCommentEnabled: false
     - nodeName: "___VARIABLE_productName___"
     ▿ stateImports: 2 elements
       - "<baseImport>"
       - "Nodes"
-    ▿ testImports: 1 element
-      - "<baseTestImports>"
     - viewControllableFlowType: "<viewControllableFlowType>"
+    - viewControllableMockContents: "<viewControllableMockContents>"
     - viewControllableType: "<viewControllableType>"
     ▿ workerGenericTypes: 1 element
       - "<workerGenericType>"

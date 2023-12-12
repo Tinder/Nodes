@@ -1,4 +1,4 @@
-▿ 18 key/value pairs
+▿ 21 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -14,6 +14,10 @@
           - key: "type"
           - value: "<analyticsPropertyType>"
   ▿ (2 elements)
+    - key: "analytics_tests_imports"
+    ▿ value: 1 element
+      - "<analyticsTestsImport>"
+  ▿ (2 elements)
     - key: "builder_imports"
     ▿ value: 1 element
       - "<builderImport>"
@@ -25,6 +29,10 @@
     - key: "context_imports"
     ▿ value: 1 element
       - "<contextImport>"
+  ▿ (2 elements)
+    - key: "context_tests_imports"
+    ▿ value: 1 element
+      - "<contextTestsImport>"
   ▿ (2 elements)
     - key: "dependencies"
     ▿ value: 1 element
@@ -53,6 +61,10 @@
           - key: "type"
           - value: "<flowPropertyType>"
   ▿ (2 elements)
+    - key: "flow_tests_imports"
+    ▿ value: 1 element
+      - "<flowTestsImport>"
+  ▿ (2 elements)
     - key: "is_nimble_enabled"
     - value: true
   ▿ (2 elements)
@@ -69,12 +81,11 @@
     ▿ value: 1 element
       - "<stateImport>"
   ▿ (2 elements)
-    - key: "test_imports"
-    ▿ value: 1 element
-      - "<testImport>"
-  ▿ (2 elements)
     - key: "view_controllable_flow_type"
     - value: "<viewControllableFlowType>"
+  ▿ (2 elements)
+    - key: "view_controllable_mock_contents"
+    - value: "<viewControllableMockContents>"
   ▿ (2 elements)
     - key: "view_controllable_type"
     - value: "<viewControllableType>"

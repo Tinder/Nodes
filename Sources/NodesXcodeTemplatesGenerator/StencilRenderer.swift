@@ -63,6 +63,7 @@ public final class StencilRenderer {
             .appendingPathExtension("stencil")
         let template: String = try .init(contentsOf: stencilURL)
         let environment: Environment = .init(loader: DictionaryLoader(templates: [stencil.name: template]),
+                                             extensions: stencilExtensions(),
                                              trimBehaviour: .smart)
         return try environment.renderTemplate(name: stencil.name, context: context)
     }
@@ -71,5 +72,15 @@ public final class StencilRenderer {
         try Dictionary(uniqueKeysWithValues: stencils.map { stencil in
             try (stencil.name, render(stencil, with: context))
         })
+    }
+
+    private func stencilExtensions() -> [Extension] {
+        let stencilExtension: Extension = .init()
+        stencilExtension.registerFilter("decapitalize") { value in
+            guard let string = value as? String
+            else { return value }
+            return string.prefix(1).lowercased() + string.dropFirst()
+        }
+        return [stencilExtension]
     }
 }

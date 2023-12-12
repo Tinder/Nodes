@@ -11,12 +11,15 @@ public struct NodeViewInjectedStencilContext: StencilContext {
     private let contextImports: [String]
     private let flowImports: [String]
     private let stateImports: [String]
-    private let testImports: [String]
+    private let analyticsTestsImports: [String]
+    private let contextTestsImports: [String]
+    private let flowTestsImports: [String]
     private let dependencies: [[String: Any]]
     private let analyticsProperties: [[String: Any]]
     private let flowProperties: [[String: Any]]
     private let viewControllableType: String
     private let viewControllableFlowType: String
+    private let viewControllableMockContents: String
     private let contextGenericTypes: [String]
     private let workerGenericTypes: [String]
     private let isPeripheryCommentEnabled: Bool
@@ -32,12 +35,15 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             "context_imports": contextImports,
             "flow_imports": flowImports,
             "state_imports": stateImports,
-            "test_imports": testImports,
+            "analytics_tests_imports": analyticsTestsImports,
+            "context_tests_imports": contextTestsImports,
+            "flow_tests_imports": flowTestsImports,
             "dependencies": dependencies,
             "analytics_properties": analyticsProperties,
             "flow_properties": flowProperties,
             "view_controllable_type": viewControllableType,
             "view_controllable_flow_type": viewControllableFlowType,
+            "view_controllable_mock_contents": viewControllableMockContents,
             "context_generic_types": contextGenericTypes,
             "worker_generic_types": workerGenericTypes,
             "is_periphery_comment_enabled": isPeripheryCommentEnabled,
@@ -53,12 +59,15 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         contextImports: Set<String>,
         flowImports: Set<String>,
         stateImports: Set<String>,
-        testImports: Set<String>,
+        analyticsTestsImports: Set<String>,
+        contextTestsImports: Set<String>,
+        flowTestsImports: Set<String>,
         dependencies: [Config.Variable],
         analyticsProperties: [Config.Variable],
         flowProperties: [Config.Variable],
         viewControllableType: String,
         viewControllableFlowType: String,
+        viewControllableMockContents: String,
         contextGenericTypes: [String],
         workerGenericTypes: [String],
         isPeripheryCommentEnabled: Bool,
@@ -73,12 +82,15 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         self.contextImports = contextImports.sortedImports()
         self.flowImports = flowImports.sortedImports()
         self.stateImports = stateImports.sortedImports()
-        self.testImports = testImports.sortedImports()
+        self.analyticsTestsImports = analyticsTestsImports.sortedImports()
+        self.contextTestsImports = contextTestsImports.sortedImports()
+        self.flowTestsImports = flowTestsImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)
         self.analyticsProperties = analyticsProperties.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)
         self.viewControllableType = viewControllableType
         self.viewControllableFlowType = viewControllableFlowType
+        self.viewControllableMockContents = viewControllableMockContents
         self.contextGenericTypes = contextGenericTypes
         self.workerGenericTypes = workerGenericTypes
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
