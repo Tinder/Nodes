@@ -1031,6 +1031,7 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
+      @preconcurrency
       @MainActor
       public protocol SceneDependency: Dependency {}
 
@@ -1386,6 +1387,7 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
+      @preconcurrency
       @MainActor
       public protocol WindowDependency: Dependency {}
 
@@ -1734,6 +1736,7 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
+      @preconcurrency
       @MainActor
       public protocol RootDependency: Dependency {}
 
