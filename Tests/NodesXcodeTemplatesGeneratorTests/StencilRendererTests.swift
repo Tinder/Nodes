@@ -3,7 +3,7 @@
 //
 
 import Nimble
-@testable import NodesXcodeTemplatesGenerator
+import NodesXcodeTemplatesGenerator
 import SnapshotTesting
 import XCTest
 

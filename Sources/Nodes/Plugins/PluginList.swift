@@ -29,7 +29,7 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
         /// Initializes a new type-erased `AnyPlugin` instance.
         ///
         /// Example:
-        /// ```
+        /// ```swift
         /// AnyPlugin { state in
         ///     ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create(state: state)
         /// }
@@ -203,7 +203,7 @@ extension PluginList.AnyPlugin where StateType == Void {
     /// Initializes a new type-erased `AnyPlugin` instance.
     ///
     /// Example:
-    /// ```
+    /// ```swift
     /// AnyPlugin(ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create())
     /// ```
     ///

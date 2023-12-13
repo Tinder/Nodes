@@ -3,7 +3,7 @@
 //
 
 import Nimble
-@testable import Nodes
+import Nodes
 import XCTest
 
 final class PluginTests: XCTestCase, TestCaseHelpers {

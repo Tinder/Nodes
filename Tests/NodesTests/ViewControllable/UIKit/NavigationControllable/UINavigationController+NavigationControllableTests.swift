@@ -6,7 +6,7 @@
 #if canImport(UIKit)
 
 import Nimble
-@testable import Nodes
+import Nodes
 import UIKit
 import XCTest
 

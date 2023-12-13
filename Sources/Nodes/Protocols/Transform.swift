@@ -3,8 +3,8 @@
 //
 
 #if canImport(Combine)
+
 import Combine
-#endif
 
 /**
  * ``Transform`` represents a transformation from an `Input` value to an `Output` value.
@@ -63,3 +63,5 @@ extension Publisher {
         Publishers.Map(upstream: self, transform: transform)
     }
 }
+
+#endif

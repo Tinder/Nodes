@@ -1,7 +1,5 @@
 //___FILEHEADER___
 
-import Nodes
-
 /**
  PURPOSE:
  The state of the Node.

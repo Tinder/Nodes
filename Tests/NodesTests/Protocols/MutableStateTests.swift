@@ -3,12 +3,13 @@
 //
 
 import Nimble
-@testable import Nodes
+import Nodes
 import XCTest
 
 final class MutableStateTests: XCTestCase {
 
     private struct TestState: MutableState, Equatable {
+
         var value: Int
     }
 

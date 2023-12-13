@@ -3,8 +3,8 @@
 //
 
 #if canImport(Combine)
+
 import Combine
-#endif
 
 /**
  * ``StateObserver`` specifies a method for updating a UI with view state.
@@ -42,3 +42,5 @@ extension StateObserver {
         }
     }
 }
+
+#endif

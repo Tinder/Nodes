@@ -2,6 +2,8 @@
 //  Copyright © 2023 Tinder (Match Group, LLC)
 //
 
+#if canImport(Combine)
+
 import Combine
 
 extension Set where Element == AnyCancellable {
@@ -18,3 +20,5 @@ extension Set where Element == AnyCancellable {
         }
     }
 }
+
+#endif

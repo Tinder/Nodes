@@ -113,9 +113,6 @@ A Node's ``ViewControllable`` instance defines its user interface (for example a
 - ``TabBarControllable``
 - ``ModalStyle``
 
-### SwiftUI
-
-
 ### View State
 
 - ``StateObserver``

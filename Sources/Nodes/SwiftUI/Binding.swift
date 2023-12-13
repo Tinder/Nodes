@@ -16,7 +16,7 @@ extension Binding {
     /// - Allows for `.bind` which is more declarative than `.init`
     ///
     /// Example:
-    /// ```
+    /// ```swift
     /// var body: some View {
     ///     WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
     ///         Slider(value: .bind(to: viewState.sliderValue) { receiver?.didChangeSliderValue($0) },
@@ -41,7 +41,7 @@ extension Binding {
     /// - Allows for `.bind` which is more declarative than `.init`
     ///
     /// Example:
-    /// ```
+    /// ```swift
     /// var body: some View {
     ///     WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
     ///         Slider(value: .bind(to: viewState.sliderValue, onChange: receiver?.didChangeSliderValue),

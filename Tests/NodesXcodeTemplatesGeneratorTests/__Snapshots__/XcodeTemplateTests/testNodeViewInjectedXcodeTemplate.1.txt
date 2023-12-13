@@ -20,9 +20,8 @@
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true
   ▿ stencilContext: NodeViewInjectedStencilContext
-    ▿ analyticsImports: 2 elements
+    ▿ analyticsImports: 1 element
       - "<baseImport>"
-      - "Nodes"
     ▿ analyticsProperties: 1 element
       ▿ 2 key/value pairs
         ▿ (2 elements)
@@ -71,9 +70,8 @@
     - isNimbleEnabled: false
     - isPeripheryCommentEnabled: false
     - nodeName: "___VARIABLE_productName___"
-    ▿ stateImports: 2 elements
+    ▿ stateImports: 1 element
       - "<baseImport>"
-      - "Nodes"
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableMockContents: "<viewControllableMockContents>"
     - viewControllableType: "<viewControllableType>"

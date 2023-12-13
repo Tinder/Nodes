@@ -183,16 +183,18 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     uiFrameworkImport = "<uiFrameworkImport>"
                 }
                 switch stencilTemplate {
-                case .analytics, .flow, .state, .viewState:
+                case .analytics, .state:
+                    expect(imports) == ["<baseImport>"]
+                case .flow, .viewState:
                     expect(imports) == ["Nodes", "<baseImport>"]
-                case .builder:
-                    expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>", "<dependencyInjectionImport>"]
                 case .context, .worker:
                     expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>"]
                 case .viewController:
                     expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>", uiFrameworkImport]
                 case .plugin, .pluginList:
                     expect(imports) == ["Nodes", "<baseImport>", "<dependencyInjectionImport>"]
+                case .builder:
+                    expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>", "<dependencyInjectionImport>"]
                 case .contextTests, .analyticsTests, .viewStateFactoryTests, .flowTests:
                     expect(imports) == ["<baseTestImport>"]
                 case .viewControllerTests:
