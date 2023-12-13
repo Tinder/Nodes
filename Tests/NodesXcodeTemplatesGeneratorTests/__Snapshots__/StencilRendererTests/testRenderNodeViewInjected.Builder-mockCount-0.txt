@@ -37,7 +37,7 @@ internal typealias <nodeName>DynamicComponentDependency = Void
  Declares dependencies that are owned by this Node.
  */
 @MainActor
-internal final class <nodeName>Component: Component
+public final class <nodeName>Component: Component
 <
     <nodeName>Dependency
 > {
@@ -73,8 +73,9 @@ internal final class <nodeName>Component: Component
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
     ///
-    /// - Parameter parent: The parent scope
-    /// - Parameter dynamicDependency: The dynamic component dependency
+    /// - Parameters:
+    ///   - parent: The parent scope
+    ///   - dynamicDependency: The dynamic component dependency
     internal init(parent: Scope, dynamicDependency: <nodeName>DynamicComponentDependency = ()) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)

@@ -12,7 +12,7 @@
  * As an example, to use Combine with Nodes, the following protocol conformance would need to exist within
  * application code:
  *
- * ```
+ * ```swift
  * import class Combine.AnyCancellable
  * import protocol Nodes.Cancellable
  *

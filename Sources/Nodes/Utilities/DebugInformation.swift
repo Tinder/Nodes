@@ -2,12 +2,10 @@
 //  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
-#if canImport(Combine)
-import Combine
-#endif
-import Foundation
+#if DEBUG && canImport(Combine)
 
-#if DEBUG
+import Combine
+import Foundation
 
 internal protocol NotificationPosting {
 
@@ -279,6 +277,7 @@ public enum DebugInformation {
     }
 
     private enum UserInfoKey {
+
         case flowIdentifier
         case flowType
         case factory

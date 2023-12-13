@@ -3,6 +3,7 @@
 import <pluginListImport1>
 import <pluginListImport2>
 
+// periphery:ignore
 /**
  PURPOSE:
  The common Flow interface.
@@ -10,6 +11,7 @@ import <pluginListImport2>
 @MainActor
 internal protocol <pluginListName>Flow: <viewControllableFlowType> {}
 
+// periphery:ignore
 /**
  PURPOSE:
  The common Listener interface.
@@ -17,6 +19,7 @@ internal protocol <pluginListName>Flow: <viewControllableFlowType> {}
 @MainActor
 internal protocol <pluginListName>Listener: AnyObject {}
 
+// periphery:ignore
 /**
  PURPOSE:
  The common Builder interface.
@@ -40,7 +43,7 @@ public protocol <pluginListName>PluginListDependency: Dependency {}
  Declares dependencies that are owned by this Plugin List.
  */
 @MainActor
-internal final class <pluginListName>PluginListComponent: Component
+public final class <pluginListName>PluginListComponent: Component
 <
     <pluginListName>PluginListDependency
 > {
@@ -95,6 +98,7 @@ internal typealias <pluginListName>PluginListKeyType = String
  */
 internal typealias <pluginListName>PluginListStateType = Void
 
+// periphery:ignore
 /**
  PURPOSE:
  The Plugin List protocol (available to mock for testability).
@@ -106,6 +110,7 @@ internal protocol <pluginListName>PluginList {
     func create(key: <pluginListName>PluginListKeyType) -> <pluginListName>Builder?
 }
 
+// periphery:ignore
 /**
  PURPOSE:
  Concrete implementation of the Plugin List providing the Plugin collection and (optionally) the creation order.
@@ -138,12 +143,12 @@ internal final class <pluginListName>PluginListImp: PluginList
     ///   - component: The component instance
     ///   - state: The state
     /// - Returns: The keys defining the Plugin creation order
-//    override internal func creationOrder(
-//        component: <pluginListName>PluginListComponent,
-//        state: <pluginListName>PluginListStateType
-//    ) -> [<pluginListName>PluginListKeyType] {
-//        super.creationOrder(component: component, state: state)
-//    }
+    override internal func creationOrder(
+        component: <pluginListName>PluginListComponent,
+        state: <pluginListName>PluginListStateType
+    ) -> [<pluginListName>PluginListKeyType] {
+        super.creationOrder(component: component, state: state)
+    }
 }
 
 extension <pluginListName>PluginListImp: <pluginListName>PluginList {}

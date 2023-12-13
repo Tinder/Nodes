@@ -1,0 +1,32 @@
+{{ file_header }}
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+{% if view_state_factory_tests_imports %}
+
+{% for import in view_state_factory_tests_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+internal final class {{ node_name }}ViewStateFactoryTests: XCTestCase {
+
+    private var viewStateFactory: {{ node_name }}ViewStateFactory!
+
+    override func setUp() {
+        super.setUp()
+        viewStateFactory = {{ node_name }}ViewStateFactory()
+    }
+
+    override func tearDown() {
+        viewStateFactory = nil
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        {% if is_nimble_enabled %}
+        expect { self.viewStateFactory({{ node_name }}State()) } != nil
+        {% else %}
+        XCTAssertNotNil(viewStateFactory({{ node_name }}State()))
+        {% endif %}
+    }
+}

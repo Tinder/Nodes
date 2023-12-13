@@ -51,7 +51,7 @@ internal typealias {{ node_name }}DynamicComponentDependency = Void
  Declares dependencies that are owned by this Node.
  */
 @MainActor
-internal final class {{ node_name }}Component: Component
+public final class {{ node_name }}Component: Component
 <
     {{ node_name }}Dependency
 > {
@@ -81,14 +81,21 @@ internal final class {{ node_name }}Component: Component
 
      */
 
+    {% if is_periphery_comment_enabled %}
+    // periphery:ignore
+    {% endif %}
     private let dynamicDependency: {{ node_name }}DynamicComponentDependency
 
+    {% if is_periphery_comment_enabled %}
+    // periphery:ignore
+    {% endif %}
     /// The initializer.
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
     ///
-    /// - Parameter parent: The parent scope
-    /// - Parameter dynamicDependency: The dynamic component dependency
+    /// - Parameters:
+    ///   - parent: The parent scope
+    ///   - dynamicDependency: The dynamic component dependency
     internal init(parent: Scope, dynamicDependency: {{ node_name }}DynamicComponentDependency = ()) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
@@ -109,6 +116,9 @@ internal final class {{ node_name }}Component: Component
 
 // MARK: - Builder
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  The Builder interface (available to mock for testability).
@@ -120,6 +130,9 @@ internal protocol {{ node_name }}Builder: AnyObject {
     ) -> {{ node_name }}Flow
 }
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.
@@ -172,13 +185,9 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         )
         context.listener = listener
         let viewStateFactory: {{ node_name }}ViewStateFactory = .init()
-        let viewState: Publishers.Map = .init(
-            upstream: context.$state,
-            transform: viewStateFactory
-        )
         var view: {{ node_name }}View = .init(
             initialState: viewStateFactory(context.state),
-            statePublisher: viewState.eraseToAnyPublisher()
+            {{ view_state_property_name }}: {{ view_state_transform }}
         )
         view.receiver = context
         let viewController: {{ node_name }}ViewController = .init(

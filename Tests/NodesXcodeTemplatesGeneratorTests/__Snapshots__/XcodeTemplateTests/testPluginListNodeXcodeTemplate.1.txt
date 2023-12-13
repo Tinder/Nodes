@@ -1,0 +1,32 @@
+▿ PluginListNodeXcodeTemplate
+  - name: "Plugin List (for Node)"
+  ▿ propertyList: XcodeTemplatePropertyList
+    ▿ allowedTypes: 1 element
+      - "public.swift-source"
+    - description: "The source file implementing a Plugin List."
+    - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
+    - mainTemplateFile: "___FILEBASENAME___.swift"
+    ▿ options: 1 element
+      ▿ Option
+        - default: Optional<String>.none
+        - description: "The name of the Plugin List"
+        - identifier: "productName"
+        - name: "Plugin List name:"
+        - notPersisted: true
+        - required: true
+        - type: "text"
+    - platforms: 0 elements
+    - sortOrder: 6
+    - summary: "The source file implementing a Plugin List"
+    - supportsSwiftPackage: true
+  ▿ stencilContext: PluginListStencilContext
+    - fileHeader: "<fileHeader>"
+    - isPeripheryCommentEnabled: false
+    ▿ pluginListImports: 3 elements
+      - "<baseImport>"
+      - "<dependencyInjectionImport>"
+      - "Nodes"
+    - pluginListName: "___VARIABLE_productName___"
+    - viewControllableFlowType: "<viewControllableFlowType>"
+  ▿ stencils: 1 element
+    - PluginList

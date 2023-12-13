@@ -2,8 +2,6 @@
 //  Copyright © 2023 Tinder (Match Group, LLC)
 //
 
-import Foundation
-
 internal class PathComponent: CustomStringConvertible {
 
     internal let description: String

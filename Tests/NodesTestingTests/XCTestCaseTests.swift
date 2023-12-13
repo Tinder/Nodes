@@ -4,7 +4,7 @@
 
 import NeedleFoundation
 import Nimble
-@testable import NodesTesting
+import NodesTesting
 import XCTest
 
 final class XCTestCaseTests: XCTestCase {

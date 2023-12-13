@@ -85,14 +85,14 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
 
     func testFirstFlowOfType() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
-        expect(flowController.firstFlow(ofType: FlowMock.self)) == mockFlows.first
+        expect(flowController.firstFlow(ofType: FlowMock.self)) === mockFlows.first
     }
 
     func testWithFirstFlowOfType() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         var flow: FlowMock?
         flowController.withFirstFlow(ofType: FlowMock.self) { flow = $0 }
-        expect(flow) == mockFlows.first
+        expect(flow) === mockFlows.first
     }
 
     func testFlowsOfType() {

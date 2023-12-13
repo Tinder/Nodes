@@ -18,7 +18,7 @@ public protocol {{ plugin_name }}PluginDependency: Dependency {}
  Declares dependencies that are owned by this Plugin.
  */
 @MainActor
-internal final class {{ plugin_name }}PluginComponent: Component
+public final class {{ plugin_name }}PluginComponent: Component
 <
     {{ plugin_name }}PluginDependency
 > {
@@ -73,6 +73,9 @@ internal final class {{ plugin_name }}PluginComponent: Component
  */
 internal typealias {{ plugin_name }}PluginStateType = Void
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  The Plugin interface (available to mock for testability).
@@ -86,6 +89,9 @@ internal protocol {{ plugin_name }}Plugin {
     {% endif %}
 }
 
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  Concrete implementation of the Plugin.

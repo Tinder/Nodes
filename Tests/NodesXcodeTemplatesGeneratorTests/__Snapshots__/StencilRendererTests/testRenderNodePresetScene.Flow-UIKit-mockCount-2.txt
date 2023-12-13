@@ -1,0 +1,60 @@
+<fileHeader>
+
+import <flowImport1>
+import <flowImport2>
+
+/**
+ PURPOSE:
+ The interface that the Flow will speak to the Context through. Used for informing the Context of
+ presentation lifecycle events, as an example.
+ */
+@MainActor
+internal protocol SceneContextInterface: Context {}
+
+/**
+ PURPOSE:
+ The interface of the View used for presenting the View of child Nodes. May inherit additional base
+ protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
+ implementation as necessary.
+ */
+@MainActor
+internal protocol SceneViewControllable: <viewControllableType> {}
+
+/**
+ PURPOSE:
+ Responsible for presenting views and starting child Flows, and should not contain business logic.
+ */
+internal final class SceneFlowImp: AbstractFlow
+<
+    SceneContextInterface,
+    SceneViewControllable
+> {
+
+    private let <flowPropertyName1>: <flowPropertyType1>
+    private let <flowPropertyName2>: <flowPropertyType2>
+
+    /// The initializer.
+    ///
+    /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
+    /// - Parameters:
+    ///   - context: The Context instance
+    ///   - viewController: The View Controller instance
+    ///   - <flowPropertyName1>: The <flowPropertyType1> instance
+    ///   - <flowPropertyName2>: The <flowPropertyType2> instance
+    internal init(
+        context: SceneContextInterface,
+        viewController: SceneViewControllable,
+        <flowPropertyName1>: <flowPropertyType1>,
+        <flowPropertyName2>: <flowPropertyType2>
+    ) {
+        self.<flowPropertyName1> = <flowPropertyName1>
+        self.<flowPropertyName2> = <flowPropertyName2>
+        super.init(context: context, viewController: viewController)
+    }
+
+    /// Implement logic to execute when the Flow is started.
+    override internal func didStart() {}
+}
+
+extension SceneFlowImp: SceneFlow {}
+extension SceneFlowImp: SceneFlowInterface {}

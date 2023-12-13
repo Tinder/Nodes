@@ -12,13 +12,7 @@ import {{ import }}
  view events and user interactions.
  */
 @MainActor
-{% if root_node %}
-internal protocol {{ node_name }}Receiver: AnyObject {
-    func viewDidAppear()
-}
-{% else %}
 internal protocol {{ node_name }}Receiver: AnyObject {}
-{% endif %}
 
 /**
  PURPOSE:
@@ -48,41 +42,54 @@ extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
  PURPOSE:
  Concrete implementation of the View.
  */
-internal struct {{ node_name }}View: NodesView {
+internal struct {{ node_name }}View {
 
-    /// The body of the view.
-    internal var body: some View {
-        WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
-            Text(verbatim: "\(type(of: viewState))")
-        }
-    }
-
+    {% if is_periphery_comment_enabled %}
+    // periphery:ignore
+    {% endif %}
     /// The view receiver.
     internal weak var receiver: {{ node_name }}Receiver?
 
     /// The initial view state.
     private let initialState: {{ node_name }}ViewState
 
-    /// The view state publisher.
-    private let statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
+    /// {{ view_state_property_comment }}.
+    private let {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
 
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialState: The initial view state.
-    ///   - statePublisher: The view state publisher.
+    ///   - {{ view_state_property_name }}: {{ view_state_property_comment }}.
     internal init(
         initialState: {{ node_name }}ViewState,
-        statePublisher: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
+        {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
     ) {
         self.initialState = initialState
-        self.statePublisher = statePublisher
+        self.{{ view_state_property_name }} = {{ view_state_property_name }}
             {% if view_state_operators %}
             {{ view_state_operators|indent:12 }}
             {% endif %}
     }
 }
 
+// MARK: - View
+
+extension {{ node_name }}View: View {
+
+    internal var body: some View {
+        WithViewState(initialState: initialState, {{ view_state_property_name }}: {{ view_state_property_name }}) { viewState in
+            Text(verbatim: "\(type(of: viewState))")
+        }
+    }
+}
+
+// MARK: - Preview
+
+{% if is_preview_provider_enabled %}
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
 /**
  PURPOSE:
  The SwiftUI preview (excluded from release builds).
@@ -92,7 +99,15 @@ internal struct {{ node_name }}View_Previews: PreviewProvider {
     internal static var previews: some View {
         {{ node_name }}View(
             initialState: {{ node_name }}ViewState(),
-            statePublisher: Empty().eraseToAnyPublisher()
+            {{ view_state_property_name }}: {{ view_state_empty_factory }}
         )
     }
 }
+{% else %}
+#Preview {
+    {{ node_name }}View(
+        initialState: {{ node_name }}ViewState(),
+        {{ view_state_property_name }}: {{ view_state_empty_factory }}
+    )
+}
+{% endif %}

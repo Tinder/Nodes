@@ -3,7 +3,7 @@
 //
 
 import Nimble
-@testable import Nodes
+import Nodes
 import XCTest
 
 @MainActor
@@ -41,14 +41,14 @@ final class WorkerControllerTests: XCTestCase, TestCaseHelpers {
 
     func testFirstWorkerOfType() {
         let workerController: WorkerController = givenWorkerController(with: mockWorkers)
-        expect(workerController.firstWorker(ofType: WorkerMock.self)) == mockWorkers.first
+        expect(workerController.firstWorker(ofType: WorkerMock.self)) === mockWorkers.first
     }
 
     func testWithFirstWorkerOfType() {
         let workerController: WorkerController = givenWorkerController(with: mockWorkers)
         var worker: WorkerMock?
         workerController.withFirstWorker(ofType: WorkerMock.self) { worker = $0 }
-        expect(worker) == mockWorkers.first
+        expect(worker) === mockWorkers.first
     }
 
     func testWorkersOfType() {

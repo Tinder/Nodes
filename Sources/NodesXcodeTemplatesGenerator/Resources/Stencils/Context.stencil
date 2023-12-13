@@ -19,7 +19,7 @@ internal protocol {{ node_name }}Listener: AnyObject {}
  an example.
  */
 @MainActor
-{% if root_node %}
+{% if node_name == "Root" %}
 internal protocol {{ node_name }}FlowInterface: Flow {
     func didBecomeReady()
 }
@@ -32,24 +32,44 @@ internal protocol {{ node_name }}FlowInterface: Flow {}
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.
  */
+{% if context_generic_types %}
 internal final class {{ node_name }}ContextImp: AbstractContext
 <
-    {{ cancellable_type }}
-> {
+    {% for generic_type in context_generic_types %}
+    {{ generic_type }}{% if not forloop.last %},
+    {% endif %}
+    {% endfor %}
 
+> {
+{% else %}
+internal final class {{ node_name }}ContextImp: AbstractContext {
+{% endif %}
+
+    {% if is_periphery_comment_enabled %}
+    // periphery:ignore
+    {% endif %}
     /// The Flow instance.
     internal weak var flow: {{ node_name }}FlowInterface?
 
+    {% if is_periphery_comment_enabled %}
+    // periphery:ignore
+    {% endif %}
     /// The Listener instance.
     internal weak var listener: {{ node_name }}Listener?
 
+    {% if is_periphery_comment_enabled and not owns_view %}
+    // periphery:ignore
+    {% endif %}
     /// The State instance.
     @Published
     internal private(set) var state: {{ node_name }}State
 
+    {% if is_periphery_comment_enabled %}
+    // periphery:ignore
+    {% endif %}
     /// The Analytics instance.
     private let analytics: {{ node_name }}Analytics
-    {% if root_node %}
+    {% if node_name == "Root" %}
 
     private var isReady: Bool = false
     {% endif %}
@@ -76,7 +96,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext
 
 extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}
 {% if owns_view %}
-{% if root_node %}
+{% if node_name == "Root" %}
 extension {{ node_name }}ContextImp: {{ node_name }}Receiver {
 
     internal func viewDidAppear() {

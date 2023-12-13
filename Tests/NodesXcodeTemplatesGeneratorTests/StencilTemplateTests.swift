@@ -31,23 +31,6 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         }
     }
 
-    func testAllCases() {
-        expect(StencilTemplate.allCases) == [
-            .analytics,
-            .builder(.default),
-            .builder(.swiftUI),
-            .context,
-            .flow,
-            .plugin,
-            .pluginList,
-            .state,
-            .viewController(.default),
-            .viewController(.swiftUI),
-            .viewState,
-            .worker
-        ]
-    }
-
     func testDescription() {
         StencilTemplate.allCases.forEach { stencilTemplate in
             expect("\(stencilTemplate)") == stencilTemplate.name
@@ -79,6 +62,16 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(name) == "ViewState"
             case .worker:
                 expect(name) == "Worker"
+            case .analyticsTests:
+                expect(name) == "AnalyticsTests"
+            case .contextTests:
+                expect(name) == "ContextTests"
+            case .flowTests:
+                expect(name) == "FlowTests"
+            case .viewControllerTests:
+                expect(name) == "ViewControllerTests"
+            case .viewStateFactoryTests:
+                expect(name) == "ViewStateFactoryTests"
             }
         }
     }
@@ -108,13 +101,24 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(filename) == "ViewState"
             case .worker:
                 expect(filename) == "Worker"
+            case .analyticsTests:
+                expect(filename) == "AnalyticsTests"
+            case .contextTests:
+                expect(filename) == "ContextTests"
+            case .flowTests:
+                expect(filename) == "FlowTests"
+            case let .viewControllerTests(variation):
+                expect(filename) == "ViewControllerTests\(variation == .swiftUI ? "-SwiftUI" : "")"
+            case .viewStateFactoryTests:
+                expect(filename) == "ViewStateFactoryTests"
             }
         }
     }
 
     func testNodeStencils() {
         StencilTemplate.Variation.allCases.forEach { variation in
-            expect(StencilTemplate.Node(for: variation).stencils) == [
+            let node: StencilTemplate.Node = .init(for: variation)
+            expect(node.stencils(includeTests: false)) == [
                 .analytics,
                 .builder(variation),
                 .context,
@@ -123,16 +127,41 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .viewController(variation),
                 .viewState
             ]
+            expect(node.stencils(includeTests: true)) == [
+                .analytics,
+                .builder(variation),
+                .context,
+                .flow,
+                .state,
+                .viewController(variation),
+                .viewState,
+                .analyticsTests,
+                .contextTests,
+                .flowTests,
+                .viewControllerTests(variation),
+                .viewStateFactoryTests
+            ]
         }
     }
 
     func testNodeViewInjectedStencils() {
-        expect(StencilTemplate.NodeViewInjected().stencils) == [
+        let nodeViewInjected: StencilTemplate.NodeViewInjected = .init()
+        expect(nodeViewInjected.stencils(includeTests: false)) == [
             .analytics,
             .builder(.default),
             .context,
             .flow,
             .state
+        ]
+        expect(nodeViewInjected.stencils(includeTests: true)) == [
+            .analytics,
+            .builder(.default),
+            .context,
+            .flow,
+            .state,
+            .analyticsTests,
+            .contextTests,
+            .flowTests
         ]
     }
 
@@ -154,18 +183,49 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     uiFrameworkImport = "<uiFrameworkImport>"
                 }
                 switch stencilTemplate {
-                case .analytics, .flow, .state, .viewState:
+                case .analytics, .state:
+                    expect(imports) == ["<baseImport>"]
+                case .flow, .viewState:
                     expect(imports) == ["Nodes", "<baseImport>"]
-                case .builder:
-                    expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>", "<dependencyInjectionImport>"]
                 case .context, .worker:
                     expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>"]
                 case .viewController:
                     expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>", uiFrameworkImport]
                 case .plugin, .pluginList:
                     expect(imports) == ["Nodes", "<baseImport>", "<dependencyInjectionImport>"]
+                case .builder:
+                    expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>", "<dependencyInjectionImport>"]
+                case .contextTests, .analyticsTests, .viewStateFactoryTests, .flowTests:
+                    expect(imports) == ["<baseTestImport>"]
+                case .viewControllerTests:
+                    expect(imports) == ["<baseTestImport>", "<reactiveImport>"]
                 }
             }
         }
     }
+}
+
+extension StencilTemplate {
+
+    // swiftlint:disable:next strict_fileprivate
+    fileprivate static let allCases: [Self] = [
+        .analytics,
+        .builder(.default),
+        .builder(.swiftUI),
+        .context,
+        .flow,
+        .plugin,
+        .pluginList,
+        .state,
+        .viewController(.default),
+        .viewController(.swiftUI),
+        .viewState,
+        .worker,
+        .analyticsTests,
+        .contextTests,
+        .flowTests,
+        .viewControllerTests(.default),
+        .viewControllerTests(.swiftUI),
+        .viewStateFactoryTests
+    ]
 }

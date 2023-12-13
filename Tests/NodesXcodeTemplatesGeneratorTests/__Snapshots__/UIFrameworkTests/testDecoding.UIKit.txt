@@ -1,5 +1,4 @@
 ▿ UIFramework
   - framework: Framework.uiKit
   - viewControllerMethods: "<viewControllerMethods>"
-  - viewControllerMethodsForRootNode: "<viewControllerMethodsForRootNode>"
   - viewControllerProperties: "<viewControllerProperties>"

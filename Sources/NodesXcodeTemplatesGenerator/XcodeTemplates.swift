@@ -11,15 +11,15 @@ public final class XcodeTemplates {
     public init(config: Config) {
         var templates: [XcodeTemplate] = UIFramework.Kind
             .allCases
-            .compactMap { try? NodeTemplate(for: $0, config: config) }
+            .compactMap { try? NodeXcodeTemplate(for: $0, config: config) }
         if config.isViewInjectedTemplateEnabled {
-            templates.append(NodeViewInjectedTemplate(config: config))
+            templates.append(NodeViewInjectedXcodeTemplate(config: config))
         }
         templates += [
-            PluginListNodeTemplate(config: config),
-            PluginNodeTemplate(config: config),
-            PluginTemplate(config: config),
-            WorkerTemplate(config: config)
+            PluginListNodeXcodeTemplate(config: config),
+            PluginNodeXcodeTemplate(config: config),
+            PluginXcodeTemplate(config: config),
+            WorkerXcodeTemplate(config: config)
         ]
         self.templates = templates
     }

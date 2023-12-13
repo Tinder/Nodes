@@ -3,9 +3,9 @@
 //
 
 #if canImport(Combine) && canImport(SwiftUI)
+
 import Combine
 import SwiftUI
-#endif
 
 /**
  * A [SwiftUI](https://developer.apple.com/documentation/swiftui) helper
@@ -13,7 +13,7 @@ import SwiftUI
  * by a given publisher.
  *
  * Usage Example:
- * ```
+ * ```swift
  * struct ExampleViewState: Equatable {
  *     let text: String
  * }
@@ -58,3 +58,5 @@ public struct WithViewState<ViewState, Content: View>: View {
         self.content = content
     }
 }
+
+#endif

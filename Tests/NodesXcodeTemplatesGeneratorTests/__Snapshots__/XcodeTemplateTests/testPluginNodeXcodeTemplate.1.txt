@@ -1,0 +1,32 @@
+▿ PluginNodeXcodeTemplate
+  - name: "Plugin (for Node)"
+  ▿ propertyList: XcodeTemplatePropertyList
+    ▿ allowedTypes: 1 element
+      - "public.swift-source"
+    - description: "The source file implementing a Plugin for a Node."
+    - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
+    - mainTemplateFile: "___FILEBASENAME___.swift"
+    ▿ options: 1 element
+      ▿ Option
+        - default: Optional<String>.none
+        - description: "The name of the Plugin"
+        - identifier: "productName"
+        - name: "Node name:"
+        - notPersisted: true
+        - required: true
+        - type: "text"
+    - platforms: 0 elements
+    - sortOrder: 7
+    - summary: "The source file implementing a Plugin for a Node"
+    - supportsSwiftPackage: true
+  ▿ stencilContext: PluginStencilContext
+    - fileHeader: "<fileHeader>"
+    - isPeripheryCommentEnabled: false
+    ▿ pluginImports: 3 elements
+      - "<baseImport>"
+      - "<dependencyInjectionImport>"
+      - "Nodes"
+    - pluginName: "___VARIABLE_productName___"
+    - returnType: Optional<String>.none
+  ▿ stencils: 1 element
+    - Plugin

@@ -1,0 +1,67 @@
+<fileHeader>
+
+import <contextImport>
+
+/**
+ PURPOSE:
+ The Context delegates callbacks to its (external) Listener, typically the parent Context.
+ */
+@MainActor
+internal protocol SceneListener: AnyObject {}
+
+/**
+ PURPOSE:
+ The interface that the Context will speak to the Flow through. Used to initiate navigation as
+ an example.
+ */
+@MainActor
+internal protocol SceneFlowInterface: Flow {}
+
+/**
+ PURPOSE:
+ Contains the business logic of the Node. The lifecycle of the Node is bookended between the
+ `didBecomeActive` and `willResignActive` methods.
+ */
+internal final class SceneContextImp: AbstractContext
+<
+    <contextGenericType>
+> {
+
+    // periphery:ignore
+    /// The Flow instance.
+    internal weak var flow: SceneFlowInterface?
+
+    // periphery:ignore
+    /// The Listener instance.
+    internal weak var listener: SceneListener?
+
+    // periphery:ignore
+    /// The State instance.
+    @Published
+    internal private(set) var state: SceneState
+
+    // periphery:ignore
+    /// The Analytics instance.
+    private let analytics: SceneAnalytics
+
+    /// The initializer.
+    /// - Parameters:
+    ///   - workers: The Worker instances
+    ///   - analytics: The Analytics instance
+    internal init(
+        workers: [Worker],
+        analytics: SceneAnalytics
+    ) {
+        self.state = SceneState()
+        self.analytics = analytics
+        super.init(workers: workers)
+    }
+
+    /// Implement logic to execute when the Context becomes active.
+    override internal func didBecomeActive() {}
+
+    /// Implement logic to execute when the Context will become inactive.
+    override internal func willResignActive() {}
+}
+
+extension SceneContextImp: SceneContextInterface {}

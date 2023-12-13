@@ -12,7 +12,7 @@ public protocol <pluginName>PluginDependency: Dependency {}
  Declares dependencies that are owned by this Plugin.
  */
 @MainActor
-internal final class <pluginName>PluginComponent: Component
+public final class <pluginName>PluginComponent: Component
 <
     <pluginName>PluginDependency
 > {
