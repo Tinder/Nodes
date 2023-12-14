@@ -132,8 +132,8 @@ public struct UIFramework: Equatable, Codable {
                     .decode(String.self, forKey: .import)
                 let viewControllerType: String = try container
                     .decode(String.self, forKey: .viewControllerType)
-                let viewControllerSuperParameters: String = try container.
-                    decode(String.self, forKey: .viewControllerSuperParameters)
+                let viewControllerSuperParameters: String = try container
+                    .decode(String.self, forKey: .viewControllerSuperParameters)
                 let required: [(key: String, value: String)] = [
                     (key: "name", value: name),
                     (key: "import", value: `import`),
