@@ -133,8 +133,8 @@ extension Config {
         let defaults: Config = .init()
         do {
             uiFrameworks = try decoder.decode(CodingKeys.uiFrameworks)
-        } catch let error as ConfigError {
-            throw error
+        } catch let DecodingError.dataCorrupted(context) where context.underlyingError is Config.ConfigError {
+            throw DecodingError.dataCorrupted(context)
         } catch {
             uiFrameworks = defaults.uiFrameworks
         }
@@ -231,8 +231,7 @@ extension Config {
             (key: "viewStateTransform", value: viewStateTransform)
         ]
         for (key, value) in required where value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            let error: ConfigError = .emptyStringNotAllowed(key: key)
-            throw error
+            throw ConfigError.emptyStringNotAllowed(key: key)
         }
     }
 }
