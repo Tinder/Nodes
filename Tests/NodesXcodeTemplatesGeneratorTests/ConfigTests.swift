@@ -52,6 +52,28 @@ final class ConfigTests: XCTestCase, TestFactories {
             }
     }
 
+    func testDecodingThrowsEmptyStringNotAllowedForCustomUIFramework() throws {
+        let requiredKeys: [(key: String, yaml: String)] = [
+            (key: "name", yaml: givenCustomUIFrameworkYAML(name: "")),
+            (key: "import", yaml: givenCustomUIFrameworkYAML(import: "")),
+            (key: "viewControllerType", yaml: givenCustomUIFrameworkYAML(viewControllerType: ""))
+        ]
+        for (key, yaml): (String, String) in requiredKeys {
+            expect(try YAMLDecoder().decode(Config.self, from: Data(yaml.utf8)))
+                .to(throwError(errorType: DecodingError.self) { error in
+                    guard
+                        case let .dataCorrupted(context): DecodingError = error,
+                        let configError: Config.ConfigError = context.underlyingError as? Config.ConfigError
+                    else { return fail("Expected data corrupted case with underlying ConfigError") }
+                    expect(configError) == .emptyStringNotAllowed(key: key)
+                    expect(configError.localizedDescription) == """
+                        ERROR: Empty String Not Allowed [key: \(key)] \
+                        (TIP: Omit from config for the default value to be used instead)
+                        """
+                })
+        }
+    }
+
     func testDecodingThrowsEmptyStringNotAllowed() throws {
         let requiredKeys: [String] = [
             "publisherType",
