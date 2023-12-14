@@ -162,4 +162,19 @@ final class ConfigTests: XCTestCase, TestFactories {
         isPeripheryCommentEnabled: true
         """
     }
+
+    private func givenCustomUIFrameworkYAML(
+        name: String = "<name>",
+        import: String = "<import>",
+        viewControllerType: String = "<viewControllerType>"
+    ) -> String {
+        """
+        uiFrameworks:
+          - framework:
+              custom:
+                name: \(name)
+                import: \(`import`)
+                viewControllerType: \(viewControllerType)
+        """
+    }
 }
