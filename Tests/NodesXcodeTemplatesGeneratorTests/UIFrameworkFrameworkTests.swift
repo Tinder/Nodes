@@ -86,7 +86,8 @@ final class UIFrameworkFrameworkTests: XCTestCase {
                     else { return fail("expected data corrupted case with underlying config error") }
                     expect(configError) == .emptyStringNotAllowed(key: key)
                     expect(configError.localizedDescription) == """
-                        ERROR: Empty String Not Allowed [key: \(key)] (TIP: Omit from config for default to be used)
+                        ERROR: Empty String Not Allowed [key: \(key)] \
+                        (TIP: Omit from config for the default value to be used instead)
                         """
                 })
         }
