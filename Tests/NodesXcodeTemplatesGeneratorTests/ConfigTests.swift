@@ -86,7 +86,9 @@ final class ConfigTests: XCTestCase, TestFactories {
             "viewStateTransform"
         ]
         for key: String in requiredKeys {
-            let yaml: String = "\(key): \"\"\n"
+            let yaml: String = """
+                \(key): ""
+                """
             expect(try YAMLDecoder().decode(Config.self, from: Data(yaml.utf8)))
                 .to(throwError(errorType: DecodingError.self) { error in
                     guard
