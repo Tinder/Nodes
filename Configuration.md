@@ -1,6 +1,6 @@
 # Nodes Configuration
 
-While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui) (for iOS), using other UI frameworks with Nodes (such as [AppKit](https://developer.apple.com/documentation/appkit)) requires the following custom configuration.
+While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui) (for iOS), the following custom configuration is required to use other UI frameworks, such as [AppKit](https://developer.apple.com/documentation/appkit).
 
 ## Configure the Xcode Template Generator
 
@@ -16,7 +16,7 @@ swift run -- nodes-xcode-templates-gen --id "Custom" --config "nodes.yml"
 
 ### Sample Config File
 
-All values shown in the sample (below) are the defaults.
+All values shown in the samples below are the defaults.
 
 > TIP: It is only necessary to include config options that are different from the defaults.
 
@@ -135,12 +135,14 @@ uiFrameworks:
 
 #### Custom
 
+> IMPORTANT: A non-empty string must be provided for `name`, `import` and `viewControllerType`.
+
 ```yaml
 uiFrameworks:
   - framework:
       custom:
-        name: Custom
-        import: Custom
+        name: ""
+        import: ""
         viewControllerType: ""
         viewControllerSuperParameters: ""
     viewControllerProperties: ""
