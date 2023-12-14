@@ -53,7 +53,7 @@ final class ConfigTests: XCTestCase, TestFactories {
     }
 
     func testDecodingThrowsEmptyStringNotAllowed() throws {
-        let keys: [String] = [
+        let requiredKeys: [String] = [
             "publisherType",
             "viewControllableFlowType",
             "viewControllableType",
@@ -63,13 +63,19 @@ final class ConfigTests: XCTestCase, TestFactories {
             "viewStatePropertyName",
             "viewStateTransform"
         ]
-        try keys
-            .map { (key: $0, data: Data("\($0):".utf8)) }
-            .forEach { key, data in
-                expect(try YAMLDecoder().decode(Config.self, from: data)).to(throwError { error in
-                    assertSnapshot(matching: (key: key, error: error), as: .dump)
+        for key: String in requiredKeys {
+            let yaml: String = "\(key): \"\"\n"
+            expect(try YAMLDecoder().decode(Config.self, from: Data(yaml.utf8)))
+                .to(throwError(errorType: DecodingError.self) { error in
+                    guard case let .dataCorrupted(context) = error,
+                          let configError: Config.ConfigError = context.underlyingError as? Config.ConfigError
+                    else { return fail("expected data corrupted case with underlying config error") }
+                    expect(configError) == .emptyStringNotAllowed(key: key)
+                    expect(configError.localizedDescription) == """
+                        ERROR: Empty String Not Allowed [key: \(key)] (TIP: Omit from config for default to be used)
+                        """
                 })
-            }
+        }
     }
 
     func testConfigErrorLocalizedDescription() {

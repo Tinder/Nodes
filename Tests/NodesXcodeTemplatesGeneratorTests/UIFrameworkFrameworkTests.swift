@@ -73,18 +73,23 @@ final class UIFrameworkFrameworkTests: XCTestCase {
     }
 
     func testDecodingThrowsEmptyStringNotAllowed() throws {
-        let requiredStrings: [(key: String, yaml: String)] = [
+        let requiredKeys: [(key: String, yaml: String)] = [
             (key: "name", yaml: givenCustomYAML(name: "")),
             (key: "import", yaml: givenCustomYAML(import: "")),
             (key: "viewControllerType", yaml: givenCustomYAML(viewControllerType: ""))
         ]
-        try requiredStrings
-            .map { (key: $0.key, data: Data($0.yaml.utf8)) }
-            .forEach { key, data in
-                expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: data)).to(throwError { error in
-                    assertSnapshot(matching: (key: key, error: error), as: .dump)
+        for (key, yaml): (String, String) in requiredKeys {
+            expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: Data(yaml.utf8)))
+                .to(throwError(errorType: DecodingError.self) { error in
+                    guard case let .dataCorrupted(context) = error,
+                          let configError: Config.ConfigError = context.underlyingError as? Config.ConfigError
+                    else { return fail("expected data corrupted case with underlying config error") }
+                    expect(configError) == .emptyStringNotAllowed(key: key)
+                    expect(configError.localizedDescription) == """
+                        ERROR: Empty String Not Allowed [key: \(key)] (TIP: Omit from config for default to be used)
+                        """
                 })
-            }
+        }
     }
 
     private func givenYAML(for framework: UIFramework.Framework) -> String {
