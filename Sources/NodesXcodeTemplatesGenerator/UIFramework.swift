@@ -126,11 +126,14 @@ public struct UIFramework: Equatable, Codable {
                 let container: KeyedDecodingContainer<CustomCodingKeys> = try container.nestedContainer(
                     keyedBy: CustomCodingKeys.self, forKey: .custom
                 )
-                let name: String = try container.decode(String.self, forKey: .name)
-                let `import`: String = try container.decode(String.self, forKey: .import)
-                let viewControllerType: String = try container.decode(String.self, forKey: .viewControllerType)
-                let viewControllerSuperParameters: String = try container.decode(String.self,
-                                                                                 forKey: .viewControllerSuperParameters)
+                let name: String = try container
+                    .decode(String.self, forKey: .name)
+                let `import`: String = try container
+                    .decode(String.self, forKey: .import)
+                let viewControllerType: String = try container
+                    .decode(String.self, forKey: .viewControllerType)
+                let viewControllerSuperParameters: String = try container.
+                    decode(String.self, forKey: .viewControllerSuperParameters)
                 let required: [(key: String, value: String)] = [
                     (key: "name", value: name),
                     (key: "import", value: `import`),
