@@ -11,6 +11,16 @@ import Yams
 
 final class ConfigTests: XCTestCase, TestFactories {
 
+    func testConfigErrorLocalizedDescription() {
+        expect(Config.ConfigError.emptyStringNotAllowed(key: "<key>").localizedDescription) == """
+            ERROR: Empty String Not Allowed [key: <key>] \
+            (TIP: Omit from config for the default value to be used instead)
+            """
+        expect(Config.ConfigError.uiFrameworkNotDefined(kind: .uiKit).localizedDescription) == """
+            ERROR: UIFramework Not Defined [kind: uiKit]
+            """
+    }
+
     func testConfig() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
@@ -30,27 +40,6 @@ final class ConfigTests: XCTestCase, TestFactories {
 
     func testDefaultConfig() {
         assertSnapshot(matching: Config(), as: .dump)
-    }
-
-    func testUIFrameworkForKind() throws {
-        let config: Config = givenConfig()
-        try UIFramework.Kind
-            .allCases
-            .forEach { expect(try config.uiFramework(for: $0).kind) == $0 }
-    }
-
-    func testUIFrameworkForKindIsNotDefined() throws {
-        var config: Config = .init()
-        config.uiFrameworks = []
-        try UIFramework.Kind
-            .allCases
-            .forEach { kind in
-                expect(try config.uiFramework(for: kind))
-                    .to(throwError(errorType: Config.ConfigError.self) { error in
-                        expect(error) == .uiFrameworkNotDefined(kind: kind)
-                        expect(error.localizedDescription) == "ERROR: UIFramework Not Defined [kind: \(kind)]"
-                    })
-            }
     }
 
     func testDecodingThrowsEmptyStringNotAllowedForCustomUIFramework() throws {
@@ -103,14 +92,25 @@ final class ConfigTests: XCTestCase, TestFactories {
         }
     }
 
-    func testConfigErrorLocalizedDescription() {
-        expect(Config.ConfigError.uiFrameworkNotDefined(kind: .uiKit).localizedDescription) == """
-            ERROR: UIFramework Not Defined [kind: uiKit]
-            """
-        expect(Config.ConfigError.emptyStringNotAllowed(key: "<key>").localizedDescription) == """
-            ERROR: Empty String Not Allowed [key: <key>] \
-            (TIP: Omit from config for the default value to be used instead)
-            """
+    func testUIFrameworkForKind() throws {
+        let config: Config = givenConfig()
+        try UIFramework.Kind
+            .allCases
+            .forEach { expect(try config.uiFramework(for: $0).kind) == $0 }
+    }
+
+    func testUIFrameworkForKindIsNotDefined() throws {
+        var config: Config = .init()
+        config.uiFrameworks = []
+        try UIFramework.Kind
+            .allCases
+            .forEach { kind in
+                expect(try config.uiFramework(for: kind))
+                    .to(throwError(errorType: Config.ConfigError.self) { error in
+                        expect(error) == .uiFrameworkNotDefined(kind: kind)
+                        expect(error.localizedDescription) == "ERROR: UIFramework Not Defined [kind: \(kind)]"
+                    })
+            }
     }
 
     private func givenConfig() -> String {

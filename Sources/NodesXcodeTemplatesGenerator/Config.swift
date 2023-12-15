@@ -10,16 +10,16 @@ public struct Config: Equatable, Codable {
 
     public enum ConfigError: LocalizedError, Equatable {
 
-        case uiFrameworkNotDefined(kind: UIFramework.Kind)
         case emptyStringNotAllowed(key: String)
+        case uiFrameworkNotDefined(kind: UIFramework.Kind)
 
         public var errorDescription: String? {
             switch self {
-            case let .uiFrameworkNotDefined(kind):
-                return "ERROR: UIFramework Not Defined [kind: \(kind)]"
             case let .emptyStringNotAllowed(key):
                 let tip: String = "Omit from config for the default value to be used instead"
                 return "ERROR: Empty String Not Allowed [key: \(key)] (TIP: \(tip))"
+            case let .uiFrameworkNotDefined(kind):
+                return "ERROR: UIFramework Not Defined [kind: \(kind)]"
             }
         }
     }
