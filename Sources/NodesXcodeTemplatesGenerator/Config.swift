@@ -130,7 +130,9 @@ extension Config {
 
     // swiftlint:disable:next function_body_length
     public init(from decoder: Decoder) throws {
+
         let defaults: Config = .init()
+
         do {
             uiFrameworks = try decoder.decode(CodingKeys.uiFrameworks)
         } catch let error as Config.ConfigError {
@@ -138,6 +140,7 @@ extension Config {
         } catch {
             uiFrameworks = defaults.uiFrameworks
         }
+
         fileHeader =
             (try? decoder.decodeString(CodingKeys.fileHeader))
             ?? defaults.fileHeader
@@ -216,6 +219,7 @@ extension Config {
         isPeripheryCommentEnabled =
             (try? decoder.decode(CodingKeys.isPeripheryCommentEnabled))
             ?? defaults.isPeripheryCommentEnabled
+        
         try validateRequiredStrings()
     }
 
