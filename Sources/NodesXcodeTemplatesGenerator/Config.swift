@@ -219,7 +219,7 @@ extension Config {
         isPeripheryCommentEnabled =
             (try? decoder.decode(CodingKeys.isPeripheryCommentEnabled))
             ?? defaults.isPeripheryCommentEnabled
-        
+
         try validateRequiredStrings()
     }
 
