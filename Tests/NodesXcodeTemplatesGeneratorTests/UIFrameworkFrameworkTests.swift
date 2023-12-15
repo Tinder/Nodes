@@ -2,6 +2,7 @@
 //  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
+import Codextended
 import Nimble
 @testable import NodesXcodeTemplatesGenerator
 import SnapshotTesting
@@ -57,7 +58,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         ]
         try frameworks.forEach { framework in
             let data: Data = .init(givenYAML(for: framework).utf8)
-            expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: data)) == framework
+            expect(try data.decoded(as: UIFramework.Framework.self, using: YAMLDecoder())) == framework
         }
     }
 
@@ -66,7 +67,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             .map(\.utf8)
             .map(Data.init(_:))
             .forEach { data in
-                expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: data)).to(throwError { error in
+                expect(try data.decoded(as: UIFramework.Framework.self, using: YAMLDecoder())).to(throwError { error in
                     assertSnapshot(matching: error, as: .dump)
                 })
             }
