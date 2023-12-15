@@ -28,7 +28,7 @@ final class ConfigTests: XCTestCase, TestFactories {
         assertSnapshot(matching: config, as: .dump)
     }
 
-    func testDecodeConfigFromEmptyString() throws {
+    func testDecodeFromEmptyString() throws {
         let config: Config = try Data("".utf8).decoded(as: Config.self, using: YAMLDecoder())
         expect(config) == Config()
         assertSnapshot(matching: config, as: .dump)
