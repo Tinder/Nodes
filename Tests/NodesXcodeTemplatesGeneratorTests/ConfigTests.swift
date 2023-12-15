@@ -2,6 +2,7 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
+import Codextended
 import Nimble
 import NodesXcodeTemplatesGenerator
 import SnapshotTesting
