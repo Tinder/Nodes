@@ -2,6 +2,7 @@
 //  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
+import Codextended
 import Nimble
 @testable import NodesXcodeTemplatesGenerator
 import SnapshotTesting
@@ -68,7 +69,7 @@ final class UIFrameworkTests: XCTestCase {
             .map(givenYAML)
             .map(\.utf8)
             .map(Data.init(_:))
-            .map { try YAMLDecoder().decode(UIFramework.self, from: $0) }
+            .map { try $0.decoded(as: UIFramework.self, using: YAMLDecoder()) }
             .forEach { assertSnapshot(matching: $0, as: .dump, named: $0.kind.rawValue) }
     }
 
@@ -78,7 +79,7 @@ final class UIFrameworkTests: XCTestCase {
             .map(givenMinimalYAML)
             .map(\.utf8)
             .map(Data.init(_:))
-            .map { try YAMLDecoder().decode(UIFramework.self, from: $0) }
+            .map { try $0.decoded(as: UIFramework.self, using: YAMLDecoder()) }
             .forEach { assertSnapshot(matching: $0, as: .dump, named: $0.kind.rawValue) }
     }
 
