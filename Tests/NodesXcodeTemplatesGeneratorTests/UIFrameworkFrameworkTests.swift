@@ -2,6 +2,7 @@
 //  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
+import Codextended
 import Nimble
 @testable import NodesXcodeTemplatesGenerator
 import SnapshotTesting
@@ -79,12 +80,11 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             (key: "viewControllerType", yaml: givenCustomYAML(viewControllerType: ""))
         ]
         for (key, yaml): (String, String) in requiredKeys {
-            expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: Data(yaml.utf8)))
+            expect(try Data(yaml.utf8).decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
                 .to(throwError(errorType: DecodingError.self) { error in
-                    guard
-                        case let .dataCorrupted(context): DecodingError = error,
-                        let configError: Config.ConfigError = context.underlyingError as? Config.ConfigError
-                    else { return fail("Expected data corrupted case with underlying ConfigError") }
+                    guard case let .dataCorrupted(context): DecodingError = error,
+                          let configError: Config.ConfigError = context.underlyingError as? Config.ConfigError
+                    else { return fail("expected data corrupted case with underlying config error") }
                     expect(configError) == .emptyStringNotAllowed(key: key)
                     expect(configError.localizedDescription) == """
                         ERROR: Empty String Not Allowed [key: \(key)] \
