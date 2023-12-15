@@ -51,7 +51,7 @@ final class ConfigTests: XCTestCase, TestFactories {
         for (key, yaml): (String, String) in requiredKeys {
             expect(try Data(yaml.utf8).decoded(as: Config.self, using: YAMLDecoder()))
                 .to(throwError(errorType: DecodingError.self) { error in
-                    guard case let .dataCorrupted(context): DecodingError = error,
+                    guard case let .dataCorrupted(context) = error,
                           let configError: Config.ConfigError = context.underlyingError as? Config.ConfigError
                     else { return fail("expected data corrupted case with underlying config error") }
                     expect(configError) == .emptyStringNotAllowed(key: key)
@@ -80,7 +80,7 @@ final class ConfigTests: XCTestCase, TestFactories {
                 """
             expect(try Data(yaml.utf8).decoded(as: Config.self, using: YAMLDecoder()))
                 .to(throwError(errorType: DecodingError.self) { error in
-                    guard case let .dataCorrupted(context): DecodingError = error,
+                    guard case let .dataCorrupted(context) = error,
                           let configError: Config.ConfigError = context.underlyingError as? Config.ConfigError
                     else { return fail("expected data corrupted case with underlying config error") }
                     expect(configError) == .emptyStringNotAllowed(key: key)

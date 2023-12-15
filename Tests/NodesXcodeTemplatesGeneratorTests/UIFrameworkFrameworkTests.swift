@@ -82,7 +82,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         for (key, yaml): (String, String) in requiredKeys {
             expect(try Data(yaml.utf8).decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
                 .to(throwError(errorType: DecodingError.self) { error in
-                    guard case let .dataCorrupted(context): DecodingError = error,
+                    guard case let .dataCorrupted(context) = error,
                           let configError: Config.ConfigError = context.underlyingError as? Config.ConfigError
                     else { return fail("expected data corrupted case with underlying config error") }
                     expect(configError) == .emptyStringNotAllowed(key: key)
