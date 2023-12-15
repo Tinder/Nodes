@@ -133,8 +133,8 @@ extension Config {
         let defaults: Config = .init()
         do {
             uiFrameworks = try decoder.decode(CodingKeys.uiFrameworks)
-        } catch let DecodingError.dataCorrupted(context) where context.underlyingError is Config.ConfigError {
-            throw DecodingError.dataCorrupted(context)
+        } catch let error as Config.ConfigError {
+            throw error
         } catch {
             uiFrameworks = defaults.uiFrameworks
         }
