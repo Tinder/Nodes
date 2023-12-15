@@ -45,7 +45,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         expect(custom.viewControllerType) == "<viewControllerType>"
     }
 
-    func testFrameworkInitFromDecoder() throws {
+    func testDecoding() throws {
         let frameworks: [UIFramework.Framework] = [
             .appKit,
             .uiKit,
@@ -57,19 +57,60 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         ]
         try frameworks.forEach { framework in
             let data: Data = .init(givenYAML(for: framework).utf8)
-            expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: data)) == framework
+            expect(try data.decoded(as: UIFramework.Framework.self, using: YAMLDecoder())) == framework
         }
     }
 
-    func testFrameworkInitFromDecoderThrowsError() throws {
-        try ["Custom", "AnyUnsupportedFrameworkName", "custom:\ncustom:\n", "[]"]
-            .map(\.utf8)
-            .map(Data.init(_:))
-            .forEach { data in
-                expect(try YAMLDecoder().decode(UIFramework.Framework.self, from: data)).to(throwError { error in
-                    assertSnapshot(matching: error, as: .dump)
-                })
-            }
+    func testDecodingThrowsTypeMismatchForUnsupportedFrameworkName() throws {
+        let data: Data = .init("AnyUnsupportedFrameworkName".utf8)
+        expect(try data.decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
+            .to(throwError(errorType: DecodingError.self) { error in
+                guard case let .typeMismatch(framework, context) = error
+                else { return fail("expected type mismatch case") }
+                expect(framework == UIFramework.Framework.self) == true
+                expect(context.codingPath).to(beEmpty())
+                expect(context.debugDescription) == "Unsupported framework: AnyUnsupportedFrameworkName"
+                expect(context.underlyingError) == nil
+            })
+    }
+
+    func testDecodingThrowsTypeMismatchForCustomFrameworkMustBeObject() throws {
+        let data: Data = .init("Custom".utf8)
+        expect(try data.decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
+            .to(throwError(errorType: DecodingError.self) { error in
+                guard case let .typeMismatch(framework, context) = error
+                else { return fail("expected type mismatch case") }
+                expect(framework == UIFramework.Framework.self) == true
+                expect(context.codingPath).to(beEmpty())
+                expect(context.debugDescription) == "Custom framework must be an object."
+                expect(context.underlyingError) == nil
+            })
+    }
+
+    func testDecodingThrowsTypeMismatchForExpectedOnlyOneKey() throws {
+        let data: Data = .init("custom:\ncustom:\n".utf8)
+        expect(try data.decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
+            .to(throwError(errorType: DecodingError.self) { error in
+                guard case let .typeMismatch(framework, context) = error
+                else { return fail("expected type mismatch case") }
+                expect(framework == UIFramework.Framework.self) == true
+                expect(context.codingPath).to(beEmpty())
+                expect(context.debugDescription) == "Expected only one key."
+                expect(context.underlyingError) == nil
+            })
+    }
+
+    func testDecodingThrowsTypeMismatchForExpectedToDecodeMapping() throws {
+        let data: Data = .init("[]".utf8)
+        expect(try data.decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
+            .to(throwError(errorType: DecodingError.self) { error in
+                guard case let .typeMismatch(mapping, context) = error
+                else { return fail("expected type mismatch case") }
+                expect(mapping == Node.Mapping.self) == true
+                expect(context.codingPath).to(beEmpty())
+                expect(context.debugDescription) == "Expected to decode Mapping but found Node instead."
+                expect(context.underlyingError) == nil
+            })
     }
 
     private func givenYAML(for framework: UIFramework.Framework) -> String {
