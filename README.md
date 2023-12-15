@@ -144,4 +144,4 @@ While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/docume
 
 ### Reactive Frameworks
 
-While Nodes work out-of-the-box with [Combine](https://developer.apple.com/documentation/combine), custom [configuration and setup is required](RxSwift.md) to use other reactive frameworks, such [RxSwift](https://github.com/ReactiveX/RxSwift).
+While Nodes works out-of-the-box with [Combine](https://developer.apple.com/documentation/combine), custom [configuration and setup is required](RxSwift.md) to use other reactive frameworks, such [RxSwift](https://github.com/ReactiveX/RxSwift).
