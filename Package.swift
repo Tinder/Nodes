@@ -119,7 +119,9 @@ let package = Package(
                 "Nimble",
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
             ],
-            exclude: ["__Snapshots__"],
+            exclude: [
+                "__Snapshots__",
+            ],
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
