@@ -18,7 +18,7 @@ final class ConfigTests: XCTestCase, TestFactories {
         assertSnapshot(matching: config, as: .dump)
     }
 
-    func testEmptyConfig() throws {
+    func testConfigWithEmptyFileContents() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
         fileSystem.contents[url] = Data("".utf8)
@@ -27,7 +27,7 @@ final class ConfigTests: XCTestCase, TestFactories {
         assertSnapshot(matching: config, as: .dump)
     }
 
-    func testDecodeFromEmptyString() throws {
+    func testDecodeConfigFromEmptyString() throws {
         let config: Config = try YAMLDecoder().decode(Config.self, from: Data("".utf8))
         expect(config) == Config()
         assertSnapshot(matching: config, as: .dump)
