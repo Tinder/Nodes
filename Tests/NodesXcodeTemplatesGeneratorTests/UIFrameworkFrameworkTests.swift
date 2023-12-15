@@ -61,7 +61,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         }
     }
 
-    func testDecodingThrowsTypeMismatchForUnsupportedFrameworkName() throws {
+    func testDecodingThrowsTypeMismatchForUnsupportedFramework() throws {
         let data: Data = .init("AnyUnsupportedFrameworkName".utf8)
         expect(try data.decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
             .to(throwError(errorType: DecodingError.self) { error in
