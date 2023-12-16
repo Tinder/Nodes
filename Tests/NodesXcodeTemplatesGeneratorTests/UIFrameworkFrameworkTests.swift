@@ -76,8 +76,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
                           - codingPath: 0 elements
                           - debugDescription: "Unsupported framework: AnyUnsupportedFrameworkName"
                           - underlyingError: Optional<Error>.none
-
-                    """
+                    """ + "\n"
                 }
             })
     }
@@ -95,8 +94,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
                           - codingPath: 0 elements
                           - debugDescription: "Custom framework must be an object."
                           - underlyingError: Optional<Error>.none
-
-                    """
+                    """ + "\n"
                 }
             })
     }
@@ -114,8 +112,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
                           - codingPath: 0 elements
                           - debugDescription: "Expected only one key."
                           - underlyingError: Optional<Error>.none
-
-                    """
+                    """ + "\n"
                 }
             })
     }
@@ -133,8 +130,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
                           - codingPath: 0 elements
                           - debugDescription: "Expected to decode Mapping but found Node instead."
                           - underlyingError: Optional<Error>.none
-
-                    """
+                    """ + "\n"
                 }
             })
     }
@@ -158,8 +154,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
                           ▿ some: ConfigError
                             ▿ emptyStringNotAllowed: (1 element)
                               - key: "\(key)"
-
-                    """
+                    """ + "\n"
                     }
                 })
         }

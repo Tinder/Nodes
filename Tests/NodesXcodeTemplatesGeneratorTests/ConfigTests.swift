@@ -64,8 +64,7 @@ final class ConfigTests: XCTestCase, TestFactories {
                               ▿ some: ConfigError
                                 ▿ emptyStringNotAllowed: (1 element)
                                   - key: "\(key)"
-
-                        """
+                        """ + "\n"
                     }
                 })
         }
@@ -98,8 +97,7 @@ final class ConfigTests: XCTestCase, TestFactories {
                               ▿ some: ConfigError
                                 ▿ emptyStringNotAllowed: (1 element)
                                   - key: "\(key)"
-
-                        """
+                        """ + "\n"
                     }
                 })
         }
@@ -125,8 +123,7 @@ final class ConfigTests: XCTestCase, TestFactories {
                             ▿ ConfigError
                               ▿ uiFrameworkNotDefined: (1 element)
                                 - kind: Kind.\(kind)
-
-                            """
+                            """ + "\n"
                         }
                     })
             }
