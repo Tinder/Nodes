@@ -70,7 +70,7 @@ final class UIFrameworkTests: XCTestCase {
             .map(\.utf8)
             .map(Data.init(_:))
             .map { try $0.decoded(as: UIFramework.self, using: YAMLDecoder()) }
-            .forEach { assertSnapshot(matching: $0, as: .dump, named: $0.kind.rawValue) }
+            .forEach { assertSnapshot(of: $0, as: .dump, named: $0.kind.rawValue) }
     }
 
     func testDecodingWithDefaults() throws {
@@ -80,7 +80,7 @@ final class UIFrameworkTests: XCTestCase {
             .map(\.utf8)
             .map(Data.init(_:))
             .map { try $0.decoded(as: UIFramework.self, using: YAMLDecoder()) }
-            .forEach { assertSnapshot(matching: $0, as: .dump, named: $0.kind.rawValue) }
+            .forEach { assertSnapshot(of: $0, as: .dump, named: $0.kind.rawValue) }
     }
 
     private func givenYAML(for kind: UIFramework.Kind) -> String {

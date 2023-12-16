@@ -19,34 +19,34 @@ final class XcodeTemplateTests: XCTestCase, TestFactories {
 
     func testNodeXcodeTemplate() throws {
         try UIFramework.Kind.allCases.forEach { kind in
-            try assertSnapshot(matching: NodeXcodeTemplate(for: kind, config: givenConfig()),
+            try assertSnapshot(of: NodeXcodeTemplate(for: kind, config: givenConfig()),
                                as: .dump,
                                named: kind.rawValue)
         }
     }
 
     func testNodeViewInjectedXcodeTemplate() {
-        assertSnapshot(matching: NodeViewInjectedXcodeTemplate(config: givenConfig()),
+        assertSnapshot(of: NodeViewInjectedXcodeTemplate(config: givenConfig()),
                        as: .dump)
     }
 
     func testPluginListNodeXcodeTemplate() {
-        assertSnapshot(matching: PluginListNodeXcodeTemplate(config: givenConfig()),
+        assertSnapshot(of: PluginListNodeXcodeTemplate(config: givenConfig()),
                        as: .dump)
     }
 
     func testPluginNodeXcodeTemplate() {
-        assertSnapshot(matching: PluginNodeXcodeTemplate(config: givenConfig()),
+        assertSnapshot(of: PluginNodeXcodeTemplate(config: givenConfig()),
                        as: .dump)
     }
 
     func testPluginXcodeTemplate() {
-        assertSnapshot(matching: PluginXcodeTemplate(config: givenConfig()),
+        assertSnapshot(of: PluginXcodeTemplate(config: givenConfig()),
                        as: .dump)
     }
 
     func testWorkerXcodeTemplate() {
-        assertSnapshot(matching: WorkerXcodeTemplate(config: givenConfig()),
+        assertSnapshot(of: WorkerXcodeTemplate(config: givenConfig()),
                        as: .dump)
     }
 }

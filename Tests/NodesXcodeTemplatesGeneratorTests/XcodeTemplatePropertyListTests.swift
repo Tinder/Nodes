@@ -50,6 +50,6 @@ final class XcodeTemplatePropertyListTests: XCTestCase {
             }
         }
         let xml: String = try .init(decoding: plist.encode(), as: UTF8.self)
-        assertSnapshot(matching: xml, as: .lines)
+        assertSnapshot(of: xml, as: .lines)
     }
 }

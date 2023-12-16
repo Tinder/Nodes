@@ -13,11 +13,11 @@ final class XcodeTemplatesTests: XCTestCase {
         try XcodeTemplates(config: Config()).generate(identifier: "identifier", using: fileSystem)
         // swiftlint:disable:next large_tuple
         let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
-        writes.forEach { assertSnapshot(matching: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))") }
-        assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) }, as: .dump, named: "Writes")
-        assertSnapshot(matching: fileSystem.directories, as: .dump, named: "Directories")
-        assertSnapshot(matching: fileSystem.copies, as: .dump, named: "Copies")
-        assertSnapshot(matching: fileSystem.deletions, as: .dump, named: "Deletions")
+        writes.forEach { assertSnapshot(of: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))") }
+        assertSnapshot(of: writes.map { (path: $0.path, atomically: $0.atomically) }, as: .dump, named: "Writes")
+        assertSnapshot(of: fileSystem.directories, as: .dump, named: "Directories")
+        assertSnapshot(of: fileSystem.copies, as: .dump, named: "Copies")
+        assertSnapshot(of: fileSystem.deletions, as: .dump, named: "Deletions")
     }
 
     func testGenerateWithURL() throws {
@@ -26,11 +26,11 @@ final class XcodeTemplatesTests: XCTestCase {
         try XcodeTemplates(config: Config()).generate(at: url, using: fileSystem)
         // swiftlint:disable:next large_tuple
         let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
-        writes.forEach { assertSnapshot(matching: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))") }
-        assertSnapshot(matching: writes.map { (path: $0.path, atomically: $0.atomically) }, as: .dump, named: "Writes")
-        assertSnapshot(matching: fileSystem.directories, as: .dump, named: "Directories")
-        assertSnapshot(matching: fileSystem.copies, as: .dump, named: "Copies")
-        assertSnapshot(matching: fileSystem.deletions, as: .dump, named: "Deletions")
+        writes.forEach { assertSnapshot(of: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))") }
+        assertSnapshot(of: writes.map { (path: $0.path, atomically: $0.atomically) }, as: .dump, named: "Writes")
+        assertSnapshot(of: fileSystem.directories, as: .dump, named: "Directories")
+        assertSnapshot(of: fileSystem.copies, as: .dump, named: "Copies")
+        assertSnapshot(of: fileSystem.deletions, as: .dump, named: "Deletions")
     }
 
     private func name(from path: String) -> String {

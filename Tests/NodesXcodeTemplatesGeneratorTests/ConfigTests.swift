@@ -26,7 +26,7 @@ final class ConfigTests: XCTestCase, TestFactories {
         let url: URL = .init(fileURLWithPath: "/")
         fileSystem.contents[url] = Data(givenConfig().utf8)
         let config: Config = try .init(at: url.path, using: fileSystem)
-        assertSnapshot(matching: config, as: .dump)
+        assertSnapshot(of: config, as: .dump)
     }
 
     func testConfigWithEmptyFileContents() throws {
@@ -35,13 +35,13 @@ final class ConfigTests: XCTestCase, TestFactories {
         fileSystem.contents[url] = Data("".utf8)
         let config: Config = try .init(at: url.path, using: fileSystem)
         expect(config) == Config()
-        assertSnapshot(matching: config, as: .dump)
+        assertSnapshot(of: config, as: .dump)
     }
 
     func testDecodeFromEmptyString() throws {
         let config: Config = try Data("".utf8).decoded(as: Config.self, using: YAMLDecoder())
         expect(config) == Config()
-        assertSnapshot(matching: config, as: .dump)
+        assertSnapshot(of: config, as: .dump)
     }
 
     func testDecodingThrowsEmptyStringNotAllowedForCustomUIFramework() throws {

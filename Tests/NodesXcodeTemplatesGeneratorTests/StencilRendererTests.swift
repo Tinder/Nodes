@@ -34,7 +34,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                     "ViewStateFactoryTests"
                 ]
                 templates.forEach { name, template in
-                    assertSnapshot(matching: template,
+                    assertSnapshot(of: template,
                                    as: .lines,
                                    named: "\(name)-\(kind.rawValue)-mockCount-\(count)")
                 }
@@ -59,7 +59,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "State"
             ]
             templates.forEach { name, template in
-                assertSnapshot(matching: template, as: .lines, named: "\(name)-mockCount-\(count)")
+                assertSnapshot(of: template, as: .lines, named: "\(name)-mockCount-\(count)")
             }
         }
     }
@@ -76,7 +76,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Flow"
             ]
             templates.forEach { name, template in
-                assertSnapshot(matching: template,
+                assertSnapshot(of: template,
                                as: .lines,
                                named: "\(name)-UIKit-mockCount-\(count)")
             }
@@ -95,7 +95,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Flow"
             ]
             templates.forEach { name, template in
-                assertSnapshot(matching: template,
+                assertSnapshot(of: template,
                                as: .lines,
                                named: "\(name)-UIKit-mockCount-\(count)")
             }
@@ -114,7 +114,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Flow"
             ]
             templates.forEach { name, template in
-                assertSnapshot(matching: template,
+                assertSnapshot(of: template,
                                as: .lines,
                                named: "\(name)-UIKit-mockCount-\(count)")
             }
@@ -136,7 +136,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "ViewState"
             ]
             templates.forEach { name, template in
-                assertSnapshot(matching: template,
+                assertSnapshot(of: template,
                                as: .lines,
                                named: "\(name)-UIKit-mockCount-\(count)")
             }
@@ -146,7 +146,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     func testRenderPlugin() throws {
         try mockCounts.forEach { count in
             let context: PluginStencilContext = givenPluginStencilContext(mockCount: count)
-            assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
+            assertSnapshot(of: try StencilRenderer().renderPlugin(context: context),
                            as: .lines,
                            named: "mockCount-\(count)")
         }
@@ -155,7 +155,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     func testRenderPluginWithoutReturnType() throws {
         try mockCounts.forEach { count in
             let context: PluginStencilContext = givenPluginStencilContextWithoutReturnType(mockCount: count)
-            assertSnapshot(matching: try StencilRenderer().renderPlugin(context: context),
+            assertSnapshot(of: try StencilRenderer().renderPlugin(context: context),
                            as: .lines,
                            named: "mockCount-\(count)")
         }
@@ -164,7 +164,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     func testRenderPluginList() throws {
         try mockCounts.forEach { count in
             let context: PluginListStencilContext = givenPluginListStencilContext(mockCount: count)
-            assertSnapshot(matching: try StencilRenderer().renderPluginList(context: context),
+            assertSnapshot(of: try StencilRenderer().renderPluginList(context: context),
                            as: .lines,
                            named: "mockCount-\(count)")
         }
@@ -173,7 +173,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     func testRenderWorker() throws {
         try mockCounts.forEach { count in
             let context: WorkerStencilContext = givenWorkerStencilContext(mockCount: count)
-            assertSnapshot(matching: try StencilRenderer().renderWorker(context: context),
+            assertSnapshot(of: try StencilRenderer().renderWorker(context: context),
                            as: .lines,
                            named: "mockCount-\(count)")
         }
