@@ -3,6 +3,7 @@
 //
 
 import Codextended
+import InlineSnapshotTesting
 import Nimble
 import NodesXcodeTemplatesGenerator
 import SnapshotTesting
@@ -53,14 +54,19 @@ final class ConfigTests: XCTestCase, TestFactories {
         for (key, yaml): (String, String) in requiredKeys {
             expect(try Data(yaml.utf8).decoded(as: Config.self, using: YAMLDecoder()))
                 .to(throwError(errorType: DecodingError.self) { error in
-                    guard case let .dataCorrupted(context) = error,
-                          let configError: Config.ConfigError = context.underlyingError as? Config.ConfigError
-                    else { return fail("expected data corrupted case with underlying config error") }
-                    expect(configError) == .emptyStringNotAllowed(key: key)
-                    expect(configError.localizedDescription) == """
-                        ERROR: Empty String Not Allowed [key: \(key)] \
-                        (TIP: Omit from config for the default value to be used instead)
+                    assertInlineSnapshot(of: error, as: .dump) {
                         """
+                        ▿ DecodingError
+                          ▿ dataCorrupted: Context
+                            - codingPath: 0 elements
+                            - debugDescription: "The given data was not valid YAML."
+                            ▿ underlyingError: Optional<Error>
+                              ▿ some: ConfigError
+                                ▿ emptyStringNotAllowed: (1 element)
+                                  - key: "\(key)"
+
+                        """
+                    }
                 })
         }
     }
@@ -82,14 +88,19 @@ final class ConfigTests: XCTestCase, TestFactories {
                 """
             expect(try Data(yaml.utf8).decoded(as: Config.self, using: YAMLDecoder()))
                 .to(throwError(errorType: DecodingError.self) { error in
-                    guard case let .dataCorrupted(context) = error,
-                          let configError: Config.ConfigError = context.underlyingError as? Config.ConfigError
-                    else { return fail("expected data corrupted case with underlying config error") }
-                    expect(configError) == .emptyStringNotAllowed(key: key)
-                    expect(configError.localizedDescription) == """
-                        ERROR: Empty String Not Allowed [key: \(key)] \
-                        (TIP: Omit from config for the default value to be used instead)
+                    assertInlineSnapshot(of: error, as: .dump) {
                         """
+                        ▿ DecodingError
+                          ▿ dataCorrupted: Context
+                            - codingPath: 0 elements
+                            - debugDescription: "The given data was not valid YAML."
+                            ▿ underlyingError: Optional<Error>
+                              ▿ some: ConfigError
+                                ▿ emptyStringNotAllowed: (1 element)
+                                  - key: "\(key)"
+
+                        """
+                    }
                 })
         }
     }
@@ -109,8 +120,14 @@ final class ConfigTests: XCTestCase, TestFactories {
             .forEach { kind in
                 expect(try config.uiFramework(for: kind))
                     .to(throwError(errorType: Config.ConfigError.self) { error in
-                        expect(error) == .uiFrameworkNotDefined(kind: kind)
-                        expect(error.localizedDescription) == "ERROR: UIFramework Not Defined [kind: \(kind)]"
+                        assertInlineSnapshot(of: error, as: .dump) {
+                            """
+                            ▿ ConfigError
+                              ▿ uiFrameworkNotDefined: (1 element)
+                                - kind: Kind.\(kind)
+
+                            """
+                        }
                     })
             }
     }
