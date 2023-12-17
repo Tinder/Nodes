@@ -118,6 +118,7 @@ let package = Package(
                 "NodesXcodeTemplatesGenerator",
                 "Nimble",
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+                .product(name: "InlineSnapshotTesting", package: "swift-snapshot-testing"),
             ],
             exclude: [
                 "__Snapshots__",

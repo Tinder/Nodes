@@ -3,6 +3,7 @@
 //
 
 import Codextended
+import InlineSnapshotTesting
 import Nimble
 @testable import NodesXcodeTemplatesGenerator
 import SnapshotTesting
@@ -66,12 +67,17 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         let data: Data = .init("AnyUnsupportedFrameworkName".utf8)
         expect(try data.decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
             .to(throwError(errorType: DecodingError.self) { error in
-                guard case let .typeMismatch(framework, context) = error
-                else { return fail("expected type mismatch case") }
-                expect(framework == UIFramework.Framework.self) == true
-                expect(context.codingPath).to(beEmpty())
-                expect(context.debugDescription) == "Unsupported framework: AnyUnsupportedFrameworkName"
-                expect(context.underlyingError) == nil
+                assertInlineSnapshot(of: error, as: .dump) {
+                    """
+                    ▿ DecodingError
+                      ▿ typeMismatch: (2 elements)
+                        - .0: Framework
+                        ▿ .1: Context
+                          - codingPath: 0 elements
+                          - debugDescription: "Unsupported framework: AnyUnsupportedFrameworkName"
+                          - underlyingError: Optional<Error>.none
+                    """ + "\n"
+                }
             })
     }
 
@@ -79,12 +85,17 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         let data: Data = .init("Custom".utf8)
         expect(try data.decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
             .to(throwError(errorType: DecodingError.self) { error in
-                guard case let .typeMismatch(framework, context) = error
-                else { return fail("expected type mismatch case") }
-                expect(framework == UIFramework.Framework.self) == true
-                expect(context.codingPath).to(beEmpty())
-                expect(context.debugDescription) == "Custom framework must be an object."
-                expect(context.underlyingError) == nil
+                assertInlineSnapshot(of: error, as: .dump) {
+                    """
+                    ▿ DecodingError
+                      ▿ typeMismatch: (2 elements)
+                        - .0: Framework
+                        ▿ .1: Context
+                          - codingPath: 0 elements
+                          - debugDescription: "Custom framework must be an object."
+                          - underlyingError: Optional<Error>.none
+                    """ + "\n"
+                }
             })
     }
 
@@ -92,12 +103,17 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         let data: Data = .init("custom:\ncustom:\n".utf8)
         expect(try data.decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
             .to(throwError(errorType: DecodingError.self) { error in
-                guard case let .typeMismatch(framework, context) = error
-                else { return fail("expected type mismatch case") }
-                expect(framework == UIFramework.Framework.self) == true
-                expect(context.codingPath).to(beEmpty())
-                expect(context.debugDescription) == "Expected only one key."
-                expect(context.underlyingError) == nil
+                assertInlineSnapshot(of: error, as: .dump) {
+                    """
+                    ▿ DecodingError
+                      ▿ typeMismatch: (2 elements)
+                        - .0: Framework
+                        ▿ .1: Context
+                          - codingPath: 0 elements
+                          - debugDescription: "Expected only one key."
+                          - underlyingError: Optional<Error>.none
+                    """ + "\n"
+                }
             })
     }
 
@@ -105,12 +121,17 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         let data: Data = .init("[]".utf8)
         expect(try data.decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
             .to(throwError(errorType: DecodingError.self) { error in
-                guard case let .typeMismatch(mapping, context) = error
-                else { return fail("expected type mismatch case") }
-                expect(mapping == Node.Mapping.self) == true
-                expect(context.codingPath).to(beEmpty())
-                expect(context.debugDescription) == "Expected to decode Mapping but found Node instead."
-                expect(context.underlyingError) == nil
+                assertInlineSnapshot(of: error, as: .dump) {
+                    """
+                    ▿ DecodingError
+                      ▿ typeMismatch: (2 elements)
+                        - .0: Mapping
+                        ▿ .1: Context
+                          - codingPath: 0 elements
+                          - debugDescription: "Expected to decode Mapping but found Node instead."
+                          - underlyingError: Optional<Error>.none
+                    """ + "\n"
+                }
             })
     }
 
@@ -123,14 +144,18 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         for (key, yaml): (String, String) in requiredKeys {
             expect(try Data(yaml.utf8).decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
                 .to(throwError(errorType: DecodingError.self) { error in
-                    guard case let .dataCorrupted(context) = error,
-                          let configError: Config.ConfigError = context.underlyingError as? Config.ConfigError
-                    else { return fail("expected data corrupted case with underlying config error") }
-                    expect(configError) == .emptyStringNotAllowed(key: key)
-                    expect(configError.localizedDescription) == """
-                        ERROR: Empty String Not Allowed [key: \(key)] \
-                        (TIP: Omit from config for the default value to be used instead)
+                    assertInlineSnapshot(of: error, as: .dump) {
                         """
+                        ▿ DecodingError
+                          ▿ dataCorrupted: Context
+                            - codingPath: 0 elements
+                            - debugDescription: "The given data was not valid YAML."
+                            ▿ underlyingError: Optional<Error>
+                              ▿ some: ConfigError
+                                ▿ emptyStringNotAllowed: (1 element)
+                                  - key: "\(key)"
+                        """ + "\n"
+                    }
                 })
         }
     }
