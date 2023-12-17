@@ -5,7 +5,7 @@ swift_library(
     srcs = glob(["Sources/ArgumentParser/**/*.swift"]),
     visibility = ["//visibility:public"],
     deps = [
-        "@ArgumentParser//:ArgumentParserToolInfo",
+        ":ArgumentParserToolInfo",
     ],
 )
 
