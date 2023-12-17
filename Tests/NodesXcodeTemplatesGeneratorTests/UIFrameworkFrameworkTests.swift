@@ -145,16 +145,16 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             expect(try Data(yaml.utf8).decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
                 .to(throwError(errorType: DecodingError.self) { error in
                     assertInlineSnapshot(of: error, as: .dump) {
-                    """
-                    ▿ DecodingError
-                      ▿ dataCorrupted: Context
-                        - codingPath: 0 elements
-                        - debugDescription: "The given data was not valid YAML."
-                        ▿ underlyingError: Optional<Error>
-                          ▿ some: ConfigError
-                            ▿ emptyStringNotAllowed: (1 element)
-                              - key: "\(key)"
-                    """ + "\n"
+                        """
+                        ▿ DecodingError
+                          ▿ dataCorrupted: Context
+                            - codingPath: 0 elements
+                            - debugDescription: "The given data was not valid YAML."
+                            ▿ underlyingError: Optional<Error>
+                              ▿ some: ConfigError
+                                ▿ emptyStringNotAllowed: (1 element)
+                                  - key: "\(key)"
+                        """ + "\n"
                     }
                 })
         }
