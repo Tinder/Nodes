@@ -36,7 +36,7 @@ swift_binary(
     name = "nodes-xcode-templates-gen",
     srcs = glob(["Sources/NodesXcodeTemplatesGeneratorExecutable/**/*.swift"]),
     deps = [
-        "@Nodes//:NodesXcodeTemplatesGenerator",
+        ":NodesXcodeTemplatesGenerator",
         "@ArgumentParser",
     ],
     copts = ["-warnings-as-errors"],
