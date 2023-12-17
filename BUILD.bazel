@@ -1,15 +1,48 @@
-load("@build_bazel_rules_apple//apple:ios.bzl", "ios_build_test")
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary", "swift_library", "swift_test")
+load("@build_bazel_rules_apple//apple:macos.bzl", "macos_unit_test")
+load("@build_bazel_rules_apple//apple:ios.bzl", "ios_unit_test")
 
-ios_build_test(
-    name = "Nodes-iOS",
-    minimum_os_version = "13.0",
-    targets = [":Nodes"],
-)
+MINIMUM_MACOS_VERSION = "10.15"
+MINIMUM_IOS_VERSION = "13.0"
 
 swift_library(
     name = "Nodes",
     srcs = glob(["Sources/Nodes/**/*.swift"]),
     visibility = ["//visibility:public"],
-    tags = ["manual"],
+    copts = ["-warnings-as-errors"],
+)
+
+swift_library(
+    name = "NodesTesting",
+    srcs = glob(["Sources/NodesTesting/**/*.swift"]),
+    visibility = ["//visibility:public"],
+    deps = [
+        "@Needle//:NeedleFoundation",
+    ],
+    copts = ["-warnings-as-errors"],
+    testonly = True,
+)
+
+swift_library(
+    name = "NodesXcodeTemplatesGenerator",
+    srcs = glob(["Sources/NodesXcodeTemplatesGenerator/**/*.swift"]),
+    visibility = ["//visibility:public"],
+    deps = [
+        "@Codextended",
+        "@Stencil",
+        "@Yams",
+    ],
+    data = glob(["Sources/XcodeTemplateGenerator/Resources/**"]),
+    copts = ["-warnings-as-errors"],
+    defines = ["BAZEL"],
+)
+
+swift_binary(
+    name = "nodes-xcode-templates-gen",
+    srcs = glob(["Sources/NodesXcodeTemplatesGeneratorExecutable/**/*.swift"]),
+    deps = [
+        "@Nodes//:NodesXcodeTemplatesGenerator",
+        "@ArgumentParser",
+    ],
+    copts = ["-warnings-as-errors"],
 )
