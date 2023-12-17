@@ -17,4 +17,4 @@ jobs:
     - name: Checkout source
       uses: actions/checkout@v3
     - name: Build
-      run: bazelisk build //:all
+      run: bazelisk build :all
