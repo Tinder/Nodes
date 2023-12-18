@@ -17,7 +17,7 @@ extension Bundle {
             Bundle.main.bundleURL
         ].compactMap { $0 }
         let bundles: [Bundle] = candidates
-            .map { $0.appendingPathComponent("\(moduleBundleName).bundle") }
+            .map { $0.appendingPathComponent(moduleBundleName) }
             .compactMap(Bundle.init)
         guard let module: Bundle = bundles.first
         else { fatalError("Failed to locate bundle: \(moduleBundleName)") }
@@ -29,9 +29,8 @@ extension Bundle {
     internal static var moduleRelativeToExecutable: Bundle? {
         guard let url: URL = Bundle.main.executableURL
         else { return nil }
-        let name: String = "\(moduleBundleName).bundle"
-        return Bundle(url: url.deletingLastPathComponent().appendingPathComponent(name))
+        return Bundle(url: url.deletingLastPathComponent().appendingPathComponent(moduleBundleName))
     }
 
-    private static let moduleBundleName: String = "Nodes_NodesXcodeTemplatesGenerator"
+    private static let moduleBundleName: String = "Nodes_NodesXcodeTemplatesGenerator.bundle"
 }
