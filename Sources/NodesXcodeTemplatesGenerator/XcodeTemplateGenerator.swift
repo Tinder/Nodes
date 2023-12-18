@@ -46,16 +46,12 @@ internal final class XcodeTemplateGenerator {
     private func copyIcons(into url: URL) throws {
         let bundle: Bundle = .moduleRelativeToExecutable ?? .module
         // swiftlint:disable:next force_unwrapping
-        let iconsURL: URL = bundle.resourceURL!.appendingPathComponent("Icons")
-        try fileSystem.copyItem(at: iconsURL
-                                    .appendingPathComponent("Tinder")
-                                    .appendingPathExtension("png"),
+        try fileSystem.copyItem(at: bundle.url(forResource: "Tinder", withExtension: "png")!,
                                 to: url
                                     .appendingPathComponent("TemplateIcon")
                                     .appendingPathExtension("png"))
-        try fileSystem.copyItem(at: iconsURL
-                                    .appendingPathComponent("Tinder@2x")
-                                    .appendingPathExtension("png"),
+        // swiftlint:disable:next force_unwrapping
+        try fileSystem.copyItem(at: bundle.url(forResource: "Tinder@2x", withExtension: "png")!,
                                 to: url
                                     .appendingPathComponent("TemplateIcon@2x")
                                     .appendingPathExtension("png"))
