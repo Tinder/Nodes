@@ -79,8 +79,7 @@ let package = Package(
                 "Stencil",
             ],
             resources: [
-                .copy("Resources/Icons"),
-                .copy("Resources/Stencils"),
+                .process("Resources"),
             ],
             plugins: [
                 .plugin(name: SwiftLint.plugin),
