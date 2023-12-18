@@ -116,4 +116,3 @@ swift_library(
     ],
     testonly = True,
 )
-
