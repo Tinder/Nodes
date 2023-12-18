@@ -22,7 +22,9 @@ internal class {{ node_name }}ViewStateFactory: Nodes.Transform {
     ///
     /// - Parameter state: The state.
     /// - Returns: The view state.
-    internal func callAsFunction(_ state: {{ node_name }}State) -> {{ node_name }}ViewState {
+    internal func callAsFunction(
+        _ state: {{ node_name }}State
+    ) -> {{ node_name }}ViewState {
         {{ node_name }}ViewState()
     }
 }

@@ -18,7 +18,9 @@ internal class <nodeName>ViewStateFactory: Nodes.Transform {
     ///
     /// - Parameter state: The state.
     /// - Returns: The view state.
-    internal func callAsFunction(_ state: <nodeName>State) -> <nodeName>ViewState {
+    internal func callAsFunction(
+        _ state: <nodeName>State
+    ) -> <nodeName>ViewState {
         <nodeName>ViewState()
     }
 }

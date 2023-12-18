@@ -18,7 +18,9 @@ internal class ___VARIABLE_productName___ViewStateFactory: Nodes.Transform {
     ///
     /// - Parameter state: The state.
     /// - Returns: The view state.
-    internal func callAsFunction(_ state: ___VARIABLE_productName___State) -> ___VARIABLE_productName___ViewState {
+    internal func callAsFunction(
+        _ state: ___VARIABLE_productName___State
+    ) -> ___VARIABLE_productName___ViewState {
         ___VARIABLE_productName___ViewState()
     }
 }
