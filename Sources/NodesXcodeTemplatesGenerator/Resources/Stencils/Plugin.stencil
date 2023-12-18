@@ -10,6 +10,7 @@ import {{ import }}
  PURPOSE:
  Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
  */
+/// @mockable
 public protocol {{ plugin_name }}PluginDependency: Dependency {}
 
 /**
@@ -78,6 +79,7 @@ internal typealias {{ plugin_name }}PluginStateType = Void
  PURPOSE:
  The Plugin interface (available to mock for testability).
  */
+/// @mockable
 internal protocol {{ plugin_name }}Plugin {
     {% if return_type %}
     func create() -> {{ return_type }}?

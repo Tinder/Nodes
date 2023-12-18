@@ -11,8 +11,10 @@ import {{ import }}
  The interface of the Flow.
  */
 {% if owns_view %}
+/// @mockable
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
 {% else %}
+/// @mockable
 internal protocol {{ node_name }}Flow: Flow {}
 {% endif %}
 
@@ -21,12 +23,14 @@ internal protocol {{ node_name }}Flow: Flow {}
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
 {% if dependencies %}
+/// @mockable
 public protocol {{ node_name }}Dependency: Dependency {
     {% for dependency in dependencies %}
     var {{ dependency.name }}: {{ dependency.type }} { get }
     {% endfor %}
 }
 {% else %}
+/// @mockable
 public protocol {{ node_name }}Dependency: Dependency {}
 {% endif %}
 
@@ -128,6 +132,7 @@ public final class {{ node_name }}Component: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
+/// @mockable
 internal protocol {{ node_name }}Builder: AnyObject {
     func build(
         withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}
