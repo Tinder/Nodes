@@ -6,12 +6,14 @@ import <builderImport>
  PURPOSE:
  The interface of the Flow.
  */
+/// @mockable
 internal protocol RootFlow: <viewControllableFlowType> {}
 
 /**
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
+/// @mockable
 public protocol RootDependency: Dependency {
     var <dependencyName>: <dependencyType> { get }
 }
@@ -104,6 +106,7 @@ public final class RootComponent: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
+/// @mockable
 internal protocol RootBuilder: AnyObject {
     func build(
         withListener listener: RootListener

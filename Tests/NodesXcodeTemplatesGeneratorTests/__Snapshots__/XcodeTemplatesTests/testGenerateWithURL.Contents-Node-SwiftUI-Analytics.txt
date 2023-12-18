@@ -16,6 +16,7 @@
 
  Add requirements to this protocol to provide analytics tracking methods for this Node.
  */
+/// @mockable
 internal protocol ___VARIABLE_productName___Analytics: AnyObject {}
 
 /**

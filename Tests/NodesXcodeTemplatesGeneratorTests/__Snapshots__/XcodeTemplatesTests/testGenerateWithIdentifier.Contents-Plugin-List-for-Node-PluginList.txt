@@ -7,18 +7,21 @@ import Nodes
  PURPOSE:
  The common Flow interface.
  */
+/// @mockable
 internal protocol ___VARIABLE_productName___Flow: ViewControllableFlow {}
 
 /**
  PURPOSE:
  The common Listener interface.
  */
+/// @mockable
 internal protocol ___VARIABLE_productName___Listener: AnyObject {}
 
 /**
  PURPOSE:
  The common Builder interface.
  */
+/// @mockable
 internal protocol ___VARIABLE_productName___Builder: AnyObject {
     func build(
         withListener listener: ___VARIABLE_productName___Listener
@@ -29,6 +32,7 @@ internal protocol ___VARIABLE_productName___Builder: AnyObject {
  PURPOSE:
  Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
  */
+/// @mockable
 public protocol ___VARIABLE_productName___PluginListDependency: Dependency {}
 
 /**
@@ -94,6 +98,7 @@ internal typealias ___VARIABLE_productName___PluginListStateType = Void
  PURPOSE:
  The Plugin List protocol (available to mock for testability).
  */
+/// @mockable
 internal protocol ___VARIABLE_productName___PluginList {
     func createAll() -> [___VARIABLE_productName___Builder]
     func create() -> ___VARIABLE_productName___Builder?

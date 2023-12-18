@@ -4,6 +4,7 @@
  PURPOSE:
  Encapsulates work to be performed by the Node.
  */
+/// @mockable
 internal protocol <workerName>Worker: Worker {}
 
 /**
