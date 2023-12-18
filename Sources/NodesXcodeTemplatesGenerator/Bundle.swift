@@ -10,19 +10,6 @@ extension Bundle {
 
     private class BundleLocator {}
 
-    #endif
-
-    private static let moduleBundleName: String = "Nodes_NodesXcodeTemplatesGenerator"
-
-    internal static var moduleRelativeToExecutable: Bundle? {
-        guard let url: URL = Bundle.main.executableURL
-        else { return nil }
-        let name: String = "\(moduleBundleName).bundle"
-        return Bundle(url: url.deletingLastPathComponent().appendingPathComponent(name))
-    }
-
-    #if BAZEL
-
     internal static let module: Bundle = {
         let candidates: [URL] = [
             Bundle.main.resourceURL,
@@ -38,4 +25,13 @@ extension Bundle {
     }()
 
     #endif
+
+    internal static var moduleRelativeToExecutable: Bundle? {
+        guard let url: URL = Bundle.main.executableURL
+        else { return nil }
+        let name: String = "\(moduleBundleName).bundle"
+        return Bundle(url: url.deletingLastPathComponent().appendingPathComponent(name))
+    }
+
+    private static let moduleBundleName: String = "Nodes_NodesXcodeTemplatesGenerator"
 }
