@@ -1,4 +1,10 @@
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary", "swift_library")
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary", "swift_library", "swift_test")
+load("@build_bazel_rules_apple//apple:resources.bzl", "apple_resource_bundle")
+load("@build_bazel_rules_apple//apple:macos.bzl", "macos_unit_test")
+load("@build_bazel_rules_apple//apple:ios.bzl", "ios_unit_test")
+
+MINIMUM_MACOS_VERSION = "10.15"
+MINIMUM_IOS_VERSION = "13.0"
 
 swift_library(
     name = "Nodes",
@@ -21,15 +27,21 @@ swift_library(
 swift_library(
     name = "NodesXcodeTemplatesGenerator",
     srcs = glob(["Sources/NodesXcodeTemplatesGenerator/**/*.swift"]),
+    data = [":NodesXcodeTemplatesGeneratorResources"],
     visibility = ["//visibility:public"],
     deps = [
         "@Codextended",
         "@Stencil",
         "@Yams",
     ],
-    data = glob(["Sources/XcodeTemplateGenerator/Resources/**"]),
     copts = ["-warnings-as-errors"],
     defines = ["BAZEL"],
+)
+
+apple_resource_bundle(
+    name = "NodesXcodeTemplatesGeneratorResources",
+    bundle_name = "Nodes_NodesXcodeTemplatesGenerator",
+    resources = glob(["Sources/NodesXcodeTemplatesGenerator/Resources/**"]),
 )
 
 swift_binary(
@@ -41,3 +53,67 @@ swift_binary(
     ],
     copts = ["-warnings-as-errors"],
 )
+
+ios_unit_test(
+    name = "NodesTests-iOS",
+    deps = [
+        ":NodesTests",
+    ],
+    minimum_os_version = MINIMUM_IOS_VERSION,
+    size = "small",
+)
+
+swift_library(
+    name = "NodesTests",
+    srcs = glob(["Tests/NodesTests/**/*.swift"]),
+    visibility = ["//visibility:private"],
+    deps = [
+        ":Nodes",
+        "@Nimble",
+    ],
+    testonly = True,
+)
+
+ios_unit_test(
+    name = "NodesTestingTests-iOS",
+    deps = [
+        ":NodesTestingTests",
+    ],
+    minimum_os_version = MINIMUM_IOS_VERSION,
+    size = "small",
+)
+
+swift_library(
+    name = "NodesTestingTests",
+    srcs = glob(["Tests/NodesTestingTests/**/*.swift"]),
+    visibility = ["//visibility:private"],
+    deps = [
+        ":NodesTesting",
+        "@Nimble",
+    ],
+    testonly = True,
+)
+
+macos_unit_test(
+    name = "NodesXcodeTemplatesGeneratorTests-macOS",
+    deps = [
+        ":NodesXcodeTemplatesGeneratorTests",
+    ],
+    minimum_os_version = MINIMUM_MACOS_VERSION,
+    size = "small",
+)
+
+swift_library(
+    name = "NodesXcodeTemplatesGeneratorTests",
+    srcs = glob(["Tests/NodesXcodeTemplatesGeneratorTests/**/*.swift"]),
+    data = glob(["Tests/NodesXcodeTemplatesGeneratorTests/__Snapshots__/**"]),
+    visibility = ["//visibility:private"],
+    deps = [
+        ":NodesXcodeTemplatesGenerator",
+        "@Nimble",
+        "@SnapshotTesting//:SnapshotTesting",
+        "@SnapshotTesting//:InlineSnapshotTesting",
+    ],
+    testonly = True,
+)
+

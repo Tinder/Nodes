@@ -24,6 +24,28 @@ def nodes_dependencies():
         build_file = "@Nodes//:external/Codextended.BUILD",
     )
 
+    CWLCATCHEXCEPTION_VERSION = "2.1.2"
+    CWLCATCHEXCEPTION_SHA_256 = "bae8844e8ebf92972689f4ff872971d162e9b1bddd1c6445ca5cd81546efde19"
+
+    http_archive(
+        name = "CwlCatchException",
+        url = "https://github.com/mattgallagher/CwlCatchException/archive/refs/tags/%s.tar.gz" % CWLCATCHEXCEPTION_VERSION,
+        strip_prefix = "CwlCatchException-%s" % CWLCATCHEXCEPTION_VERSION,
+        sha256 = CWLCATCHEXCEPTION_SHA_256,
+        build_file = "@Nodes//:external/CwlCatchException.BUILD",
+    )
+
+    CWLPRECONDITIONTESTING_VERSION = "2.2.0"
+    CWLPRECONDITIONTESTING_SHA_256 = "2236cbdef60df5a0396af29ee9c187576f2e5f4383ff340000f04f30bf1bdd9e"
+
+    http_archive(
+        name = "CwlPreconditionTesting",
+        url = "https://github.com/mattgallagher/CwlPreconditionTesting/archive/refs/tags/%s.tar.gz" % CWLPRECONDITIONTESTING_VERSION,
+        strip_prefix = "CwlPreconditionTesting-%s" % CWLPRECONDITIONTESTING_VERSION,
+        sha256 = CWLPRECONDITIONTESTING_SHA_256,
+        build_file = "@Nodes//:external/CwlPreconditionTesting.BUILD",
+    )
+
     NEEDLE_VERSION = "0.24.0"
     NEEDLE_SHA_256 = "61b7259a369d04d24c0c532ecf3295fdff92e79e4d0f96abaed1552b19208478"
 
@@ -33,6 +55,17 @@ def nodes_dependencies():
         strip_prefix = "needle-%s" % NEEDLE_VERSION,
         sha256 = NEEDLE_SHA_256,
         build_file = "@Nodes//:external/Needle.BUILD",
+    )
+
+    NIMBLE_VERSION = "13.0.0"
+    NIMBLE_SHA_256 = "727b05a2dfd286d16cb516e58c27a3aa4ea2ba1c520fabec2056fefd14f146ca"
+
+    http_archive(
+        name = "Nimble",
+        url = "https://github.com/Quick/Nimble/archive/refs/tags/v%s.tar.gz" % NIMBLE_VERSION,
+        strip_prefix = "Nimble-%s" % NIMBLE_VERSION,
+        sha256 = NIMBLE_SHA_256,
+        build_file = "@Nodes//:external/Nimble.BUILD",
     )
 
     PATHKIT_VERSION = "1.0.1"
@@ -46,6 +79,17 @@ def nodes_dependencies():
         build_file = "@Nodes//:external/PathKit.BUILD",
     )
 
+    SNAPSHOTTESTING_VERSION = "1.15.1"
+    SNAPSHOTTESTING_SHA_256 = "9b7b1a075ef4baf17a0181e815e858fde89d58cfef8fef418464e97a0754d509"
+
+    http_archive(
+        name = "SnapshotTesting",
+        url = "https://github.com/pointfreeco/swift-snapshot-testing/archive/refs/tags/%s.tar.gz" % SNAPSHOTTESTING_VERSION,
+        strip_prefix = "swift-snapshot-testing-%s" % SNAPSHOTTESTING_VERSION,
+        sha256 = SNAPSHOTTESTING_SHA_256,
+        build_file = "@Nodes//:external/SnapshotTesting.BUILD",
+    )
+
     STENCIL_VERSION = "0.15.1"
     STENCIL_SHA_256 = "7e1d7b72cd07af0b31d8db6671540c357005d18f30c077f2dff0f84030995010"
 
@@ -55,6 +99,16 @@ def nodes_dependencies():
         strip_prefix = "Stencil-%s" % STENCIL_VERSION,
         sha256 = STENCIL_SHA_256,
         build_file = "@Nodes//:external/Stencil.BUILD",
+    )
+
+    SWIFTSYNTAX_VERSION = "509.0.2"
+    SWIFTSYNTAX_SHA_256 = "1a516cf344e4910329e3ba28e04f53f457bba23e71e7a4a980515ccc29685dbc"
+
+    http_archive(
+        name = "SwiftSyntax",
+        url = "https://github.com/apple/swift-syntax/archive/refs/tags/%s.tar.gz" % SWIFTSYNTAX_VERSION,
+        strip_prefix = "swift-syntax-%s" % SWIFTSYNTAX_VERSION,
+        sha256 = SWIFTSYNTAX_SHA_256,
     )
 
     YAMS_VERSION = "5.0.6"
