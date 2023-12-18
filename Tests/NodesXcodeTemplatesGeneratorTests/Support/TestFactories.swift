@@ -34,8 +34,8 @@ extension TestFactories {
         config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
         config.analyticsProperties = [Variable(name: "<analyticsPropertiesName>", type: "<analyticsPropertiesType>")]
         config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
-        config.viewControllableType = "<viewControllableType>"
         config.viewControllableFlowType = "<viewControllableFlowType>"
+        config.viewControllableType = "<viewControllableType>"
         config.viewControllableMockContents = "<viewControllableMockContents>"
         config.viewControllerSubscriptionsProperty = "<viewControllerSubscriptionsProperty>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
@@ -77,13 +77,13 @@ extension TestFactories {
             dependencies: .mock(with: "dependency", count: mockCount),
             analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
             flowProperties: .mock(with: "flowProperty", count: mockCount),
-            viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllableType: "<viewControllableType>",
+            viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
             viewControllerType: "<viewControllerType>",
             viewControllerSuperParameters: mockCount > 0 ? "<viewControllerSuperParameters>" : "",
             viewControllerProperties: mockCount > 0 ? "<viewControllerProperties>" : "",
             viewControllerMethods: mockCount > 0 ? "<viewControllerMethods>" : "",
-            viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
             viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>",
             viewControllerUpdateComment: mockCount > 0 ? "<viewControllerUpdateComment>" : "",
             viewStateEmptyFactory: "<viewStateEmptyFactory>",
@@ -119,8 +119,8 @@ extension TestFactories {
             dependencies: .mock(with: "dependency", count: mockCount),
             analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
             flowProperties: .mock(with: "flowProperty", count: mockCount),
-            viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllableType: "<viewControllableType>",
             viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
@@ -151,13 +151,13 @@ extension TestFactories {
             dependencies: .mock(with: "dependency", count: mockCount),
             analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
             flowProperties: .mock(with: "flowProperty", count: mockCount),
-            viewControllableType: "<viewControllableType>",
             viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllableType: "<viewControllableType>",
+            viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
             viewControllerType: "<viewControllerType>",
             viewControllerSuperParameters: mockCount > 0 ? "<viewControllerSuperParameters>" : "",
             viewControllerProperties: mockCount > 0 ? "<viewControllerProperties>" : "",
             viewControllerMethods: mockCount > 0 ? "<viewControllerMethods>" : "",
-            viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
             viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>",
             viewControllerUpdateComment: mockCount > 0 ? "<viewControllerUpdateComment>" : "",
             viewStateEmptyFactory: "<viewStateEmptyFactory>",

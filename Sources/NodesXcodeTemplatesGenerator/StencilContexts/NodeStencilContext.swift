@@ -21,13 +21,13 @@ public struct NodeStencilContext: StencilContext {
     private let dependencies: [[String: Any]]
     private let analyticsProperties: [[String: Any]]
     private let flowProperties: [[String: Any]]
-    private let viewControllableType: String
     private let viewControllableFlowType: String
+    private let viewControllableType: String
+    private let viewControllableMockContents: String
     private let viewControllerType: String
     private let viewControllerSuperParameters: String
     private let viewControllerProperties: String
     private let viewControllerMethods: String
-    private let viewControllableMockContents: String
     private let viewControllerSubscriptionsProperty: String
     private let viewControllerUpdateComment: String
     private let viewStateEmptyFactory: String
@@ -63,13 +63,13 @@ public struct NodeStencilContext: StencilContext {
             "dependencies": dependencies,
             "analytics_properties": analyticsProperties,
             "flow_properties": flowProperties,
-            "view_controllable_type": viewControllableType,
             "view_controllable_flow_type": viewControllableFlowType,
+            "view_controllable_type": viewControllableType,
+            "view_controllable_mock_contents": viewControllableMockContents,
             "view_controller_type": viewControllerType,
             "view_controller_super_parameters": viewControllerSuperParameters,
             "view_controller_properties": viewControllerProperties,
             "view_controller_methods": viewControllerMethods,
-            "view_controllable_mock_contents": viewControllableMockContents,
             "view_controller_subscriptions_property": viewControllerSubscriptionsProperty,
             "view_controller_update_comment": viewControllerUpdateComment,
             "view_state_empty_factory": viewStateEmptyFactory,
@@ -105,13 +105,13 @@ public struct NodeStencilContext: StencilContext {
         dependencies: [Config.Variable],
         analyticsProperties: [Config.Variable],
         flowProperties: [Config.Variable],
-        viewControllableType: String,
         viewControllableFlowType: String,
+        viewControllableType: String,
+        viewControllableMockContents: String,
         viewControllerType: String,
         viewControllerSuperParameters: String,
         viewControllerProperties: String,
         viewControllerMethods: String,
-        viewControllableMockContents: String,
         viewControllerSubscriptionsProperty: String,
         viewControllerUpdateComment: String,
         viewStateEmptyFactory: String,
@@ -146,13 +146,13 @@ public struct NodeStencilContext: StencilContext {
         self.dependencies = dependencies.map(\.dictionary)
         self.analyticsProperties = analyticsProperties.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)
-        self.viewControllableType = viewControllableType
         self.viewControllableFlowType = viewControllableFlowType
+        self.viewControllableType = viewControllableType
+        self.viewControllableMockContents = viewControllableMockContents
         self.viewControllerType = viewControllerType
         self.viewControllerSuperParameters = viewControllerSuperParameters
         self.viewControllerProperties = viewControllerProperties
         self.viewControllerMethods = viewControllerMethods
-        self.viewControllableMockContents = viewControllableMockContents
         self.viewControllerSubscriptionsProperty = viewControllerSubscriptionsProperty
         self.viewControllerUpdateComment = viewControllerUpdateComment
         self.viewStateEmptyFactory = viewStateEmptyFactory
