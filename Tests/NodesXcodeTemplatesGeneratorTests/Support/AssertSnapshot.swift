@@ -2,6 +2,7 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
+import Foundation
 import SnapshotTesting
 import XCTest
 
@@ -15,11 +16,27 @@ internal func assertSnapshot<Value, Format>(
     testName: String = #function,
     line: UInt = #line
 ) {
+    var snapshotDirectory: URL?
+    #if BAZEL
+    if let srcRoot: String = ProcessInfo.processInfo.environment["SRCROOT"] {
+        let absoluteURL: URL = .init(fileURLWithPath: "\(srcRoot)/\(file)", isDirectory: false)
+        let filename: String = absoluteURL.deletingPathExtension().lastPathComponent
+        snapshotDirectory = absoluteURL
+            .deletingLastPathComponent()
+            .appendingPathComponent("__Snapshots__")
+            .appendingPathComponent(filename)
+    } else {
+        snapshotDirectory = nil
+    }
+    #else
+    snapshotDirectory = nil
+    #endif
     let failure: String? = verifySnapshot(
         of: try value(),
         as: snapshotting,
         named: name,
         record: recording,
+        snapshotDirectory: snapshotDirectory?.path,
         timeout: timeout,
         file: file,
         testName: testName,

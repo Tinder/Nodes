@@ -106,7 +106,6 @@ macos_unit_test(
 swift_library(
     name = "NodesXcodeTemplatesGeneratorTests",
     srcs = glob(["Tests/NodesXcodeTemplatesGeneratorTests/**/*.swift"]),
-    data = glob(["Tests/NodesXcodeTemplatesGeneratorTests/__Snapshots__/**"]),
     visibility = ["//visibility:private"],
     deps = [
         ":NodesXcodeTemplatesGenerator",
@@ -114,5 +113,6 @@ swift_library(
         "@SnapshotTesting//:SnapshotTesting",
         "@SnapshotTesting//:InlineSnapshotTesting",
     ],
+    defines = ["BAZEL"],
     testonly = True,
 )
