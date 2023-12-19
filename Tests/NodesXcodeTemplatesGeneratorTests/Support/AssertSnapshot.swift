@@ -1,3 +1,4 @@
+// swiftlint:disable:this file_name
 //
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
@@ -5,6 +6,8 @@
 import Foundation
 import SnapshotTesting
 import XCTest
+
+private final class BundleLocator {}
 
 internal func assertSnapshot<Value, Format>(
     of value: @autoclosure () throws -> Value,
@@ -16,32 +19,41 @@ internal func assertSnapshot<Value, Format>(
     testName: String = #function,
     line: UInt = #line
 ) {
-    var snapshotDirectory: URL?
+    let failure: String?
     #if BAZEL
-    if let srcRoot: String = ProcessInfo.processInfo.environment["SRCROOT"] {
-        let absoluteURL: URL = .init(fileURLWithPath: "\(srcRoot)/\(file)", isDirectory: false)
-        let filename: String = absoluteURL.deletingPathExtension().lastPathComponent
-        snapshotDirectory = absoluteURL
-            .deletingLastPathComponent()
-            .appendingPathComponent("__Snapshots__")
-            .appendingPathComponent(filename)
-    } else {
-        snapshotDirectory = nil
-    }
-    #else
-    snapshotDirectory = nil
-    #endif
-    let failure: String? = verifySnapshot(
+    let testTarget: String = "\(file)".components(separatedBy: "/")[1]
+    let bundleURL: URL = Bundle(for: BundleLocator.self)
+        .resourceURL!
+        .appendingPathComponent("\(testTarget)Snapshots.bundle")
+    let resourceURL: URL = Bundle(url: bundleURL)!.resourceURL!
+    let absoluteURL: URL = .init(fileURLWithPath: "\(resourceURL.path)/\(file)", isDirectory: false)
+    let snapshotDirectory: URL = absoluteURL
+        .deletingLastPathComponent()
+        .appendingPathComponent("__Snapshots__")
+        .appendingPathComponent(absoluteURL.deletingPathExtension().lastPathComponent)
+    failure = verifySnapshot(
         of: try value(),
         as: snapshotting,
         named: name,
         record: recording,
-        snapshotDirectory: snapshotDirectory?.path,
+        snapshotDirectory: snapshotDirectory.path,
+        timeout: timeout,
+        file: "",
+        testName: testName,
+        line: line
+    )
+    #else
+    failure = verifySnapshot(
+        of: try value(),
+        as: snapshotting,
+        named: name,
+        record: recording,
         timeout: timeout,
         file: file,
         testName: testName,
         line: line
     )
+    #endif
     guard let message: String = failure
     else { return }
     XCTFail(message, file: file, line: line)

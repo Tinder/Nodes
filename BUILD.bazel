@@ -109,6 +109,7 @@ macos_unit_test(
 swift_library(
     name = "NodesXcodeTemplatesGeneratorTests",
     srcs = glob(["Tests/NodesXcodeTemplatesGeneratorTests/**/*.swift"]),
+    data = [":NodesXcodeTemplatesGeneratorTestsSnapshots"],
     visibility = ["//visibility:private"],
     deps = [
         ":NodesXcodeTemplatesGenerator",
@@ -118,4 +119,9 @@ swift_library(
     ],
     defines = ["BAZEL"],
     testonly = True,
+)
+
+apple_resource_bundle(
+    name = "NodesXcodeTemplatesGeneratorTestsSnapshots",
+    structured_resources = glob(["Tests/NodesXcodeTemplatesGeneratorTests/__Snapshots__/**"]),
 )
