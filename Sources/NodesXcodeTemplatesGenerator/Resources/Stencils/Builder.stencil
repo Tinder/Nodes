@@ -10,11 +10,10 @@ import {{ import }}
  PURPOSE:
  The interface of the Flow.
  */
-{% if owns_view %}
 /// @mockable
+{% if owns_view %}
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
 {% else %}
-/// @mockable
 internal protocol {{ node_name }}Flow: Flow {}
 {% endif %}
 
@@ -22,15 +21,14 @@ internal protocol {{ node_name }}Flow: Flow {}
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
-{% if dependencies %}
 /// @mockable
+{% if dependencies %}
 public protocol {{ node_name }}Dependency: Dependency {
     {% for dependency in dependencies %}
     var {{ dependency.name }}: {{ dependency.type }} { get }
     {% endfor %}
 }
 {% else %}
-/// @mockable
 public protocol {{ node_name }}Dependency: Dependency {}
 {% endif %}
 

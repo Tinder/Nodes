@@ -18,13 +18,12 @@ internal protocol {{ node_name }}Listener: AnyObject {}
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
-{% if node_name == "Root" %}
 /// @mockable
+{% if node_name == "Root" %}
 internal protocol {{ node_name }}FlowInterface: Flow {
     func didBecomeReady()
 }
 {% else %}
-/// @mockable
 internal protocol {{ node_name }}FlowInterface: Flow {}
 {% endif %}
 

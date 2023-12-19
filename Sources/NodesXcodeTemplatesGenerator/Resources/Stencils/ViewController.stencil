@@ -11,13 +11,12 @@ import {{ import }}
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
  */
-{% if node_name == "Root" %}
 /// @mockable
+{% if node_name == "Root" %}
 internal protocol {{ node_name }}Receiver: AnyObject {
     func viewDidAppear()
 }
 {% else %}
-/// @mockable
 internal protocol {{ node_name }}Receiver: AnyObject {}
 {% endif %}
 
