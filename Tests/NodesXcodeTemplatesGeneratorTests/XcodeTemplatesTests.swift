@@ -3,7 +3,6 @@
 //
 
 import NodesXcodeTemplatesGenerator
-import SnapshotTesting
 import XCTest
 
 final class XcodeTemplatesTests: XCTestCase {

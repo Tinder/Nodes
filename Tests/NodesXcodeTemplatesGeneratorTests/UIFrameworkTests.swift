@@ -5,7 +5,6 @@
 import Codextended
 import Nimble
 @testable import NodesXcodeTemplatesGenerator
-import SnapshotTesting
 import XCTest
 import Yams
 
