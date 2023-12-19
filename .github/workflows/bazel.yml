@@ -19,4 +19,4 @@ jobs:
     - name: Build
       run: bazelisk build :all
     - name: Test
-      run: bazelisk test :all
+      run: bazelisk test :all --test_env="SRCROOT=$(pwd)"
