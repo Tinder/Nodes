@@ -1,0 +1,34 @@
+{{ file_header }}
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+{% if plugin_tests_imports %}
+
+{% for import in plugin_tests_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+final class {{ node_name }}PluginTests: XCTestCase {
+
+    private var plugin: {{ node_name }}PluginImp!
+
+    override func setUp() {
+        super.setUp()
+
+        plugin = .init(componentFactory: injectComponent {
+            {{ node_name }}Component(parent: $0)
+        } with: {
+            let dependency: {{ node_name }}PluginDependencyMock = .init()
+            return dependency
+        })
+    }
+
+    override func tearDown() {
+        plugin = nil
+        super.tearDown()
+    }
+
+    func testPluginDoesNotCreate() {
+        XCTAssertNil(plugin.create())
+    }
+}
