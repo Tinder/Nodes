@@ -60,7 +60,6 @@ ios_unit_test(
         ":NodesTests",
     ],
     minimum_os_version = MINIMUM_IOS_VERSION,
-    size = "small",
     timeout = "long",
 )
 
@@ -81,7 +80,6 @@ ios_unit_test(
         ":NodesTestingTests",
     ],
     minimum_os_version = MINIMUM_IOS_VERSION,
-    size = "small",
     timeout = "long",
 )
 
@@ -102,7 +100,6 @@ macos_unit_test(
         ":NodesXcodeTemplatesGeneratorTests",
     ],
     minimum_os_version = MINIMUM_MACOS_VERSION,
-    size = "small",
     timeout = "long",
 )
 
