@@ -4,7 +4,6 @@
 
 import Nimble
 @testable import NodesXcodeTemplatesGenerator
-import SnapshotTesting
 import XCTest
 
 final class XcodeTemplateTests: XCTestCase, TestFactories {
