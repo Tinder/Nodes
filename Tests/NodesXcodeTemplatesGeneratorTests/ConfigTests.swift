@@ -176,8 +176,8 @@ final class ConfigTests: XCTestCase, TestFactories {
             type: <flowProperties-type-1>
           - name: <flowProperties-name-2>
             type: <flowProperties-type-2>
-        viewControllableType: <viewControllableType>
         viewControllableFlowType: <viewControllableFlowType>
+        viewControllableType: <viewControllableType>
         viewControllableMockContents: <viewControllableMockContents>
         viewControllerSubscriptionsProperty: <viewControllerSubscriptionsProperty>
         viewControllerUpdateComment: <viewControllerUpdateComment>

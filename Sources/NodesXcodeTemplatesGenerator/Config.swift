@@ -38,8 +38,8 @@ public struct Config: Equatable, Codable {
     public var dependencies: [Variable]
     public var analyticsProperties: [Variable]
     public var flowProperties: [Variable]
-    public var viewControllableType: String
     public var viewControllableFlowType: String
+    public var viewControllableType: String
     public var viewControllableMockContents: String
     public var viewControllerSubscriptionsProperty: String
     public var viewControllerUpdateComment: String
@@ -93,8 +93,8 @@ extension Config {
         dependencies = []
         analyticsProperties = []
         flowProperties = []
-        viewControllableType = "ViewControllable"
         viewControllableFlowType = "ViewControllableFlow"
+        viewControllableType = "ViewControllable"
         viewControllableMockContents = ""
         viewControllerSubscriptionsProperty = """
             /// The collection of cancellable instances.
@@ -165,12 +165,12 @@ extension Config {
         flowProperties =
             (try? decoder.decode(CodingKeys.flowProperties))
             ?? defaults.flowProperties
-        viewControllableType =
-            (try? decoder.decodeString(CodingKeys.viewControllableType))
-            ?? defaults.viewControllableType
         viewControllableFlowType =
             (try? decoder.decodeString(CodingKeys.viewControllableFlowType))
             ?? defaults.viewControllableFlowType
+        viewControllableType =
+            (try? decoder.decodeString(CodingKeys.viewControllableType))
+            ?? defaults.viewControllableType
         viewControllableMockContents =
             (try? decoder.decodeString(CodingKeys.viewControllableMockContents))
             ?? defaults.viewControllableMockContents

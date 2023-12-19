@@ -33,8 +33,8 @@ dependencyInjectionImports:
 dependencies: []
 analyticsProperties: []
 flowProperties: []
-viewControllableType: ViewControllable
 viewControllableFlowType: ViewControllableFlow
+viewControllableType: ViewControllable
 viewControllableMockContents: ""
 viewControllerSubscriptionsProperty: |
   /// The collection of cancellable instances.

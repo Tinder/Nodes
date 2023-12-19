@@ -79,7 +79,10 @@ public final class WindowComponent: Component
     /// - Parameters:
     ///   - parent: The parent scope
     ///   - dynamicDependency: The dynamic component dependency
-    internal init(parent: Scope, dynamicDependency: WindowDynamicComponentDependency = ()) {
+    internal init(
+        parent: Scope,
+        dynamicDependency: WindowDynamicComponentDependency = ()
+    ) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
     }
