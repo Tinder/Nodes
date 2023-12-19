@@ -24,7 +24,6 @@ public protocol {{ node_name }}Dependency: Dependency {
     {% endfor %}
 }
 {% else %}
-/// @mockable
 public protocol {{ node_name }}Dependency: Dependency {}
 {% endif %}
 
