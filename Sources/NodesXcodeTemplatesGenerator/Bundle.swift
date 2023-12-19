@@ -8,7 +8,7 @@ extension Bundle {
 
     #if BAZEL
 
-    private class BundleLocator {}
+    private final class BundleLocator {}
 
     internal static let module: Bundle = {
         let candidates: [URL] = [
