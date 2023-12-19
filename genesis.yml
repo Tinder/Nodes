@@ -2457,6 +2457,7 @@ files:
                     echo "SwiftLint is skipped in CI."
                 fi
             - name: Needle
+              basedOnDependencyAnalysis: false
               outputFiles:
                 - $(SRCROOT)/Generated/NeedleGenerated.swift
               script: >
