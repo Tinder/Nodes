@@ -61,6 +61,7 @@ ios_unit_test(
     ],
     minimum_os_version = MINIMUM_IOS_VERSION,
     size = "small",
+    timeout = "long",
 )
 
 swift_library(
@@ -81,6 +82,7 @@ ios_unit_test(
     ],
     minimum_os_version = MINIMUM_IOS_VERSION,
     size = "small",
+    timeout = "long",
 )
 
 swift_library(
@@ -101,6 +103,7 @@ macos_unit_test(
     ],
     minimum_os_version = MINIMUM_MACOS_VERSION,
     size = "small",
+    timeout = "long",
 )
 
 swift_library(
