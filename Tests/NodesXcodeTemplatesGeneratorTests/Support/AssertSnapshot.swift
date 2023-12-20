@@ -7,7 +7,9 @@ import Foundation
 import SnapshotTesting
 import XCTest
 
+#if BAZEL
 private final class BundleLocator {}
+#endif
 
 internal func assertSnapshot<Value, Format>(
     of value: @autoclosure () throws -> Value,
