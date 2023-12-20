@@ -8,16 +8,16 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-final class {{ node_name }}PluginTests: XCTestCase {
+final class {{ plugin_name }}PluginTests: XCTestCase {
 
-    private var plugin: {{ node_name }}PluginImp!
+    private var plugin: {{ plugin_name }}PluginImp!
 
     override func setUp() {
         super.setUp()
         plugin = .init(componentFactory: injectComponent {
-            {{ node_name }}Component(parent: $0)
+            {{ plugin_name }}Component(parent: $0)
         } with: {
-            let dependency: {{ node_name }}PluginDependencyMock = .init()
+            let dependency: {{ plugin_name }}PluginDependencyMock = .init()
             return dependency
         })
     }
@@ -32,6 +32,6 @@ final class {{ node_name }}PluginTests: XCTestCase {
     }
 
     func testOverride() {
-        XCTAssertNotNil(plugin.override())
+        XCTAssertTrue(plugin.override() is {{ plugin_name }}Builder)
     }
 }
