@@ -30,4 +30,8 @@ final class {{ node_name }}PluginTests: XCTestCase {
     func testPluginIsNotEnabled() {
         XCTAssertNil(plugin.create())
     }
+
+    func testOverride() {
+        XCTAssertNotNil(plugin.override())
+    }
 }
