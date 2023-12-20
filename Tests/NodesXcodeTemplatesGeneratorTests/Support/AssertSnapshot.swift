@@ -3,13 +3,8 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
-import Foundation
 import SnapshotTesting
 import XCTest
-
-#if BAZEL
-private final class BundleLocator {}
-#endif
 
 internal func assertSnapshot<Value, Format>(
     of value: @autoclosure () throws -> Value,
@@ -23,16 +18,13 @@ internal func assertSnapshot<Value, Format>(
 ) {
     let failure: String?
     #if BAZEL
-    let testTarget: String = "\(file)".components(separatedBy: "/")[1]
-    let bundleURL: URL = Bundle(for: BundleLocator.self)
-        .resourceURL!
-        .appendingPathComponent("\(testTarget)Snapshots.bundle")
-    let resourceURL: URL = Bundle(url: bundleURL)!.resourceURL!
-    let absoluteURL: URL = .init(fileURLWithPath: "\(resourceURL.path)/\(file)", isDirectory: false)
-    let snapshotDirectory: URL = absoluteURL
+    let runfilesPath: String = ProcessInfo.processInfo.environment["TEST_SRCDIR"]!
+    let workspaceName: String = ProcessInfo.processInfo.environment["TEST_WORKSPACE"]!
+    let testCase: URL = .init(fileURLWithPath: "\(runfilesPath)/\(workspaceName)/\(file)", isDirectory: false)
+    let snapshotDirectory: URL = testCase
         .deletingLastPathComponent()
         .appendingPathComponent("__Snapshots__")
-        .appendingPathComponent(absoluteURL.deletingPathExtension().lastPathComponent)
+        .appendingPathComponent(testCase.deletingPathExtension().lastPathComponent)
     failure = verifySnapshot(
         of: try value(),
         as: snapshotting,
