@@ -18,6 +18,7 @@ import <analyticsImport>
 
  Add requirements to this protocol to provide analytics tracking methods for this Node.
  */
+/// @mockable
 internal protocol SceneAnalytics: AnyObject {}
 
 /**

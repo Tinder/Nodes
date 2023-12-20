@@ -9,6 +9,7 @@ import UIKit
  The interface that the View will speak to the Context through. Used for informing the Context of
  view events and user interactions.
  */
+/// @mockable
 internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
 
 /**

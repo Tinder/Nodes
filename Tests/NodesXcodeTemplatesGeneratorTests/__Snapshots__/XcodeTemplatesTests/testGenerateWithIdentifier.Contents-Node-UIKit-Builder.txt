@@ -8,12 +8,14 @@ import Nodes
  PURPOSE:
  The interface of the Flow.
  */
+/// @mockable
 internal protocol ___VARIABLE_productName___Flow: ViewControllableFlow {}
 
 /**
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
+/// @mockable
 public protocol ___VARIABLE_productName___Dependency: Dependency {}
 
 /**
@@ -104,6 +106,7 @@ public final class ___VARIABLE_productName___Component: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
+/// @mockable
 internal protocol ___VARIABLE_productName___Builder: AnyObject {
     func build(
         withListener listener: ___VARIABLE_productName___Listener

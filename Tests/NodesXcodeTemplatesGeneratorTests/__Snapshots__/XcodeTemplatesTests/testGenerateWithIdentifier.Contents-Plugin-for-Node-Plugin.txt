@@ -7,6 +7,7 @@ import Nodes
  PURPOSE:
  Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
  */
+/// @mockable
 public protocol ___VARIABLE_productName___PluginDependency: Dependency {}
 
 /**
@@ -70,6 +71,7 @@ internal typealias ___VARIABLE_productName___PluginStateType = Void
  PURPOSE:
  The Plugin interface (available to mock for testability).
  */
+/// @mockable
 internal protocol ___VARIABLE_productName___Plugin {
     func create() -> ___VARIABLE_productName___Builder?
 }

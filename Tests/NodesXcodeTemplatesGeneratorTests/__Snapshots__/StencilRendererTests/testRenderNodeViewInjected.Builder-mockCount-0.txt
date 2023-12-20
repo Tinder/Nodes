@@ -4,12 +4,14 @@
  PURPOSE:
  The interface of the Flow.
  */
+/// @mockable
 internal protocol <nodeName>Flow: Flow {}
 
 /**
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
+/// @mockable
 public protocol <nodeName>Dependency: Dependency {}
 
 /**
@@ -100,6 +102,7 @@ public final class <nodeName>Component: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
+/// @mockable
 internal protocol <nodeName>Builder: AnyObject {
     func build(
         withListener listener: <nodeName>Listener,

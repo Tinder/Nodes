@@ -5,6 +5,7 @@
  The interface that the Flow will speak to the Context through. Used for informing the Context of
  presentation lifecycle events, as an example.
  */
+/// @mockable
 internal protocol RootContextInterface: Context {}
 
 /**
