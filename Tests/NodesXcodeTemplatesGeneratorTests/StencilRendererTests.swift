@@ -36,7 +36,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 templates.forEach { name, template in
                     assertSnapshot(of: template,
                                    as: .lines,
-                                   named: "\(name)-\(kind.rawValue)-mockCount-\(count)")
+                                   named: "\(name)-\(kind.rawValue)-mockCount-\(count)"
                 }
             }
         }
