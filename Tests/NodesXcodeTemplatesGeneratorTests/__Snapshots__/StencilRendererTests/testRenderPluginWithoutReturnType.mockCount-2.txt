@@ -7,6 +7,7 @@ import <pluginImport2>
  PURPOSE:
  Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
  */
+/// @mockable
 public protocol <pluginName>PluginDependency: Dependency {}
 
 /**
@@ -71,6 +72,7 @@ internal typealias <pluginName>PluginStateType = Void
  PURPOSE:
  The Plugin interface (available to mock for testability).
  */
+/// @mockable
 internal protocol <pluginName>Plugin {
     func create() -> <pluginName>Builder?
 }

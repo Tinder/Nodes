@@ -13,6 +13,7 @@ import {{ import }}
  PURPOSE:
  Encapsulates work to be performed by the Node.
  */
+/// @mockable
 internal protocol {{ worker_name }}Worker: Worker {}
 
 {% if is_periphery_comment_enabled %}
