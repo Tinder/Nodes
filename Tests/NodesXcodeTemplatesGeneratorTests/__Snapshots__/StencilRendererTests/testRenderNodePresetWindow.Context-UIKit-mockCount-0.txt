@@ -4,6 +4,7 @@
  PURPOSE:
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
+/// @mockable
 internal protocol WindowListener: AnyObject {}
 
 /**
@@ -11,6 +12,7 @@ internal protocol WindowListener: AnyObject {}
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
+/// @mockable
 internal protocol WindowFlowInterface: Flow {}
 
 /**

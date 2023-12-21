@@ -13,6 +13,7 @@ import {{ import }}
  PURPOSE:
  The common Flow interface.
  */
+/// @mockable
 internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} {}
 
 {% if is_periphery_comment_enabled %}
@@ -22,6 +23,7 @@ internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} 
  PURPOSE:
  The common Listener interface.
  */
+/// @mockable
 internal protocol {{ plugin_list_name }}Listener: AnyObject {}
 
 {% if is_periphery_comment_enabled %}
@@ -31,6 +33,7 @@ internal protocol {{ plugin_list_name }}Listener: AnyObject {}
  PURPOSE:
  The common Builder interface.
  */
+/// @mockable
 internal protocol {{ plugin_list_name }}Builder: AnyObject {
     func build(
         withListener listener: {{ plugin_list_name }}Listener
@@ -41,6 +44,7 @@ internal protocol {{ plugin_list_name }}Builder: AnyObject {
  PURPOSE:
  Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
  */
+/// @mockable
 public protocol {{ plugin_list_name }}PluginListDependency: Dependency {}
 
 /**
@@ -109,6 +113,7 @@ internal typealias {{ plugin_list_name }}PluginListStateType = Void
  PURPOSE:
  The Plugin List protocol (available to mock for testability).
  */
+/// @mockable
 internal protocol {{ plugin_list_name }}PluginList {
     func createAll() -> [{{ plugin_list_name }}Builder]
     func create() -> {{ plugin_list_name }}Builder?

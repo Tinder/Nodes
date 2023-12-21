@@ -8,6 +8,7 @@ import <pluginListImport2>
  PURPOSE:
  The common Flow interface.
  */
+/// @mockable
 internal protocol <pluginListName>Flow: <viewControllableFlowType> {}
 
 // periphery:ignore
@@ -15,6 +16,7 @@ internal protocol <pluginListName>Flow: <viewControllableFlowType> {}
  PURPOSE:
  The common Listener interface.
  */
+/// @mockable
 internal protocol <pluginListName>Listener: AnyObject {}
 
 // periphery:ignore
@@ -22,6 +24,7 @@ internal protocol <pluginListName>Listener: AnyObject {}
  PURPOSE:
  The common Builder interface.
  */
+/// @mockable
 internal protocol <pluginListName>Builder: AnyObject {
     func build(
         withListener listener: <pluginListName>Listener
@@ -32,6 +35,7 @@ internal protocol <pluginListName>Builder: AnyObject {
  PURPOSE:
  Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
  */
+/// @mockable
 public protocol <pluginListName>PluginListDependency: Dependency {}
 
 /**
@@ -98,6 +102,7 @@ internal typealias <pluginListName>PluginListStateType = Void
  PURPOSE:
  The Plugin List protocol (available to mock for testability).
  */
+/// @mockable
 internal protocol <pluginListName>PluginList {
     func createAll() -> [<pluginListName>Builder]
     func create() -> <pluginListName>Builder?
