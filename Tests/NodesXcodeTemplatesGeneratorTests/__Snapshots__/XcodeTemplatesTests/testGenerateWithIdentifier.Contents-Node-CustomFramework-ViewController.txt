@@ -1,0 +1,55 @@
+//___FILEHEADER___
+
+import Combine
+import CustomFramework
+import Nodes
+
+/**
+ PURPOSE:
+ The interface that the View will speak to the Context through. Used for informing the Context of
+ view events and user interactions.
+ */
+/// @mockable
+internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
+
+/**
+ PURPOSE:
+ Concrete implementation of the UI.
+ */
+internal final class ___VARIABLE_productName___ViewController: CustomViewController, StateObserver {
+
+    /// The view receiver.
+    internal weak var receiver: ___VARIABLE_productName___Receiver?
+
+    /// The collection of cancellable instances.
+    private var cancellables: Set<AnyCancellable> = .init()
+
+    /// The initial view state.
+    private let initialState: ___VARIABLE_productName___ViewState
+
+    /// The view state publisher.
+    private let statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+
+    /// The initializer.
+    ///
+    /// - Parameters:
+    ///   - initialState: The initial view state.
+    ///   - statePublisher: The view state publisher.
+    internal init(
+        initialState: ___VARIABLE_productName___ViewState,
+        statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+    ) {
+        self.initialState = initialState
+        self.statePublisher = statePublisher
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+        super.init()
+    }
+
+    internal func update(with viewState: ___VARIABLE_productName___ViewState) {
+        // Add implementation to update the user interface when the view state changes.
+    }
+}
+
+extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllable {}

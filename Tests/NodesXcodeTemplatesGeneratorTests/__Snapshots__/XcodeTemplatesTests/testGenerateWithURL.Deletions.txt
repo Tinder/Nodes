@@ -1,6 +1,8 @@
-▿ 7 elements
+▿ 9 elements
+  - "/Node - AppKit.xctemplate"
   - "/Node - UIKit.xctemplate"
   - "/Node - SwiftUI.xctemplate"
+  - "/Node - CustomFramework.xctemplate"
   - "/Node (view injected).xctemplate"
   - "/Plugin List (for Node).xctemplate"
   - "/Plugin (for Node).xctemplate"

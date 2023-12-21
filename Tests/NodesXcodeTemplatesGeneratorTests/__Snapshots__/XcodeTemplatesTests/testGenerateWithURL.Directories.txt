@@ -1,9 +1,15 @@
-▿ 7 elements
+▿ 9 elements
+  ▿ (2 elements)
+    - path: "/Node - AppKit.xctemplate"
+    - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node - UIKit.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node - SwiftUI.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node - CustomFramework.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node (view injected).xctemplate"

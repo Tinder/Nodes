@@ -1,9 +1,15 @@
-▿ 7 elements
+▿ 9 elements
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - AppKit.xctemplate"
+    - createIntermediates: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - UIKit.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - SwiftUI.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFramework.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate"

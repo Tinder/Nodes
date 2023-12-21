@@ -9,7 +9,7 @@ final class XcodeTemplatesTests: XCTestCase {
 
     func testGenerateWithIdentifier() throws {
         let fileSystem: FileSystemMock = .init()
-        try XcodeTemplates(config: Config()).generate(identifier: "identifier", using: fileSystem)
+        try XcodeTemplates(config: giveConfig()).generate(identifier: "identifier", using: fileSystem)
         // swiftlint:disable:next large_tuple
         let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
         writes.forEach { assertSnapshot(of: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))") }
@@ -22,7 +22,7 @@ final class XcodeTemplatesTests: XCTestCase {
     func testGenerateWithURL() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
-        try XcodeTemplates(config: Config()).generate(at: url, using: fileSystem)
+        try XcodeTemplates(config: giveConfig()).generate(at: url, using: fileSystem)
         // swiftlint:disable:next large_tuple
         let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
         writes.forEach { assertSnapshot(of: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))") }
@@ -39,5 +39,17 @@ final class XcodeTemplatesTests: XCTestCase {
             .reversed()
             .joined(separator: "-")
             .replacingOccurrences(of: [".xctemplate", "___FILEBASENAME___", ".swift", ".plist"], with: "")
+    }
+
+    private func giveConfig() -> Config {
+        var config: Config = .init()
+        config.uiFrameworks += [
+            UIFramework(framework: .appKit),
+            UIFramework(framework: .custom(name: "CustomFramework",
+                                           import: "CustomFramework",
+                                           viewControllerType: "CustomViewController",
+                                           viewControllerSuperParameters: ""))
+        ]
+        return config
     }
 }
