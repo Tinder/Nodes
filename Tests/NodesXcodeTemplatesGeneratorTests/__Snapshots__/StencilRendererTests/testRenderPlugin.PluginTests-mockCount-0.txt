@@ -1,23 +1,17 @@
-{{ file_header }}
+<fileHeader>
 
 #warning("Manually move this test file to the corresponding test target then delete this warning.")
-{% if plugin_tests_imports %}
 
-{% for import in plugin_tests_imports %}
-import {{ import }}
-{% endfor %}
-{% endif %}
+final class <pluginName>PluginTests: XCTestCase {
 
-final class {{ plugin_name }}PluginTests: XCTestCase {
-
-    private var plugin: {{ plugin_name }}PluginImp!
+    private var plugin: <pluginName>PluginImp!
 
     override func setUp() {
         super.setUp()
         plugin = .init(componentFactory: injectComponent {
-            {{ plugin_name }}PluginComponent(parent: $0)
+            <pluginName>PluginComponent(parent: $0)
         } with: {
-            let dependency: {{ plugin_name }}PluginDependencyMock = .init()
+            let dependency: <pluginName>PluginDependencyMock = .init()
             return dependency
         })
     }
@@ -32,6 +26,6 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
     }
 
     func testOverride() {
-        XCTAssertTrue(plugin.override() is {{ plugin_name }}Builder)
+        XCTAssertTrue(plugin.override() is <pluginName>Builder)
     }
 }

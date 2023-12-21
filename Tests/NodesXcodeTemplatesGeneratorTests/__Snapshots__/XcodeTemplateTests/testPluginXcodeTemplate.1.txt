@@ -35,6 +35,10 @@
       - "<dependencyInjectionImport>"
       - "Nodes"
     - pluginName: "___VARIABLE_productName___"
+    ▿ pluginTestsImports: 3 elements
+      - "<baseTestImport>"
+      - "Nodes"
+      - "NodesTesting"
     ▿ returnType: Optional<String>
       - some: "___VARIABLE_returnType___"
   ▿ stencils: 1 element

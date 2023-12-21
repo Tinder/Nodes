@@ -181,6 +181,7 @@ extension TestFactories {
             pluginName: "<pluginName>",
             returnType: "<returnType>",
             pluginImports: .mock(with: "pluginImport", count: mockCount),
+            pluginTestsImports: .mock(with: "pluginTestsImport", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
@@ -190,6 +191,7 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             pluginImports: .mock(with: "pluginImport", count: mockCount),
+            pluginTestsImports: .mock(with: "pluginTestsImport", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0
         )
     }
