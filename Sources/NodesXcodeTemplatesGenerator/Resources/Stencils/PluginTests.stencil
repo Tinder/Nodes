@@ -15,7 +15,7 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
     override func setUp() {
         super.setUp()
         plugin = .init(componentFactory: injectComponent {
-            {{ plugin_name }}Component(parent: $0)
+            {{ plugin_name }}PluginComponent(parent: $0)
         } with: {
             let dependency: {{ plugin_name }}PluginDependencyMock = .init()
             return dependency
