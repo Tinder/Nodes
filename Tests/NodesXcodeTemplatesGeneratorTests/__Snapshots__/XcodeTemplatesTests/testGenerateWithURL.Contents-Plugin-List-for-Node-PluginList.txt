@@ -43,7 +43,6 @@ public protocol ___VARIABLE_productName___PluginListDependency: Dependency {}
  PURPOSE:
  Declares dependencies that are owned by this Plugin List.
  */
-@MainActor
 public final class ___VARIABLE_productName___PluginListComponent: Component
 <
     ___VARIABLE_productName___PluginListDependency

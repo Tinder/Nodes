@@ -55,7 +55,6 @@ public protocol {{ plugin_list_name }}PluginListDependency: Dependency {}
  PURPOSE:
  Declares dependencies that are owned by this Plugin List.
  */
-@MainActor
 public final class {{ plugin_list_name }}PluginListComponent: Component
 <
     {{ plugin_list_name }}PluginListDependency

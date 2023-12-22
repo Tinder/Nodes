@@ -38,7 +38,6 @@ internal typealias SceneDynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
-@MainActor
 public final class SceneComponent: Component
 <
     SceneDependency

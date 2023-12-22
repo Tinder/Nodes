@@ -46,7 +46,6 @@ public protocol <pluginListName>PluginListDependency: Dependency {}
  PURPOSE:
  Declares dependencies that are owned by this Plugin List.
  */
-@MainActor
 public final class <pluginListName>PluginListComponent: Component
 <
     <pluginListName>PluginListDependency

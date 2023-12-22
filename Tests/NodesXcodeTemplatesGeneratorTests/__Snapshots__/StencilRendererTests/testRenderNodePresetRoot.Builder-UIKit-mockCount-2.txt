@@ -44,7 +44,6 @@ internal typealias RootDynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
-@MainActor
 public final class RootComponent: Component
 <
     RootDependency

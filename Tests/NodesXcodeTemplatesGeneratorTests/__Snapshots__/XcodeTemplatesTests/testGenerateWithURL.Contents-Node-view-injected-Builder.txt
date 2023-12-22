@@ -42,7 +42,6 @@ internal typealias ___VARIABLE_productName___DynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
-@MainActor
 public final class ___VARIABLE_productName___Component: Component
 <
     ___VARIABLE_productName___Dependency
