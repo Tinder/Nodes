@@ -19,10 +19,10 @@
     - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - SwiftUI.xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFrameworkName.xctemplate/TemplateIcon.png"
+    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - Custom.xctemplate/TemplateIcon.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder@2x.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFrameworkName.xctemplate/TemplateIcon@2x.png"
+    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - Custom.xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
     - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/TemplateIcon.png"

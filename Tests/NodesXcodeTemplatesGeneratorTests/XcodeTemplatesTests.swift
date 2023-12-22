@@ -47,9 +47,9 @@ final class XcodeTemplatesTests: XCTestCase {
             UIFramework(framework: .appKit),
             UIFramework(framework: .uiKit),
             UIFramework(framework: .swiftUI),
-            UIFramework(framework: .custom(name: "CustomFrameworkName",
-                                           import: "CustomFrameworkImport",
-                                           viewControllerType: "CustomFrameworkViewControllerType",
+            UIFramework(framework: .custom(name: "Custom",
+                                           import: "CustomFramework",
+                                           viewControllerType: "CustomViewController",
                                            viewControllerSuperParameters: ""))
         ]
         return config

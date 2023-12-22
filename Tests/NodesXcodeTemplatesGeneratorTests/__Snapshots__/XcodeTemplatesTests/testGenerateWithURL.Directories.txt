@@ -9,7 +9,7 @@
     - path: "/Node - SwiftUI.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Node - CustomFrameworkName.xctemplate"
+    - path: "/Node - Custom.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node (view injected).xctemplate"
