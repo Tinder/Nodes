@@ -55,7 +55,7 @@ let package = Package(
             from: "13.0.0"),
         .package(
             url: "https://github.com/pointfreeco/swift-snapshot-testing.git",
-            from: "1.11.0"),
+            from: "1.15.0"),
     ],
     targets: [
         .target(
@@ -85,8 +85,7 @@ let package = Package(
                 "Stencil",
             ],
             resources: [
-                .copy("Resources/Icons"),
-                .copy("Resources/Stencils"),
+                .process("Resources"),
             ],
             swiftSettings: [
                 .unsafeFlags(["-strict-concurrency=complete"]),
@@ -127,8 +126,11 @@ let package = Package(
                 "NodesXcodeTemplatesGenerator",
                 "Nimble",
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+                .product(name: "InlineSnapshotTesting", package: "swift-snapshot-testing"),
             ],
-            exclude: ["__Snapshots__"],
+            exclude: [
+                "__Snapshots__",
+            ],
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
@@ -141,7 +143,7 @@ let package = Package(
             path: "Plugins/SwiftLintPlugin"),
         .binaryTarget(
             name: SwiftLint.binary,
-            url: "https://github.com/realm/SwiftLint/releases/download/0.52.4/SwiftLintBinary-macos.artifactbundle.zip",
-            checksum: "8a8095e6235a07d00f34a9e500e7568b359f6f66a249f36d12cd846017a8c6f5"),
+            url: "https://github.com/realm/SwiftLint/releases/download/0.54.0/SwiftLintBinary-macos.artifactbundle.zip",
+            checksum: "963121d6babf2bf5fd66a21ac9297e86d855cbc9d28322790646b88dceca00f1"),
     ]
 )

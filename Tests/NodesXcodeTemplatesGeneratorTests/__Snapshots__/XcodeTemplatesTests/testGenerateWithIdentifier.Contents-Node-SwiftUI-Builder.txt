@@ -8,6 +8,7 @@ import Nodes
  PURPOSE:
  The interface of the Flow.
  */
+/// @mockable
 @MainActor
 internal protocol ___VARIABLE_productName___Flow: ViewControllableFlow {}
 
@@ -15,6 +16,7 @@ internal protocol ___VARIABLE_productName___Flow: ViewControllableFlow {}
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
+/// @mockable
 @MainActor
 public protocol ___VARIABLE_productName___Dependency: Dependency {}
 
@@ -80,7 +82,10 @@ public final class ___VARIABLE_productName___Component: Component
     /// - Parameters:
     ///   - parent: The parent scope
     ///   - dynamicDependency: The dynamic component dependency
-    internal init(parent: Scope, dynamicDependency: ___VARIABLE_productName___DynamicComponentDependency = ()) {
+    internal init(
+        parent: Scope,
+        dynamicDependency: ___VARIABLE_productName___DynamicComponentDependency = ()
+    ) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
     }
@@ -104,6 +109,7 @@ public final class ___VARIABLE_productName___Component: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
+/// @mockable
 @MainActor
 internal protocol ___VARIABLE_productName___Builder: AnyObject {
     func build(

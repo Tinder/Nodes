@@ -19,7 +19,9 @@ internal class RootViewStateFactory: Nodes.Transform {
     ///
     /// - Parameter state: The state.
     /// - Returns: The view state.
-    internal func callAsFunction(_ state: RootState) -> RootViewState {
+    internal func callAsFunction(
+        _ state: RootState
+    ) -> RootViewState {
         RootViewState()
     }
 }

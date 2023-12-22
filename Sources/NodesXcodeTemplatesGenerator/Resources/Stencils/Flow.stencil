@@ -11,6 +11,7 @@ import {{ import }}
  The interface that the Flow will speak to the Context through. Used for informing the Context of
  presentation lifecycle events, as an example.
  */
+/// @mockable
 @MainActor
 internal protocol {{ node_name }}ContextInterface: Context {}
 

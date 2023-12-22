@@ -1,8 +1,8 @@
 # Using RxSwift with Nodes
 
-Using [RxSwift](https://github.com/ReactiveX/RxSwift) with Nodes requires custom configuration and setup.
+While Nodes works out-of-the-box with [Combine](https://developer.apple.com/documentation/combine), the following custom configuration and setup is required to use other reactive frameworks, such [RxSwift](https://github.com/ReactiveX/RxSwift).
 
-## Step 1 - Configure the Nodes Xcode Templates Generator for RxSwift
+## Configure the Xcode Template Generator
 
 Specify a path to a custom config file by providing the `--config` option when executing `nodes-xcode-templates-gen`.
 
@@ -11,6 +11,8 @@ If utilizing the [quick start project setup](https://github.com/TinderApp/Nodes#
 ```
 swift run -- nodes-xcode-templates-gen --id "RxSwift" --config "nodes.yml"
 ```
+
+> TIP: The provided `id` value is used to uniquely identify different sets of templates within the new file dialog in Xcode.
 
 ### Sample Config File
 
@@ -58,7 +60,7 @@ contextGenericTypes: []
 workerGenericTypes: []
 ```
 
-## Step 2 - Add Supporting Types
+## Add Supporting Types
 
 Add the following types to the application:
 

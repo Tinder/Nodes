@@ -4,13 +4,12 @@
 
 import Nimble
 @testable import NodesXcodeTemplatesGenerator
-import SnapshotTesting
 import XCTest
 
 final class StencilContextsTests: XCTestCase, TestFactories {
 
     func testNodeStencilContext() throws {
-        assertSnapshot(matching: try givenNodeStencilContext().dictionary,
+        assertSnapshot(of: try givenNodeStencilContext().dictionary,
                        as: .dump)
     }
 
@@ -22,7 +21,7 @@ final class StencilContextsTests: XCTestCase, TestFactories {
     }
 
     func testNodeViewInjectedStencilContext() throws {
-        assertSnapshot(matching: try givenNodeViewInjectedStencilContext().dictionary,
+        assertSnapshot(of: try givenNodeViewInjectedStencilContext().dictionary,
                        as: .dump)
     }
 
@@ -34,42 +33,42 @@ final class StencilContextsTests: XCTestCase, TestFactories {
     }
 
     func testNodePresetAppStencilContext() {
-        assertSnapshot(matching: givenNodePresetStencilContext(preset: .app).dictionary,
+        assertSnapshot(of: givenNodePresetStencilContext(preset: .app).dictionary,
                        as: .dump)
     }
 
     func testNodePresetSceneStencilContext() {
-        assertSnapshot(matching: givenNodePresetStencilContext(preset: .scene).dictionary,
+        assertSnapshot(of: givenNodePresetStencilContext(preset: .scene).dictionary,
                        as: .dump)
     }
 
     func testNodePresetWindowStencilContext() {
-        assertSnapshot(matching: givenNodePresetStencilContext(preset: .window).dictionary,
+        assertSnapshot(of: givenNodePresetStencilContext(preset: .window).dictionary,
                        as: .dump)
     }
 
     func testNodePresetRootStencilContext() {
-        assertSnapshot(matching: givenNodePresetStencilContext(preset: .root).dictionary,
+        assertSnapshot(of: givenNodePresetStencilContext(preset: .root).dictionary,
                        as: .dump)
     }
 
     func testPluginStencilContext() {
-        assertSnapshot(matching: givenPluginStencilContext().dictionary,
+        assertSnapshot(of: givenPluginStencilContext().dictionary,
                        as: .dump)
     }
 
     func testPluginStencilContextWithoutReturnType() {
-        assertSnapshot(matching: givenPluginStencilContextWithoutReturnType().dictionary,
+        assertSnapshot(of: givenPluginStencilContextWithoutReturnType().dictionary,
                        as: .dump)
     }
 
     func testPluginListStencilContext() {
-        assertSnapshot(matching: givenPluginListStencilContext().dictionary,
+        assertSnapshot(of: givenPluginListStencilContext().dictionary,
                        as: .dump)
     }
 
     func testWorkerStencilContext() {
-        assertSnapshot(matching: givenWorkerStencilContext().dictionary,
+        assertSnapshot(of: givenWorkerStencilContext().dictionary,
                        as: .dump)
     }
 

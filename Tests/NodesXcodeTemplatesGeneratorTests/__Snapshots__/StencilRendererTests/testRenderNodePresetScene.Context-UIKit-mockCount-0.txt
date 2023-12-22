@@ -4,6 +4,7 @@
  PURPOSE:
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
+/// @mockable
 @MainActor
 internal protocol SceneListener: AnyObject {}
 
@@ -12,6 +13,7 @@ internal protocol SceneListener: AnyObject {}
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
+/// @mockable
 @MainActor
 internal protocol SceneFlowInterface: Flow {}
 

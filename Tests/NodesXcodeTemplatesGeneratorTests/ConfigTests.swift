@@ -2,32 +2,104 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
+import Codextended
+import InlineSnapshotTesting
 import Nimble
 import NodesXcodeTemplatesGenerator
-import SnapshotTesting
 import XCTest
+import Yams
 
 final class ConfigTests: XCTestCase, TestFactories {
+
+    func testConfigErrorLocalizedDescription() {
+        expect(Config.ConfigError.emptyStringNotAllowed(key: "<key>").localizedDescription) == """
+            ERROR: Empty String Not Allowed [key: <key>] \
+            (TIP: Omit from config for the default value to be used instead)
+            """
+        expect(Config.ConfigError.uiFrameworkNotDefined(kind: .uiKit).localizedDescription) == """
+            ERROR: UIFramework Not Defined [kind: uiKit]
+            """
+    }
 
     func testConfig() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
         fileSystem.contents[url] = Data(givenConfig().utf8)
         let config: Config = try .init(at: url.path, using: fileSystem)
-        assertSnapshot(matching: config, as: .dump)
+        assertSnapshot(of: config, as: .dump)
     }
 
-    func testEmptyConfig() throws {
+    func testConfigWithEmptyFileContents() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
         fileSystem.contents[url] = Data("".utf8)
         let config: Config = try .init(at: url.path, using: fileSystem)
         expect(config) == Config()
-        assertSnapshot(matching: config, as: .dump)
+        assertSnapshot(of: config, as: .dump)
     }
 
-    func testDefaultConfig() {
-        assertSnapshot(matching: Config(), as: .dump)
+    func testDecodingFromEmptyString() throws {
+        let config: Config = try Data("".utf8).decoded(as: Config.self, using: YAMLDecoder())
+        expect(config) == Config()
+        assertSnapshot(of: config, as: .dump)
+    }
+
+    func testDecodingThrowsEmptyStringNotAllowedForCustomUIFramework() throws {
+        let requiredKeys: [(key: String, yaml: String)] = [
+            (key: "name", yaml: givenCustomUIFrameworkYAML(name: "")),
+            (key: "import", yaml: givenCustomUIFrameworkYAML(import: "")),
+            (key: "viewControllerType", yaml: givenCustomUIFrameworkYAML(viewControllerType: ""))
+        ]
+        for (key, yaml): (String, String) in requiredKeys {
+            expect(try Data(yaml.utf8).decoded(as: Config.self, using: YAMLDecoder()))
+                .to(throwError(errorType: DecodingError.self) { error in
+                    assertInlineSnapshot(of: error, as: .dump) {
+                        """
+                        ▿ DecodingError
+                          ▿ dataCorrupted: Context
+                            - codingPath: 0 elements
+                            - debugDescription: "The given data was not valid YAML."
+                            ▿ underlyingError: Optional<Error>
+                              ▿ some: ConfigError
+                                ▿ emptyStringNotAllowed: (1 element)
+                                  - key: "\(key)"
+                        """ + "\n"
+                    }
+                })
+        }
+    }
+
+    func testDecodingThrowsEmptyStringNotAllowed() throws {
+        let requiredKeys: [String] = [
+            "publisherType",
+            "viewControllableFlowType",
+            "viewControllableType",
+            "viewControllerSubscriptionsProperty",
+            "viewStateEmptyFactory",
+            "viewStatePropertyComment",
+            "viewStatePropertyName",
+            "viewStateTransform"
+        ]
+        for key: String in requiredKeys {
+            let yaml: String = """
+                \(key): ""
+                """
+            expect(try Data(yaml.utf8).decoded(as: Config.self, using: YAMLDecoder()))
+                .to(throwError(errorType: DecodingError.self) { error in
+                    assertInlineSnapshot(of: error, as: .dump) {
+                        """
+                        ▿ DecodingError
+                          ▿ dataCorrupted: Context
+                            - codingPath: 0 elements
+                            - debugDescription: "The given data was not valid YAML."
+                            ▿ underlyingError: Optional<Error>
+                              ▿ some: ConfigError
+                                ▿ emptyStringNotAllowed: (1 element)
+                                  - key: "\(key)"
+                        """ + "\n"
+                    }
+                })
+        }
     }
 
     func testUIFrameworkForKind() throws {
@@ -45,8 +117,13 @@ final class ConfigTests: XCTestCase, TestFactories {
             .forEach { kind in
                 expect(try config.uiFramework(for: kind))
                     .to(throwError(errorType: Config.ConfigError.self) { error in
-                        expect(error) == .uiFrameworkNotDefined(kind: kind)
-                        expect(error.localizedDescription) == "ERROR: UIFramework Not Defined [`kind: \(kind)`]"
+                        assertInlineSnapshot(of: error, as: .dump) {
+                            """
+                            ▿ ConfigError
+                              ▿ uiFrameworkNotDefined: (1 element)
+                                - kind: Kind.\(kind)
+                            """ + "\n"
+                        }
                     })
             }
     }
@@ -99,8 +176,8 @@ final class ConfigTests: XCTestCase, TestFactories {
             type: <flowProperties-type-1>
           - name: <flowProperties-name-2>
             type: <flowProperties-type-2>
-        viewControllableType: <viewControllableType>
         viewControllableFlowType: <viewControllableFlowType>
+        viewControllableType: <viewControllableType>
         viewControllableMockContents: <viewControllableMockContents>
         viewControllerSubscriptionsProperty: <viewControllerSubscriptionsProperty>
         viewControllerUpdateComment: <viewControllerUpdateComment>
@@ -121,6 +198,21 @@ final class ConfigTests: XCTestCase, TestFactories {
         isPreviewProviderEnabled: true
         isTestTemplatesGenerationEnabled: true
         isPeripheryCommentEnabled: true
+        """
+    }
+
+    private func givenCustomUIFrameworkYAML(
+        name: String = "<name>",
+        import: String = "<import>",
+        viewControllerType: String = "<viewControllerType>"
+    ) -> String {
+        """
+        uiFrameworks:
+          - framework:
+              custom:
+                name: \(name)
+                import: \(`import`)
+                viewControllerType: \(viewControllerType)
         """
     }
 }

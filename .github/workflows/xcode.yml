@@ -22,5 +22,5 @@ jobs:
       run: xcodebuild -resolvePackageDependencies
     - name: Build
       run: xcodebuild build-for-testing -scheme "Nodes-Package" -destination "name=$SIMULATOR,OS=latest"
-    - name: Run tests
+    - name: Test
       run: xcodebuild test-without-building -scheme "Nodes-Package" -destination "name=$SIMULATOR,OS=latest"

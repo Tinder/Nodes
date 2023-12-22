@@ -2490,6 +2490,7 @@ files:
                     echo "SwiftLint is skipped in CI."
                 fi
             - name: Needle
+              basedOnDependencyAnalysis: false
               outputFiles:
                 - $(SRCROOT)/Generated/NeedleGenerated.swift
               script: >
@@ -2545,6 +2546,7 @@ files:
             - package: Nimble
           preBuildScripts:
             - name: Mockolo
+              basedOnDependencyAnalysis: false
               outputFiles:
                 - $(SRCROOT)/Generated/MockoloGenerated.swift
               script: >

@@ -17,8 +17,8 @@ public struct NodeViewInjectedStencilContext: StencilContext {
     private let dependencies: [[String: Any]]
     private let analyticsProperties: [[String: Any]]
     private let flowProperties: [[String: Any]]
-    private let viewControllableType: String
     private let viewControllableFlowType: String
+    private let viewControllableType: String
     private let viewControllableMockContents: String
     private let contextGenericTypes: [String]
     private let workerGenericTypes: [String]
@@ -41,8 +41,8 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             "dependencies": dependencies,
             "analytics_properties": analyticsProperties,
             "flow_properties": flowProperties,
-            "view_controllable_type": viewControllableType,
             "view_controllable_flow_type": viewControllableFlowType,
+            "view_controllable_type": viewControllableType,
             "view_controllable_mock_contents": viewControllableMockContents,
             "context_generic_types": contextGenericTypes,
             "worker_generic_types": workerGenericTypes,
@@ -65,8 +65,8 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         dependencies: [Config.Variable],
         analyticsProperties: [Config.Variable],
         flowProperties: [Config.Variable],
-        viewControllableType: String,
         viewControllableFlowType: String,
+        viewControllableType: String,
         viewControllableMockContents: String,
         contextGenericTypes: [String],
         workerGenericTypes: [String],
@@ -88,8 +88,8 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         self.dependencies = dependencies.map(\.dictionary)
         self.analyticsProperties = analyticsProperties.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)
-        self.viewControllableType = viewControllableType
         self.viewControllableFlowType = viewControllableFlowType
+        self.viewControllableType = viewControllableType
         self.viewControllableMockContents = viewControllableMockContents
         self.contextGenericTypes = contextGenericTypes
         self.workerGenericTypes = workerGenericTypes

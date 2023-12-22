@@ -3,7 +3,6 @@
 //
 
 @testable import NodesXcodeTemplatesGenerator
-import SnapshotTesting
 import XCTest
 
 final class XcodeTemplatePropertyListTests: XCTestCase {
@@ -50,6 +49,6 @@ final class XcodeTemplatePropertyListTests: XCTestCase {
             }
         }
         let xml: String = try .init(decoding: plist.encode(), as: UTF8.self)
-        assertSnapshot(matching: xml, as: .lines)
+        assertSnapshot(of: xml, as: .lines)
     }
 }

@@ -4,6 +4,7 @@
  PURPOSE:
  The interface of the Flow.
  */
+/// @mockable
 @MainActor
 internal protocol WindowFlow: Flow {}
 
@@ -11,6 +12,7 @@ internal protocol WindowFlow: Flow {}
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
+/// @mockable
 @MainActor
 public protocol WindowDependency: Dependency {}
 
@@ -76,7 +78,10 @@ public final class WindowComponent: Component
     /// - Parameters:
     ///   - parent: The parent scope
     ///   - dynamicDependency: The dynamic component dependency
-    internal init(parent: Scope, dynamicDependency: WindowDynamicComponentDependency = ()) {
+    internal init(
+        parent: Scope,
+        dynamicDependency: WindowDynamicComponentDependency = ()
+    ) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
     }
@@ -100,6 +105,7 @@ public final class WindowComponent: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
+/// @mockable
 @MainActor
 internal protocol WindowBuilder: AnyObject {
     func build(

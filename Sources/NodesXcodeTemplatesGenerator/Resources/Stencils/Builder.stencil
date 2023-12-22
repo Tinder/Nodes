@@ -10,6 +10,7 @@ import {{ import }}
  PURPOSE:
  The interface of the Flow.
  */
+/// @mockable
 @MainActor
 {% if owns_view %}
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
@@ -21,6 +22,7 @@ internal protocol {{ node_name }}Flow: Flow {}
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
+/// @mockable
 @MainActor
 {% if dependencies %}
 public protocol {{ node_name }}Dependency: Dependency {
@@ -104,7 +106,10 @@ public final class {{ node_name }}Component: Component
     /// - Parameters:
     ///   - parent: The parent scope
     ///   - dynamicDependency: The dynamic component dependency
-    internal init(parent: Scope, dynamicDependency: {{ node_name }}DynamicComponentDependency = ()) {
+    internal init(
+        parent: Scope,
+        dynamicDependency: {{ node_name }}DynamicComponentDependency = ()
+    ) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
     }
@@ -131,6 +136,7 @@ public final class {{ node_name }}Component: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
+/// @mockable
 @MainActor
 internal protocol {{ node_name }}Builder: AnyObject {
     func build(

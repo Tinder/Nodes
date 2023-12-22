@@ -6,6 +6,7 @@ import <builderImport>
  PURPOSE:
  The interface of the Flow.
  */
+/// @mockable
 @MainActor
 internal protocol SceneFlow: Flow {}
 
@@ -13,6 +14,7 @@ internal protocol SceneFlow: Flow {}
  PURPOSE:
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
+/// @mockable
 @MainActor
 public protocol SceneDependency: Dependency {
     var <dependencyName>: <dependencyType> { get }
@@ -82,7 +84,10 @@ public final class SceneComponent: Component
     /// - Parameters:
     ///   - parent: The parent scope
     ///   - dynamicDependency: The dynamic component dependency
-    internal init(parent: Scope, dynamicDependency: SceneDynamicComponentDependency = ()) {
+    internal init(
+        parent: Scope,
+        dynamicDependency: SceneDynamicComponentDependency = ()
+    ) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
     }
@@ -107,6 +112,7 @@ public final class SceneComponent: Component
  PURPOSE:
  The Builder interface (available to mock for testability).
  */
+/// @mockable
 @MainActor
 internal protocol SceneBuilder: AnyObject {
     func build(

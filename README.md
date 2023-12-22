@@ -50,11 +50,49 @@ The Nodes architecture is backed by the Nodes framework which includes base clas
 
 Native mobile applications need to be good citizens within their host device and operating system. Memory leaks and even normal memory use must be managed carefully. This can be challenging enough in a small app, and inside a large codebase it can quickly become unmanageable without a clear plan. The Nodes architecture provides controls for the lifecycle of each feature screen in the application which allows all memory of each experience to be reclaimed.
 
+## Introduction
+
+In a Nodes based application, the code implementation for a single screen is referred to as a "node". The application can be thought of as a node tree, where navigating from screen to screen creates the branches, referred to as attaching a node to another node.
+
+Each node is comprised of a few pre-defined types working in conjunction to power the screen and provide clean separation of concerns. Interaction handling and business logic for a screen is contained in the `Context` of the node, while its `Flow` is used for routing to other screens by attaching to other nodes within the application. The view of each node then remains solely focused on presentation. Each node can contain state which is transformed into view state and provided to the view for display.
+
+### Xcode Templates
+
+Nodes' Xcode templates are required to ensure correct use of the Nodes framework and to guarantee that every created node is properly defined.
+
+Installation of the templates is performed by the Xcode template generator (the `nodes-xcode-templates-gen` executable in the Swift package). Without customizing the generator, Xcode templates for UIKit and SwiftUI (for iOS) are installed by default. The generator supports [optional customization](#optional-customization) if needed.
+
+> TIP: After completing the [Quick Start](#quick-start) setup (below), Nodes' Xcode templates will be ***installed automatically***, so these instructions to manually install the Xcode templates ***may be skipped*** and are included here simply as a reference.
+
+<details>
+<summary><h4>Xcode Template Installation</h4></summary>
+
+To install Nodes' Xcode templates manually, first add Nodes as a dependency to a `Package.swift` file.
+
+> Replace `<version>` in the command with the latest Nodes version.
+
+```
+.package(
+    url: "git@github.com:TinderApp/Nodes.git",
+    from: "<version>"),
+```
+
+Then run the following shell command:
+
+```
+swift run -- nodes-xcode-templates-gen --id "Xcode Templates" 
+```
+
+The Xcode templates will be installed to the following location to be made available within Xcode's new file dialog.
+
+`~/Library/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (Xcode Templates)`
+</details>
+
 ## Documentation
 
 Documentation is available online at: [https://TinderApp.github.io/Nodes](https://TinderApp.github.io/Nodes)
 
-After completing the [Quick Start](#quick-start) setup (below), documentation is viewable in Xcode by selecting `Build Documentation` from the `Product` menu.
+> TIP: After completing the [Quick Start](#quick-start) setup (below), documentation is viewable in Xcode by selecting `Build Documentation` from the `Product` menu.
 
 ## Quick Start
 
@@ -113,7 +151,7 @@ Execute the `xcodegen` command any time the `project.yml` file is changed or pro
 
 ### Use Xcode Templates
 
-Xcode templates for Nodes will automatically be installed to:
+Xcode templates for Nodes will be installed automatically to:
 
 `~/Library/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (Xcode Templates)`
 
@@ -138,6 +176,10 @@ brew reinstall --build-from-source mockolo
 
 ## Optional Customization
 
-### Using RxSwift with Nodes
+### UI Frameworks
 
-While Nodes works out-of-the-box with Combine, using [RxSwift](https://github.com/ReactiveX/RxSwift) with Nodes requires [custom configuration and setup](RxSwift.md).
+While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui) (for iOS), custom [configuration is required](Configuration.md) to use other UI frameworks, such as [AppKit](https://developer.apple.com/documentation/appkit).
+
+### Reactive Frameworks
+
+While Nodes works out-of-the-box with [Combine](https://developer.apple.com/documentation/combine), custom [configuration and setup is required](RxSwift.md) to use other reactive frameworks, such [RxSwift](https://github.com/ReactiveX/RxSwift).

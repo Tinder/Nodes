@@ -7,6 +7,7 @@ import <contextImport2>
  PURPOSE:
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
+/// @mockable
 @MainActor
 internal protocol RootListener: AnyObject {}
 
@@ -15,6 +16,7 @@ internal protocol RootListener: AnyObject {}
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
+/// @mockable
 @MainActor
 internal protocol RootFlowInterface: Flow {
     func didBecomeReady()

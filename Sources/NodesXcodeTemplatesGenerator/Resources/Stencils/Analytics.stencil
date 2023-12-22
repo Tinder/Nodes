@@ -22,6 +22,7 @@ import {{ import }}
 
  Add requirements to this protocol to provide analytics tracking methods for this Node.
  */
+/// @mockable
 internal protocol {{ node_name }}Analytics: AnyObject {}
 
 /**
