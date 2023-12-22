@@ -9,7 +9,7 @@ final class XcodeTemplatesTests: XCTestCase {
 
     func testGenerateWithIdentifier() throws {
         let fileSystem: FileSystemMock = .init()
-        try XcodeTemplates(config: giveConfig()).generate(identifier: "identifier", using: fileSystem)
+        try XcodeTemplates(config: givenConfig()).generate(identifier: "identifier", using: fileSystem)
         // swiftlint:disable:next large_tuple
         let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
         writes.forEach { assertSnapshot(of: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))") }
@@ -22,7 +22,7 @@ final class XcodeTemplatesTests: XCTestCase {
     func testGenerateWithURL() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
-        try XcodeTemplates(config: giveConfig()).generate(at: url, using: fileSystem)
+        try XcodeTemplates(config: givenConfig()).generate(at: url, using: fileSystem)
         // swiftlint:disable:next large_tuple
         let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
         writes.forEach { assertSnapshot(of: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))") }
@@ -41,13 +41,15 @@ final class XcodeTemplatesTests: XCTestCase {
             .replacingOccurrences(of: [".xctemplate", "___FILEBASENAME___", ".swift", ".plist"], with: "")
     }
 
-    private func giveConfig() -> Config {
+    private func givenConfig() -> Config {
         var config: Config = .init()
-        config.uiFrameworks += [
+        config.uiFrameworks = [
             UIFramework(framework: .appKit),
-            UIFramework(framework: .custom(name: "CustomFramework",
-                                           import: "CustomFramework",
-                                           viewControllerType: "CustomViewController",
+            UIFramework(framework: .uiKit),
+            UIFramework(framework: .swiftUI),
+            UIFramework(framework: .custom(name: "CustomFrameworkName",
+                                           import: "CustomFrameworkImport",
+                                           viewControllerType: "CustomFrameworkViewControllerType",
                                            viewControllerSuperParameters: ""))
         ]
         return config

@@ -9,7 +9,7 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - SwiftUI.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFramework.xctemplate"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFrameworkName.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate"

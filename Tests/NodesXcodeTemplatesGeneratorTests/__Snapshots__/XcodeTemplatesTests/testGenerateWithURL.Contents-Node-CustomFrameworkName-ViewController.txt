@@ -1,7 +1,7 @@
 //___FILEHEADER___
 
 import Combine
-import CustomFramework
+import CustomFrameworkImport
 import Nodes
 
 /**
@@ -16,7 +16,7 @@ internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
  PURPOSE:
  Concrete implementation of the UI.
  */
-internal final class ___VARIABLE_productName___ViewController: CustomViewController, StateObserver {
+internal final class ___VARIABLE_productName___ViewController: CustomFrameworkViewControllerType, StateObserver {
 
     /// The view receiver.
     internal weak var receiver: ___VARIABLE_productName___Receiver?

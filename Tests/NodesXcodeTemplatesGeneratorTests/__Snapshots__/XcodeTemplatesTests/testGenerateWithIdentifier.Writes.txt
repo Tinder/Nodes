@@ -72,28 +72,28 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - SwiftUI.xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFramework.xctemplate/___FILEBASENAME___Analytics.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___Analytics.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFramework.xctemplate/___FILEBASENAME___Builder.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___Builder.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFramework.xctemplate/___FILEBASENAME___Context.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___Context.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFramework.xctemplate/___FILEBASENAME___Flow.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___Flow.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFramework.xctemplate/___FILEBASENAME___State.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___State.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFramework.xctemplate/___FILEBASENAME___ViewController.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___ViewController.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFramework.xctemplate/___FILEBASENAME___ViewState.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___ViewState.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFramework.xctemplate/TemplateInfo.plist"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - CustomFrameworkName.xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Analytics.swift"

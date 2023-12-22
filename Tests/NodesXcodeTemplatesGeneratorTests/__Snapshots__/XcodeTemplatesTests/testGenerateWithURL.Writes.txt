@@ -72,28 +72,28 @@
     - path: "/Node - SwiftUI.xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node - CustomFramework.xctemplate/___FILEBASENAME___Analytics.swift"
+    - path: "/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___Analytics.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node - CustomFramework.xctemplate/___FILEBASENAME___Builder.swift"
+    - path: "/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___Builder.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node - CustomFramework.xctemplate/___FILEBASENAME___Context.swift"
+    - path: "/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___Context.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node - CustomFramework.xctemplate/___FILEBASENAME___Flow.swift"
+    - path: "/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___Flow.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node - CustomFramework.xctemplate/___FILEBASENAME___State.swift"
+    - path: "/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___State.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node - CustomFramework.xctemplate/___FILEBASENAME___ViewController.swift"
+    - path: "/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___ViewController.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node - CustomFramework.xctemplate/___FILEBASENAME___ViewState.swift"
+    - path: "/Node - CustomFrameworkName.xctemplate/___FILEBASENAME___ViewState.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node - CustomFramework.xctemplate/TemplateInfo.plist"
+    - path: "/Node - CustomFrameworkName.xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node (view injected).xctemplate/___FILEBASENAME___Analytics.swift"
