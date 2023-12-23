@@ -1,4 +1,28 @@
-▿ 30 elements
+▿ 46 elements
+  ▿ (2 elements)
+    - path: "/Node - AppKit.xctemplate/___FILEBASENAME___Analytics.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - AppKit.xctemplate/___FILEBASENAME___Builder.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - AppKit.xctemplate/___FILEBASENAME___Context.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - AppKit.xctemplate/___FILEBASENAME___Flow.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - AppKit.xctemplate/___FILEBASENAME___State.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - AppKit.xctemplate/___FILEBASENAME___ViewController.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - AppKit.xctemplate/___FILEBASENAME___ViewState.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - AppKit.xctemplate/TemplateInfo.plist"
+    - atomically: true
   ▿ (2 elements)
     - path: "/Node - UIKit.xctemplate/___FILEBASENAME___Analytics.swift"
     - atomically: true
@@ -46,6 +70,30 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Node - SwiftUI.xctemplate/TemplateInfo.plist"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - Custom.xctemplate/___FILEBASENAME___Analytics.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - Custom.xctemplate/___FILEBASENAME___Builder.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - Custom.xctemplate/___FILEBASENAME___Context.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - Custom.xctemplate/___FILEBASENAME___Flow.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - Custom.xctemplate/___FILEBASENAME___State.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - Custom.xctemplate/___FILEBASENAME___ViewController.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - Custom.xctemplate/___FILEBASENAME___ViewState.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node - Custom.xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node (view injected).xctemplate/___FILEBASENAME___Analytics.swift"
