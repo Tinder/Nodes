@@ -10,7 +10,7 @@ def nodes_dependencies():
         url = "https://github.com/apple/swift-argument-parser/archive/refs/tags/%s.tar.gz" % ARGUMENTPARSER_VERSION,
         strip_prefix = "swift-argument-parser-%s" % ARGUMENTPARSER_VERSION,
         sha256 = ARGUMENTPARSER_SHA_256,
-        build_file = "@nodes//bazel:dependencies/ArgumentParser/BUILD",
+        build_file = "@nodes_architecture_framework//bazel:dependencies/ArgumentParser/BUILD",
     )
 
     CODEXTENDED_VERSION = "0.3.0"
@@ -21,7 +21,7 @@ def nodes_dependencies():
         url = "https://github.com/JohnSundell/Codextended/archive/refs/tags/%s.tar.gz" % CODEXTENDED_VERSION,
         strip_prefix = "Codextended-%s" % CODEXTENDED_VERSION,
         sha256 = CODEXTENDED_SHA_256,
-        build_file = "@nodes//bazel:dependencies/Codextended/BUILD",
+        build_file = "@nodes_architecture_framework//bazel:dependencies/Codextended/BUILD",
     )
 
     CWLCATCHEXCEPTION_VERSION = "2.1.2"
@@ -32,7 +32,7 @@ def nodes_dependencies():
         url = "https://github.com/mattgallagher/CwlCatchException/archive/refs/tags/%s.tar.gz" % CWLCATCHEXCEPTION_VERSION,
         strip_prefix = "CwlCatchException-%s" % CWLCATCHEXCEPTION_VERSION,
         sha256 = CWLCATCHEXCEPTION_SHA_256,
-        build_file = "@nodes//bazel:dependencies/CwlCatchException/BUILD",
+        build_file = "@nodes_architecture_framework//bazel:dependencies/CwlCatchException/BUILD",
     )
 
     CWLPRECONDITIONTESTING_VERSION = "2.2.0"
@@ -43,7 +43,7 @@ def nodes_dependencies():
         url = "https://github.com/mattgallagher/CwlPreconditionTesting/archive/refs/tags/%s.tar.gz" % CWLPRECONDITIONTESTING_VERSION,
         strip_prefix = "CwlPreconditionTesting-%s" % CWLPRECONDITIONTESTING_VERSION,
         sha256 = CWLPRECONDITIONTESTING_SHA_256,
-        build_file = "@nodes//bazel:dependencies/CwlPreconditionTesting/BUILD",
+        build_file = "@nodes_architecture_framework//bazel:dependencies/CwlPreconditionTesting/BUILD",
     )
 
     NEEDLE_VERSION = "0.24.0"
@@ -54,7 +54,7 @@ def nodes_dependencies():
         url = "https://github.com/uber/needle/archive/refs/tags/v%s.tar.gz" % NEEDLE_VERSION,
         strip_prefix = "needle-%s" % NEEDLE_VERSION,
         sha256 = NEEDLE_SHA_256,
-        build_file = "@nodes//bazel:dependencies/Needle/BUILD",
+        build_file = "@nodes_architecture_framework//bazel:dependencies/Needle/BUILD",
     )
 
     NIMBLE_VERSION = "13.0.0"
@@ -65,7 +65,7 @@ def nodes_dependencies():
         url = "https://github.com/Quick/Nimble/archive/refs/tags/v%s.tar.gz" % NIMBLE_VERSION,
         strip_prefix = "Nimble-%s" % NIMBLE_VERSION,
         sha256 = NIMBLE_SHA_256,
-        build_file = "@nodes//bazel:dependencies/Nimble/BUILD",
+        build_file = "@nodes_architecture_framework//bazel:dependencies/Nimble/BUILD",
     )
 
     PATHKIT_VERSION = "1.0.1"
@@ -76,7 +76,7 @@ def nodes_dependencies():
         url = "https://github.com/kylef/PathKit/archive/refs/tags/%s.tar.gz" % PATHKIT_VERSION,
         strip_prefix = "PathKit-%s" % PATHKIT_VERSION,
         sha256 = PATHKIT_SHA_256,
-        build_file = "@nodes//bazel:dependencies/PathKit/BUILD",
+        build_file = "@nodes_architecture_framework//bazel:dependencies/PathKit/BUILD",
     )
 
     SNAPSHOTTESTING_VERSION = "1.15.1"
@@ -87,7 +87,7 @@ def nodes_dependencies():
         url = "https://github.com/pointfreeco/swift-snapshot-testing/archive/refs/tags/%s.tar.gz" % SNAPSHOTTESTING_VERSION,
         strip_prefix = "swift-snapshot-testing-%s" % SNAPSHOTTESTING_VERSION,
         sha256 = SNAPSHOTTESTING_SHA_256,
-        build_file = "@nodes//bazel:dependencies/SnapshotTesting/BUILD",
+        build_file = "@nodes_architecture_framework//bazel:dependencies/SnapshotTesting/BUILD",
     )
 
     STENCIL_VERSION = "0.15.1"
@@ -98,7 +98,7 @@ def nodes_dependencies():
         url = "https://github.com/stencilproject/Stencil/archive/refs/tags/%s.tar.gz" % STENCIL_VERSION,
         strip_prefix = "Stencil-%s" % STENCIL_VERSION,
         sha256 = STENCIL_SHA_256,
-        build_file = "@nodes//bazel:dependencies/Stencil/BUILD",
+        build_file = "@nodes_architecture_framework//bazel:dependencies/Stencil/BUILD",
     )
 
     SWIFTSYNTAX_VERSION = "509.0.2"
