@@ -31,7 +31,7 @@ internal func assertSnapshot<Value, Format>(
         record: recording,
         snapshotDirectory: snapshotDirectory.path,
         timeout: timeout,
-        file: StaticString(), // <- Intentionally avoiding potential (invalid relative path) magic file name use.
+        file: StaticString(), // <- Intentionally avoiding possibility of invalid relative path usage.
         testName: testName,
         line: line
     )
