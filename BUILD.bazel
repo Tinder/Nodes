@@ -1,6 +1,6 @@
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary", "swift_library")
-load("@build_bazel_rules_apple//apple:resources.bzl", "apple_resource_bundle")
-load("@build_bazel_rules_apple//apple:macos.bzl", "macos_unit_test")
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+load("@build_bazel_rules_apple//apple:resources.bzl", "apple_resource_group", "apple_resource_bundle")
+load("@build_bazel_rules_apple//apple:macos.bzl", "macos_command_line_application", "macos_bundle", "macos_unit_test")
 load("@build_bazel_rules_apple//apple:ios.bzl", "ios_unit_test")
 
 MINIMUM_MACOS_VERSION = "10.15"
@@ -27,7 +27,7 @@ swift_library(
 swift_library(
     name = "NodesXcodeTemplatesGenerator",
     srcs = glob(["Sources/NodesXcodeTemplatesGenerator/**/*.swift"]),
-    data = [":NodesXcodeTemplatesGeneratorResources"],
+    data = [":NodesXcodeTemplatesGeneratorResourcesBundle"],
     visibility = ["//visibility:public"],
     deps = [
         "@Codextended",
@@ -39,19 +39,40 @@ swift_library(
 )
 
 apple_resource_bundle(
-    name = "NodesXcodeTemplatesGeneratorResources",
+    name = "NodesXcodeTemplatesGeneratorResourcesBundle",
     bundle_name = "Nodes_NodesXcodeTemplatesGenerator",
+    resources = [":NodesXcodeTemplatesGeneratorResources"],
+)
+
+apple_resource_group(
+    name = "NodesXcodeTemplatesGeneratorResources",
     resources = glob(["Sources/NodesXcodeTemplatesGenerator/Resources/**"]),
 )
 
-swift_binary(
+macos_command_line_application(
     name = "nodes-xcode-templates-gen",
+    deps = [
+        ":NodesXcodeTemplatesGeneratorExecutable",
+    ],
+    minimum_os_version = MINIMUM_MACOS_VERSION,
+)
+
+swift_library(
+    name = "NodesXcodeTemplatesGeneratorExecutable",
     srcs = glob(["Sources/NodesXcodeTemplatesGeneratorExecutable/**/*.swift"]),
     deps = [
         ":NodesXcodeTemplatesGenerator",
         "@ArgumentParser",
     ],
     copts = ["-warnings-as-errors"],
+)
+
+macos_bundle(
+    name = "Nodes_NodesXcodeTemplatesGenerator",
+    bundle_id = "com.tinder.NodesXcodeTemplatesGeneratorResources",
+    resources = [":NodesXcodeTemplatesGeneratorResources"],
+    infoplists = ["Info.plist"],
+    minimum_os_version = MINIMUM_MACOS_VERSION,
 )
 
 ios_unit_test(
