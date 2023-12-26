@@ -1,7 +1,7 @@
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
-load("@build_bazel_rules_apple//apple:resources.bzl", "apple_resource_group", "apple_resource_bundle")
 load("@build_bazel_rules_apple//apple:macos.bzl", "macos_command_line_application", "macos_bundle", "macos_unit_test")
 load("@build_bazel_rules_apple//apple:ios.bzl", "ios_unit_test")
+load("@build_bazel_rules_apple//apple:resources.bzl", "apple_resource_group", "apple_resource_bundle")
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 
 MINIMUM_MACOS_VERSION = "10.15"
 MINIMUM_IOS_VERSION = "13.0"
