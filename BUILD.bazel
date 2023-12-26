@@ -71,6 +71,7 @@ macos_bundle(
     name = "Nodes_NodesXcodeTemplatesGenerator",
     bundle_id = "com.tinder.NodesXcodeTemplatesGeneratorResources",
     resources = [":NodesXcodeTemplatesGeneratorResources"],
+    visibility = ["//visibility:public"],
     infoplists = ["Info.plist"],
     minimum_os_version = MINIMUM_MACOS_VERSION,
 )
