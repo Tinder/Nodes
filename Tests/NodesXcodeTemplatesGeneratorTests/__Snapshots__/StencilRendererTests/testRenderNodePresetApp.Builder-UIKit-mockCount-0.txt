@@ -9,18 +9,11 @@ internal protocol AppFlow: Flow {}
 
 /**
  PURPOSE:
- Declares the dependencies required by this Node that will be injected (not created by this Node itself).
- */
-/// @mockable
-public protocol AppDependency: Dependency {}
-
-/**
- PURPOSE:
  A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 
  Can be a tuple or struct containing multiple values when necessary.
  */
-internal typealias AppDynamicBuildDependency = (AppListener, AppViewControllable)
+internal typealias AppDynamicBuildDependency = Void
 
 /**
  PURPOSE:
@@ -36,10 +29,7 @@ internal typealias AppDynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
-public final class AppComponent: Component
-<
-    AppDependency
-> {
+public final class AppComponent: BootstrapComponent {
 
     /*
      Dependencies
@@ -66,22 +56,7 @@ public final class AppComponent: Component
 
      */
 
-    private let dynamicDependency: AppDynamicComponentDependency
-
-    /// The initializer.
-    ///
-    /// Remove `dynamicDependency` default parameter when its type is not `Void`.
-    ///
-    /// - Parameters:
-    ///   - parent: The parent scope
-    ///   - dynamicDependency: The dynamic component dependency
-    internal init(
-        parent: Scope,
-        dynamicDependency: AppDynamicComponentDependency = ()
-    ) {
-        self.dynamicDependency = dynamicDependency
-        super.init(parent: parent)
-    }
+    fileprivate let appService: AppService = AppServiceImp()
 
     /*
      Child Components
@@ -94,6 +69,10 @@ public final class AppComponent: Component
      }
 
      */
+
+    fileprivate func sceneComponentFactory() -> SceneComponent {
+        SceneComponent(parent: self)
+    }
 }
 
 // MARK: - Builder
@@ -104,10 +83,7 @@ public final class AppComponent: Component
  */
 /// @mockable
 internal protocol AppBuilder: AnyObject {
-    func build(
-        withListener listener: AppListener,
-        viewController: AppViewControllable
-    ) -> AppFlow
+    func build() -> AppFlow
 }
 
 /**
@@ -126,15 +102,9 @@ internal final class AppBuilderImp: AbstractBuilder
     /// the dynamic component dependency.
     ///
     /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
-    /// - Parameters:
-    ///   - listener: An object that can listen for signals from the Node
-    ///   - viewController: The injected view controller
     /// - Returns: The Flow instance
-    internal func build(
-        withListener listener: AppListener,
-        viewController: AppViewControllable
-    ) -> AppFlow {
-        let dynamicBuildDependency: AppDynamicBuildDependency = (listener, viewController)
+    internal func build() -> AppFlow {
+        let dynamicBuildDependency: AppDynamicBuildDependency = ()
         let dynamicComponentDependency: AppDynamicComponentDependency = ()
         return build(dynamicBuildDependency, dynamicComponentDependency)
     }
@@ -148,17 +118,15 @@ internal final class AppBuilderImp: AbstractBuilder
         component: AppComponent,
         dynamicBuildDependency: AppDynamicBuildDependency
     ) -> AppFlow {
-        let listener: AppListener = dynamicBuildDependency.0
-        let viewController: AppViewControllable = dynamicBuildDependency.1
         let analytics: AppAnalyticsImp = .init()
         let context: AppContextImp = .init(
             workers: [],
-            analytics: analytics
+            analytics: analytics,
+            windowSceneState: component.appService.windowSceneState
         )
-        context.listener = listener
         let flow: AppFlowImp = .init(
             context: context,
-            viewController: viewController
+            sceneBuilder: SceneBuilderImp(componentFactory: component.sceneComponentFactory)
         )
         context.flow = flow
         return flow

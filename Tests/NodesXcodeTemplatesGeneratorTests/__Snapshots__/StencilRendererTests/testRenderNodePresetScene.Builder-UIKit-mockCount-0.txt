@@ -5,7 +5,9 @@
  The interface of the Flow.
  */
 /// @mockable
-internal protocol SceneFlow: Flow {}
+internal protocol SceneFlow: Flow {
+    func getViewController() -> WindowSceneViewControllable
+}
 
 /**
  PURPOSE:
@@ -20,7 +22,7 @@ public protocol SceneDependency: Dependency {}
 
  Can be a tuple or struct containing multiple values when necessary.
  */
-internal typealias SceneDynamicBuildDependency = (SceneListener, SceneViewControllable)
+internal typealias SceneDynamicBuildDependency = (SceneListener, WindowSceneViewControllable)
 
 /**
  PURPOSE:
@@ -94,6 +96,10 @@ public final class SceneComponent: Component
      }
 
      */
+
+    fileprivate func windowComponentFactory() -> WindowComponent {
+        WindowComponent(parent: self)
+    }
 }
 
 // MARK: - Builder
@@ -106,7 +112,7 @@ public final class SceneComponent: Component
 internal protocol SceneBuilder: AnyObject {
     func build(
         withListener listener: SceneListener,
-        viewController: SceneViewControllable
+        viewController: WindowSceneViewControllable
     ) -> SceneFlow
 }
 
@@ -132,7 +138,7 @@ internal final class SceneBuilderImp: AbstractBuilder
     /// - Returns: The Flow instance
     internal func build(
         withListener listener: SceneListener,
-        viewController: SceneViewControllable
+        viewController: WindowSceneViewControllable
     ) -> SceneFlow {
         let dynamicBuildDependency: SceneDynamicBuildDependency = (listener, viewController)
         let dynamicComponentDependency: SceneDynamicComponentDependency = ()
@@ -149,7 +155,7 @@ internal final class SceneBuilderImp: AbstractBuilder
         dynamicBuildDependency: SceneDynamicBuildDependency
     ) -> SceneFlow {
         let listener: SceneListener = dynamicBuildDependency.0
-        let viewController: SceneViewControllable = dynamicBuildDependency.1
+        let viewController: WindowSceneViewControllable = dynamicBuildDependency.1
         let analytics: SceneAnalyticsImp = .init()
         let context: SceneContextImp = .init(
             workers: [],
@@ -158,7 +164,8 @@ internal final class SceneBuilderImp: AbstractBuilder
         context.listener = listener
         let flow: SceneFlowImp = .init(
             context: context,
-            viewController: viewController
+            viewController: viewController,
+            windowBuilder: WindowBuilderImp(componentFactory: component.windowComponentFactory)
         )
         context.flow = flow
         return flow

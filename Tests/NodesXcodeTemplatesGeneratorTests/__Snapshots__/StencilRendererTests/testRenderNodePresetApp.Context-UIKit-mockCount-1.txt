@@ -4,18 +4,14 @@ import <contextImport>
 
 /**
  PURPOSE:
- The Context delegates callbacks to its (external) Listener, typically the parent Context.
- */
-/// @mockable
-internal protocol AppListener: AnyObject {}
-
-/**
- PURPOSE:
  The interface that the Context will speak to the Flow through. Used to initiate navigation as
  an example.
  */
 /// @mockable
-internal protocol AppFlowInterface: Flow {}
+internal protocol AppFlowInterface: Flow {
+    func attachScene(_ viewController: WindowSceneViewControllable)
+    func detachScene(_ viewController: WindowSceneViewControllable)
+}
 
 /**
  PURPOSE:
@@ -32,17 +28,10 @@ internal final class AppContextImp: AbstractContext
     internal weak var flow: AppFlowInterface?
 
     // periphery:ignore
-    /// The Listener instance.
-    internal weak var listener: AppListener?
-
-    // periphery:ignore
-    /// The State instance.
-    @Published
-    internal private(set) var state: AppState
-
-    // periphery:ignore
     /// The Analytics instance.
     private let analytics: AppAnalytics
+
+    private let windowSceneState: AnyPublisher<WindowSceneState, Never>
 
     /// The initializer.
     /// - Parameters:
@@ -50,18 +39,34 @@ internal final class AppContextImp: AbstractContext
     ///   - analytics: The Analytics instance
     internal init(
         workers: [Worker],
-        analytics: AppAnalytics
+        analytics: AppAnalytics,
+        windowSceneState: AnyPublisher<WindowSceneState, Never>
     ) {
-        self.state = AppState()
         self.analytics = analytics
+        self.windowSceneState = windowSceneState
         super.init(workers: workers)
     }
 
     /// Implement logic to execute when the Context becomes active.
-    override internal func didBecomeActive() {}
+    override internal func didBecomeActive() {
+        subscribe(to: windowSceneState)
+    }
 
     /// Implement logic to execute when the Context will become inactive.
     override internal func willResignActive() {}
+
+    private func subscribe(to windowSceneState: AnyPublisher<WindowSceneState, Never>) {
+        windowSceneState
+            .filter(\.isAdded)
+            .map(\.windowScene)
+            .sink { [weak self] in self?.flow?.attachScene($0) }
+            .store(in: &cancellables)
+        windowSceneState
+            .filter(\.isRemoved)
+            .map(\.windowScene)
+            .sink { [weak self] in self?.flow?.detachScene($0) }
+            .store(in: &cancellables)
+    }
 }
 
 extension AppContextImp: AppContextInterface {}

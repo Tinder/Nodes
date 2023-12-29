@@ -100,6 +100,10 @@ public final class WindowComponent: Component
      }
 
      */
+
+    fileprivate func rootComponentFactory() -> RootComponent {
+        RootComponent(parent: self)
+    }
 }
 
 // MARK: - Builder
@@ -158,9 +162,7 @@ internal final class WindowBuilderImp: AbstractBuilder
     ) -> WindowFlow {
         let listener: WindowListener = dynamicBuildDependency.0
         let viewController: WindowViewControllable = dynamicBuildDependency.1
-        let analytics: WindowAnalyticsImp = .init(
-            <analyticsPropertyName>: component.dependency.<analyticsPropertyName>
-        )
+        let analytics: WindowAnalyticsImp = .init()
         let context: WindowContextImp = .init(
             workers: [],
             analytics: analytics
@@ -169,7 +171,7 @@ internal final class WindowBuilderImp: AbstractBuilder
         let flow: WindowFlowImp = .init(
             context: context,
             viewController: viewController,
-            <flowPropertyName>: component.dependency.<flowPropertyName>
+            rootBuilder: RootBuilderImp(componentFactory: component.rootComponentFactory)
         )
         context.flow = flow
         return flow

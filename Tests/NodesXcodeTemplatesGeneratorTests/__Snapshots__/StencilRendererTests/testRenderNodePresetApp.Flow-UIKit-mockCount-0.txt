@@ -6,15 +6,7 @@
  presentation lifecycle events, as an example.
  */
 /// @mockable
-internal protocol AppContextInterface: Context {}
-
-/**
- PURPOSE:
- The interface of the View used for presenting the View of child Nodes. May inherit additional base
- protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
- implementation as necessary.
- */
-internal protocol AppViewControllable: <viewControllableType> {}
+internal protocol AppContextInterface: Context, SceneListener {}
 
 /**
  PURPOSE:
@@ -23,20 +15,23 @@ internal protocol AppViewControllable: <viewControllableType> {}
 internal final class AppFlowImp: AbstractFlow
 <
     AppContextInterface,
-    AppViewControllable
+    Void
 > {
+
+    private let sceneBuilder: SceneBuilder
 
     /// The initializer.
     ///
     /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
     /// - Parameters:
     ///   - context: The Context instance
-    ///   - viewController: The View Controller instance
-    override internal init(
+    ///   - sceneBuilder: The Scene Builder instance
+    internal init(
         context: AppContextInterface,
-        viewController: AppViewControllable
+        sceneBuilder: SceneBuilder
     ) {
-        super.init(context: context, viewController: viewController)
+        self.sceneBuilder = sceneBuilder
+        super.init(context: context, viewController: ())
     }
 
     /// Implement logic to execute when the Flow is started.
@@ -44,4 +39,18 @@ internal final class AppFlowImp: AbstractFlow
 }
 
 extension AppFlowImp: AppFlow {}
-extension AppFlowImp: AppFlowInterface {}
+extension AppFlowImp: AppFlowInterface {
+
+    internal func attachScene(_ viewController: WindowSceneViewControllable) {
+        let flow: SceneFlow = sceneBuilder.build(withListener: context,
+                                                 viewController: viewController)
+        attach(starting: flow)
+    }
+
+    internal func detachScene(_ viewController: WindowSceneViewControllable) {
+        subFlows
+            .compactMap { $0 as? SceneFlow }
+            .filter { $0.getViewController() === viewController }
+            .forEach(detach)
+    }
+}

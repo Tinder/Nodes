@@ -36,11 +36,6 @@ internal final class WindowContextImp: AbstractContext
     internal weak var listener: WindowListener?
 
     // periphery:ignore
-    /// The State instance.
-    @Published
-    internal private(set) var state: WindowState
-
-    // periphery:ignore
     /// The Analytics instance.
     private let analytics: WindowAnalytics
 
@@ -52,7 +47,6 @@ internal final class WindowContextImp: AbstractContext
         workers: [Worker],
         analytics: WindowAnalytics
     ) {
-        self.state = WindowState()
         self.analytics = analytics
         super.init(workers: workers)
     }

@@ -36,11 +36,6 @@ internal final class SceneContextImp: AbstractContext
     internal weak var listener: SceneListener?
 
     // periphery:ignore
-    /// The State instance.
-    @Published
-    internal private(set) var state: SceneState
-
-    // periphery:ignore
     /// The Analytics instance.
     private let analytics: SceneAnalytics
 
@@ -52,7 +47,6 @@ internal final class SceneContextImp: AbstractContext
         workers: [Worker],
         analytics: SceneAnalytics
     ) {
-        self.state = SceneState()
         self.analytics = analytics
         super.init(workers: workers)
     }
