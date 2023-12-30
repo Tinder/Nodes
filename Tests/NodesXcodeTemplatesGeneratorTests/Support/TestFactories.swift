@@ -102,7 +102,7 @@ extension TestFactories {
     }
 
     internal func givenNodeStencilContext(
-        preset: NodePreset,
+        preset: Preset,
         mockCount: Int = 1
     ) throws -> NodeStencilContext {
         try NodeStencilContext(
@@ -176,7 +176,7 @@ extension TestFactories {
     }
 
     internal func givenNodeViewInjectedStencilContext(
-        preset: NodePreset,
+        preset: Preset,
         mockCount: Int = 1
     ) throws -> NodeViewInjectedStencilContext {
         try NodeViewInjectedStencilContext(

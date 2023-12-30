@@ -2,7 +2,7 @@
 //  Copyright © 2023 Tinder (Match Group, LLC)
 //
 
-public enum NodePreset: String {
+public enum Preset: String {
 
     case app = "App"
     case scene = "Scene"

@@ -99,7 +99,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
     }
 
     public init(
-        preset: NodePreset,
+        preset: Preset,
         fileHeader: String,
         analyticsImports: Set<String>,
         builderImports: Set<String>,
@@ -170,7 +170,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
     ) throws {
-        guard !strict || NodePreset(rawValue: nodeName) == nil
+        guard !strict || Preset(rawValue: nodeName) == nil
         else { throw StencilContextError.reservedNodeName(nodeName) }
         self.fileHeader = fileHeader
         self.nodeName = nodeName
