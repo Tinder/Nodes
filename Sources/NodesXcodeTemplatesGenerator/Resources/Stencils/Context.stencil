@@ -85,6 +85,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     private let windowSceneState: AnyPublisher<WindowSceneState, Never>
     {% elif node_name == "Root" %}
 
+    // swiftlint:disable:next redundant_type_annotation
     private var isReady: Bool = false
     {% endif %}
 
@@ -97,7 +98,9 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
         analytics: {{ node_name }}Analytics{% if node_name == "App" %}{{ ',' }}
         windowSceneState: AnyPublisher<WindowSceneState, Never>{% endif +%}
     ) {
-        {% if node_name != "App" and node_name != "Scene" and node_name != "Window" %}
+        {% if node_name == "Root" %}
+        self.state = {{ node_name }}State(name: "{{ node_name }}")
+        {% elif node_name != "App" and node_name != "Scene" and node_name != "Window" %}
         self.state = {{ node_name }}State()
         {% endif %}
         self.analytics = analytics

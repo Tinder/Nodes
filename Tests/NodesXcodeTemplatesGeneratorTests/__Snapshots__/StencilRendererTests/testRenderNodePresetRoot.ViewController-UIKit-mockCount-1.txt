@@ -32,6 +32,8 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     /// <viewStatePropertyComment>.
     private let <viewStatePropertyName>: <publisherType><RootViewState, <publisherFailureType>>
 
+    private let label: UILabel = .init()
+
     /// The initializer.
     ///
     /// - Parameters:
@@ -55,6 +57,12 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     override internal func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
+        view.addConstraints([
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20)
+        ])
         update(with: initialState)
     }
 
@@ -75,6 +83,7 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
 
     internal func update(with viewState: RootViewState) {
         <viewControllerUpdateComment>
+        label.text = viewState.title
     }
 }
 

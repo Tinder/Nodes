@@ -7,7 +7,10 @@ import <viewStateImport2>
  PURPOSE:
  The view state of the view.
  */
-internal struct RootViewState: Equatable {}
+internal struct RootViewState: Equatable {
+
+    internal let title: String
+}
 
 /**
  PURPOSE:
@@ -22,6 +25,6 @@ internal class RootViewStateFactory: Nodes.Transform {
     internal func callAsFunction(
         _ state: RootState
     ) -> RootViewState {
-        RootViewState()
+        RootViewState(title: state.name)
     }
 }
