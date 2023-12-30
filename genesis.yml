@@ -2393,7 +2393,6 @@ files:
                   -e 'end if' \
                   -e 'end tell' \
                   -e 'end if'
-              unset WORKSPACE_DOCUMENT_NAME
           else
               echo "AppleScript is not executed in CI."
           fi
@@ -2401,7 +2400,6 @@ files:
           MOCKOLO_GENERATED="{{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift"
           [[ -f "${NEEDLE_GENERATED}" ]] || touch "${NEEDLE_GENERATED}"
           [[ -f "${MOCKOLO_GENERATED}" ]] || touch "${MOCKOLO_GENERATED}"
-          unset NEEDLE_GENERATED MOCKOLO_GENERATED
         postGenCommand: |
           set -e
           if test -z "$CI"
