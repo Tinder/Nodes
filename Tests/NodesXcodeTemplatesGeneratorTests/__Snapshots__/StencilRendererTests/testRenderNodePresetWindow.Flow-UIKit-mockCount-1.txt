@@ -31,7 +31,7 @@ internal final class WindowFlowImp: AbstractFlow
     ///   - rootBuilder: The Root Builder instance
     internal init(
         context: WindowContextInterface,
-        viewController: WindowWindowViewControllable,
+        viewController: WindowViewControllable,
         rootBuilder: RootBuilder
     ) {
         self.rootBuilder = rootBuilder

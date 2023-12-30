@@ -91,7 +91,7 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     ///   - rootBuilder: The Root Builder instance
     internal init(
         context: {{ node_name }}ContextInterface,
-        viewController: Window{{ node_name }}ViewControllable,
+        viewController: {{ node_name }}ViewControllable,
         rootBuilder: RootBuilder
     ) {
         self.rootBuilder = rootBuilder
