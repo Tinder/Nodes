@@ -18,7 +18,7 @@ internal struct NodesXcodeTemplatesGeneratorCommand: ParsableCommand {
     private var configPath: String?
 
     internal func run() throws {
-        let config: ConfigFactory = .init()
-        try XcodeTemplates(config: config(at: configPath)).generate(identifier: identifier)
+        let config: Config = try configPath.flatMap { try Config(at: $0) } ?? Config()
+        try XcodeTemplates(config: config).generate(identifier: identifier)
     }
 }
