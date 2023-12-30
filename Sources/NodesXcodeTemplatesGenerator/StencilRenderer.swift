@@ -12,33 +12,23 @@ public final class StencilRenderer {
     public func renderNode(
         context: NodeStencilContext,
         kind: UIFramework.Kind,
-        includeTests: Bool
+        includeState: Bool = true,
+        includeTests: Bool = false
     ) throws -> [String: String] {
         let node: StencilTemplate.Node = .init(for: .variation(for: kind))
-        let stencils: [StencilTemplate] = node.stencils(includeTests: includeTests)
+        let stencils: [StencilTemplate] = node.stencils(includeState: includeState,
+                                                        includeTests: includeTests)
         return try renderNode(stencils: stencils, with: context.dictionary)
     }
 
     public func renderNodeViewInjected(
         context: NodeViewInjectedStencilContext,
-        includeTests: Bool
+        includeState: Bool = true,
+        includeTests: Bool = false
     ) throws -> [String: String] {
         let nodeViewInjected: StencilTemplate.NodeViewInjected = .init()
-        let stencils: [StencilTemplate] = nodeViewInjected.stencils(includeTests: includeTests)
-        return try renderNode(stencils: stencils, with: context.dictionary)
-    }
-
-    public func renderNodePreset(
-        context: NodePresetStencilContext
-    ) throws -> [String: String] {
-        let stencils: [StencilTemplate]
-        if context.preset.isUserInterface {
-            stencils = StencilTemplate.Node(for: .variation(for: .uiKit))
-                .stencils(includeState: true, includeTests: false)
-        } else {
-            stencils = StencilTemplate.NodeViewInjected()
-                .stencils(includeState: false, includeTests: false)
-        }
+        let stencils: [StencilTemplate] = nodeViewInjected.stencils(includeState: includeState,
+                                                                    includeTests: includeTests)
         return try renderNode(stencils: stencils, with: context.dictionary)
     }
 
