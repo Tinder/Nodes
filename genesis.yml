@@ -301,9 +301,6 @@ files:
       file_header:
         required_pattern: |
           \/\/
-          \/\/ {2}.+\.swift
-          \/\/ {2}.+
-          \/\/
           \/\/ {2}Created by .+ on \d{1,2}\/\d{1,2}\/\d{2}\.
           \/\/
 
@@ -2404,6 +2401,21 @@ files:
           unset NEEDLE_GENERATED MOCKOLO_GENERATED
         postGenCommand: |
           set -e
+          if test -z "$CI"
+          then
+              XCSHAREDDATA="{{ project|replace:' ','_' }}.xcodeproj/xcshareddata"
+              HEADER=$'\n//  Created by ___FULLUSERNAME___ on ___DATE___.\n//'
+              echo "⚙️  Installing Xcode project file header template..."
+              mkdir -p "$XCSHAREDDATA"
+              /usr/libexec/PlistBuddy -c \
+                  "Delete :FILEHEADER" \
+                  "${XCSHAREDDATA}/IDETemplateMacros.plist" >/dev/null 2>&1 || true
+              /usr/libexec/PlistBuddy -c \
+                  "Add :FILEHEADER string ${HEADER}" \
+                  "${XCSHAREDDATA}/IDETemplateMacros.plist" >/dev/null 2>&1
+          else
+              echo "Xcode project file header template is not installed in CI."
+          fi
           if test -z "$CI"
           then
               swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
