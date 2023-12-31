@@ -72,9 +72,7 @@ To install Nodes' Xcode templates manually, first add Nodes as a dependency to a
 > Replace `<version>` in the command with the latest Nodes version.
 
 ```
-.package(
-    url: "git@github.com:TinderApp/Nodes.git",
-    from: "<version>"),
+.package(url: "git@github.com:TinderApp/Nodes.git", from: "<version>")
 ```
 
 Then run the following shell command:
