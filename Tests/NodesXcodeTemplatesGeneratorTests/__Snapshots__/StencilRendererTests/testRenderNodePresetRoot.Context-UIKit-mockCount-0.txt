@@ -48,7 +48,7 @@ internal final class RootContextImp: AbstractContext {
         workers: [Worker],
         analytics: RootAnalytics
     ) {
-        self.state = RootState(name: "Root")
+        self.state = RootState(name: "Root View Controller")
         self.analytics = analytics
         super.init(workers: workers)
     }

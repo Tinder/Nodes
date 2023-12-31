@@ -99,7 +99,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
         windowSceneState: AnyPublisher<WindowSceneState, Never>{% endif +%}
     ) {
         {% if node_name == "Root" %}
-        self.state = {{ node_name }}State(name: "Hello World")
+        self.state = {{ node_name }}State(name: "{{ node_name }} View Controller")
         {% elif node_name != "App" and node_name != "Scene" and node_name != "Window" %}
         self.state = {{ node_name }}State()
         {% endif %}
