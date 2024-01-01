@@ -9,7 +9,7 @@ final class XcodeTemplatesTests: XCTestCase {
 
     func testGenerateWithIdentifier() throws {
         let fileSystem: FileSystemMock = .init()
-        try XcodeTemplates(config: givenConfig()).generate(identifier: "identifier", using: fileSystem)
+        try XcodeTemplates(config: givenConfig(), fileSystem: fileSystem).generate(identifier: "identifier")
         // swiftlint:disable:next large_tuple
         let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
         writes.forEach { assertSnapshot(of: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))") }
@@ -22,7 +22,7 @@ final class XcodeTemplatesTests: XCTestCase {
     func testGenerateWithURL() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/")
-        try XcodeTemplates(config: givenConfig()).generate(at: url, using: fileSystem)
+        try XcodeTemplates(config: givenConfig(), fileSystem: fileSystem).generate(at: url)
         // swiftlint:disable:next large_tuple
         let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
         writes.forEach { assertSnapshot(of: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))") }
