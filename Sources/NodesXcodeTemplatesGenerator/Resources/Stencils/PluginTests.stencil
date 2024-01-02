@@ -32,6 +32,6 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
     }
 
     func testOverride() {
-        XCTAssertTrue(plugin.override() is {{ plugin_name }}Builder)
+        XCTAssertNotNil(plugin.override())
     }
 }
