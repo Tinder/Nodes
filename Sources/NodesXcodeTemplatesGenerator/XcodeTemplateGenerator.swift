@@ -12,8 +12,8 @@ internal final class XcodeTemplateGenerator {
         self.fileSystem = fileSystem
     }
 
-    internal func generate(template: XcodeTemplate, into url: URL) throws {
-        let url: URL = url
+    internal func generate(template: XcodeTemplate, into directory: URL) throws {
+        let url: URL = directory
             .appendingPathComponent(template.name)
             .appendingPathExtension("xctemplate")
         try? fileSystem.removeItem(at: url)
@@ -23,36 +23,36 @@ internal final class XcodeTemplateGenerator {
         try copyIcons(into: url)
     }
 
-    private func renderStencils(for template: XcodeTemplate, into url: URL) throws {
+    private func renderStencils(for template: XcodeTemplate, into directory: URL) throws {
         let stencilRenderer: StencilRenderer = .init()
         try template.stencils.forEach { stencil in
             let contents: String = try stencilRenderer.render(stencil, with: template.stencilContext.dictionary)
             try fileSystem.write(Data(contents.utf8),
-                                 to: url
+                                 to: directory
                                     .appendingPathComponent("___FILEBASENAME___\(stencil.name)")
                                     .appendingPathExtension("swift"),
                                  atomically: true)
         }
     }
 
-    private func writePropertyList(for template: XcodeTemplate, into url: URL) throws {
+    private func writePropertyList(for template: XcodeTemplate, into directory: URL) throws {
         try fileSystem.write(template.propertyList.encode(),
-                             to: url
+                             to: directory
                                 .appendingPathComponent("TemplateInfo")
                                 .appendingPathExtension("plist"),
                              atomically: true)
     }
 
-    private func copyIcons(into url: URL) throws {
+    private func copyIcons(into directory: URL) throws {
         let bundle: Bundle = .moduleRelativeToExecutable ?? .module
         // swiftlint:disable:next force_unwrapping
         try fileSystem.copyItem(at: bundle.url(forResource: "Tinder", withExtension: "png")!,
-                                to: url
+                                to: directory
                                     .appendingPathComponent("TemplateIcon")
                                     .appendingPathExtension("png"))
         // swiftlint:disable:next force_unwrapping
         try fileSystem.copyItem(at: bundle.url(forResource: "Tinder@2x", withExtension: "png")!,
-                                to: url
+                                to: directory
                                     .appendingPathComponent("TemplateIcon@2x")
                                     .appendingPathExtension("png"))
     }

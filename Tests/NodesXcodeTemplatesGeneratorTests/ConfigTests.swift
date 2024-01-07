@@ -23,7 +23,7 @@ final class ConfigTests: XCTestCase, TestFactories {
 
     func testConfig() throws {
         let fileSystem: FileSystemMock = .init()
-        let url: URL = .init(fileURLWithPath: "/")
+        let url: URL = .init(fileURLWithPath: "/", isDirectory: true)
         fileSystem.contents[url] = Data(givenConfig().utf8)
         let config: Config = try .init(at: url.path, using: fileSystem)
         assertSnapshot(of: config, as: .dump)
@@ -31,7 +31,7 @@ final class ConfigTests: XCTestCase, TestFactories {
 
     func testConfigWithEmptyFileContents() throws {
         let fileSystem: FileSystemMock = .init()
-        let url: URL = .init(fileURLWithPath: "/")
+        let url: URL = .init(fileURLWithPath: "/", isDirectory: true)
         fileSystem.contents[url] = Data("".utf8)
         let config: Config = try .init(at: url.path, using: fileSystem)
         expect(config) == Config()

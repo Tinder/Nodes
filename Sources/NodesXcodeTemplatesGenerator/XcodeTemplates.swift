@@ -28,21 +28,21 @@ public final class XcodeTemplates {
         identifier: String,
         using fileSystem: FileSystem = FileManager.default
     ) throws {
-        let url: URL = fileSystem.libraryURL
+        let directory: URL = fileSystem.libraryURL
             .appendingPathComponent("Developer")
             .appendingPathComponent("Xcode")
             .appendingPathComponent("Templates")
             .appendingPathComponent("File Templates")
             .appendingPathComponent("Nodes Architecture Framework (\(identifier))")
-        try? fileSystem.removeItem(at: url)
-        try generate(at: url, using: fileSystem)
+        try? fileSystem.removeItem(at: directory)
+        try generate(into: directory, using: fileSystem)
     }
 
     public func generate(
-        at url: URL,
+        into directory: URL,
         using fileSystem: FileSystem = FileManager.default
     ) throws {
         let generator: XcodeTemplateGenerator = .init(fileSystem: fileSystem)
-        try templates.forEach { try generator.generate(template: $0, into: url) }
+        try templates.forEach { try generator.generate(template: $0, into: directory) }
     }
 }

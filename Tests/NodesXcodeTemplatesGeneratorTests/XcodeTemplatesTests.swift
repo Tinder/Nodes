@@ -21,8 +21,8 @@ final class XcodeTemplatesTests: XCTestCase {
 
     func testGenerateWithURL() throws {
         let fileSystem: FileSystemMock = .init()
-        let url: URL = .init(fileURLWithPath: "/")
-        try XcodeTemplates(config: givenConfig()).generate(at: url, using: fileSystem)
+        let url: URL = .init(fileURLWithPath: "/", isDirectory: true)
+        try XcodeTemplates(config: givenConfig()).generate(into: url, using: fileSystem)
         // swiftlint:disable:next large_tuple
         let writes: [(contents: String, path: String, atomically: Bool)] = fileSystem.writes
         writes.forEach { assertSnapshot(of: $0.contents, as: .lines, named: "Contents.\(name(from: $0.path))") }
