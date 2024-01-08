@@ -202,7 +202,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 case .contextTests, .analyticsTests, .viewStateFactoryTests, .flowTests:
                     expect(imports) == ["<baseTestImport>"]
                 case .pluginTests:
-                    expect(imports) == ["Nodes", "NodesTesting", "<baseTestImport>"]
+                    expect(imports) == ["NodesTesting", "<baseTestImport>"]
                 case .viewControllerTests:
                     expect(imports) == ["<baseTestImport>", "<reactiveImport>"]
                 }

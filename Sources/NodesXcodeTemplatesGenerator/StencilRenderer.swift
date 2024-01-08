@@ -16,7 +16,7 @@ public final class StencilRenderer {
     ) throws -> [String: String] {
         let node: StencilTemplate.Node = .init(for: .variation(for: kind))
         let stencils: [StencilTemplate] = node.stencils(includeTests: includeTests)
-        return try renderNode(stencils: stencils, with: context.dictionary)
+        return try render(stencils: stencils, with: context.dictionary)
     }
 
     public func renderNodeViewInjected(
@@ -25,7 +25,7 @@ public final class StencilRenderer {
     ) throws -> [String: String] {
         let nodeViewInjected: StencilTemplate.NodeViewInjected = .init()
         let stencils: [StencilTemplate] = nodeViewInjected.stencils(includeTests: includeTests)
-        return try renderNode(stencils: stencils, with: context.dictionary)
+        return try render(stencils: stencils, with: context.dictionary)
     }
 
     public func renderNodePreset(
@@ -39,7 +39,7 @@ public final class StencilRenderer {
             stencils = StencilTemplate.NodeViewInjected()
                 .stencils(includeState: false, includeTests: false)
         }
-        return try renderNode(stencils: stencils, with: context.dictionary)
+        return try render(stencils: stencils, with: context.dictionary)
     }
 
     public func renderPlugin(
@@ -47,7 +47,7 @@ public final class StencilRenderer {
         includeTests: Bool
     ) throws -> [String: String] {
         let stencils: [StencilTemplate] = includeTests ? [.plugin, .pluginTests] : [.plugin]
-        return try renderNode(stencils: stencils, with: context.dictionary)
+        return try render(stencils: stencils, with: context.dictionary)
     }
 
     public func renderPluginList(context: PluginListStencilContext) throws -> String {
@@ -69,7 +69,7 @@ public final class StencilRenderer {
         return try environment.renderTemplate(name: stencil.name, context: context)
     }
 
-    private func renderNode(stencils: [StencilTemplate], with context: [String: Any]) throws -> [String: String] {
+    private func render(stencils: [StencilTemplate], with context: [String: Any]) throws -> [String: String] {
         try Dictionary(uniqueKeysWithValues: stencils.map { stencil in
             try (stencil.name, render(stencil, with: context))
         })

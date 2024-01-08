@@ -243,7 +243,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         case .analyticsTests, .contextTests, .flowTests, .viewStateFactoryTests:
             return config.baseTestImports
         case .pluginTests:
-            return config.baseTestImports.union(["Nodes", "NodesTesting"])
+            return config.baseTestImports.union(["NodesTesting"])
         case .viewControllerTests:
             return config.baseTestImports.union(config.reactiveImports)
         }

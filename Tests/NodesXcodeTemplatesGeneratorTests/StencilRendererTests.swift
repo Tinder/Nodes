@@ -143,9 +143,10 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderPlugin() throws {
+        let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: PluginStencilContext = givenPluginStencilContext(mockCount: count)
-            let templates: [String: String] = try StencilRenderer().renderPlugin(
+            let templates: [String: String] = try stencilRenderer.renderPlugin(
                 context: context,
                 includeTests: true
             )
@@ -162,9 +163,10 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderPluginWithoutReturnType() throws {
+        let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: PluginStencilContext = givenPluginStencilContextWithoutReturnType(mockCount: count)
-            let templates: [String: String] = try StencilRenderer().renderPlugin(
+            let templates: [String: String] = try stencilRenderer.renderPlugin(
                 context: context,
                 includeTests: true
             )
