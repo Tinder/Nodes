@@ -176,10 +176,7 @@ extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {
     }
 
     internal func detachScene(_ viewController: WindowSceneViewControllable) {
-        subFlows
-            .compactMap { $0 as? SceneFlow }
-            .filter { $0.getViewController() === viewController }
-            .forEach(detach)
+        detach(endingSubFlowsOfType: SceneFlow.self) { $0.getViewController() === viewController }
     }
 }
 {% elif node_name == "Root" %}
