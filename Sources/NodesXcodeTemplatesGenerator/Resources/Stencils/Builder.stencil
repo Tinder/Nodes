@@ -104,7 +104,7 @@ public final class {{ node_name }}Component: Component
     {% if node_name == "App" %}
 
     fileprivate let appService: AppService = AppServiceImp()
-    {% else %}
+    {% endif %}
 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
@@ -128,7 +128,6 @@ public final class {{ node_name }}Component: Component
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
     }
-    {% endif %}
 
     /*
      Child Components
