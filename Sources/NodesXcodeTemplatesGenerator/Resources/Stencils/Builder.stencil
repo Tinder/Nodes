@@ -255,7 +255,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         let viewController: {{ node_name }}ViewControllable = dynamicBuildDependency.1
         {% endif %}
         {% endif %}
-        {% if node_name != "App" and node_name != "Scene" and node_name != "Window" and analytics_properties %}
+        {% if analytics_properties %}
         let analytics: {{ node_name }}AnalyticsImp = .init(
             {% for property in analytics_properties %}
             {{ property.name }}: component{% if node_name != "App" %}.dependency{% endif %}.{{ property.name }}{% if not forloop.last %}{{ ',' }}
