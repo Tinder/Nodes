@@ -18,6 +18,7 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
             {{ plugin_name }}PluginComponent(parent: $0)
         } with: {
             let dependency: {{ plugin_name }}PluginDependencyMock = .init()
+            // dependency.<dependencyName> = <dependencyName>Mock
             return dependency
         })
     }
