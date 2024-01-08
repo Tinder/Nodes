@@ -258,7 +258,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         {% if node_name != "App" and node_name != "Scene" and node_name != "Window" and analytics_properties %}
         let analytics: {{ node_name }}AnalyticsImp = .init(
             {% for property in analytics_properties %}
-            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %}{{ ',' }}
+            {{ property.name }}: component{% if node_name != "App" %}.dependency{% endif %}.{{ property.name }}{% if not forloop.last %}{{ ',' }}
             {% endif %}
             {% endfor +%}
         )
@@ -294,7 +294,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             {% else %}
             viewController: viewController{% if node_name != "App" and node_name != "Scene" and node_name != "Window" and flow_properties %}{{ ',' }}
             {% for property in flow_properties %}
-            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %}{{ ',' }}
+            {{ property.name }}: component{% if node_name != "App" %}.dependency{% endif %}.{{ property.name }}{% if not forloop.last %}{{ ',' }}
             {% endif %}
             {% endfor %}
             {% endif +%}
