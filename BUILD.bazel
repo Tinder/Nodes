@@ -9,9 +9,11 @@ MINIMUM_IOS_VERSION = "13.0"
 swift_library(
     name = "Nodes",
     srcs = glob(["Sources/Nodes/**/*.swift"]),
-    copts = ["-strict-concurrency=complete"],
+    copts = [
+        "-warnings-as-errors",
+        "-strict-concurrency=complete"
+    ],
     visibility = ["//visibility:public"],
-    copts = ["-warnings-as-errors"],
 )
 
 swift_library(
@@ -21,7 +23,10 @@ swift_library(
     deps = [
         "@Needle//:NeedleFoundation",
     ],
-    copts = ["-warnings-as-errors"],
+    copts = [
+        "-warnings-as-errors",
+        "-strict-concurrency=complete"
+    ],
     testonly = True,
 )
 
@@ -35,7 +40,10 @@ swift_library(
         "@Stencil",
         "@Yams",
     ],
-    copts = ["-warnings-as-errors"],
+    copts = [
+        "-warnings-as-errors",
+        "-strict-concurrency=complete"
+    ],
     defines = ["BAZEL"],
 )
 
@@ -65,7 +73,10 @@ swift_library(
         ":NodesXcodeTemplatesGenerator",
         "@ArgumentParser",
     ],
-    copts = ["-warnings-as-errors"],
+    copts = [
+        "-warnings-as-errors",
+        "-strict-concurrency=complete"
+    ],
 )
 
 macos_bundle(
