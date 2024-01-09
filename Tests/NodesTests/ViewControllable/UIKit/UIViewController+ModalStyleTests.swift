@@ -10,6 +10,7 @@ import Nodes
 import UIKit
 import XCTest
 
+@MainActor
 final class UIViewControllerModalStyleTests: XCTestCase {
 
     func testCover() {

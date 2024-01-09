@@ -6,6 +6,7 @@ import Nimble
 import Nodes
 import XCTest
 
+@MainActor
 final class AbstractBuilderTests: XCTestCase {
 
     private class ComponentType {}

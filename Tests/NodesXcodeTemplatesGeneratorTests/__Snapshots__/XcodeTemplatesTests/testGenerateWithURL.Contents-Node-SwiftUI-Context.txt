@@ -8,6 +8,7 @@ import Nodes
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
 /// @mockable
+@MainActor
 internal protocol ___VARIABLE_productName___Listener: AnyObject {}
 
 /**
@@ -16,6 +17,7 @@ internal protocol ___VARIABLE_productName___Listener: AnyObject {}
  an example.
  */
 /// @mockable
+@MainActor
 internal protocol ___VARIABLE_productName___FlowInterface: Flow {}
 
 /**
