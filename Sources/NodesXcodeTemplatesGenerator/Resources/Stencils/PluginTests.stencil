@@ -29,7 +29,11 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
     }
 
     func testPluginIsNotEnabled() {
+        {% if is_nimble_enabled %}
+        expect { self.plugin.create() } == nil
+        {% else %}
         XCTAssertNil(plugin.create())
+        {% endif %}
     }
 
     func testOverride() {
