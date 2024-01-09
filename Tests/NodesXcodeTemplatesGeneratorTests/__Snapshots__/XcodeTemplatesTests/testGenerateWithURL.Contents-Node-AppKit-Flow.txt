@@ -8,6 +8,7 @@ import Nodes
  presentation lifecycle events, as an example.
  */
 /// @mockable
+@MainActor
 internal protocol ___VARIABLE_productName___ContextInterface: Context {}
 
 /**
@@ -16,6 +17,7 @@ internal protocol ___VARIABLE_productName___ContextInterface: Context {}
  protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
  implementation as necessary.
  */
+@MainActor
 internal protocol ___VARIABLE_productName___ViewControllable: ViewControllable {}
 
 /**

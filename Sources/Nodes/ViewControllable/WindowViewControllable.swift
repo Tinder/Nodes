@@ -8,6 +8,8 @@
  * The interface used for injecting a window into a `Flow` instance to limit the available API,
  * to avoid the use of UI frameworks within the `Flow` instance and to facilitate testing.
  */
+@preconcurrency
+@MainActor
 public protocol WindowViewControllable: AnyObject {
 
     /// Presents a ``ViewControllable`` instance.
