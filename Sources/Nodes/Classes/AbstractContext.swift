@@ -29,6 +29,8 @@ public protocol Cancellable: AnyObject, Hashable {
  * The interface used by an ``AbstractFlow`` instance to activate and deactivate its `Context` instance.
  */
 /// @mockable
+@preconcurrency
+@MainActor
 public protocol Context: AnyObject {
 
     /// A Boolean value indicating whether the `Context` instance is active.
@@ -52,6 +54,8 @@ public protocol Context: AnyObject {
  *
  * > Note: This abstract class should never be instantiated directly and must therefore always be subclassed.
  */
+@preconcurrency
+@MainActor
 open class _BaseContext: Context { // swiftlint:disable:this type_name
 
     /// A Boolean value indicating whether the `Context` instance is active.
@@ -194,6 +198,8 @@ open class _BaseContext: Context { // swiftlint:disable:this type_name
  * | --------------- | -------------------------------------------------------------------------------------------- |
  * | CancellableType | The type supporting subscription cancellation that conforms to the ``Cancellable`` protocol. |
  */
+@preconcurrency
+@MainActor
 open class AbstractContext<CancellableType: Cancellable>: _BaseContext {
 
     /// The set of `CancellableType` instances.
@@ -223,6 +229,8 @@ open class AbstractContext<CancellableType: Cancellable>: _BaseContext {
  * | CancellableType | The type supporting subscription cancellation that conforms to the ``Cancellable`` protocol. |
  * | PresentableType | The type of the presentable user interface.                                                  |
  */
+@preconcurrency
+@MainActor
 open class AbstractPresentableContext<CancellableType: Cancellable, PresentableType>: AbstractContext<CancellableType> {
 
     /// The `PresentableType` instance.

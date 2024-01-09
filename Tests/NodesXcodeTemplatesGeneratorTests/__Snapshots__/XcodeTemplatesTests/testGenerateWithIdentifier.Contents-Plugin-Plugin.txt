@@ -8,6 +8,7 @@ import Nodes
  Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
  */
 /// @mockable
+@MainActor
 public protocol ___VARIABLE_productName___PluginDependency: Dependency {}
 
 /**
@@ -68,6 +69,7 @@ internal typealias ___VARIABLE_productName___PluginStateType = Void
  The Plugin interface (available to mock for testability).
  */
 /// @mockable
+@MainActor
 internal protocol ___VARIABLE_productName___Plugin {
     func create() -> ___VARIABLE_returnType___?
 }

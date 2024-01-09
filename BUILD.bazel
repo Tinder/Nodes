@@ -10,6 +10,7 @@ ios_build_test(
 swift_library(
     name = "Nodes",
     srcs = glob(["Sources/Nodes/**/*.swift"]),
+    copts = ["-strict-concurrency=complete"],
     visibility = ["//visibility:public"],
     tags = ["manual"],
 )

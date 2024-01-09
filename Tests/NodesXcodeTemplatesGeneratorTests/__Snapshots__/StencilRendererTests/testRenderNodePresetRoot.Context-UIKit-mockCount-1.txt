@@ -7,6 +7,7 @@ import <contextImport>
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
 /// @mockable
+@MainActor
 internal protocol RootListener: AnyObject {}
 
 /**
@@ -15,6 +16,7 @@ internal protocol RootListener: AnyObject {}
  an example.
  */
 /// @mockable
+@MainActor
 internal protocol RootFlowInterface: Flow {
     func didBecomeReady()
 }
