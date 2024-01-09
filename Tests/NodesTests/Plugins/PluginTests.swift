@@ -6,6 +6,7 @@ import Nimble
 import Nodes
 import XCTest
 
+@MainActor
 final class PluginTests: XCTestCase, TestCaseHelpers {
 
     private class ComponentType {}

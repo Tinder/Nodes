@@ -5,6 +5,7 @@
  The interface of the Flow.
  */
 /// @mockable
+@MainActor
 internal protocol RootFlow: <viewControllableFlowType> {}
 
 /**
@@ -12,6 +13,7 @@ internal protocol RootFlow: <viewControllableFlowType> {}
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
 /// @mockable
+@MainActor
 public protocol RootDependency: Dependency {}
 
 /**
@@ -103,6 +105,7 @@ public final class RootComponent: Component
  The Builder interface (available to mock for testability).
  */
 /// @mockable
+@MainActor
 internal protocol RootBuilder: AnyObject {
     func build(
         withListener listener: RootListener

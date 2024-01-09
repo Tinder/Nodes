@@ -10,7 +10,7 @@ import Nodes
 import UIKit
 import XCTest
 
-// swiftlint:disable:next type_name
+@MainActor // swiftlint:disable:next type_name
 final class UINavigationControllerNavigationControllableTests: XCTestCase {
 
     func testSet() {

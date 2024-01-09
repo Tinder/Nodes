@@ -8,6 +8,8 @@
  *
  * > Important: Consider ``FlowController`` to be a private type and avoid its use within application code.
  */
+@preconcurrency
+@MainActor
 public final class FlowController {
 
     #if DEBUG
@@ -220,15 +222,5 @@ public final class FlowController {
     ///     The closure returns `Void` and throws.
     public func withFlows<T>(ofType type: T.Type, perform: (_ flow: T) throws -> Void) rethrows {
         try flows(ofType: type).forEach(perform)
-    }
-
-    deinit {
-        #if DEBUG
-        if !flows.isEmpty {
-            assertionFailure("""
-                Lifecycle Violation: Expected `Flow` instances to be detached before `FlowController` is deallocated.
-                """)
-        }
-        #endif
     }
 }

@@ -11,6 +11,8 @@ import UIKit
  * a `Flow` instance to limit the available API, to avoid the use of UI frameworks within the `Flow`
  * instance and to facilitate testing.
  */
+@preconcurrency
+@MainActor
 public protocol NavigationControllable: ViewControllable {
 
     /// An array of the ``ViewControllable`` instances on the navigation stack.
