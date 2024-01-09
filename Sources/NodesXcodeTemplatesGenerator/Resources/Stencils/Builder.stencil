@@ -118,15 +118,25 @@ public final class {{ node_name }}Component: Component
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
     ///
+    {% if node_name == "App" %}
+    /// - Parameter dynamicDependency: The dynamic component dependency
+    {% else %}
     /// - Parameters:
     ///   - parent: The parent scope
     ///   - dynamicDependency: The dynamic component dependency
+    {% endif %}
     internal init(
+        {% if node_name != "App" %}
         parent: Scope,
+        {% endif %}
         dynamicDependency: {{ node_name }}DynamicComponentDependency = ()
     ) {
         self.dynamicDependency = dynamicDependency
+        {% if node_name == "App" %}
+        super.init()
+        {% else %}
         super.init(parent: parent)
+        {% endif %}
     }
 
     /*
