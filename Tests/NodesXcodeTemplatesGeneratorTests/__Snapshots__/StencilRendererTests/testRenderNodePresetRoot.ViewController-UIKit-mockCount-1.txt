@@ -8,6 +8,7 @@ import <viewControllerImport>
  view events and user interactions.
  */
 /// @mockable
+@MainActor
 internal protocol RootReceiver: AnyObject {
     func viewDidAppear()
 }
