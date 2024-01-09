@@ -48,45 +48,53 @@ extension XCTestCase {
         }
     }
 
+    @MainActor
     internal func allBeStarted() -> Matcher<[Flow]> {
         allPass(beStarted())
     }
 
+    @MainActor
     internal func beStarted() -> Matcher<Flow> {
-        Matcher.simple("be started") { expression in
+        .simple("be started") { expression in
             let flow: Flow? = try expression.evaluate()
             return MatcherStatus(bool: flow?.isStarted ?? false)
         }
     }
 
+    @MainActor
     internal func allBeActive() -> Matcher<[Context]> {
         allPass(beActive())
     }
 
+    @MainActor
     internal func beActive() -> Matcher<Context> {
-        Matcher.simple("be active") { expression in
+        .simple("be active") { expression in
             let context: Context? = try expression.evaluate()
             return MatcherStatus(bool: context?.isActive ?? false)
         }
     }
 
+    @MainActor
     internal func allBeWorking() -> Matcher<[Worker]> {
         allPass(beWorking())
     }
 
+    @MainActor
     internal func beWorking() -> Matcher<Worker> {
-        Matcher.simple("be working") { expression in
+        .simple("be working") { expression in
             let worker: Worker? = try expression.evaluate()
             return MatcherStatus(bool: worker?.isWorking ?? false)
         }
     }
 
+    @MainActor
     internal func allBeCancelled() -> Matcher<[CancellableMock]> {
         allPass(beCancelled())
     }
 
+    @MainActor
     internal func beCancelled() -> Matcher<CancellableMock> {
-        Matcher.simple("be cancelled") { expression in
+        .simple("be cancelled") { expression in
             let cancellable: CancellableMock? = try expression.evaluate()
             return MatcherStatus(bool: cancellable?.isCancelled ?? false)
         }
