@@ -12,6 +12,8 @@ import UIKit
  * The interface used for injecting a user interface into a `Flow` instance to limit the available API,
  * to avoid the use of UI frameworks within the `Flow` instance and to facilitate testing.
  */
+@preconcurrency
+@MainActor
 public protocol ViewControllable: AnyObject {
 
     /// Applies the given ``ModalStyle``.
