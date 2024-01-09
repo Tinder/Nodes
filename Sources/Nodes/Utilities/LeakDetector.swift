@@ -41,7 +41,7 @@ public enum LeakDetector {
     ///   - object: The instance with which to detect the expected deallocation.
     ///   - delay: The time interval in seconds to wait before leak detection occurs.
     public static func detect(_ object: AnyObject, delay: TimeInterval = 1) {
-        struct WeakBox {
+        struct WeakBox: @unchecked Sendable {
             weak var object: AnyObject?
         }
         let box: WeakBox = .init(object: object)
