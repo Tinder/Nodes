@@ -10,6 +10,7 @@ import UIKit
  view events and user interactions.
  */
 /// @mockable
+@MainActor
 internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
 
 /**

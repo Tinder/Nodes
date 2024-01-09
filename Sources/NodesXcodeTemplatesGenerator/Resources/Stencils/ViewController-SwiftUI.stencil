@@ -12,6 +12,7 @@ import {{ import }}
  view events and user interactions.
  */
 /// @mockable
+@MainActor
 internal protocol {{ node_name }}Receiver: AnyObject {}
 
 /**

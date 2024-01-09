@@ -7,6 +7,7 @@ import <builderImport>
  The interface of the Flow.
  */
 /// @mockable
+@MainActor
 internal protocol <nodeName>Flow: Flow {}
 
 /**
@@ -14,6 +15,7 @@ internal protocol <nodeName>Flow: Flow {}
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
 /// @mockable
+@MainActor
 public protocol <nodeName>Dependency: Dependency {
     var <dependencyName>: <dependencyType> { get }
 }
@@ -110,6 +112,7 @@ public final class <nodeName>Component: Component
  The Builder interface (available to mock for testability).
  */
 /// @mockable
+@MainActor
 internal protocol <nodeName>Builder: AnyObject {
     func build(
         withListener listener: <nodeName>Listener,
