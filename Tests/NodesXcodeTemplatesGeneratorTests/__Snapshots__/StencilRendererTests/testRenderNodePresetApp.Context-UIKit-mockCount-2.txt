@@ -8,6 +8,7 @@ import <contextImport2>
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
 /// @mockable
+@MainActor
 internal protocol AppListener: AnyObject {}
 
 /**
@@ -16,6 +17,7 @@ internal protocol AppListener: AnyObject {}
  an example.
  */
 /// @mockable
+@MainActor
 internal protocol AppFlowInterface: Flow {}
 
 /**

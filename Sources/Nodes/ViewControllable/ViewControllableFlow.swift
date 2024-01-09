@@ -7,6 +7,8 @@
  * parent `Flow` instance for display or presentation.
  */
 /// @mockable
+@preconcurrency
+@MainActor
 public protocol ViewControllableFlow: Flow {
 
     /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.

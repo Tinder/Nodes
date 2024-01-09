@@ -17,6 +17,8 @@
  * | DynamicBuildDependencyType     | The type of dependency provided dynamically to the `BuildType` instance.     |
  * | DynamicComponentDependencyType | The type of dependency provided dynamically to the `ComponentType` instance. |
  */
+@preconcurrency
+@MainActor
 open class AbstractBuilder<ComponentType,
                            BuildType,
                            DynamicBuildDependencyType, // swiftlint:disable:this generic_type_name
