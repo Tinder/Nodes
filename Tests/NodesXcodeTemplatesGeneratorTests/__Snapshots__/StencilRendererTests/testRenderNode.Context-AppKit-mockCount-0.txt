@@ -5,6 +5,7 @@
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
 /// @mockable
+@MainActor
 internal protocol <nodeName>Listener: AnyObject {}
 
 /**
@@ -13,6 +14,7 @@ internal protocol <nodeName>Listener: AnyObject {}
  an example.
  */
 /// @mockable
+@MainActor
 internal protocol <nodeName>FlowInterface: Flow {}
 
 /**

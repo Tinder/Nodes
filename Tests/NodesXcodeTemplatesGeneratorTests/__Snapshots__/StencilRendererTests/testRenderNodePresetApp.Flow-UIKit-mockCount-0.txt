@@ -6,6 +6,7 @@
  presentation lifecycle events, as an example.
  */
 /// @mockable
+@MainActor
 internal protocol AppContextInterface: Context {}
 
 /**
@@ -14,6 +15,7 @@ internal protocol AppContextInterface: Context {}
  protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
  implementation as necessary.
  */
+@MainActor
 internal protocol AppViewControllable: <viewControllableType> {}
 
 /**

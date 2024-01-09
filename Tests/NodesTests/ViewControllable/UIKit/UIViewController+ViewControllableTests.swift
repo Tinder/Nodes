@@ -10,6 +10,7 @@ import Nodes
 import UIKit
 import XCTest
 
+@MainActor
 final class UIViewControllerViewControllableTests: XCTestCase {
 
     private class TestViewController: UIViewController {
