@@ -396,6 +396,7 @@ files:
       GCC_WARN_UNUSED_VARIABLE = YES
       MTL_FAST_MATH = YES
       SDKROOT = iphoneos
+      // SWIFT_STRICT_CONCURRENCY = complete
 
   - path: "{{ project|replace:' ','_' }}/Assets/Assets.xcassets/AccentColor.colorset/Contents.json"
     contents: |
@@ -681,6 +682,7 @@ files:
        PURPOSE:
        The interface of the Flow.
        */
+      @MainActor
       internal protocol AppFlow: Flow {}
 
       /**
@@ -705,6 +707,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
+      @MainActor
       internal final class AppComponent: BootstrapComponent {
 
           /*
@@ -771,6 +774,7 @@ files:
        PURPOSE:
        The Builder interface (available to mock for testability).
        */
+      @MainActor
       internal protocol AppBuilder: AnyObject {
           func build() -> AppFlow
       }
@@ -841,6 +845,7 @@ files:
        The interface that the Context will speak to the Flow through. Used to initiate navigation as
        an example.
        */
+      @MainActor
       internal protocol AppFlowInterface: Flow {
           func attachScene(_ viewController: WindowSceneViewControllable)
           func detachScene(_ viewController: WindowSceneViewControllable)
@@ -918,6 +923,7 @@ files:
        The interface that the Flow will speak to the Context through. Used for informing the Context of
        presentation lifecycle events, as an example.
        */
+      @MainActor
       internal protocol AppContextInterface: Context, SceneListener {}
 
       /**
@@ -1019,6 +1025,7 @@ files:
        PURPOSE:
        The interface of the Flow.
        */
+      @MainActor
       internal protocol SceneFlow: Flow {
           func getViewController() -> WindowSceneViewControllable
       }
@@ -1027,6 +1034,8 @@ files:
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
+      @preconcurrency
+      @MainActor
       public protocol SceneDependency: Dependency {}
 
       /**
@@ -1051,6 +1060,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
+      @MainActor
       public final class SceneComponent: Component
       <
           SceneDependency
@@ -1118,6 +1128,7 @@ files:
        PURPOSE:
        The Builder interface (available to mock for testability).
        */
+      @MainActor
       internal protocol SceneBuilder: AnyObject {
           func build(
               withListener listener: SceneListener,
@@ -1199,6 +1210,7 @@ files:
        PURPOSE:
        The Context delegates callbacks to its (external) Listener, typically the parent Context.
        */
+      @MainActor
       internal protocol SceneListener: AnyObject {}
 
       /**
@@ -1206,6 +1218,7 @@ files:
        The interface that the Context will speak to the Flow through. Used to initiate navigation as
        an example.
        */
+      @MainActor
       internal protocol SceneFlowInterface: Flow {}
 
       /**
@@ -1264,6 +1277,7 @@ files:
        The interface that the Flow will speak to the Context through. Used for informing the Context of
        presentation lifecycle events, as an example.
        */
+      @MainActor
       internal protocol SceneContextInterface: Context, WindowListener {}
 
       /**
@@ -1369,12 +1383,15 @@ files:
        PURPOSE:
        The interface of the Flow.
        */
+      @MainActor
       internal protocol WindowFlow: Flow {}
 
       /**
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
+      @preconcurrency
+      @MainActor
       public protocol WindowDependency: Dependency {}
 
       /**
@@ -1399,6 +1416,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
+      @MainActor
       public final class WindowComponent: Component
       <
           WindowDependency
@@ -1466,6 +1484,7 @@ files:
        PURPOSE:
        The Builder interface (available to mock for testability).
        */
+      @MainActor
       internal protocol WindowBuilder: AnyObject {
           func build(
               withListener listener: WindowListener,
@@ -1547,6 +1566,7 @@ files:
        PURPOSE:
        The Context delegates callbacks to its (external) Listener, typically the parent Context.
        */
+      @MainActor
       internal protocol WindowListener: AnyObject {}
 
       /**
@@ -1554,6 +1574,7 @@ files:
        The interface that the Context will speak to the Flow through. Used to initiate navigation as
        an example.
        */
+      @MainActor
       internal protocol WindowFlowInterface: Flow {}
 
       /**
@@ -1612,6 +1633,7 @@ files:
        The interface that the Flow will speak to the Context through. Used for informing the Context of
        presentation lifecycle events, as an example.
        */
+      @MainActor
       internal protocol WindowContextInterface: Context, RootListener {}
 
       /**
@@ -1710,12 +1732,15 @@ files:
        PURPOSE:
        The interface of the Flow.
        */
+      @MainActor
       internal protocol RootFlow: ViewControllableFlow {}
 
       /**
        PURPOSE:
        Declares the dependencies required by this Node that will be injected (not created by this Node itself).
        */
+      @preconcurrency
+      @MainActor
       public protocol RootDependency: Dependency {}
 
       /**
@@ -1740,6 +1765,7 @@ files:
        PURPOSE:
        Declares dependencies that are owned by this Node.
        */
+      @MainActor
       public final class RootComponent: Component
       <
           RootDependency
@@ -1803,6 +1829,7 @@ files:
        PURPOSE:
        The Builder interface (available to mock for testability).
        */
+      @MainActor
       internal protocol RootBuilder: AnyObject {
           func build(
               withListener listener: RootListener
@@ -1884,6 +1911,7 @@ files:
        PURPOSE:
        The Context delegates callbacks to its (external) Listener, typically the parent Context.
        */
+      @MainActor
       internal protocol RootListener: AnyObject {}
 
       /**
@@ -1891,6 +1919,7 @@ files:
        The interface that the Context will speak to the Flow through. Used to initiate navigation as
        an example.
        */
+      @MainActor
       internal protocol RootFlowInterface: Flow {
           func didBecomeReady()
       }
@@ -1968,6 +1997,7 @@ files:
        The interface that the Flow will speak to the Context through. Used for informing the Context of
        presentation lifecycle events, as an example.
        */
+      @MainActor
       internal protocol RootContextInterface: Context {}
 
       /**
@@ -1976,6 +2006,7 @@ files:
        protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
        implementation as necessary.
        */
+      @MainActor
       internal protocol RootViewControllable: ViewControllable {}
 
       /**
@@ -2057,6 +2088,7 @@ files:
        The interface that the View will speak to the Context through. Used for informing the Context of
        view events and user interactions.
        */
+      @MainActor
       internal protocol RootReceiver: AnyObject {
           func viewDidAppear()
       }
@@ -2186,6 +2218,7 @@ files:
       import UIKit
 
       /// @mockable
+      @MainActor
       internal protocol AppService {
           var windowSceneState: AnyPublisher<WindowSceneState, Never> { get }
       }

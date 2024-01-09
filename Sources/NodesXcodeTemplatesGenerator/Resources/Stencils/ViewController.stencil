@@ -12,6 +12,7 @@ import {{ import }}
  view events and user interactions.
  */
 /// @mockable
+@MainActor
 {% if node_name == "Root" %}
 internal protocol {{ node_name }}Receiver: AnyObject {
     func viewDidAppear()
