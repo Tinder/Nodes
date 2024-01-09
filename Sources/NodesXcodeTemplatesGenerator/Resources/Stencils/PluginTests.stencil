@@ -37,6 +37,10 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
     }
 
     func testOverride() {
+        {% if is_nimble_enabled %}
+        expect { self.plugin.override() } != nil
+        {% else %}
         XCTAssertNotNil(plugin.override())
+        {% endif %}
     }
 }
