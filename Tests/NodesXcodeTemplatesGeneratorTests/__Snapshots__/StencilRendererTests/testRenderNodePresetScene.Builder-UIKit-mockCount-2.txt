@@ -8,6 +8,7 @@ import <builderImport2>
  The interface of the Flow.
  */
 /// @mockable
+@MainActor
 internal protocol SceneFlow: Flow {
     func getViewController() -> WindowSceneViewControllable
 }
@@ -17,6 +18,7 @@ internal protocol SceneFlow: Flow {
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
 /// @mockable
+@MainActor
 public protocol SceneDependency: Dependency {
     var <dependencyName1>: <dependencyType1> { get }
     var <dependencyName2>: <dependencyType2> { get }
@@ -118,6 +120,7 @@ public final class SceneComponent: Component
  The Builder interface (available to mock for testability).
  */
 /// @mockable
+@MainActor
 internal protocol SceneBuilder: AnyObject {
     func build(
         withListener listener: SceneListener,

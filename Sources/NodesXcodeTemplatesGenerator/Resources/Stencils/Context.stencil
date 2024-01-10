@@ -12,6 +12,7 @@ import {{ import }}
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
 /// @mockable
+@MainActor
 internal protocol {{ node_name }}Listener: AnyObject {}
 {% endif %}
 
@@ -21,6 +22,7 @@ internal protocol {{ node_name }}Listener: AnyObject {}
  an example.
  */
 /// @mockable
+@MainActor
 {% if node_name == "App" %}
 internal protocol {{ node_name }}FlowInterface: Flow {
     func attachScene(_ viewController: WindowSceneViewControllable)

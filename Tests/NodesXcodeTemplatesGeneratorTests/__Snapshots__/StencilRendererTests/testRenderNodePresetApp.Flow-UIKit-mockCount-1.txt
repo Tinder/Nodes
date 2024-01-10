@@ -8,6 +8,7 @@ import <flowImport>
  presentation lifecycle events, as an example.
  */
 /// @mockable
+@MainActor
 internal protocol AppContextInterface: Context, SceneListener {}
 
 /**

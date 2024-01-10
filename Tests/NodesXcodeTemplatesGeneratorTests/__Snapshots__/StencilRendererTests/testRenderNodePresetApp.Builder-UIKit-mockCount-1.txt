@@ -7,6 +7,7 @@ import <builderImport>
  The interface of the Flow.
  */
 /// @mockable
+@MainActor
 internal protocol AppFlow: Flow {}
 
 /**
@@ -101,6 +102,7 @@ public final class AppComponent: BootstrapComponent {
  The Builder interface (available to mock for testability).
  */
 /// @mockable
+@MainActor
 internal protocol AppBuilder: AnyObject {
     func build() -> AppFlow
 }

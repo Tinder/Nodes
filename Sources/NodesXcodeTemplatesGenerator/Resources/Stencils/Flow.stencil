@@ -12,6 +12,7 @@ import {{ import }}
  presentation lifecycle events, as an example.
  */
 /// @mockable
+@MainActor
 {% if node_name == "App" %}
 internal protocol {{ node_name }}ContextInterface: Context, SceneListener {}
 {% elif node_name == "Scene" %}
@@ -27,6 +28,7 @@ internal protocol {{ node_name }}ContextInterface: Context {}
  protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
  implementation as necessary.
  */
+@MainActor
 internal protocol {{ node_name }}ViewControllable: {{ view_controllable_type }} {}
 {% endif %}
 

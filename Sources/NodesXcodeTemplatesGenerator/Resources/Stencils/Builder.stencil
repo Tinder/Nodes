@@ -11,6 +11,7 @@ import {{ import }}
  The interface of the Flow.
  */
 /// @mockable
+@MainActor
 {% if owns_view %}
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
 {% elif node_name == "Scene" %}
@@ -27,6 +28,7 @@ internal protocol {{ node_name }}Flow: Flow {}
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
 /// @mockable
+@MainActor
 {% if dependencies %}
 public protocol {{ node_name }}Dependency: Dependency {
     {% for dependency in dependencies %}
@@ -178,6 +180,7 @@ public final class {{ node_name }}Component: Component
  The Builder interface (available to mock for testability).
  */
 /// @mockable
+@MainActor
 internal protocol {{ node_name }}Builder: AnyObject {
     {% if node_name == "App" %}
     func build() -> {{ node_name }}Flow

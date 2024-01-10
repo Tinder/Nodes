@@ -9,6 +9,7 @@ import <contextImport2>
  an example.
  */
 /// @mockable
+@MainActor
 internal protocol AppFlowInterface: Flow {
     func attachScene(_ viewController: WindowSceneViewControllable)
     func detachScene(_ viewController: WindowSceneViewControllable)
