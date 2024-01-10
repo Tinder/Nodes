@@ -45,6 +45,12 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {{ node_name }}ViewControllable
     {% endif %}
 > {
+    {% if flow_properties %}
+
+    {% for property in flow_properties %}
+    private let {{ property.name }}: {{ property.type }}
+    {% endfor %}
+    {% endif %}
     {% if node_name == "App" %}
 
     private let sceneBuilder: SceneBuilder
@@ -54,11 +60,6 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {% elif node_name == "Window" %}
 
     private let rootBuilder: RootBuilder
-    {% elif flow_properties %}
-
-    {% for property in flow_properties %}
-    private let {{ property.name }}: {{ property.type }}
-    {% endfor %}
     {% endif %}
 
     /// The initializer.
@@ -66,61 +67,51 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
     /// - Parameters:
     ///   - context: The Context instance
-    {% if node_name == "App" %}
-    ///   - sceneBuilder: The Scene Builder instance
-    internal init(
-        context: {{ node_name }}ContextInterface,
-        sceneBuilder: SceneBuilder
-    ) {
-        self.sceneBuilder = sceneBuilder
-        super.init(context: context, viewController: ())
-    }
-    {% elif node_name == "Scene" %}
+    {% if node_name != "App" %}
     ///   - viewController: The View Controller instance
-    ///   - windowBuilder: The Window Builder instance
-    internal init(
-        context: {{ node_name }}ContextInterface,
-        viewController: Window{{ node_name }}ViewControllable,
-        windowBuilder: WindowBuilder
-    ) {
-        self.windowBuilder = windowBuilder
-        super.init(context: context, viewController: viewController)
-    }
-    {% elif node_name == "Window" %}
-    ///   - viewController: The View Controller instance
-    ///   - rootBuilder: The Root Builder instance
-    internal init(
-        context: {{ node_name }}ContextInterface,
-        viewController: {{ node_name }}ViewControllable,
-        rootBuilder: RootBuilder
-    ) {
-        self.rootBuilder = rootBuilder
-        super.init(context: context, viewController: viewController)
-    }
-    {% else %}
-    ///   - viewController: The View Controller instance
-    {% if flow_properties %}
+    {% endif %}
     {% for property in flow_properties %}
     ///   - {{ property.name }}: The {{ property.type }} instance
     {% endfor %}
+    {% if node_name == "App" %}
+    ///   - sceneBuilder: The Scene Builder instance
+    {% elif node_name == "Scene" %}
+    ///   - windowBuilder: The Window Builder instance
+    {% elif node_name == "Window" %}
+    ///   - rootBuilder: The Root Builder instance
+    {% endif %}
+    {% if node_name == "App" or node_name == "Scene" or node_name == "Window" or flow_properties %}
     internal init(
     {% else %}
     override internal init(
     {% endif %}
-        context: {{ node_name }}ContextInterface,
-        viewController: {{ node_name }}ViewControllable{% if flow_properties %}{{ ',' }}
+        context: {{ node_name }}ContextInterface{% if node_name != "App" %}{{ ',' }}
+        viewController: {%+ if node_name == "Scene" %}Window{% endif %}{{ node_name }}ViewControllable{% endif +%}{% if flow_properties %}{{ ',' }}
         {% endif %}
         {% for property in flow_properties %}
         {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}
         {% endif %}
-        {% endfor +%}
+        {% endfor +%}{% if node_name == "App" %}{{ ',' }}
+        sceneBuilder: SceneBuilder{% endif +%}{% if node_name == "Scene" %}{{ ',' }}
+        windowBuilder: WindowBuilder{% endif +%}{% if node_name == "Window" %}{{ ',' }}
+        rootBuilder: RootBuilder{% endif +%}
     ) {
         {% for property in flow_properties %}
         self.{{ property.name }} = {{ property.name }}
         {% endfor %}
+        {% if node_name == "App" %}
+        self.sceneBuilder = sceneBuilder
+        {% elif node_name == "Scene" %}
+        self.windowBuilder = windowBuilder
+        {% elif node_name == "Window" %}
+        self.rootBuilder = rootBuilder
+        {% endif %}
+        {% if node_name == "App" %}
+        super.init(context: context, viewController: ())
+        {% else %}
         super.init(context: context, viewController: viewController)
+        {% endif %}
     }
-    {% endif %}
 
     /// Implement logic to execute when the Flow is started.
     {% if node_name == "Scene" %}

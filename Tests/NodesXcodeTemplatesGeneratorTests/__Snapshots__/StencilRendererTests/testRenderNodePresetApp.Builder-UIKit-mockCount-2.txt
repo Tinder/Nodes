@@ -61,6 +61,22 @@ public final class AppComponent: BootstrapComponent {
 
     fileprivate let appService: AppService = AppServiceImp()
 
+    // periphery:ignore
+    private let dynamicDependency: AppDynamicComponentDependency
+
+    // periphery:ignore
+    /// The initializer.
+    ///
+    /// Remove `dynamicDependency` default parameter when its type is not `Void`.
+    ///
+    /// - Parameter dynamicDependency: The dynamic component dependency
+    internal init(
+        dynamicDependency: AppDynamicComponentDependency = ()
+    ) {
+        self.dynamicDependency = dynamicDependency
+        super.init()
+    }
+
     /*
      Child Components
      ================
@@ -123,7 +139,10 @@ internal final class AppBuilderImp: AbstractBuilder
         component: AppComponent,
         dynamicBuildDependency: AppDynamicBuildDependency
     ) -> AppFlow {
-        let analytics: AppAnalyticsImp = .init()
+        let analytics: AppAnalyticsImp = .init(
+            <analyticsPropertyName1>: component.<analyticsPropertyName1>,
+            <analyticsPropertyName2>: component.<analyticsPropertyName2>
+        )
         let context: AppContextImp = .init(
             workers: [],
             analytics: analytics,

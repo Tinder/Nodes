@@ -20,6 +20,8 @@ internal final class WindowFlowImp: AbstractFlow
     WindowViewControllable
 > {
 
+    private let <flowPropertyName>: <flowPropertyType>
+
     private let rootBuilder: RootBuilder
 
     /// The initializer.
@@ -28,12 +30,15 @@ internal final class WindowFlowImp: AbstractFlow
     /// - Parameters:
     ///   - context: The Context instance
     ///   - viewController: The View Controller instance
+    ///   - <flowPropertyName>: The <flowPropertyType> instance
     ///   - rootBuilder: The Root Builder instance
     internal init(
         context: WindowContextInterface,
         viewController: WindowViewControllable,
+        <flowPropertyName>: <flowPropertyType>,
         rootBuilder: RootBuilder
     ) {
+        self.<flowPropertyName> = <flowPropertyName>
         self.rootBuilder = rootBuilder
         super.init(context: context, viewController: viewController)
     }

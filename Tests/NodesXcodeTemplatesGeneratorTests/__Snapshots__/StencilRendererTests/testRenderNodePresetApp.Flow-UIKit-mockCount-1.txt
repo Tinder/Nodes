@@ -20,6 +20,8 @@ internal final class AppFlowImp: AbstractFlow
     Void
 > {
 
+    private let <flowPropertyName>: <flowPropertyType>
+
     private let sceneBuilder: SceneBuilder
 
     /// The initializer.
@@ -27,11 +29,14 @@ internal final class AppFlowImp: AbstractFlow
     /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
     /// - Parameters:
     ///   - context: The Context instance
+    ///   - <flowPropertyName>: The <flowPropertyType> instance
     ///   - sceneBuilder: The Scene Builder instance
     internal init(
         context: AppContextInterface,
+        <flowPropertyName>: <flowPropertyType>,
         sceneBuilder: SceneBuilder
     ) {
+        self.<flowPropertyName> = <flowPropertyName>
         self.sceneBuilder = sceneBuilder
         super.init(context: context, viewController: ())
     }
@@ -41,6 +46,7 @@ internal final class AppFlowImp: AbstractFlow
 }
 
 extension AppFlowImp: AppFlow {}
+
 extension AppFlowImp: AppFlowInterface {
 
     internal func attachScene(_ viewController: WindowSceneViewControllable) {
@@ -50,9 +56,6 @@ extension AppFlowImp: AppFlowInterface {
     }
 
     internal func detachScene(_ viewController: WindowSceneViewControllable) {
-        subFlows
-            .compactMap { $0 as? SceneFlow }
-            .filter { $0.getViewController() === viewController }
-            .forEach(detach)
+        detach(endingSubFlowsOfType: SceneFlow.self) { $0.getViewController() === viewController }
     }
 }

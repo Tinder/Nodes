@@ -39,6 +39,7 @@ internal final class AppFlowImp: AbstractFlow
 }
 
 extension AppFlowImp: AppFlow {}
+
 extension AppFlowImp: AppFlowInterface {
 
     internal func attachScene(_ viewController: WindowSceneViewControllable) {
@@ -48,9 +49,6 @@ extension AppFlowImp: AppFlowInterface {
     }
 
     internal func detachScene(_ viewController: WindowSceneViewControllable) {
-        subFlows
-            .compactMap { $0 as? SceneFlow }
-            .filter { $0.getViewController() === viewController }
-            .forEach(detach)
+        detach(endingSubFlowsOfType: SceneFlow.self) { $0.getViewController() === viewController }
     }
 }

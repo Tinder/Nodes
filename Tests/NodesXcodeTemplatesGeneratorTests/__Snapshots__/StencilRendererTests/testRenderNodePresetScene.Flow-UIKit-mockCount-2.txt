@@ -21,6 +21,9 @@ internal final class SceneFlowImp: AbstractFlow
     WindowSceneViewControllable
 > {
 
+    private let <flowPropertyName1>: <flowPropertyType1>
+    private let <flowPropertyName2>: <flowPropertyType2>
+
     private let windowBuilder: WindowBuilder
 
     /// The initializer.
@@ -29,12 +32,18 @@ internal final class SceneFlowImp: AbstractFlow
     /// - Parameters:
     ///   - context: The Context instance
     ///   - viewController: The View Controller instance
+    ///   - <flowPropertyName1>: The <flowPropertyType1> instance
+    ///   - <flowPropertyName2>: The <flowPropertyType2> instance
     ///   - windowBuilder: The Window Builder instance
     internal init(
         context: SceneContextInterface,
         viewController: WindowSceneViewControllable,
+        <flowPropertyName1>: <flowPropertyType1>,
+        <flowPropertyName2>: <flowPropertyType2>,
         windowBuilder: WindowBuilder
     ) {
+        self.<flowPropertyName1> = <flowPropertyName1>
+        self.<flowPropertyName2> = <flowPropertyName2>
         self.windowBuilder = windowBuilder
         super.init(context: context, viewController: viewController)
     }

@@ -166,7 +166,10 @@ internal final class SceneBuilderImp: AbstractBuilder
     ) -> SceneFlow {
         let listener: SceneListener = dynamicBuildDependency.0
         let viewController: WindowSceneViewControllable = dynamicBuildDependency.1
-        let analytics: SceneAnalyticsImp = .init()
+        let analytics: SceneAnalyticsImp = .init(
+            <analyticsPropertyName1>: component.dependency.<analyticsPropertyName1>,
+            <analyticsPropertyName2>: component.dependency.<analyticsPropertyName2>
+        )
         let context: SceneContextImp = .init(
             workers: [],
             analytics: analytics

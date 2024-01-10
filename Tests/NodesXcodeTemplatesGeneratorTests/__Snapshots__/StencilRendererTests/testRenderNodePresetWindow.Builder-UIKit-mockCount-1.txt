@@ -162,7 +162,9 @@ internal final class WindowBuilderImp: AbstractBuilder
     ) -> WindowFlow {
         let listener: WindowListener = dynamicBuildDependency.0
         let viewController: WindowViewControllable = dynamicBuildDependency.1
-        let analytics: WindowAnalyticsImp = .init()
+        let analytics: WindowAnalyticsImp = .init(
+            <analyticsPropertyName>: component.dependency.<analyticsPropertyName>
+        )
         let context: WindowContextImp = .init(
             workers: [],
             analytics: analytics

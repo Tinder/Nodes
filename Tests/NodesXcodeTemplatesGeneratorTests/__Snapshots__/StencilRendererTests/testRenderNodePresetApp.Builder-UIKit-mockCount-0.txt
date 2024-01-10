@@ -58,6 +58,20 @@ public final class AppComponent: BootstrapComponent {
 
     fileprivate let appService: AppService = AppServiceImp()
 
+    private let dynamicDependency: AppDynamicComponentDependency
+
+    /// The initializer.
+    ///
+    /// Remove `dynamicDependency` default parameter when its type is not `Void`.
+    ///
+    /// - Parameter dynamicDependency: The dynamic component dependency
+    internal init(
+        dynamicDependency: AppDynamicComponentDependency = ()
+    ) {
+        self.dynamicDependency = dynamicDependency
+        super.init()
+    }
+
     /*
      Child Components
      ================
