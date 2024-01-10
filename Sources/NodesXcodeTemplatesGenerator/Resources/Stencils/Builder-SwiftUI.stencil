@@ -201,11 +201,11 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         let flow: {{ node_name }}FlowImp = .init(
             context: context,
             viewController: viewController{% if flow_properties %}{{ ',' }}
-            {% endif %}
             {% for property in flow_properties %}
             {{ property.name }}: component{% if node_name != "App" %}.dependency{% endif %}.{{ property.name }}{% if not forloop.last %}{{ ',' }}
             {% endif %}
-            {% endfor +%}
+            {% endfor %}
+            {% endif +%}
         )
         context.flow = flow
         return flow

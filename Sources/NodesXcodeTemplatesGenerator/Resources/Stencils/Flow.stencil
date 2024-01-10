@@ -89,11 +89,11 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {% endif %}
         context: {{ node_name }}ContextInterface{% if node_name != "App" %}{{ ',' }}
         viewController: {%+ if node_name == "Scene" %}Window{% endif %}{{ node_name }}ViewControllable{% endif +%}{% if flow_properties %}{{ ',' }}
-        {% endif %}
         {% for property in flow_properties %}
         {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}
         {% endif %}
-        {% endfor +%}{% if node_name == "App" %}{{ ',' }}
+        {% endfor %}
+        {% endif +%}{% if node_name == "App" %}{{ ',' }}
         sceneBuilder: SceneBuilder{% endif +%}{% if node_name == "Scene" %}{{ ',' }}
         windowBuilder: WindowBuilder{% endif +%}{% if node_name == "Window" %}{{ ',' }}
         rootBuilder: RootBuilder{% endif +%}
