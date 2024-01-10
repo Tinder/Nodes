@@ -181,6 +181,8 @@ internal final class SceneBuilderImp: AbstractBuilder
         let flow: SceneFlowImp = .init(
             context: context,
             viewController: viewController,
+            <flowPropertyName1>: component.dependency.<flowPropertyName1>,
+            <flowPropertyName2>: component.dependency.<flowPropertyName2>,
             windowBuilder: WindowBuilderImp(componentFactory: component.windowComponentFactory)
         )
         context.flow = flow

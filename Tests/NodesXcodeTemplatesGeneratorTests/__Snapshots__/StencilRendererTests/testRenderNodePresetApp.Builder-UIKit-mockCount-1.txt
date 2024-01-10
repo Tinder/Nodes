@@ -150,6 +150,7 @@ internal final class AppBuilderImp: AbstractBuilder
         )
         let flow: AppFlowImp = .init(
             context: context,
+            <flowPropertyName>: component.<flowPropertyName>,
             sceneBuilder: SceneBuilderImp(componentFactory: component.sceneComponentFactory)
         )
         context.flow = flow

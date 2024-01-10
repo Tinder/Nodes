@@ -176,6 +176,7 @@ internal final class WindowBuilderImp: AbstractBuilder
         let flow: WindowFlowImp = .init(
             context: context,
             viewController: viewController,
+            <flowPropertyName>: component.dependency.<flowPropertyName>,
             rootBuilder: RootBuilderImp(componentFactory: component.rootComponentFactory)
         )
         context.flow = flow

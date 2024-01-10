@@ -294,23 +294,16 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         viewController.receiver = context
         {% endif %}
         let flow: {{ node_name }}FlowImp = .init(
-            context: context,
-            {% if node_name == "App" %}
-            sceneBuilder: SceneBuilderImp(componentFactory: component.sceneComponentFactory)
-            {% elif node_name == "Scene" %}
-            viewController: viewController,
-            windowBuilder: WindowBuilderImp(componentFactory: component.windowComponentFactory)
-            {% elif node_name == "Window" %}
-            viewController: viewController,
-            rootBuilder: RootBuilderImp(componentFactory: component.rootComponentFactory)
-            {% else %}
-            viewController: viewController{% if flow_properties %}{{ ',' }}
+            context: context{% if node_name != "App" %}{{ ',' }}
+            viewController: viewController{% endif +%}{% if flow_properties %}{{ ',' }}
             {% endif %}
             {% for property in flow_properties %}
             {{ property.name }}: component{% if node_name != "App" %}.dependency{% endif %}.{{ property.name }}{% if not forloop.last %}{{ ',' }}
             {% endif %}
-            {% endfor +%}
-            {% endif %}
+            {% endfor +%}{% if node_name == "App" %}{{ ',' }}
+            sceneBuilder: SceneBuilderImp(componentFactory: component.sceneComponentFactory){% endif +%}{% if node_name == "Scene" %}{{ ',' }}
+            windowBuilder: WindowBuilderImp(componentFactory: component.windowComponentFactory){% endif +%}{% if node_name == "Window" %}{{ ',' }}
+            rootBuilder: RootBuilderImp(componentFactory: component.rootComponentFactory){% endif +%}
         )
         context.flow = flow
         return flow
