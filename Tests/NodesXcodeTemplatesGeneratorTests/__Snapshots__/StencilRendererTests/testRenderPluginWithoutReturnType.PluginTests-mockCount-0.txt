@@ -8,10 +8,11 @@ final class <pluginName>PluginTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        plugin = .init(componentFactory: injectComponent {
+        plugin = <pluginName>PluginImp(componentFactory: injectComponent {
             <pluginName>PluginComponent(parent: $0)
         } with: {
             let dependency: <pluginName>PluginDependencyMock = .init()
+            // dependency.<dependencyName> = <dependencyName>Mock
             return dependency
         })
     }
@@ -26,6 +27,6 @@ final class <pluginName>PluginTests: XCTestCase {
     }
 
     func testOverride() {
-        XCTAssertTrue(plugin.override() is <pluginName>Builder)
+        XCTAssertNotNil(plugin.override())
     }
 }
