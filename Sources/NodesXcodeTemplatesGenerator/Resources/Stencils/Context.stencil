@@ -11,6 +11,7 @@ import {{ import }}
  The Context delegates callbacks to its (external) Listener, typically the parent Context.
  */
 /// @mockable
+@MainActor
 internal protocol {{ node_name }}Listener: AnyObject {}
 
 /**
@@ -19,6 +20,7 @@ internal protocol {{ node_name }}Listener: AnyObject {}
  an example.
  */
 /// @mockable
+@MainActor
 {% if node_name == "Root" %}
 internal protocol {{ node_name }}FlowInterface: Flow {
     func didBecomeReady()

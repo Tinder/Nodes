@@ -8,6 +8,7 @@ import <pluginImport2>
  Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
  */
 /// @mockable
+@MainActor
 public protocol <pluginName>PluginDependency: Dependency {}
 
 /**
@@ -69,6 +70,7 @@ internal typealias <pluginName>PluginStateType = Void
  The Plugin interface (available to mock for testability).
  */
 /// @mockable
+@MainActor
 internal protocol <pluginName>Plugin {
     func create() -> <returnType>?
 }

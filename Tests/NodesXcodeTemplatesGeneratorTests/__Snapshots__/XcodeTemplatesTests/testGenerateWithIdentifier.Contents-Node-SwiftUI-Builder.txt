@@ -9,6 +9,7 @@ import Nodes
  The interface of the Flow.
  */
 /// @mockable
+@MainActor
 internal protocol ___VARIABLE_productName___Flow: ViewControllableFlow {}
 
 /**
@@ -16,6 +17,7 @@ internal protocol ___VARIABLE_productName___Flow: ViewControllableFlow {}
  Declares the dependencies required by this Node that will be injected (not created by this Node itself).
  */
 /// @mockable
+@MainActor
 public protocol ___VARIABLE_productName___Dependency: Dependency {}
 
 /**
@@ -107,6 +109,7 @@ public final class ___VARIABLE_productName___Component: Component
  The Builder interface (available to mock for testability).
  */
 /// @mockable
+@MainActor
 internal protocol ___VARIABLE_productName___Builder: AnyObject {
     func build(
         withListener listener: ___VARIABLE_productName___Listener

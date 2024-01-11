@@ -14,10 +14,11 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        plugin = .init(componentFactory: injectComponent {
+        plugin = {{ plugin_name }}PluginImp(componentFactory: injectComponent {
             {{ plugin_name }}PluginComponent(parent: $0)
         } with: {
             let dependency: {{ plugin_name }}PluginDependencyMock = .init()
+            // dependency.<dependencyName> = <dependencyName>Mock
             return dependency
         })
     }
@@ -28,10 +29,18 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
     }
 
     func testPluginIsNotEnabled() {
+        {% if is_nimble_enabled %}
+        expect { self.plugin.create() } == nil
+        {% else %}
         XCTAssertNil(plugin.create())
+        {% endif %}
     }
 
     func testOverride() {
-        XCTAssertTrue(plugin.override() is {{ plugin_name }}Builder)
+        {% if is_nimble_enabled %}
+        expect { self.plugin.override() } != nil
+        {% else %}
+        XCTAssertNotNil(plugin.override())
+        {% endif %}
     }
 }

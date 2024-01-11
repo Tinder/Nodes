@@ -12,6 +12,10 @@ extension UIFramework {
                 preconditionFailure("init(coder:) has not been implemented")
             }
 
+            override internal func loadView() {
+                view = NSView()
+            }
+
             override internal func viewDidLoad() {
                 super.viewDidLoad()
                 update(with: initialState)
