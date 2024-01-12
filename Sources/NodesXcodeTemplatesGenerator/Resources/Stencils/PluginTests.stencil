@@ -8,6 +8,7 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
+@MainActor
 final class {{ plugin_name }}PluginTests: XCTestCase {
 
     private var plugin: {{ plugin_name }}PluginImp!
