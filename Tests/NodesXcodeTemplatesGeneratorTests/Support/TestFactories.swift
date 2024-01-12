@@ -193,7 +193,8 @@ extension TestFactories {
             pluginName: "<pluginName>",
             pluginImports: .mock(with: "pluginImport", count: mockCount),
             pluginTestsImports: .mock(with: "pluginTestsImport", count: mockCount),
-            isPeripheryCommentEnabled: mockCount > 0
+            isPeripheryCommentEnabled: mockCount > 0,
+            isNimbleEnabled: mockCount > 0
         )
     }
 
