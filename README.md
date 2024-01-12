@@ -178,8 +178,8 @@ brew reinstall --build-from-source mockolo
 
 ### UI Frameworks
 
-While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui) (for iOS), custom [configuration is required](Configuration.md) to use other UI frameworks, such as [AppKit](https://developer.apple.com/documentation/appkit).
+While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui) (for iOS), custom [configuration is required](Customization/Configuration.md) to use other UI frameworks, such as [AppKit](https://developer.apple.com/documentation/appkit).
 
 ### Reactive Frameworks
 
-While Nodes works out-of-the-box with [Combine](https://developer.apple.com/documentation/combine), custom [configuration and setup is required](RxSwift.md) to use other reactive frameworks, such [RxSwift](https://github.com/ReactiveX/RxSwift).
+While Nodes works out-of-the-box with [Combine](https://developer.apple.com/documentation/combine), custom [configuration and setup is required](Customization/RxSwift.md) to use other reactive frameworks, such [RxSwift](https://github.com/ReactiveX/RxSwift).
