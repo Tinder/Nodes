@@ -5,6 +5,7 @@
 import <flowTestsImport1>
 import <flowTestsImport2>
 
+@MainActor
 final class <nodeName>FlowTests: XCTestCase {
 
     private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {

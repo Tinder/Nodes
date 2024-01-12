@@ -4,6 +4,7 @@
 
 import <contextTestsImport>
 
+@MainActor
 final class <nodeName>ContextTests: XCTestCase {
 
     private var analyticsMock: <nodeName>AnalyticsMock!
