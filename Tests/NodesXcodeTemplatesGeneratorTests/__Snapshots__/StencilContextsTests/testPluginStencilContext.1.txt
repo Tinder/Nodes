@@ -1,7 +1,10 @@
-▿ 6 key/value pairs
+▿ 7 key/value pairs
   ▿ (2 elements)
     - key: "file_header"
     - value: "<fileHeader>"
+  ▿ (2 elements)
+    - key: "is_nimble_enabled"
+    - value: true
   ▿ (2 elements)
     - key: "is_periphery_comment_enabled"
     - value: true

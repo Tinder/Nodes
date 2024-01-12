@@ -29,7 +29,8 @@ internal struct PluginXcodeTemplate: XcodeTemplate {
             returnType: Self.variable("returnType"),
             pluginImports: plugin.imports(config: config),
             pluginTestsImports: pluginTests.imports(config: config),
-            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
+            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
+            isNimbleEnabled: config.isNimbleEnabled
         )
     }
 }

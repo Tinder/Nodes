@@ -21,6 +21,7 @@
     - supportsSwiftPackage: true
   ▿ stencilContext: PluginStencilContext
     - fileHeader: "<fileHeader>"
+    - isNimbleEnabled: false
     - isPeripheryCommentEnabled: false
     ▿ pluginImports: 3 elements
       - "<baseImport>"
