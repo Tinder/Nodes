@@ -8,6 +8,7 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
+@MainActor
 final class {{ node_name }}FlowTests: XCTestCase {
 
     {% if view_controllable_mock_contents %}

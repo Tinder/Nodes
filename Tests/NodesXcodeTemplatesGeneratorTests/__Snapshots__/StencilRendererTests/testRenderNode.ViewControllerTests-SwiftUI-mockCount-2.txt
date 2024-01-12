@@ -5,6 +5,7 @@
 import <viewControllerTestsImport1>
 import <viewControllerTestsImport2>
 
+@MainActor
 final class <nodeName>ViewControllerTests: XCTestCase {
 
     func testNotNil() {
