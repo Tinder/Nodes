@@ -18,6 +18,6 @@ jobs:
     - name: Checkout source
       uses: actions/checkout@v3
     - name: Build
-      run: swift build -v
+      run: swift build -v -Xswiftc -warnings-as-errors
     - name: Test
       run: swift test -v
