@@ -147,6 +147,6 @@ extension Array where Element == SwiftSetting {
     static var swiftSettings: [SwiftSetting] {
         guard let value: String = Context.environment["STRICT_CONCURRENCY_CHECKING"]
         else { return [] }
-        return [.unsafeFlags(["-strict-concurrency=\(value)"])]
+        return [.unsafeFlags(["-warnings-as-errors", "-strict-concurrency=\(value)"])]
     }
 }
