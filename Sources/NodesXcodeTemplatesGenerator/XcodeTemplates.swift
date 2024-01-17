@@ -45,4 +45,12 @@ public final class XcodeTemplates {
         let generator: XcodeTemplateGenerator = .init(fileSystem: fileSystem)
         try templates.forEach { try generator.generate(template: $0, into: url) }
     }
+
+    private func example() {
+        class Example {}
+        let example: Example = .init()
+        DispatchQueue.main.async {
+            print(example)
+        }
+    }
 }
