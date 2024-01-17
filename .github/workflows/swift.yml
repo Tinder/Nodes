@@ -8,7 +8,7 @@ on:
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_15.0.app/Contents/Developer
-  STRICT_CONCURRENCY_CHECKING: true
+  STRICT_CONCURRENCY_CHECKING: complete
 
 jobs:
   swift:

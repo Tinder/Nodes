@@ -2,17 +2,6 @@
 
 import PackageDescription
 
-extension SwiftSetting {
-
-    static var strictConcurrencyChecking: SwiftSetting {
-        if Context.environment["STRICT_CONCURRENCY_CHECKING"] != nil {
-            return .unsafeFlags(["-strict-concurrency=complete"])
-        } else {
-            return .enableUpcomingFeature("StrictConcurrency")
-        }
-    }
-}
-
 let packageName = "Nodes"
 
 enum SwiftLint {
@@ -71,9 +60,7 @@ let package = Package(
     targets: [
         .target(
             name: "Nodes",
-            swiftSettings: [
-                .strictConcurrencyChecking,
-            ],
+            swiftSettings: .swiftSettings,
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
@@ -82,9 +69,7 @@ let package = Package(
             dependencies: [
                 .product(name: "NeedleFoundation", package: "needle")
             ],
-            swiftSettings: [
-                .strictConcurrencyChecking,
-            ],
+            swiftSettings: .swiftSettings,
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
@@ -98,9 +83,7 @@ let package = Package(
             resources: [
                 .process("Resources"),
             ],
-            swiftSettings: [
-                .strictConcurrencyChecking,
-            ],
+            swiftSettings: .swiftSettings,
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
@@ -158,3 +141,12 @@ let package = Package(
             checksum: "963121d6babf2bf5fd66a21ac9297e86d855cbc9d28322790646b88dceca00f1"),
     ]
 )
+
+extension Array where Element == SwiftSetting {
+
+    static var swiftSettings: [SwiftSetting] {
+        guard let value: String = Context.environment["STRICT_CONCURRENCY_CHECKING"]
+        else { return [] }
+        return [.unsafeFlags(["-strict-concurrency=\(value)"])]
+    }
+}
