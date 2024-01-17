@@ -2,6 +2,17 @@
 
 import PackageDescription
 
+extension SwiftSetting {
+
+    static var strictConcurrencyChecking: SwiftSetting {
+        if Context.environment["STRICT_CONCURRENCY_CHECKING"] != nil {
+            return .unsafeFlags(["-strict-concurrency=complete"])
+        } else {
+            return .enableUpcomingFeature("StrictConcurrency")
+        }
+    }
+}
+
 let packageName = "Nodes"
 
 enum SwiftLint {
@@ -61,7 +72,7 @@ let package = Package(
         .target(
             name: "Nodes",
             swiftSettings: [
-                .unsafeFlags(["-strict-concurrency=complete"]),
+                .strictConcurrencyChecking,
             ],
             plugins: [
                 .plugin(name: SwiftLint.plugin),
@@ -72,7 +83,7 @@ let package = Package(
                 .product(name: "NeedleFoundation", package: "needle")
             ],
             swiftSettings: [
-                .unsafeFlags(["-strict-concurrency=complete"]),
+                .strictConcurrencyChecking,
             ],
             plugins: [
                 .plugin(name: SwiftLint.plugin),
@@ -88,7 +99,7 @@ let package = Package(
                 .process("Resources"),
             ],
             swiftSettings: [
-                .unsafeFlags(["-strict-concurrency=complete"]),
+                .strictConcurrencyChecking,
             ],
             plugins: [
                 .plugin(name: SwiftLint.plugin),
