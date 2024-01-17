@@ -113,16 +113,12 @@ public struct ModalStyle {
         Self(behavior: .custom)
     }
 
-    // swiftlint:disable identifier_name
-
-    /// DEPRECATED - DO NOT USE
-    public func _withAdditionalConfiguration(
+    /// NOT INTENDED FOR USE
+    public func withAdditionalConfiguration(
         configuration additionalConfiguration: @escaping (ViewControllable) -> Void
     ) -> Self {
         Self(behavior: behavior, configuration: configuration + [additionalConfiguration])
     }
-
-    // swiftlint:enable identifier_name
 }
 
 extension UIViewController {

@@ -81,9 +81,9 @@ final class UIViewControllerModalStyleTests: XCTestCase {
         var additionalConfiguration2: [UIViewController] = []
         var additionalConfiguration3: [UIViewController] = []
         let modalStyle: ModalStyle = .cover()
-            ._withAdditionalConfiguration { additionalConfiguration1.append($0._asUIViewController()) }
-            ._withAdditionalConfiguration { additionalConfiguration2.append($0._asUIViewController()) }
-            ._withAdditionalConfiguration { additionalConfiguration3.append($0._asUIViewController()) }
+            .withAdditionalConfiguration { additionalConfiguration1.append($0._asUIViewController()) }
+            .withAdditionalConfiguration { additionalConfiguration2.append($0._asUIViewController()) }
+            .withAdditionalConfiguration { additionalConfiguration3.append($0._asUIViewController()) }
         let viewController: UIViewController = givenViewController(with: modalStyle)
         expect(additionalConfiguration1) == [viewController]
         expect(additionalConfiguration2) == [viewController]
