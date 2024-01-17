@@ -145,7 +145,7 @@ let package = Package(
 extension Array where Element == SwiftSetting {
 
     static var swiftSettings: [SwiftSetting] {
-        guard let value: String = Context.environment["STRICT_CONCURRENCY_CHECKING"]
+        guard let value: String = Context.environment["SWIFT_STRICT_CONCURRENCY"]
         else { return [] }
         return [.unsafeFlags(["-warnings-as-errors", "-strict-concurrency=\(value)"])]
     }
