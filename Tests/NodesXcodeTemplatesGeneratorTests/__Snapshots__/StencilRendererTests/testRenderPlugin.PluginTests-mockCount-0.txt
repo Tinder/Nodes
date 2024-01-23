@@ -2,6 +2,7 @@
 
 #warning("Manually move this test file to the corresponding test target then delete this warning.")
 
+@MainActor
 final class <pluginName>PluginTests: XCTestCase {
 
     private var plugin: <pluginName>PluginImp!

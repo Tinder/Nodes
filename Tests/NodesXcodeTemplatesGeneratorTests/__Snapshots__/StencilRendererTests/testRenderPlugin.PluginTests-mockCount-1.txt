@@ -4,6 +4,7 @@
 
 import <pluginTestsImport>
 
+@MainActor
 final class <pluginName>PluginTests: XCTestCase {
 
     private var plugin: <pluginName>PluginImp!
