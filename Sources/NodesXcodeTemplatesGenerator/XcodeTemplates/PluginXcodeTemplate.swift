@@ -22,7 +22,8 @@ internal struct PluginXcodeTemplate: XcodeTemplate {
     internal init(config: Config) {
         let plugin: StencilTemplate = .plugin
         let pluginTests: StencilTemplate = .pluginTests
-        stencils = config.isTestTemplatesGenerationEnabled ? [plugin, pluginTests] : [plugin]
+        let additional: [StencilTemplate] = config.isTestTemplatesGenerationEnabled ? [pluginTests] : []
+        stencils = [plugin] + additional
         stencilContext = PluginStencilContext(
             fileHeader: config.fileHeader,
             pluginName: Self.variable(Self.productName),
