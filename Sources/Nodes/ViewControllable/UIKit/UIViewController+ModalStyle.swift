@@ -30,7 +30,7 @@ public struct ModalStyle {
         /// The ``UIModalPresentationStyle.formSheet`` behavior.
         case form
 
-        /// The ``UIModalPresentationStyle.custom`` behavior.
+        /// NOT INTENDED FOR USE
         case custom
     }
 
@@ -103,12 +103,7 @@ public struct ModalStyle {
         return Self(behavior: behavior)
     }
 
-    /// A factory method that creates a ``ModalStyle`` with custom behavior.
-    ///
-    /// Custom presentation controlled by ``UIViewControllerTransitioningDelegate``
-    /// and ``UIViewControllerAnimatedTransitioning`` object(s).
-    ///
-    /// - Returns: A ``ModalStyle`` instance with `behavior` set to `.custom`.
+    /// NOT INTENDED FOR USE
     public static func custom() -> Self {
         Self(behavior: .custom)
     }
@@ -142,10 +137,10 @@ extension UIViewController {
             modalPresentationStyle = .formSheet
         #endif
         case .custom:
-            modalPresentationStyle = .custom
+            break
         }
         if #available(iOS 13.0, tvOS 13.0, *) {
-            isModalInPresentation = true
+            isModalInPresentation = modalStyle.behavior != .custom
         }
         modalStyle.configuration.forEach { $0(self) }
         return self
