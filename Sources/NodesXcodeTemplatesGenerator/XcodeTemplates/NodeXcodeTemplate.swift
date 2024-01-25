@@ -9,7 +9,12 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
     internal let stencilContext: StencilContext
     internal let propertyList: PropertyList
 
-    internal init(for kind: UIFramework.Kind, config: Config) throws {
+    internal init(
+        for kind: UIFramework.Kind,
+        config: Config,
+        nodeName: String? = nil,
+        pluginListName: String = ""
+    ) throws {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
         let node: StencilTemplate.Node = .init(for: .variation(for: uiFramework.kind))
         name = "Node - \(uiFramework.name)"
@@ -17,7 +22,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
         // swiftlint:disable:next force_try
         stencilContext = try! NodeStencilContext(
             fileHeader: config.fileHeader,
-            nodeName: Self.variable(Self.productName),
+            nodeName: nodeName ?? Self.variable(Self.productName),
             analyticsImports: node.analytics.imports(for: uiFramework, config: config),
             builderImports: node.builder.imports(for: uiFramework, config: config),
             contextImports: node.context.imports(for: uiFramework, config: config),
@@ -53,7 +58,8 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
             workerGenericTypes: config.workerGenericTypes,
             isPreviewProviderEnabled: config.isPreviewProviderEnabled,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
-            isNimbleEnabled: config.isNimbleEnabled
+            isNimbleEnabled: config.isNimbleEnabled,
+            pluginListName: pluginListName
         )
         propertyList = PropertyList(description: "The source files implementing a Node.",
                                     // swiftlint:disable:next force_unwrapping

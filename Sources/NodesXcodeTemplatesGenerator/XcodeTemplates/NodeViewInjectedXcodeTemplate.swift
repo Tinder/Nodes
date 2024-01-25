@@ -16,13 +16,13 @@ internal struct NodeViewInjectedXcodeTemplate: XcodeTemplate {
                    description: "The name of the Node")
         }
 
-    internal init(config: Config) {
+    internal init(config: Config, nodeName: String? = nil) {
         let node: StencilTemplate.NodeViewInjected = .init()
         stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
         // swiftlint:disable:next force_try
         stencilContext = try! NodeViewInjectedStencilContext(
             fileHeader: config.fileHeader,
-            nodeName: Self.variable(Self.productName),
+            nodeName:  nodeName ?? Self.variable(Self.productName),
             analyticsImports: node.analytics.imports(config: config),
             builderImports: node.builder.imports(config: config),
             contextImports: node.context.imports(config: config),

@@ -16,7 +16,7 @@ internal struct PluginListNodeXcodeTemplate: XcodeTemplate {
                    description: "The name of the Plugin List")
         }
 
-    internal init(config: Config) {
+    internal init(config: Config, pluginListItemName: String = "") {
         let pluginList: StencilTemplate = .pluginList
         stencils = [pluginList]
         stencilContext = PluginListStencilContext(
@@ -24,7 +24,8 @@ internal struct PluginListNodeXcodeTemplate: XcodeTemplate {
             pluginListName: Self.variable(Self.productName),
             pluginListImports: pluginList.imports(config: config),
             viewControllableFlowType: config.viewControllableFlowType,
-            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
+            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
+            pluginListItemName: pluginListItemName
         )
     }
 }

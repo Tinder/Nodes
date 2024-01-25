@@ -16,12 +16,12 @@ internal struct PluginNodeXcodeTemplate: XcodeTemplate {
                    description: "The name of the Plugin")
         }
 
-    internal init(config: Config) {
+    internal init(config: Config, pluginName: String? = nil) {
         let plugin: StencilTemplate = .plugin
         stencils = [plugin]
         stencilContext = PluginStencilContext(
             fileHeader: config.fileHeader,
-            pluginName: Self.variable(Self.productName),
+            pluginName: pluginName ?? Self.variable(Self.productName),
             pluginImports: plugin.imports(config: config),
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
         )

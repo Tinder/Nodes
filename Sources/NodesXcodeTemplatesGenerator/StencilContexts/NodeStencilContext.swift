@@ -42,6 +42,7 @@ public struct NodeStencilContext: StencilContext {
     private let isPreviewProviderEnabled: Bool
     private let isPeripheryCommentEnabled: Bool
     private let isNimbleEnabled: Bool
+    private let pluginListName: String
 
     internal var dictionary: [String: Any] {
         [
@@ -83,7 +84,8 @@ public struct NodeStencilContext: StencilContext {
             "worker_generic_types": workerGenericTypes,
             "is_preview_provider_enabled": isPreviewProviderEnabled,
             "is_periphery_comment_enabled": isPeripheryCommentEnabled,
-            "is_nimble_enabled": isNimbleEnabled
+            "is_nimble_enabled": isNimbleEnabled,
+            "plugin_list_name": pluginListName
         ]
     }
 
@@ -125,7 +127,8 @@ public struct NodeStencilContext: StencilContext {
         workerGenericTypes: [String],
         isPreviewProviderEnabled: Bool,
         isPeripheryCommentEnabled: Bool,
-        isNimbleEnabled: Bool
+        isNimbleEnabled: Bool,
+        pluginListName: String
     ) throws {
         guard NodePresetStencilContext.Preset(rawValue: nodeName) == nil
         else { throw StencilContextError.reservedNodeName(nodeName) }
@@ -167,5 +170,6 @@ public struct NodeStencilContext: StencilContext {
         self.isPreviewProviderEnabled = isPreviewProviderEnabled
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
         self.isNimbleEnabled = isNimbleEnabled
+        self.pluginListName = pluginListName
     }
 }
