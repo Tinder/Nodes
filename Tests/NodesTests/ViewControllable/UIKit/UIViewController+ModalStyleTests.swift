@@ -69,7 +69,7 @@ final class UIViewControllerModalStyleTests: XCTestCase {
         expect(modalStyle.behavior) == .custom
 
         let viewController: UIViewController = givenViewController(with: modalStyle)
-        expect(viewController.modalPresentationStyle) == .custom
+        expect(viewController.modalPresentationStyle) == UIModalPresentationStyle.none
 
         if #available(iOS 13.0, tvOS 13.0, *) {
             expect(viewController.isModalInPresentation) == true

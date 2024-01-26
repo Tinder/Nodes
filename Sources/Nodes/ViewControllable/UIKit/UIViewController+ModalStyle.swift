@@ -137,7 +137,7 @@ extension UIViewController {
             modalPresentationStyle = .formSheet
         #endif
         case .custom:
-            break
+            modalPresentationStyle = .none
         }
         if #available(iOS 13.0, tvOS 13.0, *) {
             isModalInPresentation = modalStyle.behavior != .custom
