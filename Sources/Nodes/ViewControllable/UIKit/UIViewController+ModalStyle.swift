@@ -139,7 +139,7 @@ extension UIViewController {
         case .custom:
             modalPresentationStyle = .none
         }
-        isModalInPresentation = modalStyle.behavior != .custom
+        isModalInPresentation = true
         modalStyle.configuration.forEach { $0(self) }
         return self
     }
