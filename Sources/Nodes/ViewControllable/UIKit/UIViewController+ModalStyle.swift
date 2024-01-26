@@ -139,9 +139,7 @@ extension UIViewController {
         case .custom:
             modalPresentationStyle = .none
         }
-        if #available(iOS 13.0, tvOS 13.0, *) {
-            isModalInPresentation = modalStyle.behavior != .custom
-        }
+        isModalInPresentation = modalStyle.behavior != .custom
         modalStyle.configuration.forEach { $0(self) }
         return self
     }
