@@ -43,7 +43,7 @@ let package = Package(
             from: "0.3.0"),
         .package(
             url: "https://github.com/jpsim/Yams.git",
-            from: "4.0.0"),
+            from: "5.0.0"),
         .package(
             url: "https://github.com/stencilproject/Stencil.git",
             from: "0.15.0"),
