@@ -52,6 +52,7 @@ jobs:
         -scheme "Tinder"
         -destination "name=$SIMULATOR,OS=latest"
         -configuration "Debug"
+        SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
     - name: Run tests
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
