@@ -2404,7 +2404,7 @@ files:
           then
               WORKSPACE_DOCUMENT_NAME="{{ project|replace:' ','_' }}.xcodeproj"
               osascript \
-                  -e 'set workspaceDocumentName to "'"${WORKSPACE_DOCUMENT_NAME}"'"' \
+                  -e 'set workspaceDocumentName to "'"$WORKSPACE_DOCUMENT_NAME"'"' \
                   -e 'if app id "com.apple.dt.Xcode" is running then' \
                   -e 'tell app id "com.apple.dt.Xcode"' \
                   -e 'if workspace document workspaceDocumentName exists then' \
@@ -2423,15 +2423,13 @@ files:
                   -e 'end if' \
                   -e 'end tell' \
                   -e 'end if'
-              unset WORKSPACE_DOCUMENT_NAME
           else
-              echo "AppleScript is not executed in CI."
+              echo "AppleScript to close the Xcode project is not executed in CI."
           fi
           NEEDLE_GENERATED="{{ project|replace:' ','_' }}/Generated/NeedleGenerated.swift"
           MOCKOLO_GENERATED="{{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift"
-          [[ -f "${NEEDLE_GENERATED}" ]] || touch "${NEEDLE_GENERATED}"
-          [[ -f "${MOCKOLO_GENERATED}" ]] || touch "${MOCKOLO_GENERATED}"
-          unset NEEDLE_GENERATED MOCKOLO_GENERATED
+          [[ -f "$NEEDLE_GENERATED" ]] || touch "$NEEDLE_GENERATED"
+          [[ -f "$MOCKOLO_GENERATED" ]] || touch "$MOCKOLO_GENERATED"
         postGenCommand: |
           set -e
           if test -z "$CI"
@@ -2451,10 +2449,17 @@ files:
           fi
           if test -z "$CI"
           then
-              swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
+              echo "⚙️  Installing Xcode templates..."
+              swift build --product nodes-xcode-templates-gen >/dev/null
+              swift run --skip-build -- nodes-xcode-templates-gen --id "Xcode Templates"
+          else
+              echo "Xcode templates are not installed in CI."
+          fi
+          if test -z "$CI"
+          then
+              echo "⚙️  Opening project..."
               xed {{ project|replace:' ','_' }}.xcodeproj
           else
-              echo "Nodes Xcode templates are not installed in CI."
               echo "Xcode project is not opened in CI."
           fi
       packages:

@@ -10,7 +10,14 @@ import {{ import }}
  PURPOSE:
  The view state of the view.
  */
+{% if node_name == "Root" %}
+internal struct {{ node_name }}ViewState: Equatable {
+
+    internal let title: String
+}
+{% else %}
 internal struct {{ node_name }}ViewState: Equatable {}
+{% endif %}
 
 /**
  PURPOSE:
@@ -25,6 +32,10 @@ internal class {{ node_name }}ViewStateFactory: Nodes.Transform {
     internal func callAsFunction(
         _ state: {{ node_name }}State
     ) -> {{ node_name }}ViewState {
+        {% if node_name == "Root" %}
+        {{ node_name }}ViewState(title: state.name)
+        {% else %}
         {{ node_name }}ViewState()
+        {% endif %}
     }
 }

@@ -2,14 +2,14 @@
 
 While Nodes works out-of-the-box with [Combine](https://developer.apple.com/documentation/combine), the following custom configuration and setup is required to use other reactive frameworks, such [RxSwift](https://github.com/ReactiveX/RxSwift).
 
-## Configure the Xcode Template Generator
+## Configure the Xcode Templates Generator
 
 Specify a path to a custom config file by providing the `--config` option when executing `nodes-xcode-templates-gen`.
 
 If utilizing the [quick start project setup](https://github.com/TinderApp/Nodes#quick-start), the path can be set in the `project.yml` file, for example:
 
 ```
-swift run -- nodes-xcode-templates-gen --id "RxSwift" --config "nodes.yml"
+swift run --skip-build -- nodes-xcode-templates-gen --id "RxSwift" --config "nodes.yml"
 ```
 
 > TIP: The provided `id` value is used to uniquely identify different sets of templates within the new file dialog in Xcode.

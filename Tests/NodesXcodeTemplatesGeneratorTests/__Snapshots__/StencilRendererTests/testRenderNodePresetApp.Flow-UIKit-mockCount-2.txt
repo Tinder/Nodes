@@ -10,16 +10,7 @@ import <flowImport2>
  */
 /// @mockable
 @MainActor
-internal protocol AppContextInterface: Context {}
-
-/**
- PURPOSE:
- The interface of the View used for presenting the View of child Nodes. May inherit additional base
- protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
- implementation as necessary.
- */
-@MainActor
-internal protocol AppViewControllable: <viewControllableType> {}
+internal protocol AppContextInterface: Context, SceneListener {}
 
 /**
  PURPOSE:
@@ -28,29 +19,32 @@ internal protocol AppViewControllable: <viewControllableType> {}
 internal final class AppFlowImp: AbstractFlow
 <
     AppContextInterface,
-    AppViewControllable
+    Void
 > {
 
     private let <flowPropertyName1>: <flowPropertyType1>
     private let <flowPropertyName2>: <flowPropertyType2>
+
+    private let sceneBuilder: SceneBuilder
 
     /// The initializer.
     ///
     /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
     /// - Parameters:
     ///   - context: The Context instance
-    ///   - viewController: The View Controller instance
     ///   - <flowPropertyName1>: The <flowPropertyType1> instance
     ///   - <flowPropertyName2>: The <flowPropertyType2> instance
+    ///   - sceneBuilder: The Scene Builder instance
     internal init(
         context: AppContextInterface,
-        viewController: AppViewControllable,
         <flowPropertyName1>: <flowPropertyType1>,
-        <flowPropertyName2>: <flowPropertyType2>
+        <flowPropertyName2>: <flowPropertyType2>,
+        sceneBuilder: SceneBuilder
     ) {
         self.<flowPropertyName1> = <flowPropertyName1>
         self.<flowPropertyName2> = <flowPropertyName2>
-        super.init(context: context, viewController: viewController)
+        self.sceneBuilder = sceneBuilder
+        super.init(context: context, viewController: ())
     }
 
     /// Implement logic to execute when the Flow is started.
@@ -58,4 +52,16 @@ internal final class AppFlowImp: AbstractFlow
 }
 
 extension AppFlowImp: AppFlow {}
-extension AppFlowImp: AppFlowInterface {}
+
+extension AppFlowImp: AppFlowInterface {
+
+    internal func attachScene(_ viewController: WindowSceneViewControllable) {
+        let flow: SceneFlow = sceneBuilder.build(withListener: context,
+                                                 viewController: viewController)
+        attach(starting: flow)
+    }
+
+    internal func detachScene(_ viewController: WindowSceneViewControllable) {
+        detach(endingSubFlowsOfType: SceneFlow.self) { $0.getViewController() === viewController }
+    }
+}
