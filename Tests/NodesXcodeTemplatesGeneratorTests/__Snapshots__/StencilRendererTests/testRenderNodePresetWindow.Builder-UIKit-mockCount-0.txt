@@ -96,6 +96,10 @@ public final class WindowComponent: Component
      }
 
      */
+
+    fileprivate func rootComponentFactory() -> RootComponent {
+        RootComponent(parent: self)
+    }
 }
 
 // MARK: - Builder
@@ -161,7 +165,8 @@ internal final class WindowBuilderImp: AbstractBuilder
         context.listener = listener
         let flow: WindowFlowImp = .init(
             context: context,
-            viewController: viewController
+            viewController: viewController,
+            rootBuilder: RootBuilderImp(componentFactory: component.rootComponentFactory)
         )
         context.flow = flow
         return flow

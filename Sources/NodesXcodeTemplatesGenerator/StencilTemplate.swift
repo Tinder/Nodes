@@ -20,6 +20,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
     case analyticsTests
     case contextTests
     case flowTests
+    case pluginTests
     case viewControllerTests(Variation)
     case viewStateFactoryTests
 
@@ -192,6 +193,8 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             return "ContextTests"
         case .flowTests:
             return "FlowTests"
+        case .pluginTests:
+            return "PluginTests"
         case .viewControllerTests:
             return "ViewControllerTests"
         case .viewStateFactoryTests:
@@ -206,7 +209,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             return description
         case let .builder(variation), let .viewController(variation):
             return description.appending(variation.rawValue)
-        case .analyticsTests, .contextTests, .flowTests, .viewStateFactoryTests:
+        case .analyticsTests, .contextTests, .flowTests, .pluginTests, .viewStateFactoryTests:
             return description
         case let .viewControllerTests(variation):
             return description.appending(variation.rawValue)
@@ -219,7 +222,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             return imports(config: config)
         case .viewController:
             return imports(config: config).union([uiFramework.import])
-        case .analyticsTests, .contextTests, .flowTests, .viewControllerTests, .viewStateFactoryTests:
+        case .analyticsTests, .contextTests, .flowTests, .pluginTests, .viewControllerTests, .viewStateFactoryTests:
             return imports(config: config)
         }
     }
@@ -239,6 +242,8 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             return baseWithNodes.union(config.reactiveImports).union(config.dependencyInjectionImports)
         case .analyticsTests, .contextTests, .flowTests, .viewStateFactoryTests:
             return config.baseTestImports
+        case .pluginTests:
+            return config.baseTestImports.union(["NodesTesting"])
         case .viewControllerTests:
             return config.baseTestImports.union(config.reactiveImports)
         }

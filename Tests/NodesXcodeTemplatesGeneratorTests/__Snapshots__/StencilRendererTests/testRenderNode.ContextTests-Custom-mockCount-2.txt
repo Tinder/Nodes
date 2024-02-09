@@ -5,6 +5,7 @@
 import <contextTestsImport1>
 import <contextTestsImport2>
 
+@MainActor
 final class <nodeName>ContextTests: XCTestCase {
 
     private var analyticsMock: <nodeName>AnalyticsMock!

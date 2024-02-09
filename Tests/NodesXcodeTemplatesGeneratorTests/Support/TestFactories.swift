@@ -101,39 +101,11 @@ extension TestFactories {
         )
     }
 
-    internal func givenNodeViewInjectedStencilContext(
-        nodeName: String = "<nodeName>",
+    internal func givenNodeStencilContext(
+        preset: Preset,
         mockCount: Int = 1
-    ) throws -> NodeViewInjectedStencilContext {
-        try NodeViewInjectedStencilContext(
-            fileHeader: "<fileHeader>",
-            nodeName: nodeName,
-            analyticsImports: .mock(with: "analyticsImport", count: mockCount),
-            builderImports: .mock(with: "builderImport", count: mockCount),
-            contextImports: .mock(with: "contextImport", count: mockCount),
-            flowImports: .mock(with: "flowImport", count: mockCount),
-            stateImports: .mock(with: "stateImport", count: mockCount),
-            analyticsTestsImports: .mock(with: "analyticsTestsImport", count: mockCount),
-            contextTestsImports: .mock(with: "contextTestsImport", count: mockCount),
-            flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
-            dependencies: .mock(with: "dependency", count: mockCount),
-            analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
-            flowProperties: .mock(with: "flowProperty", count: mockCount),
-            viewControllableFlowType: "<viewControllableFlowType>",
-            viewControllableType: "<viewControllableType>",
-            viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
-            contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
-            workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
-            isPeripheryCommentEnabled: mockCount > 0,
-            isNimbleEnabled: mockCount > 0
-        )
-    }
-
-    internal func givenNodePresetStencilContext(
-        preset: NodePresetStencilContext.Preset,
-        mockCount: Int = 1
-    ) -> NodePresetStencilContext {
-        NodePresetStencilContext(
+    ) throws -> NodeStencilContext {
+        try NodeStencilContext(
             preset: preset,
             fileHeader: "<fileHeader>",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
@@ -175,13 +147,71 @@ extension TestFactories {
         )
     }
 
+    internal func givenNodeViewInjectedStencilContext(
+        nodeName: String = "<nodeName>",
+        mockCount: Int = 1
+    ) throws -> NodeViewInjectedStencilContext {
+        try NodeViewInjectedStencilContext(
+            fileHeader: "<fileHeader>",
+            nodeName: nodeName,
+            analyticsImports: .mock(with: "analyticsImport", count: mockCount),
+            builderImports: .mock(with: "builderImport", count: mockCount),
+            contextImports: .mock(with: "contextImport", count: mockCount),
+            flowImports: .mock(with: "flowImport", count: mockCount),
+            stateImports: .mock(with: "stateImport", count: mockCount),
+            analyticsTestsImports: .mock(with: "analyticsTestsImport", count: mockCount),
+            contextTestsImports: .mock(with: "contextTestsImport", count: mockCount),
+            flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
+            dependencies: .mock(with: "dependency", count: mockCount),
+            analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
+            flowProperties: .mock(with: "flowProperty", count: mockCount),
+            viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllableType: "<viewControllableType>",
+            viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
+            contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
+            workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            isPeripheryCommentEnabled: mockCount > 0,
+            isNimbleEnabled: mockCount > 0
+        )
+    }
+
+    internal func givenNodeViewInjectedStencilContext(
+        preset: Preset,
+        mockCount: Int = 1
+    ) throws -> NodeViewInjectedStencilContext {
+        try NodeViewInjectedStencilContext(
+            preset: preset,
+            fileHeader: "<fileHeader>",
+            analyticsImports: .mock(with: "analyticsImport", count: mockCount),
+            builderImports: .mock(with: "builderImport", count: mockCount),
+            contextImports: .mock(with: "contextImport", count: mockCount),
+            flowImports: .mock(with: "flowImport", count: mockCount),
+            stateImports: .mock(with: "stateImport", count: mockCount),
+            analyticsTestsImports: .mock(with: "analyticsTestsImport", count: mockCount),
+            contextTestsImports: .mock(with: "contextTestsImport", count: mockCount),
+            flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
+            dependencies: .mock(with: "dependency", count: mockCount),
+            analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
+            flowProperties: .mock(with: "flowProperty", count: mockCount),
+            viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllableType: "<viewControllableType>",
+            viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
+            contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
+            workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            isPeripheryCommentEnabled: mockCount > 0,
+            isNimbleEnabled: mockCount > 0
+        )
+    }
+
     internal func givenPluginStencilContext(mockCount: Int = 1) -> PluginStencilContext {
         PluginStencilContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             returnType: "<returnType>",
             pluginImports: .mock(with: "pluginImport", count: mockCount),
-            isPeripheryCommentEnabled: mockCount > 0
+            pluginTestsImports: .mock(with: "pluginTestsImport", count: mockCount),
+            isPeripheryCommentEnabled: mockCount > 0,
+            isNimbleEnabled: mockCount > 0
         )
     }
 
@@ -190,7 +220,9 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             pluginImports: .mock(with: "pluginImport", count: mockCount),
-            isPeripheryCommentEnabled: mockCount > 0
+            pluginTestsImports: .mock(with: "pluginTestsImport", count: mockCount),
+            isPeripheryCommentEnabled: mockCount > 0,
+            isNimbleEnabled: mockCount > 0
         )
     }
 
