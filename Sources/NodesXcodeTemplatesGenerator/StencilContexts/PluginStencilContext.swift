@@ -8,7 +8,9 @@ public struct PluginStencilContext: StencilContext {
     private let pluginName: String
     private let returnType: String?
     private let pluginImports: [String]
+    private let pluginTestsImports: [String]
     private let isPeripheryCommentEnabled: Bool
+    private let isNimbleEnabled: Bool
 
     internal var dictionary: [String: Any] {
         let dictionary: [String: Any]
@@ -18,14 +20,18 @@ public struct PluginStencilContext: StencilContext {
                 "plugin_name": pluginName,
                 "return_type": returnType,
                 "plugin_imports": pluginImports,
-                "is_periphery_comment_enabled": isPeripheryCommentEnabled
+                "plugin_tests_imports": pluginTestsImports,
+                "is_periphery_comment_enabled": isPeripheryCommentEnabled,
+                "is_nimble_enabled": isNimbleEnabled
             ]
         } else {
             dictionary = [
                 "file_header": fileHeader,
                 "plugin_name": pluginName,
                 "plugin_imports": pluginImports,
-                "is_periphery_comment_enabled": isPeripheryCommentEnabled
+                "plugin_tests_imports": pluginTestsImports,
+                "is_periphery_comment_enabled": isPeripheryCommentEnabled,
+                "is_nimble_enabled": isNimbleEnabled
             ]
         }
         return dictionary
@@ -35,13 +41,17 @@ public struct PluginStencilContext: StencilContext {
         fileHeader: String,
         pluginName: String,
         pluginImports: Set<String>,
-        isPeripheryCommentEnabled: Bool
+        pluginTestsImports: Set<String>,
+        isPeripheryCommentEnabled: Bool,
+        isNimbleEnabled: Bool
     ) {
         self.fileHeader = fileHeader
         self.pluginName = pluginName
         self.returnType = nil
         self.pluginImports = pluginImports.sortedImports()
+        self.pluginTestsImports = pluginTestsImports.sortedImports()
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
+        self.isNimbleEnabled = isNimbleEnabled
     }
 
     public init(
@@ -49,12 +59,16 @@ public struct PluginStencilContext: StencilContext {
         pluginName: String,
         returnType: String,
         pluginImports: Set<String>,
-        isPeripheryCommentEnabled: Bool
+        pluginTestsImports: Set<String>,
+        isPeripheryCommentEnabled: Bool,
+        isNimbleEnabled: Bool
     ) {
         self.fileHeader = fileHeader
         self.pluginName = pluginName
         self.returnType = returnType
         self.pluginImports = pluginImports.sortedImports()
+        self.pluginTestsImports = pluginTestsImports.sortedImports()
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
+        self.isNimbleEnabled = isNimbleEnabled
     }
 }

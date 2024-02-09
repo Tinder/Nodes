@@ -4,6 +4,7 @@
 
 import <viewControllerTestsImport>
 
+@MainActor
 final class <nodeName>ViewControllerTests: XCTestCase {
 
     func testNotNil() {

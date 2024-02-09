@@ -149,20 +149,32 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderPlugin() throws {
+        let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: PluginStencilContext = givenPluginStencilContext(mockCount: count)
-            assertSnapshot(of: try StencilRenderer().renderPlugin(context: context),
-                           as: .lines,
-                           named: "mockCount-\(count)")
+            let templates: [String: String] = try stencilRenderer
+                .renderPlugin(context: context, includeTests: true)
+            expect(templates.keys.sorted()) == ["Plugin", "PluginTests"]
+            templates.forEach { name, template in
+                assertSnapshot(of: template,
+                               as: .lines,
+                               named: "\(name)-mockCount-\(count)")
+            }
         }
     }
 
     func testRenderPluginWithoutReturnType() throws {
+        let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: PluginStencilContext = givenPluginStencilContextWithoutReturnType(mockCount: count)
-            assertSnapshot(of: try StencilRenderer().renderPlugin(context: context),
-                           as: .lines,
-                           named: "mockCount-\(count)")
+            let templates: [String: String] = try stencilRenderer
+                .renderPlugin(context: context, includeTests: true)
+            expect(templates.keys.sorted()) == ["Plugin", "PluginTests"]
+            templates.forEach { name, template in
+                assertSnapshot(of: template,
+                               as: .lines,
+                               named: "\(name)-mockCount-\(count)")
+            }
         }
     }
 
