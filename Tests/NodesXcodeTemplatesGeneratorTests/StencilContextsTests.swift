@@ -20,10 +20,18 @@ final class StencilContextsTests: XCTestCase, TestFactories {
             })
     }
 
-    func testNodeStencilContextThrowsInvalidContext() {
+    func testNodeStencilContextThrowsInvalidPreset() {
         expect { try self.givenNodeStencilContext(preset: .app) }
             .to(throwError(errorType: StencilContextError.self) { error in
                 expect(error) == .invalidPreset("App")
+            })
+        expect { try self.givenNodeStencilContext(preset: .scene) }
+            .to(throwError(errorType: StencilContextError.self) { error in
+                expect(error) == .invalidPreset("Scene")
+            })
+        expect { try self.givenNodeStencilContext(preset: .window) }
+            .to(throwError(errorType: StencilContextError.self) { error in
+                expect(error) == .invalidPreset("Window")
             })
     }
 
@@ -39,7 +47,7 @@ final class StencilContextsTests: XCTestCase, TestFactories {
             })
     }
 
-    func testNodeViewInjectedStencilContextThrowsInvalidContext() {
+    func testNodeViewInjectedStencilContextThrowsInvalidPreset() {
         expect { try self.givenNodeViewInjectedStencilContext(preset: .root) }
             .to(throwError(errorType: StencilContextError.self) { error in
                 expect(error) == .invalidPreset("Root")
