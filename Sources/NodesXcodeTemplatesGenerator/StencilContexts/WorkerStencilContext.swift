@@ -8,7 +8,6 @@ public struct WorkerStencilContext: StencilContext {
     private let workerName: String
     private let workerImports: [String]
     private let workerGenericTypes: [String]
-
     private let isPeripheryCommentEnabled: Bool
 
     internal var dictionary: [String: Any] {

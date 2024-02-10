@@ -102,6 +102,7 @@ let package = Package(
                 "Nodes",
                 "Nimble",
             ],
+            swiftSettings: .swiftSettings,
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
@@ -111,6 +112,7 @@ let package = Package(
                 "NodesTesting",
                 "Nimble",
             ],
+            swiftSettings: .swiftSettings,
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
@@ -125,6 +127,7 @@ let package = Package(
             exclude: [
                 "__Snapshots__",
             ],
+            swiftSettings: .swiftSettings,
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),

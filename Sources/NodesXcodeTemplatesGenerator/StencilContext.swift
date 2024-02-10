@@ -7,11 +7,14 @@ import Foundation
 public enum StencilContextError: LocalizedError, Equatable {
 
     case reservedNodeName(String)
+    case invalidPreset(String)
 
     public var errorDescription: String? {
         switch self {
         case let .reservedNodeName(nodeName):
             return "ERROR: Reserved Node Name (\(nodeName))"
+        case let .invalidPreset(preset):
+            return "ERROR: Invalid Preset (\(preset))"
         }
     }
 }

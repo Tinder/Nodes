@@ -37,11 +37,11 @@ final class {{ node_name }}FlowTests: XCTestCase {
         flow = {{ node_name }}FlowImp(
             context: contextMock,
             viewController: viewControllableMock{% if flow_properties %}{{ ',' }}
-            {% endif %}
             {% for property in flow_properties %}
             {{ property.name }}: {{ property.type|decapitalize }}Mock{% if not forloop.last %}{{ ',' }}
             {% endif %}
-            {% endfor +%}
+            {% endfor %}
+            {% endif +%}
         )
         {% if is_nimble_enabled %}
         expect { self.flow.isStarted } == true

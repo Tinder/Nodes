@@ -179,6 +179,7 @@ files:
       # - no_grouping_extension
       # - no_magic_numbers
       - no_space_in_method_call
+      - non_overridable_class_declaration
       - notification_center_detachment
       - ns_number_init_as_function_reference
       - nslocalizedstring_key
@@ -204,6 +205,7 @@ files:
       - private_outlet
       - private_over_fileprivate
       - private_subject
+      - private_swiftui_state
       - private_unit_test
       - prohibited_interface_builder
       - prohibited_super_call
@@ -259,6 +261,7 @@ files:
       - unavailable_function
       - unhandled_throwing_task
       - unneeded_break_in_switch
+      # - unneeded_override
       - unneeded_parentheses_in_closure_argument
       - unneeded_synthesized_initializer
       - unowned_variable_capture
@@ -300,9 +303,6 @@ files:
 
       file_header:
         required_pattern: |
-          \/\/
-          \/\/ {2}.+\.swift
-          \/\/ {2}.+
           \/\/
           \/\/ {2}Created by .+ on \d{1,2}\/\d{1,2}\/\d{2}\.
           \/\/
@@ -352,6 +352,7 @@ files:
   - path: BuildSettings/Shared.xcconfig
     contents: |
       ALWAYS_SEARCH_USER_PATHS = NO
+      ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES
       CLANG_ANALYZER_NONNULL = YES
       CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE
       CLANG_CXX_LANGUAGE_STANDARD = gnu++14
@@ -381,8 +382,10 @@ files:
       CLANG_WARN_SUSPICIOUS_MOVE = YES
       CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE
       CLANG_WARN_UNREACHABLE_CODE = YES
+      CODE_SIGN_STYLE = Automatic
       COPY_PHASE_STRIP = NO
       ENABLE_STRICT_OBJC_MSGSEND = YES
+      ENABLE_USER_SCRIPT_SANDBOXING = NO
       GCC_C_LANGUAGE_STANDARD = gnu11
       GCC_NO_COMMON_BLOCKS = YES
       GCC_WARN_64_TO_32_BIT_CONVERSION = YES
@@ -393,6 +396,7 @@ files:
       GCC_WARN_UNUSED_VARIABLE = YES
       MTL_FAST_MATH = YES
       SDKROOT = iphoneos
+      SWIFT_VERSION = 5.0
       // SWIFT_STRICT_CONCURRENCY = complete
 
   - path: "{{ project|replace:' ','_' }}/Assets/Assets.xcassets/AccentColor.colorset/Contents.json"
@@ -531,10 +535,8 @@ files:
     contents: |
       ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon
       ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor
-      CODE_SIGN_STYLE = Automatic
       LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks
       PRODUCT_NAME = $(TARGET_NAME)
-      SWIFT_VERSION = 5.0
       TARGETED_DEVICE_FAMILY = 1,2
 
   - path: "{{ project|replace:' ','_' }}/Generated/.gitignore"
@@ -2334,10 +2336,8 @@ files:
     contents: |
       ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
       BUNDLE_LOADER = $(TEST_HOST)
-      CODE_SIGN_STYLE = Automatic
       LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @loader_path/Frameworks
       PRODUCT_NAME = $(TARGET_NAME)
-      SWIFT_VERSION = 5.0
       TARGETED_DEVICE_FAMILY = 1,2
       TEST_HOST = $(BUILT_PRODUCTS_DIR)/{{ project|replace:' ','_' }}.app/{{ project|replace:' ','_' }}
 
@@ -2384,8 +2384,8 @@ files:
           targets: [
               .binaryTarget(
                   name: "SwiftLintBinary-{{ project|replace:' ','_' }}",
-                  url: "https://github.com/realm/SwiftLint/releases/download/0.52.4/SwiftLintBinary-macos.artifactbundle.zip",
-                  checksum: "8a8095e6235a07d00f34a9e500e7568b359f6f66a249f36d12cd846017a8c6f5"),
+                  url: "https://github.com/realm/SwiftLint/releases/download/0.54.0/SwiftLintBinary-macos.artifactbundle.zip",
+                  checksum: "963121d6babf2bf5fd66a21ac9297e86d855cbc9d28322790646b88dceca00f1"),
           ]
       )
 
@@ -2407,7 +2407,7 @@ files:
           then
               WORKSPACE_DOCUMENT_NAME="{{ project|replace:' ','_' }}.xcodeproj"
               osascript \
-                  -e 'set workspaceDocumentName to "'"${WORKSPACE_DOCUMENT_NAME}"'"' \
+                  -e 'set workspaceDocumentName to "'"$WORKSPACE_DOCUMENT_NAME"'"' \
                   -e 'if app id "com.apple.dt.Xcode" is running then' \
                   -e 'tell app id "com.apple.dt.Xcode"' \
                   -e 'if workspace document workspaceDocumentName exists then' \
@@ -2426,23 +2426,43 @@ files:
                   -e 'end if' \
                   -e 'end tell' \
                   -e 'end if'
-              unset WORKSPACE_DOCUMENT_NAME
           else
-              echo "AppleScript is not executed in CI."
+              echo "AppleScript to close the Xcode project is not executed in CI."
           fi
           NEEDLE_GENERATED="{{ project|replace:' ','_' }}/Generated/NeedleGenerated.swift"
           MOCKOLO_GENERATED="{{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift"
-          [[ -f "${NEEDLE_GENERATED}" ]] || touch "${NEEDLE_GENERATED}"
-          [[ -f "${MOCKOLO_GENERATED}" ]] || touch "${MOCKOLO_GENERATED}"
-          unset NEEDLE_GENERATED MOCKOLO_GENERATED
+          [[ -f "$NEEDLE_GENERATED" ]] || touch "$NEEDLE_GENERATED"
+          [[ -f "$MOCKOLO_GENERATED" ]] || touch "$MOCKOLO_GENERATED"
         postGenCommand: |
           set -e
           if test -z "$CI"
           then
-              swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
+              XCSHAREDDATA="{{ project|replace:' ','_' }}.xcodeproj/xcshareddata"
+              HEADER=$'\n//  Created by ___FULLUSERNAME___ on ___DATE___.\n//'
+              echo "⚙️  Installing Xcode project file header template..."
+              mkdir -p "$XCSHAREDDATA"
+              /usr/libexec/PlistBuddy -c \
+                  "Delete :FILEHEADER" \
+                  "${XCSHAREDDATA}/IDETemplateMacros.plist" >/dev/null 2>&1 || true
+              /usr/libexec/PlistBuddy -c \
+                  "Add :FILEHEADER string ${HEADER}" \
+                  "${XCSHAREDDATA}/IDETemplateMacros.plist" >/dev/null 2>&1
+          else
+              echo "Xcode project file header template is not installed in CI."
+          fi
+          if test -z "$CI"
+          then
+              echo "⚙️  Installing Xcode templates..."
+              swift build --product nodes-xcode-templates-gen >/dev/null
+              swift run --skip-build -- nodes-xcode-templates-gen --id "Xcode Templates"
+          else
+              echo "Xcode templates are not installed in CI."
+          fi
+          if test -z "$CI"
+          then
+              echo "⚙️  Opening project..."
               xed {{ project|replace:' ','_' }}.xcodeproj
           else
-              echo "Nodes Xcode templates are not installed in CI."
               echo "Xcode project is not opened in CI."
           fi
       packages:

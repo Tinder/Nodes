@@ -47,6 +47,7 @@ internal final class RootContextImp: AbstractContext
     /// The Analytics instance.
     private let analytics: RootAnalytics
 
+    // swiftlint:disable:next redundant_type_annotation
     private var isReady: Bool = false
 
     /// The initializer.
@@ -57,7 +58,7 @@ internal final class RootContextImp: AbstractContext
         workers: [Worker],
         analytics: RootAnalytics
     ) {
-        self.state = RootState()
+        self.state = RootState(name: "Root View Controller")
         self.analytics = analytics
         super.init(workers: workers)
     }

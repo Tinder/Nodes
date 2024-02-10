@@ -21,13 +21,17 @@ internal struct PluginXcodeTemplate: XcodeTemplate {
 
     internal init(config: Config) {
         let plugin: StencilTemplate = .plugin
-        stencils = [plugin]
+        let pluginTests: StencilTemplate = .pluginTests
+        let additional: [StencilTemplate] = config.isTestTemplatesGenerationEnabled ? [pluginTests] : []
+        stencils = [plugin] + additional
         stencilContext = PluginStencilContext(
             fileHeader: config.fileHeader,
             pluginName: Self.variable(Self.productName),
             returnType: Self.variable("returnType"),
             pluginImports: plugin.imports(config: config),
-            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
+            pluginTestsImports: pluginTests.imports(config: config),
+            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
+            isNimbleEnabled: config.isNimbleEnabled
         )
     }
 }

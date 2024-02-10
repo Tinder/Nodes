@@ -2,14 +2,14 @@
 
 While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui) (for iOS), the following custom configuration is required to use other UI frameworks, such as [AppKit](https://developer.apple.com/documentation/appkit).
 
-## Configure the Xcode Template Generator
+## Configure the Xcode Templates Generator
 
 Specify a path to a custom config file by providing the `--config` option when executing `nodes-xcode-templates-gen`.
 
 If utilizing the [quick start project setup](https://github.com/TinderApp/Nodes#quick-start), the path can be set in the `project.yml` file, for example:
 
 ```
-swift run -- nodes-xcode-templates-gen --id "Custom" --config "nodes.yml"
+swift run --skip-build -- nodes-xcode-templates-gen --id "Custom" --config "nodes.yml"
 ```
 
 > TIP: The provided `id` value is used to uniquely identify different sets of templates within the new file dialog in Xcode.
