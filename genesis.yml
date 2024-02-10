@@ -859,30 +859,25 @@ files:
           else
               echo "Swift package dependencies are not resolved in CI."
           fi
-          if test -z "$CI"
+          if ! test -d "{{ project|replace:' ','_' }}/Sources/Bootstrap"
           then
-              if ! test -d "{{ project|replace:' ','_' }}/Sources/Bootstrap"
-              then
-                  echo "⚙️  Generating presets..."
-                  swift build --product nodes-code-gen >/dev/null
-                  create()
-                  {
-                      if ! test -d "$1"
-                      then
-                          mkdir -p "$1"
-                          PRESET=$(basename "$1")
-                          AUTHOR="$(git config user.name)"
-                          echo "⚙️  Creating $(echo "$PRESET" | tr '[:upper:]' '[:lower:]') preset..."
-                          swift run --skip-build -- nodes-code-gen --preset "$PRESET" --author "$AUTHOR" --path "$1"
-                      fi
-                  }
-                  create "{{ project|replace:' ','_' }}/Sources/Bootstrap/App"
-                  create "{{ project|replace:' ','_' }}/Sources/Bootstrap/Scene"
-                  create "{{ project|replace:' ','_' }}/Sources/Bootstrap/Window"
-                  create "{{ project|replace:' ','_' }}/Sources/Screens/Root"
-              fi
-          else
-              echo "Presets are not generated in CI."
+              echo "⚙️  Generating presets..."
+              swift build --product nodes-code-gen >/dev/null
+              create()
+              {
+                  if ! test -d "$1"
+                  then
+                      mkdir -p "$1"
+                      PRESET=$(basename "$1")
+                      AUTHOR="$(git config user.name)"
+                      echo "⚙️  Creating $(echo "$PRESET" | tr '[:upper:]' '[:lower:]') preset..."
+                      swift run --skip-build -- nodes-code-gen --preset "$PRESET" --author "$AUTHOR" --path "$1"
+                  fi
+              }
+              create "{{ project|replace:' ','_' }}/Sources/Bootstrap/App"
+              create "{{ project|replace:' ','_' }}/Sources/Bootstrap/Scene"
+              create "{{ project|replace:' ','_' }}/Sources/Bootstrap/Window"
+              create "{{ project|replace:' ','_' }}/Sources/Screens/Root"
           fi
           NEEDLE_GENERATED="{{ project|replace:' ','_' }}/Generated/NeedleGenerated.swift"
           MOCKOLO_GENERATED="{{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift"
