@@ -13,10 +13,25 @@ final class StencilContextsTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
-    func testNodeStencilContextWithReservedNodeName() {
+    func testNodeStencilContextThrowsReservedNodeName() {
         expect { try self.givenNodeStencilContext(nodeName: "Root") }
             .to(throwError(errorType: StencilContextError.self) { error in
                 expect(error) == .reservedNodeName("Root")
+            })
+    }
+
+    func testNodeStencilContextThrowsInvalidPreset() {
+        expect { try self.givenNodeStencilContext(preset: .app) }
+            .to(throwError(errorType: StencilContextError.self) { error in
+                expect(error) == .invalidPreset("App")
+            })
+        expect { try self.givenNodeStencilContext(preset: .scene) }
+            .to(throwError(errorType: StencilContextError.self) { error in
+                expect(error) == .invalidPreset("Scene")
+            })
+        expect { try self.givenNodeStencilContext(preset: .window) }
+            .to(throwError(errorType: StencilContextError.self) { error in
+                expect(error) == .invalidPreset("Window")
             })
     }
 
@@ -25,31 +40,38 @@ final class StencilContextsTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
-    func testNodeViewInjectedStencilContextWithReservedNodeName() {
+    func testNodeViewInjectedStencilContextThrowsReservedNodeName() {
         expect { try self.givenNodeViewInjectedStencilContext(nodeName: "Root") }
             .to(throwError(errorType: StencilContextError.self) { error in
                 expect(error) == .reservedNodeName("Root")
             })
     }
 
-    func testNodePresetAppStencilContext() {
-        assertSnapshot(of: givenNodePresetStencilContext(preset: .app).dictionary,
-                       as: .dump)
+    func testNodeViewInjectedStencilContextThrowsInvalidPreset() {
+        expect { try self.givenNodeViewInjectedStencilContext(preset: .root) }
+            .to(throwError(errorType: StencilContextError.self) { error in
+                expect(error) == .invalidPreset("Root")
+            })
     }
 
-    func testNodePresetSceneStencilContext() {
-        assertSnapshot(of: givenNodePresetStencilContext(preset: .scene).dictionary,
-                       as: .dump)
+    func testNodePresetAppStencilContext() throws {
+        try assertSnapshot(of: givenNodeViewInjectedStencilContext(preset: .app).dictionary,
+                           as: .dump)
     }
 
-    func testNodePresetWindowStencilContext() {
-        assertSnapshot(of: givenNodePresetStencilContext(preset: .window).dictionary,
-                       as: .dump)
+    func testNodePresetSceneStencilContext() throws {
+        try assertSnapshot(of: givenNodeViewInjectedStencilContext(preset: .scene).dictionary,
+                           as: .dump)
     }
 
-    func testNodePresetRootStencilContext() {
-        assertSnapshot(of: givenNodePresetStencilContext(preset: .root).dictionary,
-                       as: .dump)
+    func testNodePresetWindowStencilContext() throws {
+        try assertSnapshot(of: givenNodeViewInjectedStencilContext(preset: .window).dictionary,
+                           as: .dump)
+    }
+
+    func testNodePresetRootStencilContext() throws {
+        try assertSnapshot(of: givenNodeStencilContext(preset: .root).dictionary,
+                           as: .dump)
     }
 
     func testPluginStencilContext() {

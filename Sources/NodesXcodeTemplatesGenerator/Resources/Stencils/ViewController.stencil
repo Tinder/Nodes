@@ -44,6 +44,10 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
 
     /// {{ view_state_property_comment }}.
     private let {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
+    {% if node_name == "Root" %}
+
+    private let label: UILabel = .init()
+    {% endif %}
 
     /// The initializer.
     ///
@@ -71,6 +75,12 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     override internal func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
+        view.addConstraints([
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20)
+        ])
         update(with: initialState)
     }
 
@@ -95,12 +105,25 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     {% endif %}
     {% endif %}
 
+    {% if node_name == "Root" %}
+    {% if view_controller_update_comment %}
+    internal func update(with viewState: {{ node_name }}ViewState) {
+        {{ view_controller_update_comment|indent:8 }}
+        label.text = viewState.title
+    }
+    {% else %}
+    internal func update(with viewState: {{ node_name }}ViewState) {
+        label.text = viewState.title
+    }
+    {% endif %}
+    {% else %}
     {% if view_controller_update_comment %}
     internal func update(with viewState: {{ node_name }}ViewState) {
         {{ view_controller_update_comment|indent:8 }}
     }
     {% else %}
     internal func update(with viewState: {{ node_name }}ViewState) {}
+    {% endif %}
     {% endif %}
 }
 

@@ -31,9 +31,7 @@ internal final class FileSystemMock: FileSystem {
     }
 
     internal func copyItem(at fromURL: URL, to toURL: URL) throws {
-        let path: String = fromURL.path.replacingOccurrences(of: "/Contents/Resources", with: "")
-        let bundle: String = "Nodes_NodesXcodeTemplatesGenerator"
-        copies.append((from: path.components(separatedBy: bundle).last!, to: toURL.path))
+        copies.append((from: fromURL.path, to: toURL.path))
     }
 
     internal func removeItem(at url: URL) throws {
