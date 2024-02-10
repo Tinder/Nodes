@@ -2,7 +2,7 @@
 //  Copyright © 2023 Tinder (Match Group, LLC)
 //
 
-@testable import NodesXcodeTemplatesGenerator
+@testable import NodesGenerator
 
 internal struct TestXcodeTemplate: XcodeTemplate {
 

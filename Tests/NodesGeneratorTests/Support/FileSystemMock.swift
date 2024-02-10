@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import NodesXcodeTemplatesGenerator
+import NodesGenerator
 
 internal final class FileSystemMock: FileSystem {
 

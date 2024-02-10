@@ -4,7 +4,7 @@
 
 import Codextended
 import Nimble
-@testable import NodesXcodeTemplatesGenerator
+@testable import NodesGenerator
 import XCTest
 import Yams
 

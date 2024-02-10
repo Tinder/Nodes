@@ -25,11 +25,11 @@ let package = Package(
             name: "NodesTesting",
             targets: ["NodesTesting"]),
         .library(
-            name: "NodesXcodeTemplatesGenerator",
-            targets: ["NodesXcodeTemplatesGenerator"]),
+            name: "NodesGenerator",
+            targets: ["NodesGenerator"]),
         .executable(
             name: "nodes-xcode-templates-gen",
-            targets: ["NodesXcodeTemplatesGeneratorExecutable"]),
+            targets: ["NodesXcodeTemplatesGenerator"]),
     ],
     dependencies: [
         .package(
@@ -74,7 +74,7 @@ let package = Package(
                 .plugin(name: SwiftLint.plugin),
             ]),
         .target(
-            name: "NodesXcodeTemplatesGenerator",
+            name: "NodesGenerator",
             dependencies: [
                 "Codextended",
                 "Yams",
@@ -88,9 +88,9 @@ let package = Package(
                 .plugin(name: SwiftLint.plugin),
             ]),
         .executableTarget(
-            name: "NodesXcodeTemplatesGeneratorExecutable",
+            name: "NodesXcodeTemplatesGenerator",
             dependencies: [
-                "NodesXcodeTemplatesGenerator",
+                "NodesGenerator",
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ],
             plugins: [
@@ -117,9 +117,9 @@ let package = Package(
                 .plugin(name: SwiftLint.plugin),
             ]),
         .testTarget(
-            name: "NodesXcodeTemplatesGeneratorTests",
+            name: "NodesGeneratorTests",
             dependencies: [
-                "NodesXcodeTemplatesGenerator",
+                "NodesGenerator",
                 "Nimble",
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
                 .product(name: "InlineSnapshotTesting", package: "swift-snapshot-testing"),

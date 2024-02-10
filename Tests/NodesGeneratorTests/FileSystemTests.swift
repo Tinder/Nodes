@@ -5,7 +5,7 @@
 #if os(macOS)
 
 import Nimble
-import NodesXcodeTemplatesGenerator
+import NodesGenerator
 import XCTest
 
 final class FileSystemTests: XCTestCase {

@@ -2,7 +2,7 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
-@testable import NodesXcodeTemplatesGenerator
+@testable import NodesGenerator
 import XCTest
 
 final class XcodeTemplatePropertyListTests: XCTestCase {

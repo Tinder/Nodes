@@ -3,7 +3,7 @@
 //
 
 import Nimble
-import NodesXcodeTemplatesGenerator
+import NodesGenerator
 import XCTest
 
 final class StencilRendererTests: XCTestCase, TestFactories {

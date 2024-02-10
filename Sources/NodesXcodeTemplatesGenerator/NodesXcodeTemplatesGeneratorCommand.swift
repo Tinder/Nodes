@@ -3,7 +3,7 @@
 //
 
 import ArgumentParser
-import NodesXcodeTemplatesGenerator
+import NodesGenerator
 
 @main
 internal struct NodesXcodeTemplatesGeneratorCommand: ParsableCommand {

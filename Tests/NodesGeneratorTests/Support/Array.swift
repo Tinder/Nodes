@@ -2,7 +2,7 @@
 //  Copyright © 2023 Tinder (Match Group, LLC)
 //
 
-import NodesXcodeTemplatesGenerator
+import NodesGenerator
 
 extension Array where Element == String {
 
