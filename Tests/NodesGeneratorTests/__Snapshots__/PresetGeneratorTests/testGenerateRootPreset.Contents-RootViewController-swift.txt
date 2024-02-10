@@ -1,0 +1,95 @@
+//
+//  Created by <author> on <date>.
+//
+
+import Combine
+import Nodes
+import UIKit
+
+/**
+ PURPOSE:
+ The interface that the View will speak to the Context through. Used for informing the Context of
+ view events and user interactions.
+ */
+/// @mockable
+@MainActor
+internal protocol RootReceiver: AnyObject {
+    func viewDidAppear()
+}
+
+/**
+ PURPOSE:
+ Concrete implementation of the UI.
+ */
+internal final class RootViewController: UIViewController, StateObserver {
+
+    /// The view receiver.
+    internal weak var receiver: RootReceiver?
+
+    /// The collection of cancellable instances.
+    private var cancellables: Set<AnyCancellable> = .init()
+
+    /// The initial view state.
+    private let initialState: RootViewState
+
+    /// The view state publisher.
+    private let statePublisher: AnyPublisher<RootViewState, Never>
+
+    private let label: UILabel = .init()
+
+    /// The initializer.
+    ///
+    /// - Parameters:
+    ///   - initialState: The initial view state.
+    ///   - statePublisher: The view state publisher.
+    internal init(
+        initialState: RootViewState,
+        statePublisher: AnyPublisher<RootViewState, Never>
+    ) {
+        self.initialState = initialState
+        self.statePublisher = statePublisher
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    internal required init?(coder: NSCoder) {
+        preconditionFailure("init(coder:) has not been implemented")
+    }
+
+    override internal func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
+        view.addConstraints([
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20)
+        ])
+        update(with: initialState)
+    }
+
+    override internal func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        observe(statePublisher).store(in: &cancellables)
+    }
+
+    override internal func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        receiver?.viewDidAppear()
+    }
+
+    override internal func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cancellables.cancelAll()
+    }
+
+    internal func update(with viewState: RootViewState) {
+        // Add implementation to update the user interface when the view state changes.
+        label.text = viewState.title
+    }
+}
+
+extension RootViewController: RootViewControllable {}

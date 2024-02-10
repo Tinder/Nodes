@@ -28,6 +28,9 @@ let package = Package(
             name: "NodesGenerator",
             targets: ["NodesGenerator"]),
         .executable(
+            name: "nodes-code-gen",
+            targets: ["NodesCodeGenerator"]),
+        .executable(
             name: "nodes-xcode-templates-gen",
             targets: ["NodesXcodeTemplatesGenerator"]),
     ],
@@ -84,6 +87,15 @@ let package = Package(
                 .process("Resources"),
             ],
             swiftSettings: .swiftSettings,
+            plugins: [
+                .plugin(name: SwiftLint.plugin),
+            ]),
+        .executableTarget(
+            name: "NodesCodeGenerator",
+            dependencies: [
+                "NodesGenerator",
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
