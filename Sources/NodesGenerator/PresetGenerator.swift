@@ -24,26 +24,25 @@ public final class PresetGenerator {
         into directory: URL
     ) throws {
         let output: [String: String]
-        let uiFramework: UIFramework = try config.uiFramework(for: .uiKit)
         if preset.isViewInjected {
             let node: StencilTemplate.NodeViewInjected = .init()
             let context: NodeViewInjectedStencilContext = try .init(
                 preset: preset,
                 fileHeader: fileHeader,
-                analyticsImports: node.analytics.imports(for: uiFramework, config: config),
-                builderImports: node.builder.imports(for: uiFramework, config: config),
-                contextImports: node.context.imports(for: uiFramework, config: config),
-                flowImports: node.flow.imports(for: uiFramework, config: config),
-                stateImports: node.state.imports(for: uiFramework, config: config),
-                analyticsTestsImports: node.analyticsTests.imports(for: uiFramework, config: config),
-                contextTestsImports: node.contextTests.imports(for: uiFramework, config: config),
-                flowTestsImports: node.flowTests.imports(for: uiFramework, config: config),
+                analyticsImports: node.analytics.imports(config: config),
+                builderImports: node.builder.imports(config: config),
+                contextImports: node.context.imports(config: config),
+                flowImports: node.flow.imports(config: config),
+                stateImports: node.state.imports(config: config),
+                analyticsTestsImports: node.analyticsTests.imports(config: config),
+                contextTestsImports: node.contextTests.imports(config: config),
+                flowTestsImports: node.flowTests.imports(config: config),
                 dependencies: config.dependencies,
                 analyticsProperties: config.analyticsProperties,
                 flowProperties: config.flowProperties,
                 viewControllableFlowType: config.viewControllableFlowType,
-                viewControllableType: config.viewControllableMockContents,
-                viewControllableMockContents: uiFramework.viewControllerType,
+                viewControllableType: config.viewControllableType,
+                viewControllableMockContents: config.viewControllableMockContents,
                 contextGenericTypes: config.contextGenericTypes,
                 workerGenericTypes: config.workerGenericTypes,
                 isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
@@ -51,6 +50,7 @@ public final class PresetGenerator {
             )
             output = try StencilRenderer().renderNodeViewInjected(context: context, includeState: false)
         } else {
+            let uiFramework: UIFramework = try config.uiFramework(for: .uiKit)
             let kind: UIFramework.Kind = uiFramework.kind
             let node: StencilTemplate.Node = .init(for: .variation(for: kind))
             let context: NodeStencilContext = try .init(
