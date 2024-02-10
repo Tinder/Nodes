@@ -10,4 +10,11 @@ import {{ import }}
  PURPOSE:
  The state of the Node.
  */
+{% if node_name == "Root" %}
+internal struct {{ node_name }}State: Equatable {
+
+    internal var name: String
+}
+{% else %}
 internal struct {{ node_name }}State: Equatable {}
+{% endif %}

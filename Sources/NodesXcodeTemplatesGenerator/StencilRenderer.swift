@@ -12,38 +12,32 @@ public final class StencilRenderer {
     public func renderNode(
         context: NodeStencilContext,
         kind: UIFramework.Kind,
-        includeTests: Bool
+        includeState: Bool = true,
+        includeTests: Bool = false
     ) throws -> [String: String] {
         let node: StencilTemplate.Node = .init(for: .variation(for: kind))
-        let stencils: [StencilTemplate] = node.stencils(includeTests: includeTests)
-        return try renderNode(stencils: stencils, with: context.dictionary)
+        let stencils: [StencilTemplate] = node.stencils(includeState: includeState,
+                                                        includeTests: includeTests)
+        return try render(stencils: stencils, with: context.dictionary)
     }
 
     public func renderNodeViewInjected(
         context: NodeViewInjectedStencilContext,
-        includeTests: Bool
+        includeState: Bool = true,
+        includeTests: Bool = false
     ) throws -> [String: String] {
         let nodeViewInjected: StencilTemplate.NodeViewInjected = .init()
-        let stencils: [StencilTemplate] = nodeViewInjected.stencils(includeTests: includeTests)
-        return try renderNode(stencils: stencils, with: context.dictionary)
+        let stencils: [StencilTemplate] = nodeViewInjected.stencils(includeState: includeState,
+                                                                    includeTests: includeTests)
+        return try render(stencils: stencils, with: context.dictionary)
     }
 
-    public func renderNodePreset(
-        context: NodePresetStencilContext
+    public func renderPlugin(
+        context: PluginStencilContext,
+        includeTests: Bool
     ) throws -> [String: String] {
-        let stencils: [StencilTemplate]
-        if context.preset.isUserInterface {
-            stencils = StencilTemplate.Node(for: .variation(for: .uiKit))
-                .stencils(includeState: true, includeTests: false)
-        } else {
-            stencils = StencilTemplate.NodeViewInjected()
-                .stencils(includeState: false, includeTests: false)
-        }
-        return try renderNode(stencils: stencils, with: context.dictionary)
-    }
-
-    public func renderPlugin(context: PluginStencilContext) throws -> String {
-        try render(.plugin, with: context.dictionary)
+        let stencils: [StencilTemplate] = includeTests ? [.plugin, .pluginTests] : [.plugin]
+        return try render(stencils: stencils, with: context.dictionary)
     }
 
     public func renderPluginList(context: PluginListStencilContext) throws -> String {
@@ -65,7 +59,7 @@ public final class StencilRenderer {
         return try environment.renderTemplate(name: stencil.name, context: context)
     }
 
-    private func renderNode(stencils: [StencilTemplate], with context: [String: Any]) throws -> [String: String] {
+    private func render(stencils: [StencilTemplate], with context: [String: Any]) throws -> [String: String] {
         try Dictionary(uniqueKeysWithValues: stencils.map { stencil in
             try (stencil.name, render(stencil, with: context))
         })

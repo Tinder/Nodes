@@ -15,10 +15,10 @@ internal struct NodesXcodeTemplatesGeneratorCommand: ParsableCommand {
     private var identifier: String
 
     @Option(name: .customLong("config"), help: "The YAML config file path. (optional)")
-    private var path: String?
+    private var configPath: String?
 
     internal func run() throws {
-        let config: ConfigFactory = .init()
-        try XcodeTemplates(config: config(at: path)).generate(identifier: identifier)
+        let config: Config = try configPath.flatMap { try Config(at: $0) } ?? Config()
+        try XcodeTemplates(config: config).generate(identifier: identifier)
     }
 }

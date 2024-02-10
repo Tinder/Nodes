@@ -14,9 +14,14 @@ import {{ import }}
 @MainActor
 {% if owns_view %}
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
+{% elif node_name == "Scene" %}
+internal protocol {{ node_name }}Flow: Flow {
+    func getViewController() -> Window{{ node_name }}ViewControllable
+}
 {% else %}
 internal protocol {{ node_name }}Flow: Flow {}
 {% endif %}
+{% if node_name != "App" %}
 
 /**
  PURPOSE:
@@ -33,6 +38,7 @@ public protocol {{ node_name }}Dependency: Dependency {
 {% else %}
 public protocol {{ node_name }}Dependency: Dependency {}
 {% endif %}
+{% endif %}
 
 /**
  PURPOSE:
@@ -42,6 +48,10 @@ public protocol {{ node_name }}Dependency: Dependency {}
  */
 {% if owns_view %}
 internal typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listener
+{% elif node_name == "App" %}
+internal typealias {{ node_name }}DynamicBuildDependency = Void
+{% elif node_name == "Scene" %}
+internal typealias {{ node_name }}DynamicBuildDependency = ({{ node_name }}Listener, Window{{ node_name }}ViewControllable)
 {% else %}
 internal typealias {{ node_name }}DynamicBuildDependency = ({{ node_name }}Listener, {{ node_name }}ViewControllable)
 {% endif %}
@@ -60,10 +70,14 @@ internal typealias {{ node_name }}DynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
+{% if node_name == "App" %}
+public final class {{ node_name }}Component: BootstrapComponent {
+{% else %}
 public final class {{ node_name }}Component: Component
 <
     {{ node_name }}Dependency
 > {
+{% endif %}
 
     /*
      Dependencies
@@ -89,6 +103,10 @@ public final class {{ node_name }}Component: Component
      }
 
      */
+    {% if node_name == "App" %}
+
+    fileprivate let appService: AppService = AppServiceImp()
+    {% endif %}
 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
@@ -102,15 +120,25 @@ public final class {{ node_name }}Component: Component
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
     ///
+    {% if node_name == "App" %}
+    /// - Parameter dynamicDependency: The dynamic component dependency
+    {% else %}
     /// - Parameters:
     ///   - parent: The parent scope
     ///   - dynamicDependency: The dynamic component dependency
+    {% endif %}
     internal init(
+        {% if node_name != "App" %}
         parent: Scope,
+        {% endif %}
         dynamicDependency: {{ node_name }}DynamicComponentDependency = ()
     ) {
         self.dynamicDependency = dynamicDependency
+        {% if node_name == "App" %}
+        super.init()
+        {% else %}
         super.init(parent: parent)
+        {% endif %}
     }
 
     /*
@@ -124,6 +152,22 @@ public final class {{ node_name }}Component: Component
      }
 
      */
+    {% if node_name == "App" %}
+
+    fileprivate func sceneComponentFactory() -> SceneComponent {
+        SceneComponent(parent: self)
+    }
+    {% elif node_name == "Scene" %}
+
+    fileprivate func windowComponentFactory() -> WindowComponent {
+        WindowComponent(parent: self)
+    }
+    {% elif node_name == "Window" %}
+
+    fileprivate func rootComponentFactory() -> RootComponent {
+        RootComponent(parent: self)
+    }
+    {% endif %}
 }
 
 // MARK: - Builder
@@ -138,10 +182,19 @@ public final class {{ node_name }}Component: Component
 /// @mockable
 @MainActor
 internal protocol {{ node_name }}Builder: AnyObject {
+    {% if node_name == "App" %}
+    func build() -> {{ node_name }}Flow
+    {% elif node_name == "Scene" %}
+    func build(
+        withListener listener: {{ node_name }}Listener,
+        viewController: Window{{ node_name }}ViewControllable
+    ) -> {{ node_name }}Flow
+    {% else %}
     func build(
         withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}
         viewController: {{ node_name }}ViewControllable{% endif +%}
     ) -> {{ node_name }}Flow
+    {% endif %}
 }
 
 {% if is_periphery_comment_enabled %}
@@ -165,18 +218,29 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
     {% if owns_view %}
     /// - Parameter listener: An object that can listen for signals from the Node
-    {% else %}
+    {% elif node_name != "App" %}
     /// - Parameters:
     ///   - listener: An object that can listen for signals from the Node
     ///   - viewController: The injected view controller
     {% endif %}
     /// - Returns: The Flow instance
+    {% if node_name == "App" %}
+    internal func build() -> {{ node_name }}Flow {
+    {% elif node_name == "Scene" %}
+    internal func build(
+        withListener listener: {{ node_name }}Listener,
+        viewController: Window{{ node_name }}ViewControllable
+    ) -> {{ node_name }}Flow {
+    {% else %}
     internal func build(
         withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}
         viewController: {{ node_name }}ViewControllable{% endif +%}
     ) -> {{ node_name }}Flow {
+    {% endif %}
         {% if owns_view %}
         let dynamicBuildDependency: {{ node_name }}DynamicBuildDependency = listener
+        {% elif node_name == "App" %}
+        let dynamicBuildDependency: {{ node_name }}DynamicBuildDependency = ()
         {% else %}
         let dynamicBuildDependency: {{ node_name }}DynamicBuildDependency = (listener, viewController)
         {% endif %}
@@ -195,14 +259,18 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     ) -> {{ node_name }}Flow {
         {% if owns_view %}
         let listener: {{ node_name }}Listener = dynamicBuildDependency
-        {% else %}
+        {% elif node_name != "App" %}
         let listener: {{ node_name }}Listener = dynamicBuildDependency.0
+        {% if node_name == "Scene" %}
+        let viewController: Window{{ node_name }}ViewControllable = dynamicBuildDependency.1
+        {% else %}
         let viewController: {{ node_name }}ViewControllable = dynamicBuildDependency.1
+        {% endif %}
         {% endif %}
         {% if analytics_properties %}
         let analytics: {{ node_name }}AnalyticsImp = .init(
             {% for property in analytics_properties %}
-            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %}{{ ',' }}
+            {{ property.name }}: component{% if node_name != "App" %}.dependency{% endif %}.{{ property.name }}{% if not forloop.last %}{{ ',' }}
             {% endif %}
             {% endfor +%}
         )
@@ -211,9 +279,12 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         {% endif %}
         let context: {{ node_name }}ContextImp = .init(
             workers: [],
-            analytics: analytics
+            analytics: analytics{% if node_name == "App" %}{{ ',' }}
+            windowSceneState: component.appService.windowSceneState{% endif +%}
         )
+        {% if node_name != "App" %}
         context.listener = listener
+        {% endif %}
         {% if owns_view %}
         let viewStateFactory: {{ node_name }}ViewStateFactory = .init()
         let viewController: {{ node_name }}ViewController = .init(
@@ -223,13 +294,16 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         viewController.receiver = context
         {% endif %}
         let flow: {{ node_name }}FlowImp = .init(
-            context: context,
-            viewController: viewController{% if flow_properties %}{{ ',' }}
+            context: context{% if node_name != "App" %}{{ ',' }}
+            viewController: viewController{% endif +%}{% if flow_properties %}{{ ',' }}
             {% for property in flow_properties %}
-            {{ property.name }}: component.dependency.{{ property.name }}{% if not forloop.last %}{{ ',' }}
+            {{ property.name }}: component{% if node_name != "App" %}.dependency{% endif %}.{{ property.name }}{% if not forloop.last %}{{ ',' }}
             {% endif %}
             {% endfor %}
-            {% endif +%}
+            {% endif +%}{% if node_name == "App" %}{{ ',' }}
+            sceneBuilder: SceneBuilderImp(componentFactory: component.sceneComponentFactory){% endif +%}{% if node_name == "Scene" %}{{ ',' }}
+            windowBuilder: WindowBuilderImp(componentFactory: component.windowComponentFactory){% endif +%}{% if node_name == "Window" %}{{ ',' }}
+            rootBuilder: RootBuilderImp(componentFactory: component.rootComponentFactory){% endif +%}
         )
         context.flow = flow
         return flow

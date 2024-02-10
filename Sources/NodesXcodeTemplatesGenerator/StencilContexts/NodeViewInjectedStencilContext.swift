@@ -73,7 +73,104 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
     ) throws {
-        guard NodePresetStencilContext.Preset(rawValue: nodeName) == nil
+        self = try Self(
+            strict: true,
+            fileHeader: fileHeader,
+            nodeName: nodeName,
+            analyticsImports: analyticsImports,
+            builderImports: builderImports,
+            contextImports: contextImports,
+            flowImports: flowImports,
+            stateImports: stateImports,
+            analyticsTestsImports: analyticsTestsImports,
+            contextTestsImports: contextTestsImports,
+            flowTestsImports: flowTestsImports,
+            dependencies: dependencies,
+            analyticsProperties: analyticsProperties,
+            flowProperties: flowProperties,
+            viewControllableFlowType: viewControllableFlowType,
+            viewControllableType: viewControllableType,
+            viewControllableMockContents: viewControllableMockContents,
+            contextGenericTypes: contextGenericTypes,
+            workerGenericTypes: workerGenericTypes,
+            isPeripheryCommentEnabled: isPeripheryCommentEnabled,
+            isNimbleEnabled: isNimbleEnabled
+        )
+    }
+
+    public init(
+        preset: Preset,
+        fileHeader: String,
+        analyticsImports: Set<String>,
+        builderImports: Set<String>,
+        contextImports: Set<String>,
+        flowImports: Set<String>,
+        stateImports: Set<String>,
+        analyticsTestsImports: Set<String>,
+        contextTestsImports: Set<String>,
+        flowTestsImports: Set<String>,
+        dependencies: [Config.Variable],
+        analyticsProperties: [Config.Variable],
+        flowProperties: [Config.Variable],
+        viewControllableFlowType: String,
+        viewControllableType: String,
+        viewControllableMockContents: String,
+        contextGenericTypes: [String],
+        workerGenericTypes: [String],
+        isPeripheryCommentEnabled: Bool,
+        isNimbleEnabled: Bool
+    ) throws {
+        guard preset.isViewInjected
+        else { throw StencilContextError.invalidPreset(preset.nodeName) }
+        self = try Self(
+            strict: false,
+            fileHeader: fileHeader,
+            nodeName: preset.nodeName,
+            analyticsImports: analyticsImports,
+            builderImports: builderImports,
+            contextImports: contextImports,
+            flowImports: flowImports,
+            stateImports: stateImports,
+            analyticsTestsImports: analyticsTestsImports,
+            contextTestsImports: contextTestsImports,
+            flowTestsImports: flowTestsImports,
+            dependencies: dependencies,
+            analyticsProperties: analyticsProperties,
+            flowProperties: flowProperties,
+            viewControllableFlowType: viewControllableFlowType,
+            viewControllableType: viewControllableType,
+            viewControllableMockContents: viewControllableMockContents,
+            contextGenericTypes: contextGenericTypes,
+            workerGenericTypes: workerGenericTypes,
+            isPeripheryCommentEnabled: isPeripheryCommentEnabled,
+            isNimbleEnabled: isNimbleEnabled
+        )
+    }
+
+    private init(
+        strict: Bool,
+        fileHeader: String,
+        nodeName: String,
+        analyticsImports: Set<String>,
+        builderImports: Set<String>,
+        contextImports: Set<String>,
+        flowImports: Set<String>,
+        stateImports: Set<String>,
+        analyticsTestsImports: Set<String>,
+        contextTestsImports: Set<String>,
+        flowTestsImports: Set<String>,
+        dependencies: [Config.Variable],
+        analyticsProperties: [Config.Variable],
+        flowProperties: [Config.Variable],
+        viewControllableFlowType: String,
+        viewControllableType: String,
+        viewControllableMockContents: String,
+        contextGenericTypes: [String],
+        workerGenericTypes: [String],
+        isPeripheryCommentEnabled: Bool,
+        isNimbleEnabled: Bool
+    ) throws {
+        guard !strict || Preset(rawValue: nodeName) == nil
         else { throw StencilContextError.reservedNodeName(nodeName) }
         self.fileHeader = fileHeader
         self.nodeName = nodeName

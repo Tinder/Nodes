@@ -6,9 +6,33 @@ import Foundation
 
 public final class XcodeTemplates {
 
-    private let templates: [XcodeTemplate]
+    private let config: Config
+    private let fileSystem: FileSystem
 
-    public init(config: Config) {
+    public init(
+        config: Config,
+        fileSystem: FileSystem = FileManager.default
+    ) {
+        self.config = config
+        self.fileSystem = fileSystem
+    }
+
+    public func generate(
+        identifier: String
+    ) throws {
+        let directory: URL = fileSystem.libraryURL
+            .appendingPathComponent("Developer")
+            .appendingPathComponent("Xcode")
+            .appendingPathComponent("Templates")
+            .appendingPathComponent("File Templates")
+            .appendingPathComponent("Nodes Architecture Framework (\(identifier))")
+        try? fileSystem.removeItem(at: directory)
+        try generate(into: directory)
+    }
+
+    public func generate(
+        into directory: URL
+    ) throws {
         var templates: [XcodeTemplate] = UIFramework.Kind
             .allCases
             .compactMap { try? NodeXcodeTemplate(for: $0, config: config) }
@@ -21,27 +45,6 @@ public final class XcodeTemplates {
             PluginXcodeTemplate(config: config),
             WorkerXcodeTemplate(config: config)
         ]
-        self.templates = templates
-    }
-
-    public func generate(
-        identifier: String,
-        using fileSystem: FileSystem = FileManager.default
-    ) throws {
-        let directory: URL = fileSystem.libraryURL
-            .appendingPathComponent("Developer")
-            .appendingPathComponent("Xcode")
-            .appendingPathComponent("Templates")
-            .appendingPathComponent("File Templates")
-            .appendingPathComponent("Nodes Architecture Framework (\(identifier))")
-        try? fileSystem.removeItem(at: directory)
-        try generate(into: directory, using: fileSystem)
-    }
-
-    public func generate(
-        into directory: URL,
-        using fileSystem: FileSystem = FileManager.default
-    ) throws {
         let generator: XcodeTemplateGenerator = .init(fileSystem: fileSystem)
         try templates.forEach { try generator.generate(template: $0, into: directory) }
     }

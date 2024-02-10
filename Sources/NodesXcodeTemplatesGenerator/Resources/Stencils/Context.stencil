@@ -5,6 +5,7 @@
 import {{ import }}
 {% endfor %}
 {% endif %}
+{% if node_name != "App" %}
 
 /**
  PURPOSE:
@@ -13,6 +14,7 @@ import {{ import }}
 /// @mockable
 @MainActor
 internal protocol {{ node_name }}Listener: AnyObject {}
+{% endif %}
 
 /**
  PURPOSE:
@@ -21,7 +23,12 @@ internal protocol {{ node_name }}Listener: AnyObject {}
  */
 /// @mockable
 @MainActor
-{% if node_name == "Root" %}
+{% if node_name == "App" %}
+internal protocol {{ node_name }}FlowInterface: Flow {
+    func attachScene(_ viewController: WindowSceneViewControllable)
+    func detachScene(_ viewController: WindowSceneViewControllable)
+}
+{% elif node_name == "Root" %}
 internal protocol {{ node_name }}FlowInterface: Flow {
     func didBecomeReady()
 }
@@ -52,12 +59,15 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     {% endif %}
     /// The Flow instance.
     internal weak var flow: {{ node_name }}FlowInterface?
+    {% if node_name != "App" %}
 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
     /// The Listener instance.
     internal weak var listener: {{ node_name }}Listener?
+    {% endif %}
+    {% if node_name != "App" and node_name != "Scene" and node_name != "Window" %}
 
     {% if is_periphery_comment_enabled and not owns_view %}
     // periphery:ignore
@@ -65,14 +75,19 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     /// The State instance.
     @Published
     internal private(set) var state: {{ node_name }}State
+    {% endif %}
 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
     /// The Analytics instance.
     private let analytics: {{ node_name }}Analytics
-    {% if node_name == "Root" %}
+    {% if node_name == "App" %}
 
+    private let windowSceneState: AnyPublisher<WindowSceneState, Never>
+    {% elif node_name == "Root" %}
+
+    // swiftlint:disable:next redundant_type_annotation
     private var isReady: Bool = false
     {% endif %}
 
@@ -82,18 +97,47 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     ///   - analytics: The Analytics instance
     internal init(
         workers: [Worker],
-        analytics: {{ node_name }}Analytics
+        analytics: {{ node_name }}Analytics{% if node_name == "App" %}{{ ',' }}
+        windowSceneState: AnyPublisher<WindowSceneState, Never>{% endif +%}
     ) {
+        {% if node_name == "Root" %}
+        self.state = {{ node_name }}State(name: "{{ node_name }} View Controller")
+        {% elif node_name != "App" and node_name != "Scene" and node_name != "Window" %}
         self.state = {{ node_name }}State()
+        {% endif %}
         self.analytics = analytics
+        {% if node_name == "App" %}
+        self.windowSceneState = windowSceneState
+        {% endif %}
         super.init(workers: workers)
     }
 
     /// Implement logic to execute when the Context becomes active.
+    {% if node_name == "App" %}
+    override internal func didBecomeActive() {
+        subscribe(to: windowSceneState)
+    }
+    {% else %}
     override internal func didBecomeActive() {}
+    {% endif %}
 
     /// Implement logic to execute when the Context will become inactive.
     override internal func willResignActive() {}
+    {% if node_name == "App" %}
+
+    private func subscribe(to windowSceneState: AnyPublisher<WindowSceneState, Never>) {
+        windowSceneState
+            .filter(\.isAdded)
+            .map(\.windowScene)
+            .sink { [weak self] in self?.flow?.attachScene($0) }
+            .store(in: &cancellables)
+        windowSceneState
+            .filter(\.isRemoved)
+            .map(\.windowScene)
+            .sink { [weak self] in self?.flow?.detachScene($0) }
+            .store(in: &cancellables)
+    }
+    {% endif %}
 }
 
 extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}
