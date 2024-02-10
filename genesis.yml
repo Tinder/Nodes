@@ -862,7 +862,7 @@ files:
           if ! test -d "{{ project|replace:' ','_' }}/Sources/Bootstrap"
           then
               echo "⚙️  Generating presets..."
-              swift build --product nodes-code-gen >/dev/null
+              swift build --product nodes-code-gen
               create()
               {
                   if ! test -d "$1"
