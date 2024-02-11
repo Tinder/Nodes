@@ -18,21 +18,21 @@ let package = Package(
         .watchOS(.v6),
     ],
     products: [
-        .library(
-            name: "Nodes",
-            targets: ["Nodes"]),
-        .library(
-            name: "NodesTesting",
-            targets: ["NodesTesting"]),
-        .library(
-            name: "NodesGenerator",
-            targets: ["NodesGenerator"]),
         .executable(
             name: "nodes-code-gen",
             targets: ["NodesCodeGenerator"]),
         .executable(
             name: "nodes-xcode-templates-gen",
             targets: ["NodesXcodeTemplatesGenerator"]),
+        .library(
+            name: "Nodes",
+            targets: ["Nodes"]),
+        .library(
+            name: "NodesGenerator",
+            targets: ["NodesGenerator"]),
+        .library(
+            name: "NodesTesting",
+            targets: ["NodesTesting"]),
     ],
     dependencies: [
         .package(
@@ -61,17 +61,28 @@ let package = Package(
             from: "1.15.0"),
     ],
     targets: [
-        .target(
-            name: "Nodes",
-            swiftSettings: .swiftSettings,
+        .executableTarget(
+            name: "NodesCodeGenerator",
+            dependencies: [
+                "NodesGenerator",
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
+            path: "Sources/Executables/NodesCodeGenerator",
+            plugins: [
+                .plugin(name: SwiftLint.plugin),
+            ]),
+        .executableTarget(
+            name: "NodesXcodeTemplatesGenerator",
+            dependencies: [
+                "NodesGenerator",
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
+            path: "Sources/Executables/NodesXcodeTemplatesGenerator",
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
         .target(
-            name: "NodesTesting",
-            dependencies: [
-                .product(name: "NeedleFoundation", package: "needle")
-            ],
+            name: "Nodes",
             swiftSettings: .swiftSettings,
             plugins: [
                 .plugin(name: SwiftLint.plugin),
@@ -90,21 +101,12 @@ let package = Package(
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
-        .executableTarget(
-            name: "NodesCodeGenerator",
+        .target(
+            name: "NodesTesting",
             dependencies: [
-                "NodesGenerator",
-                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .product(name: "NeedleFoundation", package: "needle")
             ],
-            plugins: [
-                .plugin(name: SwiftLint.plugin),
-            ]),
-        .executableTarget(
-            name: "NodesXcodeTemplatesGenerator",
-            dependencies: [
-                "NodesGenerator",
-                .product(name: "ArgumentParser", package: "swift-argument-parser"),
-            ],
+            swiftSettings: .swiftSettings,
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
@@ -112,16 +114,6 @@ let package = Package(
             name: "NodesTests",
             dependencies: [
                 "Nodes",
-                "Nimble",
-            ],
-            swiftSettings: .swiftSettings,
-            plugins: [
-                .plugin(name: SwiftLint.plugin),
-            ]),
-        .testTarget(
-            name: "NodesTestingTests",
-            dependencies: [
-                "NodesTesting",
                 "Nimble",
             ],
             swiftSettings: .swiftSettings,
@@ -138,6 +130,16 @@ let package = Package(
             ],
             exclude: [
                 "__Snapshots__",
+            ],
+            swiftSettings: .swiftSettings,
+            plugins: [
+                .plugin(name: SwiftLint.plugin),
+            ]),
+        .testTarget(
+            name: "NodesTestingTests",
+            dependencies: [
+                "NodesTesting",
+                "Nimble",
             ],
             swiftSettings: .swiftSettings,
             plugins: [
