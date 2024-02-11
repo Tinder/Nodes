@@ -869,7 +869,7 @@ files:
                   then
                       mkdir -p "$1"
                       PRESET="$(basename "$1")"
-                      AUTHOR="$(git config user.name)"
+                      AUTHOR="$(git config user.name || "<Author>")"
                       echo "⚙️  Creating $(echo "$PRESET" | tr '[:upper:]' '[:lower:]') preset..."
                       swift run --skip-build -- nodes-code-gen --preset "$PRESET" --author "$AUTHOR" --path "$1"
                   fi
