@@ -51,15 +51,15 @@ jobs:
     - name: Build
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
-        xcodebuild build-for-testing
+        xcodebuild
+        build-for-testing
         -scheme "Tinder"
         -destination "name=$SIMULATOR,OS=latest"
-        -configuration "Debug"
         SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
     - name: Run tests
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
-        xcodebuild test-without-building
+        xcodebuild
+        test-without-building
         -scheme "Tinder"
         -destination "name=$SIMULATOR,OS=latest"
-        -configuration "Debug"
