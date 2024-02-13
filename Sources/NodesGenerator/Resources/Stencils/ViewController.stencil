@@ -77,7 +77,7 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
         view.backgroundColor = .systemBackground
         label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)
-        view.addConstraints([
+        NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20)
         ])
