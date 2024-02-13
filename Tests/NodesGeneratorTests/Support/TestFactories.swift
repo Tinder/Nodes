@@ -147,6 +147,100 @@ extension TestFactories {
         )
     }
 
+    internal func givenNodeV2StencilContext(
+        nodeName: String = "<nodeName>",
+        mockCount: Int = 1
+    ) throws -> NodeV2StencilContext {
+        try NodeV2StencilContext(
+            fileHeader: "<fileHeader>",
+            nodeName: nodeName,
+            analyticsImports: .mock(with: "analyticsImport", count: mockCount),
+            builderImports: .mock(with: "builderImport", count: mockCount),
+            contextImports: .mock(with: "contextImport", count: mockCount),
+            flowImports: .mock(with: "flowImport", count: mockCount),
+            stateImports: .mock(with: "stateImport", count: mockCount),
+            viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
+            viewStateImports: .mock(with: "viewStateImport", count: mockCount),
+            analyticsTestsImports: .mock(with: "analyticsTestsImport", count: mockCount),
+            contextTestsImports: .mock(with: "contextTestsImport", count: mockCount),
+            flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
+            viewControllerTestsImports: .mock(with: "viewControllerTestsImport", count: mockCount),
+            viewStateFactoryTestsImports: .mock(with: "viewStateFactoryTestsImport", count: mockCount),
+            dependencies: .mock(with: "dependency", count: mockCount),
+            analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
+            flowProperties: .mock(with: "flowProperty", count: mockCount),
+            viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllableType: "<viewControllableType>",
+            viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
+            viewControllerType: "<viewControllerType>",
+            viewControllerSuperParameters: mockCount > 0 ? "<viewControllerSuperParameters>" : "",
+            viewControllerProperties: mockCount > 0 ? "<viewControllerProperties>" : "",
+            viewControllerMethods: mockCount > 0 ? "<viewControllerMethods>" : "",
+            viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>",
+            viewControllerUpdateComment: mockCount > 0 ? "<viewControllerUpdateComment>" : "",
+            viewStateEmptyFactory: "<viewStateEmptyFactory>",
+            viewStateOperators: mockCount > 0 ? "<viewStateOperators>" : "",
+            viewStatePropertyComment: "<viewStatePropertyComment>",
+            viewStatePropertyName: "<viewStatePropertyName>",
+            viewStateTransform: "<viewStateTransform>",
+            publisherType: "<publisherType>",
+            publisherFailureType: mockCount > 0 ? "<publisherFailureType>" : "",
+            contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
+            workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            isPreviewProviderEnabled: mockCount > 0,
+            isPeripheryCommentEnabled: mockCount > 0,
+            isNimbleEnabled: mockCount > 0,
+            pluginListName: mockCount > 0 ? "<pluginListName>" : ""
+        )
+    }
+
+    internal func givenNodeV2StencilContext(
+        preset: Preset,
+        mockCount: Int = 1
+    ) throws -> NodeV2StencilContext {
+        try NodeV2StencilContext(
+            preset: preset,
+            fileHeader: "<fileHeader>",
+            analyticsImports: .mock(with: "analyticsImport", count: mockCount),
+            builderImports: .mock(with: "builderImport", count: mockCount),
+            contextImports: .mock(with: "contextImport", count: mockCount),
+            flowImports: .mock(with: "flowImport", count: mockCount),
+            stateImports: .mock(with: "stateImport", count: mockCount),
+            viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
+            viewStateImports: .mock(with: "viewStateImport", count: mockCount),
+            analyticsTestsImports: .mock(with: "analyticsTestsImport", count: mockCount),
+            contextTestsImports: .mock(with: "contextTestsImport", count: mockCount),
+            flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
+            viewControllerTestsImports: .mock(with: "viewControllerTestsImport", count: mockCount),
+            viewStateFactoryTestsImports: .mock(with: "viewStateFactoryTestsImport", count: mockCount),
+            dependencies: .mock(with: "dependency", count: mockCount),
+            analyticsProperties: .mock(with: "analyticsProperty", count: mockCount),
+            flowProperties: .mock(with: "flowProperty", count: mockCount),
+            viewControllableFlowType: "<viewControllableFlowType>",
+            viewControllableType: "<viewControllableType>",
+            viewControllableMockContents: mockCount > 0 ? "<viewControllableMockContents>" : "",
+            viewControllerType: "<viewControllerType>",
+            viewControllerSuperParameters: mockCount > 0 ? "<viewControllerSuperParameters>" : "",
+            viewControllerProperties: mockCount > 0 ? "<viewControllerProperties>" : "",
+            viewControllerMethods: mockCount > 0 ? "<viewControllerMethods>" : "",
+            viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>",
+            viewControllerUpdateComment: mockCount > 0 ? "<viewControllerUpdateComment>" : "",
+            viewStateEmptyFactory: "<viewStateEmptyFactory>",
+            viewStateOperators: mockCount > 0 ? "<viewStateOperators>" : "",
+            viewStatePropertyComment: "<viewStatePropertyComment>",
+            viewStatePropertyName: "<viewStatePropertyName>",
+            viewStateTransform: "<viewStateTransform>",
+            publisherType: "<publisherType>",
+            publisherFailureType: mockCount > 0 ? "<publisherFailureType>" : "",
+            contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
+            workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            isPreviewProviderEnabled: mockCount > 0,
+            isPeripheryCommentEnabled: mockCount > 0,
+            isNimbleEnabled: mockCount > 0,
+            pluginListName: mockCount > 0 ? "<pluginListName>" : ""
+        )
+    }
+
     internal func givenNodeViewInjectedStencilContext(
         nodeName: String = "<nodeName>",
         mockCount: Int = 1

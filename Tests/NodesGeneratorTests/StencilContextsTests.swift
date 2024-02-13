@@ -35,6 +35,33 @@ final class StencilContextsTests: XCTestCase, TestFactories {
             })
     }
 
+    func testNodeV2StencilContext() throws {
+        assertSnapshot(of: try givenNodeV2StencilContext().dictionary,
+                       as: .dump)
+    }
+
+    func testNodeV2StencilContextThrowsReservedNodeName() {
+        expect { try self.givenNodeV2StencilContext(nodeName: "Root") }
+            .to(throwError(errorType: StencilContextError.self) { error in
+                expect(error) == .reservedNodeName("Root")
+            })
+    }
+
+    func testNodeV2StencilContextThrowsInvalidPreset() {
+        expect { try self.givenNodeV2StencilContext(preset: .app) }
+            .to(throwError(errorType: StencilContextError.self) { error in
+                expect(error) == .invalidPreset("App")
+            })
+        expect { try self.givenNodeV2StencilContext(preset: .scene) }
+            .to(throwError(errorType: StencilContextError.self) { error in
+                expect(error) == .invalidPreset("Scene")
+            })
+        expect { try self.givenNodeV2StencilContext(preset: .window) }
+            .to(throwError(errorType: StencilContextError.self) { error in
+                expect(error) == .invalidPreset("Window")
+            })
+    }
+
     func testNodeViewInjectedStencilContext() throws {
         assertSnapshot(of: try givenNodeViewInjectedStencilContext().dictionary,
                        as: .dump)
