@@ -179,18 +179,20 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderPluginList() throws {
+        let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: PluginListStencilContext = givenPluginListStencilContext(mockCount: count)
-            assertSnapshot(of: try StencilRenderer().renderPluginList(context: context),
+            assertSnapshot(of: try stencilRenderer.renderPluginList(context: context),
                            as: .lines,
                            named: "mockCount-\(count)")
         }
     }
 
     func testRenderWorker() throws {
+        let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: WorkerStencilContext = givenWorkerStencilContext(mockCount: count)
-            assertSnapshot(of: try StencilRenderer().renderWorker(context: context),
+            assertSnapshot(of: try stencilRenderer.renderWorker(context: context),
                            as: .lines,
                            named: "mockCount-\(count)")
         }
