@@ -575,9 +575,6 @@ files:
   - path: "{{ project|replace:' ','_' }}/Sources/AppDelegate.swift"
     contents: |
       //
-      //  AppDelegate.swift
-      //  {{ project|replace:' ','_' }}
-      //
       //  Created by {{ author }} on {{ date }}.
       //
 
@@ -617,9 +614,6 @@ files:
   - path: "{{ project|replace:' ','_' }}/Sources/SceneDelegate.swift"
     contents: |
       //
-      //  SceneDelegate.swift
-      //  {{ project|replace:' ','_' }}
-      //
       //  Created by {{ author }} on {{ date }}.
       //
 
@@ -629,9 +623,6 @@ files:
 
   - path: "{{ project|replace:' ','_' }}/Sources/Services/AppService.swift"
     contents: |
-      //
-      //  AppService.swift
-      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -697,9 +688,6 @@ files:
   - path: "{{ project|replace:' ','_' }}/Sources/System/NotificationCenter.swift"
     contents: |
       //
-      //  NotificationCenter.swift
-      //  {{ project|replace:' ','_' }}
-      //
       //  Created by {{ author }} on {{ date }}.
       //
 
@@ -721,9 +709,6 @@ files:
 
   - path: "{{ project|replace:' ','_' }}/Sources/Utility/AnyCancellable+Cancellable.swift"
     contents: |
-      //
-      //  AnyCancellable+Cancellable.swift
-      //  {{ project|replace:' ','_' }}
       //
       //  Created by {{ author }} on {{ date }}.
       //
@@ -771,9 +756,6 @@ files:
 
   - path: "{{ project|replace:' ','_' }}Tests/Tests/{{ project|replace:' ','_' }}Tests.swift"
     contents: |
-      //
-      //  {{ project|replace:' ','_' }}Tests.swift
-      //  {{ project|replace:' ','_' }}Tests
       //
       //  Created by {{ author }} on {{ date }}.
       //
