@@ -15,9 +15,10 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        plugin = {{ plugin_name }}PluginImp(componentFactory: injectComponent {
-            {{ plugin_name }}PluginComponent(parent: $0)
+        plugin = {{ plugin_name }}PluginImp(componentFactory: injectComponent { parent in
+            {{ plugin_name }}PluginComponent(parent: parent)
         } with: {
+            // swiftlint:disable:next direct_return
             let dependency: {{ plugin_name }}PluginDependencyMock = .init()
             // dependency.<dependencyName> = <dependencyName>Mock
             return dependency
