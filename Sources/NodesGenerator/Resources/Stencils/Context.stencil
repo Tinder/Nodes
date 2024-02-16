@@ -143,6 +143,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
 extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}
 {% if owns_view %}
 {% if node_name == "Root" %}
+
 extension {{ node_name }}ContextImp: {{ node_name }}Receiver {
 
     internal func viewDidAppear() {

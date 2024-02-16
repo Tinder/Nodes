@@ -73,6 +73,7 @@ internal final class RootContextImp: AbstractContext
 }
 
 extension RootContextImp: RootContextInterface {}
+
 extension RootContextImp: RootReceiver {
 
     internal func viewDidAppear() {
