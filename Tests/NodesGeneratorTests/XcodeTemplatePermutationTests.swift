@@ -19,6 +19,22 @@ final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
             }
     }
 
+    func testNodeXcodeTemplateV2Permutation() throws {
+        let config: Config = givenConfig()
+        try UIFramework.Kind
+            .allCases
+            .map { try config.uiFramework(for: $0) }
+            .forEach { framework in
+                let permutation1: NodeXcodeTemplateV2Permutation = .init(usePluginList: true,
+                                                                         for: framework,
+                                                                         config: config)
+                let permutation2: NodeXcodeTemplateV2Permutation = .init(usePluginList: false,
+                                                                         for: framework,
+                                                                         config: config)
+                assertSnapshot(of: [permutation1, permutation2], as: .dump, named: framework.kind.rawValue)
+            }
+    }
+
     func testNodeViewInjectedXcodeTemplatePermutation() throws {
         let permutation: NodeViewInjectedXcodeTemplatePermutation = .init(name: "<name>", config: givenConfig())
         assertSnapshot(of: permutation, as: .dump)
