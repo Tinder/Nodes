@@ -1,0 +1,18 @@
+▿ PluginXcodeTemplatePermutation
+  - name: "<name>"
+  ▿ stencilContext: PluginStencilContext
+    - fileHeader: "<fileHeader>"
+    - isNimbleEnabled: false
+    - isPeripheryCommentEnabled: false
+    ▿ pluginImports: 3 elements
+      - "<baseImport>"
+      - "<dependencyInjectionImport>"
+      - "Nodes"
+    - pluginName: "___VARIABLE_productName___"
+    ▿ pluginTestsImports: 2 elements
+      - "<baseTestImport>"
+      - "NodesTesting"
+    ▿ returnType: Optional<String>
+      - some: "___VARIABLE_returnType___"
+  ▿ stencils: 1 element
+    - Plugin
