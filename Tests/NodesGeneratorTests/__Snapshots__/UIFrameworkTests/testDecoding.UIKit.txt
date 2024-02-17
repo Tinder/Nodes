@@ -1,0 +1,4 @@
+▿ UIFramework
+  - framework: Framework.uiKit
+  - viewControllerMethods: "<viewControllerMethods>"
+  - viewControllerProperties: "<viewControllerProperties>"

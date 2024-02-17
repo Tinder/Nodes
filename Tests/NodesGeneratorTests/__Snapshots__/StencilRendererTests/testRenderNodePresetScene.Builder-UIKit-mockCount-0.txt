@@ -1,0 +1,178 @@
+<fileHeader>
+
+/**
+ PURPOSE:
+ The interface of the Flow.
+ */
+/// @mockable
+@MainActor
+internal protocol SceneFlow: Flow {
+    func getViewController() -> WindowSceneViewControllable
+}
+
+/**
+ PURPOSE:
+ Declares the dependencies required by this Node that will be injected (not created by this Node itself).
+ */
+/// @mockable
+@MainActor
+public protocol SceneDependency: Dependency {}
+
+/**
+ PURPOSE:
+ A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
+
+ Can be a tuple or struct containing multiple values when necessary.
+ */
+internal typealias SceneDynamicBuildDependency = (SceneListener, WindowSceneViewControllable)
+
+/**
+ PURPOSE:
+ A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
+
+ Can be a tuple or struct containing multiple values when necessary.
+ */
+internal typealias SceneDynamicComponentDependency = Void
+
+// MARK: - Component
+
+/**
+ PURPOSE:
+ Declares dependencies that are owned by this Node.
+ */
+public final class SceneComponent: Component
+<
+    SceneDependency
+> {
+
+    /*
+     Dependencies
+     ============
+
+     Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
+
+     fileprivate let example: Example = .init()
+
+     Whenever possible, for example when the dependency does not provide shared state, define the property as a
+     factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
+     Needle compatibility whenever the access control is increased.
+
+     fileprivate var exampleFactory: Example {
+         Example()
+     }
+
+     When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
+     that always returns the same instance from a computed property.
+
+     fileprivate var example: Example {
+         shared { Example(otherDependency: dependency.otherDependency) }
+     }
+
+     */
+
+    private let dynamicDependency: SceneDynamicComponentDependency
+
+    /// The initializer.
+    ///
+    /// Remove `dynamicDependency` default parameter when its type is not `Void`.
+    ///
+    /// - Parameters:
+    ///   - parent: The parent scope
+    ///   - dynamicDependency: The dynamic component dependency
+    internal init(
+        parent: Scope,
+        dynamicDependency: SceneDynamicComponentDependency = ()
+    ) {
+        self.dynamicDependency = dynamicDependency
+        super.init(parent: parent)
+    }
+
+    /*
+     Child Components
+     ================
+
+     Declare child component factories as 'fileprivate' methods.
+
+     fileprivate func <name>ComponentFactory() -> <Name>Component {
+         <Name>Component(parent: self)
+     }
+
+     */
+
+    fileprivate func windowComponentFactory() -> WindowComponent {
+        WindowComponent(parent: self)
+    }
+}
+
+// MARK: - Builder
+
+/**
+ PURPOSE:
+ The Builder interface (available to mock for testability).
+ */
+/// @mockable
+@MainActor
+internal protocol SceneBuilder: AnyObject {
+    func build(
+        withListener listener: SceneListener,
+        viewController: WindowSceneViewControllable
+    ) -> SceneFlow
+}
+
+/**
+ PURPOSE:
+ Concrete implementation of the Builder, where everything is created and associated.
+ */
+internal final class SceneBuilderImp: AbstractBuilder
+<
+    SceneComponent,
+    SceneFlow,
+    SceneDynamicBuildDependency,
+    SceneDynamicComponentDependency
+> {
+
+    /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
+    /// the dynamic component dependency.
+    ///
+    /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
+    /// - Parameters:
+    ///   - listener: An object that can listen for signals from the Node
+    ///   - viewController: The injected view controller
+    /// - Returns: The Flow instance
+    internal func build(
+        withListener listener: SceneListener,
+        viewController: WindowSceneViewControllable
+    ) -> SceneFlow {
+        let dynamicBuildDependency: SceneDynamicBuildDependency = (listener, viewController)
+        let dynamicComponentDependency: SceneDynamicComponentDependency = ()
+        return build(dynamicBuildDependency, dynamicComponentDependency)
+    }
+
+    /// The factory method in which the Context and Flow are initialized.
+    /// - Parameters:
+    ///   - component: The component instance
+    ///   - dynamicBuildDependency: The dynamic build dependency
+    /// - Returns: The Flow instance
+    override internal func build(
+        component: SceneComponent,
+        dynamicBuildDependency: SceneDynamicBuildDependency
+    ) -> SceneFlow {
+        let listener: SceneListener = dynamicBuildDependency.0
+        let viewController: WindowSceneViewControllable = dynamicBuildDependency.1
+        let analytics: SceneAnalyticsImp = .init()
+        let context: SceneContextImp = .init(
+            workers: [],
+            analytics: analytics
+        )
+        context.listener = listener
+        let flow: SceneFlowImp = .init(
+            context: context,
+            viewController: viewController,
+            windowBuilder: WindowBuilderImp(componentFactory: component.windowComponentFactory)
+        )
+        context.flow = flow
+        return flow
+    }
+}
+
+extension SceneBuilderImp: SceneBuilder {}

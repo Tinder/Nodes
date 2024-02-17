@@ -1,0 +1,32 @@
+//___FILEHEADER___
+
+import Combine
+import Nodes
+
+/**
+ PURPOSE:
+ Encapsulates work to be performed by the Node.
+ */
+/// @mockable
+internal protocol ___VARIABLE_productName___Worker: Worker {}
+
+/**
+ PURPOSE:
+ Concrete implementation of the Worker.
+ */
+internal final class ___VARIABLE_productName___WorkerImp: AbstractWorker
+<
+    AnyCancellable
+> {
+
+    /// The initializer.
+    override internal init() {}
+
+    /// Implement logic to execute when the Worker is started.
+    override internal func didStart() {}
+
+    /// Implement logic to execute when the Worker has stopped.
+    override internal func willStop() {}
+}
+
+extension ___VARIABLE_productName___WorkerImp: ___VARIABLE_productName___Worker {}

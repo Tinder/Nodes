@@ -1,0 +1,28 @@
+<fileHeader>
+
+/*
+ INSTRUCTIONS:
+
+ Inject an existing analytics tracker (or client), that is defined outside of the Node, into the
+ class defined in this file (below).
+
+ Inject the tracker (or client) via a protocol. The protocol for the injected tracker (or client)
+ can either be an existing one defined outside of the Node or can be a new one added to this file.
+ */
+
+/**
+ PURPOSE:
+ The interface for analytics tracked by this Node.
+
+ Add requirements to this protocol to provide analytics tracking methods for this Node.
+ */
+/// @mockable
+internal protocol AppAnalytics: AnyObject {}
+
+/**
+ PURPOSE:
+ Custom analytics implementation for this Node.
+ */
+internal final class AppAnalyticsImp {}
+
+extension AppAnalyticsImp: AppAnalytics {}
