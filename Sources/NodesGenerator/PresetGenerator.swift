@@ -56,7 +56,6 @@ public final class PresetGenerator {
             let context: NodeStencilContext = try .init(
                 preset: preset,
                 fileHeader: fileHeader,
-                pluginListName: "",
                 analyticsImports: node.analytics.imports(for: uiFramework, config: config),
                 builderImports: node.builder.imports(for: uiFramework, config: config),
                 contextImports: node.context.imports(for: uiFramework, config: config),

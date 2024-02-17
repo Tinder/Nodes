@@ -81,7 +81,7 @@
     - value: true
   ▿ (2 elements)
     - key: "plugin_list_name"
-    - value: ""
+    - value: "<pluginListName>"
   ▿ (2 elements)
     - key: "publisher_failure_type"
     - value: "<publisherFailureType>"

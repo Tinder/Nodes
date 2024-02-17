@@ -178,7 +178,6 @@ public struct NodeStencilContext: StencilContext {
     public init(
         preset: Preset,
         fileHeader: String,
-        pluginListName: String,
         analyticsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
@@ -222,7 +221,7 @@ public struct NodeStencilContext: StencilContext {
             strict: false,
             fileHeader: fileHeader,
             nodeName: preset.nodeName,
-            pluginListName: pluginListName,
+            pluginListName: "",
             analyticsImports: analyticsImports,
             builderImports: builderImports,
             contextImports: contextImports,
