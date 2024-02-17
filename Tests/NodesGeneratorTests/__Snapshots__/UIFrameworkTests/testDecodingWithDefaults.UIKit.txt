@@ -1,4 +1,0 @@
-▿ UIFramework
-  - framework: Framework.uiKit
-  - viewControllerMethods: "@available(*, unavailable)\ninternal required init?(coder: NSCoder) {\n    preconditionFailure(\"init(coder:) has not been implemented\")\n}\n\noverride internal func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n    update(with: initialState)\n}\n\noverride internal func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(statePublisher).store(in: &cancellables)\n}\n\noverride internal func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.cancelAll()\n}"
-  - viewControllerProperties: ""

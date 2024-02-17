@@ -1,4 +1,0 @@
-▿ UIFramework
-  - framework: Framework.swiftUI
-  - viewControllerMethods: "<viewControllerMethods>"
-  - viewControllerProperties: "<viewControllerProperties>"
