@@ -62,6 +62,7 @@ extension TestFactories {
         try NodeStencilContext(
             fileHeader: "<fileHeader>",
             nodeName: nodeName,
+            pluginListName: "",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
             contextImports: .mock(with: "contextImport", count: mockCount),
@@ -108,6 +109,7 @@ extension TestFactories {
         try NodeStencilContext(
             preset: preset,
             fileHeader: "<fileHeader>",
+            pluginListName: "",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
             contextImports: .mock(with: "contextImport", count: mockCount),
@@ -150,10 +152,11 @@ extension TestFactories {
     internal func givenNodeV2StencilContext(
         nodeName: String = "<nodeName>",
         mockCount: Int = 1
-    ) throws -> NodeV2StencilContext {
-        try NodeV2StencilContext(
+    ) throws -> NodeStencilContext {
+        try NodeStencilContext(
             fileHeader: "<fileHeader>",
             nodeName: nodeName,
+            pluginListName: mockCount > 0 ? "<pluginListName>" : "",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
             contextImports: .mock(with: "contextImport", count: mockCount),
@@ -189,18 +192,18 @@ extension TestFactories {
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             isPreviewProviderEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0,
-            isNimbleEnabled: mockCount > 0,
-            pluginListName: mockCount > 0 ? "<pluginListName>" : ""
+            isNimbleEnabled: mockCount > 0
         )
     }
 
     internal func givenNodeV2StencilContext(
         preset: Preset,
         mockCount: Int = 1
-    ) throws -> NodeV2StencilContext {
-        try NodeV2StencilContext(
+    ) throws -> NodeStencilContext {
+        try NodeStencilContext(
             preset: preset,
             fileHeader: "<fileHeader>",
+            pluginListName: mockCount > 0 ? "<pluginListName>" : "",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
             contextImports: .mock(with: "contextImport", count: mockCount),
@@ -236,8 +239,7 @@ extension TestFactories {
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             isPreviewProviderEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0,
-            isNimbleEnabled: mockCount > 0,
-            pluginListName: mockCount > 0 ? "<pluginListName>" : ""
+            isNimbleEnabled: mockCount > 0
         )
     }
 

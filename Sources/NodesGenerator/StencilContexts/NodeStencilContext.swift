@@ -7,6 +7,7 @@ public struct NodeStencilContext: StencilContext {
 
     private let fileHeader: String
     private let nodeName: String
+    private let pluginListName: String
     private let analyticsImports: [String]
     private let builderImports: [String]
     private let contextImports: [String]
@@ -48,6 +49,7 @@ public struct NodeStencilContext: StencilContext {
         [
             "file_header": fileHeader,
             "node_name": nodeName,
+            "plugin_list_name": pluginListName,
             "owns_view": true,
             "analytics_imports": analyticsImports,
             "builder_imports": builderImports,
@@ -91,6 +93,7 @@ public struct NodeStencilContext: StencilContext {
     public init(
         fileHeader: String,
         nodeName: String,
+        pluginListName: String,
         analyticsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
@@ -132,6 +135,7 @@ public struct NodeStencilContext: StencilContext {
             strict: true,
             fileHeader: fileHeader,
             nodeName: nodeName,
+            pluginListName: pluginListName,
             analyticsImports: analyticsImports,
             builderImports: builderImports,
             contextImports: contextImports,
@@ -174,6 +178,7 @@ public struct NodeStencilContext: StencilContext {
     public init(
         preset: Preset,
         fileHeader: String,
+        pluginListName: String,
         analyticsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
@@ -217,6 +222,7 @@ public struct NodeStencilContext: StencilContext {
             strict: false,
             fileHeader: fileHeader,
             nodeName: preset.nodeName,
+            pluginListName: pluginListName,
             analyticsImports: analyticsImports,
             builderImports: builderImports,
             contextImports: contextImports,
@@ -260,6 +266,7 @@ public struct NodeStencilContext: StencilContext {
         strict: Bool,
         fileHeader: String,
         nodeName: String,
+        pluginListName: String,
         analyticsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
@@ -301,6 +308,7 @@ public struct NodeStencilContext: StencilContext {
         else { throw StencilContextError.reservedNodeName(nodeName) }
         self.fileHeader = fileHeader
         self.nodeName = nodeName
+        self.pluginListName = pluginListName
         self.analyticsImports = analyticsImports.sortedImports()
         self.builderImports = builderImports.sortedImports()
         self.contextImports = contextImports.sortedImports()

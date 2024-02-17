@@ -9,6 +9,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
     internal let stencilContext: StencilContext
     internal let propertyList: PropertyList
 
+    // swiftlint:disable:next function_body_length
     internal init(for kind: UIFramework.Kind, config: Config) throws {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
         let node: StencilTemplate.Node = .init(for: .variation(for: uiFramework.kind))
@@ -18,6 +19,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
         stencilContext = try! NodeStencilContext(
             fileHeader: config.fileHeader,
             nodeName: Self.variable(Self.productName),
+            pluginListName: "",
             analyticsImports: node.analytics.imports(for: uiFramework, config: config),
             builderImports: node.builder.imports(for: uiFramework, config: config),
             contextImports: node.context.imports(for: uiFramework, config: config),
