@@ -11,7 +11,7 @@ internal struct PluginXcodeTemplate: XcodeTemplate {
     internal let propertyList: PropertyList =
         .init(description: "The source file implementing a Plugin.",
               sortOrder: 8) {
-            Option(identifier: Self.productName,
+            Option(identifier: XcodeTemplateConstants.productName,
                    name: "Plugin name:",
                    description: "The name of the Plugin")
             Option(identifier: "returnType",
@@ -26,8 +26,8 @@ internal struct PluginXcodeTemplate: XcodeTemplate {
         stencils = [plugin] + additional
         stencilContext = PluginStencilContext(
             fileHeader: config.fileHeader,
-            pluginName: Self.variable(Self.productName),
-            returnType: Self.variable("returnType"),
+            pluginName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
+            returnType: XcodeTemplateConstants.variable("returnType"),
             pluginImports: plugin.imports(config: config),
             pluginTestsImports: pluginTests.imports(config: config),
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,

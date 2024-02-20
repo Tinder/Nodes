@@ -18,7 +18,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
         // swiftlint:disable:next force_try
         stencilContext = try! NodeStencilContext(
             fileHeader: config.fileHeader,
-            nodeName: Self.variable(Self.productName),
+            nodeName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
             pluginListName: "",
             analyticsImports: node.analytics.imports(for: uiFramework, config: config),
             builderImports: node.builder.imports(for: uiFramework, config: config),
@@ -60,7 +60,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
         propertyList = PropertyList(description: "The source files implementing a Node.",
                                     // swiftlint:disable:next force_unwrapping
                                     sortOrder: UIFramework.Kind.allCases.firstIndex(of: kind)! + 1) {
-            Option(identifier: Self.productName,
+            Option(identifier: XcodeTemplateConstants.productName,
                    name: "Node name:",
                    description: "The name of the Node")
         }

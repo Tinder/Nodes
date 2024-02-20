@@ -11,7 +11,7 @@ internal struct NodeViewInjectedXcodeTemplate: XcodeTemplate {
     internal let propertyList: PropertyList =
         .init(description: "The source files implementing a Node.",
               sortOrder: 5) {
-            Option(identifier: Self.productName,
+            Option(identifier: XcodeTemplateConstants.productName,
                    name: "Node name:",
                    description: "The name of the Node")
         }
@@ -22,7 +22,7 @@ internal struct NodeViewInjectedXcodeTemplate: XcodeTemplate {
         // swiftlint:disable:next force_try
         stencilContext = try! NodeViewInjectedStencilContext(
             fileHeader: config.fileHeader,
-            nodeName: Self.variable(Self.productName),
+            nodeName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
             analyticsImports: node.analytics.imports(config: config),
             builderImports: node.builder.imports(config: config),
             contextImports: node.context.imports(config: config),

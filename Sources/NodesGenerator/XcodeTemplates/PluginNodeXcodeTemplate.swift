@@ -11,7 +11,7 @@ internal struct PluginNodeXcodeTemplate: XcodeTemplate {
     internal let propertyList: PropertyList =
         .init(description: "The source file implementing a Plugin for a Node.",
               sortOrder: 7) {
-            Option(identifier: Self.productName,
+            Option(identifier: XcodeTemplateConstants.productName,
                    name: "Node name:",
                    description: "The name of the Plugin")
         }
@@ -23,7 +23,7 @@ internal struct PluginNodeXcodeTemplate: XcodeTemplate {
         stencils = [plugin] + additional
         stencilContext = PluginStencilContext(
             fileHeader: config.fileHeader,
-            pluginName: Self.variable(Self.productName),
+            pluginName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
             pluginImports: plugin.imports(config: config),
             pluginTestsImports: pluginTests.imports(config: config),
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
