@@ -26,13 +26,16 @@ final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
             .map { try config.uiFramework(for: $0) }
             .forEach { framework in
                 [true, false].forEach { usePluginList in
-                    let permutation: NodeXcodeTemplateV2Permutation = .init(usePluginList: usePluginList,
-                                                                            for: framework,
-                                                                            config: config)
+                    let permutation: NodeXcodeTemplateV2Permutation = .init(
+                        usePluginList: usePluginList,
+                        for: framework,
+                        config: config
+                    )
                     assertSnapshot(
                         of: permutation,
                         as: .dump,
-                        named: "\(framework.kind.rawValue)\(usePluginList ? "-UsePluginList" : "")")
+                        named: "\(framework.kind.rawValue)\(usePluginList ? "-UsePluginList" : "")"
+                    )
                 }
             }
     }
