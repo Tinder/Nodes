@@ -1,5 +1,5 @@
 ▿ NodeXcodeTemplateV2Permutation
-  - name: "SwiftUI"
+  - name: "usePluginListSwiftUI"
   ▿ stencilContext: NodeStencilContext
     ▿ analyticsImports: 1 element
       - "<baseImport>"
@@ -52,7 +52,7 @@
     - isPeripheryCommentEnabled: false
     - isPreviewProviderEnabled: false
     - nodeName: "___VARIABLE_productName___"
-    - pluginListName: ""
+    - pluginListName: "___VARIABLE_pluginListName___"
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
     ▿ stateImports: 1 element

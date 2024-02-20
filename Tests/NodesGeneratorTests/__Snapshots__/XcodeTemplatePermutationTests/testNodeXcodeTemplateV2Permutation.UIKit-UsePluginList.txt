@@ -1,5 +1,5 @@
 ▿ NodeXcodeTemplateV2Permutation
-  - name: "SwiftUI"
+  - name: "usePluginListUIKit"
   ▿ stencilContext: NodeStencilContext
     ▿ analyticsImports: 1 element
       - "<baseImport>"
@@ -52,7 +52,7 @@
     - isPeripheryCommentEnabled: false
     - isPreviewProviderEnabled: false
     - nodeName: "___VARIABLE_productName___"
-    - pluginListName: ""
+    - pluginListName: "___VARIABLE_pluginListName___"
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
     ▿ stateImports: 1 element
@@ -64,15 +64,15 @@
       - "<baseImport>"
       - "<reactiveImport>"
       - "Nodes"
-      - "SwiftUI"
+      - "UIKit"
     - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerProperties: "<viewControllerProperties>"
     - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
-    - viewControllerSuperParameters: ""
+    - viewControllerSuperParameters: "nibName: nil, bundle: nil"
     ▿ viewControllerTestsImports: 2 elements
       - "<baseTestImport>"
       - "<reactiveImport>"
-    - viewControllerType: "UIHostingController"
+    - viewControllerType: "UIViewController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateEmptyFactory: "<viewStateEmptyFactory>"
     ▿ viewStateFactoryTestsImports: 1 element
@@ -89,10 +89,10 @@
   ▿ stencils: 7 elements
     - Analytics
     ▿ Builder
-      - builder: Variation.swiftUI
+      - builder: Variation.default
     - Context
     - Flow
     - State
     ▿ ViewController
-      - viewController: Variation.swiftUI
+      - viewController: Variation.default
     - ViewState
