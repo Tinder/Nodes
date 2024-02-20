@@ -12,14 +12,3 @@ internal protocol XcodeTemplate {
     var stencilContext: StencilContext { get }
     var propertyList: PropertyList { get }
 }
-
-extension XcodeTemplate {
-
-    internal static var productName: String {
-        "productName"
-    }
-
-    internal static func variable(_ name: String) -> String {
-        "___VARIABLE_\(name)___"
-    }
-}

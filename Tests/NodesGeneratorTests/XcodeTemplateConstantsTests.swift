@@ -8,6 +8,10 @@ import XCTest
 
 final class XcodeTemplateConstantsTests: XCTestCase {
 
+    func testFileBaseName() {
+        expect(XcodeTemplateConstants.fileBaseName) == "___FILEBASENAME___"
+    }
+
     func testProductName() {
         expect(XcodeTemplateConstants.productName) == "productName"
     }

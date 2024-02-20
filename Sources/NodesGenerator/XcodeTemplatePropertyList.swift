@@ -128,7 +128,7 @@ internal struct XcodeTemplatePropertyList: Equatable, Codable {
         self.allowedTypes = ["public.swift-source"]
         self.supportsSwiftPackage = true
         self.platforms = []
-        self.mainTemplateFile = "___FILEBASENAME___.swift"
+        self.mainTemplateFile = "\(XcodeTemplateConstants.fileBaseName).swift"
         self.options = build()
     }
 

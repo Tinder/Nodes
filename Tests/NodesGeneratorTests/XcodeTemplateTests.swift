@@ -8,14 +8,6 @@ import XCTest
 
 final class XcodeTemplateTests: XCTestCase, TestFactories {
 
-    func testProductName() throws {
-        expect(TestXcodeTemplate.productName) == "productName"
-    }
-
-    func testVariable() throws {
-        expect(TestXcodeTemplate.variable("Hello World")) == "___VARIABLE_Hello World___"
-    }
-
     func testNodeXcodeTemplate() throws {
         try UIFramework.Kind.allCases.forEach { kind in
             try assertSnapshot(of: NodeXcodeTemplate(for: kind, config: givenConfig()),

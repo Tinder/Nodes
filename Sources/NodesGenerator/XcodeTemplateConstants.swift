@@ -4,6 +4,7 @@
 
 internal enum XcodeTemplateConstants {
 
+    internal static let fileBaseName: String = "___FILEBASENAME___"
     internal static let productName: String = "productName"
     internal static let usePluginList: String = "usePluginList"
     internal static let pluginListName: String = "pluginListName"
