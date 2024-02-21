@@ -10,7 +10,6 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
 
     internal init(for kind: UIFramework.Kind, config: Config) throws {
         let uiFramework: UIFramework = try config.uiFramework(for: kind)
-        let node: StencilTemplate.Node = .init(for: .variation(for: uiFramework.kind))
         name = "Node - \(uiFramework.name)"
         propertyList = PropertyList(description: "The source files implementing a Node.",
                                     // swiftlint:disable:next force_unwrapping
@@ -19,7 +18,6 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
                    name: "Node name:",
                    description: "The name of the Node")
         }
-        let permutation: NodeXcodeTemplatePermutation = .init(name: name, for: uiFramework, config: config)
-        permutations = [permutation]
+        permutations = [NodeXcodeTemplatePermutation(name: name, for: uiFramework, config: config)]
     }
 }

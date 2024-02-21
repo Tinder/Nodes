@@ -27,11 +27,8 @@ internal final class XcodeTemplateGenerator {
         let stencilRenderer: StencilRenderer = .init()
         let permutations: [XcodeTemplatePermutation] = template.permutations
 
-        guard !permutations.isEmpty
-        else { return }
-
-        if permutations.count == 1, let permutation = permutations.first {
-            for stencil in permutation.stencils {
+        if permutations.count == 1, let permutation: XcodeTemplatePermutation = permutations.first {
+            for stencil: StencilTemplate in permutation.stencils {
                 let contents: String = try stencilRenderer.render(stencil, with: permutation.stencilContext.dictionary)
                 let url: URL = directory
                     .appendingPathComponent("\(XcodeTemplateConstants.fileBaseName)\(stencil.name)")
