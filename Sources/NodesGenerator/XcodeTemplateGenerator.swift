@@ -27,11 +27,10 @@ internal final class XcodeTemplateGenerator {
         let stencilRenderer: StencilRenderer = .init()
         try template.stencils.forEach { stencil in
             let contents: String = try stencilRenderer.render(stencil, with: template.stencilContext.dictionary)
-            try fileSystem.write(Data(contents.utf8),
-                                 to: directory
+            let url: URL = directory
                 .appendingPathComponent("\(XcodeTemplateConstants.fileBaseName)\(stencil.name)")
-                                    .appendingPathExtension("swift"),
-                                 atomically: true)
+                .appendingPathExtension("swift")
+            try fileSystem.write(Data(contents.utf8), to: url, atomically: true)
         }
     }
 
