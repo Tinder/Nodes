@@ -27,8 +27,12 @@
 			<true/>
 			<key>Required</key>
 			<true/>
+			<key>RequiredOptions</key>
+			<dict/>
 			<key>Type</key>
 			<string>text</string>
+			<key>Values</key>
+			<array/>
 		</dict>
 	</array>
 	<key>Platforms</key>
