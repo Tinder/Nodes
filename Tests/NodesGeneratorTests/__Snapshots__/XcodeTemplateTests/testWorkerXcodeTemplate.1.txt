@@ -1,5 +1,20 @@
 ▿ WorkerXcodeTemplate
   - name: "Worker"
+  ▿ permutations: 1 element
+    ▿ WorkerXcodeTemplatePermutation
+      - name: "Worker"
+      ▿ stencilContext: WorkerStencilContext
+        - fileHeader: "<fileHeader>"
+        - isPeripheryCommentEnabled: false
+        ▿ workerGenericTypes: 1 element
+          - "<workerGenericType>"
+        ▿ workerImports: 3 elements
+          - "<baseImport>"
+          - "<reactiveImport>"
+          - "Nodes"
+        - workerName: "___VARIABLE_productName___"
+      ▿ stencils: 1 element
+        - Worker
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"
@@ -19,15 +34,3 @@
     - sortOrder: 9
     - summary: "The source file implementing a Worker"
     - supportsSwiftPackage: true
-  ▿ stencilContext: WorkerStencilContext
-    - fileHeader: "<fileHeader>"
-    - isPeripheryCommentEnabled: false
-    ▿ workerGenericTypes: 1 element
-      - "<workerGenericType>"
-    ▿ workerImports: 3 elements
-      - "<baseImport>"
-      - "<reactiveImport>"
-      - "Nodes"
-    - workerName: "___VARIABLE_productName___"
-  ▿ stencils: 1 element
-    - Worker

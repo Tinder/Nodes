@@ -1,5 +1,24 @@
 ▿ PluginXcodeTemplate
   - name: "Plugin"
+  ▿ permutations: 1 element
+    ▿ PluginXcodeTemplatePermutation
+      - name: "Plugin"
+      ▿ stencilContext: PluginStencilContext
+        - fileHeader: "<fileHeader>"
+        - isNimbleEnabled: false
+        - isPeripheryCommentEnabled: false
+        ▿ pluginImports: 3 elements
+          - "<baseImport>"
+          - "<dependencyInjectionImport>"
+          - "Nodes"
+        - pluginName: "___VARIABLE_productName___"
+        ▿ pluginTestsImports: 2 elements
+          - "<baseTestImport>"
+          - "NodesTesting"
+        ▿ returnType: Optional<String>
+          - some: "___VARIABLE_returnType___"
+      ▿ stencils: 1 element
+        - Plugin
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"
@@ -27,19 +46,3 @@
     - sortOrder: 8
     - summary: "The source file implementing a Plugin"
     - supportsSwiftPackage: true
-  ▿ stencilContext: PluginStencilContext
-    - fileHeader: "<fileHeader>"
-    - isNimbleEnabled: false
-    - isPeripheryCommentEnabled: false
-    ▿ pluginImports: 3 elements
-      - "<baseImport>"
-      - "<dependencyInjectionImport>"
-      - "Nodes"
-    - pluginName: "___VARIABLE_productName___"
-    ▿ pluginTestsImports: 2 elements
-      - "<baseTestImport>"
-      - "NodesTesting"
-    ▿ returnType: Optional<String>
-      - some: "___VARIABLE_returnType___"
-  ▿ stencils: 1 element
-    - Plugin
