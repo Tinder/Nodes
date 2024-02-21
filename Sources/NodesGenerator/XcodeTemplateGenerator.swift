@@ -26,7 +26,6 @@ internal final class XcodeTemplateGenerator {
     private func renderStencils(for template: XcodeTemplate, into directory: URL) throws {
         let stencilRenderer: StencilRenderer = .init()
         let permutations: [XcodeTemplatePermutation] = template.permutations
-
         if permutations.count == 1, let permutation: XcodeTemplatePermutation = permutations.first {
             for stencil: StencilTemplate in permutation.stencils {
                 let contents: String = try stencilRenderer.render(stencil, with: permutation.stencilContext.dictionary)
