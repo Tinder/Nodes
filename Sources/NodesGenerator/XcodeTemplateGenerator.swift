@@ -25,12 +25,22 @@ internal final class XcodeTemplateGenerator {
 
     private func renderStencils(for template: XcodeTemplate, into directory: URL) throws {
         let stencilRenderer: StencilRenderer = .init()
-        try template.stencils.forEach { stencil in
-            let contents: String = try stencilRenderer.render(stencil, with: template.stencilContext.dictionary)
-            let url: URL = directory
-                .appendingPathComponent("\(XcodeTemplateConstants.fileBaseName)\(stencil.name)")
-                .appendingPathExtension("swift")
-            try fileSystem.write(Data(contents.utf8), to: url, atomically: true)
+        let permutations: [XcodeTemplatePermutation] = template.permutations
+
+        guard !permutations.isEmpty
+        else { return }
+
+        if permutations.count == 1, let permutation = permutations.first {
+            for stencil in permutation.stencils {
+                let contents: String = try stencilRenderer.render(stencil, with: permutation.stencilContext.dictionary)
+                let url: URL = directory
+                    .appendingPathComponent("\(XcodeTemplateConstants.fileBaseName)\(stencil.name)")
+                    .appendingPathExtension("swift")
+                try fileSystem.write(Data(contents.utf8), to: url, atomically: true)
+            }
+        } else {
+            // swiftlint:disable:next todo
+            // TODO: [eh] - Implement in later PR
         }
     }
 

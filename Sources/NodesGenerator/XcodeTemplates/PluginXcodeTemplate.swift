@@ -5,8 +5,6 @@
 internal struct PluginXcodeTemplate: XcodeTemplate {
 
     internal let name: String = "Plugin"
-    internal let stencils: [StencilTemplate]
-    internal let stencilContext: StencilContext
 
     internal let propertyList: PropertyList =
         .init(description: "The source file implementing a Plugin.",
@@ -19,19 +17,9 @@ internal struct PluginXcodeTemplate: XcodeTemplate {
                    description: "The return type of the Plugin")
         }
 
+    internal let permutations: [XcodeTemplatePermutation]
+
     internal init(config: Config) {
-        let plugin: StencilTemplate = .plugin
-        let pluginTests: StencilTemplate = .pluginTests
-        let additional: [StencilTemplate] = config.isTestTemplatesGenerationEnabled ? [pluginTests] : []
-        stencils = [plugin] + additional
-        stencilContext = PluginStencilContext(
-            fileHeader: config.fileHeader,
-            pluginName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
-            returnType: XcodeTemplateConstants.variable("returnType"),
-            pluginImports: plugin.imports(config: config),
-            pluginTestsImports: pluginTests.imports(config: config),
-            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
-            isNimbleEnabled: config.isNimbleEnabled
-        )
+        permutations = [PluginXcodeTemplatePermutation(name: name, config: config)]
     }
 }

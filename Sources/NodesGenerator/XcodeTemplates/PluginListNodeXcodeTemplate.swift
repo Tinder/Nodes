@@ -5,26 +5,19 @@
 internal struct PluginListNodeXcodeTemplate: XcodeTemplate {
 
     internal let name: String = "Plugin List (for Node)"
-    internal let stencils: [StencilTemplate]
-    internal let stencilContext: StencilContext
 
     internal let propertyList: PropertyList =
         .init(description: "The source file implementing a Plugin List.",
               sortOrder: 6) {
             Option(identifier: XcodeTemplateConstants.productName,
                    name: "Plugin List name:",
-                   description: "The name of the Plugin List")
+                   description: "The name of the Plugin List",
+                   default: "MyFeature")
         }
 
+    internal let permutations: [XcodeTemplatePermutation]
+
     internal init(config: Config) {
-        let pluginList: StencilTemplate = .pluginList
-        stencils = [pluginList]
-        stencilContext = PluginListStencilContext(
-            fileHeader: config.fileHeader,
-            pluginListName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
-            pluginListImports: pluginList.imports(config: config),
-            viewControllableFlowType: config.viewControllableFlowType,
-            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
-        )
+        permutations = [PluginListNodeXcodeTemplatePermutation(name: name, config: config)]
     }
 }

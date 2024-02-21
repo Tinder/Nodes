@@ -5,8 +5,6 @@
 internal struct WorkerXcodeTemplate: XcodeTemplate {
 
     internal let name: String = "Worker"
-    internal let stencils: [StencilTemplate]
-    internal let stencilContext: StencilContext
 
     internal let propertyList: PropertyList =
         .init(description: "The source file implementing a Worker.",
@@ -16,15 +14,9 @@ internal struct WorkerXcodeTemplate: XcodeTemplate {
                    description: "The name of the Worker")
         }
 
+    internal let permutations: [XcodeTemplatePermutation]
+
     internal init(config: Config) {
-        let worker: StencilTemplate = .worker
-        stencils = [worker]
-        stencilContext = WorkerStencilContext(
-            fileHeader: config.fileHeader,
-            workerName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
-            workerImports: worker.imports(config: config),
-            workerGenericTypes: config.workerGenericTypes,
-            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
-        )
+        permutations = [WorkerXcodeTemplatePermutation(name: name, config: config)]
     }
 }
