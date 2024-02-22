@@ -9,11 +9,11 @@ internal struct NodeXcodeTemplateV2: XcodeTemplate {
     internal let permutations: [XcodeTemplatePermutation]
 
     internal init?(uiFrameworks: [UIFramework], config: Config) {
-        guard let firstFramework = uiFrameworks.first
+        guard let firstFramework: UIFramework = uiFrameworks.first
         else { return nil }
 
         let description: String = "A wizard-style template picker for creating a Node."
-        propertyList = PropertyList(description: description, sortOrder: 10) {
+        propertyList = PropertyList(description: description, sortOrder: 1) {
             Option(identifier: "productName",
                    name: "Node name:",
                    description: "The name of the new node.",
@@ -26,14 +26,14 @@ internal struct NodeXcodeTemplateV2: XcodeTemplate {
             Option(identifier: XcodeTemplateConstants.pluginListName,
                    name: "Existing Plugin List:",
                    description: "The name of an existing plugin list.",
-                   default: "MyFeature",
-                   requiredOptions: [XcodeTemplateConstants.usePluginList: ["true"]])
+                   requiredOptions: [XcodeTemplateConstants.usePluginList: ["true"]],
+                   default: "MyFeature")
             Option(identifier: "uiFramework",
                    name: "UI Framework:",
                    description: "The UI framework of the new node.",
                    type: "popup",
-                   default: firstFramework.name,
-                   values: uiFrameworks.map(\.framework).map(\.name))
+                   values: uiFrameworks.map(\.framework).map(\.name),
+                   default: firstFramework.name)
         }
 
         permutations = uiFrameworks

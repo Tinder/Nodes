@@ -8,7 +8,7 @@ internal struct WorkerXcodeTemplate: XcodeTemplate {
 
     internal let propertyList: PropertyList =
         .init(description: "The source file implementing a Worker.",
-              sortOrder: 9) {
+              sortOrder: 10) {
             Option(identifier: XcodeTemplateConstants.productName,
                    name: "Worker name:",
                    description: "The name of the Worker")
