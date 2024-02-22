@@ -707,17 +707,6 @@ files:
 
       extension Foundation.NotificationCenter: NotificationCenter {}
 
-  - path: "{{ project|replace:' ','_' }}/Sources/Utility/AnyCancellable+Cancellable.swift"
-    contents: |
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import Combine
-      import Nodes
-
-      extension Combine.AnyCancellable: Nodes.Cancellable {}
-
   - path: "{{ project|replace:' ','_' }}Tests/.swiftlint.yml"
     contents: |
       disabled_rules:
