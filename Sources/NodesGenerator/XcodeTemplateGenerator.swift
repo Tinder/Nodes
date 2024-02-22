@@ -35,8 +35,21 @@ internal final class XcodeTemplateGenerator {
                 try fileSystem.write(Data(contents.utf8), to: url, atomically: true)
             }
         } else {
-            // swiftlint:disable:next todo
-            // TODO: [eh] - Implement in later PR
+            for permutation: XcodeTemplatePermutation in permutations {
+                let directory: URL = directory.appendingPathComponent(permutation.name)
+                try fileSystem.createDirectory(at: directory, withIntermediateDirectories: true)
+
+                for stencil: StencilTemplate in permutation.stencils {
+                    let stencilDirectory: URL = directory
+                        .appendingPathComponent("\(XcodeTemplateConstants.fileBaseName)\(stencil.name)")
+                        .appendingPathExtension("swift")
+                    let contents: String = try stencilRenderer.render(stencil,
+                                                                      with: permutation.stencilContext.dictionary)
+                    try fileSystem.write(Data(contents.utf8),
+                                         to: stencilDirectory,
+                                         atomically: true)
+                }
+            }
         }
     }
 
