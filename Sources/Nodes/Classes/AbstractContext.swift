@@ -5,27 +5,6 @@
 // swiftlint:disable file_types_order period_spacing
 
 /**
- * A Nodes application can use [Combine](https://developer.apple.com/documentation/combine), or any other
- * reactive library, by providing a type supporting subscription cancellation that conforms to Nodes'
- * ``Cancellable`` protocol.
- *
- * As an example, to use Combine with Nodes, the following protocol conformance would need to exist within
- * application code:
- *
- * ```swift
- * import class Combine.AnyCancellable
- * import protocol Nodes.Cancellable
- *
- * extension AnyCancellable: Cancellable {}
- * ```
- */
-public protocol Cancellable: AnyObject, Hashable {
-
-    /// Cancels the ``Cancellable`` subscription.
-    func cancel()
-}
-
-/**
  * The interface used by an ``AbstractFlow`` instance to activate and deactivate its `Context` instance.
  */
 /// @mockable
