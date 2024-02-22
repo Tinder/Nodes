@@ -33,9 +33,14 @@ public final class XcodeTemplates {
     public func generate(
         into directory: URL
     ) throws {
-        var templates: [XcodeTemplate] = UIFramework.Kind
+        let uiFrameworks: [UIFramework] = UIFramework.Kind
             .allCases
-            .compactMap { try? NodeXcodeTemplate(for: $0, config: config) }
+            .compactMap { try? config.uiFramework(for: $0) }
+        var templates: [XcodeTemplate] = uiFrameworks
+            .map { NodeXcodeTemplate(for: $0, config: config) }
+        if let nodeXcodeTemplateV2: NodeXcodeTemplateV2 = .init(uiFrameworks: uiFrameworks, config: config) {
+            templates.append(nodeXcodeTemplateV2)
+        }
         if config.isViewInjectedTemplateEnabled {
             templates.append(NodeViewInjectedXcodeTemplate(config: config))
         }

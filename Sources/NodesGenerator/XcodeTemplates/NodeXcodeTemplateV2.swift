@@ -32,7 +32,7 @@ internal struct NodeXcodeTemplateV2: XcodeTemplate {
                    name: "UI Framework:",
                    description: "The UI framework of the new node.",
                    type: "popup",
-                   values: uiFrameworks.map(\.framework).map(\.name),
+                   values: uiFrameworks.map(\.framework.name),
                    default: firstFramework.name)
         }
 

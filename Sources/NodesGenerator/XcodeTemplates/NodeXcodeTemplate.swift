@@ -8,8 +8,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
     internal let propertyList: PropertyList
     internal let permutations: [XcodeTemplatePermutation]
 
-    internal init(for kind: UIFramework.Kind, config: Config) throws {
-        let uiFramework: UIFramework = try config.uiFramework(for: kind)
+    internal init(for uiFramework: UIFramework, config: Config) {
         name = "Node - \(uiFramework.name)"
         propertyList = PropertyList(description: "The source files implementing a Node.",
                                     // swiftlint:disable:next force_unwrapping

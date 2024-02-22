@@ -9,11 +9,15 @@ import XCTest
 final class XcodeTemplateTests: XCTestCase, TestFactories {
 
     func testNodeXcodeTemplate() throws {
-        try UIFramework.Kind.allCases.forEach { kind in
-            try assertSnapshot(of: NodeXcodeTemplate(for: kind, config: givenConfig()),
+        let config: Config = givenConfig()
+        try UIFramework.Kind
+            .allCases
+            .map { try config.uiFramework(for: $0) }
+            .forEach { framework in
+                assertSnapshot(of: NodeXcodeTemplate(for: framework, config: config),
                                as: .dump,
-                               named: kind.rawValue)
-        }
+                               named: framework.kind.rawValue)
+            }
     }
 
     func testNodeViewInjectedXcodeTemplate() {
