@@ -36,7 +36,7 @@
 	<key>Platforms</key>
 	<array/>
 	<key>SortOrder</key>
-	<integer>5</integer>
+	<integer>6</integer>
 	<key>Summary</key>
 	<string>The source files implementing a Node</string>
 	<key>SupportsSwiftPackage</key>

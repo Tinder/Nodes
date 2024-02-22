@@ -33,6 +33,6 @@
         - type: "text"
         - values: 0 elements
     - platforms: 0 elements
-    - sortOrder: 9
+    - sortOrder: 10
     - summary: "The source file implementing a Worker"
     - supportsSwiftPackage: true

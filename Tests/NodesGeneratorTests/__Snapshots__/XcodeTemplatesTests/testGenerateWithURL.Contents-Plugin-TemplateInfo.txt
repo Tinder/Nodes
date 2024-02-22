@@ -54,7 +54,7 @@
 	<key>Platforms</key>
 	<array/>
 	<key>SortOrder</key>
-	<integer>8</integer>
+	<integer>9</integer>
 	<key>Summary</key>
 	<string>The source file implementing a Plugin</string>
 	<key>SupportsSwiftPackage</key>

@@ -47,6 +47,6 @@
         - type: "text"
         - values: 0 elements
     - platforms: 0 elements
-    - sortOrder: 8
+    - sortOrder: 9
     - summary: "The source file implementing a Plugin"
     - supportsSwiftPackage: true

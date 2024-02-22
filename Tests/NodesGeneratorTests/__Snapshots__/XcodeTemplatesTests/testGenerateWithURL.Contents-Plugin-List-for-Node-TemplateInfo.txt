@@ -38,7 +38,7 @@
 	<key>Platforms</key>
 	<array/>
 	<key>SortOrder</key>
-	<integer>6</integer>
+	<integer>7</integer>
 	<key>Summary</key>
 	<string>The source file implementing a Plugin List</string>
 	<key>SupportsSwiftPackage</key>

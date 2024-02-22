@@ -86,6 +86,6 @@
         - type: "text"
         - values: 0 elements
     - platforms: 0 elements
-    - sortOrder: 5
+    - sortOrder: 6
     - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true

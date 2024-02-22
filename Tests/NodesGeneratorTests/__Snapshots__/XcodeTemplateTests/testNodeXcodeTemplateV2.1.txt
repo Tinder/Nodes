@@ -846,6 +846,6 @@
             - "SwiftUI"
             - "<uiFrameworkName>"
       - platforms: 0 elements
-      - sortOrder: 10
+      - sortOrder: 1
       - summary: "A wizard-style template picker for creating a Node"
       - supportsSwiftPackage: true

@@ -36,6 +36,6 @@
         - type: "text"
         - values: 0 elements
     - platforms: 0 elements
-    - sortOrder: 7
+    - sortOrder: 8
     - summary: "The source file implementing a Plugin for a Node"
     - supportsSwiftPackage: true

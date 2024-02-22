@@ -33,6 +33,6 @@
         - type: "text"
         - values: 0 elements
     - platforms: 0 elements
-    - sortOrder: 6
+    - sortOrder: 7
     - summary: "The source file implementing a Plugin List"
     - supportsSwiftPackage: true
