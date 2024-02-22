@@ -1,4 +1,4 @@
-▿ 46 elements
+▿ 47 elements
   ▿ (2 elements)
     - path: "/Node - AppKit.xctemplate/___FILEBASENAME___Analytics.swift"
     - atomically: true
@@ -94,6 +94,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Node - Custom.xctemplate/TemplateInfo.plist"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node (view injected).xctemplate/___FILEBASENAME___Analytics.swift"

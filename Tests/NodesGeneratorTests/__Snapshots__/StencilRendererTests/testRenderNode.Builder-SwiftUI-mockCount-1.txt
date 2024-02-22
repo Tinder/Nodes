@@ -7,8 +7,7 @@ import <builderImport>
  The interface of the Flow.
  */
 /// @mockable
-@MainActor
-internal protocol <nodeName>Flow: <viewControllableFlowType> {}
+internal protocol <nodeName>Flow: <pluginListName>Flow {}
 
 /**
  PURPOSE:
@@ -113,7 +112,7 @@ public final class <nodeName>Component: Component
  */
 /// @mockable
 @MainActor
-internal protocol <nodeName>Builder: AnyObject {
+internal protocol <nodeName>Builder: <pluginListName>Builder {
     func build(
         withListener listener: <nodeName>Listener
     ) -> <nodeName>Flow
@@ -131,6 +130,18 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
     <nodeName>DynamicBuildDependency,
     <nodeName>DynamicComponentDependency
 > {
+
+    /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
+    /// the dynamic component dependency.
+    ///
+    /// The dynamic dependencies can be tuples containing multiple values when necessary.
+    /// - Parameter listener: An object that can listen for signals from the Node
+    /// - Returns: The Flow instance
+    internal func build(
+        withListener listener: <pluginListName>Listener
+    ) -> <pluginListName>Flow {
+        build(listener: listener as <nodeName>Listener)
+    }
 
     /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
     /// the dynamic component dependency.

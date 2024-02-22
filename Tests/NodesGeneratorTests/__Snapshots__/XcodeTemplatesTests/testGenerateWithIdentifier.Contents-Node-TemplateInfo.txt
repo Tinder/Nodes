@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AllowedTypes</key>
+	<array>
+		<string>public.swift-source</string>
+	</array>
+	<key>Description</key>
+	<string>A wizard-style template picker for creating a Node.</string>
+	<key>Kind</key>
+	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
+	<key>MainTemplateFile</key>
+	<string>___FILEBASENAME___.swift</string>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Default</key>
+			<string>MyFeatureV1</string>
+			<key>Description</key>
+			<string>The name of the new node.</string>
+			<key>Identifier</key>
+			<string>productName</string>
+			<key>Name</key>
+			<string>Node name:</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>RequiredOptions</key>
+			<dict/>
+			<key>Type</key>
+			<string>text</string>
+			<key>Values</key>
+			<array/>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>true</string>
+			<key>Description</key>
+			<string>Whether the node is created for use in an existing plugin list.</string>
+			<key>Identifier</key>
+			<string>usePluginList</string>
+			<key>Name</key>
+			<string>Created For Existing Plugin List</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>RequiredOptions</key>
+			<dict/>
+			<key>Type</key>
+			<string>checkbox</string>
+			<key>Values</key>
+			<array/>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>MyFeature</string>
+			<key>Description</key>
+			<string>The name of an existing plugin list.</string>
+			<key>Identifier</key>
+			<string>pluginListName</string>
+			<key>Name</key>
+			<string>Existing Plugin List:</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>RequiredOptions</key>
+			<dict>
+				<key>usePluginList</key>
+				<array>
+					<string>true</string>
+				</array>
+			</dict>
+			<key>Type</key>
+			<string>text</string>
+			<key>Values</key>
+			<array/>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>AppKit</string>
+			<key>Description</key>
+			<string>The UI framework of the new node.</string>
+			<key>Identifier</key>
+			<string>uiFramework</string>
+			<key>Name</key>
+			<string>UI Framework:</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>RequiredOptions</key>
+			<dict/>
+			<key>Type</key>
+			<string>popup</string>
+			<key>Values</key>
+			<array>
+				<string>AppKit</string>
+				<string>UIKit</string>
+				<string>SwiftUI</string>
+				<string>Custom</string>
+			</array>
+		</dict>
+	</array>
+	<key>Platforms</key>
+	<array/>
+	<key>SortOrder</key>
+	<integer>1</integer>
+	<key>Summary</key>
+	<string>A wizard-style template picker for creating a Node</string>
+	<key>SupportsSwiftPackage</key>
+	<true/>
+</dict>
+</plist>

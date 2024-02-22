@@ -1,4 +1,4 @@
-▿ 18 elements
+▿ 20 elements
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
     - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - AppKit.xctemplate/TemplateIcon.png"
@@ -23,6 +23,12 @@
   ▿ (2 elements)
     - from: ".bundle/Tinder@2x.png"
     - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - Custom.xctemplate/TemplateIcon@2x.png"
+  ▿ (2 elements)
+    - from: ".bundle/Tinder.png"
+    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/TemplateIcon.png"
+  ▿ (2 elements)
+    - from: ".bundle/Tinder@2x.png"
+    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
     - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/TemplateIcon.png"

@@ -1,4 +1,4 @@
-▿ 9 elements
+▿ 10 elements
   ▿ (2 elements)
     - path: "/Node - AppKit.xctemplate"
     - createIntermediates: true
@@ -10,6 +10,9 @@
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node - Custom.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node (view injected).xctemplate"
