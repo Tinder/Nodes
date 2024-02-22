@@ -15,7 +15,7 @@ internal struct WorkerXcodeTemplatePermutation: XcodeTemplatePermutation {
         stencilContext = WorkerStencilContext(
             fileHeader: config.fileHeader,
             workerName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
-            workerImports: worker.imports(config: config),
+            workerImports: worker.imports(with: config),
             workerGenericTypes: config.workerGenericTypes,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
         )

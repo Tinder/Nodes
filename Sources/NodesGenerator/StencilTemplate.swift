@@ -216,36 +216,30 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         }
     }
 
-    public func imports(for uiFramework: UIFramework, config: Config) -> Set<String> {
-        switch self {
-        case .analytics, .builder, .context, .flow, .plugin, .pluginList, .state, .viewState, .worker:
-            return imports(config: config)
-        case .viewController:
-            return imports(config: config).union([uiFramework.import])
-        case .analyticsTests, .contextTests, .flowTests, .pluginTests, .viewControllerTests, .viewStateFactoryTests:
-            return imports(config: config)
-        }
-    }
-
-    public func imports(config: Config) -> Set<String> {
+    public func imports(with config: Config, including uiFramework: UIFramework? = nil) -> Set<String> {
         let baseWithNodes: Set<String> = config.baseImports.union(["Nodes"])
         switch self {
         case .analytics, .state:
             return config.baseImports
         case .flow, .viewState:
             return baseWithNodes
-        case .context, .viewController, .worker:
+        case .context, .worker:
             return baseWithNodes.union(config.reactiveImports)
+        case .viewController:
+            let viewControllerImports: Set<String> = baseWithNodes.union(config.reactiveImports)
+            guard let uiFramework: UIFramework
+            else { return viewControllerImports }
+            return viewControllerImports.union([uiFramework.import])
         case .plugin, .pluginList:
             return baseWithNodes.union(config.dependencyInjectionImports)
         case .builder:
             return baseWithNodes.union(config.reactiveImports).union(config.dependencyInjectionImports)
         case .analyticsTests, .contextTests, .flowTests, .viewStateFactoryTests:
             return config.baseTestImports
-        case .pluginTests:
-            return config.baseTestImports.union(["NodesTesting"])
         case .viewControllerTests:
             return config.baseTestImports.union(config.reactiveImports)
+        case .pluginTests:
+            return config.baseTestImports.union(["NodesTesting"])
         }
     }
 }

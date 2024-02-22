@@ -174,7 +174,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         let config: Config = givenConfig()
         for stencilTemplate in StencilTemplate.allCases {
             for uiFramework in config.uiFrameworks {
-                let imports: Set<String> = stencilTemplate.imports(for: uiFramework, config: config)
+                let imports: Set<String> = stencilTemplate.imports(with: config, including: uiFramework)
                 let uiFrameworkImport: String
                 switch uiFramework.kind {
                 case .appKit:

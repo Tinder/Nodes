@@ -15,7 +15,7 @@ internal struct PluginListNodeXcodeTemplatePermutation: XcodeTemplatePermutation
         stencilContext = PluginListStencilContext(
             fileHeader: config.fileHeader,
             pluginListName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
-            pluginListImports: pluginList.imports(config: config),
+            pluginListImports: pluginList.imports(with: config),
             viewControllableFlowType: config.viewControllableFlowType,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
         )

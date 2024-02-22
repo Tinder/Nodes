@@ -17,8 +17,8 @@ internal struct PluginXcodeTemplatePermutation: XcodeTemplatePermutation {
             fileHeader: config.fileHeader,
             pluginName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
             returnType: XcodeTemplateConstants.variable("returnType"),
-            pluginImports: plugin.imports(config: config),
-            pluginTestsImports: pluginTests.imports(config: config),
+            pluginImports: plugin.imports(with: config),
+            pluginTestsImports: pluginTests.imports(with: config),
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
             isNimbleEnabled: config.isNimbleEnabled
         )
