@@ -31,7 +31,8 @@ public protocol StateObserver: AnyObject {
 @available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension StateObserver {
 
-    /// Configures the `update(with:)` method to automatically be called with view state emitted by the given publisher.
+    /// Configures the `update(with:)` method to automatically be called with view state emitted by the given
+    /// [Combine](https://developer.apple.com/documentation/combine) publisher.
     ///
     /// - Parameter publisher: The view state ``Publisher`` instance to observe.
     ///
