@@ -11,10 +11,10 @@ import {{ import }}
  The interface of the Flow.
  */
 /// @mockable
+@MainActor
 {% if plugin_list_name %}
 internal protocol {{ node_name }}Flow: {{ plugin_list_name }}Flow {}
 {% else %}
-@MainActor
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
 {% endif %}
 

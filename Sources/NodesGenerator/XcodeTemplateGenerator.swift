@@ -45,9 +45,7 @@ internal final class XcodeTemplateGenerator {
                         .appendingPathExtension("swift")
                     let contents: String = try stencilRenderer.render(stencil,
                                                                       with: permutation.stencilContext.dictionary)
-                    try fileSystem.write(Data(contents.utf8),
-                                         to: stencilDirectory,
-                                         atomically: true)
+                    try fileSystem.write(Data(contents.utf8), to: stencilDirectory, atomically: true)
                 }
             }
         }
