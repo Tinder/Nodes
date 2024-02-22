@@ -36,12 +36,11 @@ internal struct NodeXcodeTemplateV2: XcodeTemplate {
                    default: firstFramework.name)
         }
 
-        permutations = uiFrameworks
-            .flatMap { framework in
-                [
-                    NodeXcodeTemplateV2Permutation(usePluginList: true, for: framework, config: config),
-                    NodeXcodeTemplateV2Permutation(usePluginList: false, for: framework, config: config)
-                ]
-            }
+        permutations = uiFrameworks.flatMap { framework in
+            [
+                NodeXcodeTemplateV2Permutation(usePluginList: true, for: framework, config: config),
+                NodeXcodeTemplateV2Permutation(usePluginList: false, for: framework, config: config)
+            ]
+        }
     }
 }
