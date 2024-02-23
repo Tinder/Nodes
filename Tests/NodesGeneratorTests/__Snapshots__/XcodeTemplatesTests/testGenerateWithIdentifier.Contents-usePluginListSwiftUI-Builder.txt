@@ -9,6 +9,7 @@ import Nodes
  The interface of the Flow.
  */
 /// @mockable
+@MainActor
 internal protocol ___VARIABLE_productName___Flow: ___VARIABLE_pluginListName___Flow {}
 
 /**

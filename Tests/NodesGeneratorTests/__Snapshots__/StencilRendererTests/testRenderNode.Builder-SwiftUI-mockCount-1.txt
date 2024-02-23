@@ -7,6 +7,7 @@ import <builderImport>
  The interface of the Flow.
  */
 /// @mockable
+@MainActor
 internal protocol <nodeName>Flow: <pluginListName>Flow {}
 
 /**
