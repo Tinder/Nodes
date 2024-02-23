@@ -6,8 +6,6 @@
 	<array>
 		<string>public.swift-source</string>
 	</array>
-	<key>Description</key>
-	<string>The source files implementing a Node.</string>
 	<key>Kind</key>
 	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
 	<key>MainTemplateFile</key>
@@ -37,8 +35,6 @@
 	<array/>
 	<key>SortOrder</key>
 	<integer>2</integer>
-	<key>Summary</key>
-	<string>The source files implementing a Node</string>
 	<key>SupportsSwiftPackage</key>
 	<true/>
 </dict>

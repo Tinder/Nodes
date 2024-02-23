@@ -71,7 +71,6 @@
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"
-    - description: "The source files implementing a Node."
     - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
     - mainTemplateFile: "___FILEBASENAME___.swift"
     ▿ options: 1 element
@@ -87,5 +86,4 @@
         - values: 0 elements
     - platforms: 0 elements
     - sortOrder: 6
-    - summary: "The source files implementing a Node"
     - supportsSwiftPackage: true

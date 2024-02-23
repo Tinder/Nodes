@@ -17,7 +17,6 @@
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"
-    - description: "The source file implementing a Plugin List."
     - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
     - mainTemplateFile: "___FILEBASENAME___.swift"
     ▿ options: 1 element
@@ -34,5 +33,4 @@
         - values: 0 elements
     - platforms: 0 elements
     - sortOrder: 7
-    - summary: "The source file implementing a Plugin List"
     - supportsSwiftPackage: true

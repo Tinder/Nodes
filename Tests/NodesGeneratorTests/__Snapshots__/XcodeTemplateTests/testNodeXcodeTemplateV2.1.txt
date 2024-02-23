@@ -789,7 +789,6 @@
     ▿ propertyList: XcodeTemplatePropertyList
       ▿ allowedTypes: 1 element
         - "public.swift-source"
-      - description: "A wizard-style template picker for creating a Node."
       - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
       - mainTemplateFile: "___FILEBASENAME___.swift"
       ▿ options: 4 elements
@@ -847,5 +846,4 @@
             - "<uiFrameworkName>"
       - platforms: 0 elements
       - sortOrder: 1
-      - summary: "A wizard-style template picker for creating a Node"
       - supportsSwiftPackage: true

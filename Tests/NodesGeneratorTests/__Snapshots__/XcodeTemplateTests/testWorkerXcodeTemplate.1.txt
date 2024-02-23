@@ -18,7 +18,6 @@
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"
-    - description: "The source file implementing a Worker."
     - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
     - mainTemplateFile: "___FILEBASENAME___.swift"
     ▿ options: 1 element
@@ -34,5 +33,4 @@
         - values: 0 elements
     - platforms: 0 elements
     - sortOrder: 10
-    - summary: "The source file implementing a Worker"
     - supportsSwiftPackage: true

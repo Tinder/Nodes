@@ -6,8 +6,6 @@
 	<array>
 		<string>public.swift-source</string>
 	</array>
-	<key>Description</key>
-	<string>description</string>
 	<key>Kind</key>
 	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
 	<key>MainTemplateFile</key>
@@ -129,8 +127,6 @@
 	<array/>
 	<key>SortOrder</key>
 	<integer>23</integer>
-	<key>Summary</key>
-	<string>description</string>
 	<key>SupportsSwiftPackage</key>
 	<true/>
 </dict>

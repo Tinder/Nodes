@@ -6,8 +6,6 @@
 	<array>
 		<string>public.swift-source</string>
 	</array>
-	<key>Description</key>
-	<string>A wizard-style template picker for creating a Node.</string>
 	<key>Kind</key>
 	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
 	<key>MainTemplateFile</key>
@@ -109,8 +107,6 @@
 	<array/>
 	<key>SortOrder</key>
 	<integer>1</integer>
-	<key>Summary</key>
-	<string>A wizard-style template picker for creating a Node</string>
 	<key>SupportsSwiftPackage</key>
 	<true/>
 </dict>
