@@ -10,9 +10,8 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
 
     internal init(for uiFramework: UIFramework, config: Config) {
         name = "Node - \(uiFramework.name)"
-        propertyList = PropertyList(description: "The source files implementing a Node.",
-                                    // swiftlint:disable:next force_unwrapping
-                                    sortOrder: UIFramework.Kind.allCases.firstIndex(of: uiFramework.kind)! + 2) {
+        // swiftlint:disable:next force_unwrapping
+        propertyList = PropertyList(sortOrder: UIFramework.Kind.allCases.firstIndex(of: uiFramework.kind)! + 2) {
             Option(identifier: XcodeTemplateConstants.productName,
                    name: "Node name:",
                    description: "The name of the Node")

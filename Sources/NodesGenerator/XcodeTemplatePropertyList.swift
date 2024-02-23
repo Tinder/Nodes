@@ -109,8 +109,6 @@ internal struct XcodeTemplatePropertyList: Equatable, Codable {
     private enum CodingKeys: String, CodingKey {
 
         case kind = "Kind"
-        case description = "Description"
-        case summary = "Summary"
         case sortOrder = "SortOrder"
         case allowedTypes = "AllowedTypes"
         case supportsSwiftPackage = "SupportsSwiftPackage"
@@ -120,8 +118,6 @@ internal struct XcodeTemplatePropertyList: Equatable, Codable {
     }
 
     internal let kind: String
-    internal let description: String
-    internal let summary: String
     internal let sortOrder: Int
     internal let allowedTypes: [String]
     internal let supportsSwiftPackage: Bool
@@ -129,10 +125,8 @@ internal struct XcodeTemplatePropertyList: Equatable, Codable {
     internal let mainTemplateFile: String
     internal let options: [Option]
 
-    internal init(description: String, sortOrder: Int, @OptionBuilder build: () -> [Option]) {
+    internal init(sortOrder: Int, @OptionBuilder build: () -> [Option]) {
         self.kind = "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
-        self.description = description
-        self.summary = description.replacingOccurrences(of: "[.]+$", with: "", options: .regularExpression)
         self.sortOrder = sortOrder
         self.allowedTypes = ["public.swift-source"]
         self.supportsSwiftPackage = true

@@ -12,8 +12,7 @@ internal struct NodeXcodeTemplateV2: XcodeTemplate {
         guard let firstFramework: UIFramework = uiFrameworks.first
         else { return nil }
 
-        let description: String = "A wizard-style template picker for creating a Node."
-        propertyList = PropertyList(description: description, sortOrder: 1) {
+        propertyList = PropertyList(sortOrder: 1) {
             Option(identifier: "productName",
                    name: "Node name:",
                    description: "The name of the new node.",

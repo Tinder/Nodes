@@ -14,7 +14,7 @@ final class XcodeTemplatePropertyListTests: XCTestCase {
         // swiftlint:disable:next redundant_type_annotation
         let flag: Bool = false
         // swiftlint:disable:next closure_body_length
-        let plist: XcodeTemplatePropertyList = .init(description: "description", sortOrder: 23) {
+        let plist: XcodeTemplatePropertyList = .init(sortOrder: 23) {
             Option(identifier: "identifier-1",
                    name: "name-1",
                    description: "description-1",
