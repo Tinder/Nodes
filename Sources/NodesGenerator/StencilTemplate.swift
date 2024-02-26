@@ -51,6 +51,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         public let analyticsTests: StencilTemplate
         public let contextTests: StencilTemplate
         public let flowTests: StencilTemplate
+        public let pluginTests: StencilTemplate
         public let viewControllerTests: StencilTemplate
         public let viewStateFactoryTests: StencilTemplate
 
@@ -66,6 +67,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             self.analyticsTests = .analyticsTests
             self.contextTests = .contextTests
             self.flowTests = .flowTests
+            self.pluginTests = .pluginTests
             self.viewControllerTests = .viewControllerTests(variation)
             self.viewStateFactoryTests = .viewStateFactoryTests
         }
@@ -90,6 +92,17 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             stencils += [viewController, viewState]
             guard includeTests
             else { return stencils }
+
+            if includePlugin {
+                return stencils + [
+                    analyticsTests,
+                    contextTests,
+                    flowTests,
+                    pluginTests,
+                    viewControllerTests,
+                    viewStateFactoryTests
+                ]
+            }
             return stencils + [
                 analyticsTests,
                 contextTests,
