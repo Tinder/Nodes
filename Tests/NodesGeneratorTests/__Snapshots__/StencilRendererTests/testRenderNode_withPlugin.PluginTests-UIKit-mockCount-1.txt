@@ -1,0 +1,36 @@
+<fileHeader>
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+
+import <pluginTestsImport>
+
+@MainActor
+final class PluginTests: XCTestCase {
+
+    private var plugin: PluginImp!
+
+    override func setUp() {
+        super.setUp()
+        plugin = PluginImp(componentFactory: injectComponent { parent in
+            PluginComponent(parent: parent)
+        } with: {
+            // swiftlint:disable:next direct_return
+            let dependency: PluginDependencyMock = .init()
+            // dependency.<dependencyName> = <dependencyName>Mock
+            return dependency
+        })
+    }
+
+    override func tearDown() {
+        plugin = nil
+        super.tearDown()
+    }
+
+    func testPluginIsNotEnabled() {
+        expect { self.plugin.create() } == nil
+    }
+
+    func testOverride() {
+        expect { self.plugin.override() } != nil
+    }
+}
