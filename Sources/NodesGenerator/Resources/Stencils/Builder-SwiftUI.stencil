@@ -168,7 +168,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     internal func build(
         withListener listener: {{ plugin_list_name }}Listener
     ) -> {{ plugin_list_name }}Flow {
-        build(listener: listener as {{ node_name }}Listener)
+        build(withListener: listener as {{ node_name }}Listener)
     }
     {% endif %}
 
