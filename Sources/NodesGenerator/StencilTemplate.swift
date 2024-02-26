@@ -42,6 +42,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         public let builder: StencilTemplate
         public let context: StencilTemplate
         public let flow: StencilTemplate
+        public let plugin: StencilTemplate
         public let state: StencilTemplate
         public let viewController: StencilTemplate
         public let viewState: StencilTemplate
@@ -58,6 +59,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             self.builder = .builder(variation)
             self.context = .context
             self.flow = .flow
+            self.plugin = .plugin
             self.state = .state
             self.viewController = .viewController(variation)
             self.viewState = .viewState
@@ -69,30 +71,23 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         }
 
         public func stencils(
+            includePlugin: Bool = false,
             includeState: Bool = true,
             includeTests: Bool = false
         ) -> [StencilTemplate] {
-            let stencils: [StencilTemplate]
-            if includeState {
-                stencils = [
-                    analytics,
-                    builder,
-                    context,
-                    flow,
-                    state,
-                    viewController,
-                    viewState
-                ]
-            } else {
-                stencils = [
-                    analytics,
-                    builder,
-                    context,
-                    flow,
-                    viewController,
-                    viewState
-                ]
+            var stencils: [StencilTemplate] = [
+                analytics,
+                builder,
+                context,
+                flow
+            ]
+            if includePlugin {
+                stencils.append(.plugin)
             }
+            if includeState {
+                stencils.append(.state)
+            }
+            stencils += [viewController, viewState]
             guard includeTests
             else { return stencils }
             return stencils + [
