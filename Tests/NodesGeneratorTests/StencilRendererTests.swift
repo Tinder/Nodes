@@ -14,9 +14,13 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             try UIFramework.Kind.allCases.forEach { kind in
-                let context: NodeStencilContext = try givenNodeStencilContext(mockCount: count)
+                // swiftlint:disable:next redundant_type_annotation
+                let includePlugin: Bool = false
+                let context: NodeStencilContext = try givenNodeStencilContext(includePlugin: includePlugin, mockCount: count)
                 let templates: [String: String] = try stencilRenderer.renderNode(context: context,
                                                                                  kind: kind,
+                                                                                 includePlugin: includePlugin,
+                                                                                 includeState: true,
                                                                                  includeTests: true)
                 expect(templates.keys.sorted()) == [
                     "Analytics",
@@ -26,6 +30,42 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                     "ContextTests",
                     "Flow",
                     "FlowTests",
+                    "State",
+                    "ViewController",
+                    "ViewControllerTests",
+                    "ViewState",
+                    "ViewStateFactoryTests"
+                ]
+                templates.forEach { name, template in
+                    assertSnapshot(of: template,
+                                   as: .lines,
+                                   named: "\(name)-\(kind.rawValue)-mockCount-\(count)")
+                }
+            }
+        }
+    }
+
+    func testRenderNode_withPlugin() throws {
+        let stencilRenderer: StencilRenderer = .init()
+        try mockCounts.forEach { count in
+            try UIFramework.Kind.allCases.forEach { kind in
+                let includePlugin: Bool = true
+                let context: NodeStencilContext = try givenNodeStencilContext(includePlugin: includePlugin, mockCount: count)
+                let templates: [String: String] = try stencilRenderer.renderNode(context: context,
+                                                                                 kind: kind,
+                                                                                 includePlugin: includePlugin,
+                                                                                 includeState: true,
+                                                                                 includeTests: true)
+                expect(templates.keys.sorted()) == [
+                    "Analytics",
+                    "AnalyticsTests",
+                    "Builder",
+                    "Context",
+                    "ContextTests",
+                    "Flow",
+                    "FlowTests",
+                    "Plugin",
+                    "PluginTests",
                     "State",
                     "ViewController",
                     "ViewControllerTests",
