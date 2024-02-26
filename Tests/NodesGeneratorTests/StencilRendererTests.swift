@@ -16,7 +16,8 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             try UIFramework.Kind.allCases.forEach { kind in
                 // swiftlint:disable:next redundant_type_annotation
                 let includePlugin: Bool = false
-                let context: NodeStencilContext = try givenNodeStencilContext(includePlugin: includePlugin, mockCount: count)
+                let context: NodeStencilContext = try givenNodeStencilContext(includePlugin: includePlugin,
+                                                                              mockCount: count)
                 let templates: [String: String] = try stencilRenderer.renderNode(context: context,
                                                                                  kind: kind,
                                                                                  includePlugin: includePlugin,
@@ -47,10 +48,13 @@ final class StencilRendererTests: XCTestCase, TestFactories {
 
     func testRenderNode_withPlugin() throws {
         let stencilRenderer: StencilRenderer = .init()
+        // swiftlint:disable:next closure_body_length
         try mockCounts.forEach { count in
             try UIFramework.Kind.allCases.forEach { kind in
+                // swiftlint:disable:next redundant_type_annotation
                 let includePlugin: Bool = true
-                let context: NodeStencilContext = try givenNodeStencilContext(includePlugin: includePlugin, mockCount: count)
+                let context: NodeStencilContext = try givenNodeStencilContext(includePlugin: includePlugin,
+                                                                              mockCount: count)
                 let templates: [String: String] = try stencilRenderer.renderNode(context: context,
                                                                                  kind: kind,
                                                                                  includePlugin: includePlugin,
