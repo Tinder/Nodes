@@ -81,7 +81,7 @@
     - value: true
   ▿ (2 elements)
     - key: "pluginName"
-    - value: "<nodeName>"
+    - value: ""
   ▿ (2 elements)
     - key: "plugin_imports"
     ▿ value: 1 element
