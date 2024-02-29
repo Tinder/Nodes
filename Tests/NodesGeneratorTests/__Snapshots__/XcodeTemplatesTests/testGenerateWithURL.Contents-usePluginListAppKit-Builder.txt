@@ -137,7 +137,7 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
     internal func build(
         withListener listener: ___VARIABLE_pluginListName___Listener
     ) -> ___VARIABLE_pluginListName___Flow {
-        build(listener: listener as ___VARIABLE_productName___Listener)
+        build(withListener: listener as ___VARIABLE_productName___Listener)
     }
 
     /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
