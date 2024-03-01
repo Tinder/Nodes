@@ -17,7 +17,8 @@ internal struct PluginListNodeXcodeTemplatePermutation: XcodeTemplatePermutation
             pluginListName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
             pluginListImports: pluginList.imports(with: config),
             viewControllableFlowType: config.viewControllableFlowType,
-            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
+            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
+            isNimbleEnabled: config.isNimbleEnabled
         )
     }
 }

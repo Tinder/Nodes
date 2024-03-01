@@ -2,6 +2,7 @@
   - name: "<name>"
   ▿ stencilContext: PluginListStencilContext
     - fileHeader: "<fileHeader>"
+    - isNimbleEnabled: false
     - isPeripheryCommentEnabled: false
     ▿ pluginListImports: 3 elements
       - "<baseImport>"

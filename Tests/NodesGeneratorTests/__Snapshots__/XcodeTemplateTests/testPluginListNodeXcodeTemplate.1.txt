@@ -5,6 +5,7 @@
       - name: "Plugin List (for Node)"
       ▿ stencilContext: PluginListStencilContext
         - fileHeader: "<fileHeader>"
+        - isNimbleEnabled: false
         - isPeripheryCommentEnabled: false
         ▿ pluginListImports: 3 elements
           - "<baseImport>"
