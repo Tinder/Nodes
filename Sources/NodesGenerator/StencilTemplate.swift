@@ -19,6 +19,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
     case contextTests
     case flowTests
     case pluginTests
+    case pluginListTests
     case viewControllerTests(Variation)
     case viewStateFactoryTests
 
@@ -177,6 +178,8 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             "FlowTests"
         case .pluginTests:
             "PluginTests"
+        case .pluginListTests:
+            "PluginListTests"
         case .viewControllerTests:
             "ViewControllerTests"
         case .viewStateFactoryTests:
@@ -190,7 +193,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             description.appending(variation.rawValue)
         case .analytics, .context, .flow, .plugin, .pluginList, .state, .viewState, .worker:
             description
-        case .analyticsTests, .contextTests, .flowTests, .pluginTests, .viewStateFactoryTests:
+        case .analyticsTests, .contextTests, .flowTests, .pluginTests, .pluginListTests, .viewStateFactoryTests:
             description
         }
     }
@@ -245,6 +248,9 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         case .flowTests:
             config.baseTestImports
         case .pluginTests:
+            config.baseTestImports
+                .union(["NodesTesting"])
+        case .pluginListTests:
             config.baseTestImports
                 .union(["NodesTesting"])
         case .viewControllerTests:
