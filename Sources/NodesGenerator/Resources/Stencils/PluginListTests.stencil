@@ -1,0 +1,56 @@
+{{ file_header }}
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+{% if plugin_list_tests_imports %}
+
+{% for import in plugin_list_tests_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+@MainActor
+final class {{ plugin_list_name }}PluginListTests: XCTestCase {
+
+    private var pluginList: {{ plugin_list_name }}PluginListImp!
+
+    override func setUp() {
+        super.setUp()
+        pluginList = {{ plugin_list_name }}PluginListImp(componentFactory: injectComponent { parent in
+            {{ plugin_list_name }}PluginListComponent(parent: parent)
+        } with: {
+            // swiftlint:disable:next direct_return
+            let dependency: {{ plugin_list_name }}PluginListDependencyMock = .init()
+            // dependency.<dependencyName> = <dependencyName>Mock
+            return dependency
+        })
+    }
+
+    override func tearDown() {
+        pluginList = nil
+        super.tearDown()
+    }
+
+    func testCreateAll() {
+        {% if is_nimble_enabled %}
+        expect { self.pluginList.createAll().isEmpty } == true
+        {% else %}
+        XCTAssertTrue(pluginList.createAll().isEmpty)
+        {% endif %}
+    }
+
+    func testCreate() {
+        {% if is_nimble_enabled %}
+        expect { self.pluginList.create() } == nil
+        {% else %}
+        XCTAssertNil(pluginList.create())
+        {% endif %}
+    }
+
+    func testCreateWithKey() {
+        {% if is_nimble_enabled %}
+        expect { self.pluginList.create(key: "<key>") } == nil
+        {% else %}
+        XCTAssertNil(pluginList.create(key: "<key>"))
+        {% endif %}
+    }
+}
