@@ -57,26 +57,22 @@ extension TestFactories {
 
     internal func givenNodeStencilContext(
         nodeName: String = "<nodeName>",
-        includePlugin: Bool = false,
         mockCount: Int = 1
     ) throws -> NodeStencilContext {
         try NodeStencilContext(
             fileHeader: "<fileHeader>",
             nodeName: nodeName,
-            pluginName: includePlugin ? nodeName : "",
             pluginListName: mockCount > 0 ? "<pluginListName>" : "",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
             contextImports: .mock(with: "contextImport", count: mockCount),
             flowImports: .mock(with: "flowImport", count: mockCount),
-            pluginImports: .mock(with: "pluginImport", count: mockCount),
             stateImports: .mock(with: "stateImport", count: mockCount),
             viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
             viewStateImports: .mock(with: "viewStateImport", count: mockCount),
             analyticsTestsImports: .mock(with: "analyticsTestsImport", count: mockCount),
             contextTestsImports: .mock(with: "contextTestsImport", count: mockCount),
             flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
-            pluginTestsImports: .mock(with: "pluginTestsImport", count: mockCount),
             viewControllerTestsImports: .mock(with: "viewControllerTestsImport", count: mockCount),
             viewStateFactoryTestsImports: .mock(with: "viewStateFactoryTestsImport", count: mockCount),
             dependencies: .mock(with: "dependency", count: mockCount),

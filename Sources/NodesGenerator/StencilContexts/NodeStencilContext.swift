@@ -7,20 +7,17 @@ public struct NodeStencilContext: StencilContext {
 
     private let fileHeader: String
     private let nodeName: String
-    private let pluginName: String
     private let pluginListName: String
     private let analyticsImports: [String]
     private let builderImports: [String]
     private let contextImports: [String]
     private let flowImports: [String]
-    private let pluginImports: [String]
     private let stateImports: [String]
     private let viewControllerImports: [String]
     private let viewStateImports: [String]
     private let analyticsTestsImports: [String]
     private let contextTestsImports: [String]
     private let flowTestsImports: [String]
-    private let pluginTestsImports: [String]
     private let viewControllerTestsImports: [String]
     private let viewStateFactoryTestsImports: [String]
     private let dependencies: [[String: Any]]
@@ -52,21 +49,18 @@ public struct NodeStencilContext: StencilContext {
         [
             "file_header": fileHeader,
             "node_name": nodeName,
-            "pluginName": pluginName,
             "plugin_list_name": pluginListName,
             "owns_view": true,
             "analytics_imports": analyticsImports,
             "builder_imports": builderImports,
             "context_imports": contextImports,
             "flow_imports": flowImports,
-            "plugin_imports": pluginImports,
             "state_imports": stateImports,
             "view_controller_imports": viewControllerImports,
             "view_state_imports": viewStateImports,
             "analytics_tests_imports": analyticsTestsImports,
             "context_tests_imports": contextTestsImports,
             "flow_tests_imports": flowTestsImports,
-            "plugin_tests_imports": pluginTestsImports,
             "view_controller_tests_imports": viewControllerTestsImports,
             "view_state_factory_tests_imports": viewStateFactoryTestsImports,
             "dependencies": dependencies,
@@ -99,20 +93,17 @@ public struct NodeStencilContext: StencilContext {
     public init(
         fileHeader: String,
         nodeName: String,
-        pluginName: String,
         pluginListName: String,
         analyticsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
         flowImports: Set<String>,
-        pluginImports: Set<String>,
         stateImports: Set<String>,
         viewControllerImports: Set<String>,
         viewStateImports: Set<String>,
         analyticsTestsImports: Set<String>,
         contextTestsImports: Set<String>,
         flowTestsImports: Set<String>,
-        pluginTestsImports: Set<String>,
         viewControllerTestsImports: Set<String>,
         viewStateFactoryTestsImports: Set<String>,
         dependencies: [Config.Variable],
@@ -144,20 +135,17 @@ public struct NodeStencilContext: StencilContext {
             strict: true,
             fileHeader: fileHeader,
             nodeName: nodeName,
-            pluginName: pluginName,
             pluginListName: pluginListName,
             analyticsImports: analyticsImports,
             builderImports: builderImports,
             contextImports: contextImports,
             flowImports: flowImports,
-            pluginImports: pluginImports,
             stateImports: stateImports,
             viewControllerImports: viewControllerImports,
             viewStateImports: viewStateImports,
             analyticsTestsImports: analyticsTestsImports,
             contextTestsImports: contextTestsImports,
             flowTestsImports: flowTestsImports,
-            pluginTestsImports: pluginTestsImports,
             viewControllerTestsImports: viewControllerTestsImports,
             viewStateFactoryTestsImports: viewStateFactoryTestsImports,
             dependencies: dependencies,
@@ -233,20 +221,17 @@ public struct NodeStencilContext: StencilContext {
             strict: false,
             fileHeader: fileHeader,
             nodeName: preset.nodeName,
-            pluginName: "",
             pluginListName: "",
             analyticsImports: analyticsImports,
             builderImports: builderImports,
             contextImports: contextImports,
             flowImports: flowImports,
-            pluginImports: [],
             stateImports: stateImports,
             viewControllerImports: viewControllerImports,
             viewStateImports: viewStateImports,
             analyticsTestsImports: analyticsTestsImports,
             contextTestsImports: contextTestsImports,
             flowTestsImports: flowTestsImports,
-            pluginTestsImports: [],
             viewControllerTestsImports: viewControllerTestsImports,
             viewStateFactoryTestsImports: viewStateFactoryTestsImports,
             dependencies: dependencies,
@@ -280,20 +265,17 @@ public struct NodeStencilContext: StencilContext {
         strict: Bool,
         fileHeader: String,
         nodeName: String,
-        pluginName: String,
         pluginListName: String,
         analyticsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
         flowImports: Set<String>,
-        pluginImports: Set<String>,
         stateImports: Set<String>,
         viewControllerImports: Set<String>,
         viewStateImports: Set<String>,
         analyticsTestsImports: Set<String>,
         contextTestsImports: Set<String>,
         flowTestsImports: Set<String>,
-        pluginTestsImports: Set<String>,
         viewControllerTestsImports: Set<String>,
         viewStateFactoryTestsImports: Set<String>,
         dependencies: [Config.Variable],
@@ -325,20 +307,17 @@ public struct NodeStencilContext: StencilContext {
         else { throw StencilContextError.reservedNodeName(nodeName) }
         self.fileHeader = fileHeader
         self.nodeName = nodeName
-        self.pluginName = pluginName
         self.pluginListName = pluginListName
         self.analyticsImports = analyticsImports.sortedImports()
         self.builderImports = builderImports.sortedImports()
         self.contextImports = contextImports.sortedImports()
         self.flowImports = flowImports.sortedImports()
-        self.pluginImports = pluginImports.sortedImports()
         self.stateImports = stateImports.sortedImports()
         self.viewControllerImports = viewControllerImports.sortedImports()
         self.viewStateImports = viewStateImports.sortedImports()
         self.analyticsTestsImports = analyticsTestsImports.sortedImports()
         self.contextTestsImports = contextTestsImports.sortedImports()
         self.flowTestsImports = flowTestsImports.sortedImports()
-        self.pluginTestsImports = pluginTestsImports.sortedImports()
         self.viewControllerTestsImports = viewControllerTestsImports.sortedImports()
         self.viewStateFactoryTestsImports = viewStateFactoryTestsImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)

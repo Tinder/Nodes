@@ -1,4 +1,4 @@
-▿ 111 elements
+▿ 103 elements
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - AppKit.xctemplate/___FILEBASENAME___Analytics.swift"
     - atomically: true
@@ -108,9 +108,6 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___Flow.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___Plugin.swift"
-    - atomically: true
-  ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___State.swift"
     - atomically: true
   ▿ (2 elements)
@@ -130,9 +127,6 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit/___FILEBASENAME___Flow.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit/___FILEBASENAME___State.swift"
@@ -156,9 +150,6 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___Flow.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___Plugin.swift"
-    - atomically: true
-  ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___State.swift"
     - atomically: true
   ▿ (2 elements)
@@ -178,9 +169,6 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit/___FILEBASENAME___Flow.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit/___FILEBASENAME___State.swift"
@@ -204,9 +192,6 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___Flow.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___Plugin.swift"
-    - atomically: true
-  ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___State.swift"
     - atomically: true
   ▿ (2 elements)
@@ -226,9 +211,6 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/SwiftUI/___FILEBASENAME___Flow.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/SwiftUI/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/SwiftUI/___FILEBASENAME___State.swift"
@@ -252,9 +234,6 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/usePluginListCustom/___FILEBASENAME___Flow.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/usePluginListCustom/___FILEBASENAME___Plugin.swift"
-    - atomically: true
-  ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/usePluginListCustom/___FILEBASENAME___State.swift"
     - atomically: true
   ▿ (2 elements)
@@ -274,9 +253,6 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/Custom/___FILEBASENAME___Flow.swift"
-    - atomically: true
-  ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/Custom/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/Custom/___FILEBASENAME___State.swift"

@@ -1,4 +1,4 @@
-▿ 43 key/value pairs
+▿ 40 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -80,19 +80,8 @@
     - key: "owns_view"
     - value: true
   ▿ (2 elements)
-    - key: "pluginName"
-    - value: ""
-  ▿ (2 elements)
-    - key: "plugin_imports"
-    ▿ value: 1 element
-      - "<pluginImport>"
-  ▿ (2 elements)
     - key: "plugin_list_name"
     - value: "<pluginListName>"
-  ▿ (2 elements)
-    - key: "plugin_tests_imports"
-    ▿ value: 1 element
-      - "<pluginTestsImport>"
   ▿ (2 elements)
     - key: "publisher_failure_type"
     - value: "<publisherFailureType>"

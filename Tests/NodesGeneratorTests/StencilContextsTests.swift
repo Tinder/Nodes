@@ -13,11 +13,6 @@ final class StencilContextsTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
-    func testNodeStencilContext_withPlugin() throws {
-        assertSnapshot(of: try givenNodeStencilContext(includePlugin: true).dictionary,
-                       as: .dump)
-    }
-
     func testNodeStencilContextThrowsReservedNodeName() {
         expect { try self.givenNodeStencilContext(nodeName: "Root") }
             .to(throwError(errorType: StencilContextError.self) { error in

@@ -52,15 +52,7 @@
     - isPeripheryCommentEnabled: false
     - isPreviewProviderEnabled: false
     - nodeName: "___VARIABLE_productName___"
-    ▿ pluginImports: 3 elements
-      - "<baseImport>"
-      - "<dependencyInjectionImport>"
-      - "Nodes"
     - pluginListName: "___VARIABLE_pluginListName___"
-    - pluginName: "___VARIABLE_productName___"
-    ▿ pluginTestsImports: 2 elements
-      - "<baseTestImport>"
-      - "NodesTesting"
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
     ▿ stateImports: 1 element
@@ -94,13 +86,12 @@
     - viewStateTransform: "<viewStateTransform>"
     ▿ workerGenericTypes: 1 element
       - "<workerGenericType>"
-  ▿ stencils: 8 elements
+  ▿ stencils: 7 elements
     - Analytics
     ▿ Builder
       - builder: Variation.swiftUI
     - Context
     - Flow
-    - Plugin
     - State
     ▿ ViewController
       - viewController: Variation.swiftUI

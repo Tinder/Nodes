@@ -52,10 +52,7 @@
     - isPeripheryCommentEnabled: false
     - isPreviewProviderEnabled: false
     - nodeName: "___VARIABLE_productName___"
-    - pluginImports: 0 elements
     - pluginListName: ""
-    - pluginName: ""
-    - pluginTestsImports: 0 elements
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
     ▿ stateImports: 1 element
