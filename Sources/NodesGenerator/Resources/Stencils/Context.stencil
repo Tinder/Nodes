@@ -67,7 +67,6 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     /// The Listener instance.
     internal weak var listener: {{ node_name }}Listener?
     {% endif %}
-    {% if node_name != "App" and node_name != "Scene" and node_name != "Window" %}
 
     {% if is_periphery_comment_enabled and not owns_view %}
     // periphery:ignore
@@ -75,7 +74,6 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     /// The State instance.
     @Published
     internal private(set) var state: {{ node_name }}State
-    {% endif %}
 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
@@ -102,7 +100,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     ) {
         {% if node_name == "Root" %}
         self.state = {{ node_name }}State(name: "{{ node_name }} View Controller")
-        {% elif node_name != "App" and node_name != "Scene" and node_name != "Window" %}
+        {% else %}
         self.state = {{ node_name }}State()
         {% endif %}
         self.analytics = analytics
