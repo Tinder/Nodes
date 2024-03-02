@@ -1,0 +1,7 @@
+<fileHeader>
+
+/**
+ PURPOSE:
+ The state of the Node.
+ */
+internal struct SceneState: Equatable {}

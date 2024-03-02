@@ -68,13 +68,13 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         try mockCounts.forEach { count in
             let context: NodeViewInjectedStencilContext = try givenNodeViewInjectedStencilContext(preset: .app,
                                                                                                   mockCount: count)
-            let templates: [String: String] = try stencilRenderer.renderNodeViewInjected(context: context,
-                                                                                         includeState: false)
+            let templates: [String: String] = try stencilRenderer.renderNodeViewInjected(context: context)
             expect(templates.keys.sorted()) == [
                 "Analytics",
                 "Builder",
                 "Context",
-                "Flow"
+                "Flow",
+                "State"
             ]
             templates.forEach { name, template in
                 assertSnapshot(of: template,
@@ -89,13 +89,13 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         try mockCounts.forEach { count in
             let context: NodeViewInjectedStencilContext = try givenNodeViewInjectedStencilContext(preset: .scene,
                                                                                                   mockCount: count)
-            let templates: [String: String] = try stencilRenderer.renderNodeViewInjected(context: context,
-                                                                                         includeState: false)
+            let templates: [String: String] = try stencilRenderer.renderNodeViewInjected(context: context)
             expect(templates.keys.sorted()) == [
                 "Analytics",
                 "Builder",
                 "Context",
-                "Flow"
+                "Flow",
+                "State"
             ]
             templates.forEach { name, template in
                 assertSnapshot(of: template,
@@ -110,13 +110,13 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         try mockCounts.forEach { count in
             let context: NodeViewInjectedStencilContext = try givenNodeViewInjectedStencilContext(preset: .window,
                                                                                                   mockCount: count)
-            let templates: [String: String] = try stencilRenderer.renderNodeViewInjected(context: context,
-                                                                                         includeState: false)
+            let templates: [String: String] = try stencilRenderer.renderNodeViewInjected(context: context)
             expect(templates.keys.sorted()) == [
                 "Analytics",
                 "Builder",
                 "Context",
-                "Flow"
+                "Flow",
+                "State"
             ]
             templates.forEach { name, template in
                 assertSnapshot(of: template,
