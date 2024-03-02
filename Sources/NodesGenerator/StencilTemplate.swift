@@ -64,30 +64,17 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         }
 
         public func stencils(
-            includeState: Bool = true,
             includeTests: Bool = false
         ) -> [StencilTemplate] {
-            let stencils: [StencilTemplate]
-            if includeState {
-                stencils = [
-                    analytics,
-                    builder,
-                    context,
-                    flow,
-                    state,
-                    viewController,
-                    viewState
-                ]
-            } else {
-                stencils = [
-                    analytics,
-                    builder,
-                    context,
-                    flow,
-                    viewController,
-                    viewState
-                ]
-            }
+            let stencils: [StencilTemplate] = [
+                analytics,
+                builder,
+                context,
+                flow,
+                state,
+                viewController,
+                viewState
+            ]
             guard includeTests
             else { return stencils }
             return stencils + [
@@ -124,26 +111,15 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         }
 
         public func stencils(
-            includeState: Bool = true,
             includeTests: Bool = false
         ) -> [StencilTemplate] {
-            let stencils: [StencilTemplate]
-            if includeState {
-                stencils = [
-                    analytics,
-                    builder,
-                    context,
-                    flow,
-                    state
-                ]
-            } else {
-                stencils = [
-                    analytics,
-                    builder,
-                    context,
-                    flow
-                ]
-            }
+            let stencils: [StencilTemplate] = [
+                analytics,
+                builder,
+                context,
+                flow,
+                state
+            ]
             guard includeTests
             else { return stencils }
             return stencils + [
