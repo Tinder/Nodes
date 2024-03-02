@@ -62,10 +62,15 @@ Nodes' Xcode templates are required to ensure correct use of the Nodes framework
 
 Installation of the templates is performed by the Xcode templates generator (the `nodes-xcode-templates-gen` executable in the Swift package). Without customizing the generator, Xcode templates for UIKit and SwiftUI (for iOS) are installed by default. The generator supports [optional customization](#optional-customization) if needed.
 
+#### Xcode Templates Installation
+
 > TIP: After completing the [Quick Start](#quick-start) setup (below), Nodes' Xcode templates will be ***installed automatically***, so these instructions to manually install the Xcode templates ***may be skipped*** and are included here simply as a reference.
 
 <details>
-<summary><h4>Xcode Templates Installation</h4></summary>
+
+<summary>Manual Installation</summary>
+
+<br>
 
 To install Nodes' Xcode templates manually, first add Nodes as a dependency to a `Package.swift` file.
 
@@ -84,6 +89,7 @@ swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
 The Xcode templates will be installed to the following location to be made available within Xcode's new file dialog.
 
 `~/Library/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (Xcode Templates)`
+
 </details>
 
 ## Documentation
