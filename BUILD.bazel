@@ -11,7 +11,7 @@ swift_library(
     srcs = glob(["Sources/Nodes/**/*.swift"]),
     copts = [
         "-warnings-as-errors",
-        "-strict-concurrency=complete"
+        "-strict-concurrency=complete",
     ],
     visibility = ["//visibility:public"],
 )
@@ -25,7 +25,7 @@ swift_library(
     ],
     copts = [
         "-warnings-as-errors",
-        "-strict-concurrency=complete"
+        "-strict-concurrency=complete",
     ],
     testonly = True,
 )
@@ -42,7 +42,7 @@ swift_library(
     ],
     copts = [
         "-warnings-as-errors",
-        "-strict-concurrency=complete"
+        "-strict-concurrency=complete",
     ],
     defines = ["BAZEL"],
 )
@@ -75,7 +75,7 @@ swift_library(
     ],
     copts = [
         "-warnings-as-errors",
-        "-strict-concurrency=complete"
+        "-strict-concurrency=complete",
     ],
 )
 
