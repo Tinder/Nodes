@@ -31,9 +31,9 @@ swift_library(
 )
 
 swift_library(
-    name = "NodesXcodeTemplatesGenerator",
-    srcs = glob(["Sources/NodesXcodeTemplatesGenerator/**/*.swift"]),
-    data = [":NodesXcodeTemplatesGeneratorResourcesBundle"],
+    name = "NodesGenerator",
+    srcs = glob(["Sources/NodesGenerator/**/*.swift"]),
+    data = [":NodesGeneratorResourcesBundle"],
     visibility = ["//visibility:public"],
     deps = [
         "@Codextended",
@@ -48,29 +48,29 @@ swift_library(
 )
 
 apple_resource_bundle(
-    name = "NodesXcodeTemplatesGeneratorResourcesBundle",
-    bundle_name = "Nodes_NodesXcodeTemplatesGenerator",
-    resources = [":NodesXcodeTemplatesGeneratorResources"],
+    name = "NodesGeneratorResourcesBundle",
+    bundle_name = "Nodes_NodesGenerator",
+    resources = [":NodesGeneratorResources"],
 )
 
 apple_resource_group(
-    name = "NodesXcodeTemplatesGeneratorResources",
-    resources = glob(["Sources/NodesXcodeTemplatesGenerator/Resources/**"]),
+    name = "NodesGeneratorResources",
+    resources = glob(["Sources/NodesGenerator/Resources/**"]),
 )
 
 macos_command_line_application(
     name = "nodes-xcode-templates-gen",
     deps = [
-        ":NodesXcodeTemplatesGeneratorExecutable",
+        ":NodesXcodeTemplatesGenerator",
     ],
     minimum_os_version = MINIMUM_MACOS_VERSION,
 )
 
 swift_library(
-    name = "NodesXcodeTemplatesGeneratorExecutable",
-    srcs = glob(["Sources/NodesXcodeTemplatesGeneratorExecutable/**/*.swift"]),
+    name = "NodesXcodeTemplatesGenerator",
+    srcs = glob(["Sources/Executables/NodesXcodeTemplatesGenerator/**/*.swift"]),
     deps = [
-        ":NodesXcodeTemplatesGenerator",
+        ":NodesGenerator",
         "@ArgumentParser",
     ],
     copts = [
@@ -80,9 +80,9 @@ swift_library(
 )
 
 macos_bundle(
-    name = "Nodes_NodesXcodeTemplatesGenerator",
-    bundle_id = "com.tinder.NodesXcodeTemplatesGeneratorResources",
-    resources = [":NodesXcodeTemplatesGeneratorResources"],
+    name = "Nodes_NodesGenerator",
+    bundle_id = "com.tinder.NodesGeneratorResources",
+    resources = [":NodesGeneratorResources"],
     visibility = ["//visibility:public"],
     infoplists = ["Info.plist"],
     minimum_os_version = MINIMUM_MACOS_VERSION,
@@ -129,21 +129,21 @@ swift_library(
 )
 
 macos_unit_test(
-    name = "NodesXcodeTemplatesGeneratorTests-macOS",
-    data = glob(["Tests/NodesXcodeTemplatesGeneratorTests/__Snapshots__/**"]),
+    name = "NodesGeneratorTests-macOS",
+    data = glob(["Tests/NodesGeneratorTests/__Snapshots__/**"]),
     deps = [
-        ":NodesXcodeTemplatesGeneratorTests",
+        ":NodesGeneratorTests",
     ],
     minimum_os_version = MINIMUM_MACOS_VERSION,
     timeout = "long",
 )
 
 swift_library(
-    name = "NodesXcodeTemplatesGeneratorTests",
-    srcs = glob(["Tests/NodesXcodeTemplatesGeneratorTests/**/*.swift"]),
+    name = "NodesGeneratorTests",
+    srcs = glob(["Tests/NodesGeneratorTests/**/*.swift"]),
     visibility = ["//visibility:private"],
     deps = [
-        ":NodesXcodeTemplatesGenerator",
+        ":NodesGenerator",
         "@Nimble",
         "@SnapshotTesting//:SnapshotTesting",
         "@SnapshotTesting//:InlineSnapshotTesting",
