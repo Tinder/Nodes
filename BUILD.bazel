@@ -6,6 +6,26 @@ MINIMUM_MACOS_VERSION = "10.15"
 MINIMUM_IOS_VERSION = "13.0"
 
 swift_binary(
+    name = "nodes-code-gen",
+    deps = [
+        ":NodesCodeGenerator",
+    ],
+)
+
+swift_library(
+    name = "NodesCodeGenerator",
+    srcs = glob(["Sources/Executables/NodesCodeGenerator/**/*.swift"]),
+    deps = [
+        ":NodesGenerator",
+        "@ArgumentParser",
+    ],
+    copts = [
+        "-warnings-as-errors",
+        "-strict-concurrency=complete",
+    ],
+)
+
+swift_binary(
     name = "nodes-xcode-templates-gen",
     deps = [
         ":NodesXcodeTemplatesGenerator",
