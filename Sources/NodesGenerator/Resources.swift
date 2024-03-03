@@ -4,78 +4,47 @@
 
 import Foundation
 
-internal protocol Resources {
+#if BAZEL
+import PathKit
+#endif
 
-    func makeURL(
-        filename: String,
-        extension: String
-    ) throws -> URL
-}
-
-internal final class ResourcesImp: Resources {
-
-    private enum Error: Swift.Error {
-        case missingExecutableURL
-        case missingBundle(path: String)
-        case missingResource(bundlePath: String, filename: String, extension: String)
-    }
-
-    func makeURL(
-        filename: String,
-        extension: String
-    ) throws -> URL {
-        #if BAZEL
-        return try makeRunfilesURL(
-            filename: filename,
-            extension: `extension`
-        )
-        #else
-        return try makeBundleURL(
-            filename: filename,
-            extension: `extension`
-        )
-        #endif
-    }
+internal final class Resources {
 
     #if BAZEL
-    private func makeRunfilesURL(
-        filename: String,
-        extension: String
-    ) throws -> URL {
-        try RunfilesImp().makeResourceURL(
-            filename: filename,
-            extension: `extension`
-        )
+
+    // swiftlint:disable force_unwrapping
+
+    internal func url(forResource resource: String, withExtension extension: String) -> URL {
+        // swiftlint:disable:next force_try
+        try! Path(Bundle.main.bundleURL.path)
+            .children()
+            .first { $0.extension == "runfiles" }!
+            .recursiveChildren()
+            .first { $0.lastComponentWithoutExtension == resource && $0.extension == `extension` }!
+            .url
+            .resolvingSymlinksInPath()
     }
+
+    // swiftlint:enable force_unwrapping
 
     #else
 
-    private func makeBundleURL(
-        filename: String,
-        extension: String
-    ) throws -> URL {
-        guard let executableURL: URL = Bundle.main.executableURL else {
-            throw Error.missingExecutableURL
-        }
-        let bundleURL: URL = executableURL
-            .deletingLastPathComponent()
-            .appendingPathComponent("Nodes_NodesGenerator.bundle")
-        guard let bundle: Bundle = .init(url: bundleURL) else {
-            throw Error.missingBundle(
-                path: bundleURL.path
-            )
-        }
-        guard let resourceURL: URL = bundle.url(
-            forResource: filename,
-            withExtension: `extension`
-        ) else {
-            throw Error.missingResource(
-                bundlePath: bundleURL.path,
-                filename: filename,
-                extension: `extension`
-            )
-        }
-        return resourceURL
+    internal func url(forResource resource: String, withExtension extension: String) -> URL {
+        let bundle: Bundle = .moduleRelativeToExecutable ?? .module
+        // swiftlint:disable:next force_unwrapping
+        return bundle.url(forResource: resource, withExtension: `extension`)!
     }
+
     #endif
+}
+
+extension Bundle {
+
+    // swiftlint:disable:next strict_fileprivate
+    fileprivate static var moduleRelativeToExecutable: Bundle? {
+        guard let url: URL = Bundle.main.executableURL
+        else { return nil }
+        let name: String = "Nodes_NodesGenerator.bundle"
+        return Bundle(url: url.deletingLastPathComponent().appendingPathComponent(name))
+    }
 }

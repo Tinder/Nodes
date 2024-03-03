@@ -50,10 +50,8 @@ public final class StencilRenderer {
     }
 
     internal func render(_ stencil: StencilTemplate, with context: [String: Any]) throws -> String {
-        let stencilURL: URL = try ResourcesImp().makeURL(
-            filename: stencil.filename,
-            extension: "stencil"
-        )
+        let resources: Resources = .init()
+        let stencilURL: URL = resources.url(forResource: stencil.filename, withExtension: "stencil")
         let template: String = try .init(contentsOf: stencilURL)
         let environment: Environment = .init(loader: DictionaryLoader(templates: [stencil.name: template]),
                                              extensions: stencilExtensions(),
