@@ -51,7 +51,8 @@ public final class StencilRenderer {
 
     internal func render(_ stencil: StencilTemplate, with context: [String: Any]) throws -> String {
         let resources: Resources = .init()
-        let stencilURL: URL = resources.url(forResource: stencil.filename, withExtension: "stencil")
+        // swiftlint:disable:next force_unwrapping
+        let stencilURL: URL = resources.url(forResource: stencil.filename, withExtension: "stencil")!
         let template: String = try .init(contentsOf: stencilURL)
         let environment: Environment = .init(loader: DictionaryLoader(templates: [stencil.name: template]),
                                              extensions: stencilExtensions(),

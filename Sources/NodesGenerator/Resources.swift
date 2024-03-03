@@ -12,27 +12,21 @@ internal final class Resources {
 
     #if BAZEL
 
-    // swiftlint:disable force_unwrapping
-
-    internal func url(forResource resource: String, withExtension extension: String) -> URL {
-        // swiftlint:disable:next force_try
-        try! Path(Bundle.main.bundleURL.path)
+    internal func url(forResource resource: String, withExtension extension: String) -> URL? {
+        try? Path(Bundle.main.bundleURL.path)
             .children()
-            .first { $0.extension == "runfiles" }!
+            .first { $0.extension == "runfiles" }?
             .recursiveChildren()
-            .first { $0.lastComponentWithoutExtension == resource && $0.extension == `extension` }!
+            .first { $0.lastComponentWithoutExtension == resource && $0.extension == `extension` }?
             .url
             .resolvingSymlinksInPath()
     }
 
-    // swiftlint:enable force_unwrapping
-
     #else
 
-    internal func url(forResource resource: String, withExtension extension: String) -> URL {
+    internal func url(forResource resource: String, withExtension extension: String) -> URL? {
         let bundle: Bundle = .moduleRelativeToExecutable ?? .module
-        // swiftlint:disable:next force_unwrapping
-        return bundle.url(forResource: resource, withExtension: `extension`)!
+        return bundle.url(forResource: resource, withExtension: `extension`)
     }
 
     #endif
