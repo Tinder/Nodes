@@ -43,7 +43,7 @@ internal final class RunfilesImp: Runfiles {
                 bundlePath: bundlePath.string
             )
         }
-        return resourcePath.url
+        return resourcePath.url.resolvingSymlinksInPath()
     }
 }
 
