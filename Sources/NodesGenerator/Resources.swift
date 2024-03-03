@@ -13,7 +13,7 @@ internal final class Resources {
     #if BAZEL
 
     internal func url(forResource resource: String, withExtension extension: String) -> URL? {
-        try? Path(Bundle.main.bundleURL.path)
+        try? Path(Bundle.main.bundlePath)
             .children()
             .first { $0.extension == "runfiles" }?
             .recursiveChildren()
