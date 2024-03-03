@@ -188,37 +188,87 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 }
                 switch stencilTemplate {
                 case .analytics:
-                    expect(imports) == ["<baseImport>"]
+                    expect(imports) == [
+                        "<baseImport>"
+                    ]
                 case .builder:
-                    expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>", "<dependencyInjectionImport>"]
+                    expect(imports) == [
+                        "Nodes",
+                        "<baseImport>",
+                        "<reactiveImport>",
+                        "<dependencyInjectionImport>"
+                    ]
                 case .context:
-                    expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>"]
+                    expect(imports) == [
+                        "Nodes",
+                        "<baseImport>",
+                        "<reactiveImport>"
+                    ]
                 case .flow:
-                    expect(imports) == ["Nodes", "<baseImport>"]
+                    expect(imports) == [
+                        "Nodes",
+                        "<baseImport>"
+                    ]
                 case .plugin:
-                    expect(imports) == ["Nodes", "<baseImport>", "<dependencyInjectionImport>"]
+                    expect(imports) == [
+                        "Nodes",
+                        "<baseImport>",
+                        "<dependencyInjectionImport>"
+                    ]
                 case .pluginList:
-                    expect(imports) == ["Nodes", "<baseImport>", "<dependencyInjectionImport>"]
+                    expect(imports) == [
+                        "Nodes",
+                        "<baseImport>",
+                        "<dependencyInjectionImport>"
+                    ]
                 case .state:
-                    expect(imports) == ["<baseImport>"]
+                    expect(imports) == [
+                        "<baseImport>"
+                    ]
                 case .viewController:
-                    expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>", uiFrameworkImport]
+                    expect(imports) == [
+                        "Nodes",
+                        "<baseImport>",
+                        "<reactiveImport>",
+                        uiFrameworkImport
+                    ]
                 case .viewState:
-                    expect(imports) == ["Nodes", "<baseImport>"]
+                    expect(imports) == [
+                        "Nodes",
+                        "<baseImport>"
+                    ]
                 case .worker:
-                    expect(imports) == ["Nodes", "<baseImport>", "<reactiveImport>"]
+                    expect(imports) == [
+                        "Nodes",
+                        "<baseImport>",
+                        "<reactiveImport>"
+                    ]
                 case .analyticsTests:
-                    expect(imports) == ["<baseTestImport>"]
+                    expect(imports) == [
+                        "<baseTestImport>"
+                    ]
                 case .contextTests:
-                    expect(imports) == ["<baseTestImport>"]
+                    expect(imports) == [
+                        "<baseTestImport>"
+                    ]
                 case .flowTests:
-                    expect(imports) == ["<baseTestImport>"]
+                    expect(imports) == [
+                        "<baseTestImport>"
+                    ]
                 case .pluginTests:
-                    expect(imports) == ["NodesTesting", "<baseTestImport>"]
+                    expect(imports) == [
+                        "NodesTesting",
+                        "<baseTestImport>"
+                    ]
                 case .viewControllerTests:
-                    expect(imports) == ["<baseTestImport>", "<reactiveImport>"]
+                    expect(imports) == [
+                        "<baseTestImport>",
+                        "<reactiveImport>"
+                    ]
                 case .viewStateFactoryTests:
-                    expect(imports) == ["<baseTestImport>"]
+                    expect(imports) == [
+                        "<baseTestImport>"
+                    ]
                 }
             }
         }
