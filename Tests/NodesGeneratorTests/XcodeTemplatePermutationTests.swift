@@ -1,0 +1,67 @@
+//
+//  Copyright © 2024 Tinder (Match Group, LLC)
+//
+
+import Nimble
+@testable import NodesGenerator
+import XCTest
+
+final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
+
+    func testNodeXcodeTemplatePermutation() throws {
+        let config: Config = givenConfig()
+        try UIFramework.Kind
+            .allCases
+            .map { try config.uiFramework(for: $0) }
+            .forEach { framework in
+                let permutation: NodeXcodeTemplatePermutation = .init(name: "<name>", for: framework, config: config)
+                assertSnapshot(of: permutation, as: .dump, named: framework.kind.rawValue)
+            }
+    }
+
+    func testNodeXcodeTemplateV2Permutation() throws {
+        let config: Config = givenConfig()
+        try UIFramework.Kind
+            .allCases
+            .map { try config.uiFramework(for: $0) }
+            .forEach { framework in
+                [true, false].forEach { usePluginList in
+                    let permutation: NodeXcodeTemplateV2Permutation = .init(
+                        usePluginList: usePluginList,
+                        for: framework,
+                        config: config
+                    )
+                    assertSnapshot(
+                        of: permutation,
+                        as: .dump,
+                        named: "\(framework.kind.rawValue)\(usePluginList ? "-UsePluginList" : "")"
+                    )
+                }
+            }
+    }
+
+    func testNodeViewInjectedXcodeTemplatePermutation() throws {
+        let permutation: NodeViewInjectedXcodeTemplatePermutation = .init(name: "<name>", config: givenConfig())
+        assertSnapshot(of: permutation, as: .dump)
+    }
+
+    func testPluginListNodeXcodeTemplatePermutation() throws {
+        let permutation: PluginListNodeXcodeTemplatePermutation = .init(name: "<name>", config: givenConfig())
+        assertSnapshot(of: permutation, as: .dump)
+    }
+
+    func testPluginNodeXcodeTemplatePermutation() {
+        let permutation: PluginNodeXcodeTemplatePermutation = .init(name: "<name>", config: givenConfig())
+        assertSnapshot(of: permutation, as: .dump)
+    }
+
+    func testPluginXcodeTemplatePermutation() {
+        let permutation: PluginXcodeTemplatePermutation = .init(name: "<name>", config: givenConfig())
+        assertSnapshot(of: permutation, as: .dump)
+    }
+
+    func testWorkerXcodeTemplatePermutation() {
+        let permutation: WorkerXcodeTemplatePermutation = .init(name: "<name>", config: givenConfig())
+        assertSnapshot(of: permutation, as: .dump)
+    }
+}

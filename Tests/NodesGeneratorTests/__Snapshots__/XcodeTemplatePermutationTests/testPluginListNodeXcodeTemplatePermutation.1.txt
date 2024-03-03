@@ -1,0 +1,13 @@
+▿ PluginListNodeXcodeTemplatePermutation
+  - name: "<name>"
+  ▿ stencilContext: PluginListStencilContext
+    - fileHeader: "<fileHeader>"
+    - isPeripheryCommentEnabled: false
+    ▿ pluginListImports: 3 elements
+      - "<baseImport>"
+      - "<dependencyInjectionImport>"
+      - "Nodes"
+    - pluginListName: "___VARIABLE_productName___"
+    - viewControllableFlowType: "<viewControllableFlowType>"
+  ▿ stencils: 1 element
+    - PluginList

@@ -1,0 +1,67 @@
+{{ file_header }}
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+{% if context_tests_imports %}
+
+{% for import in context_tests_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+@MainActor
+final class {{ node_name }}ContextTests: XCTestCase {
+
+    private var analyticsMock: {{ node_name }}AnalyticsMock!
+    private var context: {{ node_name }}ContextImp!
+
+    override func setUp() {
+        super.setUp()
+        analyticsMock = {{ node_name }}AnalyticsMock()
+        context = {{ node_name }}ContextImp(
+            workers: [],
+            analytics: analyticsMock
+        )
+    }
+
+    override func tearDown() {
+        analyticsMock = nil
+        context = nil
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        {% if is_nimble_enabled %}
+        expect { self.context } != nil
+        {% else %}
+        XCTAssertNotNil(context)
+        {% endif %}
+    }
+
+    func testWorkersIsEmpty() {
+        {% if is_nimble_enabled %}
+        expect { self.context.workers }.to(beEmpty())
+        {% else %}
+        XCTAssertTrue(context.workers.isEmpty)
+        {% endif %}
+    }
+
+    func testActivation() {
+        {% if is_nimble_enabled %}
+        expect { self.context.isActive } == false
+        {% else %}
+        XCTAssertFalse(context.isActive)
+        {% endif %}
+        context.activate()
+        {% if is_nimble_enabled %}
+        expect { self.context.isActive } == true
+        {% else %}
+        XCTAssertTrue(context.isActive)
+        {% endif %}
+        context.deactivate()
+        {% if is_nimble_enabled %}
+        expect { self.context.isActive } == false
+        {% else %}
+        XCTAssertFalse(context.isActive)
+        {% endif %}
+    }
+}

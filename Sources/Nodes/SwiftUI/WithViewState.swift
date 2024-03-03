@@ -10,7 +10,7 @@ import SwiftUI
 /**
  * A [SwiftUI](https://developer.apple.com/documentation/swiftui) helper
  * [View](https://developer.apple.com/documentation/swiftui/view) that provides access to view state emitted
- * by a given publisher.
+ * by a given [Combine](https://developer.apple.com/documentation/combine) publisher.
  *
  * Usage Example:
  * ```swift

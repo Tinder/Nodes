@@ -1,0 +1,20 @@
+{{ file_header }}
+{% if state_imports %}
+
+{% for import in state_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+/**
+ PURPOSE:
+ The state of the Node.
+ */
+{% if node_name == "Root" %}
+internal struct {{ node_name }}State: Equatable {
+
+    internal var name: String
+}
+{% else %}
+internal struct {{ node_name }}State: Equatable {}
+{% endif %}

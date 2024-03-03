@@ -1,0 +1,30 @@
+{{ file_header }}
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+{% if view_controller_tests_imports %}
+
+{% for import in view_controller_tests_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+@MainActor
+final class {{ node_name }}ViewControllerTests: XCTestCase {
+
+    func testNotNil() {
+        {% if is_nimble_enabled %}
+        expect { self.givenViewController(with: {{ node_name }}ViewState()) } != nil
+        {% else %}
+        XCTAssertNotNil(givenViewController(with: {{ node_name }}ViewState()))
+        {% endif %}
+    }
+
+    private func givenViewController(
+        with state: {{ node_name }}ViewState
+    ) -> {{ node_name }}ViewController {
+        {{ node_name }}ViewController(rootView: {{ node_name }}View(
+            initialState: state,
+            {{ view_state_property_name }}: {{ view_state_empty_factory }}
+        ))
+    }
+}

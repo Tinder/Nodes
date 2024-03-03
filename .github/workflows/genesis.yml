@@ -33,6 +33,9 @@ jobs:
     - name: Generate Xcode project
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: xcodegen
+    - name: Remove @MainActor
+      working-directory: ${{ steps.mktemp.outputs.directory }}
+      run: find . -type f -name "*.swift" -exec sed -i '' '/@MainActor/,+0d' {} \;
     - name: Download swiftlint binary
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: swift package resolve
@@ -48,14 +51,15 @@ jobs:
     - name: Build
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
-        xcodebuild build-for-testing
+        xcodebuild
+        build-for-testing
         -scheme "Tinder"
         -destination "name=$SIMULATOR,OS=latest"
-        -configuration "Debug"
-    - name: Run tests
+        SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
+    - name: Test
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
-        xcodebuild test-without-building
+        xcodebuild
+        test-without-building
         -scheme "Tinder"
         -destination "name=$SIMULATOR,OS=latest"
-        -configuration "Debug"

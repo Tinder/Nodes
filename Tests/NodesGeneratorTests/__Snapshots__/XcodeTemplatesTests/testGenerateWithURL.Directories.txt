@@ -1,0 +1,55 @@
+▿ 18 elements
+  ▿ (2 elements)
+    - path: "/Node - AppKit.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node - UIKit.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node - SwiftUI.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node - Custom.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/usePluginListAppKit"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/AppKit"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/usePluginListUIKit"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/UIKit"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/usePluginListSwiftUI"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/SwiftUI"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/usePluginListCustom"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/Custom"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node (view injected).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Plugin List (for Node).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Plugin (for Node).xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Plugin.xctemplate"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Worker.xctemplate"
+    - createIntermediates: true

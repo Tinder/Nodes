@@ -1,0 +1,36 @@
+▿ WorkerXcodeTemplate
+  - name: "Worker"
+  ▿ permutations: 1 element
+    ▿ WorkerXcodeTemplatePermutation
+      - name: "Worker"
+      ▿ stencilContext: WorkerStencilContext
+        - fileHeader: "<fileHeader>"
+        - isPeripheryCommentEnabled: false
+        ▿ workerGenericTypes: 1 element
+          - "<workerGenericType>"
+        ▿ workerImports: 3 elements
+          - "<baseImport>"
+          - "<reactiveImport>"
+          - "Nodes"
+        - workerName: "___VARIABLE_productName___"
+      ▿ stencils: 1 element
+        - Worker
+  ▿ propertyList: XcodeTemplatePropertyList
+    ▿ allowedTypes: 1 element
+      - "public.swift-source"
+    - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
+    - mainTemplateFile: "___FILEBASENAME___.swift"
+    ▿ options: 1 element
+      ▿ Option
+        - default: Optional<String>.none
+        - description: "The name of the Worker"
+        - identifier: "productName"
+        - name: "Worker name:"
+        - notPersisted: true
+        - required: true
+        - requiredOptions: 0 key/value pairs
+        - type: "text"
+        - values: 0 elements
+    - platforms: 0 elements
+    - sortOrder: 10
+    - supportsSwiftPackage: true

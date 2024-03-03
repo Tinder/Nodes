@@ -9,7 +9,7 @@ import Combine
 /**
  * ``Transform`` represents a transformation from an `Input` value to an `Output` value.
  *
- * Protocol extensions exist to use ``Transform`` conforming instances with
+ * Protocol extensions are defined for using ``Transform`` conforming instances with
  * [Combine](https://developer.apple.com/documentation/combine) publishers.
  */
 public protocol Transform {

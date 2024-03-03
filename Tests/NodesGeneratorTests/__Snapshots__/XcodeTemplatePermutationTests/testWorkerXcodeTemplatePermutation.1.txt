@@ -1,0 +1,14 @@
+▿ WorkerXcodeTemplatePermutation
+  - name: "<name>"
+  ▿ stencilContext: WorkerStencilContext
+    - fileHeader: "<fileHeader>"
+    - isPeripheryCommentEnabled: false
+    ▿ workerGenericTypes: 1 element
+      - "<workerGenericType>"
+    ▿ workerImports: 3 elements
+      - "<baseImport>"
+      - "<reactiveImport>"
+      - "Nodes"
+    - workerName: "___VARIABLE_productName___"
+  ▿ stencils: 1 element
+    - Worker

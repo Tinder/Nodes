@@ -1,0 +1,39 @@
+▿ PluginNodeXcodeTemplate
+  - name: "Plugin (for Node)"
+  ▿ permutations: 1 element
+    ▿ PluginNodeXcodeTemplatePermutation
+      - name: "Plugin (for Node)"
+      ▿ stencilContext: PluginStencilContext
+        - fileHeader: "<fileHeader>"
+        - isNimbleEnabled: false
+        - isPeripheryCommentEnabled: false
+        ▿ pluginImports: 3 elements
+          - "<baseImport>"
+          - "<dependencyInjectionImport>"
+          - "Nodes"
+        - pluginName: "___VARIABLE_productName___"
+        ▿ pluginTestsImports: 2 elements
+          - "<baseTestImport>"
+          - "NodesTesting"
+        - returnType: Optional<String>.none
+      ▿ stencils: 1 element
+        - Plugin
+  ▿ propertyList: XcodeTemplatePropertyList
+    ▿ allowedTypes: 1 element
+      - "public.swift-source"
+    - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
+    - mainTemplateFile: "___FILEBASENAME___.swift"
+    ▿ options: 1 element
+      ▿ Option
+        - default: Optional<String>.none
+        - description: "The name of the Plugin"
+        - identifier: "productName"
+        - name: "Node name:"
+        - notPersisted: true
+        - required: true
+        - requiredOptions: 0 key/value pairs
+        - type: "text"
+        - values: 0 elements
+    - platforms: 0 elements
+    - sortOrder: 8
+    - supportsSwiftPackage: true
