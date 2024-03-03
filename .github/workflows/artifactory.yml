@@ -29,7 +29,6 @@ jobs:
         tar -czf "Nodes-${GITHUB_REF_NAME}.tar.gz"
         BUILD.bazel
         Documentation
-        Info.plist
         Sources
         WORKSPACE.bazel
         bazel

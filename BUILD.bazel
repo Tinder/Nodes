@@ -1,7 +1,6 @@
-load("@build_bazel_rules_apple//apple:macos.bzl", "macos_command_line_application", "macos_bundle", "macos_unit_test")
+load("@build_bazel_rules_apple//apple:macos.bzl", "macos_unit_test")
 load("@build_bazel_rules_apple//apple:ios.bzl", "ios_unit_test")
-load("@build_bazel_rules_apple//apple:resources.bzl", "apple_resource_group", "apple_resource_bundle")
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary", "swift_library")
 
 MINIMUM_MACOS_VERSION = "10.15"
 MINIMUM_IOS_VERSION = "13.0"
@@ -33,10 +32,11 @@ swift_library(
 swift_library(
     name = "NodesGenerator",
     srcs = glob(["Sources/NodesGenerator/**/*.swift"]),
-    data = [":NodesGeneratorResourcesBundle"],
+    data = [":NodesGeneratorResources"],
     visibility = ["//visibility:public"],
     deps = [
         "@Codextended",
+        "@PathKit",
         "@Stencil",
         "@Yams",
     ],
@@ -47,23 +47,16 @@ swift_library(
     defines = ["BAZEL"],
 )
 
-apple_resource_bundle(
-    name = "NodesGeneratorResourcesBundle",
-    bundle_name = "Nodes_NodesGenerator",
-    resources = [":NodesGeneratorResources"],
-)
-
-apple_resource_group(
+filegroup(
     name = "NodesGeneratorResources",
-    resources = glob(["Sources/NodesGenerator/Resources/**"]),
+    srcs = glob(["Sources/NodesGenerator/Resources/**"]),
 )
 
-macos_command_line_application(
+swift_binary(
     name = "nodes-xcode-templates-gen",
     deps = [
         ":NodesXcodeTemplatesGenerator",
     ],
-    minimum_os_version = MINIMUM_MACOS_VERSION,
 )
 
 swift_library(
@@ -77,15 +70,6 @@ swift_library(
         "-warnings-as-errors",
         "-strict-concurrency=complete",
     ],
-)
-
-macos_bundle(
-    name = "Nodes_NodesGenerator",
-    bundle_id = "com.tinder.NodesGeneratorResources",
-    resources = [":NodesGeneratorResources"],
-    visibility = ["//visibility:public"],
-    infoplists = ["Info.plist"],
-    minimum_os_version = MINIMUM_MACOS_VERSION,
 )
 
 ios_unit_test(
