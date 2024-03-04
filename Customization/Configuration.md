@@ -40,6 +40,9 @@ reactiveImports:
   - Combine
 dependencyInjectionImports: 
   - NeedleFoundation
+builderImports: []
+flowImports: []
+viewControllerImports: []
 dependencies: []
 analyticsProperties: []
 flowProperties: []

@@ -210,6 +210,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             .baseImports
             .union(["Nodes"])
             .union(config.reactiveImports)
+            .union(config.viewControllerImports)
         return switch self {
         case .analytics:
             config.baseImports
@@ -218,6 +219,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
                 .union(["Nodes"])
                 .union(config.reactiveImports)
                 .union(config.dependencyInjectionImports)
+                .union(config.builderImports)
         case .context:
             config.baseImports
                 .union(["Nodes"])
@@ -225,6 +227,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         case .flow:
             config.baseImports
                 .union(["Nodes"])
+                .union(config.flowImports)
         case .plugin:
             config.baseImports
                 .union(["Nodes"])

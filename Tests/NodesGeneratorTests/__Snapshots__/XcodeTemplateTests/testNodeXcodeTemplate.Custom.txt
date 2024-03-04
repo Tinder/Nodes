@@ -16,8 +16,9 @@
               - value: "<analyticsPropertiesType>"
         ▿ analyticsTestsImports: 1 element
           - "<baseTestImport>"
-        ▿ builderImports: 4 elements
+        ▿ builderImports: 5 elements
           - "<baseImport>"
+          - "<builderImport>"
           - "<dependencyInjectionImport>"
           - "<reactiveImport>"
           - "Nodes"
@@ -38,8 +39,9 @@
               - key: "type"
               - value: "<dependenciesType>"
         - fileHeader: "<fileHeader>"
-        ▿ flowImports: 2 elements
+        ▿ flowImports: 3 elements
           - "<baseImport>"
+          - "<flowImport>"
           - "Nodes"
         ▿ flowProperties: 1 element
           ▿ 2 key/value pairs
@@ -63,10 +65,11 @@
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
-        ▿ viewControllerImports: 4 elements
+        ▿ viewControllerImports: 5 elements
           - "<baseImport>"
           - "<reactiveImport>"
           - "<uiFrameworkImport>"
+          - "<viewControllerImport>"
           - "Nodes"
         - viewControllerMethods: "<viewControllerMethods>"
         - viewControllerProperties: "<viewControllerProperties>"
