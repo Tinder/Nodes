@@ -161,6 +161,15 @@ final class ConfigTests: XCTestCase, TestFactories {
         dependencyInjectionImports:
           - <dependencyInjectionImports-1>
           - <dependencyInjectionImports-2>
+        builderImports:
+          - <builderImports-1>
+          - <builderImports-2>
+        flowImports:
+          - <flowImports-1>
+          - <flowImports-2>
+        viewControllerImports:
+          - <viewControllerImports-1>
+          - <viewControllerImports-2>
         dependencies:
           - name: <dependencies-name-1>
             type: <dependencies-type-1>
