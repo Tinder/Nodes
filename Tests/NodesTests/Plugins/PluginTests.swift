@@ -16,7 +16,7 @@ final class PluginTests: XCTestCase, TestCaseHelpers {
     private class TestPlugin: Plugin<ComponentType, BuildType, Void> {
 
         // swiftlint:disable:next redundant_type_annotation
-        var isEnabledOverride: Bool = false
+        var isEnabledOverride: Bool = true
 
         override func isEnabled(component: ComponentType, state: Void) -> Bool {
             isEnabledOverride
@@ -30,9 +30,9 @@ final class PluginTests: XCTestCase, TestCaseHelpers {
     func testCreate() {
         let plugin: TestPlugin = .init { ComponentType() }
         expect(plugin).to(notBeNilAndToDeallocateAfterTest())
-        expect(plugin.create()) == nil
-        plugin.isEnabledOverride = true
         expect(plugin.create()).to(beAKindOf(BuildType.self))
+        plugin.isEnabledOverride = false
+        expect(plugin.create()) == nil
     }
 
     func testOverride() {
