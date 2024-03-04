@@ -91,7 +91,7 @@ internal final class <pluginName>PluginImp: Plugin
         component: <pluginName>PluginComponent,
         state: <pluginName>PluginStateType
     ) -> Bool {
-        false
+        true
     }
 
     /// The factory method in which the instance is initialized.
