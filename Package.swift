@@ -68,6 +68,7 @@ let package = Package(
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ],
             path: "Sources/Executables/NodesCodeGenerator",
+            swiftSettings: .swiftSettings,
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
@@ -78,6 +79,7 @@ let package = Package(
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ],
             path: "Sources/Executables/NodesXcodeTemplatesGenerator",
+            swiftSettings: .swiftSettings,
             plugins: [
                 .plugin(name: SwiftLint.plugin),
             ]),
