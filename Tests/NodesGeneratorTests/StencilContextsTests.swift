@@ -9,7 +9,7 @@ import XCTest
 final class StencilContextsTests: XCTestCase, TestFactories {
 
     func testNodeStencilContext() throws {
-        assertSnapshot(of: try givenNodeStencilContext().dictionary,
+        assertSnapshot(of: try givenNodeStencilContext(includePlugin: false).dictionary,
                        as: .dump)
     }
 
