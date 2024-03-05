@@ -1,0 +1,49 @@
+<fileHeader>
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+
+import <flowTestsImport1>
+import <flowTestsImport2>
+
+@MainActor
+final class <nodeName>FlowTests: XCTestCase {
+
+    private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {
+
+        <viewControllableMockContents>
+    }
+
+    private var contextMock: <nodeName>ContextInterfaceMock!
+    private var viewControllableMock: <nodeName>ViewControllableMock!
+    private var <flowPropertyType1>Mock: <flowPropertyType1>Mock!
+    private var <flowPropertyType2>Mock: <flowPropertyType2>Mock!
+    private var flow: <nodeName>FlowImp!
+
+    override func setUp() {
+        super.setUp()
+        contextMock = <nodeName>ContextInterfaceMock(isActive: true)
+        viewControllableMock = <nodeName>ViewControllableMock()
+        <flowPropertyType1>Mock = <flowPropertyType1>Mock()
+        <flowPropertyType2>Mock = <flowPropertyType2>Mock()
+        flow = <nodeName>FlowImp(
+            context: contextMock,
+            viewController: viewControllableMock,
+            <flowPropertyName1>: <flowPropertyType1>Mock,
+            <flowPropertyName2>: <flowPropertyType2>Mock
+        )
+        expect { self.flow.isStarted } == true
+    }
+
+    override func tearDown() {
+        contextMock = nil
+        viewControllableMock = nil
+        <flowPropertyType1>Mock = nil
+        <flowPropertyType2>Mock = nil
+        flow = nil
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        expect { self.flow } != nil
+    }
+}
