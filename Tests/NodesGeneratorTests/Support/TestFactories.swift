@@ -251,7 +251,8 @@ extension TestFactories {
             workerName: "<workerName>",
             workerImports: .mock(with: "workerImport", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
-            isPeripheryCommentEnabled: mockCount > 0
+            isPeripheryCommentEnabled: mockCount > 0,
+            isNimbleEnabled: mockCount > 0
         )
     }
 }
