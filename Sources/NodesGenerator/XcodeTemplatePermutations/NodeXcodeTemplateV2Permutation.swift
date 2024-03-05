@@ -8,25 +8,30 @@ internal struct NodeXcodeTemplateV2Permutation: XcodeTemplatePermutation {
     internal let stencils: [StencilTemplate]
     internal let stencilContext: StencilContext
 
+    // swiftlint:disable:next function_body_length
     internal init(usePluginList: Bool, for uiFramework: UIFramework, config: Config) {
         let node: StencilTemplate.Node = StencilTemplate.Node(for: .variation(for: uiFramework.kind))
         name = "\(usePluginList ? XcodeTemplateConstants.usePluginList : "")\(uiFramework.name)"
-        stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
+        stencils = node.stencils(includePlugin: true, includeTests: config.isTestTemplatesGenerationEnabled)
+        let productName: String = XcodeTemplateConstants.variable(XcodeTemplateConstants.productName)
         // swiftlint:disable:next force_try
         stencilContext = try! NodeStencilContext(
             fileHeader: config.fileHeader,
-            nodeName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
+            nodeName: productName,
+            pluginName: productName,
             pluginListName: usePluginList ? XcodeTemplateConstants.variable(XcodeTemplateConstants.pluginListName) : "",
             analyticsImports: node.analytics.imports(with: config, including: uiFramework),
             builderImports: node.builder.imports(with: config, including: uiFramework),
             contextImports: node.context.imports(with: config, including: uiFramework),
             flowImports: node.flow.imports(with: config, including: uiFramework),
+            pluginImports: node.plugin.imports(with: config, including: uiFramework),
             stateImports: node.state.imports(with: config, including: uiFramework),
             viewControllerImports: node.viewController.imports(with: config, including: uiFramework),
             viewStateImports: node.viewState.imports(with: config, including: uiFramework),
             analyticsTestsImports: node.analyticsTests.imports(with: config, including: uiFramework),
             contextTestsImports: node.contextTests.imports(with: config, including: uiFramework),
             flowTestsImports: node.flowTests.imports(with: config, including: uiFramework),
+            pluginTestsImports: node.pluginTests.imports(with: config, including: uiFramework),
             viewControllerTestsImports: node.viewControllerTests.imports(with: config, including: uiFramework),
             viewStateFactoryTestsImports: node.viewStateFactoryTests.imports(with: config, including: uiFramework),
             dependencies: config.dependencies,
