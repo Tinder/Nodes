@@ -11,7 +11,7 @@ internal struct NodeXcodeTemplateV2Permutation: XcodeTemplatePermutation {
     internal init(usePluginList: Bool, for uiFramework: UIFramework, config: Config) {
         let node: StencilTemplate.Node = StencilTemplate.Node(for: .variation(for: uiFramework.kind))
         name = "\(usePluginList ? XcodeTemplateConstants.usePluginList : "")\(uiFramework.name)"
-        stencils = node.stencils(includeState: true, includeTests: config.isTestTemplatesGenerationEnabled)
+        stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
         // swiftlint:disable:next force_try
         stencilContext = try! NodeStencilContext(
             fileHeader: config.fileHeader,

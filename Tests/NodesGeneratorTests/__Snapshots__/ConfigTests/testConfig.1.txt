@@ -12,6 +12,9 @@
   ▿ baseTestImports: 2 members
     - "<baseTestImports-1>"
     - "<baseTestImports-2>"
+  ▿ builderImports: 2 members
+    - "<builderImports-1>"
+    - "<builderImports-2>"
   ▿ contextGenericTypes: 2 elements
     - "<contextGenericTypes-1>"
     - "<contextGenericTypes-2>"
@@ -26,6 +29,9 @@
     - "<dependencyInjectionImports-1>"
     - "<dependencyInjectionImports-2>"
   - fileHeader: "<fileHeader>"
+  ▿ flowImports: 2 members
+    - "<flowImports-1>"
+    - "<flowImports-2>"
   ▿ flowProperties: 2 elements
     ▿ Variable
       - name: "<flowProperties-name-1>"
@@ -67,6 +73,9 @@
   - viewControllableFlowType: "<viewControllableFlowType>"
   - viewControllableMockContents: "<viewControllableMockContents>"
   - viewControllableType: "<viewControllableType>"
+  ▿ viewControllerImports: 2 members
+    - "<viewControllerImports-1>"
+    - "<viewControllerImports-2>"
   - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
   - viewControllerUpdateComment: "<viewControllerUpdateComment>"
   - viewStateEmptyFactory: "<viewStateEmptyFactory>"

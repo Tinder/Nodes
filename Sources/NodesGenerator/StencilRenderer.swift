@@ -12,23 +12,19 @@ public final class StencilRenderer {
     public func renderNode(
         context: NodeStencilContext,
         kind: UIFramework.Kind,
-        includeState: Bool = true,
         includeTests: Bool = false
     ) throws -> [String: String] {
         let node: StencilTemplate.Node = .init(for: .variation(for: kind))
-        let stencils: [StencilTemplate] = node.stencils(includeState: includeState,
-                                                        includeTests: includeTests)
+        let stencils: [StencilTemplate] = node.stencils(includeTests: includeTests)
         return try render(stencils: stencils, with: context.dictionary)
     }
 
     public func renderNodeViewInjected(
         context: NodeViewInjectedStencilContext,
-        includeState: Bool = true,
         includeTests: Bool = false
     ) throws -> [String: String] {
         let nodeViewInjected: StencilTemplate.NodeViewInjected = .init()
-        let stencils: [StencilTemplate] = nodeViewInjected.stencils(includeState: includeState,
-                                                                    includeTests: includeTests)
+        let stencils: [StencilTemplate] = nodeViewInjected.stencils(includeTests: includeTests)
         return try render(stencils: stencils, with: context.dictionary)
     }
 

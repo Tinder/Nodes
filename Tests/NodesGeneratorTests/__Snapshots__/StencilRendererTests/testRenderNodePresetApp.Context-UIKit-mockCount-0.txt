@@ -22,6 +22,10 @@ internal final class AppContextImp: AbstractContext {
     /// The Flow instance.
     internal weak var flow: AppFlowInterface?
 
+    /// The State instance.
+    @Published
+    internal private(set) var state: AppState
+
     /// The Analytics instance.
     private let analytics: AppAnalytics
 
@@ -36,6 +40,7 @@ internal final class AppContextImp: AbstractContext {
         analytics: AppAnalytics,
         windowSceneState: AnyPublisher<WindowSceneState, Never>
     ) {
+        self.state = AppState()
         self.analytics = analytics
         self.windowSceneState = windowSceneState
         super.init(workers: workers)

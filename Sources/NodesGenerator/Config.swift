@@ -35,6 +35,9 @@ public struct Config: Equatable, Codable {
     public var baseTestImports: Set<String>
     public var reactiveImports: Set<String>
     public var dependencyInjectionImports: Set<String>
+    public var builderImports: Set<String>
+    public var flowImports: Set<String>
+    public var viewControllerImports: Set<String>
     public var dependencies: [Variable]
     public var analyticsProperties: [Variable]
     public var flowProperties: [Variable]
@@ -90,6 +93,9 @@ extension Config {
         baseTestImports = ["Nimble", "XCTest"]
         reactiveImports = ["Combine"]
         dependencyInjectionImports = ["NeedleFoundation"]
+        builderImports = []
+        flowImports = []
+        viewControllerImports = []
         dependencies = []
         analyticsProperties = []
         flowProperties = []
@@ -156,6 +162,15 @@ extension Config {
         dependencyInjectionImports =
             (try? decoder.decode(CodingKeys.dependencyInjectionImports))
             ?? defaults.dependencyInjectionImports
+        builderImports =
+            (try? decoder.decode(CodingKeys.builderImports))
+            ?? defaults.builderImports
+        flowImports =
+            (try? decoder.decode(CodingKeys.flowImports))
+            ?? defaults.flowImports
+        viewControllerImports =
+            (try? decoder.decode(CodingKeys.viewControllerImports))
+            ?? defaults.viewControllerImports
         dependencies =
             (try? decoder.decode(CodingKeys.dependencies))
             ?? defaults.dependencies

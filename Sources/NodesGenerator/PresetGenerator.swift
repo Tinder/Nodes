@@ -48,7 +48,7 @@ public final class PresetGenerator {
                 isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
                 isNimbleEnabled: config.isNimbleEnabled
             )
-            output = try StencilRenderer().renderNodeViewInjected(context: context, includeState: false)
+            output = try StencilRenderer().renderNodeViewInjected(context: context)
         } else {
             let uiFramework: UIFramework = try config.uiFramework(for: .uiKit)
             let kind: UIFramework.Kind = uiFramework.kind
@@ -93,7 +93,7 @@ public final class PresetGenerator {
                 isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
                 isNimbleEnabled: config.isNimbleEnabled
             )
-            output = try StencilRenderer().renderNode(context: context, kind: kind, includeState: true)
+            output = try StencilRenderer().renderNode(context: context, kind: kind)
         }
         for (file, contents): (String, String) in output.sorted(by: { $0.key < $1.key }) {
             let url: URL = directory

@@ -2,7 +2,6 @@
 //  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
-/// Every Stencil source file is represented by a case. Some cases have a variation.
 public enum StencilTemplate: Equatable, CustomStringConvertible {
 
     case analytics
@@ -16,7 +15,6 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
     case viewState
     case worker
 
-    // Tests
     case analyticsTests
     case contextTests
     case flowTests
@@ -24,7 +22,6 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
     case viewControllerTests(Variation)
     case viewStateFactoryTests
 
-    /// Alternate Stencil source files for specific use cases.
     public enum Variation: String, Equatable, CaseIterable {
 
         case `default` = ""
@@ -35,7 +32,6 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         }
     }
 
-    /// The StencilTemplate cases that represent a Node.
     public struct Node {
 
         public let analytics: StencilTemplate
@@ -46,7 +42,6 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         public let viewController: StencilTemplate
         public let viewState: StencilTemplate
 
-        // Tests
         public let analyticsTests: StencilTemplate
         public let contextTests: StencilTemplate
         public let flowTests: StencilTemplate
@@ -69,30 +64,17 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         }
 
         public func stencils(
-            includeState: Bool = true,
             includeTests: Bool = false
         ) -> [StencilTemplate] {
-            let stencils: [StencilTemplate]
-            if includeState {
-                stencils = [
-                    analytics,
-                    builder,
-                    context,
-                    flow,
-                    state,
-                    viewController,
-                    viewState
-                ]
-            } else {
-                stencils = [
-                    analytics,
-                    builder,
-                    context,
-                    flow,
-                    viewController,
-                    viewState
-                ]
-            }
+            let stencils: [StencilTemplate] = [
+                analytics,
+                builder,
+                context,
+                flow,
+                state,
+                viewController,
+                viewState
+            ]
             guard includeTests
             else { return stencils }
             return stencils + [
@@ -105,7 +87,6 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         }
     }
 
-    /// The StencilTemplate cases that represent a view injected Node.
     public struct NodeViewInjected {
 
         public let analytics: StencilTemplate
@@ -114,7 +95,6 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         public let flow: StencilTemplate
         public let state: StencilTemplate
 
-        // Tests
         public let analyticsTests: StencilTemplate
         public let contextTests: StencilTemplate
         public let flowTests: StencilTemplate
@@ -131,26 +111,15 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         }
 
         public func stencils(
-            includeState: Bool = true,
             includeTests: Bool = false
         ) -> [StencilTemplate] {
-            let stencils: [StencilTemplate]
-            if includeState {
-                stencils = [
-                    analytics,
-                    builder,
-                    context,
-                    flow,
-                    state
-                ]
-            } else {
-                stencils = [
-                    analytics,
-                    builder,
-                    context,
-                    flow
-                ]
-            }
+            let stencils: [StencilTemplate] = [
+                analytics,
+                builder,
+                context,
+                flow,
+                state
+            ]
             guard includeTests
             else { return stencils }
             return stencils + [
@@ -161,85 +130,113 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
         }
     }
 
-    /// A string representation of the case for ``CustomStringConvertible`` conformance.
     public var description: String { name }
 
-    /// The name of the Stencil template.
     public var name: String {
         switch self {
         case .analytics:
-            return "Analytics"
+            "Analytics"
         case .builder:
-            return "Builder"
+            "Builder"
         case .context:
-            return "Context"
+            "Context"
         case .flow:
-            return "Flow"
+            "Flow"
         case .plugin:
-            return "Plugin"
+            "Plugin"
         case .pluginList:
-            return "PluginList"
+            "PluginList"
         case .state:
-            return "State"
+            "State"
         case .viewController:
-            return "ViewController"
+            "ViewController"
         case .viewState:
-            return "ViewState"
+            "ViewState"
         case .worker:
-            return "Worker"
+            "Worker"
         case .analyticsTests:
-            return "AnalyticsTests"
+            "AnalyticsTests"
         case .contextTests:
-            return "ContextTests"
+            "ContextTests"
         case .flowTests:
-            return "FlowTests"
+            "FlowTests"
         case .pluginTests:
-            return "PluginTests"
+            "PluginTests"
         case .viewControllerTests:
-            return "ViewControllerTests"
+            "ViewControllerTests"
         case .viewStateFactoryTests:
-            return "ViewStateFactoryTests"
+            "ViewStateFactoryTests"
         }
     }
 
-    /// The name of the Stencil source file in the bundle.
     public var filename: String {
         switch self {
+        case let .builder(variation), let .viewController(variation), let .viewControllerTests(variation):
+            description.appending(variation.rawValue)
         case .analytics, .context, .flow, .plugin, .pluginList, .state, .viewState, .worker:
-            return description
-        case let .builder(variation), let .viewController(variation):
-            return description.appending(variation.rawValue)
+            description
         case .analyticsTests, .contextTests, .flowTests, .pluginTests, .viewStateFactoryTests:
-            return description
-        case let .viewControllerTests(variation):
-            return description.appending(variation.rawValue)
+            description
         }
     }
 
+    // swiftlint:disable:next function_body_length cyclomatic_complexity
     public func imports(with config: Config, including uiFramework: UIFramework? = nil) -> Set<String> {
-        let baseWithNodes: Set<String> = config.baseImports.union(["Nodes"])
-        switch self {
-        case .analytics, .state:
-            return config.baseImports
-        case .flow, .viewState:
-            return baseWithNodes
-        case .context, .worker:
-            return baseWithNodes.union(config.reactiveImports)
-        case .viewController:
-            let viewControllerImports: Set<String> = baseWithNodes.union(config.reactiveImports)
-            guard let uiFramework: UIFramework
-            else { return viewControllerImports }
-            return viewControllerImports.union([uiFramework.import])
-        case .plugin, .pluginList:
-            return baseWithNodes.union(config.dependencyInjectionImports)
+        let viewControllerImports: Set<String> = config
+            .baseImports
+            .union(["Nodes"])
+            .union(config.reactiveImports)
+            .union(config.viewControllerImports)
+        return switch self {
+        case .analytics:
+            config.baseImports
         case .builder:
-            return baseWithNodes.union(config.reactiveImports).union(config.dependencyInjectionImports)
-        case .analyticsTests, .contextTests, .flowTests, .viewStateFactoryTests:
-            return config.baseTestImports
-        case .viewControllerTests:
-            return config.baseTestImports.union(config.reactiveImports)
+            config.baseImports
+                .union(["Nodes"])
+                .union(config.reactiveImports)
+                .union(config.dependencyInjectionImports)
+                .union(config.builderImports)
+        case .context:
+            config.baseImports
+                .union(["Nodes"])
+                .union(config.reactiveImports)
+        case .flow:
+            config.baseImports
+                .union(["Nodes"])
+                .union(config.flowImports)
+        case .plugin:
+            config.baseImports
+                .union(["Nodes"])
+                .union(config.dependencyInjectionImports)
+        case .pluginList:
+            config.baseImports
+                .union(["Nodes"])
+                .union(config.dependencyInjectionImports)
+        case .state:
+            config.baseImports
+        case .viewController:
+            uiFramework.flatMap { viewControllerImports.union([$0.import]) } ?? viewControllerImports
+        case .viewState:
+            config.baseImports
+                .union(["Nodes"])
+        case .worker:
+            config.baseImports
+                .union(["Nodes"])
+                .union(config.reactiveImports)
+        case .analyticsTests:
+            config.baseTestImports
+        case .contextTests:
+            config.baseTestImports
+        case .flowTests:
+            config.baseTestImports
         case .pluginTests:
-            return config.baseTestImports.union(["NodesTesting"])
+            config.baseTestImports
+                .union(["NodesTesting"])
+        case .viewControllerTests:
+            config.baseTestImports
+                .union(config.reactiveImports)
+        case .viewStateFactoryTests:
+            config.baseTestImports
         }
     }
 }

@@ -4,12 +4,14 @@
   ▿ baseTestImports: 2 members
     - "Nimble"
     - "XCTest"
+  - builderImports: 0 members
   ▿ contextGenericTypes: 1 element
     - "AnyCancellable"
   - dependencies: 0 elements
   ▿ dependencyInjectionImports: 1 member
     - "NeedleFoundation"
   - fileHeader: "//___FILEHEADER___"
+  - flowImports: 0 members
   - flowProperties: 0 elements
   - isPeripheryCommentEnabled: false
   - isPreviewProviderEnabled: false
@@ -31,6 +33,7 @@
   - viewControllableFlowType: "ViewControllableFlow"
   - viewControllableMockContents: ""
   - viewControllableType: "ViewControllable"
+  - viewControllerImports: 0 members
   - viewControllerSubscriptionsProperty: "/// The collection of cancellable instances.\nprivate var cancellables: Set<AnyCancellable> = .init()"
   - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
   - viewStateEmptyFactory: "Empty().eraseToAnyPublisher()"
