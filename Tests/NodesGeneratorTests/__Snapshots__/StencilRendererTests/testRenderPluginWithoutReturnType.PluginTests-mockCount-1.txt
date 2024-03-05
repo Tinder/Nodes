@@ -26,7 +26,7 @@ final class <pluginName>PluginTests: XCTestCase {
         super.tearDown()
     }
 
-    func testPluginIsNotEnabled() {
+    func testCreate() {
         expect { self.plugin.create() } == nil
     }
 

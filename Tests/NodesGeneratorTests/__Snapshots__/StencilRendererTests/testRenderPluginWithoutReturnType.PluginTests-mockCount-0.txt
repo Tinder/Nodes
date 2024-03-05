@@ -24,7 +24,7 @@ final class <pluginName>PluginTests: XCTestCase {
         super.tearDown()
     }
 
-    func testPluginIsNotEnabled() {
+    func testCreate() {
         XCTAssertNil(plugin.create())
     }
 
