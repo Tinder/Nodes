@@ -32,7 +32,7 @@ final class {{ plugin_list_name }}PluginListTests: XCTestCase {
 
     func testCreateAll() {
         {% if is_nimble_enabled %}
-        expect { self.pluginList.createAll().isEmpty } == true
+        expect { self.pluginList.createAll() }.to(beEmpty())
         {% else %}
         XCTAssertTrue(pluginList.createAll().isEmpty)
         {% endif %}
