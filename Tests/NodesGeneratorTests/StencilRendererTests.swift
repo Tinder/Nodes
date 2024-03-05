@@ -71,6 +71,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 let context: NodeStencilContext = try givenNodeStencilContext(mockCount: count)
                 let templates: [String: String] = try stencilRenderer.renderNode(context: context,
                                                                                  kind: kind,
+                                                                                 includePlugin: false,
                                                                                  includeTests: true)
                 expect(templates.keys.sorted()) == [
                     "Analytics",
