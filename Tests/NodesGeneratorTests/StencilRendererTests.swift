@@ -10,7 +10,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
 
     private let mockCounts: ClosedRange<Int> = 0...2
 
-    func testRenderNode() throws {
+    func testRenderNode_withTests() throws {
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             try UIFramework.Kind.allCases.forEach { kind in
