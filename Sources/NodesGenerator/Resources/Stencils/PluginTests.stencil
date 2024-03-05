@@ -30,7 +30,7 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
         super.tearDown()
     }
 
-    func testPluginIsNotEnabled() {
+    func testCreate() {
         {% if is_nimble_enabled %}
         expect { self.plugin.create() } == nil
         {% else %}
