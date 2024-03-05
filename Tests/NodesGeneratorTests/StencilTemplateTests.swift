@@ -120,18 +120,26 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
     }
 
     func testNodeStencils() {
+        // swiftlint:disable:next closure_body_length
         StencilTemplate.Variation.allCases.forEach { variation in
             let node: StencilTemplate.Node = .init(for: variation)
-            expect(node.stencils(includeTests: false)) == [
+            expect(node.stencils(includePlugin: true, includeTests: true)) == [
                 .analytics,
                 .builder(variation),
                 .context,
                 .flow,
+                .plugin,
                 .state,
                 .viewController(variation),
-                .viewState
+                .viewState,
+                .analyticsTests,
+                .contextTests,
+                .flowTests,
+                .pluginTests,
+                .viewControllerTests(variation),
+                .viewStateFactoryTests
             ]
-            expect(node.stencils(includeTests: true)) == [
+            expect(node.stencils(includePlugin: false, includeTests: true)) == [
                 .analytics,
                 .builder(variation),
                 .context,
@@ -144,6 +152,25 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .flowTests,
                 .viewControllerTests(variation),
                 .viewStateFactoryTests
+            ]
+            expect(node.stencils(includePlugin: true, includeTests: false)) == [
+                .analytics,
+                .builder(variation),
+                .context,
+                .flow,
+                .plugin,
+                .state,
+                .viewController(variation),
+                .viewState
+            ]
+            expect(node.stencils(includePlugin: false, includeTests: false)) == [
+                .analytics,
+                .builder(variation),
+                .context,
+                .flow,
+                .state,
+                .viewController(variation),
+                .viewState
             ]
         }
     }
