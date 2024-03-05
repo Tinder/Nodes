@@ -45,8 +45,13 @@ final class XcodeTemplatesTests: XCTestCase {
         // swiftlint:disable:next identifier_name
         copies.map { from, to in
             let from: String = from.replacingOccurrences(of: "/Contents/Resources", with: "")
+            #if BAZEL
+            let bundle: String = "NodesGeneratorTests-macOS.xctest"
+            return (from: ".bundle\(from.components(separatedBy: bundle).last!)", to: to)
+            #else
             let bundle: String = "Nodes_NodesGenerator"
             return (from: from.components(separatedBy: bundle).last!, to: to)
+            #endif
         }
     }
 
