@@ -36,6 +36,33 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         }
     }
 
+    func testRenderNode_withPlugin() throws {
+        let stencilRenderer: StencilRenderer = .init()
+        try mockCounts.forEach { count in
+            try UIFramework.Kind.allCases.forEach { kind in
+                let context: NodeStencilContext = try givenNodeStencilContext(mockCount: count)
+                let templates: [String: String] = try stencilRenderer.renderNode(context: context,
+                                                                                 kind: kind,
+                                                                                 includePlugin: true)
+                expect(templates.keys.sorted()) == [
+                    "Analytics",
+                    "Builder",
+                    "Context",
+                    "Flow",
+                    "Plugin",
+                    "State",
+                    "ViewController",
+                    "ViewState"
+                ]
+                templates.forEach { name, template in
+                    assertSnapshot(of: template,
+                                   as: .lines,
+                                   named: "\(name)-\(kind.rawValue)-mockCount-\(count)")
+                }
+            }
+        }
+    }
+
     func testRenderNode_withTests() throws {
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
