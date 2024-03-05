@@ -8,7 +8,6 @@ internal struct NodeXcodeTemplateV2Permutation: XcodeTemplatePermutation {
     internal let stencils: [StencilTemplate]
     internal let stencilContext: StencilContext
 
-    // swiftlint:disable:next function_body_length
     internal init(usePluginList: Bool, for uiFramework: UIFramework, config: Config) {
         let node: StencilTemplate.Node = StencilTemplate.Node(for: .variation(for: uiFramework.kind))
         name = "\(usePluginList ? XcodeTemplateConstants.usePluginList : "")\(uiFramework.name)"
