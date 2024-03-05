@@ -15,7 +15,9 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         try mockCounts.forEach { count in
             try UIFramework.Kind.allCases.forEach { kind in
                 let context: NodeStencilContext = try givenNodeStencilContext(mockCount: count)
-                let templates: [String: String] = try stencilRenderer.renderNode(context: context, kind: kind)
+                let templates: [String: String] = try stencilRenderer.renderNode(context: context,
+                                                                                 kind: kind,
+                                                                                 includeTests: false)
                 expect(templates.keys.sorted()) == [
                     "Analytics",
                     "Builder",
