@@ -1,0 +1,46 @@
+<fileHeader>
+
+/**
+ PURPOSE:
+ The interface that the View will speak to the Context through. Used for informing the Context of
+ view events and user interactions.
+ */
+/// @mockable
+@MainActor
+internal protocol <nodeName>Receiver: AnyObject {}
+
+/**
+ PURPOSE:
+ Concrete implementation of the UI.
+ */
+internal final class <nodeName>ViewController: <viewControllerType>, StateObserver {
+
+    /// The view receiver.
+    internal weak var receiver: <nodeName>Receiver?
+
+    <viewControllerSubscriptionsProperty>
+
+    /// The initial view state.
+    private let initialState: <nodeName>ViewState
+
+    /// <viewStatePropertyComment>.
+    private let <viewStatePropertyName>: <publisherType><<nodeName>ViewState>
+
+    /// The initializer.
+    ///
+    /// - Parameters:
+    ///   - initialState: The initial view state.
+    ///   - <viewStatePropertyName>: <viewStatePropertyComment>.
+    internal init(
+        initialState: <nodeName>ViewState,
+        <viewStatePropertyName>: <publisherType><<nodeName>ViewState>
+    ) {
+        self.initialState = initialState
+        self.<viewStatePropertyName> = <viewStatePropertyName>
+        super.init()
+    }
+
+    internal func update(with viewState: <nodeName>ViewState) {}
+}
+
+extension <nodeName>ViewController: <nodeName>ViewControllable {}
