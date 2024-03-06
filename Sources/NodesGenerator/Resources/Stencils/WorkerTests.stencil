@@ -11,7 +11,7 @@ import {{ import }}
 @MainActor
 final class {{ worker_name }}WorkerTests: XCTestCase {
 
-    private var worker: {{ worker_name }}ContextImp!
+    private var worker: {{ worker_name }}WorkerImp!
 
     override func setUp() {
         super.setUp()
