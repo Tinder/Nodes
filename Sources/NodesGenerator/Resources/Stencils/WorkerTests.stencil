@@ -8,7 +8,6 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-@MainActor
 final class {{ worker_name }}WorkerTests: XCTestCase {
 
     private var worker: {{ worker_name }}WorkerImp!
