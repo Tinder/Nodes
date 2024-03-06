@@ -13,6 +13,7 @@ public struct NodeStencilContext: StencilContext {
     private let builderImports: [String]
     private let contextImports: [String]
     private let flowImports: [String]
+    private let pluginImports: [String]
     private let stateImports: [String]
     private let viewControllerImports: [String]
     private let viewStateImports: [String]
@@ -57,6 +58,7 @@ public struct NodeStencilContext: StencilContext {
             "builder_imports": builderImports,
             "context_imports": contextImports,
             "flow_imports": flowImports,
+            "plugin_imports": pluginImports,
             "state_imports": stateImports,
             "view_controller_imports": viewControllerImports,
             "view_state_imports": viewStateImports,
@@ -101,6 +103,7 @@ public struct NodeStencilContext: StencilContext {
         builderImports: Set<String>,
         contextImports: Set<String>,
         flowImports: Set<String>,
+        pluginImports: Set<String>,
         stateImports: Set<String>,
         viewControllerImports: Set<String>,
         viewStateImports: Set<String>,
@@ -144,6 +147,7 @@ public struct NodeStencilContext: StencilContext {
             builderImports: builderImports,
             contextImports: contextImports,
             flowImports: flowImports,
+            pluginImports: pluginImports,
             stateImports: stateImports,
             viewControllerImports: viewControllerImports,
             viewStateImports: viewStateImports,
@@ -231,6 +235,7 @@ public struct NodeStencilContext: StencilContext {
             builderImports: builderImports,
             contextImports: contextImports,
             flowImports: flowImports,
+            pluginImports: [],
             stateImports: stateImports,
             viewControllerImports: viewControllerImports,
             viewStateImports: viewStateImports,
@@ -276,6 +281,7 @@ public struct NodeStencilContext: StencilContext {
         builderImports: Set<String>,
         contextImports: Set<String>,
         flowImports: Set<String>,
+        pluginImports: Set<String>,
         stateImports: Set<String>,
         viewControllerImports: Set<String>,
         viewStateImports: Set<String>,
@@ -319,6 +325,7 @@ public struct NodeStencilContext: StencilContext {
         self.builderImports = builderImports.sortedImports()
         self.contextImports = contextImports.sortedImports()
         self.flowImports = flowImports.sortedImports()
+        self.pluginImports = pluginImports.sortedImports()
         self.stateImports = stateImports.sortedImports()
         self.viewControllerImports = viewControllerImports.sortedImports()
         self.viewStateImports = viewStateImports.sortedImports()

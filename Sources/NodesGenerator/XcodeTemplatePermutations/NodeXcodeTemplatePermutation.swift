@@ -22,6 +22,7 @@ internal struct NodeXcodeTemplatePermutation: XcodeTemplatePermutation {
             builderImports: node.builder.imports(with: config, including: uiFramework),
             contextImports: node.context.imports(with: config, including: uiFramework),
             flowImports: node.flow.imports(with: config, including: uiFramework),
+            pluginImports: [],
             stateImports: node.state.imports(with: config, including: uiFramework),
             viewControllerImports: node.viewController.imports(with: config, including: uiFramework),
             viewStateImports: node.viewState.imports(with: config, including: uiFramework),

@@ -72,6 +72,7 @@ extension TestFactories {
             builderImports: .mock(with: "builderImport", count: mockCount),
             contextImports: .mock(with: "contextImport", count: mockCount),
             flowImports: .mock(with: "flowImport", count: mockCount),
+            pluginImports: includePlugin ? .mock(with: "pluginImport", count: mockCount) : [],
             stateImports: .mock(with: "stateImport", count: mockCount),
             viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
             viewStateImports: .mock(with: "viewStateImport", count: mockCount),
