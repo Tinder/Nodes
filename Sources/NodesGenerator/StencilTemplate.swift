@@ -198,7 +198,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             description
         case .analyticsTests, .contextTests, .flowTests, .viewStateFactoryTests, .workerTests:
             description
-        case .pluginTests, .pluginListTests
+        case .pluginTests, .pluginListTests:
             description
         }
     }
