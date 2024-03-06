@@ -64,6 +64,9 @@
             - "Nodes"
           - pluginListName: "___VARIABLE_pluginListName___"
           - pluginName: "___VARIABLE_productName___"
+          ▿ pluginTestsImports: 2 elements
+            - "<baseTestImport>"
+            - "NodesTesting"
           - publisherFailureType: "<publisherFailureType>"
           - publisherType: "<publisherType>"
           ▿ stateImports: 1 element
@@ -170,6 +173,9 @@
             - "Nodes"
           - pluginListName: ""
           - pluginName: "___VARIABLE_productName___"
+          ▿ pluginTestsImports: 2 elements
+            - "<baseTestImport>"
+            - "NodesTesting"
           - publisherFailureType: "<publisherFailureType>"
           - publisherType: "<publisherType>"
           ▿ stateImports: 1 element
@@ -276,6 +282,9 @@
             - "Nodes"
           - pluginListName: "___VARIABLE_pluginListName___"
           - pluginName: "___VARIABLE_productName___"
+          ▿ pluginTestsImports: 2 elements
+            - "<baseTestImport>"
+            - "NodesTesting"
           - publisherFailureType: "<publisherFailureType>"
           - publisherType: "<publisherType>"
           ▿ stateImports: 1 element
@@ -382,6 +391,9 @@
             - "Nodes"
           - pluginListName: ""
           - pluginName: "___VARIABLE_productName___"
+          ▿ pluginTestsImports: 2 elements
+            - "<baseTestImport>"
+            - "NodesTesting"
           - publisherFailureType: "<publisherFailureType>"
           - publisherType: "<publisherType>"
           ▿ stateImports: 1 element
@@ -488,6 +500,9 @@
             - "Nodes"
           - pluginListName: "___VARIABLE_pluginListName___"
           - pluginName: "___VARIABLE_productName___"
+          ▿ pluginTestsImports: 2 elements
+            - "<baseTestImport>"
+            - "NodesTesting"
           - publisherFailureType: "<publisherFailureType>"
           - publisherType: "<publisherType>"
           ▿ stateImports: 1 element
@@ -594,6 +609,9 @@
             - "Nodes"
           - pluginListName: ""
           - pluginName: "___VARIABLE_productName___"
+          ▿ pluginTestsImports: 2 elements
+            - "<baseTestImport>"
+            - "NodesTesting"
           - publisherFailureType: "<publisherFailureType>"
           - publisherType: "<publisherType>"
           ▿ stateImports: 1 element
@@ -700,6 +718,9 @@
             - "Nodes"
           - pluginListName: "___VARIABLE_pluginListName___"
           - pluginName: "___VARIABLE_productName___"
+          ▿ pluginTestsImports: 2 elements
+            - "<baseTestImport>"
+            - "NodesTesting"
           - publisherFailureType: "<publisherFailureType>"
           - publisherType: "<publisherType>"
           ▿ stateImports: 1 element
@@ -806,6 +827,9 @@
             - "Nodes"
           - pluginListName: ""
           - pluginName: "___VARIABLE_productName___"
+          ▿ pluginTestsImports: 2 elements
+            - "<baseTestImport>"
+            - "NodesTesting"
           - publisherFailureType: "<publisherFailureType>"
           - publisherType: "<publisherType>"
           ▿ stateImports: 1 element

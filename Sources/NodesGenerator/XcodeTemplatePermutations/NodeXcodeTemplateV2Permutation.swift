@@ -30,6 +30,7 @@ internal struct NodeXcodeTemplateV2Permutation: XcodeTemplatePermutation {
             analyticsTestsImports: node.analyticsTests.imports(with: config, including: uiFramework),
             contextTestsImports: node.contextTests.imports(with: config, including: uiFramework),
             flowTestsImports: node.flowTests.imports(with: config, including: uiFramework),
+            pluginTestsImports: node.pluginTests.imports(with: config, including: uiFramework),
             viewControllerTestsImports: node.viewControllerTests.imports(with: config, including: uiFramework),
             viewStateFactoryTestsImports: node.viewStateFactoryTests.imports(with: config, including: uiFramework),
             dependencies: config.dependencies,

@@ -20,6 +20,7 @@ public struct NodeStencilContext: StencilContext {
     private let analyticsTestsImports: [String]
     private let contextTestsImports: [String]
     private let flowTestsImports: [String]
+    private let pluginTestsImports: [String]
     private let viewControllerTestsImports: [String]
     private let viewStateFactoryTestsImports: [String]
     private let dependencies: [[String: Any]]
@@ -65,6 +66,7 @@ public struct NodeStencilContext: StencilContext {
             "analytics_tests_imports": analyticsTestsImports,
             "context_tests_imports": contextTestsImports,
             "flow_tests_imports": flowTestsImports,
+            "plugin_tests_imports": pluginTestsImports,
             "view_controller_tests_imports": viewControllerTestsImports,
             "view_state_factory_tests_imports": viewStateFactoryTestsImports,
             "dependencies": dependencies,
@@ -110,6 +112,7 @@ public struct NodeStencilContext: StencilContext {
         analyticsTestsImports: Set<String>,
         contextTestsImports: Set<String>,
         flowTestsImports: Set<String>,
+        pluginTestsImports: Set<String>,
         viewControllerTestsImports: Set<String>,
         viewStateFactoryTestsImports: Set<String>,
         dependencies: [Config.Variable],
@@ -154,6 +157,7 @@ public struct NodeStencilContext: StencilContext {
             analyticsTestsImports: analyticsTestsImports,
             contextTestsImports: contextTestsImports,
             flowTestsImports: flowTestsImports,
+            pluginTestsImports: pluginTestsImports,
             viewControllerTestsImports: viewControllerTestsImports,
             viewStateFactoryTestsImports: viewStateFactoryTestsImports,
             dependencies: dependencies,
@@ -242,6 +246,7 @@ public struct NodeStencilContext: StencilContext {
             analyticsTestsImports: analyticsTestsImports,
             contextTestsImports: contextTestsImports,
             flowTestsImports: flowTestsImports,
+            pluginTestsImports: [],
             viewControllerTestsImports: viewControllerTestsImports,
             viewStateFactoryTestsImports: viewStateFactoryTestsImports,
             dependencies: dependencies,
@@ -288,6 +293,7 @@ public struct NodeStencilContext: StencilContext {
         analyticsTestsImports: Set<String>,
         contextTestsImports: Set<String>,
         flowTestsImports: Set<String>,
+        pluginTestsImports: Set<String>,
         viewControllerTestsImports: Set<String>,
         viewStateFactoryTestsImports: Set<String>,
         dependencies: [Config.Variable],
@@ -332,6 +338,7 @@ public struct NodeStencilContext: StencilContext {
         self.analyticsTestsImports = analyticsTestsImports.sortedImports()
         self.contextTestsImports = contextTestsImports.sortedImports()
         self.flowTestsImports = flowTestsImports.sortedImports()
+        self.pluginTestsImports = pluginTestsImports.sortedImports()
         self.viewControllerTestsImports = viewControllerTestsImports.sortedImports()
         self.viewStateFactoryTestsImports = viewStateFactoryTestsImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)

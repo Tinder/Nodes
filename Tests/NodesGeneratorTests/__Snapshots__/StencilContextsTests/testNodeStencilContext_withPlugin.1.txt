@@ -1,4 +1,4 @@
-▿ 42 key/value pairs
+▿ 43 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -89,6 +89,10 @@
   ▿ (2 elements)
     - key: "plugin_name"
     - value: "<nodeName>"
+  ▿ (2 elements)
+    - key: "plugin_tests_imports"
+    ▿ value: 1 element
+      - "<pluginTestsImport>"
   ▿ (2 elements)
     - key: "publisher_failure_type"
     - value: "<publisherFailureType>"
