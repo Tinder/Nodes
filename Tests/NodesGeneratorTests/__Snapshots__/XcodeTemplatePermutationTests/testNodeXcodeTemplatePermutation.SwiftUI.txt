@@ -55,6 +55,7 @@
     - isPreviewProviderEnabled: false
     - nodeName: "___VARIABLE_productName___"
     - pluginListName: ""
+    - pluginName: ""
     - publisherFailureType: "<publisherFailureType>"
     - publisherType: "<publisherType>"
     ▿ stateImports: 1 element

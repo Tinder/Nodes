@@ -84,7 +84,7 @@
     - value: "<pluginListName>"
   ▿ (2 elements)
     - key: "plugin_name"
-    - value: ""
+    - value: "<nodeName>"
   ▿ (2 elements)
     - key: "publisher_failure_type"
     - value: "<publisherFailureType>"
