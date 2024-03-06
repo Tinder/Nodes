@@ -23,19 +23,19 @@ final class {{ worker_name }}WorkerTests: XCTestCase {
         super.tearDown()
     }
 
-    func testDidStart() {
+    func testStart() {
         {% if is_nimble_enabled %}
-        expect { self.worker.didStart() }.toNot(throwError())
+        expect { self.worker.start() }.toNot(throwError())
         {% else %}
-        XCTAssertNoThrow(worker.didStart())
+        XCTAssertNoThrow(worker.start())
         {% endif %}
     }
 
-    func testWillStop() {
+    func testStop() {
         {% if is_nimble_enabled %}
-        expect { self.worker.willStop() }.toNot(throwError())
+        expect { self.worker.stop() }.toNot(throwError())
         {% else %}
-        XCTAssertNoThrow(worker.willStop())
+        XCTAssertNoThrow(worker.stop())
         {% endif %}
     }
 }
