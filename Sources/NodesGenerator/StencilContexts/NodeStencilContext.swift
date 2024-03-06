@@ -7,6 +7,7 @@ public struct NodeStencilContext: StencilContext {
 
     private let fileHeader: String
     private let nodeName: String
+    private let pluginName: String
     private let pluginListName: String
     private let analyticsImports: [String]
     private let builderImports: [String]
@@ -49,6 +50,7 @@ public struct NodeStencilContext: StencilContext {
         [
             "file_header": fileHeader,
             "node_name": nodeName,
+            "plugin_name": pluginName,
             "plugin_list_name": pluginListName,
             "owns_view": true,
             "analytics_imports": analyticsImports,
@@ -93,6 +95,7 @@ public struct NodeStencilContext: StencilContext {
     public init(
         fileHeader: String,
         nodeName: String,
+        pluginName: String,
         pluginListName: String,
         analyticsImports: Set<String>,
         builderImports: Set<String>,
@@ -135,6 +138,7 @@ public struct NodeStencilContext: StencilContext {
             strict: true,
             fileHeader: fileHeader,
             nodeName: nodeName,
+            pluginName: pluginName,
             pluginListName: pluginListName,
             analyticsImports: analyticsImports,
             builderImports: builderImports,
@@ -221,6 +225,7 @@ public struct NodeStencilContext: StencilContext {
             strict: false,
             fileHeader: fileHeader,
             nodeName: preset.nodeName,
+            pluginName: "",
             pluginListName: "",
             analyticsImports: analyticsImports,
             builderImports: builderImports,
@@ -265,6 +270,7 @@ public struct NodeStencilContext: StencilContext {
         strict: Bool,
         fileHeader: String,
         nodeName: String,
+        pluginName: String,
         pluginListName: String,
         analyticsImports: Set<String>,
         builderImports: Set<String>,
@@ -307,6 +313,7 @@ public struct NodeStencilContext: StencilContext {
         else { throw StencilContextError.reservedNodeName(nodeName) }
         self.fileHeader = fileHeader
         self.nodeName = nodeName
+        self.pluginName = pluginName
         self.pluginListName = pluginListName
         self.analyticsImports = analyticsImports.sortedImports()
         self.builderImports = builderImports.sortedImports()

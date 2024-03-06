@@ -12,10 +12,12 @@ internal struct NodeXcodeTemplateV2Permutation: XcodeTemplatePermutation {
         let node: StencilTemplate.Node = StencilTemplate.Node(for: .variation(for: uiFramework.kind))
         name = "\(usePluginList ? XcodeTemplateConstants.usePluginList : "")\(uiFramework.name)"
         stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
+        let productName: String = XcodeTemplateConstants.variable(XcodeTemplateConstants.productName)
         // swiftlint:disable:next force_try
         stencilContext = try! NodeStencilContext(
             fileHeader: config.fileHeader,
-            nodeName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
+            nodeName: productName,
+            pluginName: productName,
             pluginListName: usePluginList ? XcodeTemplateConstants.variable(XcodeTemplateConstants.pluginListName) : "",
             analyticsImports: node.analytics.imports(with: config, including: uiFramework),
             builderImports: node.builder.imports(with: config, including: uiFramework),

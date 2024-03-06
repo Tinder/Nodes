@@ -16,6 +16,7 @@ internal struct NodeXcodeTemplatePermutation: XcodeTemplatePermutation {
         stencilContext = try! NodeStencilContext(
             fileHeader: config.fileHeader,
             nodeName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
+            pluginName: "",
             pluginListName: "",
             analyticsImports: node.analytics.imports(with: config, including: uiFramework),
             builderImports: node.builder.imports(with: config, including: uiFramework),

@@ -60,11 +60,13 @@ extension TestFactories {
 
     internal func givenNodeStencilContext(
         nodeName: String = "<nodeName>",
+        includePlugin: Bool = false,
         mockCount: Int = 1
     ) throws -> NodeStencilContext {
         try NodeStencilContext(
             fileHeader: "<fileHeader>",
             nodeName: nodeName,
+            pluginName: includePlugin ? nodeName : "",
             pluginListName: mockCount > 0 ? "<pluginListName>" : "",
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),
