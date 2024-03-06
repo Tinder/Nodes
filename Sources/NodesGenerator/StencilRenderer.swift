@@ -12,10 +12,11 @@ public final class StencilRenderer {
     public func renderNode(
         context: NodeStencilContext,
         kind: UIFramework.Kind,
+        includePlugin: Bool = false,
         includeTests: Bool = false
     ) throws -> [String: String] {
         let node: StencilTemplate.Node = .init(for: .variation(for: kind))
-        let stencils: [StencilTemplate] = node.stencils(includeTests: includeTests)
+        let stencils: [StencilTemplate] = node.stencils(includePlugin: includePlugin, includeTests: includeTests)
         return try render(stencils: stencils, with: context.dictionary)
     }
 
