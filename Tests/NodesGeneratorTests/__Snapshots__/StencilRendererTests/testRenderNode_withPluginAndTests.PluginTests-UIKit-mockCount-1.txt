@@ -2,6 +2,8 @@
 
 #warning("Manually move this test file to the corresponding test target then delete this warning.")
 
+import <pluginTestsImport>
+
 @MainActor
 final class PluginTests: XCTestCase {
 

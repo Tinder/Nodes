@@ -1,5 +1,7 @@
 <fileHeader>
 
+import <pluginImport>
+
 /**
  PURPOSE:
  Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
