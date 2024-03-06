@@ -196,7 +196,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             description.appending(variation.rawValue)
         case .analytics, .context, .flow, .plugin, .pluginList, .state, .viewState, .worker:
             description
-        case .analyticsTests, .contextTests, .flowTests, .viewStateFactoryTests, .workerTests::
+        case .analyticsTests, .contextTests, .flowTests, .viewStateFactoryTests, .workerTests:
             description
         case .pluginTests, .pluginListTests
             description
