@@ -54,6 +54,10 @@
     - isPeripheryCommentEnabled: false
     - isPreviewProviderEnabled: false
     - nodeName: "___VARIABLE_productName___"
+    ▿ pluginImports: 3 elements
+      - "<baseImport>"
+      - "<dependencyInjectionImport>"
+      - "Nodes"
     - pluginListName: "___VARIABLE_pluginListName___"
     - pluginName: "___VARIABLE_productName___"
     - publisherFailureType: "<publisherFailureType>"
