@@ -101,12 +101,13 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 7 elements
+        ▿ stencils: 8 elements
           - Analytics
           ▿ Builder
             - builder: Variation.default
           - Context
           - Flow
+          - Plugin
           - State
           ▿ ViewController
             - viewController: Variation.default
@@ -210,12 +211,13 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 7 elements
+        ▿ stencils: 8 elements
           - Analytics
           ▿ Builder
             - builder: Variation.default
           - Context
           - Flow
+          - Plugin
           - State
           ▿ ViewController
             - viewController: Variation.default
@@ -319,12 +321,13 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 7 elements
+        ▿ stencils: 8 elements
           - Analytics
           ▿ Builder
             - builder: Variation.default
           - Context
           - Flow
+          - Plugin
           - State
           ▿ ViewController
             - viewController: Variation.default
@@ -428,12 +431,13 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 7 elements
+        ▿ stencils: 8 elements
           - Analytics
           ▿ Builder
             - builder: Variation.default
           - Context
           - Flow
+          - Plugin
           - State
           ▿ ViewController
             - viewController: Variation.default
@@ -537,12 +541,13 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 7 elements
+        ▿ stencils: 8 elements
           - Analytics
           ▿ Builder
             - builder: Variation.swiftUI
           - Context
           - Flow
+          - Plugin
           - State
           ▿ ViewController
             - viewController: Variation.swiftUI
@@ -646,12 +651,13 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 7 elements
+        ▿ stencils: 8 elements
           - Analytics
           ▿ Builder
             - builder: Variation.swiftUI
           - Context
           - Flow
+          - Plugin
           - State
           ▿ ViewController
             - viewController: Variation.swiftUI
@@ -755,12 +761,13 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 7 elements
+        ▿ stencils: 8 elements
           - Analytics
           ▿ Builder
             - builder: Variation.default
           - Context
           - Flow
+          - Plugin
           - State
           ▿ ViewController
             - viewController: Variation.default
@@ -864,12 +871,13 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 7 elements
+        ▿ stencils: 8 elements
           - Analytics
           ▿ Builder
             - builder: Variation.default
           - Context
           - Flow
+          - Plugin
           - State
           ▿ ViewController
             - viewController: Variation.default
