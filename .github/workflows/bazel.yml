@@ -17,7 +17,7 @@ jobs:
     - name: Checkout source
       uses: actions/checkout@v3
     - name: Build
-      run: bazelisk build :all
+      run: bazelisk build --macos_minimum_os=$(sw_vers -productVersion) :all
     - name: Test
       run: bazelisk test :all
     - name: Validate executables
