@@ -21,3 +21,7 @@ jobs:
       run: swift build -v -Xswiftc -warnings-as-errors
     - name: Test
       run: swift test -v
+    - name: Validate executables
+      run: |
+        swift run -- nodes-code-gen --help
+        swift run -- nodes-xcode-templates-gen --help
