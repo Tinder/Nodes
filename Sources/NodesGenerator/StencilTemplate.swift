@@ -69,10 +69,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             self.viewStateFactoryTests = .viewStateFactoryTests
         }
 
-        public func stencils(
-            includePlugin: Bool = false,
-            includeTests: Bool = false
-        ) -> [StencilTemplate] {
+        public func stencils(includePlugin: Bool, includeTests: Bool) -> [StencilTemplate] {
             var stencils: [StencilTemplate] = [
                 analytics,
                 builder,
@@ -127,9 +124,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             self.flowTests = .flowTests
         }
 
-        public func stencils(
-            includeTests: Bool = false
-        ) -> [StencilTemplate] {
+        public func stencils(includeTests: Bool) -> [StencilTemplate] {
             let stencils: [StencilTemplate] = [
                 analytics,
                 builder,
