@@ -20,3 +20,7 @@ jobs:
       run: bazelisk build :all
     - name: Test
       run: bazelisk test :all
+    - name: Validate executables
+      run: |
+        bazelisk run :nodes-code-gen -- --help
+        bazelisk run :nodes-xcode-templates-gen -- --help
