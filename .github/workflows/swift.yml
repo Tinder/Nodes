@@ -21,6 +21,13 @@ jobs:
       run: swift build -v -Xswiftc -warnings-as-errors
     - name: Test
       run: swift test -v
+    - name: Delete snapshots
+      run: make delete-snapshots
+    - name: Record snapshots
+      run: swift test -v
+      continue-on-error: true
+    - name: Validate recorded snapshots
+      run: test -z "$(git status --porcelain)"
     - name: Validate executables
       run: |
         swift run -- nodes-code-gen --help
