@@ -12,7 +12,7 @@ internal struct PluginXcodeTemplatePermutation: XcodeTemplatePermutation {
         self.name = name
         let plugin: StencilTemplate = .plugin
         let pluginTests: StencilTemplate = .pluginTests
-        stencils = [plugin]
+        stencils = [plugin] + (config.isTestTemplatesGenerationEnabled ? [pluginTests] : [])
         stencilContext = PluginStencilContext(
             fileHeader: config.fileHeader,
             pluginName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
