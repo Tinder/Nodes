@@ -33,6 +33,7 @@ extension TestFactories {
         config.dependencyInjectionImports = ["<dependencyInjectionImport>"]
         config.builderImports = ["<builderImport>"]
         config.flowImports = ["<flowImport>"]
+        config.pluginListImports = ["<pluginListImport>"]
         config.viewControllerImports = ["<viewControllerImport>"]
         config.dependencies = [Variable(name: "<dependencyName>", type: "<dependencyType>")]
         config.analyticsProperties = [Variable(name: "<analyticsPropertyName>", type: "<analyticsPropertyType>")]

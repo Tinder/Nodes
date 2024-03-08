@@ -256,7 +256,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     expect(imports) == [
                         "Nodes",
                         "<baseImport>",
-                        "<dependencyInjectionImport>"
+                        "<dependencyInjectionImport>",
+                        "<pluginListImport>"
                     ]
                 case .state:
                     expect(imports) == [

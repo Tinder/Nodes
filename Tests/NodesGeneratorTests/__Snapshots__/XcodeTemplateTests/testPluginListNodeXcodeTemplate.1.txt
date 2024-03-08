@@ -7,9 +7,10 @@
         - fileHeader: "<fileHeader>"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: false
-        ▿ pluginListImports: 3 elements
+        ▿ pluginListImports: 4 elements
           - "<baseImport>"
           - "<dependencyInjectionImport>"
+          - "<pluginListImport>"
           - "Nodes"
         - pluginListName: "___VARIABLE_productName___"
         - viewControllableFlowType: "<viewControllableFlowType>"

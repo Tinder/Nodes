@@ -43,6 +43,7 @@
   - isPreviewProviderEnabled: true
   - isTestTemplatesGenerationEnabled: true
   - isViewInjectedTemplateEnabled: false
+  - pluginListImports: 0 members
   - publisherFailureType: "<publisherFailureType>"
   - publisherType: "<publisherType>"
   ▿ reactiveImports: 2 members

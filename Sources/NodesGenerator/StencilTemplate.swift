@@ -230,6 +230,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             config.baseImports
                 .union(["Nodes"])
                 .union(config.dependencyInjectionImports)
+                .union(config.pluginListImports)
         case .state:
             config.baseImports
         case .viewController:
