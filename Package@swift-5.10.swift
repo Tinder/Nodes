@@ -164,6 +164,8 @@ let package = Package(
 extension Array where Element == SwiftSetting {
 
     static var swiftSettings: [SwiftSetting] {
-        [.unsafeFlags(["-strict-concurrency=complete"])]
+        [
+            .enableExperimentalFeature("StrictConcurrency"),
+        ]
     }
 }
