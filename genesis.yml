@@ -633,12 +633,12 @@ files:
       /// @mockable
       @MainActor
       internal protocol AppService {
-          var windowSceneState: AnyPublisher<WindowSceneState, Never> { get }
+          var windowSceneEvents: AnyPublisher<WindowSceneEvent, Never> { get }
       }
 
       internal final class AppServiceImp: AppService {
 
-          internal var windowSceneState: AnyPublisher<WindowSceneState, Never> {
+          internal var windowSceneEvents: AnyPublisher<WindowSceneEvent, Never> {
               Publishers.Merge(
                   notificationCenter
                       .publisher(for: UIScene.willConnectNotification)
@@ -658,7 +658,7 @@ files:
           }
       }
 
-      internal enum WindowSceneState {
+      internal enum WindowSceneEvent {
 
           case added(UIWindowScene)
           case removed(UIWindowScene)

@@ -144,7 +144,7 @@ internal final class AppBuilderImp: AbstractBuilder
         let context: AppContextImp = .init(
             workers: [],
             analytics: analytics,
-            windowSceneState: component.appService.windowSceneState
+            windowSceneEvents: component.appService.windowSceneEvents
         )
         let flow: AppFlowImp = .init(
             context: context,
