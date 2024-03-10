@@ -2,7 +2,7 @@
 //  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
-public enum StencilTemplate: Equatable, CustomStringConvertible {
+public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
 
     case analytics
     case builder(Variation)
@@ -24,7 +24,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
     case viewStateFactoryTests
     case workerTests
 
-    public enum Variation: String, Equatable, CaseIterable {
+    public enum Variation: String, Sendable, Equatable, CaseIterable {
 
         case `default` = ""
         case swiftUI = "-SwiftUI"

@@ -12,6 +12,7 @@ import XCTest
 
 final class UIWindowViewControllableTests: XCTestCase {
 
+    @MainActor
     func testPresent() {
         let testWindow: UIWindow = givenWindow()
         let testViewController: UIViewController = givenViewController()
@@ -22,12 +23,14 @@ final class UIWindowViewControllableTests: XCTestCase {
         expect(testWindow.isKeyWindow) == true
     }
 
+    @MainActor
     private func givenViewController() -> UIViewController {
         let viewController: UIViewController = .init()
         expect(viewController).to(notBeNilAndToDeallocateAfterTest())
         return viewController
     }
 
+    @MainActor
     private func givenWindow() -> UIWindow {
         let window: UIWindow = .init()
         expect(window).to(notBeNilAndToDeallocateAfterTest())

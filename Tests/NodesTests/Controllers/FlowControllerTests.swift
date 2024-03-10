@@ -6,25 +6,28 @@ import Nimble
 @testable import Nodes
 import XCTest
 
-@MainActor
 final class FlowControllerTests: XCTestCase, TestCaseHelpers {
 
     private var mockFlows: [FlowMock]!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         tearDown(keyPath: \.mockFlows, initialValue: [FlowMock(), FlowMock(), FlowMock()])
     }
 
+    @MainActor
     override func tearDown() {
         super.tearDown()
     }
 
+    @MainActor
     func testFlows() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         expect(flowController.flows as? [FlowMock]) == mockFlows
     }
 
+    @MainActor
     func testFlowLeakDetection() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         expect(flowController.isFlowLeakDetectionEnabled) == true
@@ -38,6 +41,7 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         expect(flowController.isFlowLeakDetectionEnabled) == true
     }
 
+    @MainActor
     func testAssertions() {
         let flowController: FlowController = .init()
         let flowA: FlowMock = .init()
@@ -47,6 +51,7 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         expect(flowController.detach(ending: flowB)).to(throwAssertion())
     }
 
+    @MainActor
     func testAttach() {
         let flowController: FlowController = givenFlowController()
         let flow: FlowMock = mockFlows[0]
@@ -55,6 +60,7 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         expect(flowController.flows).to(haveCount(1))
     }
 
+    @MainActor
     func testDetach() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         let flow: FlowMock = mockFlows[1]
@@ -63,6 +69,7 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         expect(flowController.flows).to(haveCount(2))
     }
 
+    @MainActor
     func testDetachEndingAllFlows() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         let flows: [Flow] = flowController.flows
@@ -73,6 +80,7 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         expect(flowController.flows).to(beEmpty())
     }
 
+    @MainActor
     func testDetachEndingFlowsOfType() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         let flows: [Flow] = flowController.flows
@@ -83,11 +91,13 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         expect(flowController.flows).to(beEmpty())
     }
 
+    @MainActor
     func testFirstFlowOfType() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         expect(flowController.firstFlow(ofType: FlowMock.self)) === mockFlows.first
     }
 
+    @MainActor
     func testWithFirstFlowOfType() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         var flow: FlowMock?
@@ -95,11 +105,13 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         expect(flow) === mockFlows.first
     }
 
+    @MainActor
     func testFlowsOfType() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         expect(flowController.flows(ofType: FlowMock.self)) == mockFlows
     }
 
+    @MainActor
     func testWithFlowsOfType() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         var flows: [FlowMock] = []
@@ -107,6 +119,7 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
         expect(flows) == mockFlows
     }
 
+    @MainActor
     private func givenFlowController(with flows: [Flow] = []) -> FlowController {
         let flowController: FlowController = .init()
         expect(flowController).to(notBeNilAndToDeallocateAfterTest())

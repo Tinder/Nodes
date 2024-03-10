@@ -4,7 +4,7 @@
 
 import XCTest
 
-private class ObjectReference<T: AnyObject> {
+private final class ObjectReference<T: AnyObject> {
 
     private var object: T!
 
@@ -22,14 +22,16 @@ internal protocol TestCaseHelpers {}
 
 extension TestCaseHelpers where Self: XCTestCase {
 
+    @MainActor
     internal func addTeardownBlock<T: AnyObject>(
         with object: T,
-        _ block: @escaping (T) -> Void
+        _ block: @MainActor @Sendable @escaping (T) -> Void
     ) {
         let reference: ObjectReference = .init(object)
         addTeardownBlock { block(reference()) }
     }
 
+    @MainActor
     internal func tearDown<T>(
         keyPath: ReferenceWritableKeyPath<Self, T?>,
         initialValue: T,
@@ -39,6 +41,7 @@ extension TestCaseHelpers where Self: XCTestCase {
         addTeardownBlock(for: keyPath, with: initialValue)
     }
 
+    @MainActor
     internal func tearDown<T: AnyObject>(
         keyPath: ReferenceWritableKeyPath<Self, T?>,
         initialValue object: T,
@@ -57,6 +60,7 @@ extension TestCaseHelpers where Self: XCTestCase {
         addTeardownBlock(for: keyPath, with: object)
     }
 
+    @MainActor
     internal func tearDown<T: Collection>(
         keyPath: ReferenceWritableKeyPath<Self, T?>,
         initialValue collection: T,
@@ -78,6 +82,7 @@ extension TestCaseHelpers where Self: XCTestCase {
         addTeardownBlock(for: keyPath, with: collection)
     }
 
+    @MainActor
     private func addTeardownBlock<T>(
         for keyPath: ReferenceWritableKeyPath<Self, T?>,
         with initialValue: T

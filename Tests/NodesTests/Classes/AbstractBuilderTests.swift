@@ -6,7 +6,6 @@ import Nimble
 import Nodes
 import XCTest
 
-@MainActor
 final class AbstractBuilderTests: XCTestCase {
 
     private class ComponentType {}
@@ -20,17 +19,20 @@ final class AbstractBuilderTests: XCTestCase {
         }
     }
 
+    @MainActor
     func testBuild() {
         let builder: TestBuilder = givenBuilder { ComponentType() }
         expect(builder.build()).to(beAKindOf(BuildType.self))
     }
 
+    @MainActor
     func testAssertions() {
         let builder: AbstractBuilder<ComponentType, BuildType, Void, Void> = .init { ComponentType() }
         expect(builder.build()).to(throwAssertion()) // precondition failure for non-overridden method
         expect(builder.build()).to(throwAssertion()) // assertion failure for re-used component instance
     }
 
+    @MainActor
     private func givenBuilder(componentFactory: @escaping () -> ComponentType) -> TestBuilder {
         let builder: TestBuilder = .init(componentFactory: componentFactory)
         expect(builder).to(notBeNilAndToDeallocateAfterTest())
