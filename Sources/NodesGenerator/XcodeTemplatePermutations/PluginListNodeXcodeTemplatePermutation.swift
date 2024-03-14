@@ -16,7 +16,7 @@ internal struct PluginListNodeXcodeTemplatePermutation: XcodeTemplatePermutation
             fileHeader: config.fileHeader,
             pluginListName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
             pluginListImports: pluginList.imports(with: config),
-            pluginListTestsImports: StencilTemplate.pluginListTests.imports(with: config),
+            pluginListTestsImports: [],
             viewControllableFlowType: config.viewControllableFlowType,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
             isNimbleEnabled: config.isNimbleEnabled
