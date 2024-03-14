@@ -1,4 +1,4 @@
-▿ 6 key/value pairs
+▿ 7 key/value pairs
   ▿ (2 elements)
     - key: "file_header"
     - value: "<fileHeader>"
@@ -19,3 +19,7 @@
   ▿ (2 elements)
     - key: "worker_name"
     - value: "<workerName>"
+  ▿ (2 elements)
+    - key: "worker_tests_imports"
+    ▿ value: 1 element
+      - "<workerTestsImport>"

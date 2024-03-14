@@ -11,5 +11,6 @@
       - "<reactiveImport>"
       - "Nodes"
     - workerName: "___VARIABLE_productName___"
+    - workerTestsImports: 0 elements
   ▿ stencils: 1 element
     - Worker
