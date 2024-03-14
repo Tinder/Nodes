@@ -82,7 +82,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     private let analytics: {{ node_name }}Analytics
     {% if node_name == "App" %}
 
-    private let windowSceneEvents: AnyPublisher<WindowSceneEvent, Never>
+    private let windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>
     {% elif node_name == "Root" %}
 
     // swiftlint:disable:next redundant_type_annotation
@@ -96,7 +96,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     internal init(
         workers: [Worker],
         analytics: {{ node_name }}Analytics{% if node_name == "App" %}{{ ',' }}
-        windowSceneEvents: AnyPublisher<WindowSceneEvent, Never>{% endif +%}
+        windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>{% endif +%}
     ) {
         {% if node_name == "Root" %}
         self.state = {{ node_name }}State(name: "{{ node_name }} View Controller")
@@ -105,7 +105,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
         {% endif %}
         self.analytics = analytics
         {% if node_name == "App" %}
-        self.windowSceneEvents = windowSceneEvents
+        self.windowScenePublisher = windowScenePublisher
         {% endif %}
         super.init(workers: workers)
     }
@@ -113,7 +113,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     /// Implement logic to execute when the Context becomes active.
     {% if node_name == "App" %}
     override internal func didBecomeActive() {
-        subscribe(to: windowSceneEvents)
+        subscribe(to: windowScenePublisher)
     }
     {% else %}
     override internal func didBecomeActive() {}
@@ -123,14 +123,14 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     override internal func willResignActive() {}
     {% if node_name == "App" %}
 
-    private func subscribe(to windowSceneEvents: AnyPublisher<WindowSceneEvent, Never>) {
-        windowSceneEvents
-            .filter(\.isAdded)
+    private func subscribe(to windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>) {
+        windowScenePublisher
+            .filter(\.willConnect)
             .map(\.windowScene)
             .sink { [weak self] in self?.flow?.attachScene($0) }
             .store(in: &cancellables)
-        windowSceneEvents
-            .filter(\.isRemoved)
+        windowScenePublisher
+            .filter(\.didDisconnect)
             .map(\.windowScene)
             .sink { [weak self] in self?.flow?.detachScene($0) }
             .store(in: &cancellables)

@@ -37,7 +37,7 @@ internal final class AppContextImp: AbstractContext
     /// The Analytics instance.
     private let analytics: AppAnalytics
 
-    private let windowSceneEvents: AnyPublisher<WindowSceneEvent, Never>
+    private let windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>
 
     /// The initializer.
     /// - Parameters:
@@ -46,30 +46,30 @@ internal final class AppContextImp: AbstractContext
     internal init(
         workers: [Worker],
         analytics: AppAnalytics,
-        windowSceneEvents: AnyPublisher<WindowSceneEvent, Never>
+        windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>
     ) {
         self.state = AppState()
         self.analytics = analytics
-        self.windowSceneEvents = windowSceneEvents
+        self.windowScenePublisher = windowScenePublisher
         super.init(workers: workers)
     }
 
     /// Implement logic to execute when the Context becomes active.
     override internal func didBecomeActive() {
-        subscribe(to: windowSceneEvents)
+        subscribe(to: windowScenePublisher)
     }
 
     /// Implement logic to execute when the Context will become inactive.
     override internal func willResignActive() {}
 
-    private func subscribe(to windowSceneEvents: AnyPublisher<WindowSceneEvent, Never>) {
-        windowSceneEvents
-            .filter(\.isAdded)
+    private func subscribe(to windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>) {
+        windowScenePublisher
+            .filter(\.willConnect)
             .map(\.windowScene)
             .sink { [weak self] in self?.flow?.attachScene($0) }
             .store(in: &cancellables)
-        windowSceneEvents
-            .filter(\.isRemoved)
+        windowScenePublisher
+            .filter(\.didDisconnect)
             .map(\.windowScene)
             .sink { [weak self] in self?.flow?.detachScene($0) }
             .store(in: &cancellables)
