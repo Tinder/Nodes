@@ -89,8 +89,8 @@ public final class AppComponent: BootstrapComponent {
 
      */
 
-    fileprivate func sceneComponentFactory() -> SceneComponent {
-        SceneComponent(parent: self)
+    fileprivate func windowSceneComponentFactory() -> WindowSceneComponent {
+        WindowSceneComponent(parent: self)
     }
 }
 
@@ -151,7 +151,7 @@ internal final class AppBuilderImp: AbstractBuilder
         let flow: AppFlowImp = .init(
             context: context,
             <flowPropertyName>: component.<flowPropertyName>,
-            sceneBuilder: SceneBuilderImp(componentFactory: component.sceneComponentFactory)
+            windowSceneBuilder: WindowSceneBuilderImp(componentFactory: component.windowSceneComponentFactory)
         )
         context.flow = flow
         return flow

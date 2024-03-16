@@ -8,8 +8,8 @@
 /// @mockable
 @MainActor
 internal protocol AppFlowInterface: Flow {
-    func attachScene(_ viewController: WindowSceneViewControllable)
-    func detachScene(_ viewController: WindowSceneViewControllable)
+    func attachWindowScene(_ viewController: WindowSceneViewControllable)
+    func detachWindowScene(_ viewController: WindowSceneViewControllable)
 }
 
 /**
@@ -58,12 +58,12 @@ internal final class AppContextImp: AbstractContext {
         windowScenePublisher
             .filter(\.willConnect)
             .map(\.windowScene)
-            .sink { [weak self] in self?.flow?.attachScene($0) }
+            .sink { [weak self] in self?.flow?.attachWindowScene($0) }
             .store(in: &cancellables)
         windowScenePublisher
             .filter(\.didDisconnect)
             .map(\.windowScene)
-            .sink { [weak self] in self?.flow?.detachScene($0) }
+            .sink { [weak self] in self?.flow?.detachWindowScene($0) }
             .store(in: &cancellables)
     }
 }

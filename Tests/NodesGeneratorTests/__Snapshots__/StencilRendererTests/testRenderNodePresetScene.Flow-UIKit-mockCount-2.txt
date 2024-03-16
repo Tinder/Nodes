@@ -10,15 +10,15 @@ import <flowImport2>
  */
 /// @mockable
 @MainActor
-internal protocol SceneContextInterface: Context, WindowListener {}
+internal protocol WindowSceneContextInterface: Context, WindowListener {}
 
 /**
  PURPOSE:
  Responsible for presenting views and starting child Flows, and should not contain business logic.
  */
-internal final class SceneFlowImp: AbstractFlow
+internal final class WindowSceneFlowImp: AbstractFlow
 <
-    SceneContextInterface,
+    WindowSceneContextInterface,
     WindowSceneViewControllable
 > {
 
@@ -37,7 +37,7 @@ internal final class SceneFlowImp: AbstractFlow
     ///   - <flowPropertyName2>: The <flowPropertyType2> instance
     ///   - windowBuilder: The Window Builder instance
     internal init(
-        context: SceneContextInterface,
+        context: WindowSceneContextInterface,
         viewController: WindowSceneViewControllable,
         <flowPropertyName1>: <flowPropertyType1>,
         <flowPropertyName2>: <flowPropertyType2>,
@@ -68,5 +68,5 @@ internal final class SceneFlowImp: AbstractFlow
     }
 }
 
-extension SceneFlowImp: SceneFlow {}
-extension SceneFlowImp: SceneFlowInterface {}
+extension WindowSceneFlowImp: WindowSceneFlow {}
+extension WindowSceneFlowImp: WindowSceneFlowInterface {}

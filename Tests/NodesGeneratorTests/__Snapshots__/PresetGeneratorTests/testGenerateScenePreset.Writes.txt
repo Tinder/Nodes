@@ -1,16 +1,16 @@
 ▿ 5 elements
   ▿ (2 elements)
-    - path: "/SceneAnalytics.swift"
+    - path: "/WindowSceneAnalytics.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/SceneBuilder.swift"
+    - path: "/WindowSceneBuilder.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/SceneContext.swift"
+    - path: "/WindowSceneContext.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/SceneFlow.swift"
+    - path: "/WindowSceneFlow.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/SceneState.swift"
+    - path: "/WindowSceneState.swift"
     - atomically: true

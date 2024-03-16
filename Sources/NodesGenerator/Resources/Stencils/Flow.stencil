@@ -14,8 +14,8 @@ import {{ import }}
 /// @mockable
 @MainActor
 {% if node_name == "App" %}
-internal protocol {{ node_name }}ContextInterface: Context, SceneListener {}
-{% elif node_name == "Scene" %}
+internal protocol {{ node_name }}ContextInterface: Context, WindowSceneListener {}
+{% elif node_name == "WindowScene" %}
 internal protocol {{ node_name }}ContextInterface: Context, WindowListener {}
 {% elif node_name == "Window" %}
 internal protocol {{ node_name }}ContextInterface: Context, RootListener {}
@@ -41,8 +41,6 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {{ node_name }}ContextInterface,
     {% if node_name == "App" %}
     Void
-    {% elif node_name == "Scene" %}
-    Window{{ node_name }}ViewControllable
     {% else %}
     {{ node_name }}ViewControllable
     {% endif %}
@@ -55,8 +53,8 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {% endif %}
     {% if node_name == "App" %}
 
-    private let sceneBuilder: SceneBuilder
-    {% elif node_name == "Scene" %}
+    private let windowSceneBuilder: WindowSceneBuilder
+    {% elif node_name == "WindowScene" %}
 
     private let windowBuilder: WindowBuilder
     {% elif node_name == "Window" %}
@@ -76,25 +74,25 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     ///   - {{ property.name }}: The {{ property.type }} instance
     {% endfor %}
     {% if node_name == "App" %}
-    ///   - sceneBuilder: The Scene Builder instance
-    {% elif node_name == "Scene" %}
+    ///   - windowSceneBuilder: The Window Scene Builder instance
+    {% elif node_name == "WindowScene" %}
     ///   - windowBuilder: The Window Builder instance
     {% elif node_name == "Window" %}
     ///   - rootBuilder: The Root Builder instance
     {% endif %}
-    {% if node_name == "App" or node_name == "Scene" or node_name == "Window" or flow_properties %}
+    {% if node_name == "App" or node_name == "WindowScene" or node_name == "Window" or flow_properties %}
     internal init(
     {% else %}
     override internal init(
     {% endif %}
         context: {{ node_name }}ContextInterface{% if node_name != "App" %}{{ ',' }}
-        viewController: {%+ if node_name == "Scene" %}Window{% endif %}{{ node_name }}ViewControllable{% endif +%}{% if flow_properties %}{{ ',' }}
+        viewController: {{ node_name }}ViewControllable{% endif +%}{% if flow_properties %}{{ ',' }}
         {% for property in flow_properties %}
         {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}
         {% endif %}
         {% endfor %}
         {% endif +%}{% if node_name == "App" %}{{ ',' }}
-        sceneBuilder: SceneBuilder{% endif +%}{% if node_name == "Scene" %}{{ ',' }}
+        windowSceneBuilder: WindowSceneBuilder{% endif +%}{% if node_name == "WindowScene" %}{{ ',' }}
         windowBuilder: WindowBuilder{% endif +%}{% if node_name == "Window" %}{{ ',' }}
         rootBuilder: RootBuilder{% endif +%}
     ) {
@@ -102,8 +100,8 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
         self.{{ property.name }} = {{ property.name }}
         {% endfor %}
         {% if node_name == "App" %}
-        self.sceneBuilder = sceneBuilder
-        {% elif node_name == "Scene" %}
+        self.windowSceneBuilder = windowSceneBuilder
+        {% elif node_name == "WindowScene" %}
         self.windowBuilder = windowBuilder
         {% elif node_name == "Window" %}
         self.rootBuilder = rootBuilder
@@ -116,7 +114,7 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     }
 
     /// Implement logic to execute when the Flow is started.
-    {% if node_name == "Scene" %}
+    {% if node_name == "WindowScene" %}
     override internal func didStart() {
         attachWindow()
     }
@@ -127,20 +125,20 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {% else %}
     override internal func didStart() {}
     {% endif %}
-    {% if owns_view or node_name == "Scene" %}
+    {% if owns_view or node_name == "WindowScene" %}
 
     /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
     ///
     /// - Returns: The ``ViewControllable`` instance.
-    {% if node_name == "Scene" %}
-    internal func getViewController() -> Window{{ node_name }}ViewControllable {
+    {% if node_name == "WindowScene" %}
+    internal func getViewController() -> {{ node_name }}ViewControllable {
     {% else %}
     internal func getViewController() -> {{ view_controllable_type }} {
     {% endif %}
         viewController
     }
     {% endif %}
-    {% if node_name == "Scene" %}
+    {% if node_name == "WindowScene" %}
 
     private func attachWindow() {
         let flow: WindowFlow = windowBuilder.build(withListener: context,
@@ -162,14 +160,14 @@ extension {{ node_name }}FlowImp: {{ node_name }}Flow {}
 
 extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {
 
-    internal func attachScene(_ viewController: WindowSceneViewControllable) {
-        let flow: SceneFlow = sceneBuilder.build(withListener: context,
-                                                 viewController: viewController)
+    internal func attachWindowScene(_ viewController: WindowSceneViewControllable) {
+        let flow: WindowSceneFlow = windowSceneBuilder.build(withListener: context,
+                                                             viewController: viewController)
         attach(starting: flow)
     }
 
-    internal func detachScene(_ viewController: WindowSceneViewControllable) {
-        detach(endingSubFlowsOfType: SceneFlow.self) { $0.getViewController() === viewController }
+    internal func detachWindowScene(_ viewController: WindowSceneViewControllable) {
+        detach(endingSubFlowsOfType: WindowSceneFlow.self) { $0.getViewController() === viewController }
     }
 }
 {% elif node_name == "Root" %}
