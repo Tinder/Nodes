@@ -17,9 +17,11 @@ final class UIWindowViewControllableTests: XCTestCase {
         let testWindow: UIWindow = givenWindow()
         let testViewController: UIViewController = givenViewController()
         expect(testWindow.rootViewController) == nil
+        expect(testWindow.isHidden) == true
         expect(testWindow.isKeyWindow) == false
         testWindow.makeKeyAndVisible(rootViewController: testViewController)
         expect(testWindow.rootViewController) == testViewController
+        expect(testWindow.isHidden) == false
         expect(testWindow.isKeyWindow) == true
     }
 
