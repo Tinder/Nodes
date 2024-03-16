@@ -151,7 +151,7 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
 
     private func attachRoot() {
         let flow: RootFlow = rootBuilder.build(withListener: context)
-        viewController.present(flow.getViewController())
+        viewController.makeKeyAndVisible(rootViewController: flow.getViewController())
         attach(starting: flow)
     }
     {% endif %}
