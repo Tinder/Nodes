@@ -46,7 +46,8 @@ public struct WithViewState<ViewState, Content: View>: View {
     ///
     /// - Parameters:
     ///     - initialState: The initial view state.
-    ///     - publisher: The view state ``Publisher`` instance to observe.
+    ///     - publisher: The view state [`Publisher`](https://developer.apple.com/documentation/combine/publisher)
+    ///       instance to observe.
     ///     - content: A view builder that creates the content of this view.
     public init<P: Publisher>(
         initialState: ViewState,

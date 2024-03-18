@@ -16,18 +16,26 @@ public struct ModalStyle {
     /// The ``ModalStyle`` behavior.
     public enum Behavior {
 
-        /// The ``UIModalPresentationStyle.fullScreen`` behavior.
+        /// The `cover` behavior - [fullScreen](
+        /// https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/fullscreen
+        /// ) in UIKit.
         case cover
 
-        /// The ``UIModalPresentationStyle.overFullScreen`` behavior.
+        /// The `overlay` behavior - [overFullScreen](
+        /// https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/overFullScreen
+        /// ) in UIKit.
         case overlay
 
+        /// The `page` behavior - [pageSheet](
+        /// https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/pageSheet
+        /// ) in UIKit.
         @available(tvOS, unavailable)
-        /// The ``UIModalPresentationStyle.pageSheet`` behavior.
         case page
 
+        /// The `form` behavior - [formSheet](
+        /// https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/formSheet
+        /// ) in UIKit.
         @available(tvOS, unavailable)
-        /// The ``UIModalPresentationStyle.formSheet`` behavior.
         case form
 
         /// NOT INTENDED FOR USE
@@ -38,10 +46,14 @@ public struct ModalStyle {
     @available(tvOS, unavailable)
     public enum SheetStyle {
 
-        /// The ``UIModalPresentationStyle.pageSheet`` behavior.
+        /// The `page` behavior - [pageSheet](
+        /// https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/pageSheet
+        /// ) in UIKit.
         case page
 
-        /// The ``UIModalPresentationStyle.formSheet`` behavior.
+        /// The `form` behavior - [formSheet](
+        /// https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/formSheet
+        /// ) in UIKit.
         case form
     }
 
