@@ -10,7 +10,7 @@
  * ``PluginList`` has the following generic parameters:
  * | Name          | Description                                                                                 |
  * | ------------- | ------------------------------------------------------------------------------------------- |
- * | KeyType       | The ``Hashable`` key type.                                                                  |
+ * | KeyType       | The [`Hashable`](https://developer.apple.com/documentation/swift/hashable) key type.        |
  * | ComponentType | The DI graph `Component` type.                                                              |
  * | BuildType     | The type of object created (typically a `Builder`).                                         |
  * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
@@ -117,7 +117,7 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
         plugins(component: component).map(\.key)
     }
 
-    /// Calls `create` on the plugins for the keys provided by ``creationOrder(component:)`` and returns
+    /// Calls `create` on the plugins for the keys provided by ``creationOrder(component:state:)`` and returns
     /// the resulting non-nil `BuildType` instances in creation order.
     ///
     /// - Parameter state: The `StateType` instance.
@@ -221,7 +221,7 @@ extension PluginList.AnyPlugin where StateType == Void {
 
 extension PluginList where StateType == Void {
 
-    /// Calls `create` on the plugins for the keys provided by ``creationOrder(component:)`` and returns
+    /// Calls `create` on the plugins for the keys provided by ``creationOrder(component:state:)`` and returns
     /// the resulting non-nil `BuildType` instances in creation order.
     ///
     /// This convenience method has no parameters since `StateType` is `Void`.
@@ -262,7 +262,7 @@ extension PluginList where StateType == Void {
  * ``PluginListWithDefault`` has the following generic parameters:
  * | Name          | Description                                                                                 |
  * | ------------- | ------------------------------------------------------------------------------------------- |
- * | KeyType       | The ``Hashable`` key type.                                                                  |
+ * | KeyType       | The [`Hashable`](https://developer.apple.com/documentation/swift/hashable) key type.        |
  * | ComponentType | The DI graph `Component` type.                                                              |
  * | BuildType     | The type of object created (typically a `Builder`).                                         |
  * | StateType     | The type of state to be used as enabled criteria (can be any type, even `Void` or a tuple). |
@@ -290,8 +290,8 @@ open class PluginListWithDefault<KeyType: Hashable,
         preconditionFailure("Method in abstract base class must be overridden")
     }
 
-    /// Calls `create` on the plugins for the keys provided by ``creationOrder(component:)`` and returns
-    /// the resulting non-nil `BuildType` instances in creation order prepended with the default instance
+    /// Calls `create` on the plugins for the keys provided by ``PluginList/creationOrder(component:state:)`` and
+    /// returns the resulting non-nil `BuildType` instances in creation order prepended with the default instance
     /// provided by ``default(component:)``.
     ///
     /// - Parameter state: The `StateType` instance.

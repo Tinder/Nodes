@@ -7,6 +7,7 @@ import NeedleFoundation
 /**
  * A ``DependencyProviderRegistrationBuilder`` is used to inject Needle components descending from a scope.
  */
+@MainActor
 public final class DependencyProviderRegistrationBuilder {
 
     private var path: [String]

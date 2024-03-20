@@ -20,13 +20,13 @@ import <analyticsImport2>
  Add requirements to this protocol to provide analytics tracking methods for this Node.
  */
 /// @mockable
-internal protocol SceneAnalytics: AnyObject {}
+internal protocol WindowSceneAnalytics: AnyObject {}
 
 /**
  PURPOSE:
  Custom analytics implementation for this Node.
  */
-internal final class SceneAnalyticsImp {
+internal final class WindowSceneAnalyticsImp {
 
     private let <analyticsPropertyName1>: <analyticsPropertyType1>
     private let <analyticsPropertyName2>: <analyticsPropertyType2>
@@ -44,4 +44,4 @@ internal final class SceneAnalyticsImp {
     }
 }
 
-extension SceneAnalyticsImp: SceneAnalytics {}
+extension WindowSceneAnalyticsImp: WindowSceneAnalytics {}

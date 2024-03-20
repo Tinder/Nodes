@@ -9,7 +9,7 @@ import <builderImport2>
  */
 /// @mockable
 @MainActor
-internal protocol SceneFlow: Flow {
+internal protocol WindowSceneFlow: Flow {
     func getViewController() -> WindowSceneViewControllable
 }
 
@@ -19,7 +19,7 @@ internal protocol SceneFlow: Flow {
  */
 /// @mockable
 @MainActor
-public protocol SceneDependency: Dependency {
+public protocol WindowSceneDependency: Dependency {
     var <dependencyName1>: <dependencyType1> { get }
     var <dependencyName2>: <dependencyType2> { get }
 }
@@ -30,7 +30,7 @@ public protocol SceneDependency: Dependency {
 
  Can be a tuple or struct containing multiple values when necessary.
  */
-internal typealias SceneDynamicBuildDependency = (SceneListener, WindowSceneViewControllable)
+internal typealias WindowSceneDynamicBuildDependency = (WindowSceneListener, WindowSceneViewControllable)
 
 /**
  PURPOSE:
@@ -38,7 +38,7 @@ internal typealias SceneDynamicBuildDependency = (SceneListener, WindowSceneView
 
  Can be a tuple or struct containing multiple values when necessary.
  */
-internal typealias SceneDynamicComponentDependency = Void
+internal typealias WindowSceneDynamicComponentDependency = Void
 
 // MARK: - Component
 
@@ -46,9 +46,9 @@ internal typealias SceneDynamicComponentDependency = Void
  PURPOSE:
  Declares dependencies that are owned by this Node.
  */
-public final class SceneComponent: Component
+public final class WindowSceneComponent: Component
 <
-    SceneDependency
+    WindowSceneDependency
 > {
 
     /*
@@ -77,7 +77,7 @@ public final class SceneComponent: Component
      */
 
     // periphery:ignore
-    private let dynamicDependency: SceneDynamicComponentDependency
+    private let dynamicDependency: WindowSceneDynamicComponentDependency
 
     // periphery:ignore
     /// The initializer.
@@ -89,7 +89,7 @@ public final class SceneComponent: Component
     ///   - dynamicDependency: The dynamic component dependency
     internal init(
         parent: Scope,
-        dynamicDependency: SceneDynamicComponentDependency = ()
+        dynamicDependency: WindowSceneDynamicComponentDependency = ()
     ) {
         self.dynamicDependency = dynamicDependency
         super.init(parent: parent)
@@ -121,11 +121,11 @@ public final class SceneComponent: Component
  */
 /// @mockable
 @MainActor
-internal protocol SceneBuilder: AnyObject {
+internal protocol WindowSceneBuilder: AnyObject {
     func build(
-        withListener listener: SceneListener,
+        withListener listener: WindowSceneListener,
         viewController: WindowSceneViewControllable
-    ) -> SceneFlow
+    ) -> WindowSceneFlow
 }
 
 // periphery:ignore
@@ -133,12 +133,12 @@ internal protocol SceneBuilder: AnyObject {
  PURPOSE:
  Concrete implementation of the Builder, where everything is created and associated.
  */
-internal final class SceneBuilderImp: AbstractBuilder
+internal final class WindowSceneBuilderImp: AbstractBuilder
 <
-    SceneComponent,
-    SceneFlow,
-    SceneDynamicBuildDependency,
-    SceneDynamicComponentDependency
+    WindowSceneComponent,
+    WindowSceneFlow,
+    WindowSceneDynamicBuildDependency,
+    WindowSceneDynamicComponentDependency
 > {
 
     /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
@@ -150,11 +150,11 @@ internal final class SceneBuilderImp: AbstractBuilder
     ///   - viewController: The injected view controller
     /// - Returns: The Flow instance
     internal func build(
-        withListener listener: SceneListener,
+        withListener listener: WindowSceneListener,
         viewController: WindowSceneViewControllable
-    ) -> SceneFlow {
-        let dynamicBuildDependency: SceneDynamicBuildDependency = (listener, viewController)
-        let dynamicComponentDependency: SceneDynamicComponentDependency = ()
+    ) -> WindowSceneFlow {
+        let dynamicBuildDependency: WindowSceneDynamicBuildDependency = (listener, viewController)
+        let dynamicComponentDependency: WindowSceneDynamicComponentDependency = ()
         return build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
@@ -164,21 +164,21 @@ internal final class SceneBuilderImp: AbstractBuilder
     ///   - dynamicBuildDependency: The dynamic build dependency
     /// - Returns: The Flow instance
     override internal func build(
-        component: SceneComponent,
-        dynamicBuildDependency: SceneDynamicBuildDependency
-    ) -> SceneFlow {
-        let listener: SceneListener = dynamicBuildDependency.0
+        component: WindowSceneComponent,
+        dynamicBuildDependency: WindowSceneDynamicBuildDependency
+    ) -> WindowSceneFlow {
+        let listener: WindowSceneListener = dynamicBuildDependency.0
         let viewController: WindowSceneViewControllable = dynamicBuildDependency.1
-        let analytics: SceneAnalyticsImp = .init(
+        let analytics: WindowSceneAnalyticsImp = .init(
             <analyticsPropertyName1>: component.dependency.<analyticsPropertyName1>,
             <analyticsPropertyName2>: component.dependency.<analyticsPropertyName2>
         )
-        let context: SceneContextImp = .init(
+        let context: WindowSceneContextImp = .init(
             workers: [],
             analytics: analytics
         )
         context.listener = listener
-        let flow: SceneFlowImp = .init(
+        let flow: WindowSceneFlowImp = .init(
             context: context,
             viewController: viewController,
             <flowPropertyName1>: component.dependency.<flowPropertyName1>,
@@ -190,4 +190,4 @@ internal final class SceneBuilderImp: AbstractBuilder
     }
 }
 
-extension SceneBuilderImp: SceneBuilder {}
+extension WindowSceneBuilderImp: WindowSceneBuilder {}

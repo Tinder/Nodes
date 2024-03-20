@@ -6,7 +6,6 @@ import Nimble
 import Nodes
 import XCTest
 
-@MainActor
 final class AbstractContextTests: XCTestCase, TestCaseHelpers {
 
     private class PresentableType {}
@@ -30,16 +29,19 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
     private var mockWorkers: [WorkerMock]!
     private var mockCancellables: [CancellableMock]!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         tearDown(keyPath: \.mockWorkers, initialValue: [WorkerMock(), WorkerMock(), WorkerMock()])
         tearDown(keyPath: \.mockCancellables, initialValue: [CancellableMock(), CancellableMock(), CancellableMock()])
     }
 
+    @MainActor
     override func tearDown() {
         super.tearDown()
     }
 
+    @MainActor
     func testPresentable() {
         let presentable: PresentableType = .init()
         expect(presentable).to(notBeNilAndToDeallocateAfterTest())
@@ -47,6 +49,7 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         expect(context.presentable) === presentable
     }
 
+    @MainActor
     func testCancellables() {
         let cancellables: [CancellableMock] = [CancellableMock(), CancellableMock(), CancellableMock()]
         expect(cancellables).to(notBeNilAndElementsToDeallocateAfterTest())
@@ -55,11 +58,13 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         expect(context.cancellables).to(contain(cancellables))
     }
 
+    @MainActor
     func testWorkers() {
         let context: TestContext = givenContext(workers: mockWorkers)
         expect(context.workers as? [WorkerMock]) == mockWorkers
     }
 
+    @MainActor
     func testActivate() {
         let context: TestContext = givenContext(workers: mockWorkers)
         expect(context).toNot(beActive())
@@ -71,6 +76,7 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         expect(context.workers).to(allBeWorking())
     }
 
+    @MainActor
     func testDeactivate() {
         let context: TestContext = givenContext(workers: mockWorkers, cancellables: mockCancellables)
         let cancellables: [CancellableMock] = Array(context.cancellables)
@@ -88,11 +94,13 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         expect(context.cancellables).to(beEmpty())
     }
 
+    @MainActor
     func testFirstWorkerOfType() {
         let context: TestContext = givenContext(workers: mockWorkers)
         expect(context.firstWorker(ofType: WorkerMock.self)) == mockWorkers.first
     }
 
+    @MainActor
     func testWithFirstWorkerOfType() {
         let context: TestContext = givenContext(workers: mockWorkers)
         var worker: WorkerMock?
@@ -100,11 +108,13 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         expect(worker) == mockWorkers.first
     }
 
+    @MainActor
     func testWorkersOfType() {
         let context: TestContext = givenContext(workers: mockWorkers)
         expect(context.workers(ofType: WorkerMock.self)) == mockWorkers
     }
 
+    @MainActor
     func testWithWorkersOfType() {
         let context: TestContext = givenContext(workers: mockWorkers)
         var workers: [WorkerMock] = []
@@ -112,6 +122,7 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
         expect(workers) == mockWorkers
     }
 
+    @MainActor
     private func givenContext(
         presentable: PresentableType? = nil,
         workers: [Worker] = [],

@@ -7,7 +7,6 @@ import Nimble
 import Nodes
 import XCTest
 
-@MainActor
 @available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 final class StateObserverTests: XCTestCase {
 
@@ -20,6 +19,7 @@ final class StateObserverTests: XCTestCase {
         }
     }
 
+    @MainActor
     func testObserve() {
         let observer: TestObserver = .init()
         let subject: PassthroughSubject<Void, Never> = .init()

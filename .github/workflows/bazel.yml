@@ -17,4 +17,10 @@ jobs:
     - name: Checkout source
       uses: actions/checkout@v3
     - name: Build
-      run: bazelisk build --noenable_bzlmod //:all
+      run: bazelisk build :all
+    - name: Test
+      run: bazelisk test :all
+    - name: Validate executables
+      run: |
+        bazelisk run --macos_minimum_os=$(sw_vers -productVersion) :nodes-code-gen -- --help
+        bazelisk run --macos_minimum_os=$(sw_vers -productVersion) :nodes-xcode-templates-gen -- --help

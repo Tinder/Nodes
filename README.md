@@ -24,7 +24,7 @@
 
 Native Mobile Application Engineering at Scale
 
-[https://github.com/TinderApp/Nodes](https://github.com/TinderApp/Nodes)
+## Overview
 
 At Tinder, we create mobile applications ***to power and inspire real connections by making meeting easy and fun for every new generation of singles***. And to do that successfully, we assembled a large team of mobile engineers who continually deliver numerous concurrent projects to empower, delight and protect our countless members around the globe.
 

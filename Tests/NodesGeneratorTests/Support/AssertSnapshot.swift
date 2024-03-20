@@ -15,7 +15,28 @@ internal func assertSnapshot<Value, Format>(
     testName: String = #function,
     line: UInt = #line
 ) {
-    let failure: String? = verifySnapshot(
+    let failure: String?
+    #if BAZEL
+    let runfilesPath: String = ProcessInfo.processInfo.environment["TEST_SRCDIR"]!
+    let workspaceName: String = ProcessInfo.processInfo.environment["TEST_WORKSPACE"]!
+    let testCase: URL = .init(fileURLWithPath: "\(runfilesPath)/\(workspaceName)/\(file)", isDirectory: false)
+    let snapshotDirectory: URL = testCase
+        .deletingLastPathComponent()
+        .appendingPathComponent("__Snapshots__")
+        .appendingPathComponent(testCase.deletingPathExtension().lastPathComponent)
+    failure = verifySnapshot(
+        of: try value(),
+        as: snapshotting,
+        named: name,
+        record: recording,
+        snapshotDirectory: snapshotDirectory.path,
+        timeout: timeout,
+        file: StaticString(), // <- Intentionally avoiding possibility of invalid relative path usage.
+        testName: testName,
+        line: line
+    )
+    #else
+    failure = verifySnapshot(
         of: try value(),
         as: snapshotting,
         named: name,
@@ -25,6 +46,7 @@ internal func assertSnapshot<Value, Format>(
         testName: testName,
         line: line
     )
+    #endif
     guard let message: String = failure
     else { return }
     XCTFail(message, file: file, line: line)

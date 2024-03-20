@@ -1,16 +1,157 @@
-load("@build_bazel_rules_apple//apple:ios.bzl", "ios_build_test")
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+load("@build_bazel_rules_apple//apple:macos.bzl", "macos_unit_test")
+load("@build_bazel_rules_apple//apple:ios.bzl", "ios_unit_test")
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_binary", "swift_library")
 
-ios_build_test(
-    name = "Nodes-iOS",
-    minimum_os_version = "13.0",
-    targets = [":Nodes"],
+MINIMUM_MACOS_VERSION = "10.15"
+MINIMUM_IOS_VERSION = "13.0"
+
+swift_binary(
+    name = "nodes-code-gen",
+    deps = [
+        ":NodesCodeGenerator",
+    ],
+)
+
+swift_library(
+    name = "NodesCodeGenerator",
+    srcs = glob(["Sources/Executables/NodesCodeGenerator/**/*.swift"]),
+    deps = [
+        ":NodesGenerator",
+        "@ArgumentParser",
+    ],
+    copts = [
+        "-warnings-as-errors",
+        "-strict-concurrency=complete",
+    ],
+)
+
+swift_binary(
+    name = "nodes-xcode-templates-gen",
+    deps = [
+        ":NodesXcodeTemplatesGenerator",
+    ],
+)
+
+swift_library(
+    name = "NodesXcodeTemplatesGenerator",
+    srcs = glob(["Sources/Executables/NodesXcodeTemplatesGenerator/**/*.swift"]),
+    deps = [
+        ":NodesGenerator",
+        "@ArgumentParser",
+    ],
+    copts = [
+        "-warnings-as-errors",
+        "-strict-concurrency=complete",
+    ],
 )
 
 swift_library(
     name = "Nodes",
     srcs = glob(["Sources/Nodes/**/*.swift"]),
-    copts = ["-strict-concurrency=complete"],
+    copts = [
+        "-warnings-as-errors",
+        "-strict-concurrency=complete",
+    ],
     visibility = ["//visibility:public"],
-    tags = ["manual"],
+)
+
+swift_library(
+    name = "NodesGenerator",
+    srcs = glob(["Sources/NodesGenerator/**/*.swift"]),
+    data = [":NodesGeneratorResources"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@Codextended",
+        "@PathKit",
+        "@Stencil",
+        "@Yams",
+    ],
+    copts = [
+        "-warnings-as-errors",
+        "-strict-concurrency=complete",
+    ],
+    defines = ["BAZEL"],
+)
+
+filegroup(
+    name = "NodesGeneratorResources",
+    srcs = glob(["Sources/NodesGenerator/Resources/**"]),
+)
+
+swift_library(
+    name = "NodesTesting",
+    srcs = glob(["Sources/NodesTesting/**/*.swift"]),
+    visibility = ["//visibility:public"],
+    deps = [
+        "@Needle//:NeedleFoundation",
+    ],
+    copts = [
+        "-warnings-as-errors",
+        "-strict-concurrency=complete",
+    ],
+    testonly = True,
+)
+
+ios_unit_test(
+    name = "NodesTests-iOS",
+    deps = [
+        ":NodesTests",
+    ],
+    minimum_os_version = MINIMUM_IOS_VERSION,
+    size = "small",
+)
+
+swift_library(
+    name = "NodesTests",
+    srcs = glob(["Tests/NodesTests/**/*.swift"]),
+    visibility = ["//visibility:private"],
+    deps = [
+        ":Nodes",
+        "@Nimble",
+    ],
+    testonly = True,
+)
+
+macos_unit_test(
+    name = "NodesGeneratorTests-macOS",
+    data = glob(["Tests/NodesGeneratorTests/__Snapshots__/**"]),
+    deps = [
+        ":NodesGeneratorTests",
+    ],
+    minimum_os_version = MINIMUM_MACOS_VERSION,
+    size = "small",
+)
+
+swift_library(
+    name = "NodesGeneratorTests",
+    srcs = glob(["Tests/NodesGeneratorTests/**/*.swift"]),
+    visibility = ["//visibility:private"],
+    deps = [
+        ":NodesGenerator",
+        "@Nimble",
+        "@SnapshotTesting//:SnapshotTesting",
+        "@SnapshotTesting//:InlineSnapshotTesting",
+    ],
+    defines = ["BAZEL"],
+    testonly = True,
+)
+
+ios_unit_test(
+    name = "NodesTestingTests-iOS",
+    deps = [
+        ":NodesTestingTests",
+    ],
+    minimum_os_version = MINIMUM_IOS_VERSION,
+    size = "small",
+)
+
+swift_library(
+    name = "NodesTestingTests",
+    srcs = glob(["Tests/NodesTestingTests/**/*.swift"]),
+    visibility = ["//visibility:private"],
+    deps = [
+        ":NodesTesting",
+        "@Nimble",
+    ],
+    testonly = True,
 )

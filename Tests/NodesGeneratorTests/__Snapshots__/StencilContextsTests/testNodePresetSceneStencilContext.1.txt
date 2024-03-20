@@ -72,7 +72,7 @@
     - value: true
   ▿ (2 elements)
     - key: "node_name"
-    - value: "Scene"
+    - value: "WindowScene"
   ▿ (2 elements)
     - key: "owns_view"
     - value: false

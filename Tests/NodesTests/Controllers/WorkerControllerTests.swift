@@ -6,25 +6,28 @@ import Nimble
 import Nodes
 import XCTest
 
-@MainActor
 final class WorkerControllerTests: XCTestCase, TestCaseHelpers {
 
     private var mockWorkers: [WorkerMock]!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         tearDown(keyPath: \.mockWorkers, initialValue: [WorkerMock(), WorkerMock(), WorkerMock()])
     }
 
+    @MainActor
     override func tearDown() {
         super.tearDown()
     }
 
+    @MainActor
     func testWorkers() {
         let workerController: WorkerController = givenWorkerController(with: mockWorkers)
         expect(workerController.workers as? [WorkerMock]) == mockWorkers
     }
 
+    @MainActor
     func testStartWorkers() {
         let workerController: WorkerController = givenWorkerController(with: mockWorkers)
         expect(workerController.workers).toNot(allBeWorking())
@@ -32,6 +35,7 @@ final class WorkerControllerTests: XCTestCase, TestCaseHelpers {
         expect(workerController.workers).to(allBeWorking())
     }
 
+    @MainActor
     func testStopWorkers() {
         let workerController: WorkerController = givenWorkerController(with: mockWorkers, start: true)
         expect(workerController.workers).to(allBeWorking())
@@ -39,11 +43,13 @@ final class WorkerControllerTests: XCTestCase, TestCaseHelpers {
         expect(workerController.workers).toNot(allBeWorking())
     }
 
+    @MainActor
     func testFirstWorkerOfType() {
         let workerController: WorkerController = givenWorkerController(with: mockWorkers)
         expect(workerController.firstWorker(ofType: WorkerMock.self)) === mockWorkers.first
     }
 
+    @MainActor
     func testWithFirstWorkerOfType() {
         let workerController: WorkerController = givenWorkerController(with: mockWorkers)
         var worker: WorkerMock?
@@ -51,11 +57,13 @@ final class WorkerControllerTests: XCTestCase, TestCaseHelpers {
         expect(worker) === mockWorkers.first
     }
 
+    @MainActor
     func testWorkersOfType() {
         let workerController: WorkerController = givenWorkerController(with: mockWorkers)
         expect(workerController.workers(ofType: WorkerMock.self)) == mockWorkers
     }
 
+    @MainActor
     func testWithWorkersOfType() {
         let workerController: WorkerController = givenWorkerController(with: mockWorkers)
         var workers: [WorkerMock] = []
@@ -63,6 +71,7 @@ final class WorkerControllerTests: XCTestCase, TestCaseHelpers {
         expect(workers) == mockWorkers
     }
 
+    @MainActor
     private func givenWorkerController(with workers: [Worker], start startWorkers: Bool = false) -> WorkerController {
         let workerController: WorkerController = .init(workers: workers)
         expect(workerController).to(notBeNilAndToDeallocateAfterTest())

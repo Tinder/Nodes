@@ -7,10 +7,11 @@ import NeedleFoundation
 
 extension __DependencyProviderRegistry {
 
+    @MainActor
     internal func register(
         path: [String],
         dependencyProviderFactory dependency: @escaping (_ scope: Scope) -> AnyObject,
-        onTeardown: (@escaping () -> Void) -> Void
+        onTeardown: (@MainActor @Sendable @escaping () -> Void) -> Void
     ) {
         let componentPath: String = path.joined(separator: "->")
         if dependencyProviderFactory(for: componentPath) != nil {
