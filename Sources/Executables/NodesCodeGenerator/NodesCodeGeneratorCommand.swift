@@ -9,8 +9,10 @@ import NodesGenerator
 @main
 internal struct NodesCodeGeneratorCommand: ParsableCommand {
 
-    internal static let configuration: CommandConfiguration = .init(commandName: "nodes-code-gen",
-                                                                    abstract: "Nodes Code Generator")
+    nonisolated(unsafe) internal static let configuration: CommandConfiguration = .init(
+        commandName: "nodes-code-gen",
+        abstract: "Nodes Code Generator"
+    )
 
     @Option(help: "The name of the preset. (App|Scene|Window|Root)")
     private var preset: Preset
