@@ -7,7 +7,6 @@ import Nodes
 import SwiftUI
 import XCTest
 
-@available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 final class BindingTests: XCTestCase {
 
     func testBindingFactory() {
