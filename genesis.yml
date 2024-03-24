@@ -946,10 +946,10 @@ files:
 
                 let packageData: Data = shell("swift", "package", "show-dependencies", "--format", "json")
 
-                guard let buildDir: String = ProcessInfo.processInfo.environment["BUILD_DIR"]
+                guard let buildDirectory: String = ProcessInfo.processInfo.environment["BUILD_DIR"]
                 else { fail("Environment variable `BUILD_DIR` must be set.") }
 
-                let workspaceState: String = "\(buildDir)/../../SourcePackages/workspace-state.json"
+                let workspaceState: String = "\(buildDirectory)/../../SourcePackages/workspace-state.json"
                 let workspaceData: Data = try .init(contentsOf: URL(fileURLWithPath: workspaceState))
 
                 guard let packageDictionary: [String: Any] = try json(packageData),
