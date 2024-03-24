@@ -85,6 +85,10 @@ public final class {{ node_name }}Component: Component
      }
 
      */
+    {% if component_dependencies %}
+
+    {{ component_dependencies }}
+    {% endif %}
 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore

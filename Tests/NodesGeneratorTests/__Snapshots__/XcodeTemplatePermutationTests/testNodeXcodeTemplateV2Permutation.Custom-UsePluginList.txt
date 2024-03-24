@@ -19,6 +19,7 @@
       - "<dependencyInjectionImport>"
       - "<reactiveImport>"
       - "Nodes"
+    - componentDependencies: ""
     ▿ contextGenericTypes: 1 element
       - "<contextGenericType>"
     ▿ contextImports: 3 elements
