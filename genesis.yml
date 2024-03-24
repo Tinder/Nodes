@@ -914,6 +914,82 @@ files:
               product: Nodes
             - package: NeedleFoundation
           preBuildScripts:
+            - name: Nodes
+              basedOnDependencyAnalysis: false
+              shell: /usr/bin/env xcrun --sdk macosx swift
+              script: |
+                import Foundation
+
+                func shell(_ arguments: String...) -> Data {
+                    let task: Process = .init()
+                    let pipe: Pipe = .init()
+                    task.standardOutput = pipe
+                    task.launchPath = "/usr/bin/env"
+                    task.arguments = arguments
+                    task.launch()
+                    task.waitUntilExit()
+                    return pipe.fileHandleForReading.readDataToEndOfFile()
+                }
+
+                func json(_ data: Data) throws -> [String: Any]? {
+                    try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                }
+
+                func fail(_ message: String) -> Never {
+                    do {
+                        try FileHandle.standardError.write(contentsOf: Data("ERROR: \(message)\n".utf8))
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                    exit(EXIT_FAILURE)
+                }
+
+                let packageData: Data = shell("swift", "package", "show-dependencies", "--format", "json")
+
+                guard let buildDir: String = ProcessInfo.processInfo.environment["BUILD_DIR"]
+                else { fail("Environment variable `BUILD_DIR` must be set.") }
+
+                let workspaceState: String = "\(buildDir)/../../SourcePackages/workspace-state.json"
+                let workspaceData: Data = try .init(contentsOf: URL(fileURLWithPath: workspaceState))
+
+                guard let packageDictionary: [String: Any] = try json(packageData),
+                      let packageDependencies: [[String: Any]] = packageDictionary["dependencies"] as? [[String: Any]],
+                      let nodesPackageDependency: [String: Any] = packageDependencies.first(where: {
+                          $0["identity"] as? String == "nodes"
+                      }),
+                      let packageVersion: String = nodesPackageDependency["version"] as? String
+                else { fail("Failed to parse package Nodes version.") }
+
+                guard let workspaceDictionary: [String: Any] = try json(workspaceData),
+                      let workspaceObject: [String: Any] = workspaceDictionary["object"] as? [String: Any],
+                      let workspaceDependencies: [[String: Any]] = workspaceObject["dependencies"] as? [[String: Any]]
+                else { fail("Failed to parse project dependencies.") }
+
+                let nodesProjectDependency: [String: Any]? = workspaceDependencies.first {
+                    ($0["packageRef"] as? [String: Any])?["identity"] as? String == "nodes"
+                }
+
+                print("Package Nodes Version:", packageVersion)
+
+                if packageVersion == "unspecified" {
+                    guard nodesProjectDependency == nil
+                    else {
+                        print("Project Nodes Version: specified")
+                        fail("Mismatched Nodes Versions")
+                    }
+                    print("Project Nodes Version: unspecified")
+                    print("VALID: Matching Nodes Versions")
+                } else {
+                    guard let nodesProjectDependency: [String: Any] = nodesProjectDependency,
+                          let workspaceState: [String: Any] = nodesProjectDependency["state"] as? [String: Any],
+                          let workspaceCheckoutState: [String: Any] = workspaceState["checkoutState"] as? [String: Any],
+                          let workspaceVersion: String = workspaceCheckoutState["version"] as? String
+                    else { fail("Failed to parse project Nodes version.") }
+                    print("Project Nodes Version:", workspaceVersion)
+                    guard packageVersion == workspaceVersion
+                    else { fail("Mismatched Nodes Versions") }
+                    print("VALID: Matching Nodes Versions")
+                }
             - name: SwiftLint
               basedOnDependencyAnalysis: false
               script: |
