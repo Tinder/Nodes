@@ -13,7 +13,7 @@ internal struct PluginListNodeXcodeTemplatePermutation: XcodeTemplatePermutation
         let pluginList: StencilTemplate = .pluginList
         stencils = [pluginList]
         stencilContext = PluginListStencilContext(
-            fileHeader: config.fileHeader,
+            fileHeader: XcodeTemplateConstants.fileHeader,
             pluginListName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
             pluginListImports: pluginList.imports(with: config),
             viewControllableFlowType: config.viewControllableFlowType,

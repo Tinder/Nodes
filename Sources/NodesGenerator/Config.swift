@@ -30,7 +30,6 @@ public struct Config: Equatable, Codable {
     }
 
     public var uiFrameworks: [UIFramework]
-    public var fileHeader: String
     public var baseImports: Set<String>
     public var baseTestImports: Set<String>
     public var reactiveImports: Set<String>
@@ -89,7 +88,6 @@ extension Config {
 
     public init() {
         uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
-        fileHeader = "//___FILEHEADER___"
         baseImports = []
         baseTestImports = ["Nimble", "XCTest"]
         reactiveImports = ["Combine"]
@@ -149,9 +147,6 @@ extension Config {
             uiFrameworks = defaults.uiFrameworks
         }
 
-        fileHeader =
-            (try? decoder.decodeString(CodingKeys.fileHeader))
-            ?? defaults.fileHeader
         baseImports =
             (try? decoder.decode(CodingKeys.baseImports))
             ?? defaults.baseImports

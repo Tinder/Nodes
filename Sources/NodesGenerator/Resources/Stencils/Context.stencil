@@ -1,4 +1,4 @@
-{{ file_header }}
+//{{ file_header }}
 {% if context_imports %}
 
 {% for import in context_imports %}

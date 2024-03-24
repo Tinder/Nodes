@@ -148,7 +148,6 @@ final class ConfigTests: XCTestCase, TestFactories {
                 viewControllerSuperParameters: <viewControllerSuperParameters>
             viewControllerProperties: <viewControllerProperties-Custom>
             viewControllerMethods: <viewControllerMethods-Custom>
-        fileHeader: <fileHeader>
         baseImports:
           - <baseImports-1>
           - <baseImports-2>

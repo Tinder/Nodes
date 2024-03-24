@@ -4,7 +4,7 @@
     ▿ WorkerXcodeTemplatePermutation
       - name: "Worker"
       ▿ stencilContext: WorkerStencilContext
-        - fileHeader: "<fileHeader>"
+        - fileHeader: "___FILEHEADER___"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: false
         ▿ workerGenericTypes: 1 element

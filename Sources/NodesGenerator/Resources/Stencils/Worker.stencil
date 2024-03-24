@@ -1,4 +1,4 @@
-{{ file_header }}
+//{{ file_header }}
 {% if worker_imports %}
 
 {% for import in worker_imports %}

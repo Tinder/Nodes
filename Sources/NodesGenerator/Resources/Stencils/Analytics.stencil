@@ -1,4 +1,4 @@
-{{ file_header }}
+//{{ file_header }}
 {% if analytics_imports %}
 
 {% for import in analytics_imports %}

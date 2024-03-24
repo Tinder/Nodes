@@ -35,7 +35,7 @@
         ▿ (2 elements)
           - key: "type"
           - value: "<dependencyType>"
-    - fileHeader: "<fileHeader>"
+    - fileHeader: "___FILEHEADER___"
     ▿ flowImports: 3 elements
       - "<baseImport>"
       - "<flowImport>"

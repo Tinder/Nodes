@@ -31,7 +31,6 @@ All values shown in the samples below are the defaults.
 > TIP: It is only necessary to include config options that are different from the defaults.
 
 ```yaml
-fileHeader: //___FILEHEADER___
 baseImports: []
 baseTestImports:
   - Nimble

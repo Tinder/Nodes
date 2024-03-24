@@ -10,7 +10,6 @@
   - dependencies: 0 elements
   ▿ dependencyInjectionImports: 1 member
     - "NeedleFoundation"
-  - fileHeader: "//___FILEHEADER___"
   - flowImports: 0 members
   - flowProperties: 0 elements
   - isPeripheryCommentEnabled: false

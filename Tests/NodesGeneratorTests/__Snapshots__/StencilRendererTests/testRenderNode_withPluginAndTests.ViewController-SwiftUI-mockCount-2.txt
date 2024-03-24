@@ -1,4 +1,4 @@
-<fileHeader>
+//<fileHeader>
 
 import <viewControllerImport1>
 import <viewControllerImport2>

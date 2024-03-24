@@ -26,7 +26,6 @@ extension TestFactories {
             uiFramework.viewControllerMethods = "<viewControllerMethods>"
             return uiFramework
         }
-        config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImport>"]
         config.baseTestImports = ["<baseTestImport>"]
         config.reactiveImports = ["<reactiveImport>"]

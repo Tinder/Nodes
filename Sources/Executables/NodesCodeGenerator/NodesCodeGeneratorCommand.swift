@@ -28,7 +28,7 @@ internal struct NodesCodeGeneratorCommand: ParsableCommand {
         let config: Config = try configPath.flatMap { try Config(at: $0) } ?? Config()
         let dateFormatter: DateFormatter = .init()
         dateFormatter.dateStyle = .short
-        let fileHeader: String = "//\n//  Created by \(author) on \(dateFormatter.string(from: Date())).\n//"
+        let fileHeader: String = "\n//  Created by \(author) on \(dateFormatter.string(from: Date())).\n//"
         let directory: URL = .init(fileURLWithPath: outputPath)
         try PresetGenerator(config: config).generate(preset: preset, with: fileHeader, into: directory)
     }

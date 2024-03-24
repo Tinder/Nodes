@@ -14,7 +14,7 @@ internal struct PluginNodeXcodeTemplatePermutation: XcodeTemplatePermutation {
         let pluginTests: StencilTemplate = .pluginTests
         stencils = [plugin] + (config.isTestTemplatesGenerationEnabled ? [pluginTests] : [])
         stencilContext = PluginStencilContext(
-            fileHeader: config.fileHeader,
+            fileHeader: XcodeTemplateConstants.fileHeader,
             pluginName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
             pluginImports: plugin.imports(with: config),
             pluginTestsImports: pluginTests.imports(with: config),

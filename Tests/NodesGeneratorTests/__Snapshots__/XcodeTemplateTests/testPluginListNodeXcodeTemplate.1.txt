@@ -4,7 +4,7 @@
     ▿ PluginListNodeXcodeTemplatePermutation
       - name: "Plugin List (for Node)"
       ▿ stencilContext: PluginListStencilContext
-        - fileHeader: "<fileHeader>"
+        - fileHeader: "___FILEHEADER___"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: false
         ▿ pluginListImports: 4 elements
