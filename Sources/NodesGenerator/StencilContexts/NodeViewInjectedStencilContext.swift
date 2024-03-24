@@ -53,6 +53,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         ]
     }
 
+    // swiftlint:disable:next function_default_parameter_at_end
     public init(
         fileHeader: String,
         nodeName: String,
