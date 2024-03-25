@@ -975,10 +975,10 @@ files:
                     guard nodesProjectDependency == nil
                     else {
                         print("Project Nodes Version: specified")
-                        fail("Mismatched Nodes Versions.")
+                        fail("Mismatched nodes versions encountered.")
                     }
                     print("Project Nodes Version: unspecified")
-                    print("VALID: Matching Nodes Versions")
+                    print("VALID: Matching Nodes versions detected.")
                 } else {
                     guard let nodesProjectDependency: [String: Any] = nodesProjectDependency,
                           let workspaceState: [String: Any] = nodesProjectDependency["state"] as? [String: Any],
@@ -987,8 +987,8 @@ files:
                     else { fail("Failed to parse project Nodes version.") }
                     print("Project Nodes Version:", workspaceVersion)
                     guard packageVersion == workspaceVersion
-                    else { fail("Mismatched Nodes Versions.") }
-                    print("VALID: Matching Nodes Versions")
+                    else { fail("Mismatched nodes versions encountered.") }
+                    print("VALID: Matching Nodes versions detected.")
                 }
             - name: SwiftLint
               basedOnDependencyAnalysis: false
