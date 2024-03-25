@@ -94,19 +94,22 @@ public final class FlowController {
 
     /// Detaches `Flow` instances of the given `type` (in LIFO order) where the given predicate closure returns `true`.
     ///
-    /// Under normal circumstances, user interactions do not directly cause ``ViewControllable`` instances to be
-    /// dismissed, for example when simply tapping a button. To dismiss a ``ViewControllable`` instance in these
-    /// situations, the `Context` instance will be informed of the button tap which then informs the `Flow` instance to
-    /// initiate the dismissal. The `Flow` instance retrieves the appropriate child `Flow` instance (by type) and, only
-    /// after the dismissal is complete, detaches the child `Flow` instance using the ``detach(ending:)`` method.
+    /// Under normal circumstances, user interactions do not directly cause ``ViewControllable`` instances to
+    /// be dismissed, for example when simply tapping a button. To dismiss a ``ViewControllable`` instance in these
+    /// situations, the `Context` instance will be informed of the button tap which then informs the `Flow` instance
+    /// to initiate the dismissal. The `Flow` instance retrieves the appropriate child `Flow` instance (by type) and,
+    /// only after the dismissal is complete, detaches the child `Flow` instance using the
+    /// ``AbstractFlow/detach(ending:)`` method.
     ///
     /// However, in some cases, user interactions can directly cause ``ViewControllable`` instances to be dismissed,
-    /// for example when interacting with ``UINavigationController`` (from `UIKit`). By long pressing the back button
-    /// of the navigation controller, a user may navigate backward to any point in the navigation history, which
-    /// directly causes one or more ``ViewControllable`` instances to be immediately removed from the navigation stack.
-    /// In these situations, to detach `Flow` instances corresponding to already dismissed ``ViewControllable``
-    /// instances, the `Context` instance will be informed of the dismissal (and be provided the ``ViewControllable``
-    /// instances) which then informs the `Flow` instance to perform the detachment only.
+    /// for example when interacting with [`UINavigationController`](
+    /// https://developer.apple.com/documentation/uikit/uinavigationcontroller
+    /// ) (from `UIKit`). By long pressing the back button of the navigation controller, a user may navigate backward
+    /// to any point in the navigation history, which directly causes one or more ``ViewControllable`` instances to be
+    /// immediately removed from the navigation stack. In these situations, to detach `Flow` instances corresponding to
+    /// already dismissed ``ViewControllable`` instances, the `Context` instance will be informed of the dismissal
+    /// (and be provided the ``ViewControllable`` instances) which then informs the `Flow` instance to perform
+    /// the detachment only.
     ///
     /// Example of `Flow` implementation:
     /// ```swift
@@ -120,10 +123,10 @@ public final class FlowController {
     /// - Note: In the above example, the `where` closure returns `true` if the ``ViewControllable`` of the `flow`
     ///   exists in the given `viewControllers` array.
     ///
-    /// - Important: Use the ``detach(endingFlowsOfType:where:)`` method only when ``ViewControllable`` instances
-    ///   are dismissed directly within the UI framework (before the `Context` instance is informed of the
-    ///   interaction). And therefore, in normal situations, use the ``detach(ending:)`` method whenever the `Flow`
-    ///   instance initiates the dismissal.
+    /// - Important: Use the ``AbstractFlow/detach(endingSubFlowsOfType:where:)`` method only when ``ViewControllable``
+    ///   instances are dismissed directly within the UI framework (before the `Context` instance is informed of the
+    ///   interaction). And therefore, in normal situations, use the ``AbstractFlow/detach(ending:)`` method whenever
+    ///   the `Flow` instance initiates the dismissal.
     ///
     /// Within a `UIKit` app (for example), for a `Flow` instance to be informed of view controllers removed from a
     /// navigation stack as a result of user interactions, the view controller must subclass ``NavigationController``

@@ -10,9 +10,10 @@ import Nodes
 import UIKit
 import XCTest
 
-@MainActor // swiftlint:disable:next type_name
+// swiftlint:disable:next type_name
 final class UINavigationControllerNavigationControllableTests: XCTestCase {
 
+    @MainActor
     func testSet() {
         let navigationController: NavigationControllable = givenNavigationController()
         expect(navigationController.viewControllers).to(beEmpty())
@@ -22,6 +23,7 @@ final class UINavigationControllerNavigationControllableTests: XCTestCase {
         expect(navigationController.viewControllers.map { $0._asUIViewController() }) == viewControllers
     }
 
+    @MainActor
     func testPush() {
         let navigationController: NavigationControllable = givenNavigationController()
         expect(navigationController.viewControllers).to(beEmpty())
@@ -31,6 +33,7 @@ final class UINavigationControllerNavigationControllableTests: XCTestCase {
         expect(navigationController.viewControllers.map { $0._asUIViewController() }) == viewControllers
     }
 
+    @MainActor
     func testPop() {
         let navigationController: NavigationControllable = givenNavigationController()
         let viewControllers: [UIViewController] = [UIViewController(), UIViewController(), UIViewController()]
@@ -41,12 +44,14 @@ final class UINavigationControllerNavigationControllableTests: XCTestCase {
         expect(navigationController.viewControllers.map { $0._asUIViewController() }) == [viewControllers[0]]
     }
 
+    @MainActor
     func testAsUINavigationController() {
         let navigationController: NavigationControllable = givenNavigationController()
         expect(navigationController._asUINavigationController()) === navigationController
         expect(navigationController._asUINavigationController()).to(beAKindOf(UINavigationController.self))
     }
 
+    @MainActor
     private func givenNavigationController() -> UINavigationController {
         let navigationController: UINavigationController = .init()
         expect(navigationController).to(notBeNilAndToDeallocateAfterTest())

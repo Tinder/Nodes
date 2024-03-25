@@ -128,7 +128,7 @@ extension Config {
         workerGenericTypes = ["AnyCancellable"]
         isViewInjectedTemplateEnabled = true
         isPreviewProviderEnabled = false
-        isTestTemplatesGenerationEnabled = false
+        isTestTemplatesGenerationEnabled = true
         isPeripheryCommentEnabled = false
     }
 }

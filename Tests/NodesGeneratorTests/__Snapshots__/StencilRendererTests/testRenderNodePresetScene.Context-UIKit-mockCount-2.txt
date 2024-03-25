@@ -9,7 +9,7 @@ import <contextImport2>
  */
 /// @mockable
 @MainActor
-internal protocol SceneListener: AnyObject {}
+internal protocol WindowSceneListener: AnyObject {}
 
 /**
  PURPOSE:
@@ -18,14 +18,14 @@ internal protocol SceneListener: AnyObject {}
  */
 /// @mockable
 @MainActor
-internal protocol SceneFlowInterface: Flow {}
+internal protocol WindowSceneFlowInterface: Flow {}
 
 /**
  PURPOSE:
  Contains the business logic of the Node. The lifecycle of the Node is bookended between the
  `didBecomeActive` and `willResignActive` methods.
  */
-internal final class SceneContextImp: AbstractContext
+internal final class WindowSceneContextImp: AbstractContext
 <
     <contextGenericType1>,
     <contextGenericType2>
@@ -33,20 +33,20 @@ internal final class SceneContextImp: AbstractContext
 
     // periphery:ignore
     /// The Flow instance.
-    internal weak var flow: SceneFlowInterface?
+    internal weak var flow: WindowSceneFlowInterface?
 
     // periphery:ignore
     /// The Listener instance.
-    internal weak var listener: SceneListener?
+    internal weak var listener: WindowSceneListener?
 
     // periphery:ignore
     /// The State instance.
     @Published
-    internal private(set) var state: SceneState
+    internal private(set) var state: WindowSceneState
 
     // periphery:ignore
     /// The Analytics instance.
-    private let analytics: SceneAnalytics
+    private let analytics: WindowSceneAnalytics
 
     /// The initializer.
     /// - Parameters:
@@ -54,9 +54,9 @@ internal final class SceneContextImp: AbstractContext
     ///   - analytics: The Analytics instance
     internal init(
         workers: [Worker],
-        analytics: SceneAnalytics
+        analytics: WindowSceneAnalytics
     ) {
-        self.state = SceneState()
+        self.state = WindowSceneState()
         self.analytics = analytics
         super.init(workers: workers)
     }
@@ -68,4 +68,4 @@ internal final class SceneContextImp: AbstractContext
     override internal func willResignActive() {}
 }
 
-extension SceneContextImp: SceneContextInterface {}
+extension WindowSceneContextImp: WindowSceneContextInterface {}

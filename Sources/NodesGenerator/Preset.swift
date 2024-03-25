@@ -10,7 +10,7 @@ public enum Preset: String {
     case root = "Root"
 
     public var nodeName: String {
-        rawValue
+        self == .scene ? "Window\(rawValue)" : rawValue
     }
 
     public var isViewInjected: Bool {

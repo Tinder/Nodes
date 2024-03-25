@@ -10,7 +10,7 @@ import <flowImport2>
  */
 /// @mockable
 @MainActor
-internal protocol AppContextInterface: Context, SceneListener {}
+internal protocol AppContextInterface: Context, WindowSceneListener {}
 
 /**
  PURPOSE:
@@ -25,7 +25,7 @@ internal final class AppFlowImp: AbstractFlow
     private let <flowPropertyName1>: <flowPropertyType1>
     private let <flowPropertyName2>: <flowPropertyType2>
 
-    private let sceneBuilder: SceneBuilder
+    private let windowSceneBuilder: WindowSceneBuilder
 
     /// The initializer.
     ///
@@ -34,16 +34,16 @@ internal final class AppFlowImp: AbstractFlow
     ///   - context: The Context instance
     ///   - <flowPropertyName1>: The <flowPropertyType1> instance
     ///   - <flowPropertyName2>: The <flowPropertyType2> instance
-    ///   - sceneBuilder: The Scene Builder instance
+    ///   - windowSceneBuilder: The Window Scene Builder instance
     internal init(
         context: AppContextInterface,
         <flowPropertyName1>: <flowPropertyType1>,
         <flowPropertyName2>: <flowPropertyType2>,
-        sceneBuilder: SceneBuilder
+        windowSceneBuilder: WindowSceneBuilder
     ) {
         self.<flowPropertyName1> = <flowPropertyName1>
         self.<flowPropertyName2> = <flowPropertyName2>
-        self.sceneBuilder = sceneBuilder
+        self.windowSceneBuilder = windowSceneBuilder
         super.init(context: context, viewController: ())
     }
 
@@ -55,13 +55,13 @@ extension AppFlowImp: AppFlow {}
 
 extension AppFlowImp: AppFlowInterface {
 
-    internal func attachScene(_ viewController: WindowSceneViewControllable) {
-        let flow: SceneFlow = sceneBuilder.build(withListener: context,
-                                                 viewController: viewController)
+    internal func attachWindowScene(_ viewController: WindowSceneViewControllable) {
+        let flow: WindowSceneFlow = windowSceneBuilder.build(withListener: context,
+                                                             viewController: viewController)
         attach(starting: flow)
     }
 
-    internal func detachScene(_ viewController: WindowSceneViewControllable) {
-        detach(endingSubFlowsOfType: SceneFlow.self) { $0.getViewController() === viewController }
+    internal func detachWindowScene(_ viewController: WindowSceneViewControllable) {
+        detach(endingSubFlowsOfType: WindowSceneFlow.self) { $0.getViewController() === viewController }
     }
 }

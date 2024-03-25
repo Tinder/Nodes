@@ -6,7 +6,6 @@ import Nimble
 import Nodes
 import XCTest
 
-@MainActor
 final class PluginTests: XCTestCase, TestCaseHelpers {
 
     private class ComponentType {}
@@ -27,6 +26,7 @@ final class PluginTests: XCTestCase, TestCaseHelpers {
         }
     }
 
+    @MainActor
     func testCreate() {
         let plugin: TestPlugin = .init { ComponentType() }
         expect(plugin).to(notBeNilAndToDeallocateAfterTest())
@@ -35,12 +35,14 @@ final class PluginTests: XCTestCase, TestCaseHelpers {
         expect(plugin.create()) == nil
     }
 
+    @MainActor
     func testOverride() {
         let plugin: TestPlugin = .init { ComponentType() }
         expect(plugin).to(notBeNilAndToDeallocateAfterTest())
         expect(plugin.override()).to(beAKindOf(BuildType.self))
     }
 
+    @MainActor
     func testAssertions() {
         let component: ComponentType = .init()
         let plugin: Plugin<ComponentType, BuildType, Void> = .init { component }

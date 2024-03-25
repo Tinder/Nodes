@@ -1,0 +1,38 @@
+//___FILEHEADER___
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+
+import Nimble
+import XCTest
+
+@MainActor
+final class ___VARIABLE_productName___FlowTests: XCTestCase {
+
+    private final class ___VARIABLE_productName___ViewControllableMock: UIViewController, ___VARIABLE_productName___ViewControllable {}
+
+    private var contextMock: ___VARIABLE_productName___ContextInterfaceMock!
+    private var viewControllableMock: ___VARIABLE_productName___ViewControllableMock!
+    private var flow: ___VARIABLE_productName___FlowImp!
+
+    override func setUp() {
+        super.setUp()
+        contextMock = ___VARIABLE_productName___ContextInterfaceMock(isActive: true)
+        viewControllableMock = ___VARIABLE_productName___ViewControllableMock()
+        flow = ___VARIABLE_productName___FlowImp(
+            context: contextMock,
+            viewController: viewControllableMock
+        )
+        expect { self.flow.isStarted } == true
+    }
+
+    override func tearDown() {
+        contextMock = nil
+        viewControllableMock = nil
+        flow = nil
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        expect { self.flow } != nil
+    }
+}

@@ -12,10 +12,11 @@
 @MainActor
 public protocol WindowViewControllable: AnyObject {
 
-    /// Presents a ``ViewControllable`` instance.
+    /// Sets a ``ViewControllable`` instance as the root view controller of the window and then shows the window and
+    /// makes it the key window.
     ///
-    /// - Parameter viewController: The ``ViewControllable`` instance to present.
-    func present(_ viewController: ViewControllable)
+    /// - Parameter rootViewController: The ``ViewControllable`` instance to set as the root view controller.
+    func makeKeyAndVisible(rootViewController viewController: ViewControllable)
 }
 
 #endif

@@ -1,12 +1,16 @@
 # ``Nodes``
 
+Native Mobile Application Engineering at Scale
+
+##
+
 ![Nodes Architecture Framework](Nodes)
 
-# Nodes Architecture Framework
+## Nodes Architecture Framework
 
 Native Mobile Application Engineering at Scale
 
-[https://github.com/TinderApp/Nodes](https://github.com/TinderApp/Nodes)
+## Overview
 
 At Tinder, we create mobile applications ***to power and inspire real connections by making it easy and fun to meet for every new generation of singles***. And to do that successfully, we assembled a large team of mobile engineers who continually deliver numerous concurrent projects to empower, delight and protect our countless members around the globe.
 

@@ -18,9 +18,9 @@ internal protocol {{ node_name }}Flow: {{ plugin_list_name }}Flow {}
 {% else %}
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
 {% endif %}
-{% elif node_name == "Scene" %}
+{% elif node_name == "WindowScene" %}
 internal protocol {{ node_name }}Flow: Flow {
-    func getViewController() -> Window{{ node_name }}ViewControllable
+    func getViewController() -> {{ node_name }}ViewControllable
 }
 {% else %}
 internal protocol {{ node_name }}Flow: Flow {}
@@ -54,8 +54,6 @@ public protocol {{ node_name }}Dependency: Dependency {}
 internal typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listener
 {% elif node_name == "App" %}
 internal typealias {{ node_name }}DynamicBuildDependency = Void
-{% elif node_name == "Scene" %}
-internal typealias {{ node_name }}DynamicBuildDependency = ({{ node_name }}Listener, Window{{ node_name }}ViewControllable)
 {% else %}
 internal typealias {{ node_name }}DynamicBuildDependency = ({{ node_name }}Listener, {{ node_name }}ViewControllable)
 {% endif %}
@@ -158,10 +156,10 @@ public final class {{ node_name }}Component: Component
      */
     {% if node_name == "App" %}
 
-    fileprivate func sceneComponentFactory() -> SceneComponent {
-        SceneComponent(parent: self)
+    fileprivate func windowSceneComponentFactory() -> WindowSceneComponent {
+        WindowSceneComponent(parent: self)
     }
-    {% elif node_name == "Scene" %}
+    {% elif node_name == "WindowScene" %}
 
     fileprivate func windowComponentFactory() -> WindowComponent {
         WindowComponent(parent: self)
@@ -195,11 +193,6 @@ internal protocol {{ node_name }}Builder: {{ plugin_list_name }}Builder {
 internal protocol {{ node_name }}Builder: AnyObject {
     {% if node_name == "App" %}
     func build() -> {{ node_name }}Flow
-    {% elif node_name == "Scene" %}
-    func build(
-        withListener listener: {{ node_name }}Listener,
-        viewController: Window{{ node_name }}ViewControllable
-    ) -> {{ node_name }}Flow
     {% else %}
     func build(
         withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}
@@ -252,11 +245,6 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     /// - Returns: The Flow instance
     {% if node_name == "App" %}
     internal func build() -> {{ node_name }}Flow {
-    {% elif node_name == "Scene" %}
-    internal func build(
-        withListener listener: {{ node_name }}Listener,
-        viewController: Window{{ node_name }}ViewControllable
-    ) -> {{ node_name }}Flow {
     {% else %}
     internal func build(
         withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}
@@ -287,11 +275,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         let listener: {{ node_name }}Listener = dynamicBuildDependency
         {% elif node_name != "App" %}
         let listener: {{ node_name }}Listener = dynamicBuildDependency.0
-        {% if node_name == "Scene" %}
-        let viewController: Window{{ node_name }}ViewControllable = dynamicBuildDependency.1
-        {% else %}
         let viewController: {{ node_name }}ViewControllable = dynamicBuildDependency.1
-        {% endif %}
         {% endif %}
         {% if analytics_properties %}
         let analytics: {{ node_name }}AnalyticsImp = .init(
@@ -306,7 +290,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         let context: {{ node_name }}ContextImp = .init(
             workers: [],
             analytics: analytics{% if node_name == "App" %}{{ ',' }}
-            windowSceneState: component.appService.windowSceneState{% endif +%}
+            windowScenePublisher: component.appService.windowScenePublisher{% endif +%}
         )
         {% if node_name != "App" %}
         context.listener = listener
@@ -327,7 +311,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             {% endif %}
             {% endfor %}
             {% endif +%}{% if node_name == "App" %}{{ ',' }}
-            sceneBuilder: SceneBuilderImp(componentFactory: component.sceneComponentFactory){% endif +%}{% if node_name == "Scene" %}{{ ',' }}
+            windowSceneBuilder: WindowSceneBuilderImp(componentFactory: component.windowSceneComponentFactory){% endif +%}{% if node_name == "WindowScene" %}{{ ',' }}
             windowBuilder: WindowBuilderImp(componentFactory: component.windowComponentFactory){% endif +%}{% if node_name == "Window" %}{{ ',' }}
             rootBuilder: RootBuilderImp(componentFactory: component.rootComponentFactory){% endif +%}
         )

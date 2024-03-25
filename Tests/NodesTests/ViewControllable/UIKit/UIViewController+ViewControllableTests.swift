@@ -10,7 +10,6 @@ import Nodes
 import UIKit
 import XCTest
 
-@MainActor
 final class UIViewControllerViewControllableTests: XCTestCase {
 
     private class TestViewController: UIViewController {
@@ -51,6 +50,7 @@ final class UIViewControllerViewControllableTests: XCTestCase {
         }
     }
 
+    @MainActor
     func testPresentation() {
         let testViewController: TestViewController = givenViewController()
         let child: TestViewController = givenViewController()
@@ -62,6 +62,7 @@ final class UIViewControllerViewControllableTests: XCTestCase {
         expect(testViewController.dismissCallCount) == 1
     }
 
+    @MainActor
     func testContainment() {
         let viewController: TestViewController = givenViewController()
         let child: TestViewController = givenViewController()
@@ -81,12 +82,14 @@ final class UIViewControllerViewControllableTests: XCTestCase {
         expect(viewController.view.subviews).to(beEmpty())
     }
 
+    @MainActor
     func testAsUIViewController() {
         let viewController: ViewControllable = givenViewController()
         expect(viewController._asUIViewController()) === viewController
         expect(viewController._asUIViewController()).to(beAKindOf(UIViewController.self))
     }
 
+    @MainActor
     private func givenViewController() -> TestViewController {
         let viewController: TestViewController = .init()
         expect(viewController).to(notBeNilAndToDeallocateAfterTest())

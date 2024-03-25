@@ -11,6 +11,7 @@ import XCTest
 
 final class NavigationControllerTests: XCTestCase {
 
+    @MainActor
     func testPopViewControllers() {
 
         let rootViewController: UIViewController = .init()

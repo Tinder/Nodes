@@ -28,6 +28,7 @@ final class UIViewControllerContainmentTests: XCTestCase {
         }
     }
 
+    @MainActor
     func testContainLayout() {
         let viewController: TestViewController = givenViewController()
         let child: TestViewController = givenViewController()
@@ -50,6 +51,7 @@ final class UIViewControllerContainmentTests: XCTestCase {
         expect(viewController.view.subviews).to(beEmpty())
     }
 
+    @MainActor
     func testContainInView() {
         let viewController: TestViewController = givenViewController()
         let child: TestViewController = givenViewController()
@@ -71,6 +73,7 @@ final class UIViewControllerContainmentTests: XCTestCase {
         expect(viewController.view.subviews).to(beEmpty())
     }
 
+    @MainActor
     private func givenViewController() -> TestViewController {
         let viewController: TestViewController = .init()
         expect(viewController).to(notBeNilAndToDeallocateAfterTest())

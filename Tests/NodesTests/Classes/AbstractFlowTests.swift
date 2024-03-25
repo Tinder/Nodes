@@ -6,7 +6,6 @@ import Nimble
 import Nodes
 import XCTest
 
-@MainActor
 final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
 
     private class ViewControllerType {}
@@ -23,15 +22,18 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
 
     private var mockFlows: [FlowMock]!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         tearDown(keyPath: \.mockFlows, initialValue: [FlowMock(), FlowMock(), FlowMock()])
     }
 
+    @MainActor
     override func tearDown() {
         super.tearDown()
     }
 
+    @MainActor
     func testContext() {
         let context: ContextMock = .init()
         expect(context).to(notBeNilAndToDeallocateAfterTest())
@@ -40,6 +42,7 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         expect(flow.context) === context
     }
 
+    @MainActor
     func testViewController() {
         let viewController: ViewControllerType = .init()
         expect(viewController).to(notBeNilAndToDeallocateAfterTest())
@@ -47,15 +50,18 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         expect(flow.viewController) === viewController
     }
 
+    @MainActor
     func testSubFlows() {
         let flow: TestFlow = givenStartedFlow(subFlows: mockFlows)
         expect(flow.subFlows as? [FlowMock]) == mockFlows
     }
 
+    @MainActor
     func testAssertion() {
         expect(AbstractFlow<Void, Void>(context: (), viewController: ())).to(throwAssertion())
     }
 
+    @MainActor
     func testStart() {
         let flow: TestFlow = givenFlow()
         expect(flow).toNot(beStarted())
@@ -67,6 +73,7 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         expect(flow.context).to(beActive())
     }
 
+    @MainActor
     func testEnd() {
         let flow: TestFlow = givenStartedFlow()
         expect(flow).to(beStarted())
@@ -76,6 +83,7 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         expect(flow.context).toNot(beActive())
     }
 
+    @MainActor
     func testAttach() {
         let flow: TestFlow = givenStartedFlow()
         let subFlow: FlowMock = mockFlows[0]
@@ -84,6 +92,7 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         expect(flow.subFlows).to(haveCount(1))
     }
 
+    @MainActor
     func testDetach() {
         let flow: TestFlow = givenStartedFlow(subFlows: mockFlows)
         let subFlow: FlowMock = mockFlows[1]
@@ -92,6 +101,7 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         expect(flow.subFlows).to(haveCount(2))
     }
 
+    @MainActor
     func testDetachEndingSubFlowsOfType() {
         let flow: TestFlow = givenStartedFlow(subFlows: mockFlows)
         let subFlows: [Flow] = flow.subFlows
@@ -102,11 +112,13 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         expect(flow.subFlows).to(beEmpty())
     }
 
+    @MainActor
     func testFirstFlowOfType() {
         let flow: TestFlow = givenStartedFlow(subFlows: mockFlows)
         expect(flow.firstSubFlow(ofType: FlowMock.self)) == mockFlows.first
     }
 
+    @MainActor
     func testWithFirstFlowOfType() {
         let flow: TestFlow = givenStartedFlow(subFlows: mockFlows)
         var subFlow: FlowMock?
@@ -114,11 +126,13 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         expect(subFlow) == mockFlows.first
     }
 
+    @MainActor
     func testFlowsOfType() {
         let flow: TestFlow = givenStartedFlow(subFlows: mockFlows)
         expect(flow.subFlows(ofType: FlowMock.self)) == mockFlows
     }
 
+    @MainActor
     func testWithFlowsOfType() {
         let flow: TestFlow = givenStartedFlow(subFlows: mockFlows)
         var flows: [FlowMock] = []
@@ -126,6 +140,7 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         expect(flows) == mockFlows
     }
 
+    @MainActor
     private func givenFlow(
         context: ContextMock? = nil,
         viewController: ViewControllerType? = nil
@@ -158,6 +173,7 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
         return flow
     }
 
+    @MainActor
     private func givenStartedFlow(subFlows: [FlowMock] = []) -> TestFlow {
         let flow: TestFlow = givenFlow()
         flow.start()

@@ -10,9 +10,9 @@ import Nodes
 import UIKit
 import XCTest
 
-@MainActor
 final class UIViewControllerModalStyleTests: XCTestCase {
 
+    @MainActor
     func testCover() {
 
         let modalStyle: ModalStyle = .cover()
@@ -26,6 +26,7 @@ final class UIViewControllerModalStyleTests: XCTestCase {
         }
     }
 
+    @MainActor
     func testOverlayWithDefaults() {
 
         let modalStyle: ModalStyle = .overlay()
@@ -41,6 +42,7 @@ final class UIViewControllerModalStyleTests: XCTestCase {
 
     @available(iOS 13.0, *)
     @available(tvOS, unavailable)
+    @MainActor
     func testPageSheet() {
 
         let modalStyle: ModalStyle = .sheet(style: .page)
@@ -53,6 +55,7 @@ final class UIViewControllerModalStyleTests: XCTestCase {
 
     @available(iOS 13.0, *)
     @available(tvOS, unavailable)
+    @MainActor
     func testFormSheet() {
 
         let modalStyle: ModalStyle = .sheet(style: .form)
@@ -63,6 +66,7 @@ final class UIViewControllerModalStyleTests: XCTestCase {
         expect(viewController.isModalInPresentation) == true
     }
 
+    @MainActor
     func testCustom() {
 
         let modalStyle: ModalStyle = .custom()
@@ -73,6 +77,7 @@ final class UIViewControllerModalStyleTests: XCTestCase {
         expect(viewController.isModalInPresentation) == true
     }
 
+    @MainActor
     func testAdditionalConfiguration() {
         var additionalConfiguration1: [UIViewController] = []
         var additionalConfiguration2: [UIViewController] = []
@@ -91,6 +96,7 @@ final class UIViewControllerModalStyleTests: XCTestCase {
         expect(additionalConfiguration3.count) == 2
     }
 
+    @MainActor
     private func givenViewController(with modalStyle: ModalStyle) -> UIViewController {
         let viewController: UIViewController = .init()
         expect(viewController).to(notBeNilAndToDeallocateAfterTest())

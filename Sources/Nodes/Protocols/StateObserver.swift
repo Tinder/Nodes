@@ -34,7 +34,8 @@ extension StateObserver {
     /// Configures the `update(with:)` method to automatically be called with view state emitted by the given
     /// [Combine](https://developer.apple.com/documentation/combine) publisher.
     ///
-    /// - Parameter publisher: The view state ``Publisher`` instance to observe.
+    /// - Parameter publisher: The view state [`Publisher`](https://developer.apple.com/documentation/combine/publisher)
+    ///   instance to observe.
     ///
     /// - Returns: A ``Cancellable`` instance.
     public func observe<P: Publisher>(

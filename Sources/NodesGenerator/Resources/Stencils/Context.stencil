@@ -25,8 +25,8 @@ internal protocol {{ node_name }}Listener: AnyObject {}
 @MainActor
 {% if node_name == "App" %}
 internal protocol {{ node_name }}FlowInterface: Flow {
-    func attachScene(_ viewController: WindowSceneViewControllable)
-    func detachScene(_ viewController: WindowSceneViewControllable)
+    func attachWindowScene(_ viewController: WindowSceneViewControllable)
+    func detachWindowScene(_ viewController: WindowSceneViewControllable)
 }
 {% elif node_name == "Root" %}
 internal protocol {{ node_name }}FlowInterface: Flow {
@@ -82,7 +82,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     private let analytics: {{ node_name }}Analytics
     {% if node_name == "App" %}
 
-    private let windowSceneState: AnyPublisher<WindowSceneState, Never>
+    private let windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>
     {% elif node_name == "Root" %}
 
     // swiftlint:disable:next redundant_type_annotation
@@ -96,7 +96,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     internal init(
         workers: [Worker],
         analytics: {{ node_name }}Analytics{% if node_name == "App" %}{{ ',' }}
-        windowSceneState: AnyPublisher<WindowSceneState, Never>{% endif +%}
+        windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>{% endif +%}
     ) {
         {% if node_name == "Root" %}
         self.state = {{ node_name }}State(name: "{{ node_name }} View Controller")
@@ -105,7 +105,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
         {% endif %}
         self.analytics = analytics
         {% if node_name == "App" %}
-        self.windowSceneState = windowSceneState
+        self.windowScenePublisher = windowScenePublisher
         {% endif %}
         super.init(workers: workers)
     }
@@ -113,7 +113,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     /// Implement logic to execute when the Context becomes active.
     {% if node_name == "App" %}
     override internal func didBecomeActive() {
-        subscribe(to: windowSceneState)
+        subscribe(to: windowScenePublisher)
     }
     {% else %}
     override internal func didBecomeActive() {}
@@ -123,16 +123,16 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     override internal func willResignActive() {}
     {% if node_name == "App" %}
 
-    private func subscribe(to windowSceneState: AnyPublisher<WindowSceneState, Never>) {
-        windowSceneState
-            .filter(\.isAdded)
+    private func subscribe(to windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>) {
+        windowScenePublisher
+            .filter(\.willConnect)
             .map(\.windowScene)
-            .sink { [weak self] in self?.flow?.attachScene($0) }
+            .sink { [weak self] in self?.flow?.attachWindowScene($0) }
             .store(in: &cancellables)
-        windowSceneState
-            .filter(\.isRemoved)
+        windowScenePublisher
+            .filter(\.didDisconnect)
             .map(\.windowScene)
-            .sink { [weak self] in self?.flow?.detachScene($0) }
+            .sink { [weak self] in self?.flow?.detachWindowScene($0) }
             .store(in: &cancellables)
     }
     {% endif %}

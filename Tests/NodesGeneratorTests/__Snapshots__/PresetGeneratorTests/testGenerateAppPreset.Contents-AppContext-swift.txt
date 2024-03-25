@@ -13,8 +13,8 @@ import Nodes
 /// @mockable
 @MainActor
 internal protocol AppFlowInterface: Flow {
-    func attachScene(_ viewController: WindowSceneViewControllable)
-    func detachScene(_ viewController: WindowSceneViewControllable)
+    func attachWindowScene(_ viewController: WindowSceneViewControllable)
+    func detachWindowScene(_ viewController: WindowSceneViewControllable)
 }
 
 /**
@@ -37,7 +37,7 @@ internal final class AppContextImp: AbstractContext
     /// The Analytics instance.
     private let analytics: AppAnalytics
 
-    private let windowSceneState: AnyPublisher<WindowSceneState, Never>
+    private let windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>
 
     /// The initializer.
     /// - Parameters:
@@ -46,32 +46,32 @@ internal final class AppContextImp: AbstractContext
     internal init(
         workers: [Worker],
         analytics: AppAnalytics,
-        windowSceneState: AnyPublisher<WindowSceneState, Never>
+        windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>
     ) {
         self.state = AppState()
         self.analytics = analytics
-        self.windowSceneState = windowSceneState
+        self.windowScenePublisher = windowScenePublisher
         super.init(workers: workers)
     }
 
     /// Implement logic to execute when the Context becomes active.
     override internal func didBecomeActive() {
-        subscribe(to: windowSceneState)
+        subscribe(to: windowScenePublisher)
     }
 
     /// Implement logic to execute when the Context will become inactive.
     override internal func willResignActive() {}
 
-    private func subscribe(to windowSceneState: AnyPublisher<WindowSceneState, Never>) {
-        windowSceneState
-            .filter(\.isAdded)
+    private func subscribe(to windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>) {
+        windowScenePublisher
+            .filter(\.willConnect)
             .map(\.windowScene)
-            .sink { [weak self] in self?.flow?.attachScene($0) }
+            .sink { [weak self] in self?.flow?.attachWindowScene($0) }
             .store(in: &cancellables)
-        windowSceneState
-            .filter(\.isRemoved)
+        windowScenePublisher
+            .filter(\.didDisconnect)
             .map(\.windowScene)
-            .sink { [weak self] in self?.flow?.detachScene($0) }
+            .sink { [weak self] in self?.flow?.detachWindowScene($0) }
             .store(in: &cancellables)
     }
 }
