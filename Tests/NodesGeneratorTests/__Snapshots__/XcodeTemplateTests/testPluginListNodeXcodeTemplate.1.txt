@@ -13,6 +13,7 @@
           - "<pluginListImport>"
           - "Nodes"
         - pluginListName: "___VARIABLE_productName___"
+        - pluginListTestsImports: 0 elements
         - viewControllableFlowType: "<viewControllableFlowType>"
       ▿ stencils: 1 element
         - PluginList
