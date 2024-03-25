@@ -25,7 +25,7 @@ final class <pluginName>PluginTests: XCTestCase {
     }
 
     func testCreate() {
-        XCTAssertNil(plugin.create())
+        XCTAssertNotNil(plugin.create())
     }
 
     func testOverride() {

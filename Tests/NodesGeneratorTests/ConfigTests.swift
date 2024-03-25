@@ -167,6 +167,9 @@ final class ConfigTests: XCTestCase, TestFactories {
         flowImports:
           - <flowImports-1>
           - <flowImports-2>
+        pluginListImports:
+          - <pluginListImports-1>
+          - <pluginListImports-2>
         viewControllerImports:
           - <viewControllerImports-1>
           - <viewControllerImports-2>

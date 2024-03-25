@@ -15,22 +15,27 @@ final class XCTestCaseTests: XCTestCase {
     private class ParentComponent: Component<ParentDependency> {}
     private class ChildComponent: Component<ChildDependency> {}
 
+    @MainActor
     private static let registry: __DependencyProviderRegistry = .instance
+
     private static let parentPath: String = "^->BootstrapComponent->ParentComponent"
     private static let childPath: String = "^->BootstrapComponent->ParentComponent->ChildComponent"
 
+    @MainActor
     override func setUp() {
         super.setUp()
         expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)) == nil
         expect(Self.registry.dependencyProviderFactory(for: Self.childPath)) == nil
     }
 
+    @MainActor
     override func tearDown() {
         expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)) == nil
         expect(Self.registry.dependencyProviderFactory(for: Self.childPath)) == nil
         super.tearDown()
     }
 
+    @MainActor
     func testInjectComponents() throws {
 
         // GIVEN
@@ -79,6 +84,7 @@ final class XCTestCaseTests: XCTestCase {
         expect(childDependencyFactoryB(parentComponent)) === childDependencyB as AnyObject
     }
 
+    @MainActor
     private func dependencyProviderFactory(
         path: String
     ) throws -> (Scope) -> AnyObject {

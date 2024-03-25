@@ -17,7 +17,8 @@ internal struct WorkerXcodeTemplatePermutation: XcodeTemplatePermutation {
             workerName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
             workerImports: worker.imports(with: config),
             workerGenericTypes: config.workerGenericTypes,
-            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled
+            isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
+            isNimbleEnabled: config.isNimbleEnabled
         )
     }
 }

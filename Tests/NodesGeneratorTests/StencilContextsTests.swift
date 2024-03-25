@@ -32,7 +32,7 @@ final class StencilContextsTests: XCTestCase, TestFactories {
             })
         expect { try self.givenNodeStencilContext(preset: .scene) }
             .to(throwError(errorType: StencilContextError.self) { error in
-                expect(error) == .invalidPreset("Scene")
+                expect(error) == .invalidPreset("WindowScene")
             })
         expect { try self.givenNodeStencilContext(preset: .window) }
             .to(throwError(errorType: StencilContextError.self) { error in

@@ -6,7 +6,6 @@ import Nimble
 import Nodes
 import XCTest
 
-@MainActor
 final class AbstractWorkerTests: XCTestCase, TestCaseHelpers {
 
     private class TestWorker: AbstractWorker<CancellableMock> {
@@ -27,15 +26,18 @@ final class AbstractWorkerTests: XCTestCase, TestCaseHelpers {
 
     private var mockCancellables: [CancellableMock]!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         tearDown(keyPath: \.mockCancellables, initialValue: [CancellableMock(), CancellableMock(), CancellableMock()])
     }
 
+    @MainActor
     override func tearDown() {
         super.tearDown()
     }
 
+    @MainActor
     func testStart() {
         let worker: TestWorker = givenWorker()
         expect(worker).toNot(beWorking())
@@ -45,6 +47,7 @@ final class AbstractWorkerTests: XCTestCase, TestCaseHelpers {
         expect(worker.didStartCallCount) == 1
     }
 
+    @MainActor
     func testStop() {
         let worker: TestWorker = givenStartedWorker(cancellables: mockCancellables)
         let cancellables: [CancellableMock] = Array(worker.cancellables)
@@ -59,6 +62,7 @@ final class AbstractWorkerTests: XCTestCase, TestCaseHelpers {
         expect(worker.cancellables).to(beEmpty())
     }
 
+    @MainActor
     private func givenWorker() -> TestWorker {
         let worker: TestWorker = .init()
         expect(worker).to(notBeNilAndToDeallocateAfterTest())
@@ -70,6 +74,7 @@ final class AbstractWorkerTests: XCTestCase, TestCaseHelpers {
         return worker
     }
 
+    @MainActor
     private func givenStartedWorker(cancellables: [CancellableMock] = []) -> TestWorker {
         let worker: TestWorker = givenWorker()
         worker.start()

@@ -1,0 +1,44 @@
+//___FILEHEADER___
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+
+import Nimble
+import XCTest
+
+@MainActor
+final class ___VARIABLE_productName___ContextTests: XCTestCase {
+
+    private var analyticsMock: ___VARIABLE_productName___AnalyticsMock!
+    private var context: ___VARIABLE_productName___ContextImp!
+
+    override func setUp() {
+        super.setUp()
+        analyticsMock = ___VARIABLE_productName___AnalyticsMock()
+        context = ___VARIABLE_productName___ContextImp(
+            workers: [],
+            analytics: analyticsMock
+        )
+    }
+
+    override func tearDown() {
+        analyticsMock = nil
+        context = nil
+        super.tearDown()
+    }
+
+    func testNotNil() {
+        expect { self.context } != nil
+    }
+
+    func testWorkersIsEmpty() {
+        expect { self.context.workers }.to(beEmpty())
+    }
+
+    func testActivation() {
+        expect { self.context.isActive } == false
+        context.activate()
+        expect { self.context.isActive } == true
+        context.deactivate()
+        expect { self.context.isActive } == false
+    }
+}

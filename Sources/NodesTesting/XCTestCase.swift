@@ -5,6 +5,7 @@
 import NeedleFoundation
 import XCTest
 
+@MainActor
 private let registry: __DependencyProviderRegistry = .instance
 
 extension XCTestCase {
@@ -15,7 +16,8 @@ extension XCTestCase {
     ///   - componentFactory: A closure that initializes a Needle component instance.
     ///   - dependency: A closure that initializes a mocked dependency instance for the component.
     ///
-    /// - Returns: A factory for the component using ``BootstrapComponent`` as the parent.
+    /// - Returns: A factory for the component using `BootstrapComponent` as the parent.
+    @MainActor
     public func injectComponent<T: Component<U>, U>(
         componentFactory: @escaping (_ parent: Scope) -> T,
         with dependency: () -> U
@@ -32,6 +34,7 @@ extension XCTestCase {
     /// - Parameter scope: The scope from which injected components will descend.
     ///
     /// - Returns: The `DependencyProviderRegistrationBuilder` instance.
+    @MainActor
     public func injectComponents(
         descendingFrom scope: @autoclosure () -> Scope
     ) -> DependencyProviderRegistrationBuilder {
@@ -43,6 +46,7 @@ extension XCTestCase {
     /// - Parameter scope: The scope from which injected components will descend.
     ///
     /// - Returns: The `DependencyProviderRegistrationBuilder` instance.
+    @MainActor
     public func injectComponents(
         descendingFrom scope: () -> Scope
     ) -> DependencyProviderRegistrationBuilder {
@@ -55,6 +59,7 @@ extension XCTestCase {
         }
     }
 
+    @MainActor
     private func registerBootstrapComponent<T: Component<EmptyDependency>>(
         componentFactory: @escaping () -> T
     ) {

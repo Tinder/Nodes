@@ -2,7 +2,7 @@
 //  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
-public enum StencilTemplate: Equatable, CustomStringConvertible {
+public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
 
     case analytics
     case builder(Variation)
@@ -22,8 +22,9 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
     case pluginListTests
     case viewControllerTests(Variation)
     case viewStateFactoryTests
+    case workerTests
 
-    public enum Variation: String, Equatable, CaseIterable {
+    public enum Variation: String, Sendable, Equatable, CaseIterable {
 
         case `default` = ""
         case swiftUI = "-SwiftUI"
@@ -68,10 +69,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             self.viewStateFactoryTests = .viewStateFactoryTests
         }
 
-        public func stencils(
-            includePlugin: Bool = false,
-            includeTests: Bool = false
-        ) -> [StencilTemplate] {
+        public func stencils(includePlugin: Bool, includeTests: Bool) -> [StencilTemplate] {
             var stencils: [StencilTemplate] = [
                 analytics,
                 builder,
@@ -126,9 +124,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             self.flowTests = .flowTests
         }
 
-        public func stencils(
-            includeTests: Bool = false
-        ) -> [StencilTemplate] {
+        public func stencils(includeTests: Bool) -> [StencilTemplate] {
             let stencils: [StencilTemplate] = [
                 analytics,
                 builder,
@@ -184,6 +180,8 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             "ViewControllerTests"
         case .viewStateFactoryTests:
             "ViewStateFactoryTests"
+        case .workerTests:
+            "WorkerTests"
         }
     }
 
@@ -193,7 +191,9 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             description.appending(variation.rawValue)
         case .analytics, .context, .flow, .plugin, .pluginList, .state, .viewState, .worker:
             description
-        case .analyticsTests, .contextTests, .flowTests, .pluginTests, .pluginListTests, .viewStateFactoryTests:
+        case .analyticsTests, .contextTests, .flowTests, .viewStateFactoryTests, .workerTests:
+            description
+        case .pluginTests, .pluginListTests:
             description
         }
     }
@@ -230,6 +230,7 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             config.baseImports
                 .union(["Nodes"])
                 .union(config.dependencyInjectionImports)
+                .union(config.pluginListImports)
         case .state:
             config.baseImports
         case .viewController:
@@ -257,6 +258,8 @@ public enum StencilTemplate: Equatable, CustomStringConvertible {
             config.baseTestImports
                 .union(config.reactiveImports)
         case .viewStateFactoryTests:
+            config.baseTestImports
+        case .workerTests:
             config.baseTestImports
         }
     }

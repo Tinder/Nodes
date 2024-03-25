@@ -9,6 +9,7 @@ public struct WorkerStencilContext: StencilContext {
     private let workerImports: [String]
     private let workerGenericTypes: [String]
     private let isPeripheryCommentEnabled: Bool
+    private let isNimbleEnabled: Bool
 
     internal var dictionary: [String: Any] {
         [
@@ -16,7 +17,8 @@ public struct WorkerStencilContext: StencilContext {
             "worker_name": workerName,
             "worker_imports": workerImports,
             "worker_generic_types": workerGenericTypes,
-            "is_periphery_comment_enabled": isPeripheryCommentEnabled
+            "is_periphery_comment_enabled": isPeripheryCommentEnabled,
+            "is_nimble_enabled": isNimbleEnabled
         ]
     }
 
@@ -25,12 +27,14 @@ public struct WorkerStencilContext: StencilContext {
         workerName: String,
         workerImports: Set<String>,
         workerGenericTypes: [String],
-        isPeripheryCommentEnabled: Bool
+        isPeripheryCommentEnabled: Bool,
+        isNimbleEnabled: Bool
     ) {
         self.fileHeader = fileHeader
         self.workerName = workerName
         self.workerImports = workerImports.sortedImports()
         self.workerGenericTypes = workerGenericTypes
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
+        self.isNimbleEnabled = isNimbleEnabled
     }
 }

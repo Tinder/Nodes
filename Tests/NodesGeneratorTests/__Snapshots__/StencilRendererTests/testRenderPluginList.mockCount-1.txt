@@ -81,8 +81,8 @@ public final class <pluginListName>PluginListComponent: Component
 
      Declare child component factories as 'fileprivate' methods.
 
-     fileprivate func <name>ComponentFactory() -> <Name>Component {
-         <Name>Component(parent: self)
+     fileprivate func <name>PluginComponentFactory() -> <Name>PluginComponent {
+         <Name>PluginComponent(parent: self)
      }
 
      */

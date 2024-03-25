@@ -633,21 +633,21 @@ files:
       /// @mockable
       @MainActor
       internal protocol AppService {
-          var windowSceneState: AnyPublisher<WindowSceneState, Never> { get }
+          var windowScenePublisher: AnyPublisher<WindowSceneEvent, Never> { get }
       }
 
       internal final class AppServiceImp: AppService {
 
-          internal var windowSceneState: AnyPublisher<WindowSceneState, Never> {
+          internal var windowScenePublisher: AnyPublisher<WindowSceneEvent, Never> {
               Publishers.Merge(
                   notificationCenter
                       .publisher(for: UIScene.willConnectNotification)
                       .compactMap { $0.object as? UIWindowScene }
-                      .map { .added($0) },
+                      .map { .willConnect($0) },
                   notificationCenter
                       .publisher(for: UIScene.didDisconnectNotification)
                       .compactMap { $0.object as? UIWindowScene }
-                      .map { .removed($0) })
+                      .map { .didDisconnect($0) })
               .eraseToAnyPublisher()
           }
 
@@ -658,28 +658,28 @@ files:
           }
       }
 
-      internal enum WindowSceneState {
+      internal enum WindowSceneEvent {
 
-          case added(UIWindowScene)
-          case removed(UIWindowScene)
+          case willConnect(UIWindowScene)
+          case didDisconnect(UIWindowScene)
 
-          internal var isAdded: Bool {
-              guard case .added = self
+          internal var willConnect: Bool {
+              guard case .willConnect = self
               else { return false }
               return true
           }
 
-          internal var isRemoved: Bool {
-              guard case .removed = self
+          internal var didDisconnect: Bool {
+              guard case .didDisconnect = self
               else { return false }
               return true
           }
 
           internal var windowScene: UIWindowScene {
               switch self {
-              case let .added(windowScene):
+              case let .willConnect(windowScene):
                   return windowScene
-              case let .removed(windowScene):
+              case let .didDisconnect(windowScene):
                   return windowScene
               }
           }

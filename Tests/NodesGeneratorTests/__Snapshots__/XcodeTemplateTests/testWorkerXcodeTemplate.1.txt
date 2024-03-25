@@ -5,6 +5,7 @@
       - name: "Worker"
       ▿ stencilContext: WorkerStencilContext
         - fileHeader: "<fileHeader>"
+        - isNimbleEnabled: false
         - isPeripheryCommentEnabled: false
         ▿ workerGenericTypes: 1 element
           - "<workerGenericType>"

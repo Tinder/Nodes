@@ -6,7 +6,6 @@ import Nimble
 import Nodes
 import XCTest
 
-@MainActor
 final class PluginListTests: XCTestCase, TestCaseHelpers {
 
     private class ComponentType {}
@@ -60,6 +59,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         }
     }
 
+    @MainActor
     func testPluginListCreateAll() {
         let pluginList: TestPluginList = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
@@ -70,6 +70,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList.createAll().map(\.identifier)).to(beEmpty())
     }
 
+    @MainActor
     func testPluginListWithDefaultCreateAll() {
         let pluginList: TestPluginListWithDefault = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
@@ -80,6 +81,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList.createAll().map(\.identifier)) == ["default"]
     }
 
+    @MainActor
     func testPluginListCreate() {
         let pluginList: TestPluginList = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
@@ -90,6 +92,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList.create()) == nil
     }
 
+    @MainActor
     func testPluginListWithDefaultCreate() {
         let pluginList: TestPluginListWithDefault = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
@@ -100,6 +103,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList.create()?.identifier) == "default"
     }
 
+    @MainActor
     func testPluginListCreateWithKey() {
         let pluginList: TestPluginList = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
@@ -110,6 +114,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList.create(key: "plugin2")) == nil
     }
 
+    @MainActor
     func testPluginListWithDefaultCreateWithKey() {
         let pluginList: TestPluginListWithDefault = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
@@ -120,24 +125,28 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList.create(key: "plugin2")?.identifier) == "default"
     }
 
+    @MainActor
     func testPluginListWithDefaultCreateWithDefaultKey() throws {
         let pluginList: TestPluginListWithDefault = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
         expect(pluginList.create(key: "default")?.identifier) == "default"
     }
 
+    @MainActor
     func testPluginListDuplicateKeys() {
         let pluginList: TestPluginList = .init { ComponentType() }
         pluginList.creationOrderOverride = ["plugin1", "plugin1"]
         expect(pluginList.createAll()).to(throwAssertion())
     }
 
+    @MainActor
     func testPluginListWithDefaultDuplicateKeys() {
         let pluginList: TestPluginListWithDefault = .init { ComponentType() }
         pluginList.creationOrderOverride = ["plugin1", "plugin1"]
         expect(pluginList.createAll()).to(throwAssertion())
     }
 
+    @MainActor
     func testPluginListAssertions() {
         let component: ComponentType = .init()
         let pluginList: PluginList<String, ComponentType, BuildType, Void> = .init { component }
@@ -145,6 +154,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         expect(pluginList.plugins(component: component)).to(throwAssertion())
     }
 
+    @MainActor
     func testPluginListWithDefaultAssertions() {
         let component: ComponentType = .init()
         let pluginList: PluginListWithDefault<String, ComponentType, BuildType, Void> = .init { component }

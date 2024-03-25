@@ -15,8 +15,9 @@
   - flowProperties: 0 elements
   - isPeripheryCommentEnabled: false
   - isPreviewProviderEnabled: false
-  - isTestTemplatesGenerationEnabled: false
+  - isTestTemplatesGenerationEnabled: true
   - isViewInjectedTemplateEnabled: true
+  - pluginListImports: 0 members
   - publisherFailureType: "Never"
   - publisherType: "AnyPublisher"
   ▿ reactiveImports: 1 member

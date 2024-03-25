@@ -33,10 +33,11 @@ extension TestFactories {
         config.dependencyInjectionImports = ["<dependencyInjectionImport>"]
         config.builderImports = ["<builderImport>"]
         config.flowImports = ["<flowImport>"]
+        config.pluginListImports = ["<pluginListImport>"]
         config.viewControllerImports = ["<viewControllerImport>"]
-        config.dependencies = [Variable(name: "<dependenciesName>", type: "<dependenciesType>")]
-        config.analyticsProperties = [Variable(name: "<analyticsPropertiesName>", type: "<analyticsPropertiesType>")]
-        config.flowProperties = [Variable(name: "<flowPropertiesName>", type: "<flowPropertiesType>")]
+        config.dependencies = [Variable(name: "<dependencyName>", type: "<dependencyType>")]
+        config.analyticsProperties = [Variable(name: "<analyticsPropertyName>", type: "<analyticsPropertyType>")]
+        config.flowProperties = [Variable(name: "<flowPropertyName>", type: "<flowPropertyType>")]
         config.viewControllableFlowType = "<viewControllableFlowType>"
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableMockContents = "<viewControllableMockContents>"
@@ -252,7 +253,8 @@ extension TestFactories {
             workerName: "<workerName>",
             workerImports: .mock(with: "workerImport", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
-            isPeripheryCommentEnabled: mockCount > 0
+            isPeripheryCommentEnabled: mockCount > 0,
+            isNimbleEnabled: mockCount > 0
         )
     }
 }

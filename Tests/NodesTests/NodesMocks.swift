@@ -16,7 +16,7 @@ internal final class FlowMock: Flow, Equatable {
     // swiftlint:disable:next identifier_name
     internal let _context: Context = ContextMock()
 
-    internal static func == (lhs: FlowMock, rhs: FlowMock) -> Bool {
+    nonisolated internal static func == (lhs: FlowMock, rhs: FlowMock) -> Bool {
         ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
 

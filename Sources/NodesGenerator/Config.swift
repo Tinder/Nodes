@@ -37,6 +37,7 @@ public struct Config: Equatable, Codable {
     public var dependencyInjectionImports: Set<String>
     public var builderImports: Set<String>
     public var flowImports: Set<String>
+    public var pluginListImports: Set<String>
     public var viewControllerImports: Set<String>
     public var dependencies: [Variable]
     public var analyticsProperties: [Variable]
@@ -95,6 +96,7 @@ extension Config {
         dependencyInjectionImports = ["NeedleFoundation"]
         builderImports = []
         flowImports = []
+        pluginListImports = []
         viewControllerImports = []
         dependencies = []
         analyticsProperties = []
@@ -126,7 +128,7 @@ extension Config {
         workerGenericTypes = ["AnyCancellable"]
         isViewInjectedTemplateEnabled = true
         isPreviewProviderEnabled = false
-        isTestTemplatesGenerationEnabled = false
+        isTestTemplatesGenerationEnabled = true
         isPeripheryCommentEnabled = false
     }
 }
@@ -168,6 +170,9 @@ extension Config {
         flowImports =
             (try? decoder.decode(CodingKeys.flowImports))
             ?? defaults.flowImports
+        pluginListImports =
+            (try? decoder.decode(CodingKeys.pluginListImports))
+            ?? defaults.pluginListImports
         viewControllerImports =
             (try? decoder.decode(CodingKeys.viewControllerImports))
             ?? defaults.viewControllerImports

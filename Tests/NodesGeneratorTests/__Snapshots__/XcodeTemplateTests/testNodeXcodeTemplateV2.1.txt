@@ -11,10 +11,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<analyticsPropertiesName>"
+                - value: "<analyticsPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<analyticsPropertiesType>"
+                - value: "<analyticsPropertyType>"
           ▿ analyticsTestsImports: 1 element
             - "<baseTestImport>"
           ▿ builderImports: 5 elements
@@ -35,10 +35,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<dependenciesName>"
+                - value: "<dependencyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<dependenciesType>"
+                - value: "<dependencyType>"
           - fileHeader: "<fileHeader>"
           ▿ flowImports: 3 elements
             - "<baseImport>"
@@ -48,10 +48,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<flowPropertiesName>"
+                - value: "<flowPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<flowPropertiesType>"
+                - value: "<flowPropertyType>"
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
@@ -121,10 +121,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<analyticsPropertiesName>"
+                - value: "<analyticsPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<analyticsPropertiesType>"
+                - value: "<analyticsPropertyType>"
           ▿ analyticsTestsImports: 1 element
             - "<baseTestImport>"
           ▿ builderImports: 5 elements
@@ -145,10 +145,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<dependenciesName>"
+                - value: "<dependencyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<dependenciesType>"
+                - value: "<dependencyType>"
           - fileHeader: "<fileHeader>"
           ▿ flowImports: 3 elements
             - "<baseImport>"
@@ -158,10 +158,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<flowPropertiesName>"
+                - value: "<flowPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<flowPropertiesType>"
+                - value: "<flowPropertyType>"
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
@@ -231,10 +231,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<analyticsPropertiesName>"
+                - value: "<analyticsPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<analyticsPropertiesType>"
+                - value: "<analyticsPropertyType>"
           ▿ analyticsTestsImports: 1 element
             - "<baseTestImport>"
           ▿ builderImports: 5 elements
@@ -255,10 +255,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<dependenciesName>"
+                - value: "<dependencyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<dependenciesType>"
+                - value: "<dependencyType>"
           - fileHeader: "<fileHeader>"
           ▿ flowImports: 3 elements
             - "<baseImport>"
@@ -268,10 +268,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<flowPropertiesName>"
+                - value: "<flowPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<flowPropertiesType>"
+                - value: "<flowPropertyType>"
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
@@ -341,10 +341,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<analyticsPropertiesName>"
+                - value: "<analyticsPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<analyticsPropertiesType>"
+                - value: "<analyticsPropertyType>"
           ▿ analyticsTestsImports: 1 element
             - "<baseTestImport>"
           ▿ builderImports: 5 elements
@@ -365,10 +365,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<dependenciesName>"
+                - value: "<dependencyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<dependenciesType>"
+                - value: "<dependencyType>"
           - fileHeader: "<fileHeader>"
           ▿ flowImports: 3 elements
             - "<baseImport>"
@@ -378,10 +378,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<flowPropertiesName>"
+                - value: "<flowPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<flowPropertiesType>"
+                - value: "<flowPropertyType>"
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
@@ -451,10 +451,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<analyticsPropertiesName>"
+                - value: "<analyticsPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<analyticsPropertiesType>"
+                - value: "<analyticsPropertyType>"
           ▿ analyticsTestsImports: 1 element
             - "<baseTestImport>"
           ▿ builderImports: 5 elements
@@ -475,10 +475,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<dependenciesName>"
+                - value: "<dependencyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<dependenciesType>"
+                - value: "<dependencyType>"
           - fileHeader: "<fileHeader>"
           ▿ flowImports: 3 elements
             - "<baseImport>"
@@ -488,10 +488,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<flowPropertiesName>"
+                - value: "<flowPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<flowPropertiesType>"
+                - value: "<flowPropertyType>"
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
@@ -561,10 +561,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<analyticsPropertiesName>"
+                - value: "<analyticsPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<analyticsPropertiesType>"
+                - value: "<analyticsPropertyType>"
           ▿ analyticsTestsImports: 1 element
             - "<baseTestImport>"
           ▿ builderImports: 5 elements
@@ -585,10 +585,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<dependenciesName>"
+                - value: "<dependencyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<dependenciesType>"
+                - value: "<dependencyType>"
           - fileHeader: "<fileHeader>"
           ▿ flowImports: 3 elements
             - "<baseImport>"
@@ -598,10 +598,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<flowPropertiesName>"
+                - value: "<flowPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<flowPropertiesType>"
+                - value: "<flowPropertyType>"
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
@@ -671,10 +671,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<analyticsPropertiesName>"
+                - value: "<analyticsPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<analyticsPropertiesType>"
+                - value: "<analyticsPropertyType>"
           ▿ analyticsTestsImports: 1 element
             - "<baseTestImport>"
           ▿ builderImports: 5 elements
@@ -695,10 +695,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<dependenciesName>"
+                - value: "<dependencyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<dependenciesType>"
+                - value: "<dependencyType>"
           - fileHeader: "<fileHeader>"
           ▿ flowImports: 3 elements
             - "<baseImport>"
@@ -708,10 +708,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<flowPropertiesName>"
+                - value: "<flowPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<flowPropertiesType>"
+                - value: "<flowPropertyType>"
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
@@ -781,10 +781,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<analyticsPropertiesName>"
+                - value: "<analyticsPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<analyticsPropertiesType>"
+                - value: "<analyticsPropertyType>"
           ▿ analyticsTestsImports: 1 element
             - "<baseTestImport>"
           ▿ builderImports: 5 elements
@@ -805,10 +805,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<dependenciesName>"
+                - value: "<dependencyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<dependenciesType>"
+                - value: "<dependencyType>"
           - fileHeader: "<fileHeader>"
           ▿ flowImports: 3 elements
             - "<baseImport>"
@@ -818,10 +818,10 @@
             ▿ 2 key/value pairs
               ▿ (2 elements)
                 - key: "name"
-                - value: "<flowPropertiesName>"
+                - value: "<flowPropertyName>"
               ▿ (2 elements)
                 - key: "type"
-                - value: "<flowPropertiesType>"
+                - value: "<flowPropertyType>"
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false

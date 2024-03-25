@@ -27,7 +27,7 @@ final class <pluginName>PluginTests: XCTestCase {
     }
 
     func testCreate() {
-        expect { self.plugin.create() } == nil
+        expect { self.plugin.create() } != nil
     }
 
     func testOverride() {

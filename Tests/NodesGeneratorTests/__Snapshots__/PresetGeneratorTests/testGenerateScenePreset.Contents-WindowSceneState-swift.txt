@@ -1,0 +1,9 @@
+//
+//  Created by <author> on <date>.
+//
+
+/**
+ PURPOSE:
+ The state of the Node.
+ */
+internal struct WindowSceneState: Equatable {}
