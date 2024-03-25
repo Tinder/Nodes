@@ -42,6 +42,7 @@ dependencyInjectionImports:
   - NeedleFoundation
 builderImports: []
 flowImports: []
+pluginListImports: []
 viewControllerImports: []
 dependencies: []
 analyticsProperties: []
@@ -70,7 +71,7 @@ workerGenericTypes:
   - AnyCancellable
 isViewInjectedTemplateEnabled: true
 isPreviewProviderEnabled: false
-isTestTemplatesGenerationEnabled: false
+isTestTemplatesGenerationEnabled: true
 isPeripheryCommentEnabled: false
 ```
 
