@@ -39,7 +39,8 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         let custom: UIFramework.Framework = .custom(name: "<uiFrameworkName>",
                                                     import: "<uiFrameworkImport>",
                                                     viewControllerType: "<viewControllerType>",
-                                                    viewControllerSuperParameters: "<viewControllerSuperParameters>")
+                                                    viewControllerSuperParameters: "<viewControllerSuperParameters>",
+                                                    viewControllerMethods: "<viewControllerMethods>")
         expect(custom.kind) == .custom
         expect(custom.name) == "<uiFrameworkName>"
         expect(custom.import) == "<uiFrameworkImport>"
@@ -54,7 +55,8 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             .custom(name: "<uiFrameworkName>",
                     import: "<uiFrameworkImport>",
                     viewControllerType: "<viewControllerType>",
-                    viewControllerSuperParameters: "<viewControllerSuperParameters>")
+                    viewControllerSuperParameters: "<viewControllerSuperParameters>",
+                    viewControllerMethods: "<viewControllerMethods>")
         ]
         try frameworks.forEach { framework in
             let data: Data = .init(givenYAML(for: framework).utf8)
@@ -163,11 +165,12 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         switch framework {
         case .appKit, .uiKit, .swiftUI:
             return framework.name
-        case let .custom(name, `import`, viewControllerType, viewControllerSuperParameters):
+        case let .custom(name, `import`, viewControllerType, viewControllerSuperParameters, viewControllerMethods):
             return givenCustomYAML(name: name,
                                    import: `import`,
                                    viewControllerType: viewControllerType,
-                                   viewControllerSuperParameters: viewControllerSuperParameters)
+                                   viewControllerSuperParameters: viewControllerSuperParameters,
+                                   viewControllerMethods: viewControllerMethods)
         }
     }
 
@@ -175,7 +178,8 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         name: String = "<name>",
         import: String = "<import>",
         viewControllerType: String = "<viewControllerType>",
-        viewControllerSuperParameters: String = "<viewControllerSuperParameters>"
+        viewControllerSuperParameters: String = "<viewControllerSuperParameters>",
+        viewControllerMethods: String = "<viewControllerMethods>"
     ) -> String {
         """
         custom:
@@ -183,6 +187,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
           import: \(`import`)
           viewControllerType: \(viewControllerType)
           viewControllerSuperParameters: \(viewControllerSuperParameters)
+          viewControllerMethods: \(viewControllerMethods)
         """
     }
 }

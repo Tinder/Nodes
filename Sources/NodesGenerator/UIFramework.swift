@@ -19,10 +19,13 @@ public struct UIFramework: Equatable, Codable {
         case appKit
         case uiKit
         case swiftUI
+
+        // swiftlint:disable:next enum_case_associated_values_count
         case custom(name: String,
                     import: String,
                     viewControllerType: String,
-                    viewControllerSuperParameters: String)
+                    viewControllerSuperParameters: String,
+                    viewControllerMethods: String)
 
         internal var kind: Kind {
             switch self {
@@ -41,7 +44,7 @@ public struct UIFramework: Equatable, Codable {
             switch self {
             case .appKit, .uiKit, .swiftUI:
                 return kind.rawValue
-            case let .custom(name, _, _, _):
+            case let .custom(name, _, _, _, _):
                 return name
             }
         }
@@ -50,7 +53,7 @@ public struct UIFramework: Equatable, Codable {
             switch self {
             case .appKit, .uiKit, .swiftUI:
                 return name
-            case let .custom(_, `import`, _, _):
+            case let .custom(_, `import`, _, _, _):
                 return `import`
             }
         }
@@ -63,7 +66,7 @@ public struct UIFramework: Equatable, Codable {
                 return "UIViewController"
             case .swiftUI:
                 return "UIHostingController"
-            case let .custom(_, _, viewControllerType, _):
+            case let .custom(_, _, viewControllerType, _, _):
                 return viewControllerType
             }
         }
@@ -74,8 +77,66 @@ public struct UIFramework: Equatable, Codable {
                 return "nibName: nil, bundle: nil"
             case .swiftUI:
                 return ""
-            case let .custom(_, _, _, viewControllerSuperParameters):
+            case let .custom(_, _, _, viewControllerSuperParameters, _):
                 return viewControllerSuperParameters
+            }
+        }
+
+        internal var viewControllerMethods: String {
+            switch self {
+            case .appKit:
+                return """
+                    @available(*, unavailable)
+                    internal required init?(coder: NSCoder) {
+                        preconditionFailure("init(coder:) has not been implemented")
+                    }
+
+                    override internal func loadView() {
+                        view = NSView()
+                    }
+
+                    override internal func viewDidLoad() {
+                        super.viewDidLoad()
+                        update(with: initialState)
+                    }
+
+                    override internal func viewWillAppear() {
+                        super.viewWillAppear()
+                        observe(statePublisher).store(in: &cancellables)
+                    }
+
+                    override internal func viewWillDisappear() {
+                        super.viewWillDisappear()
+                        cancellables.cancelAll()
+                    }
+                    """
+            case .uiKit:
+                return """
+                    @available(*, unavailable)
+                    internal required init?(coder: NSCoder) {
+                        preconditionFailure("init(coder:) has not been implemented")
+                    }
+
+                    override internal func viewDidLoad() {
+                        super.viewDidLoad()
+                        view.backgroundColor = .systemBackground
+                        update(with: initialState)
+                    }
+
+                    override internal func viewWillAppear(_ animated: Bool) {
+                        super.viewWillAppear(animated)
+                        observe(statePublisher).store(in: &cancellables)
+                    }
+
+                    override internal func viewWillDisappear(_ animated: Bool) {
+                        super.viewWillDisappear(animated)
+                        cancellables.cancelAll()
+                    }
+                    """
+            case .swiftUI:
+                return ""
+            case let .custom(_, _, _, _, viewControllerMethods):
+                return viewControllerMethods
             }
         }
 
@@ -134,6 +195,8 @@ public struct UIFramework: Equatable, Codable {
                     .decode(String.self, forKey: .viewControllerType)
                 let viewControllerSuperParameters: String? = try? container
                     .decode(String.self, forKey: .viewControllerSuperParameters)
+                let viewControllerMethods: String? = try? container
+                    .decode(String.self, forKey: .viewControllerMethods)
                 let required: [(key: String, value: String)] = [
                     (key: "name", value: name),
                     (key: "import", value: `import`),
@@ -145,7 +208,8 @@ public struct UIFramework: Equatable, Codable {
                 return .custom(name: name,
                                import: `import`,
                                viewControllerType: viewControllerType,
-                               viewControllerSuperParameters: viewControllerSuperParameters ?? "")
+                               viewControllerSuperParameters: viewControllerSuperParameters ?? "",
+                               viewControllerMethods: viewControllerMethods ?? "")
             }
         }
     }
@@ -157,41 +221,13 @@ public struct UIFramework: Equatable, Codable {
     public var `import`: String { framework.import }
     public var viewControllerType: String { framework.viewControllerType }
     public var viewControllerSuperParameters: String { framework.viewControllerSuperParameters }
-
-    public var viewControllerProperties: String
-    public var viewControllerMethods: String
+    public var viewControllerMethods: String { framework.viewControllerMethods }
 
     public init(framework: Framework) {
-        switch framework.kind {
-        case .appKit:
-            self = .makeDefaultAppKitFramework()
-        case .uiKit:
-            self = .makeDefaultUIKitFramework()
-        case .swiftUI:
-            self = .makeDefaultSwiftUIFramework()
-        case .custom:
-            self = .makeDefaultFramework(for: framework)
-        }
+        self.framework = framework
     }
 
     public init(from decoder: Decoder) throws {
         framework = try decoder.decode(CodingKeys.framework)
-        let defaults: Self = .init(framework: framework)
-        viewControllerProperties =
-            (try? decoder.decodeString(CodingKeys.viewControllerProperties))
-            ?? defaults.viewControllerProperties
-        viewControllerMethods =
-            (try? decoder.decodeString(CodingKeys.viewControllerMethods))
-            ?? defaults.viewControllerMethods
-    }
-
-    internal init(
-        framework: Framework,
-        viewControllerProperties: String,
-        viewControllerMethods: String
-    ) {
-        self.framework = framework
-        self.viewControllerProperties = viewControllerProperties
-        self.viewControllerMethods = viewControllerMethods
     }
 }

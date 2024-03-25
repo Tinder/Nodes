@@ -22,11 +22,11 @@ internal protocol {{ node_name }}Receiver: AnyObject {}
 internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 <
     {{ node_name }}View
-{% if view_controller_properties or view_controller_methods %}
+{% if view_controller_static_content or view_controller_methods %}
 > {
-    {% if view_controller_properties %}
+    {% if view_controller_static_content %}
 
-    {{ view_controller_properties|indent:4 }}
+    {{ view_controller_static_content|indent:4 }}
     {% endif %}
     {% if view_controller_methods %}
 

@@ -26,9 +26,9 @@ internal protocol {{ node_name }}Receiver: AnyObject {}
  Concrete implementation of the UI.
  */
 internal final class {{ node_name }}ViewController: {{ view_controller_type }}, StateObserver {
-    {% if view_controller_properties %}
+    {% if view_controller_static_content %}
 
-    {{ view_controller_properties|indent:4 }}
+    {{ view_controller_static_content|indent:4 }}
     {% endif %}
 
     {% if is_periphery_comment_enabled %}

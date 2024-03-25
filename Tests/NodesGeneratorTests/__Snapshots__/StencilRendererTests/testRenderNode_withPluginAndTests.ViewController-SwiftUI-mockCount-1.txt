@@ -20,7 +20,7 @@ internal final class <nodeName>ViewController: <viewControllerType>
     <nodeName>View
 > {
 
-    <viewControllerProperties>
+    <viewControllerStaticContent>
 
     <viewControllerMethods>
 }

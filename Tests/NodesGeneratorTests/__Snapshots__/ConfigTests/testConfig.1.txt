@@ -54,31 +54,25 @@
   ▿ uiFrameworks: 4 elements
     ▿ UIFramework
       - framework: Framework.appKit
-      - viewControllerMethods: "<viewControllerMethods-AppKit>"
-      - viewControllerProperties: "<viewControllerProperties-AppKit>"
     ▿ UIFramework
       - framework: Framework.uiKit
-      - viewControllerMethods: "<viewControllerMethods-UIKit>"
-      - viewControllerProperties: "<viewControllerProperties-UIKit>"
     ▿ UIFramework
       - framework: Framework.swiftUI
-      - viewControllerMethods: "<viewControllerMethods-SwiftUI>"
-      - viewControllerProperties: "<viewControllerProperties-SwiftUI>"
     ▿ UIFramework
       ▿ framework: Framework
-        ▿ custom: (4 elements)
+        ▿ custom: (5 elements)
           - name: "<uiFrameworkName>"
           - import: "<uiFrameworkImport>"
           - viewControllerType: "<viewControllerType>"
           - viewControllerSuperParameters: "<viewControllerSuperParameters>"
-      - viewControllerMethods: "<viewControllerMethods-Custom>"
-      - viewControllerProperties: "<viewControllerProperties-Custom>"
+          - viewControllerMethods: ""
   - viewControllableFlowType: "<viewControllableFlowType>"
   - viewControllableMockContents: "<viewControllableMockContents>"
   - viewControllableType: "<viewControllableType>"
   ▿ viewControllerImports: 2 members
     - "<viewControllerImports-1>"
     - "<viewControllerImports-2>"
+  - viewControllerStaticContent: ""
   - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
   - viewControllerUpdateComment: "<viewControllerUpdateComment>"
   - viewStateEmptyFactory: "<viewStateEmptyFactory>"

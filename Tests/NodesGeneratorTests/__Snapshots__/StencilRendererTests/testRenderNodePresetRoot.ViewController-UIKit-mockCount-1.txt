@@ -19,7 +19,7 @@ internal protocol RootReceiver: AnyObject {
  */
 internal final class RootViewController: <viewControllerType>, StateObserver {
 
-    <viewControllerProperties>
+    <viewControllerStaticContent>
 
     // periphery:ignore
     /// The view receiver.

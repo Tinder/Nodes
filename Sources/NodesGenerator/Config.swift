@@ -45,6 +45,7 @@ public struct Config: Equatable, Codable {
     public var viewControllableFlowType: String
     public var viewControllableType: String
     public var viewControllableMockContents: String
+    public var viewControllerStaticContent: String
     public var viewControllerSubscriptionsProperty: String
     public var viewControllerUpdateComment: String
     public var viewStateEmptyFactory: String
@@ -104,6 +105,7 @@ extension Config {
         viewControllableFlowType = "ViewControllableFlow"
         viewControllableType = "ViewControllable"
         viewControllableMockContents = ""
+        viewControllerStaticContent = ""
         viewControllerSubscriptionsProperty = """
             /// The collection of cancellable instances.
             private var cancellables: Set<AnyCancellable> = .init()
@@ -194,6 +196,9 @@ extension Config {
         viewControllableMockContents =
             (try? decoder.decodeString(CodingKeys.viewControllableMockContents))
             ?? defaults.viewControllableMockContents
+        viewControllerStaticContent =
+            (try? decoder.decodeString(CodingKeys.viewControllerStaticContent))
+            ?? defaults.viewControllerStaticContent
         viewControllerSubscriptionsProperty =
             (try? decoder.decodeString(CodingKeys.viewControllerSubscriptionsProperty))
             ?? defaults.viewControllerSubscriptionsProperty

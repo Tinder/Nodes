@@ -18,7 +18,7 @@ internal protocol <nodeName>Receiver: AnyObject {}
  */
 internal final class <nodeName>ViewController: <viewControllerType>, StateObserver {
 
-    <viewControllerProperties>
+    <viewControllerStaticContent>
 
     // periphery:ignore
     /// The view receiver.

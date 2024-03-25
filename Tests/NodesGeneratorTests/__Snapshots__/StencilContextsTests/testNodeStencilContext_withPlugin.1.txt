@@ -120,8 +120,8 @@
     - key: "view_controller_methods"
     - value: "<viewControllerMethods>"
   ▿ (2 elements)
-    - key: "view_controller_properties"
-    - value: "<viewControllerProperties>"
+    - key: "view_controller_static_content"
+    - value: "<viewControllerStaticContent>"
   ▿ (2 elements)
     - key: "view_controller_subscriptions_property"
     - value: "<viewControllerSubscriptionsProperty>"

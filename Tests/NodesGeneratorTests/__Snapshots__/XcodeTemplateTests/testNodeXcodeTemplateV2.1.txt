@@ -80,8 +80,8 @@
             - "<viewControllerImport>"
             - "AppKit"
             - "Nodes"
-          - viewControllerMethods: "<viewControllerMethods>"
-          - viewControllerProperties: "<viewControllerProperties>"
+          - viewControllerMethods: "@available(*, unavailable)\ninternal required init?(coder: NSCoder) {\n    preconditionFailure(\"init(coder:) has not been implemented\")\n}\n\noverride internal func loadView() {\n    view = NSView()\n}\n\noverride internal func viewDidLoad() {\n    super.viewDidLoad()\n    update(with: initialState)\n}\n\noverride internal func viewWillAppear() {\n    super.viewWillAppear()\n    observe(statePublisher).store(in: &cancellables)\n}\n\noverride internal func viewWillDisappear() {\n    super.viewWillDisappear()\n    cancellables.cancelAll()\n}"
+          - viewControllerStaticContent: ""
           - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
           - viewControllerSuperParameters: "nibName: nil, bundle: nil"
           ▿ viewControllerTestsImports: 2 elements
@@ -190,8 +190,8 @@
             - "<viewControllerImport>"
             - "AppKit"
             - "Nodes"
-          - viewControllerMethods: "<viewControllerMethods>"
-          - viewControllerProperties: "<viewControllerProperties>"
+          - viewControllerMethods: "@available(*, unavailable)\ninternal required init?(coder: NSCoder) {\n    preconditionFailure(\"init(coder:) has not been implemented\")\n}\n\noverride internal func loadView() {\n    view = NSView()\n}\n\noverride internal func viewDidLoad() {\n    super.viewDidLoad()\n    update(with: initialState)\n}\n\noverride internal func viewWillAppear() {\n    super.viewWillAppear()\n    observe(statePublisher).store(in: &cancellables)\n}\n\noverride internal func viewWillDisappear() {\n    super.viewWillDisappear()\n    cancellables.cancelAll()\n}"
+          - viewControllerStaticContent: ""
           - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
           - viewControllerSuperParameters: "nibName: nil, bundle: nil"
           ▿ viewControllerTestsImports: 2 elements
@@ -300,8 +300,8 @@
             - "<viewControllerImport>"
             - "Nodes"
             - "UIKit"
-          - viewControllerMethods: "<viewControllerMethods>"
-          - viewControllerProperties: "<viewControllerProperties>"
+          - viewControllerMethods: "@available(*, unavailable)\ninternal required init?(coder: NSCoder) {\n    preconditionFailure(\"init(coder:) has not been implemented\")\n}\n\noverride internal func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n    update(with: initialState)\n}\n\noverride internal func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(statePublisher).store(in: &cancellables)\n}\n\noverride internal func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.cancelAll()\n}"
+          - viewControllerStaticContent: ""
           - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
           - viewControllerSuperParameters: "nibName: nil, bundle: nil"
           ▿ viewControllerTestsImports: 2 elements
@@ -410,8 +410,8 @@
             - "<viewControllerImport>"
             - "Nodes"
             - "UIKit"
-          - viewControllerMethods: "<viewControllerMethods>"
-          - viewControllerProperties: "<viewControllerProperties>"
+          - viewControllerMethods: "@available(*, unavailable)\ninternal required init?(coder: NSCoder) {\n    preconditionFailure(\"init(coder:) has not been implemented\")\n}\n\noverride internal func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n    update(with: initialState)\n}\n\noverride internal func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(statePublisher).store(in: &cancellables)\n}\n\noverride internal func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.cancelAll()\n}"
+          - viewControllerStaticContent: ""
           - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
           - viewControllerSuperParameters: "nibName: nil, bundle: nil"
           ▿ viewControllerTestsImports: 2 elements
@@ -520,8 +520,8 @@
             - "<viewControllerImport>"
             - "Nodes"
             - "SwiftUI"
-          - viewControllerMethods: "<viewControllerMethods>"
-          - viewControllerProperties: "<viewControllerProperties>"
+          - viewControllerMethods: ""
+          - viewControllerStaticContent: ""
           - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
           - viewControllerSuperParameters: ""
           ▿ viewControllerTestsImports: 2 elements
@@ -630,8 +630,8 @@
             - "<viewControllerImport>"
             - "Nodes"
             - "SwiftUI"
-          - viewControllerMethods: "<viewControllerMethods>"
-          - viewControllerProperties: "<viewControllerProperties>"
+          - viewControllerMethods: ""
+          - viewControllerStaticContent: ""
           - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
           - viewControllerSuperParameters: ""
           ▿ viewControllerTestsImports: 2 elements
@@ -741,7 +741,7 @@
             - "<viewControllerImport>"
             - "Nodes"
           - viewControllerMethods: "<viewControllerMethods>"
-          - viewControllerProperties: "<viewControllerProperties>"
+          - viewControllerStaticContent: ""
           - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
           - viewControllerSuperParameters: "<viewControllerSuperParameters>"
           ▿ viewControllerTestsImports: 2 elements
@@ -851,7 +851,7 @@
             - "<viewControllerImport>"
             - "Nodes"
           - viewControllerMethods: "<viewControllerMethods>"
-          - viewControllerProperties: "<viewControllerProperties>"
+          - viewControllerStaticContent: ""
           - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
           - viewControllerSuperParameters: "<viewControllerSuperParameters>"
           ▿ viewControllerTestsImports: 2 elements

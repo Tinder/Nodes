@@ -11,55 +11,93 @@ import Yams
 final class UIFrameworkTests: XCTestCase {
 
     func testInitWithAppKit() {
-        let expected: UIFramework = .makeDefaultAppKitFramework()
         let framework: UIFramework = .init(framework: .appKit)
-        expect(framework.kind) == expected.kind
-        expect(framework.name) == expected.name
-        expect(framework.import) == expected.import
-        expect(framework.viewControllerType) == expected.viewControllerType
-        expect(framework.viewControllerSuperParameters) == expected.viewControllerSuperParameters
-        expect(framework.viewControllerProperties) == expected.viewControllerProperties
-        expect(framework.viewControllerMethods) == expected.viewControllerMethods
+        expect(framework.kind) == .appKit
+        expect(framework.name) == "AppKit"
+        expect(framework.import) == "AppKit"
+        expect(framework.viewControllerType) == "NSViewController"
+        expect(framework.viewControllerSuperParameters) == "nibName: nil, bundle: nil"
+        expect(framework.viewControllerMethods) == """
+            @available(*, unavailable)
+            internal required init?(coder: NSCoder) {
+                preconditionFailure("init(coder:) has not been implemented")
+            }
+
+            override internal func loadView() {
+                view = NSView()
+            }
+
+            override internal func viewDidLoad() {
+                super.viewDidLoad()
+                update(with: initialState)
+            }
+
+            override internal func viewWillAppear() {
+                super.viewWillAppear()
+                observe(statePublisher).store(in: &cancellables)
+            }
+
+            override internal func viewWillDisappear() {
+                super.viewWillDisappear()
+                cancellables.cancelAll()
+            }
+            """
     }
 
     func testInitWithUIKit() {
-        let expected: UIFramework = .makeDefaultUIKitFramework()
         let framework: UIFramework = .init(framework: .uiKit)
-        expect(framework.kind) == expected.kind
-        expect(framework.name) == expected.name
-        expect(framework.import) == expected.import
-        expect(framework.viewControllerType) == expected.viewControllerType
-        expect(framework.viewControllerSuperParameters) == expected.viewControllerSuperParameters
-        expect(framework.viewControllerProperties) == expected.viewControllerProperties
-        expect(framework.viewControllerMethods) == expected.viewControllerMethods
+        expect(framework.kind) == .uiKit
+        expect(framework.name) == "UIKit"
+        expect(framework.import) == "UIKit"
+        expect(framework.viewControllerType) == "UIViewController"
+        expect(framework.viewControllerSuperParameters) == "nibName: nil, bundle: nil"
+        expect(framework.viewControllerMethods) == """
+            @available(*, unavailable)
+            internal required init?(coder: NSCoder) {
+                preconditionFailure("init(coder:) has not been implemented")
+            }
+
+            override internal func viewDidLoad() {
+                super.viewDidLoad()
+                view.backgroundColor = .systemBackground
+                update(with: initialState)
+            }
+
+            override internal func viewWillAppear(_ animated: Bool) {
+                super.viewWillAppear(animated)
+                observe(statePublisher).store(in: &cancellables)
+            }
+
+            override internal func viewWillDisappear(_ animated: Bool) {
+                super.viewWillDisappear(animated)
+                cancellables.cancelAll()
+            }
+            """
     }
 
     func testInitWithSwiftUI() {
-        let expected: UIFramework = .makeDefaultSwiftUIFramework()
         let framework: UIFramework = .init(framework: .swiftUI)
-        expect(framework.kind) == expected.kind
-        expect(framework.name) == expected.name
-        expect(framework.import) == expected.import
-        expect(framework.viewControllerType) == expected.viewControllerType
-        expect(framework.viewControllerSuperParameters) == expected.viewControllerSuperParameters
-        expect(framework.viewControllerProperties) == expected.viewControllerProperties
-        expect(framework.viewControllerMethods) == expected.viewControllerMethods
+        expect(framework.kind) == .swiftUI
+        expect(framework.name) == "SwiftUI"
+        expect(framework.import) == "SwiftUI"
+        expect(framework.viewControllerType) == "UIHostingController"
+        expect(framework.viewControllerSuperParameters).to(beEmpty())
+        expect(framework.viewControllerMethods).to(beEmpty())
     }
 
     func testInitWithCustom() {
         let custom: UIFramework.Framework = .custom(name: "<uiFrameworkName>",
                                                     import: "<uiFrameworkImport>",
                                                     viewControllerType: "<viewControllerType>",
-                                                    viewControllerSuperParameters: "<viewControllerSuperParameters>")
-        let expected: UIFramework = .makeDefaultFramework(for: custom)
+                                                    viewControllerSuperParameters: "<viewControllerSuperParameters>",
+                                                    viewControllerMethods: "<viewControllerMethods>")
         let framework: UIFramework = .init(framework: custom)
-        expect(framework.kind) == expected.kind
-        expect(framework.name) == expected.name
-        expect(framework.import) == expected.import
-        expect(framework.viewControllerType) == expected.viewControllerType
-        expect(framework.viewControllerSuperParameters) == expected.viewControllerSuperParameters
-        expect(framework.viewControllerProperties) == expected.viewControllerProperties
-        expect(framework.viewControllerMethods) == expected.viewControllerMethods
+        expect(framework.kind) == .custom
+        expect(framework.name) == "<uiFrameworkName>"
+        expect(framework.import) == "<uiFrameworkImport>"
+        expect(framework.viewControllerType) == "<viewControllerType>"
+        expect(framework.viewControllerSuperParameters) == "<viewControllerSuperParameters>"
+        expect(framework.viewControllerMethods) == "<viewControllerMethods>"
     }
 
     func testDecoding() throws {

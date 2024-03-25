@@ -64,7 +64,8 @@ final class XcodeTemplatesTests: XCTestCase {
             UIFramework(framework: .custom(name: "Custom",
                                            import: "CustomFramework",
                                            viewControllerType: "CustomViewController",
-                                           viewControllerSuperParameters: ""))
+                                           viewControllerSuperParameters: "<viewControllerSuperParameters>",
+                                           viewControllerMethods: "<viewControllerMethods>"))
         ]
         return config
     }
