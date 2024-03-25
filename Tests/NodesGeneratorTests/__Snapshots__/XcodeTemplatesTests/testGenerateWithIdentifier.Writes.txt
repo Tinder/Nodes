@@ -525,6 +525,9 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/___FILEBASENAME___PluginList.swift"
     - atomically: true
   ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/___FILEBASENAME___PluginListTests.swift"
+    - atomically: true
+  ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
