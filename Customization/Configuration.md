@@ -7,7 +7,10 @@ While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/docume
 Specify a path to a custom config file by providing the `--config` option when executing `nodes-xcode-templates-gen`.
 
 <details>
-<summary><h4>Quick Start Project Setup</h4></summary>
+
+<summary><strong>Quick Start Project Setup</strong></summary>
+
+<br>
 
 If utilizing the [quick start project setup](https://github.com/TinderApp/Nodes#quick-start), the path can be set in the `project.yml` file:
 
@@ -22,6 +25,7 @@ The script that creates the presets in the quick start project should use the sa
 ```
 swift run --skip-build -- nodes-code-gen --preset "$PRESET" --author "$AUTHOR" --path "$1" --config "nodes.yml"
 ```
+
 </details>
 
 ### Sample Config File
