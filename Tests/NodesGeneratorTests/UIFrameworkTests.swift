@@ -110,41 +110,7 @@ final class UIFrameworkTests: XCTestCase {
             .forEach { assertSnapshot(of: $0, as: .dump, named: $0.kind.rawValue) }
     }
 
-    func testDecodingWithDefaults() throws {
-        try UIFramework.Kind
-            .allCases
-            .map(givenMinimalYAML)
-            .map(\.utf8)
-            .map(Data.init(_:))
-            .map { try $0.decoded(as: UIFramework.self, using: YAMLDecoder()) }
-            .forEach { assertSnapshot(of: $0, as: .dump, named: $0.kind.rawValue) }
-    }
-
     private func givenYAML(for kind: UIFramework.Kind) -> String {
-        switch kind {
-        case .appKit, .uiKit, .swiftUI:
-            return """
-                framework: \(kind.rawValue)
-                viewControllerProperties: <viewControllerProperties>
-                viewControllerMethods: <viewControllerMethods>
-                viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode>
-                """
-        case .custom:
-            return """
-                framework:
-                  custom:
-                    name: <uiFrameworkName>
-                    import: <uiFrameworkImport>
-                    viewControllerType: <viewControllerType>
-                    viewControllerSuperParameters: <viewControllerSuperParameters>
-                viewControllerProperties: <viewControllerProperties>
-                viewControllerMethods: <viewControllerMethods>
-                viewControllerMethodsForRootNode: <viewControllerMethodsForRootNode>
-                """
-        }
-    }
-
-    private func givenMinimalYAML(for kind: UIFramework.Kind) -> String {
         switch kind {
         case .appKit, .uiKit, .swiftUI:
             return "framework: \(kind.rawValue)"
@@ -156,6 +122,7 @@ final class UIFrameworkTests: XCTestCase {
                     import: <uiFrameworkImport>
                     viewControllerType: <viewControllerType>
                     viewControllerSuperParameters: <viewControllerSuperParameters>
+                    viewControllerMethods: <viewControllerMethods>
                 """
         }
     }

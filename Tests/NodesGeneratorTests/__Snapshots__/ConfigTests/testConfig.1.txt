@@ -65,7 +65,7 @@
           - import: "<uiFrameworkImport>"
           - viewControllerType: "<viewControllerType>"
           - viewControllerSuperParameters: "<viewControllerSuperParameters>"
-          - viewControllerMethods: ""
+          - viewControllerMethods: "<viewControllerMethods>"
   - viewControllableFlowType: "<viewControllableFlowType>"
   - viewControllableMockContents: "<viewControllableMockContents>"
   - viewControllableType: "<viewControllableType>"

@@ -132,20 +132,15 @@ final class ConfigTests: XCTestCase, TestFactories {
         """
         uiFrameworks:
           - framework: AppKit
-            viewControllerProperties: <viewControllerProperties-AppKit>
-            viewControllerMethods: <viewControllerMethods-AppKit>
           - framework: UIKit
-            viewControllerProperties: <viewControllerProperties-UIKit>
-            viewControllerMethods: <viewControllerMethods-UIKit>
           - framework: SwiftUI
-            viewControllerProperties: <viewControllerProperties-SwiftUI>
-            viewControllerMethods: <viewControllerMethods-SwiftUI>
           - framework:
               custom:
                 name: <uiFrameworkName>
                 import: <uiFrameworkImport>
                 viewControllerType: <viewControllerType>
                 viewControllerSuperParameters: <viewControllerSuperParameters>
+                viewControllerMethods: <viewControllerMethods>
             viewControllerProperties: <viewControllerProperties-Custom>
             viewControllerMethods: <viewControllerMethods-Custom>
         fileHeader: <fileHeader>

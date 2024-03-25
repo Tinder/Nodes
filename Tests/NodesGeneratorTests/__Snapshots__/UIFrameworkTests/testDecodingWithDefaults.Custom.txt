@@ -1,8 +1,0 @@
-▿ UIFramework
-  ▿ framework: Framework
-    ▿ custom: (5 elements)
-      - name: "<uiFrameworkName>"
-      - import: "<uiFrameworkImport>"
-      - viewControllerType: "<viewControllerType>"
-      - viewControllerSuperParameters: "<viewControllerSuperParameters>"
-      - viewControllerMethods: ""

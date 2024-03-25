@@ -5,4 +5,4 @@
       - import: "<uiFrameworkImport>"
       - viewControllerType: "<viewControllerType>"
       - viewControllerSuperParameters: "<viewControllerSuperParameters>"
-      - viewControllerMethods: ""
+      - viewControllerMethods: "<viewControllerMethods>"
