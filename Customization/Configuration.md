@@ -36,9 +36,9 @@ baseImports: []
 baseTestImports:
   - Nimble
   - XCTest
-reactiveImports: 
+reactiveImports:
   - Combine
-dependencyInjectionImports: 
+dependencyInjectionImports:
   - NeedleFoundation
 builderImports: []
 flowImports: []
@@ -66,7 +66,7 @@ publisherType: AnyPublisher
 publisherFailureType: Never
 contextGenericTypes:
   - AnyCancellable
-workerGenericTypes: 
+workerGenericTypes:
   - AnyCancellable
 isViewInjectedTemplateEnabled: true
 isPreviewProviderEnabled: false
@@ -74,7 +74,7 @@ isTestTemplatesGenerationEnabled: false
 isPeripheryCommentEnabled: false
 ```
 
-To control which UI Frameworks are made available within the new file dialog in Xcode, include configuration for AppKit, UIKit, or SwiftUI as shown below; or a fully custom UI framework may be configured for unique use cases. More than one UI framework can be included in the configuration. And by default, without providing any UI framework configuration, UIKit and SwiftUI (for iOS) are automatically configured. 
+To control which UI Frameworks are made available within the new file dialog in Xcode, include configuration for AppKit, UIKit, or SwiftUI as shown below; or a fully custom UI framework may be configured for unique use cases. More than one UI framework can be included in the configuration. And by default, without providing any UI framework configuration, UIKit and SwiftUI (for iOS) are automatically configured.
 
 > TIP: For use in an iOS app that allows both UIKit and SwiftUI, both may be enabled simultaneously if desired.
 

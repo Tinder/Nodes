@@ -83,7 +83,7 @@ To install Nodes' Xcode templates manually, first add Nodes as a dependency to a
 Then run the following shell command:
 
 ```
-swift run -- nodes-xcode-templates-gen --id "Xcode Templates" 
+swift run -- nodes-xcode-templates-gen --id "Xcode Templates"
 ```
 
 The Xcode templates will be installed to the following location to be made available within Xcode's new file dialog.
