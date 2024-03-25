@@ -254,7 +254,8 @@ extension Config {
             (key: "viewStatePropertyName", value: viewStatePropertyName),
             (key: "viewStateTransform", value: viewStateTransform)
         ]
-        for (key, value) in required where value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+        for (key, value): (String, String) in required
+        where value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             throw ConfigError.emptyStringNotAllowed(key: key)
         }
     }
