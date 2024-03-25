@@ -25,7 +25,7 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     /// The initial view state.
     private let initialState: RootViewState
 
-    /// <viewStatePropertyComment>.
+    /// <viewStatePropertyComment>
     private let <viewStatePropertyName>: <publisherType><RootViewState>
 
     private let label: UILabel = .init()
@@ -34,7 +34,7 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     ///
     /// - Parameters:
     ///   - initialState: The initial view state.
-    ///   - <viewStatePropertyName>: <viewStatePropertyComment>.
+    ///   - <viewStatePropertyName>: <viewStatePropertyComment>
     internal init(
         initialState: RootViewState,
         <viewStatePropertyName>: <publisherType><RootViewState>

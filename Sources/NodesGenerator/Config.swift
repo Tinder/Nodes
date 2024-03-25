@@ -117,7 +117,7 @@ extension Config {
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
             """
-        viewStatePropertyComment = "The view state publisher"
+        viewStatePropertyComment = "The view state publisher."
         viewStatePropertyName = "statePublisher"
         viewStateTransform = """
             Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()
