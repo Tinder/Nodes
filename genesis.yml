@@ -975,7 +975,7 @@ files:
                     guard nodesProjectDependency == nil
                     else {
                         print("Project Nodes Version: specified")
-                        fail("Mismatched Nodes Versions")
+                        fail("Mismatched Nodes Versions.")
                     }
                     print("Project Nodes Version: unspecified")
                     print("VALID: Matching Nodes Versions")
@@ -987,7 +987,7 @@ files:
                     else { fail("Failed to parse project Nodes version.") }
                     print("Project Nodes Version:", workspaceVersion)
                     guard packageVersion == workspaceVersion
-                    else { fail("Mismatched Nodes Versions") }
+                    else { fail("Mismatched Nodes Versions.") }
                     print("VALID: Matching Nodes Versions")
                 }
             - name: SwiftLint
