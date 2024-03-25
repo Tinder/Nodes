@@ -1,0 +1,26 @@
+//___FILEHEADER___
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+
+final class ___VARIABLE_productName___WorkerTests: XCTestCase {
+
+    private var worker: ___VARIABLE_productName___WorkerImp!
+
+    override func setUp() {
+        super.setUp()
+        worker = ___VARIABLE_productName___WorkerImp()
+    }
+
+    override func tearDown() {
+        worker = nil
+        super.tearDown()
+    }
+
+    func testWorking() {
+        expect { self.worker.isWorking } == false
+        worker.start()
+        expect { self.worker.isWorking } == true
+        worker.stop()
+        expect { self.worker.isWorking } == false
+    }
+}

@@ -11,7 +11,8 @@ internal struct WorkerXcodeTemplatePermutation: XcodeTemplatePermutation {
     internal init(name: String, config: Config) {
         self.name = name
         let worker: StencilTemplate = .worker
-        stencils = [worker]
+        let workerTests: StencilTemplate = .workerTests
+        stencils = [worker] + (config.isTestTemplatesGenerationEnabled ? [workerTests] : [])
         stencilContext = WorkerStencilContext(
             fileHeader: config.fileHeader,
             workerName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
