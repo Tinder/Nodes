@@ -13,9 +13,10 @@ internal struct WorkerXcodeTemplatePermutation: XcodeTemplatePermutation {
         let worker: StencilTemplate = .worker
         stencils = [worker]
         stencilContext = WorkerStencilContext(
-            fileHeader: config.fileHeader,
+            fileHeader: XcodeTemplateConstants.fileHeader,
             workerName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
             workerImports: worker.imports(with: config),
+            workerTestsImports: [],
             workerGenericTypes: config.workerGenericTypes,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
             isNimbleEnabled: config.isNimbleEnabled

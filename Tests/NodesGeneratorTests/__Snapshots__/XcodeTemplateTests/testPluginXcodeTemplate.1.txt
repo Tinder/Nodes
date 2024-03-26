@@ -4,7 +4,7 @@
     ▿ PluginXcodeTemplatePermutation
       - name: "Plugin"
       ▿ stencilContext: PluginStencilContext
-        - fileHeader: "<fileHeader>"
+        - fileHeader: "___FILEHEADER___"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: false
         ▿ pluginImports: 3 elements

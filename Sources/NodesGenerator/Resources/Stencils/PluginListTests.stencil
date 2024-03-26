@@ -1,4 +1,4 @@
-{{ file_header }}
+//{{ file_header }}
 
 #warning("Manually move this test file to the corresponding test target then delete this warning.")
 {% if plugin_list_tests_imports %}

@@ -25,4 +25,8 @@ public enum Preset: String {
             return false
         }
     }
+
+    internal var componentDependencies: String {
+        self == .app ? "fileprivate let appService: AppService = AppServiceImp()" : ""
+    }
 }

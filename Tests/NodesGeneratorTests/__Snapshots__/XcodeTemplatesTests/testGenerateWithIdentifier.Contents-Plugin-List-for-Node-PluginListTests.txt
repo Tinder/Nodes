@@ -1,0 +1,38 @@
+//___FILEHEADER___
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+
+@MainActor
+final class ___VARIABLE_productName___PluginListTests: XCTestCase {
+
+    private var pluginList: ___VARIABLE_productName___PluginListImp!
+
+    override func setUp() {
+        super.setUp()
+        pluginList = ___VARIABLE_productName___PluginListImp(componentFactory: injectComponent { parent in
+            ___VARIABLE_productName___PluginListComponent(parent: parent)
+        } with: {
+            // swiftlint:disable:next direct_return
+            let dependency: ___VARIABLE_productName___PluginListDependencyMock = .init()
+            // dependency.<dependencyName> = <dependencyName>Mock
+            return dependency
+        })
+    }
+
+    override func tearDown() {
+        pluginList = nil
+        super.tearDown()
+    }
+
+    func testCreateAll() {
+        expect { self.pluginList.createAll() }.to(beEmpty())
+    }
+
+    func testCreate() {
+        expect { self.pluginList.create() } == nil
+    }
+
+    func testCreateWithKey() {
+        expect { self.pluginList.create(key: "<key>") } == nil
+    }
+}

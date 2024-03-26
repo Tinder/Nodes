@@ -12,6 +12,10 @@ final class XcodeTemplateConstantsTests: XCTestCase {
         expect(XcodeTemplateConstants.fileBaseName) == "___FILEBASENAME___"
     }
 
+    func testFileHeader() {
+        expect(XcodeTemplateConstants.fileHeader) == "___FILEHEADER___"
+    }
+
     func testProductName() {
         expect(XcodeTemplateConstants.productName) == "productName"
     }

@@ -1,7 +1,7 @@
 ▿ WorkerXcodeTemplatePermutation
   - name: "<name>"
   ▿ stencilContext: WorkerStencilContext
-    - fileHeader: "<fileHeader>"
+    - fileHeader: "___FILEHEADER___"
     - isNimbleEnabled: false
     - isPeripheryCommentEnabled: false
     ▿ workerGenericTypes: 1 element
@@ -11,5 +11,6 @@
       - "<reactiveImport>"
       - "Nodes"
     - workerName: "___VARIABLE_productName___"
+    - workerTestsImports: 0 elements
   ▿ stencils: 1 element
     - Worker

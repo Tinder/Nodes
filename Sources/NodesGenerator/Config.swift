@@ -30,7 +30,6 @@ public struct Config: Equatable, Codable {
     }
 
     public var uiFrameworks: [UIFramework]
-    public var fileHeader: String
     public var baseImports: Set<String>
     public var baseTestImports: Set<String>
     public var reactiveImports: Set<String>
@@ -90,7 +89,6 @@ extension Config {
 
     public init() {
         uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
-        fileHeader = "//___FILEHEADER___"
         baseImports = []
         baseTestImports = ["Nimble", "XCTest"]
         reactiveImports = ["Combine"]
@@ -119,7 +117,7 @@ extension Config {
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
             """
-        viewStatePropertyComment = "The view state publisher"
+        viewStatePropertyComment = "The view state publisher."
         viewStatePropertyName = "statePublisher"
         viewStateTransform = """
             Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()
@@ -151,9 +149,6 @@ extension Config {
             uiFrameworks = defaults.uiFrameworks
         }
 
-        fileHeader =
-            (try? decoder.decodeString(CodingKeys.fileHeader))
-            ?? defaults.fileHeader
         baseImports =
             (try? decoder.decode(CodingKeys.baseImports))
             ?? defaults.baseImports
@@ -259,7 +254,8 @@ extension Config {
             (key: "viewStatePropertyName", value: viewStatePropertyName),
             (key: "viewStateTransform", value: viewStateTransform)
         ]
-        for (key, value) in required where value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+        for (key, value): (String, String) in required
+        where value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             throw ConfigError.emptyStringNotAllowed(key: key)
         }
     }

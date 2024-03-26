@@ -1,4 +1,4 @@
-{{ file_header }}
+//{{ file_header }}
 {% if builder_imports %}
 
 {% for import in builder_imports %}
@@ -105,9 +105,9 @@ public final class {{ node_name }}Component: Component
      }
 
      */
-    {% if node_name == "App" %}
+    {% if component_dependencies %}
 
-    fileprivate let appService: AppService = AppServiceImp()
+    {{ component_dependencies }}
     {% endif %}
 
     {% if is_periphery_comment_enabled %}

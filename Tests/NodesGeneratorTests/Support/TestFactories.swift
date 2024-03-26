@@ -22,7 +22,6 @@ extension TestFactories {
                                            viewControllerSuperParameters: "<viewControllerSuperParameters>",
                                            viewControllerMethods: "<viewControllerMethods>"))
         ]
-        config.fileHeader = "<fileHeader>"
         config.baseImports = ["<baseImport>"]
         config.baseTestImports = ["<baseTestImport>"]
         config.reactiveImports = ["<reactiveImport>"]
@@ -236,6 +235,7 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
             pluginListImports: .mock(with: "pluginListImport", count: mockCount),
+            pluginListTestsImports: .mock(with: "pluginListTestsImports", count: mockCount),
             viewControllableFlowType: "<viewControllableFlowType>",
             isPeripheryCommentEnabled: mockCount > 0,
             isNimbleEnabled: mockCount > 0
@@ -247,6 +247,7 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",
             workerImports: .mock(with: "workerImport", count: mockCount),
+            workerTestsImports: .mock(with: "workerTestsImport", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0,
             isNimbleEnabled: mockCount > 0

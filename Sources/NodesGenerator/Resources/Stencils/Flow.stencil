@@ -1,4 +1,4 @@
-{{ file_header }}
+//{{ file_header }}
 {% if flow_imports %}
 
 {% for import in flow_imports %}

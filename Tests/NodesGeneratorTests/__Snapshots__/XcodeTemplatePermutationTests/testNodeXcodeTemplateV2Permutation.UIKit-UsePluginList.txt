@@ -19,6 +19,7 @@
       - "<dependencyInjectionImport>"
       - "<reactiveImport>"
       - "Nodes"
+    - componentDependencies: ""
     ▿ contextGenericTypes: 1 element
       - "<contextGenericType>"
     ▿ contextImports: 3 elements
@@ -35,7 +36,7 @@
         ▿ (2 elements)
           - key: "type"
           - value: "<dependencyType>"
-    - fileHeader: "<fileHeader>"
+    - fileHeader: "___FILEHEADER___"
     ▿ flowImports: 3 elements
       - "<baseImport>"
       - "<flowImport>"

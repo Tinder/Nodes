@@ -7,7 +7,10 @@ While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/docume
 Specify a path to a custom config file by providing the `--config` option when executing `nodes-xcode-templates-gen`.
 
 <details>
-<summary><h4>Quick Start Project Setup</h4></summary>
+
+<summary><strong>Quick Start Project Setup</strong></summary>
+
+<br>
 
 If utilizing the [quick start project setup](https://github.com/TinderApp/Nodes#quick-start), the path can be set in the `project.yml` file:
 
@@ -22,6 +25,7 @@ The script that creates the presets in the quick start project should use the sa
 ```
 swift run --skip-build -- nodes-code-gen --preset "$PRESET" --author "$AUTHOR" --path "$1" --config "nodes.yml"
 ```
+
 </details>
 
 ### Sample Config File
@@ -31,17 +35,17 @@ All values shown in the samples below are the defaults.
 > TIP: It is only necessary to include config options that are different from the defaults.
 
 ```yaml
-fileHeader: //___FILEHEADER___
 baseImports: []
 baseTestImports:
   - Nimble
   - XCTest
-reactiveImports: 
+reactiveImports:
   - Combine
-dependencyInjectionImports: 
+dependencyInjectionImports:
   - NeedleFoundation
 builderImports: []
 flowImports: []
+pluginListImports: []
 viewControllerImports: []
 dependencies: []
 analyticsProperties: []
@@ -66,15 +70,15 @@ publisherType: AnyPublisher
 publisherFailureType: Never
 contextGenericTypes:
   - AnyCancellable
-workerGenericTypes: 
+workerGenericTypes:
   - AnyCancellable
 isViewInjectedTemplateEnabled: true
 isPreviewProviderEnabled: false
-isTestTemplatesGenerationEnabled: false
+isTestTemplatesGenerationEnabled: true
 isPeripheryCommentEnabled: false
 ```
 
-To control which UI Frameworks are made available within the new file dialog in Xcode, include configuration for AppKit, UIKit, or SwiftUI as shown below; or a fully custom UI framework may be configured for unique use cases. More than one UI framework can be included in the configuration. And by default, without providing any UI framework configuration, UIKit and SwiftUI (for iOS) are automatically configured. 
+To control which UI Frameworks are made available within the new file dialog in Xcode, include configuration for AppKit, UIKit, or SwiftUI as shown below; or a fully custom UI framework may be configured for unique use cases. More than one UI framework can be included in the configuration. And by default, without providing any UI framework configuration, UIKit and SwiftUI (for iOS) are automatically configured.
 
 > TIP: For use in an iOS app that allows both UIKit and SwiftUI, both may be enabled simultaneously if desired.
 

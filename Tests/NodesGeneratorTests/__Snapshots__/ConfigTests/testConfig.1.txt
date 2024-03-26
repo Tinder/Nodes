@@ -28,7 +28,6 @@
   ▿ dependencyInjectionImports: 2 members
     - "<dependencyInjectionImports-1>"
     - "<dependencyInjectionImports-2>"
-  - fileHeader: "<fileHeader>"
   ▿ flowImports: 2 members
     - "<flowImports-1>"
     - "<flowImports-2>"

@@ -15,6 +15,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
     private let contextTestsImports: [String]
     private let flowTestsImports: [String]
     private let dependencies: [[String: Any]]
+    private let componentDependencies: String
     private let analyticsProperties: [[String: Any]]
     private let flowProperties: [[String: Any]]
     private let viewControllableFlowType: String
@@ -39,6 +40,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             "context_tests_imports": contextTestsImports,
             "flow_tests_imports": flowTestsImports,
             "dependencies": dependencies,
+            "component_dependencies": componentDependencies,
             "analytics_properties": analyticsProperties,
             "flow_properties": flowProperties,
             "view_controllable_flow_type": viewControllableFlowType,
@@ -51,6 +53,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         ]
     }
 
+    // swiftlint:disable:next function_default_parameter_at_end
     public init(
         fileHeader: String,
         nodeName: String,
@@ -63,6 +66,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         contextTestsImports: Set<String>,
         flowTestsImports: Set<String>,
         dependencies: [Config.Variable],
+        componentDependencies: String = "",
         analyticsProperties: [Config.Variable],
         flowProperties: [Config.Variable],
         viewControllableFlowType: String,
@@ -86,6 +90,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             contextTestsImports: contextTestsImports,
             flowTestsImports: flowTestsImports,
             dependencies: dependencies,
+            componentDependencies: componentDependencies,
             analyticsProperties: analyticsProperties,
             flowProperties: flowProperties,
             viewControllableFlowType: viewControllableFlowType,
@@ -135,6 +140,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             contextTestsImports: contextTestsImports,
             flowTestsImports: flowTestsImports,
             dependencies: dependencies,
+            componentDependencies: preset.componentDependencies,
             analyticsProperties: analyticsProperties,
             flowProperties: flowProperties,
             viewControllableFlowType: viewControllableFlowType,
@@ -160,6 +166,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         contextTestsImports: Set<String>,
         flowTestsImports: Set<String>,
         dependencies: [Config.Variable],
+        componentDependencies: String,
         analyticsProperties: [Config.Variable],
         flowProperties: [Config.Variable],
         viewControllableFlowType: String,
@@ -183,6 +190,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         self.contextTestsImports = contextTestsImports.sortedImports()
         self.flowTestsImports = flowTestsImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)
+        self.componentDependencies = componentDependencies
         self.analyticsProperties = analyticsProperties.map(\.dictionary)
         self.flowProperties = flowProperties.map(\.dictionary)
         self.viewControllableFlowType = viewControllableFlowType

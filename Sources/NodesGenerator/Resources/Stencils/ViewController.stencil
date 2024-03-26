@@ -1,4 +1,4 @@
-{{ file_header }}
+//{{ file_header }}
 {% if view_controller_imports %}
 
 {% for import in view_controller_imports %}
@@ -42,7 +42,7 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     /// The initial view state.
     private let initialState: {{ node_name }}ViewState
 
-    /// {{ view_state_property_comment }}.
+    /// {{ view_state_property_comment }}
     private let {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
     {% if node_name == "Root" %}
 
@@ -53,7 +53,7 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     ///
     /// - Parameters:
     ///   - initialState: The initial view state.
-    ///   - {{ view_state_property_name }}: {{ view_state_property_comment }}.
+    ///   - {{ view_state_property_name }}: {{ view_state_property_comment }}
     internal init(
         initialState: {{ node_name }}ViewState,
         {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>

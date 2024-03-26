@@ -1,4 +1,4 @@
-▿ 21 key/value pairs
+▿ 22 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -21,6 +21,9 @@
     - key: "builder_imports"
     ▿ value: 1 element
       - "<builderImport>"
+  ▿ (2 elements)
+    - key: "component_dependencies"
+    - value: ""
   ▿ (2 elements)
     - key: "context_generic_types"
     ▿ value: 1 element

@@ -8,8 +8,18 @@ import NodesGenerator
 @main
 internal struct NodesXcodeTemplatesGeneratorCommand: ParsableCommand {
 
-    internal static let configuration: CommandConfiguration = .init(commandName: "nodes-xcode-templates-gen",
-                                                                    abstract: "Nodes Xcode Templates Generator")
+    #if swift(>=5.10)
+    // swiftlint:disable:next explicit_acl type_contents_order
+    nonisolated(unsafe) internal static let configuration: CommandConfiguration = .init(
+        commandName: "nodes-xcode-templates-gen",
+        abstract: "Nodes Xcode Templates Generator"
+    )
+    #else
+    internal static let configuration: CommandConfiguration = .init(
+        commandName: "nodes-xcode-templates-gen",
+        abstract: "Nodes Xcode Templates Generator"
+    )
+    #endif
 
     @Option(name: .customLong("id"), help: "The Xcode templates identifier.")
     private var identifier: String

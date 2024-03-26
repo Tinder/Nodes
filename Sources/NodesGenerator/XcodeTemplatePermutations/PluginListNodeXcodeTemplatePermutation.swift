@@ -11,11 +11,13 @@ internal struct PluginListNodeXcodeTemplatePermutation: XcodeTemplatePermutation
     internal init(name: String, config: Config) {
         self.name = name
         let pluginList: StencilTemplate = .pluginList
-        stencils = [pluginList]
+        let pluginListTests: StencilTemplate = .pluginListTests
+        stencils = [pluginList] + (config.isTestTemplatesGenerationEnabled ? [pluginListTests] : [])
         stencilContext = PluginListStencilContext(
-            fileHeader: config.fileHeader,
+            fileHeader: XcodeTemplateConstants.fileHeader,
             pluginListName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
             pluginListImports: pluginList.imports(with: config),
+            pluginListTestsImports: [],
             viewControllableFlowType: config.viewControllableFlowType,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
             isNimbleEnabled: config.isNimbleEnabled

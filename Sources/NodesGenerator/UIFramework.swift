@@ -150,9 +150,11 @@ public struct UIFramework: Equatable, Codable {
                 self = try Self.decodeUsingKeyedContainer(with: decoder)
                 return
             }
-            guard let kind: Kind = .init(rawValue: framework) else {
+            guard let kind: Kind = .init(rawValue: framework)
+            else {
                 throw DecodingError.typeMismatch(Self.self, DecodingError.Context(
-                    codingPath: container.codingPath, debugDescription: "Unsupported framework: \(framework)"
+                    codingPath: container.codingPath,
+                    debugDescription: "Unsupported framework: \(framework)"
                 ))
             }
             switch kind {
@@ -164,16 +166,19 @@ public struct UIFramework: Equatable, Codable {
                 self = .swiftUI
             default:
                 throw DecodingError.typeMismatch(Self.self, DecodingError.Context(
-                    codingPath: container.codingPath, debugDescription: "Custom framework must be an object."
+                    codingPath: container.codingPath,
+                    debugDescription: "Custom framework must be an object."
                 ))
             }
         }
 
         private static func decodeUsingKeyedContainer(with decoder: Decoder) throws -> Self {
             let container: KeyedDecodingContainer<CodingKeys> = try decoder.container(keyedBy: CodingKeys.self)
-            guard container.allKeys.count == 1, let key: CodingKeys = container.allKeys.first else {
+            guard container.allKeys.count == 1, let key: CodingKeys = container.allKeys.first
+            else {
                 throw DecodingError.typeMismatch(Self.self, DecodingError.Context(
-                    codingPath: container.codingPath, debugDescription: "Expected only one key."
+                    codingPath: container.codingPath,
+                    debugDescription: "Expected only one key."
                 ))
             }
             switch key {
@@ -184,9 +189,8 @@ public struct UIFramework: Equatable, Codable {
             case .swiftUI:
                 return .swiftUI
             case .custom:
-                let container: KeyedDecodingContainer<CustomCodingKeys> = try container.nestedContainer(
-                    keyedBy: CustomCodingKeys.self, forKey: .custom
-                )
+                let container: KeyedDecodingContainer<CustomCodingKeys> = try container
+                    .nestedContainer(keyedBy: CustomCodingKeys.self, forKey: .custom)
                 let name: String = try container
                     .decode(String.self, forKey: .name)
                 let `import`: String = try container
@@ -202,7 +206,8 @@ public struct UIFramework: Equatable, Codable {
                     (key: "import", value: `import`),
                     (key: "viewControllerType", value: viewControllerType)
                 ]
-                for (key, value) in required where value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                for (key, value): (String, String) in required
+                where value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                     throw Config.ConfigError.emptyStringNotAllowed(key: key)
                 }
                 return .custom(name: name,

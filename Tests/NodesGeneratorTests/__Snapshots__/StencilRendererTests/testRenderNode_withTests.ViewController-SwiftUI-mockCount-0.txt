@@ -1,4 +1,4 @@
-<fileHeader>
+//<fileHeader>
 
 /**
  PURPOSE:
@@ -32,14 +32,14 @@ internal struct <nodeName>View {
     /// The initial view state.
     private let initialState: <nodeName>ViewState
 
-    /// <viewStatePropertyComment>.
+    /// <viewStatePropertyComment>
     private let <viewStatePropertyName>: <publisherType><<nodeName>ViewState>
 
     /// The initializer.
     ///
     /// - Parameters:
     ///   - initialState: The initial view state.
-    ///   - <viewStatePropertyName>: <viewStatePropertyComment>.
+    ///   - <viewStatePropertyName>: <viewStatePropertyComment>
     internal init(
         initialState: <nodeName>ViewState,
         <viewStatePropertyName>: <publisherType><<nodeName>ViewState>

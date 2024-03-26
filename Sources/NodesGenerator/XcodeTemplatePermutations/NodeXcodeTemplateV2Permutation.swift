@@ -15,7 +15,7 @@ internal struct NodeXcodeTemplateV2Permutation: XcodeTemplatePermutation {
         let productName: String = XcodeTemplateConstants.variable(XcodeTemplateConstants.productName)
         // swiftlint:disable:next force_try
         stencilContext = try! NodeStencilContext(
-            fileHeader: config.fileHeader,
+            fileHeader: XcodeTemplateConstants.fileHeader,
             nodeName: productName,
             pluginName: productName,
             pluginListName: usePluginList ? XcodeTemplateConstants.variable(XcodeTemplateConstants.pluginListName) : "",

@@ -8,7 +8,7 @@ import XCTest
 
 final class PresetGeneratorTests: XCTestCase {
 
-    private let fileHeader: String = "//\n//  Created by <author> on <date>.\n//"
+    private let fileHeader: String = "\n//  Created by <author> on <date>.\n//"
 
     func testGenerateAppPreset() throws {
         let fileSystem: FileSystemMock = .init()

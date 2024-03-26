@@ -9,8 +9,18 @@ import NodesGenerator
 @main
 internal struct NodesCodeGeneratorCommand: ParsableCommand {
 
-    internal static let configuration: CommandConfiguration = .init(commandName: "nodes-code-gen",
-                                                                    abstract: "Nodes Code Generator")
+    #if swift(>=5.10)
+    // swiftlint:disable:next explicit_acl type_contents_order
+    nonisolated(unsafe) internal static let configuration: CommandConfiguration = .init(
+        commandName: "nodes-code-gen",
+        abstract: "Nodes Code Generator"
+    )
+    #else
+    internal static let configuration: CommandConfiguration = .init(
+        commandName: "nodes-code-gen",
+        abstract: "Nodes Code Generator"
+    )
+    #endif
 
     @Option(help: "The name of the preset. (App|Scene|Window|Root)")
     private var preset: Preset
@@ -28,7 +38,7 @@ internal struct NodesCodeGeneratorCommand: ParsableCommand {
         let config: Config = try configPath.flatMap { try Config(at: $0) } ?? Config()
         let dateFormatter: DateFormatter = .init()
         dateFormatter.dateStyle = .short
-        let fileHeader: String = "//\n//  Created by \(author) on \(dateFormatter.string(from: Date())).\n//"
+        let fileHeader: String = "\n//  Created by \(author) on \(dateFormatter.string(from: Date())).\n//"
         let directory: URL = .init(fileURLWithPath: outputPath)
         try PresetGenerator(config: config).generate(preset: preset, with: fileHeader, into: directory)
     }

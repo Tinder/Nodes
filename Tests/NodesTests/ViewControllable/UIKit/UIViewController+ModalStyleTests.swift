@@ -20,10 +20,7 @@ final class UIViewControllerModalStyleTests: XCTestCase {
 
         let viewController: UIViewController = givenViewController(with: modalStyle)
         expect(viewController.modalPresentationStyle) == .fullScreen
-
-        if #available(iOS 13.0, tvOS 13.0, *) {
-            expect(viewController.isModalInPresentation) == true
-        }
+        expect(viewController.isModalInPresentation) == true
     }
 
     @MainActor
@@ -34,14 +31,9 @@ final class UIViewControllerModalStyleTests: XCTestCase {
 
         let viewController: UIViewController = givenViewController(with: modalStyle)
         expect(viewController.modalPresentationStyle) == .overFullScreen
-
-        if #available(iOS 13.0, tvOS 13.0, *) {
-            expect(viewController.isModalInPresentation) == true
-        }
+        expect(viewController.isModalInPresentation) == true
     }
 
-    @available(iOS 13.0, *)
-    @available(tvOS, unavailable)
     @MainActor
     func testPageSheet() {
 
@@ -53,8 +45,6 @@ final class UIViewControllerModalStyleTests: XCTestCase {
         expect(viewController.isModalInPresentation) == true
     }
 
-    @available(iOS 13.0, *)
-    @available(tvOS, unavailable)
     @MainActor
     func testFormSheet() {
 

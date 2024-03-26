@@ -291,14 +291,14 @@ public enum DebugInformation {
 
     @available(iOS 13.0, OSX 10.15, *)
     public static func publisher() -> AnyPublisher<Self, Never> {
-        FlowWillStartNotification.publisher()
-            .merge(with: FlowDidEndNotification.publisher())
-            .merge(with: FlowWillAttachNotification.publisher())
-            .merge(with: FlowDidDetachNotification.publisher())
-            .merge(with: FlowControllerWillAttachNotification.publisher())
-            .merge(with: FlowControllerDidDetachNotification.publisher())
-            .receive(on: queue)
-            .eraseToAnyPublisher()
+        Publishers.MergeMany(FlowWillStartNotification.publisher(),
+                             FlowDidEndNotification.publisher(),
+                             FlowWillAttachNotification.publisher(),
+                             FlowDidDetachNotification.publisher(),
+                             FlowControllerWillAttachNotification.publisher(),
+                             FlowControllerDidDetachNotification.publisher())
+        .receive(on: queue)
+        .eraseToAnyPublisher()
     }
 }
 
