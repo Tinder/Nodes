@@ -954,10 +954,10 @@ files:
 
                 guard let packageDictionary: [String: Any] = try json(packageData),
                       let packageDependencies: [[String: Any]] = packageDictionary["dependencies"] as? [[String: Any]],
-                      let nodesPackageDependency: [String: Any] = packageDependencies.first(where: {
+                      let packageDependency: [String: Any] = packageDependencies.first(where: {
                           $0["identity"] as? String == "nodes"
                       }),
-                      let packageVersion: String = nodesPackageDependency["version"] as? String
+                      let packageVersion: String = packageDependency["version"] as? String
                 else { fail("Failed to parse package Nodes version.") }
 
                 guard let workspaceDictionary: [String: Any] = try json(workspaceData),
@@ -965,14 +965,14 @@ files:
                       let workspaceDependencies: [[String: Any]] = workspaceObject["dependencies"] as? [[String: Any]]
                 else { fail("Failed to parse project dependencies.") }
 
-                let nodesProjectDependency: [String: Any]? = workspaceDependencies.first {
+                let workspaceDependency: [String: Any]? = workspaceDependencies.first {
                     ($0["packageRef"] as? [String: Any])?["identity"] as? String == "nodes"
                 }
 
                 print("Package Nodes Version:", packageVersion)
 
                 if packageVersion == "unspecified" {
-                    guard nodesProjectDependency == nil
+                    guard workspaceDependency == nil
                     else {
                         print("Project Nodes Version: specified")
                         fail("Mismatched Nodes versions detected.")
@@ -980,8 +980,8 @@ files:
                     print("Project Nodes Version: unspecified")
                     print("Nodes versions validated successfully.")
                 } else {
-                    guard let nodesProjectDependency: [String: Any] = nodesProjectDependency,
-                          let workspaceState: [String: Any] = nodesProjectDependency["state"] as? [String: Any],
+                    guard let workspaceDependency: [String: Any] = workspaceDependency,
+                          let workspaceState: [String: Any] = workspaceDependency["state"] as? [String: Any],
                           let workspaceCheckoutState: [String: Any] = workspaceState["checkoutState"] as? [String: Any],
                           let workspaceVersion: String = workspaceCheckoutState["version"] as? String
                     else { fail("Failed to parse project Nodes version.") }
