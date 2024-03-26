@@ -1011,8 +1011,8 @@ files:
                 - $(SRCROOT)/Generated/NeedleGenerated.swift
               script: >
                 env SOURCEKIT_LOGGING=0
-                needle generate {{ project|replace:' ','_' }}/Generated/NeedleGenerated.swift
-                {{ project|replace:' ','_' }}/Sources
+                needle generate "{{ project|replace:' ','_' }}/Generated/NeedleGenerated.swift"
+                "{{ project|replace:' ','_' }}/Sources"
           sources: {{ project|replace:' ','_' }}
           scheme:
             testTargets:
@@ -1067,19 +1067,19 @@ files:
                 - $(SRCROOT)/Generated/MockoloGenerated.swift
               script: >
                 mockolo
-                -i {{ project|replace:' ','_' }}
-                -s {{ project|replace:' ','_' }}/Sources
+                -i "{{ project|replace:' ','_' }}"
+                -s "{{ project|replace:' ','_' }}/Sources"
                 {% if path|replace:' ','' %}
-                -s {{ path }}/Sources/Nodes/Core/Protocols
-                -s {{ path }}/Sources/Nodes/UIKit/Protocols
-                -s {{ path }}/Sources/Nodes/ViewControllable/Protocols
+                -s "{{ path }}/Sources/Nodes/Core/Protocols"
+                -s "{{ path }}/Sources/Nodes/UIKit/Protocols"
+                -s "{{ path }}/Sources/Nodes/ViewControllable/Protocols"
                 {% else %}
-                -s ${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes/Core/Protocols
-                -s ${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes/UIKit/Protocols
-                -s ${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes/ViewControllable/Protocols
+                -s "${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes/Core/Protocols"
+                -s "${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes/UIKit/Protocols"
+                -s "${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes/ViewControllable/Protocols"
                 {% endif %}
-                -c Nodes
-                -d {{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift
+                -c "Nodes"
+                -d "{{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift"
           sources: {{ project|replace:' ','_' }}Tests
           configFiles:
             Debug: {{ project|replace:' ','_' }}Tests/BuildSettings/Debug.xcconfig
