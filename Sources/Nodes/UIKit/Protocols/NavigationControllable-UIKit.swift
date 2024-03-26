@@ -1,3 +1,4 @@
+// swiftlint:disable:this file_name
 //
 //  Copyright © 2020 Tinder (Match Group, LLC)
 //
@@ -11,6 +12,7 @@ import UIKit
  * a `Flow` instance to limit the available API, to avoid the use of UI frameworks within the `Flow`
  * instance and to facilitate testing.
  */
+/// @mockable
 @preconcurrency
 @MainActor
 public protocol NavigationControllable: ViewControllable {

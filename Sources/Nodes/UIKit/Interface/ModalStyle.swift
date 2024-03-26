@@ -4,8 +4,6 @@
 
 #if canImport(UIKit) && !os(watchOS)
 
-import UIKit
-
 /**
  * Nodes' convenience modal presentation styles for [UIKit](https://developer.apple.com/documentation/uikit).
  */
@@ -125,35 +123,6 @@ public struct ModalStyle {
         configuration additionalConfiguration: @escaping (ViewControllable) -> Void
     ) -> Self {
         Self(behavior: behavior, configuration: configuration + [additionalConfiguration])
-    }
-}
-
-extension UIViewController {
-
-    /// Applies the given ``ModalStyle``.
-    ///
-    /// - Parameter modalStyle: The ``ModalStyle`` to apply.
-    ///
-    /// - Returns: The `self` instance with the given ``ModalStyle`` applied.
-    @discardableResult
-    public func withModalStyle(_ modalStyle: ModalStyle) -> Self {
-        switch modalStyle.behavior {
-        case .cover:
-            modalPresentationStyle = .fullScreen
-        case .overlay:
-            modalPresentationStyle = .overFullScreen
-        #if !os(tvOS)
-        case .page:
-            modalPresentationStyle = .pageSheet
-        case .form:
-            modalPresentationStyle = .formSheet
-        #endif
-        case .custom:
-            modalPresentationStyle = .none
-        }
-        isModalInPresentation = true
-        modalStyle.configuration.forEach { $0(self) }
-        return self
     }
 }
 

@@ -3,8 +3,8 @@
 //
 
 #if canImport(SwiftUI)
+
 import SwiftUI
-#endif
 
 @available(macOS 10.15, macCatalyst 13.0, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension Binding {
@@ -61,3 +61,5 @@ extension Binding {
         return bind(to: value, onChange: onChange)
     }
 }
+
+#endif

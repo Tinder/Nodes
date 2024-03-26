@@ -1,3 +1,4 @@
+// swiftlint:disable:this file_name
 //
 //  Copyright © 2022 Tinder (Match Group, LLC)
 //
@@ -8,6 +9,7 @@
  * The interface used for injecting a window scene into a `Flow` instance to limit the available API,
  * to avoid the use of UI frameworks within the `Flow` instance and to facilitate testing.
  */
+/// @mockable
 @preconcurrency
 @MainActor
 public protocol WindowSceneViewControllable: AnyObject {

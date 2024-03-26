@@ -8,6 +8,32 @@ import UIKit
 
 extension UIViewController: ViewControllable {
 
+    /// Applies the given ``ModalStyle``.
+    ///
+    /// - Parameter modalStyle: The ``ModalStyle`` to apply.
+    ///
+    /// - Returns: The `self` instance with the given ``ModalStyle`` applied.
+    @discardableResult
+    public func withModalStyle(_ modalStyle: ModalStyle) -> Self {
+        switch modalStyle.behavior {
+        case .cover:
+            modalPresentationStyle = .fullScreen
+        case .overlay:
+            modalPresentationStyle = .overFullScreen
+        #if !os(tvOS)
+        case .page:
+            modalPresentationStyle = .pageSheet
+        case .form:
+            modalPresentationStyle = .formSheet
+        #endif
+        case .custom:
+            modalPresentationStyle = .none
+        }
+        isModalInPresentation = true
+        modalStyle.configuration.forEach { $0(self) }
+        return self
+    }
+
     /// Presents a ``ViewControllable`` instance.
     ///
     /// - Parameters:

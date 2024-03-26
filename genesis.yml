@@ -1067,15 +1067,19 @@ files:
                 - $(SRCROOT)/Generated/MockoloGenerated.swift
               script: >
                 mockolo
-                -d {{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift
                 -i {{ project|replace:' ','_' }}
                 -s {{ project|replace:' ','_' }}/Sources
                 {% if path|replace:' ','' %}
-                -s {{ path }}/Sources/Nodes
+                -s {{ path }}/Sources/Nodes/Core/Protocols
+                -s {{ path }}/Sources/Nodes/UIKit/Protocols
+                -s {{ path }}/Sources/Nodes/ViewControllable/Protocols
                 {% else %}
-                -s ${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes
+                -s ${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes/Core/Protocols
+                -s ${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes/UIKit/Protocols
+                -s ${BUILD_DIR%Build/*}/SourcePackages/checkouts/Nodes/Sources/Nodes/ViewControllable/Protocols
                 {% endif %}
-                --custom-imports Nodes
+                -c Nodes
+                -d {{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift
           sources: {{ project|replace:' ','_' }}Tests
           configFiles:
             Debug: {{ project|replace:' ','_' }}Tests/BuildSettings/Debug.xcconfig
