@@ -38,8 +38,9 @@ public final class StencilRenderer {
         return try render(stencils: stencils, with: context.dictionary)
     }
 
-    public func renderPluginList(context: PluginListStencilContext) throws -> String {
-        try render(.pluginList, with: context.dictionary)
+    public func renderPluginList(context: PluginListStencilContext, includeTests: Bool) throws -> [String: String] {
+        let stencils: [StencilTemplate] = [.pluginList] + (includeTests ? [.pluginListTests] : [])
+        return try render(stencils: stencils, with: context.dictionary)
     }
 
     public func renderWorker(context: WorkerStencilContext) throws -> String {
