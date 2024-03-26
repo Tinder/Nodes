@@ -271,10 +271,13 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: PluginListStencilContext = givenPluginListStencilContext(mockCount: count)
-            let templates: [String: String] = try stencilRenderer.renderPluginList(context: context, includeTests: true)
+            let templates: [String: String] = try stencilRenderer
+                .renderPluginList(context: context, includeTests: true)
             expect(templates.keys.sorted()) == ["PluginList", "PluginListTests"]
             templates.forEach { name, template in
-                assertSnapshot(of: template, as: .lines, named: "\(name)-mockCount-\(count)")
+                assertSnapshot(of: template,
+                               as: .lines,
+                               named: "\(name)-mockCount-\(count)")
             }
         }
     }
