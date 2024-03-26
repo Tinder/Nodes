@@ -2,11 +2,11 @@
 
 #warning("Manually move this test file to the corresponding test target then delete this warning.")
 
-@MainActor
 final class <pluginListName>PluginListTests: XCTestCase {
 
     private var pluginList: <pluginListName>PluginListImp!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         pluginList = <pluginListName>PluginListImp(componentFactory: injectComponent { parent in
@@ -24,14 +24,17 @@ final class <pluginListName>PluginListTests: XCTestCase {
         super.tearDown()
     }
 
+    @MainActor
     func testCreateAll() {
         XCTAssertTrue(pluginList.createAll().isEmpty)
     }
 
+    @MainActor
     func testCreate() {
         XCTAssertNil(pluginList.create())
     }
 
+    @MainActor
     func testCreateWithKey() {
         XCTAssertNil(pluginList.create(key: "<key>"))
     }
