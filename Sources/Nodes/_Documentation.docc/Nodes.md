@@ -44,7 +44,7 @@ Each node is comprised of a few pre-defined types working in conjunction to powe
 
 ## Topics
 
-### Plugin
+### Config
 
 Experimentation and Feature Gating
 
