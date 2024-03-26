@@ -18,6 +18,7 @@ internal protocol <nodeName>ContextInterface: Context {}
  protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
  implementation as necessary.
  */
+/// @mockable
 @MainActor
 internal protocol <nodeName>ViewControllable: <viewControllableType> {}
 

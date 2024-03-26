@@ -4,7 +4,6 @@
 
 import <flowTestsImport>
 
-@MainActor
 final class <nodeName>FlowTests: XCTestCase {
 
     private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {
@@ -17,6 +16,7 @@ final class <nodeName>FlowTests: XCTestCase {
     private var <flowPropertyType>Mock: <flowPropertyType>Mock!
     private var flow: <nodeName>FlowImp!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         contextMock = <nodeName>ContextInterfaceMock(isActive: true)
@@ -38,6 +38,7 @@ final class <nodeName>FlowTests: XCTestCase {
         super.tearDown()
     }
 
+    @MainActor
     func testNotNil() {
         expect { self.flow } != nil
     }

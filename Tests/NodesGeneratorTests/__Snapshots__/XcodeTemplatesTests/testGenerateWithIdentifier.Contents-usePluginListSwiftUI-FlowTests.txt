@@ -5,15 +5,13 @@
 import Nimble
 import XCTest
 
-@MainActor
 final class ___VARIABLE_productName___FlowTests: XCTestCase {
-
-    private final class ___VARIABLE_productName___ViewControllableMock: UIViewController, ___VARIABLE_productName___ViewControllable {}
 
     private var contextMock: ___VARIABLE_productName___ContextInterfaceMock!
     private var viewControllableMock: ___VARIABLE_productName___ViewControllableMock!
     private var flow: ___VARIABLE_productName___FlowImp!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         contextMock = ___VARIABLE_productName___ContextInterfaceMock(isActive: true)
@@ -32,6 +30,7 @@ final class ___VARIABLE_productName___FlowTests: XCTestCase {
         super.tearDown()
     }
 
+    @MainActor
     func testNotNil() {
         expect { self.flow } != nil
     }

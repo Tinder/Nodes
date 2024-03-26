@@ -8,12 +8,12 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-@MainActor
 final class {{ node_name }}ContextTests: XCTestCase {
 
     private var analyticsMock: {{ node_name }}AnalyticsMock!
     private var context: {{ node_name }}ContextImp!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         analyticsMock = {{ node_name }}AnalyticsMock()
@@ -29,6 +29,7 @@ final class {{ node_name }}ContextTests: XCTestCase {
         super.tearDown()
     }
 
+    @MainActor
     func testNotNil() {
         {% if is_nimble_enabled %}
         expect { self.context } != nil
@@ -37,6 +38,7 @@ final class {{ node_name }}ContextTests: XCTestCase {
         {% endif %}
     }
 
+    @MainActor
     func testWorkersIsEmpty() {
         {% if is_nimble_enabled %}
         expect { self.context.workers }.to(beEmpty())
@@ -45,6 +47,7 @@ final class {{ node_name }}ContextTests: XCTestCase {
         {% endif %}
     }
 
+    @MainActor
     func testActivation() {
         {% if is_nimble_enabled %}
         expect { self.context.isActive } == false

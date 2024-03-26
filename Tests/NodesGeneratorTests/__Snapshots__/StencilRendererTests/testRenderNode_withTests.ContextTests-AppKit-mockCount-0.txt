@@ -2,12 +2,12 @@
 
 #warning("Manually move this test file to the corresponding test target then delete this warning.")
 
-@MainActor
 final class <nodeName>ContextTests: XCTestCase {
 
     private var analyticsMock: <nodeName>AnalyticsMock!
     private var context: <nodeName>ContextImp!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         analyticsMock = <nodeName>AnalyticsMock()
@@ -23,14 +23,17 @@ final class <nodeName>ContextTests: XCTestCase {
         super.tearDown()
     }
 
+    @MainActor
     func testNotNil() {
         XCTAssertNotNil(context)
     }
 
+    @MainActor
     func testWorkersIsEmpty() {
         XCTAssertTrue(context.workers.isEmpty)
     }
 
+    @MainActor
     func testActivation() {
         XCTAssertFalse(context.isActive)
         context.activate()

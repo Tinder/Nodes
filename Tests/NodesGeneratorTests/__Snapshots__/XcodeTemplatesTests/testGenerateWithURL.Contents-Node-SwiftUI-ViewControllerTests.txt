@@ -6,13 +6,14 @@ import Combine
 import Nimble
 import XCTest
 
-@MainActor
 final class ___VARIABLE_productName___ViewControllerTests: XCTestCase {
 
+    @MainActor
     func testNotNil() {
         expect { self.givenViewController(with: ___VARIABLE_productName___ViewState()) } != nil
     }
 
+    @MainActor
     private func givenViewController(
         with state: ___VARIABLE_productName___ViewState
     ) -> ___VARIABLE_productName___ViewController {

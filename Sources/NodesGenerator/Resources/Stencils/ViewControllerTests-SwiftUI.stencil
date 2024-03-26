@@ -8,9 +8,9 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-@MainActor
 final class {{ node_name }}ViewControllerTests: XCTestCase {
 
+    @MainActor
     func testNotNil() {
         {% if is_nimble_enabled %}
         expect { self.givenViewController(with: {{ node_name }}ViewState()) } != nil
@@ -19,6 +19,7 @@ final class {{ node_name }}ViewControllerTests: XCTestCase {
         {% endif %}
     }
 
+    @MainActor
     private func givenViewController(
         with state: {{ node_name }}ViewState
     ) -> {{ node_name }}ViewController {

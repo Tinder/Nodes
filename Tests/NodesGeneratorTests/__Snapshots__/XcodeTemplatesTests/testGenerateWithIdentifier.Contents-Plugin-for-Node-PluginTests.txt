@@ -6,11 +6,11 @@ import Nimble
 import NodesTesting
 import XCTest
 
-@MainActor
 final class ___VARIABLE_productName___PluginTests: XCTestCase {
 
     private var plugin: ___VARIABLE_productName___PluginImp!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         plugin = ___VARIABLE_productName___PluginImp(componentFactory: injectComponent { parent in
@@ -28,10 +28,12 @@ final class ___VARIABLE_productName___PluginTests: XCTestCase {
         super.tearDown()
     }
 
+    @MainActor
     func testCreate() {
         expect { self.plugin.create() } != nil
     }
 
+    @MainActor
     func testOverride() {
         expect { self.plugin.override() } != nil
     }

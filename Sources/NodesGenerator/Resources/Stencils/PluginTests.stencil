@@ -8,11 +8,11 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-@MainActor
 final class {{ plugin_name }}PluginTests: XCTestCase {
 
     private var plugin: {{ plugin_name }}PluginImp!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         plugin = {{ plugin_name }}PluginImp(componentFactory: injectComponent { parent in
@@ -30,6 +30,7 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
         super.tearDown()
     }
 
+    @MainActor
     func testCreate() {
         {% if is_nimble_enabled %}
         expect { self.plugin.create() } != nil
@@ -38,6 +39,7 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
         {% endif %}
     }
 
+    @MainActor
     func testOverride() {
         {% if is_nimble_enabled %}
         expect { self.plugin.override() } != nil

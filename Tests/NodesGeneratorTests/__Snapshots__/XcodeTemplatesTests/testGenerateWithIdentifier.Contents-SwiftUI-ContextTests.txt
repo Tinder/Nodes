@@ -5,12 +5,12 @@
 import Nimble
 import XCTest
 
-@MainActor
 final class ___VARIABLE_productName___ContextTests: XCTestCase {
 
     private var analyticsMock: ___VARIABLE_productName___AnalyticsMock!
     private var context: ___VARIABLE_productName___ContextImp!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         analyticsMock = ___VARIABLE_productName___AnalyticsMock()
@@ -26,14 +26,17 @@ final class ___VARIABLE_productName___ContextTests: XCTestCase {
         super.tearDown()
     }
 
+    @MainActor
     func testNotNil() {
         expect { self.context } != nil
     }
 
+    @MainActor
     func testWorkersIsEmpty() {
         expect { self.context.workers }.to(beEmpty())
     }
 
+    @MainActor
     func testActivation() {
         expect { self.context.isActive } == false
         context.activate()

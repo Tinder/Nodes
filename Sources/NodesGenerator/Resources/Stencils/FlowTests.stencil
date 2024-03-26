@@ -8,16 +8,13 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-@MainActor
 final class {{ node_name }}FlowTests: XCTestCase {
-
     {% if view_controllable_mock_contents %}
+
     private final class {{ node_name }}ViewControllableMock: UIViewController, {{ node_name }}ViewControllable {
 
         {{ view_controllable_mock_contents|indent:8 }}
     }
-    {% else %}
-    private final class {{ node_name }}ViewControllableMock: UIViewController, {{ node_name }}ViewControllable {}
     {% endif %}
 
     private var contextMock: {{ node_name }}ContextInterfaceMock!
@@ -27,6 +24,7 @@ final class {{ node_name }}FlowTests: XCTestCase {
     {% endfor %}
     private var flow: {{ node_name }}FlowImp!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         contextMock = {{ node_name }}ContextInterfaceMock(isActive: true)
@@ -60,6 +58,7 @@ final class {{ node_name }}FlowTests: XCTestCase {
         super.tearDown()
     }
 
+    @MainActor
     func testNotNil() {
         {% if is_nimble_enabled %}
         expect { self.flow } != nil

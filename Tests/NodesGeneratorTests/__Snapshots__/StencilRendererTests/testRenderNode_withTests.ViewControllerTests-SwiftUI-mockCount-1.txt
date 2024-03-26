@@ -4,13 +4,14 @@
 
 import <viewControllerTestsImport>
 
-@MainActor
 final class <nodeName>ViewControllerTests: XCTestCase {
 
+    @MainActor
     func testNotNil() {
         expect { self.givenViewController(with: <nodeName>ViewState()) } != nil
     }
 
+    @MainActor
     private func givenViewController(
         with state: <nodeName>ViewState
     ) -> <nodeName>ViewController {

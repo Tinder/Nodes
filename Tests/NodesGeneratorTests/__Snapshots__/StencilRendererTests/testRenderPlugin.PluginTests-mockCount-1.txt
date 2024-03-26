@@ -4,11 +4,11 @@
 
 import <pluginTestsImport>
 
-@MainActor
 final class <pluginName>PluginTests: XCTestCase {
 
     private var plugin: <pluginName>PluginImp!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         plugin = <pluginName>PluginImp(componentFactory: injectComponent { parent in
@@ -26,10 +26,12 @@ final class <pluginName>PluginTests: XCTestCase {
         super.tearDown()
     }
 
+    @MainActor
     func testCreate() {
         expect { self.plugin.create() } != nil
     }
 
+    @MainActor
     func testOverride() {
         expect { self.plugin.override() } != nil
     }

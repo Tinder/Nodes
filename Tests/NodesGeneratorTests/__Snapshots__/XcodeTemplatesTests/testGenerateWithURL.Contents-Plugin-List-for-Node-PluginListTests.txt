@@ -6,11 +6,11 @@ import Nimble
 import NodesTesting
 import XCTest
 
-@MainActor
 final class ___VARIABLE_productName___PluginListTests: XCTestCase {
 
     private var pluginList: ___VARIABLE_productName___PluginListImp!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         pluginList = ___VARIABLE_productName___PluginListImp(componentFactory: injectComponent { parent in
@@ -28,14 +28,17 @@ final class ___VARIABLE_productName___PluginListTests: XCTestCase {
         super.tearDown()
     }
 
+    @MainActor
     func testCreateAll() {
         expect { self.pluginList.createAll() }.to(beEmpty())
     }
 
+    @MainActor
     func testCreate() {
         expect { self.pluginList.create() } == nil
     }
 
+    @MainActor
     func testCreateWithKey() {
         expect { self.pluginList.create(key: "<key>") } == nil
     }

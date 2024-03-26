@@ -4,12 +4,12 @@
 
 import <contextTestsImport>
 
-@MainActor
 final class <nodeName>ContextTests: XCTestCase {
 
     private var analyticsMock: <nodeName>AnalyticsMock!
     private var context: <nodeName>ContextImp!
 
+    @MainActor
     override func setUp() {
         super.setUp()
         analyticsMock = <nodeName>AnalyticsMock()
@@ -25,14 +25,17 @@ final class <nodeName>ContextTests: XCTestCase {
         super.tearDown()
     }
 
+    @MainActor
     func testNotNil() {
         expect { self.context } != nil
     }
 
+    @MainActor
     func testWorkersIsEmpty() {
         expect { self.context.workers }.to(beEmpty())
     }
 
+    @MainActor
     func testActivation() {
         expect { self.context.isActive } == false
         context.activate()
