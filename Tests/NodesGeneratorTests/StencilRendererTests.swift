@@ -17,6 +17,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 let context: NodeStencilContext = try givenNodeStencilContext(mockCount: count)
                 let templates: [String: String] = try stencilRenderer.renderNode(context: context,
                                                                                  kind: kind,
+                                                                                 includePlugin: false,
                                                                                  includeTests: false)
                 expect(templates.keys.sorted()) == [
                     "Analytics",
@@ -268,6 +269,21 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderPluginList() throws {
+        let stencilRenderer: StencilRenderer = .init()
+        try mockCounts.forEach { count in
+            let context: PluginListStencilContext = givenPluginListStencilContext(mockCount: count)
+            let templates: [String: String] = try stencilRenderer
+                .renderPluginList(context: context, includeTests: false)
+            expect(templates.keys.sorted()) == ["PluginList"]
+            templates.forEach { name, template in
+                assertSnapshot(of: template,
+                               as: .lines,
+                               named: "\(name)-mockCount-\(count)")
+            }
+        }
+    }
+
+    func testRenderPluginList_withTests() throws {
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: PluginListStencilContext = givenPluginListStencilContext(mockCount: count)
