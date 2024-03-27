@@ -328,7 +328,7 @@ public struct NodeStencilContext: StencilContext {
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
     ) throws {
-        guard !strict || Preset(rawValue: nodeName) == nil
+        guard !strict || !Preset.isReserved(nodeName: nodeName)
         else { throw StencilContextError.reservedNodeName(nodeName) }
         self.fileHeader = fileHeader
         self.nodeName = nodeName

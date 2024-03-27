@@ -29,4 +29,8 @@ public enum Preset: String {
     internal var componentDependencies: String {
         self == .app ? "fileprivate let appService: AppService = AppServiceImp()" : ""
     }
+
+    internal static func isReserved(nodeName: String) -> Bool {
+        Self(rawValue: nodeName) != nil || nodeName == "WindowScene"
+    }
 }
