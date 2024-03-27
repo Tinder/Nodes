@@ -35,11 +35,6 @@ final class XcodeTemplateTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
-    func testPluginXcodeTemplate() {
-        assertSnapshot(of: PluginXcodeTemplate(config: givenConfig()),
-                       as: .dump)
-    }
-
     func testNodeXcodeTemplateV2() throws {
         let config: Config = givenConfig()
         let frameworks: [UIFramework] = try UIFramework.Kind

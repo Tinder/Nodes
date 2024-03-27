@@ -1,4 +1,4 @@
-▿ 18 elements
+▿ 17 elements
   ▿ (2 elements)
     - path: "/Node - AppKit.xctemplate"
     - createIntermediates: true
@@ -46,9 +46,6 @@
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Plugin (for Node).xctemplate"
-    - createIntermediates: true
-  ▿ (2 elements)
-    - path: "/Plugin.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Worker.xctemplate"
