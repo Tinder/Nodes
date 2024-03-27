@@ -40,7 +40,7 @@
       - type: "<flowProperties-type-2>"
   - isPeripheryCommentEnabled: true
   - isPreviewProviderEnabled: true
-  - isTestTemplatesGenerationEnabled: true
+  - isTestTemplatesGenerationEnabled: false
   - isViewInjectedTemplateEnabled: false
   ▿ pluginListImports: 2 members
     - "<pluginListImports-1>"
@@ -71,7 +71,7 @@
   ▿ viewControllerImports: 2 members
     - "<viewControllerImports-1>"
     - "<viewControllerImports-2>"
-  - viewControllerStaticContent: ""
+  - viewControllerStaticContent: "<viewControllerStaticContent>"
   - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
   - viewControllerUpdateComment: "<viewControllerUpdateComment>"
   - viewStateEmptyFactory: "<viewStateEmptyFactory>"

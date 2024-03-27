@@ -141,8 +141,6 @@ final class ConfigTests: XCTestCase, TestFactories {
                 viewControllerType: <viewControllerType>
                 viewControllerSuperParameters: <viewControllerSuperParameters>
                 viewControllerMethods: <viewControllerMethods>
-            viewControllerProperties: <viewControllerProperties-Custom>
-            viewControllerMethods: <viewControllerMethods-Custom>
         baseImports:
           - <baseImports-1>
           - <baseImports-2>
@@ -185,6 +183,7 @@ final class ConfigTests: XCTestCase, TestFactories {
         viewControllableFlowType: <viewControllableFlowType>
         viewControllableType: <viewControllableType>
         viewControllableMockContents: <viewControllableMockContents>
+        viewControllerStaticContent: <viewControllerStaticContent>
         viewControllerSubscriptionsProperty: <viewControllerSubscriptionsProperty>
         viewControllerUpdateComment: <viewControllerUpdateComment>
         viewStateEmptyFactory: <viewStateEmptyFactory>
@@ -202,7 +201,7 @@ final class ConfigTests: XCTestCase, TestFactories {
           - <workerGenericTypes-2>
         isViewInjectedTemplateEnabled: false
         isPreviewProviderEnabled: true
-        isTestTemplatesGenerationEnabled: true
+        isTestTemplatesGenerationEnabled: false
         isPeripheryCommentEnabled: true
         """
     }
@@ -210,7 +209,9 @@ final class ConfigTests: XCTestCase, TestFactories {
     private func givenCustomUIFrameworkYAML(
         name: String = "<name>",
         import: String = "<import>",
-        viewControllerType: String = "<viewControllerType>"
+        viewControllerType: String = "<viewControllerType>",
+        viewControllerSuperParameters: String = "<viewControllerSuperParameters>",
+        viewControllerMethods: String = "<viewControllerMethods>"
     ) -> String {
         """
         uiFrameworks:
@@ -219,6 +220,8 @@ final class ConfigTests: XCTestCase, TestFactories {
                 name: \(name)
                 import: \(`import`)
                 viewControllerType: \(viewControllerType)
+                viewControllerSuperParameters: \(viewControllerSuperParameters)
+                viewControllerMethods: \(viewControllerMethods)
         """
     }
 }
