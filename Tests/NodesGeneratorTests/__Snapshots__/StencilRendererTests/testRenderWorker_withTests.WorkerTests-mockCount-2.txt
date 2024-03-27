@@ -1,17 +1,17 @@
-//___FILEHEADER___
+//<fileHeader>
 
 #warning("Manually move this test file to the corresponding test target then delete this warning.")
 
-import Nimble
-import XCTest
+import <workerTestsImport1>
+import <workerTestsImport2>
 
-final class ___VARIABLE_productName___WorkerTests: XCTestCase {
+final class <workerName>WorkerTests: XCTestCase {
 
-    private var worker: ___VARIABLE_productName___WorkerImp!
+    private var worker: <workerName>WorkerImp!
 
     override func setUp() {
         super.setUp()
-        worker = ___VARIABLE_productName___WorkerImp()
+        worker = <workerName>WorkerImp()
     }
 
     override func tearDown() {
