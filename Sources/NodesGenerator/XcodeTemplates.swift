@@ -36,8 +36,7 @@ public final class XcodeTemplates {
         let uiFrameworks: [UIFramework] = UIFramework.Kind
             .allCases
             .compactMap { try? config.uiFramework(for: $0) }
-        var templates: [XcodeTemplate] = uiFrameworks
-            .map { NodeXcodeTemplate(for: $0, config: config) }
+        var templates: [XcodeTemplate] = []
         if let nodeXcodeTemplateV2: NodeXcodeTemplateV2 = .init(uiFrameworks: uiFrameworks, config: config) {
             templates.append(nodeXcodeTemplateV2)
         }
