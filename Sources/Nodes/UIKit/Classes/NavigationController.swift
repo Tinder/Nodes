@@ -9,7 +9,7 @@ import UIKit
 /**
  * ``NavigationController`` is a [`UINavigationController`](
  * https://developer.apple.com/documentation/uikit/uinavigationcontroller
- * ) subclass to be used with Nodes.
+ * ) subclass to be used with Nodes and [UIKit](https://developer.apple.com/documentation/uikit).
  *
  * ``NavigationController`` provides a necessary callback allowing `Flow` instances to be detached when their view
  * controllers are removed from the navigation stack as a result of user interactions (such as when long pressing the

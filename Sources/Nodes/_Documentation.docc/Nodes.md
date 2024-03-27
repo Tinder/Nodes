@@ -18,9 +18,7 @@ We think [Swift](https://developer.apple.com/swift) and related technologies inc
 
 Nodes provides a modular and plugin-based approach to assembling an app with countless screens and features. Nodes leverages reactive data streams for state management to allow app state to be distributed, which is essential when many different teams own different parts of the codebase. Nodes is not opinionated about which reactive library to use however, or even which UI framework to use. In fact, Nodes is fully compatible with [SwiftUI](https://developer.apple.com/documentation/swiftui), [UIKit](https://developer.apple.com/documentation/uikit) and [AppKit](https://developer.apple.com/documentation/appkit).
 
-Although the Nodes Architecture Framework leverages some concepts and patterns similar to [Uber's cross-platform mobile architecture framework](https://github.com/uber/RIBs) (RIBs), it was developed from the ground up to provide unique benefits purpose-built for [Tinder](https://github.com/tinder). ***No source code has been copied from RIBs*** into this framework. Other open source projects such as [Needle](https://github.com/uber/needle) and [Mockolo](https://github.com/uber/mockolo) are utilized as dependencies when creating an app with Nodes.
-
-We ❤️ building mobile applications with Nodes and we hope you ~~will~~ do too!
+The Nodes Architecture Framework leverages some concepts and patterns similar to [Uber's cross-platform mobile architecture framework](https://github.com/uber/RIBs) (RIBs); however, it has been developed entirely from the ground up to provide unique benefits purpose-built for Tinder. ***No source code has been copied from RIBs into this project.*** Note that other open source projects such as [Needle](https://github.com/uber/needle) and [Mockolo](https://github.com/uber/mockolo) are utilized as dependencies when creating an app with Nodes.
 
 ## Design Goals
 
@@ -44,9 +42,7 @@ Each node is comprised of a few pre-defined types working in conjunction to powe
 
 ## Topics
 
-### Config
-
-Experimentation and Feature Gating
+### Experimentation and Feature Gating
 
 `Plugin` and `PluginList` subclasses provide conditional logic for experimentation and feature gating.
 
@@ -58,9 +54,7 @@ A `PluginList` instance provides a `Plugin` collection enabling versioning or A|
 - ``PluginList``
 - ``PluginListWithDefault``
 
-### Builder
-
-Node Creation and Dependency Injection
+### Node Creation and Dependency Injection
 
 A node's `Builder` instance is a factory that non-optionally creates and returns the node's `Flow` instance.
 
@@ -72,9 +66,7 @@ The `Builder` injects dynamic component dependencies (if provided) into the `Com
 
 - ``AbstractBuilder``
 
-### Flow
-
-Node Tree and Routing
+### Node Tree and Routing
 
 A node's `Flow` instance acts as a router and is responsible for attaching child `Flow` instances.
 
@@ -87,9 +79,7 @@ A `Flow` is also responsible for detaching its child `Flow` instances which occu
 - ``AbstractFlow``
 - ``FlowRetaining``
 
-### Context
-
-Events and Interactions
+### Events and Interactions
 
 A node's `Context` instance acts as an interactor and is responsible for handling events and responding to user interactions (received through a `Receiver` protocol from the user interface).
 
@@ -101,9 +91,7 @@ The `Context` can (as desired) delegate data requests, event handling and user i
 - ``AbstractContext``
 - ``AbstractPresentableContext``
 
-### Worker
-
-Business Logic
+### Business Logic
 
 One or more `Worker` instances containing business logic may exist in each node's `Worker` collection, and the `Context` instance can call methods on these `Worker` instances as needed.
 
@@ -112,11 +100,11 @@ One or more `Worker` instances containing business logic may exist in each node'
 - ``Worker``
 - ``AbstractWorker``
 
-### UI
+### User Interface
 
-User Interface
+A Node's ``ViewControllable`` instance defines its user interface (for example a [UIViewController](https://developer.apple.com/documentation/uikit/uiviewcontroller) in a [UIKit](https://developer.apple.com/documentation/uikit) app) and is also responsible for displaying or presenting the user interface of child Nodes.
 
-A node's ``ViewControllable`` instance defines its user interface (for example a [UIViewController](https://developer.apple.com/documentation/uikit/uiviewcontroller) in a [UIKit](https://developer.apple.com/documentation/uikit) app) and is also responsible for displaying or presenting the user interface of child Nodes. A ``ViewControllable`` protocol is used instead of the concrete class type to limit the available API, to avoid the use of UI frameworks (such as [UIKit](https://developer.apple.com/documentation/uikit)) within `Flow` instances and to facilitate testing.
+A ``ViewControllable`` protocol is used instead of the concrete class type to limit the available API, to avoid the use of UI frameworks (such as [UIKit](https://developer.apple.com/documentation/uikit)) within `Flow` instances and to facilitate testing.
 
 - ``ViewControllable``
 - ``NavigationControllable``
