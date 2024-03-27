@@ -73,7 +73,7 @@
       - "Nodes"
       - "SwiftUI"
     - viewControllerMethods: ""
-    - viewControllerStaticContent: ""
+    - viewControllerStaticContent: "<viewControllerStaticContent>"
     - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
     - viewControllerSuperParameters: ""
     ▿ viewControllerTestsImports: 2 elements

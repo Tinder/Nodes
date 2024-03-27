@@ -36,6 +36,7 @@ extension TestFactories {
         config.viewControllableFlowType = "<viewControllableFlowType>"
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableMockContents = "<viewControllableMockContents>"
+        config.viewControllerStaticContent = "<viewControllerStaticContent>"
         config.viewControllerSubscriptionsProperty = "<viewControllerSubscriptionsProperty>"
         config.viewControllerUpdateComment = "<viewControllerUpdateComment>"
         config.viewStateEmptyFactory = "<viewStateEmptyFactory>"

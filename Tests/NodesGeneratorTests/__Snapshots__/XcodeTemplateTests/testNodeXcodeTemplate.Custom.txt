@@ -76,7 +76,7 @@
           - "<viewControllerImport>"
           - "Nodes"
         - viewControllerMethods: "<viewControllerMethods>"
-        - viewControllerStaticContent: ""
+        - viewControllerStaticContent: "<viewControllerStaticContent>"
         - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
         - viewControllerSuperParameters: "<viewControllerSuperParameters>"
         ▿ viewControllerTestsImports: 2 elements
