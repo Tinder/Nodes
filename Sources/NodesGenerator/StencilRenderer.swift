@@ -47,8 +47,13 @@ public final class StencilRenderer {
         return try render(stencils: stencils, with: context.dictionary)
     }
 
-    public func renderWorker(context: WorkerStencilContext) throws -> String {
-        try render(.worker, with: context.dictionary)
+    public func renderWorker(
+        context: WorkerStencilContext,
+        includeTests: Bool
+    ) throws -> [String: String] {
+        let additional: [StencilTemplate] = includeTests ? [.workerTests] : []
+        let stencils: [StencilTemplate] = [.worker] + additional
+        return try render(stencils: stencils, with: context.dictionary)
     }
 
     internal func render(_ stencil: StencilTemplate, with context: [String: Any]) throws -> String {

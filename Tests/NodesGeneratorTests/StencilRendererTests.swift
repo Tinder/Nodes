@@ -286,9 +286,29 @@ final class StencilRendererTests: XCTestCase, TestFactories {
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: WorkerStencilContext = givenWorkerStencilContext(mockCount: count)
-            assertSnapshot(of: try stencilRenderer.renderWorker(context: context),
-                           as: .lines,
-                           named: "mockCount-\(count)")
+            let templates: [String: String] = try stencilRenderer
+                .renderWorker(context: context, includeTests: false)
+            expect(templates.keys.sorted()) == ["Worker"]
+            templates.forEach { name, template in
+                assertSnapshot(of: template,
+                               as: .lines,
+                               named: "\(name)-mockCount-\(count)")
+            }
+        }
+    }
+
+    func testRenderWorker_withTests() throws {
+        let stencilRenderer: StencilRenderer = .init()
+        try mockCounts.forEach { count in
+            let context: WorkerStencilContext = givenWorkerStencilContext(mockCount: count)
+            let templates: [String: String] = try stencilRenderer
+                .renderWorker(context: context, includeTests: true)
+            expect(templates.keys.sorted()) == ["Worker", "WorkerTests"]
+            templates.forEach { name, template in
+                assertSnapshot(of: template,
+                               as: .lines,
+                               named: "\(name)-mockCount-\(count)")
+            }
         }
     }
 }
