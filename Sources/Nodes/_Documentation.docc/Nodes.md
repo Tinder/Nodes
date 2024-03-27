@@ -18,9 +18,7 @@ We think [Swift](https://developer.apple.com/swift) and related technologies inc
 
 Nodes provides a modular and plugin-based approach to assembling an app with countless screens and features. Nodes leverages reactive data streams for state management to allow app state to be distributed, which is essential when many different teams own different parts of the codebase. Nodes is not opinionated about which reactive library to use however, or even which UI framework to use. In fact, Nodes is fully compatible with [SwiftUI](https://developer.apple.com/documentation/swiftui), [UIKit](https://developer.apple.com/documentation/uikit) and [AppKit](https://developer.apple.com/documentation/appkit).
 
-Although the Nodes Architecture Framework leverages some concepts and patterns similar to [Uber's cross-platform mobile architecture framework](https://github.com/uber/RIBs) (RIBs), it was developed from the ground up to provide unique benefits purpose-built for [Tinder](https://github.com/tinder). ***No source code has been copied from RIBs*** into this framework. Other open source projects such as [Needle](https://github.com/uber/needle) and [Mockolo](https://github.com/uber/mockolo) are utilized as dependencies when creating an app with Nodes.
-
-We ❤️ building mobile applications with Nodes and we hope you ~~will~~ do too!
+The Nodes Architecture Framework leverages some concepts and patterns similar to [Uber's cross-platform mobile architecture framework](https://github.com/uber/RIBs) (RIBs); however, it has been developed entirely from the ground up to provide unique benefits purpose-built for Tinder. ***No source code has been copied from RIBs into this project.*** Note that other open source projects such as [Needle](https://github.com/uber/needle) and [Mockolo](https://github.com/uber/mockolo) are utilized as dependencies when creating an app with Nodes.
 
 ## Design Goals
 
