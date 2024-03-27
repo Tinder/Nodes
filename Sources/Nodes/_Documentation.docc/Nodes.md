@@ -44,9 +44,7 @@ Each node is comprised of a few pre-defined types working in conjunction to powe
 
 ## Topics
 
-### Config
-
-Experimentation and Feature Gating
+### Experimentation and Feature Gating
 
 `Plugin` and `PluginList` subclasses provide conditional logic for experimentation and feature gating.
 
@@ -58,9 +56,7 @@ A `PluginList` instance provides a `Plugin` collection enabling versioning or A|
 - ``PluginList``
 - ``PluginListWithDefault``
 
-### Builder
-
-Node Creation and Dependency Injection
+### Node Creation and Dependency Injection
 
 A Node's `Builder` instance is a factory that non-optionally creates and returns the Node's `Flow` instance.
 
@@ -72,9 +68,7 @@ The `Builder` injects dynamic component dependencies (if provided) into the `Com
 
 - ``AbstractBuilder``
 
-### Flow
-
-Node Tree and Routing
+### Node Tree and Routing
 
 A Node's `Flow` instance acts as a router and is responsible for attaching child `Flow` instances.
 
@@ -87,9 +81,7 @@ A `Flow` is also responsible for detaching its child `Flow` instances which occu
 - ``AbstractFlow``
 - ``FlowRetaining``
 
-### Context
-
-Events and Interactions
+### Events and Interactions
 
 A Node's `Context` instance acts as an interactor and is responsible for handling events and responding to user interactions (received through a `Receiver` protocol from the user interface).
 
@@ -101,9 +93,7 @@ The `Context` can (as desired) delegate data requests, event handling and user i
 - ``AbstractContext``
 - ``AbstractPresentableContext``
 
-### Worker
-
-Business Logic
+### Business Logic
 
 One or more `Worker` instances containing business logic may exist in each Node's `Worker` collection, and the `Context` instance can call methods on these `Worker` instances as needed.
 
@@ -112,11 +102,11 @@ One or more `Worker` instances containing business logic may exist in each Node'
 - ``Worker``
 - ``AbstractWorker``
 
-### UI
+### User Interface
 
-User Interface
+A Node's ``ViewControllable`` instance defines its user interface (for example a [UIViewController](https://developer.apple.com/documentation/uikit/uiviewcontroller) in a [UIKit](https://developer.apple.com/documentation/uikit) app) and is also responsible for displaying or presenting the user interface of child Nodes.
 
-A Node's ``ViewControllable`` instance defines its user interface (for example a [UIViewController](https://developer.apple.com/documentation/uikit/uiviewcontroller) in a [UIKit](https://developer.apple.com/documentation/uikit) app) and is also responsible for displaying or presenting the user interface of child Nodes. A ``ViewControllable`` protocol is used instead of the concrete class type to limit the available API, to avoid the use of UI frameworks (such as [UIKit](https://developer.apple.com/documentation/uikit)) within `Flow` instances and to facilitate testing.
+A ``ViewControllable`` protocol is used instead of the concrete class type to limit the available API, to avoid the use of UI frameworks (such as [UIKit](https://developer.apple.com/documentation/uikit)) within `Flow` instances and to facilitate testing.
 
 - ``ViewControllable``
 - ``NavigationControllable``
