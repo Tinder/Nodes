@@ -3,7 +3,7 @@
   ▿ stencilContext: PluginListStencilContext
     - fileHeader: "___FILEHEADER___"
     - isNimbleEnabled: false
-    - isPeripheryCommentEnabled: false
+    - isPeripheryCommentEnabled: true
     ▿ pluginListImports: 4 elements
       - "<baseImport>"
       - "<dependencyInjectionImport>"
@@ -14,5 +14,6 @@
       - "<baseTestImport>"
       - "NodesTesting"
     - viewControllableFlowType: "<viewControllableFlowType>"
-  ▿ stencils: 1 element
+  ▿ stencils: 2 elements
     - PluginList
+    - PluginListTests

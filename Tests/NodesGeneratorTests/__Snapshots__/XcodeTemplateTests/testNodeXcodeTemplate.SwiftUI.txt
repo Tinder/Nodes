@@ -55,8 +55,8 @@
         ▿ flowTestsImports: 1 element
           - "<baseTestImport>"
         - isNimbleEnabled: false
-        - isPeripheryCommentEnabled: false
-        - isPreviewProviderEnabled: false
+        - isPeripheryCommentEnabled: true
+        - isPreviewProviderEnabled: true
         - nodeName: "___VARIABLE_productName___"
         - pluginImports: 0 elements
         - pluginListName: ""
@@ -96,7 +96,7 @@
         - viewStateTransform: "<viewStateTransform>"
         ▿ workerGenericTypes: 1 element
           - "<workerGenericType>"
-      ▿ stencils: 7 elements
+      ▿ stencils: 12 elements
         - Analytics
         ▿ Builder
           - builder: Variation.swiftUI
@@ -106,6 +106,12 @@
         ▿ ViewController
           - viewController: Variation.swiftUI
         - ViewState
+        - AnalyticsTests
+        - ContextTests
+        - FlowTests
+        ▿ ViewControllerTests
+          - viewControllerTests: Variation.swiftUI
+        - ViewStateFactoryTests
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"

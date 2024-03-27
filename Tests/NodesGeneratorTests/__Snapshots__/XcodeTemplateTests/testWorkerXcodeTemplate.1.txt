@@ -6,7 +6,7 @@
       ▿ stencilContext: WorkerStencilContext
         - fileHeader: "___FILEHEADER___"
         - isNimbleEnabled: false
-        - isPeripheryCommentEnabled: false
+        - isPeripheryCommentEnabled: true
         ▿ workerGenericTypes: 1 element
           - "<workerGenericType>"
         ▿ workerImports: 3 elements
@@ -16,8 +16,9 @@
         - workerName: "___VARIABLE_productName___"
         ▿ workerTestsImports: 1 element
           - "<baseTestImport>"
-      ▿ stencils: 1 element
+      ▿ stencils: 2 elements
         - Worker
+        - WorkerTests
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"

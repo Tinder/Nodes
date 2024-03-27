@@ -6,7 +6,7 @@
       ▿ stencilContext: PluginStencilContext
         - fileHeader: "___FILEHEADER___"
         - isNimbleEnabled: false
-        - isPeripheryCommentEnabled: false
+        - isPeripheryCommentEnabled: true
         ▿ pluginImports: 3 elements
           - "<baseImport>"
           - "<dependencyInjectionImport>"
@@ -17,8 +17,9 @@
           - "NodesTesting"
         ▿ returnType: Optional<String>
           - some: "___VARIABLE_returnType___"
-      ▿ stencils: 1 element
+      ▿ stencils: 2 elements
         - Plugin
+        - PluginTests
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"

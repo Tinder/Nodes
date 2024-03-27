@@ -52,8 +52,8 @@
     ▿ flowTestsImports: 1 element
       - "<baseTestImport>"
     - isNimbleEnabled: false
-    - isPeripheryCommentEnabled: false
-    - isPreviewProviderEnabled: false
+    - isPeripheryCommentEnabled: true
+    - isPreviewProviderEnabled: true
     - nodeName: "___VARIABLE_productName___"
     ▿ pluginImports: 3 elements
       - "<baseImport>"
@@ -98,7 +98,7 @@
     - viewStateTransform: "<viewStateTransform>"
     ▿ workerGenericTypes: 1 element
       - "<workerGenericType>"
-  ▿ stencils: 8 elements
+  ▿ stencils: 14 elements
     - Analytics
     ▿ Builder
       - builder: Variation.default
@@ -109,3 +109,10 @@
     ▿ ViewController
       - viewController: Variation.default
     - ViewState
+    - AnalyticsTests
+    - ContextTests
+    - FlowTests
+    - PluginTests
+    ▿ ViewControllerTests
+      - viewControllerTests: Variation.default
+    - ViewStateFactoryTests

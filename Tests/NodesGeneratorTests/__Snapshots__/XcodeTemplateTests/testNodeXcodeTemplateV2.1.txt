@@ -56,8 +56,8 @@
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
-          - isPeripheryCommentEnabled: false
-          - isPreviewProviderEnabled: false
+          - isPeripheryCommentEnabled: true
+          - isPreviewProviderEnabled: true
           - nodeName: "___VARIABLE_productName___"
           ▿ pluginImports: 3 elements
             - "<baseImport>"
@@ -102,7 +102,7 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 8 elements
+        ▿ stencils: 14 elements
           - Analytics
           ▿ Builder
             - builder: Variation.default
@@ -113,6 +113,13 @@
           ▿ ViewController
             - viewController: Variation.default
           - ViewState
+          - AnalyticsTests
+          - ContextTests
+          - FlowTests
+          - PluginTests
+          ▿ ViewControllerTests
+            - viewControllerTests: Variation.default
+          - ViewStateFactoryTests
       ▿ NodeXcodeTemplateV2Permutation
         - name: "AppKit"
         ▿ stencilContext: NodeStencilContext
@@ -167,8 +174,8 @@
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
-          - isPeripheryCommentEnabled: false
-          - isPreviewProviderEnabled: false
+          - isPeripheryCommentEnabled: true
+          - isPreviewProviderEnabled: true
           - nodeName: "___VARIABLE_productName___"
           ▿ pluginImports: 3 elements
             - "<baseImport>"
@@ -213,7 +220,7 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 8 elements
+        ▿ stencils: 14 elements
           - Analytics
           ▿ Builder
             - builder: Variation.default
@@ -224,6 +231,13 @@
           ▿ ViewController
             - viewController: Variation.default
           - ViewState
+          - AnalyticsTests
+          - ContextTests
+          - FlowTests
+          - PluginTests
+          ▿ ViewControllerTests
+            - viewControllerTests: Variation.default
+          - ViewStateFactoryTests
       ▿ NodeXcodeTemplateV2Permutation
         - name: "usePluginListUIKit"
         ▿ stencilContext: NodeStencilContext
@@ -278,8 +292,8 @@
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
-          - isPeripheryCommentEnabled: false
-          - isPreviewProviderEnabled: false
+          - isPeripheryCommentEnabled: true
+          - isPreviewProviderEnabled: true
           - nodeName: "___VARIABLE_productName___"
           ▿ pluginImports: 3 elements
             - "<baseImport>"
@@ -324,7 +338,7 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 8 elements
+        ▿ stencils: 14 elements
           - Analytics
           ▿ Builder
             - builder: Variation.default
@@ -335,6 +349,13 @@
           ▿ ViewController
             - viewController: Variation.default
           - ViewState
+          - AnalyticsTests
+          - ContextTests
+          - FlowTests
+          - PluginTests
+          ▿ ViewControllerTests
+            - viewControllerTests: Variation.default
+          - ViewStateFactoryTests
       ▿ NodeXcodeTemplateV2Permutation
         - name: "UIKit"
         ▿ stencilContext: NodeStencilContext
@@ -389,8 +410,8 @@
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
-          - isPeripheryCommentEnabled: false
-          - isPreviewProviderEnabled: false
+          - isPeripheryCommentEnabled: true
+          - isPreviewProviderEnabled: true
           - nodeName: "___VARIABLE_productName___"
           ▿ pluginImports: 3 elements
             - "<baseImport>"
@@ -435,7 +456,7 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 8 elements
+        ▿ stencils: 14 elements
           - Analytics
           ▿ Builder
             - builder: Variation.default
@@ -446,6 +467,13 @@
           ▿ ViewController
             - viewController: Variation.default
           - ViewState
+          - AnalyticsTests
+          - ContextTests
+          - FlowTests
+          - PluginTests
+          ▿ ViewControllerTests
+            - viewControllerTests: Variation.default
+          - ViewStateFactoryTests
       ▿ NodeXcodeTemplateV2Permutation
         - name: "usePluginListSwiftUI"
         ▿ stencilContext: NodeStencilContext
@@ -500,8 +528,8 @@
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
-          - isPeripheryCommentEnabled: false
-          - isPreviewProviderEnabled: false
+          - isPeripheryCommentEnabled: true
+          - isPreviewProviderEnabled: true
           - nodeName: "___VARIABLE_productName___"
           ▿ pluginImports: 3 elements
             - "<baseImport>"
@@ -546,7 +574,7 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 8 elements
+        ▿ stencils: 14 elements
           - Analytics
           ▿ Builder
             - builder: Variation.swiftUI
@@ -557,6 +585,13 @@
           ▿ ViewController
             - viewController: Variation.swiftUI
           - ViewState
+          - AnalyticsTests
+          - ContextTests
+          - FlowTests
+          - PluginTests
+          ▿ ViewControllerTests
+            - viewControllerTests: Variation.swiftUI
+          - ViewStateFactoryTests
       ▿ NodeXcodeTemplateV2Permutation
         - name: "SwiftUI"
         ▿ stencilContext: NodeStencilContext
@@ -611,8 +646,8 @@
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
-          - isPeripheryCommentEnabled: false
-          - isPreviewProviderEnabled: false
+          - isPeripheryCommentEnabled: true
+          - isPreviewProviderEnabled: true
           - nodeName: "___VARIABLE_productName___"
           ▿ pluginImports: 3 elements
             - "<baseImport>"
@@ -657,7 +692,7 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 8 elements
+        ▿ stencils: 14 elements
           - Analytics
           ▿ Builder
             - builder: Variation.swiftUI
@@ -668,6 +703,13 @@
           ▿ ViewController
             - viewController: Variation.swiftUI
           - ViewState
+          - AnalyticsTests
+          - ContextTests
+          - FlowTests
+          - PluginTests
+          ▿ ViewControllerTests
+            - viewControllerTests: Variation.swiftUI
+          - ViewStateFactoryTests
       ▿ NodeXcodeTemplateV2Permutation
         - name: "usePluginList<uiFrameworkName>"
         ▿ stencilContext: NodeStencilContext
@@ -722,8 +764,8 @@
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
-          - isPeripheryCommentEnabled: false
-          - isPreviewProviderEnabled: false
+          - isPeripheryCommentEnabled: true
+          - isPreviewProviderEnabled: true
           - nodeName: "___VARIABLE_productName___"
           ▿ pluginImports: 3 elements
             - "<baseImport>"
@@ -768,7 +810,7 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 8 elements
+        ▿ stencils: 14 elements
           - Analytics
           ▿ Builder
             - builder: Variation.default
@@ -779,6 +821,13 @@
           ▿ ViewController
             - viewController: Variation.default
           - ViewState
+          - AnalyticsTests
+          - ContextTests
+          - FlowTests
+          - PluginTests
+          ▿ ViewControllerTests
+            - viewControllerTests: Variation.default
+          - ViewStateFactoryTests
       ▿ NodeXcodeTemplateV2Permutation
         - name: "<uiFrameworkName>"
         ▿ stencilContext: NodeStencilContext
@@ -833,8 +882,8 @@
           ▿ flowTestsImports: 1 element
             - "<baseTestImport>"
           - isNimbleEnabled: false
-          - isPeripheryCommentEnabled: false
-          - isPreviewProviderEnabled: false
+          - isPeripheryCommentEnabled: true
+          - isPreviewProviderEnabled: true
           - nodeName: "___VARIABLE_productName___"
           ▿ pluginImports: 3 elements
             - "<baseImport>"
@@ -879,7 +928,7 @@
           - viewStateTransform: "<viewStateTransform>"
           ▿ workerGenericTypes: 1 element
             - "<workerGenericType>"
-        ▿ stencils: 8 elements
+        ▿ stencils: 14 elements
           - Analytics
           ▿ Builder
             - builder: Variation.default
@@ -890,6 +939,13 @@
           ▿ ViewController
             - viewController: Variation.default
           - ViewState
+          - AnalyticsTests
+          - ContextTests
+          - FlowTests
+          - PluginTests
+          ▿ ViewControllerTests
+            - viewControllerTests: Variation.default
+          - ViewStateFactoryTests
     ▿ propertyList: XcodeTemplatePropertyList
       ▿ allowedTypes: 1 element
         - "public.swift-source"
