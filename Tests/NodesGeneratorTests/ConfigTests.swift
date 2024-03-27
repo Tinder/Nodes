@@ -24,7 +24,7 @@ final class ConfigTests: XCTestCase, TestFactories {
     func testConfig() throws {
         let fileSystem: FileSystemMock = .init()
         let url: URL = .init(fileURLWithPath: "/", isDirectory: true)
-        fileSystem.contents[url] = Data(givenConfig().utf8)
+        fileSystem.contents[url] = Data(givenConfigYAML().utf8)
         let config: Config = try .init(at: url.path, using: fileSystem)
         assertSnapshot(of: config, as: .dump)
     }
@@ -46,9 +46,9 @@ final class ConfigTests: XCTestCase, TestFactories {
 
     func testDecodingThrowsEmptyStringNotAllowedForCustomUIFramework() throws {
         let requiredKeys: [(key: String, yaml: String)] = [
-            (key: "name", yaml: givenCustomUIFrameworkYAML(name: "")),
-            (key: "import", yaml: givenCustomUIFrameworkYAML(import: "")),
-            (key: "viewControllerType", yaml: givenCustomUIFrameworkYAML(viewControllerType: ""))
+            (key: "name", yaml: givenCustomUIFrameworkConfigYAML(name: "")),
+            (key: "import", yaml: givenCustomUIFrameworkConfigYAML(import: "")),
+            (key: "viewControllerType", yaml: givenCustomUIFrameworkConfigYAML(viewControllerType: ""))
         ]
         for (key, yaml): (String, String) in requiredKeys {
             expect(try Data(yaml.utf8).decoded(as: Config.self, using: YAMLDecoder()))
@@ -128,7 +128,7 @@ final class ConfigTests: XCTestCase, TestFactories {
             }
     }
 
-    private func givenConfig() -> String {
+    private func givenConfigYAML() -> String {
         """
         uiFrameworks:
           - framework: AppKit
@@ -206,7 +206,7 @@ final class ConfigTests: XCTestCase, TestFactories {
         """
     }
 
-    private func givenCustomUIFrameworkYAML(
+    private func givenCustomUIFrameworkConfigYAML(
         name: String = "<uiFrameworkName>",
         import: String = "<uiFrameworkImport>",
         viewControllerType: String = "<viewControllerType>",
