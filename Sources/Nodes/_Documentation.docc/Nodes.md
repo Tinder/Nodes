@@ -50,7 +50,7 @@ Experimentation and Feature Gating
 
 `Plugin` and `PluginList` subclasses provide conditional logic for experimentation and feature gating.
 
-A Node's `Plugin` instance is a factory that optionally creates and returns the Node's `Builder` instance.
+A node's `Plugin` instance is a factory that optionally creates and returns the node's `Builder` instance.
 
 A `PluginList` instance provides a `Plugin` collection enabling versioning or A|B Testing multiple Nodes. The `PluginListWithDefault` variant allows for a default instance to be prepended to the `Builder` collection.
 
@@ -62,13 +62,13 @@ A `PluginList` instance provides a `Plugin` collection enabling versioning or A|
 
 Node Creation and Dependency Injection
 
-A Node's `Builder` instance is a factory that non-optionally creates and returns the Node's `Flow` instance.
+A node's `Builder` instance is a factory that non-optionally creates and returns the node's `Flow` instance.
 
-At that same time, the `Builder` also creates several other objects including the Node's `Context` instance, one or more `Worker` instances, and its ``ViewControllable`` instance.
+At that same time, the `Builder` also creates several other objects including the node's `Context` instance, one or more `Worker` instances, and its ``ViewControllable`` instance.
 
 Every `Builder` is provided a DI graph `Component` whose dependencies are made available for injection into the objects the `Builder` creates.
 
-The `Builder` injects dynamic component dependencies (if provided) into the `Component` and injects dynamic build dependencies into the objects the `Builder` creates (for example injecting the Node's listener into the `Context` instance). Dynamic dependencies might include identifiers or other app state, but would never be services or dependencies provided by the DI graph `Component`. Dynamic dependencies are instead provided by a parent `Flow` when calling a `Builder` instance's build method.
+The `Builder` injects dynamic component dependencies (if provided) into the `Component` and injects dynamic build dependencies into the objects the `Builder` creates (for example injecting the node's listener into the `Context` instance). Dynamic dependencies might include identifiers or other app state, but would never be services or dependencies provided by the DI graph `Component`. Dynamic dependencies are instead provided by a parent `Flow` when calling a `Builder` instance's build method.
 
 - ``AbstractBuilder``
 
@@ -76,11 +76,11 @@ The `Builder` injects dynamic component dependencies (if provided) into the `Com
 
 Node Tree and Routing
 
-A Node's `Flow` instance acts as a router and is responsible for attaching child `Flow` instances.
+A node's `Flow` instance acts as a router and is responsible for attaching child `Flow` instances.
 
-A Node tree is created when parent `Flow` instances use a `Builder` instance (either directly or from a `Plugin` or `PluginList` instance) to create a child `Flow` instance, and then present the ``ViewControllable`` instance of the child `Flow` and subsequently attach the child `Flow`. This will automatically start the child Node's `Flow` instance, activate the child Node's `Context` instance and start the child Node's `Worker` instances.
+A node tree is created when parent `Flow` instances use a `Builder` instance (either directly or from a `Plugin` or `PluginList` instance) to create a child `Flow` instance, and then present the ``ViewControllable`` instance of the child `Flow` and subsequently attach the child `Flow`. This will automatically start the child node's `Flow` instance, activate the child node's `Context` instance and start the child node's `Worker` instances.
 
-A `Flow` is also responsible for detaching its child `Flow` instances which occurs in the reverse order. This is an important lifecycle event for the Node, meaning that when a `Flow` instance is detached from its parent, the expectation is that all memory used by the Node and all of its objects is released.
+A `Flow` is also responsible for detaching its child `Flow` instances which occurs in the reverse order. This is an important lifecycle event for the Node, meaning that when a `Flow` instance is detached from its parent, the expectation is that all memory used by the node and all of its objects is released.
 
 - ``Flow``
 - ``ViewControllableFlow``
@@ -91,11 +91,11 @@ A `Flow` is also responsible for detaching its child `Flow` instances which occu
 
 Events and Interactions
 
-A Node's `Context` instance acts as an interactor and is responsible for handling events and responding to user interactions (received through a `Receiver` protocol from the user interface).
+A node's `Context` instance acts as an interactor and is responsible for handling events and responding to user interactions (received through a `Receiver` protocol from the user interface).
 
-To avoid bloating the `Context` implementation, one or more `Worker` instances containing business logic may exist in the Node's `Worker` collection, and the `Context` can call methods on these `Worker` instances as needed.
+To avoid bloating the `Context` implementation, one or more `Worker` instances containing business logic may exist in the node's `Worker` collection, and the `Context` can call methods on these `Worker` instances as needed.
 
-The `Context` can (as desired) delegate data requests, event handling and user interactions to the Node's listener which, in almost every situation, is the `Context` of the parent Node.
+The `Context` can (as desired) delegate data requests, event handling and user interactions to the node's listener which, in almost every situation, is the `Context` of the parent Node.
 
 - ``Context``
 - ``AbstractContext``
@@ -105,9 +105,9 @@ The `Context` can (as desired) delegate data requests, event handling and user i
 
 Business Logic
 
-One or more `Worker` instances containing business logic may exist in each Node's `Worker` collection, and the `Context` instance can call methods on these `Worker` instances as needed.
+One or more `Worker` instances containing business logic may exist in each node's `Worker` collection, and the `Context` instance can call methods on these `Worker` instances as needed.
 
-`Worker` class definitions do not have to be strictly associated to an individual Node. This enables sharing business logic with other Nodes and may be leveraged, for example, to allow a `Worker` defined in one module to be used in the `Worker` collection of a Node in another module. In this case, the `Worker` class definition should be stored separately from any specific Node's source files.
+`Worker` class definitions do not have to be strictly associated to an individual Node. This enables sharing business logic with other Nodes and may be leveraged, for example, to allow a `Worker` defined in one module to be used in the `Worker` collection of a node in another module. In this case, the `Worker` class definition should be stored separately from any specific node's source files.
 
 - ``Worker``
 - ``AbstractWorker``
@@ -116,7 +116,7 @@ One or more `Worker` instances containing business logic may exist in each Node'
 
 User Interface
 
-A Node's ``ViewControllable`` instance defines its user interface (for example a [UIViewController](https://developer.apple.com/documentation/uikit/uiviewcontroller) in a [UIKit](https://developer.apple.com/documentation/uikit) app) and is also responsible for displaying or presenting the user interface of child Nodes. A ``ViewControllable`` protocol is used instead of the concrete class type to limit the available API, to avoid the use of UI frameworks (such as [UIKit](https://developer.apple.com/documentation/uikit)) within `Flow` instances and to facilitate testing.
+A node's ``ViewControllable`` instance defines its user interface (for example a [UIViewController](https://developer.apple.com/documentation/uikit/uiviewcontroller) in a [UIKit](https://developer.apple.com/documentation/uikit) app) and is also responsible for displaying or presenting the user interface of child Nodes. A ``ViewControllable`` protocol is used instead of the concrete class type to limit the available API, to avoid the use of UI frameworks (such as [UIKit](https://developer.apple.com/documentation/uikit)) within `Flow` instances and to facilitate testing.
 
 - ``ViewControllable``
 - ``NavigationControllable``
