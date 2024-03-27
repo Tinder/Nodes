@@ -207,8 +207,8 @@ final class ConfigTests: XCTestCase, TestFactories {
     }
 
     private func givenCustomUIFrameworkYAML(
-        name: String = "<name>",
-        import: String = "<import>",
+        name: String = "<uiFrameworkName>",
+        import: String = "<uiFrameworkImport>",
         viewControllerType: String = "<viewControllerType>",
         viewControllerSuperParameters: String = "<viewControllerSuperParameters>",
         viewControllerMethods: String = "<viewControllerMethods>"

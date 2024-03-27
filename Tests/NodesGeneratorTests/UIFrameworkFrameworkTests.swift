@@ -175,8 +175,8 @@ final class UIFrameworkFrameworkTests: XCTestCase {
     }
 
     private func givenCustomYAML(
-        name: String = "<name>",
-        import: String = "<import>",
+        name: String = "<uiFrameworkName>",
+        import: String = "<uiFrameworkImport>",
         viewControllerType: String = "<viewControllerType>",
         viewControllerSuperParameters: String = "<viewControllerSuperParameters>",
         viewControllerMethods: String = "<viewControllerMethods>"
