@@ -17,7 +17,7 @@ internal struct WorkerXcodeTemplatePermutation: XcodeTemplatePermutation {
             fileHeader: XcodeTemplateConstants.fileHeader,
             workerName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
             workerImports: worker.imports(with: config),
-            workerTestsImports: [],
+            workerTestsImports: workerTests.imports(with: config),
             workerGenericTypes: config.workerGenericTypes,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
             isNimbleEnabled: config.isNimbleEnabled
