@@ -10,8 +10,8 @@ import {{ import }}
 
 final class {{ node_name }}BuilderTests: XCTestCase {
 
-    private var builder: {{ node_name }}BuilderImp!
     private var listenerMock: {{ node_name }}ListenerMock!
+    private var builder: {{ node_name }}BuilderImp!
 
     @MainActor
     override func setUp() {
