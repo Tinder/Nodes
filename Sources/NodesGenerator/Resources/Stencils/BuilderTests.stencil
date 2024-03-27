@@ -1,0 +1,44 @@
+//{{ file_header }}
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+{% if builder_tests_imports %}
+
+{% for import in builder_tests_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+final class {{ node_name }}BuilderTests: XCTestCase {
+
+    private var builder: {{ node_name }}BuilderImp!
+    private var listenerMock: {{ node_name }}ListenerMock!
+
+    @MainActor
+    override func setUp() {
+        super.setUp()
+        listenerMock = {{ node_name }}ListenerMock()
+        builder = {{ node_name }}BuilderImp(componentFactory: injectComponent { parent in
+            {{ node_name }}Component(parent: parent)
+        } with: {
+            // swiftlint:disable:next direct_return
+            let dependency: {{ node_name }}DependencyMock = .init()
+            // dependency.<dependencyName> = <dependencyName>Mock
+            return dependency
+        })
+    }
+
+    override func tearDown() {
+        listenerMock = nil
+        builder = nil
+        super.tearDown()
+    }
+
+    @MainActor
+    func testCreate() {
+        {% if is_nimble_enabled %}
+        expect { self.builder.build(withListener: self.listenerMock) } != nil
+        {% else %}
+        XCTAssertNotNil(builder.build(withListener: listenerMock))
+        {% endif %}
+    }
+}
