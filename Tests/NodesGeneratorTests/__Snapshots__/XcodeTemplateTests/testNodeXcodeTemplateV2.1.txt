@@ -965,6 +965,21 @@
           - values: 0 elements
         ▿ Option
           ▿ default: Optional<String>
+            - some: "AppKit"
+          - description: "The UI framework of the new node."
+          - identifier: "uiFramework"
+          - name: "UI Framework:"
+          - notPersisted: true
+          - required: true
+          - requiredOptions: 0 key/value pairs
+          - type: "popup"
+          ▿ values: 4 elements
+            - "AppKit"
+            - "UIKit"
+            - "SwiftUI"
+            - "<uiFrameworkName>"
+        ▿ Option
+          ▿ default: Optional<String>
             - some: "true"
           - description: "Whether the node is created for use in an existing plugin list."
           - identifier: "usePluginList"
@@ -989,21 +1004,6 @@
                 - "true"
           - type: "text"
           - values: 0 elements
-        ▿ Option
-          ▿ default: Optional<String>
-            - some: "AppKit"
-          - description: "The UI framework of the new node."
-          - identifier: "uiFramework"
-          - name: "UI Framework:"
-          - notPersisted: true
-          - required: true
-          - requiredOptions: 0 key/value pairs
-          - type: "popup"
-          ▿ values: 4 elements
-            - "AppKit"
-            - "UIKit"
-            - "SwiftUI"
-            - "<uiFrameworkName>"
       - platforms: 0 elements
       - sortOrder: 1
       - supportsSwiftPackage: true

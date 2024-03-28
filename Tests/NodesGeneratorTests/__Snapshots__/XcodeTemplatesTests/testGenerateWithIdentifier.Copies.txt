@@ -1,28 +1,4 @@
-▿ 20 elements
-  ▿ (2 elements)
-    - from: ".bundle/Tinder.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - AppKit.xctemplate/TemplateIcon.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder@2x.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - AppKit.xctemplate/TemplateIcon@2x.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - UIKit.xctemplate/TemplateIcon.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder@2x.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - UIKit.xctemplate/TemplateIcon@2x.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - SwiftUI.xctemplate/TemplateIcon.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder@2x.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - SwiftUI.xctemplate/TemplateIcon@2x.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - Custom.xctemplate/TemplateIcon.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder@2x.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - Custom.xctemplate/TemplateIcon@2x.png"
+▿ 10 elements
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
     - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/TemplateIcon.png"
@@ -47,12 +23,6 @@
   ▿ (2 elements)
     - from: ".bundle/Tinder@2x.png"
     - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/TemplateIcon@2x.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate/TemplateIcon.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder@2x.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
     - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Worker.xctemplate/TemplateIcon.png"

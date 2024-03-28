@@ -8,18 +8,6 @@ import XCTest
 
 final class XcodeTemplateTests: XCTestCase, TestFactories {
 
-    func testNodeXcodeTemplate() throws {
-        let config: Config = givenConfig()
-        try UIFramework.Kind
-            .allCases
-            .map { try config.uiFramework(for: $0) }
-            .forEach { framework in
-                assertSnapshot(of: NodeXcodeTemplate(for: framework, config: config),
-                               as: .dump,
-                               named: framework.kind.rawValue)
-            }
-    }
-
     func testNodeViewInjectedXcodeTemplate() {
         assertSnapshot(of: NodeViewInjectedXcodeTemplate(config: givenConfig()),
                        as: .dump)
@@ -32,11 +20,6 @@ final class XcodeTemplateTests: XCTestCase, TestFactories {
 
     func testPluginNodeXcodeTemplate() {
         assertSnapshot(of: PluginNodeXcodeTemplate(config: givenConfig()),
-                       as: .dump)
-    }
-
-    func testPluginXcodeTemplate() {
-        assertSnapshot(of: PluginXcodeTemplate(config: givenConfig()),
                        as: .dump)
     }
 
