@@ -100,19 +100,19 @@
       - "<workerGenericType>"
   ▿ stencils: 14 elements
     - Analytics
+    - AnalyticsTests
     ▿ Builder
       - builder: Variation.swiftUI
     - Context
+    - ContextTests
     - Flow
+    - FlowTests
     - Plugin
+    - PluginTests
     - State
     ▿ ViewController
       - viewController: Variation.swiftUI
-    - ViewState
-    - AnalyticsTests
-    - ContextTests
-    - FlowTests
-    - PluginTests
     ▿ ViewControllerTests
       - viewControllerTests: Variation.swiftUI
+    - ViewState
     - ViewStateFactoryTests

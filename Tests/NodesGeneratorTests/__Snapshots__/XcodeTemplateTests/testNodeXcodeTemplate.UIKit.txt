@@ -98,19 +98,19 @@
           - "<workerGenericType>"
       ▿ stencils: 12 elements
         - Analytics
+        - AnalyticsTests
         ▿ Builder
           - builder: Variation.default
         - Context
+        - ContextTests
         - Flow
+        - FlowTests
         - State
         ▿ ViewController
           - viewController: Variation.default
-        - ViewState
-        - AnalyticsTests
-        - ContextTests
-        - FlowTests
         ▿ ViewControllerTests
           - viewControllerTests: Variation.default
+        - ViewState
         - ViewStateFactoryTests
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element

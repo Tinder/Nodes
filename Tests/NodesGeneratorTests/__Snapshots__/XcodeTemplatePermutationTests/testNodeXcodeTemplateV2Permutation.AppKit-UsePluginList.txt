@@ -100,19 +100,19 @@
       - "<workerGenericType>"
   ▿ stencils: 14 elements
     - Analytics
+    - AnalyticsTests
     ▿ Builder
       - builder: Variation.default
     - Context
+    - ContextTests
     - Flow
+    - FlowTests
     - Plugin
+    - PluginTests
     - State
     ▿ ViewController
       - viewController: Variation.default
-    - ViewState
-    - AnalyticsTests
-    - ContextTests
-    - FlowTests
-    - PluginTests
     ▿ ViewControllerTests
       - viewControllerTests: Variation.default
+    - ViewState
     - ViewStateFactoryTests
