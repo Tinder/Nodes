@@ -149,6 +149,10 @@ extension Config {
             uiFrameworks = defaults.uiFrameworks
         }
 
+        if uiFrameworks.isEmpty {
+            uiFrameworks = defaults.uiFrameworks
+        }
+
         baseImports =
             (try? decoder.decode(CodingKeys.baseImports))
             ?? defaults.baseImports
