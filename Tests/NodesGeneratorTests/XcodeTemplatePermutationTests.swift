@@ -55,11 +55,6 @@ final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
         assertSnapshot(of: permutation, as: .dump)
     }
 
-    func testPluginXcodeTemplatePermutation() {
-        let permutation: PluginXcodeTemplatePermutation = .init(name: "<name>", config: givenConfig())
-        assertSnapshot(of: permutation, as: .dump)
-    }
-
     func testWorkerXcodeTemplatePermutation() {
         let permutation: WorkerXcodeTemplatePermutation = .init(name: "<name>", config: givenConfig())
         assertSnapshot(of: permutation, as: .dump)
