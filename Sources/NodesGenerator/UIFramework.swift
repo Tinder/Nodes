@@ -164,7 +164,7 @@ public struct UIFramework: Equatable, Codable {
                 self = .uiKit
             case .swiftUI:
                 self = .swiftUI
-            default:
+            case .custom:
                 throw DecodingError.typeMismatch(Self.self, DecodingError.Context(
                     codingPath: container.codingPath,
                     debugDescription: "Custom framework must be an object."
