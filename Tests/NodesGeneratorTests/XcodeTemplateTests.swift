@@ -8,15 +8,6 @@ import XCTest
 
 final class XcodeTemplateTests: XCTestCase, TestFactories {
 
-    func testNodeXcodeTemplate() throws {
-        let config: Config = givenConfig()
-        config.uiFrameworks.forEach { framework in
-            assertSnapshot(of: NodeXcodeTemplate(for: framework, config: config),
-                           as: .dump,
-                           named: framework.kind.rawValue)
-        }
-    }
-
     func testNodeViewInjectedXcodeTemplate() {
         assertSnapshot(of: NodeViewInjectedXcodeTemplate(config: givenConfig()),
                        as: .dump)

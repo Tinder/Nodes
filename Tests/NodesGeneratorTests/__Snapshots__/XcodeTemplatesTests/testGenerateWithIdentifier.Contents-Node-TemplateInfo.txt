@@ -34,6 +34,31 @@
 		</dict>
 		<dict>
 			<key>Default</key>
+			<string>AppKit</string>
+			<key>Description</key>
+			<string>The UI framework of the new node.</string>
+			<key>Identifier</key>
+			<string>uiFramework</string>
+			<key>Name</key>
+			<string>UI Framework:</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>RequiredOptions</key>
+			<dict/>
+			<key>Type</key>
+			<string>popup</string>
+			<key>Values</key>
+			<array>
+				<string>AppKit</string>
+				<string>UIKit</string>
+				<string>SwiftUI</string>
+				<string>Custom</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Default</key>
 			<string>true</string>
 			<key>Description</key>
 			<string>Whether the node is created for use in an existing plugin list.</string>
@@ -76,31 +101,6 @@
 			<string>text</string>
 			<key>Values</key>
 			<array/>
-		</dict>
-		<dict>
-			<key>Default</key>
-			<string>AppKit</string>
-			<key>Description</key>
-			<string>The UI framework of the new node.</string>
-			<key>Identifier</key>
-			<string>uiFramework</string>
-			<key>Name</key>
-			<string>UI Framework:</string>
-			<key>NotPersisted</key>
-			<true/>
-			<key>Required</key>
-			<true/>
-			<key>RequiredOptions</key>
-			<dict/>
-			<key>Type</key>
-			<string>popup</string>
-			<key>Values</key>
-			<array>
-				<string>AppKit</string>
-				<string>UIKit</string>
-				<string>SwiftUI</string>
-				<string>Custom</string>
-			</array>
 		</dict>
 	</array>
 	<key>Platforms</key>

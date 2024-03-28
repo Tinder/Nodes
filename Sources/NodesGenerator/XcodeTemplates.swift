@@ -40,8 +40,7 @@ public final class XcodeTemplates {
             seen.insert(framework.name)
             return true
         }
-        var templates: [XcodeTemplate] = uiFrameworks
-            .map { NodeXcodeTemplate(for: $0, config: config) }
+        var templates: [XcodeTemplate] = []
         if let nodeXcodeTemplateV2: NodeXcodeTemplateV2 = .init(uiFrameworks: uiFrameworks, config: config) {
             templates.append(nodeXcodeTemplateV2)
         }

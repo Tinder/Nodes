@@ -1,16 +1,4 @@
-▿ 18 elements
-  ▿ (2 elements)
-    - path: "/Node - AppKit.xctemplate"
-    - createIntermediates: true
-  ▿ (2 elements)
-    - path: "/Node - UIKit.xctemplate"
-    - createIntermediates: true
-  ▿ (2 elements)
-    - path: "/Node - SwiftUI.xctemplate"
-    - createIntermediates: true
-  ▿ (2 elements)
-    - path: "/Node - Custom.xctemplate"
-    - createIntermediates: true
+▿ 14 elements
   ▿ (2 elements)
     - path: "/Node.xctemplate"
     - createIntermediates: true
