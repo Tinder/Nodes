@@ -10,34 +10,28 @@ final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
 
     func testNodeXcodeTemplatePermutation() throws {
         let config: Config = givenConfig()
-        try UIFramework.Kind
-            .allCases
-            .map { try config.uiFramework(for: $0) }
-            .forEach { framework in
-                let permutation: NodeXcodeTemplatePermutation = .init(name: "<name>", for: framework, config: config)
-                assertSnapshot(of: permutation, as: .dump, named: framework.kind.rawValue)
-            }
+        config.uiFrameworks.forEach { framework in
+            let permutation: NodeXcodeTemplatePermutation = .init(name: "<name>", for: framework, config: config)
+            assertSnapshot(of: permutation, as: .dump, named: framework.kind.rawValue)
+        }
     }
 
     func testNodeXcodeTemplateV2Permutation() throws {
         let config: Config = givenConfig()
-        try UIFramework.Kind
-            .allCases
-            .map { try config.uiFramework(for: $0) }
-            .forEach { framework in
-                [true, false].forEach { usePluginList in
-                    let permutation: NodeXcodeTemplateV2Permutation = .init(
-                        usePluginList: usePluginList,
-                        for: framework,
-                        config: config
-                    )
-                    assertSnapshot(
-                        of: permutation,
-                        as: .dump,
-                        named: "\(framework.kind.rawValue)\(usePluginList ? "-UsePluginList" : "")"
-                    )
-                }
+        config.uiFrameworks.forEach { framework in
+            [true, false].forEach { usePluginList in
+                let permutation: NodeXcodeTemplateV2Permutation = .init(
+                    usePluginList: usePluginList,
+                    for: framework,
+                    config: config
+                )
+                assertSnapshot(
+                    of: permutation,
+                    as: .dump,
+                    named: "\(framework.kind.rawValue)\(usePluginList ? "-UsePluginList" : "")"
+                )
             }
+        }
     }
 
     func testNodeViewInjectedXcodeTemplatePermutation() throws {

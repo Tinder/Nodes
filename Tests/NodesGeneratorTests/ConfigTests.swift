@@ -16,9 +16,6 @@ final class ConfigTests: XCTestCase, TestFactories {
             ERROR: Empty String Not Allowed [key: <key>] \
             (TIP: Omit from config for the default value to be used instead)
             """
-        expect(Config.ConfigError.uiFrameworkNotDefined(kind: .uiKit).localizedDescription) == """
-            ERROR: UIFramework Not Defined [kind: uiKit]
-            """
     }
 
     func testConfig() throws {
@@ -100,32 +97,6 @@ final class ConfigTests: XCTestCase, TestFactories {
                     }
                 })
         }
-    }
-
-    func testUIFrameworkForKind() throws {
-        let config: Config = givenConfig()
-        try UIFramework.Kind
-            .allCases
-            .forEach { expect(try config.uiFramework(for: $0).kind) == $0 }
-    }
-
-    func testUIFrameworkForKindIsNotDefined() throws {
-        var config: Config = .init()
-        config.uiFrameworks = []
-        try UIFramework.Kind
-            .allCases
-            .forEach { kind in
-                expect(try config.uiFramework(for: kind))
-                    .to(throwError(errorType: Config.ConfigError.self) { error in
-                        assertInlineSnapshot(of: error, as: .dump) {
-                            """
-                            ▿ ConfigError
-                              ▿ uiFrameworkNotDefined: (1 element)
-                                - kind: Kind.\(kind)
-                            """ + "\n"
-                        }
-                    })
-            }
     }
 
     private func givenConfigYAML() -> String {
