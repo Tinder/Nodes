@@ -21,7 +21,7 @@ internal struct NodeXcodeTemplateV2: XcodeTemplate {
                    name: "UI Framework:",
                    description: "The UI framework of the new node.",
                    type: "popup",
-                   values: uiFrameworks.map(\.framework.name),
+                   values: uiFrameworks.map(\.name),
                    default: firstFramework.name)
             Option(identifier: XcodeTemplateConstants.usePluginList,
                    name: "Created For Existing Plugin List",
