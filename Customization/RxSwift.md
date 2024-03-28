@@ -32,37 +32,42 @@ swift run --skip-build -- nodes-code-gen --preset "$PRESET" --author "$AUTHOR" -
 
 ```yaml
 uiFrameworks:
-  - framework: UIKit
-    viewControllerMethods: |
-      @available(*, unavailable)
-      internal required init?(coder: NSCoder) {
-          preconditionFailure("init(coder:) has not been implemented")
-      }
+  - framework:
+      custom:
+        name: UIKit
+        import: UIKit
+        viewControllerType: UIViewController
+        viewControllerSuperParameters: "nibName: nil, bundle: nil"
+        viewControllerMethods: |-
+          @available(*, unavailable)
+          internal required init?(coder: NSCoder) {
+              preconditionFailure("init(coder:) has not been implemented")
+          }
 
-      override internal func viewDidLoad() {
-          super.viewDidLoad()
-          view.backgroundColor = .systemBackground
-          update(with: initialState)
-      }
+          override internal func viewDidLoad() {
+              super.viewDidLoad()
+              view.backgroundColor = .systemBackground
+              update(with: initialState)
+          }
 
-      override internal func viewWillAppear(_ animated: Bool) {
-          super.viewWillAppear(animated)
-          observe(stateObservable).disposed(by: disposeBag)
-      }
+          override internal func viewWillAppear(_ animated: Bool) {
+              super.viewWillAppear(animated)
+              observe(stateObservable).disposed(by: disposeBag)
+          }
 
-      override internal func viewWillDisappear(_ animated: Bool) {
-          super.viewWillDisappear(animated)
-          LeakDetector.detect(disposeBag)
-          disposeBag = DisposeBag()
-      }
+          override internal func viewWillDisappear(_ animated: Bool) {
+              super.viewWillDisappear(animated)
+              LeakDetector.detect(disposeBag)
+              disposeBag = DisposeBag()
+          }
   - framework: SwiftUI
 reactiveImports:
   - RxSwift
-viewControllerSubscriptionsProperty: |
+viewControllerSubscriptionsProperty: |-
   /// The DisposeBag instance.
   private var disposeBag: DisposeBag = .init()
 viewStateEmptyFactory: Observable.empty()
-viewStateOperators: |
+viewStateOperators: |-
   .distinctUntilChanged()
   .observe(on: MainScheduler.instance)
 viewStatePropertyComment: The view state observable
