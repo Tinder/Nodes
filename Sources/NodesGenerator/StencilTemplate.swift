@@ -2,7 +2,6 @@
 //  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
-// swiftlint:disable:next type_body_length
 public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
 
     case analytics
@@ -68,63 +67,26 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
             self.viewStateFactoryTests = .viewStateFactoryTests
         }
 
-        // swiftlint:disable:next function_body_length
         public func stencils(includePlugin: Bool, includeTests: Bool) -> [StencilTemplate] {
-            switch (includePlugin, includeTests) {
-            case (true, true):
-                [
-                    analytics,
-                    analyticsTests,
-                    builder,
-                    context,
-                    contextTests,
-                    flow,
-                    flowTests,
-                    plugin,
-                    pluginTests,
-                    state,
-                    viewController,
-                    viewControllerTests,
-                    viewState,
-                    viewStateFactoryTests
-                ]
-            case (true, false):
-                [
-                    analytics,
-                    builder,
-                    context,
-                    flow,
-                    plugin,
-                    state,
-                    viewController,
-                    viewState
-                ]
-            case (false, true):
-                [
-                    analytics,
-                    analyticsTests,
-                    builder,
-                    context,
-                    contextTests,
-                    flow,
-                    flowTests,
-                    state,
-                    viewController,
-                    viewControllerTests,
-                    viewState,
-                    viewStateFactoryTests
-                ]
-            case (false, false):
-                [
-                    analytics,
-                    builder,
-                    context,
-                    flow,
-                    state,
-                    viewController,
-                    viewState
-                ]
-            }
+            let stencils: [StencilTemplate] = [
+                analytics,
+                builder,
+                context,
+                flow,
+                state,
+                viewController,
+                viewState
+            ] + (includePlugin ? [.plugin] : [])
+            guard includeTests
+            else { return stencils }
+            let testsStencils: [StencilTemplate] = [
+                analyticsTests,
+                contextTests,
+                flowTests,
+                viewControllerTests,
+                viewStateFactoryTests
+            ] + (includePlugin ? [.pluginTests] : [])
+            return stencils + testsStencils
         }
     }
 

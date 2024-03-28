@@ -133,32 +133,32 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             let node: StencilTemplate.Node = .init(for: variation)
             expect(node.stencils(includePlugin: true, includeTests: true)) == [
                 .analytics,
-                .analyticsTests,
                 .builder(variation),
                 .context,
-                .contextTests,
                 .flow,
-                .flowTests,
-                .plugin,
-                .pluginTests,
                 .state,
                 .viewController(variation),
-                .viewControllerTests(variation),
                 .viewState,
-                .viewStateFactoryTests
+                .plugin,
+                .analyticsTests,
+                .contextTests,
+                .flowTests,
+                .viewControllerTests(variation),
+                .viewStateFactoryTests,
+                .pluginTests
             ]
             expect(node.stencils(includePlugin: false, includeTests: true)) == [
                 .analytics,
-                .analyticsTests,
                 .builder(variation),
                 .context,
-                .contextTests,
                 .flow,
-                .flowTests,
                 .state,
                 .viewController(variation),
-                .viewControllerTests(variation),
                 .viewState,
+                .analyticsTests,
+                .contextTests,
+                .flowTests,
+                .viewControllerTests(variation),
                 .viewStateFactoryTests
             ]
             expect(node.stencils(includePlugin: true, includeTests: false)) == [
@@ -166,10 +166,10 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .builder(variation),
                 .context,
                 .flow,
-                .plugin,
                 .state,
                 .viewController(variation),
-                .viewState
+                .viewState,
+                .plugin
             ]
             expect(node.stencils(includePlugin: false, includeTests: false)) == [
                 .analytics,
