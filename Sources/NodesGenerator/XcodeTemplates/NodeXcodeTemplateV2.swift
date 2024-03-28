@@ -17,6 +17,12 @@ internal struct NodeXcodeTemplateV2: XcodeTemplate {
                    name: "Node name:",
                    description: "The name of the new node.",
                    default: "MyFeatureV1")
+            Option(identifier: "uiFramework",
+                   name: "UI Framework:",
+                   description: "The UI framework of the new node.",
+                   type: "popup",
+                   values: uiFrameworks.map(\.framework.name),
+                   default: firstFramework.name)
             Option(identifier: XcodeTemplateConstants.usePluginList,
                    name: "Created For Existing Plugin List",
                    description: "Whether the node is created for use in an existing plugin list.",
@@ -27,12 +33,6 @@ internal struct NodeXcodeTemplateV2: XcodeTemplate {
                    description: "The name of an existing plugin list.",
                    requiredOptions: [XcodeTemplateConstants.usePluginList: ["true"]],
                    default: "MyFeature")
-            Option(identifier: "uiFramework",
-                   name: "UI Framework:",
-                   description: "The UI framework of the new node.",
-                   type: "popup",
-                   values: uiFrameworks.map(\.framework.name),
-                   default: firstFramework.name)
         }
 
         permutations = uiFrameworks.flatMap { framework in
