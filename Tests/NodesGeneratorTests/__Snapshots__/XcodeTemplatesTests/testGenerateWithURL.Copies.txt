@@ -1,28 +1,4 @@
-▿ 18 elements
-  ▿ (2 elements)
-    - from: ".bundle/Tinder.png"
-    - to: "/Node - AppKit.xctemplate/TemplateIcon.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder@2x.png"
-    - to: "/Node - AppKit.xctemplate/TemplateIcon@2x.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder.png"
-    - to: "/Node - UIKit.xctemplate/TemplateIcon.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder@2x.png"
-    - to: "/Node - UIKit.xctemplate/TemplateIcon@2x.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder.png"
-    - to: "/Node - SwiftUI.xctemplate/TemplateIcon.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder@2x.png"
-    - to: "/Node - SwiftUI.xctemplate/TemplateIcon@2x.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder.png"
-    - to: "/Node - Custom.xctemplate/TemplateIcon.png"
-  ▿ (2 elements)
-    - from: ".bundle/Tinder@2x.png"
-    - to: "/Node - Custom.xctemplate/TemplateIcon@2x.png"
+▿ 10 elements
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
     - to: "/Node.xctemplate/TemplateIcon.png"

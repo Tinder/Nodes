@@ -1,16 +1,4 @@
-▿ 17 elements
-  ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - AppKit.xctemplate"
-    - createIntermediates: true
-  ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - UIKit.xctemplate"
-    - createIntermediates: true
-  ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - SwiftUI.xctemplate"
-    - createIntermediates: true
-  ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node - Custom.xctemplate"
-    - createIntermediates: true
+▿ 13 elements
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate"
     - createIntermediates: true
