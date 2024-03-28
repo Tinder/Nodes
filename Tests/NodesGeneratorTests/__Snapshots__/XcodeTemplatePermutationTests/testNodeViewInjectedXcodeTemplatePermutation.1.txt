@@ -63,11 +63,11 @@
       - "<workerGenericType>"
   ▿ stencils: 8 elements
     - Analytics
-    - AnalyticsTests
     ▿ Builder
       - builder: Variation.default
     - Context
-    - ContextTests
     - Flow
-    - FlowTests
     - State
+    - AnalyticsTests
+    - ContextTests
+    - FlowTests

@@ -194,13 +194,13 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         ]
         expect(nodeViewInjected.stencils(includeTests: true)) == [
             .analytics,
-            .analyticsTests,
             .builder(.default),
             .context,
-            .contextTests,
             .flow,
-            .flowTests,
-            .state
+            .state,
+            .analyticsTests,
+            .contextTests,
+            .flowTests
         ]
     }
 

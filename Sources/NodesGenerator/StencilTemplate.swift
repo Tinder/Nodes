@@ -113,27 +113,21 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
         }
 
         public func stencils(includeTests: Bool) -> [StencilTemplate] {
-            switch includeTests {
-            case true:
-                [
-                    analytics,
-                    analyticsTests,
-                    builder,
-                    context,
-                    contextTests,
-                    flow,
-                    flowTests,
-                    state
-                ]
-            case false:
-                [
-                    analytics,
-                    builder,
-                    context,
-                    flow,
-                    state
-                ]
-            }
+            let stencils: [StencilTemplate] = [
+                analytics,
+                builder,
+                context,
+                flow,
+                state
+            ]
+            guard includeTests
+            else { return stencils }
+            let testsStencils: [StencilTemplate] = [
+                analyticsTests,
+                contextTests,
+                flowTests
+            ]
+            return stencils + testsStencils
         }
     }
 

@@ -498,25 +498,25 @@
     - path: "/Node (view injected).xctemplate/___FILEBASENAME___Analytics.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node (view injected).xctemplate/___FILEBASENAME___AnalyticsTests.swift"
-    - atomically: true
-  ▿ (2 elements)
     - path: "/Node (view injected).xctemplate/___FILEBASENAME___Builder.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node (view injected).xctemplate/___FILEBASENAME___Context.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node (view injected).xctemplate/___FILEBASENAME___ContextTests.swift"
-    - atomically: true
-  ▿ (2 elements)
     - path: "/Node (view injected).xctemplate/___FILEBASENAME___Flow.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node (view injected).xctemplate/___FILEBASENAME___FlowTests.swift"
+    - path: "/Node (view injected).xctemplate/___FILEBASENAME___State.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node (view injected).xctemplate/___FILEBASENAME___State.swift"
+    - path: "/Node (view injected).xctemplate/___FILEBASENAME___AnalyticsTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node (view injected).xctemplate/___FILEBASENAME___ContextTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node (view injected).xctemplate/___FILEBASENAME___FlowTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node (view injected).xctemplate/TemplateInfo.plist"
