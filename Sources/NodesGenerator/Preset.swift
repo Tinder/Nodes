@@ -2,7 +2,7 @@
 //  Copyright © 2023 Tinder (Match Group, LLC)
 //
 
-public enum Preset: String {
+public enum Preset: String, CaseIterable {
 
     case app = "App"
     case scene = "Scene"
@@ -30,7 +30,10 @@ public enum Preset: String {
         self == .app ? "fileprivate let appService: AppService = AppServiceImp()" : ""
     }
 
-    internal static func isReserved(nodeName: String) -> Bool {
-        Self(rawValue: nodeName) != nil || nodeName == "WindowScene"
+    internal static func isPresetNodeName(_ nodeName: String) -> Bool {
+        for presetName: String in allCases.map(\.nodeName) where presetName == nodeName {
+            return true
+        }
+        return false
     }
 }

@@ -177,7 +177,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
     ) throws {
-        guard !strict || !Preset.isReserved(nodeName: nodeName)
+        guard !strict || !Preset.isPresetNodeName(nodeName)
         else { throw StencilContextError.reservedNodeName(nodeName) }
         self.fileHeader = fileHeader
         self.nodeName = nodeName

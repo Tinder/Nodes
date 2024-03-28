@@ -23,17 +23,13 @@ final class StencilContextsTests: XCTestCase, TestFactories {
             .to(throwError(errorType: StencilContextError.self) { error in
                 expect(error) == .reservedNodeName("App")
             })
-        expect { try self.givenNodeStencilContext(nodeName: "Scene") }
+        expect { try self.givenNodeStencilContext(nodeName: "WindowScene") }
             .to(throwError(errorType: StencilContextError.self) { error in
-                expect(error) == .reservedNodeName("Scene")
+                expect(error) == .reservedNodeName("WindowScene")
             })
         expect { try self.givenNodeStencilContext(nodeName: "Window") }
             .to(throwError(errorType: StencilContextError.self) { error in
                 expect(error) == .reservedNodeName("Window")
-            })
-        expect { try self.givenNodeStencilContext(nodeName: "WindowScene") }
-            .to(throwError(errorType: StencilContextError.self) { error in
-                expect(error) == .reservedNodeName("WindowScene")
             })
         expect { try self.givenNodeStencilContext(nodeName: "Root") }
             .to(throwError(errorType: StencilContextError.self) { error in
@@ -66,17 +62,13 @@ final class StencilContextsTests: XCTestCase, TestFactories {
             .to(throwError(errorType: StencilContextError.self) { error in
                 expect(error) == .reservedNodeName("App")
             })
-        expect { try self.givenNodeViewInjectedStencilContext(nodeName: "Scene") }
+        expect { try self.givenNodeViewInjectedStencilContext(nodeName: "WindowScene") }
             .to(throwError(errorType: StencilContextError.self) { error in
-                expect(error) == .reservedNodeName("Scene")
+                expect(error) == .reservedNodeName("WindowScene")
             })
         expect { try self.givenNodeViewInjectedStencilContext(nodeName: "Window") }
             .to(throwError(errorType: StencilContextError.self) { error in
                 expect(error) == .reservedNodeName("Window")
-            })
-        expect { try self.givenNodeViewInjectedStencilContext(nodeName: "WindowScene") }
-            .to(throwError(errorType: StencilContextError.self) { error in
-                expect(error) == .reservedNodeName("WindowScene")
             })
         expect { try self.givenNodeViewInjectedStencilContext(nodeName: "Root") }
             .to(throwError(errorType: StencilContextError.self) { error in
