@@ -44,38 +44,38 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             switch stencilTemplate {
             case .analytics:
                 expect(name) == "Analytics"
+            case .analyticsTests:
+                expect(name) == "AnalyticsTests"
             case .builder:
                 expect(name) == "Builder"
             case .context:
                 expect(name) == "Context"
+            case .contextTests:
+                expect(name) == "ContextTests"
             case .flow:
                 expect(name) == "Flow"
+            case .flowTests:
+                expect(name) == "FlowTests"
             case .plugin:
                 expect(name) == "Plugin"
+            case .pluginTests:
+                expect(name) == "PluginTests"
             case .pluginList:
                 expect(name) == "PluginList"
+            case .pluginListTests:
+                expect(name) == "PluginListTests"
             case .state:
                 expect(name) == "State"
             case .viewController:
                 expect(name) == "ViewController"
-            case .viewState:
-                expect(name) == "ViewState"
-            case .worker:
-                expect(name) == "Worker"
-            case .analyticsTests:
-                expect(name) == "AnalyticsTests"
-            case .contextTests:
-                expect(name) == "ContextTests"
-            case .flowTests:
-                expect(name) == "FlowTests"
-            case .pluginTests:
-                expect(name) == "PluginTests"
-            case .pluginListTests:
-                expect(name) == "PluginListTests"
             case .viewControllerTests:
                 expect(name) == "ViewControllerTests"
+            case .viewState:
+                expect(name) == "ViewState"
             case .viewStateFactoryTests:
                 expect(name) == "ViewStateFactoryTests"
+            case .worker:
+                expect(name) == "Worker"
             case .workerTests:
                 expect(name) == "WorkerTests"
             }
@@ -89,38 +89,38 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             switch stencilTemplate {
             case .analytics:
                 expect(filename) == "Analytics"
+            case .analyticsTests:
+                expect(filename) == "AnalyticsTests"
             case let .builder(variation):
                 expect(filename) == "Builder\(variation == .swiftUI ? "-SwiftUI" : "")"
             case .context:
                 expect(filename) == "Context"
+            case .contextTests:
+                expect(filename) == "ContextTests"
             case .flow:
                 expect(filename) == "Flow"
+            case .flowTests:
+                expect(filename) == "FlowTests"
             case .plugin:
                 expect(filename) == "Plugin"
+            case .pluginTests:
+                expect(filename) == "PluginTests"
             case .pluginList:
                 expect(filename) == "PluginList"
+            case .pluginListTests:
+                expect(filename) == "PluginListTests"
             case .state:
                 expect(filename) == "State"
             case let .viewController(variation):
                 expect(filename) == "ViewController\(variation == .swiftUI ? "-SwiftUI" : "")"
-            case .viewState:
-                expect(filename) == "ViewState"
-            case .worker:
-                expect(filename) == "Worker"
-            case .analyticsTests:
-                expect(filename) == "AnalyticsTests"
-            case .contextTests:
-                expect(filename) == "ContextTests"
-            case .flowTests:
-                expect(filename) == "FlowTests"
-            case .pluginTests:
-                expect(filename) == "PluginTests"
-            case .pluginListTests:
-                expect(filename) == "PluginListTests"
             case let .viewControllerTests(variation):
                 expect(filename) == "ViewControllerTests\(variation == .swiftUI ? "-SwiftUI" : "")"
+            case .viewState:
+                expect(filename) == "ViewState"
             case .viewStateFactoryTests:
                 expect(filename) == "ViewStateFactoryTests"
+            case .worker:
+                expect(filename) == "Worker"
             case .workerTests:
                 expect(filename) == "WorkerTests"
             }
@@ -136,16 +136,16 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .builder(variation),
                 .context,
                 .flow,
-                .plugin,
                 .state,
                 .viewController(variation),
                 .viewState,
+                .plugin,
                 .analyticsTests,
                 .contextTests,
                 .flowTests,
-                .pluginTests,
                 .viewControllerTests(variation),
-                .viewStateFactoryTests
+                .viewStateFactoryTests,
+                .pluginTests
             ]
             expect(node.stencils(includePlugin: false, includeTests: true)) == [
                 .analytics,
@@ -166,10 +166,10 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .builder(variation),
                 .context,
                 .flow,
-                .plugin,
                 .state,
                 .viewController(variation),
-                .viewState
+                .viewState,
+                .plugin
             ]
             expect(node.stencils(includePlugin: false, includeTests: false)) == [
                 .analytics,
@@ -226,6 +226,10 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     expect(imports) == [
                         "<baseImport>"
                     ]
+                case .analyticsTests:
+                    expect(imports) == [
+                        "<baseTestImport>"
+                    ]
                 case .builder:
                     expect(imports) == [
                         "Nodes",
@@ -240,11 +244,19 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                         "<baseImport>",
                         "<reactiveImport>"
                     ]
+                case .contextTests:
+                    expect(imports) == [
+                        "<baseTestImport>"
+                    ]
                 case .flow:
                     expect(imports) == [
                         "Nodes",
                         "<baseImport>",
                         "<flowImport>"
+                    ]
+                case .flowTests:
+                    expect(imports) == [
+                        "<baseTestImport>"
                     ]
                 case .plugin:
                     expect(imports) == [
@@ -252,12 +264,22 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                         "<baseImport>",
                         "<dependencyInjectionImport>"
                     ]
+                case .pluginTests:
+                    expect(imports) == [
+                        "NodesTesting",
+                        "<baseTestImport>"
+                    ]
                 case .pluginList:
                     expect(imports) == [
                         "Nodes",
                         "<baseImport>",
                         "<dependencyInjectionImport>",
                         "<pluginListImport>"
+                    ]
+                case .pluginListTests:
+                    expect(imports) == [
+                        "NodesTesting",
+                        "<baseTestImport>"
                     ]
                 case .state:
                     expect(imports) == [
@@ -271,47 +293,25 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                         "<viewControllerImport>",
                         uiFrameworkImport
                     ]
+                case .viewControllerTests:
+                    expect(imports) == [
+                        "<baseTestImport>",
+                        "<reactiveImport>"
+                    ]
                 case .viewState:
                     expect(imports) == [
                         "Nodes",
                         "<baseImport>"
+                    ]
+                case .viewStateFactoryTests:
+                    expect(imports) == [
+                        "<baseTestImport>"
                     ]
                 case .worker:
                     expect(imports) == [
                         "Nodes",
                         "<baseImport>",
                         "<reactiveImport>"
-                    ]
-                case .analyticsTests:
-                    expect(imports) == [
-                        "<baseTestImport>"
-                    ]
-                case .contextTests:
-                    expect(imports) == [
-                        "<baseTestImport>"
-                    ]
-                case .flowTests:
-                    expect(imports) == [
-                        "<baseTestImport>"
-                    ]
-                case .pluginTests:
-                    expect(imports) == [
-                        "NodesTesting",
-                        "<baseTestImport>"
-                    ]
-                case .pluginListTests:
-                    expect(imports) == [
-                        "NodesTesting",
-                        "<baseTestImport>"
-                    ]
-                case .viewControllerTests:
-                    expect(imports) == [
-                        "<baseTestImport>",
-                        "<reactiveImport>"
-                    ]
-                case .viewStateFactoryTests:
-                    expect(imports) == [
-                        "<baseTestImport>"
                     ]
                 case .workerTests:
                     expect(imports) == [
@@ -328,25 +328,25 @@ extension StencilTemplate {
     // swiftlint:disable:next strict_fileprivate
     fileprivate static let allCases: [Self] = [
         .analytics,
+        .analyticsTests,
         .builder(.default),
         .builder(.swiftUI),
         .context,
+        .contextTests,
         .flow,
+        .flowTests,
         .plugin,
+        .pluginTests,
         .pluginList,
+        .pluginListTests,
         .state,
         .viewController(.default),
-        .viewController(.swiftUI),
-        .viewState,
-        .worker,
-        .analyticsTests,
-        .contextTests,
-        .flowTests,
-        .pluginTests,
-        .pluginListTests,
         .viewControllerTests(.default),
+        .viewController(.swiftUI),
         .viewControllerTests(.swiftUI),
+        .viewState,
         .viewStateFactoryTests,
+        .worker,
         .workerTests
     ]
 }

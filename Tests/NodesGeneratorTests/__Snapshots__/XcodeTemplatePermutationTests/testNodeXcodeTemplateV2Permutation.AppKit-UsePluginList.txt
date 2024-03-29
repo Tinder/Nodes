@@ -104,15 +104,15 @@
       - builder: Variation.default
     - Context
     - Flow
-    - Plugin
     - State
     ▿ ViewController
       - viewController: Variation.default
     - ViewState
+    - Plugin
     - AnalyticsTests
     - ContextTests
     - FlowTests
-    - PluginTests
     ▿ ViewControllerTests
       - viewControllerTests: Variation.default
     - ViewStateFactoryTests
+    - PluginTests

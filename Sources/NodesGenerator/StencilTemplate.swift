@@ -5,23 +5,22 @@
 public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
 
     case analytics
+    case analyticsTests
     case builder(Variation)
     case context
+    case contextTests
     case flow
+    case flowTests
     case plugin
+    case pluginTests
     case pluginList
+    case pluginListTests
     case state
     case viewController(Variation)
-    case viewState
-    case worker
-
-    case analyticsTests
-    case contextTests
-    case flowTests
-    case pluginTests
-    case pluginListTests
     case viewControllerTests(Variation)
+    case viewState
     case viewStateFactoryTests
+    case worker
     case workerTests
 
     public enum Variation: String, Sendable, Equatable, CaseIterable {
@@ -37,91 +36,80 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
     public struct Node {
 
         public let analytics: StencilTemplate
+        public let analyticsTests: StencilTemplate
         public let builder: StencilTemplate
         public let context: StencilTemplate
+        public let contextTests: StencilTemplate
         public let flow: StencilTemplate
+        public let flowTests: StencilTemplate
         public let plugin: StencilTemplate
+        public let pluginTests: StencilTemplate
         public let state: StencilTemplate
         public let viewController: StencilTemplate
-        public let viewState: StencilTemplate
-
-        public let analyticsTests: StencilTemplate
-        public let contextTests: StencilTemplate
-        public let flowTests: StencilTemplate
-        public let pluginTests: StencilTemplate
         public let viewControllerTests: StencilTemplate
+        public let viewState: StencilTemplate
         public let viewStateFactoryTests: StencilTemplate
 
         public init(for variation: StencilTemplate.Variation) {
             self.analytics = .analytics
+            self.analyticsTests = .analyticsTests
             self.builder = .builder(variation)
             self.context = .context
+            self.contextTests = .contextTests
             self.flow = .flow
+            self.flowTests = .flowTests
             self.plugin = .plugin
+            self.pluginTests = .pluginTests
             self.state = .state
             self.viewController = .viewController(variation)
-            self.viewState = .viewState
-            self.analyticsTests = .analyticsTests
-            self.contextTests = .contextTests
-            self.flowTests = .flowTests
-            self.pluginTests = .pluginTests
             self.viewControllerTests = .viewControllerTests(variation)
+            self.viewState = .viewState
             self.viewStateFactoryTests = .viewStateFactoryTests
         }
 
         public func stencils(includePlugin: Bool, includeTests: Bool) -> [StencilTemplate] {
-            var stencils: [StencilTemplate] = [
+            let stencils: [StencilTemplate] = [
                 analytics,
                 builder,
                 context,
-                flow
-            ]
-            if includePlugin {
-                stencils.append(.plugin)
-            }
-            stencils += [
+                flow,
                 state,
                 viewController,
                 viewState
-            ]
+            ] + (includePlugin ? [.plugin] : [])
             guard includeTests
             else { return stencils }
-            stencils += [
+            let testsStencils: [StencilTemplate] = [
                 analyticsTests,
                 contextTests,
-                flowTests
-            ]
-            if includePlugin {
-                stencils.append(.pluginTests)
-            }
-            return stencils + [
+                flowTests,
                 viewControllerTests,
                 viewStateFactoryTests
-            ]
+            ] + (includePlugin ? [.pluginTests] : [])
+            return stencils + testsStencils
         }
     }
 
     public struct NodeViewInjected {
 
         public let analytics: StencilTemplate
+        public let analyticsTests: StencilTemplate
         public let builder: StencilTemplate
         public let context: StencilTemplate
-        public let flow: StencilTemplate
-        public let state: StencilTemplate
-
-        public let analyticsTests: StencilTemplate
         public let contextTests: StencilTemplate
+        public let flow: StencilTemplate
         public let flowTests: StencilTemplate
+        public let state: StencilTemplate
 
         public init() {
             self.analytics = .analytics
+            self.analyticsTests = .analyticsTests
             self.builder = .builder(.default)
             self.context = .context
-            self.flow = .flow
-            self.state = .state
-            self.analyticsTests = .analyticsTests
             self.contextTests = .contextTests
+            self.flow = .flow
             self.flowTests = .flowTests
+            self.state = .state
         }
 
         public func stencils(includeTests: Bool) -> [StencilTemplate] {
@@ -134,11 +122,12 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
             ]
             guard includeTests
             else { return stencils }
-            return stencils + [
+            let testsStencils: [StencilTemplate] = [
                 analyticsTests,
                 contextTests,
                 flowTests
             ]
+            return stencils + testsStencils
         }
     }
 
@@ -148,38 +137,38 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
         switch self {
         case .analytics:
             "Analytics"
+        case .analyticsTests:
+            "AnalyticsTests"
         case .builder:
             "Builder"
         case .context:
             "Context"
+        case .contextTests:
+            "ContextTests"
         case .flow:
             "Flow"
+        case .flowTests:
+            "FlowTests"
         case .plugin:
             "Plugin"
+        case .pluginTests:
+            "PluginTests"
         case .pluginList:
             "PluginList"
+        case .pluginListTests:
+            "PluginListTests"
         case .state:
             "State"
         case .viewController:
             "ViewController"
-        case .viewState:
-            "ViewState"
-        case .worker:
-            "Worker"
-        case .analyticsTests:
-            "AnalyticsTests"
-        case .contextTests:
-            "ContextTests"
-        case .flowTests:
-            "FlowTests"
-        case .pluginTests:
-            "PluginTests"
-        case .pluginListTests:
-            "PluginListTests"
         case .viewControllerTests:
             "ViewControllerTests"
+        case .viewState:
+            "ViewState"
         case .viewStateFactoryTests:
             "ViewStateFactoryTests"
+        case .worker:
+            "Worker"
         case .workerTests:
             "WorkerTests"
         }
@@ -187,13 +176,25 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
 
     public var filename: String {
         switch self {
-        case let .builder(variation), let .viewController(variation), let .viewControllerTests(variation):
+        case .analytics, .analyticsTests:
+            description
+        case let .builder(variation):
             description.appending(variation.rawValue)
-        case .analytics, .context, .flow, .plugin, .pluginList, .state, .viewState, .worker:
+        case .context, .contextTests:
             description
-        case .analyticsTests, .contextTests, .flowTests, .viewStateFactoryTests, .workerTests:
+        case .flow, .flowTests:
             description
-        case .pluginTests, .pluginListTests:
+        case .plugin, .pluginTests:
+            description
+        case .pluginList, .pluginListTests:
+            description
+        case .state:
+            description
+        case let .viewController(variation), let .viewControllerTests(variation):
+            description.appending(variation.rawValue)
+        case .viewState, .viewStateFactoryTests:
+            description
+        case .worker, .workerTests:
             description
         }
     }
@@ -208,6 +209,8 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
         return switch self {
         case .analytics:
             config.baseImports
+        case .analyticsTests:
+            config.baseTestImports
         case .builder:
             config.baseImports
                 .union(["Nodes"])
@@ -218,47 +221,45 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
             config.baseImports
                 .union(["Nodes"])
                 .union(config.reactiveImports)
+        case .contextTests:
+            config.baseTestImports
         case .flow:
             config.baseImports
                 .union(["Nodes"])
                 .union(config.flowImports)
+        case .flowTests:
+            config.baseTestImports
         case .plugin:
             config.baseImports
                 .union(["Nodes"])
                 .union(config.dependencyInjectionImports)
+        case .pluginTests:
+            config.baseTestImports
+                .union(["NodesTesting"])
         case .pluginList:
             config.baseImports
                 .union(["Nodes"])
                 .union(config.dependencyInjectionImports)
                 .union(config.pluginListImports)
+        case .pluginListTests:
+            config.baseTestImports
+                .union(["NodesTesting"])
         case .state:
             config.baseImports
         case .viewController:
             uiFramework.flatMap { viewControllerImports.union([$0.import]) } ?? viewControllerImports
+        case .viewControllerTests:
+            config.baseTestImports
+                .union(config.reactiveImports)
         case .viewState:
             config.baseImports
                 .union(["Nodes"])
+        case .viewStateFactoryTests:
+            config.baseTestImports
         case .worker:
             config.baseImports
                 .union(["Nodes"])
                 .union(config.reactiveImports)
-        case .analyticsTests:
-            config.baseTestImports
-        case .contextTests:
-            config.baseTestImports
-        case .flowTests:
-            config.baseTestImports
-        case .pluginTests:
-            config.baseTestImports
-                .union(["NodesTesting"])
-        case .pluginListTests:
-            config.baseTestImports
-                .union(["NodesTesting"])
-        case .viewControllerTests:
-            config.baseTestImports
-                .union(config.reactiveImports)
-        case .viewStateFactoryTests:
-            config.baseTestImports
         case .workerTests:
             config.baseTestImports
         }

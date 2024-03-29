@@ -104,15 +104,15 @@
       - builder: Variation.swiftUI
     - Context
     - Flow
-    - Plugin
     - State
     ▿ ViewController
       - viewController: Variation.swiftUI
     - ViewState
+    - Plugin
     - AnalyticsTests
     - ContextTests
     - FlowTests
-    - PluginTests
     ▿ ViewControllerTests
       - viewControllerTests: Variation.swiftUI
     - ViewStateFactoryTests
+    - PluginTests

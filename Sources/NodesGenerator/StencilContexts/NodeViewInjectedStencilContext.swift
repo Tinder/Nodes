@@ -7,13 +7,13 @@ public struct NodeViewInjectedStencilContext: StencilContext {
     private let fileHeader: String
     private let nodeName: String
     private let analyticsImports: [String]
+    private let analyticsTestsImports: [String]
     private let builderImports: [String]
     private let contextImports: [String]
-    private let flowImports: [String]
-    private let stateImports: [String]
-    private let analyticsTestsImports: [String]
     private let contextTestsImports: [String]
+    private let flowImports: [String]
     private let flowTestsImports: [String]
+    private let stateImports: [String]
     private let dependencies: [[String: Any]]
     private let componentDependencies: String
     private let analyticsProperties: [[String: Any]]
@@ -32,13 +32,13 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             "node_name": nodeName,
             "owns_view": false,
             "analytics_imports": analyticsImports,
+            "analytics_tests_imports": analyticsTestsImports,
             "builder_imports": builderImports,
             "context_imports": contextImports,
-            "flow_imports": flowImports,
-            "state_imports": stateImports,
-            "analytics_tests_imports": analyticsTestsImports,
             "context_tests_imports": contextTestsImports,
+            "flow_imports": flowImports,
             "flow_tests_imports": flowTestsImports,
+            "state_imports": stateImports,
             "dependencies": dependencies,
             "component_dependencies": componentDependencies,
             "analytics_properties": analyticsProperties,
@@ -58,13 +58,13 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         fileHeader: String,
         nodeName: String,
         analyticsImports: Set<String>,
+        analyticsTestsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
-        flowImports: Set<String>,
-        stateImports: Set<String>,
-        analyticsTestsImports: Set<String>,
         contextTestsImports: Set<String>,
+        flowImports: Set<String>,
         flowTestsImports: Set<String>,
+        stateImports: Set<String>,
         dependencies: [Config.Variable],
         componentDependencies: String = "",
         analyticsProperties: [Config.Variable],
@@ -82,13 +82,13 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             fileHeader: fileHeader,
             nodeName: nodeName,
             analyticsImports: analyticsImports,
+            analyticsTestsImports: analyticsTestsImports,
             builderImports: builderImports,
             contextImports: contextImports,
-            flowImports: flowImports,
-            stateImports: stateImports,
-            analyticsTestsImports: analyticsTestsImports,
             contextTestsImports: contextTestsImports,
+            flowImports: flowImports,
             flowTestsImports: flowTestsImports,
+            stateImports: stateImports,
             dependencies: dependencies,
             componentDependencies: componentDependencies,
             analyticsProperties: analyticsProperties,
@@ -107,13 +107,13 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         preset: Preset,
         fileHeader: String,
         analyticsImports: Set<String>,
+        analyticsTestsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
-        flowImports: Set<String>,
-        stateImports: Set<String>,
-        analyticsTestsImports: Set<String>,
         contextTestsImports: Set<String>,
+        flowImports: Set<String>,
         flowTestsImports: Set<String>,
+        stateImports: Set<String>,
         dependencies: [Config.Variable],
         analyticsProperties: [Config.Variable],
         flowProperties: [Config.Variable],
@@ -132,13 +132,13 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             fileHeader: fileHeader,
             nodeName: preset.nodeName,
             analyticsImports: analyticsImports,
+            analyticsTestsImports: analyticsTestsImports,
             builderImports: builderImports,
             contextImports: contextImports,
-            flowImports: flowImports,
-            stateImports: stateImports,
-            analyticsTestsImports: analyticsTestsImports,
             contextTestsImports: contextTestsImports,
+            flowImports: flowImports,
             flowTestsImports: flowTestsImports,
+            stateImports: stateImports,
             dependencies: dependencies,
             componentDependencies: preset.componentDependencies,
             analyticsProperties: analyticsProperties,
@@ -158,13 +158,13 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         fileHeader: String,
         nodeName: String,
         analyticsImports: Set<String>,
+        analyticsTestsImports: Set<String>,
         builderImports: Set<String>,
         contextImports: Set<String>,
-        flowImports: Set<String>,
-        stateImports: Set<String>,
-        analyticsTestsImports: Set<String>,
         contextTestsImports: Set<String>,
+        flowImports: Set<String>,
         flowTestsImports: Set<String>,
+        stateImports: Set<String>,
         dependencies: [Config.Variable],
         componentDependencies: String,
         analyticsProperties: [Config.Variable],
@@ -182,13 +182,13 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         self.fileHeader = fileHeader
         self.nodeName = nodeName
         self.analyticsImports = analyticsImports.sortedImports()
+        self.analyticsTestsImports = analyticsTestsImports.sortedImports()
         self.builderImports = builderImports.sortedImports()
         self.contextImports = contextImports.sortedImports()
-        self.flowImports = flowImports.sortedImports()
-        self.stateImports = stateImports.sortedImports()
-        self.analyticsTestsImports = analyticsTestsImports.sortedImports()
         self.contextTestsImports = contextTestsImports.sortedImports()
+        self.flowImports = flowImports.sortedImports()
         self.flowTestsImports = flowTestsImports.sortedImports()
+        self.stateImports = stateImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)
         self.componentDependencies = componentDependencies
         self.analyticsProperties = analyticsProperties.map(\.dictionary)

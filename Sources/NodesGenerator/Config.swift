@@ -134,6 +134,9 @@ extension Config {
 
         do {
             uiFrameworks = try decoder.decode(CodingKeys.uiFrameworks)
+            if uiFrameworks.isEmpty {
+                uiFrameworks = defaults.uiFrameworks
+            }
         } catch let error as Config.ConfigError {
             throw error
         } catch {

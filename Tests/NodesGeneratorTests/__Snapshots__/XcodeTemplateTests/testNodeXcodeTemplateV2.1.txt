@@ -107,18 +107,18 @@
           - builder: Variation.default
         - Context
         - Flow
-        - Plugin
         - State
         ▿ ViewController
           - viewController: Variation.default
         - ViewState
+        - Plugin
         - AnalyticsTests
         - ContextTests
         - FlowTests
-        - PluginTests
         ▿ ViewControllerTests
           - viewControllerTests: Variation.default
         - ViewStateFactoryTests
+        - PluginTests
     ▿ NodeXcodeTemplateV2Permutation
       - name: "AppKit"
       ▿ stencilContext: NodeStencilContext
@@ -225,18 +225,18 @@
           - builder: Variation.default
         - Context
         - Flow
-        - Plugin
         - State
         ▿ ViewController
           - viewController: Variation.default
         - ViewState
+        - Plugin
         - AnalyticsTests
         - ContextTests
         - FlowTests
-        - PluginTests
         ▿ ViewControllerTests
           - viewControllerTests: Variation.default
         - ViewStateFactoryTests
+        - PluginTests
     ▿ NodeXcodeTemplateV2Permutation
       - name: "usePluginListUIKit"
       ▿ stencilContext: NodeStencilContext
@@ -343,18 +343,18 @@
           - builder: Variation.default
         - Context
         - Flow
-        - Plugin
         - State
         ▿ ViewController
           - viewController: Variation.default
         - ViewState
+        - Plugin
         - AnalyticsTests
         - ContextTests
         - FlowTests
-        - PluginTests
         ▿ ViewControllerTests
           - viewControllerTests: Variation.default
         - ViewStateFactoryTests
+        - PluginTests
     ▿ NodeXcodeTemplateV2Permutation
       - name: "UIKit"
       ▿ stencilContext: NodeStencilContext
@@ -461,18 +461,18 @@
           - builder: Variation.default
         - Context
         - Flow
-        - Plugin
         - State
         ▿ ViewController
           - viewController: Variation.default
         - ViewState
+        - Plugin
         - AnalyticsTests
         - ContextTests
         - FlowTests
-        - PluginTests
         ▿ ViewControllerTests
           - viewControllerTests: Variation.default
         - ViewStateFactoryTests
+        - PluginTests
     ▿ NodeXcodeTemplateV2Permutation
       - name: "usePluginListSwiftUI"
       ▿ stencilContext: NodeStencilContext
@@ -579,18 +579,18 @@
           - builder: Variation.swiftUI
         - Context
         - Flow
-        - Plugin
         - State
         ▿ ViewController
           - viewController: Variation.swiftUI
         - ViewState
+        - Plugin
         - AnalyticsTests
         - ContextTests
         - FlowTests
-        - PluginTests
         ▿ ViewControllerTests
           - viewControllerTests: Variation.swiftUI
         - ViewStateFactoryTests
+        - PluginTests
     ▿ NodeXcodeTemplateV2Permutation
       - name: "SwiftUI"
       ▿ stencilContext: NodeStencilContext
@@ -697,18 +697,18 @@
           - builder: Variation.swiftUI
         - Context
         - Flow
-        - Plugin
         - State
         ▿ ViewController
           - viewController: Variation.swiftUI
         - ViewState
+        - Plugin
         - AnalyticsTests
         - ContextTests
         - FlowTests
-        - PluginTests
         ▿ ViewControllerTests
           - viewControllerTests: Variation.swiftUI
         - ViewStateFactoryTests
+        - PluginTests
     ▿ NodeXcodeTemplateV2Permutation
       - name: "usePluginList<uiFrameworkName>"
       ▿ stencilContext: NodeStencilContext
@@ -815,18 +815,18 @@
           - builder: Variation.default
         - Context
         - Flow
-        - Plugin
         - State
         ▿ ViewController
           - viewController: Variation.default
         - ViewState
+        - Plugin
         - AnalyticsTests
         - ContextTests
         - FlowTests
-        - PluginTests
         ▿ ViewControllerTests
           - viewControllerTests: Variation.default
         - ViewStateFactoryTests
+        - PluginTests
     ▿ NodeXcodeTemplateV2Permutation
       - name: "<uiFrameworkName>"
       ▿ stencilContext: NodeStencilContext
@@ -933,18 +933,18 @@
           - builder: Variation.default
         - Context
         - Flow
-        - Plugin
         - State
         ▿ ViewController
           - viewController: Variation.default
         - ViewState
+        - Plugin
         - AnalyticsTests
         - ContextTests
         - FlowTests
-        - PluginTests
         ▿ ViewControllerTests
           - viewControllerTests: Variation.default
         - ViewStateFactoryTests
+        - PluginTests
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"
