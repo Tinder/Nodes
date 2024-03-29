@@ -1,5 +1,4 @@
 {
-  "originHash" : "2a3f427236684006ece9590819487d04ed2ec442507a2460b22a150dfe2a71f3",
   "pins" : [
     {
       "identity" : "codextended",
@@ -128,5 +127,5 @@
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }
