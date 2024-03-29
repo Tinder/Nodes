@@ -31,9 +31,6 @@ public enum Preset: String, CaseIterable {
     }
 
     internal static func isPresetNodeName(_ nodeName: String) -> Bool {
-        for presetName: String in allCases.map(\.nodeName) where presetName == nodeName {
-            return true
-        }
-        return false
+        allCases.map(\.nodeName).contains(nodeName)
     }
 }
