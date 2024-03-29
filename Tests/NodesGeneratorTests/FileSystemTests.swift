@@ -36,11 +36,13 @@ final class FileSystemTests: XCTestCase {
                  in: .userDomainMask,
                  appropriateFor: fileSystem.libraryURL,
                  create: true)
-            .appendingPathComponent("file")
+        let file1: URL = url.appendingPathComponent("file1")
+        let file2: URL = url.appendingPathComponent("file2")
         let contents: Data = .init("data".utf8)
-        expect(try fileSystem.write(contents, to: url, atomically: false)).toNot(throwAssertion())
-        expect(try fileSystem.write(contents, to: url, atomically: true)).toNot(throwAssertion())
-        expect(try fileSystem.contents(of: url)) == contents
+        expect(try fileSystem.write(contents, to: file1, atomically: false)).toNot(throwAssertion())
+        expect(try fileSystem.write(contents, to: file2, atomically: true)).toNot(throwAssertion())
+        expect(try fileSystem.contents(of: file1)) == contents
+        expect(try fileSystem.contents(of: file2)) == contents
     }
 }
 
