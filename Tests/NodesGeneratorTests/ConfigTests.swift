@@ -99,6 +99,14 @@ final class ConfigTests: XCTestCase, TestFactories {
         }
     }
 
+    func testIsNimbleEnabled() {
+        var config: Config = .init()
+        config.baseTestImports = ["Nimble"]
+        expect(config.isNimbleEnabled) == true
+        config.baseTestImports = []
+        expect(config.isNimbleEnabled) == false
+    }
+
     private func givenConfigYAML() -> String {
         """
         uiFrameworks:
