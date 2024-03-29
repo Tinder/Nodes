@@ -55,7 +55,7 @@ final class XcodeTemplatePropertyListTests: XCTestCase {
                        name: "name-\(index)",
                        description: "description-\(index)")
             }
-            if #available(macOS 14.0, *) {
+            if #available(macOS 13.4, *) {
                 Option(identifier: "identifier-12",
                        name: "name-12",
                        description: "description-12")
