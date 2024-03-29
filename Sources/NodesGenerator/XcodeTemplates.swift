@@ -33,11 +33,14 @@ public final class XcodeTemplates {
     public func generate(
         into directory: URL
     ) throws {
-        let uiFrameworks: [UIFramework] = UIFramework.Kind
-            .allCases
-            .compactMap { try? config.uiFramework(for: $0) }
-        var templates: [XcodeTemplate] = uiFrameworks
-            .map { NodeXcodeTemplate(for: $0, config: config) }
+        var seen: Set<String> = .init()
+        let uiFrameworks: [UIFramework] = config.uiFrameworks.filter { framework in
+            guard !seen.contains(framework.name)
+            else { return false }
+            seen.insert(framework.name)
+            return true
+        }
+        var templates: [XcodeTemplate] = []
         if let nodeXcodeTemplateV2: NodeXcodeTemplateV2 = .init(uiFrameworks: uiFrameworks, config: config) {
             templates.append(nodeXcodeTemplateV2)
         }
@@ -47,7 +50,6 @@ public final class XcodeTemplates {
         templates += [
             PluginListNodeXcodeTemplate(config: config),
             PluginNodeXcodeTemplate(config: config),
-            PluginXcodeTemplate(config: config),
             WorkerXcodeTemplate(config: config)
         ]
         let generator: XcodeTemplateGenerator = .init(fileSystem: fileSystem)

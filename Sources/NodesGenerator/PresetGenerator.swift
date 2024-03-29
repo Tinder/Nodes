@@ -50,7 +50,7 @@ public final class PresetGenerator {
             )
             output = try StencilRenderer().renderNodeViewInjected(context: context)
         } else {
-            let uiFramework: UIFramework = try config.uiFramework(for: .uiKit)
+            let uiFramework: UIFramework = config.uiFrameworks.first ?? UIFramework(framework: .uiKit)
             let kind: UIFramework.Kind = uiFramework.kind
             let node: StencilTemplate.Node = .init(for: .variation(for: kind))
             let context: NodeStencilContext = try .init(
