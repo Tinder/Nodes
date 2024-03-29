@@ -3,12 +3,19 @@
 //
 
 import Nimble
-import NodesGenerator
+@testable import NodesGenerator
 import XCTest
 
 final class PresetGeneratorTests: XCTestCase {
 
     private let fileHeader: String = "\n//  Created by <author> on <date>.\n//"
+
+    func testIsPresetNodeName() {
+        expect(Preset.isPresetNodeName("Hello World")) == false
+        ["App", "WindowScene", "Window", "Root"].forEach { nodeName in
+            expect(Preset.isPresetNodeName(nodeName)) == true
+        }
+    }
 
     func testGenerateAppPreset() throws {
         let fileSystem: FileSystemMock = .init()
