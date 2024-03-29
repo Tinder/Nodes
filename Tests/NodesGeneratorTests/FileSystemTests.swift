@@ -38,6 +38,7 @@ final class FileSystemTests: XCTestCase {
                  create: true)
             .appendingPathComponent("file")
         let contents: Data = .init("data".utf8)
+        expect(try fileSystem.write(contents, to: url, atomically: false)).toNot(throwAssertion())
         expect(try fileSystem.write(contents, to: url, atomically: true)).toNot(throwAssertion())
         expect(try fileSystem.contents(of: url)) == contents
     }
