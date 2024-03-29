@@ -25,10 +25,8 @@ final class XcodeTemplateTests: XCTestCase, TestFactories {
 
     func testNodeXcodeTemplateV2() throws {
         let config: Config = givenConfig()
-        let frameworks: [UIFramework] = try UIFramework.Kind
-            .allCases
-            .map { try config.uiFramework(for: $0) }
-        assertSnapshot(of: NodeXcodeTemplateV2(uiFrameworks: frameworks, config: config), as: .dump)
+        assertSnapshot(of: NodeXcodeTemplateV2(uiFrameworks: config.uiFrameworks, config: config),
+                       as: .dump)
     }
 
     func testWorkerXcodeTemplate() {

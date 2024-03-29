@@ -30,13 +30,13 @@ public final class PresetGenerator {
                 preset: preset,
                 fileHeader: fileHeader,
                 analyticsImports: node.analytics.imports(with: config),
+                analyticsTestsImports: node.analyticsTests.imports(with: config),
                 builderImports: node.builder.imports(with: config),
                 contextImports: node.context.imports(with: config),
-                flowImports: node.flow.imports(with: config),
-                stateImports: node.state.imports(with: config),
-                analyticsTestsImports: node.analyticsTests.imports(with: config),
                 contextTestsImports: node.contextTests.imports(with: config),
+                flowImports: node.flow.imports(with: config),
                 flowTestsImports: node.flowTests.imports(with: config),
+                stateImports: node.state.imports(with: config),
                 dependencies: config.dependencies,
                 analyticsProperties: config.analyticsProperties,
                 flowProperties: config.flowProperties,
@@ -50,23 +50,23 @@ public final class PresetGenerator {
             )
             output = try StencilRenderer().renderNodeViewInjected(context: context)
         } else {
-            let uiFramework: UIFramework = try config.uiFramework(for: .uiKit)
+            let uiFramework: UIFramework = config.uiFrameworks.first ?? UIFramework(framework: .uiKit)
             let kind: UIFramework.Kind = uiFramework.kind
             let node: StencilTemplate.Node = .init(for: .variation(for: kind))
             let context: NodeStencilContext = try .init(
                 preset: preset,
                 fileHeader: fileHeader,
                 analyticsImports: node.analytics.imports(with: config, including: uiFramework),
+                analyticsTestsImports: node.analyticsTests.imports(with: config, including: uiFramework),
                 builderImports: node.builder.imports(with: config, including: uiFramework),
                 contextImports: node.context.imports(with: config, including: uiFramework),
+                contextTestsImports: node.contextTests.imports(with: config, including: uiFramework),
                 flowImports: node.flow.imports(with: config, including: uiFramework),
+                flowTestsImports: node.flowTests.imports(with: config, including: uiFramework),
                 stateImports: node.state.imports(with: config, including: uiFramework),
                 viewControllerImports: node.viewController.imports(with: config, including: uiFramework),
-                viewStateImports: node.viewState.imports(with: config, including: uiFramework),
-                analyticsTestsImports: node.analyticsTests.imports(with: config, including: uiFramework),
-                contextTestsImports: node.contextTests.imports(with: config, including: uiFramework),
-                flowTestsImports: node.flowTests.imports(with: config, including: uiFramework),
                 viewControllerTestsImports: node.viewControllerTests.imports(with: config, including: uiFramework),
+                viewStateImports: node.viewState.imports(with: config, including: uiFramework),
                 viewStateFactoryTestsImports: node.viewStateFactoryTests.imports(with: config, including: uiFramework),
                 dependencies: config.dependencies,
                 analyticsProperties: config.analyticsProperties,

@@ -10,23 +10,20 @@ final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
 
     func testNodeXcodeTemplateV2Permutation() throws {
         let config: Config = givenConfig()
-        try UIFramework.Kind
-            .allCases
-            .map { try config.uiFramework(for: $0) }
-            .forEach { framework in
-                [true, false].forEach { usePluginList in
-                    let permutation: NodeXcodeTemplateV2Permutation = .init(
-                        usePluginList: usePluginList,
-                        for: framework,
-                        config: config
-                    )
-                    assertSnapshot(
-                        of: permutation,
-                        as: .dump,
-                        named: "\(framework.kind.rawValue)\(usePluginList ? "-UsePluginList" : "")"
-                    )
-                }
+        config.uiFrameworks.forEach { framework in
+            [true, false].forEach { usePluginList in
+                let permutation: NodeXcodeTemplateV2Permutation = .init(
+                    usePluginList: usePluginList,
+                    for: framework,
+                    config: config
+                )
+                assertSnapshot(
+                    of: permutation,
+                    as: .dump,
+                    named: "\(framework.kind.rawValue)\(usePluginList ? "-UsePluginList" : "")"
+                )
             }
+        }
     }
 
     func testNodeViewInjectedXcodeTemplatePermutation() throws {
@@ -41,11 +38,6 @@ final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
 
     func testPluginNodeXcodeTemplatePermutation() {
         let permutation: PluginNodeXcodeTemplatePermutation = .init(name: "<name>", config: givenConfig())
-        assertSnapshot(of: permutation, as: .dump)
-    }
-
-    func testPluginXcodeTemplatePermutation() {
-        let permutation: PluginXcodeTemplatePermutation = .init(name: "<name>", config: givenConfig())
         assertSnapshot(of: permutation, as: .dump)
     }
 
