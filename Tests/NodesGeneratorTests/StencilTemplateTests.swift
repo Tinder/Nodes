@@ -48,6 +48,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(name) == "AnalyticsTests"
             case .builder:
                 expect(name) == "Builder"
+            case .builderTests:
+                expect(name) == "BuilderTests"
             case .context:
                 expect(name) == "Context"
             case .contextTests:
@@ -93,6 +95,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(filename) == "AnalyticsTests"
             case let .builder(variation):
                 expect(filename) == "Builder\(variation == .swiftUI ? "-SwiftUI" : "")"
+            case .builderTests:
+                expect(filename) == "BuilderTests"
             case .context:
                 expect(filename) == "Context"
             case .contextTests:
@@ -238,6 +242,11 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                         "<dependencyInjectionImport>",
                         "<builderImport>"
                     ]
+                case .builderTests:
+                    expect(imports) == [
+                        "NodesTesting",
+                        "<baseTestImport>"
+                    ]
                 case .context:
                     expect(imports) == [
                         "Nodes",
@@ -331,6 +340,7 @@ extension StencilTemplate {
         .analyticsTests,
         .builder(.default),
         .builder(.swiftUI),
+        .builderTests,
         .context,
         .contextTests,
         .flow,
@@ -341,8 +351,8 @@ extension StencilTemplate {
         .pluginListTests,
         .state,
         .viewController(.default),
-        .viewControllerTests(.default),
         .viewController(.swiftUI),
+        .viewControllerTests(.default),
         .viewControllerTests(.swiftUI),
         .viewState,
         .viewStateFactoryTests,
