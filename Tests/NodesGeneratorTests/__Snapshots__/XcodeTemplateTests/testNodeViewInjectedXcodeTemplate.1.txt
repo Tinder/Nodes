@@ -91,5 +91,5 @@
         - type: "text"
         - values: 0 elements
     - platforms: 0 elements
-    - sortOrder: 6
+    - sortOrder: 2
     - supportsSwiftPackage: true
