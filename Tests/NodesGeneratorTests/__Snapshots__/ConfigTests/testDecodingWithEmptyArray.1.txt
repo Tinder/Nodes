@@ -1,0 +1,42 @@
+▿ Config
+  - analyticsProperties: 0 elements
+  - baseImports: 0 members
+  ▿ baseTestImports: 2 members
+    - "Nimble"
+    - "XCTest"
+  - builderImports: 0 members
+  ▿ contextGenericTypes: 1 element
+    - "AnyCancellable"
+  - dependencies: 0 elements
+  ▿ dependencyInjectionImports: 1 member
+    - "NeedleFoundation"
+  - flowImports: 0 members
+  - flowProperties: 0 elements
+  - isPeripheryCommentEnabled: false
+  - isPreviewProviderEnabled: false
+  - isTestTemplatesGenerationEnabled: true
+  - isViewInjectedTemplateEnabled: true
+  - pluginListImports: 0 members
+  - publisherFailureType: "Never"
+  - publisherType: "AnyPublisher"
+  ▿ reactiveImports: 1 member
+    - "Combine"
+  ▿ uiFrameworks: 2 elements
+    ▿ UIFramework
+      - framework: Framework.uiKit
+    ▿ UIFramework
+      - framework: Framework.swiftUI
+  - viewControllableFlowType: "ViewControllableFlow"
+  - viewControllableMockContents: ""
+  - viewControllableType: "ViewControllable"
+  - viewControllerImports: 0 members
+  - viewControllerStaticContent: ""
+  - viewControllerSubscriptionsProperty: "/// The collection of cancellable instances.\nprivate var cancellables: Set<AnyCancellable> = .init()"
+  - viewControllerUpdateComment: "// Add implementation to update the user interface when the view state changes."
+  - viewStateEmptyFactory: "Empty().eraseToAnyPublisher()"
+  - viewStateOperators: ".removeDuplicates()\n.receive(on: DispatchQueue.main)\n.eraseToAnyPublisher()"
+  - viewStatePropertyComment: "The view state publisher."
+  - viewStatePropertyName: "statePublisher"
+  - viewStateTransform: "Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()"
+  ▿ workerGenericTypes: 1 element
+    - "AnyCancellable"
