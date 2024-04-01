@@ -59,6 +59,7 @@ public final class PresetGenerator {
                 analyticsImports: node.analytics.imports(with: config, including: uiFramework),
                 analyticsTestsImports: node.analyticsTests.imports(with: config, including: uiFramework),
                 builderImports: node.builder.imports(with: config, including: uiFramework),
+                builderTestsImports: node.builderTests.imports(with: config, including: uiFramework),
                 contextImports: node.context.imports(with: config, including: uiFramework),
                 contextTestsImports: node.contextTests.imports(with: config, including: uiFramework),
                 flowImports: node.flow.imports(with: config, including: uiFramework),

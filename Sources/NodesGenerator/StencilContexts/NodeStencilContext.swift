@@ -20,6 +20,7 @@ public struct NodeStencilContext: StencilContext {
     private let pluginTestsImports: [String]
     private let stateImports: [String]
     private let viewControllerImports: [String]
+    private let builderTestsImports: [String]
     private let viewControllerTestsImports: [String]
     private let viewStateImports: [String]
     private let viewStateFactoryTestsImports: [String]
@@ -59,6 +60,7 @@ public struct NodeStencilContext: StencilContext {
             "analytics_imports": analyticsImports,
             "analytics_tests_imports": analyticsTestsImports,
             "builder_imports": builderImports,
+            "builder_tests_imports": builderTestsImports,
             "context_imports": contextImports,
             "context_tests_imports": contextTestsImports,
             "flow_imports": flowImports,
@@ -107,6 +109,7 @@ public struct NodeStencilContext: StencilContext {
         analyticsImports: Set<String>,
         analyticsTestsImports: Set<String>,
         builderImports: Set<String>,
+        builderTestsImports: Set<String>,
         contextImports: Set<String>,
         contextTestsImports: Set<String>,
         flowImports: Set<String>,
@@ -153,6 +156,7 @@ public struct NodeStencilContext: StencilContext {
             analyticsImports: analyticsImports,
             analyticsTestsImports: analyticsTestsImports,
             builderImports: builderImports,
+            builderTestsImports: builderTestsImports,
             contextImports: contextImports,
             contextTestsImports: contextTestsImports,
             flowImports: flowImports,
@@ -198,6 +202,7 @@ public struct NodeStencilContext: StencilContext {
         analyticsImports: Set<String>,
         analyticsTestsImports: Set<String>,
         builderImports: Set<String>,
+        builderTestsImports: Set<String>,
         contextImports: Set<String>,
         contextTestsImports: Set<String>,
         flowImports: Set<String>,
@@ -243,6 +248,7 @@ public struct NodeStencilContext: StencilContext {
             analyticsImports: analyticsImports,
             analyticsTestsImports: analyticsTestsImports,
             builderImports: builderImports,
+            builderTestsImports: builderTestsImports,
             contextImports: contextImports,
             contextTestsImports: contextTestsImports,
             flowImports: flowImports,
@@ -291,6 +297,7 @@ public struct NodeStencilContext: StencilContext {
         analyticsImports: Set<String>,
         analyticsTestsImports: Set<String>,
         builderImports: Set<String>,
+        builderTestsImports: Set<String>,
         contextImports: Set<String>,
         contextTestsImports: Set<String>,
         flowImports: Set<String>,
@@ -337,6 +344,7 @@ public struct NodeStencilContext: StencilContext {
         self.analyticsImports = analyticsImports.sortedImports()
         self.analyticsTestsImports = analyticsTestsImports.sortedImports()
         self.builderImports = builderImports.sortedImports()
+        self.builderTestsImports = builderTestsImports.sortedImports()
         self.contextImports = contextImports.sortedImports()
         self.contextTestsImports = contextTestsImports.sortedImports()
         self.flowImports = flowImports.sortedImports()

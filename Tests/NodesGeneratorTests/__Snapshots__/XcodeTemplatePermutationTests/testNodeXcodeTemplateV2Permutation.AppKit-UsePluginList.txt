@@ -19,6 +19,9 @@
       - "<dependencyInjectionImport>"
       - "<reactiveImport>"
       - "Nodes"
+    ▿ builderTestsImports: 2 elements
+      - "<baseTestImport>"
+      - "NodesTesting"
     - componentDependencies: ""
     ▿ contextGenericTypes: 1 element
       - "<contextGenericType>"
