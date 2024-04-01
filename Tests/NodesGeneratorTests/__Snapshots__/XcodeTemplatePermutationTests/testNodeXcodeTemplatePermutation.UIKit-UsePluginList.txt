@@ -1,5 +1,5 @@
-▿ NodeXcodeTemplateV2Permutation
-  - name: "<uiFrameworkName>"
+▿ NodeXcodeTemplatePermutation
+  - name: "usePluginListUIKit"
   ▿ stencilContext: NodeStencilContext
     ▿ analyticsImports: 1 element
       - "<baseImport>"
@@ -62,7 +62,7 @@
       - "<baseImport>"
       - "<dependencyInjectionImport>"
       - "Nodes"
-    - pluginListName: ""
+    - pluginListName: "___VARIABLE_pluginListName___"
     - pluginName: "___VARIABLE_productName___"
     ▿ pluginTestsImports: 2 elements
       - "<baseTestImport>"
@@ -77,17 +77,17 @@
     ▿ viewControllerImports: 5 elements
       - "<baseImport>"
       - "<reactiveImport>"
-      - "<uiFrameworkImport>"
       - "<viewControllerImport>"
       - "Nodes"
-    - viewControllerMethods: "<viewControllerMethods>"
+      - "UIKit"
+    - viewControllerMethods: "@available(*, unavailable)\ninternal required init?(coder: NSCoder) {\n    preconditionFailure(\"init(coder:) has not been implemented\")\n}\n\noverride internal func viewDidLoad() {\n    super.viewDidLoad()\n    view.backgroundColor = .systemBackground\n    update(with: initialState)\n}\n\noverride internal func viewWillAppear(_ animated: Bool) {\n    super.viewWillAppear(animated)\n    observe(statePublisher).store(in: &cancellables)\n}\n\noverride internal func viewWillDisappear(_ animated: Bool) {\n    super.viewWillDisappear(animated)\n    cancellables.cancelAll()\n}"
     - viewControllerStaticContent: "<viewControllerStaticContent>"
     - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
-    - viewControllerSuperParameters: "<viewControllerSuperParameters>"
+    - viewControllerSuperParameters: "nibName: nil, bundle: nil"
     ▿ viewControllerTestsImports: 2 elements
       - "<baseTestImport>"
       - "<reactiveImport>"
-    - viewControllerType: "<viewControllerType>"
+    - viewControllerType: "UIViewController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateEmptyFactory: "<viewStateEmptyFactory>"
     ▿ viewStateFactoryTestsImports: 1 element

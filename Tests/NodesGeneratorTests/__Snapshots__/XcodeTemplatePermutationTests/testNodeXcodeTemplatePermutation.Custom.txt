@@ -1,5 +1,5 @@
-▿ NodeXcodeTemplateV2Permutation
-  - name: "usePluginListSwiftUI"
+▿ NodeXcodeTemplatePermutation
+  - name: "<uiFrameworkName>"
   ▿ stencilContext: NodeStencilContext
     ▿ analyticsImports: 1 element
       - "<baseImport>"
@@ -62,7 +62,7 @@
       - "<baseImport>"
       - "<dependencyInjectionImport>"
       - "Nodes"
-    - pluginListName: "___VARIABLE_pluginListName___"
+    - pluginListName: ""
     - pluginName: "___VARIABLE_productName___"
     ▿ pluginTestsImports: 2 elements
       - "<baseTestImport>"
@@ -77,17 +77,17 @@
     ▿ viewControllerImports: 5 elements
       - "<baseImport>"
       - "<reactiveImport>"
+      - "<uiFrameworkImport>"
       - "<viewControllerImport>"
       - "Nodes"
-      - "SwiftUI"
-    - viewControllerMethods: ""
+    - viewControllerMethods: "<viewControllerMethods>"
     - viewControllerStaticContent: "<viewControllerStaticContent>"
     - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
-    - viewControllerSuperParameters: ""
+    - viewControllerSuperParameters: "<viewControllerSuperParameters>"
     ▿ viewControllerTestsImports: 2 elements
       - "<baseTestImport>"
       - "<reactiveImport>"
-    - viewControllerType: "UIHostingController"
+    - viewControllerType: "<viewControllerType>"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateEmptyFactory: "<viewStateEmptyFactory>"
     ▿ viewStateFactoryTestsImports: 1 element
@@ -104,18 +104,18 @@
   ▿ stencils: 14 elements
     - Analytics
     ▿ Builder
-      - builder: Variation.swiftUI
+      - builder: Variation.default
     - Context
     - Flow
     - State
     ▿ ViewController
-      - viewController: Variation.swiftUI
+      - viewController: Variation.default
     - ViewState
     - Plugin
     - AnalyticsTests
     - ContextTests
     - FlowTests
     ▿ ViewControllerTests
-      - viewControllerTests: Variation.swiftUI
+      - viewControllerTests: Variation.default
     - ViewStateFactoryTests
     - PluginTests

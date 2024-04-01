@@ -8,11 +8,11 @@ import XCTest
 
 final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
 
-    func testNodeXcodeTemplateV2Permutation() throws {
+    func testNodeXcodeTemplatePermutation() throws {
         let config: Config = givenConfig()
         config.uiFrameworks.forEach { framework in
             [true, false].forEach { usePluginList in
-                let permutation: NodeXcodeTemplateV2Permutation = .init(
+                let permutation: NodeXcodeTemplatePermutation = .init(
                     usePluginList: usePluginList,
                     for: framework,
                     config: config

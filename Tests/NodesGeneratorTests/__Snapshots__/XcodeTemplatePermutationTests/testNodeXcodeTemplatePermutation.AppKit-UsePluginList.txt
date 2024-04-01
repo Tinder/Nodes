@@ -1,4 +1,4 @@
-▿ NodeXcodeTemplateV2Permutation
+▿ NodeXcodeTemplatePermutation
   - name: "usePluginListAppKit"
   ▿ stencilContext: NodeStencilContext
     ▿ analyticsImports: 1 element
