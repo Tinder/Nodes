@@ -8,10 +8,7 @@ internal struct NodeXcodeTemplateV2: XcodeTemplate {
     internal let propertyList: PropertyList
     internal let permutations: [XcodeTemplatePermutation]
 
-    internal init?(uiFrameworks: [UIFramework], config: Config) {
-        guard let firstFramework: UIFramework = uiFrameworks.first
-        else { return nil }
-
+    internal init(uiFrameworks: [UIFramework], config: Config) {
         propertyList = PropertyList(sortOrder: 1) {
             Option(identifier: "productName",
                    name: "Node name:",
@@ -22,7 +19,7 @@ internal struct NodeXcodeTemplateV2: XcodeTemplate {
                    description: "The UI framework of the new node.",
                    type: "popup",
                    values: uiFrameworks.map(\.name),
-                   default: firstFramework.name)
+                   default: uiFrameworks.first?.name ?? "")
             Option(identifier: XcodeTemplateConstants.usePluginList,
                    name: "Created For Existing Plugin List",
                    description: "Whether the node is created for use in an existing plugin list.",
