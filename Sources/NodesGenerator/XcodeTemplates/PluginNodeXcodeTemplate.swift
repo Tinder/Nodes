@@ -16,6 +16,6 @@ internal struct PluginNodeXcodeTemplate: XcodeTemplate {
     internal let permutations: [XcodeTemplatePermutation]
 
     internal init(config: Config) {
-        permutations = [PluginNodeXcodeTemplatePermutation(name: name, config: config)]
+        permutations = [PluginXcodeTemplatePermutation(name: name, config: config)]
     }
 }
