@@ -1,4 +1,4 @@
-▿ PluginNodeXcodeTemplate
+▿ PluginXcodeTemplate
   - name: "Plugin (for Node)"
   ▿ permutations: 1 element
     ▿ PluginXcodeTemplatePermutation

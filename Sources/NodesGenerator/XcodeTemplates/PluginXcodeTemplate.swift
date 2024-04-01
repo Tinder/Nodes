@@ -2,7 +2,7 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
-internal struct PluginNodeXcodeTemplate: XcodeTemplate {
+internal struct PluginXcodeTemplate: XcodeTemplate {
 
     internal let name: String = "Plugin (for Node)"
 
