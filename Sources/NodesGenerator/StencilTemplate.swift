@@ -40,6 +40,7 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
         public let analytics: StencilTemplate
         public let analyticsTests: StencilTemplate
         public let builder: StencilTemplate
+        public let builderTests: StencilTemplate
         public let context: StencilTemplate
         public let contextTests: StencilTemplate
         public let flow: StencilTemplate
@@ -56,6 +57,7 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
             self.analytics = .analytics
             self.analyticsTests = .analyticsTests
             self.builder = .builder(variation)
+            self.builderTests = .builderTests
             self.context = .context
             self.contextTests = .contextTests
             self.flow = .flow
