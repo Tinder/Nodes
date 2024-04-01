@@ -85,6 +85,7 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
             else { return stencils }
             let testsStencils: [StencilTemplate] = [
                 analyticsTests,
+                builderTests,
                 contextTests,
                 flowTests,
                 viewControllerTests,

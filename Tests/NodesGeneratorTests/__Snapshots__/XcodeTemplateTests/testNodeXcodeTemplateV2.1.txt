@@ -104,7 +104,7 @@
         - viewStateTransform: "<viewStateTransform>"
         ▿ workerGenericTypes: 1 element
           - "<workerGenericType>"
-      ▿ stencils: 14 elements
+      ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
           - builder: Variation.default
@@ -116,6 +116,7 @@
         - ViewState
         - Plugin
         - AnalyticsTests
+        - BuilderTests
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests
@@ -225,7 +226,7 @@
         - viewStateTransform: "<viewStateTransform>"
         ▿ workerGenericTypes: 1 element
           - "<workerGenericType>"
-      ▿ stencils: 14 elements
+      ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
           - builder: Variation.default
@@ -237,6 +238,7 @@
         - ViewState
         - Plugin
         - AnalyticsTests
+        - BuilderTests
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests
@@ -346,7 +348,7 @@
         - viewStateTransform: "<viewStateTransform>"
         ▿ workerGenericTypes: 1 element
           - "<workerGenericType>"
-      ▿ stencils: 14 elements
+      ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
           - builder: Variation.default
@@ -358,6 +360,7 @@
         - ViewState
         - Plugin
         - AnalyticsTests
+        - BuilderTests
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests
@@ -467,7 +470,7 @@
         - viewStateTransform: "<viewStateTransform>"
         ▿ workerGenericTypes: 1 element
           - "<workerGenericType>"
-      ▿ stencils: 14 elements
+      ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
           - builder: Variation.default
@@ -479,6 +482,7 @@
         - ViewState
         - Plugin
         - AnalyticsTests
+        - BuilderTests
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests
@@ -588,7 +592,7 @@
         - viewStateTransform: "<viewStateTransform>"
         ▿ workerGenericTypes: 1 element
           - "<workerGenericType>"
-      ▿ stencils: 14 elements
+      ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
           - builder: Variation.swiftUI
@@ -600,6 +604,7 @@
         - ViewState
         - Plugin
         - AnalyticsTests
+        - BuilderTests
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests
@@ -709,7 +714,7 @@
         - viewStateTransform: "<viewStateTransform>"
         ▿ workerGenericTypes: 1 element
           - "<workerGenericType>"
-      ▿ stencils: 14 elements
+      ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
           - builder: Variation.swiftUI
@@ -721,6 +726,7 @@
         - ViewState
         - Plugin
         - AnalyticsTests
+        - BuilderTests
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests
@@ -830,7 +836,7 @@
         - viewStateTransform: "<viewStateTransform>"
         ▿ workerGenericTypes: 1 element
           - "<workerGenericType>"
-      ▿ stencils: 14 elements
+      ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
           - builder: Variation.default
@@ -842,6 +848,7 @@
         - ViewState
         - Plugin
         - AnalyticsTests
+        - BuilderTests
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests
@@ -951,7 +958,7 @@
         - viewStateTransform: "<viewStateTransform>"
         ▿ workerGenericTypes: 1 element
           - "<workerGenericType>"
-      ▿ stencils: 14 elements
+      ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
           - builder: Variation.default
@@ -963,6 +970,7 @@
         - ViewState
         - Plugin
         - AnalyticsTests
+        - BuilderTests
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests

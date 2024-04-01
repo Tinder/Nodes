@@ -1,0 +1,38 @@
+//___FILEHEADER___
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+
+import Nimble
+import NodesTesting
+import XCTest
+
+final class ___VARIABLE_productName___BuilderTests: XCTestCase {
+
+    private var listenerMock: ___VARIABLE_productName___ListenerMock!
+    private var builder: ___VARIABLE_productName___BuilderImp!
+
+    @MainActor
+    override func setUp() {
+        super.setUp()
+        listenerMock = ___VARIABLE_productName___ListenerMock()
+        builder = ___VARIABLE_productName___BuilderImp(componentFactory: injectComponent { parent in
+            ___VARIABLE_productName___Component(parent: parent)
+        } with: {
+            // swiftlint:disable:next direct_return
+            let dependency: ___VARIABLE_productName___DependencyMock = .init()
+            // dependency.<dependencyName> = <dependencyName>Mock
+            return dependency
+        })
+    }
+
+    override func tearDown() {
+        listenerMock = nil
+        builder = nil
+        super.tearDown()
+    }
+
+    @MainActor
+    func testCreate() {
+        expect { self.builder.build(withListener: self.listenerMock) } != nil
+    }
+}

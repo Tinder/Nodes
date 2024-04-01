@@ -1,4 +1,4 @@
-▿ 131 elements
+▿ 139 elements
   ▿ (2 elements)
     - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___Analytics.swift"
     - atomically: true
@@ -25,6 +25,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___AnalyticsTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___BuilderTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___ContextTests.swift"
@@ -69,6 +72,9 @@
     - path: "/Node.xctemplate/AppKit/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
+    - path: "/Node.xctemplate/AppKit/___FILEBASENAME___BuilderTests.swift"
+    - atomically: true
+  ▿ (2 elements)
     - path: "/Node.xctemplate/AppKit/___FILEBASENAME___ContextTests.swift"
     - atomically: true
   ▿ (2 elements)
@@ -109,6 +115,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___AnalyticsTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___BuilderTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___ContextTests.swift"
@@ -153,6 +162,9 @@
     - path: "/Node.xctemplate/UIKit/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
+    - path: "/Node.xctemplate/UIKit/___FILEBASENAME___BuilderTests.swift"
+    - atomically: true
+  ▿ (2 elements)
     - path: "/Node.xctemplate/UIKit/___FILEBASENAME___ContextTests.swift"
     - atomically: true
   ▿ (2 elements)
@@ -193,6 +205,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___AnalyticsTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___BuilderTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___ContextTests.swift"
@@ -237,6 +252,9 @@
     - path: "/Node.xctemplate/SwiftUI/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
+    - path: "/Node.xctemplate/SwiftUI/___FILEBASENAME___BuilderTests.swift"
+    - atomically: true
+  ▿ (2 elements)
     - path: "/Node.xctemplate/SwiftUI/___FILEBASENAME___ContextTests.swift"
     - atomically: true
   ▿ (2 elements)
@@ -279,6 +297,9 @@
     - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___BuilderTests.swift"
+    - atomically: true
+  ▿ (2 elements)
     - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___ContextTests.swift"
     - atomically: true
   ▿ (2 elements)
@@ -319,6 +340,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/Custom/___FILEBASENAME___AnalyticsTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/Custom/___FILEBASENAME___BuilderTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/Custom/___FILEBASENAME___ContextTests.swift"
