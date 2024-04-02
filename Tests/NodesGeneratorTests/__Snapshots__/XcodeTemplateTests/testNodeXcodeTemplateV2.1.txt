@@ -1,7 +1,7 @@
 ▿ NodeXcodeTemplateV2
   - name: "Node"
   ▿ permutations: 8 elements
-    ▿ NodeXcodeTemplateV2Permutation
+    ▿ NodeXcodeTemplatePermutation
       - name: "usePluginListAppKit"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
@@ -123,7 +123,7 @@
           - viewControllerTests: Variation.default
         - ViewStateFactoryTests
         - PluginTests
-    ▿ NodeXcodeTemplateV2Permutation
+    ▿ NodeXcodeTemplatePermutation
       - name: "AppKit"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
@@ -245,7 +245,7 @@
           - viewControllerTests: Variation.default
         - ViewStateFactoryTests
         - PluginTests
-    ▿ NodeXcodeTemplateV2Permutation
+    ▿ NodeXcodeTemplatePermutation
       - name: "usePluginListUIKit"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
@@ -367,7 +367,7 @@
           - viewControllerTests: Variation.default
         - ViewStateFactoryTests
         - PluginTests
-    ▿ NodeXcodeTemplateV2Permutation
+    ▿ NodeXcodeTemplatePermutation
       - name: "UIKit"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
@@ -489,7 +489,7 @@
           - viewControllerTests: Variation.default
         - ViewStateFactoryTests
         - PluginTests
-    ▿ NodeXcodeTemplateV2Permutation
+    ▿ NodeXcodeTemplatePermutation
       - name: "usePluginListSwiftUI"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
@@ -611,7 +611,7 @@
           - viewControllerTests: Variation.swiftUI
         - ViewStateFactoryTests
         - PluginTests
-    ▿ NodeXcodeTemplateV2Permutation
+    ▿ NodeXcodeTemplatePermutation
       - name: "SwiftUI"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
@@ -733,7 +733,7 @@
           - viewControllerTests: Variation.swiftUI
         - ViewStateFactoryTests
         - PluginTests
-    ▿ NodeXcodeTemplateV2Permutation
+    ▿ NodeXcodeTemplatePermutation
       - name: "usePluginList<uiFrameworkName>"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
@@ -855,7 +855,7 @@
           - viewControllerTests: Variation.default
         - ViewStateFactoryTests
         - PluginTests
-    ▿ NodeXcodeTemplateV2Permutation
+    ▿ NodeXcodeTemplatePermutation
       - name: "<uiFrameworkName>"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element

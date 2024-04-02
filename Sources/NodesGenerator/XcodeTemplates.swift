@@ -45,8 +45,8 @@ public final class XcodeTemplates {
         let templates: [XcodeTemplate] = [
             NodeXcodeTemplateV2(uiFrameworks: uiFrameworks, config: config)
         ] + viewInjectedTemplate + [
-            PluginListNodeXcodeTemplate(config: config),
-            PluginNodeXcodeTemplate(config: config),
+            PluginListXcodeTemplate(config: config),
+            PluginXcodeTemplate(config: config),
             WorkerXcodeTemplate(config: config)
         ]
         let generator: XcodeTemplateGenerator = .init(fileSystem: fileSystem)

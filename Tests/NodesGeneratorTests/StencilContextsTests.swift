@@ -8,6 +8,15 @@ import XCTest
 
 final class StencilContextsTests: XCTestCase, TestFactories {
 
+    func testStencilContextErrorLocalizedDescription() {
+        expect(StencilContextError.reservedNodeName("<nodeName>").localizedDescription) == """
+            ERROR: Reserved Node Name (<nodeName>)
+            """
+        expect(StencilContextError.invalidPreset("<preset>").localizedDescription) == """
+            ERROR: Invalid Preset (<preset>)
+            """
+    }
+
     func testNodeStencilContext() throws {
         assertSnapshot(of: try givenNodeStencilContext(includePlugin: false).dictionary,
                        as: .dump)

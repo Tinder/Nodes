@@ -1,5 +1,5 @@
-▿ NodeXcodeTemplateV2Permutation
-  - name: "AppKit"
+▿ NodeXcodeTemplatePermutation
+  - name: "SwiftUI"
   ▿ stencilContext: NodeStencilContext
     ▿ analyticsImports: 1 element
       - "<baseImport>"
@@ -78,16 +78,16 @@
       - "<baseImport>"
       - "<reactiveImport>"
       - "<viewControllerImport>"
-      - "AppKit"
       - "Nodes"
-    - viewControllerMethods: "@available(*, unavailable)\ninternal required init?(coder: NSCoder) {\n    preconditionFailure(\"init(coder:) has not been implemented\")\n}\n\noverride internal func loadView() {\n    view = NSView()\n}\n\noverride internal func viewDidLoad() {\n    super.viewDidLoad()\n    update(with: initialState)\n}\n\noverride internal func viewWillAppear() {\n    super.viewWillAppear()\n    observe(statePublisher).store(in: &cancellables)\n}\n\noverride internal func viewWillDisappear() {\n    super.viewWillDisappear()\n    cancellables.cancelAll()\n}"
+      - "SwiftUI"
+    - viewControllerMethods: ""
     - viewControllerStaticContent: "<viewControllerStaticContent>"
     - viewControllerSubscriptionsProperty: "<viewControllerSubscriptionsProperty>"
-    - viewControllerSuperParameters: "nibName: nil, bundle: nil"
+    - viewControllerSuperParameters: ""
     ▿ viewControllerTestsImports: 2 elements
       - "<baseTestImport>"
       - "<reactiveImport>"
-    - viewControllerType: "NSViewController"
+    - viewControllerType: "UIHostingController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateEmptyFactory: "<viewStateEmptyFactory>"
     ▿ viewStateFactoryTestsImports: 1 element
@@ -104,12 +104,12 @@
   ▿ stencils: 15 elements
     - Analytics
     ▿ Builder
-      - builder: Variation.default
+      - builder: Variation.swiftUI
     - Context
     - Flow
     - State
     ▿ ViewController
-      - viewController: Variation.default
+      - viewController: Variation.swiftUI
     - ViewState
     - Plugin
     - AnalyticsTests
@@ -117,6 +117,6 @@
     - ContextTests
     - FlowTests
     ▿ ViewControllerTests
-      - viewControllerTests: Variation.default
+      - viewControllerTests: Variation.swiftUI
     - ViewStateFactoryTests
     - PluginTests

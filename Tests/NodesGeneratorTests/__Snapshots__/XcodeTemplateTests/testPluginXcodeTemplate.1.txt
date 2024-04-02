@@ -1,25 +1,24 @@
-▿ PluginListNodeXcodeTemplate
-  - name: "Plugin List (for Node)"
+▿ PluginXcodeTemplate
+  - name: "Plugin (for Node)"
   ▿ permutations: 1 element
-    ▿ PluginListNodeXcodeTemplatePermutation
-      - name: "Plugin List (for Node)"
-      ▿ stencilContext: PluginListStencilContext
+    ▿ PluginXcodeTemplatePermutation
+      - name: "Plugin (for Node)"
+      ▿ stencilContext: PluginStencilContext
         - fileHeader: "___FILEHEADER___"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true
-        ▿ pluginListImports: 4 elements
+        ▿ pluginImports: 3 elements
           - "<baseImport>"
           - "<dependencyInjectionImport>"
-          - "<pluginListImport>"
           - "Nodes"
-        - pluginListName: "___VARIABLE_productName___"
-        ▿ pluginListTestsImports: 2 elements
+        - pluginName: "___VARIABLE_productName___"
+        ▿ pluginTestsImports: 2 elements
           - "<baseTestImport>"
           - "NodesTesting"
-        - viewControllableFlowType: "<viewControllableFlowType>"
+        - returnType: Optional<String>.none
       ▿ stencils: 2 elements
-        - PluginList
-        - PluginListTests
+        - Plugin
+        - PluginTests
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
       - "public.swift-source"
@@ -27,16 +26,15 @@
     - mainTemplateFile: "___FILEBASENAME___.swift"
     ▿ options: 1 element
       ▿ Option
-        ▿ default: Optional<String>
-          - some: "MyFeature"
-        - description: "The name of the Plugin List"
+        - default: Optional<String>.none
+        - description: "The name of the Plugin"
         - identifier: "productName"
-        - name: "Plugin List name:"
+        - name: "Node name:"
         - notPersisted: true
         - required: true
         - requiredOptions: 0 key/value pairs
         - type: "text"
         - values: 0 elements
     - platforms: 0 elements
-    - sortOrder: 7
+    - sortOrder: 8
     - supportsSwiftPackage: true

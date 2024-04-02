@@ -34,8 +34,8 @@ internal struct NodeXcodeTemplateV2: XcodeTemplate {
 
         permutations = uiFrameworks.flatMap { framework in
             [
-                NodeXcodeTemplateV2Permutation(usePluginList: true, for: framework, config: config),
-                NodeXcodeTemplateV2Permutation(usePluginList: false, for: framework, config: config)
+                NodeXcodeTemplatePermutation(usePluginList: true, for: framework, config: config),
+                NodeXcodeTemplatePermutation(usePluginList: false, for: framework, config: config)
             ]
         }
     }

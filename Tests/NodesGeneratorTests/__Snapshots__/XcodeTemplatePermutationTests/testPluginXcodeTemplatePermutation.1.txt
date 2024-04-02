@@ -1,4 +1,4 @@
-▿ PluginNodeXcodeTemplatePermutation
+▿ PluginXcodeTemplatePermutation
   - name: "<name>"
   ▿ stencilContext: PluginStencilContext
     - fileHeader: "___FILEHEADER___"

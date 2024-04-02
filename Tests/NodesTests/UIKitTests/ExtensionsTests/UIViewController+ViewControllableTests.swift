@@ -51,74 +51,70 @@ final class UIViewControllerViewControllableTests: XCTestCase {
     }
 
     @MainActor
-    func testCover() {
-
-        let modalStyle: ModalStyle = .cover()
-        expect(modalStyle.behavior) == .cover
-
-        let viewController: UIViewController = givenViewController(with: modalStyle)
+    func testWithModalStyleCover() {
+        let viewController: UIViewController = givenViewController()
+        expect(viewController.modalPresentationStyle) == UIModalPresentationStyle.none
+        expect(viewController.isModalInPresentation) == false
+        viewController.withModalStyle(.cover())
         expect(viewController.modalPresentationStyle) == .fullScreen
         expect(viewController.isModalInPresentation) == true
     }
 
     @MainActor
-    func testOverlay() {
-
-        let modalStyle: ModalStyle = .overlay()
-        expect(modalStyle.behavior) == ModalStyle.Behavior.overlay
-
-        let viewController: UIViewController = givenViewController(with: modalStyle)
+    func testWithModalStyleOverlay() {
+        let viewController: UIViewController = givenViewController()
+        expect(viewController.modalPresentationStyle) == UIModalPresentationStyle.none
+        expect(viewController.isModalInPresentation) == false
+        viewController.withModalStyle(.overlay())
         expect(viewController.modalPresentationStyle) == .overFullScreen
         expect(viewController.isModalInPresentation) == true
     }
 
     @MainActor
-    func testPageSheet() {
-
-        let modalStyle: ModalStyle = .sheet(style: .page)
-        expect(modalStyle.behavior) == .page
-
-        let viewController: UIViewController = givenViewController(with: modalStyle)
+    func testWithModalStylePageSheet() {
+        let viewController: UIViewController = givenViewController()
+        expect(viewController.modalPresentationStyle) == UIModalPresentationStyle.none
+        expect(viewController.isModalInPresentation) == false
+        viewController.withModalStyle(.sheet(style: .page))
         expect(viewController.modalPresentationStyle) == .pageSheet
         expect(viewController.isModalInPresentation) == true
     }
 
     @MainActor
-    func testFormSheet() {
-
-        let modalStyle: ModalStyle = .sheet(style: .form)
-        expect(modalStyle.behavior) == .form
-
-        let viewController: UIViewController = givenViewController(with: modalStyle)
+    func testWithModalStyleFormSheet() {
+        let viewController: UIViewController = givenViewController()
+        expect(viewController.modalPresentationStyle) == UIModalPresentationStyle.none
+        expect(viewController.isModalInPresentation) == false
+        viewController.withModalStyle(.sheet(style: .form))
         expect(viewController.modalPresentationStyle) == .formSheet
         expect(viewController.isModalInPresentation) == true
     }
 
     @MainActor
-    func testCustom() {
-
-        let modalStyle: ModalStyle = .custom()
-        expect(modalStyle.behavior) == .custom
-
-        let viewController: UIViewController = givenViewController(with: modalStyle)
+    func testWithModalStyleCustom() {
+        let viewController: UIViewController = givenViewController()
+        expect(viewController.modalPresentationStyle) == UIModalPresentationStyle.none
+        expect(viewController.isModalInPresentation) == false
+        viewController.withModalStyle(.custom())
         expect(viewController.modalPresentationStyle) == UIModalPresentationStyle.none
         expect(viewController.isModalInPresentation) == true
     }
 
     @MainActor
-    func testAdditionalConfiguration() {
+    func testWithModalStyleWithAdditionalConfiguration() {
+        let viewController: UIViewController = givenViewController()
         var additionalConfiguration1: [UIViewController] = []
         var additionalConfiguration2: [UIViewController] = []
         var additionalConfiguration3: [UIViewController] = []
-        let modalStyle: ModalStyle = .cover()
+        let modalStyle: ModalStyle = .custom()
             .withAdditionalConfiguration { additionalConfiguration1.append($0._asUIViewController()) }
             .withAdditionalConfiguration { additionalConfiguration2.append($0._asUIViewController()) }
             .withAdditionalConfiguration { additionalConfiguration3.append($0._asUIViewController()) }
-        let viewController: UIViewController = givenViewController(with: modalStyle)
+        viewController.withModalStyle(modalStyle)
         expect(additionalConfiguration1) == [viewController]
         expect(additionalConfiguration2) == [viewController]
         expect(additionalConfiguration3) == [viewController]
-        _ = givenViewController(with: modalStyle)
+        viewController.withModalStyle(modalStyle)
         expect(additionalConfiguration1.count) == 2
         expect(additionalConfiguration2.count) == 2
         expect(additionalConfiguration3.count) == 2
@@ -164,15 +160,9 @@ final class UIViewControllerViewControllableTests: XCTestCase {
     }
 
     @MainActor
-    private func givenViewController(with modalStyle: ModalStyle) -> UIViewController {
-        let viewController: UIViewController = .init()
-        expect(viewController).to(notBeNilAndToDeallocateAfterTest())
-        return viewController.withModalStyle(modalStyle)
-    }
-
-    @MainActor
     private func givenViewController() -> TestViewController {
         let viewController: TestViewController = .init()
+        viewController.modalPresentationStyle = .none
         expect(viewController).to(notBeNilAndToDeallocateAfterTest())
         return viewController
     }

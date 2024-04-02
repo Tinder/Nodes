@@ -2,7 +2,7 @@
 //  Copyright © 2021 Tinder (Match Group, LLC)
 //
 
-internal struct PluginListNodeXcodeTemplate: XcodeTemplate {
+internal struct PluginListXcodeTemplate: XcodeTemplate {
 
     internal let name: String = "Plugin List (for Node)"
 
@@ -17,6 +17,6 @@ internal struct PluginListNodeXcodeTemplate: XcodeTemplate {
     internal let permutations: [XcodeTemplatePermutation]
 
     internal init(config: Config) {
-        permutations = [PluginListNodeXcodeTemplatePermutation(name: name, config: config)]
+        permutations = [PluginListXcodeTemplatePermutation(name: name, config: config)]
     }
 }
