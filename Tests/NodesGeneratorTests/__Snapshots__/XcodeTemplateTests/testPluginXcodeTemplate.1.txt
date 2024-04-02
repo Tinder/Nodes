@@ -15,7 +15,6 @@
         ▿ pluginTestsImports: 2 elements
           - "<baseTestImport>"
           - "NodesTesting"
-        - returnType: Optional<String>.none
       ▿ stencils: 2 elements
         - Plugin
         - PluginTests
