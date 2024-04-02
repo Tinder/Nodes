@@ -117,11 +117,6 @@ final class StencilContextsTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
-    func testPluginStencilContextWithoutReturnType() {
-        assertSnapshot(of: givenPluginStencilContextWithoutReturnType().dictionary,
-                       as: .dump)
-    }
-
     func testPluginListStencilContext() {
         assertSnapshot(of: givenPluginListStencilContext().dictionary,
                        as: .dump)
