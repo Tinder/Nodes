@@ -26,17 +26,17 @@ final class UIWindowViewControllableTests: XCTestCase {
     }
 
     @MainActor
-    private func givenViewController() -> UIViewController {
-        let viewController: UIViewController = .init()
-        expect(viewController).to(notBeNilAndToDeallocateAfterTest())
-        return viewController
-    }
-
-    @MainActor
     private func givenWindow() -> UIWindow {
         let window: UIWindow = .init()
         expect(window).to(notBeNilAndToDeallocateAfterTest())
         return window
+    }
+
+    @MainActor
+    private func givenViewController() -> UIViewController {
+        let viewController: UIViewController = .init()
+        expect(viewController).to(notBeNilAndToDeallocateAfterTest())
+        return viewController
     }
 }
 
