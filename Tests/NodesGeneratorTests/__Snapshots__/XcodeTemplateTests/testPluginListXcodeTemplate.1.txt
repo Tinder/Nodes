@@ -38,5 +38,5 @@
         - type: "text"
         - values: 0 elements
     - platforms: 0 elements
-    - sortOrder: 7
+    - sortOrder: 3
     - supportsSwiftPackage: true

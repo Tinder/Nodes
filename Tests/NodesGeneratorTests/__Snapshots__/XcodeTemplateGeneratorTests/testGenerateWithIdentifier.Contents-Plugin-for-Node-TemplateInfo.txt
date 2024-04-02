@@ -34,7 +34,7 @@
 	<key>Platforms</key>
 	<array/>
 	<key>SortOrder</key>
-	<integer>8</integer>
+	<integer>4</integer>
 	<key>SupportsSwiftPackage</key>
 	<true/>
 </dict>
