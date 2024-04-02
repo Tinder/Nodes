@@ -5,7 +5,7 @@
 import NodesGenerator
 import XCTest
 
-final class XcodeTemplatesTests: XCTestCase {
+final class XcodeTemplateGeneratorTests: XCTestCase {
 
     func testGenerateWithIdentifier() throws {
         let fileSystem: FileSystemMock = .init()

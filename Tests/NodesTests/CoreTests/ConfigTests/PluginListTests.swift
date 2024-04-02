@@ -96,11 +96,11 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
     func testPluginListWithDefaultCreate() {
         let pluginList: TestPluginListWithDefault = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
-        expect(pluginList.create()?.identifier) == "plugin3"
+        expect(pluginList.create().identifier) == "plugin3"
         pluginList.creationOrderOverride = ["plugin3", "plugin1"]
-        expect(pluginList.create()?.identifier) == "plugin1"
+        expect(pluginList.create().identifier) == "plugin1"
         pluginList.creationOrderOverride = []
-        expect(pluginList.create()?.identifier) == "default"
+        expect(pluginList.create().identifier) == "default"
     }
 
     @MainActor
@@ -118,11 +118,11 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
     func testPluginListWithDefaultCreateWithKey() {
         let pluginList: TestPluginListWithDefault = .init { ComponentType() }
         expect(pluginList).to(notBeNilAndToDeallocateAfterTest())
-        expect(pluginList.create(key: "plugin2")?.identifier) == "plugin2"
+        expect(pluginList.create(key: "plugin2").identifier) == "plugin2"
         pluginList.creationOrderOverride = ["plugin3", "plugin1"]
-        expect(pluginList.create(key: "plugin2")?.identifier) == "default"
+        expect(pluginList.create(key: "plugin2").identifier) == "default"
         pluginList.creationOrderOverride = []
-        expect(pluginList.create(key: "plugin2")?.identifier) == "default"
+        expect(pluginList.create(key: "plugin2").identifier) == "default"
     }
 
     @MainActor

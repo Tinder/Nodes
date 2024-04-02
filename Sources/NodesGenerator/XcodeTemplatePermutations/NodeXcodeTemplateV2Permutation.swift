@@ -9,8 +9,8 @@ internal struct NodeXcodeTemplateV2Permutation: XcodeTemplatePermutation {
     internal let stencilContext: StencilContext
 
     internal init(usePluginList: Bool, for uiFramework: UIFramework, config: Config) {
+        self.name = "\(usePluginList ? XcodeTemplateConstants.usePluginList : "")\(uiFramework.name)"
         let node: StencilTemplate.Node = StencilTemplate.Node(for: .variation(for: uiFramework.kind))
-        name = "\(usePluginList ? XcodeTemplateConstants.usePluginList : "")\(uiFramework.name)"
         stencils = node.stencils(includePlugin: true, includeTests: config.isTestTemplatesGenerationEnabled)
         let productName: String = XcodeTemplateConstants.variable(XcodeTemplateConstants.productName)
         // swiftlint:disable:next force_try
@@ -22,6 +22,7 @@ internal struct NodeXcodeTemplateV2Permutation: XcodeTemplatePermutation {
             analyticsImports: node.analytics.imports(with: config, including: uiFramework),
             analyticsTestsImports: node.analyticsTests.imports(with: config, including: uiFramework),
             builderImports: node.builder.imports(with: config, including: uiFramework),
+            builderTestsImports: node.builderTests.imports(with: config, including: uiFramework),
             contextImports: node.context.imports(with: config, including: uiFramework),
             contextTestsImports: node.contextTests.imports(with: config, including: uiFramework),
             flowImports: node.flow.imports(with: config, including: uiFramework),

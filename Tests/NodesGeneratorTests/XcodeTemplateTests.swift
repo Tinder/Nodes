@@ -24,8 +24,8 @@ final class XcodeTemplateTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
-    func testPluginNodeXcodeTemplate() {
-        assertSnapshot(of: PluginNodeXcodeTemplate(config: givenConfig()),
+    func testPluginXcodeTemplate() {
+        assertSnapshot(of: PluginXcodeTemplate(config: givenConfig()),
                        as: .dump)
     }
 

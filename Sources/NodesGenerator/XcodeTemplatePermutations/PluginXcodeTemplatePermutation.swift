@@ -2,7 +2,7 @@
 //  Copyright © 2024 Tinder (Match Group, LLC)
 //
 
-internal struct PluginNodeXcodeTemplatePermutation: XcodeTemplatePermutation {
+internal struct PluginXcodeTemplatePermutation: XcodeTemplatePermutation {
 
     internal let name: String
     internal let stencils: [StencilTemplate]

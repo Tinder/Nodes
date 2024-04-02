@@ -2,11 +2,13 @@
 //  Copyright © 2022 Tinder (Match Group, LLC)
 //
 
+// swiftlint:disable:next type_body_length
 public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
 
     case analytics
     case analyticsTests
     case builder(Variation)
+    case builderTests
     case context
     case contextTests
     case flow
@@ -38,6 +40,7 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
         public let analytics: StencilTemplate
         public let analyticsTests: StencilTemplate
         public let builder: StencilTemplate
+        public let builderTests: StencilTemplate
         public let context: StencilTemplate
         public let contextTests: StencilTemplate
         public let flow: StencilTemplate
@@ -54,6 +57,7 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
             self.analytics = .analytics
             self.analyticsTests = .analyticsTests
             self.builder = .builder(variation)
+            self.builderTests = .builderTests
             self.context = .context
             self.contextTests = .contextTests
             self.flow = .flow
@@ -141,6 +145,8 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
             "AnalyticsTests"
         case .builder:
             "Builder"
+        case .builderTests:
+            "BuilderTests"
         case .context:
             "Context"
         case .contextTests:
@@ -180,6 +186,8 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
             description
         case let .builder(variation):
             description.appending(variation.rawValue)
+        case .builderTests:
+            description
         case .context, .contextTests:
             description
         case .flow, .flowTests:
@@ -217,6 +225,9 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
                 .union(config.reactiveImports)
                 .union(config.dependencyInjectionImports)
                 .union(config.builderImports)
+        case .builderTests:
+            config.baseTestImports
+                .union(["NodesTesting"])
         case .context:
             config.baseImports
                 .union(["Nodes"])

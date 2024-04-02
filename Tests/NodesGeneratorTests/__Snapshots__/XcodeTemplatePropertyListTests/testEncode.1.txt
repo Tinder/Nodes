@@ -34,11 +34,11 @@
 		</dict>
 		<dict>
 			<key>Description</key>
-			<string>description-4</string>
+			<string>description-2</string>
 			<key>Identifier</key>
-			<string>identifier-4</string>
+			<string>identifier-2</string>
 			<key>Name</key>
-			<string>name-4</string>
+			<string>name-2</string>
 			<key>NotPersisted</key>
 			<true/>
 			<key>Required</key>
@@ -52,11 +52,29 @@
 		</dict>
 		<dict>
 			<key>Description</key>
-			<string>description-5</string>
+			<string>description-3</string>
 			<key>Identifier</key>
-			<string>identifier-5</string>
+			<string>identifier-3</string>
 			<key>Name</key>
-			<string>name-5</string>
+			<string>name-3</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>RequiredOptions</key>
+			<dict/>
+			<key>Type</key>
+			<string>text</string>
+			<key>Values</key>
+			<array/>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>description-6</string>
+			<key>Identifier</key>
+			<string>identifier-6</string>
+			<key>Name</key>
+			<string>name-6</string>
 			<key>NotPersisted</key>
 			<true/>
 			<key>Required</key>
@@ -88,11 +106,11 @@
 		</dict>
 		<dict>
 			<key>Description</key>
-			<string>description-8</string>
+			<string>description-9</string>
 			<key>Identifier</key>
-			<string>identifier-8</string>
+			<string>identifier-9</string>
 			<key>Name</key>
-			<string>name-8</string>
+			<string>name-9</string>
 			<key>NotPersisted</key>
 			<true/>
 			<key>Required</key>
@@ -106,11 +124,47 @@
 		</dict>
 		<dict>
 			<key>Description</key>
-			<string>description-9</string>
+			<string>description-10</string>
 			<key>Identifier</key>
-			<string>identifier-9</string>
+			<string>identifier-10</string>
 			<key>Name</key>
-			<string>name-9</string>
+			<string>name-10</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>RequiredOptions</key>
+			<dict/>
+			<key>Type</key>
+			<string>text</string>
+			<key>Values</key>
+			<array/>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>description-11</string>
+			<key>Identifier</key>
+			<string>identifier-11</string>
+			<key>Name</key>
+			<string>name-11</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>RequiredOptions</key>
+			<dict/>
+			<key>Type</key>
+			<string>text</string>
+			<key>Values</key>
+			<array/>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>description-12</string>
+			<key>Identifier</key>
+			<string>identifier-12</string>
+			<key>Name</key>
+			<string>name-12</string>
 			<key>NotPersisted</key>
 			<true/>
 			<key>Required</key>
