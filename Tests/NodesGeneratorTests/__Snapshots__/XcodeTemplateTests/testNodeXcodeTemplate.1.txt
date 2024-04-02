@@ -1,4 +1,4 @@
-▿ NodeXcodeTemplateV2
+▿ NodeXcodeTemplate
   - name: "Node"
   ▿ permutations: 8 elements
     ▿ NodeXcodeTemplatePermutation

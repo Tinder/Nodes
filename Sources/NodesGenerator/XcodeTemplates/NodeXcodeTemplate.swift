@@ -2,7 +2,7 @@
 //  Copyright © 2024 Tinder (Match Group, LLC)
 //
 
-internal struct NodeXcodeTemplateV2: XcodeTemplate {
+internal struct NodeXcodeTemplate: XcodeTemplate {
 
     internal let name: String = "Node"
     internal let propertyList: PropertyList

@@ -43,7 +43,7 @@ public final class XcodeTemplates {
         let viewInjectedTemplate: [XcodeTemplate] = config
             .isViewInjectedTemplateEnabled ? [NodeViewInjectedXcodeTemplate(config: config)] : []
         let templates: [XcodeTemplate] = [
-            NodeXcodeTemplateV2(uiFrameworks: uiFrameworks, config: config)
+            NodeXcodeTemplate(uiFrameworks: uiFrameworks, config: config)
         ] + viewInjectedTemplate + [
             PluginListXcodeTemplate(config: config),
             PluginXcodeTemplate(config: config),
