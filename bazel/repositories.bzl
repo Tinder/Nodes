@@ -122,8 +122,8 @@ def nodes_dependencies():
         sha256 = SWIFTSYNTAX_SHA_256,
     )
 
-    YAMS_VERSION = "5.0.6"
-    YAMS_SHA_256 = "a81c6b93f5d26bae1b619b7f8babbfe7c8abacf95b85916961d488888df886fb"
+    YAMS_VERSION = "5.1.0"
+    YAMS_SHA_256 = "842d35324a31aa693a289ba6dde39d330c036f46db7484c25bed60d45123f7b0"
 
     maybe(
         http_archive,

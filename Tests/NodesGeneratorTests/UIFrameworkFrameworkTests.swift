@@ -17,6 +17,32 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         expect(appKit.name) == "AppKit"
         expect(appKit.import) == "AppKit"
         expect(appKit.viewControllerType) == "NSViewController"
+        expect(appKit.viewControllerSuperParameters) == "nibName: nil, bundle: nil"
+        expect(appKit.viewControllerMethods) == """
+            @available(*, unavailable)
+            internal required init?(coder: NSCoder) {
+                preconditionFailure("init(coder:) has not been implemented")
+            }
+
+            override internal func loadView() {
+                view = NSView()
+            }
+
+            override internal func viewDidLoad() {
+                super.viewDidLoad()
+                update(with: initialState)
+            }
+
+            override internal func viewWillAppear() {
+                super.viewWillAppear()
+                observe(statePublisher).store(in: &cancellables)
+            }
+
+            override internal func viewWillDisappear() {
+                super.viewWillDisappear()
+                cancellables.cancelAll()
+            }
+            """
     }
 
     func testUIKit() {
@@ -25,6 +51,29 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         expect(uiKit.name) == "UIKit"
         expect(uiKit.import) == "UIKit"
         expect(uiKit.viewControllerType) == "UIViewController"
+        expect(uiKit.viewControllerSuperParameters) == "nibName: nil, bundle: nil"
+        expect(uiKit.viewControllerMethods) == """
+            @available(*, unavailable)
+            internal required init?(coder: NSCoder) {
+                preconditionFailure("init(coder:) has not been implemented")
+            }
+
+            override internal func viewDidLoad() {
+                super.viewDidLoad()
+                view.backgroundColor = .systemBackground
+                update(with: initialState)
+            }
+
+            override internal func viewWillAppear(_ animated: Bool) {
+                super.viewWillAppear(animated)
+                observe(statePublisher).store(in: &cancellables)
+            }
+
+            override internal func viewWillDisappear(_ animated: Bool) {
+                super.viewWillDisappear(animated)
+                cancellables.cancelAll()
+            }
+            """
     }
 
     func testSwiftUI() {
@@ -33,6 +82,8 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         expect(swiftUI.name) == "SwiftUI"
         expect(swiftUI.import) == "SwiftUI"
         expect(swiftUI.viewControllerType) == "UIHostingController"
+        expect(swiftUI.viewControllerSuperParameters).to(beEmpty())
+        expect(swiftUI.viewControllerMethods).to(beEmpty())
     }
 
     func testCustom() {
@@ -45,6 +96,8 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         expect(custom.name) == "<uiFrameworkName>"
         expect(custom.import) == "<uiFrameworkImport>"
         expect(custom.viewControllerType) == "<viewControllerType>"
+        expect(custom.viewControllerSuperParameters) == "<viewControllerSuperParameters>"
+        expect(custom.viewControllerMethods) == "<viewControllerMethods>"
     }
 
     func testDecoding() throws {
