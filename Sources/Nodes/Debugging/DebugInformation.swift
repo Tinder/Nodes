@@ -57,6 +57,10 @@ public enum DebugInformation {
             self.object = object
         }
 
+        public func canMake<T>(withObjectOfType type: T.Type) -> Bool {
+            (object as? T) != nil
+        }
+
         /// Use the factory's `object` instance (a view controller for example) to make
         /// an instance of another type (a view snapshot for example).
         ///
@@ -65,10 +69,13 @@ public enum DebugInformation {
         ///
         /// If an identity transform is provided, `nil` will be returned to prevent direct
         /// access to the factory's weak `object` itself.
-        public func make<T: AnyObject, U>(_ type: T.Type, _ factory: (T) throws -> U) rethrows -> U? {
+        public func make<T: AnyObject, U>(
+            withObjectOfType type: T.Type,
+            transform: @MainActor (T) throws -> U
+        ) async rethrows -> U? where T: Sendable, U: Sendable {
             guard let input = object as? T
             else { return nil }
-            let output: U = try factory(input)
+            let output: U = try await transform(input)
             guard output as AnyObject !== input
             else { return nil }
             return output
