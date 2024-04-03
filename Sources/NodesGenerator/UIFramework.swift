@@ -51,8 +51,10 @@ public struct UIFramework: Equatable, Codable {
 
         internal var `import`: String {
             switch self {
-            case .appKit, .uiKit, .swiftUI:
+            case .appKit, .uiKit:
                 return name
+            case .swiftUI:
+                return "SwiftUI"
             case let .custom(_, `import`, _, _, _):
                 return `import`
             }
