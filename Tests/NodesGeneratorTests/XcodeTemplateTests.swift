@@ -8,9 +8,9 @@ import XCTest
 
 final class XcodeTemplateTests: XCTestCase, TestFactories {
 
-    func testNodeXcodeTemplateV2() throws {
+    func testNodeXcodeTemplate() throws {
         let config: Config = givenConfig()
-        assertSnapshot(of: NodeXcodeTemplateV2(uiFrameworks: config.uiFrameworks, config: config),
+        assertSnapshot(of: NodeXcodeTemplate(uiFrameworks: config.uiFrameworks, config: config),
                        as: .dump)
     }
 
@@ -19,13 +19,13 @@ final class XcodeTemplateTests: XCTestCase, TestFactories {
                        as: .dump)
     }
 
-    func testPluginListNodeXcodeTemplate() {
-        assertSnapshot(of: PluginListNodeXcodeTemplate(config: givenConfig()),
+    func testPluginListXcodeTemplate() {
+        assertSnapshot(of: PluginListXcodeTemplate(config: givenConfig()),
                        as: .dump)
     }
 
-    func testPluginNodeXcodeTemplate() {
-        assertSnapshot(of: PluginNodeXcodeTemplate(config: givenConfig()),
+    func testPluginXcodeTemplate() {
+        assertSnapshot(of: PluginXcodeTemplate(config: givenConfig()),
                        as: .dump)
     }
 

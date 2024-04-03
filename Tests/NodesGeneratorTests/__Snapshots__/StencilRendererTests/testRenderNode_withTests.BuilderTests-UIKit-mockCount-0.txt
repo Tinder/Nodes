@@ -1,0 +1,34 @@
+//<fileHeader>
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+
+final class <nodeName>BuilderTests: XCTestCase {
+
+    private var listenerMock: <nodeName>ListenerMock!
+    private var builder: <nodeName>BuilderImp!
+
+    @MainActor
+    override func setUp() {
+        super.setUp()
+        listenerMock = <nodeName>ListenerMock()
+        builder = <nodeName>BuilderImp(componentFactory: injectComponent { parent in
+            <nodeName>Component(parent: parent)
+        } with: {
+            // swiftlint:disable:next direct_return
+            let dependency: <nodeName>DependencyMock = .init()
+            // dependency.<dependencyName> = <dependencyName>Mock
+            return dependency
+        })
+    }
+
+    override func tearDown() {
+        listenerMock = nil
+        builder = nil
+        super.tearDown()
+    }
+
+    @MainActor
+    func testCreate() {
+        XCTAssertNotNil(builder.build(withListener: listenerMock))
+    }
+}

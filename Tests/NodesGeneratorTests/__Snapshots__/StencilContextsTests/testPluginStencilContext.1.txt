@@ -1,4 +1,4 @@
-▿ 7 key/value pairs
+▿ 6 key/value pairs
   ▿ (2 elements)
     - key: "file_header"
     - value: "<fileHeader>"
@@ -19,6 +19,3 @@
     - key: "plugin_tests_imports"
     ▿ value: 1 element
       - "<pluginTestsImport>"
-  ▿ (2 elements)
-    - key: "return_type"
-    - value: "<returnType>"

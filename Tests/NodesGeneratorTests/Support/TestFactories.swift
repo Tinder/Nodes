@@ -214,18 +214,6 @@ extension TestFactories {
         PluginStencilContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
-            returnType: "<returnType>",
-            pluginImports: .mock(with: "pluginImport", count: mockCount),
-            pluginTestsImports: .mock(with: "pluginTestsImport", count: mockCount),
-            isPeripheryCommentEnabled: mockCount > 0,
-            isNimbleEnabled: mockCount > 0
-        )
-    }
-
-    internal func givenPluginStencilContextWithoutReturnType(mockCount: Int = 1) -> PluginStencilContext {
-        PluginStencilContext(
-            fileHeader: "<fileHeader>",
-            pluginName: "<pluginName>",
             pluginImports: .mock(with: "pluginImport", count: mockCount),
             pluginTestsImports: .mock(with: "pluginTestsImport", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0,

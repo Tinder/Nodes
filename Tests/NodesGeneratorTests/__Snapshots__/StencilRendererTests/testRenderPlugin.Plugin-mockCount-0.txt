@@ -53,6 +53,10 @@ public final class <pluginName>PluginComponent: Component
      }
 
      */
+
+    fileprivate func componentFactory() -> <pluginName>Component {
+        <pluginName>Component(parent: self)
+    }
 }
 
 /**
@@ -68,7 +72,7 @@ internal typealias <pluginName>PluginStateType = Void
 /// @mockable
 @MainActor
 internal protocol <pluginName>Plugin {
-    func create() -> <returnType>?
+    func create() -> <pluginName>Builder?
 }
 
 /**
@@ -78,7 +82,7 @@ internal protocol <pluginName>Plugin {
 internal final class <pluginName>PluginImp: Plugin
 <
     <pluginName>PluginComponent,
-    <returnType>,
+    <pluginName>Builder,
     <pluginName>PluginStateType
 > {
 
@@ -99,8 +103,8 @@ internal final class <pluginName>PluginImp: Plugin
     /// - Returns: The initialized instance
     override internal func build(
         component: <pluginName>PluginComponent
-    ) -> <returnType> {
-        // TODO: Initialize instance
+    ) -> <pluginName>Builder {
+        <pluginName>BuilderImp(componentFactory: component.componentFactory)
     }
 }
 

@@ -36,5 +36,5 @@
         - type: "text"
         - values: 0 elements
     - platforms: 0 elements
-    - sortOrder: 10
+    - sortOrder: 5
     - supportsSwiftPackage: true

@@ -177,43 +177,43 @@ extension Config {
             (try? decoder.decode(CodingKeys.flowProperties))
             ?? defaults.flowProperties
         viewControllableFlowType =
-            (try? decoder.decodeString(CodingKeys.viewControllableFlowType))
+            (try? decoder.decode(CodingKeys.viewControllableFlowType))
             ?? defaults.viewControllableFlowType
         viewControllableType =
-            (try? decoder.decodeString(CodingKeys.viewControllableType))
+            (try? decoder.decode(CodingKeys.viewControllableType))
             ?? defaults.viewControllableType
         viewControllableMockContents =
-            (try? decoder.decodeString(CodingKeys.viewControllableMockContents))
+            (try? decoder.decode(CodingKeys.viewControllableMockContents))
             ?? defaults.viewControllableMockContents
         viewControllerStaticContent =
-            (try? decoder.decodeString(CodingKeys.viewControllerStaticContent))
+            (try? decoder.decode(CodingKeys.viewControllerStaticContent))
             ?? defaults.viewControllerStaticContent
         viewControllerSubscriptionsProperty =
-            (try? decoder.decodeString(CodingKeys.viewControllerSubscriptionsProperty))
+            (try? decoder.decode(CodingKeys.viewControllerSubscriptionsProperty))
             ?? defaults.viewControllerSubscriptionsProperty
         viewControllerUpdateComment =
-            (try? decoder.decodeString(CodingKeys.viewControllerUpdateComment))
+            (try? decoder.decode(CodingKeys.viewControllerUpdateComment))
             ?? defaults.viewControllerUpdateComment
         viewStateEmptyFactory =
-            (try? decoder.decodeString(CodingKeys.viewStateEmptyFactory))
+            (try? decoder.decode(CodingKeys.viewStateEmptyFactory))
             ?? defaults.viewStateEmptyFactory
         viewStateOperators =
-            (try? decoder.decodeString(CodingKeys.viewStateOperators))
+            (try? decoder.decode(CodingKeys.viewStateOperators))
             ?? defaults.viewStateOperators
         viewStatePropertyComment =
-            (try? decoder.decodeString(CodingKeys.viewStatePropertyComment))
+            (try? decoder.decode(CodingKeys.viewStatePropertyComment))
             ?? defaults.viewStatePropertyComment
         viewStatePropertyName =
-            (try? decoder.decodeString(CodingKeys.viewStatePropertyName))
+            (try? decoder.decode(CodingKeys.viewStatePropertyName))
             ?? defaults.viewStatePropertyName
         viewStateTransform =
-            (try? decoder.decodeString(CodingKeys.viewStateTransform))
+            (try? decoder.decode(CodingKeys.viewStateTransform))
             ?? defaults.viewStateTransform
         publisherType =
-            (try? decoder.decodeString(CodingKeys.publisherType))
+            (try? decoder.decode(CodingKeys.publisherType))
             ?? defaults.publisherType
         publisherFailureType =
-            (try? decoder.decodeString(CodingKeys.publisherFailureType))
+            (try? decoder.decode(CodingKeys.publisherFailureType))
             ?? defaults.publisherFailureType
         contextGenericTypes =
             (try? decoder.decode(CodingKeys.contextGenericTypes))
