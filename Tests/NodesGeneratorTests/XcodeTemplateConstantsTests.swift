@@ -20,6 +20,10 @@ final class XcodeTemplateConstantsTests: XCTestCase {
         expect(XcodeTemplateConstants.productName) == "productName"
     }
 
+    func testUIFramework() {
+        expect(XcodeTemplateConstants.uiFramework) == "uiFramework"
+    }
+
     func testUsePluginList() {
         expect(XcodeTemplateConstants.usePluginList) == "usePluginList"
     }

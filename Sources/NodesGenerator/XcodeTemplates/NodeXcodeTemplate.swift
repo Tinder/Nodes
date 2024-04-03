@@ -10,11 +10,11 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
 
     internal init(uiFrameworks: [UIFramework], config: Config) {
         propertyList = PropertyList(sortOrder: 1) {
-            Option(identifier: "productName",
-                   name: "Node name:",
+            Option(identifier: XcodeTemplateConstants.productName,
+                   name: "Node Name:",
                    description: "The name of the new node.",
                    default: "MyFeatureV1")
-            Option(identifier: "uiFramework",
+            Option(identifier: XcodeTemplateConstants.uiFramework,
                    name: "UI Framework:",
                    description: "The UI framework of the new node.",
                    type: "popup",

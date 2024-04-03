@@ -8,6 +8,7 @@ internal enum XcodeTemplateConstants {
     internal static let fileHeader: String = "___FILEHEADER___"
 
     internal static let productName: String = "productName"
+    internal static let uiFramework: String = "uiFramework"
     internal static let usePluginList: String = "usePluginList"
     internal static let pluginListName: String = "pluginListName"
 

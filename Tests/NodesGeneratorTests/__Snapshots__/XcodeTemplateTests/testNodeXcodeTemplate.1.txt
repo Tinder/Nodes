@@ -988,7 +988,7 @@
           - some: "MyFeatureV1"
         - description: "The name of the new node."
         - identifier: "productName"
-        - name: "Node name:"
+        - name: "Node Name:"
         - notPersisted: true
         - required: true
         - requiredOptions: 0 key/value pairs
