@@ -13,8 +13,8 @@ final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
         config.uiFrameworks.forEach { framework in
             [true, false].forEach { createdForPluginList in
                 let permutation: NodeXcodeTemplatePermutation = .init(
-                    createdForPluginList: createdForPluginList,
                     for: framework,
+                    createdForPluginList: createdForPluginList,
                     config: config
                 )
                 assertSnapshot(
