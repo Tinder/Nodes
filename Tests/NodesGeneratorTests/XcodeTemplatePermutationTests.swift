@@ -11,9 +11,9 @@ final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
     func testNodeXcodeTemplatePermutation() throws {
         let config: Config = givenConfig()
         config.uiFrameworks.forEach { framework in
-            [true, false].forEach { usePluginList in
+            [true, false].forEach { createdForPluginList in
                 let permutation: NodeXcodeTemplatePermutation = .init(
-                    usePluginList: usePluginList,
+                    createdForPluginList: createdForPluginList,
                     for: framework,
                     config: config
                 )
