@@ -21,7 +21,7 @@ final class XcodeTemplateConstantsTests: XCTestCase {
     }
 
     func testUsePluginList() {
-        expect(XcodeTemplateConstants.usePluginList) == "usePluginList"
+        expect(XcodeTemplateConstants.usePluginList) == "CreatedForPluginList"
     }
 
     func testPluginListName() {
