@@ -1,5 +1,5 @@
 ▿ NodeXcodeTemplatePermutation
-  - name: "UsePluginListUIKit"
+  - name: "usePluginListUIKit"
   ▿ stencilContext: NodeStencilContext
     ▿ analyticsImports: 1 element
       - "<baseImport>"

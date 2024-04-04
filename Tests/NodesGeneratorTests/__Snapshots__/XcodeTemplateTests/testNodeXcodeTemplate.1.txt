@@ -2,7 +2,7 @@
   - name: "Node"
   ▿ permutations: 8 elements
     ▿ NodeXcodeTemplatePermutation
-      - name: "UsePluginListAppKit"
+      - name: "usePluginListAppKit"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -246,7 +246,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "UsePluginListUIKit"
+      - name: "usePluginListUIKit"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -490,7 +490,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "UsePluginListSwiftUI"
+      - name: "usePluginListSwiftUI"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -734,7 +734,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "UsePluginList<uiFrameworkName>"
+      - name: "usePluginList<uiFrameworkName>"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -1013,7 +1013,7 @@
         ▿ default: Optional<String>
           - some: "true"
         - description: "Whether the node is created for use in an existing plugin list."
-        - identifier: "UsePluginList"
+        - identifier: "usePluginList"
         - name: "Created For Existing Plugin List"
         - notPersisted: true
         - required: true
@@ -1030,7 +1030,7 @@
         - required: true
         ▿ requiredOptions: 1 key/value pair
           ▿ (2 elements)
-            - key: "UsePluginList"
+            - key: "usePluginList"
             ▿ value: 1 element
               - "true"
         - type: "text"

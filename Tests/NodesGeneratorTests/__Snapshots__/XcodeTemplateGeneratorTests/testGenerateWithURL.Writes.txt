@@ -1,48 +1,48 @@
 ▿ 139 elements
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___Analytics.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___Analytics.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___Builder.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___Builder.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___Context.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___Context.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___Flow.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___Flow.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___State.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___State.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___ViewController.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___ViewController.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___ViewState.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___ViewState.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___Plugin.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___AnalyticsTests.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___BuilderTests.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___BuilderTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___ContextTests.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___ContextTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___FlowTests.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___FlowTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___ViewControllerTests.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___ViewControllerTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___ViewStateFactoryTests.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___ViewStateFactoryTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit/___FILEBASENAME___PluginTests.swift"
+    - path: "/Node.xctemplate/usePluginListAppKit/___FILEBASENAME___PluginTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/AppKit/___FILEBASENAME___Analytics.swift"
@@ -90,49 +90,49 @@
     - path: "/Node.xctemplate/AppKit/___FILEBASENAME___PluginTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___Analytics.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___Analytics.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___Builder.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___Builder.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___Context.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___Context.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___Flow.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___Flow.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___State.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___State.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___ViewController.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___ViewController.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___ViewState.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___ViewState.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___Plugin.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___AnalyticsTests.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___BuilderTests.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___BuilderTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___ContextTests.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___ContextTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___FlowTests.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___FlowTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___ViewControllerTests.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___ViewControllerTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___ViewStateFactoryTests.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___ViewStateFactoryTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit/___FILEBASENAME___PluginTests.swift"
+    - path: "/Node.xctemplate/usePluginListUIKit/___FILEBASENAME___PluginTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/UIKit/___FILEBASENAME___Analytics.swift"
@@ -180,49 +180,49 @@
     - path: "/Node.xctemplate/UIKit/___FILEBASENAME___PluginTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___Analytics.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___Analytics.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___Builder.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___Builder.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___Context.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___Context.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___Flow.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___Flow.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___State.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___State.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___ViewController.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___ViewController.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___ViewState.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___ViewState.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___Plugin.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___AnalyticsTests.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___BuilderTests.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___BuilderTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___ContextTests.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___ContextTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___FlowTests.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___FlowTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___ViewControllerTests.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___ViewControllerTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___ViewStateFactoryTests.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___ViewStateFactoryTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI/___FILEBASENAME___PluginTests.swift"
+    - path: "/Node.xctemplate/usePluginListSwiftUI/___FILEBASENAME___PluginTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/SwiftUI/___FILEBASENAME___Analytics.swift"
@@ -270,49 +270,49 @@
     - path: "/Node.xctemplate/SwiftUI/___FILEBASENAME___PluginTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___Analytics.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___Analytics.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___Builder.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___Builder.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___Context.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___Context.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___Flow.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___Flow.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___State.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___State.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___ViewController.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___ViewController.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___ViewState.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___ViewState.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___Plugin.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___AnalyticsTests.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___BuilderTests.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___BuilderTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___ContextTests.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___ContextTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___FlowTests.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___FlowTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___ViewControllerTests.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___ViewControllerTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___ViewStateFactoryTests.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___ViewStateFactoryTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom/___FILEBASENAME___PluginTests.swift"
+    - path: "/Node.xctemplate/usePluginListCustom/___FILEBASENAME___PluginTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/Custom/___FILEBASENAME___Analytics.swift"
