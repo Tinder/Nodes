@@ -59,6 +59,9 @@ final class StencilContextsTests: XCTestCase, TestFactories {
             .to(throwError(errorType: StencilContextError.self) { error in
                 expect(error) == .invalidPreset("Window")
             })
+        expect { try self.givenNodeStencilContext(preset: .root) }
+            .toNot(throwError())
+
     }
 
     func testNodeViewInjectedStencilContext() throws {
@@ -86,6 +89,12 @@ final class StencilContextsTests: XCTestCase, TestFactories {
     }
 
     func testNodeViewInjectedStencilContextThrowsInvalidPreset() {
+        expect { try self.givenNodeViewInjectedStencilContext(preset: .app) }
+            .toNot(throwError())
+        expect { try self.givenNodeViewInjectedStencilContext(preset: .scene) }
+            .toNot(throwError())
+        expect { try self.givenNodeViewInjectedStencilContext(preset: .window) }
+            .toNot(throwError())
         expect { try self.givenNodeViewInjectedStencilContext(preset: .root) }
             .to(throwError(errorType: StencilContextError.self) { error in
                 expect(error) == .invalidPreset("Root")
