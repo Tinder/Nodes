@@ -14,11 +14,11 @@
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>The name of the Worker</string>
+			<string>The name of the Worker.</string>
 			<key>Identifier</key>
 			<string>productName</string>
 			<key>Name</key>
-			<string>Worker name:</string>
+			<string>Worker Name:</string>
 			<key>NotPersisted</key>
 			<true/>
 			<key>Required</key>

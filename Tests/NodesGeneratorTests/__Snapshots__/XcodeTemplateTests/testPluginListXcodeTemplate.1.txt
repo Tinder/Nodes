@@ -29,9 +29,9 @@
       ▿ Option
         ▿ default: Optional<String>
           - some: "MyFeature"
-        - description: "The name of the Plugin List"
+        - description: "The name of the Plugin List."
         - identifier: "productName"
-        - name: "Plugin List name:"
+        - name: "Plugin List Name:"
         - notPersisted: true
         - required: true
         - requiredOptions: 0 key/value pairs

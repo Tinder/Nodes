@@ -986,9 +986,9 @@
       ▿ Option
         ▿ default: Optional<String>
           - some: "MyFeatureV1"
-        - description: "The name of the new node."
+        - description: "The name of the node."
         - identifier: "productName"
-        - name: "Node name:"
+        - name: "Node Name:"
         - notPersisted: true
         - required: true
         - requiredOptions: 0 key/value pairs
@@ -1012,9 +1012,9 @@
       ▿ Option
         ▿ default: Optional<String>
           - some: "true"
-        - description: "Whether the node is created for use in an existing plugin list."
+        - description: "Whether the node is created for use in an existing Plugin List."
         - identifier: "CreatedForPluginList"
-        - name: "Created For Existing Plugin List"
+        - name: "Created for existing Plugin List"
         - notPersisted: true
         - required: true
         - requiredOptions: 0 key/value pairs
@@ -1023,7 +1023,7 @@
       ▿ Option
         ▿ default: Optional<String>
           - some: "MyFeature"
-        - description: "The name of an existing plugin list."
+        - description: "The name of an existing Plugin List."
         - identifier: "pluginListName"
         - name: "Existing Plugin List:"
         - notPersisted: true

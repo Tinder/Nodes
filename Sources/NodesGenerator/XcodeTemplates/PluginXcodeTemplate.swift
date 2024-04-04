@@ -9,8 +9,8 @@ internal struct PluginXcodeTemplate: XcodeTemplate {
     internal let propertyList: PropertyList =
         .init(sortOrder: 4) {
             Option(identifier: XcodeTemplateConstants.productName,
-                   name: "Node name:",
-                   description: "The name of the Plugin")
+                   name: "Node Name:",
+                   description: "The name of the node for the Plugin.")
         }
 
     internal let permutations: [XcodeTemplatePermutation]
