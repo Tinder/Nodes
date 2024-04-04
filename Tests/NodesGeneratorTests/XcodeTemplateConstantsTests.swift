@@ -21,15 +21,15 @@ final class XcodeTemplateConstantsTests: XCTestCase {
     }
 
     func testUIFramework() {
-        expect(XcodeTemplateConstants.uiFramework) == "uiFramework"
+        expect(XcodeTemplateConstants.uiFramework) == "UIFramework"
     }
 
     func testUsePluginList() {
-        expect(XcodeTemplateConstants.usePluginList) == "usePluginList"
+        expect(XcodeTemplateConstants.usePluginList) == "UsePluginList"
     }
 
     func testPluginListName() {
-        expect(XcodeTemplateConstants.pluginListName) == "pluginListName"
+        expect(XcodeTemplateConstants.pluginListName) == "PluginListName"
     }
 
     func testVariable() {

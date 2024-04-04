@@ -2,7 +2,7 @@
   - name: "Node"
   ▿ permutations: 8 elements
     ▿ NodeXcodeTemplatePermutation
-      - name: "usePluginListAppKit"
+      - name: "UsePluginListAppKit"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -65,7 +65,7 @@
           - "<baseImport>"
           - "<dependencyInjectionImport>"
           - "Nodes"
-        - pluginListName: "___VARIABLE_pluginListName___"
+        - pluginListName: "___VARIABLE_PluginListName___"
         - pluginName: "___VARIABLE_productName___"
         ▿ pluginTestsImports: 2 elements
           - "<baseTestImport>"
@@ -246,7 +246,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "usePluginListUIKit"
+      - name: "UsePluginListUIKit"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -309,7 +309,7 @@
           - "<baseImport>"
           - "<dependencyInjectionImport>"
           - "Nodes"
-        - pluginListName: "___VARIABLE_pluginListName___"
+        - pluginListName: "___VARIABLE_PluginListName___"
         - pluginName: "___VARIABLE_productName___"
         ▿ pluginTestsImports: 2 elements
           - "<baseTestImport>"
@@ -490,7 +490,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "usePluginListSwiftUI"
+      - name: "UsePluginListSwiftUI"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -553,7 +553,7 @@
           - "<baseImport>"
           - "<dependencyInjectionImport>"
           - "Nodes"
-        - pluginListName: "___VARIABLE_pluginListName___"
+        - pluginListName: "___VARIABLE_PluginListName___"
         - pluginName: "___VARIABLE_productName___"
         ▿ pluginTestsImports: 2 elements
           - "<baseTestImport>"
@@ -734,7 +734,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "usePluginList<uiFrameworkName>"
+      - name: "UsePluginList<uiFrameworkName>"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -797,7 +797,7 @@
           - "<baseImport>"
           - "<dependencyInjectionImport>"
           - "Nodes"
-        - pluginListName: "___VARIABLE_pluginListName___"
+        - pluginListName: "___VARIABLE_PluginListName___"
         - pluginName: "___VARIABLE_productName___"
         ▿ pluginTestsImports: 2 elements
           - "<baseTestImport>"
@@ -988,7 +988,7 @@
           - some: "MyFeatureV1"
         - description: "The name of the new node."
         - identifier: "productName"
-        - name: "Node Name:"
+        - name: "Node name:"
         - notPersisted: true
         - required: true
         - requiredOptions: 0 key/value pairs
@@ -998,7 +998,7 @@
         ▿ default: Optional<String>
           - some: "AppKit"
         - description: "The UI framework of the new node."
-        - identifier: "uiFramework"
+        - identifier: "UIFramework"
         - name: "UI Framework:"
         - notPersisted: true
         - required: true
@@ -1013,7 +1013,7 @@
         ▿ default: Optional<String>
           - some: "true"
         - description: "Whether the node is created for use in an existing plugin list."
-        - identifier: "usePluginList"
+        - identifier: "UsePluginList"
         - name: "Created For Existing Plugin List"
         - notPersisted: true
         - required: true
@@ -1024,13 +1024,13 @@
         ▿ default: Optional<String>
           - some: "MyFeature"
         - description: "The name of an existing plugin list."
-        - identifier: "pluginListName"
+        - identifier: "PluginListName"
         - name: "Existing Plugin List:"
         - notPersisted: true
         - required: true
         ▿ requiredOptions: 1 key/value pair
           ▿ (2 elements)
-            - key: "usePluginList"
+            - key: "UsePluginList"
             ▿ value: 1 element
               - "true"
         - type: "text"

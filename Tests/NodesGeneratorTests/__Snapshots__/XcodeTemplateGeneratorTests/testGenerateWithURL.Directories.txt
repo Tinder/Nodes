@@ -3,25 +3,25 @@
     - path: "/Node.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/usePluginListAppKit"
+    - path: "/Node.xctemplate/UsePluginListAppKit"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/AppKit"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/usePluginListUIKit"
+    - path: "/Node.xctemplate/UsePluginListUIKit"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/UIKit"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/usePluginListSwiftUI"
+    - path: "/Node.xctemplate/UsePluginListSwiftUI"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/SwiftUI"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/usePluginListCustom"
+    - path: "/Node.xctemplate/UsePluginListCustom"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/Custom"
