@@ -11,7 +11,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
     internal init(uiFrameworks: [UIFramework], config: Config) {
         propertyList = PropertyList(sortOrder: 1) {
             Option(identifier: "productName",
-                   name: "Node name:",
+                   name: "Node Name:",
                    description: "The name of the new node.",
                    default: "MyFeatureV1")
             Option(identifier: "uiFramework",
@@ -21,13 +21,13 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
                    values: uiFrameworks.map(\.name),
                    default: uiFrameworks.first?.name ?? "")
             Option(identifier: XcodeTemplateConstants.usePluginList,
-                   name: "Created For Existing Plugin List",
-                   description: "Whether the node is created for use in an existing plugin list.",
+                   name: "Created for existing Plugin List",
+                   description: "Whether the node is created for use in an existing Plugin List.",
                    type: "checkbox",
                    default: "true")
             Option(identifier: XcodeTemplateConstants.pluginListName,
                    name: "Existing Plugin List:",
-                   description: "The name of an existing plugin list.",
+                   description: "The name of an existing Plugin List.",
                    requiredOptions: [XcodeTemplateConstants.usePluginList: ["true"]],
                    default: "MyFeature")
         }

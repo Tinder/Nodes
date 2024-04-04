@@ -16,11 +16,11 @@
 			<key>Default</key>
 			<string>MyFeature</string>
 			<key>Description</key>
-			<string>The name of the Plugin List</string>
+			<string>The name of the Plugin List.</string>
 			<key>Identifier</key>
 			<string>productName</string>
 			<key>Name</key>
-			<string>Plugin List name:</string>
+			<string>Plugin List Name:</string>
 			<key>NotPersisted</key>
 			<true/>
 			<key>Required</key>

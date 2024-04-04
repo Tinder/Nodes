@@ -14,11 +14,11 @@
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>The name of the Plugin</string>
+			<string>The name of the Plugin.</string>
 			<key>Identifier</key>
 			<string>productName</string>
 			<key>Name</key>
-			<string>Node name:</string>
+			<string>Node Name:</string>
 			<key>NotPersisted</key>
 			<true/>
 			<key>Required</key>
