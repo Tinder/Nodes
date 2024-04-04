@@ -30,10 +30,10 @@
     - path: "/Node (view injected).xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Plugin List (for Node).xctemplate"
+    - path: "/Plugin List.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Plugin (for Node).xctemplate"
+    - path: "/Plugin.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Worker.xctemplate"

@@ -390,22 +390,22 @@
     - path: "/Node (view injected).xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Plugin List (for Node).xctemplate/___FILEBASENAME___PluginList.swift"
+    - path: "/Plugin List.xctemplate/___FILEBASENAME___PluginList.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Plugin List (for Node).xctemplate/___FILEBASENAME___PluginListTests.swift"
+    - path: "/Plugin List.xctemplate/___FILEBASENAME___PluginListTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Plugin List (for Node).xctemplate/TemplateInfo.plist"
+    - path: "/Plugin List.xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Plugin (for Node).xctemplate/___FILEBASENAME___Plugin.swift"
+    - path: "/Plugin.xctemplate/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Plugin (for Node).xctemplate/___FILEBASENAME___PluginTests.swift"
+    - path: "/Plugin.xctemplate/___FILEBASENAME___PluginTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Plugin (for Node).xctemplate/TemplateInfo.plist"
+    - path: "/Plugin.xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
     - path: "/Worker.xctemplate/___FILEBASENAME___Worker.swift"

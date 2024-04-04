@@ -20,7 +20,7 @@ final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
                 assertSnapshot(
                     of: permutation,
                     as: .dump,
-                    named: "\(framework.kind.rawValue)\(usePluginList ? "-UsePluginList" : "")"
+                    named: permutation.name
                 )
             }
         }
