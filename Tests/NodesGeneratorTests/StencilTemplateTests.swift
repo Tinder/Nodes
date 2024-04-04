@@ -131,6 +131,19 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         }
     }
 
+    func testNode() {
+        StencilTemplate.Variation.allCases.forEach { variation in
+            assertSnapshot(of: StencilTemplate.Node(for: variation),
+                           as: .dump,
+                           named: variation.rawValue)
+        }
+    }
+
+    func testNodeViewInjected() {
+        assertSnapshot(of: StencilTemplate.NodeViewInjected(),
+                       as: .dump)
+    }
+
     func testNodeStencils() {
         // swiftlint:disable:next closure_body_length
         StencilTemplate.Variation.allCases.forEach { variation in
