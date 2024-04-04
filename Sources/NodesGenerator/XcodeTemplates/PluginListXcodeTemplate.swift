@@ -4,13 +4,13 @@
 
 internal struct PluginListXcodeTemplate: XcodeTemplate {
 
-    internal let name: String = "Plugin List (for Node)"
+    internal let name: String = "Plugin List"
 
     internal let propertyList: PropertyList =
         .init(sortOrder: 3) {
             Option(identifier: XcodeTemplateConstants.productName,
-                   name: "Plugin List name:",
-                   description: "The name of the Plugin List",
+                   name: "Plugin List Name:",
+                   description: "The name of the Plugin List.",
                    default: "MyFeature")
         }
 

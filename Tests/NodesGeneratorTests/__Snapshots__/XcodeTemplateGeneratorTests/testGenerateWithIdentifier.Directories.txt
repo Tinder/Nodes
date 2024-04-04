@@ -3,25 +3,25 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UsePluginListAppKit"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/CreatedForPluginListAppKit"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UsePluginListUIKit"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/CreatedForPluginListUIKit"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UsePluginListSwiftUI"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/CreatedForPluginListSwiftUI"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/SwiftUI"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UsePluginListCustom"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/CreatedForPluginListCustom"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/Custom"
@@ -30,10 +30,10 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Worker.xctemplate"

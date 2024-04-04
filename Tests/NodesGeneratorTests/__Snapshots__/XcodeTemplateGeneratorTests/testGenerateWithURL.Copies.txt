@@ -13,16 +13,16 @@
     - to: "/Node (view injected).xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
-    - to: "/Plugin List (for Node).xctemplate/TemplateIcon.png"
+    - to: "/Plugin List.xctemplate/TemplateIcon.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder@2x.png"
-    - to: "/Plugin List (for Node).xctemplate/TemplateIcon@2x.png"
+    - to: "/Plugin List.xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
-    - to: "/Plugin (for Node).xctemplate/TemplateIcon.png"
+    - to: "/Plugin.xctemplate/TemplateIcon.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder@2x.png"
-    - to: "/Plugin (for Node).xctemplate/TemplateIcon@2x.png"
+    - to: "/Plugin.xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
     - to: "/Worker.xctemplate/TemplateIcon.png"

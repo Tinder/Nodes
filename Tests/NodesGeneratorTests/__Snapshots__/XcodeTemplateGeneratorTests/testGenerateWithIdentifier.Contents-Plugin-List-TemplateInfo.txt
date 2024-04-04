@@ -13,12 +13,14 @@
 	<key>Options</key>
 	<array>
 		<dict>
+			<key>Default</key>
+			<string>MyFeature</string>
 			<key>Description</key>
-			<string>The name of the Plugin</string>
+			<string>The name of the Plugin List.</string>
 			<key>Identifier</key>
 			<string>productName</string>
 			<key>Name</key>
-			<string>Node name:</string>
+			<string>Plugin List Name:</string>
 			<key>NotPersisted</key>
 			<true/>
 			<key>Required</key>
@@ -34,7 +36,7 @@
 	<key>Platforms</key>
 	<array/>
 	<key>SortOrder</key>
-	<integer>4</integer>
+	<integer>3</integer>
 	<key>SupportsSwiftPackage</key>
 	<true/>
 </dict>

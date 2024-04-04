@@ -24,8 +24,8 @@ final class XcodeTemplateConstantsTests: XCTestCase {
         expect(XcodeTemplateConstants.uiFramework) == "UIFramework"
     }
 
-    func testUsePluginList() {
-        expect(XcodeTemplateConstants.usePluginList) == "UsePluginList"
+    func testCreatedForPluginList() {
+        expect(XcodeTemplateConstants.createdForPluginList) == "CreatedForPluginList"
     }
 
     func testPluginListName() {

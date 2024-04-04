@@ -2,7 +2,7 @@
   - name: "Node"
   ▿ permutations: 8 elements
     ▿ NodeXcodeTemplatePermutation
-      - name: "UsePluginListAppKit"
+      - name: "CreatedForPluginListAppKit"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -246,7 +246,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "UsePluginListUIKit"
+      - name: "CreatedForPluginListUIKit"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -490,7 +490,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "UsePluginListSwiftUI"
+      - name: "CreatedForPluginListSwiftUI"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -734,7 +734,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "UsePluginList<uiFrameworkName>"
+      - name: "CreatedForPluginList<uiFrameworkName>"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -986,9 +986,9 @@
       ▿ Option
         ▿ default: Optional<String>
           - some: "MyFeatureV1"
-        - description: "The name of the new node."
+        - description: "The name of the node."
         - identifier: "productName"
-        - name: "Node name:"
+        - name: "Node Name:"
         - notPersisted: true
         - required: true
         - requiredOptions: 0 key/value pairs
@@ -1012,9 +1012,9 @@
       ▿ Option
         ▿ default: Optional<String>
           - some: "true"
-        - description: "Whether the node is created for use in an existing plugin list."
-        - identifier: "UsePluginList"
-        - name: "Created For Existing Plugin List"
+        - description: "Whether the node is created for use in an existing Plugin List."
+        - identifier: "CreatedForPluginList"
+        - name: "Created for existing Plugin List"
         - notPersisted: true
         - required: true
         - requiredOptions: 0 key/value pairs
@@ -1023,14 +1023,14 @@
       ▿ Option
         ▿ default: Optional<String>
           - some: "MyFeature"
-        - description: "The name of an existing plugin list."
+        - description: "The name of an existing Plugin List."
         - identifier: "PluginListName"
         - name: "Existing Plugin List:"
         - notPersisted: true
         - required: true
         ▿ requiredOptions: 1 key/value pair
           ▿ (2 elements)
-            - key: "UsePluginList"
+            - key: "CreatedForPluginList"
             ▿ value: 1 element
               - "true"
         - type: "text"

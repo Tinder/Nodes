@@ -9,8 +9,8 @@ internal struct NodeViewInjectedXcodeTemplate: XcodeTemplate {
     internal let propertyList: PropertyList =
         .init(sortOrder: 2) {
             Option(identifier: XcodeTemplateConstants.productName,
-                   name: "Node name:",
-                   description: "The name of the Node")
+                   name: "Node Name:",
+                   description: "The name of the node.")
         }
 
     internal let permutations: [XcodeTemplatePermutation]

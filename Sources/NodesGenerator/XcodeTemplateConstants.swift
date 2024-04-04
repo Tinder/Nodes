@@ -12,7 +12,7 @@ internal enum XcodeTemplateConstants {
 
     // Custom identifiers use pascal case for readablilty.
     internal static let uiFramework: String = "UIFramework"
-    internal static let usePluginList: String = "UsePluginList"
+    internal static let createdForPluginList: String = "CreatedForPluginList"
     internal static let pluginListName: String = "PluginListName"
 
     internal static func variable(_ name: String) -> String {

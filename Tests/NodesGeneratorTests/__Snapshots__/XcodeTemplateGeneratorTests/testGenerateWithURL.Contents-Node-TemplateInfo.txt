@@ -16,11 +16,11 @@
 			<key>Default</key>
 			<string>MyFeatureV1</string>
 			<key>Description</key>
-			<string>The name of the new node.</string>
+			<string>The name of the node.</string>
 			<key>Identifier</key>
 			<string>productName</string>
 			<key>Name</key>
-			<string>Node name:</string>
+			<string>Node Name:</string>
 			<key>NotPersisted</key>
 			<true/>
 			<key>Required</key>
@@ -61,11 +61,11 @@
 			<key>Default</key>
 			<string>true</string>
 			<key>Description</key>
-			<string>Whether the node is created for use in an existing plugin list.</string>
+			<string>Whether the node is created for use in an existing Plugin List.</string>
 			<key>Identifier</key>
-			<string>UsePluginList</string>
+			<string>CreatedForPluginList</string>
 			<key>Name</key>
-			<string>Created For Existing Plugin List</string>
+			<string>Created for existing Plugin List</string>
 			<key>NotPersisted</key>
 			<true/>
 			<key>Required</key>
@@ -81,7 +81,7 @@
 			<key>Default</key>
 			<string>MyFeature</string>
 			<key>Description</key>
-			<string>The name of an existing plugin list.</string>
+			<string>The name of an existing Plugin List.</string>
 			<key>Identifier</key>
 			<string>PluginListName</string>
 			<key>Name</key>
@@ -92,7 +92,7 @@
 			<true/>
 			<key>RequiredOptions</key>
 			<dict>
-				<key>UsePluginList</key>
+				<key>CreatedForPluginList</key>
 				<array>
 					<string>true</string>
 				</array>

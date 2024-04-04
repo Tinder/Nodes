@@ -3,25 +3,25 @@
     - path: "/Node.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListAppKit"
+    - path: "/Node.xctemplate/CreatedForPluginListAppKit"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/AppKit"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListUIKit"
+    - path: "/Node.xctemplate/CreatedForPluginListUIKit"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/UIKit"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListSwiftUI"
+    - path: "/Node.xctemplate/CreatedForPluginListSwiftUI"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/SwiftUI"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/UsePluginListCustom"
+    - path: "/Node.xctemplate/CreatedForPluginListCustom"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/Custom"
@@ -30,10 +30,10 @@
     - path: "/Node (view injected).xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Plugin List (for Node).xctemplate"
+    - path: "/Plugin List.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Plugin (for Node).xctemplate"
+    - path: "/Plugin.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Worker.xctemplate"

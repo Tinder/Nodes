@@ -2,6 +2,6 @@
   - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)"
   - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate"
   - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate"
-  - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate"
-  - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate"
+  - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List.xctemplate"
+  - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate"
   - "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Worker.xctemplate"

@@ -8,17 +8,18 @@ internal struct NodeXcodeTemplatePermutation: XcodeTemplatePermutation {
     internal let stencils: [StencilTemplate]
     internal let stencilContext: StencilContext
 
-    internal init(usePluginList: Bool, for uiFramework: UIFramework, config: Config) {
-        self.name = "\(usePluginList ? XcodeTemplateConstants.usePluginList : "")\(uiFramework.name)"
+    internal init(createdForPluginList: Bool, for uiFramework: UIFramework, config: Config) {
+        self.name = "\(createdForPluginList ? XcodeTemplateConstants.createdForPluginList : "")\(uiFramework.name)"
         let node: StencilTemplate.Node = StencilTemplate.Node(for: .variation(for: uiFramework.kind))
         stencils = node.stencils(includePlugin: true, includeTests: config.isTestTemplatesGenerationEnabled)
         let productName: String = XcodeTemplateConstants.variable(XcodeTemplateConstants.productName)
+        let pluginListName: String = XcodeTemplateConstants.variable(XcodeTemplateConstants.pluginListName)
         // swiftlint:disable:next force_try
         stencilContext = try! NodeStencilContext(
             fileHeader: XcodeTemplateConstants.fileHeader,
             nodeName: productName,
             pluginName: productName,
-            pluginListName: usePluginList ? XcodeTemplateConstants.variable(XcodeTemplateConstants.pluginListName) : "",
+            pluginListName: createdForPluginList ? pluginListName : "",
             analyticsImports: node.analytics.imports(with: config, including: uiFramework),
             analyticsTestsImports: node.analyticsTests.imports(with: config, including: uiFramework),
             builderImports: node.builder.imports(with: config, including: uiFramework),

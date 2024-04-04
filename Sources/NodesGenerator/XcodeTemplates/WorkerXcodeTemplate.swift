@@ -9,8 +9,8 @@ internal struct WorkerXcodeTemplate: XcodeTemplate {
     internal let propertyList: PropertyList =
         .init(sortOrder: 5) {
             Option(identifier: XcodeTemplateConstants.productName,
-                   name: "Worker name:",
-                   description: "The name of the Worker")
+                   name: "Worker Name:",
+                   description: "The name of the Worker.")
         }
 
     internal let permutations: [XcodeTemplatePermutation]
