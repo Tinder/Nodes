@@ -1,8 +1,8 @@
 ▿ PluginListXcodeTemplate
-  - name: "Plugin List (for Node)"
+  - name: "Plugin List"
   ▿ permutations: 1 element
     ▿ PluginListXcodeTemplatePermutation
-      - name: "Plugin List (for Node)"
+      - name: "Plugin List"
       ▿ stencilContext: PluginListStencilContext
         - fileHeader: "___FILEHEADER___"
         - isNimbleEnabled: false

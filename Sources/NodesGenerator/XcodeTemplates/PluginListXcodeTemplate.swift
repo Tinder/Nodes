@@ -4,7 +4,7 @@
 
 internal struct PluginListXcodeTemplate: XcodeTemplate {
 
-    internal let name: String = "Plugin List (for Node)"
+    internal let name: String = "Plugin List"
 
     internal let propertyList: PropertyList =
         .init(sortOrder: 3) {

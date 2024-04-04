@@ -13,16 +13,16 @@
     - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/TemplateIcon.png"
+    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List.xctemplate/TemplateIcon.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder@2x.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/TemplateIcon@2x.png"
+    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List.xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/TemplateIcon.png"
+    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate/TemplateIcon.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder@2x.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/TemplateIcon@2x.png"
+    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
     - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Worker.xctemplate/TemplateIcon.png"

@@ -1,8 +1,8 @@
 ▿ PluginXcodeTemplate
-  - name: "Plugin (for Node)"
+  - name: "Plugin"
   ▿ permutations: 1 element
     ▿ PluginXcodeTemplatePermutation
-      - name: "Plugin (for Node)"
+      - name: "Plugin"
       ▿ stencilContext: PluginStencilContext
         - fileHeader: "___FILEHEADER___"
         - isNimbleEnabled: false

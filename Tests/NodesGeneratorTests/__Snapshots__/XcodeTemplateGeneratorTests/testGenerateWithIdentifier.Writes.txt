@@ -390,22 +390,22 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/___FILEBASENAME___PluginList.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List.xctemplate/___FILEBASENAME___PluginList.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/___FILEBASENAME___PluginListTests.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List.xctemplate/___FILEBASENAME___PluginListTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List (for Node).xctemplate/TemplateInfo.plist"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List.xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/___FILEBASENAME___Plugin.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/___FILEBASENAME___PluginTests.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate/___FILEBASENAME___PluginTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin (for Node).xctemplate/TemplateInfo.plist"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin.xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Worker.xctemplate/___FILEBASENAME___Worker.swift"
