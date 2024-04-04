@@ -10,7 +10,7 @@ internal struct PluginXcodeTemplate: XcodeTemplate {
         .init(sortOrder: 4) {
             Option(identifier: XcodeTemplateConstants.productName,
                    name: "Node Name:",
-                   description: "The name of the Plugin.")
+                   description: "The name of the node for the Plugin.")
         }
 
     internal let permutations: [XcodeTemplatePermutation]

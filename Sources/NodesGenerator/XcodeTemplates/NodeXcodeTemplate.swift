@@ -12,7 +12,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
         propertyList = PropertyList(sortOrder: 1) {
             Option(identifier: "productName",
                    name: "Node Name:",
-                   description: "The name of the new node.",
+                   description: "The name of the node.",
                    default: "MyFeatureV1")
             Option(identifier: "uiFramework",
                    name: "UI Framework:",
