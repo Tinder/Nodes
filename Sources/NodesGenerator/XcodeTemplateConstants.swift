@@ -10,7 +10,7 @@ internal enum XcodeTemplateConstants {
     // Apple requires the product name identifier to be camel case.
     internal static let productName: String = "productName"
 
-    // Custom identifiers use pascal case for readablilty.
+    // Custom identifiers use pascal case for readability.
     internal static let uiFramework: String = "UIFramework"
     internal static let createdForPluginList: String = "CreatedForPluginList"
     internal static let pluginListName: String = "PluginListName"
