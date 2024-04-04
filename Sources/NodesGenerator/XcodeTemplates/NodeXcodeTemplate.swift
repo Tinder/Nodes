@@ -20,7 +20,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
                    type: "popup",
                    values: uiFrameworks.map(\.name),
                    default: uiFrameworks.first?.name ?? "")
-            Option(identifier: XcodeTemplateConstants.usePluginList,
+            Option(identifier: XcodeTemplateConstants.createdForPluginList,
                    name: "Created For Existing Plugin List",
                    description: "Whether the node is created for use in an existing plugin list.",
                    type: "checkbox",
@@ -28,7 +28,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
             Option(identifier: XcodeTemplateConstants.pluginListName,
                    name: "Existing Plugin List:",
                    description: "The name of an existing plugin list.",
-                   requiredOptions: [XcodeTemplateConstants.usePluginList: ["true"]],
+                   requiredOptions: [XcodeTemplateConstants.createdForPluginList: ["true"]],
                    default: "MyFeature")
         }
 

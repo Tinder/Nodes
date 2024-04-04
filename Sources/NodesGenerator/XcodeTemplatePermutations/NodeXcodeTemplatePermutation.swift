@@ -9,7 +9,7 @@ internal struct NodeXcodeTemplatePermutation: XcodeTemplatePermutation {
     internal let stencilContext: StencilContext
 
     internal init(usePluginList: Bool, for uiFramework: UIFramework, config: Config) {
-        self.name = "\(usePluginList ? XcodeTemplateConstants.usePluginList : "")\(uiFramework.name)"
+        self.name = "\(usePluginList ? XcodeTemplateConstants.createdForPluginList : "")\(uiFramework.name)"
         let node: StencilTemplate.Node = StencilTemplate.Node(for: .variation(for: uiFramework.kind))
         stencils = node.stencils(includePlugin: true, includeTests: config.isTestTemplatesGenerationEnabled)
         let productName: String = XcodeTemplateConstants.variable(XcodeTemplateConstants.productName)
