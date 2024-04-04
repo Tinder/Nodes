@@ -26,7 +26,7 @@
     ▿ options: 1 element
       ▿ Option
         - default: Optional<String>.none
-        - description: "The name of the Plugin."
+        - description: "The name of the node for the Plugin."
         - identifier: "productName"
         - name: "Node Name:"
         - notPersisted: true

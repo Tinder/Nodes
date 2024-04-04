@@ -16,7 +16,7 @@
 			<key>Default</key>
 			<string>MyFeatureV1</string>
 			<key>Description</key>
-			<string>The name of the new node.</string>
+			<string>The name of the node.</string>
 			<key>Identifier</key>
 			<string>productName</string>
 			<key>Name</key>

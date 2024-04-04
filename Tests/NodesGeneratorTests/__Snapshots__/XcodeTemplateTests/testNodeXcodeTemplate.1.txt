@@ -986,7 +986,7 @@
       ▿ Option
         ▿ default: Optional<String>
           - some: "MyFeatureV1"
-        - description: "The name of the new node."
+        - description: "The name of the node."
         - identifier: "productName"
         - name: "Node Name:"
         - notPersisted: true
