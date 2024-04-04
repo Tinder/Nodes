@@ -13,13 +13,13 @@ internal struct NodeXcodeTemplatePermutation: XcodeTemplatePermutation {
         let node: StencilTemplate.Node = StencilTemplate.Node(for: .variation(for: uiFramework.kind))
         stencils = node.stencils(includePlugin: true, includeTests: config.isTestTemplatesGenerationEnabled)
         let productName: String = XcodeTemplateConstants.variable(XcodeTemplateConstants.productName)
-        let pluginListNameVariable: String = XcodeTemplateConstants.variable(XcodeTemplateConstants.pluginListName)
+        let pluginListName: String = XcodeTemplateConstants.variable(XcodeTemplateConstants.pluginListName)
         // swiftlint:disable:next force_try
         stencilContext = try! NodeStencilContext(
             fileHeader: XcodeTemplateConstants.fileHeader,
             nodeName: productName,
             pluginName: productName,
-            pluginListName: createdForPluginList ? pluginListNameVariable : "",
+            pluginListName: createdForPluginList ? pluginListName : "",
             analyticsImports: node.analytics.imports(with: config, including: uiFramework),
             analyticsTestsImports: node.analyticsTests.imports(with: config, including: uiFramework),
             builderImports: node.builder.imports(with: config, including: uiFramework),
