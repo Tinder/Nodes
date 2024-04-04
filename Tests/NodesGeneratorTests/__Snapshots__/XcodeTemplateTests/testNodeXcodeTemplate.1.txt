@@ -2,7 +2,7 @@
   - name: "Node"
   ▿ permutations: 8 elements
     ▿ NodeXcodeTemplatePermutation
-      - name: "CreatedForPluginListAppKit"
+      - name: "AppKitCreatedForPluginList"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -246,7 +246,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "CreatedForPluginListUIKit"
+      - name: "UIKitCreatedForPluginList"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -490,7 +490,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "CreatedForPluginListSwiftUI"
+      - name: "SwiftUICreatedForPluginList"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -734,7 +734,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "CreatedForPluginList<uiFrameworkName>"
+      - name: "<uiFrameworkName>CreatedForPluginList"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
