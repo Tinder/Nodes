@@ -4,7 +4,7 @@
 
 internal struct NodeViewInjectedXcodeTemplate: XcodeTemplate {
 
-    internal let name: String = "Node (view injected)"
+    internal let name: String = "View Injected"
 
     internal let propertyList: PropertyList =
         .init(sortOrder: 2) {
