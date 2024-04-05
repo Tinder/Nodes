@@ -363,31 +363,31 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Analytics.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/___FILEBASENAME___Analytics.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Builder.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/___FILEBASENAME___Builder.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Context.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/___FILEBASENAME___Context.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___Flow.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/___FILEBASENAME___Flow.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___State.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/___FILEBASENAME___State.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___AnalyticsTests.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___ContextTests.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/___FILEBASENAME___ContextTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/___FILEBASENAME___FlowTests.swift"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/___FILEBASENAME___FlowTests.swift"
     - atomically: true
   ▿ (2 elements)
-    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/TemplateInfo.plist"
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/TemplateInfo.plist"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List.xctemplate/___FILEBASENAME___PluginList.swift"

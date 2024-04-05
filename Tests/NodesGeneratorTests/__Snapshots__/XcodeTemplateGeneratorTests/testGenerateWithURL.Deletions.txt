@@ -1,6 +1,6 @@
 ▿ 5 elements
   - "/Node.xctemplate"
-  - "/Node (view injected).xctemplate"
+  - "/View Injected.xctemplate"
   - "/Plugin List.xctemplate"
   - "/Plugin.xctemplate"
   - "/Worker.xctemplate"

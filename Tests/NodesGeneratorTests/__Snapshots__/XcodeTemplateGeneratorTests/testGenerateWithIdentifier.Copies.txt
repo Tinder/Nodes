@@ -7,10 +7,10 @@
     - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/TemplateIcon.png"
+    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/TemplateIcon.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder@2x.png"
-    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node (view injected).xctemplate/TemplateIcon@2x.png"
+    - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
     - to: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Plugin List.xctemplate/TemplateIcon.png"

@@ -1,8 +1,8 @@
 ▿ NodeViewInjectedXcodeTemplate
-  - name: "Node (view injected)"
+  - name: "View Injected"
   ▿ permutations: 1 element
     ▿ NodeViewInjectedXcodeTemplatePermutation
-      - name: "Node (view injected)"
+      - name: "View Injected"
       ▿ stencilContext: NodeViewInjectedStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"

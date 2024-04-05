@@ -7,10 +7,10 @@
     - to: "/Node.xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
-    - to: "/Node (view injected).xctemplate/TemplateIcon.png"
+    - to: "/View Injected.xctemplate/TemplateIcon.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder@2x.png"
-    - to: "/Node (view injected).xctemplate/TemplateIcon@2x.png"
+    - to: "/View Injected.xctemplate/TemplateIcon@2x.png"
   ▿ (2 elements)
     - from: ".bundle/Tinder.png"
     - to: "/Plugin List.xctemplate/TemplateIcon.png"

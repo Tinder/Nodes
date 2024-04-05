@@ -27,7 +27,7 @@
     - path: "/Node.xctemplate/Custom"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Node (view injected).xctemplate"
+    - path: "/View Injected.xctemplate"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Plugin List.xctemplate"
