@@ -28,7 +28,9 @@ internal protocol {{ node_name }}ContextInterface: Context {}
  protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
  implementation as necessary.
  */
+{% if not view_controllable_mock_contents %}
 /// @mockable
+{% endif %}
 @MainActor
 internal protocol {{ node_name }}ViewControllable: {{ view_controllable_type }} {}
 {% endif %}
