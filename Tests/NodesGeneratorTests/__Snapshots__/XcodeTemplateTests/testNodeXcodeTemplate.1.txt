@@ -997,7 +997,7 @@
       ▿ Option
         ▿ default: Optional<String>
           - some: "AppKit"
-        - description: "The UI framework of the new node."
+        - description: "The UI framework of the node."
         - identifier: "UIFramework"
         - name: "UI Framework:"
         - notPersisted: true

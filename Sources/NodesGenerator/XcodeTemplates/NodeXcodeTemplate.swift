@@ -16,7 +16,7 @@ internal struct NodeXcodeTemplate: XcodeTemplate {
                    default: "MyFeatureV1")
             Option(identifier: XcodeTemplateConstants.uiFramework,
                    name: "UI Framework:",
-                   description: "The UI framework of the new node.",
+                   description: "The UI framework of the node.",
                    type: "popup",
                    values: uiFrameworks.map(\.name),
                    default: uiFrameworks.first?.name ?? "")

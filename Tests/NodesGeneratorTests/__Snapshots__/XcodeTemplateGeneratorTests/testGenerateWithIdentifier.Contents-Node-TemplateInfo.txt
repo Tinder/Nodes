@@ -36,7 +36,7 @@
 			<key>Default</key>
 			<string>AppKit</string>
 			<key>Description</key>
-			<string>The UI framework of the new node.</string>
+			<string>The UI framework of the node.</string>
 			<key>Identifier</key>
 			<string>UIFramework</string>
 			<key>Name</key>
