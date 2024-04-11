@@ -30,7 +30,11 @@ extension Binding {
     ///   - onChange: An escaping closure for the setter of the binding.
     ///
     /// - Returns: A SwiftUI `Binding` instance.
-    public static func bind(to value: Value, onChange: @escaping (Value) -> Void) -> Binding<Value> {
+    @MainActor
+    public static func bind(
+        to value: Value,
+        onChange: @escaping @MainActor (Value) -> Void
+    ) -> Binding<Value> {
         Binding(get: { value }, set: { onChange($0) })
     }
 
@@ -55,7 +59,11 @@ extension Binding {
     ///   - onChange: An optional (escaping) closure for the setter of the binding.
     ///
     /// - Returns: A SwiftUI `Binding` instance.
-    public static func bind(to value: Value, onChange: ((Value) -> Void)?) -> Binding<Value> {
+    @MainActor
+    public static func bind(
+        to value: Value,
+        onChange: (@MainActor (Value) -> Void)?
+    ) -> Binding<Value> {
         guard let onChange: (Value) -> Void
         else { return .constant(value) }
         return bind(to: value, onChange: onChange)
