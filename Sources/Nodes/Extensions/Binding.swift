@@ -64,7 +64,7 @@ extension Binding {
         to value: Value,
         onChange: (@MainActor (Value) -> Void)?
     ) -> Binding<Value> {
-        guard let onChange: (Value) -> Void
+        guard let onChange: @MainActor (Value) -> Void
         else { return .constant(value) }
         return bind(to: value, onChange: onChange)
     }
