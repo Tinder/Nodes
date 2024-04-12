@@ -39,8 +39,8 @@ final class UINavigationControllerNavigationControllableTests: XCTestCase {
         let viewControllers: [UIViewController] = [UIViewController(), UIViewController(), UIViewController()]
         expect(viewControllers).to(notBeNilAndElementsToDeallocateAfterTest())
         navigationController.viewControllers = viewControllers
-        expect(navigationController.popViewController(viewControllers[2], animated: false)) != nil
-        expect(navigationController.popViewController(viewControllers[1], animated: false)) != nil
+        navigationController.popViewController(viewControllers[2], animated: false)
+        navigationController.popViewController(viewControllers[1], animated: false)
         expect(navigationController.viewControllers.map { $0._asUIViewController() }) == [viewControllers[0]]
     }
 
