@@ -34,9 +34,9 @@ public protocol ViewControllable: AnyObject {
     ///
     ///     The closure has no arguments and returns `Void`.
     func present(
-        _ viewController: ViewControllable,
+        _ viewControllerToPresent: ViewControllable,
         withModalStyle modalStyle: ModalStyle,
-        animated: Bool,
+        animated flag: Bool,
         completion: (() -> Void)?
     )
 
@@ -84,11 +84,11 @@ extension ViewControllable {
     ///   - modalStyle: The ``ModalStyle`` to apply to the ``ViewControllable`` instance before presenting.
     ///   - animated: A Boolean value specifying whether presentation is animated.
     public func present(
-        _ viewController: ViewControllable,
+        _ viewControllerToPresent: ViewControllable,
         withModalStyle modalStyle: ModalStyle,
-        animated: Bool
+        animated flag: Bool
     ) {
-        present(viewController, withModalStyle: modalStyle, animated: animated, completion: nil)
+        present(viewControllerToPresent, withModalStyle: modalStyle, animated: flag, completion: nil)
     }
 
     /// Dismisses a ``ViewControllable`` instance.

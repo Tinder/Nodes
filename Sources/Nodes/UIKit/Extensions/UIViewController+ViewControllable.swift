@@ -37,20 +37,20 @@ extension UIViewController: ViewControllable {
     /// Presents a ``ViewControllable`` instance.
     ///
     /// - Parameters:
-    ///   - viewController: The ``ViewControllable`` instance to present.
+    ///   - viewControllerToPresent: The ``ViewControllable`` instance to present.
     ///   - modalStyle: The ``ModalStyle`` to apply to the ``ViewControllable`` instance before presenting.
     ///   - animated: A Boolean value specifying whether presentation is animated.
     ///   - completion: An optional closure to execute when the presentation is finished.
     ///
     ///     The closure has no arguments and returns `Void`.
     public func present(
-        _ viewController: ViewControllable,
+        _ viewControllerToPresent: ViewControllable,
         withModalStyle modalStyle: ModalStyle,
-        animated: Bool,
+        animated flag: Bool,
         completion: (() -> Void)?
     ) {
-        let viewController: UIViewController = viewController._asUIViewController()
-        present(viewController.withModalStyle(modalStyle), animated: animated, completion: completion)
+        let viewController: UIViewController = viewControllerToPresent._asUIViewController()
+        present(viewController.withModalStyle(modalStyle), animated: flag, completion: completion)
     }
 
     /// Dismisses a ``ViewControllable`` instance.
