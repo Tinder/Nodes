@@ -11,7 +11,7 @@ extension UINavigationController: NavigationControllable {
     /// An array of the ``ViewControllable`` instances on the navigation stack.
     public var viewControllers: [ViewControllable] {
         get { children }
-        set { set(newValue, animated: false) }
+        set { setViewControllers(newValue, animated: false) }
     }
 
     /// Sets the ``ViewControllable`` instances on the navigation stack.
@@ -19,7 +19,7 @@ extension UINavigationController: NavigationControllable {
     /// - Parameters:
     ///   - viewControllers: The array of ``ViewControllable`` instances to set on the navigation stack.
     ///   - animated: A Boolean value specifying whether changes to the navigation stack are animated.
-    public func set(_ viewControllers: [ViewControllable], animated: Bool) {
+    public func setViewControllers(_ viewControllers: [ViewControllable], animated: Bool) {
         setViewControllers(viewControllers.map { $0._asUIViewController() }, animated: animated)
     }
 
@@ -28,7 +28,7 @@ extension UINavigationController: NavigationControllable {
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to push on to the navigation stack.
     ///   - animated: A Boolean value specifying whether the navigation stack transition is animated.
-    public func push(_ viewController: ViewControllable, animated: Bool) {
+    public func pushViewController(_ viewController: ViewControllable, animated: Bool) {
         let viewController: UIViewController = viewController._asUIViewController()
         pushViewController(viewController, animated: animated)
     }
@@ -38,11 +38,11 @@ extension UINavigationController: NavigationControllable {
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to pop from the navigation stack.
     ///   - animated: A Boolean value specifying whether the navigation stack transition is animated.
-    public func pop(_ viewController: ViewControllable, animated: Bool) {
+    public func popViewController(_ viewController: ViewControllable, animated: Bool) -> ViewControllable? {
         let viewController: UIViewController = viewController._asUIViewController()
         guard viewController === topViewController
-        else { return }
-        popViewController(animated: animated)
+        else { return nil }
+        return popViewController(animated: animated)
     }
 
     // swiftlint:disable identifier_name

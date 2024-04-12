@@ -25,7 +25,7 @@ public protocol TabBarControllable: ViewControllable {
     /// - Parameters:
     ///   - viewControllers: The array of ``ViewControllable`` instances to display in the tab bar interface.
     ///   - animated: A Boolean value specifying whether changes to the tab bar interface are animated.
-    func set(
+    func setViewControllers(
         _ viewControllers: [ViewControllable]?, // swiftlint:disable:this discouraged_optional_collection
         animated: Bool
     )

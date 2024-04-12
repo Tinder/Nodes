@@ -14,7 +14,7 @@ import XCTest
 final class UINavigationControllerNavigationControllableTests: XCTestCase {
 
     @MainActor
-    func testSet() {
+    func testSetViewControllers() {
         let navigationController: NavigationControllable = givenNavigationController()
         expect(navigationController.viewControllers).to(beEmpty())
         let viewControllers: [UIViewController] = [UIViewController(), UIViewController(), UIViewController()]
@@ -24,23 +24,23 @@ final class UINavigationControllerNavigationControllableTests: XCTestCase {
     }
 
     @MainActor
-    func testPush() {
+    func testPushViewController() {
         let navigationController: NavigationControllable = givenNavigationController()
         expect(navigationController.viewControllers).to(beEmpty())
         let viewControllers: [UIViewController] = [UIViewController(), UIViewController(), UIViewController()]
         expect(viewControllers).to(notBeNilAndElementsToDeallocateAfterTest())
-        viewControllers.forEach { navigationController.push($0, animated: false) }
+        viewControllers.forEach { navigationController.pushViewController($0, animated: false) }
         expect(navigationController.viewControllers.map { $0._asUIViewController() }) == viewControllers
     }
 
     @MainActor
-    func testPop() {
+    func testPopViewController() {
         let navigationController: NavigationControllable = givenNavigationController()
         let viewControllers: [UIViewController] = [UIViewController(), UIViewController(), UIViewController()]
         expect(viewControllers).to(notBeNilAndElementsToDeallocateAfterTest())
         navigationController.viewControllers = viewControllers
-        navigationController.pop(viewControllers[2], animated: false)
-        navigationController.pop(viewControllers[1], animated: false)
+        expect(navigationController.popViewController(viewControllers[2], animated: false)) != nil
+        expect(navigationController.popViewController(viewControllers[1], animated: false)) != nil
         expect(navigationController.viewControllers.map { $0._asUIViewController() }) == [viewControllers[0]]
     }
 

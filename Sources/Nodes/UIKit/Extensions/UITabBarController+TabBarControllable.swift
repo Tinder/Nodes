@@ -11,7 +11,7 @@ extension UITabBarController: TabBarControllable {
     /// An array of the ``ViewControllable`` instances displayed in the tab bar interface.
     public var viewControllers: [ViewControllable]? { // swiftlint:disable:this discouraged_optional_collection
         get { children }
-        set { set(newValue, animated: false) }
+        set { setViewControllers(newValue, animated: false) }
     }
 
     /// Sets the ``ViewControllable`` instances displayed in the tab bar interface.
@@ -19,7 +19,7 @@ extension UITabBarController: TabBarControllable {
     /// - Parameters:
     ///   - viewControllers: The array of ``ViewControllable`` instances to display in the tab bar interface.
     ///   - animated: A Boolean value specifying whether changes to the tab bar interface are animated.
-    public func set(
+    public func setViewControllers(
         _ viewControllers: [ViewControllable]?, // swiftlint:disable:this discouraged_optional_collection
         animated: Bool
     ) {

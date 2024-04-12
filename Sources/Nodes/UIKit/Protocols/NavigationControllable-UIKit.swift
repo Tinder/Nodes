@@ -25,21 +25,21 @@ public protocol NavigationControllable: ViewControllable {
     /// - Parameters:
     ///   - viewControllers: The array of ``ViewControllable`` instances to set on the navigation stack.
     ///   - animated: A Boolean value specifying whether changes to the navigation stack are animated.
-    func set(_ viewControllers: [ViewControllable], animated: Bool)
+    func setViewControllers(_ viewControllers: [ViewControllable], animated: Bool)
 
     /// Pushes a ``ViewControllable`` instance onto the navigation stack.
     ///
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to push on to the navigation stack.
     ///   - animated: A Boolean value specifying whether the navigation stack transition is animated.
-    func push(_ viewController: ViewControllable, animated: Bool)
+    func pushViewController(_ viewController: ViewControllable, animated: Bool)
 
     /// Pops a ``ViewControllable`` instance from the navigation stack.
     ///
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to pop from the navigation stack.
     ///   - animated: A Boolean value specifying whether the navigation stack transition is animated.
-    func pop(_ viewController: ViewControllable, animated: Bool)
+    func popViewController(_ viewController: ViewControllable, animated: Bool) -> ViewControllable?
 
     // swiftlint:disable identifier_name
 

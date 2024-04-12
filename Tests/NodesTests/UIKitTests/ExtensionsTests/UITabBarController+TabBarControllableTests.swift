@@ -14,7 +14,7 @@ import XCTest
 final class UITabBarControllerTabBarControllableTests: XCTestCase {
 
     @MainActor
-    func testSet() {
+    func testSetViewControllers() {
         let tabBarController: TabBarControllable = givenTabBarController()
         expect(tabBarController.viewControllers).to(beEmpty())
         let viewControllers: [UIViewController] = [UIViewController(), UIViewController(), UIViewController()]
