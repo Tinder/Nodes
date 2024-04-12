@@ -39,7 +39,7 @@ public protocol NavigationControllable: ViewControllable {
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to pop from the navigation stack.
     ///   - animated: A Boolean value specifying whether the navigation stack transition is animated.
-    func popViewController(_ viewController: ViewControllable, animated: Bool) -> ViewControllable?
+    func popViewController(_ viewController: ViewControllable, animated: Bool)
 
     // swiftlint:disable identifier_name
 

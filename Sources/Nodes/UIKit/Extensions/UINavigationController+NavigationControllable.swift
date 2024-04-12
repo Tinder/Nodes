@@ -38,11 +38,11 @@ extension UINavigationController: NavigationControllable {
     /// - Parameters:
     ///   - viewController: The ``ViewControllable`` instance to pop from the navigation stack.
     ///   - animated: A Boolean value specifying whether the navigation stack transition is animated.
-    public func popViewController(_ viewController: ViewControllable, animated: Bool) -> ViewControllable? {
+    public func popViewController(_ viewController: ViewControllable, animated: Bool) {
         let viewController: UIViewController = viewController._asUIViewController()
         guard viewController === topViewController
-        else { return nil }
-        return popViewController(animated: animated)
+        else { return }
+        popViewController(animated: animated)
     }
 
     // swiftlint:disable identifier_name
