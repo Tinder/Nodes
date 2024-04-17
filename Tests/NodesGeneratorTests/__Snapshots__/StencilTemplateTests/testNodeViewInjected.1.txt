@@ -3,6 +3,7 @@
   - analyticsTests: AnalyticsTests
   ▿ builder: Builder
     - builder: Variation.default
+  - builderTests: BuilderTests
   - context: Context
   - contextTests: ContextTests
   - flow: Flow
