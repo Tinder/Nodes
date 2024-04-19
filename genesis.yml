@@ -910,7 +910,6 @@ files:
           platform: iOS
           dependencies:
             - package: Nodes
-              product: Nodes
             - package: NeedleFoundation
           preBuildScripts:
             - name: Nodes
