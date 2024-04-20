@@ -796,11 +796,12 @@ files:
       //  Created by {{ author }} on {{ date }}.
       //
 
+      import Nimble
       import XCTest
 
-      internal class {{ project|replace:' ','' }}UITests: XCTestCase {
+      internal final class {{ project|replace:' ','' }}UITests: XCTestCase {
       
-          internal var app: XCUIApplication!
+          private var app: XCUIApplication!
       
           override func setUp() {
               super.setUp()
@@ -814,9 +815,9 @@ files:
       
           internal func testAppLaunch() {
               app.launch()
-              let label = app.staticTexts["Root View Controller"]
-              XCTAssertTrue(label.exists, "The label does not exist.")
-              XCTAssertTrue(label.isHittable, "The label is not hittable.")
+              let label: XCUIElement = app.staticTexts["Root View Controller"]
+              expect { label.exists } == true
+              expect { label.isHittable } == true
           }
       }
 
@@ -1168,6 +1169,7 @@ files:
           platform: iOS
           dependencies:
             - target: {{ project|replace:' ','_' }}
+            - package: Nimble
           sources: {{ project|replace:' ','_' }}UITests
           configFiles:
             Debug: {{ project|replace:' ','_' }}UITests/BuildSettings/Debug.xcconfig
