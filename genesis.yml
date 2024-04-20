@@ -799,7 +799,7 @@ files:
       import Nimble
       import XCTest
 
-      internal final class {{ project|replace:' ','' }}UITests: XCTestCase {
+      final class {{ project|replace:' ','' }}UITests: XCTestCase {
       
           private var app: XCUIApplication!
       
@@ -813,7 +813,7 @@ files:
               super.tearDown()
           }
       
-          internal func testAppLaunch() {
+          func testAppLaunch() {
               app.launch()
               let label: XCUIElement = app.staticTexts["Root View Controller"]
               expect { label.exists } == true
