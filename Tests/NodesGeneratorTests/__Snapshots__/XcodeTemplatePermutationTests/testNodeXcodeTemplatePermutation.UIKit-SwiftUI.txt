@@ -1,5 +1,5 @@
 ▿ NodeXcodeTemplatePermutation
-  - name: "SwiftUICreatedForPluginList"
+  - name: "UIKit (SwiftUI)"
   ▿ stencilContext: NodeStencilContext
     ▿ analyticsImports: 1 element
       - "<baseImport>"
@@ -62,7 +62,7 @@
       - "<baseImport>"
       - "<dependencyInjectionImport>"
       - "Nodes"
-    - pluginListName: "___VARIABLE_PluginListName___"
+    - pluginListName: ""
     - pluginName: "___VARIABLE_productName___"
     ▿ pluginTestsImports: 2 elements
       - "<baseTestImport>"

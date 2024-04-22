@@ -10,7 +10,7 @@ public struct UIFramework: Equatable, Codable {
 
         case appKit = "AppKit"
         case uiKit = "UIKit"
-        case swiftUI = "SwiftUI"
+        case swiftUI = "UIKit (SwiftUI)"
         case custom = "Custom"
 
         public var name: String {

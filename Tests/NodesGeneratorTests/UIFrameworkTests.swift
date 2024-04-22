@@ -78,7 +78,7 @@ final class UIFrameworkTests: XCTestCase {
     func testInitWithSwiftUI() {
         let framework: UIFramework = .init(framework: .uiKitSwiftUI)
         expect(framework.kind) == .swiftUI
-        expect(framework.name) == "SwiftUI"
+        expect(framework.name) == "UIKit (SwiftUI)"
         expect(framework.import) == "SwiftUI"
         expect(framework.viewControllerType) == "UIHostingController"
         expect(framework.viewControllerSuperParameters).to(beEmpty())

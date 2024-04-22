@@ -15,10 +15,10 @@
     - path: "/Node.xctemplate/UIKit"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/SwiftUICreatedForPluginList"
+    - path: "/Node.xctemplate/UIKit (SwiftUI)CreatedForPluginList"
     - createIntermediates: true
   ▿ (2 elements)
-    - path: "/Node.xctemplate/SwiftUI"
+    - path: "/Node.xctemplate/UIKit (SwiftUI)"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/CustomCreatedForPluginList"

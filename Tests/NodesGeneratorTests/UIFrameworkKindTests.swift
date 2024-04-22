@@ -13,10 +13,10 @@ final class UIFrameworkKindTests: XCTestCase {
     }
 
     func testRawValues() {
-        expect(UIFramework.Kind.allCases.map(\.rawValue)) == ["AppKit", "UIKit", "SwiftUI", "Custom"]
+        expect(UIFramework.Kind.allCases.map(\.rawValue)) == ["AppKit", "UIKit", "UIKit (SwiftUI)", "Custom"]
     }
 
     func testNames() {
-        expect(UIFramework.Kind.allCases.map(\.name)) == ["AppKit", "UIKit", "SwiftUI", "Custom"]
+        expect(UIFramework.Kind.allCases.map(\.name)) == ["AppKit", "UIKit", "UIKit (SwiftUI)", "Custom"]
     }
 }

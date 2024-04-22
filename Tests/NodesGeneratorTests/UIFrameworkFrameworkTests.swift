@@ -76,10 +76,10 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             """
     }
 
-    func testSwiftUI() {
+    func testUIKitSwiftUI() {
         let swiftUI: UIFramework.Framework = .uiKitSwiftUI
         expect(swiftUI.kind) == .swiftUI
-        expect(swiftUI.name) == "SwiftUI"
+        expect(swiftUI.name) == "UIKit (SwiftUI)"
         expect(swiftUI.import) == "SwiftUI"
         expect(swiftUI.viewControllerType) == "UIHostingController"
         expect(swiftUI.viewControllerSuperParameters).to(beEmpty())

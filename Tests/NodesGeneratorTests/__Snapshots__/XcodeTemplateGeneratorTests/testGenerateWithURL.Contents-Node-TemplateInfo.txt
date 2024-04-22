@@ -53,7 +53,7 @@
 			<array>
 				<string>AppKit</string>
 				<string>UIKit</string>
-				<string>SwiftUI</string>
+				<string>UIKit (SwiftUI)</string>
 				<string>Custom</string>
 			</array>
 		</dict>

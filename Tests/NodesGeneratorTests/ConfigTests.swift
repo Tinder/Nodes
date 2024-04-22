@@ -118,7 +118,7 @@ final class ConfigTests: XCTestCase, TestFactories {
         uiFrameworks:
           - framework: AppKit
           - framework: UIKit
-          - framework: SwiftUI
+          - framework: UIKit - SwiftUI
           - framework:
               custom:
                 name: <uiFrameworkName>

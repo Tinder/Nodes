@@ -50,21 +50,11 @@
   ▿ reactiveImports: 2 members
     - "<reactiveImports-1>"
     - "<reactiveImports-2>"
-  ▿ uiFrameworks: 4 elements
-    ▿ UIFramework
-      - framework: Framework.appKit
+  ▿ uiFrameworks: 2 elements
     ▿ UIFramework
       - framework: Framework.uiKit
     ▿ UIFramework
       - framework: Framework.uiKitSwiftUI
-    ▿ UIFramework
-      ▿ framework: Framework
-        ▿ custom: (5 elements)
-          - name: "<uiFrameworkName>"
-          - import: "<uiFrameworkImport>"
-          - viewControllerType: "<viewControllerType>"
-          - viewControllerSuperParameters: "<viewControllerSuperParameters>"
-          - viewControllerMethods: "<viewControllerMethods>"
   - viewControllableFlowType: "<viewControllableFlowType>"
   - viewControllableMockContents: "<viewControllableMockContents>"
   - viewControllableType: "<viewControllableType>"
