@@ -143,6 +143,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Analytics",
                 "AnalyticsTests",
                 "Builder",
+                "BuilderTests",
                 "Context",
                 "ContextTests",
                 "Flow",

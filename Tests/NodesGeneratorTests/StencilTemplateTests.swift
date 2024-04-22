@@ -218,6 +218,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .flow,
             .state,
             .analyticsTests,
+            .builderTests,
             .contextTests,
             .flowTests
         ]
