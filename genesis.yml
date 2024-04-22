@@ -800,24 +800,26 @@ files:
       import XCTest
 
       final class {{ project|replace:' ','' }}UITests: XCTestCase {
-      
+
           private var app: XCUIApplication!
-      
+
           override func setUp() {
               super.setUp()
+              continueAfterFailure = false
               app = XCUIApplication()
+              app.launch()
           }
-      
+
           override func tearDown() {
+              app.terminate()
               app = nil
               super.tearDown()
           }
-      
-          func testAppLaunch() {
-              app.launch()
+
+          func testRootViewController() {
               let label: XCUIElement = app.staticTexts["Root View Controller"]
-              expect { label.exists } == true
-              expect { label.isHittable } == true
+              expect(label.exists) == true
+              expect(label.isHittable) == true
           }
       }
 
