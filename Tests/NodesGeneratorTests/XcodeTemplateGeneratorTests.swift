@@ -60,7 +60,7 @@ final class XcodeTemplateGeneratorTests: XCTestCase {
         config.uiFrameworks = [
             UIFramework(framework: .appKit),
             UIFramework(framework: .uiKit),
-            UIFramework(framework: .swiftUI),
+            UIFramework(framework: .uiKitSwiftUI),
             UIFramework(framework: .custom(name: "Custom",
                                            import: "CustomFramework",
                                            viewControllerType: "CustomViewController",

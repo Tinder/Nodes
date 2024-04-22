@@ -77,7 +77,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
     }
 
     func testSwiftUI() {
-        let swiftUI: UIFramework.Framework = .swiftUI
+        let swiftUI: UIFramework.Framework = .uiKitSwiftUI
         expect(swiftUI.kind) == .swiftUI
         expect(swiftUI.name) == "SwiftUI"
         expect(swiftUI.import) == "SwiftUI"
@@ -104,7 +104,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         let frameworks: [UIFramework.Framework] = [
             .appKit,
             .uiKit,
-            .swiftUI,
+            .uiKitSwiftUI,
             .custom(name: "<uiFrameworkName>",
                     import: "<uiFrameworkImport>",
                     viewControllerType: "<viewControllerType>",
@@ -216,7 +216,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
 
     private func givenYAML(for framework: UIFramework.Framework) -> String {
         switch framework {
-        case .appKit, .uiKit, .swiftUI:
+        case .appKit, .uiKit, .uiKitSwiftUI:
             return framework.name
         case let .custom(name, `import`, viewControllerType, viewControllerSuperParameters, viewControllerMethods):
             return givenCustomYAML(name: name,

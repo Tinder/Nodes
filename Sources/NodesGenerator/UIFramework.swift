@@ -18,7 +18,7 @@ public struct UIFramework: Equatable, Codable {
 
         case appKit
         case uiKit
-        case swiftUI
+        case uiKitSwiftUI
 
         // swiftlint:disable:next enum_case_associated_values_count
         case custom(name: String,
@@ -33,7 +33,7 @@ public struct UIFramework: Equatable, Codable {
                 return .appKit
             case .uiKit:
                 return .uiKit
-            case .swiftUI:
+            case .uiKitSwiftUI:
                 return .swiftUI
             case .custom:
                 return .custom
@@ -42,7 +42,7 @@ public struct UIFramework: Equatable, Codable {
 
         internal var name: String {
             switch self {
-            case .appKit, .uiKit, .swiftUI:
+            case .appKit, .uiKit, .uiKitSwiftUI:
                 return kind.rawValue
             case let .custom(name, _, _, _, _):
                 return name
@@ -53,7 +53,7 @@ public struct UIFramework: Equatable, Codable {
             switch self {
             case .appKit, .uiKit:
                 return name
-            case .swiftUI:
+            case .uiKitSwiftUI:
                 return "SwiftUI"
             case let .custom(_, `import`, _, _, _):
                 return `import`
@@ -66,7 +66,7 @@ public struct UIFramework: Equatable, Codable {
                 return "NSViewController"
             case .uiKit:
                 return "UIViewController"
-            case .swiftUI:
+            case .uiKitSwiftUI:
                 return "UIHostingController"
             case let .custom(_, _, viewControllerType, _, _):
                 return viewControllerType
@@ -77,7 +77,7 @@ public struct UIFramework: Equatable, Codable {
             switch self {
             case .appKit, .uiKit:
                 return "nibName: nil, bundle: nil"
-            case .swiftUI:
+            case .uiKitSwiftUI:
                 return ""
             case let .custom(_, _, _, viewControllerSuperParameters, _):
                 return viewControllerSuperParameters
@@ -135,7 +135,7 @@ public struct UIFramework: Equatable, Codable {
                         cancellables.cancelAll()
                     }
                     """
-            case .swiftUI:
+            case .uiKitSwiftUI:
                 return ""
             case let .custom(_, _, _, _, viewControllerMethods):
                 return viewControllerMethods
@@ -165,7 +165,7 @@ public struct UIFramework: Equatable, Codable {
             case .uiKit:
                 self = .uiKit
             case .swiftUI:
-                self = .swiftUI
+                self = .uiKitSwiftUI
             case .custom:
                 throw DecodingError.typeMismatch(Self.self, DecodingError.Context(
                     codingPath: container.codingPath,
@@ -188,8 +188,8 @@ public struct UIFramework: Equatable, Codable {
                 return .appKit
             case .uiKit:
                 return .uiKit
-            case .swiftUI:
-                return .swiftUI
+            case .uiKitSwiftUI:
+                return .uiKitSwiftUI
             case .custom:
                 let container: KeyedDecodingContainer<CustomCodingKeys> = try container
                     .nestedContainer(keyedBy: CustomCodingKeys.self, forKey: .custom)

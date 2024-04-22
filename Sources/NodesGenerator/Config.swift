@@ -79,7 +79,7 @@ public struct Config: Equatable, Codable {
 extension Config {
 
     public init() {
-        uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .swiftUI)]
+        uiFrameworks = [UIFramework(framework: .uiKit), UIFramework(framework: .uiKitSwiftUI)]
         baseImports = []
         baseTestImports = ["Nimble", "XCTest"]
         reactiveImports = ["Combine"]

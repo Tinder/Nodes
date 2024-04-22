@@ -56,7 +56,7 @@
     ▿ UIFramework
       - framework: Framework.uiKit
     ▿ UIFramework
-      - framework: Framework.swiftUI
+      - framework: Framework.uiKitSwiftUI
     ▿ UIFramework
       ▿ framework: Framework
         ▿ custom: (5 elements)
