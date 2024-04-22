@@ -1155,17 +1155,6 @@ files:
           configFiles:
             Debug: {{ project|replace:' ','_' }}Tests/BuildSettings/Debug.xcconfig
             Release: {{ project|replace:' ','_' }}Tests/BuildSettings/Release.xcconfig
-          info:
-            path: {{ project|replace:' ','_' }}Tests/Generated/Info.plist
-            properties:
-              CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
-              CFBundleExecutable: $(EXECUTABLE_NAME)
-              CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
-              CFBundleInfoDictionaryVersion: "6.0"
-              CFBundleName: $(PRODUCT_NAME)
-              CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
-              CFBundleShortVersionString: "1.0"
-              CFBundleVersion: "1"
         {{ project|replace:' ','_' }}UITests:
           type: bundle.ui-testing
           platform: iOS
@@ -1176,17 +1165,6 @@ files:
           configFiles:
             Debug: {{ project|replace:' ','_' }}UITests/BuildSettings/Debug.xcconfig
             Release: {{ project|replace:' ','_' }}UITests/BuildSettings/Release.xcconfig
-          info:
-            path: {{ project|replace:' ','_' }}UITests/Generated/Info.plist
-            properties:
-              CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
-              CFBundleExecutable: $(EXECUTABLE_NAME)
-              CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
-              CFBundleInfoDictionaryVersion: "6.0"
-              CFBundleName: $(PRODUCT_NAME)
-              CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
-              CFBundleShortVersionString: "1.0"
-              CFBundleVersion: "1"
 
   - path: README.md
     contents: |
