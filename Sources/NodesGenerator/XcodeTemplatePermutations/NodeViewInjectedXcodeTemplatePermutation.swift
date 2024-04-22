@@ -19,6 +19,7 @@ internal struct NodeViewInjectedXcodeTemplatePermutation: XcodeTemplatePermutati
             analyticsImports: node.analytics.imports(with: config),
             analyticsTestsImports: node.analyticsTests.imports(with: config),
             builderImports: node.builder.imports(with: config),
+            builderTestsImports: node.builderTests.imports(with: config),
             contextImports: node.context.imports(with: config),
             contextTestsImports: node.contextTests.imports(with: config),
             flowImports: node.flow.imports(with: config),
