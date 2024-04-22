@@ -1170,6 +1170,7 @@ files:
           type: bundle.ui-testing
           platform: iOS
           dependencies:
+            - target: {{ project|replace:' ','_' }}
             - package: Nimble
           sources: {{ project|replace:' ','_' }}UITests
           configFiles:
