@@ -15,6 +15,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         let appKit: UIFramework.Framework = .appKit
         expect(appKit.kind) == .appKit
         expect(appKit.name) == "AppKit"
+        expect(appKit.displayName) == "AppKit"
         expect(appKit.import) == "AppKit"
         expect(appKit.viewControllerType) == "NSViewController"
         expect(appKit.viewControllerSuperParameters) == "nibName: nil, bundle: nil"
@@ -49,6 +50,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         let uiKit: UIFramework.Framework = .uiKit
         expect(uiKit.kind) == .uiKit
         expect(uiKit.name) == "UIKit"
+        expect(uiKit.displayName) == "UIKit"
         expect(uiKit.import) == "UIKit"
         expect(uiKit.viewControllerType) == "UIViewController"
         expect(uiKit.viewControllerSuperParameters) == "nibName: nil, bundle: nil"
@@ -80,6 +82,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
         let swiftUI: UIFramework.Framework = .uiKitSwiftUI
         expect(swiftUI.kind) == .swiftUI
         expect(swiftUI.name) == "SwiftUI"
+        expect(swiftUI.displayName) == "SwiftUI"
         expect(swiftUI.import) == "SwiftUI"
         expect(swiftUI.viewControllerType) == "UIHostingController"
         expect(swiftUI.viewControllerSuperParameters).to(beEmpty())
@@ -94,6 +97,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
                                                     viewControllerMethods: "<viewControllerMethods>")
         expect(custom.kind) == .custom
         expect(custom.name) == "<uiFrameworkName>"
+        expect(custom.displayName) == "<uiFrameworkName>"
         expect(custom.import) == "<uiFrameworkImport>"
         expect(custom.viewControllerType) == "<viewControllerType>"
         expect(custom.viewControllerSuperParameters) == "<viewControllerSuperParameters>"

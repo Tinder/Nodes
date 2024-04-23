@@ -49,6 +49,15 @@ public struct UIFramework: Equatable, Codable {
             }
         }
 
+        internal var displayName: String {
+            switch self {
+            case .appKit, .uiKit, .uiKitSwiftUI:
+                kind.rawValue.replacingOccurrences(of: "-", with: " - ")
+            case let .custom(name, _, _, _, _):
+                name
+            }
+        }
+
         internal var `import`: String {
             switch self {
             case .appKit, .uiKit:
@@ -225,6 +234,7 @@ public struct UIFramework: Equatable, Codable {
 
     public var kind: Kind { framework.kind }
     public var name: String { framework.name }
+    public var displayName: String { framework.displayName }
     public var `import`: String { framework.import }
     public var viewControllerType: String { framework.viewControllerType }
     public var viewControllerSuperParameters: String { framework.viewControllerSuperParameters }
