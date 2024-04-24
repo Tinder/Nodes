@@ -22,6 +22,7 @@ public final class StencilRenderer {
 
     public func renderNodeViewInjected(
         context: NodeViewInjectedStencilContext,
+        includePlugin: Bool = false,
         includeTests: Bool = false
     ) throws -> [String: String] {
         let nodeViewInjected: StencilTemplate.NodeViewInjected = .init()
