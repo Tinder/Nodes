@@ -12,6 +12,10 @@ public struct UIFramework: Equatable, Codable {
         case uiKit = "UIKit"
         case swiftUI = "SwiftUI"
         case custom = "Custom"
+
+        public var name: String {
+            rawValue
+        }
     }
 
     public enum Framework: Equatable, Codable {
@@ -43,7 +47,7 @@ public struct UIFramework: Equatable, Codable {
         internal var name: String {
             switch self {
             case .appKit, .uiKit, .uiKitSwiftUI:
-                return kind.rawValue
+                return kind.name
             case let .custom(name, _, _, _, _):
                 return name
             }

@@ -107,13 +107,13 @@ final class UIFrameworkTests: XCTestCase {
             .map(\.utf8)
             .map(Data.init(_:))
             .map { try $0.decoded(as: UIFramework.self, using: YAMLDecoder()) }
-            .forEach { assertSnapshot(of: $0, as: .dump, named: $0.kind.rawValue.sanitized) }
+            .forEach { assertSnapshot(of: $0, as: .dump, named: $0.kind.name.sanitized) }
     }
 
     private func givenYAML(for kind: UIFramework.Kind) -> String {
         switch kind {
         case .appKit, .uiKit, .swiftUI:
-            return "framework: \(kind.rawValue)"
+            return "framework: \(kind.name)"
         case .custom:
             return """
                 framework:
