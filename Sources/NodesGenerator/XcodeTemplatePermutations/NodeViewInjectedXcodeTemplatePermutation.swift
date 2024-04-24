@@ -11,7 +11,7 @@ internal struct NodeViewInjectedXcodeTemplatePermutation: XcodeTemplatePermutati
     internal init(name: String, config: Config) {
         self.name = name
         let node: StencilTemplate.NodeViewInjected = .init()
-        stencils = node.stencils(includeTests: config.isTestTemplatesGenerationEnabled)
+        stencils = node.stencils(includePlugin: true, includeTests: config.isTestTemplatesGenerationEnabled)
         // swiftlint:disable:next force_try
         stencilContext = try! NodeViewInjectedStencilContext(
             fileHeader: XcodeTemplateConstants.fileHeader,

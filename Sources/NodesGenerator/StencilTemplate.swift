@@ -121,7 +121,7 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
             self.state = .state
         }
 
-        public func stencils(includeTests: Bool) -> [StencilTemplate] {
+        public func stencils(includePlugin: Bool, includeTests: Bool) -> [StencilTemplate] {
             let stencils: [StencilTemplate] = [
                 analytics,
                 builder,
