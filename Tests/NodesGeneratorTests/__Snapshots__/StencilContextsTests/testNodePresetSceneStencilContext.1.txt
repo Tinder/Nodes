@@ -1,4 +1,4 @@
-▿ 23 key/value pairs
+▿ 24 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -83,6 +83,10 @@
   ▿ (2 elements)
     - key: "owns_view"
     - value: false
+  ▿ (2 elements)
+    - key: "plugin_imports"
+    ▿ value: 1 element
+      - "<pluginImport>"
   ▿ (2 elements)
     - key: "state_imports"
     ▿ value: 1 element
