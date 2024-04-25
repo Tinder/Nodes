@@ -25,9 +25,8 @@ public final class StencilRenderer {
         includePlugin: Bool = false,
         includeTests: Bool = false
     ) throws -> [String: String] {
-        let nodeViewInjected: StencilTemplate.NodeViewInjected = .init()
-        let stencils: [StencilTemplate] = nodeViewInjected.stencils(includePlugin: includePlugin,
-                                                                    includeTests: includeTests)
+        let node: StencilTemplate.NodeViewInjected = .init()
+        let stencils: [StencilTemplate] = node.stencils(includePlugin: includePlugin, includeTests: includeTests)
         return try render(stencils: stencils, with: context.dictionary)
     }
 

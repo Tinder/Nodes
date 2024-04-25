@@ -203,8 +203,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
     }
 
     func testNodeViewInjectedStencils() {
-        let nodeViewInjected: StencilTemplate.NodeViewInjected = .init()
-        expect(nodeViewInjected.stencils(includePlugin: true, includeTests: true)) == [
+        let node: StencilTemplate.NodeViewInjected = .init()
+        expect(node.stencils(includePlugin: true, includeTests: true)) == [
             .analytics,
             .builder(.default),
             .context,
@@ -215,7 +215,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .contextTests,
             .flowTests
         ]
-        expect(nodeViewInjected.stencils(includePlugin: false, includeTests: true)) == [
+        expect(node.stencils(includePlugin: false, includeTests: true)) == [
             .analytics,
             .builder(.default),
             .context,
@@ -226,14 +226,14 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .contextTests,
             .flowTests
         ]
-        expect(nodeViewInjected.stencils(includePlugin: true, includeTests: false)) == [
+        expect(node.stencils(includePlugin: true, includeTests: false)) == [
             .analytics,
             .builder(.default),
             .context,
             .flow,
             .state
         ]
-        expect(nodeViewInjected.stencils(includePlugin: false, includeTests: false)) == [
+        expect(node.stencils(includePlugin: false, includeTests: false)) == [
             .analytics,
             .builder(.default),
             .context,
