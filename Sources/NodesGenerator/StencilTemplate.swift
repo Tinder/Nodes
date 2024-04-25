@@ -138,7 +138,7 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
                 builderTests,
                 contextTests,
                 flowTests
-            ]
+            ] + (includePlugin ? [.pluginTests] : [])
             return stencils + testsStencils
         }
     }

@@ -1,4 +1,4 @@
-▿ 141 elements
+▿ 142 elements
   ▿ (2 elements)
     - path: "/Node.xctemplate/AppKitCreatedForPluginList/___FILEBASENAME___Analytics.swift"
     - atomically: true
@@ -391,6 +391,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/View Injected.xctemplate/___FILEBASENAME___FlowTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/View Injected.xctemplate/___FILEBASENAME___PluginTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/View Injected.xctemplate/TemplateInfo.plist"
