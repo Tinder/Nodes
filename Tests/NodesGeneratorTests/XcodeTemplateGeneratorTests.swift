@@ -38,6 +38,9 @@ final class XcodeTemplateGeneratorTests: XCTestCase {
             .reversed()[0...1]
             .reversed()
             .joined(separator: "-")
+            .replacingOccurrences(of: " (SwiftUI)", with: "SwiftUI")
+            .replacingOccurrences(of: "View Injected", with: "ViewInjected")
+            .replacingOccurrences(of: "Plugin List", with: "PluginList")
             .replacingOccurrences(of: [".xctemplate", "___FILEBASENAME___", ".swift", ".plist"], with: "")
     }
 
