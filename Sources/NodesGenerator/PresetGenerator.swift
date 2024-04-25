@@ -38,6 +38,7 @@ public final class PresetGenerator {
                 flowImports: node.flow.imports(with: config),
                 flowTestsImports: node.flowTests.imports(with: config),
                 pluginImports: node.plugin.imports(with: config),
+                pluginTestsImports: node.pluginTests.imports(with: config),
                 stateImports: node.state.imports(with: config),
                 dependencies: config.dependencies,
                 analyticsProperties: config.analyticsProperties,
