@@ -20,7 +20,7 @@ final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
                 assertSnapshot(
                     of: permutation,
                     as: .dump,
-                    named: permutation.name
+                    named: permutation.name.replacingOccurrences(of: "uiFrameworkName", with: "Custom")
                 )
             }
         }
