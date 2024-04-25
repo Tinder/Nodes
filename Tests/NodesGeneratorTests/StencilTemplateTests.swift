@@ -210,6 +210,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .context,
             .flow,
             .state,
+            .plugin,
             .analyticsTests,
             .builderTests,
             .contextTests,
@@ -231,7 +232,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .builder(.default),
             .context,
             .flow,
-            .state
+            .state,
+            .plugin
         ]
         expect(node.stencils(includePlugin: false, includeTests: false)) == [
             .analytics,

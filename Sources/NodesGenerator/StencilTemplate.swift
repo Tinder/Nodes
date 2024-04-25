@@ -128,7 +128,7 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
                 context,
                 flow,
                 state
-            ]
+            ] + (includePlugin ? [.plugin] : [])
             guard includeTests
             else { return stencils }
             let testsStencils: [StencilTemplate] = [

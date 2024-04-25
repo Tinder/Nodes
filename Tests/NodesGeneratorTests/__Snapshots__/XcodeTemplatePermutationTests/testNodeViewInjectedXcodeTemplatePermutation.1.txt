@@ -68,13 +68,14 @@
     - viewControllableType: "<viewControllableType>"
     ▿ workerGenericTypes: 1 element
       - "<workerGenericType>"
-  ▿ stencils: 9 elements
+  ▿ stencils: 10 elements
     - Analytics
     ▿ Builder
       - builder: Variation.default
     - Context
     - Flow
     - State
+    - Plugin
     - AnalyticsTests
     - BuilderTests
     - ContextTests
