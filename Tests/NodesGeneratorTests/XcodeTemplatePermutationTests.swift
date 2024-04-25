@@ -9,21 +9,18 @@ import XCTest
 final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
 
     func testNodeXcodeTemplatePermutation() throws {
-        let customKind: UIFramework.Kind = .custom
-        let forPluginListString: String = XcodeTemplateConstants.createdForPluginList
         let config: Config = givenConfig()
         config.uiFrameworks.forEach { framework in
-            [true, false].forEach { forPluginList in
+            [true, false].forEach { createdForPluginList in
                 let permutation: NodeXcodeTemplatePermutation = .init(
                     for: framework,
-                    createdForPluginList: forPluginList,
+                    createdForPluginList: createdForPluginList,
                     config: config
                 )
-                let customName: String = "\(customKind.rawValue)\(forPluginList ? forPluginListString : "")"
                 assertSnapshot(
                     of: permutation,
                     as: .dump,
-                    named: framework.kind == customKind ? customName : permutation.name
+                    named: permutation.name
                 )
             }
         }

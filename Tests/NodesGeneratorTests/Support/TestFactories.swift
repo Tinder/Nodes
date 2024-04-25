@@ -16,7 +16,7 @@ extension TestFactories {
             UIFramework(framework: .appKit),
             UIFramework(framework: .uiKit),
             UIFramework(framework: .uiKitSwiftUI),
-            UIFramework(framework: .custom(name: "<uiFrameworkName>",
+            UIFramework(framework: .custom(name: "Custom",
                                            import: "<uiFrameworkImport>",
                                            viewControllerType: "<viewControllerType>",
                                            viewControllerSuperParameters: "<viewControllerSuperParameters>",

@@ -734,7 +734,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "<uiFrameworkName>CreatedForPluginList"
+      - name: "CustomCreatedForPluginList"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -856,7 +856,7 @@
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
-      - name: "<uiFrameworkName>"
+      - name: "Custom"
       ▿ stencilContext: NodeStencilContext
         ▿ analyticsImports: 1 element
           - "<baseImport>"
@@ -1008,7 +1008,7 @@
           - "AppKit"
           - "UIKit"
           - "SwiftUI"
-          - "<uiFrameworkName>"
+          - "Custom"
       ▿ Option
         ▿ default: Optional<String>
           - some: "true"
