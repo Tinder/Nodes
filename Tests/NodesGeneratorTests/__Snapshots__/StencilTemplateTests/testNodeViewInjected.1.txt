@@ -9,4 +9,5 @@
   - flow: Flow
   - flowTests: FlowTests
   - plugin: Plugin
+  - pluginTests: PluginTests
   - state: State

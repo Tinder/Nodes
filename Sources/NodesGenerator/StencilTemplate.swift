@@ -106,6 +106,7 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
         public let flow: StencilTemplate
         public let flowTests: StencilTemplate
         public let plugin: StencilTemplate
+        public let pluginTests: StencilTemplate
         public let state: StencilTemplate
 
         public init() {
@@ -118,6 +119,7 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
             self.flow = .flow
             self.flowTests = .flowTests
             self.plugin = .plugin
+            self.pluginTests = .pluginTests
             self.state = .state
         }
 
