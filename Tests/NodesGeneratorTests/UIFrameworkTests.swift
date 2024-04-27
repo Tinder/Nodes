@@ -77,7 +77,7 @@ final class UIFrameworkTests: XCTestCase {
 
     func testInitWithSwiftUI() {
         let framework: UIFramework = .init(framework: .uiKitSwiftUI)
-        expect(framework.kind) == .swiftUI
+        expect(framework.kind) == .uiKitSwiftUI
         expect(framework.name) == "UIKit (SwiftUI)"
         expect(framework.import) == "SwiftUI"
         expect(framework.viewControllerType) == "UIHostingController"
@@ -112,7 +112,7 @@ final class UIFrameworkTests: XCTestCase {
 
     private func givenYAML(for kind: UIFramework.Kind) -> String {
         switch kind {
-        case .appKit, .uiKit, .swiftUI:
+        case .appKit, .uiKit, .uiKitSwiftUI:
             return "framework: \(kind.name)"
         case .custom:
             return """

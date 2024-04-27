@@ -10,7 +10,7 @@ public struct UIFramework: Equatable, Codable {
 
         case appKit = "AppKit"
         case uiKit = "UIKit"
-        case swiftUI = "UIKit (SwiftUI)"
+        case uiKitSwiftUI = "UIKit (SwiftUI)"
         case custom = "Custom"
 
         public var name: String {
@@ -38,7 +38,7 @@ public struct UIFramework: Equatable, Codable {
             case .uiKit:
                 return .uiKit
             case .uiKitSwiftUI:
-                return .swiftUI
+                return .uiKitSwiftUI
             case .custom:
                 return .custom
             }
@@ -168,7 +168,7 @@ public struct UIFramework: Equatable, Codable {
                 self = .appKit
             case .uiKit:
                 self = .uiKit
-            case .swiftUI:
+            case .uiKitSwiftUI:
                 self = .uiKitSwiftUI
             case .custom:
                 throw DecodingError.typeMismatch(Self.self, DecodingError.Context(

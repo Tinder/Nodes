@@ -9,7 +9,7 @@ import XCTest
 final class UIFrameworkKindTests: XCTestCase {
 
     func testAllCases() {
-        expect(UIFramework.Kind.allCases) == [.appKit, .uiKit, .swiftUI, .custom]
+        expect(UIFramework.Kind.allCases) == [.appKit, .uiKit, .uiKitSwiftUI, .custom]
     }
 
     func testRawValues() {
