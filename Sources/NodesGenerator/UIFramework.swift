@@ -92,53 +92,53 @@ public struct UIFramework: Equatable, Codable {
             switch self {
             case .appKit:
                 """
-                    @available(*, unavailable)
-                    internal required init?(coder: NSCoder) {
-                        preconditionFailure("init(coder:) has not been implemented")
-                    }
+                @available(*, unavailable)
+                internal required init?(coder: NSCoder) {
+                    preconditionFailure("init(coder:) has not been implemented")
+                }
 
-                    override internal func loadView() {
-                        view = NSView()
-                    }
+                override internal func loadView() {
+                    view = NSView()
+                }
 
-                    override internal func viewDidLoad() {
-                        super.viewDidLoad()
-                        update(with: initialState)
-                    }
+                override internal func viewDidLoad() {
+                    super.viewDidLoad()
+                    update(with: initialState)
+                }
 
-                    override internal func viewWillAppear() {
-                        super.viewWillAppear()
-                        observe(statePublisher).store(in: &cancellables)
-                    }
+                override internal func viewWillAppear() {
+                    super.viewWillAppear()
+                    observe(statePublisher).store(in: &cancellables)
+                }
 
-                    override internal func viewWillDisappear() {
-                        super.viewWillDisappear()
-                        cancellables.cancelAll()
-                    }
-                    """
+                override internal func viewWillDisappear() {
+                    super.viewWillDisappear()
+                    cancellables.cancelAll()
+                }
+                """
             case .uiKit:
                 """
-                    @available(*, unavailable)
-                    internal required init?(coder: NSCoder) {
-                        preconditionFailure("init(coder:) has not been implemented")
-                    }
+                @available(*, unavailable)
+                internal required init?(coder: NSCoder) {
+                    preconditionFailure("init(coder:) has not been implemented")
+                }
 
-                    override internal func viewDidLoad() {
-                        super.viewDidLoad()
-                        view.backgroundColor = .systemBackground
-                        update(with: initialState)
-                    }
+                override internal func viewDidLoad() {
+                    super.viewDidLoad()
+                    view.backgroundColor = .systemBackground
+                    update(with: initialState)
+                }
 
-                    override internal func viewWillAppear(_ animated: Bool) {
-                        super.viewWillAppear(animated)
-                        observe(statePublisher).store(in: &cancellables)
-                    }
+                override internal func viewWillAppear(_ animated: Bool) {
+                    super.viewWillAppear(animated)
+                    observe(statePublisher).store(in: &cancellables)
+                }
 
-                    override internal func viewWillDisappear(_ animated: Bool) {
-                        super.viewWillDisappear(animated)
-                        cancellables.cancelAll()
-                    }
-                    """
+                override internal func viewWillDisappear(_ animated: Bool) {
+                    super.viewWillDisappear(animated)
+                    cancellables.cancelAll()
+                }
+                """
             case .uiKitSwiftUI:
                 ""
             case let .custom(_, _, _, _, viewControllerMethods):
