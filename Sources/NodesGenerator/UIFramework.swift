@@ -34,64 +34,64 @@ public struct UIFramework: Equatable, Codable {
         internal var kind: Kind {
             switch self {
             case .appKit:
-                return .appKit
+                .appKit
             case .uiKit:
-                return .uiKit
+                .uiKit
             case .uiKitSwiftUI:
-                return .uiKitSwiftUI
+                .uiKitSwiftUI
             case .custom:
-                return .custom
+                .custom
             }
         }
 
         internal var name: String {
             switch self {
             case .appKit, .uiKit, .uiKitSwiftUI:
-                return kind.name
+                kind.name
             case let .custom(name, _, _, _, _):
-                return name
+                name
             }
         }
 
         internal var `import`: String {
             switch self {
             case .appKit, .uiKit:
-                return name
+                name
             case .uiKitSwiftUI:
-                return "SwiftUI"
+                "SwiftUI"
             case let .custom(_, `import`, _, _, _):
-                return `import`
+                `import`
             }
         }
 
         internal var viewControllerType: String {
             switch self {
             case .appKit:
-                return "NSViewController"
+                "NSViewController"
             case .uiKit:
-                return "UIViewController"
+                "UIViewController"
             case .uiKitSwiftUI:
-                return "UIHostingController"
+                "UIHostingController"
             case let .custom(_, _, viewControllerType, _, _):
-                return viewControllerType
+                viewControllerType
             }
         }
 
         internal var viewControllerSuperParameters: String {
             switch self {
             case .appKit, .uiKit:
-                return "nibName: nil, bundle: nil"
+                "nibName: nil, bundle: nil"
             case .uiKitSwiftUI:
-                return ""
+                ""
             case let .custom(_, _, _, viewControllerSuperParameters, _):
-                return viewControllerSuperParameters
+                viewControllerSuperParameters
             }
         }
 
         internal var viewControllerMethods: String {
             switch self {
             case .appKit:
-                return """
+                """
                     @available(*, unavailable)
                     internal required init?(coder: NSCoder) {
                         preconditionFailure("init(coder:) has not been implemented")
@@ -117,7 +117,7 @@ public struct UIFramework: Equatable, Codable {
                     }
                     """
             case .uiKit:
-                return """
+                """
                     @available(*, unavailable)
                     internal required init?(coder: NSCoder) {
                         preconditionFailure("init(coder:) has not been implemented")
@@ -140,9 +140,9 @@ public struct UIFramework: Equatable, Codable {
                     }
                     """
             case .uiKitSwiftUI:
-                return ""
+                ""
             case let .custom(_, _, _, _, viewControllerMethods):
-                return viewControllerMethods
+                viewControllerMethods
             }
         }
 
