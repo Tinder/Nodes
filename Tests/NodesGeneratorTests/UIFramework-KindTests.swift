@@ -1,3 +1,4 @@
+// swiftlint:disable file_name
 //
 //  Copyright © 2022 Tinder (Match Group, LLC)
 //
