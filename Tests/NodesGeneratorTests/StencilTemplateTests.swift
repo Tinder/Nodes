@@ -25,7 +25,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             switch kind {
             case .appKit, .uiKit, .custom:
                 expect(variation) == .regular
-            case .uiKitSwiftUI:
+            case .appKitSwiftUI, .uiKitSwiftUI:
                 expect(variation) == .swiftUI
             }
         }
@@ -255,6 +255,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 switch uiFramework.kind {
                 case .appKit:
                     uiFrameworkImport = "AppKit"
+                case .appKitSwiftUI:
+                    uiFrameworkImport = "SwiftUI"
                 case .uiKit:
                     uiFrameworkImport = "UIKit"
                 case .uiKitSwiftUI:

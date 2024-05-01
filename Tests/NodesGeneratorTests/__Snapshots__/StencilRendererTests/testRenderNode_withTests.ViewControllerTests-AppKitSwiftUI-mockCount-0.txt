@@ -1,0 +1,21 @@
+//<fileHeader>
+
+#warning("Manually move this test file to the corresponding test target then delete this warning.")
+
+final class <nodeName>ViewControllerTests: XCTestCase {
+
+    @MainActor
+    func testNotNil() {
+        XCTAssertNotNil(givenViewController(with: <nodeName>ViewState()))
+    }
+
+    @MainActor
+    private func givenViewController(
+        with state: <nodeName>ViewState
+    ) -> <nodeName>ViewController {
+        <nodeName>ViewController(rootView: <nodeName>View(
+            initialState: state,
+            <viewStatePropertyName>: <viewStateEmptyFactory>
+        ))
+    }
+}

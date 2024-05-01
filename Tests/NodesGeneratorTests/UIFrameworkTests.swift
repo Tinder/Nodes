@@ -112,7 +112,7 @@ final class UIFrameworkTests: XCTestCase {
 
     private func givenYAML(for kind: UIFramework.Kind) -> String {
         switch kind {
-        case .appKit, .uiKit, .uiKitSwiftUI:
+        case .appKit, .appKitSwiftUI, .uiKit, .uiKitSwiftUI:
             return "framework: \(kind.name)"
         case .custom:
             return """

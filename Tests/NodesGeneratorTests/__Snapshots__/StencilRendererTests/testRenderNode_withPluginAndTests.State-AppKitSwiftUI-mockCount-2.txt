@@ -1,0 +1,10 @@
+//<fileHeader>
+
+import <stateImport1>
+import <stateImport2>
+
+/**
+ PURPOSE:
+ The state of the Node.
+ */
+internal struct <nodeName>State: Equatable {}

@@ -217,7 +217,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
 
     private func givenYAML(for framework: UIFramework.Framework) -> String {
         switch framework {
-        case .appKit, .uiKit, .uiKitSwiftUI:
+        case .appKit, .appKitSwiftUI, .uiKit, .uiKitSwiftUI:
             return framework.name
         case let .custom(name, `import`, viewControllerType, viewControllerSuperParameters, viewControllerMethods):
             return givenCustomYAML(name: name,

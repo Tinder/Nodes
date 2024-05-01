@@ -12,6 +12,7 @@ final class UIFrameworkKindTests: XCTestCase {
     func testAllCases() {
         expect(UIFramework.Kind.allCases) == [
             .appKit,
+            .appKitSwiftUI,
             .uiKit,
             .uiKitSwiftUI,
             .custom
@@ -21,6 +22,7 @@ final class UIFrameworkKindTests: XCTestCase {
     func testRawValues() {
         expect(UIFramework.Kind.allCases.map(\.rawValue)) == [
             "AppKit",
+            "AppKit (SwiftUI)",
             "UIKit",
             "UIKit (SwiftUI)",
             "Custom"
@@ -30,6 +32,7 @@ final class UIFrameworkKindTests: XCTestCase {
     func testNames() {
         expect(UIFramework.Kind.allCases.map(\.name)) == [
             "AppKit",
+            "AppKit (SwiftUI)",
             "UIKit",
             "UIKit (SwiftUI)",
             "Custom"
@@ -39,7 +42,7 @@ final class UIFrameworkKindTests: XCTestCase {
     func testIsHostingSwiftUI() {
         UIFramework.Kind.allCases.forEach { kind in
             switch kind {
-            case .uiKitSwiftUI:
+            case .appKitSwiftUI, .uiKitSwiftUI:
                 expect(kind.isHostingSwiftUI) == true
             case .appKit, .uiKit, .custom:
                 expect(kind.isHostingSwiftUI) == false
