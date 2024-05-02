@@ -57,7 +57,10 @@ public final class StencilRenderer {
         return try render(stencils: stencils, with: context.dictionary)
     }
 
-    internal func render(_ stencil: StencilTemplate, with context: [String: Any]) throws -> String {
+    internal func render(
+        _ stencil: StencilTemplate,
+        with context: [String: Any]
+    ) throws -> String {
         let resources: Resources = .init()
         // swiftlint:disable:next force_unwrapping
         let stencilURL: URL = resources.url(forResource: stencil.filename, withExtension: "stencil")!
@@ -68,7 +71,10 @@ public final class StencilRenderer {
         return try environment.renderTemplate(name: stencil.name, context: context)
     }
 
-    private func render(stencils: [StencilTemplate], with context: [String: Any]) throws -> [String: String] {
+    private func render(
+        stencils: [StencilTemplate],
+        with context: [String: Any]
+    ) throws -> [String: String] {
         try Dictionary(uniqueKeysWithValues: stencils.map { stencil in
             try (stencil.name, render(stencil, with: context))
         })
