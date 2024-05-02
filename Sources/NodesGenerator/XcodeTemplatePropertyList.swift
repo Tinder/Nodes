@@ -4,9 +4,9 @@
 
 import Foundation
 
-internal struct XcodeTemplatePropertyList: Equatable, Codable {
+internal struct XcodeTemplatePropertyList: Codable, Equatable {
 
-    internal struct Option: Equatable, Codable {
+    internal struct Option: Codable, Equatable {
 
         // swiftlint:disable:next nesting
         private enum CodingKeys: String, CodingKey {

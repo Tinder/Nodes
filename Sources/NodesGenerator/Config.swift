@@ -6,7 +6,7 @@ import Codextended
 import Foundation
 import Yams
 
-public struct Config: Equatable, Codable {
+public struct Config: Codable, Equatable {
 
     public enum ConfigError: LocalizedError, Equatable {
 

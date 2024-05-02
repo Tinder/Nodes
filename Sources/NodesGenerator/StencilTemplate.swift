@@ -3,7 +3,7 @@
 //
 
 // swiftlint:disable:next type_body_length
-public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
+public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
 
     case analytics
     case analyticsTests
@@ -25,7 +25,7 @@ public enum StencilTemplate: Sendable, Equatable, CustomStringConvertible {
     case worker
     case workerTests
 
-    public enum Variation: String, Sendable, Equatable, CaseIterable {
+    public enum Variation: String, CaseIterable, Equatable, Sendable {
 
         case `default` = ""
         case swiftUI = "-SwiftUI"

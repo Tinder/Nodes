@@ -4,7 +4,7 @@
 
 import Codextended
 
-public struct UIFramework: Equatable, Codable {
+public struct UIFramework: Codable, Equatable {
 
     public enum Kind: String, CaseIterable, Sendable {
 
@@ -18,7 +18,7 @@ public struct UIFramework: Equatable, Codable {
         }
     }
 
-    public enum Framework: Equatable, Codable {
+    public enum Framework: Codable, Equatable {
 
         case appKit
         case uiKit

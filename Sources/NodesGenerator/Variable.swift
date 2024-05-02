@@ -4,7 +4,7 @@
 
 extension Config {
 
-    public struct Variable: Equatable, Codable {
+    public struct Variable: Codable, Equatable {
 
         public var name: String
         public var type: String
