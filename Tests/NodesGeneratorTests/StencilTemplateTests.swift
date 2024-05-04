@@ -135,7 +135,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         StencilTemplate.Variation.allCases.forEach { variation in
             assertSnapshot(of: StencilTemplate.Node(for: variation),
                            as: .dump,
-                           named: variation.rawValue)
+                           named: "Variation-\(variation)")
         }
     }
 
