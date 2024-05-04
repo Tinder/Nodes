@@ -20,4 +20,15 @@ final class UIFrameworkKindTests: XCTestCase {
     func testNames() {
         expect(UIFramework.Kind.allCases.map(\.name)) == ["AppKit", "UIKit", "UIKit (SwiftUI)", "Custom"]
     }
+
+    func testIsHostingSwiftUI() {
+        UIFramework.Kind.allCases.forEach { kind in
+            switch kind {
+            case .appKit, .uiKit, .custom:
+                expect(kind.isHostingSwiftUI) == false
+            case .uiKitSwiftUI:
+                expect(kind.isHostingSwiftUI) == true
+            }
+        }
+    }
 }

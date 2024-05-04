@@ -31,7 +31,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         case swiftUI = "-SwiftUI"
 
         public static func variation(for kind: UIFramework.Kind) -> Self {
-            kind == .uiKitSwiftUI ? .swiftUI : .default
+            kind.isHostingSwiftUI ? .swiftUI : .default
         }
     }
 
