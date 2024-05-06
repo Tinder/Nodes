@@ -8,17 +8,6 @@ import XCTest
 
 final class StencilTemplateTests: XCTestCase, TestFactories {
 
-    func testVariationRawValue() {
-        StencilTemplate.Variation.allCases.forEach { variation in
-            switch variation {
-            case .regular:
-                expect(variation.rawValue).to(beEmpty())
-            case .swiftUI:
-                expect(variation.rawValue) == "-SwiftUI"
-            }
-        }
-    }
-
     func testVariationSuffix() {
         StencilTemplate.Variation.allCases.forEach { variation in
             switch variation {

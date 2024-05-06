@@ -25,10 +25,10 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
     case worker
     case workerTests
 
-    public enum Variation: String, CaseIterable, Equatable, Sendable {
+    public enum Variation: CaseIterable, Equatable, Sendable {
 
-        case regular = ""
-        case swiftUI = "-SwiftUI"
+        case regular
+        case swiftUI
 
         public var suffix: String {
             switch self {
