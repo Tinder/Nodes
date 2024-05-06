@@ -24,10 +24,10 @@ final class UIFrameworkKindTests: XCTestCase {
     func testIsHostingSwiftUI() {
         UIFramework.Kind.allCases.forEach { kind in
             switch kind {
-            case .appKit, .uiKit, .custom:
-                expect(kind.isHostingSwiftUI) == false
             case .uiKitSwiftUI:
                 expect(kind.isHostingSwiftUI) == true
+            case .appKit, .uiKit, .custom:
+                expect(kind.isHostingSwiftUI) == false
             }
         }
     }

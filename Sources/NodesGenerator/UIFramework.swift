@@ -19,10 +19,10 @@ public struct UIFramework: Codable, Equatable {
 
         public var isHostingSwiftUI: Bool {
             switch self {
-            case .appKit, .uiKit, .custom:
-                false
             case .uiKitSwiftUI:
                 true
+            case .appKit, .uiKit, .custom:
+                false
             }
         }
     }
