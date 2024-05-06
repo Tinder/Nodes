@@ -19,6 +19,17 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         }
     }
 
+    func testVariationSuffix() {
+        StencilTemplate.Variation.allCases.forEach { variation in
+            switch variation {
+            case .regular:
+                expect(variation.suffix).to(beEmpty())
+            case .swiftUI:
+                expect(variation.suffix) == "-SwiftUI"
+            }
+        }
+    }
+
     func testVariationForKind() {
         UIFramework.Kind.allCases.forEach { kind in
             let variation: StencilTemplate.Variation = .variation(for: kind)

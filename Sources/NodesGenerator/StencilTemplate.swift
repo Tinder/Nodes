@@ -30,6 +30,15 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         case regular = ""
         case swiftUI = "-SwiftUI"
 
+        public var suffix: String {
+            switch self {
+            case .regular:
+                ""
+            case .swiftUI:
+                "-SwiftUI"
+            }
+        }
+
         public static func variation(for kind: UIFramework.Kind) -> Self {
             kind.isHostingSwiftUI ? .swiftUI : .regular
         }
@@ -193,7 +202,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         case .analytics, .analyticsTests:
             description
         case let .builder(variation):
-            description.appending(variation.rawValue)
+            description.appending(variation.suffix)
         case .builderTests:
             description
         case .context, .contextTests:
@@ -207,7 +216,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         case .state:
             description
         case let .viewController(variation), let .viewControllerTests(variation):
-            description.appending(variation.rawValue)
+            description.appending(variation.suffix)
         case .viewState, .viewStateFactoryTests:
             description
         case .worker, .workerTests:
