@@ -27,11 +27,11 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
 
     public enum Variation: String, CaseIterable, Equatable, Sendable {
 
-        case `default` = ""
+        case regular = ""
         case swiftUI = "-SwiftUI"
 
         public static func variation(for kind: UIFramework.Kind) -> Self {
-            kind.isHostingSwiftUI ? .swiftUI : .default
+            kind.isHostingSwiftUI ? .swiftUI : .regular
         }
     }
 
@@ -112,7 +112,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         public init() {
             self.analytics = .analytics
             self.analyticsTests = .analyticsTests
-            self.builder = .builder(.default)
+            self.builder = .builder(.regular)
             self.builderTests = .builderTests
             self.context = .context
             self.contextTests = .contextTests

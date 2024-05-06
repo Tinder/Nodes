@@ -11,7 +11,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
     func testVariationRawValue() {
         StencilTemplate.Variation.allCases.forEach { variation in
             switch variation {
-            case .default:
+            case .regular:
                 expect(variation.rawValue).to(beEmpty())
             case .swiftUI:
                 expect(variation.rawValue) == "-SwiftUI"
@@ -24,7 +24,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             let variation: StencilTemplate.Variation = .variation(for: kind)
             switch kind {
             case .appKit, .uiKit, .custom:
-                expect(variation) == .default
+                expect(variation) == .regular
             case .uiKitSwiftUI:
                 expect(variation) == .swiftUI
             }
@@ -206,7 +206,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         let node: StencilTemplate.NodeViewInjected = .init()
         expect(node.stencils(includePlugin: true, includeTests: true)) == [
             .analytics,
-            .builder(.default),
+            .builder(.regular),
             .context,
             .flow,
             .state,
@@ -219,7 +219,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         ]
         expect(node.stencils(includePlugin: false, includeTests: true)) == [
             .analytics,
-            .builder(.default),
+            .builder(.regular),
             .context,
             .flow,
             .state,
@@ -230,7 +230,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         ]
         expect(node.stencils(includePlugin: true, includeTests: false)) == [
             .analytics,
-            .builder(.default),
+            .builder(.regular),
             .context,
             .flow,
             .state,
@@ -238,7 +238,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         ]
         expect(node.stencils(includePlugin: false, includeTests: false)) == [
             .analytics,
-            .builder(.default),
+            .builder(.regular),
             .context,
             .flow,
             .state
@@ -375,7 +375,7 @@ extension StencilTemplate {
     fileprivate static let allCases: [Self] = [
         .analytics,
         .analyticsTests,
-        .builder(.default),
+        .builder(.regular),
         .builder(.swiftUI),
         .builderTests,
         .context,
@@ -387,9 +387,9 @@ extension StencilTemplate {
         .pluginList,
         .pluginListTests,
         .state,
-        .viewController(.default),
+        .viewController(.regular),
         .viewController(.swiftUI),
-        .viewControllerTests(.default),
+        .viewControllerTests(.regular),
         .viewControllerTests(.swiftUI),
         .viewState,
         .viewStateFactoryTests,

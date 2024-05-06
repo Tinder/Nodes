@@ -2,7 +2,7 @@
   - analytics: Analytics
   - analyticsTests: AnalyticsTests
   ▿ builder: Builder
-    - builder: Variation.default
+    - builder: Variation.regular
   - builderTests: BuilderTests
   - context: Context
   - contextTests: ContextTests
@@ -12,8 +12,8 @@
   - pluginTests: PluginTests
   - state: State
   ▿ viewController: ViewController
-    - viewController: Variation.default
+    - viewController: Variation.regular
   ▿ viewControllerTests: ViewControllerTests
-    - viewControllerTests: Variation.default
+    - viewControllerTests: Variation.regular
   - viewState: ViewState
   - viewStateFactoryTests: ViewStateFactoryTests

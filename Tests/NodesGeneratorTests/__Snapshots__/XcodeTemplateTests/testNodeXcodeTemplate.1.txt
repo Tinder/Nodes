@@ -107,12 +107,12 @@
       ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
-          - builder: Variation.default
+          - builder: Variation.regular
         - Context
         - Flow
         - State
         ▿ ViewController
-          - viewController: Variation.default
+          - viewController: Variation.regular
         - ViewState
         - Plugin
         - AnalyticsTests
@@ -120,7 +120,7 @@
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests
-          - viewControllerTests: Variation.default
+          - viewControllerTests: Variation.regular
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
@@ -229,12 +229,12 @@
       ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
-          - builder: Variation.default
+          - builder: Variation.regular
         - Context
         - Flow
         - State
         ▿ ViewController
-          - viewController: Variation.default
+          - viewController: Variation.regular
         - ViewState
         - Plugin
         - AnalyticsTests
@@ -242,7 +242,7 @@
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests
-          - viewControllerTests: Variation.default
+          - viewControllerTests: Variation.regular
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
@@ -351,12 +351,12 @@
       ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
-          - builder: Variation.default
+          - builder: Variation.regular
         - Context
         - Flow
         - State
         ▿ ViewController
-          - viewController: Variation.default
+          - viewController: Variation.regular
         - ViewState
         - Plugin
         - AnalyticsTests
@@ -364,7 +364,7 @@
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests
-          - viewControllerTests: Variation.default
+          - viewControllerTests: Variation.regular
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
@@ -473,12 +473,12 @@
       ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
-          - builder: Variation.default
+          - builder: Variation.regular
         - Context
         - Flow
         - State
         ▿ ViewController
-          - viewController: Variation.default
+          - viewController: Variation.regular
         - ViewState
         - Plugin
         - AnalyticsTests
@@ -486,7 +486,7 @@
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests
-          - viewControllerTests: Variation.default
+          - viewControllerTests: Variation.regular
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
@@ -839,12 +839,12 @@
       ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
-          - builder: Variation.default
+          - builder: Variation.regular
         - Context
         - Flow
         - State
         ▿ ViewController
-          - viewController: Variation.default
+          - viewController: Variation.regular
         - ViewState
         - Plugin
         - AnalyticsTests
@@ -852,7 +852,7 @@
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests
-          - viewControllerTests: Variation.default
+          - viewControllerTests: Variation.regular
         - ViewStateFactoryTests
         - PluginTests
     ▿ NodeXcodeTemplatePermutation
@@ -961,12 +961,12 @@
       ▿ stencils: 15 elements
         - Analytics
         ▿ Builder
-          - builder: Variation.default
+          - builder: Variation.regular
         - Context
         - Flow
         - State
         ▿ ViewController
-          - viewController: Variation.default
+          - viewController: Variation.regular
         - ViewState
         - Plugin
         - AnalyticsTests
@@ -974,7 +974,7 @@
         - ContextTests
         - FlowTests
         ▿ ViewControllerTests
-          - viewControllerTests: Variation.default
+          - viewControllerTests: Variation.regular
         - ViewStateFactoryTests
         - PluginTests
   ▿ propertyList: XcodeTemplatePropertyList

@@ -2,7 +2,7 @@
   - analytics: Analytics
   - analyticsTests: AnalyticsTests
   ▿ builder: Builder
-    - builder: Variation.default
+    - builder: Variation.regular
   - builderTests: BuilderTests
   - context: Context
   - contextTests: ContextTests
