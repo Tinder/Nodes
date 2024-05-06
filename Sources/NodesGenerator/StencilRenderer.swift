@@ -15,7 +15,7 @@ public final class StencilRenderer {
         includePlugin: Bool = false,
         includeTests: Bool = false
     ) throws -> [String: String] {
-        let node: StencilTemplate.Node = .init(for: .variation(for: kind))
+        let node: StencilTemplate.Node = .init(.variation(for: kind))
         let stencils: [StencilTemplate] = node.stencils(includePlugin: includePlugin, includeTests: includeTests)
         return try render(stencils: stencils, with: context.dictionary)
     }

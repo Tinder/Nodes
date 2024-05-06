@@ -133,7 +133,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
 
     func testNode() {
         StencilTemplate.Variation.allCases.forEach { variation in
-            assertSnapshot(of: StencilTemplate.Node(for: variation),
+            assertSnapshot(of: StencilTemplate.Node(variation),
                            as: .dump,
                            named: "Variation-\(variation)")
         }
@@ -147,7 +147,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
     func testNodeStencils() {
         // swiftlint:disable:next closure_body_length
         StencilTemplate.Variation.allCases.forEach { variation in
-            let node: StencilTemplate.Node = .init(for: variation)
+            let node: StencilTemplate.Node = .init(variation)
             expect(node.stencils(includePlugin: true, includeTests: true)) == [
                 .analytics,
                 .builder(variation),

@@ -62,7 +62,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         public let viewState: StencilTemplate
         public let viewStateFactoryTests: StencilTemplate
 
-        public init(for variation: StencilTemplate.Variation) {
+        public init(_ variation: StencilTemplate.Variation) {
             self.analytics = .analytics
             self.analyticsTests = .analyticsTests
             self.builder = .builder(variation)
