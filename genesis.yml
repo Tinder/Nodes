@@ -967,7 +967,7 @@ files:
           url: https://github.com/uber/needle.git
           from: 0.24.0
         Nimble:
-          url: https://github.com/Quick/Nimble
+          url: https://github.com/Quick/Nimble.git
           from: 13.0.0
       configFiles:
         Debug: BuildSettings/Debug.xcconfig
