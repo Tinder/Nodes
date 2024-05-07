@@ -1018,7 +1018,7 @@ files:
                 }
 
                 guard ProcessInfo.processInfo.environment["ENABLE_PREVIEWS"] != "YES"
-                else { skip("Nodes validation is skipped when building for SwiftUI previews.") }
+                else { skip("Nodes dependency validation is skipped when building for SwiftUI previews.") }
 
                 let packageData: Data = shell("swift", "package", "show-dependencies", "--format", "json")
 
@@ -1069,12 +1069,14 @@ files:
             - name: SwiftLint
               basedOnDependencyAnalysis: false
               script: |
-                if [[ "$ENABLE_PREVIEWS" == "YES" ]]
+                if test -z "$CI"
                 then
-                    echo "SwiftLint is skipped when building for SwiftUI previews."
-                    exit
-                elif test -z "$CI"
-                then
+                    if [ "$ENABLE_PREVIEWS" = "YES" ]
+                    then
+                        echo "SwiftLint is skipped when building for SwiftUI previews."
+                        exit
+                    fi
+
                     # Ignore Bazel environment variable (if set)
                     # https://bazel.build/docs/user-manual#running-executables
                     # https://github.com/realm/SwiftLint/blob/0.52.4/Source/swiftlint/Commands/SwiftLint.swift#L8
