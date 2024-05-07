@@ -10,7 +10,7 @@ import Yams
 
 final class UIFrameworkTests: XCTestCase {
 
-    func testInitializeWithAppKitFramework() {
+    func testInitWithFrameworkAppKit() {
         let framework: UIFramework = .init(framework: .appKit)
         expect(framework.kind) == .appKit
         expect(framework.name) == "AppKit"
@@ -44,7 +44,7 @@ final class UIFrameworkTests: XCTestCase {
             """
     }
 
-    func testInitializeWithUIKitFramework() {
+    func testInitWithFrameworkUIKit() {
         let framework: UIFramework = .init(framework: .uiKit)
         expect(framework.kind) == .uiKit
         expect(framework.name) == "UIKit"
@@ -75,7 +75,7 @@ final class UIFrameworkTests: XCTestCase {
             """
     }
 
-    func testInitializeWithUIKitSwiftUIFramework() {
+    func testInitWithFrameworkUIKitSwiftUI() {
         let framework: UIFramework = .init(framework: .uiKitSwiftUI)
         expect(framework.kind) == .uiKitSwiftUI
         expect(framework.name) == "UIKit (SwiftUI)"
@@ -85,7 +85,7 @@ final class UIFrameworkTests: XCTestCase {
         expect(framework.viewControllerMethods).to(beEmpty())
     }
 
-    func testInitializeWithCustomFramework() {
+    func testInitWithFrameworkCustom() {
         let custom: UIFramework.Framework = .custom(name: "<uiFrameworkName>",
                                                     import: "<uiFrameworkImport>",
                                                     viewControllerType: "<viewControllerType>",
