@@ -1003,6 +1003,11 @@ files:
                     try JSONSerialization.jsonObject(with: data) as? [String: Any]
                 }
 
+                func skip(_ message: String) -> Never {
+                    print(message)
+                    exit(EXIT_SUCCESS)
+                }
+
                 func fail(_ message: String) -> Never {
                     do {
                         try FileHandle.standardError.write(contentsOf: Data("ERROR: \(message)\n".utf8))
@@ -1011,6 +1016,9 @@ files:
                     }
                     exit(EXIT_FAILURE)
                 }
+
+                guard ProcessInfo.processInfo.environment["ENABLE_PREVIEWS"] != "YES"
+                else { skip("Nodes validation is skipped when building for SwiftUI previews.") }
 
                 let packageData: Data = shell("swift", "package", "show-dependencies", "--format", "json")
 
@@ -1061,7 +1069,11 @@ files:
             - name: SwiftLint
               basedOnDependencyAnalysis: false
               script: |
-                if test -z "$CI"
+                if [[ "$ENABLE_PREVIEWS" == "YES" ]]
+                then
+                    echo "SwiftLint is skipped when building for SwiftUI previews."
+                    exit
+                elif test -z "$CI"
                 then
                     # Ignore Bazel environment variable (if set)
                     # https://bazel.build/docs/user-manual#running-executables
