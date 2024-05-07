@@ -5,12 +5,12 @@ on:
     tags: ['[0-9]+.[0-9]+.[0-9]+']
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_15.0.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_15.3.app/Contents/Developer
 
 jobs:
   artifactory:
     name: Artifactory
-    runs-on: macos-13
+    runs-on: macos-latest
     concurrency:
       group: ${{ github.ref_name }}
       cancel-in-progress: true
