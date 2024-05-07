@@ -45,11 +45,11 @@ final class UIFrameworkTests: XCTestCase {
     }
 
     func testInitWithFrameworkAppKitSwiftUI() {
-        let framework: UIFramework = .init(framework: .uiKitSwiftUI)
-        expect(framework.kind) == .uiKitSwiftUI
-        expect(framework.name) == "UIKit (SwiftUI)"
+        let framework: UIFramework = .init(framework: .appKitSwiftUI)
+        expect(framework.kind) == .appKitSwiftUI
+        expect(framework.name) == "AppKit (SwiftUI)"
         expect(framework.import) == "SwiftUI"
-        expect(framework.viewControllerType) == "UIHostingController"
+        expect(framework.viewControllerType) == "NSHostingController"
         expect(framework.viewControllerSuperParameters).to(beEmpty())
         expect(framework.viewControllerMethods).to(beEmpty())
     }
