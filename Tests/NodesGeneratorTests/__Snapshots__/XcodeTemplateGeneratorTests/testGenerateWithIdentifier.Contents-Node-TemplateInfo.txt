@@ -53,6 +53,7 @@
 			<array>
 				<string>AppKit</string>
 				<string>UIKit</string>
+				<string>AppKit (SwiftUI)</string>
 				<string>UIKit (SwiftUI)</string>
 				<string>Custom</string>
 			</array>

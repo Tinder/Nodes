@@ -46,6 +46,16 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             """
     }
 
+    func testAppKitSwiftUI() {
+        let swiftUI: UIFramework.Framework = .appKitSwiftUI
+        expect(swiftUI.kind) == .appKitSwiftUI
+        expect(swiftUI.name) == "AppKit (SwiftUI)"
+        expect(swiftUI.import) == "SwiftUI"
+        expect(swiftUI.viewControllerType) == "NSHostingController"
+        expect(swiftUI.viewControllerSuperParameters).to(beEmpty())
+        expect(swiftUI.viewControllerMethods).to(beEmpty())
+    }
+
     func testUIKit() {
         let uiKit: UIFramework.Framework = .uiKit
         expect(uiKit.kind) == .uiKit
@@ -104,6 +114,7 @@ final class UIFrameworkFrameworkTests: XCTestCase {
     func testDecoding() throws {
         let frameworks: [UIFramework.Framework] = [
             .appKit,
+            .appKitSwiftUI,
             .uiKit,
             .uiKitSwiftUI,
             .custom(name: "<uiFrameworkName>",

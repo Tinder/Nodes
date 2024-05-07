@@ -1,4 +1,4 @@
-▿ 142 elements
+▿ 172 elements
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKitCreatedForPluginList/___FILEBASENAME___Analytics.swift"
     - atomically: true
@@ -178,6 +178,96 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit/___FILEBASENAME___PluginTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___Analytics.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___Builder.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___Context.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___Flow.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___State.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___ViewController.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___ViewState.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___Plugin.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___AnalyticsTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___BuilderTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___ContextTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___FlowTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___ViewControllerTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___ViewStateFactoryTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___PluginTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___Analytics.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___Builder.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___Context.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___Flow.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___State.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___ViewController.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___ViewState.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___Plugin.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___AnalyticsTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___BuilderTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___ContextTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___FlowTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___ViewControllerTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___ViewStateFactoryTests.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___PluginTests.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___Analytics.swift"

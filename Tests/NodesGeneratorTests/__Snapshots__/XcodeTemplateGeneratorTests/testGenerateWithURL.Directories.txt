@@ -1,4 +1,4 @@
-▿ 13 elements
+▿ 15 elements
   ▿ (2 elements)
     - path: "/Node.xctemplate"
     - createIntermediates: true
@@ -13,6 +13,12 @@
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/UIKit"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList"
+    - createIntermediates: true
+  ▿ (2 elements)
+    - path: "/Node.xctemplate/AppKit (SwiftUI)"
     - createIntermediates: true
   ▿ (2 elements)
     - path: "/Node.xctemplate/UIKit (SwiftUI)CreatedForPluginList"

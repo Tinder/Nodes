@@ -14,6 +14,7 @@ extension TestFactories {
         var config: Config = .init()
         config.uiFrameworks = [
             UIFramework(framework: .appKit),
+            UIFramework(framework: .appKitSwiftUI),
             UIFramework(framework: .uiKit),
             UIFramework(framework: .uiKitSwiftUI),
             UIFramework(framework: .custom(name: "Custom",

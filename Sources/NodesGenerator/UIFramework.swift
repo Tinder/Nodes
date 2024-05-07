@@ -70,9 +70,7 @@ public struct UIFramework: Codable, Equatable {
             switch self {
             case .appKit, .uiKit:
                 name
-            case .appKitSwiftUI:
-                ""
-            case .uiKitSwiftUI:
+            case .appKitSwiftUI, .uiKitSwiftUI:
                 "SwiftUI"
             case let .custom(_, `import`, _, _, _):
                 `import`
