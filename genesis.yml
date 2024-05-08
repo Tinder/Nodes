@@ -687,7 +687,7 @@ files:
           }
       }
 
-  - path: "{{ project|replace:' ','_' }}/Sources/System/NotificationCenter.swift"
+  - path: "{{ project|replace:' ','_' }}/Sources/System/NotificationSystem.swift"
     contents: |
       //
       //  Created by {{ author }} on {{ date }}.
@@ -695,19 +695,19 @@ files:
 
       import Foundation
 
-      /// @mockable(module: prefix = {{ project|replace:' ','_' }})
-      internal protocol NotificationCenter {
-          func publisher(for name: Notification.Name, object: AnyObject?) -> Foundation.NotificationCenter.Publisher
+      /// @mockable
+      internal protocol NotificationSystem {
+          func publisher(for name: Notification.Name, object: AnyObject?) -> NotificationCenter.Publisher
       }
 
-      extension NotificationCenter {
+      extension NotificationSystem {
 
-          internal func publisher(for name: Notification.Name) -> Foundation.NotificationCenter.Publisher {
+          internal func publisher(for name: Notification.Name) -> NotificationCenter.Publisher {
               publisher(for: name, object: nil)
           }
       }
 
-      extension Foundation.NotificationCenter: NotificationCenter {}
+      extension NotificationCenter: NotificationSystem {}
 
   - path: "{{ project|replace:' ','_' }}Tests/.swiftlint.yml"
     contents: |
