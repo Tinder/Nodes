@@ -1200,6 +1200,39 @@ files:
               CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
               CFBundleShortVersionString: "1.0"
               CFBundleVersion: "1"
+      schemes:
+        {{ project|replace:' ','_' }}:
+          build:
+            targets:
+              {{ project|replace:' ','_' }}: all
+          test:
+            targets:
+              - {{ project|replace:' ','_' }}Tests
+              - {{ project|replace:' ','_' }}UITests
+            config: Debug
+            gatherCoverageData: true
+            coverageTargets:
+              - {{ project|replace:' ','_' }}
+        {{ project|replace:' ','_' }}Tests:
+          build:
+            targets:
+              {{ project|replace:' ','_' }}Tests: all
+          test:
+            targets:
+              - {{ project|replace:' ','_' }}Tests
+            config: Debug
+            gatherCoverageData: true
+            coverageTargets: {{ project|replace:' ','_' }}
+        {{ project|replace:' ','_' }}UITests:
+          build:
+            targets:
+              {{ project|replace:' ','_' }}UITests: all
+          test:
+            targets:
+              - {{ project|replace:' ','_' }}UITests
+            config: Debug
+            gatherCoverageData: true
+            coverageTargets: {{ project|replace:' ','_' }}
 
   - path: README.md
     contents: |
