@@ -711,7 +711,7 @@ files:
       extension Foundation.NotificationCenter: NotificationCenter {
 
           internal func publisher(for name: Notification.Name, object: AnyObject?) -> AnyPublisher<Notification, Never> {
-              NotificationCenter.Publisher(center: self, name: name, object: object).eraseToAnyPublisher()
+              Foundation.NotificationCenter.Publisher(center: self, name: name, object: object).eraseToAnyPublisher()
           }
       }
 
