@@ -701,7 +701,7 @@ files:
           func publisher(for name: Notification.Name, object: AnyObject?) -> AnyPublisher<Notification, Never>
       }
 
-      extension NotificationSystem {
+      extension NotificationCenter {
 
           internal func publisher(for name: Notification.Name) -> AnyPublisher<Notification, Never> {
               publisher(for: name, object: nil)
@@ -709,10 +709,10 @@ files:
       }
 
       extension Foundation.NotificationCenter: NotificationCenter {
-          
+
           internal func publisher(for name: Notification.Name, object: AnyObject?) -> AnyPublisher<Notification, Never> {
               NotificationCenter.Publisher(center: self, name: name, object: object).eraseToAnyPublisher()
-          }      
+          }
       }
 
   - path: "{{ project|replace:' ','_' }}Tests/.swiftlint.yml"
