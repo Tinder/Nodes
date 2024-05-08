@@ -642,21 +642,21 @@ files:
 
           internal var windowScenePublisher: AnyPublisher<WindowSceneEvent, Never> {
               Publishers.Merge(
-                  notificationCenter
+                  notificationSystem
                       .publisher(for: UIScene.willConnectNotification)
                       .compactMap { $0.object as? UIWindowScene }
                       .map { .willConnect($0) },
-                  notificationCenter
+                  notificationSystem
                       .publisher(for: UIScene.didDisconnectNotification)
                       .compactMap { $0.object as? UIWindowScene }
                       .map { .didDisconnect($0) })
               .eraseToAnyPublisher()
           }
 
-          private let notificationCenter: NotificationCenter
+          private let notificationSystem: NotificationSystem
 
-          internal init(notificationCenter: NotificationCenter = Foundation.NotificationCenter.default) {
-              self.notificationCenter = notificationCenter
+          internal init(notificationSystem: NotificationSystem = Foundation.NotificationCenter.default) {
+              self.notificationSystem = notificationSystem
           }
       }
 
