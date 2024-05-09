@@ -574,6 +574,37 @@ files:
           </scenes>
       </document>
 
+  - path: "{{ project|replace:' ','_' }}/Sources/AppComponent.swift"
+    contents: |
+      //
+      //  Created by {{ author }} on {{ date }}.
+      //
+
+      import Foundation
+
+      extension AppComponent {
+
+          internal static func makeAppComponent() -> Self {
+              #if DEBUG
+              if ProcessInfo.processInfo.environment["UITests"] == "true" {
+                  return .appComponentForUITests()
+              }
+              #endif
+              return appComponent()
+          }
+
+          private static func appComponent() -> Self {
+              Self()
+          }
+
+          #if DEBUG
+          private static func appComponentForUITests() -> Self {
+              // Inject stubbed dependencies into AppComponent.
+              Self()
+          }
+          #endif
+      }
+
   - path: "{{ project|replace:' ','_' }}/Sources/AppDelegate.swift"
     contents: |
       //
@@ -585,7 +616,7 @@ files:
       @main
       internal final class AppDelegate: UIResponder, UIApplicationDelegate {
 
-          private lazy var appBuilder: AppBuilder = AppBuilderImp { AppComponent() }
+          private lazy var appBuilder: AppBuilder = AppBuilderImp { .makeAppComponent() }
           private lazy var appFlow: AppFlow = appBuilder.build()
 
           internal convenience init(appBuilder: AppBuilder) {
@@ -813,6 +844,7 @@ files:
               super.setUp()
               continueAfterFailure = false
               app = XCUIApplication()
+              app.launchEnvironment["UITests"] = "true"
               app.launch()
           }
 
