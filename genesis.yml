@@ -617,7 +617,7 @@ files:
 
           internal static func appComponentFactory() -> AppComponent {
               #if DEBUG
-              if ProcessInfo.processInfo.arguments.contains("--stub-app-component") {
+              if ProcessInfo.processInfo.arguments.contains("--stub") {
                   return makeAppComponentWithStubbedDependencies()
               }
               #endif
@@ -835,7 +835,7 @@ files:
               super.setUp()
               continueAfterFailure = false
               app = XCUIApplication()
-              app.launchArguments += ["--stub-app-component"]
+              app.launchArguments += ["--stub"]
               app.launch()
           }
 
