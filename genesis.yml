@@ -574,37 +574,6 @@ files:
           </scenes>
       </document>
 
-  - path: "{{ project|replace:' ','_' }}/Sources/AppComponent.swift"
-    contents: |
-      //
-      //  Created by {{ author }} on {{ date }}.
-      //
-
-      import Foundation
-
-      extension AppComponent {
-
-          internal static func makeAppComponent() -> Self {
-              #if DEBUG
-              if ProcessInfo.processInfo.environment["UITests"] == "true" {
-                  return .appComponentForUITests()
-              }
-              #endif
-              return appComponent()
-          }
-
-          private static func appComponent() -> Self {
-              Self()
-          }
-
-          #if DEBUG
-          private static func appComponentForUITests() -> Self {
-              // Inject stubbed dependencies into AppComponent.
-              Self()
-          }
-          #endif
-      }
-
   - path: "{{ project|replace:' ','_' }}/Sources/AppDelegate.swift"
     contents: |
       //
@@ -616,7 +585,7 @@ files:
       @main
       internal final class AppDelegate: UIResponder, UIApplicationDelegate {
 
-          private lazy var appBuilder: AppBuilder = AppBuilderImp { .makeAppComponent() }
+          private lazy var appBuilder: AppBuilder = AppBuilderImp(componentFactory: Self.appComponentFactory)
           private lazy var appFlow: AppFlow = appBuilder.build()
 
           internal convenience init(appBuilder: AppBuilder) {
@@ -642,6 +611,28 @@ files:
               registerProviderFactories()
               appFlow.start()
           }
+      }
+
+      extension AppDelegate {
+
+          internal static func appComponentFactory() -> AppComponent {
+              #if DEBUG
+              if ProcessInfo.processInfo.arguments.contains("--stub-app-component") {
+                  return makeAppComponentWithStubbedDependencies()
+              }
+              #endif
+              return makeAppComponent()
+          }
+
+          private static func makeAppComponent() -> AppComponent {
+              AppComponent()
+          }
+
+          #if DEBUG
+          private static func makeAppComponentWithStubbedDependencies() -> AppComponent {
+              AppComponent()
+          }
+          #endif
       }
 
   - path: "{{ project|replace:' ','_' }}/Sources/SceneDelegate.swift"
@@ -844,7 +835,7 @@ files:
               super.setUp()
               continueAfterFailure = false
               app = XCUIApplication()
-              app.launchEnvironment["UITests"] = "true"
+              app.launchArguments += ["--stub-app-component"]
               app.launch()
           }
 
