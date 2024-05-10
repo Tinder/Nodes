@@ -582,9 +582,9 @@ files:
 
       import Foundation
 
-      extension AppDelegate {
+      internal final class AppComponentFactory {
 
-          internal func appComponentFactory() -> AppComponent {
+          internal func callAsFunction() -> AppComponent {
 
               #if DEBUG
 
@@ -616,7 +616,11 @@ files:
       @main
       internal final class AppDelegate: UIResponder, UIApplicationDelegate {
 
-          private lazy var appBuilder: AppBuilder = AppBuilderImp(componentFactory: appComponentFactory)
+          private lazy var appBuilder: AppBuilder = AppBuilderImp {
+              let appComponentFactory: AppComponentFactory = .init()
+              return appComponentFactory()
+          }
+
           private lazy var appFlow: AppFlow = appBuilder.build()
 
           internal convenience init(appBuilder: AppBuilder) {
