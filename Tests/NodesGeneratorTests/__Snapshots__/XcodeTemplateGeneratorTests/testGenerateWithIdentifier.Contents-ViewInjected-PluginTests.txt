@@ -6,18 +6,18 @@ import Nimble
 import NodesTesting
 import XCTest
 
-final class PluginTests: XCTestCase {
+final class ___VARIABLE_productName___PluginTests: XCTestCase {
 
-    private var plugin: PluginImp!
+    private var plugin: ___VARIABLE_productName___PluginImp!
 
     @MainActor
     override func setUp() {
         super.setUp()
-        plugin = PluginImp(componentFactory: injectComponent { parent in
-            PluginComponent(parent: parent)
+        plugin = ___VARIABLE_productName___PluginImp(componentFactory: injectComponent { parent in
+            ___VARIABLE_productName___PluginComponent(parent: parent)
         } with: {
             // swiftlint:disable:next direct_return
-            let dependency: PluginDependencyMock = .init()
+            let dependency: ___VARIABLE_productName___PluginDependencyMock = .init()
             // dependency.<dependencyName> = <dependencyName>Mock
             return dependency
         })

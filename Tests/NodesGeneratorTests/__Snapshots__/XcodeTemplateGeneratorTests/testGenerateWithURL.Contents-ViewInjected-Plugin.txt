@@ -9,15 +9,15 @@ import Nodes
  */
 /// @mockable
 @MainActor
-public protocol PluginDependency: Dependency {}
+public protocol ___VARIABLE_productName___PluginDependency: Dependency {}
 
 /**
  PURPOSE:
  Declares dependencies that are owned by this Plugin.
  */
-public final class PluginComponent: Component
+public final class ___VARIABLE_productName___PluginComponent: Component
 <
-    PluginDependency
+    ___VARIABLE_productName___PluginDependency
 > {
 
     /*
@@ -57,8 +57,8 @@ public final class PluginComponent: Component
 
      */
 
-    fileprivate func componentFactory() -> Component {
-        Component(parent: self)
+    fileprivate func componentFactory() -> ___VARIABLE_productName___Component {
+        ___VARIABLE_productName___Component(parent: self)
     }
 }
 
@@ -66,7 +66,7 @@ public final class PluginComponent: Component
  PURPOSE:
  To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the Plugin).
  */
-internal typealias PluginStateType = Void
+internal typealias ___VARIABLE_productName___PluginStateType = Void
 
 /**
  PURPOSE:
@@ -74,19 +74,19 @@ internal typealias PluginStateType = Void
  */
 /// @mockable
 @MainActor
-internal protocol Plugin {
-    func create() -> Builder?
+internal protocol ___VARIABLE_productName___Plugin {
+    func create() -> ___VARIABLE_productName___Builder?
 }
 
 /**
  PURPOSE:
  Concrete implementation of the Plugin.
  */
-internal final class PluginImp: Plugin
+internal final class ___VARIABLE_productName___PluginImp: Plugin
 <
-    PluginComponent,
-    Builder,
-    PluginStateType
+    ___VARIABLE_productName___PluginComponent,
+    ___VARIABLE_productName___Builder,
+    ___VARIABLE_productName___PluginStateType
 > {
 
     /// The method in which the Plugin's enabled criteria is defined.
@@ -95,8 +95,8 @@ internal final class PluginImp: Plugin
     ///   - state: The state
     /// - Returns: The enabled status of the Plugin
     override internal func isEnabled(
-        component: PluginComponent,
-        state: PluginStateType
+        component: ___VARIABLE_productName___PluginComponent,
+        state: ___VARIABLE_productName___PluginStateType
     ) -> Bool {
         true
     }
@@ -105,10 +105,10 @@ internal final class PluginImp: Plugin
     /// - Parameter component: The component instance
     /// - Returns: The initialized instance
     override internal func build(
-        component: PluginComponent
-    ) -> Builder {
-        BuilderImp(componentFactory: component.componentFactory)
+        component: ___VARIABLE_productName___PluginComponent
+    ) -> ___VARIABLE_productName___Builder {
+        ___VARIABLE_productName___BuilderImp(componentFactory: component.componentFactory)
     }
 }
 
-extension PluginImp: Plugin {}
+extension ___VARIABLE_productName___PluginImp: ___VARIABLE_productName___Plugin {}

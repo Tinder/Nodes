@@ -61,6 +61,7 @@
       - "<baseImport>"
       - "<dependencyInjectionImport>"
       - "Nodes"
+    - pluginName: "___VARIABLE_productName___"
     ▿ pluginTestsImports: 2 elements
       - "<baseTestImport>"
       - "NodesTesting"

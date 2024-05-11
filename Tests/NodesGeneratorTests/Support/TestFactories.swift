@@ -162,6 +162,7 @@ extension TestFactories {
         try NodeViewInjectedStencilContext(
             fileHeader: "<fileHeader>",
             nodeName: nodeName,
+            pluginName: nodeName,
             analyticsImports: .mock(with: "analyticsImport", count: mockCount),
             analyticsTestsImports: .mock(with: "analyticsTestsImport", count: mockCount),
             builderImports: .mock(with: "builderImport", count: mockCount),

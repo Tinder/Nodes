@@ -12,10 +12,12 @@ internal struct NodeViewInjectedXcodeTemplatePermutation: XcodeTemplatePermutati
         self.name = name
         let node: StencilTemplate.NodeViewInjected = .init()
         stencils = node.stencils(includePlugin: true, includeTests: config.isTestTemplatesGenerationEnabled)
+        let productName: String = XcodeTemplateConstants.variable(XcodeTemplateConstants.productName)
         // swiftlint:disable:next force_try
         stencilContext = try! NodeViewInjectedStencilContext(
             fileHeader: XcodeTemplateConstants.fileHeader,
-            nodeName: XcodeTemplateConstants.variable(XcodeTemplateConstants.productName),
+            nodeName: productName,
+            pluginName: productName,
             analyticsImports: node.analytics.imports(with: config),
             analyticsTestsImports: node.analyticsTests.imports(with: config),
             builderImports: node.builder.imports(with: config),

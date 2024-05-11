@@ -6,6 +6,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
 
     private let fileHeader: String
     private let nodeName: String
+    private let pluginName: String
     private let analyticsImports: [String]
     private let analyticsTestsImports: [String]
     private let builderImports: [String]
@@ -33,6 +34,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         [
             "file_header": fileHeader,
             "node_name": nodeName,
+            "plugin_name": pluginName,
             "owns_view": false,
             "analytics_imports": analyticsImports,
             "analytics_tests_imports": analyticsTestsImports,
@@ -63,6 +65,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
     public init(
         fileHeader: String,
         nodeName: String,
+        pluginName: String,
         analyticsImports: Set<String>,
         analyticsTestsImports: Set<String>,
         builderImports: Set<String>,
@@ -90,6 +93,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             strict: true,
             fileHeader: fileHeader,
             nodeName: nodeName,
+            pluginName: pluginName,
             analyticsImports: analyticsImports,
             analyticsTestsImports: analyticsTestsImports,
             builderImports: builderImports,
@@ -146,6 +150,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             strict: false,
             fileHeader: fileHeader,
             nodeName: preset.nodeName,
+            pluginName: "",
             analyticsImports: analyticsImports,
             analyticsTestsImports: analyticsTestsImports,
             builderImports: builderImports,
@@ -175,6 +180,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         strict: Bool,
         fileHeader: String,
         nodeName: String,
+        pluginName: String,
         analyticsImports: Set<String>,
         analyticsTestsImports: Set<String>,
         builderImports: Set<String>,
@@ -202,6 +208,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         else { throw StencilContextError.reservedNodeName(nodeName) }
         self.fileHeader = fileHeader
         self.nodeName = nodeName
+        self.pluginName = pluginName
         self.analyticsImports = analyticsImports.sortedImports()
         self.analyticsTestsImports = analyticsTestsImports.sortedImports()
         self.builderImports = builderImports.sortedImports()
