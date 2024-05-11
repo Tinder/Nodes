@@ -8,12 +8,14 @@ import <builderTestsImport2>
 final class <nodeName>BuilderTests: XCTestCase {
 
     private var listenerMock: <nodeName>ListenerMock!
+    private var viewControllableMock: <nodeName>ViewControllableMock!
     private var builder: <nodeName>BuilderImp!
 
     @MainActor
     override func setUp() {
         super.setUp()
         listenerMock = <nodeName>ListenerMock()
+        viewControllableMock = <nodeName>ViewControllableMock()
         builder = <nodeName>BuilderImp(componentFactory: injectComponent { parent in
             <nodeName>Component(parent: parent)
         } with: {
@@ -26,12 +28,13 @@ final class <nodeName>BuilderTests: XCTestCase {
 
     override func tearDown() {
         listenerMock = nil
+        viewControllableMock = nil
         builder = nil
         super.tearDown()
     }
 
     @MainActor
     func testCreate() {
-        expect { self.builder.build(withListener: self.listenerMock) } != nil
+        expect { self.builder.build(withListener: self.listenerMock, viewController: self.viewControllableMock) } != nil
     }
 }

@@ -9,12 +9,14 @@ import XCTest
 final class ___VARIABLE_productName___BuilderTests: XCTestCase {
 
     private var listenerMock: ___VARIABLE_productName___ListenerMock!
+    private var viewControllableMock: ___VARIABLE_productName___ViewControllableMock!
     private var builder: ___VARIABLE_productName___BuilderImp!
 
     @MainActor
     override func setUp() {
         super.setUp()
         listenerMock = ___VARIABLE_productName___ListenerMock()
+        viewControllableMock = ___VARIABLE_productName___ViewControllableMock()
         builder = ___VARIABLE_productName___BuilderImp(componentFactory: injectComponent { parent in
             ___VARIABLE_productName___Component(parent: parent)
         } with: {
@@ -27,12 +29,13 @@ final class ___VARIABLE_productName___BuilderTests: XCTestCase {
 
     override func tearDown() {
         listenerMock = nil
+        viewControllableMock = nil
         builder = nil
         super.tearDown()
     }
 
     @MainActor
     func testCreate() {
-        expect { self.builder.build(withListener: self.listenerMock) } != nil
+        expect { self.builder.build(withListener: self.listenerMock, viewController: self.viewControllableMock) } != nil
     }
 }

@@ -11,12 +11,18 @@ import {{ import }}
 final class {{ node_name }}BuilderTests: XCTestCase {
 
     private var listenerMock: {{ node_name }}ListenerMock!
+    {% if not owns_view %}
+    private var viewControllableMock: {{ node_name }}ViewControllableMock!
+    {% endif %}
     private var builder: {{ node_name }}BuilderImp!
 
     @MainActor
     override func setUp() {
         super.setUp()
         listenerMock = {{ node_name }}ListenerMock()
+        {% if not owns_view %}
+        viewControllableMock = {{ node_name }}ViewControllableMock()
+        {% endif %}
         builder = {{ node_name }}BuilderImp(componentFactory: injectComponent { parent in
             {{ node_name }}Component(parent: parent)
         } with: {
@@ -29,6 +35,9 @@ final class {{ node_name }}BuilderTests: XCTestCase {
 
     override func tearDown() {
         listenerMock = nil
+        {% if not owns_view %}
+        viewControllableMock = nil
+        {% endif %}
         builder = nil
         super.tearDown()
     }
@@ -36,9 +45,9 @@ final class {{ node_name }}BuilderTests: XCTestCase {
     @MainActor
     func testCreate() {
         {% if is_nimble_enabled %}
-        expect { self.builder.build(withListener: self.listenerMock) } != nil
+        expect { self.builder.build(withListener: self.listenerMock{% if not owns_view %}, viewController: self.viewControllableMock{% endif %}) } != nil
         {% else %}
-        XCTAssertNotNil(builder.build(withListener: listenerMock))
+        XCTAssertNotNil(builder.build(withListener: listenerMock{% if not owns_view %}, viewController: self.viewControllableMock{% endif %}))
         {% endif %}
     }
 }
