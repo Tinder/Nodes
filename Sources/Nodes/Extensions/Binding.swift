@@ -30,6 +30,7 @@ extension Binding {
     ///   - onChange: An escaping closure for the setter of the binding.
     ///
     /// - Returns: A SwiftUI `Binding` instance.
+    @preconcurrency
     @MainActor
     public static func bind(
         to value: Value,
@@ -59,6 +60,7 @@ extension Binding {
     ///   - onChange: An optional (escaping) closure for the setter of the binding.
     ///
     /// - Returns: A SwiftUI `Binding` instance.
+    @preconcurrency
     @MainActor
     public static func bind(
         to value: Value,
