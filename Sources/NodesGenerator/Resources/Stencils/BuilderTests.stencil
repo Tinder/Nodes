@@ -9,6 +9,13 @@ import {{ import }}
 {% endif %}
 
 final class {{ node_name }}BuilderTests: XCTestCase {
+    {% if view_controllable_mock_contents %}
+
+    private final class {{ node_name }}ViewControllableMock: UIViewController, {{ node_name }}ViewControllable {
+
+        {{ view_controllable_mock_contents|indent:8 }}
+    }
+    {% endif %}
 
     private var listenerMock: {{ node_name }}ListenerMock!
     {% if not owns_view %}

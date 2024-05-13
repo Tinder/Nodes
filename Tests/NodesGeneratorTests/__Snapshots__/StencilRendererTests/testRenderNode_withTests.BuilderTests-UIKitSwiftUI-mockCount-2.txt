@@ -7,6 +7,11 @@ import <builderTestsImport2>
 
 final class <nodeName>BuilderTests: XCTestCase {
 
+    private final class <nodeName>ViewControllableMock: UIViewController, <nodeName>ViewControllable {
+
+        <viewControllableMockContents>
+    }
+
     private var listenerMock: <nodeName>ListenerMock!
     private var builder: <nodeName>BuilderImp!
 
