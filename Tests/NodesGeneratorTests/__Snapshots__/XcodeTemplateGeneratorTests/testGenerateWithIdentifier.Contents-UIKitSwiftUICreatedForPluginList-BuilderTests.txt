@@ -33,6 +33,6 @@ final class ___VARIABLE_productName___BuilderTests: XCTestCase {
 
     @MainActor
     func testCreate() {
-        expect { self.builder.build(withListener: self.listenerMock) } != nil
+        expect { [self] in builder.build(withListener: listenerMock) } != nil
     }
 }

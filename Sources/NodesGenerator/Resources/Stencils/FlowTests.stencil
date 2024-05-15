@@ -42,7 +42,7 @@ final class {{ node_name }}FlowTests: XCTestCase {
             {% endif +%}
         )
         {% if is_nimble_enabled %}
-        expect { self.flow.isStarted } == true
+        expect { [self] in flow.isStarted } == true
         {% else %}
         XCTAssertTrue(flow.isStarted)
         {% endif %}
@@ -61,7 +61,7 @@ final class {{ node_name }}FlowTests: XCTestCase {
     @MainActor
     func testNotNil() {
         {% if is_nimble_enabled %}
-        expect { self.flow } != nil
+        expect { [self] in flow } != nil
         {% else %}
         XCTAssertNotNil(flow)
         {% endif %}

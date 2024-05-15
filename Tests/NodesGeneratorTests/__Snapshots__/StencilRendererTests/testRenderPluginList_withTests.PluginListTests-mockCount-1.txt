@@ -28,16 +28,16 @@ final class <pluginListName>PluginListTests: XCTestCase {
 
     @MainActor
     func testCreateAll() {
-        expect { self.pluginList.createAll() }.to(beEmpty())
+        expect { [self] in pluginList.createAll() }.to(beEmpty())
     }
 
     @MainActor
     func testCreate() {
-        expect { self.pluginList.create() } == nil
+        expect { [self] in pluginList.create() } == nil
     }
 
     @MainActor
     func testCreateWithKey() {
-        expect { self.pluginList.create(key: "<key>") } == nil
+        expect { [self] in pluginList.create(key: "<key>") } == nil
     }
 }

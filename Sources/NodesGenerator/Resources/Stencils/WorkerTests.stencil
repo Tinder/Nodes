@@ -24,19 +24,19 @@ final class {{ worker_name }}WorkerTests: XCTestCase {
 
     func testWorking() {
         {% if is_nimble_enabled %}
-        expect { self.worker.isWorking } == false
+        expect { [self] in worker.isWorking } == false
         {% else %}
         XCTAssertFalse(worker.isWorking)
         {% endif %}
         worker.start()
         {% if is_nimble_enabled %}
-        expect { self.worker.isWorking } == true
+        expect { [self] in worker.isWorking } == true
         {% else %}
         XCTAssertTrue(worker.isWorking)
         {% endif %}
         worker.stop()
         {% if is_nimble_enabled %}
-        expect { self.worker.isWorking } == false
+        expect { [self] in worker.isWorking } == false
         {% else %}
         XCTAssertFalse(worker.isWorking)
         {% endif %}

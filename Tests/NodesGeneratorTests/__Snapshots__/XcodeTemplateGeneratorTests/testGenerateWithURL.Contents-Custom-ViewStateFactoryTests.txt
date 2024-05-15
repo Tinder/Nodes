@@ -20,6 +20,6 @@ internal final class ___VARIABLE_productName___ViewStateFactoryTests: XCTestCase
     }
 
     func testNotNil() {
-        expect { self.viewStateFactory(___VARIABLE_productName___State()) } != nil
+        expect { [self] in viewStateFactory(___VARIABLE_productName___State()) } != nil
     }
 }

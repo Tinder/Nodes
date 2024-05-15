@@ -8,7 +8,7 @@ final class <nodeName>ViewControllerTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
-        expect { self.givenViewController(with: <nodeName>ViewState()) } != nil
+        expect { [self] in givenViewController(with: <nodeName>ViewState()) } != nil
     }
 
     @MainActor

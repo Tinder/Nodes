@@ -31,7 +31,7 @@ final class <nodeName>FlowTests: XCTestCase {
             <flowPropertyName1>: <flowPropertyType1>Mock,
             <flowPropertyName2>: <flowPropertyType2>Mock
         )
-        expect { self.flow.isStarted } == true
+        expect { [self] in flow.isStarted } == true
     }
 
     override func tearDown() {
@@ -45,6 +45,6 @@ final class <nodeName>FlowTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
-        expect { self.flow } != nil
+        expect { [self] in flow } != nil
     }
 }

@@ -52,7 +52,7 @@ final class {{ node_name }}BuilderTests: XCTestCase {
     @MainActor
     func testCreate() {
         {% if is_nimble_enabled %}
-        expect { self.builder.build(withListener: self.listenerMock{% if not owns_view %}, viewController: self.viewControllableMock{% endif %}) } != nil
+        expect { [self] in builder.build(withListener: listenerMock{% if not owns_view %}, viewController: viewControllableMock{% endif %}) } != nil
         {% else %}
         XCTAssertNotNil(builder.build(withListener: listenerMock{% if not owns_view %}, viewController: viewControllableMock{% endif %}))
         {% endif %}

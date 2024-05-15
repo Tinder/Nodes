@@ -20,7 +20,7 @@ final class ___VARIABLE_productName___FlowTests: XCTestCase {
             context: contextMock,
             viewController: viewControllableMock
         )
-        expect { self.flow.isStarted } == true
+        expect { [self] in flow.isStarted } == true
     }
 
     override func tearDown() {
@@ -32,6 +32,6 @@ final class ___VARIABLE_productName___FlowTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
-        expect { self.flow } != nil
+        expect { [self] in flow } != nil
     }
 }

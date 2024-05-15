@@ -30,11 +30,11 @@ final class ___VARIABLE_productName___PluginTests: XCTestCase {
 
     @MainActor
     func testCreate() {
-        expect { self.plugin.create() } != nil
+        expect { [self] in plugin.create() } != nil
     }
 
     @MainActor
     func testOverride() {
-        expect { self.plugin.override() } != nil
+        expect { [self] in plugin.override() } != nil
     }
 }

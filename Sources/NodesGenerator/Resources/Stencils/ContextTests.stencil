@@ -32,7 +32,7 @@ final class {{ node_name }}ContextTests: XCTestCase {
     @MainActor
     func testNotNil() {
         {% if is_nimble_enabled %}
-        expect { self.context } != nil
+        expect { [self] in context } != nil
         {% else %}
         XCTAssertNotNil(context)
         {% endif %}
@@ -41,7 +41,7 @@ final class {{ node_name }}ContextTests: XCTestCase {
     @MainActor
     func testWorkersIsEmpty() {
         {% if is_nimble_enabled %}
-        expect { self.context.workers }.to(beEmpty())
+        expect { [self] in context.workers }.to(beEmpty())
         {% else %}
         XCTAssertTrue(context.workers.isEmpty)
         {% endif %}
@@ -50,19 +50,19 @@ final class {{ node_name }}ContextTests: XCTestCase {
     @MainActor
     func testActivation() {
         {% if is_nimble_enabled %}
-        expect { self.context.isActive } == false
+        expect { [self] in context.isActive } == false
         {% else %}
         XCTAssertFalse(context.isActive)
         {% endif %}
         context.activate()
         {% if is_nimble_enabled %}
-        expect { self.context.isActive } == true
+        expect { [self] in context.isActive } == true
         {% else %}
         XCTAssertTrue(context.isActive)
         {% endif %}
         context.deactivate()
         {% if is_nimble_enabled %}
-        expect { self.context.isActive } == false
+        expect { [self] in context.isActive } == false
         {% else %}
         XCTAssertFalse(context.isActive)
         {% endif %}

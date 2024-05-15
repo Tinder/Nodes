@@ -33,7 +33,7 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
     @MainActor
     func testCreate() {
         {% if is_nimble_enabled %}
-        expect { self.plugin.create() } != nil
+        expect { [self] in plugin.create() } != nil
         {% else %}
         XCTAssertNotNil(plugin.create())
         {% endif %}
@@ -42,7 +42,7 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
     @MainActor
     func testOverride() {
         {% if is_nimble_enabled %}
-        expect { self.plugin.override() } != nil
+        expect { [self] in plugin.override() } != nil
         {% else %}
         XCTAssertNotNil(plugin.override())
         {% endif %}

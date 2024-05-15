@@ -28,20 +28,20 @@ final class ___VARIABLE_productName___ContextTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
-        expect { self.context } != nil
+        expect { [self] in context } != nil
     }
 
     @MainActor
     func testWorkersIsEmpty() {
-        expect { self.context.workers }.to(beEmpty())
+        expect { [self] in context.workers }.to(beEmpty())
     }
 
     @MainActor
     func testActivation() {
-        expect { self.context.isActive } == false
+        expect { [self] in context.isActive } == false
         context.activate()
-        expect { self.context.isActive } == true
+        expect { [self] in context.isActive } == true
         context.deactivate()
-        expect { self.context.isActive } == false
+        expect { [self] in context.isActive } == false
     }
 }

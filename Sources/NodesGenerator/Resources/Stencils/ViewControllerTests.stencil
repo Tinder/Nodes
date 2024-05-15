@@ -13,7 +13,7 @@ final class {{ node_name }}ViewControllerTests: XCTestCase {
     @MainActor
     func testNotNil() {
         {% if is_nimble_enabled %}
-        expect { self.givenViewController(with: {{ node_name }}ViewState()) } != nil
+        expect { [self] in givenViewController(with: {{ node_name }}ViewState()) } != nil
         {% else %}
         XCTAssertNotNil(givenViewController(with: {{ node_name }}ViewState()))
         {% endif %}

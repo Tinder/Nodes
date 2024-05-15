@@ -33,7 +33,7 @@ final class {{ plugin_list_name }}PluginListTests: XCTestCase {
     @MainActor
     func testCreateAll() {
         {% if is_nimble_enabled %}
-        expect { self.pluginList.createAll() }.to(beEmpty())
+        expect { [self] in pluginList.createAll() }.to(beEmpty())
         {% else %}
         XCTAssertTrue(pluginList.createAll().isEmpty)
         {% endif %}
@@ -42,7 +42,7 @@ final class {{ plugin_list_name }}PluginListTests: XCTestCase {
     @MainActor
     func testCreate() {
         {% if is_nimble_enabled %}
-        expect { self.pluginList.create() } == nil
+        expect { [self] in pluginList.create() } == nil
         {% else %}
         XCTAssertNil(pluginList.create())
         {% endif %}
@@ -51,7 +51,7 @@ final class {{ plugin_list_name }}PluginListTests: XCTestCase {
     @MainActor
     func testCreateWithKey() {
         {% if is_nimble_enabled %}
-        expect { self.pluginList.create(key: "<key>") } == nil
+        expect { [self] in pluginList.create(key: "<key>") } == nil
         {% else %}
         XCTAssertNil(pluginList.create(key: "<key>"))
         {% endif %}

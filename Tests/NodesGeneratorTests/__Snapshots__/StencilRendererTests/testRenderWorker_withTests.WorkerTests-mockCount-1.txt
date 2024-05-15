@@ -19,10 +19,10 @@ final class <workerName>WorkerTests: XCTestCase {
     }
 
     func testWorking() {
-        expect { self.worker.isWorking } == false
+        expect { [self] in worker.isWorking } == false
         worker.start()
-        expect { self.worker.isWorking } == true
+        expect { [self] in worker.isWorking } == true
         worker.stop()
-        expect { self.worker.isWorking } == false
+        expect { [self] in worker.isWorking } == false
     }
 }
