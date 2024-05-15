@@ -87,7 +87,7 @@ swift_library(
     srcs = glob(["Sources/NodesTesting/**/*.swift"]),
     visibility = ["//visibility:public"],
     deps = [
-        "@Needle//:NeedleFoundation",
+        "@NeedleFoundation//:NeedleFoundation",
     ],
     copts = [
         "-warnings-as-errors",

@@ -56,11 +56,11 @@ def nodes_dependencies():
 
     maybe(
         http_archive,
-        name = "Needle",
+        name = "NeedleFoundation",
         url = "https://github.com/uber/needle/archive/refs/tags/v%s.tar.gz" % NEEDLE_VERSION,
         strip_prefix = "needle-%s" % NEEDLE_VERSION,
         sha256 = NEEDLE_SHA_256,
-        build_file = "@nodes_architecture_framework//bazel:dependencies/Needle/BUILD",
+        build_file = "@nodes_architecture_framework//bazel:dependencies/NeedleFoundation/BUILD",
     )
 
     NIMBLE_VERSION = "13.0.0"
