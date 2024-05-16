@@ -900,7 +900,7 @@ files:
       options:
         bundleIdPrefix: {{ prefix }}
         deploymentTarget:
-          iOS: "15.0"
+          iOS: "17.0"
         defaultConfig: Release
         settingPresets: none
         usesTabs: false
