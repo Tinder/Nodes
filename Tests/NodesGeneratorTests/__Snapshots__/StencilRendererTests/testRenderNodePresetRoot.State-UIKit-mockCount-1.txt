@@ -9,4 +9,5 @@ import <stateImport>
 internal struct RootState: Equatable {
 
     internal var name: String
+    internal var isReady: Bool
 }

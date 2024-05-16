@@ -39,9 +39,6 @@ internal final class RootContextImp: AbstractContext {
     /// The Analytics instance.
     private let analytics: RootAnalytics
 
-    // swiftlint:disable:next redundant_type_annotation
-    private var isReady: Bool = false
-
     /// The initializer.
     /// - Parameters:
     ///   - workers: The Worker instances
@@ -50,7 +47,7 @@ internal final class RootContextImp: AbstractContext {
         workers: [Worker],
         analytics: RootAnalytics
     ) {
-        self.state = RootState(name: "Root View Controller")
+        self.state = RootState(name: "Root View Controller", isReady: false)
         self.analytics = analytics
         super.init(workers: workers)
     }
@@ -67,9 +64,9 @@ extension RootContextImp: RootContextInterface {}
 extension RootContextImp: RootReceiver {
 
     internal func viewDidAppear() {
-        guard !isReady
+        guard !state.isReady
         else { return }
-        isReady = true
+        state.isReady = true
         flow?.didBecomeReady()
     }
 }
