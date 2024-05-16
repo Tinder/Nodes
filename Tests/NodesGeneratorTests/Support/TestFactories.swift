@@ -218,7 +218,9 @@ extension TestFactories {
         )
     }
 
-    internal func givenPluginStencilContext(mockCount: Int = 1) -> PluginStencilContext {
+    internal func givenPluginStencilContext(
+        mockCount: Int = 1
+    ) -> PluginStencilContext {
         PluginStencilContext(
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
@@ -229,7 +231,9 @@ extension TestFactories {
         )
     }
 
-    internal func givenPluginListStencilContext(mockCount: Int = 1) -> PluginListStencilContext {
+    internal func givenPluginListStencilContext(
+        mockCount: Int = 1
+    ) -> PluginListStencilContext {
         PluginListStencilContext(
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
@@ -241,7 +245,9 @@ extension TestFactories {
         )
     }
 
-    internal func givenWorkerStencilContext(mockCount: Int = 1) -> WorkerStencilContext {
+    internal func givenWorkerStencilContext(
+        mockCount: Int = 1
+    ) -> WorkerStencilContext {
         WorkerStencilContext(
             fileHeader: "<fileHeader>",
             workerName: "<workerName>",
