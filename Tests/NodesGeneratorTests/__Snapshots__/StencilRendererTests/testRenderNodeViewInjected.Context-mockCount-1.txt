@@ -39,8 +39,7 @@ internal final class <nodeName>ContextImp: AbstractContext
 
     // periphery:ignore
     /// The State instance.
-    @Published
-    internal private(set) var state: <nodeName>State
+    internal let state: <nodeName>State
 
     // periphery:ignore
     /// The Analytics instance.

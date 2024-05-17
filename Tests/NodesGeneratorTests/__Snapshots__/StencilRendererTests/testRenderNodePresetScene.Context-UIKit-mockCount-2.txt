@@ -41,8 +41,7 @@ internal final class WindowSceneContextImp: AbstractContext
 
     // periphery:ignore
     /// The State instance.
-    @Published
-    internal private(set) var state: WindowSceneState
+    internal let state: WindowSceneState
 
     // periphery:ignore
     /// The Analytics instance.

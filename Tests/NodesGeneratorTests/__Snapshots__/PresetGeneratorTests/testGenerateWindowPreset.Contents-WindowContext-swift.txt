@@ -39,8 +39,7 @@ internal final class WindowContextImp: AbstractContext
     internal weak var listener: WindowListener?
 
     /// The State instance.
-    @Published
-    internal private(set) var state: WindowState
+    internal let state: WindowState
 
     /// The Analytics instance.
     private let analytics: WindowAnalytics

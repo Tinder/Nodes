@@ -31,8 +31,7 @@ internal final class <nodeName>ContextImp: AbstractContext {
     internal weak var listener: <nodeName>Listener?
 
     /// The State instance.
-    @Published
-    internal private(set) var state: <nodeName>State
+    internal let state: <nodeName>State
 
     /// The Analytics instance.
     private let analytics: <nodeName>Analytics
