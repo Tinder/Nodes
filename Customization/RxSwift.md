@@ -138,17 +138,6 @@ extension StateObserver {
     }
 }
 
-extension WithViewState {
-
-    public init<P: Publisher>(
-        initialState: ViewState,
-        stateObservable publisher: P,
-        @ViewBuilder content: @escaping (ViewState) -> Content
-    ) where P.Output == ViewState, P.Failure == Never {
-        self.init(initialState: initialState, statePublisher: publisher, content: content)
-    }
-}
-
 extension Observable: Publisher {
 
     public typealias Output = Element
