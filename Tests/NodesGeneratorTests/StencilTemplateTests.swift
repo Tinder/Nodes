@@ -369,6 +369,115 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             }
         }
     }
+
+    // swiftlint:disable:next cyclomatic_complexity
+    func testImports_givenUIFrameworkNil() {
+        let config: Config = givenConfig()
+        for stencilTemplate in StencilTemplate.allCases {
+            let imports: Set<String> = stencilTemplate.imports(with: config, including: nil)
+            switch stencilTemplate {
+            case .analytics:
+                expect(imports) == [
+                    "<baseImport>"
+                ]
+            case .analyticsTests:
+                expect(imports) == [
+                    "<baseTestImport>"
+                ]
+            case .builder:
+                expect(imports) == [
+                    "Nodes",
+                    "<baseImport>",
+                    "<reactiveImport>",
+                    "<dependencyInjectionImport>",
+                    "<builderImport>"
+                ]
+            case .builderTests:
+                expect(imports) == [
+                    "NodesTesting",
+                    "<baseTestImport>"
+                ]
+            case .context:
+                expect(imports) == [
+                    "Nodes",
+                    "<baseImport>",
+                    "<reactiveImport>"
+                ]
+            case .contextTests:
+                expect(imports) == [
+                    "<baseTestImport>"
+                ]
+            case .flow:
+                expect(imports) == [
+                    "Nodes",
+                    "<baseImport>",
+                    "<flowImport>"
+                ]
+            case .flowTests:
+                expect(imports) == [
+                    "<baseTestImport>"
+                ]
+            case .plugin:
+                expect(imports) == [
+                    "Nodes",
+                    "<baseImport>",
+                    "<dependencyInjectionImport>"
+                ]
+            case .pluginTests:
+                expect(imports) == [
+                    "NodesTesting",
+                    "<baseTestImport>"
+                ]
+            case .pluginList:
+                expect(imports) == [
+                    "Nodes",
+                    "<baseImport>",
+                    "<dependencyInjectionImport>",
+                    "<pluginListImport>"
+                ]
+            case .pluginListTests:
+                expect(imports) == [
+                    "NodesTesting",
+                    "<baseTestImport>"
+                ]
+            case .state:
+                expect(imports) == [
+                    "<baseImport>"
+                ]
+            case .viewController:
+                expect(imports) == [
+                    "Nodes",
+                    "<baseImport>",
+                    "<reactiveImport>",
+                    "<viewControllerImport>"
+                ]
+            case .viewControllerTests:
+                expect(imports) == [
+                    "<baseTestImport>",
+                    "<reactiveImport>"
+                ]
+            case .viewState:
+                expect(imports) == [
+                    "Nodes",
+                    "<baseImport>"
+                ]
+            case .viewStateFactoryTests:
+                expect(imports) == [
+                    "<baseTestImport>"
+                ]
+            case .worker:
+                expect(imports) == [
+                    "Nodes",
+                    "<baseImport>",
+                    "<reactiveImport>"
+                ]
+            case .workerTests:
+                expect(imports) == [
+                    "<baseTestImport>"
+                ]
+            }
+        }
+    }
 }
 
 extension StencilTemplate {
