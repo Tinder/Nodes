@@ -226,7 +226,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
 
     // swiftlint:disable:next function_body_length cyclomatic_complexity
     public func imports(with config: Config, including uiFramework: UIFramework? = nil) -> Set<String> {
-        return switch self {
+        switch self {
         case .analytics:
             config.baseImports
         case .analyticsTests:
