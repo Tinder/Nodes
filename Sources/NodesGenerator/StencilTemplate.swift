@@ -226,11 +226,6 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
 
     // swiftlint:disable:next function_body_length cyclomatic_complexity
     public func imports(with config: Config, including uiFramework: UIFramework? = nil) -> Set<String> {
-        let viewControllerImports: Set<String> = config
-            .baseImports
-            .union(["Nodes"])
-            .union(config.reactiveImports)
-            .union(config.viewControllerImports)
         return switch self {
         case .analytics:
             config.baseImports
@@ -275,7 +270,11 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         case .state:
             config.baseImports
         case .viewController:
-            uiFramework.flatMap { viewControllerImports.union([$0.import]) } ?? viewControllerImports
+            config.baseImports
+                .union(["Nodes"])
+                .union(config.reactiveImports)
+                .union(config.viewControllerImports)
+                .union(uiFramework.flatMap { [$0.import] } ?? [])
         case .viewControllerTests:
             config.baseTestImports
                 .union(config.reactiveImports)
