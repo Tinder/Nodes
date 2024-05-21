@@ -445,26 +445,13 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     "<baseImport>"
                 ]
             case .viewController:
-                expect(imports) == [
-                    "Nodes",
-                    "<baseImport>",
-                    "<reactiveImport>",
-                    "<viewControllerImport>"
-                ]
+                expect(imports).to(beEmpty())
             case .viewControllerTests:
-                expect(imports) == [
-                    "<baseTestImport>",
-                    "<reactiveImport>"
-                ]
+                expect(imports).to(beEmpty())
             case .viewState:
-                expect(imports) == [
-                    "Nodes",
-                    "<baseImport>"
-                ]
+                expect(imports).to(beEmpty())
             case .viewStateFactoryTests:
-                expect(imports) == [
-                    "<baseTestImport>"
-                ]
+                expect(imports).to(beEmpty())
             case .worker:
                 expect(imports) == [
                     "Nodes",
