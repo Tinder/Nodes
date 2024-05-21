@@ -47,11 +47,7 @@ swift_library(
 
 swift_library(
     name = "Nodes",
-    srcs = glob(
-        ["Sources/Nodes/**/*.swift"],
-        # Exclude non-UIKit `ViewControllable` implementation.
-        exclude = ["Sources/Nodes/ViewControllable/ViewControllable.swift"],
-    ),
+    srcs = glob(["Sources/Nodes/**/*.swift"]),
     copts = [
         "-warnings-as-errors",
         "-strict-concurrency=complete",
