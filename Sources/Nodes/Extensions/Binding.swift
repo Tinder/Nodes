@@ -33,10 +33,10 @@ extension Binding {
     @preconcurrency
     @MainActor
     public static func bind(
-        to value: Value,
+        to value: @escaping @autoclosure () -> Value,
         onChange: @escaping @MainActor (Value) -> Void
     ) -> Binding<Value> {
-        Binding(get: { value }, set: { onChange($0) })
+        Binding(get: value, set: onChange)
     }
 
     /// Initializes a SwiftUI `Binding`.
@@ -63,12 +63,14 @@ extension Binding {
     @preconcurrency
     @MainActor
     public static func bind(
-        to value: Value,
+        to value: @escaping @autoclosure () -> Value,
         onChange: (@MainActor (Value) -> Void)?
     ) -> Binding<Value> {
-        guard let onChange: @MainActor (Value) -> Void
-        else { return .constant(value) }
-        return bind(to: value, onChange: onChange)
+        if let onChange: @MainActor (Value) -> Void {
+            Binding(get: value, set: onChange)
+        } else {
+            Binding(get: value) { _ in }
+        }
     }
 }
 
