@@ -226,8 +226,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
 
     // swiftlint:disable:next function_body_length cyclomatic_complexity
     public func imports(with config: Config, including uiFramework: UIFramework? = nil) -> Set<String> {
-        let isViewInjected: Bool = uiFramework == nil
-        return switch self {
+        switch self {
         case .analytics:
             config.baseImports
         case .analyticsTests:
@@ -271,19 +270,19 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         case .state:
             config.baseImports
         case .viewController:
-            isViewInjected ? [] : config.baseImports
+            uiFramework == nil ? [] : config.baseImports
                 .union(["Nodes"])
                 .union(config.reactiveImports)
                 .union(config.viewControllerImports)
                 .union(uiFramework.flatMap { [$0.import] } ?? [])
         case .viewControllerTests:
-            isViewInjected ? [] : config.baseTestImports
+            uiFramework == nil ? [] : config.baseTestImports
                 .union(config.reactiveImports)
         case .viewState:
-            isViewInjected ? [] : config.baseImports
+            uiFramework == nil ? [] : config.baseImports
                 .union(["Nodes"])
         case .viewStateFactoryTests:
-            isViewInjected ? [] : config.baseTestImports
+            uiFramework == nil ? [] : config.baseTestImports
         case .worker:
             config.baseImports
                 .union(["Nodes"])
