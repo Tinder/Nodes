@@ -26,12 +26,7 @@ jobs:
         mv .build/documentation/archive/Nodes.doccarchive Documentation
     - name: Archive
       run: >
-        tar -czf "Nodes-${GITHUB_REF_NAME}.tar.gz"
-        BUILD.bazel
-        Documentation
-        Sources
-        WORKSPACE.bazel
-        bazel
+        tar -czf "Nodes-${GITHUB_REF_NAME}.tar.gz" Sources Documentation
     - name: Upload
       run: >
         jf rt u

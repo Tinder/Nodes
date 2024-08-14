@@ -6,8 +6,6 @@
 &nbsp;
 [![Xcode](https://github.com/TinderApp/Nodes/actions/workflows/xcode.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/xcode.yml)
 &nbsp;
-[![Bazel](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/bazel.yml)
-&nbsp;
 [![DocC](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml)
 &nbsp;
 [![Genesis](https://github.com/TinderApp/Nodes/actions/workflows/genesis.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/genesis.yml)
