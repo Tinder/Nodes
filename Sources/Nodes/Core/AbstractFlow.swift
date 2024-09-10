@@ -229,7 +229,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///
     /// - Returns: The first `Flow` instance of the given `type` in the `subFlows` array, or `nil` if none exist.
     public final func firstSubFlow<T>(ofType type: T.Type) -> T? {
-        flowController.firstFlow(ofType: T.self)
+        flowController.firstFlow(ofType: type)
     }
 
     /// Executes the given closure with the first `Flow` instance of the given `type`, if any exist,
@@ -246,7 +246,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///
     ///     The closure returns `Void` and throws.
     public final func withFirstSubFlow<T>(ofType type: T.Type, perform: (_ flow: T) throws -> Void) rethrows {
-        try flowController.withFirstFlow(ofType: T.self, perform: perform)
+        try flowController.withFirstFlow(ofType: type, perform: perform)
     }
 
     /// Returns an array of the `Flow` instances of the given `type` existing in the `subFlows` array.
@@ -255,7 +255,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///
     /// - Returns: The `Flow` instances of the given `type`.
     public final func subFlows<T>(ofType type: T.Type) -> [T] {
-        flowController.flows(ofType: T.self)
+        flowController.flows(ofType: type)
     }
 
     /// Executes the given closure with each `Flow` instance of the given `type`, if any exist,
@@ -272,7 +272,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
     ///
     ///     The closure returns `Void` and throws.
     public final func withSubFlows<T>(ofType type: T.Type, perform: (_ flow: T) throws -> Void) rethrows {
-        try flowController.withFlows(ofType: T.self, perform: perform)
+        try flowController.withFlows(ofType: type, perform: perform)
     }
 
     deinit {
