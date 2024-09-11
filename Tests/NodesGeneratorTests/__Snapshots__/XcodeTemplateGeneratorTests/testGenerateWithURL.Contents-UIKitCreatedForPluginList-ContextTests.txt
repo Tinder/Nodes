@@ -3,6 +3,7 @@
 #warning("Manually move this test file to the corresponding test target then delete this warning.")
 
 import Nimble
+import NodesTesting
 import XCTest
 
 final class ___VARIABLE_productName___ContextTests: XCTestCase {

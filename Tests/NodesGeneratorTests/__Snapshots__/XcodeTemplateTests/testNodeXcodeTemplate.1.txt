@@ -32,8 +32,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 1 element
+        ▿ contextTestsImports: 2 elements
           - "<baseTestImport>"
+          - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
             ▿ (2 elements)
@@ -154,8 +155,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 1 element
+        ▿ contextTestsImports: 2 elements
           - "<baseTestImport>"
+          - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
             ▿ (2 elements)
@@ -276,8 +278,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 1 element
+        ▿ contextTestsImports: 2 elements
           - "<baseTestImport>"
+          - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
             ▿ (2 elements)
@@ -398,8 +401,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 1 element
+        ▿ contextTestsImports: 2 elements
           - "<baseTestImport>"
+          - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
             ▿ (2 elements)
@@ -520,8 +524,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 1 element
+        ▿ contextTestsImports: 2 elements
           - "<baseTestImport>"
+          - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
             ▿ (2 elements)
@@ -642,8 +647,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 1 element
+        ▿ contextTestsImports: 2 elements
           - "<baseTestImport>"
+          - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
             ▿ (2 elements)
@@ -764,8 +770,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 1 element
+        ▿ contextTestsImports: 2 elements
           - "<baseTestImport>"
+          - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
             ▿ (2 elements)
@@ -886,8 +893,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 1 element
+        ▿ contextTestsImports: 2 elements
           - "<baseTestImport>"
+          - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
             ▿ (2 elements)
@@ -1008,8 +1016,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 1 element
+        ▿ contextTestsImports: 2 elements
           - "<baseTestImport>"
+          - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
             ▿ (2 elements)
@@ -1130,8 +1139,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 1 element
+        ▿ contextTestsImports: 2 elements
           - "<baseTestImport>"
+          - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
             ▿ (2 elements)
