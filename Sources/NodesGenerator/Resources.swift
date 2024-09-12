@@ -4,30 +4,12 @@
 
 import Foundation
 
-#if BAZEL
-import PathKit
-#endif
-
 internal final class Resources {
-
-    #if BAZEL
-
-    internal func url(forResource resource: String, withExtension extension: String) -> URL? {
-        try? Path(Bundle(for: Resources.self).bundlePath)
-            .recursiveChildren()
-            .first { $0.lastComponentWithoutExtension == resource && $0.extension == `extension` }?
-            .url
-            .resolvingSymlinksInPath()
-    }
-
-    #else
 
     internal func url(forResource resource: String, withExtension extension: String) -> URL? {
         let bundle: Bundle = .moduleRelativeToExecutable ?? .module
         return bundle.url(forResource: resource, withExtension: `extension`)
     }
-
-    #endif
 }
 
 extension Bundle {

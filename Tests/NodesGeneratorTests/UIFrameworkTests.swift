@@ -5,6 +5,7 @@
 import Codextended
 import Nimble
 @testable import NodesGenerator
+import SnapshotTesting
 import XCTest
 import Yams
 

@@ -4,6 +4,7 @@
 
 import Nimble
 @testable import NodesGenerator
+import SnapshotTesting
 import XCTest
 
 final class XcodeTemplatePermutationTests: XCTestCase, TestFactories {
