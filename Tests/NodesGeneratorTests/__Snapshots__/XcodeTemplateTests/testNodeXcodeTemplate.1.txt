@@ -75,6 +75,7 @@
         - publisherType: "<publisherType>"
         ▿ stateImports: 1 element
           - "<baseImport>"
+        - storePrefix: "Observable"
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -198,6 +199,7 @@
         - publisherType: "<publisherType>"
         ▿ stateImports: 1 element
           - "<baseImport>"
+        - storePrefix: "Observable"
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -321,6 +323,7 @@
         - publisherType: "<publisherType>"
         ▿ stateImports: 1 element
           - "<baseImport>"
+        - storePrefix: "Observable"
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -444,6 +447,7 @@
         - publisherType: "<publisherType>"
         ▿ stateImports: 1 element
           - "<baseImport>"
+        - storePrefix: "Observable"
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -567,6 +571,7 @@
         - publisherType: "<publisherType>"
         ▿ stateImports: 1 element
           - "<baseImport>"
+        - storePrefix: "Observable"
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -690,6 +695,7 @@
         - publisherType: "<publisherType>"
         ▿ stateImports: 1 element
           - "<baseImport>"
+        - storePrefix: "Observable"
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -813,6 +819,7 @@
         - publisherType: "<publisherType>"
         ▿ stateImports: 1 element
           - "<baseImport>"
+        - storePrefix: "Observable"
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -936,6 +943,7 @@
         - publisherType: "<publisherType>"
         ▿ stateImports: 1 element
           - "<baseImport>"
+        - storePrefix: "Observable"
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -1059,6 +1067,7 @@
         - publisherType: "<publisherType>"
         ▿ stateImports: 1 element
           - "<baseImport>"
+        - storePrefix: "Observable"
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -1182,6 +1191,7 @@
         - publisherType: "<publisherType>"
         ▿ stateImports: 1 element
           - "<baseImport>"
+        - storePrefix: "Observable"
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"

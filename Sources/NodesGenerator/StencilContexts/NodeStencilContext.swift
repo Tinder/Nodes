@@ -46,6 +46,7 @@ public struct NodeStencilContext: StencilContext {
     private let publisherFailureType: String
     private let contextGenericTypes: [String]
     private let workerGenericTypes: [String]
+    private let storePrefix: String
     private let isPreviewProviderEnabled: Bool
     private let isPeripheryCommentEnabled: Bool
     private let isNimbleEnabled: Bool
@@ -94,6 +95,7 @@ public struct NodeStencilContext: StencilContext {
             "publisher_failure_type": publisherFailureType,
             "context_generic_types": contextGenericTypes,
             "worker_generic_types": workerGenericTypes,
+            "store_prefix": storePrefix,
             "is_preview_provider_enabled": isPreviewProviderEnabled,
             "is_periphery_comment_enabled": isPeripheryCommentEnabled,
             "is_nimble_enabled": isNimbleEnabled
@@ -143,6 +145,7 @@ public struct NodeStencilContext: StencilContext {
         publisherFailureType: String,
         contextGenericTypes: [String],
         workerGenericTypes: [String],
+        storePrefix: String,
         isPreviewProviderEnabled: Bool,
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
@@ -190,6 +193,7 @@ public struct NodeStencilContext: StencilContext {
             publisherFailureType: publisherFailureType,
             contextGenericTypes: contextGenericTypes,
             workerGenericTypes: workerGenericTypes,
+            storePrefix: storePrefix,
             isPreviewProviderEnabled: isPreviewProviderEnabled,
             isPeripheryCommentEnabled: isPeripheryCommentEnabled,
             isNimbleEnabled: isNimbleEnabled
@@ -233,6 +237,7 @@ public struct NodeStencilContext: StencilContext {
         publisherFailureType: String,
         contextGenericTypes: [String],
         workerGenericTypes: [String],
+        storePrefix: String,
         isPreviewProviderEnabled: Bool,
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
@@ -282,6 +287,7 @@ public struct NodeStencilContext: StencilContext {
             publisherFailureType: publisherFailureType,
             contextGenericTypes: contextGenericTypes,
             workerGenericTypes: workerGenericTypes,
+            storePrefix: storePrefix,
             isPreviewProviderEnabled: isPreviewProviderEnabled,
             isPeripheryCommentEnabled: isPeripheryCommentEnabled,
             isNimbleEnabled: isNimbleEnabled
@@ -331,6 +337,7 @@ public struct NodeStencilContext: StencilContext {
         publisherFailureType: String,
         contextGenericTypes: [String],
         workerGenericTypes: [String],
+        storePrefix: String,
         isPreviewProviderEnabled: Bool,
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
@@ -378,6 +385,7 @@ public struct NodeStencilContext: StencilContext {
         self.publisherFailureType = publisherFailureType
         self.contextGenericTypes = contextGenericTypes
         self.workerGenericTypes = workerGenericTypes
+        self.storePrefix = storePrefix
         self.isPreviewProviderEnabled = isPreviewProviderEnabled
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
         self.isNimbleEnabled = isNimbleEnabled

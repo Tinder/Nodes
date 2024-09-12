@@ -93,6 +93,7 @@ public final class PresetGenerator {
                 publisherFailureType: config.publisherFailureType,
                 contextGenericTypes: config.contextGenericTypes,
                 workerGenericTypes: config.workerGenericTypes,
+                storePrefix: config.storePrefix,
                 isPreviewProviderEnabled: config.isPreviewProviderEnabled,
                 isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
                 isNimbleEnabled: config.isNimbleEnabled
