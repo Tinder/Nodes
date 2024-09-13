@@ -76,6 +76,7 @@ contextGenericTypes:
   - AnyCancellable
 workerGenericTypes:
   - AnyCancellable
+isObservableStoreEnabled: true  
 isViewInjectedTemplateEnabled: true
 isPreviewProviderEnabled: false
 isTestTemplatesGenerationEnabled: true
