@@ -49,6 +49,7 @@ extension TestFactories {
         config.publisherFailureType = "<publisherFailureType>"
         config.contextGenericTypes = ["<contextGenericType>"]
         config.workerGenericTypes = ["<workerGenericType>"]
+        config.isObservableStoreEnabled = true
         config.isViewInjectedTemplateEnabled = true
         config.isObservableStoreEnabled = false
         config.isPreviewProviderEnabled = true
