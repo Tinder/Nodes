@@ -118,7 +118,7 @@ extension Config {
         publisherFailureType = "Never"
         contextGenericTypes = ["AnyCancellable"]
         workerGenericTypes = ["AnyCancellable"]
-        isObservableStoreEnabled = false
+        isObservableStoreEnabled = true
         isViewInjectedTemplateEnabled = true
         isPreviewProviderEnabled = false
         isTestTemplatesGenerationEnabled = true

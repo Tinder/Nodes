@@ -38,7 +38,7 @@
     ▿ Variable
       - name: "<flowProperties-name-2>"
       - type: "<flowProperties-type-2>"
-  - isObservableStoreEnabled: false
+  - isObservableStoreEnabled: true
   - isPeripheryCommentEnabled: true
   - isPreviewProviderEnabled: true
   - isTestTemplatesGenerationEnabled: true
