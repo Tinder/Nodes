@@ -69,7 +69,7 @@ viewStateOperators: |-
   .eraseToAnyPublisher()
 viewStatePropertyComment: The view state publisher.
 viewStatePropertyName: statePublisher
-viewStateTransform: Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()
+viewStateTransform = store.viewStatePublisher
 publisherType: AnyPublisher
 publisherFailureType: Never
 contextGenericTypes:

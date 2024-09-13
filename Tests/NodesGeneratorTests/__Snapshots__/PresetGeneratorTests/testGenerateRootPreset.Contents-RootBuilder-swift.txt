@@ -163,7 +163,7 @@ internal final class RootBuilderImp: AbstractBuilder
         let viewStateFactory: RootViewStateFactory = .init()
         let viewController: RootViewController = .init(
             initialState: viewStateFactory(context.state),
-            statePublisher: Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()
+            statePublisher: store.viewStatePublisher
         )
         viewController.receiver = context
         let flow: RootFlowImp = .init(
