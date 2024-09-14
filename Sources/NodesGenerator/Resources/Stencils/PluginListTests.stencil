@@ -25,6 +25,7 @@ final class {{ plugin_list_name }}PluginListTests: XCTestCase {
         })
     }
 
+    @MainActor
     override func tearDown() {
         pluginList = nil
         super.tearDown()

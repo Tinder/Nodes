@@ -48,6 +48,7 @@ final class {{ node_name }}FlowTests: XCTestCase {
         {% endif %}
     }
 
+    @MainActor
     override func tearDown() {
         contextMock = nil
         viewControllableMock = nil

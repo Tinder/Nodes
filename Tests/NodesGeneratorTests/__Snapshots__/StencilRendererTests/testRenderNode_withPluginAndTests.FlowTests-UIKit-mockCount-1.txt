@@ -30,6 +30,7 @@ final class <nodeName>FlowTests: XCTestCase {
         expect { [self] in flow.isStarted } == true
     }
 
+    @MainActor
     override func tearDown() {
         contextMock = nil
         viewControllableMock = nil

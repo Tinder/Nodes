@@ -40,6 +40,7 @@ final class {{ node_name }}BuilderTests: XCTestCase {
         })
     }
 
+    @MainActor
     override func tearDown() {
         listenerMock = nil
         {% if not owns_view %}
