@@ -20,6 +20,7 @@ final class ___VARIABLE_productName___ContextTests: XCTestCase {
         )
     }
 
+    @MainActor
     override func tearDown() {
         analyticsMock = nil
         context = nil

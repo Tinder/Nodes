@@ -23,6 +23,7 @@ final class <nodeName>BuilderTests: XCTestCase {
         })
     }
 
+    @MainActor
     override func tearDown() {
         listenerMock = nil
         builder = nil

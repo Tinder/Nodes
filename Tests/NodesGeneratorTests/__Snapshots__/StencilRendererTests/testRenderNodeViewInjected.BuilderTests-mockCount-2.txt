@@ -31,6 +31,7 @@ final class <nodeName>BuilderTests: XCTestCase {
         })
     }
 
+    @MainActor
     override func tearDown() {
         listenerMock = nil
         viewControllableMock = nil

@@ -25,6 +25,7 @@ final class ___VARIABLE_productName___BuilderTests: XCTestCase {
         })
     }
 
+    @MainActor
     override func tearDown() {
         listenerMock = nil
         builder = nil
