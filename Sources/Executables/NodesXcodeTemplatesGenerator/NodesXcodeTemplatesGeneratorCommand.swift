@@ -9,7 +9,6 @@ import NodesGenerator
 internal struct NodesXcodeTemplatesGeneratorCommand: ParsableCommand {
 
     #if swift(>=5.10)
-    // swiftlint:disable:next explicit_acl type_contents_order
     nonisolated(unsafe) internal static let configuration: CommandConfiguration = .init(
         commandName: "nodes-xcode-templates-gen",
         abstract: "Nodes Xcode Templates Generator"

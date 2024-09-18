@@ -59,6 +59,8 @@ extension XCTestCase {
         }
     }
 
+    // swiftlint:disable unused_parameter
+
     @MainActor
     private func registerBootstrapComponent<T: Component<EmptyDependency>>(
         componentFactory: @escaping () -> T
@@ -70,4 +72,6 @@ extension XCTestCase {
             addTeardownBlock(teardown)
         }
     }
+
+    // swiftlint:enable unused_parameter
 }

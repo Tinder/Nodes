@@ -32,6 +32,8 @@ open class Plugin<ComponentType, BuildType, StateType> {
         self.componentFactory = componentFactory
     }
 
+    // swiftlint:disable unused_parameter
+
     /// Contains the plugin's enabled criteria.
     ///
     /// The `create` method of the plugin will return a `BuildType` instance when enabled, otherwise `nil`.
@@ -64,6 +66,8 @@ open class Plugin<ComponentType, BuildType, StateType> {
     open func build(component: ComponentType) -> BuildType { // swiftlint:disable:this unavailable_function
         preconditionFailure("Method in abstract base class must be overridden")
     }
+
+    // swiftlint:enable unused_parameter
 
     /// Initializes and returns a `BuildType` instance when the plugin is enabled, otherwise `nil`.
     ///

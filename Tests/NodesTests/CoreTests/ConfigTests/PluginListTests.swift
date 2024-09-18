@@ -24,6 +24,7 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         // swiftlint:disable:next discouraged_optional_collection
         var creationOrderOverride: [String]?
 
+        // swiftlint:disable:next unused_parameter
         override func plugins(component: ComponentType) -> KeyValuePairs<String, AnyPlugin> {
             [
                 "plugin1": AnyPlugin(BuildType(identifier: "plugin1")),
@@ -42,10 +43,12 @@ final class PluginListTests: XCTestCase, TestCaseHelpers {
         // swiftlint:disable:next discouraged_optional_collection
         var creationOrderOverride: [String]?
 
+        // swiftlint:disable:next unused_parameter
         override func `default`(component: ComponentType) -> (key: String, instance: BuildType) {
             (key: "default", instance: BuildType(identifier: "default"))
         }
 
+        // swiftlint:disable:next unused_parameter
         override func plugins(component: ComponentType) -> KeyValuePairs<String, AnyPlugin> {
             [
                 "plugin1": AnyPlugin(BuildType(identifier: "plugin1")),

@@ -14,7 +14,7 @@
 open class _BaseContext: Context { // swiftlint:disable:this type_name
 
     /// A Boolean value indicating whether the `Context` instance is active.
-    public private(set) var isActive: Bool = false // swiftlint:disable:this redundant_type_annotation
+    public private(set) var isActive: Bool = false
 
     /// The array of `Worker` instances.
     public var workers: [Worker] {

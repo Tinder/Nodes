@@ -78,6 +78,8 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
         self.componentFactory = componentFactory
     }
 
+    // swiftlint:disable unused_parameter
+
     /// Defines the collection of type-erased `AnyPlugin` instances.
     ///
     /// - Important: This abstract method must be overridden in subclasses.
@@ -116,6 +118,8 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
     ) -> [KeyType] {
         plugins(component: component).map(\.key)
     }
+
+    // swiftlint:enable unused_parameter
 
     /// Calls `create` on the plugins for the keys provided by ``creationOrder(component:state:)`` and returns
     /// the resulting non-nil `BuildType` instances in creation order.
@@ -274,6 +278,8 @@ open class PluginListWithDefault<KeyType: Hashable,
                                  BuildType,
                                  StateType>: PluginList<KeyType, ComponentType, BuildType, StateType> {
 
+    // swiftlint:disable unused_parameter
+
     /// Defines the default instance to prepend to the collection of `BuildType` instances.
     ///
     /// - Important: This abstract method must be overridden in subclasses.
@@ -289,6 +295,8 @@ open class PluginListWithDefault<KeyType: Hashable,
     ) -> (key: KeyType, instance: BuildType) {
         preconditionFailure("Method in abstract base class must be overridden")
     }
+
+    // swiftlint:enable unused_parameter
 
     /// Calls `create` on the plugins for the keys provided by ``PluginList/creationOrder(component:state:)`` and
     /// returns the resulting non-nil `BuildType` instances in creation order prepended with the default instance

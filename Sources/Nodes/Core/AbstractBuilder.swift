@@ -43,6 +43,8 @@ open class AbstractBuilder<ComponentType,
         self.componentFactory = componentFactory
     }
 
+    // swiftlint:disable unused_parameter
+
     /// The factory method that creates and returns a `BuildType` instance (`Flow` object).
     ///
     /// This method typically also creates several other objects including a `Context` instance,
@@ -63,6 +65,8 @@ open class AbstractBuilder<ComponentType,
     ) -> BuildType {
         preconditionFailure("Method in abstract base class must be overridden")
     }
+
+    // swiftlint:enable unused_parameter
 
     /// Initializes a `ComponentType` instance (using the stored factory) which is then passed to
     /// ``build(component:dynamicBuildDependency:)`` to create the `BuildType` instance (`Flow` object).

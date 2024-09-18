@@ -13,6 +13,7 @@ final class StateObserverTests: XCTestCase {
 
         private(set) var observerCallCount: Int = 0
 
+        // swiftlint:disable:next unused_parameter
         func update(with: Void) {
             observerCallCount += 1
         }
