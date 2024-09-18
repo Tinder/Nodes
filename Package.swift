@@ -116,11 +116,9 @@ let package = Package(
 
 package.targets.forEach { target in
 
-    if Context.environment["CI"] != "true" {
-        target.swiftSettings = [
-            .enableExperimentalFeature("StrictConcurrency"),
-        ]
-    }
+    target.swiftSettings = [
+        .enableExperimentalFeature("StrictConcurrency"),
+    ]
 
     target.plugins = [
         .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint"),
