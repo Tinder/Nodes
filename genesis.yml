@@ -279,7 +279,7 @@ files:
       - unused_control_flow_label
       - unused_enumerated
       - unused_optional_binding
-      - unused_parameter
+      # - unused_parameter
       - unused_setter_value
       - valid_ibinspectable
       - vertical_parameter_alignment
