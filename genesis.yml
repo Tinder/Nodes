@@ -1009,14 +1009,14 @@ files:
           path: {{ path }}
           {% else %}
           url: git@github.com:TinderApp/Nodes.git
-          exact: {{ nodes }}
+          version: {{ nodes }}
           {% endif %}
         NeedleFoundation:
           url: https://github.com/uber/needle.git
-          exact: 0.24.0
+          version: 0.24.0
         Nimble:
           url: https://github.com/Quick/Nimble.git
-          exact: 13.0.0
+          version: 13.0.0
       configFiles:
         Debug: BuildSettings/Debug.xcconfig
         Release: BuildSettings/Release.xcconfig
