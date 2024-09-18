@@ -1,6 +1,6 @@
 options:
 
-  - question: "Nodes Version Requirement (up to next major):"
+  - question: "Nodes Version:"
     name: nodes
     type: string
     required: true
@@ -25,7 +25,7 @@ options:
     type: string
     required: true
 
-  - question: "[OPTIONAL] Nodes repository absolute file path (overrides Nodes version requirement):"
+  - question: "[OPTIONAL] Nodes repository absolute file path (overrides Nodes version):"
     name: path
     type: string
     required: false
@@ -83,6 +83,7 @@ files:
       - contains_over_filter_is_empty
       - contains_over_first_not_nil
       - contains_over_range_nil_comparison
+      # - contrasted_opening_brace
       - control_statement
       - convenience_type
       - custom_rules
@@ -123,6 +124,7 @@ files:
       # - file_name
       - file_name_no_space
       # - file_types_order
+      - final_test_case
       - first_where
       - flatmap_over_map_reduce
       - for_where
@@ -174,11 +176,13 @@ files:
       - multiple_closures_with_trailing_closure
       - nesting
       - nimble_operator
+      # - no_empty_block
       - no_extension_access_modifier
       - no_fallthrough_only
       # - no_grouping_extension
       # - no_magic_numbers
       - no_space_in_method_call
+      - non_optional_string_data_conversion
       - non_overridable_class_declaration
       - notification_center_detachment
       - ns_number_init_as_function_reference
@@ -187,6 +191,7 @@ files:
       - nsobject_prefer_isequal
       - number_separator
       # - object_literal
+      # - one_declaration_per_file
       - opening_brace
       - operator_usage_whitespace
       - operator_whitespace
@@ -196,6 +201,7 @@ files:
       - override_in_extension
       - pattern_matching_keywords
       - period_spacing
+      - prefer_key_path
       - prefer_nimble
       - prefer_self_in_static_references
       - prefer_self_type_over_type_of_self
@@ -231,6 +237,7 @@ files:
       # - return_value_from_void_function
       - self_binding
       - self_in_property_initialization
+      # - shorthand_argument
       - shorthand_operator
       - shorthand_optional_binding
       - single_test_class
@@ -239,6 +246,7 @@ files:
       - sorted_imports
       - statement_position
       - static_operator
+      - static_over_final_class
       # - strict_fileprivate
       - strong_iboutlet
       - superfluous_disable_command
@@ -271,6 +279,7 @@ files:
       - unused_control_flow_label
       - unused_enumerated
       - unused_optional_binding
+      - unused_parameter
       - unused_setter_value
       - valid_ibinspectable
       - vertical_parameter_alignment
@@ -870,7 +879,7 @@ files:
 
   - path: Package.swift
     contents: |
-      // swift-tools-version:5.9
+      // swift-tools-version:5.8
 
       import PackageDescription
 
@@ -883,14 +892,11 @@ files:
                   path: "{{ path }}"),
                   {% else %}
                   url: "git@github.com:TinderApp/Nodes.git",
-                  from: "{{ nodes }}"),
+                  exact: "{{ nodes }}"),
                   {% endif %}
-          ],
-          targets: [
-              .binaryTarget(
-                  name: "SwiftLintBinary-{{ project|replace:' ','_' }}",
-                  url: "https://github.com/realm/SwiftLint/releases/download/0.54.0/SwiftLintBinary-macos.artifactbundle.zip",
-                  checksum: "963121d6babf2bf5fd66a21ac9297e86d855cbc9d28322790646b88dceca00f1"),
+              .package(
+                  url: "https://github.com/realm/SwiftLint.git",
+                  exact: "0.56.2"),
           ]
       )
 
@@ -1003,14 +1009,14 @@ files:
           path: {{ path }}
           {% else %}
           url: git@github.com:TinderApp/Nodes.git
-          from: {{ nodes }}
+          exact: {{ nodes }}
           {% endif %}
         NeedleFoundation:
           url: https://github.com/uber/needle.git
-          from: 0.24.0
+          exact: 0.24.0
         Nimble:
           url: https://github.com/Quick/Nimble.git
-          from: 13.0.0
+          exact: 13.0.0
       configFiles:
         Debug: BuildSettings/Debug.xcconfig
         Release: BuildSettings/Release.xcconfig
@@ -1124,9 +1130,7 @@ files:
                     # https://github.com/realm/SwiftLint/blob/0.52.4/Source/swiftlint/Commands/SwiftLint.swift#L8
                     unset BUILD_WORKSPACE_DIRECTORY
 
-                    DIRECTORY_NAME="$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]')"
-
-                    "$(find ".build/artifacts/${DIRECTORY_NAME}" -type f -name swiftlint -perm +111 -print -quit)"
+                    "$(find ".build/artifacts/swiftlint" -type f -name swiftlint -perm +111 -print -quit)"
                 else
                     echo "SwiftLint is skipped in CI."
                 fi
