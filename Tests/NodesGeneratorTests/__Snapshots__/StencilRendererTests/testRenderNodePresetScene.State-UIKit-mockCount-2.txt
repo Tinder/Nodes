@@ -7,4 +7,9 @@ import <stateImport2>
  PURPOSE:
  The state of the Node.
  */
-internal struct WindowSceneState: Equatable {}
+internal struct WindowSceneState: Equatable {
+
+    internal static func initialState() -> Self {
+        WindowSceneState()
+    }
+}

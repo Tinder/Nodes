@@ -10,12 +10,21 @@ import {{ import }}
  PURPOSE:
  The state of the Node.
  */
-{% if node_name == "Root" %}
 internal struct {{ node_name }}State: Equatable {
 
+{% if node_name == "Root" %}
     internal var name: String
     internal var isReady: Bool
-}
+
+    internal static func initialState() -> Self {
+        {{ node_name }}State(
+            name: "{{ node_name }} View Controller",
+            isReady: false
+        )
+    }
 {% else %}
-internal struct {{ node_name }}State: Equatable {}
+    internal static func initialState() -> Self {
+        {{ node_name }}State()
+    }
 {% endif %}
+}

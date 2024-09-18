@@ -98,11 +98,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
         analytics: {{ node_name }}Analytics{% if node_name == "App" %}{{ ',' }}
         windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>{% endif +%}
     ) {
-        {% if node_name == "Root" %}
-        self.state = {{ node_name }}State(name: "{{ node_name }} View Controller", isReady: false)
-        {% else %}
-        self.state = {{ node_name }}State()
-        {% endif %}
+        self.state = .initialState()
         self.analytics = analytics
         {% if node_name == "App" %}
         self.windowScenePublisher = windowScenePublisher

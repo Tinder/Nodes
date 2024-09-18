@@ -10,4 +10,11 @@ internal struct RootState: Equatable {
 
     internal var name: String
     internal var isReady: Bool
+
+    internal static func initialState() -> Self {
+        RootState(
+            name: "Root View Controller",
+            isReady: false
+        )
+    }
 }
