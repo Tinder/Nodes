@@ -9,6 +9,6 @@ import <stateImport>
 internal struct WindowSceneState: Equatable {
 
     internal static func initialState() -> Self {
-        WindowSceneState()
+        Self()
     }
 }

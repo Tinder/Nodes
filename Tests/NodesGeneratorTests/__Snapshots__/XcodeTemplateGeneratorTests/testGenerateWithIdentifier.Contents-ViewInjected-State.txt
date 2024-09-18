@@ -7,6 +7,6 @@
 internal struct ___VARIABLE_productName___State: Equatable {
 
     internal static func initialState() -> Self {
-        ___VARIABLE_productName___State()
+        Self()
     }
 }

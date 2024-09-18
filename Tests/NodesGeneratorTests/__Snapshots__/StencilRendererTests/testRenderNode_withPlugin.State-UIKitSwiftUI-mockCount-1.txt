@@ -9,6 +9,6 @@ import <stateImport>
 internal struct <nodeName>State: Equatable {
 
     internal static func initialState() -> Self {
-        <nodeName>State()
+        Self()
     }
 }

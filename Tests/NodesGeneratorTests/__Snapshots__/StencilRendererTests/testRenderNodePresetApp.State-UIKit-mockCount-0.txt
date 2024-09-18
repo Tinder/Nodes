@@ -7,6 +7,6 @@
 internal struct AppState: Equatable {
 
     internal static func initialState() -> Self {
-        AppState()
+        Self()
     }
 }
