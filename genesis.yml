@@ -1013,10 +1013,10 @@ files:
           {% endif %}
         NeedleFoundation:
           url: https://github.com/uber/needle.git
-          version: 0.24.0
+          version: 0.25.1
         Nimble:
           url: https://github.com/Quick/Nimble.git
-          version: 13.0.0
+          version: 13.5.0
       configFiles:
         Debug: BuildSettings/Debug.xcconfig
         Release: BuildSettings/Release.xcconfig
