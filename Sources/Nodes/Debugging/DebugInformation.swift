@@ -57,6 +57,8 @@ public enum DebugInformation {
             self.object = object
         }
 
+        // swiftlint:disable unused_parameter
+
         public func canMake<T>(withObjectOfType type: T.Type) -> Bool {
             (object as? T) != nil
         }
@@ -80,6 +82,8 @@ public enum DebugInformation {
             else { return nil }
             return output
         }
+
+        // swiftlint:enable unused_parameter
     }
 
     internal final class FlowWillStartNotification: NotificationPosting {

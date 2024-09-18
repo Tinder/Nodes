@@ -88,6 +88,8 @@ open class NavigationController: UINavigationController, UINavigationControllerD
 
     private var previousChildren: [UIViewController] = []
 
+    // swiftlint:disable unused_parameter
+
     /// Notifies the delegate after the navigation controller displays a view controller’s view and navigation
     /// item properties.
     ///
@@ -111,6 +113,8 @@ open class NavigationController: UINavigationController, UINavigationControllerD
         let startIndex: Int = index + 1
         didPopViewControllers(Array(previousChildren[startIndex...endIndex]))
     }
+
+    // swiftlint:enable unused_parameter
 
     /// Assigns the closure in which to call the receiver method informing a `Context` instance of removed
     /// view controllers.

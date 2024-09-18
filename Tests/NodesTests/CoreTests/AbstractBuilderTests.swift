@@ -14,6 +14,7 @@ final class AbstractBuilderTests: XCTestCase {
 
     private class TestBuilder: AbstractBuilder<ComponentType, BuildType, Void, Void> {
 
+        // swiftlint:disable:next unused_parameter
         override func build(component: ComponentType, dynamicBuildDependency: Void) -> BuildType {
             BuildType()
         }

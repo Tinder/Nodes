@@ -58,7 +58,6 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
 
     #if DEBUG
 
-    // swiftlint:disable:next redundant_type_annotation
     private var _isStarted: Bool = false
 
     #endif

@@ -11,6 +11,3 @@
 
 # Codegen
 **/Generated/
-
-# Bazel
-bazel-*

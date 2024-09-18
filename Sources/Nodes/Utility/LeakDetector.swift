@@ -67,6 +67,7 @@ public enum LeakDetector {
 
     #else
 
+    // swiftlint:disable:next unused_parameter
     public static func detect(_ object: AnyObject, delay: TimeInterval = 1) {}
 
     #endif
