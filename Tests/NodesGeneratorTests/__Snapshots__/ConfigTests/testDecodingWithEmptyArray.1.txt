@@ -12,7 +12,7 @@
     - "NeedleFoundation"
   - flowImports: 0 members
   - flowProperties: 0 elements
-  - isObservableStoreEnabled: true
+  - isObservableStoreEnabled: false
   - isPeripheryCommentEnabled: false
   - isPreviewProviderEnabled: false
   - isTestTemplatesGenerationEnabled: true

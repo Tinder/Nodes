@@ -185,6 +185,7 @@ final class ConfigTests: XCTestCase, TestFactories {
           - <workerGenericTypes-1>
           - <workerGenericTypes-2>
         isViewInjectedTemplateEnabled: true
+        isObservableStoreEnabled: false
         isPreviewProviderEnabled: true
         isTestTemplatesGenerationEnabled: true
         isPeripheryCommentEnabled: true

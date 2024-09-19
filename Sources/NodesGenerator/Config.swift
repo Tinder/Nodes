@@ -54,8 +54,8 @@ public struct Config: Codable, Equatable {
     public var contextGenericTypes: [String]
     public var workerGenericTypes: [String]
 
-    public var isObservableStoreEnabled: Bool
     public var isViewInjectedTemplateEnabled: Bool
+    public var isObservableStoreEnabled: Bool
     public var isPreviewProviderEnabled: Bool
     public var isTestTemplatesGenerationEnabled: Bool
     public var isPeripheryCommentEnabled: Bool
@@ -118,8 +118,8 @@ extension Config {
         publisherFailureType = "Never"
         contextGenericTypes = ["AnyCancellable"]
         workerGenericTypes = ["AnyCancellable"]
-        isObservableStoreEnabled = true
         isViewInjectedTemplateEnabled = true
+        isObservableStoreEnabled = false
         isPreviewProviderEnabled = false
         isTestTemplatesGenerationEnabled = true
         isPeripheryCommentEnabled = false
@@ -223,12 +223,12 @@ extension Config {
         workerGenericTypes =
             (try? decoder.decode(CodingKeys.workerGenericTypes))
             ?? defaults.workerGenericTypes
-        isObservableStoreEnabled =
-            (try? decoder.decode(CodingKeys.isObservableStoreEnabled))
-            ?? defaults.isObservableStoreEnabled
         isViewInjectedTemplateEnabled =
             (try? decoder.decode(CodingKeys.isViewInjectedTemplateEnabled))
             ?? defaults.isViewInjectedTemplateEnabled
+        isObservableStoreEnabled =
+            (try? decoder.decode(CodingKeys.isObservableStoreEnabled))
+            ?? defaults.isObservableStoreEnabled
         isPreviewProviderEnabled =
             (try? decoder.decode(CodingKeys.isPreviewProviderEnabled))
             ?? defaults.isPreviewProviderEnabled

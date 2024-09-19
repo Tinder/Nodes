@@ -50,6 +50,7 @@ extension TestFactories {
         config.contextGenericTypes = ["<contextGenericType>"]
         config.workerGenericTypes = ["<workerGenericType>"]
         config.isViewInjectedTemplateEnabled = true
+        config.isObservableStoreEnabled = false
         config.isPreviewProviderEnabled = true
         config.isTestTemplatesGenerationEnabled = true
         config.isPeripheryCommentEnabled = true
