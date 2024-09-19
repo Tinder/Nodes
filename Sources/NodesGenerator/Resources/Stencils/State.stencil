@@ -17,10 +17,7 @@ internal struct {{ node_name }}State: Equatable {
     internal var isReady: Bool
 
     internal static func initialState() -> Self {
-        Self(
-            name: "{{ node_name }} View Controller",
-            isReady: false
-        )
+        Self(name: "{{ node_name }} View Controller", isReady: false)
     }
 {% else %}
     internal static func initialState() -> Self {
