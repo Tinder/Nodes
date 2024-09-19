@@ -177,6 +177,8 @@ private class ObservableViewStateStoreBase<
         preconditionFailure("Property in abstract base class must be overridden")
     }
 
+    // swiftlint:disable unused_parameter
+
     // swiftlint:disable:next unavailable_function
     func bind<T>(
         to keyPath: KeyPath<ViewState, T>,
@@ -192,6 +194,8 @@ private class ObservableViewStateStoreBase<
     ) -> Binding<T> {
         preconditionFailure("Method in abstract base class must be overridden")
     }
+
+    // swiftlint:enable unused_parameter
 }
 
 // MARK: - Preview
@@ -208,6 +212,8 @@ public final class ObservablePreviewStore<ViewState: Equatable>: ObservableViewS
         self.viewState = viewState
     }
 
+    // swiftlint:disable unused_parameter
+
     public func bind<T>(
         to keyPath: KeyPath<ViewState, T>,
         onChange: @escaping @MainActor (T) -> Void
@@ -221,6 +227,8 @@ public final class ObservablePreviewStore<ViewState: Equatable>: ObservableViewS
     ) -> Binding<T> {
         .constant(viewState[keyPath: keyPath])
     }
+
+    // swiftlint:enable unused_parameter
 }
 
 #endif
