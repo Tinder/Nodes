@@ -336,7 +336,7 @@
         - viewControllerSuperParameters: ""
         ▿ viewControllerTestsImports: 2 elements
           - "<baseTestImport>"
-          - "<reactiveImport>"
+          - "NodesTesting"
         - viewControllerType: "NSHostingController"
         - viewControllerUpdateComment: "<viewControllerUpdateComment>"
         - viewStateEmptyFactory: "<viewStateEmptyFactory>"
@@ -459,7 +459,7 @@
         - viewControllerSuperParameters: ""
         ▿ viewControllerTestsImports: 2 elements
           - "<baseTestImport>"
-          - "<reactiveImport>"
+          - "NodesTesting"
         - viewControllerType: "NSHostingController"
         - viewControllerUpdateComment: "<viewControllerUpdateComment>"
         - viewStateEmptyFactory: "<viewStateEmptyFactory>"
@@ -828,7 +828,7 @@
         - viewControllerSuperParameters: ""
         ▿ viewControllerTestsImports: 2 elements
           - "<baseTestImport>"
-          - "<reactiveImport>"
+          - "NodesTesting"
         - viewControllerType: "UIHostingController"
         - viewControllerUpdateComment: "<viewControllerUpdateComment>"
         - viewStateEmptyFactory: "<viewStateEmptyFactory>"
@@ -951,7 +951,7 @@
         - viewControllerSuperParameters: ""
         ▿ viewControllerTestsImports: 2 elements
           - "<baseTestImport>"
-          - "<reactiveImport>"
+          - "NodesTesting"
         - viewControllerType: "UIHostingController"
         - viewControllerUpdateComment: "<viewControllerUpdateComment>"
         - viewStateEmptyFactory: "<viewStateEmptyFactory>"
