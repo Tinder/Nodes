@@ -31,6 +31,8 @@ extension TestCaseHelpers where Self: XCTestCase {
         addTeardownBlock { block(reference()) }
     }
 
+    // swiftlint:disable unused_parameter
+
     @MainActor
     internal func tearDown<T>(
         keyPath: ReferenceWritableKeyPath<Self, T?>,
@@ -40,6 +42,8 @@ extension TestCaseHelpers where Self: XCTestCase {
     ) {
         addTeardownBlock(for: keyPath, with: initialValue)
     }
+
+    // swiftlint:enable unused_parameter
 
     @MainActor
     internal func tearDown<T: AnyObject>(

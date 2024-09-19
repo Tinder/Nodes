@@ -12,7 +12,6 @@ final class XcodeTemplatePropertyListTests: XCTestCase {
     private typealias Option = PropertyList.Option
 
     func testEncode() throws {
-        // swiftlint:disable:next redundant_type_annotation
         let flag: Bool = false
         // swiftlint:disable:next closure_body_length
         let plist: XcodeTemplatePropertyList = .init(sortOrder: 23) {

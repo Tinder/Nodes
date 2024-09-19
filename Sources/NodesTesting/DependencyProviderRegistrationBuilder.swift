@@ -36,6 +36,8 @@ public final class DependencyProviderRegistrationBuilder {
         injectComponent(ofType: type, with: dependency)
     }
 
+    // swiftlint:disable unused_parameter
+
     /// Injects a Needle component with mock dependencies.
     ///
     /// - Parameters:
@@ -53,4 +55,6 @@ public final class DependencyProviderRegistrationBuilder {
         registration(path, dependency() as AnyObject)
         return self
     }
+
+    // swiftlint:enable unused_parameter
 }

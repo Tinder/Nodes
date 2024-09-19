@@ -10,7 +10,7 @@
 open class _BaseWorker: Worker { // swiftlint:disable:this type_name
 
     /// A Boolean value indicating whether the `Worker` instance has started working.
-    public private(set) var isWorking: Bool = false // swiftlint:disable:this redundant_type_annotation
+    public private(set) var isWorking: Bool = false
 
     /// Initializes a ``_BaseWorker`` instance.
     public init() {}

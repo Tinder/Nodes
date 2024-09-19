@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_15.2.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_15.4.app/Contents/Developer
 
 jobs:
   genesis:
@@ -21,7 +21,7 @@ jobs:
         brew install mint xcodegen needle mockolo
         mint install yonaskolb/genesis
     - name: Checkout source
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Create temporary directory
       id: mktemp
       run: echo "directory=$(mktemp -d)" >> "$GITHUB_OUTPUT"
@@ -41,9 +41,8 @@ jobs:
       run: swift package resolve
     - name: Lint
       working-directory: ${{ steps.mktemp.outputs.directory }}
-      run: |
-        DIRECTORY_NAME=$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]')
-        "$(find ".build/artifacts/${DIRECTORY_NAME}" -type f -name swiftlint -perm +111 -print -quit)" \
+      run: >
+        "$(find ".build/artifacts/swiftlint" -type f -name swiftlint -perm +111 -print -quit)"
         lint --strict --reporter github-actions-logging
     - name: Resolve package dependencies
       working-directory: ${{ steps.mktemp.outputs.directory }}
@@ -55,7 +54,7 @@ jobs:
         build-for-testing
         -scheme "Tinder"
         -destination "name=$SIMULATOR,OS=latest"
-        SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
+        -skipPackagePluginValidation
     - name: Test
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >

@@ -1,18 +1,11 @@
-// swift-tools-version:5.9
+// swift-tools-version:5.8
 
 import PackageDescription
 
-let packageName = "Nodes"
-
-enum SwiftLint {
-    static let plugin = "SwiftLintPlugin-\(packageName)"
-    static let binary = "SwiftLintBinary-\(packageName)"
-}
-
 let package = Package(
-    name: packageName,
+    name: "Nodes",
     platforms: [
-        .macOS(.v10_15),
+        .macOS(.v12),
         .iOS(.v13),
         .tvOS(.v13),
         .watchOS(.v6),
@@ -37,28 +30,31 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/apple/swift-argument-parser.git",
-            from: "1.0.0"),
+            exact: "1.5.0"),
         .package(
             url: "https://github.com/apple/swift-docc-plugin.git",
-            from: "1.0.0"),
+            exact: "1.4.2"),
         .package(
             url: "https://github.com/JohnSundell/Codextended.git",
-            from: "0.3.0"),
+            exact: "0.3.0"),
         .package(
             url: "https://github.com/jpsim/Yams.git",
-            from: "5.1.0"),
+            exact: "5.1.3"),
         .package(
             url: "https://github.com/stencilproject/Stencil.git",
-            from: "0.15.0"),
+            exact: "0.15.1"),
         .package(
             url: "https://github.com/uber/needle.git",
-            from: "0.22.0"),
+            exact: "0.25.1"),
+        .package(
+            url: "https://github.com/realm/SwiftLint.git",
+            exact: "0.56.2"),
         .package(
             url: "https://github.com/Quick/Nimble.git",
-            from: "13.0.0"),
+            exact: "13.4.0"),
         .package(
             url: "https://github.com/pointfreeco/swift-snapshot-testing.git",
-            from: "1.15.0"),
+            exact: "1.17.4"),
     ],
     targets: [
         .executableTarget(
@@ -67,28 +63,16 @@ let package = Package(
                 "NodesGenerator",
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ],
-            path: "Sources/Executables/NodesCodeGenerator",
-            swiftSettings: .swiftSettings,
-            plugins: [
-                .plugin(name: SwiftLint.plugin),
-            ]),
+            path: "Sources/Executables/NodesCodeGenerator"),
         .executableTarget(
             name: "NodesXcodeTemplatesGenerator",
             dependencies: [
                 "NodesGenerator",
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ],
-            path: "Sources/Executables/NodesXcodeTemplatesGenerator",
-            swiftSettings: .swiftSettings,
-            plugins: [
-                .plugin(name: SwiftLint.plugin),
-            ]),
+            path: "Sources/Executables/NodesXcodeTemplatesGenerator"),
         .target(
-            name: "Nodes",
-            swiftSettings: .swiftSettings,
-            plugins: [
-                .plugin(name: SwiftLint.plugin),
-            ]),
+            name: "Nodes"),
         .target(
             name: "NodesGenerator",
             dependencies: [
@@ -98,29 +82,17 @@ let package = Package(
             ],
             resources: [
                 .process("Resources"),
-            ],
-            swiftSettings: .swiftSettings,
-            plugins: [
-                .plugin(name: SwiftLint.plugin),
             ]),
         .target(
             name: "NodesTesting",
             dependencies: [
                 .product(name: "NeedleFoundation", package: "needle")
-            ],
-            swiftSettings: .swiftSettings,
-            plugins: [
-                .plugin(name: SwiftLint.plugin),
             ]),
         .testTarget(
             name: "NodesTests",
             dependencies: [
                 "Nodes",
                 "Nimble",
-            ],
-            swiftSettings: .swiftSettings,
-            plugins: [
-                .plugin(name: SwiftLint.plugin),
             ]),
         .testTarget(
             name: "NodesGeneratorTests",
@@ -132,40 +104,23 @@ let package = Package(
             ],
             exclude: [
                 "__Snapshots__",
-            ],
-            swiftSettings: .swiftSettings,
-            plugins: [
-                .plugin(name: SwiftLint.plugin),
             ]),
         .testTarget(
             name: "NodesTestingTests",
             dependencies: [
                 "NodesTesting",
                 "Nimble",
-            ],
-            swiftSettings: .swiftSettings,
-            plugins: [
-                .plugin(name: SwiftLint.plugin),
             ]),
-        .plugin(
-            name: SwiftLint.plugin,
-            capability: .buildTool(),
-            dependencies: [
-                .target(name: SwiftLint.binary)
-            ],
-            path: "Plugins/SwiftLintPlugin"),
-        .binaryTarget(
-            name: SwiftLint.binary,
-            url: "https://github.com/realm/SwiftLint/releases/download/0.54.0/SwiftLintBinary-macos.artifactbundle.zip",
-            checksum: "963121d6babf2bf5fd66a21ac9297e86d855cbc9d28322790646b88dceca00f1"),
     ]
 )
 
-extension Array where Element == SwiftSetting {
+package.targets.forEach { target in
 
-    static var swiftSettings: [SwiftSetting] {
-        guard let value: String = Context.environment["SWIFT_STRICT_CONCURRENCY"]
-        else { return [] }
-        return [.unsafeFlags(["-strict-concurrency=\(value)"])]
-    }
+    target.swiftSettings = [
+        .enableExperimentalFeature("StrictConcurrency"),
+    ]
+
+    target.plugins = [
+        .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint"),
+    ]
 }

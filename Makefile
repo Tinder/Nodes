@@ -1,9 +1,3 @@
-#
-#  The SwiftLint recipes require the Swift Package Resources scripts to be installed.
-#
-#  https://github.com/TinderApp/Swift-Package-Resources#installation
-#
-
 .PHONY: release
 release: override library = Nodes
 release: override platforms = macos catalyst ios tvos watchos
@@ -44,7 +38,8 @@ fix:
 .PHONY: lint
 lint: format ?= emoji
 lint:
-	@swiftlint lint --strict --progress --reporter "$(format)"
+	@swift package plugin \
+		swiftlint lint --strict --progress --reporter "$(format)"
 
 .PHONY: analyze
 analyze: target ?= Nodes
@@ -60,13 +55,11 @@ endif
 		-destination "generic/platform=$(platform)" \
 		-derivedDataPath "$$DERIVED_DATA" \
 		-configuration "Debug" \
+		-skipPackagePluginValidation \
 		CODE_SIGNING_ALLOWED="NO" \
 		> "$$XCODEBUILD_LOG"; \
-	swiftlint analyze --strict --progress --reporter "$(format)" --compiler-log-path "$$XCODEBUILD_LOG"
-
-.PHONY: rules
-rules:
-	@swiftlint rules | lint-rules
+	swift package plugin \
+		swiftlint analyze --strict --progress --reporter "$(format)" --compiler-log-path "$$XCODEBUILD_LOG"
 
 .PHONY: delete-snapshots
 delete-snapshots:
@@ -75,6 +68,26 @@ delete-snapshots:
 		rm -rf "$$snapshots"; \
 		echo "Deleted $$snapshots"; \
 	done
+
+.PHONY: docs
+docs: target ?= Nodes
+docs: destination ?= generic/platform=iOS
+docs: open ?= OPEN
+docs: DERIVED_DATA_PATH = .build/documentation/data
+docs: ARCHIVE_PATH = .build/documentation/archive
+docs:
+	@mkdir -p "$(DERIVED_DATA_PATH)" "$(ARCHIVE_PATH)"
+	xcodebuild docbuild \
+		-scheme "$(target)" \
+		-destination "$(destination)" \
+		-derivedDataPath "$(DERIVED_DATA_PATH)" \
+		-skipPackagePluginValidation \
+		OTHER_DOCC_FLAGS="--warnings-as-errors"
+	@find "$(DERIVED_DATA_PATH)" \
+		-type d \
+		-name "$(target).doccarchive" \
+		-exec cp -R {} "$(ARCHIVE_PATH)/" \;
+	$(if $(filter $(open),OPEN),@open "$(ARCHIVE_PATH)/$(target).doccarchive",)
 
 .PHONY: preview
 preview: target ?= Nodes
@@ -94,25 +107,6 @@ site:
 		--output-path "$(prefix)/_site"
 	cp docs.html "$(prefix)/_site/index.html"
 	cp docs.html "$(prefix)/_site/documentation/index.html"
-
-.PHONY: docs
-docs: target ?= Nodes
-docs: destination ?= generic/platform=iOS
-docs: open ?= OPEN
-docs: DERIVED_DATA_PATH = .build/documentation/data
-docs: ARCHIVE_PATH = .build/documentation/archive
-docs:
-	@mkdir -p "$(DERIVED_DATA_PATH)" "$(ARCHIVE_PATH)"
-	xcodebuild docbuild \
-		-scheme "$(target)" \
-		-destination "$(destination)" \
-		-derivedDataPath "$(DERIVED_DATA_PATH)" \
-		OTHER_DOCC_FLAGS="--warnings-as-errors"
-	@find "$(DERIVED_DATA_PATH)" \
-		-type d \
-		-name "$(target).doccarchive" \
-		-exec cp -R {} "$(ARCHIVE_PATH)/" \;
-	$(if $(filter $(open),OPEN),@open "$(ARCHIVE_PATH)/$(target).doccarchive",)
 
 .PHONY: get-libraries
 get-libraries:

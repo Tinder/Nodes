@@ -24,6 +24,8 @@ final class UIViewControllerViewControllableTests: XCTestCase {
         private(set) var willMoveCallCount: Int = 0
         private(set) var didMoveCallCount: Int = 0
 
+        // swiftlint:disable unused_parameter
+
         override func present(
             _ viewControllerToPresent: UIViewController,
             animated flag: Bool,
@@ -38,6 +40,8 @@ final class UIViewControllerViewControllableTests: XCTestCase {
         ) {
             dismissCallCount += 1
         }
+
+        // swiftlint:enable unused_parameter
 
         override func willMove(toParent parent: UIViewController?) {
             super.willMove(toParent: parent)

@@ -10,7 +10,6 @@ internal final class FlowMock: Flow, Equatable {
 
     internal let tree: Node = .init(name: "", children: [])
 
-    // swiftlint:disable:next redundant_type_annotation
     internal private(set) var isStarted: Bool = false
 
     // swiftlint:disable:next identifier_name
@@ -33,7 +32,6 @@ internal final class FlowMock: Flow, Equatable {
 
 internal final class ContextMock: Context {
 
-    // swiftlint:disable:next redundant_type_annotation
     internal private(set) var isActive: Bool = false
 
     internal func activate() {
@@ -47,7 +45,6 @@ internal final class ContextMock: Context {
 
 internal final class WorkerMock: Worker, Equatable {
 
-    // swiftlint:disable:next redundant_type_annotation
     internal private(set) var isWorking: Bool = false
 
     internal static func == (lhs: WorkerMock, rhs: WorkerMock) -> Bool {
@@ -65,7 +62,6 @@ internal final class WorkerMock: Worker, Equatable {
 
 internal final class CancellableMock: Cancellable {
 
-    // swiftlint:disable:next redundant_type_annotation
     internal private(set) var isCancelled: Bool = false
 
     internal static func == (lhs: CancellableMock, rhs: CancellableMock) -> Bool {

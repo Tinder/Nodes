@@ -23,7 +23,6 @@ public final class FlowController {
     /// The array of `Flow` instances managed by the ``FlowController``.
     public private(set) var flows: [Flow] = []
 
-    // swiftlint:disable:next redundant_type_annotation
     internal var isFlowLeakDetectionEnabled: Bool = true
 
     /// Initializes a new ``FlowController`` instance to manage a collection of `Flow` instances.
@@ -91,6 +90,8 @@ public final class FlowController {
     public func detachEndingAllFlows() {
         flows.reversed().forEach(detach)
     }
+
+    // swiftlint:disable unused_parameter
 
     /// Detaches `Flow` instances of the given `type` (in LIFO order) where the given predicate closure returns `true`.
     ///
@@ -209,6 +210,8 @@ public final class FlowController {
     public func flows<T>(ofType type: T.Type) -> [T] {
         flows.compactMap { $0 as? T }
     }
+
+    // swiftlint:enable unused_parameter
 
     /// Executes the given closure with each `Flow` instance of the given `type`, if any exist,
     /// in the `flows` array.

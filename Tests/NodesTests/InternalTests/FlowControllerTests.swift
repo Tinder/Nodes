@@ -31,7 +31,6 @@ final class FlowControllerTests: XCTestCase, TestCaseHelpers {
     func testFlowLeakDetection() {
         let flowController: FlowController = givenFlowController(with: mockFlows)
         expect(flowController.isFlowLeakDetectionEnabled) == true
-        // swiftlint:disable:next redundant_type_annotation
         var called: Bool = false
         flowController.withoutFlowLeakDetection { flowController in
             called = true

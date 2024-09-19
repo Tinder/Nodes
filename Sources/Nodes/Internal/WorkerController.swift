@@ -30,6 +30,8 @@ public final class WorkerController {
         workers.forEach { $0.stop() }
     }
 
+    // swiftlint:disable unused_parameter
+
     /// Returns the first `Worker` instance of the given `type`, if any exist, in the `workers` array.
     ///
     /// - Parameter type: The type of the `Worker` instance to return.
@@ -66,6 +68,8 @@ public final class WorkerController {
     public func workers<T>(ofType type: T.Type) -> [T] {
         workers.compactMap { $0 as? T }
     }
+
+    // swiftlint:enable unused_parameter
 
     /// Executes the given closure with each `Worker` instance of the given `type`, if any exist,
     /// in the `workers` array.

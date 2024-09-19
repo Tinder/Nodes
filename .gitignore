@@ -8,9 +8,3 @@
 # Xcode
 *.xcworkspace/
 *.xcodeproj/
-
-# Codegen
-**/Generated/
-
-# Bazel
-bazel-*

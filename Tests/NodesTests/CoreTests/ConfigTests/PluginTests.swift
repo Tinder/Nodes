@@ -14,13 +14,14 @@ final class PluginTests: XCTestCase, TestCaseHelpers {
 
     private class TestPlugin: Plugin<ComponentType, BuildType, Void> {
 
-        // swiftlint:disable:next redundant_type_annotation
         var isEnabledOverride: Bool = true
 
+        // swiftlint:disable:next unused_parameter
         override func isEnabled(component: ComponentType, state: Void) -> Bool {
             isEnabledOverride
         }
 
+        // swiftlint:disable:next unused_parameter
         override func build(component: ComponentType) -> BuildType {
             BuildType()
         }
