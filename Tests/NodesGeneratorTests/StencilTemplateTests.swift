@@ -373,10 +373,10 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
     }
 
     // swiftlint:disable:next cyclomatic_complexity
-    func testImportsWithConfigIncludingUIFrameworkNil() {
+    func testImportsWithConfig() {
         let config: Config = givenConfig()
         for stencilTemplate in StencilTemplate.allCases {
-            let imports: Set<String> = stencilTemplate.imports(with: config, including: nil)
+            let imports: Set<String> = stencilTemplate.imports(with: config)
             switch stencilTemplate {
             case .analytics:
                 expect(imports) == [
