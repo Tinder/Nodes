@@ -107,7 +107,6 @@ final class ConfigTests: XCTestCase, TestFactories {
 
     func testStorePrefix() {
         var config: Config = .init()
-        config.isObservableStoreEnabled = false
         expect(config.storePrefix.isEmpty) == true
         config.isObservableStoreEnabled = true
         expect(config.storePrefix) == "Observable"
