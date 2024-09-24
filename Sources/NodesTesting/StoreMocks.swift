@@ -9,36 +9,26 @@ import SwiftUI
 public final class StateStoreMock<State: Equatable>: StateStore {
 
     public var state: State {
-        get { _state }
-        set { _state = newValue }
+        didSet { stateSetCallCount += 1 }
     }
 
     public private(set) var stateSetCallCount: Int = 0
 
-    private var _state: State {
-        didSet { stateSetCallCount += 1 }
-    }
-
     public init(state: State) {
-        self._state = state
+        self.state = state
     }
 }
 
 public final class ObservableStateStoreMock<State: Equatable>: ObservableStateStore {
 
     public var state: State {
-        get { _state }
-        set { _state = newValue }
+        didSet { stateSetCallCount += 1 }
     }
 
     public private(set) var stateSetCallCount: Int = 0
 
-    private var _state: State {
-        didSet { stateSetCallCount += 1 }
-    }
-
     public init(state: State) {
-        self._state = state
+        self.state = state
     }
 }
 
@@ -46,8 +36,7 @@ public final class ObservableStateStoreMock<State: Equatable>: ObservableStateSt
 public final class ViewStateStoreMock<ViewState: Equatable>: ViewStateStore {
 
     public var viewState: ViewState {
-        get { _viewState }
-        set { _viewState = newValue }
+        didSet { viewStateSetCallCount += 1 }
     }
 
     public var bindHandler: ((Any, Any) -> (Any))?
@@ -57,12 +46,8 @@ public final class ViewStateStoreMock<ViewState: Equatable>: ViewStateStore {
     public private(set) var bindCallCount: Int = 0
     public private(set) var bindToCallCount: Int = 0
 
-    private var _viewState: ViewState {
-        didSet { viewStateSetCallCount += 1 }
-    }
-
     public init(viewState: ViewState) {
-        self._viewState = viewState
+        self.viewState = viewState
     }
 
     public func bind<T>(to keyPath: KeyPath<ViewState, T>, onChange: @escaping @MainActor (T) -> Void) -> Binding<T> {
@@ -87,8 +72,7 @@ public final class ViewStateStoreMock<ViewState: Equatable>: ViewStateStore {
 public final class ObservableViewStateStoreMock<ViewState: Equatable>: ObservableViewStateStore {
 
     public var viewState: ViewState {
-        get { _viewState }
-        set { _viewState = newValue }
+        didSet { viewStateSetCallCount += 1 }
     }
 
     public var bindHandler: ((Any, Any) -> (Any))?
@@ -98,12 +82,8 @@ public final class ObservableViewStateStoreMock<ViewState: Equatable>: Observabl
     public private(set) var bindCallCount: Int = 0
     public private(set) var bindToCallCount: Int = 0
 
-    private var _viewState: ViewState {
-        didSet { viewStateSetCallCount += 1 }
-    }
-
     public init(viewState: ViewState) {
-        self._viewState = viewState
+        self.viewState = viewState
     }
 
     public func bind<T>(to keyPath: KeyPath<ViewState, T>, onChange: @escaping @MainActor (T) -> Void) -> Binding<T> {
