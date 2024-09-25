@@ -28,10 +28,11 @@ final class {{ node_name }}ViewControllerTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
+        let viewController: {{ node_name }}ViewController = givenViewController()
         {% if is_nimble_enabled %}
-        expect { [self] in givenViewController(with: {{ node_name }}ViewState()) } != nil
+        expect(viewController) != nil
         {% else %}
-        XCTAssertNotNil(givenViewController(with: {{ node_name }}ViewState()))
+        XCTAssertNotNil(viewController)
         {% endif %}
     }
 

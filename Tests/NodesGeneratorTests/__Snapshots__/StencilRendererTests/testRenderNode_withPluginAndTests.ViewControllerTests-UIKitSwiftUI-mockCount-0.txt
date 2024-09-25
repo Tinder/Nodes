@@ -22,7 +22,8 @@ final class <nodeName>ViewControllerTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
-        XCTAssertNotNil(givenViewController(with: <nodeName>ViewState()))
+        let viewController: <nodeName>ViewController = givenViewController()
+        XCTAssertNotNil(viewController)
     }
 
     @MainActor
