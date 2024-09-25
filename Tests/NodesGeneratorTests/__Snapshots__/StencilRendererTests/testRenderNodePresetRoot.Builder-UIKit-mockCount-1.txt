@@ -156,7 +156,7 @@ internal final class RootBuilderImp: AbstractBuilder
         dynamicBuildDependency: RootDynamicBuildDependency
     ) -> RootFlow {
         let listener: RootListener = dynamicBuildDependency
-        let store: Store<
+        let store: <storePrefix>Store<
             RootState,
             RootViewState
         > = .init(
