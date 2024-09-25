@@ -10,7 +10,9 @@ final class ___VARIABLE_productName___ViewControllerTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
-        expect { [self] in givenViewController(with: ___VARIABLE_productName___ViewState()) } != nil
+        let viewState: ___VARIABLE_productName___ViewState = .init()
+        let viewController: ___VARIABLE_productName___ViewController = givenViewController(with: viewState)
+        expect(viewController) != nil
     }
 
     @MainActor

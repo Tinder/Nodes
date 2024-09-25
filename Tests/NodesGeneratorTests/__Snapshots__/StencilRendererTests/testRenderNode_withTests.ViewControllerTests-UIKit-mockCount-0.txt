@@ -6,7 +6,9 @@ final class <nodeName>ViewControllerTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
-        XCTAssertNotNil(givenViewController(with: <nodeName>ViewState()))
+        let viewState: <nodeName>ViewState = .init()
+        let viewController: <nodeName>ViewController = givenViewController(with: viewState)
+        XCTAssertNotNil(viewController)
     }
 
     @MainActor
