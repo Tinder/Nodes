@@ -9,6 +9,7 @@ import XCTest
 
 final class ___VARIABLE_productName___ContextTests: XCTestCase {
 
+    private var storeMock: StateStoreMock<___VARIABLE_productName___State>!
     private var analyticsMock: ___VARIABLE_productName___AnalyticsMock!
     private var context: ___VARIABLE_productName___ContextImp!
 

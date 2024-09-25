@@ -10,6 +10,9 @@ import {{ import }}
 
 final class {{ node_name }}ContextTests: XCTestCase {
 
+    {% if owns_view %}
+    private var storeMock: {{ store_prefix }}StateStoreMock<{{ node_name }}State>!
+    {% endif %}
     private var analyticsMock: {{ node_name }}AnalyticsMock!
     private var context: {{ node_name }}ContextImp!
 
