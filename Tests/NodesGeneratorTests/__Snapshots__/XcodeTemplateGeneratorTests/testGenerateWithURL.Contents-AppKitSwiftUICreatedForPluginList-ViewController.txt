@@ -38,18 +38,11 @@ internal struct ___VARIABLE_productName___View {
 
     /// The initializer.
     ///
-    /// - Parameters:
-    ///   - initialState: The initial view state.
-    ///   - statePublisher: The view state publisher.
-    internal init(
-        initialState: ___VARIABLE_productName___ViewState,
-        statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
-    ) {
-        self.initialState = initialState
-        self.statePublisher = statePublisher
-            .removeDuplicates()
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+    /// - Parameters: The store instance.
+    internal init<T: ViewStateStore>(
+        store: T
+    ) where T.ViewState == ___VARIABLE_productName___ViewState {
+        self.store = AnyViewStateStore(store)
     }
 }
 

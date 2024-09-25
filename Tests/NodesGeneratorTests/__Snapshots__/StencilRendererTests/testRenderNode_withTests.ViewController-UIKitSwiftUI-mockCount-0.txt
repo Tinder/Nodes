@@ -34,15 +34,11 @@ internal struct <nodeName>View {
 
     /// The initializer.
     ///
-    /// - Parameters:
-    ///   - initialState: The initial view state.
-    ///   - <viewStatePropertyName>: <viewStatePropertyComment>
-    internal init(
-        initialState: <nodeName>ViewState,
-        <viewStatePropertyName>: <publisherType><<nodeName>ViewState>
-    ) {
-        self.initialState = initialState
-        self.<viewStatePropertyName> = <viewStatePropertyName>
+    /// - Parameters: The store instance.
+    internal init<T: ViewStateStore>(
+        store: T
+    ) where T.ViewState == <nodeName>ViewState {
+        self.store = AnyViewStateStore(store)
     }
 }
 
