@@ -65,9 +65,9 @@ extension RootContextImp: RootContextInterface {}
 extension RootContextImp: RootReceiver {
 
     internal func viewDidAppear() {
-        guard !state.isReady
+        guard !store.state.isReady
         else { return }
-        state.isReady = true
+        store.state.isReady = true
         flow?.didBecomeReady()
     }
 }

@@ -159,9 +159,9 @@ extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}
 extension {{ node_name }}ContextImp: {{ node_name }}Receiver {
 
     internal func viewDidAppear() {
-        guard !state.isReady
+        guard !store.state.isReady
         else { return }
-        state.isReady = true
+        store.state.isReady = true
         flow?.didBecomeReady()
     }
 }
