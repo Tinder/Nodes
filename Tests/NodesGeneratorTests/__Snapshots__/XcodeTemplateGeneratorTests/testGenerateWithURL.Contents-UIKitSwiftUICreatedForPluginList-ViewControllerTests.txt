@@ -8,6 +8,8 @@ import XCTest
 
 final class ___VARIABLE_productName___ViewControllerTests: XCTestCase {
 
+    private var storeMock: ViewStateStoreMock<___VARIABLE_productName___ViewState>!
+
     @MainActor
     func testNotNil() {
         expect { [self] in givenViewController(with: ___VARIABLE_productName___ViewState()) } != nil

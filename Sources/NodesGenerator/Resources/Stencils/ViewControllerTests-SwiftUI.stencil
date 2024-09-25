@@ -10,6 +10,8 @@ import {{ import }}
 
 final class {{ node_name }}ViewControllerTests: XCTestCase {
 
+    private var storeMock: {{ store_prefix }}ViewStateStoreMock<{{ node_name }}ViewState>!
+
     @MainActor
     func testNotNil() {
         {% if is_nimble_enabled %}

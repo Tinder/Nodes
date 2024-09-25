@@ -4,6 +4,8 @@
 
 final class <nodeName>ViewControllerTests: XCTestCase {
 
+    private var storeMock: ViewStateStoreMock<<nodeName>ViewState>!
+
     @MainActor
     func testNotNil() {
         XCTAssertNotNil(givenViewController(with: <nodeName>ViewState()))

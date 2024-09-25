@@ -6,6 +6,8 @@ import <viewControllerTestsImport>
 
 final class <nodeName>ViewControllerTests: XCTestCase {
 
+    private var storeMock: <storePrefix>ViewStateStoreMock<<nodeName>ViewState>!
+
     @MainActor
     func testNotNil() {
         expect { [self] in givenViewController(with: <nodeName>ViewState()) } != nil
