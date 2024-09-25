@@ -164,6 +164,13 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
         dynamicBuildDependency: ___VARIABLE_productName___DynamicBuildDependency
     ) -> ___VARIABLE_productName___Flow {
         let listener: ___VARIABLE_productName___Listener = dynamicBuildDependency
+        let store: Store<
+            ___VARIABLE_productName___State,
+            ___VARIABLE_productName___ViewState
+        > = .init(
+            state: ___VARIABLE_productName___State(),
+            transform: ___VARIABLE_productName___ViewStateFactory()
+        )
         let analytics: ___VARIABLE_productName___AnalyticsImp = .init()
         let context: ___VARIABLE_productName___ContextImp = .init(
             workers: [],

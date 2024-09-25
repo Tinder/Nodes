@@ -277,6 +277,15 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         let listener: {{ node_name }}Listener = dynamicBuildDependency.0
         let viewController: {{ node_name }}ViewControllable = dynamicBuildDependency.1
         {% endif %}
+        {% if owns_view %}
+        let store: {{ store_prefix }}Store<
+            {{ node_name }}State,
+            {{ node_name }}ViewState
+        > = .init(
+            state: {{ node_name }}State({% if node_name == "Root" %}name: "Root View Controller", isReady: false{% endif %}),
+            transform: {{ node_name }}ViewStateFactory()
+        )
+        {% endif %}
         {% if analytics_properties %}
         let analytics: {{ node_name }}AnalyticsImp = .init(
             {% for property in analytics_properties %}
