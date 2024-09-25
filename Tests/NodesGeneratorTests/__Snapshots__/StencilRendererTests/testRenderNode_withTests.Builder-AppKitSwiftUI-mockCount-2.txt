@@ -183,6 +183,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         )
         let context: <nodeName>ContextImp = .init(
             workers: [],
+            store: store,
             analytics: analytics
         )
         context.listener = listener
