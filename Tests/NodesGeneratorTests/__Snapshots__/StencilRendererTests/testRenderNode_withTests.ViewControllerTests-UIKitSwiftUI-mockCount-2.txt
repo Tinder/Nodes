@@ -30,12 +30,11 @@ final class <nodeName>ViewControllerTests: XCTestCase {
     }
 
     @MainActor
-    private func givenViewController(
-        with state: <nodeName>ViewState
-    ) -> <nodeName>ViewController {
-        <nodeName>ViewController(rootView: <nodeName>View(
-            initialState: state,
-            <viewStatePropertyName>: <viewStateEmptyFactory>
-        ))
+    private func givenViewController() -> <nodeName>ViewController {
+        <nodeName>ViewController(
+            rootView: <nodeName>View(
+                store: storeMock
+            )
+        )
     }
 }

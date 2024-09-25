@@ -31,12 +31,11 @@ final class ___VARIABLE_productName___ViewControllerTests: XCTestCase {
     }
 
     @MainActor
-    private func givenViewController(
-        with state: ___VARIABLE_productName___ViewState
-    ) -> ___VARIABLE_productName___ViewController {
-        ___VARIABLE_productName___ViewController(rootView: ___VARIABLE_productName___View(
-            initialState: state,
-            statePublisher: Empty().eraseToAnyPublisher()
-        ))
+    private func givenViewController() -> ___VARIABLE_productName___ViewController {
+        ___VARIABLE_productName___ViewController(
+            rootView: ___VARIABLE_productName___View(
+                store: storeMock
+            )
+        )
     }
 }
