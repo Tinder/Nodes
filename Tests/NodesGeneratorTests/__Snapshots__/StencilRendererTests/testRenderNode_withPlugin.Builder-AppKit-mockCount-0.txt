@@ -162,9 +162,8 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
             analytics: analytics
         )
         context.listener = listener
-        let viewStateFactory: <nodeName>ViewStateFactory = .init()
         let viewController: <nodeName>ViewController = .init(
-            initialState: viewStateFactory(context.state),
+            initialState: store.viewState,
             <viewStatePropertyName>: <viewStateTransform>
         )
         viewController.receiver = context

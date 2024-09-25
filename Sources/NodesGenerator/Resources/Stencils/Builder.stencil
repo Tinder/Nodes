@@ -308,9 +308,8 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         context.listener = listener
         {% endif %}
         {% if owns_view %}
-        let viewStateFactory: {{ node_name }}ViewStateFactory = .init()
         let viewController: {{ node_name }}ViewController = .init(
-            initialState: viewStateFactory(context.state),
+            initialState: store.viewState,
             {{ view_state_property_name }}: {{ view_state_transform }}
         )
         viewController.receiver = context
