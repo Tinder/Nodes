@@ -164,6 +164,7 @@ internal final class RootBuilderImp: AbstractBuilder
         let analytics: RootAnalyticsImp = .init()
         let context: RootContextImp = .init(
             workers: [],
+            store: store,
             analytics: analytics
         )
         context.listener = listener

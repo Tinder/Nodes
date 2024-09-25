@@ -298,6 +298,9 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         {% endif %}
         let context: {{ node_name }}ContextImp = .init(
             workers: [],
+            {% if owns_view %}
+            store: store,
+            {% endif %}
             analytics: analytics{% if node_name == "App" %}{{ ',' }}
             windowScenePublisher: component.appService.windowScenePublisher{% endif +%}
         )
