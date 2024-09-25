@@ -51,9 +51,7 @@ internal struct ___VARIABLE_productName___View {
 extension ___VARIABLE_productName___View: View {
 
     internal var body: some View {
-        WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
-            Text(verbatim: "\(type(of: viewState))")
-        }
+        Text(verbatim: "\(type(of: store.viewState))")
     }
 }
 

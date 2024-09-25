@@ -47,9 +47,7 @@ internal struct <nodeName>View {
 extension <nodeName>View: View {
 
     internal var body: some View {
-        WithViewState(initialState: initialState, <viewStatePropertyName>: <viewStatePropertyName>) { viewState in
-            Text(verbatim: "\(type(of: viewState))")
-        }
+        Text(verbatim: "\(type(of: store.viewState))")
     }
 }
 
