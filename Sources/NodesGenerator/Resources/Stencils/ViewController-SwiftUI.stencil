@@ -51,11 +51,8 @@ internal struct {{ node_name }}View {
     /// The view receiver.
     internal weak var receiver: {{ node_name }}Receiver?
 
-    /// The initial view state.
-    private let initialState: {{ node_name }}ViewState
-
-    /// {{ view_state_property_comment }}
-    private let {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
+    /// The store.
+    private let store: Any{{ store_prefix }}ViewStateStore<{{ node_name }}ViewState>
 
     /// The initializer.
     ///

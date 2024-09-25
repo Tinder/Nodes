@@ -33,11 +33,8 @@ internal struct ___VARIABLE_productName___View {
     /// The view receiver.
     internal weak var receiver: ___VARIABLE_productName___Receiver?
 
-    /// The initial view state.
-    private let initialState: ___VARIABLE_productName___ViewState
-
-    /// The view state publisher.
-    private let statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+    /// The store.
+    private let store: AnyViewStateStore<___VARIABLE_productName___ViewState>
 
     /// The initializer.
     ///

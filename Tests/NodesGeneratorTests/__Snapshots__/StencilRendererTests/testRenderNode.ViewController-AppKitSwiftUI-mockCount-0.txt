@@ -29,11 +29,8 @@ internal struct <nodeName>View {
     /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 
-    /// The initial view state.
-    private let initialState: <nodeName>ViewState
-
-    /// <viewStatePropertyComment>
-    private let <viewStatePropertyName>: <publisherType><<nodeName>ViewState>
+    /// The store.
+    private let store: AnyViewStateStore<<nodeName>ViewState>
 
     /// The initializer.
     ///
