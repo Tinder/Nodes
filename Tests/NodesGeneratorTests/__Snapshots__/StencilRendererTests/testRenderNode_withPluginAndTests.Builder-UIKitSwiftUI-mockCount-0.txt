@@ -148,6 +148,13 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         dynamicBuildDependency: <nodeName>DynamicBuildDependency
     ) -> <nodeName>Flow {
         let listener: <nodeName>Listener = dynamicBuildDependency
+        let store: Store<
+            <nodeName>State,
+            <nodeName>ViewState
+        > = .init(
+            state: <nodeName>State(),
+            transform: <nodeName>ViewStateFactory()
+        )
         let analytics: <nodeName>AnalyticsImp = .init()
         let context: <nodeName>ContextImp = .init(
             workers: [],

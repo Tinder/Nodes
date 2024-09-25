@@ -200,6 +200,13 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency
     ) -> {{ node_name }}Flow {
         let listener: {{ node_name }}Listener = dynamicBuildDependency
+        let store: {{ store_prefix }}Store<
+            {{ node_name }}State,
+            {{ node_name }}ViewState
+        > = .init(
+            state: {{ node_name }}State(),
+            transform: {{ node_name }}ViewStateFactory()
+        )
         {% if analytics_properties %}
         let analytics: {{ node_name }}AnalyticsImp = .init(
             {% for property in analytics_properties %}
