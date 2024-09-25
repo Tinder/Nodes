@@ -13,6 +13,20 @@ final class {{ node_name }}ViewControllerTests: XCTestCase {
     private var storeMock: {{ store_prefix }}ViewStateStoreMock<{{ node_name }}ViewState>!
 
     @MainActor
+    override func setUp() {
+        super.setUp()
+        storeMock = {{ store_prefix }}ViewStateStoreMock(
+            viewState: {{ node_name }}ViewState()
+        )
+    }
+
+    @MainActor
+    override func tearDown() {
+        storeMock = nil
+        super.tearDown()
+    }
+
+    @MainActor
     func testNotNil() {
         {% if is_nimble_enabled %}
         expect { [self] in givenViewController(with: {{ node_name }}ViewState()) } != nil

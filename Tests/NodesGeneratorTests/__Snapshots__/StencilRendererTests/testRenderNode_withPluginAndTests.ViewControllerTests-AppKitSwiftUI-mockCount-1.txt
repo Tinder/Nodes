@@ -9,6 +9,20 @@ final class <nodeName>ViewControllerTests: XCTestCase {
     private var storeMock: <storePrefix>ViewStateStoreMock<<nodeName>ViewState>!
 
     @MainActor
+    override func setUp() {
+        super.setUp()
+        storeMock = <storePrefix>ViewStateStoreMock(
+            viewState: <nodeName>ViewState()
+        )
+    }
+
+    @MainActor
+    override func tearDown() {
+        storeMock = nil
+        super.tearDown()
+    }
+
+    @MainActor
     func testNotNil() {
         expect { [self] in givenViewController(with: <nodeName>ViewState()) } != nil
     }

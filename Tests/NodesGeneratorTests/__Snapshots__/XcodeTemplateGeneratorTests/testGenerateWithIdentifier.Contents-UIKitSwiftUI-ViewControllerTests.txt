@@ -11,6 +11,20 @@ final class ___VARIABLE_productName___ViewControllerTests: XCTestCase {
     private var storeMock: ViewStateStoreMock<___VARIABLE_productName___ViewState>!
 
     @MainActor
+    override func setUp() {
+        super.setUp()
+        storeMock = ViewStateStoreMock(
+            viewState: ___VARIABLE_productName___ViewState()
+        )
+    }
+
+    @MainActor
+    override func tearDown() {
+        storeMock = nil
+        super.tearDown()
+    }
+
+    @MainActor
     func testNotNil() {
         expect { [self] in givenViewController(with: ___VARIABLE_productName___ViewState()) } != nil
     }
