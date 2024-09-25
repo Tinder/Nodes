@@ -87,16 +87,18 @@ internal struct {{ node_name }}View_Previews: PreviewProvider {
 
     internal static var previews: some View {
         {{ node_name }}View(
-            initialState: {{ node_name }}ViewState(),
-            {{ view_state_property_name }}: {{ view_state_empty_factory }}
+            store: {{ store_prefix }}PreviewStore(
+                {{ node_name }}ViewState()
+            )
         )
     }
 }
 {% else %}
 #Preview {
     {{ node_name }}View(
-        initialState: {{ node_name }}ViewState(),
-        {{ view_state_property_name }}: {{ view_state_empty_factory }}
+        store: {{ store_prefix }}PreviewStore(
+            viewState: {{ node_name }}ViewState()
+        )
     )
 }
 {% endif %}

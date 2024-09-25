@@ -59,7 +59,8 @@ extension ___VARIABLE_productName___View: View {
 
 #Preview {
     ___VARIABLE_productName___View(
-        initialState: ___VARIABLE_productName___ViewState(),
-        statePublisher: Empty().eraseToAnyPublisher()
+        store: PreviewStore(
+            viewState: ___VARIABLE_productName___ViewState()
+        )
     )
 }

@@ -55,7 +55,8 @@ extension <nodeName>View: View {
 
 #Preview {
     <nodeName>View(
-        initialState: <nodeName>ViewState(),
-        <viewStatePropertyName>: <viewStateEmptyFactory>
+        store: PreviewStore(
+            viewState: <nodeName>ViewState()
+        )
     )
 }

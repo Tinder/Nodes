@@ -70,8 +70,9 @@ internal struct <nodeName>View_Previews: PreviewProvider {
 
     internal static var previews: some View {
         <nodeName>View(
-            initialState: <nodeName>ViewState(),
-            <viewStatePropertyName>: <viewStateEmptyFactory>
+            store: <storePrefix>PreviewStore(
+                <nodeName>ViewState()
+            )
         )
     }
 }
