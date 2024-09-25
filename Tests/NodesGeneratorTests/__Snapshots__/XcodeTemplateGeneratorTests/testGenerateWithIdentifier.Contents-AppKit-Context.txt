@@ -36,9 +36,8 @@ internal final class ___VARIABLE_productName___ContextImp: AbstractContext
     /// The Listener instance.
     internal weak var listener: ___VARIABLE_productName___Listener?
 
-    /// The State instance.
-    @Published
-    internal private(set) var state: ___VARIABLE_productName___State
+    /// The Store instance.
+    private let store: AnyStateStore<___VARIABLE_productName___State>
 
     /// The Analytics instance.
     private let analytics: ___VARIABLE_productName___Analytics
