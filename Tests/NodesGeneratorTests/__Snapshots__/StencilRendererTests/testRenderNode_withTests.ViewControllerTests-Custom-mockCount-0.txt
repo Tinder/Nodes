@@ -13,10 +13,10 @@ final class <nodeName>ViewControllerTests: XCTestCase {
 
     @MainActor
     private func givenViewController(
-        with state: <nodeName>ViewState
+        with viewState: <nodeName>ViewState
     ) -> <nodeName>ViewController {
         <nodeName>ViewController(
-            initialState: state,
+            initialState: viewState,
             <viewStatePropertyName>: <viewStateEmptyFactory>
         )
     }

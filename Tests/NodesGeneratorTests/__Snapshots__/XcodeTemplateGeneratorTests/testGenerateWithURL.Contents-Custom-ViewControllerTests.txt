@@ -17,10 +17,10 @@ final class ___VARIABLE_productName___ViewControllerTests: XCTestCase {
 
     @MainActor
     private func givenViewController(
-        with state: ___VARIABLE_productName___ViewState
+        with viewState: ___VARIABLE_productName___ViewState
     ) -> ___VARIABLE_productName___ViewController {
         ___VARIABLE_productName___ViewController(
-            initialState: state,
+            initialState: viewState,
             statePublisher: Empty().eraseToAnyPublisher()
         )
     }

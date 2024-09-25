@@ -23,10 +23,10 @@ final class {{ node_name }}ViewControllerTests: XCTestCase {
 
     @MainActor
     private func givenViewController(
-        with state: {{ node_name }}ViewState
+        with viewState: {{ node_name }}ViewState
     ) -> {{ node_name }}ViewController {
         {{ node_name }}ViewController(
-            initialState: state,
+            initialState: viewState,
             {{ view_state_property_name }}: {{ view_state_empty_factory }}
         )
     }
