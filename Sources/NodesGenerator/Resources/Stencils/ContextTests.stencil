@@ -14,7 +14,6 @@ final class {{ node_name }}ContextTests: XCTestCase {
     private var storeMock: {{ store_prefix }}StateStoreMock<{{ node_name }}State>!
     {% endif %}
     private var analyticsMock: {{ node_name }}AnalyticsMock!
-    private var context: {{ node_name }}ContextImp!
 
     @MainActor
     override func setUp() {
@@ -25,16 +24,11 @@ final class {{ node_name }}ContextTests: XCTestCase {
         )
         {% endif %}
         analyticsMock = {{ node_name }}AnalyticsMock()
-        context = {{ node_name }}ContextImp(
-            workers: [],
-            analytics: analyticsMock
-        )
     }
 
     @MainActor
     override func tearDown() {
         analyticsMock = nil
-        context = nil
         super.tearDown()
     }
 

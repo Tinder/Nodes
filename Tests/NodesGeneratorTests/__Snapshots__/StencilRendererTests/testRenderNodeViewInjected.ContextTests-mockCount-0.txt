@@ -5,22 +5,16 @@
 final class <nodeName>ContextTests: XCTestCase {
 
     private var analyticsMock: <nodeName>AnalyticsMock!
-    private var context: <nodeName>ContextImp!
 
     @MainActor
     override func setUp() {
         super.setUp()
         analyticsMock = <nodeName>AnalyticsMock()
-        context = <nodeName>ContextImp(
-            workers: [],
-            analytics: analyticsMock
-        )
     }
 
     @MainActor
     override func tearDown() {
         analyticsMock = nil
-        context = nil
         super.tearDown()
     }
 
