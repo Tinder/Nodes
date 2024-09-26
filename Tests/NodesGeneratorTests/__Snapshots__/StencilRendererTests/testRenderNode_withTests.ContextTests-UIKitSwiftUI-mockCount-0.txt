@@ -11,6 +11,9 @@ final class <nodeName>ContextTests: XCTestCase {
     @MainActor
     override func setUp() {
         super.setUp()
+        storeMock = StateStoreMock(
+            state: <nodeName>State()
+        )
         analyticsMock = <nodeName>AnalyticsMock()
         context = <nodeName>ContextImp(
             workers: [],

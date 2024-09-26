@@ -16,6 +16,9 @@ final class ___VARIABLE_productName___ContextTests: XCTestCase {
     @MainActor
     override func setUp() {
         super.setUp()
+        storeMock = StateStoreMock(
+            state: ___VARIABLE_productName___State()
+        )
         analyticsMock = ___VARIABLE_productName___AnalyticsMock()
         context = ___VARIABLE_productName___ContextImp(
             workers: [],

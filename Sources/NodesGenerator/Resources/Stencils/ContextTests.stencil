@@ -19,6 +19,11 @@ final class {{ node_name }}ContextTests: XCTestCase {
     @MainActor
     override func setUp() {
         super.setUp()
+        {% if owns_view %}
+        storeMock = {{ store_prefix }}StateStoreMock(
+            state: {{ node_name }}State()
+        )
+        {% endif %}
         analyticsMock = {{ node_name }}AnalyticsMock()
         context = {{ node_name }}ContextImp(
             workers: [],
