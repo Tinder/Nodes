@@ -37,6 +37,7 @@ final class <nodeName>ContextTests: XCTestCase {
 
     @MainActor
     func testActivation() {
+        let context: <nodeName>ContextImp = givenContext()
         XCTAssertFalse(context.isActive)
         context.activate()
         XCTAssertTrue(context.isActive)
