@@ -37,8 +37,9 @@ final class {{ node_name }}ContextTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
+        let context: {{ node_name }}ContextImp = givenContext()
         {% if is_nimble_enabled %}
-        expect { [self] in context } != nil
+        expect(context) != nil
         {% else %}
         XCTAssertNotNil(context)
         {% endif %}

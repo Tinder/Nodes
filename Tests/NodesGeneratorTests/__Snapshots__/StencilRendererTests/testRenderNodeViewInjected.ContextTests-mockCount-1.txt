@@ -22,7 +22,8 @@ final class <nodeName>ContextTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
-        expect { [self] in context } != nil
+        let context: <nodeName>ContextImp = givenContext()
+        expect(context) != nil
     }
 
     @MainActor

@@ -25,6 +25,7 @@ final class <nodeName>ContextTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
+        let context: <nodeName>ContextImp = givenContext()
         XCTAssertNotNil(context)
     }
 
