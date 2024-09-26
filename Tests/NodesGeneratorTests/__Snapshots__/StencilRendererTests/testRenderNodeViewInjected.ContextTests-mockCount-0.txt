@@ -36,4 +36,12 @@ final class <nodeName>ContextTests: XCTestCase {
         context.deactivate()
         XCTAssertFalse(context.isActive)
     }
+
+    @MainActor
+    private func givenContext() -> <nodeName>ContextImp {
+        <nodeName>ContextImp(
+            workers: [],
+            analytics: analyticsMock
+        )
+    }
 }

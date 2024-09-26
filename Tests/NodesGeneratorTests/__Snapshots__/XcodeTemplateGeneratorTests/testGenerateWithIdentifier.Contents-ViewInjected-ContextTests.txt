@@ -40,4 +40,12 @@ final class ___VARIABLE_productName___ContextTests: XCTestCase {
         context.deactivate()
         expect { [self] in context.isActive } == false
     }
+
+    @MainActor
+    private func givenContext() -> ___VARIABLE_productName___ContextImp {
+        ___VARIABLE_productName___ContextImp(
+            workers: [],
+            analytics: analyticsMock
+        )
+    }
 }

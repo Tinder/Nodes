@@ -39,4 +39,12 @@ final class <nodeName>ContextTests: XCTestCase {
         context.deactivate()
         expect { [self] in context.isActive } == false
     }
+
+    @MainActor
+    private func givenContext() -> <nodeName>ContextImp {
+        <nodeName>ContextImp(
+            workers: [],
+            analytics: analyticsMock
+        )
+    }
 }

@@ -70,4 +70,15 @@ final class {{ node_name }}ContextTests: XCTestCase {
         XCTAssertFalse(context.isActive)
         {% endif %}
     }
+
+    @MainActor
+    private func givenContext() -> {{ node_name }}ContextImp {
+        {{ node_name }}ContextImp(
+            workers: [],
+            {% if owns_view %}
+            store: storeMock,
+            {% endif %}
+            analytics: analyticsMock
+        )
+    }
 }
