@@ -18,6 +18,7 @@ final class <nodeName>ContextTests: XCTestCase {
 
     @MainActor
     override func tearDown() {
+        storeMock = nil
         analyticsMock = nil
         super.tearDown()
     }

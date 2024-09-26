@@ -28,6 +28,9 @@ final class {{ node_name }}ContextTests: XCTestCase {
 
     @MainActor
     override func tearDown() {
+        {% if owns_view %}
+        storeMock = nil
+        {% endif %}
         analyticsMock = nil
         super.tearDown()
     }
