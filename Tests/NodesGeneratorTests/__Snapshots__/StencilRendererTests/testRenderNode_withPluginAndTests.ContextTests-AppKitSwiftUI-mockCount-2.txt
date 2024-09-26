@@ -34,7 +34,8 @@ final class <nodeName>ContextTests: XCTestCase {
 
     @MainActor
     func testWorkersIsEmpty() {
-        expect { [self] in context.workers }.to(beEmpty())
+        let context: <nodeName>ContextImp = givenContext()
+        expect(context.workers).to(beEmpty())
     }
 
     @MainActor

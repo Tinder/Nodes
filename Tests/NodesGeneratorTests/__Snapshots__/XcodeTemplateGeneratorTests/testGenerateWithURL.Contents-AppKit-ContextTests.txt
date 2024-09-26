@@ -36,7 +36,8 @@ final class ___VARIABLE_productName___ContextTests: XCTestCase {
 
     @MainActor
     func testWorkersIsEmpty() {
-        expect { [self] in context.workers }.to(beEmpty())
+        let context: ___VARIABLE_productName___ContextImp = givenContext()
+        expect(context.workers).to(beEmpty())
     }
 
     @MainActor

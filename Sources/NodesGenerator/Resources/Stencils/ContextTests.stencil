@@ -47,8 +47,9 @@ final class {{ node_name }}ContextTests: XCTestCase {
 
     @MainActor
     func testWorkersIsEmpty() {
+        let context: {{ node_name }}ContextImp = givenContext()
         {% if is_nimble_enabled %}
-        expect { [self] in context.workers }.to(beEmpty())
+        expect(context.workers).to(beEmpty())
         {% else %}
         XCTAssertTrue(context.workers.isEmpty)
         {% endif %}
