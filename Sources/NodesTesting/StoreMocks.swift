@@ -6,6 +6,7 @@
 import Nodes
 import SwiftUI
 
+// swiftlint:disable:next file_types_order
 public final class StateStoreMock<State: Equatable>: StateStore {
 
     public var state: State {
