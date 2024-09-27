@@ -346,7 +346,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 case .viewControllerTests:
                     expect(imports) == [
                         "<baseTestImport>",
-                        uiFramework.kind.isHostingSwiftUI ? "NodesTesting" : "<reactiveImport>"
+                        uiFramework.kind.isHostingSwiftUI ? "Nodes" : "<reactiveImport>"
                     ]
                 case .viewState:
                     expect(imports) == [

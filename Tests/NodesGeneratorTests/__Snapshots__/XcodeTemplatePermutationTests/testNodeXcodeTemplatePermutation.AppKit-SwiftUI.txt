@@ -88,7 +88,7 @@
     - viewControllerSuperParameters: ""
     ▿ viewControllerTestsImports: 2 elements
       - "<baseTestImport>"
-      - "NodesTesting"
+      - "Nodes"
     - viewControllerType: "NSHostingController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateEmptyFactory: "<viewStateEmptyFactory>"
