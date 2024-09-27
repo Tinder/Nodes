@@ -45,9 +45,11 @@ final class ___VARIABLE_productName___ContextTests: XCTestCase {
     }
 
     @MainActor
-    private func givenContext() -> ___VARIABLE_productName___ContextImp {
+    private func givenContext(
+        workers: [Worker] = []
+    ) -> ___VARIABLE_productName___ContextImp {
         ___VARIABLE_productName___ContextImp(
-            workers: [],
+            workers: workers,
             analytics: analyticsMock
         )
     }

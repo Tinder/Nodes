@@ -41,9 +41,11 @@ final class <nodeName>ContextTests: XCTestCase {
     }
 
     @MainActor
-    private func givenContext() -> <nodeName>ContextImp {
+    private func givenContext(
+        workers: [Worker] = []
+    ) -> <nodeName>ContextImp {
         <nodeName>ContextImp(
-            workers: [],
+            workers: workers,
             analytics: analyticsMock
         )
     }

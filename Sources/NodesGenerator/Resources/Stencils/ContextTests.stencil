@@ -78,9 +78,11 @@ final class {{ node_name }}ContextTests: XCTestCase {
     }
 
     @MainActor
-    private func givenContext() -> {{ node_name }}ContextImp {
+    private func givenContext(
+        workers: [Worker] = []
+    ) -> {{ node_name }}ContextImp {
         {{ node_name }}ContextImp(
-            workers: [],
+            workers: workers,
             {% if owns_view %}
             store: storeMock,
             {% endif %}
