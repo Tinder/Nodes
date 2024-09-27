@@ -8,33 +8,21 @@ import XCTest
 
 final class ___VARIABLE_productName___ViewControllerTests: XCTestCase {
 
-    private var storeMock: ViewStateStoreMock<___VARIABLE_productName___ViewState>!
-
-    @MainActor
-    override func setUp() {
-        super.setUp()
-        storeMock = ViewStateStoreMock(
-            viewState: ___VARIABLE_productName___ViewState()
-        )
-    }
-
-    @MainActor
-    override func tearDown() {
-        storeMock = nil
-        super.tearDown()
-    }
-
     @MainActor
     func testNotNil() {
-        let viewController: ___VARIABLE_productName___ViewController = givenViewController()
+        let viewController: ___VARIABLE_productName___ViewController = givenViewController(
+            viewState: ___VARIABLE_productName___ViewState()
+        )
         expect(viewController) != nil
     }
 
     @MainActor
-    private func givenViewController() -> ___VARIABLE_productName___ViewController {
+    private func givenViewController(
+        viewState: ___VARIABLE_productName___ViewState
+    ) -> ___VARIABLE_productName___ViewController {
         ___VARIABLE_productName___ViewController(
             rootView: ___VARIABLE_productName___View(
-                store: storeMock
+                store: PreviewStore(viewState: viewState)
             )
         )
     }

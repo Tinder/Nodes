@@ -6,33 +6,21 @@ import <viewControllerTestsImport>
 
 final class <nodeName>ViewControllerTests: XCTestCase {
 
-    private var storeMock: <storePrefix>ViewStateStoreMock<<nodeName>ViewState>!
-
-    @MainActor
-    override func setUp() {
-        super.setUp()
-        storeMock = <storePrefix>ViewStateStoreMock(
-            viewState: <nodeName>ViewState()
-        )
-    }
-
-    @MainActor
-    override func tearDown() {
-        storeMock = nil
-        super.tearDown()
-    }
-
     @MainActor
     func testNotNil() {
-        let viewController: <nodeName>ViewController = givenViewController()
+        let viewController: <nodeName>ViewController = givenViewController(
+            viewState: <nodeName>ViewState()
+        )
         expect(viewController) != nil
     }
 
     @MainActor
-    private func givenViewController() -> <nodeName>ViewController {
+    private func givenViewController(
+        viewState: <nodeName>ViewState
+    ) -> <nodeName>ViewController {
         <nodeName>ViewController(
             rootView: <nodeName>View(
-                store: storeMock
+                store: <storePrefix>PreviewStore(viewState: viewState)
             )
         )
     }

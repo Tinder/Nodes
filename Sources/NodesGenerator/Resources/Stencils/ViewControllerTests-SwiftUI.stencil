@@ -10,25 +10,11 @@ import {{ import }}
 
 final class {{ node_name }}ViewControllerTests: XCTestCase {
 
-    private var storeMock: {{ store_prefix }}ViewStateStoreMock<{{ node_name }}ViewState>!
-
-    @MainActor
-    override func setUp() {
-        super.setUp()
-        storeMock = {{ store_prefix }}ViewStateStoreMock(
-            viewState: {{ node_name }}ViewState()
-        )
-    }
-
-    @MainActor
-    override func tearDown() {
-        storeMock = nil
-        super.tearDown()
-    }
-
     @MainActor
     func testNotNil() {
-        let viewController: {{ node_name }}ViewController = givenViewController()
+        let viewController: {{ node_name }}ViewController = givenViewController(
+            viewState: {{ node_name }}ViewState()
+        )
         {% if is_nimble_enabled %}
         expect(viewController) != nil
         {% else %}
@@ -37,10 +23,12 @@ final class {{ node_name }}ViewControllerTests: XCTestCase {
     }
 
     @MainActor
-    private func givenViewController() -> {{ node_name }}ViewController {
+    private func givenViewController(
+        viewState: {{ node_name }}ViewState
+    ) -> {{ node_name }}ViewController {
         {{ node_name }}ViewController(
             rootView: {{ node_name }}View(
-                store: storeMock
+                store: {{ store_prefix }}PreviewStore(viewState: viewState)
             )
         )
     }

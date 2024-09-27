@@ -4,33 +4,21 @@
 
 final class <nodeName>ViewControllerTests: XCTestCase {
 
-    private var storeMock: ViewStateStoreMock<<nodeName>ViewState>!
-
-    @MainActor
-    override func setUp() {
-        super.setUp()
-        storeMock = ViewStateStoreMock(
-            viewState: <nodeName>ViewState()
-        )
-    }
-
-    @MainActor
-    override func tearDown() {
-        storeMock = nil
-        super.tearDown()
-    }
-
     @MainActor
     func testNotNil() {
-        let viewController: <nodeName>ViewController = givenViewController()
+        let viewController: <nodeName>ViewController = givenViewController(
+            viewState: <nodeName>ViewState()
+        )
         XCTAssertNotNil(viewController)
     }
 
     @MainActor
-    private func givenViewController() -> <nodeName>ViewController {
+    private func givenViewController(
+        viewState: <nodeName>ViewState
+    ) -> <nodeName>ViewController {
         <nodeName>ViewController(
             rootView: <nodeName>View(
-                store: storeMock
+                store: PreviewStore(viewState: viewState)
             )
         )
     }
