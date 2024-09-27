@@ -33,12 +33,12 @@ internal struct ___VARIABLE_productName___View {
     /// The view receiver.
     internal weak var receiver: ___VARIABLE_productName___Receiver?
 
-    /// The store.
+    /// The Store instance.
     private let store: AnyViewStateStore<___VARIABLE_productName___ViewState>
 
     /// The initializer.
     ///
-    /// - Parameters: The store instance.
+    /// - Parameter store: The Store instance.
     internal init<T: ViewStateStore>(
         store: T
     ) where T.ViewState == ___VARIABLE_productName___ViewState {

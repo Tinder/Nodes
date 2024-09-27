@@ -38,12 +38,12 @@ internal struct <nodeName>View {
     /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 
-    /// The store.
+    /// The Store instance.
     private let store: Any<storePrefix>ViewStateStore<<nodeName>ViewState>
 
     /// The initializer.
     ///
-    /// - Parameters: The store instance.
+    /// - Parameter store: The Store instance.
     internal init<T: <storePrefix>ViewStateStore>(
         store: T
     ) where T.ViewState == <nodeName>ViewState {

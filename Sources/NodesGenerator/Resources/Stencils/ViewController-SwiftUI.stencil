@@ -51,12 +51,12 @@ internal struct {{ node_name }}View {
     /// The view receiver.
     internal weak var receiver: {{ node_name }}Receiver?
 
-    /// The store.
+    /// The Store instance.
     private let store: Any{{ store_prefix }}ViewStateStore<{{ node_name }}ViewState>
 
     /// The initializer.
     ///
-    /// - Parameters: The store instance.
+    /// - Parameter store: The Store instance.
     internal init<T: {{ store_prefix }}ViewStateStore>(
         store: T
     ) where T.ViewState == {{ node_name }}ViewState {
