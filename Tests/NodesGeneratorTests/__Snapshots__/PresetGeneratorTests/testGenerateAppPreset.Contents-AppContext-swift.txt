@@ -31,7 +31,7 @@ internal final class AppContextImp: AbstractContext
     internal weak var flow: AppFlowInterface?
 
     /// The State instance.
-    internal let state: AppState
+    private let state: AppState
 
     /// The Analytics instance.
     private let analytics: AppAnalytics

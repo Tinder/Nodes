@@ -76,7 +76,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     @Published
     internal private(set) var state: {{ node_name }}State
     {% else %}
-    internal let state: {{ node_name }}State
+    private let state: {{ node_name }}State
     {% endif %}
 
     {% if is_periphery_comment_enabled %}

@@ -39,7 +39,7 @@ internal final class WindowSceneContextImp: AbstractContext
 
     // periphery:ignore
     /// The State instance.
-    internal let state: WindowSceneState
+    private let state: WindowSceneState
 
     // periphery:ignore
     /// The Analytics instance.

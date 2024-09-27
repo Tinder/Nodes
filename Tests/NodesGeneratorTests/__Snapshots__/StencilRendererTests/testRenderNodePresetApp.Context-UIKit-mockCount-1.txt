@@ -30,7 +30,7 @@ internal final class AppContextImp: AbstractContext
 
     // periphery:ignore
     /// The State instance.
-    internal let state: AppState
+    private let state: AppState
 
     // periphery:ignore
     /// The Analytics instance.

@@ -41,7 +41,7 @@ internal final class <nodeName>ContextImp: AbstractContext
 
     // periphery:ignore
     /// The State instance.
-    internal let state: <nodeName>State
+    private let state: <nodeName>State
 
     // periphery:ignore
     /// The Analytics instance.
