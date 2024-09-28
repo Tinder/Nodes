@@ -34,11 +34,6 @@ public protocol PerceptibleViewStateStore<ViewState>: AnyObject, Perceptible {
         to keyPath: KeyPath<ViewState, T>,
         onChange: @escaping @MainActor (T) -> Void
     ) -> Binding<T>
-
-    func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
-    ) -> Binding<T>
 }
 
 // MARK: - State Store
@@ -126,13 +121,6 @@ public final class AnyPerceptibleViewStateStore<
     ) -> Binding<T> {
         box.bind(to: keyPath, onChange: onChange)
     }
-
-    public func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
-    ) -> Binding<T> {
-        box.bind(to: keyPath, onChange: onChange)
-    }
 }
 
 @preconcurrency
@@ -157,13 +145,6 @@ private class PerceptibleViewStateStoreBox<
     ) -> Binding<T> {
         base.bind(to: keyPath, onChange: onChange)
     }
-
-    override func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
-    ) -> Binding<T> {
-        base.bind(to: keyPath, onChange: onChange)
-    }
 }
 
 @preconcurrency
@@ -176,6 +157,8 @@ private class PerceptibleViewStateStoreBase<
         preconditionFailure("Property in abstract base class must be overridden")
     }
 
+    // swiftlint:disable unused_parameter
+
     // swiftlint:disable:next unavailable_function
     func bind<T>(
         to keyPath: KeyPath<ViewState, T>,
@@ -184,24 +167,39 @@ private class PerceptibleViewStateStoreBase<
         preconditionFailure("Method in abstract base class must be overridden")
     }
 
-    // swiftlint:disable:next unavailable_function
-    func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
-    ) -> Binding<T> {
-        preconditionFailure("Method in abstract base class must be overridden")
+    // swiftlint:enable unused_parameter
+}
+
+// MARK: - Testing
+
+@preconcurrency
+@MainActor
+public final class PerceptibleTestStore<State: Equatable>: PerceptibleStateStore {
+
+    public typealias StateChange = (_ old: State, _ new: State) -> Void
+
+    public var onStateChange: StateChange
+
+    public var state: State {
+        didSet { onStateChange(oldValue, state) }
+    }
+
+    public init(
+        state: State,
+        onStateChange: @escaping StateChange = { _, _ in }
+    ) {
+        self.state = state
+        self.onStateChange = onStateChange
     }
 }
 
 // MARK: - Preview
 
-#if DEBUG
-
 @preconcurrency
 @MainActor
 public final class PerceptiblePreviewStore<ViewState: Equatable>: PerceptibleViewStateStore {
 
-    public let viewState: ViewState
+    public var viewState: ViewState
 
     public init(viewState: ViewState) {
         self.viewState = viewState
@@ -211,18 +209,13 @@ public final class PerceptiblePreviewStore<ViewState: Equatable>: PerceptibleVie
         to keyPath: KeyPath<ViewState, T>,
         onChange: @escaping @MainActor (T) -> Void
     ) -> Binding<T> {
-        .constant(viewState[keyPath: keyPath])
-    }
-
-    public func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
-    ) -> Binding<T> {
-        .constant(viewState[keyPath: keyPath])
+        Binding { [self] in
+            viewState[keyPath: keyPath]
+        } set: { value in
+            onChange(value)
+        }
     }
 }
-
-#endif
 
 // MARK: - Scope
 
@@ -252,13 +245,6 @@ private final class PerceptibleScope<
     func bind<T>(
         to keyPath: KeyPath<ViewState, T>,
         onChange: @escaping @MainActor (T) -> Void
-    ) -> Binding<T> {
-        store.bind(to: self.keyPath.appending(path: keyPath), onChange: onChange)
-    }
-
-    func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
     ) -> Binding<T> {
         store.bind(to: self.keyPath.appending(path: keyPath), onChange: onChange)
     }
@@ -318,20 +304,24 @@ open class PerceptibleStore<
         to keyPath: KeyPath<ViewState, T>,
         onChange: @escaping @MainActor (T) -> Void
     ) -> Binding<T> {
-        Binding(get: { [self] in viewState[keyPath: keyPath] }, set: { onChange($0) })
-    }
-
-    public func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
-    ) -> Binding<T> {
-        Binding(get: { [self] in viewState[keyPath: keyPath] }, set: { onChange?($0) })
+        Binding { [self] in
+            viewState[keyPath: keyPath]
+        } set: { value in
+            onChange(value)
+        }
     }
 }
 
 // MARK: - Extensions
 
 extension PerceptibleViewStateStore {
+
+    public func bind<T>(
+        to keyPath: KeyPath<ViewState, T>,
+        onChange: (@MainActor (T) -> Void)?
+    ) -> Binding<T> {
+        bind(to: keyPath) { onChange?($0) }
+    }
 
     public func scope<T: Equatable>(
         viewState keyPath: KeyPath<ViewState, T>

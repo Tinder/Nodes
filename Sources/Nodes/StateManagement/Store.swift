@@ -33,11 +33,6 @@ public protocol ViewStateStore<ViewState>: AnyObject, Observable {
         to keyPath: KeyPath<ViewState, T>,
         onChange: @escaping @MainActor (T) -> Void
     ) -> Binding<T>
-
-    func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
-    ) -> Binding<T>
 }
 
 // MARK: - State Store
@@ -129,13 +124,6 @@ public final class AnyViewStateStore<
     ) -> Binding<T> {
         box.bind(to: keyPath, onChange: onChange)
     }
-
-    public func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
-    ) -> Binding<T> {
-        box.bind(to: keyPath, onChange: onChange)
-    }
 }
 
 @preconcurrency
@@ -158,13 +146,6 @@ private class ViewStateStoreBox<
     override func bind<T>(
         to keyPath: KeyPath<ViewState, T>,
         onChange: @escaping @MainActor (T) -> Void
-    ) -> Binding<T> {
-        base.bind(to: keyPath, onChange: onChange)
-    }
-
-    override func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
     ) -> Binding<T> {
         base.bind(to: keyPath, onChange: onChange)
     }
@@ -191,52 +172,57 @@ private class ViewStateStoreBase<
         preconditionFailure("Method in abstract base class must be overridden")
     }
 
-    // swiftlint:disable:next unavailable_function
-    func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
-    ) -> Binding<T> {
-        preconditionFailure("Method in abstract base class must be overridden")
-    }
-
     // swiftlint:enable unused_parameter
 }
 
-// MARK: - Preview
+// MARK: - Testing
 
-#if DEBUG
+@preconcurrency
+@MainActor
+@available(macOS 14.0, macCatalyst 17.0, iOS 17.0, tvOS 17.0, watchOS 10.0, *)
+public final class TestStore<State: Equatable>: StateStore {
+
+    public typealias StateChange = (_ old: State, _ new: State) -> Void
+
+    public var onStateChange: StateChange
+
+    public var state: State {
+        didSet { onStateChange(oldValue, state) }
+    }
+
+    public init(
+        state: State,
+        onStateChange: @escaping StateChange = { _, _ in }
+    ) {
+        self.state = state
+        self.onStateChange = onStateChange
+    }
+}
+
+// MARK: - Preview
 
 @preconcurrency
 @MainActor
 @available(macOS 14.0, macCatalyst 17.0, iOS 17.0, tvOS 17.0, watchOS 10.0, *)
 public final class PreviewStore<ViewState: Equatable>: ViewStateStore {
 
-    public let viewState: ViewState
+    public var viewState: ViewState
 
     public init(viewState: ViewState) {
         self.viewState = viewState
     }
 
-    // swiftlint:disable unused_parameter
-
     public func bind<T>(
         to keyPath: KeyPath<ViewState, T>,
         onChange: @escaping @MainActor (T) -> Void
     ) -> Binding<T> {
-        .constant(viewState[keyPath: keyPath])
+        Binding { [self] in
+            viewState[keyPath: keyPath]
+        } set: { value in
+            onChange(value)
+        }
     }
-
-    public func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
-    ) -> Binding<T> {
-        .constant(viewState[keyPath: keyPath])
-    }
-
-    // swiftlint:enable unused_parameter
 }
-
-#endif
 
 // MARK: - Scope
 
@@ -267,13 +253,6 @@ private final class Scope<
     func bind<T>(
         to keyPath: KeyPath<ViewState, T>,
         onChange: @escaping @MainActor (T) -> Void
-    ) -> Binding<T> {
-        store.bind(to: self.keyPath.appending(path: keyPath), onChange: onChange)
-    }
-
-    func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
     ) -> Binding<T> {
         store.bind(to: self.keyPath.appending(path: keyPath), onChange: onChange)
     }
@@ -334,14 +313,11 @@ open class Store<
         to keyPath: KeyPath<ViewState, T>,
         onChange: @escaping @MainActor (T) -> Void
     ) -> Binding<T> {
-        Binding(get: { [self] in viewState[keyPath: keyPath] }, set: { onChange($0) })
-    }
-
-    public func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: (@MainActor (T) -> Void)?
-    ) -> Binding<T> {
-        Binding(get: { [self] in viewState[keyPath: keyPath] }, set: { onChange?($0) })
+        Binding { [self] in
+            viewState[keyPath: keyPath]
+        } set: { value in
+            onChange(value)
+        }
     }
 }
 
@@ -349,6 +325,13 @@ open class Store<
 
 @available(macOS 14.0, macCatalyst 17.0, iOS 17.0, tvOS 17.0, watchOS 10.0, *)
 extension ViewStateStore {
+
+    public func bind<T>(
+        to keyPath: KeyPath<ViewState, T>,
+        onChange: (@MainActor (T) -> Void)?
+    ) -> Binding<T> {
+        bind(to: keyPath) { onChange?($0) }
+    }
 
     public func scope<T: Equatable>(
         viewState keyPath: KeyPath<ViewState, T>
