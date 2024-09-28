@@ -88,7 +88,7 @@ internal struct {{ node_name }}View_Previews: PreviewProvider {
     internal static var previews: some View {
         {{ node_name }}View(
             store: {{ store_prefix }}PreviewStore(
-                {{ node_name }}ViewState()
+                viewState: {{ node_name }}ViewState()
             )
         )
     }
