@@ -3,7 +3,6 @@
 //
 
 import Nodes
-import SwiftUI
 
 public final class ViewStateStoreMock<ViewState: Equatable>: ViewStateStore, ObservableViewStateStore {
 
