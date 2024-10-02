@@ -76,17 +76,6 @@ final class ObservableStoreTests: XCTestCase {
     }
 
     @MainActor
-    func testObservableTestStore() {
-        var values: [(Int, Int)] = []
-        let store: ObservableTestStore = .init(state: 23) { values.append(($0, $1)) }
-        expect(store).to(notBeNilAndToDeallocateAfterTest())
-        expect(store.state) == 23
-        store.state = 100
-        expect(store.state) == 100
-        expect(values) == [(23, 100)]
-    }
-
-    @MainActor
     func testObservablePreviewStore() {
         let store: ObservablePreviewStore = .init(viewState: 23)
         expect(store).to(notBeNilAndToDeallocateAfterTest())

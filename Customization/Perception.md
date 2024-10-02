@@ -29,11 +29,6 @@ public protocol PerceptibleViewStateStore<ViewState>: AnyObject, Perceptible {
     associatedtype ViewState: Equatable
 
     var viewState: ViewState { get }
-
-    func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: @escaping @MainActor (T) -> Void
-    ) -> Binding<T>
 }
 
 // MARK: - State Store
@@ -114,13 +109,6 @@ public final class AnyPerceptibleViewStateStore<
     ) where Base.ViewState == ViewState {
         box = PerceptibleViewStateStoreBox(base)
     }
-
-    public func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: @escaping @MainActor (T) -> Void
-    ) -> Binding<T> {
-        box.bind(to: keyPath, onChange: onChange)
-    }
 }
 
 @preconcurrency
@@ -138,13 +126,6 @@ private class PerceptibleViewStateStoreBox<
     init(_ base: Base) {
         self.base = base
     }
-
-    override func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: @escaping @MainActor (T) -> Void
-    ) -> Binding<T> {
-        base.bind(to: keyPath, onChange: onChange)
-    }
 }
 
 @preconcurrency
@@ -155,41 +136,6 @@ private class PerceptibleViewStateStoreBase<
 
     var viewState: ViewState {
         preconditionFailure("Property in abstract base class must be overridden")
-    }
-
-    // swiftlint:disable unused_parameter
-
-    // swiftlint:disable:next unavailable_function
-    func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: @escaping @MainActor (T) -> Void
-    ) -> Binding<T> {
-        preconditionFailure("Method in abstract base class must be overridden")
-    }
-
-    // swiftlint:enable unused_parameter
-}
-
-// MARK: - Testing
-
-@preconcurrency
-@MainActor
-public final class PerceptibleTestStore<State: Equatable>: PerceptibleStateStore {
-
-    public typealias StateChange = (_ old: State, _ new: State) -> Void
-
-    public var onStateChange: StateChange
-
-    public var state: State {
-        didSet { onStateChange(oldValue, state) }
-    }
-
-    public init(
-        state: State,
-        onStateChange: @escaping StateChange = { _, _ in }
-    ) {
-        self.state = state
-        self.onStateChange = onStateChange
     }
 }
 
@@ -203,17 +149,6 @@ public final class PerceptiblePreviewStore<ViewState: Equatable>: PerceptibleVie
 
     public init(viewState: ViewState) {
         self.viewState = viewState
-    }
-
-    public func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: @escaping @MainActor (T) -> Void
-    ) -> Binding<T> {
-        Binding { [self] in
-            viewState[keyPath: keyPath]
-        } set: { value in
-            onChange(value)
-        }
     }
 }
 
@@ -240,13 +175,6 @@ private final class PerceptibleScope<
     ) {
         self.store = store
         self.keyPath = keyPath
-    }
-
-    func bind<T>(
-        to keyPath: KeyPath<ViewState, T>,
-        onChange: @escaping @MainActor (T) -> Void
-    ) -> Binding<T> {
-        store.bind(to: self.keyPath.appending(path: keyPath), onChange: onChange)
     }
 }
 
@@ -299,6 +227,17 @@ open class PerceptibleStore<
         self.viewStateSubject = viewStateSubject
         self.transform = transform
     }
+}
+
+// MARK: - Extensions
+
+extension PerceptibleViewStateStore {
+
+    public func scope<T: Equatable>(
+        viewState keyPath: KeyPath<ViewState, T>
+    ) -> AnyPerceptibleViewStateStore<T> {
+        AnyPerceptibleViewStateStore(PerceptibleScope(store: self, keyPath: keyPath))
+    }
 
     public func bind<T>(
         to keyPath: KeyPath<ViewState, T>,
@@ -310,23 +249,17 @@ open class PerceptibleStore<
             onChange(value)
         }
     }
-}
-
-// MARK: - Extensions
-
-extension PerceptibleViewStateStore {
 
     public func bind<T>(
         to keyPath: KeyPath<ViewState, T>,
         onChange: (@MainActor (T) -> Void)?
     ) -> Binding<T> {
-        bind(to: keyPath) { onChange?($0) }
-    }
-
-    public func scope<T: Equatable>(
-        viewState keyPath: KeyPath<ViewState, T>
-    ) -> AnyPerceptibleViewStateStore<T> {
-        AnyPerceptibleViewStateStore(PerceptibleScope(store: self, keyPath: keyPath))
+        guard let onChange: (@MainActor (T) -> Void)
+        else {
+            assertionFailure("The `onChange` closure should not be nil")
+            return bind(to: keyPath) { _ in }
+        }
+        return bind(to: keyPath) { onChange($0) }
     }
 }
 ```
