@@ -254,7 +254,7 @@ extension PerceptibleViewStateStore {
         to keyPath: KeyPath<ViewState, T>,
         onChange: (@MainActor (T) -> Void)?
     ) -> Binding<T> {
-        guard let onChange: (@MainActor (T) -> Void)
+        guard let onChange: @MainActor (T) -> Void
         else { return bind(to: keyPath) { _ in } }
         return bind(to: keyPath, onChange: onChange)
     }
