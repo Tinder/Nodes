@@ -261,11 +261,8 @@ extension ObservableViewStateStore {
         onChange: (@MainActor (T) -> Void)?
     ) -> Binding<T> {
         guard let onChange: (@MainActor (T) -> Void)
-        else {
-            assertionFailure("The `onChange` closure should not be nil")
-            return bind(to: keyPath) { _ in }
-        }
-        return bind(to: keyPath) { onChange($0) }
+        else { return bind(to: keyPath) { _ in } }
+        return bind(to: keyPath, onChange: onChange)
     }
 }
 
