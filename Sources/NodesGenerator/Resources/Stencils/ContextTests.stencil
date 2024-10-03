@@ -11,7 +11,7 @@ import {{ import }}
 final class {{ node_name }}ContextTests: XCTestCase {
 
     {% if owns_view %}
-    private var storeMock: StateStoreMock<{{ node_name }}State>!
+    private var storeMock: {{ store_prefix }}StateStoreMock<{{ node_name }}State>!
     {% endif %}
     private var analyticsMock: {{ node_name }}AnalyticsMock!
 
@@ -19,7 +19,7 @@ final class {{ node_name }}ContextTests: XCTestCase {
     override func setUp() {
         super.setUp()
         {% if owns_view %}
-        storeMock = StateStoreMock(
+        storeMock = {{ store_prefix }}StateStoreMock(
             state: {{ node_name }}State()
         )
         {% endif %}

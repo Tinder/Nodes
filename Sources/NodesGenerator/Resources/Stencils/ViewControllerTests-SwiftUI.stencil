@@ -28,7 +28,7 @@ final class {{ node_name }}ViewControllerTests: XCTestCase {
     ) -> {{ node_name }}ViewController {
         {{ node_name }}ViewController(
             rootView: {{ node_name }}View(
-                store: ViewStateStoreMock(viewState: viewState)
+                store: {{ store_prefix }}ViewStateStoreMock(viewState: viewState)
             )
         )
     }
