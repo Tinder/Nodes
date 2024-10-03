@@ -22,7 +22,7 @@ final class ___VARIABLE_productName___ViewControllerTests: XCTestCase {
     ) -> ___VARIABLE_productName___ViewController {
         ___VARIABLE_productName___ViewController(
             rootView: ___VARIABLE_productName___View(
-                store: PreviewStore(viewState: viewState)
+                store: ViewStateStoreMock(viewState: viewState)
             )
         )
     }

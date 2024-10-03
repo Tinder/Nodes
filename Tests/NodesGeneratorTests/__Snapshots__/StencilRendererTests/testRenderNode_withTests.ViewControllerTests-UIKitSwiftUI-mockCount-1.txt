@@ -20,7 +20,7 @@ final class <nodeName>ViewControllerTests: XCTestCase {
     ) -> <nodeName>ViewController {
         <nodeName>ViewController(
             rootView: <nodeName>View(
-                store: <storePrefix>PreviewStore(viewState: viewState)
+                store: ViewStateStoreMock(viewState: viewState)
             )
         )
     }
