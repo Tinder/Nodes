@@ -6,7 +6,9 @@ import Nodes
 
 @preconcurrency
 @MainActor
-public final class ObservableStateStoreMock<State: Equatable>: ObservableStateStore {
+public final class ObservableStateStoreMock<
+    State: Equatable
+>: ObservableStateStore {
 
     public var state: State {
         didSet { stateSetCallCount += 1 }

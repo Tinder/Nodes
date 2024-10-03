@@ -9,7 +9,9 @@ import SwiftUI
 
 @preconcurrency
 @MainActor
-public final class ObservableViewStateStoreMock<ViewState: Equatable>: ObservableViewStateStore {
+public final class ObservableViewStateStoreMock<
+    ViewState: Equatable
+>: ObservableViewStateStore {
 
     @Published
     public var viewState: ViewState {

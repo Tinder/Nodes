@@ -144,7 +144,9 @@ private class ObservableViewStateStoreBase<
 
 @preconcurrency
 @MainActor
-public final class ObservablePreviewStore<ViewState: Equatable>: ObservableViewStateStore {
+public final class ObservablePreviewStore<
+    ViewState: Equatable
+>: ObservableViewStateStore {
 
     @Published
     public var viewState: ViewState
