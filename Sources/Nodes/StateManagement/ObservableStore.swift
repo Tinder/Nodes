@@ -146,6 +146,7 @@ private class ObservableViewStateStoreBase<
 @MainActor
 public final class ObservablePreviewStore<ViewState: Equatable>: ObservableViewStateStore {
 
+    @Published
     public var viewState: ViewState
 
     public init(viewState: ViewState) {
@@ -189,7 +190,7 @@ private final class ObservableScope<
 
 @preconcurrency
 @MainActor
-open class ObservableStore<
+public final class ObservableStore<
     State: Equatable,
     ViewState: Equatable
 >: ObservableStateStore, ObservableViewStateStore {
@@ -260,9 +261,9 @@ extension ObservableViewStateStore {
         to keyPath: KeyPath<ViewState, T>,
         onChange: (@MainActor (T) -> Void)?
     ) -> Binding<T> {
-        guard let onChange: @MainActor (T) -> Void
-        else { return bind(to: keyPath) { _ in } }
-        return bind(to: keyPath, onChange: onChange)
+        bind(to: keyPath) { value in
+            onChange?(value)
+        }
     }
 }
 

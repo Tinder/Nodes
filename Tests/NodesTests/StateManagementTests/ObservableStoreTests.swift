@@ -10,17 +10,10 @@ import XCTest
 
 final class ObservableStoreTests: XCTestCase {
 
-    private final class ObservableStore: Nodes.ObservableStore<Int, String> {
-
-        init() {
-            super.init(state: 1) { $0 == 0 ? "23" : "\($0)" }
-        }
-    }
-
     @MainActor
     func testObservableStore() {
 
-        let store: ObservableStore = .init()
+        let store: ObservableStore = givenObservableStore()
 
         expect(store).to(notBeNilAndToDeallocateAfterTest())
 
@@ -86,7 +79,7 @@ final class ObservableStoreTests: XCTestCase {
 
     @MainActor
     func testObservableStoreBindings() {
-        let store: ObservableStore = .init()
+        let store: ObservableStore = givenObservableStore()
         expect(store).to(notBeNilAndToDeallocateAfterTest())
         let onChangeA: (String) -> Void = { value in
             let sanitized: String = value.replacingOccurrences(of: "|", with: "")
@@ -101,5 +94,10 @@ final class ObservableStoreTests: XCTestCase {
         bindingB.wrappedValue = "|23|"
         expect(bindingA.wrappedValue) == "23"
         expect(bindingB.wrappedValue) == "23"
+    }
+
+    @MainActor
+    private func givenObservableStore() -> ObservableStore<Int, String> {
+        ObservableStore(state: 1) { $0 == 0 ? "23" : "\($0)" }
     }
 }

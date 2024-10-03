@@ -2,10 +2,16 @@
 //  Copyright © 2024 Tinder (Match Group, LLC)
 //
 
+#if canImport(SwiftUI)
+
 import Nodes
+import SwiftUI
 
-public final class ViewStateStoreMock<ViewState: Equatable>: ViewStateStore, ObservableViewStateStore {
+@preconcurrency
+@MainActor
+public final class ObservableViewStateStoreMock<ViewState: Equatable>: ObservableViewStateStore {
 
+    @Published
     public var viewState: ViewState {
         didSet { viewStateSetCallCount += 1 }
     }
@@ -16,3 +22,5 @@ public final class ViewStateStoreMock<ViewState: Equatable>: ViewStateStore, Obs
         self.viewState = viewState
     }
 }
+
+#endif

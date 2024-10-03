@@ -11,17 +11,10 @@ import XCTest
 @available(macOS 14.0, macCatalyst 17.0, iOS 17.0, tvOS 17.0, watchOS 10.0, *)
 final class StoreTests: XCTestCase {
 
-    private final class Store: Nodes.Store<Int, String> {
-
-        init() {
-            super.init(state: 1) { $0 == 0 ? "23" : "\($0)" }
-        }
-    }
-
     @MainActor
     func testStore() {
 
-        let store: Store = .init()
+        let store: Store = givenStore()
 
         expect(store).to(notBeNilAndToDeallocateAfterTest())
 
@@ -87,7 +80,7 @@ final class StoreTests: XCTestCase {
 
     @MainActor
     func testStoreBindings() {
-        let store: Store = .init()
+        let store: Store = givenStore()
         expect(store).to(notBeNilAndToDeallocateAfterTest())
         let onChangeA: (String) -> Void = { value in
             let sanitized: String = value.replacingOccurrences(of: "|", with: "")
@@ -102,5 +95,10 @@ final class StoreTests: XCTestCase {
         bindingB.wrappedValue = "|23|"
         expect(bindingA.wrappedValue) == "23"
         expect(bindingB.wrappedValue) == "23"
+    }
+
+    @MainActor
+    private func givenStore() -> Store<Int, String> {
+        Store(state: 1) { $0 == 0 ? "23" : "\($0)" }
     }
 }

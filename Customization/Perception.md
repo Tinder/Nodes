@@ -141,6 +141,7 @@ private class PerceptibleViewStateStoreBase<
 
 // MARK: - Preview
 
+@Perceptible
 @preconcurrency
 @MainActor
 public final class PerceptiblePreviewStore<ViewState: Equatable>: PerceptibleViewStateStore {
@@ -183,7 +184,7 @@ private final class PerceptibleScope<
 @Perceptible
 @preconcurrency
 @MainActor
-open class PerceptibleStore<
+public final class PerceptibleStore<
     State: Equatable,
     ViewState: Equatable
 >: PerceptibleStateStore, PerceptibleViewStateStore {
@@ -254,9 +255,9 @@ extension PerceptibleViewStateStore {
         to keyPath: KeyPath<ViewState, T>,
         onChange: (@MainActor (T) -> Void)?
     ) -> Binding<T> {
-        guard let onChange: @MainActor (T) -> Void
-        else { return bind(to: keyPath) { _ in } }
-        return bind(to: keyPath, onChange: onChange)
+        bind(to: keyPath) { value in
+            onChange?(value)
+        }
     }
 }
 ```

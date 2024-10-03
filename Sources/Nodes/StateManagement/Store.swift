@@ -146,6 +146,7 @@ private class ViewStateStoreBase<
 
 // MARK: - Preview
 
+@Observable
 @preconcurrency
 @MainActor
 @available(macOS 14.0, macCatalyst 17.0, iOS 17.0, tvOS 17.0, watchOS 10.0, *)
@@ -191,7 +192,7 @@ private final class Scope<
 @preconcurrency
 @MainActor
 @available(macOS 14.0, macCatalyst 17.0, iOS 17.0, tvOS 17.0, watchOS 10.0, *)
-open class Store<
+public final class Store<
     State: Equatable,
     ViewState: Equatable
 >: StateStore, ViewStateStore {
@@ -263,9 +264,9 @@ extension ViewStateStore {
         to keyPath: KeyPath<ViewState, T>,
         onChange: (@MainActor (T) -> Void)?
     ) -> Binding<T> {
-        guard let onChange: @MainActor (T) -> Void
-        else { return bind(to: keyPath) { _ in } }
-        return bind(to: keyPath, onChange: onChange)
+        bind(to: keyPath) { value in
+            onChange?(value)
+        }
     }
 }
 
