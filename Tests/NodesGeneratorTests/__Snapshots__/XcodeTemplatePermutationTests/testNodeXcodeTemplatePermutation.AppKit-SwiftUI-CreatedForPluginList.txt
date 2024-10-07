@@ -29,8 +29,9 @@
       - "<baseImport>"
       - "<reactiveImport>"
       - "Nodes"
-    ▿ contextTestsImports: 2 elements
+    ▿ contextTestsImports: 3 elements
       - "<baseTestImport>"
+      - "Nodes"
       - "NodesTesting"
     ▿ dependencies: 1 element
       ▿ 2 key/value pairs
@@ -88,7 +89,7 @@
     - viewControllerSuperParameters: ""
     ▿ viewControllerTestsImports: 2 elements
       - "<baseTestImport>"
-      - "Nodes"
+      - "NodesTesting"
     - viewControllerType: "NSHostingController"
     - viewControllerUpdateComment: "<viewControllerUpdateComment>"
     - viewStateEmptyFactory: "<viewStateEmptyFactory>"

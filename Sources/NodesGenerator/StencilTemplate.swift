@@ -246,6 +246,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
                 .union(config.reactiveImports)
         case .contextTests:
             config.baseTestImports
+                .union(["Nodes"])
                 .union(uiFramework == nil ? [] : ["NodesTesting"])
         case .flow:
             config.baseImports
@@ -278,7 +279,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
                 .union(uiFramework.flatMap { [$0.import] } ?? [])
         case .viewControllerTests:
             uiFramework == nil ? [] : config.baseTestImports
-                .union(uiFramework?.kind.isHostingSwiftUI == true ? ["Nodes"] : config.reactiveImports)
+                .union(uiFramework?.kind.isHostingSwiftUI == true ? ["NodesTesting"] : config.reactiveImports)
         case .viewState:
             uiFramework == nil ? [] : config.baseImports
                 .union(["Nodes"])
