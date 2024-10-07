@@ -13,7 +13,7 @@ final class {{ node_name }}ViewControllerTests: XCTestCase {
     @MainActor
     func testNotNil() {
         let viewController: {{ node_name }}ViewController = givenViewController(
-            with: {{ node_name }}ViewState()
+            viewState: {{ node_name }}ViewState()
         )
         {% if is_nimble_enabled %}
         expect(viewController) != nil
@@ -24,7 +24,7 @@ final class {{ node_name }}ViewControllerTests: XCTestCase {
 
     @MainActor
     private func givenViewController(
-        with viewState: {{ node_name }}ViewState
+        viewState: {{ node_name }}ViewState
     ) -> {{ node_name }}ViewController {
         {{ node_name }}ViewController(
             initialState: viewState,

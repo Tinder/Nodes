@@ -162,7 +162,7 @@ internal final class RootBuilderImp: AbstractBuilder
             RootState,
             RootViewState
         > = .init(
-            state: RootState(name: "Root View Controller", isReady: false),
+            state: .initialState(),
             transform: RootViewStateFactory()
         )
         let analytics: RootAnalyticsImp = .init(

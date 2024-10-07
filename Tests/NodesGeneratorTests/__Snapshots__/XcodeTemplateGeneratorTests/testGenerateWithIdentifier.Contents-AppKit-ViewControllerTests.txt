@@ -11,14 +11,14 @@ final class ___VARIABLE_productName___ViewControllerTests: XCTestCase {
     @MainActor
     func testNotNil() {
         let viewController: ___VARIABLE_productName___ViewController = givenViewController(
-            with: ___VARIABLE_productName___ViewState()
+            viewState: ___VARIABLE_productName___ViewState()
         )
         expect(viewController) != nil
     }
 
     @MainActor
     private func givenViewController(
-        with viewState: ___VARIABLE_productName___ViewState
+        viewState: ___VARIABLE_productName___ViewState
     ) -> ___VARIABLE_productName___ViewController {
         ___VARIABLE_productName___ViewController(
             initialState: viewState,

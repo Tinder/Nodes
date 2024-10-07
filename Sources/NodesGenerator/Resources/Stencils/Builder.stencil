@@ -282,11 +282,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
             {{ node_name }}State,
             {{ node_name }}ViewState
         > = .init(
-            {% if node_name == "Root" %}
-            state: {{ node_name }}State(name: "Root View Controller", isReady: false),
-            {% else %}
-            state: {{ node_name }}State(),
-            {% endif %}
+            state: .initialState(),
             transform: {{ node_name }}ViewStateFactory()
         )
         {% endif %}

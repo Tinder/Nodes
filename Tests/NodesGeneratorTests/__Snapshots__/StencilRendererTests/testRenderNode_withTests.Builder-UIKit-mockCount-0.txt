@@ -152,7 +152,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
             <nodeName>State,
             <nodeName>ViewState
         > = .init(
-            state: <nodeName>State(),
+            state: .initialState(),
             transform: <nodeName>ViewStateFactory()
         )
         let analytics: <nodeName>AnalyticsImp = .init()

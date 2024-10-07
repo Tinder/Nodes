@@ -156,7 +156,7 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
             ___VARIABLE_productName___State,
             ___VARIABLE_productName___ViewState
         > = .init(
-            state: ___VARIABLE_productName___State(),
+            state: .initialState(),
             transform: ___VARIABLE_productName___ViewStateFactory()
         )
         let analytics: ___VARIABLE_productName___AnalyticsImp = .init()
