@@ -251,7 +251,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         let config: Config = givenConfig()
         for stencilTemplate in StencilTemplate.allCases {
             for uiFramework in config.uiFrameworks {
-                let imports: [String] = Array(stencilTemplate.imports(with: config, including: uiFramework)).sorted()
+                let imports: [String] = stencilTemplate.imports(with: config, including: uiFramework).sortedImports()
                 let uiFrameworkImport: String
                 switch uiFramework.kind {
                 case .appKit:
@@ -377,7 +377,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
     func testImportsWithConfig() {
         let config: Config = givenConfig()
         for stencilTemplate in StencilTemplate.allCases {
-            let imports: [String] = Array(stencilTemplate.imports(with: config)).sorted()
+            let imports: [String] = stencilTemplate.imports(with: config).sortedImports()
             switch stencilTemplate {
             case .analytics:
                 expect(imports) == [
