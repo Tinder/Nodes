@@ -251,7 +251,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
         let config: Config = givenConfig()
         for stencilTemplate in StencilTemplate.allCases {
             for uiFramework in config.uiFrameworks {
-                let imports: Set<String> = stencilTemplate.imports(with: config, including: uiFramework)
+                let imports: [String] = Array(stencilTemplate.imports(with: config, including: uiFramework)).sorted()
                 let uiFrameworkImport: String
                 switch uiFramework.kind {
                 case .appKit:
@@ -276,34 +276,34 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     ]
                 case .builder:
                     expect(imports) == [
-                        "Nodes",
                         "<baseImport>",
-                        "<reactiveImport>",
+                        "<builderImport>",
                         "<dependencyInjectionImport>",
-                        "<builderImport>"
+                        "<reactiveImport>",
+                        "Nodes"
                     ]
                 case .builderTests:
                     expect(imports) == [
-                        "NodesTesting",
-                        "<baseTestImport>"
+                        "<baseTestImport>",
+                        "NodesTesting"
                     ]
                 case .context:
                     expect(imports) == [
-                        "Nodes",
                         "<baseImport>",
-                        "<reactiveImport>"
+                        "<reactiveImport>",
+                        "Nodes"
                     ]
                 case .contextTests:
                     expect(imports) == [
-                        "Nodes",
                         "<baseTestImport>",
+                        "Nodes",
                         "NodesTesting"
                     ]
                 case .flow:
                     expect(imports) == [
-                        "Nodes",
                         "<baseImport>",
-                        "<flowImport>"
+                        "<flowImport>",
+                        "Nodes"
                     ]
                 case .flowTests:
                     expect(imports) == [
@@ -311,26 +311,26 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     ]
                 case .plugin:
                     expect(imports) == [
-                        "Nodes",
                         "<baseImport>",
-                        "<dependencyInjectionImport>"
+                        "<dependencyInjectionImport>",
+                        "Nodes"
                     ]
                 case .pluginTests:
                     expect(imports) == [
-                        "NodesTesting",
-                        "<baseTestImport>"
+                        "<baseTestImport>",
+                        "NodesTesting"
                     ]
                 case .pluginList:
                     expect(imports) == [
-                        "Nodes",
                         "<baseImport>",
                         "<dependencyInjectionImport>",
-                        "<pluginListImport>"
+                        "<pluginListImport>",
+                        "Nodes"
                     ]
                 case .pluginListTests:
                     expect(imports) == [
-                        "NodesTesting",
-                        "<baseTestImport>"
+                        "<baseTestImport>",
+                        "NodesTesting"
                     ]
                 case .state:
                     expect(imports) == [
@@ -338,12 +338,12 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     ]
                 case .viewController:
                     expect(imports) == [
-                        "Nodes",
                         "<baseImport>",
                         "<reactiveImport>",
                         "<viewControllerImport>",
+                        "Nodes",
                         uiFrameworkImport
-                    ]
+                    ].sorted()
                 case .viewControllerTests:
                     expect(imports) == [
                         "<baseTestImport>",
@@ -351,8 +351,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     ]
                 case .viewState:
                     expect(imports) == [
-                        "Nodes",
-                        "<baseImport>"
+                        "<baseImport>",
+                        "Nodes"
                     ]
                 case .viewStateFactoryTests:
                     expect(imports) == [
@@ -360,9 +360,9 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     ]
                 case .worker:
                     expect(imports) == [
-                        "Nodes",
                         "<baseImport>",
-                        "<reactiveImport>"
+                        "<reactiveImport>",
+                        "Nodes"
                     ]
                 case .workerTests:
                     expect(imports) == [
@@ -377,7 +377,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
     func testImportsWithConfig() {
         let config: Config = givenConfig()
         for stencilTemplate in StencilTemplate.allCases {
-            let imports: Set<String> = stencilTemplate.imports(with: config)
+            let imports: [String] = Array(stencilTemplate.imports(with: config)).sorted()
             switch stencilTemplate {
             case .analytics:
                 expect(imports) == [
@@ -389,33 +389,33 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 ]
             case .builder:
                 expect(imports) == [
-                    "Nodes",
                     "<baseImport>",
-                    "<reactiveImport>",
+                    "<builderImport>",
                     "<dependencyInjectionImport>",
-                    "<builderImport>"
+                    "<reactiveImport>",
+                    "Nodes"
                 ]
             case .builderTests:
                 expect(imports) == [
-                    "NodesTesting",
-                    "<baseTestImport>"
+                    "<baseTestImport>",
+                    "NodesTesting"
                 ]
             case .context:
                 expect(imports) == [
-                    "Nodes",
                     "<baseImport>",
-                    "<reactiveImport>"
+                    "<reactiveImport>",
+                    "Nodes"
                 ]
             case .contextTests:
                 expect(imports) == [
-                    "Nodes",
-                    "<baseTestImport>"
+                    "<baseTestImport>",
+                    "Nodes"
                 ]
             case .flow:
                 expect(imports) == [
-                    "Nodes",
                     "<baseImport>",
-                    "<flowImport>"
+                    "<flowImport>",
+                    "Nodes"
                 ]
             case .flowTests:
                 expect(imports) == [
@@ -423,26 +423,26 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 ]
             case .plugin:
                 expect(imports) == [
-                    "Nodes",
                     "<baseImport>",
-                    "<dependencyInjectionImport>"
+                    "<dependencyInjectionImport>",
+                    "Nodes"
                 ]
             case .pluginTests:
                 expect(imports) == [
-                    "NodesTesting",
-                    "<baseTestImport>"
+                    "<baseTestImport>",
+                    "NodesTesting"
                 ]
             case .pluginList:
                 expect(imports) == [
-                    "Nodes",
                     "<baseImport>",
                     "<dependencyInjectionImport>",
-                    "<pluginListImport>"
+                    "<pluginListImport>",
+                    "Nodes"
                 ]
             case .pluginListTests:
                 expect(imports) == [
-                    "NodesTesting",
-                    "<baseTestImport>"
+                    "<baseTestImport>",
+                    "NodesTesting"
                 ]
             case .state:
                 expect(imports) == [
@@ -458,9 +458,9 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(imports).to(beEmpty())
             case .worker:
                 expect(imports) == [
-                    "Nodes",
                     "<baseImport>",
-                    "<reactiveImport>"
+                    "<reactiveImport>",
+                    "Nodes"
                 ]
             case .workerTests:
                 expect(imports) == [
