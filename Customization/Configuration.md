@@ -69,7 +69,7 @@ viewStateOperators: |-
   .eraseToAnyPublisher()
 viewStatePropertyComment: The view state publisher.
 viewStatePropertyName: statePublisher
-viewStateTransform = store.viewStatePublisher
+viewStateTransform: store.viewStatePublisher
 publisherType: AnyPublisher
 publisherFailureType: Never
 contextGenericTypes:
