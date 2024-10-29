@@ -39,7 +39,8 @@ internal struct <nodeName>View {
     internal weak var receiver: <nodeName>Receiver?
 
     /// The Store instance.
-    private let store: Any<storePrefix>ViewStateStore<<nodeName>ViewState>
+    @ObservedObject
+    private var store: Any<storePrefix>ViewStateStore<<nodeName>ViewState>
 
     /// The initializer.
     ///

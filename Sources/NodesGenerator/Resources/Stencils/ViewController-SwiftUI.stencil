@@ -52,7 +52,12 @@ internal struct {{ node_name }}View {
     internal weak var receiver: {{ node_name }}Receiver?
 
     /// The Store instance.
-    private let store: Any{{ store_prefix }}ViewStateStore<{{ node_name }}ViewState>
+    {% if store_prefix %}
+    @ObservedObject
+    private var store: Any{{ store_prefix }}ViewStateStore<{{ node_name }}ViewState>
+    {% else %}
+    private let store: AnyViewStateStore<{{ node_name }}ViewState>
+    {% endif %}
 
     /// The initializer.
     ///
