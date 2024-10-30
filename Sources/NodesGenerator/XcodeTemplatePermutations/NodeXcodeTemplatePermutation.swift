@@ -58,6 +58,7 @@ internal struct NodeXcodeTemplatePermutation: XcodeTemplatePermutation {
             contextGenericTypes: config.contextGenericTypes,
             workerGenericTypes: config.workerGenericTypes,
             storePrefix: config.storePrefix,
+            storePropertyWrapper: config.storePropertyWrapper,
             isPreviewProviderEnabled: config.isPreviewProviderEnabled,
             isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
             isNimbleEnabled: config.isNimbleEnabled

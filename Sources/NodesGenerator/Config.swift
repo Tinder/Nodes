@@ -61,6 +61,7 @@ public struct Config: Codable, Equatable {
     public var isPeripheryCommentEnabled: Bool
 
     public var storePrefix: String { isObservableStoreEnabled ? "Observable" : "" }
+    public var storePropertyWrapper: String { isObservableStoreEnabled ? "@ObservedObject" : "" }
     public var isNimbleEnabled: Bool { baseTestImports.contains("Nimble") }
 
     public init(

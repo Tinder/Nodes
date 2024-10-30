@@ -74,6 +74,7 @@
     ▿ stateImports: 1 element
       - "<baseImport>"
     - storePrefix: ""
+    - storePropertyWrapper: ""
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableMockContents: "<viewControllableMockContents>"
     - viewControllableType: "<viewControllableType>"
