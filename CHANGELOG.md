@@ -1,6 +1,6 @@
 # Changelog
 
-All release notes are available on [GitHub](https://github.com/TinderApp/Nodes/releases).
+All release notes are available on [GitHub](https://github.com/Tinder/Nodes/releases).
 
 Alternatively, use `git log <from-tag>...<to-tag>` to view changes locally.
 

@@ -39,7 +39,7 @@ make delete-snapshots
 
 ## Creating Releases
 
-Releases are made [on the GitHub website](https://github.com/TinderApp/Nodes/releases/new).
+Releases are made [on the GitHub website](https://github.com/Tinder/Nodes/releases/new).
 
 In all of the following steps, `X.X.X` is a placeholder to be substituted with the actual semantic version for the release.
 

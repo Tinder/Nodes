@@ -1,18 +1,18 @@
 <div align="center">
 
-[![Lint](https://github.com/TinderApp/Nodes/actions/workflows/lint.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/lint.yml)
+[![Lint](https://github.com/Tinder/Nodes/actions/workflows/lint.yml/badge.svg?event=push)](https://github.com/Tinder/Nodes/actions/workflows/lint.yml)
 &nbsp;
-[![Swift](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/swift.yml)
+[![Swift](https://github.com/Tinder/Nodes/actions/workflows/swift.yml/badge.svg?event=push)](https://github.com/Tinder/Nodes/actions/workflows/swift.yml)
 &nbsp;
-[![Xcode](https://github.com/TinderApp/Nodes/actions/workflows/xcode.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/xcode.yml)
+[![Xcode](https://github.com/Tinder/Nodes/actions/workflows/xcode.yml/badge.svg?event=push)](https://github.com/Tinder/Nodes/actions/workflows/xcode.yml)
 &nbsp;
-[![DocC](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/docc.yml)
+[![DocC](https://github.com/Tinder/Nodes/actions/workflows/docc.yml/badge.svg?event=push)](https://github.com/Tinder/Nodes/actions/workflows/docc.yml)
 &nbsp;
-[![Genesis](https://github.com/TinderApp/Nodes/actions/workflows/genesis.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/genesis.yml)
+[![Genesis](https://github.com/Tinder/Nodes/actions/workflows/genesis.yml/badge.svg?event=push)](https://github.com/Tinder/Nodes/actions/workflows/genesis.yml)
 
-[![Pages](https://github.com/TinderApp/Nodes/actions/workflows/pages.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/pages.yml)
+[![Pages](https://github.com/Tinder/Nodes/actions/workflows/pages.yml/badge.svg?event=push)](https://github.com/Tinder/Nodes/actions/workflows/pages.yml)
 &nbsp;
-[![Artifactory](https://github.com/TinderApp/Nodes/actions/workflows/artifactory.yml/badge.svg?event=push)](https://github.com/TinderApp/Nodes/actions/workflows/artifactory.yml)
+[![Artifactory](https://github.com/Tinder/Nodes/actions/workflows/artifactory.yml/badge.svg?event=push)](https://github.com/Tinder/Nodes/actions/workflows/artifactory.yml)
 
 <img src="Nodes.png" />
 
@@ -73,7 +73,7 @@ To install Nodes' Xcode templates manually, first add Nodes as a dependency to a
 > Replace `<version>` in the command with the latest Nodes version.
 
 ```
-.package(url: "git@github.com:TinderApp/Nodes.git", from: "<version>")
+.package(url: "git@github.com:Tinder/Nodes.git", from: "<version>")
 ```
 
 Then run the following shell command:
@@ -90,7 +90,7 @@ The Xcode templates will be installed to the following location to be made avail
 
 ## Documentation
 
-Documentation is available online at: [https://TinderApp.github.io/Nodes](https://TinderApp.github.io/Nodes)
+Documentation is available online at: [https://Tinder.github.io/Nodes](https://Tinder.github.io/Nodes)
 
 > TIP: After completing the [Quick Start](#quick-start) setup (below), documentation is viewable in Xcode by selecting `Build Documentation` from the `Product` menu.
 
@@ -116,7 +116,7 @@ This step may be skipped if the Nodes repository was previously cloned.
 > Replace `<version>` in the command with the latest Nodes version.
 
 ```
-git clone -b <version> git@github.com:TinderApp/Nodes.git
+git clone -b <version> git@github.com:Tinder/Nodes.git
 ```
 
 ### Create Project Directory
@@ -186,4 +186,4 @@ While Nodes works out-of-the-box with [Combine](https://developer.apple.com/docu
 
 ## Extras 
 
-The [Nodes Tree Visualizer](https://github.com/TinderApp/Nodes-Tree-Visualizer) is a Swift library and companion web application for tree visualization.
+The [Nodes Tree Visualizer](https://github.com/Tinder/Nodes-Tree-Visualizer) is a Swift library and companion web application for tree visualization.

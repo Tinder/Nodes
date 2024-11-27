@@ -12,7 +12,7 @@ Specify a path to a custom config file by providing the `--config` option when e
 
 <br>
 
-If utilizing the [quick start project setup](https://github.com/TinderApp/Nodes#quick-start), the path can be set in the `project.yml` file:
+If utilizing the [quick start project setup](https://github.com/Tinder/Nodes#quick-start), the path can be set in the `project.yml` file:
 
 ```
 swift run --skip-build -- nodes-xcode-templates-gen --id "Custom" --config "nodes.yml"
