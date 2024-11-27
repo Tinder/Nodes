@@ -55,6 +55,9 @@ jobs:
         -scheme "Tinder"
         -destination "name=$SIMULATOR,OS=latest"
         -skipPackagePluginValidation
+        CODE_SIGN_IDENTITY=""
+        CODE_SIGNING_ALLOWED="NO"
+        CODE_SIGNING_REQUIRED="NO"
     - name: Test
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
