@@ -891,7 +891,7 @@ files:
                   {% if path|replace:' ','' %}
                   path: "{{ path }}"),
                   {% else %}
-                  url: "git@github.com:TinderApp/Nodes.git",
+                  url: "git@github.com:Tinder/Nodes.git",
                   exact: "{{ nodes }}"),
                   {% endif %}
               .package(
@@ -1008,7 +1008,7 @@ files:
           {% if path|replace:' ','' %}
           path: {{ path }}
           {% else %}
-          url: git@github.com:TinderApp/Nodes.git
+          url: git@github.com:Tinder/Nodes.git
           version: {{ nodes }}
           {% endif %}
         NeedleFoundation:

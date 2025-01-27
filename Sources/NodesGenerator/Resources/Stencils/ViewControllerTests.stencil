@@ -12,19 +12,22 @@ final class {{ node_name }}ViewControllerTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
+        let viewController: {{ node_name }}ViewController = givenViewController(
+            viewState: {{ node_name }}ViewState()
+        )
         {% if is_nimble_enabled %}
-        expect { [self] in givenViewController(with: {{ node_name }}ViewState()) } != nil
+        expect(viewController) != nil
         {% else %}
-        XCTAssertNotNil(givenViewController(with: {{ node_name }}ViewState()))
+        XCTAssertNotNil(viewController)
         {% endif %}
     }
 
     @MainActor
     private func givenViewController(
-        with state: {{ node_name }}ViewState
+        viewState: {{ node_name }}ViewState
     ) -> {{ node_name }}ViewController {
         {{ node_name }}ViewController(
-            initialState: state,
+            initialState: viewState,
             {{ view_state_property_name }}: {{ view_state_empty_factory }}
         )
     }

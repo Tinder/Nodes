@@ -86,7 +86,7 @@ let package = Package(
         .target(
             name: "NodesTesting",
             dependencies: [
-                "Nodes",            
+                "Nodes",
                 .product(name: "NeedleFoundation", package: "needle")
             ]),
         .testTarget(

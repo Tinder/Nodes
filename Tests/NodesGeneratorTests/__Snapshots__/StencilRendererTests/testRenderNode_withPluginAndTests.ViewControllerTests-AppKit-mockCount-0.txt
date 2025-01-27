@@ -6,15 +6,18 @@ final class <nodeName>ViewControllerTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
-        XCTAssertNotNil(givenViewController(with: <nodeName>ViewState()))
+        let viewController: <nodeName>ViewController = givenViewController(
+            viewState: <nodeName>ViewState()
+        )
+        XCTAssertNotNil(viewController)
     }
 
     @MainActor
     private func givenViewController(
-        with state: <nodeName>ViewState
+        viewState: <nodeName>ViewState
     ) -> <nodeName>ViewController {
         <nodeName>ViewController(
-            initialState: state,
+            initialState: viewState,
             <viewStatePropertyName>: <viewStateEmptyFactory>
         )
     }

@@ -33,26 +33,16 @@ internal struct ___VARIABLE_productName___View {
     /// The view receiver.
     internal weak var receiver: ___VARIABLE_productName___Receiver?
 
-    /// The initial view state.
-    private let initialState: ___VARIABLE_productName___ViewState
-
-    /// The view state publisher.
-    private let statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
+    /// The Store instance.
+    private let store: AnyViewStateStore<___VARIABLE_productName___ViewState>
 
     /// The initializer.
     ///
-    /// - Parameters:
-    ///   - initialState: The initial view state.
-    ///   - statePublisher: The view state publisher.
-    internal init(
-        initialState: ___VARIABLE_productName___ViewState,
-        statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
-    ) {
-        self.initialState = initialState
-        self.statePublisher = statePublisher
-            .removeDuplicates()
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+    /// - Parameter store: The Store instance.
+    internal init<T: ViewStateStore>(
+        store: T
+    ) where T.ViewState == ___VARIABLE_productName___ViewState {
+        self.store = AnyViewStateStore(store)
     }
 }
 
@@ -61,9 +51,7 @@ internal struct ___VARIABLE_productName___View {
 extension ___VARIABLE_productName___View: View {
 
     internal var body: some View {
-        WithViewState(initialState: initialState, statePublisher: statePublisher) { viewState in
-            Text(verbatim: "\(type(of: viewState))")
-        }
+        Text(verbatim: "\(type(of: store.viewState))")
     }
 }
 
@@ -71,7 +59,8 @@ extension ___VARIABLE_productName___View: View {
 
 #Preview {
     ___VARIABLE_productName___View(
-        initialState: ___VARIABLE_productName___ViewState(),
-        statePublisher: Empty().eraseToAnyPublisher()
+        store: PreviewStore(
+            viewState: ___VARIABLE_productName___ViewState()
+        )
     )
 }

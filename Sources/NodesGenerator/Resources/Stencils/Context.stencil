@@ -68,14 +68,14 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     internal weak var listener: {{ node_name }}Listener?
     {% endif %}
 
-    {% if is_periphery_comment_enabled and not owns_view %}
+    {% if owns_view %}
+    /// The Store instance.
+    private let store: Any{{ store_prefix }}StateStore<{{ node_name }}State>
+    {% else %}
+    {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
     /// The State instance.
-    {% if owns_view %}
-    @Published
-    internal private(set) var state: {{ node_name }}State
-    {% else %}
     private let state: {{ node_name }}State
     {% endif %}
 
@@ -92,13 +92,31 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     /// The initializer.
     /// - Parameters:
     ///   - workers: The Worker instances
+    {% if owns_view %}
+    ///   - store: The Store instance
+    {% endif %}
     ///   - analytics: The Analytics instance
+    {% if owns_view %}
+    internal init<T: {{ store_prefix }}StateStore>(
+    {% else %}
     internal init(
+    {% endif %}
         workers: [Worker],
+        {% if owns_view %}
+        store: T,
+        {% endif %}
         analytics: {{ node_name }}Analytics{% if node_name == "App" %}{{ ',' }}
         windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>{% endif +%}
+    {% if owns_view %}
+    ) where T.State == {{ node_name }}State {
+    {% else %}
     ) {
+    {% endif %}
+        {% if owns_view %}
+        self.store = Any{{ store_prefix }}StateStore(store)
+        {% else %}
         self.state = .initialState()
+        {% endif %}
         self.analytics = analytics
         {% if node_name == "App" %}
         self.windowScenePublisher = windowScenePublisher
@@ -141,9 +159,9 @@ extension {{ node_name }}ContextImp: {{ node_name }}ContextInterface {}
 extension {{ node_name }}ContextImp: {{ node_name }}Receiver {
 
     internal func viewDidAppear() {
-        guard !state.isReady
+        guard !store.state.isReady
         else { return }
-        state.isReady = true
+        store.state.isReady = true
         flow?.didBecomeReady()
     }
 }

@@ -30,9 +30,8 @@ internal final class <nodeName>ContextImp: AbstractContext {
     /// The Listener instance.
     internal weak var listener: <nodeName>Listener?
 
-    /// The State instance.
-    @Published
-    internal private(set) var state: <nodeName>State
+    /// The Store instance.
+    private let store: AnyStateStore<<nodeName>State>
 
     /// The Analytics instance.
     private let analytics: <nodeName>Analytics
@@ -40,12 +39,14 @@ internal final class <nodeName>ContextImp: AbstractContext {
     /// The initializer.
     /// - Parameters:
     ///   - workers: The Worker instances
+    ///   - store: The Store instance
     ///   - analytics: The Analytics instance
-    internal init(
+    internal init<T: StateStore>(
         workers: [Worker],
+        store: T,
         analytics: <nodeName>Analytics
-    ) {
-        self.state = .initialState()
+    ) where T.State == <nodeName>State {
+        self.store = AnyStateStore(store)
         self.analytics = analytics
         super.init(workers: workers)
     }

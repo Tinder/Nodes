@@ -105,6 +105,7 @@ extension TestFactories {
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             storePrefix: mockCount > 0 ? "<storePrefix>" : "",
+            storePropertyWrapper: mockCount > 0 ? "<storePropertyWrapper>" : "",
             isPreviewProviderEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0,
             isNimbleEnabled: mockCount > 0
@@ -153,6 +154,7 @@ extension TestFactories {
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
             storePrefix: mockCount > 0 ? "<storePrefix>" : "",
+            storePropertyWrapper: mockCount > 0 ? "<storePropertyWrapper>" : "",
             isPreviewProviderEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0,
             isNimbleEnabled: mockCount > 0

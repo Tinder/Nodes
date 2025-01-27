@@ -32,8 +32,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 2 elements
+        ▿ contextTestsImports: 3 elements
           - "<baseTestImport>"
+          - "Nodes"
           - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
@@ -76,6 +77,7 @@
         ▿ stateImports: 1 element
           - "<baseImport>"
         - storePrefix: ""
+        - storePropertyWrapper: ""
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -156,8 +158,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 2 elements
+        ▿ contextTestsImports: 3 elements
           - "<baseTestImport>"
+          - "Nodes"
           - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
@@ -200,6 +203,7 @@
         ▿ stateImports: 1 element
           - "<baseImport>"
         - storePrefix: ""
+        - storePropertyWrapper: ""
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -280,8 +284,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 2 elements
+        ▿ contextTestsImports: 3 elements
           - "<baseTestImport>"
+          - "Nodes"
           - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
@@ -324,6 +329,7 @@
         ▿ stateImports: 1 element
           - "<baseImport>"
         - storePrefix: ""
+        - storePropertyWrapper: ""
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -339,7 +345,7 @@
         - viewControllerSuperParameters: ""
         ▿ viewControllerTestsImports: 2 elements
           - "<baseTestImport>"
-          - "Nodes"
+          - "NodesTesting"
         - viewControllerType: "NSHostingController"
         - viewControllerUpdateComment: "<viewControllerUpdateComment>"
         - viewStateEmptyFactory: "<viewStateEmptyFactory>"
@@ -404,8 +410,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 2 elements
+        ▿ contextTestsImports: 3 elements
           - "<baseTestImport>"
+          - "Nodes"
           - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
@@ -448,6 +455,7 @@
         ▿ stateImports: 1 element
           - "<baseImport>"
         - storePrefix: ""
+        - storePropertyWrapper: ""
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -463,7 +471,7 @@
         - viewControllerSuperParameters: ""
         ▿ viewControllerTestsImports: 2 elements
           - "<baseTestImport>"
-          - "Nodes"
+          - "NodesTesting"
         - viewControllerType: "NSHostingController"
         - viewControllerUpdateComment: "<viewControllerUpdateComment>"
         - viewStateEmptyFactory: "<viewStateEmptyFactory>"
@@ -528,8 +536,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 2 elements
+        ▿ contextTestsImports: 3 elements
           - "<baseTestImport>"
+          - "Nodes"
           - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
@@ -572,6 +581,7 @@
         ▿ stateImports: 1 element
           - "<baseImport>"
         - storePrefix: ""
+        - storePropertyWrapper: ""
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -652,8 +662,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 2 elements
+        ▿ contextTestsImports: 3 elements
           - "<baseTestImport>"
+          - "Nodes"
           - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
@@ -696,6 +707,7 @@
         ▿ stateImports: 1 element
           - "<baseImport>"
         - storePrefix: ""
+        - storePropertyWrapper: ""
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -776,8 +788,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 2 elements
+        ▿ contextTestsImports: 3 elements
           - "<baseTestImport>"
+          - "Nodes"
           - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
@@ -820,6 +833,7 @@
         ▿ stateImports: 1 element
           - "<baseImport>"
         - storePrefix: ""
+        - storePropertyWrapper: ""
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -835,7 +849,7 @@
         - viewControllerSuperParameters: ""
         ▿ viewControllerTestsImports: 2 elements
           - "<baseTestImport>"
-          - "Nodes"
+          - "NodesTesting"
         - viewControllerType: "UIHostingController"
         - viewControllerUpdateComment: "<viewControllerUpdateComment>"
         - viewStateEmptyFactory: "<viewStateEmptyFactory>"
@@ -900,8 +914,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 2 elements
+        ▿ contextTestsImports: 3 elements
           - "<baseTestImport>"
+          - "Nodes"
           - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
@@ -944,6 +959,7 @@
         ▿ stateImports: 1 element
           - "<baseImport>"
         - storePrefix: ""
+        - storePropertyWrapper: ""
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -959,7 +975,7 @@
         - viewControllerSuperParameters: ""
         ▿ viewControllerTestsImports: 2 elements
           - "<baseTestImport>"
-          - "Nodes"
+          - "NodesTesting"
         - viewControllerType: "UIHostingController"
         - viewControllerUpdateComment: "<viewControllerUpdateComment>"
         - viewStateEmptyFactory: "<viewStateEmptyFactory>"
@@ -1024,8 +1040,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 2 elements
+        ▿ contextTestsImports: 3 elements
           - "<baseTestImport>"
+          - "Nodes"
           - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
@@ -1068,6 +1085,7 @@
         ▿ stateImports: 1 element
           - "<baseImport>"
         - storePrefix: ""
+        - storePropertyWrapper: ""
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"
@@ -1148,8 +1166,9 @@
           - "<baseImport>"
           - "<reactiveImport>"
           - "Nodes"
-        ▿ contextTestsImports: 2 elements
+        ▿ contextTestsImports: 3 elements
           - "<baseTestImport>"
+          - "Nodes"
           - "NodesTesting"
         ▿ dependencies: 1 element
           ▿ 2 key/value pairs
@@ -1192,6 +1211,7 @@
         ▿ stateImports: 1 element
           - "<baseImport>"
         - storePrefix: ""
+        - storePropertyWrapper: ""
         - viewControllableFlowType: "<viewControllableFlowType>"
         - viewControllableMockContents: "<viewControllableMockContents>"
         - viewControllableType: "<viewControllableType>"

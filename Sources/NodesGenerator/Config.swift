@@ -61,6 +61,7 @@ public struct Config: Codable, Equatable {
     public var isPeripheryCommentEnabled: Bool
 
     public var storePrefix: String { isObservableStoreEnabled ? "Observable" : "" }
+    public var storePropertyWrapper: String { isObservableStoreEnabled ? "@ObservedObject" : "" }
     public var isNimbleEnabled: Bool { baseTestImports.contains("Nimble") }
 
     public init(
@@ -112,9 +113,7 @@ extension Config {
             """
         viewStatePropertyComment = "The view state publisher."
         viewStatePropertyName = "statePublisher"
-        viewStateTransform = """
-            Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()
-            """
+        viewStateTransform = "store.viewStatePublisher"
         publisherType = "AnyPublisher"
         publisherFailureType = "Never"
         contextGenericTypes = ["AnyCancellable"]

@@ -94,6 +94,7 @@ public final class PresetGenerator {
                 contextGenericTypes: config.contextGenericTypes,
                 workerGenericTypes: config.workerGenericTypes,
                 storePrefix: config.storePrefix,
+                storePropertyWrapper: config.storePropertyWrapper,
                 isPreviewProviderEnabled: config.isPreviewProviderEnabled,
                 isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
                 isNimbleEnabled: config.isNimbleEnabled
