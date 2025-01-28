@@ -35,7 +35,7 @@ jobs:
       run: xcodegen
     - name: Remove @MainActor
       working-directory: ${{ steps.mktemp.outputs.directory }}
-      run: find . -type f -name "*.swift" -exec sed -i '' '/@MainActor/,+0d' {} \;
+      run: find "Tinder/Sources" -type f -name "*.swift" -exec sed -i '' '/@MainActor/,+0d' {} \;
     - name: Download swiftlint binary
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: swift package resolve
