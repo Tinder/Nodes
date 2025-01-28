@@ -6,4 +6,9 @@ import <stateImport>
  PURPOSE:
  The state of the Node.
  */
-internal struct AppState: Equatable {}
+internal struct AppState: Equatable {
+
+    internal static func initialState() -> Self {
+        Self()
+    }
+}

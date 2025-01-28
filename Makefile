@@ -30,7 +30,7 @@ fix:
 	@/usr/libexec/PlistBuddy -c \
 		"Delete :FILEHEADER" \
 		"$(XCSHAREDDATA)/IDETemplateMacros.plist" >/dev/null 2>&1 || true
-	@header=$$'\n//  Copyright © ___YEAR___ Tinder \(Match Group, LLC\)\n//'; \
+	@header=$$'\n//  All Contributions by Match Group\n//\n//  Copyright © ___YEAR___ Tinder \(Match Group, LLC\)\n//\n//  Licensed under the Match Group Modified 3-Clause BSD License.\n//  See https://github.com/Tinder/Nodes/blob/main/LICENSE for license information.\n//'; \
 	/usr/libexec/PlistBuddy -c \
 		"Add :FILEHEADER string $$header" \
 		"$(XCSHAREDDATA)/IDETemplateMacros.plist" >/dev/null 2>&1
@@ -104,6 +104,7 @@ site:
 	"$(DOCC_PATH)" process-archive \
 		transform-for-static-hosting \
 		"$(ARCHIVE_PATH)/$(target).doccarchive" \
+		--hosting-base-path "$(target)" \
 		--output-path "$(prefix)/_site"
 	cp docs.html "$(prefix)/_site/index.html"
 	cp docs.html "$(prefix)/_site/documentation/index.html"

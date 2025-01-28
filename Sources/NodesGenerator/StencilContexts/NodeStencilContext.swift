@@ -1,6 +1,13 @@
 //
-//  Copyright © 2021 Tinder (Match Group, LLC)
+//  All Contributions by Match Group
 //
+//  Copyright © 2025 Tinder (Match Group, LLC)
+//
+//  Licensed under the Match Group Modified 3-Clause BSD License.
+//  See https://github.com/Tinder/Nodes/blob/main/LICENSE for license information.
+//
+
+// swiftlint:disable file_length
 
 // swiftlint:disable:next type_body_length
 public struct NodeStencilContext: StencilContext {
@@ -46,6 +53,8 @@ public struct NodeStencilContext: StencilContext {
     private let publisherFailureType: String
     private let contextGenericTypes: [String]
     private let workerGenericTypes: [String]
+    private let storePrefix: String
+    private let storePropertyWrapper: String
     private let isPreviewProviderEnabled: Bool
     private let isPeripheryCommentEnabled: Bool
     private let isNimbleEnabled: Bool
@@ -94,6 +103,8 @@ public struct NodeStencilContext: StencilContext {
             "publisher_failure_type": publisherFailureType,
             "context_generic_types": contextGenericTypes,
             "worker_generic_types": workerGenericTypes,
+            "store_prefix": storePrefix,
+            "store_property_wrapper": storePropertyWrapper,
             "is_preview_provider_enabled": isPreviewProviderEnabled,
             "is_periphery_comment_enabled": isPeripheryCommentEnabled,
             "is_nimble_enabled": isNimbleEnabled
@@ -143,6 +154,8 @@ public struct NodeStencilContext: StencilContext {
         publisherFailureType: String,
         contextGenericTypes: [String],
         workerGenericTypes: [String],
+        storePrefix: String,
+        storePropertyWrapper: String,
         isPreviewProviderEnabled: Bool,
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
@@ -190,12 +203,15 @@ public struct NodeStencilContext: StencilContext {
             publisherFailureType: publisherFailureType,
             contextGenericTypes: contextGenericTypes,
             workerGenericTypes: workerGenericTypes,
+            storePrefix: storePrefix,
+            storePropertyWrapper: storePropertyWrapper,
             isPreviewProviderEnabled: isPreviewProviderEnabled,
             isPeripheryCommentEnabled: isPeripheryCommentEnabled,
             isNimbleEnabled: isNimbleEnabled
         )
     }
 
+    // swiftlint:disable:next function_body_length
     public init(
         preset: Preset,
         fileHeader: String,
@@ -233,6 +249,8 @@ public struct NodeStencilContext: StencilContext {
         publisherFailureType: String,
         contextGenericTypes: [String],
         workerGenericTypes: [String],
+        storePrefix: String,
+        storePropertyWrapper: String,
         isPreviewProviderEnabled: Bool,
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
@@ -282,6 +300,8 @@ public struct NodeStencilContext: StencilContext {
             publisherFailureType: publisherFailureType,
             contextGenericTypes: contextGenericTypes,
             workerGenericTypes: workerGenericTypes,
+            storePrefix: storePrefix,
+            storePropertyWrapper: storePropertyWrapper,
             isPreviewProviderEnabled: isPreviewProviderEnabled,
             isPeripheryCommentEnabled: isPeripheryCommentEnabled,
             isNimbleEnabled: isNimbleEnabled
@@ -331,6 +351,8 @@ public struct NodeStencilContext: StencilContext {
         publisherFailureType: String,
         contextGenericTypes: [String],
         workerGenericTypes: [String],
+        storePrefix: String,
+        storePropertyWrapper: String,
         isPreviewProviderEnabled: Bool,
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
@@ -378,8 +400,12 @@ public struct NodeStencilContext: StencilContext {
         self.publisherFailureType = publisherFailureType
         self.contextGenericTypes = contextGenericTypes
         self.workerGenericTypes = workerGenericTypes
+        self.storePrefix = storePrefix
+        self.storePropertyWrapper = storePropertyWrapper
         self.isPreviewProviderEnabled = isPreviewProviderEnabled
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
         self.isNimbleEnabled = isNimbleEnabled
     }
 }
+
+// swiftlint:enable file_length

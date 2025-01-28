@@ -1,5 +1,10 @@
 //
-//  Copyright © 2022 Tinder (Match Group, LLC)
+//  All Contributions by Match Group
+//
+//  Copyright © 2025 Tinder (Match Group, LLC)
+//
+//  Licensed under the Match Group Modified 3-Clause BSD License.
+//  See https://github.com/Tinder/Nodes/blob/main/LICENSE for license information.
 //
 
 // swiftlint:disable:next type_body_length
@@ -246,6 +251,8 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
                 .union(config.reactiveImports)
         case .contextTests:
             config.baseTestImports
+                .union(["Nodes"])
+                .union(uiFramework == nil ? [] : ["NodesTesting"])
         case .flow:
             config.baseImports
                 .union(["Nodes"])
@@ -277,7 +284,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
                 .union(uiFramework.flatMap { [$0.import] } ?? [])
         case .viewControllerTests:
             uiFramework == nil ? [] : config.baseTestImports
-                .union(config.reactiveImports)
+                .union(uiFramework?.kind.isHostingSwiftUI == true ? ["NodesTesting"] : config.reactiveImports)
         case .viewState:
             uiFramework == nil ? [] : config.baseImports
                 .union(["Nodes"])

@@ -1,4 +1,4 @@
-▿ 45 key/value pairs
+▿ 47 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -110,6 +110,12 @@
     - key: "state_imports"
     ▿ value: 1 element
       - "<stateImport>"
+  ▿ (2 elements)
+    - key: "store_prefix"
+    - value: "<storePrefix>"
+  ▿ (2 elements)
+    - key: "store_property_wrapper"
+    - value: "<storePropertyWrapper>"
   ▿ (2 elements)
     - key: "view_controllable_flow_type"
     - value: "<viewControllableFlowType>"

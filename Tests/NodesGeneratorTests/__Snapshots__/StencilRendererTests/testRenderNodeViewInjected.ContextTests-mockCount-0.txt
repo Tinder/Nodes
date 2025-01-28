@@ -5,41 +5,48 @@
 final class <nodeName>ContextTests: XCTestCase {
 
     private var analyticsMock: <nodeName>AnalyticsMock!
-    private var context: <nodeName>ContextImp!
 
     @MainActor
     override func setUp() {
         super.setUp()
         analyticsMock = <nodeName>AnalyticsMock()
-        context = <nodeName>ContextImp(
-            workers: [],
-            analytics: analyticsMock
-        )
     }
 
     @MainActor
     override func tearDown() {
         analyticsMock = nil
-        context = nil
         super.tearDown()
     }
 
     @MainActor
     func testNotNil() {
+        let context: <nodeName>ContextImp = givenContext()
         XCTAssertNotNil(context)
     }
 
     @MainActor
     func testWorkersIsEmpty() {
+        let context: <nodeName>ContextImp = givenContext()
         XCTAssertTrue(context.workers.isEmpty)
     }
 
     @MainActor
     func testActivation() {
+        let context: <nodeName>ContextImp = givenContext()
         XCTAssertFalse(context.isActive)
         context.activate()
         XCTAssertTrue(context.isActive)
         context.deactivate()
         XCTAssertFalse(context.isActive)
+    }
+
+    @MainActor
+    private func givenContext(
+        workers: [Worker] = []
+    ) -> <nodeName>ContextImp {
+        <nodeName>ContextImp(
+            workers: workers,
+            analytics: analyticsMock
+        )
     }
 }

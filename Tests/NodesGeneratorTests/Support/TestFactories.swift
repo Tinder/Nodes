@@ -1,5 +1,10 @@
 //
-//  Copyright © 2021 Tinder (Match Group, LLC)
+//  All Contributions by Match Group
+//
+//  Copyright © 2025 Tinder (Match Group, LLC)
+//
+//  Licensed under the Match Group Modified 3-Clause BSD License.
+//  See https://github.com/Tinder/Nodes/blob/main/LICENSE for license information.
 //
 
 import NodesGenerator
@@ -49,7 +54,9 @@ extension TestFactories {
         config.publisherFailureType = "<publisherFailureType>"
         config.contextGenericTypes = ["<contextGenericType>"]
         config.workerGenericTypes = ["<workerGenericType>"]
+        config.isObservableStoreEnabled = true
         config.isViewInjectedTemplateEnabled = true
+        config.isObservableStoreEnabled = false
         config.isPreviewProviderEnabled = true
         config.isTestTemplatesGenerationEnabled = true
         config.isPeripheryCommentEnabled = true
@@ -102,6 +109,8 @@ extension TestFactories {
             publisherFailureType: mockCount > 0 ? "<publisherFailureType>" : "",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            storePrefix: mockCount > 0 ? "<storePrefix>" : "",
+            storePropertyWrapper: mockCount > 0 ? "<storePropertyWrapper>" : "",
             isPreviewProviderEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0,
             isNimbleEnabled: mockCount > 0
@@ -149,6 +158,8 @@ extension TestFactories {
             publisherFailureType: mockCount > 0 ? "<publisherFailureType>" : "",
             contextGenericTypes: .mock(with: "contextGenericType", count: mockCount),
             workerGenericTypes: .mock(with: "workerGenericType", count: mockCount),
+            storePrefix: mockCount > 0 ? "<storePrefix>" : "",
+            storePropertyWrapper: mockCount > 0 ? "<storePropertyWrapper>" : "",
             isPreviewProviderEnabled: mockCount > 0,
             isPeripheryCommentEnabled: mockCount > 0,
             isNimbleEnabled: mockCount > 0

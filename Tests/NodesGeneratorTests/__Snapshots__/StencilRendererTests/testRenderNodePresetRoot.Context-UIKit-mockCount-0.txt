@@ -32,9 +32,8 @@ internal final class RootContextImp: AbstractContext {
     /// The Listener instance.
     internal weak var listener: RootListener?
 
-    /// The State instance.
-    @Published
-    internal private(set) var state: RootState
+    /// The Store instance.
+    private let store: AnyStateStore<RootState>
 
     /// The Analytics instance.
     private let analytics: RootAnalytics
@@ -42,12 +41,14 @@ internal final class RootContextImp: AbstractContext {
     /// The initializer.
     /// - Parameters:
     ///   - workers: The Worker instances
+    ///   - store: The Store instance
     ///   - analytics: The Analytics instance
-    internal init(
+    internal init<T: StateStore>(
         workers: [Worker],
+        store: T,
         analytics: RootAnalytics
-    ) {
-        self.state = RootState(name: "Root View Controller", isReady: false)
+    ) where T.State == RootState {
+        self.store = AnyStateStore(store)
         self.analytics = analytics
         super.init(workers: workers)
     }
@@ -64,9 +65,9 @@ extension RootContextImp: RootContextInterface {}
 extension RootContextImp: RootReceiver {
 
     internal func viewDidAppear() {
-        guard !state.isReady
+        guard !store.state.isReady
         else { return }
-        state.isReady = true
+        store.state.isReady = true
         flow?.didBecomeReady()
     }
 }

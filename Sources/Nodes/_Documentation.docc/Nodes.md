@@ -113,6 +113,25 @@ A ``ViewControllable`` protocol is used instead of the concrete class type to li
 - ``WindowViewControllable``
 - ``ModalStyle``
 
+### State Management
+
+Each node includes a store for transforming state into view state to be provided to the view for display.
+
+``Store`` is the recommended store type, compatible with [UIKit](https://developer.apple.com/documentation/uikit), [AppKit](https://developer.apple.com/documentation/appkit) and the [Observation](https://developer.apple.com/documentation/observation) framework for use with [SwiftUI](https://developer.apple.com/documentation/swiftui). ``ObservableStore`` is available for backwards compatibility with older OS versions and the [`ObservableObject`](https://developer.apple.com/documentation/combine/observableobject) protocol.
+
+- ``Store``
+- ``StateStore``
+- ``ViewStateStore``
+- ``AnyStateStore``
+- ``AnyViewStateStore``
+- ``PreviewStore``
+- ``ObservableStore``
+- ``ObservableStateStore``
+- ``ObservableViewStateStore``
+- ``AnyObservableStateStore``
+- ``AnyObservableViewStateStore``
+- ``ObservablePreviewStore``
+
 ### UIKit Additions
 
 - ``NavigationController``
@@ -123,7 +142,6 @@ A ``ViewControllable`` protocol is used instead of the concrete class type to li
 - ``MutableState``
 - ``StateObserver``
 - ``Transform``
-- ``WithViewState``
 
 ### Utility
 

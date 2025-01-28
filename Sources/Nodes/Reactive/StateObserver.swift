@@ -1,5 +1,10 @@
 //
-//  Copyright © 2021 Tinder (Match Group, LLC)
+//  All Contributions by Match Group
+//
+//  Copyright © 2025 Tinder (Match Group, LLC)
+//
+//  Licensed under the Match Group Modified 3-Clause BSD License.
+//  See https://github.com/Tinder/Nodes/blob/main/LICENSE for license information.
 //
 
 #if canImport(Combine)
@@ -13,7 +18,7 @@ import Combine
  * configuring the `update(with:)` method to automatically be called with view state emitted by a given
  * publisher.
  *
- * > Important: For [SwiftUI](https://developer.apple.com/documentation/swiftui) use ``WithViewState`` instead.
+ * > Important: `StateObserver` is not to be used with [SwiftUI](https://developer.apple.com/documentation/swiftui).
  */
 @preconcurrency
 @MainActor

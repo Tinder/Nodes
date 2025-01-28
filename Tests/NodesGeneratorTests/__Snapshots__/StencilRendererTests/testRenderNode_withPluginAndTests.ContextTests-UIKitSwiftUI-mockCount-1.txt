@@ -6,42 +6,55 @@ import <contextTestsImport>
 
 final class <nodeName>ContextTests: XCTestCase {
 
+    private var storeMock: <storePrefix>StateStoreMock<<nodeName>State>!
     private var analyticsMock: <nodeName>AnalyticsMock!
-    private var context: <nodeName>ContextImp!
 
     @MainActor
     override func setUp() {
         super.setUp()
-        analyticsMock = <nodeName>AnalyticsMock()
-        context = <nodeName>ContextImp(
-            workers: [],
-            analytics: analyticsMock
+        storeMock = <storePrefix>StateStoreMock(
+            state: <nodeName>State()
         )
+        analyticsMock = <nodeName>AnalyticsMock()
     }
 
     @MainActor
     override func tearDown() {
+        storeMock = nil
         analyticsMock = nil
-        context = nil
         super.tearDown()
     }
 
     @MainActor
     func testNotNil() {
-        expect { [self] in context } != nil
+        let context: <nodeName>ContextImp = givenContext()
+        expect(context) != nil
     }
 
     @MainActor
     func testWorkersIsEmpty() {
-        expect { [self] in context.workers }.to(beEmpty())
+        let context: <nodeName>ContextImp = givenContext()
+        expect(context.workers).to(beEmpty())
     }
 
     @MainActor
     func testActivation() {
-        expect { [self] in context.isActive } == false
+        let context: <nodeName>ContextImp = givenContext()
+        expect(context.isActive) == false
         context.activate()
-        expect { [self] in context.isActive } == true
+        expect(context.isActive) == true
         context.deactivate()
-        expect { [self] in context.isActive } == false
+        expect(context.isActive) == false
+    }
+
+    @MainActor
+    private func givenContext(
+        workers: [Worker] = []
+    ) -> <nodeName>ContextImp {
+        <nodeName>ContextImp(
+            workers: workers,
+            store: storeMock,
+            analytics: analyticsMock
+        )
     }
 }

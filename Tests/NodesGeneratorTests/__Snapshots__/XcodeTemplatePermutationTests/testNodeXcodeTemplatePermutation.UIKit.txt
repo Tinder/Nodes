@@ -29,8 +29,10 @@
       - "<baseImport>"
       - "<reactiveImport>"
       - "Nodes"
-    ▿ contextTestsImports: 1 element
+    ▿ contextTestsImports: 3 elements
       - "<baseTestImport>"
+      - "Nodes"
+      - "NodesTesting"
     ▿ dependencies: 1 element
       ▿ 2 key/value pairs
         ▿ (2 elements)
@@ -71,6 +73,8 @@
     - publisherType: "<publisherType>"
     ▿ stateImports: 1 element
       - "<baseImport>"
+    - storePrefix: ""
+    - storePropertyWrapper: ""
     - viewControllableFlowType: "<viewControllableFlowType>"
     - viewControllableMockContents: "<viewControllableMockContents>"
     - viewControllableType: "<viewControllableType>"

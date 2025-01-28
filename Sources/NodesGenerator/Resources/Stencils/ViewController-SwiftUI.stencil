@@ -51,26 +51,21 @@ internal struct {{ node_name }}View {
     /// The view receiver.
     internal weak var receiver: {{ node_name }}Receiver?
 
-    /// The initial view state.
-    private let initialState: {{ node_name }}ViewState
-
-    /// {{ view_state_property_comment }}
-    private let {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
+    /// The Store instance.
+    {% if store_property_wrapper %}
+    {{ store_property_wrapper }}
+    private var store: Any{{ store_prefix }}ViewStateStore<{{ node_name }}ViewState>
+    {% else %}
+    private let store: AnyViewStateStore<{{ node_name }}ViewState>
+    {% endif %}
 
     /// The initializer.
     ///
-    /// - Parameters:
-    ///   - initialState: The initial view state.
-    ///   - {{ view_state_property_name }}: {{ view_state_property_comment }}
-    internal init(
-        initialState: {{ node_name }}ViewState,
-        {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
-    ) {
-        self.initialState = initialState
-        self.{{ view_state_property_name }} = {{ view_state_property_name }}
-            {% if view_state_operators %}
-            {{ view_state_operators|indent:12 }}
-            {% endif %}
+    /// - Parameter store: The Store instance.
+    internal init<T: {{ store_prefix }}ViewStateStore>(
+        store: T
+    ) where T.ViewState == {{ node_name }}ViewState {
+        self.store = Any{{ store_prefix }}ViewStateStore(store)
     }
 }
 
@@ -79,9 +74,7 @@ internal struct {{ node_name }}View {
 extension {{ node_name }}View: View {
 
     internal var body: some View {
-        WithViewState(initialState: initialState, {{ view_state_property_name }}: {{ view_state_property_name }}) { viewState in
-            Text(verbatim: "\(type(of: viewState))")
-        }
+        Text(verbatim: "\(type(of: store.viewState))")
     }
 }
 
@@ -99,16 +92,18 @@ internal struct {{ node_name }}View_Previews: PreviewProvider {
 
     internal static var previews: some View {
         {{ node_name }}View(
-            initialState: {{ node_name }}ViewState(),
-            {{ view_state_property_name }}: {{ view_state_empty_factory }}
+            store: {{ store_prefix }}PreviewStore(
+                viewState: {{ node_name }}ViewState()
+            )
         )
     }
 }
 {% else %}
 #Preview {
     {{ node_name }}View(
-        initialState: {{ node_name }}ViewState(),
-        {{ view_state_property_name }}: {{ view_state_empty_factory }}
+        store: {{ store_prefix }}PreviewStore(
+            viewState: {{ node_name }}ViewState()
+        )
     )
 }
 {% endif %}

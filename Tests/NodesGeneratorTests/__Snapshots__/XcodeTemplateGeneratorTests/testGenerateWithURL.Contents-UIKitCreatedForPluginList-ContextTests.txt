@@ -3,46 +3,61 @@
 #warning("Manually move this test file to the corresponding test target then delete this warning.")
 
 import Nimble
+import Nodes
+import NodesTesting
 import XCTest
 
 final class ___VARIABLE_productName___ContextTests: XCTestCase {
 
+    private var storeMock: StateStoreMock<___VARIABLE_productName___State>!
     private var analyticsMock: ___VARIABLE_productName___AnalyticsMock!
-    private var context: ___VARIABLE_productName___ContextImp!
 
     @MainActor
     override func setUp() {
         super.setUp()
-        analyticsMock = ___VARIABLE_productName___AnalyticsMock()
-        context = ___VARIABLE_productName___ContextImp(
-            workers: [],
-            analytics: analyticsMock
+        storeMock = StateStoreMock(
+            state: ___VARIABLE_productName___State()
         )
+        analyticsMock = ___VARIABLE_productName___AnalyticsMock()
     }
 
     @MainActor
     override func tearDown() {
+        storeMock = nil
         analyticsMock = nil
-        context = nil
         super.tearDown()
     }
 
     @MainActor
     func testNotNil() {
-        expect { [self] in context } != nil
+        let context: ___VARIABLE_productName___ContextImp = givenContext()
+        expect(context) != nil
     }
 
     @MainActor
     func testWorkersIsEmpty() {
-        expect { [self] in context.workers }.to(beEmpty())
+        let context: ___VARIABLE_productName___ContextImp = givenContext()
+        expect(context.workers).to(beEmpty())
     }
 
     @MainActor
     func testActivation() {
-        expect { [self] in context.isActive } == false
+        let context: ___VARIABLE_productName___ContextImp = givenContext()
+        expect(context.isActive) == false
         context.activate()
-        expect { [self] in context.isActive } == true
+        expect(context.isActive) == true
         context.deactivate()
-        expect { [self] in context.isActive } == false
+        expect(context.isActive) == false
+    }
+
+    @MainActor
+    private func givenContext(
+        workers: [Worker] = []
+    ) -> ___VARIABLE_productName___ContextImp {
+        ___VARIABLE_productName___ContextImp(
+            workers: workers,
+            store: storeMock,
+            analytics: analyticsMock
+        )
     }
 }

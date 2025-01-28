@@ -1,5 +1,10 @@
 //
-//  Copyright © 2021 Tinder (Match Group, LLC)
+//  All Contributions by Match Group
+//
+//  Copyright © 2025 Tinder (Match Group, LLC)
+//
+//  Licensed under the Match Group Modified 3-Clause BSD License.
+//  See https://github.com/Tinder/Nodes/blob/main/LICENSE for license information.
 //
 
 import Codextended
@@ -55,10 +60,13 @@ public struct Config: Codable, Equatable {
     public var workerGenericTypes: [String]
 
     public var isViewInjectedTemplateEnabled: Bool
+    public var isObservableStoreEnabled: Bool
     public var isPreviewProviderEnabled: Bool
     public var isTestTemplatesGenerationEnabled: Bool
     public var isPeripheryCommentEnabled: Bool
 
+    public var storePrefix: String { isObservableStoreEnabled ? "Observable" : "" }
+    public var storePropertyWrapper: String { isObservableStoreEnabled ? "@ObservedObject" : "" }
     public var isNimbleEnabled: Bool { baseTestImports.contains("Nimble") }
 
     public init(
@@ -110,14 +118,13 @@ extension Config {
             """
         viewStatePropertyComment = "The view state publisher."
         viewStatePropertyName = "statePublisher"
-        viewStateTransform = """
-            Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()
-            """
+        viewStateTransform = "store.viewStatePublisher"
         publisherType = "AnyPublisher"
         publisherFailureType = "Never"
         contextGenericTypes = ["AnyCancellable"]
         workerGenericTypes = ["AnyCancellable"]
         isViewInjectedTemplateEnabled = true
+        isObservableStoreEnabled = false
         isPreviewProviderEnabled = false
         isTestTemplatesGenerationEnabled = true
         isPeripheryCommentEnabled = false
@@ -224,6 +231,9 @@ extension Config {
         isViewInjectedTemplateEnabled =
             (try? decoder.decode(CodingKeys.isViewInjectedTemplateEnabled))
             ?? defaults.isViewInjectedTemplateEnabled
+        isObservableStoreEnabled =
+            (try? decoder.decode(CodingKeys.isObservableStoreEnabled))
+            ?? defaults.isObservableStoreEnabled
         isPreviewProviderEnabled =
             (try? decoder.decode(CodingKeys.isPreviewProviderEnabled))
             ?? defaults.isPreviewProviderEnabled

@@ -14,7 +14,7 @@ jobs:
     name: Xcode
     runs-on: macos-latest
     env:
-      SIMULATOR: iPhone 14
+      SIMULATOR: iPhone 15
     steps:
     - name: Checkout source
       uses: actions/checkout@v4

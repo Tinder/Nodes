@@ -12,7 +12,7 @@ Specify a path to a custom config file by providing the `--config` option when e
 
 <br>
 
-If utilizing the [quick start project setup](https://github.com/TinderApp/Nodes#quick-start), the path can be set in the `project.yml` file:
+If utilizing the [quick start project setup](https://github.com/Tinder/Nodes#quick-start), the path can be set in the `project.yml` file:
 
 ```
 swift run --skip-build -- nodes-xcode-templates-gen --id "RxSwift" --config "nodes.yml"
@@ -135,17 +135,6 @@ extension StateObserver {
         observable.subscribe { [weak self] state in
             self?.update(with: state)
         }
-    }
-}
-
-extension WithViewState {
-
-    public init<P: Publisher>(
-        initialState: ViewState,
-        stateObservable publisher: P,
-        @ViewBuilder content: @escaping (ViewState) -> Content
-    ) where P.Output == ViewState, P.Failure == Never {
-        self.init(initialState: initialState, statePublisher: publisher, content: content)
     }
 }
 

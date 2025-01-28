@@ -170,19 +170,25 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         dynamicBuildDependency: <nodeName>DynamicBuildDependency
     ) -> <nodeName>Flow {
         let listener: <nodeName>Listener = dynamicBuildDependency
+        let store: <storePrefix>Store<
+            <nodeName>State,
+            <nodeName>ViewState
+        > = .init(
+            state: .initialState(),
+            transform: <nodeName>ViewStateFactory()
+        )
         let analytics: <nodeName>AnalyticsImp = .init(
             <analyticsPropertyName1>: component.dependency.<analyticsPropertyName1>,
             <analyticsPropertyName2>: component.dependency.<analyticsPropertyName2>
         )
         let context: <nodeName>ContextImp = .init(
             workers: [],
+            store: store,
             analytics: analytics
         )
         context.listener = listener
-        let viewStateFactory: <nodeName>ViewStateFactory = .init()
         var view: <nodeName>View = .init(
-            initialState: viewStateFactory(context.state),
-            <viewStatePropertyName>: <viewStateTransform>
+            store: store
         )
         view.receiver = context
         let viewController: <nodeName>ViewController = .init(

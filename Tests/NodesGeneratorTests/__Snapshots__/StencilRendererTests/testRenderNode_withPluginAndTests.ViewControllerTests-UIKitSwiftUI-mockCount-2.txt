@@ -9,16 +9,20 @@ final class <nodeName>ViewControllerTests: XCTestCase {
 
     @MainActor
     func testNotNil() {
-        expect { [self] in givenViewController(with: <nodeName>ViewState()) } != nil
+        let viewController: <nodeName>ViewController = givenViewController(
+            viewState: <nodeName>ViewState()
+        )
+        expect(viewController) != nil
     }
 
     @MainActor
     private func givenViewController(
-        with state: <nodeName>ViewState
+        viewState: <nodeName>ViewState
     ) -> <nodeName>ViewController {
-        <nodeName>ViewController(rootView: <nodeName>View(
-            initialState: state,
-            <viewStatePropertyName>: <viewStateEmptyFactory>
-        ))
+        <nodeName>ViewController(
+            rootView: <nodeName>View(
+                store: <storePrefix>ViewStateStoreMock(viewState: viewState)
+            )
+        )
     }
 }

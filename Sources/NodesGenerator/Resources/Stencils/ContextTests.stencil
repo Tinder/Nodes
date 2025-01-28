@@ -10,30 +10,36 @@ import {{ import }}
 
 final class {{ node_name }}ContextTests: XCTestCase {
 
+    {% if owns_view %}
+    private var storeMock: {{ store_prefix }}StateStoreMock<{{ node_name }}State>!
+    {% endif %}
     private var analyticsMock: {{ node_name }}AnalyticsMock!
-    private var context: {{ node_name }}ContextImp!
 
     @MainActor
     override func setUp() {
         super.setUp()
-        analyticsMock = {{ node_name }}AnalyticsMock()
-        context = {{ node_name }}ContextImp(
-            workers: [],
-            analytics: analyticsMock
+        {% if owns_view %}
+        storeMock = {{ store_prefix }}StateStoreMock(
+            state: {{ node_name }}State()
         )
+        {% endif %}
+        analyticsMock = {{ node_name }}AnalyticsMock()
     }
 
     @MainActor
     override func tearDown() {
+        {% if owns_view %}
+        storeMock = nil
+        {% endif %}
         analyticsMock = nil
-        context = nil
         super.tearDown()
     }
 
     @MainActor
     func testNotNil() {
+        let context: {{ node_name }}ContextImp = givenContext()
         {% if is_nimble_enabled %}
-        expect { [self] in context } != nil
+        expect(context) != nil
         {% else %}
         XCTAssertNotNil(context)
         {% endif %}
@@ -41,8 +47,9 @@ final class {{ node_name }}ContextTests: XCTestCase {
 
     @MainActor
     func testWorkersIsEmpty() {
+        let context: {{ node_name }}ContextImp = givenContext()
         {% if is_nimble_enabled %}
-        expect { [self] in context.workers }.to(beEmpty())
+        expect(context.workers).to(beEmpty())
         {% else %}
         XCTAssertTrue(context.workers.isEmpty)
         {% endif %}
@@ -50,22 +57,36 @@ final class {{ node_name }}ContextTests: XCTestCase {
 
     @MainActor
     func testActivation() {
+        let context: {{ node_name }}ContextImp = givenContext()
         {% if is_nimble_enabled %}
-        expect { [self] in context.isActive } == false
+        expect(context.isActive) == false
         {% else %}
         XCTAssertFalse(context.isActive)
         {% endif %}
         context.activate()
         {% if is_nimble_enabled %}
-        expect { [self] in context.isActive } == true
+        expect(context.isActive) == true
         {% else %}
         XCTAssertTrue(context.isActive)
         {% endif %}
         context.deactivate()
         {% if is_nimble_enabled %}
-        expect { [self] in context.isActive } == false
+        expect(context.isActive) == false
         {% else %}
         XCTAssertFalse(context.isActive)
         {% endif %}
+    }
+
+    @MainActor
+    private func givenContext(
+        workers: [Worker] = []
+    ) -> {{ node_name }}ContextImp {
+        {{ node_name }}ContextImp(
+            workers: workers,
+            {% if owns_view %}
+            store: storeMock,
+            {% endif %}
+            analytics: analyticsMock
+        )
     }
 }

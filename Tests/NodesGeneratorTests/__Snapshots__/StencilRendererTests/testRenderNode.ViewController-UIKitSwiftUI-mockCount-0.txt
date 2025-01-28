@@ -29,23 +29,16 @@ internal struct <nodeName>View {
     /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 
-    /// The initial view state.
-    private let initialState: <nodeName>ViewState
-
-    /// <viewStatePropertyComment>
-    private let <viewStatePropertyName>: <publisherType><<nodeName>ViewState>
+    /// The Store instance.
+    private let store: AnyViewStateStore<<nodeName>ViewState>
 
     /// The initializer.
     ///
-    /// - Parameters:
-    ///   - initialState: The initial view state.
-    ///   - <viewStatePropertyName>: <viewStatePropertyComment>
-    internal init(
-        initialState: <nodeName>ViewState,
-        <viewStatePropertyName>: <publisherType><<nodeName>ViewState>
-    ) {
-        self.initialState = initialState
-        self.<viewStatePropertyName> = <viewStatePropertyName>
+    /// - Parameter store: The Store instance.
+    internal init<T: ViewStateStore>(
+        store: T
+    ) where T.ViewState == <nodeName>ViewState {
+        self.store = AnyViewStateStore(store)
     }
 }
 
@@ -54,9 +47,7 @@ internal struct <nodeName>View {
 extension <nodeName>View: View {
 
     internal var body: some View {
-        WithViewState(initialState: initialState, <viewStatePropertyName>: <viewStatePropertyName>) { viewState in
-            Text(verbatim: "\(type(of: viewState))")
-        }
+        Text(verbatim: "\(type(of: store.viewState))")
     }
 }
 
@@ -64,7 +55,8 @@ extension <nodeName>View: View {
 
 #Preview {
     <nodeName>View(
-        initialState: <nodeName>ViewState(),
-        <viewStatePropertyName>: <viewStateEmptyFactory>
+        store: PreviewStore(
+            viewState: <nodeName>ViewState()
+        )
     )
 }

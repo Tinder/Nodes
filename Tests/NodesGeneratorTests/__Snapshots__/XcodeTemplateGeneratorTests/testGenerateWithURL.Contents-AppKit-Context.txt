@@ -36,9 +36,8 @@ internal final class ___VARIABLE_productName___ContextImp: AbstractContext
     /// The Listener instance.
     internal weak var listener: ___VARIABLE_productName___Listener?
 
-    /// The State instance.
-    @Published
-    internal private(set) var state: ___VARIABLE_productName___State
+    /// The Store instance.
+    private let store: AnyStateStore<___VARIABLE_productName___State>
 
     /// The Analytics instance.
     private let analytics: ___VARIABLE_productName___Analytics
@@ -46,12 +45,14 @@ internal final class ___VARIABLE_productName___ContextImp: AbstractContext
     /// The initializer.
     /// - Parameters:
     ///   - workers: The Worker instances
+    ///   - store: The Store instance
     ///   - analytics: The Analytics instance
-    internal init(
+    internal init<T: StateStore>(
         workers: [Worker],
+        store: T,
         analytics: ___VARIABLE_productName___Analytics
-    ) {
-        self.state = ___VARIABLE_productName___State()
+    ) where T.State == ___VARIABLE_productName___State {
+        self.store = AnyStateStore(store)
         self.analytics = analytics
         super.init(workers: workers)
     }

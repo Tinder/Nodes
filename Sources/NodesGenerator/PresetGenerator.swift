@@ -1,5 +1,10 @@
 //
-//  Copyright © 2023 Tinder (Match Group, LLC)
+//  All Contributions by Match Group
+//
+//  Copyright © 2025 Tinder (Match Group, LLC)
+//
+//  Licensed under the Match Group Modified 3-Clause BSD License.
+//  See https://github.com/Tinder/Nodes/blob/main/LICENSE for license information.
 //
 
 import Foundation
@@ -93,6 +98,8 @@ public final class PresetGenerator {
                 publisherFailureType: config.publisherFailureType,
                 contextGenericTypes: config.contextGenericTypes,
                 workerGenericTypes: config.workerGenericTypes,
+                storePrefix: config.storePrefix,
+                storePropertyWrapper: config.storePropertyWrapper,
                 isPreviewProviderEnabled: config.isPreviewProviderEnabled,
                 isPeripheryCommentEnabled: config.isPeripheryCommentEnabled,
                 isNimbleEnabled: config.isNimbleEnabled

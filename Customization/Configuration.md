@@ -12,7 +12,7 @@ Specify a path to a custom config file by providing the `--config` option when e
 
 <br>
 
-If utilizing the [quick start project setup](https://github.com/TinderApp/Nodes#quick-start), the path can be set in the `project.yml` file:
+If utilizing the [quick start project setup](https://github.com/Tinder/Nodes#quick-start), the path can be set in the `project.yml` file:
 
 ```
 swift run --skip-build -- nodes-xcode-templates-gen --id "Custom" --config "nodes.yml"
@@ -69,7 +69,7 @@ viewStateOperators: |-
   .eraseToAnyPublisher()
 viewStatePropertyComment: The view state publisher.
 viewStatePropertyName: statePublisher
-viewStateTransform: Publishers.Map(upstream: context.$state, transform: viewStateFactory).eraseToAnyPublisher()
+viewStateTransform: store.viewStatePublisher
 publisherType: AnyPublisher
 publisherFailureType: Never
 contextGenericTypes:
@@ -77,6 +77,7 @@ contextGenericTypes:
 workerGenericTypes:
   - AnyCancellable
 isViewInjectedTemplateEnabled: true
+isObservableStoreEnabled: false
 isPreviewProviderEnabled: false
 isTestTemplatesGenerationEnabled: true
 isPeripheryCommentEnabled: false
