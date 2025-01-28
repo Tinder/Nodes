@@ -187,3 +187,17 @@ While Nodes works out-of-the-box with [Combine](https://developer.apple.com/docu
 ## Extras 
 
 The [Nodes Tree Visualizer](https://github.com/Tinder/Nodes-Tree-Visualizer) is a Swift library and companion web application for tree visualization.
+
+## Contributing
+
+While interest in contributing to this project is appreciated, it has been open 
+sourced solely for the purpose of sharing with the community. This means we are 
+unable to accept outside contributions at this time and pull requests will not 
+be reviewed or merged. To report a security concern or vulnerability, please 
+submit a GitHub issue.
+
+## License
+
+Licensed under the [Match Group Modified 3-Clause BSD License](
+https://github.com/Tinder/Nodes/blob/main/LICENSE
+).
