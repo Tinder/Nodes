@@ -4,19 +4,15 @@ import Combine
 import Nodes
 import SwiftUI
 
-/**
- PURPOSE:
- The interface that the View will speak to the Context through. Used for informing the Context of
- view events and user interactions.
- */
+/// PURPOSE:
+/// The interface that the View will speak to the Context through. Used for informing the Context of
+/// view events and user interactions.
 /// @mockable
 @MainActor
 internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
 
-/**
- PURPOSE:
- Host of the SwiftUI view.
- */
+/// PURPOSE:
+/// Host of the SwiftUI view.
 internal final class ___VARIABLE_productName___ViewController: NSHostingController
 <
     ___VARIABLE_productName___View
@@ -24,10 +20,8 @@ internal final class ___VARIABLE_productName___ViewController: NSHostingControll
 
 extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllable {}
 
-/**
- PURPOSE:
- Concrete implementation of the View.
- */
+/// PURPOSE:
+/// Concrete implementation of the View.
 internal struct ___VARIABLE_productName___View {
 
     /// The view receiver.

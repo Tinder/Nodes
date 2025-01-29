@@ -3,21 +3,17 @@
 import <viewControllerImport1>
 import <viewControllerImport2>
 
-/**
- PURPOSE:
- The interface that the View will speak to the Context through. Used for informing the Context of
- view events and user interactions.
- */
+/// PURPOSE:
+/// The interface that the View will speak to the Context through. Used for informing the Context of
+/// view events and user interactions.
 /// @mockable
 @MainActor
 internal protocol RootReceiver: AnyObject {
     func viewDidAppear()
 }
 
-/**
- PURPOSE:
- Concrete implementation of the UI.
- */
+/// PURPOSE:
+/// Concrete implementation of the UI.
 internal final class RootViewController: <viewControllerType>, StateObserver {
 
     <viewControllerStaticContent>

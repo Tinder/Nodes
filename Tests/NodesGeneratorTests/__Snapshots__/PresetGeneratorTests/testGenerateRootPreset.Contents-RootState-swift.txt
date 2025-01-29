@@ -2,10 +2,8 @@
 //  Created by <author> on <date>.
 //
 
-/**
- PURPOSE:
- The state of the Node.
- */
+/// PURPOSE:
+/// The state of the Node.
 internal struct RootState: Equatable {
 
     internal var name: String

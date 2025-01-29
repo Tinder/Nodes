@@ -1,18 +1,14 @@
 //<fileHeader>
 
-/**
- PURPOSE:
- The interface that the View will speak to the Context through. Used for informing the Context of
- view events and user interactions.
- */
+/// PURPOSE:
+/// The interface that the View will speak to the Context through. Used for informing the Context of
+/// view events and user interactions.
 /// @mockable
 @MainActor
 internal protocol <nodeName>Receiver: AnyObject {}
 
-/**
- PURPOSE:
- Host of the SwiftUI view.
- */
+/// PURPOSE:
+/// Host of the SwiftUI view.
 internal final class <nodeName>ViewController: <viewControllerType>
 <
     <nodeName>View
@@ -20,10 +16,8 @@ internal final class <nodeName>ViewController: <viewControllerType>
 
 extension <nodeName>ViewController: <nodeName>ViewControllable {}
 
-/**
- PURPOSE:
- Concrete implementation of the View.
- */
+/// PURPOSE:
+/// Concrete implementation of the View.
 internal struct <nodeName>View {
 
     /// The view receiver.

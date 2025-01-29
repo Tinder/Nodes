@@ -1,71 +1,61 @@
 //<fileHeader>
 
-/**
- PURPOSE:
- The interface of the Flow.
- */
+/// PURPOSE:
+/// The interface of the Flow.
 /// @mockable
 @MainActor
 internal protocol WindowFlow: Flow {}
 
-/**
- PURPOSE:
- Declares the dependencies required by this Node that will be injected (not created by this Node itself).
- */
+/// PURPOSE:
+/// Declares the dependencies required by this Node that will be injected (not created by this Node itself).
 /// @mockable
 @MainActor
 public protocol WindowDependency: Dependency {}
 
-/**
- PURPOSE:
- A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
-
- Can be a tuple or struct containing multiple values when necessary.
- */
+/// PURPOSE:
+/// A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
+///
+/// Can be a tuple or struct containing multiple values when necessary.
 internal typealias WindowDynamicBuildDependency = (WindowListener, WindowViewControllable)
 
-/**
- PURPOSE:
- A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
-
- Can be a tuple or struct containing multiple values when necessary.
- */
+/// PURPOSE:
+/// A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
+///
+/// Can be a tuple or struct containing multiple values when necessary.
 internal typealias WindowDynamicComponentDependency = Void
 
 // MARK: - Component
 
-/**
- PURPOSE:
- Declares dependencies that are owned by this Node.
- */
+/// PURPOSE:
+/// Declares dependencies that are owned by this Node.
 public final class WindowComponent: Component
 <
     WindowDependency
 > {
 
     /*
-     Dependencies
-     ============
-
-     Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
-
-     fileprivate let example: Example = .init()
-
-     Whenever possible, for example when the dependency does not provide shared state, define the property as a
-     factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
-     Needle compatibility whenever the access control is increased.
-
-     fileprivate var exampleFactory: Example {
-         Example()
-     }
-
-     When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
-     that always returns the same instance from a computed property.
-
-     fileprivate var example: Example {
-         shared { Example(otherDependency: dependency.otherDependency) }
-     }
-
+     *  Dependencies
+     *  ============
+     *
+     *  Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
+     *
+     *  fileprivate let example: Example = .init()
+     *
+     *  Whenever possible, for example when the dependency does not provide shared state, define the property as a
+     *  factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
+     *  Needle compatibility whenever the access control is increased.
+     *
+     *  fileprivate var exampleFactory: Example {
+     *      Example()
+     *  }
+     *
+     *  When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
+     *  that always returns the same instance from a computed property.
+     *
+     *  fileprivate var example: Example {
+     *      shared { Example(otherDependency: dependency.otherDependency) }
+     *  }
+     *
      */
 
     private let dynamicDependency: WindowDynamicComponentDependency
@@ -86,15 +76,15 @@ public final class WindowComponent: Component
     }
 
     /*
-     Child Components
-     ================
-
-     Declare child component factories as 'fileprivate' methods.
-
-     fileprivate func <name>ComponentFactory() -> <Name>Component {
-         <Name>Component(parent: self)
-     }
-
+     *  Child Components
+     *  ================
+     *
+     *  Declare child component factories as 'fileprivate' methods.
+     *
+     *  fileprivate func <name>ComponentFactory() -> <Name>Component {
+     *      <Name>Component(parent: self)
+     *  }
+     *
      */
 
     fileprivate func rootComponentFactory() -> RootComponent {
@@ -104,10 +94,8 @@ public final class WindowComponent: Component
 
 // MARK: - Builder
 
-/**
- PURPOSE:
- The Builder interface (available to mock for testability).
- */
+/// PURPOSE:
+/// The Builder interface (available to mock for testability).
 /// @mockable
 @MainActor
 internal protocol WindowBuilder: AnyObject {
@@ -117,10 +105,8 @@ internal protocol WindowBuilder: AnyObject {
     ) -> WindowFlow
 }
 
-/**
- PURPOSE:
- Concrete implementation of the Builder, where everything is created and associated.
- */
+/// PURPOSE:
+/// Concrete implementation of the Builder, where everything is created and associated.
 internal final class WindowBuilderImp: AbstractBuilder
 <
     WindowComponent,

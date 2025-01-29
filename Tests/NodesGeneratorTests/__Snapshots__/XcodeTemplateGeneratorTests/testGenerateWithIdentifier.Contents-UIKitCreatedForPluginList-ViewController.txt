@@ -4,19 +4,15 @@ import Combine
 import Nodes
 import UIKit
 
-/**
- PURPOSE:
- The interface that the View will speak to the Context through. Used for informing the Context of
- view events and user interactions.
- */
+/// PURPOSE:
+/// The interface that the View will speak to the Context through. Used for informing the Context of
+/// view events and user interactions.
 /// @mockable
 @MainActor
 internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
 
-/**
- PURPOSE:
- Concrete implementation of the UI.
- */
+/// PURPOSE:
+/// Concrete implementation of the UI.
 internal final class ___VARIABLE_productName___ViewController: UIViewController, StateObserver {
 
     /// The view receiver.

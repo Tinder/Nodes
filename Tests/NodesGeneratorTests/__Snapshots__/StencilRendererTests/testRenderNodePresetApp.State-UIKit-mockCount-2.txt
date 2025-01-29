@@ -3,10 +3,8 @@
 import <stateImport1>
 import <stateImport2>
 
-/**
- PURPOSE:
- The state of the Node.
- */
+/// PURPOSE:
+/// The state of the Node.
 internal struct AppState: Equatable {
 
     internal static func initialState() -> Self {

@@ -3,18 +3,14 @@
 import <workerImport>
 
 // periphery:ignore
-/**
- PURPOSE:
- Encapsulates work to be performed by the Node.
- */
+/// PURPOSE:
+/// Encapsulates work to be performed by the Node.
 /// @mockable
 internal protocol <workerName>Worker: Worker {}
 
 // periphery:ignore
-/**
- PURPOSE:
- Concrete implementation of the Worker.
- */
+/// PURPOSE:
+/// Concrete implementation of the Worker.
 internal final class <workerName>WorkerImp: AbstractWorker
 <
     <workerGenericType>

@@ -3,19 +3,15 @@
 import <flowImport1>
 import <flowImport2>
 
-/**
- PURPOSE:
- The interface that the Flow will speak to the Context through. Used for informing the Context of
- presentation lifecycle events, as an example.
- */
+/// PURPOSE:
+/// The interface that the Flow will speak to the Context through. Used for informing the Context of
+/// presentation lifecycle events, as an example.
 /// @mockable
 @MainActor
 internal protocol AppContextInterface: Context, WindowSceneListener {}
 
-/**
- PURPOSE:
- Responsible for presenting views and starting child Flows, and should not contain business logic.
- */
+/// PURPOSE:
+/// Responsible for presenting views and starting child Flows, and should not contain business logic.
 internal final class AppFlowImp: AbstractFlow
 <
     AppContextInterface,

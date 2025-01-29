@@ -1,9 +1,7 @@
 //___FILEHEADER___
 
-/**
- PURPOSE:
- The state of the Node.
- */
+/// PURPOSE:
+/// The state of the Node.
 internal struct ___VARIABLE_productName___State: Equatable {
 
     internal static func initialState() -> Self {

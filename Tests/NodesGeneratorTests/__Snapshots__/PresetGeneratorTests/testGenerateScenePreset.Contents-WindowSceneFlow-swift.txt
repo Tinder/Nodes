@@ -4,19 +4,15 @@
 
 import Nodes
 
-/**
- PURPOSE:
- The interface that the Flow will speak to the Context through. Used for informing the Context of
- presentation lifecycle events, as an example.
- */
+/// PURPOSE:
+/// The interface that the Flow will speak to the Context through. Used for informing the Context of
+/// presentation lifecycle events, as an example.
 /// @mockable
 @MainActor
 internal protocol WindowSceneContextInterface: Context, WindowListener {}
 
-/**
- PURPOSE:
- Responsible for presenting views and starting child Flows, and should not contain business logic.
- */
+/// PURPOSE:
+/// Responsible for presenting views and starting child Flows, and should not contain business logic.
 internal final class WindowSceneFlowImp: AbstractFlow
 <
     WindowSceneContextInterface,
