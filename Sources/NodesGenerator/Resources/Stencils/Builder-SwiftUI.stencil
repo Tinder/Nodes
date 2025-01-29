@@ -6,10 +6,8 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/**
- PURPOSE:
- The interface of the Flow.
- */
+/// PURPOSE:
+/// The interface of the Flow.
 /// @mockable
 @MainActor
 {% if plugin_list_name %}
@@ -18,10 +16,8 @@ internal protocol {{ node_name }}Flow: {{ plugin_list_name }}Flow {}
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
 {% endif %}
 
-/**
- PURPOSE:
- Declares the dependencies required by this Node that will be injected (not created by this Node itself).
- */
+/// PURPOSE:
+/// Declares the dependencies required by this Node that will be injected (not created by this Node itself).
 /// @mockable
 @MainActor
 {% if dependencies %}
@@ -34,56 +30,50 @@ public protocol {{ node_name }}Dependency: Dependency {
 public protocol {{ node_name }}Dependency: Dependency {}
 {% endif %}
 
-/**
- PURPOSE:
- A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
-
- Can be a tuple or struct containing multiple values when necessary.
- */
+/// PURPOSE:
+/// A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
+///
+/// Can be a tuple or struct containing multiple values when necessary.
 internal typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listener
 
-/**
- PURPOSE:
- A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
-
- Can be a tuple or struct containing multiple values when necessary.
- */
+/// PURPOSE:
+/// A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
+///
+/// Can be a tuple or struct containing multiple values when necessary.
 internal typealias {{ node_name }}DynamicComponentDependency = Void
 
 // MARK: - Component
 
-/**
- PURPOSE:
- Declares dependencies that are owned by this Node.
- */
+/// PURPOSE:
+/// Declares dependencies that are owned by this Node.
 public final class {{ node_name }}Component: Component
 <
     {{ node_name }}Dependency
 > {
 
     /*
-     Dependencies
-     ============
-
-     Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
-
-     fileprivate let example: Example = .init()
-
-     Whenever possible, for example when the dependency does not provide shared state, define the property as a
-     factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
-     Needle compatibility whenever the access control is increased.
-
-     fileprivate var exampleFactory: Example {
-         Example()
-     }
-
-     When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
-     that always returns the same instance from a computed property.
-
-     fileprivate var example: Example {
-         shared { Example(otherDependency: dependency.otherDependency) }
-     }
-
+     *  Dependencies
+     *  ============
+     *
+     *  Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
+     *
+     *  fileprivate let example: Example = .init()
+     *
+     *  Whenever possible, for example when the dependency does not provide shared state, define the property as a
+     *  factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
+     *  Needle compatibility whenever the access control is increased.
+     *
+     *  fileprivate var exampleFactory: Example {
+     *      Example()
+     *  }
+     *
+     *  When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
+     *  that always returns the same instance from a computed property.
+     *
+     *  fileprivate var example: Example {
+     *      shared { Example(otherDependency: dependency.otherDependency) }
+     *  }
+     *
      */
     {% if component_dependencies %}
 
@@ -114,15 +104,15 @@ public final class {{ node_name }}Component: Component
     }
 
     /*
-     Child Components
-     ================
-
-     Declare child component factories as 'fileprivate' methods.
-
-     fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
-         ChildComponent(parent: self)
-     }
-
+     *  Child Components
+     *  ================
+     *
+     *  Declare child component factories as 'fileprivate' methods.
+     *
+     *  fileprivate func <nodeName>ComponentFactory() -> ChildComponent {
+     *      ChildComponent(parent: self)
+     *  }
+     *
      */
 }
 
@@ -131,10 +121,8 @@ public final class {{ node_name }}Component: Component
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/**
- PURPOSE:
- The Builder interface (available to mock for testability).
- */
+/// PURPOSE:
+/// The Builder interface (available to mock for testability).
 /// @mockable
 @MainActor
 {% if plugin_list_name %}
@@ -150,10 +138,8 @@ internal protocol {{ node_name }}Builder: AnyObject {
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/**
- PURPOSE:
- Concrete implementation of the Builder, where everything is created and associated.
- */
+/// PURPOSE:
+/// Concrete implementation of the Builder, where everything is created and associated.
 internal final class {{ node_name }}BuilderImp: AbstractBuilder
 <
     {{ node_name }}Component,

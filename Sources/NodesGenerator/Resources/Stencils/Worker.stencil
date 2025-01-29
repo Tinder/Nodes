@@ -9,20 +9,16 @@ import {{ import }}
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/**
- PURPOSE:
- Encapsulates work to be performed by the Node.
- */
+/// PURPOSE:
+/// Encapsulates work to be performed by the Node.
 /// @mockable
 internal protocol {{ worker_name }}Worker: Worker {}
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/**
- PURPOSE:
- Concrete implementation of the Worker.
- */
+/// PURPOSE:
+/// Concrete implementation of the Worker.
 {% if worker_generic_types %}
 internal final class {{ worker_name }}WorkerImp: AbstractWorker
 <

@@ -6,58 +6,54 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/**
- PURPOSE:
- Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
- */
+/// PURPOSE:
+/// Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
 /// @mockable
 @MainActor
 public protocol {{ plugin_name }}PluginDependency: Dependency {}
 
-/**
- PURPOSE:
- Declares dependencies that are owned by this Plugin.
- */
+/// PURPOSE:
+/// Declares dependencies that are owned by this Plugin.
 public final class {{ plugin_name }}PluginComponent: Component
 <
     {{ plugin_name }}PluginDependency
 > {
 
     /*
-     Dependencies
-     ============
-
-     Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
-
-     fileprivate let example: Example = .init()
-
-     Whenever possible, for example when the dependency does not provide shared state, define the property as a
-     factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
-     Needle compatibility whenever the access control is increased.
-
-     fileprivate var exampleFactory: Example {
-         Example()
-     }
-
-     When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
-     that always returns the same instance from a computed property.
-
-     fileprivate var example: Example {
-         shared { Example(otherDependency: dependency.otherDependency) }
-     }
-
+     *  Dependencies
+     *  ============
+     *
+     *  Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
+     *
+     *  fileprivate let example: Example = .init()
+     *
+     *  Whenever possible, for example when the dependency does not provide shared state, define the property as a
+     *  factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
+     *  Needle compatibility whenever the access control is increased.
+     *
+     *  fileprivate var exampleFactory: Example {
+     *      Example()
+     *  }
+     *
+     *  When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
+     *  that always returns the same instance from a computed property.
+     *
+     *  fileprivate var example: Example {
+     *      shared { Example(otherDependency: dependency.otherDependency) }
+     *  }
+     *
      */
 
     /*
-     Child Components
-     ================
-
-     Declare child component factories as 'fileprivate' methods.
-
-     fileprivate func <name>ComponentFactory() -> <Name>Component {
-         <Name>Component(parent: self)
-     }
-
+     *  Child Components
+     *  ================
+     *
+     *  Declare child component factories as 'fileprivate' methods.
+     *
+     *  fileprivate func <name>ComponentFactory() -> <Name>Component {
+     *      <Name>Component(parent: self)
+     *  }
+     *
      */
 
     fileprivate func componentFactory() -> {{ plugin_name }}Component {
@@ -65,19 +61,15 @@ public final class {{ plugin_name }}PluginComponent: Component
     }
 }
 
-/**
- PURPOSE:
- To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the Plugin).
- */
+/// PURPOSE:
+/// To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the Plugin).
 internal typealias {{ plugin_name }}PluginStateType = Void
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/**
- PURPOSE:
- The Plugin interface (available to mock for testability).
- */
+/// PURPOSE:
+/// The Plugin interface (available to mock for testability).
 /// @mockable
 @MainActor
 internal protocol {{ plugin_name }}Plugin {
@@ -87,10 +79,8 @@ internal protocol {{ plugin_name }}Plugin {
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/**
- PURPOSE:
- Concrete implementation of the Plugin.
- */
+/// PURPOSE:
+/// Concrete implementation of the Plugin.
 internal final class {{ plugin_name }}PluginImp: Plugin
 <
     {{ plugin_name }}PluginComponent,

@@ -6,10 +6,8 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/**
- PURPOSE:
- The state of the Node.
- */
+/// PURPOSE:
+/// The state of the Node.
 internal struct {{ node_name }}State: Equatable {
 
 {% if node_name == "Root" %}

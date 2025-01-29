@@ -7,20 +7,16 @@ import {{ import }}
 {% endif %}
 {% if node_name != "App" %}
 
-/**
- PURPOSE:
- The Context delegates callbacks to its (external) Listener, typically the parent Context.
- */
+/// PURPOSE:
+/// The Context delegates callbacks to its (external) Listener, typically the parent Context.
 /// @mockable
 @MainActor
 internal protocol {{ node_name }}Listener: AnyObject {}
 {% endif %}
 
-/**
- PURPOSE:
- The interface that the Context will speak to the Flow through. Used to initiate navigation as
- an example.
- */
+/// PURPOSE:
+/// The interface that the Context will speak to the Flow through. Used to initiate navigation as
+/// an example.
 /// @mockable
 @MainActor
 {% if node_name == "App" %}
@@ -36,11 +32,9 @@ internal protocol {{ node_name }}FlowInterface: Flow {
 internal protocol {{ node_name }}FlowInterface: Flow {}
 {% endif %}
 
-/**
- PURPOSE:
- Contains the business logic of the Node. The lifecycle of the Node is bookended between the
- `didBecomeActive` and `willResignActive` methods.
- */
+/// PURPOSE:
+/// Contains the business logic of the Node. The lifecycle of the Node is bookended between the
+/// `didBecomeActive` and `willResignActive` methods.
 {% if context_generic_types %}
 internal final class {{ node_name }}ContextImp: AbstractContext
 <

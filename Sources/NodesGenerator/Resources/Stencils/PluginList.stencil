@@ -9,10 +9,8 @@ import {{ import }}
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/**
- PURPOSE:
- The common Flow interface.
- */
+/// PURPOSE:
+/// The common Flow interface.
 /// @mockable
 @MainActor
 internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} {}
@@ -20,10 +18,8 @@ internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/**
- PURPOSE:
- The common Listener interface.
- */
+/// PURPOSE:
+/// The common Listener interface.
 /// @mockable
 @MainActor
 internal protocol {{ plugin_list_name }}Listener: AnyObject {}
@@ -31,10 +27,8 @@ internal protocol {{ plugin_list_name }}Listener: AnyObject {}
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/**
- PURPOSE:
- The common Builder interface.
- */
+/// PURPOSE:
+/// The common Builder interface.
 /// @mockable
 @MainActor
 internal protocol {{ plugin_list_name }}Builder: AnyObject {
@@ -43,80 +37,70 @@ internal protocol {{ plugin_list_name }}Builder: AnyObject {
     ) -> {{ plugin_list_name }}Flow
 }
 
-/**
- PURPOSE:
- Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
- */
+/// PURPOSE:
+/// Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
 /// @mockable
 @MainActor
 public protocol {{ plugin_list_name }}PluginListDependency: Dependency {}
 
-/**
- PURPOSE:
- Declares dependencies that are owned by this Plugin List.
- */
+/// PURPOSE:
+/// Declares dependencies that are owned by this Plugin List.
 public final class {{ plugin_list_name }}PluginListComponent: Component
 <
     {{ plugin_list_name }}PluginListDependency
 > {
 
     /*
-     Dependencies
-     ============
-
-     Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
-
-     fileprivate let example: Example = .init()
-
-     Whenever possible, for example when the dependency does not provide shared state, define the property as a
-     factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
-     Needle compatibility whenever the access control is increased.
-
-     fileprivate var exampleFactory: Example {
-         Example()
-     }
-
-     When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
-     that always returns the same instance from a computed property.
-
-     fileprivate var example: Example {
-         shared { Example(otherDependency: dependency.otherDependency) }
-     }
-
+     *  Dependencies
+     *  ============
+     *
+     *  Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
+     *
+     *  fileprivate let example: Example = .init()
+     *
+     *  Whenever possible, for example when the dependency does not provide shared state, define the property as a
+     *  factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
+     *  Needle compatibility whenever the access control is increased.
+     *
+     *  fileprivate var exampleFactory: Example {
+     *      Example()
+     *  }
+     *
+     *  When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
+     *  that always returns the same instance from a computed property.
+     *
+     *  fileprivate var example: Example {
+     *      shared { Example(otherDependency: dependency.otherDependency) }
+     *  }
+     *
      */
 
     /*
-     Child Components
-     ================
-
-     Declare child component factories as 'fileprivate' methods.
-
-     fileprivate func <name>PluginComponentFactory() -> <Name>PluginComponent {
-         <Name>PluginComponent(parent: self)
-     }
-
+     *  Child Components
+     *  ================
+     *
+     *  Declare child component factories as 'fileprivate' methods.
+     *
+     *  fileprivate func <name>PluginComponentFactory() -> <Name>PluginComponent {
+     *      <Name>PluginComponent(parent: self)
+     *  }
+     *
      */
 }
 
-/**
- PURPOSE:
- The type used for the keys of the Plugin List (can be any `Hashable` type such as `String` or an enumeration).
- */
+/// PURPOSE:
+/// The type used for the keys of the Plugin List (can be any `Hashable` type such as `String` or an enumeration).
 internal typealias {{ plugin_list_name }}PluginListKeyType = String
 
-/**
- PURPOSE:
- To provide additional state used in determining if the plugins are enabled (can be any type relevant to the plugins).
- */
+/// PURPOSE:
+/// To provide additional state used in determining if the plugins are enabled (can be any type relevant to the plugins).
 internal typealias {{ plugin_list_name }}PluginListStateType = Void
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/**
- PURPOSE:
- The Plugin List protocol (available to mock for testability).
- */
+/// PURPOSE:
+/// The Plugin List protocol (available to mock for testability).
 /// @mockable
 @MainActor
 internal protocol {{ plugin_list_name }}PluginList {
@@ -128,10 +112,8 @@ internal protocol {{ plugin_list_name }}PluginList {
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/**
- PURPOSE:
- Concrete implementation of the Plugin List providing the Plugin collection and (optionally) the creation order.
- */
+/// PURPOSE:
+/// Concrete implementation of the Plugin List providing the Plugin collection and (optionally) the creation order.
 internal final class {{ plugin_list_name }}PluginListImp: PluginList
 <
     {{ plugin_list_name }}PluginListKeyType,

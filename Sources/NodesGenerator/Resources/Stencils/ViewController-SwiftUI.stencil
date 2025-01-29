@@ -6,19 +6,15 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/**
- PURPOSE:
- The interface that the View will speak to the Context through. Used for informing the Context of
- view events and user interactions.
- */
+/// PURPOSE:
+/// The interface that the View will speak to the Context through. Used for informing the Context of
+/// view events and user interactions.
 /// @mockable
 @MainActor
 internal protocol {{ node_name }}Receiver: AnyObject {}
 
-/**
- PURPOSE:
- Host of the SwiftUI view.
- */
+/// PURPOSE:
+/// Host of the SwiftUI view.
 internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 <
     {{ node_name }}View
@@ -39,10 +35,8 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}
 
 extension {{ node_name }}ViewController: {{ node_name }}ViewControllable {}
 
-/**
- PURPOSE:
- Concrete implementation of the View.
- */
+/// PURPOSE:
+/// Concrete implementation of the View.
 internal struct {{ node_name }}View {
 
     {% if is_periphery_comment_enabled %}
@@ -84,10 +78,8 @@ extension {{ node_name }}View: View {
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/**
- PURPOSE:
- The SwiftUI preview (excluded from release builds).
- */
+/// PURPOSE:
+/// The SwiftUI preview (excluded from release builds).
 internal struct {{ node_name }}View_Previews: PreviewProvider {
 
     internal static var previews: some View {
