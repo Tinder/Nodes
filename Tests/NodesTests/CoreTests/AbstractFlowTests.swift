@@ -27,15 +27,23 @@ final class AbstractFlowTests: XCTestCase, TestCaseHelpers {
 
     private var mockFlows: [FlowMock]!
 
-    @MainActor
-    override func setUp() {
-        super.setUp()
-        tearDown(keyPath: \.mockFlows, initialValue: [FlowMock(), FlowMock(), FlowMock()])
+    override func setUp() async throws {
+        try await super.setUp()
+        struct Box<T: XCTestCase>: @unchecked Sendable {
+            let testCase: T
+        }
+        let box: Box<AbstractFlowTests> = .init(testCase: self)
+        _ = await Task { @MainActor in
+            let testCase: AbstractFlowTests = box.testCase
+            testCase.tearDown(
+                keyPath: \.mockFlows,
+                initialValue: [FlowMock(), FlowMock(), FlowMock()]
+            )
+        }.result
     }
 
-    @MainActor
-    override func tearDown() {
-        super.tearDown()
+    override func tearDown() async throws {
+        try await super.tearDown()
     }
 
     @MainActor
