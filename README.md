@@ -60,7 +60,8 @@ Installation of the templates is performed by the Xcode templates generator (the
 
 #### Xcode Templates Installation
 
-> TIP: After completing the [Quick Start](#quick-start) setup (below), Nodes' Xcode templates will be ***installed automatically***, so these instructions to manually install the Xcode templates ***may be skipped*** and are included here simply as a reference.
+> [!TIP]
+> After completing the [Quick Start](#quick-start) setup (below), Nodes' Xcode templates will be ***installed automatically***, so these instructions to manually install the Xcode templates ***may be skipped*** and are included here simply as a reference.
 
 <details>
 
@@ -92,7 +93,8 @@ The Xcode templates will be installed to the following location to be made avail
 
 Documentation is available online at: [https://Tinder.github.io/Nodes](https://Tinder.github.io/Nodes)
 
-> TIP: After completing the [Quick Start](#quick-start) setup (below), documentation is viewable in Xcode by selecting `Build Documentation` from the `Product` menu.
+> [!TIP]
+> After completing the [Quick Start](#quick-start) setup (below), documentation is viewable in Xcode by selecting `Build Documentation` from the `Product` menu.
 
 ## Quick Start
 

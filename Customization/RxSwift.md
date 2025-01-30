@@ -18,7 +18,7 @@ If utilizing the [quick start project setup](https://github.com/Tinder/Nodes#qui
 swift run --skip-build -- nodes-xcode-templates-gen --id "RxSwift" --config "nodes.yml"
 ```
 
-> TIP: The provided `id` value is used to uniquely identify different sets of templates within the new file dialog in Xcode.
+> The provided `id` value is used to uniquely identify different sets of templates within the new file dialog in Xcode.
 
 The script that creates the presets in the quick start project should use the same config file:
 

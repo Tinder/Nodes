@@ -20,7 +20,7 @@ If utilizing the [quick start project setup](https://github.com/Tinder/Nodes#qui
 swift run --skip-build -- nodes-xcode-templates-gen --id "Custom" --config "nodes.yml"
 ```
 
-> TIP: The provided `id` value is used to uniquely identify different sets of templates within the new file dialog in Xcode.
+> The provided `id` value is used to uniquely identify different sets of templates within the new file dialog in Xcode.
 
 The script that creates the presets in the quick start project should use the same config file:
 
@@ -34,7 +34,8 @@ swift run --skip-build -- nodes-code-gen --preset "$PRESET" --author "$AUTHOR" -
 
 All values shown in the sample are the defaults.
 
-> TIP: It is only necessary to include config options that are different from the defaults.
+> [!TIP]
+> It is only necessary to include config options that are different from the defaults.
 
 ```yaml
 uiFrameworks:
@@ -117,6 +118,8 @@ More than one UI framework may be included in the configuration. Without specify
         viewControllerMethods: ""
 ```
 
-> IMPORTANT: A non-empty string must be provided for `name`, `import` and `viewControllerType`.
+> [!IMPORTANT]
+> A non-empty string must be provided for `name`, `import` and `viewControllerType`.
 
-> TIP: The `viewControllerSuperParameters` and `viewControllerMethods` keys may be omitted.
+> [!TIP]
+> The `viewControllerSuperParameters` and `viewControllerMethods` keys may be omitted.
