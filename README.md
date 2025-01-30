@@ -56,7 +56,7 @@ Each node is comprised of a few pre-defined types working in conjunction to powe
 
 Nodes' Xcode templates are required to ensure correct use of the Nodes framework and to guarantee that every created node is properly defined.
 
-Installation of the templates is performed by the Xcode templates generator (the `nodes-xcode-templates-gen` executable in the Swift package). Without customizing the generator, Xcode templates for UIKit and SwiftUI (for iOS) are installed by default. The generator supports [optional customization](#optional-customization) if needed.
+Installation of the templates is performed by the Xcode templates generator (the `nodes-xcode-templates-gen` executable in the Swift package). Without customizing the generator, Xcode templates for iOS with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui) are installed by default. The generator supports [optional customization](#optional-customization) if needed.
 
 #### Xcode Templates Installation
 
@@ -178,11 +178,11 @@ brew reinstall --build-from-source mockolo
 
 ### UI Frameworks
 
-While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui) (for iOS), custom [configuration is required](Customization/Configuration.md) to use other UI frameworks, such as [AppKit](https://developer.apple.com/documentation/appkit).
+While Nodes is configured by default for iOS with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui), UI frameworks for [AppKit](https://developer.apple.com/documentation/appkit) or other platforms may be enabled with [custom configuration](Customization/Configuration.md). 
 
 ### Reactive Frameworks
 
-While Nodes works out-of-the-box with [Combine](https://developer.apple.com/documentation/combine), custom [configuration and setup is required](Customization/RxSwift.md) to use other reactive frameworks, such [RxSwift](https://github.com/ReactiveX/RxSwift).
+While Nodes is configured by default for [Combine](https://developer.apple.com/documentation/combine), other reactive frameworks such [RxSwift](https://github.com/ReactiveX/RxSwift) require [custom configuration](Customization/RxSwift.md).
 
 ## Extras 
 

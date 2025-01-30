@@ -1,10 +1,12 @@
 # Nodes Configuration
 
-While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui) (for iOS), the following custom configuration is required to use other UI frameworks, such as [AppKit](https://developer.apple.com/documentation/appkit).
+Nodes is easily customized using a YAML configuration file. The [sample](#sample-config-file) below demonstrates the available options.
+
+While Nodes is configured by default for iOS with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui), UI frameworks for [AppKit](https://developer.apple.com/documentation/appkit) or other platforms may be enabled. 
 
 ## Configure the Xcode Templates Generator
 
-Specify a path to a custom config file by providing the `--config` option when executing `nodes-xcode-templates-gen`.
+Specify a path to a custom config file by providing the `--config` option when executing the `nodes-xcode-templates-gen` command.
 
 <details>
 
@@ -28,16 +30,16 @@ swift run --skip-build -- nodes-code-gen --preset "$PRESET" --author "$AUTHOR" -
 
 </details>
 
-### Sample Config File
+## Sample Config File
 
-All values shown in the samples below are the defaults.
+All values shown in the sample are the defaults.
 
 > TIP: It is only necessary to include config options that are different from the defaults.
 
 ```yaml
 uiFrameworks:
   - framework: UIKit
-  - framework: SwiftUI
+  - framework: UIKit (SwiftUI)
 baseImports: []
 baseTestImports:
   - Nimble
@@ -83,35 +85,27 @@ isTestTemplatesGenerationEnabled: true
 isPeripheryCommentEnabled: false
 ```
 
-To control which UI Frameworks are made available within the new file dialog in Xcode, include AppKit, UIKit, or SwiftUI as shown below; or a fully custom UI framework may be configured for unique use cases. More than one UI framework can be included in the configuration. And by default, without providing any UI framework configuration, UIKit and SwiftUI (for iOS) are automatically configured.
+## UI Frameworks
 
-> TIP: For use in an iOS app that allows both UIKit and SwiftUI, both may be enabled simultaneously if desired.
+The UI framework presets available to enable in the config file are `AppKit`, `AppKit (SwiftUI)`, `UIKit` and `UIKit (SwiftUI)`. A fully custom UI framework may be configured for unique use cases.
 
-#### AppKit
+More than one UI framework may be included in the configuration. Without specifying any UI frameworks, `UIKit` and `UIKit (SwiftUI)` are enabled by default.
 
 ```yaml
   - framework: AppKit
 ```
 
-#### UIKit
+```yaml
+  - framework: AppKit (SwiftUI)
+```
 
 ```yaml
   - framework: UIKit
 ```
 
-#### SwiftUI
-
-> IMPORTANT: SwiftUI is only supported in iOS apps currently (SwiftUI support for macOS apps may be added in the future).
-
 ```yaml
-  - framework: SwiftUI
+  - framework: UIKit (SwiftUI)
 ```
-
-#### Custom
-
-> IMPORTANT: A non-empty string must be provided for `name`, `import` and `viewControllerType`.
-
-> TIP: The `viewControllerSuperParameters` and `viewControllerMethods` keys may be omitted.
 
 ```yaml
   - framework:
@@ -122,3 +116,7 @@ To control which UI Frameworks are made available within the new file dialog in 
         viewControllerSuperParameters: ""
         viewControllerMethods: ""
 ```
+
+> IMPORTANT: A non-empty string must be provided for `name`, `import` and `viewControllerType`.
+
+> TIP: The `viewControllerSuperParameters` and `viewControllerMethods` keys may be omitted.

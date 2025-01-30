@@ -1,10 +1,10 @@
 # Using RxSwift with Nodes
 
-While Nodes works out-of-the-box with [Combine](https://developer.apple.com/documentation/combine), the following custom configuration and setup is required to use other reactive frameworks, such [RxSwift](https://github.com/ReactiveX/RxSwift).
+While Nodes is configured by default for [Combine](https://developer.apple.com/documentation/combine), other reactive frameworks such [RxSwift](https://github.com/ReactiveX/RxSwift) require custom configuration and setup.
 
 ## Configure the Xcode Templates Generator
 
-Specify a path to a custom config file by providing the `--config` option when executing `nodes-xcode-templates-gen`.
+Specify a path to a custom config file by providing the `--config` option when executing the `nodes-xcode-templates-gen` command.
 
 <details>
 
@@ -28,13 +28,13 @@ swift run --skip-build -- nodes-code-gen --preset "$PRESET" --author "$AUTHOR" -
 
 </details>
 
-### Sample Config File
+## Sample Config File
 
 ```yaml
 uiFrameworks:
   - framework:
       custom:
-        name: UIKit
+        name: UIKit (RxSwift)
         import: UIKit
         viewControllerType: UIViewController
         viewControllerSuperParameters: "nibName: nil, bundle: nil"
@@ -60,7 +60,6 @@ uiFrameworks:
               LeakDetector.detect(disposeBag)
               disposeBag = DisposeBag()
           }
-  - framework: SwiftUI
 reactiveImports:
   - RxSwift
 viewControllerSubscriptionsProperty: |-
