@@ -71,7 +71,7 @@ viewStateOperators: |-
   .observe(on: MainScheduler.instance)
 viewStatePropertyComment: The view state observable
 viewStatePropertyName: stateObservable
-viewStateTransform: context.$state.map { viewStateFactory($0) }
+viewStateTransform: store.viewStatePublisher.asObservable()
 publisherType: Observable
 publisherFailureType: ""
 contextGenericTypes: []
@@ -133,6 +133,27 @@ extension StateObserver {
     ) -> Disposable where O.Element == StateObserverStateType {
         observable.subscribe { [weak self] state in
             self?.update(with: state)
+        }
+    }
+}
+
+extension Publisher {
+
+    public func asObservable() -> Observable<Output> {
+        Observable.create { observer in
+            let cancellable: AnyCancellable = sink { completion in
+                switch completion {
+                case .finished:
+                    observer.onCompleted()
+                case let .failure(error):
+                    observer.onError(error)
+                }
+            } receiveValue: { value in
+                observer.onNext(value)
+            }
+            return Disposables.create {
+                cancellable.cancel()
+            }
         }
     }
 }
