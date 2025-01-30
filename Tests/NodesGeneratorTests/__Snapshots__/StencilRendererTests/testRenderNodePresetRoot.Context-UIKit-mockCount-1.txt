@@ -2,13 +2,11 @@
 
 import <contextImport>
 
-/// PURPOSE:
 /// The Context delegates callbacks to its (external) Listener, typically the parent Context.
 /// @mockable
 @MainActor
 internal protocol RootListener: AnyObject {}
 
-/// PURPOSE:
 /// The interface that the Context will speak to the Flow through. Used to initiate navigation as
 /// an example.
 /// @mockable
@@ -17,7 +15,6 @@ internal protocol RootFlowInterface: Flow {
     func didBecomeReady()
 }
 
-/// PURPOSE:
 /// Contains the business logic of the Node. The lifecycle of the Node is bookended between the
 /// `didBecomeActive` and `willResignActive` methods.
 internal final class RootContextImp: AbstractContext

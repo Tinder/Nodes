@@ -1,11 +1,9 @@
 //<fileHeader>
 
-/// PURPOSE:
 /// Encapsulates work to be performed by the Node.
 /// @mockable
 internal protocol <workerName>Worker: Worker {}
 
-/// PURPOSE:
 /// Concrete implementation of the Worker.
 internal final class <workerName>WorkerImp: AbstractWorker {
 

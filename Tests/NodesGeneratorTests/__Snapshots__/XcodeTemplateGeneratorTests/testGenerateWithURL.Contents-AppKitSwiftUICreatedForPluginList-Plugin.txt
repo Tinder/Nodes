@@ -3,13 +3,11 @@
 import NeedleFoundation
 import Nodes
 
-/// PURPOSE:
 /// Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
 /// @mockable
 @MainActor
 public protocol ___VARIABLE_productName___PluginDependency: Dependency {}
 
-/// PURPOSE:
 /// Declares dependencies that are owned by this Plugin.
 public final class ___VARIABLE_productName___PluginComponent: Component
 <
@@ -58,11 +56,9 @@ public final class ___VARIABLE_productName___PluginComponent: Component
     }
 }
 
-/// PURPOSE:
 /// To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the Plugin).
 internal typealias ___VARIABLE_productName___PluginStateType = Void
 
-/// PURPOSE:
 /// The Plugin interface (available to mock for testability).
 /// @mockable
 @MainActor
@@ -70,7 +66,6 @@ internal protocol ___VARIABLE_productName___Plugin {
     func create() -> ___VARIABLE_productName___Builder?
 }
 
-/// PURPOSE:
 /// Concrete implementation of the Plugin.
 internal final class ___VARIABLE_productName___PluginImp: Plugin
 <

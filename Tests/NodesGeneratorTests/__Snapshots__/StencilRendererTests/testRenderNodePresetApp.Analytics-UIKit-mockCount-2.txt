@@ -14,14 +14,12 @@ import <analyticsImport2>
  *
  */
 
-/// PURPOSE:
 /// The interface for analytics tracked by this Node.
 ///
 /// Add requirements to this protocol to provide analytics tracking methods for this Node.
 /// @mockable
 internal protocol AppAnalytics: AnyObject {}
 
-/// PURPOSE:
 /// Custom analytics implementation for this Node.
 internal final class AppAnalyticsImp {
 

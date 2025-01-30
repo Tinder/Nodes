@@ -6,25 +6,21 @@ import Combine
 import NeedleFoundation
 import Nodes
 
-/// PURPOSE:
 /// The interface of the Flow.
 /// @mockable
 @MainActor
 internal protocol WindowFlow: Flow {}
 
-/// PURPOSE:
 /// Declares the dependencies required by this Node that will be injected (not created by this Node itself).
 /// @mockable
 @MainActor
 public protocol WindowDependency: Dependency {}
 
-/// PURPOSE:
 /// A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 ///
 /// Can be a tuple or struct containing multiple values when necessary.
 internal typealias WindowDynamicBuildDependency = (WindowListener, WindowViewControllable)
 
-/// PURPOSE:
 /// A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 ///
 /// Can be a tuple or struct containing multiple values when necessary.
@@ -32,7 +28,6 @@ internal typealias WindowDynamicComponentDependency = Void
 
 // MARK: - Component
 
-/// PURPOSE:
 /// Declares dependencies that are owned by this Node.
 public final class WindowComponent: Component
 <
@@ -100,7 +95,6 @@ public final class WindowComponent: Component
 
 // MARK: - Builder
 
-/// PURPOSE:
 /// The Builder interface (available to mock for testability).
 /// @mockable
 @MainActor
@@ -111,7 +105,6 @@ internal protocol WindowBuilder: AnyObject {
     ) -> WindowFlow
 }
 
-/// PURPOSE:
 /// Concrete implementation of the Builder, where everything is created and associated.
 internal final class WindowBuilderImp: AbstractBuilder
 <

@@ -2,11 +2,9 @@
 
 import Nodes
 
-/// PURPOSE:
 /// The view state of the view.
 internal struct ___VARIABLE_productName___ViewState: Equatable {}
 
-/// PURPOSE:
 /// The factory used to create view state from the state of the Node.
 internal class ___VARIABLE_productName___ViewStateFactory: Nodes.Transform {
 

@@ -9,7 +9,6 @@ import {{ import }}
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// PURPOSE:
 /// The common Flow interface.
 /// @mockable
 @MainActor
@@ -18,7 +17,6 @@ internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// PURPOSE:
 /// The common Listener interface.
 /// @mockable
 @MainActor
@@ -27,7 +25,6 @@ internal protocol {{ plugin_list_name }}Listener: AnyObject {}
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// PURPOSE:
 /// The common Builder interface.
 /// @mockable
 @MainActor
@@ -37,13 +34,11 @@ internal protocol {{ plugin_list_name }}Builder: AnyObject {
     ) -> {{ plugin_list_name }}Flow
 }
 
-/// PURPOSE:
 /// Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
 /// @mockable
 @MainActor
 public protocol {{ plugin_list_name }}PluginListDependency: Dependency {}
 
-/// PURPOSE:
 /// Declares dependencies that are owned by this Plugin List.
 public final class {{ plugin_list_name }}PluginListComponent: Component
 <
@@ -88,18 +83,15 @@ public final class {{ plugin_list_name }}PluginListComponent: Component
      */
 }
 
-/// PURPOSE:
 /// The type used for the keys of the Plugin List (can be any `Hashable` type such as `String` or an enumeration).
 internal typealias {{ plugin_list_name }}PluginListKeyType = String
 
-/// PURPOSE:
 /// To provide additional state used in determining if the plugins are enabled (can be any type relevant to the plugins).
 internal typealias {{ plugin_list_name }}PluginListStateType = Void
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// PURPOSE:
 /// The Plugin List protocol (available to mock for testability).
 /// @mockable
 @MainActor
@@ -112,7 +104,6 @@ internal protocol {{ plugin_list_name }}PluginList {
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// PURPOSE:
 /// Concrete implementation of the Plugin List providing the Plugin collection and (optionally) the creation order.
 internal final class {{ plugin_list_name }}PluginListImp: PluginList
 <

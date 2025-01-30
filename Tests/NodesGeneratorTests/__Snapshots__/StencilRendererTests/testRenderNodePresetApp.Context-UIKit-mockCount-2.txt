@@ -3,7 +3,6 @@
 import <contextImport1>
 import <contextImport2>
 
-/// PURPOSE:
 /// The interface that the Context will speak to the Flow through. Used to initiate navigation as
 /// an example.
 /// @mockable
@@ -13,7 +12,6 @@ internal protocol AppFlowInterface: Flow {
     func detachWindowScene(_ viewController: WindowSceneViewControllable)
 }
 
-/// PURPOSE:
 /// Contains the business logic of the Node. The lifecycle of the Node is bookended between the
 /// `didBecomeActive` and `willResignActive` methods.
 internal final class AppContextImp: AbstractContext

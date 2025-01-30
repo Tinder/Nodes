@@ -3,19 +3,16 @@
 import <builderImport1>
 import <builderImport2>
 
-/// PURPOSE:
 /// The interface of the Flow.
 /// @mockable
 @MainActor
 internal protocol AppFlow: Flow {}
 
-/// PURPOSE:
 /// A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 ///
 /// Can be a tuple or struct containing multiple values when necessary.
 internal typealias AppDynamicBuildDependency = Void
 
-/// PURPOSE:
 /// A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 ///
 /// Can be a tuple or struct containing multiple values when necessary.
@@ -23,7 +20,6 @@ internal typealias AppDynamicComponentDependency = Void
 
 // MARK: - Component
 
-/// PURPOSE:
 /// Declares dependencies that are owned by this Node.
 public final class AppComponent: BootstrapComponent {
 
@@ -90,7 +86,6 @@ public final class AppComponent: BootstrapComponent {
 // MARK: - Builder
 
 // periphery:ignore
-/// PURPOSE:
 /// The Builder interface (available to mock for testability).
 /// @mockable
 @MainActor
@@ -99,7 +94,6 @@ internal protocol AppBuilder: AnyObject {
 }
 
 // periphery:ignore
-/// PURPOSE:
 /// Concrete implementation of the Builder, where everything is created and associated.
 internal final class AppBuilderImp: AbstractBuilder
 <

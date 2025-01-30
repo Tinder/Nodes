@@ -1,12 +1,10 @@
 //<fileHeader>
 
-/// PURPOSE:
 /// Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
 /// @mockable
 @MainActor
 public protocol PluginDependency: Dependency {}
 
-/// PURPOSE:
 /// Declares dependencies that are owned by this Plugin.
 public final class PluginComponent: Component
 <
@@ -55,11 +53,9 @@ public final class PluginComponent: Component
     }
 }
 
-/// PURPOSE:
 /// To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the Plugin).
 internal typealias PluginStateType = Void
 
-/// PURPOSE:
 /// The Plugin interface (available to mock for testability).
 /// @mockable
 @MainActor
@@ -67,7 +63,6 @@ internal protocol Plugin {
     func create() -> Builder?
 }
 
-/// PURPOSE:
 /// Concrete implementation of the Plugin.
 internal final class PluginImp: Plugin
 <

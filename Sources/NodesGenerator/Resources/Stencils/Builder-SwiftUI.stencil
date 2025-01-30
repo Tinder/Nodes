@@ -6,7 +6,6 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/// PURPOSE:
 /// The interface of the Flow.
 /// @mockable
 @MainActor
@@ -16,7 +15,6 @@ internal protocol {{ node_name }}Flow: {{ plugin_list_name }}Flow {}
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
 {% endif %}
 
-/// PURPOSE:
 /// Declares the dependencies required by this Node that will be injected (not created by this Node itself).
 /// @mockable
 @MainActor
@@ -30,13 +28,11 @@ public protocol {{ node_name }}Dependency: Dependency {
 public protocol {{ node_name }}Dependency: Dependency {}
 {% endif %}
 
-/// PURPOSE:
 /// A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 ///
 /// Can be a tuple or struct containing multiple values when necessary.
 internal typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listener
 
-/// PURPOSE:
 /// A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 ///
 /// Can be a tuple or struct containing multiple values when necessary.
@@ -44,7 +40,6 @@ internal typealias {{ node_name }}DynamicComponentDependency = Void
 
 // MARK: - Component
 
-/// PURPOSE:
 /// Declares dependencies that are owned by this Node.
 public final class {{ node_name }}Component: Component
 <
@@ -121,7 +116,6 @@ public final class {{ node_name }}Component: Component
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// PURPOSE:
 /// The Builder interface (available to mock for testability).
 /// @mockable
 @MainActor
@@ -138,7 +132,6 @@ internal protocol {{ node_name }}Builder: AnyObject {
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// PURPOSE:
 /// Concrete implementation of the Builder, where everything is created and associated.
 internal final class {{ node_name }}BuilderImp: AbstractBuilder
 <

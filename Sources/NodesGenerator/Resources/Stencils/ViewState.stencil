@@ -6,7 +6,6 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/// PURPOSE:
 /// The view state of the view.
 {% if node_name == "Root" %}
 internal struct {{ node_name }}ViewState: Equatable {
@@ -17,7 +16,6 @@ internal struct {{ node_name }}ViewState: Equatable {
 internal struct {{ node_name }}ViewState: Equatable {}
 {% endif %}
 
-/// PURPOSE:
 /// The factory used to create view state from the state of the Node.
 internal class {{ node_name }}ViewStateFactory: Nodes.Transform {
 

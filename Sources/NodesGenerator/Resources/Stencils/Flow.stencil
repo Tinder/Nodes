@@ -6,7 +6,6 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/// PURPOSE:
 /// The interface that the Flow will speak to the Context through. Used for informing the Context of
 /// presentation lifecycle events, as an example.
 /// @mockable
@@ -20,7 +19,6 @@ internal protocol {{ node_name }}ContextInterface: Context, RootListener {}
 {% else %}
 internal protocol {{ node_name }}ContextInterface: Context {}
 
-/// PURPOSE:
 /// The interface of the View used for presenting the View of child Nodes. May inherit additional base
 /// protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
 /// implementation as necessary.
@@ -31,7 +29,6 @@ internal protocol {{ node_name }}ContextInterface: Context {}
 internal protocol {{ node_name }}ViewControllable: {{ view_controllable_type }} {}
 {% endif %}
 
-/// PURPOSE:
 /// Responsible for presenting views and starting child Flows, and should not contain business logic.
 internal final class {{ node_name }}FlowImp: AbstractFlow
 <

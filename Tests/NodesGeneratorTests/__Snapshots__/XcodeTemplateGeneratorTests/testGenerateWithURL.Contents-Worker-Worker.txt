@@ -3,12 +3,10 @@
 import Combine
 import Nodes
 
-/// PURPOSE:
 /// Encapsulates work to be performed by the Node.
 /// @mockable
 internal protocol ___VARIABLE_productName___Worker: Worker {}
 
-/// PURPOSE:
 /// Concrete implementation of the Worker.
 internal final class ___VARIABLE_productName___WorkerImp: AbstractWorker
 <

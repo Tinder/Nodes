@@ -6,13 +6,11 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/// PURPOSE:
 /// Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
 /// @mockable
 @MainActor
 public protocol {{ plugin_name }}PluginDependency: Dependency {}
 
-/// PURPOSE:
 /// Declares dependencies that are owned by this Plugin.
 public final class {{ plugin_name }}PluginComponent: Component
 <
@@ -61,14 +59,12 @@ public final class {{ plugin_name }}PluginComponent: Component
     }
 }
 
-/// PURPOSE:
 /// To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the Plugin).
 internal typealias {{ plugin_name }}PluginStateType = Void
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// PURPOSE:
 /// The Plugin interface (available to mock for testability).
 /// @mockable
 @MainActor
@@ -79,7 +75,6 @@ internal protocol {{ plugin_name }}Plugin {
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// PURPOSE:
 /// Concrete implementation of the Plugin.
 internal final class {{ plugin_name }}PluginImp: Plugin
 <

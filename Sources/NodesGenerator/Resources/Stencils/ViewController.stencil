@@ -6,7 +6,6 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/// PURPOSE:
 /// The interface that the View will speak to the Context through. Used for informing the Context of
 /// view events and user interactions.
 /// @mockable
@@ -19,7 +18,6 @@ internal protocol {{ node_name }}Receiver: AnyObject {
 internal protocol {{ node_name }}Receiver: AnyObject {}
 {% endif %}
 
-/// PURPOSE:
 /// Concrete implementation of the UI.
 internal final class {{ node_name }}ViewController: {{ view_controller_type }}, StateObserver {
     {% if view_controller_static_content %}

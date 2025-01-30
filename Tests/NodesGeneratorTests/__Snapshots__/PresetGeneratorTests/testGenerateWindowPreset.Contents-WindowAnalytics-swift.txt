@@ -13,14 +13,12 @@
  *
  */
 
-/// PURPOSE:
 /// The interface for analytics tracked by this Node.
 ///
 /// Add requirements to this protocol to provide analytics tracking methods for this Node.
 /// @mockable
 internal protocol WindowAnalytics: AnyObject {}
 
-/// PURPOSE:
 /// Custom analytics implementation for this Node.
 internal final class WindowAnalyticsImp {}
 

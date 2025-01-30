@@ -2,7 +2,6 @@
 
 import <builderImport>
 
-/// PURPOSE:
 /// The interface of the Flow.
 /// @mockable
 @MainActor
@@ -10,7 +9,6 @@ internal protocol WindowSceneFlow: Flow {
     func getViewController() -> WindowSceneViewControllable
 }
 
-/// PURPOSE:
 /// Declares the dependencies required by this Node that will be injected (not created by this Node itself).
 /// @mockable
 @MainActor
@@ -18,13 +16,11 @@ public protocol WindowSceneDependency: Dependency {
     var <dependencyName>: <dependencyType> { get }
 }
 
-/// PURPOSE:
 /// A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
 ///
 /// Can be a tuple or struct containing multiple values when necessary.
 internal typealias WindowSceneDynamicBuildDependency = (WindowSceneListener, WindowSceneViewControllable)
 
-/// PURPOSE:
 /// A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
 ///
 /// Can be a tuple or struct containing multiple values when necessary.
@@ -32,7 +28,6 @@ internal typealias WindowSceneDynamicComponentDependency = Void
 
 // MARK: - Component
 
-/// PURPOSE:
 /// Declares dependencies that are owned by this Node.
 public final class WindowSceneComponent: Component
 <
@@ -103,7 +98,6 @@ public final class WindowSceneComponent: Component
 // MARK: - Builder
 
 // periphery:ignore
-/// PURPOSE:
 /// The Builder interface (available to mock for testability).
 /// @mockable
 @MainActor
@@ -115,7 +109,6 @@ internal protocol WindowSceneBuilder: AnyObject {
 }
 
 // periphery:ignore
-/// PURPOSE:
 /// Concrete implementation of the Builder, where everything is created and associated.
 internal final class WindowSceneBuilderImp: AbstractBuilder
 <
