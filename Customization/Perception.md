@@ -149,7 +149,9 @@ private class PerceptibleViewStateStoreBase<
 @Perceptible
 @preconcurrency
 @MainActor
-public final class PerceptiblePreviewStore<ViewState: Equatable>: PerceptibleViewStateStore {
+public final class PerceptiblePreviewStore<
+    ViewState: Equatable
+>: PerceptibleViewStateStore {
 
     public var viewState: ViewState
 
