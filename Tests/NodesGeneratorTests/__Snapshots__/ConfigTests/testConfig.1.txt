@@ -51,9 +51,11 @@
   ▿ reactiveImports: 2 members
     - "<reactiveImports-1>"
     - "<reactiveImports-2>"
-  ▿ uiFrameworks: 4 elements
+  ▿ uiFrameworks: 5 elements
     ▿ UIFramework
       - framework: Framework.appKit
+    ▿ UIFramework
+      - framework: Framework.appKitSwiftUI
     ▿ UIFramework
       - framework: Framework.uiKit
     ▿ UIFramework
