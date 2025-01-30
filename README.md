@@ -141,7 +141,8 @@ mint run genesis generate <path>/genesis.yml --options "author:$(git config user
 
 When prompted, enter the latest Nodes version, a name for the new iOS Xcode project and an organization identifier (which is the bundle ID prefix such as `com.tinder`).
 
-**OPTIONAL:** The cloned Nodes repository is no longer needed at this point and may be removed if there is no plan to create additional projects.
+> [!TIP]
+> The cloned Nodes repository is no longer needed at this point and may be removed if there is no plan to create additional projects.
 
 ### Generate Xcode Project
 
