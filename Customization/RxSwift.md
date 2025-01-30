@@ -1,6 +1,6 @@
 # Using RxSwift with Nodes
 
-While Nodes is configured by default for [Combine](https://developer.apple.com/documentation/combine), other reactive frameworks such [RxSwift](https://github.com/ReactiveX/RxSwift) require custom configuration and setup.
+While Nodes is configured by default for [Combine](https://developer.apple.com/documentation/combine), other reactive frameworks such as [RxSwift](https://github.com/ReactiveX/RxSwift) require custom configuration and setup.
 
 ## Configure the Xcode Templates Generator
 

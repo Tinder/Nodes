@@ -1,6 +1,6 @@
 # Using Perception with Nodes
 
-While Nodes is compatible with the [Observation](https://developer.apple.com/documentation/observation) framework for newer operating system versions or can be [configured](Configuration.md) to use [`ObservableObject`](https://developer.apple.com/documentation/Combine/ObservableObject) for backward compatibility, other observation libraries such [Perception](https://github.com/pointfreeco/swift-perception) require custom setup.
+While Nodes is compatible with the [Observation](https://developer.apple.com/documentation/observation) framework for newer operating system versions or can be [configured](Configuration.md) to use [`ObservableObject`](https://developer.apple.com/documentation/Combine/ObservableObject) for backward compatibility, other observation libraries such as [Perception](https://github.com/pointfreeco/swift-perception) require custom setup.
 
 ## Add Supporting Types
 

@@ -181,15 +181,21 @@ brew reinstall --build-from-source mockolo
 
 ### UI Frameworks
 
-While Nodes is configured by default for iOS with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui), UI frameworks for [AppKit](https://developer.apple.com/documentation/appkit) or other platforms may be enabled with [custom configuration](Customization/Configuration.md). 
+Nodes is configured by default for iOS with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui). UI frameworks for [AppKit](https://developer.apple.com/documentation/appkit) or other platforms may be enabled with [custom configuration](Customization/Configuration.md).
 
 ### Observation Frameworks
 
-While Nodes is compatible with the [Observation](https://developer.apple.com/documentation/observation) framework for newer operating system versions or can be [configured](Customization/Configuration.md) to use [`ObservableObject`](https://developer.apple.com/documentation/Combine/ObservableObject) for backward compatibility, other observation libraries such [Perception](https://github.com/pointfreeco/swift-perception) require [custom setup](Customization/Perception.md).
+Nodes is compatible with the [Observation](https://developer.apple.com/documentation/observation) framework for newer operating system versions or can be [configured](Customization/Configuration.md) to use [`ObservableObject`](https://developer.apple.com/documentation/Combine/ObservableObject) for backward compatibility. Other observation libraries such as [Perception](https://github.com/pointfreeco/swift-perception) require [custom setup](Customization/Perception.md).
 
 ### Reactive Frameworks
 
-While Nodes is configured by default for [Combine](https://developer.apple.com/documentation/combine), other reactive frameworks such [RxSwift](https://github.com/ReactiveX/RxSwift) require [custom configuration and setup](Customization/RxSwift.md).
+Nodes is configured by default for [Combine](https://developer.apple.com/documentation/combine). Other reactive frameworks such as [RxSwift](https://github.com/ReactiveX/RxSwift) require [custom configuration and setup](Customization/RxSwift.md).
+
+### References
+
+- [Nodes Configuration](Customization/Configuration.md)
+- [Using Perception with Nodes](Customization/Perception.md)
+- [Using RxSwift with Nodes](Customization/RxSwift.md)
 
 ## Extras 
 
