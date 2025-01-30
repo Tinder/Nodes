@@ -182,7 +182,7 @@ While Nodes is configured by default for iOS with [UIKit](https://developer.appl
 
 ### Reactive Frameworks
 
-While Nodes is configured by default for [Combine](https://developer.apple.com/documentation/combine), other reactive frameworks such [RxSwift](https://github.com/ReactiveX/RxSwift) require [custom configuration](Customization/RxSwift.md).
+While Nodes is configured by default for [Combine](https://developer.apple.com/documentation/combine), other reactive frameworks such [RxSwift](https://github.com/ReactiveX/RxSwift) require [custom configuration and setup](Customization/RxSwift.md).
 
 ## Extras 
 
