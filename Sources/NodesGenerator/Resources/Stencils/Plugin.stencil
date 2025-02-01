@@ -13,7 +13,7 @@ import {{ import }}
 public protocol {{ plugin_name }}PluginDependency: Dependency {}
 
 /// Implements a DI graph scope where the dependencies provided to this component and its children are defined.
-/// Additionally, components contain their child component factories used to construct the DI graph.
+/// The component can also include child component factories, which are used to construct the DI graph.
 public final class {{ plugin_name }}PluginComponent: Component
 <
     {{ plugin_name }}PluginDependency

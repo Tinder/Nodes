@@ -38,7 +38,7 @@ internal protocol {{ plugin_list_name }}Builder: AnyObject {
 public protocol {{ plugin_list_name }}PluginListDependency: Dependency {}
 
 /// Implements a DI graph scope where the dependencies provided to this component and its children are defined.
-/// Additionally, components contain their child component factories used to construct the DI graph.
+/// The component can also include child component factories, which are used to construct the DI graph.
 public final class {{ plugin_list_name }}PluginListComponent: Component
 <
     {{ plugin_list_name }}PluginListDependency
