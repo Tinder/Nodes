@@ -20,7 +20,7 @@ internal protocol {{ node_name }}ContextInterface: Context, RootListener {}
 internal protocol {{ node_name }}ContextInterface: Context {}
 
 /// Defines the interface from the `Flow` to its view in order to present/contain other views. This protocol
-/// typically inherits protocols that contain pre-defined behavior for convenience. Add additional methods for
+/// typically inherits protocols that include pre-defined behavior for convenience. Add additional methods for
 /// custom presentation/containment as desired.
 {% if not view_controllable_mock_contents %}
 /// @mockable
