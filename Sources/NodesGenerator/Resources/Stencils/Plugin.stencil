@@ -76,7 +76,7 @@ internal final class {{ plugin_name }}PluginImp: Plugin
     {{ plugin_name }}PluginStateType
 > {
 
-    /// Defines the criteria that determine whether the component is enabled.
+    /// Defines the criteria that determine whether the plugin is enabled.
     override internal func isEnabled(
         component: {{ plugin_name }}PluginComponent,
         state: {{ plugin_name }}PluginStateType
