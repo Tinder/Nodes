@@ -13,7 +13,7 @@ import {{ import }}
 internal protocol {{ node_name }}Listener: AnyObject {}
 {% endif %}
 
-/// Defines the interface from the `Context` to its `Flow` and is intended for initiating navigation.
+/// Defines the interface between the `Context` and its `Flow`, intended for initiating navigation.
 /// @mockable
 @MainActor
 {% if node_name == "App" %}
