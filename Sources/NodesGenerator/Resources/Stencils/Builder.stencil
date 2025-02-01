@@ -6,7 +6,6 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/// The interface of the Flow.
 /// @mockable
 @MainActor
 {% if owns_view %}
@@ -24,7 +23,10 @@ internal protocol {{ node_name }}Flow: Flow {}
 {% endif %}
 {% if node_name != "App" %}
 
-/// Declares the dependencies required by this Node that will be injected (not created by this Node itself).
+// MARK: - Dependencies
+
+/// Declares the dependencies required by the component. A code-generated conforming object is made available to the
+/// component through its `dependencies` property. Dependencies must be provided by ancestor components on the DI graph.
 /// @mockable
 @MainActor
 {% if dependencies %}
@@ -38,9 +40,8 @@ public protocol {{ node_name }}Dependency: Dependency {}
 {% endif %}
 {% endif %}
 
-/// A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
-///
-/// Can be a tuple or struct containing multiple values when necessary.
+/// Encapsulates arguments passed through the builder base class to its factory build method.
+/// - NOTE: May be an individual primitive type, struct or tuple containing multiple values as needed.
 {% if owns_view %}
 internal typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listener
 {% elif node_name == "App" %}
@@ -49,14 +50,14 @@ internal typealias {{ node_name }}DynamicBuildDependency = Void
 internal typealias {{ node_name }}DynamicBuildDependency = ({{ node_name }}Listener, {{ node_name }}ViewControllable)
 {% endif %}
 
-/// A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
-///
-/// Can be a tuple or struct containing multiple values when necessary.
+/// Encapsulates arguments passed through the builder base class to the component initializer.
+/// - NOTE: May be an individual primitive type, struct or tuple containing multiple values as needed.
 internal typealias {{ node_name }}DynamicComponentDependency = Void
 
 // MARK: - Component
 
-/// Declares dependencies that are owned by this Node.
+/// Implements a DI graph scope where the dependencies provided to this component and its children are defined.
+/// Additionally, components contain their child component factories used to construct the DI graph.
 {% if node_name == "App" %}
 public final class {{ node_name }}Component: BootstrapComponent {
 {% else %}
@@ -66,30 +67,26 @@ public final class {{ node_name }}Component: Component
 > {
 {% endif %}
 
-    /*
-     *  Dependencies
-     *  ============
-     *
-     *  Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
-     *
-     *  fileprivate let example: Example = .init()
-     *
-     *  Whenever possible, for example when the dependency does not provide shared state, define the property as a
-     *  factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
-     *  Needle compatibility whenever the access control is increased.
-     *
-     *  fileprivate var exampleFactory: Example {
-     *      Example()
-     *  }
-     *
-     *  When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
-     *  that always returns the same instance from a computed property.
-     *
-     *  fileprivate var example: Example {
-     *      shared { Example(otherDependency: dependency.otherDependency) }
-     *  }
-     *
-     */
+    // MARK: - Dependencies
+
+    /// Define dependencies as `fileprivate` computed property factories that create new instances when accessed,
+    /// avoiding shared state. Only increase access control to `public` when the component is to provide the
+    /// dependency to its children.
+    ///
+    ///     fileprivate var exampleFactory: Example {
+    ///         Example()
+    ///     }
+    ///
+    /// Store the dependency on the component only when shared state is necessary.
+    ///
+    ///     fileprivate let example: Example = .init()
+    ///
+    /// Or use the `shared` helper method which will always return the same instance from a computed property. This is
+    /// only necessary for dependencies that are initialized with other dependencies.
+    ///
+    ///     fileprivate var example: Example {
+    ///         shared { Example(otherDependency: dependency.otherDependency) }
+    ///     }
     {% if component_dependencies %}
 
     {{ component_dependencies }}
@@ -103,9 +100,7 @@ public final class {{ node_name }}Component: Component
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
-    /// The initializer.
-    ///
-    /// Remove `dynamicDependency` default parameter when its type is not `Void`.
+    /// - NOTE: Remove the default value from `dynamicDependency` when its type is not `Void`.
     internal init(
         {% if node_name != "App" %}
         parent: Scope,
@@ -120,17 +115,13 @@ public final class {{ node_name }}Component: Component
         {% endif %}
     }
 
-    /*
-     *  Child Components
-     *  ================
-     *
-     *  Declare child component factories as 'fileprivate' methods.
-     *
-     *  fileprivate func <name>ComponentFactory() -> <Name>Component {
-     *      <Name>Component(parent: self)
-     *  }
-     *
-     */
+    // MARK: - Child Components
+
+    /// Define child component factories as 'fileprivate' methods.
+    ///
+    ///     fileprivate func <name>ComponentFactory() -> <Name>Component {
+    ///         <Name>Component(parent: self)
+    ///     }
     {% if node_name == "App" %}
 
     fileprivate func windowSceneComponentFactory() -> WindowSceneComponent {
@@ -154,7 +145,6 @@ public final class {{ node_name }}Component: Component
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// The Builder interface (available to mock for testability).
 /// @mockable
 @MainActor
 {% if plugin_list_name %}
@@ -179,7 +169,6 @@ internal protocol {{ node_name }}Builder: AnyObject {
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// Concrete implementation of the Builder, where everything is created and associated.
 internal final class {{ node_name }}BuilderImp: AbstractBuilder
 <
     {{ node_name }}Component,
@@ -189,10 +178,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
 > {
     {% if plugin_list_name %}
 
-    /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
-    /// the dynamic component dependency.
-    ///
-    /// The dynamic dependencies can be tuples containing multiple values when necessary.
+    /// Provides plugin list compatibility.
     internal func build(
         withListener listener: {{ plugin_list_name }}Listener
     ) -> {{ plugin_list_name }}Flow {
@@ -200,10 +186,8 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     }
     {% endif %}
 
-    /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
-    /// the dynamic component dependency.
-    ///
-    /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
+    /// Directs arguments passed through the base class, determining whether each is given to its factory build method
+    /// or the component initializer.
     {% if node_name == "App" %}
     internal func build() -> {{ node_name }}Flow {
     {% else %}
@@ -223,7 +207,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         return build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
-    /// The factory method in which the Context and Flow are initialized.
+    /// Contains the factory build method implementation.
     override internal func build(
         component: {{ node_name }}Component,
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency

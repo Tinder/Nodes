@@ -6,8 +6,8 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/// The interface that the Flow will speak to the Context through. Used for informing the Context of
-/// presentation lifecycle events, as an example.
+/// Defines the interface from the `Flow` to its `Context` and is intended for deep-linking use, enabling
+/// the `Flow` to trigger events programmatically similarly to user-initiated interactions in the view.
 /// @mockable
 @MainActor
 {% if node_name == "App" %}
@@ -19,9 +19,9 @@ internal protocol {{ node_name }}ContextInterface: Context, RootListener {}
 {% else %}
 internal protocol {{ node_name }}ContextInterface: Context {}
 
-/// The interface of the View used for presenting the View of child Nodes. May inherit additional base
-/// protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
-/// implementation as necessary.
+/// Defines the interface from the `Flow` to its view in order to present/contain other views. This protocol
+/// typically inherits protocols that contain pre-defined behavior for convenience. Add additional methods for
+/// custom presentation/containment as desired.
 {% if not view_controllable_mock_contents %}
 /// @mockable
 {% endif %}
@@ -29,7 +29,6 @@ internal protocol {{ node_name }}ContextInterface: Context {}
 internal protocol {{ node_name }}ViewControllable: {{ view_controllable_type }} {}
 {% endif %}
 
-/// Responsible for presenting views and starting child Flows, and should not contain business logic.
 internal final class {{ node_name }}FlowImp: AbstractFlow
 <
     {{ node_name }}ContextInterface,
@@ -56,9 +55,6 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     private let rootBuilder: RootBuilder
     {% endif %}
 
-    /// The initializer.
-    ///
-    /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
     {% if node_name == "App" or node_name == "WindowScene" or node_name == "Window" or flow_properties %}
     internal init(
     {% else %}
@@ -92,7 +88,7 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
         {% endif %}
     }
 
-    /// Implement logic to execute when the Flow is started.
+    /// Override to take action when started.
     {% if node_name == "WindowScene" %}
     override internal func didStart() {
         attachWindow()
@@ -101,12 +97,12 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     override internal func didStart() {
         attachRoot()
     }
-    {% else %}
+    {% elif node_name != "Root" %}
     override internal func didStart() {}
     {% endif %}
     {% if owns_view or node_name == "WindowScene" %}
 
-    /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
+    /// Required for presentation/containment (do not remove).
     {% if node_name == "WindowScene" %}
     internal func getViewController() -> {{ node_name }}ViewControllable {
     {% else %}
@@ -151,7 +147,7 @@ extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {
 
 extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {
 
-    /// Implement logic to execute when the Root Flow is ready to attach sub-Flows.
+    /// Implement to take action when ready.
     internal func didBecomeReady() {}
 }
 {% else %}

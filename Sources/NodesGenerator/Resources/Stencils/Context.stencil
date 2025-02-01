@@ -7,14 +7,13 @@ import {{ import }}
 {% endif %}
 {% if node_name != "App" %}
 
-/// The Context delegates callbacks to its (external) Listener, typically the parent Context.
+/// Defines the delegate protocol through which the `Context` triggers callbacks to listeners.
 /// @mockable
 @MainActor
 internal protocol {{ node_name }}Listener: AnyObject {}
 {% endif %}
 
-/// The interface that the Context will speak to the Flow through. Used to initiate navigation as
-/// an example.
+/// Defines the interface from the `Context` to its `Flow` and is intended for initiating navigation.
 /// @mockable
 @MainActor
 {% if node_name == "App" %}
@@ -30,8 +29,6 @@ internal protocol {{ node_name }}FlowInterface: Flow {
 internal protocol {{ node_name }}FlowInterface: Flow {}
 {% endif %}
 
-/// Contains the business logic of the Node. The lifecycle of the Node is bookended between the
-/// `didBecomeActive` and `willResignActive` methods.
 {% if context_generic_types %}
 internal final class {{ node_name }}ContextImp: AbstractContext
 <
@@ -48,39 +45,33 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
-    /// The Flow instance.
     internal weak var flow: {{ node_name }}FlowInterface?
     {% if node_name != "App" %}
 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
-    /// The Listener instance.
     internal weak var listener: {{ node_name }}Listener?
     {% endif %}
 
     {% if owns_view %}
-    /// The Store instance.
     private let store: Any{{ store_prefix }}StateStore<{{ node_name }}State>
     {% else %}
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
-    /// The State instance.
     private let state: {{ node_name }}State
     {% endif %}
 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
-    /// The Analytics instance.
     private let analytics: {{ node_name }}Analytics
     {% if node_name == "App" %}
 
     private let windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>
     {% endif %}
 
-    /// The initializer.
     {% if owns_view %}
     internal init<T: {{ store_prefix }}StateStore>(
     {% else %}
@@ -109,7 +100,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
         super.init(workers: workers)
     }
 
-    /// Implement logic to execute when the Context becomes active.
+    /// Override to take action when activating.
     {% if node_name == "App" %}
     override internal func didBecomeActive() {
         subscribe(to: windowScenePublisher)
@@ -118,7 +109,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     override internal func didBecomeActive() {}
     {% endif %}
 
-    /// Implement logic to execute when the Context will become inactive.
+    /// Override to take action when deactivating.
     override internal func willResignActive() {}
     {% if node_name == "App" %}
 

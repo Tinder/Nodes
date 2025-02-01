@@ -9,7 +9,6 @@ import {{ import }}
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// The common Flow interface.
 /// @mockable
 @MainActor
 internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} {}
@@ -17,7 +16,6 @@ internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// The common Listener interface.
 /// @mockable
 @MainActor
 internal protocol {{ plugin_list_name }}Listener: AnyObject {}
@@ -25,7 +23,6 @@ internal protocol {{ plugin_list_name }}Listener: AnyObject {}
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// The common Builder interface.
 /// @mockable
 @MainActor
 internal protocol {{ plugin_list_name }}Builder: AnyObject {
@@ -34,65 +31,60 @@ internal protocol {{ plugin_list_name }}Builder: AnyObject {
     ) -> {{ plugin_list_name }}Flow
 }
 
-/// Declares the dependencies required by this Plugin List that will be injected (not created by this Plugin List itself).
+/// Declares the dependencies required by the component. A code-generated conforming object is made available to the
+/// component through its `dependencies` property. Dependencies must be provided by ancestor components on the DI graph.
 /// @mockable
 @MainActor
 public protocol {{ plugin_list_name }}PluginListDependency: Dependency {}
 
-/// Declares dependencies that are owned by this Plugin List.
+/// Implements a DI graph scope where the dependencies provided to this component and its children are defined.
+/// Additionally, components contain their child component factories used to construct the DI graph.
 public final class {{ plugin_list_name }}PluginListComponent: Component
 <
     {{ plugin_list_name }}PluginListDependency
 > {
 
-    /*
-     *  Dependencies
-     *  ============
-     *
-     *  Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
-     *
-     *  fileprivate let example: Example = .init()
-     *
-     *  Whenever possible, for example when the dependency does not provide shared state, define the property as a
-     *  factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
-     *  Needle compatibility whenever the access control is increased.
-     *
-     *  fileprivate var exampleFactory: Example {
-     *      Example()
-     *  }
-     *
-     *  When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
-     *  that always returns the same instance from a computed property.
-     *
-     *  fileprivate var example: Example {
-     *      shared { Example(otherDependency: dependency.otherDependency) }
-     *  }
-     *
-     */
+    // MARK: - Dependencies
 
-    /*
-     *  Child Components
-     *  ================
-     *
-     *  Declare child component factories as 'fileprivate' methods.
-     *
-     *  fileprivate func <name>PluginComponentFactory() -> <Name>PluginComponent {
-     *      <Name>PluginComponent(parent: self)
-     *  }
-     *
-     */
+    /// Define dependencies as `fileprivate` computed property factories that create new instances when accessed,
+    /// avoiding shared state. Only increase access control to `public` when the component is to provide the
+    /// dependency to its children.
+    ///
+    ///     fileprivate var exampleFactory: Example {
+    ///         Example()
+    ///     }
+    ///
+    /// Store the dependency on the component only when shared state is necessary.
+    ///
+    ///     fileprivate let example: Example = .init()
+    ///
+    /// Or use the `shared` helper method which will always return the same instance from a computed property. This is
+    /// only necessary for dependencies that are initialized with other dependencies.
+    ///
+    ///     fileprivate var example: Example {
+    ///         shared { Example(otherDependency: dependency.otherDependency) }
+    ///     }
+
+    // MARK: - Child Components
+
+    /// Define child component factories as 'fileprivate' methods.
+    ///
+    ///     fileprivate func <name>PluginComponentFactory() -> <Name>PluginComponent {
+    ///         <Name>PluginComponent(parent: self)
+    ///     }
 }
 
-/// The type used for the keys of the Plugin List (can be any `Hashable` type such as `String` or an enumeration).
+/// Declares the type of key used to identify plugins within the collection.
+/// - NOTE: May be any ``Hashable`` type such as ``String`` or an enumeration.
 internal typealias {{ plugin_list_name }}PluginListKeyType = String
 
-/// To provide additional state used in determining if the plugins are enabled (can be any type relevant to the plugins).
+/// Dynamic state from the caller provided to the plugins to use in determining whether they are enabled.
+/// - NOTE: May be an individual primitive type, struct or tuple containing multiple values as needed.
 internal typealias {{ plugin_list_name }}PluginListStateType = Void
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// The Plugin List protocol (available to mock for testability).
 /// @mockable
 @MainActor
 internal protocol {{ plugin_list_name }}PluginList {
@@ -104,7 +96,6 @@ internal protocol {{ plugin_list_name }}PluginList {
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/// Concrete implementation of the Plugin List providing the Plugin collection and (optionally) the creation order.
 internal final class {{ plugin_list_name }}PluginListImp: PluginList
 <
     {{ plugin_list_name }}PluginListKeyType,
@@ -113,20 +104,19 @@ internal final class {{ plugin_list_name }}PluginListImp: PluginList
     {{ plugin_list_name }}PluginListStateType
 > {
 
-    /// The method in which the Plugins are paired with keys and wrapped in type erased `AnyPlugin` instances.
+    /// Defines the ordered collection of plugins, each paired with a unique key and wrapped in a type-erased
+    /// `AnyPlugin` instance.
     override internal func plugins(
         component: {{ plugin_list_name }}PluginListComponent
     ) -> KeyValuePairs<{{ plugin_list_name }}PluginListKeyType, AnyPlugin> {
-        [:] // Example:
+        [:]
 //        [
 //            "example": AnyPlugin(ExamplePluginImp(componentFactory: component.examplePluginComponentFactory).create())
 //        ]
     }
 
-    /// The method in which a custom creation order may (optionally) be defined.
-    ///
-    /// There is no need to call `super` when overriding this method unless it is desirable to reference (or modify)
-    /// the default order.
+    /// Optionally implements a custom creation order. This method may be omitted to use the default order.
+    /// - NOTE: Do not call `super` within this method unless referencing or modifying the default order is needed.
     override internal func creationOrder(
         component: {{ plugin_list_name }}PluginListComponent,
         state: {{ plugin_list_name }}PluginListStateType

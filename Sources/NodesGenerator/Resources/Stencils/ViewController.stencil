@@ -6,8 +6,7 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/// The interface that the View will speak to the Context through. Used for informing the Context of
-/// view events and user interactions.
+/// Defines the delegate protocol through which the `Context` receives events and user interactions from its view.
 /// @mockable
 @MainActor
 {% if node_name == "Root" %}
@@ -18,7 +17,6 @@ internal protocol {{ node_name }}Receiver: AnyObject {
 internal protocol {{ node_name }}Receiver: AnyObject {}
 {% endif %}
 
-/// Concrete implementation of the UI.
 internal final class {{ node_name }}ViewController: {{ view_controller_type }}, StateObserver {
     {% if view_controller_static_content %}
 
@@ -28,22 +26,18 @@ internal final class {{ node_name }}ViewController: {{ view_controller_type }}, 
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
-    /// The view receiver.
     internal weak var receiver: {{ node_name }}Receiver?
 
     {{ view_controller_subscriptions_property|indent:4 }}
 
-    /// The initial view state.
     private let initialState: {{ node_name }}ViewState
 
-    /// {{ view_state_property_comment }}
     private let {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
     {% if node_name == "Root" %}
 
     private let label: UILabel = .init()
     {% endif %}
 
-    /// The initializer.
     internal init(
         initialState: {{ node_name }}ViewState,
         {{ view_state_property_name }}: {{ publisher_type }}<{{ node_name }}ViewState{% if publisher_failure_type %}, {{ publisher_failure_type }}{% endif %}>
