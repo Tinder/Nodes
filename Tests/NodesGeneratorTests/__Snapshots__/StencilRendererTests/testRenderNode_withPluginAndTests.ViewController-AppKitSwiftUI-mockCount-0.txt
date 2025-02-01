@@ -24,8 +24,6 @@ internal struct <nodeName>View {
     private let store: AnyViewStateStore<<nodeName>ViewState>
 
     /// The initializer.
-    ///
-    /// - Parameter store: The Store instance.
     internal init<T: ViewStateStore>(
         store: T
     ) where T.ViewState == <nodeName>ViewState {

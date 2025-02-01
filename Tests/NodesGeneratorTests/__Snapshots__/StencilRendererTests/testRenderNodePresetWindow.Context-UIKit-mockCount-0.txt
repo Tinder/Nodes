@@ -28,9 +28,6 @@ internal final class WindowContextImp: AbstractContext {
     private let analytics: WindowAnalytics
 
     /// The initializer.
-    /// - Parameters:
-    ///   - workers: The Worker instances
-    ///   - analytics: The Analytics instance
     internal init(
         workers: [Worker],
         analytics: WindowAnalytics

@@ -22,10 +22,6 @@ internal final class WindowSceneFlowImp: AbstractFlow
     /// The initializer.
     ///
     /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
-    /// - Parameters:
-    ///   - context: The Context instance
-    ///   - viewController: The View Controller instance
-    ///   - windowBuilder: The Window Builder instance
     internal init(
         context: WindowSceneContextInterface,
         viewController: WindowSceneViewControllable,
@@ -41,8 +37,6 @@ internal final class WindowSceneFlowImp: AbstractFlow
     }
 
     /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
-    ///
-    /// - Returns: The ``ViewControllable`` instance.
     internal func getViewController() -> WindowSceneViewControllable {
         viewController
     }

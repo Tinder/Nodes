@@ -81,12 +81,6 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     {% endif %}
 
     /// The initializer.
-    /// - Parameters:
-    ///   - workers: The Worker instances
-    {% if owns_view %}
-    ///   - store: The Store instance
-    {% endif %}
-    ///   - analytics: The Analytics instance
     {% if owns_view %}
     internal init<T: {{ store_prefix }}StateStore>(
     {% else %}

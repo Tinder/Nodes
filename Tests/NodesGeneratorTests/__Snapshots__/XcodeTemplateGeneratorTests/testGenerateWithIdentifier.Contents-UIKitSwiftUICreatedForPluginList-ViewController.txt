@@ -28,8 +28,6 @@ internal struct ___VARIABLE_productName___View {
     private let store: AnyViewStateStore<___VARIABLE_productName___ViewState>
 
     /// The initializer.
-    ///
-    /// - Parameter store: The Store instance.
     internal init<T: ViewStateStore>(
         store: T
     ) where T.ViewState == ___VARIABLE_productName___ViewState {

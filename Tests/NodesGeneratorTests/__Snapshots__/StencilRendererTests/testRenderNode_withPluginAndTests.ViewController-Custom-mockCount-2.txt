@@ -27,10 +27,6 @@ internal final class <nodeName>ViewController: <viewControllerType>, StateObserv
     private let <viewStatePropertyName>: <publisherType><<nodeName>ViewState, <publisherFailureType>>
 
     /// The initializer.
-    ///
-    /// - Parameters:
-    ///   - initialState: The initial view state.
-    ///   - <viewStatePropertyName>: <viewStatePropertyComment>
     internal init(
         initialState: <nodeName>ViewState,
         <viewStatePropertyName>: <publisherType><<nodeName>ViewState, <publisherFailureType>>

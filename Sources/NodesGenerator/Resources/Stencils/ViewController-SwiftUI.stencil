@@ -51,8 +51,6 @@ internal struct {{ node_name }}View {
     {% endif %}
 
     /// The initializer.
-    ///
-    /// - Parameter store: The Store instance.
     internal init<T: {{ store_prefix }}ViewStateStore>(
         store: T
     ) where T.ViewState == {{ node_name }}ViewState {

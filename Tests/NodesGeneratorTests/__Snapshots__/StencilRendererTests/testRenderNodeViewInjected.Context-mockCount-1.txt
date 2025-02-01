@@ -37,9 +37,6 @@ internal final class <nodeName>ContextImp: AbstractContext
     private let analytics: <nodeName>Analytics
 
     /// The initializer.
-    /// - Parameters:
-    ///   - workers: The Worker instances
-    ///   - analytics: The Analytics instance
     internal init(
         workers: [Worker],
         analytics: <nodeName>Analytics

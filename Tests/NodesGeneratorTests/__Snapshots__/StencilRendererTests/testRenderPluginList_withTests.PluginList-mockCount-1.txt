@@ -100,8 +100,6 @@ internal final class <pluginListName>PluginListImp: PluginList
 > {
 
     /// The method in which the Plugins are paired with keys and wrapped in type erased `AnyPlugin` instances.
-    /// - Parameter component: The component instance
-    /// - Returns: The Plugin collection
     override internal func plugins(
         component: <pluginListName>PluginListComponent
     ) -> KeyValuePairs<<pluginListName>PluginListKeyType, AnyPlugin> {
@@ -115,10 +113,6 @@ internal final class <pluginListName>PluginListImp: PluginList
     ///
     /// There is no need to call `super` when overriding this method unless it is desirable to reference (or modify)
     /// the default order.
-    /// - Parameters:
-    ///   - component: The component instance
-    ///   - state: The state
-    /// - Returns: The keys defining the Plugin creation order
     override internal func creationOrder(
         component: <pluginListName>PluginListComponent,
         state: <pluginListName>PluginListStateType

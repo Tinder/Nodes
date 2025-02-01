@@ -33,8 +33,6 @@ internal struct <nodeName>View {
     private var store: Any<storePrefix>ViewStateStore<<nodeName>ViewState>
 
     /// The initializer.
-    ///
-    /// - Parameter store: The Store instance.
     internal init<T: <storePrefix>ViewStateStore>(
         store: T
     ) where T.ViewState == <nodeName>ViewState {

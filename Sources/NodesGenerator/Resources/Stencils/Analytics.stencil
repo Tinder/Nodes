@@ -32,14 +32,6 @@ internal final class {{ node_name }}AnalyticsImp {
     {% endfor %}
 
     /// The initializer.
-    {% if analytics_properties.count == 1 %}
-    /// - Parameter {{ analytics_properties.first.name }}: The `{{ analytics_properties.first.type }}` instance
-    {% else %}
-    /// - Parameters:
-    {% for property in analytics_properties %}
-    ///   - {{ property.name }}: The `{{ property.type }}` instance
-    {% endfor %}
-    {% endif %}
     init(
         {% for property in analytics_properties %}
         {{ property.name }}: {{ property.type }}{% if not forloop.last %}{{ ',' }}

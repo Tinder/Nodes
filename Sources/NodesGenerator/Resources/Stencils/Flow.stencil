@@ -59,21 +59,6 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     /// The initializer.
     ///
     /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
-    /// - Parameters:
-    ///   - context: The Context instance
-    {% if node_name != "App" %}
-    ///   - viewController: The View Controller instance
-    {% endif %}
-    {% for property in flow_properties %}
-    ///   - {{ property.name }}: The {{ property.type }} instance
-    {% endfor %}
-    {% if node_name == "App" %}
-    ///   - windowSceneBuilder: The Window Scene Builder instance
-    {% elif node_name == "WindowScene" %}
-    ///   - windowBuilder: The Window Builder instance
-    {% elif node_name == "Window" %}
-    ///   - rootBuilder: The Root Builder instance
-    {% endif %}
     {% if node_name == "App" or node_name == "WindowScene" or node_name == "Window" or flow_properties %}
     internal init(
     {% else %}
@@ -122,8 +107,6 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {% if owns_view or node_name == "WindowScene" %}
 
     /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
-    ///
-    /// - Returns: The ``ViewControllable`` instance.
     {% if node_name == "WindowScene" %}
     internal func getViewController() -> {{ node_name }}ViewControllable {
     {% else %}

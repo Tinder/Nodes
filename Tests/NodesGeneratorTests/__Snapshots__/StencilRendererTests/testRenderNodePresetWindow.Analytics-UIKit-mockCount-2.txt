@@ -27,9 +27,6 @@ internal final class WindowAnalyticsImp {
     private let <analyticsPropertyName2>: <analyticsPropertyType2>
 
     /// The initializer.
-    /// - Parameters:
-    ///   - <analyticsPropertyName1>: The `<analyticsPropertyType1>` instance
-    ///   - <analyticsPropertyName2>: The `<analyticsPropertyType2>` instance
     init(
         <analyticsPropertyName1>: <analyticsPropertyType1>,
         <analyticsPropertyName2>: <analyticsPropertyType2>

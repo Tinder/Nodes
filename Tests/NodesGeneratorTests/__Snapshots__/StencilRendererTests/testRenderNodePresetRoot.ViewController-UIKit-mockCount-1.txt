@@ -30,10 +30,6 @@ internal final class RootViewController: <viewControllerType>, StateObserver {
     private let label: UILabel = .init()
 
     /// The initializer.
-    ///
-    /// - Parameters:
-    ///   - initialState: The initial view state.
-    ///   - <viewStatePropertyName>: <viewStatePropertyComment>
     internal init(
         initialState: RootViewState,
         <viewStatePropertyName>: <publisherType><RootViewState, <publisherFailureType>>

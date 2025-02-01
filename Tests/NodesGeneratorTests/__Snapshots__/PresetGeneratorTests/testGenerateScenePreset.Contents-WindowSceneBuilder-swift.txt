@@ -66,10 +66,6 @@ public final class WindowSceneComponent: Component
     /// The initializer.
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
-    ///
-    /// - Parameters:
-    ///   - parent: The parent scope
-    ///   - dynamicDependency: The dynamic component dependency
     internal init(
         parent: Scope,
         dynamicDependency: WindowSceneDynamicComponentDependency = ()
@@ -120,10 +116,6 @@ internal final class WindowSceneBuilderImp: AbstractBuilder
     /// the dynamic component dependency.
     ///
     /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
-    /// - Parameters:
-    ///   - listener: An object that can listen for signals from the Node
-    ///   - viewController: The injected view controller
-    /// - Returns: The Flow instance
     internal func build(
         withListener listener: WindowSceneListener,
         viewController: WindowSceneViewControllable
@@ -134,10 +126,6 @@ internal final class WindowSceneBuilderImp: AbstractBuilder
     }
 
     /// The factory method in which the Context and Flow are initialized.
-    /// - Parameters:
-    ///   - component: The component instance
-    ///   - dynamicBuildDependency: The dynamic build dependency
-    /// - Returns: The Flow instance
     override internal func build(
         component: WindowSceneComponent,
         dynamicBuildDependency: WindowSceneDynamicBuildDependency

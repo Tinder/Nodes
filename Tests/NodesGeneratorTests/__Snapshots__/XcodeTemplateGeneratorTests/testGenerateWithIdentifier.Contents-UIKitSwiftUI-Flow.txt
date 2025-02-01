@@ -25,9 +25,6 @@ internal final class ___VARIABLE_productName___FlowImp: AbstractFlow
     /// The initializer.
     ///
     /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
-    /// - Parameters:
-    ///   - context: The Context instance
-    ///   - viewController: The View Controller instance
     override internal init(
         context: ___VARIABLE_productName___ContextInterface,
         viewController: ___VARIABLE_productName___ViewControllable
@@ -39,8 +36,6 @@ internal final class ___VARIABLE_productName___FlowImp: AbstractFlow
     override internal func didStart() {}
 
     /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
-    ///
-    /// - Returns: The ``ViewControllable`` instance.
     internal func getViewController() -> ViewControllable {
         viewController
     }

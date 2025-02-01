@@ -57,8 +57,6 @@ public final class AppComponent: BootstrapComponent {
     /// The initializer.
     ///
     /// Remove `dynamicDependency` default parameter when its type is not `Void`.
-    ///
-    /// - Parameter dynamicDependency: The dynamic component dependency
     internal init(
         dynamicDependency: AppDynamicComponentDependency = ()
     ) {
@@ -107,7 +105,6 @@ internal final class AppBuilderImp: AbstractBuilder
     /// the dynamic component dependency.
     ///
     /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
-    /// - Returns: The Flow instance
     internal func build() -> AppFlow {
         let dynamicBuildDependency: AppDynamicBuildDependency = ()
         let dynamicComponentDependency: AppDynamicComponentDependency = ()
@@ -115,10 +112,6 @@ internal final class AppBuilderImp: AbstractBuilder
     }
 
     /// The factory method in which the Context and Flow are initialized.
-    /// - Parameters:
-    ///   - component: The component instance
-    ///   - dynamicBuildDependency: The dynamic build dependency
-    /// - Returns: The Flow instance
     override internal func build(
         component: AppComponent,
         dynamicBuildDependency: AppDynamicBuildDependency

@@ -22,9 +22,6 @@ internal final class AppFlowImp: AbstractFlow
     /// The initializer.
     ///
     /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
-    /// - Parameters:
-    ///   - context: The Context instance
-    ///   - windowSceneBuilder: The Window Scene Builder instance
     internal init(
         context: AppContextInterface,
         windowSceneBuilder: WindowSceneBuilder

@@ -84,10 +84,6 @@ internal final class {{ plugin_name }}PluginImp: Plugin
 > {
 
     /// The method in which the Plugin's enabled criteria is defined.
-    /// - Parameters:
-    ///   - component: The component instance
-    ///   - state: The state
-    /// - Returns: The enabled status of the Plugin
     override internal func isEnabled(
         component: {{ plugin_name }}PluginComponent,
         state: {{ plugin_name }}PluginStateType
@@ -96,8 +92,6 @@ internal final class {{ plugin_name }}PluginImp: Plugin
     }
 
     /// The factory method in which the instance is initialized.
-    /// - Parameter component: The component instance
-    /// - Returns: The initialized instance
     override internal func build(
         component: {{ plugin_name }}PluginComponent
     ) -> {{ plugin_name }}Builder {

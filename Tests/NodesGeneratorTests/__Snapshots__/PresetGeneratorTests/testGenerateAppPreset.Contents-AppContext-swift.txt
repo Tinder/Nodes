@@ -33,9 +33,6 @@ internal final class AppContextImp: AbstractContext
     private let windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>
 
     /// The initializer.
-    /// - Parameters:
-    ///   - workers: The Worker instances
-    ///   - analytics: The Analytics instance
     internal init(
         workers: [Worker],
         analytics: AppAnalytics,

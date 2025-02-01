@@ -34,10 +34,6 @@ internal final class ___VARIABLE_productName___ContextImp: AbstractContext
     private let analytics: ___VARIABLE_productName___Analytics
 
     /// The initializer.
-    /// - Parameters:
-    ///   - workers: The Worker instances
-    ///   - store: The Store instance
-    ///   - analytics: The Analytics instance
     internal init<T: StateStore>(
         workers: [Worker],
         store: T,

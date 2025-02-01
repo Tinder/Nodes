@@ -10,9 +10,6 @@ internal struct <nodeName>ViewState: Equatable {}
 internal class <nodeName>ViewStateFactory: Nodes.Transform {
 
     /// The factory method in which state is transformed into view state.
-    ///
-    /// - Parameter state: The state.
-    /// - Returns: The view state.
     internal func callAsFunction(
         _ state: <nodeName>State
     ) -> <nodeName>ViewState {

@@ -26,10 +26,6 @@ internal final class ___VARIABLE_productName___ViewController: CustomViewControl
     private let statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>
 
     /// The initializer.
-    ///
-    /// - Parameters:
-    ///   - initialState: The initial view state.
-    ///   - statePublisher: The view state publisher.
     internal init(
         initialState: ___VARIABLE_productName___ViewState,
         statePublisher: AnyPublisher<___VARIABLE_productName___ViewState, Never>

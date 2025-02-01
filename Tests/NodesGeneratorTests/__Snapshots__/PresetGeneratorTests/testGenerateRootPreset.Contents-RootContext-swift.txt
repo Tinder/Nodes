@@ -38,10 +38,6 @@ internal final class RootContextImp: AbstractContext
     private let analytics: RootAnalytics
 
     /// The initializer.
-    /// - Parameters:
-    ///   - workers: The Worker instances
-    ///   - store: The Store instance
-    ///   - analytics: The Analytics instance
     internal init<T: StateStore>(
         workers: [Worker],
         store: T,
