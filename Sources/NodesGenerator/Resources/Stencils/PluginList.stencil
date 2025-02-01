@@ -116,7 +116,7 @@ internal final class {{ plugin_list_name }}PluginListImp: PluginList
     }
 
     /// Optionally implements a custom creation order. This method may be omitted to use the default order.
-    /// - NOTE: Do not call `super` within this method unless referencing or modifying the default order is needed.
+    /// - NOTE: Do not call `super` within this method unless needed to reference or modify the default order.
     override internal func creationOrder(
         component: {{ plugin_list_name }}PluginListComponent,
         state: {{ plugin_list_name }}PluginListStateType
