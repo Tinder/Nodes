@@ -6,8 +6,8 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/// Defines the interface from the `Flow` to its `Context`, primarily intended for deep-linking. This allows the `Flow`
-/// to trigger events programmatically, much like user-initiated interactions from the view.
+/// Defines the interface between the `Flow` and its `Context`, primarily for deep-linking. This enables the `Flow` to
+/// trigger events programmatically, simulating user-initiated interactions normally from the view.
 /// @mockable
 @MainActor
 {% if node_name == "App" %}
