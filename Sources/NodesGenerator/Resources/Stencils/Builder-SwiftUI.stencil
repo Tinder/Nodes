@@ -145,7 +145,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         return build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
-    /// Contains the factory build method implementation.
+    /// Implements the factory build method where instances are initialized.
     override internal func build(
         component: {{ node_name }}Component,
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency
