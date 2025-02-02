@@ -186,8 +186,8 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     }
     {% endif %}
 
-    /// Directs arguments passed through the base class, determining whether each is given to its factory build method
-    /// or the component initializer.
+    /// Directs arguments passed through the base class, determining whether each will be provided to its factory build
+    /// method or the component initializer.
     {% if node_name == "App" %}
     internal func build() -> {{ node_name }}Flow {
     {% else %}
