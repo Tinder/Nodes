@@ -33,8 +33,8 @@ public final class {{ plugin_name }}PluginComponent: Component
     ///
     ///     fileprivate let example: Example = .init()
     ///
-    /// Or use the `shared` helper method which will always return the same instance from a computed property. This is
-    /// only necessary for dependencies that are initialized with other dependencies.
+    /// Or use the `shared` helper method which will always return the same instance from a computed property.
+    /// This is only necessary for dependencies that are initialized with other dependencies.
     ///
     ///     fileprivate var example: Example {
     ///         shared { Example(otherDependency: dependency.otherDependency) }
