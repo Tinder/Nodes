@@ -40,8 +40,8 @@ internal typealias {{ node_name }}DynamicComponentDependency = Void
 
 // MARK: - Component
 
-/// Implements a DI graph scope where the dependencies provided to this component and its children are defined.
-/// The component can also include child component factories, which are used to construct the DI graph.
+/// Implements a DI graph scope where the dependencies provided to this component and its descendants are defined.
+/// The component can also include child component factories, which are used to construct the graph.
 public final class {{ node_name }}Component: Component
 <
     {{ node_name }}Dependency
@@ -51,7 +51,7 @@ public final class {{ node_name }}Component: Component
 
     /// Define dependencies as `fileprivate` computed property factories that create new instances when accessed,
     /// avoiding shared state. Only increase access control to `public` when the component is to provide the
-    /// dependency to its children.
+    /// dependency to its descendants.
     ///
     ///     fileprivate var exampleFactory: Example {
     ///         Example()
