@@ -79,7 +79,7 @@ public final class {{ plugin_list_name }}PluginListComponent: Component
 internal typealias {{ plugin_list_name }}PluginListKeyType = String
 
 /// Dynamic state from the caller provided to the plugins to use in determining whether they are enabled.
-/// - NOTE: May be an individual primitive type, struct or tuple containing multiple values as needed.
+/// - NOTE: May alias a single type or tuple for multiple when needed.
 internal typealias {{ plugin_list_name }}PluginListStateType = Void
 
 {% if is_periphery_comment_enabled %}

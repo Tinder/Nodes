@@ -41,7 +41,7 @@ public protocol {{ node_name }}Dependency: Dependency {}
 {% endif %}
 
 /// Encapsulates arguments passed through the builder base class to its factory build method.
-/// - NOTE: May be an individual primitive type, struct or tuple containing multiple values as needed.
+/// - NOTE: May alias a single type or tuple for multiple when needed.
 {% if owns_view %}
 internal typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listener
 {% elif node_name == "App" %}
@@ -51,7 +51,7 @@ internal typealias {{ node_name }}DynamicBuildDependency = ({{ node_name }}Liste
 {% endif %}
 
 /// Encapsulates arguments passed through the builder base class to the component initializer.
-/// - NOTE: May be an individual primitive type, struct or tuple containing multiple values as needed.
+/// - NOTE: May alias a single type or tuple for multiple when needed.
 internal typealias {{ node_name }}DynamicComponentDependency = Void
 
 // MARK: - Component
