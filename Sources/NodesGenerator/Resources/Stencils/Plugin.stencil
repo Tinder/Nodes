@@ -54,7 +54,7 @@ public final class {{ plugin_name }}PluginComponent: Component
 }
 
 /// Dynamic state from the caller provided to the plugin to use in determining whether it is enabled.
-/// - NOTE: May alias a single type or tuple for multiple when needed.
+/// - NOTE: An alias to a tuple is supported.
 internal typealias {{ plugin_name }}PluginStateType = Void
 
 {% if is_periphery_comment_enabled %}
