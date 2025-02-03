@@ -19,9 +19,9 @@ internal protocol {{ node_name }}ContextInterface: Context, RootListener {}
 {% else %}
 internal protocol {{ node_name }}ContextInterface: Context {}
 
-/// Defines the interface between the `Flow` and its view in order to present/contain other views. This protocol
-/// typically inherits protocols that include pre-defined behavior for convenience. Add additional methods for
-/// custom presentation/containment as desired.
+/// Defines the interface between the `Flow` and its view in order to present or contain other views. This protocol
+/// typically inherits protocols that include pre-defined behavior for convenience. Add additional methods for custom
+/// presentation or containment as desired.
 {% if not view_controllable_mock_contents %}
 /// @mockable
 {% endif %}
@@ -102,7 +102,7 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {% endif %}
     {% if owns_view or node_name == "WindowScene" %}
 
-    /// Required for presentation/containment (do not remove).
+    /// Required for presentation or containment (do not remove).
     {% if node_name == "WindowScene" %}
     internal func getViewController() -> {{ node_name }}ViewControllable {
     {% else %}
