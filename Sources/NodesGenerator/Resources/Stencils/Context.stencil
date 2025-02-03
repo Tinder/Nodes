@@ -100,7 +100,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
         super.init(workers: workers)
     }
 
-    /// Override to take action when activating.
+    /// Override to take action when activated.
     {% if node_name == "App" %}
     override internal func didBecomeActive() {
         subscribe(to: windowScenePublisher)
@@ -109,7 +109,7 @@ internal final class {{ node_name }}ContextImp: AbstractContext {
     override internal func didBecomeActive() {}
     {% endif %}
 
-    /// Override to take action when deactivating.
+    /// Override to take action when deactivated.
     override internal func willResignActive() {}
     {% if node_name == "App" %}
 
