@@ -4,13 +4,12 @@
 
 import Nodes
 
-/// The interface that the Flow will speak to the Context through. Used for informing the Context of
-/// presentation lifecycle events, as an example.
+/// Defines the interface between the `Flow` and its `Context`, primarily for deep-linking. This enables the `Flow` to
+/// trigger events programmatically, such as simulating user interactions normally initiated in the view.
 /// @mockable
 @MainActor
 internal protocol AppContextInterface: Context, WindowSceneListener {}
 
-/// Responsible for presenting views and starting child Flows, and should not contain business logic.
 internal final class AppFlowImp: AbstractFlow
 <
     AppContextInterface,
@@ -19,9 +18,6 @@ internal final class AppFlowImp: AbstractFlow
 
     private let windowSceneBuilder: WindowSceneBuilder
 
-    /// The initializer.
-    ///
-    /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
     internal init(
         context: AppContextInterface,
         windowSceneBuilder: WindowSceneBuilder
@@ -30,7 +26,7 @@ internal final class AppFlowImp: AbstractFlow
         super.init(context: context, viewController: ())
     }
 
-    /// Implement logic to execute when the Flow is started.
+    /// Override to take action when started.
     override internal func didStart() {}
 }
 

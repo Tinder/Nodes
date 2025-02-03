@@ -2,34 +2,28 @@
 
 import <viewControllerImport>
 
-/// The interface that the View will speak to the Context through. Used for informing the Context of
-/// view events and user interactions.
+/// Defines the delegate protocol through which the `Context` receives events and user interactions from its view.
 /// @mockable
 @MainActor
 internal protocol RootReceiver: AnyObject {
     func viewDidAppear()
 }
 
-/// Concrete implementation of the UI.
 internal final class RootViewController: <viewControllerType>, StateObserver {
 
     <viewControllerStaticContent>
 
     // periphery:ignore
-    /// The view receiver.
     internal weak var receiver: RootReceiver?
 
     <viewControllerSubscriptionsProperty>
 
-    /// The initial view state.
     private let initialState: RootViewState
 
-    /// <viewStatePropertyComment>
     private let <viewStatePropertyName>: <publisherType><RootViewState, <publisherFailureType>>
 
     private let label: UILabel = .init()
 
-    /// The initializer.
     internal init(
         initialState: RootViewState,
         <viewStatePropertyName>: <publisherType><RootViewState, <publisherFailureType>>

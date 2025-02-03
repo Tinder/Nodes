@@ -1,12 +1,11 @@
 //<fileHeader>
 
-/// The interface that the Flow will speak to the Context through. Used for informing the Context of
-/// presentation lifecycle events, as an example.
+/// Defines the interface between the `Flow` and its `Context`, primarily for deep-linking. This enables the `Flow` to
+/// trigger events programmatically, such as simulating user interactions normally initiated in the view.
 /// @mockable
 @MainActor
 internal protocol WindowContextInterface: Context, RootListener {}
 
-/// Responsible for presenting views and starting child Flows, and should not contain business logic.
 internal final class WindowFlowImp: AbstractFlow
 <
     WindowContextInterface,
@@ -15,9 +14,6 @@ internal final class WindowFlowImp: AbstractFlow
 
     private let rootBuilder: RootBuilder
 
-    /// The initializer.
-    ///
-    /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
     internal init(
         context: WindowContextInterface,
         viewController: WindowViewControllable,
@@ -27,7 +23,7 @@ internal final class WindowFlowImp: AbstractFlow
         super.init(context: context, viewController: viewController)
     }
 
-    /// Implement logic to execute when the Flow is started.
+    /// Override to take action when started.
     override internal func didStart() {
         attachRoot()
     }

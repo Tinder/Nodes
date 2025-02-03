@@ -3,70 +3,62 @@
 import NeedleFoundation
 import Nodes
 
-/// Declares the dependencies required by this Plugin that will be injected (not created by this Plugin itself).
+/// Declares the dependencies required by the component. A code-generated conforming object is made available to the
+/// component through its `dependencies` property. Dependencies must be provided by ancestor components on the DI graph.
 /// @mockable
 @MainActor
 public protocol ___VARIABLE_productName___PluginDependency: Dependency {}
 
-/// Declares dependencies that are owned by this Plugin.
+/// Implements a DI graph scope where the dependencies provided to this component and its children are defined.
+/// The component can also include child component factories, which are used to construct the DI graph.
 public final class ___VARIABLE_productName___PluginComponent: Component
 <
     ___VARIABLE_productName___PluginDependency
 > {
 
-    /*
-     *  Dependencies
-     *  ============
-     *
-     *  Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
-     *
-     *  fileprivate let example: Example = .init()
-     *
-     *  Whenever possible, for example when the dependency does not provide shared state, define the property as a
-     *  factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
-     *  Needle compatibility whenever the access control is increased.
-     *
-     *  fileprivate var exampleFactory: Example {
-     *      Example()
-     *  }
-     *
-     *  When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
-     *  that always returns the same instance from a computed property.
-     *
-     *  fileprivate var example: Example {
-     *      shared { Example(otherDependency: dependency.otherDependency) }
-     *  }
-     *
-     */
+    // MARK: - Dependencies
 
-    /*
-     *  Child Components
-     *  ================
-     *
-     *  Declare child component factories as 'fileprivate' methods.
-     *
-     *  fileprivate func <name>ComponentFactory() -> <Name>Component {
-     *      <Name>Component(parent: self)
-     *  }
-     *
-     */
+    /// Define dependencies as `fileprivate` computed property factories that create new instances when accessed.
+    /// Only increase access control to `public` when the component is to provide the dependency to its descendants.
+    ///
+    ///     fileprivate var exampleFactory: Example {
+    ///         Example()
+    ///     }
+    ///
+    /// Store the dependency on the component only when shared state is necessary.
+    ///
+    ///     fileprivate let example: Example = .init()
+    ///
+    /// Or use the `shared` helper method which will always return the same instance from a computed property.
+    /// This is only necessary for dependencies that are initialized with other dependencies.
+    ///
+    ///     fileprivate var example: Example {
+    ///         shared { Example(otherDependency: dependency.otherDependency) }
+    ///     }
+
+    // MARK: - Child Components
+
+    /// Define child component factories as 'fileprivate' methods.
+    ///
+    ///     fileprivate func <name>ComponentFactory() -> <Name>Component {
+    ///         <Name>Component(parent: self)
+    ///     }
 
     fileprivate func componentFactory() -> ___VARIABLE_productName___Component {
         ___VARIABLE_productName___Component(parent: self)
     }
 }
 
-/// To provide additional state used in determining if the Plugin is enabled (can be any type relevant to the Plugin).
+/// Dynamic state from the caller provided to the plugin to use in determining whether it is enabled.
+/// - NOTE: An alias to a tuple is supported.
 internal typealias ___VARIABLE_productName___PluginStateType = Void
 
-/// The Plugin interface (available to mock for testability).
 /// @mockable
 @MainActor
 internal protocol ___VARIABLE_productName___Plugin {
     func create() -> ___VARIABLE_productName___Builder?
 }
 
-/// Concrete implementation of the Plugin.
 internal final class ___VARIABLE_productName___PluginImp: Plugin
 <
     ___VARIABLE_productName___PluginComponent,
@@ -74,7 +66,7 @@ internal final class ___VARIABLE_productName___PluginImp: Plugin
     ___VARIABLE_productName___PluginStateType
 > {
 
-    /// The method in which the Plugin's enabled criteria is defined.
+    /// Defines the criteria that determine whether the plugin is enabled.
     override internal func isEnabled(
         component: ___VARIABLE_productName___PluginComponent,
         state: ___VARIABLE_productName___PluginStateType
@@ -82,7 +74,7 @@ internal final class ___VARIABLE_productName___PluginImp: Plugin
         true
     }
 
-    /// The factory method in which the instance is initialized.
+    /// Implements the factory build method where the instance is initialized.
     override internal func build(
         component: ___VARIABLE_productName___PluginComponent
     ) -> ___VARIABLE_productName___Builder {

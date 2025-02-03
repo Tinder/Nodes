@@ -2,13 +2,11 @@
 
 import Nodes
 
-/// The view state of the view.
 internal struct ___VARIABLE_productName___ViewState: Equatable {}
 
-/// The factory used to create view state from the state of the Node.
+/// Transforms state into view state.
 internal class ___VARIABLE_productName___ViewStateFactory: Nodes.Transform {
 
-    /// The factory method in which state is transformed into view state.
     internal func callAsFunction(
         _ state: ___VARIABLE_productName___State
     ) -> ___VARIABLE_productName___ViewState {

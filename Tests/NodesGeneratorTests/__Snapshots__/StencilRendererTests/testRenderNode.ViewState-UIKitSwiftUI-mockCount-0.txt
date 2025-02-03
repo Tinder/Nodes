@@ -1,12 +1,10 @@
 //<fileHeader>
 
-/// The view state of the view.
 internal struct <nodeName>ViewState: Equatable {}
 
-/// The factory used to create view state from the state of the Node.
+/// Transforms state into view state.
 internal class <nodeName>ViewStateFactory: Nodes.Transform {
 
-    /// The factory method in which state is transformed into view state.
     internal func callAsFunction(
         _ state: <nodeName>State
     ) -> <nodeName>ViewState {

@@ -4,25 +4,20 @@ import <workerImport1>
 import <workerImport2>
 
 // periphery:ignore
-/// Encapsulates work to be performed by the Node.
 /// @mockable
 internal protocol <workerName>Worker: Worker {}
 
 // periphery:ignore
-/// Concrete implementation of the Worker.
 internal final class <workerName>WorkerImp: AbstractWorker
 <
     <workerGenericType1>,
     <workerGenericType2>
 > {
 
-    /// The initializer.
-    override internal init() {}
-
-    /// Implement logic to execute when the Worker is started.
+    /// Override to take action when started.
     override internal func didStart() {}
 
-    /// Implement logic to execute when the Worker has stopped.
+    /// Override to take action when stopped.
     override internal func willStop() {}
 }
 

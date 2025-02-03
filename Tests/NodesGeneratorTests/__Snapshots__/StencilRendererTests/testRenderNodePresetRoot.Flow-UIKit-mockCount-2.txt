@@ -3,19 +3,18 @@
 import <flowImport1>
 import <flowImport2>
 
-/// The interface that the Flow will speak to the Context through. Used for informing the Context of
-/// presentation lifecycle events, as an example.
+/// Defines the interface between the `Flow` and its `Context`, primarily for deep-linking. This enables the `Flow` to
+/// trigger events programmatically, such as simulating user interactions normally initiated in the view.
 /// @mockable
 @MainActor
 internal protocol RootContextInterface: Context {}
 
-/// The interface of the View used for presenting the View of child Nodes. May inherit additional base
-/// protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
-/// implementation as necessary.
+/// Defines the interface between the `Flow` and its view in order to present or contain other views. This protocol
+/// typically inherits protocols that include pre-defined behavior for convenience. Add additional methods for custom
+/// presentation or containment as desired.
 @MainActor
 internal protocol RootViewControllable: <viewControllableType> {}
 
-/// Responsible for presenting views and starting child Flows, and should not contain business logic.
 internal final class RootFlowImp: AbstractFlow
 <
     RootContextInterface,
@@ -25,9 +24,6 @@ internal final class RootFlowImp: AbstractFlow
     private let <flowPropertyName1>: <flowPropertyType1>
     private let <flowPropertyName2>: <flowPropertyType2>
 
-    /// The initializer.
-    ///
-    /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
     internal init(
         context: RootContextInterface,
         viewController: RootViewControllable,
@@ -39,10 +35,9 @@ internal final class RootFlowImp: AbstractFlow
         super.init(context: context, viewController: viewController)
     }
 
-    /// Implement logic to execute when the Flow is started.
-    override internal func didStart() {}
+    /// Override to take action when started.
 
-    /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
+    /// Required for presentation or containment (do not remove).
     internal func getViewController() -> <viewControllableType> {
         viewController
     }
@@ -52,6 +47,6 @@ extension RootFlowImp: RootFlow {}
 
 extension RootFlowImp: RootFlowInterface {
 
-    /// Implement logic to execute when the Root Flow is ready to attach sub-Flows.
+    /// Implement to take action when ready.
     internal func didBecomeReady() {}
 }

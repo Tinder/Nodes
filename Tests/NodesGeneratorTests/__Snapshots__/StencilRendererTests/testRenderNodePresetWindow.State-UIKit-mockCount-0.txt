@@ -1,6 +1,5 @@
 //<fileHeader>
 
-/// The state of the Node.
 internal struct WindowState: Equatable {
 
     internal static func initialState() -> Self {

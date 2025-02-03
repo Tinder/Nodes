@@ -6,32 +6,26 @@ import Combine
 import Nodes
 import UIKit
 
-/// The interface that the View will speak to the Context through. Used for informing the Context of
-/// view events and user interactions.
+/// Defines the delegate protocol through which the `Context` receives events and user interactions from its view.
 /// @mockable
 @MainActor
 internal protocol RootReceiver: AnyObject {
     func viewDidAppear()
 }
 
-/// Concrete implementation of the UI.
 internal final class RootViewController: UIViewController, StateObserver {
 
-    /// The view receiver.
     internal weak var receiver: RootReceiver?
 
     /// The collection of cancellable instances.
     private var cancellables: Set<AnyCancellable> = .init()
 
-    /// The initial view state.
     private let initialState: RootViewState
 
-    /// The view state publisher.
     private let statePublisher: AnyPublisher<RootViewState, Never>
 
     private let label: UILabel = .init()
 
-    /// The initializer.
     internal init(
         initialState: RootViewState,
         statePublisher: AnyPublisher<RootViewState, Never>

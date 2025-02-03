@@ -2,7 +2,6 @@
 
 import <stateImport>
 
-/// The state of the Node.
 internal struct WindowSceneState: Equatable {
 
     internal static func initialState() -> Self {

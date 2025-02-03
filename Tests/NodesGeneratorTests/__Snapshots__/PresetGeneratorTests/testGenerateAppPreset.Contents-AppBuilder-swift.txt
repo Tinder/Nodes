@@ -6,58 +6,49 @@ import Combine
 import NeedleFoundation
 import Nodes
 
-/// The interface of the Flow.
 /// @mockable
 @MainActor
 internal protocol AppFlow: Flow {}
 
-/// A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
-///
-/// Can be a tuple or struct containing multiple values when necessary.
+/// Encapsulates arguments passed through the builder base class to its factory build method.
+/// - NOTE: An alias to a tuple is supported.
 internal typealias AppDynamicBuildDependency = Void
 
-/// A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
-///
-/// Can be a tuple or struct containing multiple values when necessary.
+/// Encapsulates arguments passed through the builder base class to the component initializer.
+/// - NOTE: An alias to a tuple is supported.
 internal typealias AppDynamicComponentDependency = Void
 
 // MARK: - Component
 
-/// Declares dependencies that are owned by this Node.
+/// Implements a DI graph scope where the dependencies provided to this component and its descendants are defined.
+/// The component can also include child component factories, which are used to construct the graph.
 public final class AppComponent: BootstrapComponent {
 
-    /*
-     *  Dependencies
-     *  ============
-     *
-     *  Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
-     *
-     *  fileprivate let example: Example = .init()
-     *
-     *  Whenever possible, for example when the dependency does not provide shared state, define the property as a
-     *  factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
-     *  Needle compatibility whenever the access control is increased.
-     *
-     *  fileprivate var exampleFactory: Example {
-     *      Example()
-     *  }
-     *
-     *  When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
-     *  that always returns the same instance from a computed property.
-     *
-     *  fileprivate var example: Example {
-     *      shared { Example(otherDependency: dependency.otherDependency) }
-     *  }
-     *
-     */
+    // MARK: - Dependencies
+
+    /// Define dependencies as `fileprivate` computed property factories that create new instances when accessed.
+    /// Only increase access control to `public` when the component is to provide the dependency to its descendants.
+    ///
+    ///     fileprivate var exampleFactory: Example {
+    ///         Example()
+    ///     }
+    ///
+    /// Store the dependency on the component only when shared state is necessary.
+    ///
+    ///     fileprivate let example: Example = .init()
+    ///
+    /// Or use the `shared` helper method which will always return the same instance from a computed property.
+    /// This is only necessary for dependencies that are initialized with other dependencies.
+    ///
+    ///     fileprivate var example: Example {
+    ///         shared { Example(otherDependency: dependency.otherDependency) }
+    ///     }
 
     fileprivate let appService: AppService = AppServiceImp()
 
     private let dynamicDependency: AppDynamicComponentDependency
 
-    /// The initializer.
-    ///
-    /// Remove `dynamicDependency` default parameter when its type is not `Void`.
+    /// - NOTE: Remove the default value from `dynamicDependency` when its type is not `Void`.
     internal init(
         dynamicDependency: AppDynamicComponentDependency = ()
     ) {
@@ -65,17 +56,13 @@ public final class AppComponent: BootstrapComponent {
         super.init()
     }
 
-    /*
-     *  Child Components
-     *  ================
-     *
-     *  Declare child component factories as 'fileprivate' methods.
-     *
-     *  fileprivate func <name>ComponentFactory() -> <Name>Component {
-     *      <Name>Component(parent: self)
-     *  }
-     *
-     */
+    // MARK: - Child Components
+
+    /// Define child component factories as 'fileprivate' methods.
+    ///
+    ///     fileprivate func <name>ComponentFactory() -> <Name>Component {
+    ///         <Name>Component(parent: self)
+    ///     }
 
     fileprivate func windowSceneComponentFactory() -> WindowSceneComponent {
         WindowSceneComponent(parent: self)
@@ -84,14 +71,12 @@ public final class AppComponent: BootstrapComponent {
 
 // MARK: - Builder
 
-/// The Builder interface (available to mock for testability).
 /// @mockable
 @MainActor
 internal protocol AppBuilder: AnyObject {
     func build() -> AppFlow
 }
 
-/// Concrete implementation of the Builder, where everything is created and associated.
 internal final class AppBuilderImp: AbstractBuilder
 <
     AppComponent,
@@ -100,17 +85,15 @@ internal final class AppBuilderImp: AbstractBuilder
     AppDynamicComponentDependency
 > {
 
-    /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
-    /// the dynamic component dependency.
-    ///
-    /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
+    /// Directs arguments passed through the base class, determining whether each will be provided to its factory build
+    /// method or the component initializer.
     internal func build() -> AppFlow {
         let dynamicBuildDependency: AppDynamicBuildDependency = ()
         let dynamicComponentDependency: AppDynamicComponentDependency = ()
         return build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
-    /// The factory method in which the Context and Flow are initialized.
+    /// Implements the factory build method where instances are initialized.
     override internal func build(
         component: AppComponent,
         dynamicBuildDependency: AppDynamicBuildDependency

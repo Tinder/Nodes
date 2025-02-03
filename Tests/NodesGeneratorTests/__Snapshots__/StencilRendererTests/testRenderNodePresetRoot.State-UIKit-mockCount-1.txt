@@ -2,7 +2,6 @@
 
 import <stateImport>
 
-/// The state of the Node.
 internal struct RootState: Equatable {
 
     internal var name: String
