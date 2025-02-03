@@ -87,6 +87,7 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
         super.init(context: context, viewController: viewController)
         {% endif %}
     }
+    {% if node_name != "Root" %}
 
     /// Override to take action when started.
     {% if node_name == "WindowScene" %}
@@ -97,8 +98,9 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     override internal func didStart() {
         attachRoot()
     }
-    {% elif node_name != "Root" %}
+    {% else %}
     override internal func didStart() {}
+    {% endif %}
     {% endif %}
     {% if owns_view or node_name == "WindowScene" %}
 

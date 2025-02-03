@@ -26,8 +26,6 @@ internal final class RootFlowImp: AbstractFlow
         super.init(context: context, viewController: viewController)
     }
 
-    /// Override to take action when started.
-
     /// Required for presentation or containment (do not remove).
     internal func getViewController() -> <viewControllableType> {
         viewController
