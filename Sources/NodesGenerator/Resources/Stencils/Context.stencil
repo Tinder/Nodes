@@ -7,7 +7,7 @@ import {{ import }}
 {% endif %}
 {% if node_name != "App" %}
 
-/// Defines the delegate protocol through which the `Context` triggers callbacks to listeners.
+/// Defines the delegate protocol through which the `Context` interfaces with its listener.
 /// @mockable
 @MainActor
 internal protocol {{ node_name }}Listener: AnyObject {}
