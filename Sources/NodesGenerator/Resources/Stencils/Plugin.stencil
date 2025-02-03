@@ -23,7 +23,7 @@ public final class {{ plugin_name }}PluginComponent: Component
 
     /// Define dependencies as `fileprivate` computed property factories that create new instances when accessed,
     /// avoiding shared state. Only increase access control to `public` when the component is to provide the
-    /// dependency to its children.
+    /// dependency to its descendants.
     ///
     ///     fileprivate var exampleFactory: Example {
     ///         Example()
