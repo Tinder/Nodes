@@ -46,8 +46,8 @@ public final class ___VARIABLE_productName___Component: Component
     ///
     ///     fileprivate let example: Example = .init()
     ///
-    /// Or use the `shared` helper method which will always return the same instance from a computed property.
-    /// This is only necessary for dependencies that are initialized with other dependencies.
+    /// Or use the `shared` helper method which always returns the same instance from the computed property.
+    /// This is only necessary for dependencies initialized with other dependencies.
     ///
     ///     fileprivate var example: Example {
     ///         shared { Example(otherDependency: dependency.otherDependency) }

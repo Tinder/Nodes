@@ -42,8 +42,8 @@ public final class <pluginListName>PluginListComponent: Component
     ///
     ///     fileprivate let example: Example = .init()
     ///
-    /// Or use the `shared` helper method which will always return the same instance from a computed property.
-    /// This is only necessary for dependencies that are initialized with other dependencies.
+    /// Or use the `shared` helper method which always returns the same instance from the computed property.
+    /// This is only necessary for dependencies initialized with other dependencies.
     ///
     ///     fileprivate var example: Example {
     ///         shared { Example(otherDependency: dependency.otherDependency) }
@@ -94,7 +94,7 @@ internal final class <pluginListName>PluginListImp: PluginList
     }
 
     /// Optionally implements a custom creation order. This method may be omitted to use the default order.
-    /// - NOTE: Do not call `super` within this method unless needed to reference or modify the default order.
+    /// - NOTE: Do not call `super` within this method unless referencing or modifying the default order.
     override internal func creationOrder(
         component: <pluginListName>PluginListComponent,
         state: <pluginListName>PluginListStateType
