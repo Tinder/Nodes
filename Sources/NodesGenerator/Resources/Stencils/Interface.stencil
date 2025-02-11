@@ -1,0 +1,59 @@
+//{{ file_header }}
+{% if interface_imports %}
+
+{% for import in interface_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+// MARK: - Builder
+
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
+/// @mockable
+@MainActor
+{% if plugin_list_name %}
+internal protocol {{ node_name }}Builder: {{ plugin_list_name }}Builder {
+    func build(
+        withListener listener: {{ node_name }}Listener
+    ) -> {{ node_name }}Flow
+}
+{% else %}
+internal protocol {{ node_name }}Builder: AnyObject {
+    {% if node_name == "App" %}
+    func build() -> {{ node_name }}Flow
+    {% else %}
+    func build(
+        withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}
+        viewController: {{ node_name }}ViewControllable{% endif +%}
+    ) -> {{ node_name }}Flow
+    {% endif %}
+}
+{% endif %}
+
+// MARK: - Flow
+
+/// @mockable
+@MainActor
+{% if owns_view %}
+{% if plugin_list_name %}
+internal protocol {{ node_name }}Flow: {{ plugin_list_name }}Flow {}
+{% else %}
+internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
+{% endif %}
+{% elif node_name == "WindowScene" %}
+internal protocol {{ node_name }}Flow: Flow {
+    func getViewController() -> {{ node_name }}ViewControllable
+}
+{% else %}
+internal protocol {{ node_name }}Flow: Flow {}
+{% endif %}
+
+// MARK: - Listener
+
+/// Defines the delegate protocol through which the `Context` interfaces with its listener.
+/// @mockable
+@MainActor
+internal protocol {{ node_name }}Listener: AnyObject {}
+{% endif %}
