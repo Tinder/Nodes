@@ -30,6 +30,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                     "Builder",
                     "Context",
                     "Flow",
+                    "Interface",
                     "State",
                     "ViewController",
                     "ViewState"
@@ -57,6 +58,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                     "Builder",
                     "Context",
                     "Flow",
+                    "Interface",
                     "Plugin",
                     "State",
                     "ViewController",
@@ -89,6 +91,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                     "ContextTests",
                     "Flow",
                     "FlowTests",
+                    "Interface",
                     "State",
                     "ViewController",
                     "ViewControllerTests",
@@ -122,6 +125,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                     "ContextTests",
                     "Flow",
                     "FlowTests",
+                    "Interface",
                     "Plugin",
                     "PluginTests",
                     "State",
@@ -154,6 +158,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "ContextTests",
                 "Flow",
                 "FlowTests",
+                "Interface",
                 "State"
             ]
             templates.forEach { name, template in
@@ -173,6 +178,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Builder",
                 "Context",
                 "Flow",
+                "Interface",
                 "State"
             ]
             templates.forEach { name, template in
@@ -194,6 +200,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Builder",
                 "Context",
                 "Flow",
+                "Interface",
                 "State"
             ]
             templates.forEach { name, template in
@@ -215,6 +222,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Builder",
                 "Context",
                 "Flow",
+                "Interface",
                 "State"
             ]
             templates.forEach { name, template in
@@ -235,6 +243,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                 "Builder",
                 "Context",
                 "Flow",
+                "Interface",
                 "State",
                 "ViewController",
                 "ViewState"

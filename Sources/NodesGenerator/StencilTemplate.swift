@@ -18,6 +18,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
     case contextTests
     case flow
     case flowTests
+    case interface
     case plugin
     case pluginTests
     case pluginList
@@ -59,6 +60,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         public let contextTests: StencilTemplate
         public let flow: StencilTemplate
         public let flowTests: StencilTemplate
+        public let interface: StencilTemplate
         public let plugin: StencilTemplate
         public let pluginTests: StencilTemplate
         public let state: StencilTemplate
@@ -76,6 +78,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
             self.contextTests = .contextTests
             self.flow = .flow
             self.flowTests = .flowTests
+            self.interface = .interface
             self.plugin = .plugin
             self.pluginTests = .pluginTests
             self.state = .state
@@ -91,6 +94,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
                 builder,
                 context,
                 flow,
+                interface,
                 state,
                 viewController,
                 viewState
@@ -119,6 +123,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         public let contextTests: StencilTemplate
         public let flow: StencilTemplate
         public let flowTests: StencilTemplate
+        public let interface: StencilTemplate
         public let plugin: StencilTemplate
         public let pluginTests: StencilTemplate
         public let state: StencilTemplate
@@ -132,6 +137,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
             self.contextTests = .contextTests
             self.flow = .flow
             self.flowTests = .flowTests
+            self.interface = .interface
             self.plugin = .plugin
             self.pluginTests = .pluginTests
             self.state = .state
@@ -143,6 +149,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
                 builder,
                 context,
                 flow,
+                interface,
                 state
             ] + (includePlugin ? [.plugin] : [])
             guard includeTests
@@ -177,6 +184,8 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
             "Flow"
         case .flowTests:
             "FlowTests"
+        case .interface:
+            "Interface"
         case .plugin:
             "Plugin"
         case .pluginTests:
@@ -215,6 +224,8 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         case .flow, .flowTests:
             description
         case .plugin, .pluginTests:
+            description
+        case .interface:
             description
         case .pluginList, .pluginListTests:
             description
@@ -259,6 +270,8 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
                 .union(config.flowImports)
         case .flowTests:
             config.baseTestImports
+        case .interface:
+            config.baseImports
         case .plugin:
             config.baseImports
                 .union(["Nodes"])
