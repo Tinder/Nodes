@@ -51,4 +51,3 @@ internal protocol {{ node_name }}Builder: AnyObject {
         withListener listener: {{ node_name }}Listener
     ) -> {{ node_name }}Flow
 }
-
