@@ -8,7 +8,6 @@ import {{ import }}
 
 // This file defines the protocols and types in the interface requiring public ACL for use in another module.
 
-
 // MARK: - Builder
 
 {% if is_periphery_comment_enabled %}
