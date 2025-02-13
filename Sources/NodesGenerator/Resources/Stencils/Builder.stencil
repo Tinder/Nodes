@@ -5,22 +5,6 @@
 import {{ import }}
 {% endfor %}
 {% endif %}
-
-/// @mockable
-@MainActor
-{% if owns_view %}
-{% if plugin_list_name %}
-internal protocol {{ node_name }}Flow: {{ plugin_list_name }}Flow {}
-{% else %}
-internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
-{% endif %}
-{% elif node_name == "WindowScene" %}
-internal protocol {{ node_name }}Flow: Flow {
-    func getViewController() -> {{ node_name }}ViewControllable
-}
-{% else %}
-internal protocol {{ node_name }}Flow: Flow {}
-{% endif %}
 {% if node_name != "App" %}
 
 // MARK: - Dependencies
@@ -140,30 +124,6 @@ public final class {{ node_name }}Component: Component
 }
 
 // MARK: - Builder
-
-{% if is_periphery_comment_enabled %}
-// periphery:ignore
-{% endif %}
-/// @mockable
-@MainActor
-{% if plugin_list_name %}
-internal protocol {{ node_name }}Builder: {{ plugin_list_name }}Builder {
-    func build(
-        withListener listener: {{ node_name }}Listener
-    ) -> {{ node_name }}Flow
-}
-{% else %}
-internal protocol {{ node_name }}Builder: AnyObject {
-    {% if node_name == "App" %}
-    func build() -> {{ node_name }}Flow
-    {% else %}
-    func build(
-        withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}
-        viewController: {{ node_name }}ViewControllable{% endif +%}
-    ) -> {{ node_name }}Flow
-    {% endif %}
-}
-{% endif %}
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
