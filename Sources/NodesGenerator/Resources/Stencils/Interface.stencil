@@ -49,6 +49,7 @@ internal protocol {{ node_name }}Flow: Flow {
 {% else %}
 internal protocol {{ node_name }}Flow: Flow {}
 {% endif %}
+{% if node_name != "App" %}
 
 // MARK: - Listener
 
