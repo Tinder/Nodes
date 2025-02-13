@@ -3,11 +3,15 @@
 import NeedleFoundation
 import Nodes
 
+// MARK: - Dependency
+
 /// Declares the dependencies required by the component. A code-generated conforming object is made available to the
 /// component through its `dependencies` property. Dependencies must be provided by ancestor components on the DI graph.
 /// @mockable
 @MainActor
 public protocol ___VARIABLE_productName___PluginDependency: Dependency {}
+
+// MARK: - Component
 
 /// Implements a DI graph scope where the dependencies provided to this component and its children are defined.
 /// The component can also include child component factories, which are used to construct the DI graph.
@@ -48,6 +52,8 @@ public final class ___VARIABLE_productName___PluginComponent: Component
         ___VARIABLE_productName___Component(parent: self)
     }
 }
+
+// MARK: - Plugin
 
 /// Dynamic state from the caller provided to the plugin to use in determining whether it is enabled.
 /// - NOTE: An alias to a tuple is supported.

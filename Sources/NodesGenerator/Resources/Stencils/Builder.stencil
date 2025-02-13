@@ -23,7 +23,7 @@ internal protocol {{ node_name }}Flow: Flow {}
 {% endif %}
 {% if node_name != "App" %}
 
-// MARK: - Dependencies
+// MARK: - Dependency
 
 /// Declares the dependencies required by the component. A code-generated conforming object is made available to the
 /// component through its `dependencies` property. Dependencies must be provided by ancestor components on the DI graph.
@@ -39,6 +39,8 @@ public protocol {{ node_name }}Dependency: Dependency {
 public protocol {{ node_name }}Dependency: Dependency {}
 {% endif %}
 {% endif %}
+
+// MARK: - Dynamic Dependencies
 
 /// Encapsulates arguments passed through the builder base class to its factory build method.
 /// - NOTE: An alias to a tuple is supported.

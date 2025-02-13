@@ -4,13 +4,15 @@
 @MainActor
 internal protocol <nodeName>Flow: Flow {}
 
-// MARK: - Dependencies
+// MARK: - Dependency
 
 /// Declares the dependencies required by the component. A code-generated conforming object is made available to the
 /// component through its `dependencies` property. Dependencies must be provided by ancestor components on the DI graph.
 /// @mockable
 @MainActor
 public protocol <nodeName>Dependency: Dependency {}
+
+// MARK: - Dynamic Dependencies
 
 /// Encapsulates arguments passed through the builder base class to its factory build method.
 /// - NOTE: An alias to a tuple is supported.

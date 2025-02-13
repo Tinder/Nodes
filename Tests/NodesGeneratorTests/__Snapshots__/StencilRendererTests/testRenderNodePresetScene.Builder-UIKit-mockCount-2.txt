@@ -9,7 +9,7 @@ internal protocol WindowSceneFlow: Flow {
     func getViewController() -> WindowSceneViewControllable
 }
 
-// MARK: - Dependencies
+// MARK: - Dependency
 
 /// Declares the dependencies required by the component. A code-generated conforming object is made available to the
 /// component through its `dependencies` property. Dependencies must be provided by ancestor components on the DI graph.
@@ -19,6 +19,8 @@ public protocol WindowSceneDependency: Dependency {
     var <dependencyName1>: <dependencyType1> { get }
     var <dependencyName2>: <dependencyType2> { get }
 }
+
+// MARK: - Dynamic Dependencies
 
 /// Encapsulates arguments passed through the builder base class to its factory build method.
 /// - NOTE: An alias to a tuple is supported.
