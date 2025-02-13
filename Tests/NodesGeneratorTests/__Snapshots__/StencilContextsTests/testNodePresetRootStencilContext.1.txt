@@ -1,4 +1,4 @@
-▿ 47 key/value pairs
+▿ 48 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -71,6 +71,10 @@
     - key: "flow_tests_imports"
     ▿ value: 1 element
       - "<flowTestsImport>"
+  ▿ (2 elements)
+    - key: "interface_imports"
+    ▿ value: 1 element
+      - "<interfaceImport>"
   ▿ (2 elements)
     - key: "is_nimble_enabled"
     - value: true

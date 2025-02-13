@@ -1,0 +1,28 @@
+//<fileHeader>
+
+// This file defines the protocols and types in the interface requiring public ACL for use in another module.
+
+
+// MARK: - Builder
+
+/// @mockable
+@MainActor
+internal protocol <nodeName>Builder: AnyObject {
+    func build(
+        withListener listener: <nodeName>Listener,
+        viewController: <nodeName>ViewControllable
+    ) -> <nodeName>Flow
+}
+
+// MARK: - Flow
+
+/// @mockable
+@MainActor
+internal protocol <nodeName>Flow: Flow {}
+
+// MARK: - Listener
+
+/// Defines the delegate protocol through which the `Context` interfaces with its listener.
+/// @mockable
+@MainActor
+internal protocol <nodeName>Listener: AnyObject {}

@@ -3,10 +3,6 @@
 import <builderImport1>
 import <builderImport2>
 
-/// @mockable
-@MainActor
-internal protocol RootFlow: <viewControllableFlowType> {}
-
 // MARK: - Dependencies
 
 /// Declares the dependencies required by the component. A code-generated conforming object is made available to the
@@ -78,15 +74,6 @@ public final class RootComponent: Component
 }
 
 // MARK: - Builder
-
-// periphery:ignore
-/// @mockable
-@MainActor
-internal protocol RootBuilder: AnyObject {
-    func build(
-        withListener listener: RootListener
-    ) -> RootFlow
-}
 
 // periphery:ignore
 internal final class RootBuilderImp: AbstractBuilder

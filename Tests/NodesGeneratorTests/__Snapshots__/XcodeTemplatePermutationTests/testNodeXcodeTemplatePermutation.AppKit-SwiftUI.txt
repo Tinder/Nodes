@@ -56,6 +56,8 @@
           - value: "<flowPropertyType>"
     ▿ flowTestsImports: 1 element
       - "<baseTestImport>"
+    ▿ interfaceImports: 1 element
+      - "<baseImport>"
     - isNimbleEnabled: false
     - isPeripheryCommentEnabled: true
     - isPreviewProviderEnabled: true
@@ -105,12 +107,13 @@
     - viewStateTransform: "<viewStateTransform>"
     ▿ workerGenericTypes: 1 element
       - "<workerGenericType>"
-  ▿ stencils: 15 elements
+  ▿ stencils: 16 elements
     - Analytics
     ▿ Builder
       - builder: Variation.swiftUI
     - Context
     - Flow
+    - Interface
     - State
     ▿ ViewController
       - viewController: Variation.swiftUI

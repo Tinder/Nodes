@@ -8,6 +8,7 @@
   - contextTests: ContextTests
   - flow: Flow
   - flowTests: FlowTests
+  - interface: Interface
   - plugin: Plugin
   - pluginTests: PluginTests
   - state: State
