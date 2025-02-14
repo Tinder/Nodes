@@ -116,7 +116,8 @@
           - builder: Variation.regular
         - Context
         - Flow
-        - Interface
+        ▿ Interface
+          - interface: Variation.regular
         - State
         ▿ ViewController
           - viewController: Variation.regular
@@ -245,7 +246,8 @@
           - builder: Variation.regular
         - Context
         - Flow
-        - Interface
+        ▿ Interface
+          - interface: Variation.regular
         - State
         ▿ ViewController
           - viewController: Variation.regular
@@ -374,7 +376,8 @@
           - builder: Variation.swiftUI
         - Context
         - Flow
-        - Interface
+        ▿ Interface
+          - interface: Variation.swiftUI
         - State
         ▿ ViewController
           - viewController: Variation.swiftUI
@@ -503,7 +506,8 @@
           - builder: Variation.swiftUI
         - Context
         - Flow
-        - Interface
+        ▿ Interface
+          - interface: Variation.swiftUI
         - State
         ▿ ViewController
           - viewController: Variation.swiftUI
@@ -632,7 +636,8 @@
           - builder: Variation.regular
         - Context
         - Flow
-        - Interface
+        ▿ Interface
+          - interface: Variation.regular
         - State
         ▿ ViewController
           - viewController: Variation.regular
@@ -761,7 +766,8 @@
           - builder: Variation.regular
         - Context
         - Flow
-        - Interface
+        ▿ Interface
+          - interface: Variation.regular
         - State
         ▿ ViewController
           - viewController: Variation.regular
@@ -890,7 +896,8 @@
           - builder: Variation.swiftUI
         - Context
         - Flow
-        - Interface
+        ▿ Interface
+          - interface: Variation.swiftUI
         - State
         ▿ ViewController
           - viewController: Variation.swiftUI
@@ -1019,7 +1026,8 @@
           - builder: Variation.swiftUI
         - Context
         - Flow
-        - Interface
+        ▿ Interface
+          - interface: Variation.swiftUI
         - State
         ▿ ViewController
           - viewController: Variation.swiftUI
@@ -1148,7 +1156,8 @@
           - builder: Variation.regular
         - Context
         - Flow
-        - Interface
+        ▿ Interface
+          - interface: Variation.regular
         - State
         ▿ ViewController
           - viewController: Variation.regular
@@ -1277,7 +1286,8 @@
           - builder: Variation.regular
         - Context
         - Flow
-        - Interface
+        ▿ Interface
+          - interface: Variation.regular
         - State
         ▿ ViewController
           - viewController: Variation.regular

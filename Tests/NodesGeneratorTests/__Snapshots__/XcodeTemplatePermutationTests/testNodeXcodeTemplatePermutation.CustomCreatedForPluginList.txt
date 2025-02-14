@@ -113,7 +113,8 @@
       - builder: Variation.regular
     - Context
     - Flow
-    - Interface
+    ▿ Interface
+      - interface: Variation.regular
     - State
     ▿ ViewController
       - viewController: Variation.regular

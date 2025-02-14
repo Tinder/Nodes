@@ -5,6 +5,20 @@ import <interfaceImport2>
 
 // This file defines the protocols and types in the interface requiring public ACL for use in another module.
 
+// MARK: - Listener
+
+/// Defines the delegate protocol through which the `Context` interfaces with its listener.
+/// @mockable
+@MainActor
+internal protocol WindowSceneListener: AnyObject {}
+
+// MARK: - Flow
+
+/// @mockable
+@MainActor
+internal protocol WindowSceneFlow: Flow {
+    func getViewController() -> WindowSceneViewControllable
+}
 
 // MARK: - Builder
 
@@ -17,18 +31,3 @@ internal protocol WindowSceneBuilder: AnyObject {
         viewController: WindowSceneViewControllable
     ) -> WindowSceneFlow
 }
-
-// MARK: - Flow
-
-/// @mockable
-@MainActor
-internal protocol WindowSceneFlow: Flow {
-    func getViewController() -> WindowSceneViewControllable
-}
-
-// MARK: - Listener
-
-/// Defines the delegate protocol through which the `Context` interfaces with its listener.
-/// @mockable
-@MainActor
-internal protocol WindowSceneListener: AnyObject {}

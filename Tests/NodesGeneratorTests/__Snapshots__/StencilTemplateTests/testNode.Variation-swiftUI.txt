@@ -8,7 +8,8 @@
   - contextTests: ContextTests
   - flow: Flow
   - flowTests: FlowTests
-  - interface: Interface
+  ▿ interface: Interface
+    - interface: Variation.swiftUI
   - plugin: Plugin
   - pluginTests: PluginTests
   - state: State

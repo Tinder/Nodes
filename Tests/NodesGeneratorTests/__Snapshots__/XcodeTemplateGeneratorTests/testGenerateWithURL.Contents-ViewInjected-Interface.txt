@@ -2,6 +2,18 @@
 
 // This file defines the protocols and types in the interface requiring public ACL for use in another module.
 
+// MARK: - Listener
+
+/// Defines the delegate protocol through which the `Context` interfaces with its listener.
+/// @mockable
+@MainActor
+internal protocol ___VARIABLE_productName___Listener: AnyObject {}
+
+// MARK: - Flow
+
+/// @mockable
+@MainActor
+internal protocol ___VARIABLE_productName___Flow: Flow {}
 
 // MARK: - Builder
 
@@ -13,16 +25,3 @@ internal protocol ___VARIABLE_productName___Builder: AnyObject {
         viewController: ___VARIABLE_productName___ViewControllable
     ) -> ___VARIABLE_productName___Flow
 }
-
-// MARK: - Flow
-
-/// @mockable
-@MainActor
-internal protocol ___VARIABLE_productName___Flow: Flow {}
-
-// MARK: - Listener
-
-/// Defines the delegate protocol through which the `Context` interfaces with its listener.
-/// @mockable
-@MainActor
-internal protocol ___VARIABLE_productName___Listener: AnyObject {}

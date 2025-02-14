@@ -81,7 +81,8 @@
       - builder: Variation.regular
     - Context
     - Flow
-    - Interface
+    ▿ Interface
+      - interface: Variation.regular
     - State
     - Plugin
     - AnalyticsTests
