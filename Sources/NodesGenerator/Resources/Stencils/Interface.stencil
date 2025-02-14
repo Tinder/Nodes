@@ -7,6 +7,7 @@ import {{ import }}
 {% endif %}
 
 // This file defines the protocols and types in the interface requiring public ACL for use in another module.
+{% if node_name != "App" %}
 
 // MARK: - Listener
 
@@ -33,7 +34,6 @@ internal protocol {{ node_name }}Flow: Flow {
 {% else %}
 internal protocol {{ node_name }}Flow: Flow {}
 {% endif %}
-{% if node_name != "App" %}
 
 // MARK: - Builder
 
