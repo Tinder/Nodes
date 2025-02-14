@@ -64,6 +64,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(name) == "Flow"
             case .flowTests:
                 expect(name) == "FlowTests"
+            case .interface:
+                expect(name) == "Interface"
             case .plugin:
                 expect(name) == "Plugin"
             case .pluginTests:
@@ -111,6 +113,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(filename) == "Flow"
             case .flowTests:
                 expect(filename) == "FlowTests"
+            case let .interface(variation):
+                expect(filename) == "Interface\(variation == .swiftUI ? "-SwiftUI" : "")"
             case .plugin:
                 expect(filename) == "Plugin"
             case .pluginTests:
@@ -159,6 +163,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .builder(variation),
                 .context,
                 .flow,
+                .interface(variation),
                 .state,
                 .viewController(variation),
                 .viewState,
@@ -176,6 +181,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .builder(variation),
                 .context,
                 .flow,
+                .interface(variation),
                 .state,
                 .viewController(variation),
                 .viewState,
@@ -191,6 +197,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .builder(variation),
                 .context,
                 .flow,
+                .interface(variation),
                 .state,
                 .viewController(variation),
                 .viewState,
@@ -201,6 +208,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .builder(variation),
                 .context,
                 .flow,
+                .interface(variation),
                 .state,
                 .viewController(variation),
                 .viewState
@@ -215,6 +223,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .builder(.regular),
             .context,
             .flow,
+            .interface(.regular),
             .state,
             .plugin,
             .analyticsTests,
@@ -228,6 +237,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .builder(.regular),
             .context,
             .flow,
+            .interface(.regular),
             .state,
             .analyticsTests,
             .builderTests,
@@ -239,6 +249,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .builder(.regular),
             .context,
             .flow,
+            .interface(.regular),
             .state,
             .plugin
         ]
@@ -247,6 +258,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .builder(.regular),
             .context,
             .flow,
+            .interface(.regular),
             .state
         ]
     }
@@ -313,6 +325,10 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 case .flowTests:
                     expect(imports) == [
                         "<baseTestImport>"
+                    ]
+                case .interface:
+                    expect(imports) == [
+                        "<baseImport>"
                     ]
                 case .plugin:
                     expect(imports) == [
@@ -426,6 +442,10 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(imports) == [
                     "<baseTestImport>"
                 ]
+            case .interface:
+                expect(imports) == [
+                    "<baseImport>"
+                ]
             case .plugin:
                 expect(imports) == [
                     "<baseImport>",
@@ -489,6 +509,8 @@ extension StencilTemplate {
         .contextTests,
         .flow,
         .flowTests,
+        .interface(.regular),
+        .interface(.swiftUI),
         .plugin,
         .pluginTests,
         .pluginList,

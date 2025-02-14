@@ -34,6 +34,7 @@ internal struct NodeXcodeTemplatePermutation: XcodeTemplatePermutation {
             contextTestsImports: node.contextTests.imports(with: config, including: uiFramework),
             flowImports: node.flow.imports(with: config, including: uiFramework),
             flowTestsImports: node.flowTests.imports(with: config, including: uiFramework),
+            interfaceImports: node.interface.imports(with: config, including: uiFramework),
             pluginImports: node.plugin.imports(with: config, including: uiFramework),
             pluginTestsImports: node.pluginTests.imports(with: config, including: uiFramework),
             stateImports: node.state.imports(with: config, including: uiFramework),

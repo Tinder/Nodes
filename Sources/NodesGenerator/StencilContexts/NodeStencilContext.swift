@@ -24,6 +24,7 @@ public struct NodeStencilContext: StencilContext {
     private let contextTestsImports: [String]
     private let flowImports: [String]
     private let flowTestsImports: [String]
+    private let interfaceImports: [String]
     private let pluginImports: [String]
     private let pluginTestsImports: [String]
     private let stateImports: [String]
@@ -74,6 +75,7 @@ public struct NodeStencilContext: StencilContext {
             "context_tests_imports": contextTestsImports,
             "flow_imports": flowImports,
             "flow_tests_imports": flowTestsImports,
+            "interface_imports": interfaceImports,
             "plugin_imports": pluginImports,
             "plugin_tests_imports": pluginTestsImports,
             "state_imports": stateImports,
@@ -125,6 +127,7 @@ public struct NodeStencilContext: StencilContext {
         contextTestsImports: Set<String>,
         flowImports: Set<String>,
         flowTestsImports: Set<String>,
+        interfaceImports: Set<String>,
         pluginImports: Set<String>,
         pluginTestsImports: Set<String>,
         stateImports: Set<String>,
@@ -174,6 +177,7 @@ public struct NodeStencilContext: StencilContext {
             contextTestsImports: contextTestsImports,
             flowImports: flowImports,
             flowTestsImports: flowTestsImports,
+            interfaceImports: interfaceImports,
             pluginImports: pluginImports,
             pluginTestsImports: pluginTestsImports,
             stateImports: stateImports,
@@ -223,6 +227,7 @@ public struct NodeStencilContext: StencilContext {
         contextTestsImports: Set<String>,
         flowImports: Set<String>,
         flowTestsImports: Set<String>,
+        interfaceImports: Set<String>,
         stateImports: Set<String>,
         viewControllerImports: Set<String>,
         viewControllerTestsImports: Set<String>,
@@ -271,6 +276,7 @@ public struct NodeStencilContext: StencilContext {
             contextTestsImports: contextTestsImports,
             flowImports: flowImports,
             flowTestsImports: flowTestsImports,
+            interfaceImports: interfaceImports,
             pluginImports: [],
             pluginTestsImports: [],
             stateImports: stateImports,
@@ -322,6 +328,7 @@ public struct NodeStencilContext: StencilContext {
         contextTestsImports: Set<String>,
         flowImports: Set<String>,
         flowTestsImports: Set<String>,
+        interfaceImports: Set<String>,
         pluginImports: Set<String>,
         pluginTestsImports: Set<String>,
         stateImports: Set<String>,
@@ -371,6 +378,7 @@ public struct NodeStencilContext: StencilContext {
         self.contextTestsImports = contextTestsImports.sortedImports()
         self.flowImports = flowImports.sortedImports()
         self.flowTestsImports = flowTestsImports.sortedImports()
+        self.interfaceImports = interfaceImports.sortedImports()
         self.pluginImports = pluginImports.sortedImports()
         self.pluginTestsImports = pluginTestsImports.sortedImports()
         self.stateImports = stateImports.sortedImports()
