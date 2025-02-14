@@ -113,8 +113,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(filename) == "Flow"
             case .flowTests:
                 expect(filename) == "FlowTests"
-            case .interface:
-                expect(filename) == "Interface"
+            case let .interface(variation):
+                expect(filename) == "Interface\(variation == .swiftUI ? "-SwiftUI" : "")"
             case .plugin:
                 expect(filename) == "Plugin"
             case .pluginTests:
@@ -163,7 +163,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .builder(variation),
                 .context,
                 .flow,
-                .interface,
+                .interface(variation),
                 .state,
                 .viewController(variation),
                 .viewState,
@@ -181,7 +181,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .builder(variation),
                 .context,
                 .flow,
-                .interface,
+                .interface(variation),
                 .state,
                 .viewController(variation),
                 .viewState,
@@ -197,7 +197,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .builder(variation),
                 .context,
                 .flow,
-                .interface,
+                .interface(variation),
                 .state,
                 .viewController(variation),
                 .viewState,
@@ -208,7 +208,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .builder(variation),
                 .context,
                 .flow,
-                .interface,
+                .interface(variation),
                 .state,
                 .viewController(variation),
                 .viewState
@@ -223,7 +223,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .builder(.regular),
             .context,
             .flow,
-            .interface,
+            .interface(.regular),
             .state,
             .plugin,
             .analyticsTests,
@@ -237,7 +237,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .builder(.regular),
             .context,
             .flow,
-            .interface,
+            .interface(.regular),
             .state,
             .analyticsTests,
             .builderTests,
@@ -249,7 +249,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .builder(.regular),
             .context,
             .flow,
-            .interface,
+            .interface(.regular),
             .state,
             .plugin
         ]
@@ -258,7 +258,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .builder(.regular),
             .context,
             .flow,
-            .interface,
+            .interface(.regular),
             .state
         ]
     }
@@ -509,6 +509,8 @@ extension StencilTemplate {
         .contextTests,
         .flow,
         .flowTests,
+        .interface(.regular),
+        .interface(.swiftUI),
         .plugin,
         .pluginTests,
         .pluginList,
