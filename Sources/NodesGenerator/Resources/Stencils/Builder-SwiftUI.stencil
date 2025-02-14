@@ -6,14 +6,6 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/// @mockable
-@MainActor
-{% if plugin_list_name %}
-internal protocol {{ node_name }}Flow: {{ plugin_list_name }}Flow {}
-{% else %}
-internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
-{% endif %}
-
 // MARK: - Dependencies
 
 /// Declares the dependencies required by the component. A code-generated conforming object is made available to the
@@ -98,21 +90,6 @@ public final class {{ node_name }}Component: Component
 }
 
 // MARK: - Builder
-
-{% if is_periphery_comment_enabled %}
-// periphery:ignore
-{% endif %}
-/// @mockable
-@MainActor
-{% if plugin_list_name %}
-internal protocol {{ node_name }}Builder: {{ plugin_list_name }}Builder {
-{% else %}
-internal protocol {{ node_name }}Builder: AnyObject {
-{% endif %}
-    func build(
-        withListener listener: {{ node_name }}Listener
-    ) -> {{ node_name }}Flow
-}
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
