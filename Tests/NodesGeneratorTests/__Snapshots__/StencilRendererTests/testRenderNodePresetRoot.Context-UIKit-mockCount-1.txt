@@ -2,11 +2,6 @@
 
 import <contextImport>
 
-/// Defines the delegate protocol through which the `Context` interfaces with its listener.
-/// @mockable
-@MainActor
-internal protocol RootListener: AnyObject {}
-
 /// Defines the interface between the `Context` and its `Flow`, intended for initiating navigation.
 /// @mockable
 @MainActor

@@ -1,9 +1,5 @@
 //<fileHeader>
 
-/// @mockable
-@MainActor
-internal protocol WindowFlow: Flow {}
-
 // MARK: - Dependencies
 
 /// Declares the dependencies required by the component. A code-generated conforming object is made available to the
@@ -74,15 +70,6 @@ public final class WindowComponent: Component
 }
 
 // MARK: - Builder
-
-/// @mockable
-@MainActor
-internal protocol WindowBuilder: AnyObject {
-    func build(
-        withListener listener: WindowListener,
-        viewController: WindowViewControllable
-    ) -> WindowFlow
-}
 
 internal final class WindowBuilderImp: AbstractBuilder
 <
