@@ -1,4 +1,4 @@
-▿ 5 elements
+▿ 6 elements
   ▿ (2 elements)
     - path: "/WindowSceneAnalytics.swift"
     - atomically: true
@@ -10,6 +10,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/WindowSceneFlow.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/WindowSceneInterface.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/WindowSceneState.swift"

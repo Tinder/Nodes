@@ -1,9 +1,5 @@
 //<fileHeader>
 
-/// @mockable
-@MainActor
-internal protocol <nodeName>Flow: <viewControllableFlowType> {}
-
 // MARK: - Dependencies
 
 /// Declares the dependencies required by the component. A code-generated conforming object is made available to the
@@ -70,14 +66,6 @@ public final class <nodeName>Component: Component
 }
 
 // MARK: - Builder
-
-/// @mockable
-@MainActor
-internal protocol <nodeName>Builder: AnyObject {
-    func build(
-        withListener listener: <nodeName>Listener
-    ) -> <nodeName>Flow
-}
 
 internal final class <nodeName>BuilderImp: AbstractBuilder
 <

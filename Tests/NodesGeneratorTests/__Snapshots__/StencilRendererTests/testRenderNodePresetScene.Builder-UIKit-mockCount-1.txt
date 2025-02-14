@@ -2,12 +2,6 @@
 
 import <builderImport>
 
-/// @mockable
-@MainActor
-internal protocol WindowSceneFlow: Flow {
-    func getViewController() -> WindowSceneViewControllable
-}
-
 // MARK: - Dependencies
 
 /// Declares the dependencies required by the component. A code-generated conforming object is made available to the
@@ -82,16 +76,6 @@ public final class WindowSceneComponent: Component
 }
 
 // MARK: - Builder
-
-// periphery:ignore
-/// @mockable
-@MainActor
-internal protocol WindowSceneBuilder: AnyObject {
-    func build(
-        withListener listener: WindowSceneListener,
-        viewController: WindowSceneViewControllable
-    ) -> WindowSceneFlow
-}
 
 // periphery:ignore
 internal final class WindowSceneBuilderImp: AbstractBuilder

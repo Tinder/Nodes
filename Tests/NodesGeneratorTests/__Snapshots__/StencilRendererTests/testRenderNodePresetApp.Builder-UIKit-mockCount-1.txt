@@ -2,10 +2,6 @@
 
 import <builderImport>
 
-/// @mockable
-@MainActor
-internal protocol AppFlow: Flow {}
-
 /// Encapsulates arguments passed through the builder base class to its factory build method.
 /// - NOTE: An alias to a tuple is supported.
 internal typealias AppDynamicBuildDependency = Void
@@ -68,13 +64,6 @@ public final class AppComponent: BootstrapComponent {
 }
 
 // MARK: - Builder
-
-// periphery:ignore
-/// @mockable
-@MainActor
-internal protocol AppBuilder: AnyObject {
-    func build() -> AppFlow
-}
 
 // periphery:ignore
 internal final class AppBuilderImp: AbstractBuilder
