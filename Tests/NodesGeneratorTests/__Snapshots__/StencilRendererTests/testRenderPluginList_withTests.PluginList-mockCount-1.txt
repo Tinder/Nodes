@@ -21,11 +21,15 @@ internal protocol <pluginListName>Builder: AnyObject {
     ) -> <pluginListName>Flow
 }
 
+// MARK: - Dependency
+
 /// Declares the dependencies required by the component. A code-generated conforming object is made available to the
 /// component through its `dependencies` property. Dependencies must be provided by ancestor components on the DI graph.
 /// @mockable
 @MainActor
 public protocol <pluginListName>PluginListDependency: Dependency {}
+
+// MARK: - Component
 
 /// Implements a DI graph scope where the dependencies provided to this component and its children are defined.
 /// The component can also include child component factories, which are used to construct the DI graph.
@@ -62,6 +66,8 @@ public final class <pluginListName>PluginListComponent: Component
     ///         <Name>PluginComponent(parent: self)
     ///     }
 }
+
+// MARK: - Plugin List
 
 /// Declares the type of key used to identify plugins within the collection.
 /// - NOTE: May be any ``Hashable`` type such as ``String`` or an enumeration.
