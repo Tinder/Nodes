@@ -6,10 +6,6 @@ import Combine
 import NeedleFoundation
 import Nodes
 
-/// @mockable
-@MainActor
-internal protocol RootFlow: ViewControllableFlow {}
-
 // MARK: - Dependencies
 
 /// Declares the dependencies required by the component. A code-generated conforming object is made available to the
@@ -76,14 +72,6 @@ public final class RootComponent: Component
 }
 
 // MARK: - Builder
-
-/// @mockable
-@MainActor
-internal protocol RootBuilder: AnyObject {
-    func build(
-        withListener listener: RootListener
-    ) -> RootFlow
-}
 
 internal final class RootBuilderImp: AbstractBuilder
 <
