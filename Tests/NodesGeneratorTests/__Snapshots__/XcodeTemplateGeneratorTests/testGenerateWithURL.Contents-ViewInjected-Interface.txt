@@ -1,5 +1,7 @@
 //___FILEHEADER___
 
+import Nodes
+
 // This file defines the protocols and types in the interface requiring public ACL for use in another module.
 
 // MARK: - Listener

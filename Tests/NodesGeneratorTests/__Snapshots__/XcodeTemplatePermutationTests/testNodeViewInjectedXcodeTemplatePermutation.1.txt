@@ -55,8 +55,9 @@
           - value: "<flowPropertyType>"
     ▿ flowTestsImports: 1 element
       - "<baseTestImport>"
-    ▿ interfaceImports: 1 element
+    ▿ interfaceImports: 2 elements
       - "<baseImport>"
+      - "Nodes"
     - isNimbleEnabled: false
     - isPeripheryCommentEnabled: true
     - nodeName: "___VARIABLE_productName___"
