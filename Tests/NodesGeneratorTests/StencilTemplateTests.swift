@@ -68,6 +68,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(name) == "Interface"
             case .plugin:
                 expect(name) == "Plugin"
+            case .pluginInterface:
+                expect(name) == "PluginInterface"
             case .pluginTests:
                 expect(name) == "PluginTests"
             case .pluginList:
@@ -117,6 +119,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(filename) == "Interface\(variation == .swiftUI ? "-SwiftUI" : "")"
             case .plugin:
                 expect(filename) == "Plugin"
+            case .pluginInterface:
+                expect(filename) == "PluginInterface"
             case .pluginTests:
                 expect(filename) == "PluginTests"
             case .pluginList:
@@ -168,6 +172,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .viewController(variation),
                 .viewState,
                 .plugin,
+                .pluginInterface,
                 .analyticsTests,
                 .builderTests,
                 .contextTests,
@@ -201,7 +206,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 .state,
                 .viewController(variation),
                 .viewState,
-                .plugin
+                .plugin,
+                .pluginInterface
             ]
             expect(node.stencils(includePlugin: false, includeTests: false)) == [
                 .analytics,
@@ -226,6 +232,7 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .interface(.regular),
             .state,
             .plugin,
+            .pluginInterface,
             .analyticsTests,
             .builderTests,
             .contextTests,
@@ -251,7 +258,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
             .flow,
             .interface(.regular),
             .state,
-            .plugin
+            .plugin,
+            .pluginInterface
         ]
         expect(node.stencils(includePlugin: false, includeTests: false)) == [
             .analytics,
@@ -336,6 +344,10 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                         "<baseImport>",
                         "<dependencyInjectionImport>",
                         "Nodes"
+                    ]
+                case .pluginInterface:
+                    expect(imports) == [
+                        "<baseImport>"
                     ]
                 case .pluginTests:
                     expect(imports) == [
@@ -454,6 +466,10 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     "<dependencyInjectionImport>",
                     "Nodes"
                 ]
+            case .pluginInterface:
+                expect(imports) == [
+                    "<baseImport>"
+                ]
             case .pluginTests:
                 expect(imports) == [
                     "<baseTestImport>",
@@ -514,6 +530,7 @@ extension StencilTemplate {
         .interface(.regular),
         .interface(.swiftUI),
         .plugin,
+        .pluginInterface,
         .pluginTests,
         .pluginList,
         .pluginListTests,

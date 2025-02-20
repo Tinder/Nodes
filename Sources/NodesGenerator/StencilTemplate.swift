@@ -20,6 +20,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
     case flowTests
     case interface(Variation)
     case plugin
+    case pluginInterface
     case pluginTests
     case pluginList
     case pluginListTests
@@ -62,6 +63,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         public let flowTests: StencilTemplate
         public let interface: StencilTemplate
         public let plugin: StencilTemplate
+        public let pluginInterface: StencilTemplate
         public let pluginTests: StencilTemplate
         public let state: StencilTemplate
         public let viewController: StencilTemplate
@@ -80,6 +82,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
             self.flowTests = .flowTests
             self.interface = .interface(variation)
             self.plugin = .plugin
+            self.pluginInterface = .pluginInterface
             self.pluginTests = .pluginTests
             self.state = .state
             self.viewController = .viewController(variation)
@@ -98,7 +101,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
                 state,
                 viewController,
                 viewState
-            ] + (includePlugin ? [.plugin] : [])
+            ] + (includePlugin ? [.plugin, .pluginInterface] : [])
             guard includeTests
             else { return stencils }
             let testsStencils: [StencilTemplate] = [
@@ -125,6 +128,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         public let flowTests: StencilTemplate
         public let interface: StencilTemplate
         public let plugin: StencilTemplate
+        public let pluginInterface: StencilTemplate
         public let pluginTests: StencilTemplate
         public let state: StencilTemplate
 
@@ -139,6 +143,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
             self.flowTests = .flowTests
             self.interface = .interface(.regular)
             self.plugin = .plugin
+            self.pluginInterface = .pluginInterface
             self.pluginTests = .pluginTests
             self.state = .state
         }
@@ -151,7 +156,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
                 flow,
                 interface,
                 state
-            ] + (includePlugin ? [.plugin] : [])
+            ] + (includePlugin ? [.plugin, .pluginInterface] : [])
             guard includeTests
             else { return stencils }
             let testsStencils: [StencilTemplate] = [
@@ -188,6 +193,8 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
             "Interface"
         case .plugin:
             "Plugin"
+        case .pluginInterface:
+            "PluginInterface"
         case .pluginTests:
             "PluginTests"
         case .pluginList:
@@ -224,6 +231,8 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         case .flow, .flowTests:
             description
         case .plugin, .pluginTests:
+            description
+        case .pluginInterface:
             description
         case let .interface(variation):
             description.appending(variation.suffix)
@@ -277,6 +286,8 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
             config.baseImports
                 .union(["Nodes"])
                 .union(config.dependencyInjectionImports)
+        case .pluginInterface:
+            config.baseImports
         case .pluginTests:
             config.baseTestImports
                 .union(["NodesTesting"])

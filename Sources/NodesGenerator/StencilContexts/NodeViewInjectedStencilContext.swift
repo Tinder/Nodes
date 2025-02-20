@@ -22,6 +22,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
     private let flowTestsImports: [String]
     private let interfaceImports: [String]
     private let pluginImports: [String]
+    private let pluginInterfaceImports: [String]
     private let pluginTestsImports: [String]
     private let stateImports: [String]
     private let dependencies: [[String: Any]]
@@ -52,6 +53,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             "flow_tests_imports": flowTestsImports,
             "interface_imports": interfaceImports,
             "plugin_imports": pluginImports,
+            "plugin_interface_imports": pluginInterfaceImports,
             "plugin_tests_imports": pluginTestsImports,
             "state_imports": stateImports,
             "dependencies": dependencies,
@@ -83,6 +85,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         flowTestsImports: Set<String>,
         interfaceImports: Set<String>,
         pluginImports: Set<String>,
+        pluginInterfaceImports: Set<String>,
         pluginTestsImports: Set<String>,
         stateImports: Set<String>,
         dependencies: [Config.Variable],
@@ -112,6 +115,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             flowTestsImports: flowTestsImports,
             interfaceImports: interfaceImports,
             pluginImports: pluginImports,
+            pluginInterfaceImports: pluginInterfaceImports,
             pluginTestsImports: pluginTestsImports,
             stateImports: stateImports,
             dependencies: dependencies,
@@ -141,6 +145,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         flowTestsImports: Set<String>,
         interfaceImports: Set<String>,
         pluginImports: Set<String>,
+        pluginInterfaceImports: Set<String>,
         pluginTestsImports: Set<String>,
         stateImports: Set<String>,
         dependencies: [Config.Variable],
@@ -171,6 +176,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             flowTestsImports: flowTestsImports,
             interfaceImports: interfaceImports,
             pluginImports: pluginImports,
+            pluginInterfaceImports: pluginInterfaceImports,
             pluginTestsImports: pluginTestsImports,
             stateImports: stateImports,
             dependencies: dependencies,
@@ -202,6 +208,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         flowTestsImports: Set<String>,
         interfaceImports: Set<String>,
         pluginImports: Set<String>,
+        pluginInterfaceImports: Set<String>,
         pluginTestsImports: Set<String>,
         stateImports: Set<String>,
         dependencies: [Config.Variable],
@@ -231,6 +238,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         self.flowTestsImports = flowTestsImports.sortedImports()
         self.interfaceImports = interfaceImports.sortedImports()
         self.pluginImports = pluginImports.sortedImports()
+        self.pluginInterfaceImports = pluginInterfaceImports.sortedImports()
         self.pluginTestsImports = pluginTestsImports.sortedImports()
         self.stateImports = stateImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)

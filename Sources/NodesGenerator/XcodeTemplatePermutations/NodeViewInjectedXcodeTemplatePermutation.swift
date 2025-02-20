@@ -33,6 +33,7 @@ internal struct NodeViewInjectedXcodeTemplatePermutation: XcodeTemplatePermutati
             flowTestsImports: node.flowTests.imports(with: config),
             interfaceImports: node.interface.imports(with: config),
             pluginImports: node.plugin.imports(with: config),
+            pluginInterfaceImports: node.pluginInterface.imports(with: config),
             pluginTestsImports: node.pluginTests.imports(with: config),
             stateImports: node.state.imports(with: config),
             dependencies: config.dependencies,
