@@ -1,4 +1,4 @@
-▿ 183 elements
+▿ 194 elements
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKitCreatedForPluginList/___FILEBASENAME___Analytics.swift"
     - atomically: true
@@ -25,6 +25,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKitCreatedForPluginList/___FILEBASENAME___Plugin.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKitCreatedForPluginList/___FILEBASENAME___PluginInterface.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKitCreatedForPluginList/___FILEBASENAME___AnalyticsTests.swift"
@@ -75,6 +78,9 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit/___FILEBASENAME___PluginInterface.swift"
+    - atomically: true
+  ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
@@ -121,6 +127,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKitCreatedForPluginList/___FILEBASENAME___Plugin.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKitCreatedForPluginList/___FILEBASENAME___PluginInterface.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKitCreatedForPluginList/___FILEBASENAME___AnalyticsTests.swift"
@@ -171,6 +180,9 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit/___FILEBASENAME___PluginInterface.swift"
+    - atomically: true
+  ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
@@ -217,6 +229,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___Plugin.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___PluginInterface.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___AnalyticsTests.swift"
@@ -267,6 +282,9 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___PluginInterface.swift"
+    - atomically: true
+  ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/AppKit (SwiftUI)/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
@@ -313,6 +331,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___Plugin.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___PluginInterface.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit (SwiftUI)CreatedForPluginList/___FILEBASENAME___AnalyticsTests.swift"
@@ -363,6 +384,9 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit (SwiftUI)/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit (SwiftUI)/___FILEBASENAME___PluginInterface.swift"
+    - atomically: true
+  ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/UIKit (SwiftUI)/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
@@ -409,6 +433,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/CustomCreatedForPluginList/___FILEBASENAME___Plugin.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/CustomCreatedForPluginList/___FILEBASENAME___PluginInterface.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/CustomCreatedForPluginList/___FILEBASENAME___AnalyticsTests.swift"
@@ -459,6 +486,9 @@
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/Custom/___FILEBASENAME___Plugin.swift"
     - atomically: true
   ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/Custom/___FILEBASENAME___PluginInterface.swift"
+    - atomically: true
+  ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/Node.xctemplate/Custom/___FILEBASENAME___AnalyticsTests.swift"
     - atomically: true
   ▿ (2 elements)
@@ -502,6 +532,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/___FILEBASENAME___Plugin.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/___FILEBASENAME___PluginInterface.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/Developer/Xcode/Templates/File Templates/Nodes Architecture Framework (identifier)/View Injected.xctemplate/___FILEBASENAME___AnalyticsTests.swift"

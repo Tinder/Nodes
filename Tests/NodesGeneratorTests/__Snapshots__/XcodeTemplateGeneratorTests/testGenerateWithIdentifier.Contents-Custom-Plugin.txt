@@ -55,16 +55,6 @@ public final class ___VARIABLE_productName___PluginComponent: Component
 
 // MARK: - Plugin
 
-/// Dynamic state from the caller provided to the plugin to use in determining whether it is enabled.
-/// - NOTE: An alias to a tuple is supported.
-internal typealias ___VARIABLE_productName___PluginStateType = Void
-
-/// @mockable
-@MainActor
-internal protocol ___VARIABLE_productName___Plugin {
-    func create() -> ___VARIABLE_productName___Builder?
-}
-
 internal final class ___VARIABLE_productName___PluginImp: Plugin
 <
     ___VARIABLE_productName___PluginComponent,
