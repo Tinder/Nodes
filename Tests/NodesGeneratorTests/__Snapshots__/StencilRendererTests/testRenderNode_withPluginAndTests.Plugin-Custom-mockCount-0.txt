@@ -52,16 +52,6 @@ public final class PluginComponent: Component
 
 // MARK: - Plugin
 
-/// Dynamic state from the caller provided to the plugin to use in determining whether it is enabled.
-/// - NOTE: An alias to a tuple is supported.
-internal typealias PluginStateType = Void
-
-/// @mockable
-@MainActor
-internal protocol Plugin {
-    func create() -> Builder?
-}
-
 internal final class PluginImp: Plugin
 <
     PluginComponent,
