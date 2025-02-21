@@ -94,7 +94,7 @@
   ▿ (2 elements)
     - key: "plugin_interface_imports"
     ▿ value: 1 element
-      - "<pluginInterfaceImports>"
+      - "<pluginInterfaceImport>"
   ▿ (2 elements)
     - key: "plugin_name"
     - value: ""

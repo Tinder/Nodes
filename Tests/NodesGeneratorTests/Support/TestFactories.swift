@@ -220,7 +220,7 @@ extension TestFactories {
             flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
             interfaceImports: .mock(with: "interfaceImport", count: mockCount),
             pluginImports: .mock(with: "pluginImport", count: mockCount),
-            pluginInterfaceImports: .mock(with: "pluginInterfaceImports", count: mockCount),
+            pluginInterfaceImports: .mock(with: "pluginInterfaceImport", count: mockCount),
             pluginTestsImports: .mock(with: "pluginTestsImport", count: mockCount),
             stateImports: .mock(with: "stateImport", count: mockCount),
             dependencies: .mock(with: "dependency", count: mockCount),
