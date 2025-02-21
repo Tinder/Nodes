@@ -12,6 +12,7 @@ public struct PluginStencilContext: StencilContext {
     private let fileHeader: String
     private let pluginName: String
     private let pluginImports: [String]
+    private let pluginInterfaceImports: [String]
     private let pluginTestsImports: [String]
     private let isPeripheryCommentEnabled: Bool
     private let isNimbleEnabled: Bool
@@ -21,6 +22,7 @@ public struct PluginStencilContext: StencilContext {
             "file_header": fileHeader,
             "plugin_name": pluginName,
             "plugin_imports": pluginImports,
+            "plugin_interface_imports": pluginInterfaceImports,
             "plugin_tests_imports": pluginTestsImports,
             "is_periphery_comment_enabled": isPeripheryCommentEnabled,
             "is_nimble_enabled": isNimbleEnabled
@@ -31,6 +33,7 @@ public struct PluginStencilContext: StencilContext {
         fileHeader: String,
         pluginName: String,
         pluginImports: Set<String>,
+        pluginInterfaceImports: Set<String>,
         pluginTestsImports: Set<String>,
         isPeripheryCommentEnabled: Bool,
         isNimbleEnabled: Bool
@@ -38,6 +41,7 @@ public struct PluginStencilContext: StencilContext {
         self.fileHeader = fileHeader
         self.pluginName = pluginName
         self.pluginImports = pluginImports.sortedImports()
+        self.pluginInterfaceImports = pluginInterfaceImports.sortedImports()
         self.pluginTestsImports = pluginTestsImports.sortedImports()
         self.isPeripheryCommentEnabled = isPeripheryCommentEnabled
         self.isNimbleEnabled = isNimbleEnabled
