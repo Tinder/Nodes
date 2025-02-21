@@ -110,6 +110,26 @@ final class StencilRendererTests: XCTestCase, TestFactories {
 
     func testRenderNode_withPluginAndTests() throws {
         let stencilRenderer: StencilRenderer = .init()
+        let expectedTemplates: [String] = [
+            "Analytics",
+            "AnalyticsTests",
+            "Builder",
+            "BuilderTests",
+            "Context",
+            "ContextTests",
+            "Flow",
+            "FlowTests",
+            "Interface",
+            "Plugin",
+            "PluginInterface",
+            "PluginTests",
+            "State",
+            "ViewController",
+            "ViewControllerTests",
+            "ViewState",
+            "ViewStateFactoryTests"
+        ]
+
         try mockCounts.forEach { count in
             try UIFramework.Kind.allCases.forEach { kind in
                 let context: NodeStencilContext = try givenNodeStencilContext(mockCount: count)
@@ -117,25 +137,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                                                                                  kind: kind,
                                                                                  includePlugin: true,
                                                                                  includeTests: true)
-                expect(templates.keys.sorted()) == [
-                    "Analytics",
-                    "AnalyticsTests",
-                    "Builder",
-                    "BuilderTests",
-                    "Context",
-                    "ContextTests",
-                    "Flow",
-                    "FlowTests",
-                    "Interface",
-                    "Plugin",
-                    "PluginInterface",
-                    "PluginTests",
-                    "State",
-                    "ViewController",
-                    "ViewControllerTests",
-                    "ViewState",
-                    "ViewStateFactoryTests"
-                ]
+                expect(templates.keys.sorted()) == expectedTemplates
                 templates.forEach { name, template in
                     assertSnapshot(of: template,
                                    as: .lines,
