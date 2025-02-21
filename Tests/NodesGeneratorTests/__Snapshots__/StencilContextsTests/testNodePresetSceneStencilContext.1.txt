@@ -1,4 +1,4 @@
-▿ 27 key/value pairs
+▿ 28 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -91,6 +91,10 @@
     - key: "plugin_imports"
     ▿ value: 1 element
       - "<pluginImport>"
+  ▿ (2 elements)
+    - key: "plugin_interface_imports"
+    ▿ value: 1 element
+      - "<pluginInterfaceImports>"
   ▿ (2 elements)
     - key: "plugin_name"
     - value: ""

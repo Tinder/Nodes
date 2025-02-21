@@ -65,6 +65,8 @@
       - "<baseImport>"
       - "<dependencyInjectionImport>"
       - "Nodes"
+    ▿ pluginInterfaceImports: 1 element
+      - "<baseImport>"
     - pluginName: "___VARIABLE_productName___"
     ▿ pluginTestsImports: 2 elements
       - "<baseTestImport>"
@@ -76,7 +78,7 @@
     - viewControllableType: "<viewControllableType>"
     ▿ workerGenericTypes: 1 element
       - "<workerGenericType>"
-  ▿ stencils: 12 elements
+  ▿ stencils: 13 elements
     - Analytics
     ▿ Builder
       - builder: Variation.regular
@@ -86,6 +88,7 @@
       - interface: Variation.regular
     - State
     - Plugin
+    - PluginInterface
     - AnalyticsTests
     - BuilderTests
     - ContextTests

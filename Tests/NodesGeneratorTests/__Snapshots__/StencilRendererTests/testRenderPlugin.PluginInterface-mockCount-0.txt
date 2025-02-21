@@ -1,0 +1,13 @@
+//<fileHeader>
+
+// This file defines the protocols and types in the plugin interface requiring public ACL for use in another module.
+
+/// Dynamic state from the caller provided to the plugin to use in determining whether it is enabled.
+/// - NOTE: An alias to a tuple is supported.
+internal typealias <pluginName>PluginStateType = Void
+
+/// @mockable
+@MainActor
+internal protocol <pluginName>Plugin {
+    func create() -> <pluginName>Builder?
+}

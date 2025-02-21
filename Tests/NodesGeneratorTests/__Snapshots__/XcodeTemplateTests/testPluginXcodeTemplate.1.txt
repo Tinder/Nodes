@@ -11,12 +11,15 @@
           - "<baseImport>"
           - "<dependencyInjectionImport>"
           - "Nodes"
+        ▿ pluginInterfaceImports: 1 element
+          - "<baseImport>"
         - pluginName: "___VARIABLE_productName___"
         ▿ pluginTestsImports: 2 elements
           - "<baseTestImport>"
           - "NodesTesting"
-      ▿ stencils: 2 elements
+      ▿ stencils: 3 elements
         - Plugin
+        - PluginInterface
         - PluginTests
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
