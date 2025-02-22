@@ -40,31 +40,31 @@ public final class <pluginListName>PluginListComponent: Component
 
     // MARK: - Dependencies
 
-    /// Define dependencies as `fileprivate` computed property factories that create new instances when accessed.
-    /// Only increase access control to `public` when the component is to provide the dependency to its descendants.
-    ///
-    ///     fileprivate var exampleFactory: Example {
-    ///         Example()
-    ///     }
-    ///
-    /// Store the dependency on the component only when shared state is necessary.
-    ///
-    ///     fileprivate let example: Example = .init()
-    ///
-    /// Or use the `shared` helper method which always returns the same instance from the computed property.
-    /// This is only necessary for dependencies initialized with other dependencies.
-    ///
-    ///     fileprivate var example: Example {
-    ///         shared { Example(otherDependency: dependency.otherDependency) }
-    ///     }
+    // Define dependencies as `fileprivate` computed property factories that create new instances when accessed.
+    // Only increase access control to `public` when the component is to provide the dependency to its descendants.
+    //
+    //     fileprivate var exampleFactory: Example {
+    //         Example()
+    //     }
+    //
+    // Store the dependency on the component only when shared state is necessary.
+    //
+    //     fileprivate let example: Example = .init()
+    //
+    // Or use the `shared` helper method which always returns the same instance from the computed property.
+    // This is only necessary for dependencies initialized with other dependencies.
+    //
+    //     fileprivate var example: Example {
+    //         shared { Example(otherDependency: dependency.otherDependency) }
+    //     }
 
     // MARK: - Child Components
 
-    /// Define child component factories as 'fileprivate' methods.
-    ///
-    ///     fileprivate func <name>PluginComponentFactory() -> <Name>PluginComponent {
-    ///         <Name>PluginComponent(parent: self)
-    ///     }
+    // Define child component factories as 'fileprivate' methods.
+    //
+    //     fileprivate func <name>PluginComponentFactory() -> <Name>PluginComponent {
+    //         <Name>PluginComponent(parent: self)
+    //     }
 }
 
 // MARK: - Plugin List
