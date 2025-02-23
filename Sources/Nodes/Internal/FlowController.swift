@@ -30,6 +30,12 @@ public final class FlowController {
 
     internal var isFlowLeakDetectionEnabled: Bool = true
 
+    #if DEBUG
+
+    private var _flowCount: Int = 0
+
+    #endif
+
     /// Initializes a new ``FlowController`` instance to manage a collection of `Flow` instances.
     public init() {}
 
@@ -68,6 +74,9 @@ public final class FlowController {
         DebugInformation.FlowControllerWillAttachNotification(flowController: self, flow: flow).post()
         #endif
         flows.append(flow)
+        #if DEBUG
+        _flowCount += 1
+        #endif
         flow.start()
     }
 
@@ -84,6 +93,9 @@ public final class FlowController {
             return
         }
         flow.end()
+        #if DEBUG
+        _flowCount -= 1
+        #endif
         flows.removeAll { $0 === flow }
         if isFlowLeakDetectionEnabled { LeakDetector.detect(flow) }
         #if DEBUG
@@ -234,4 +246,16 @@ public final class FlowController {
     public func withFlows<T>(ofType type: T.Type, perform: (_ flow: T) throws -> Void) rethrows {
         try flows(ofType: type).forEach(perform)
     }
+
+    #if DEBUG
+
+    deinit {
+        if _flowCount > 0 {
+            assertionFailure("""
+                Lifecycle Violation: Expected `Flow` instances to be detached before `FlowController` is deallocated
+                """)
+        }
+    }
+
+    #endif
 }
