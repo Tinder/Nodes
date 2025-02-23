@@ -279,13 +279,15 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         try flowController.withFlows(ofType: type, perform: perform)
     }
 
+    #if DEBUG
+
     deinit {
-        #if DEBUG
         if _isStarted {
-            assertionFailure("Lifecycle Violation: Expected `AbstractFlow` to end before it is deallocated.")
+            assertionFailure("Lifecycle Violation: Expected `AbstractFlow` to end before it is deallocated")
         }
-        #endif
     }
+
+    #endif
 }
 
 // swiftlint:enable period_spacing

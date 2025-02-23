@@ -70,13 +70,15 @@ open class _BaseWorker: Worker { // swiftlint:disable:this type_name
         isWorking = false
     }
 
+    #if DEBUG
+
     deinit {
-        #if DEBUG
         if isWorking {
-            assertionFailure("Lifecycle Violation: Expected `AbstractWorker` to stop before it is deallocated.")
+            assertionFailure("Lifecycle Violation: Expected `AbstractWorker` to stop before it is deallocated")
         }
-        #endif
     }
+
+    #endif
 }
 
 /**
