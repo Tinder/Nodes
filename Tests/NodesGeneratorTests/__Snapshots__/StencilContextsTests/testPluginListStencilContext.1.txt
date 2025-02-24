@@ -18,7 +18,7 @@
   ▿ (2 elements)
     - key: "plugin_list_tests_imports"
     ▿ value: 1 element
-      - "<pluginListTestsImports>"
+      - "<pluginListTestsImport>"
   ▿ (2 elements)
     - key: "view_controllable_flow_type"
     - value: "<viewControllableFlowType>"
