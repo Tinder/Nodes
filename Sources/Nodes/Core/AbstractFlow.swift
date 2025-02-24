@@ -283,7 +283,7 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
 
     deinit {
         if _isStarted {
-            assertionFailure("Lifecycle Violation: Expected `AbstractFlow` to end before it is deallocated")
+            assertionFailure("Lifecycle Violation: Expect `AbstractFlow` to end before it is deallocated.")
         }
     }
 

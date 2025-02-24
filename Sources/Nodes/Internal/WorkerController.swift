@@ -99,7 +99,7 @@ public final class WorkerController {
         for worker: Worker in workers {
             if worker.isWorking {
                 assertionFailure("""
-                    Lifecycle Violation: Expected `Worker` instance to stop before `WorkerController` is deallocated
+                    Lifecycle Violation: Expect `Worker` instance to stop before `WorkerController` is deallocated.
                     """)
             }
             LeakDetector.detect(worker)
