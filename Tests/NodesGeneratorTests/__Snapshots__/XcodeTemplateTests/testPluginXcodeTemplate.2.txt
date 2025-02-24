@@ -7,11 +7,15 @@
         - fileHeader: "___FILEHEADER___"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true
-        ▿ pluginImports: 1 element
+        ▿ pluginImports: 3 elements
+          - "<baseImport>"
+          - "<dependencyInjectionImport>"
           - "Nodes"
-        - pluginInterfaceImports: 0 elements
+        ▿ pluginInterfaceImports: 1 element
+          - "<baseImport>"
         - pluginName: "___VARIABLE_productName___"
-        ▿ pluginTestsImports: 1 element
+        ▿ pluginTestsImports: 2 elements
+          - "<baseTestImport>"
           - "NodesTesting"
       ▿ stencils: 3 elements
         - Plugin

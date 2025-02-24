@@ -1,0 +1,158 @@
+▿ NodeViewInjectedXcodeTemplate
+  - name: "View Injected"
+  ▿ permutations: 1 element
+    ▿ NodeViewInjectedXcodeTemplatePermutation
+      - name: "View Injected"
+      ▿ stencilContext: NodeViewInjectedStencilContext
+        ▿ analyticsImports: 2 elements
+          - "<baseImport1>"
+          - "<baseImport2>"
+        ▿ analyticsProperties: 2 elements
+          ▿ 2 key/value pairs
+            ▿ (2 elements)
+              - key: "name"
+              - value: "<analyticsPropertyName1>"
+            ▿ (2 elements)
+              - key: "type"
+              - value: "<analyticsPropertyType1>"
+          ▿ 2 key/value pairs
+            ▿ (2 elements)
+              - key: "name"
+              - value: "<analyticsPropertyName2>"
+            ▿ (2 elements)
+              - key: "type"
+              - value: "<analyticsPropertyType2>"
+        ▿ analyticsTestsImports: 2 elements
+          - "<baseTestImport1>"
+          - "<baseTestImport2>"
+        ▿ builderImports: 9 elements
+          - "<baseImport1>"
+          - "<baseImport2>"
+          - "<builderImport1>"
+          - "<builderImport2>"
+          - "<dependencyInjectionImport1>"
+          - "<dependencyInjectionImport2>"
+          - "<reactiveImport1>"
+          - "<reactiveImport2>"
+          - "Nodes"
+        ▿ builderTestsImports: 3 elements
+          - "<baseTestImport1>"
+          - "<baseTestImport2>"
+          - "NodesTesting"
+        - componentDependencies: ""
+        ▿ contextGenericTypes: 1 element
+          - "<contextGenericType>"
+        ▿ contextImports: 5 elements
+          - "<baseImport1>"
+          - "<baseImport2>"
+          - "<reactiveImport1>"
+          - "<reactiveImport2>"
+          - "Nodes"
+        ▿ contextTestsImports: 3 elements
+          - "<baseTestImport1>"
+          - "<baseTestImport2>"
+          - "Nodes"
+        ▿ dependencies: 2 elements
+          ▿ 2 key/value pairs
+            ▿ (2 elements)
+              - key: "name"
+              - value: "<dependencyName1>"
+            ▿ (2 elements)
+              - key: "type"
+              - value: "<dependencyType1>"
+          ▿ 2 key/value pairs
+            ▿ (2 elements)
+              - key: "name"
+              - value: "<dependencyName2>"
+            ▿ (2 elements)
+              - key: "type"
+              - value: "<dependencyType2>"
+        - fileHeader: "___FILEHEADER___"
+        ▿ flowImports: 5 elements
+          - "<baseImport1>"
+          - "<baseImport2>"
+          - "<flowImport1>"
+          - "<flowImport2>"
+          - "Nodes"
+        ▿ flowProperties: 2 elements
+          ▿ 2 key/value pairs
+            ▿ (2 elements)
+              - key: "name"
+              - value: "<flowPropertyName1>"
+            ▿ (2 elements)
+              - key: "type"
+              - value: "<flowPropertyType1>"
+          ▿ 2 key/value pairs
+            ▿ (2 elements)
+              - key: "name"
+              - value: "<flowPropertyName2>"
+            ▿ (2 elements)
+              - key: "type"
+              - value: "<flowPropertyType2>"
+        ▿ flowTestsImports: 2 elements
+          - "<baseTestImport1>"
+          - "<baseTestImport2>"
+        ▿ interfaceImports: 3 elements
+          - "<baseImport1>"
+          - "<baseImport2>"
+          - "Nodes"
+        - isNimbleEnabled: false
+        - isPeripheryCommentEnabled: true
+        - nodeName: "___VARIABLE_productName___"
+        ▿ pluginImports: 5 elements
+          - "<baseImport1>"
+          - "<baseImport2>"
+          - "<dependencyInjectionImport1>"
+          - "<dependencyInjectionImport2>"
+          - "Nodes"
+        ▿ pluginInterfaceImports: 2 elements
+          - "<baseImport1>"
+          - "<baseImport2>"
+        - pluginName: "___VARIABLE_productName___"
+        ▿ pluginTestsImports: 3 elements
+          - "<baseTestImport1>"
+          - "<baseTestImport2>"
+          - "NodesTesting"
+        ▿ stateImports: 2 elements
+          - "<baseImport1>"
+          - "<baseImport2>"
+        - viewControllableFlowType: "<viewControllableFlowType>"
+        - viewControllableMockContents: "<viewControllableMockContents>"
+        - viewControllableType: "<viewControllableType>"
+        ▿ workerGenericTypes: 1 element
+          - "<workerGenericType>"
+      ▿ stencils: 13 elements
+        - Analytics
+        ▿ Builder
+          - builder: Variation.regular
+        - Context
+        - Flow
+        ▿ Interface
+          - interface: Variation.regular
+        - State
+        - Plugin
+        - PluginInterface
+        - AnalyticsTests
+        - BuilderTests
+        - ContextTests
+        - FlowTests
+        - PluginTests
+  ▿ propertyList: XcodeTemplatePropertyList
+    ▿ allowedTypes: 1 element
+      - "public.swift-source"
+    - kind: "Xcode.IDEFoundation.TextSubstitutionFileTemplateKind"
+    - mainTemplateFile: "___FILEBASENAME___.swift"
+    ▿ options: 1 element
+      ▿ Option
+        - default: Optional<String>.none
+        - description: "The name of the node."
+        - identifier: "productName"
+        - name: "Node Name:"
+        - notPersisted: true
+        - required: true
+        - requiredOptions: 0 key/value pairs
+        - type: "text"
+        - values: 0 elements
+    - platforms: 0 elements
+    - sortOrder: 2
+    - supportsSwiftPackage: true
