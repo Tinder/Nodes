@@ -18,6 +18,7 @@
   - isTestTemplatesGenerationEnabled: true
   - isViewInjectedTemplateEnabled: true
   - pluginListImports: 0 members
+  - pluginListInterfaceImports: 0 members
   - publisherFailureType: "Never"
   - publisherType: "AnyPublisher"
   ▿ reactiveImports: 1 member
