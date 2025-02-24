@@ -99,7 +99,7 @@ open class Plugin<ComponentType, BuildType, StateType> {
     private func makeComponent() -> ComponentType {
         let component: ComponentType = componentFactory()
         let newComponent: AnyObject = component as AnyObject
-        assert(newComponent !== lastComponent, "Factory must produce a new component each time it is called")
+        assert(newComponent !== lastComponent, "Factory must produce a new component each time it is called.")
         lastComponent = newComponent
         return component
     }

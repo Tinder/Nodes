@@ -167,7 +167,7 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
     fileprivate func makeComponent() -> ComponentType {
         let component: ComponentType = componentFactory()
         let newComponent: AnyObject = component as AnyObject
-        assert(newComponent !== lastComponent, "Factory must produce a new component each time it is called")
+        assert(newComponent !== lastComponent, "Factory must produce a new component each time it is called.")
         lastComponent = newComponent
         return component
     }
@@ -204,7 +204,7 @@ open class PluginList<KeyType: Hashable, ComponentType, BuildType, StateType> {
         let keys: [KeyType] = creationOrder(component: component, state: state)
         var store: Set<KeyType> = []
         let uniqueKeys: [KeyType] = keys.filter { store.insert($0).inserted }
-        assert(uniqueKeys.count == keys.count, "Keys must be unique \(keys)")
+        assert(uniqueKeys.count == keys.count, "Keys must be unique: \(keys)")
         return uniqueKeys.compactMap { key in plugins.first { $0.key == key } }
     }
 }
