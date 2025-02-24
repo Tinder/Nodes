@@ -252,7 +252,7 @@ public final class FlowController {
     deinit {
         if _flowCount > 0 {
             assertionFailure("""
-                Lifecycle Violation: Expect `Flow` instances to be detached before `FlowController` is deallocated.
+                Lifecycle Violation: Expect `Flow` instances to detach before `FlowController` is deallocated.
                 """)
         }
     }
