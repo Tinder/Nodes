@@ -296,7 +296,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             let context: PluginListStencilContext = givenPluginListStencilContext(mockCount: count)
             let templates: [String: String] = try stencilRenderer
                 .renderPluginList(context: context, includeTests: false)
-            expect(templates.keys.sorted()) == ["PluginList"]
+            expect(templates.keys.sorted()) == ["PluginList", "PluginListInterface"]
             templates.forEach { name, template in
                 assertSnapshot(of: template,
                                as: .lines,
@@ -311,7 +311,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             let context: PluginListStencilContext = givenPluginListStencilContext(mockCount: count)
             let templates: [String: String] = try stencilRenderer
                 .renderPluginList(context: context, includeTests: true)
-            expect(templates.keys.sorted()) == ["PluginList", "PluginListTests"]
+            expect(templates.keys.sorted()) == ["PluginList", "PluginListInterface", "PluginListTests"]
             templates.forEach { name, template in
                 assertSnapshot(of: template,
                                as: .lines,

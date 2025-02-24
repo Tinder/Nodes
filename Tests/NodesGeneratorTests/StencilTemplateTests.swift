@@ -74,6 +74,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(name) == "PluginTests"
             case .pluginList:
                 expect(name) == "PluginList"
+            case .pluginListInterface:
+                expect(name) == "PluginListInterface"
             case .pluginListTests:
                 expect(name) == "PluginListTests"
             case .state:
@@ -125,6 +127,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 expect(filename) == "PluginTests"
             case .pluginList:
                 expect(filename) == "PluginList"
+            case .pluginListInterface:
+                expect(filename) == "PluginListInterface"
             case .pluginListTests:
                 expect(filename) == "PluginListTests"
             case .state:
@@ -361,6 +365,10 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                         "<pluginListImport>",
                         "Nodes"
                     ]
+                case .pluginListInterface:
+                    expect(imports) == [
+                        "<baseImport>"
+                    ]
                 case .pluginListTests:
                     expect(imports) == [
                         "<baseTestImport>",
@@ -482,6 +490,10 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     "<pluginListImport>",
                     "Nodes"
                 ]
+            case .pluginListInterface:
+                expect(imports) == [
+                    "<baseImport>"
+                ]
             case .pluginListTests:
                 expect(imports) == [
                     "<baseTestImport>",
@@ -533,6 +545,7 @@ extension StencilTemplate {
         .pluginInterface,
         .pluginTests,
         .pluginList,
+        .pluginListInterface,
         .pluginListTests,
         .state,
         .viewController(.regular),

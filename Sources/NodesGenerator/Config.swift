@@ -39,6 +39,7 @@ public struct Config: Codable, Equatable {
     public var builderImports: Set<String>
     public var flowImports: Set<String>
     public var pluginListImports: Set<String>
+    public var pluginListInterfaceImports: Set<String>
     public var viewControllerImports: Set<String>
     public var dependencies: [Variable]
     public var analyticsProperties: [Variable]
@@ -95,6 +96,7 @@ extension Config {
         builderImports = []
         flowImports = []
         pluginListImports = []
+        pluginListInterfaceImports = []
         viewControllerImports = []
         dependencies = []
         analyticsProperties = []
@@ -171,6 +173,9 @@ extension Config {
         pluginListImports =
             (try? decoder.decode(CodingKeys.pluginListImports))
             ?? defaults.pluginListImports
+        pluginListInterfaceImports =
+            (try? decoder.decode(CodingKeys.pluginListInterfaceImports))
+            ?? defaults.pluginListInterfaceImports
         viewControllerImports =
             (try? decoder.decode(CodingKeys.viewControllerImports))
             ?? defaults.viewControllerImports
