@@ -1,0 +1,19 @@
+//___FILEHEADER___
+
+// This file defines the protocols and types in the PluginList interface requiring public ACL for use in another module.
+
+/// Declares the type of key used to identify plugins within the collection.
+/// - NOTE: May be any ``Hashable`` type such as ``String`` or an enumeration.
+internal typealias ___VARIABLE_productName___PluginListKeyType = String
+
+/// Dynamic state from the caller provided to the plugins to use in determining whether they are enabled.
+/// - NOTE: An alias to a tuple is supported.
+internal typealias ___VARIABLE_productName___PluginListStateType = Void
+
+/// @mockable
+@MainActor
+internal protocol ___VARIABLE_productName___PluginList {
+    func createAll() -> [___VARIABLE_productName___Builder]
+    func create() -> ___VARIABLE_productName___Builder?
+    func create(key: ___VARIABLE_productName___PluginListKeyType) -> ___VARIABLE_productName___Builder?
+}
