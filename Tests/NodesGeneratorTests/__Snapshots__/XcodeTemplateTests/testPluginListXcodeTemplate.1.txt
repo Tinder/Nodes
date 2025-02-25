@@ -19,8 +19,9 @@
           - "<baseTestImport>"
           - "NodesTesting"
         - viewControllableFlowType: "<viewControllableFlowType>"
-      ▿ stencils: 2 elements
+      ▿ stencils: 3 elements
         - PluginList
+        - PluginListInterface
         - PluginListTests
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
