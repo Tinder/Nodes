@@ -257,7 +257,7 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
             pluginListImports: .mock(with: "pluginListImport", count: mockCount),
-            pluginListTestsImports: .mock(with: "pluginListTestsImports", count: mockCount),
+            pluginListTestsImports: .mock(with: "pluginListTestsImport", count: mockCount),
             viewControllableFlowType: "<viewControllableFlowType>",
             isPeripheryCommentEnabled: mockCount > 0,
             isNimbleEnabled: mockCount > 0
