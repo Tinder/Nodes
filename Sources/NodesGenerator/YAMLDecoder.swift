@@ -11,4 +11,4 @@ import Codextended
 import Yams
 
 // Enables Codextended with YAMLDecoder [https://github.com/JohnSundell/Codextended]
-extension YAMLDecoder: AnyDecoder {}
+extension YAMLDecoder: @retroactive AnyDecoder {}
