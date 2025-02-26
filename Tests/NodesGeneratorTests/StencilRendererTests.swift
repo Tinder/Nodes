@@ -14,8 +14,6 @@ import XCTest
 
 final class StencilRendererTests: XCTestCase, TestFactories {
 
-    private let mockCounts: ClosedRange<Int> = 0...2
-
     func testRenderNode() throws {
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in

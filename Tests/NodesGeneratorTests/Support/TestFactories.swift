@@ -15,7 +15,13 @@ extension TestFactories {
 
     private typealias Variable = Config.Variable
 
-    internal func givenConfig() -> Config {
+    internal var mockCounts: ClosedRange<Int> {
+        0...2
+    }
+
+    internal func givenConfig(
+        mockCount: Int = 1
+    ) -> Config {
         var config: Config = .init()
         config.uiFrameworks = [
             UIFramework(framework: .appKit),
@@ -28,17 +34,17 @@ extension TestFactories {
                                            viewControllerSuperParameters: "<viewControllerSuperParameters>",
                                            viewControllerMethods: "<viewControllerMethods>"))
         ]
-        config.baseImports = ["<baseImport>"]
-        config.baseTestImports = ["<baseTestImport>"]
-        config.reactiveImports = ["<reactiveImport>"]
-        config.dependencyInjectionImports = ["<dependencyInjectionImport>"]
-        config.builderImports = ["<builderImport>"]
-        config.flowImports = ["<flowImport>"]
-        config.pluginListImports = ["<pluginListImport>"]
-        config.viewControllerImports = ["<viewControllerImport>"]
-        config.dependencies = [Variable(name: "<dependencyName>", type: "<dependencyType>")]
-        config.analyticsProperties = [Variable(name: "<analyticsPropertyName>", type: "<analyticsPropertyType>")]
-        config.flowProperties = [Variable(name: "<flowPropertyName>", type: "<flowPropertyType>")]
+        config.baseImports = .mock(with: "baseImport", count: mockCount)
+        config.baseTestImports = .mock(with: "baseTestImport", count: mockCount)
+        config.reactiveImports = .mock(with: "reactiveImport", count: mockCount)
+        config.dependencyInjectionImports = .mock(with: "dependencyInjectionImport", count: mockCount)
+        config.builderImports = .mock(with: "builderImport", count: mockCount)
+        config.flowImports = .mock(with: "flowImport", count: mockCount)
+        config.pluginListImports = .mock(with: "pluginListImport", count: mockCount)
+        config.viewControllerImports = .mock(with: "viewControllerImport", count: mockCount)
+        config.dependencies = .mock(with: "dependency", count: mockCount)
+        config.analyticsProperties = .mock(with: "analyticsProperty", count: mockCount)
+        config.flowProperties = .mock(with: "flowProperty", count: mockCount)
         config.viewControllableFlowType = "<viewControllableFlowType>"
         config.viewControllableType = "<viewControllableType>"
         config.viewControllableMockContents = "<viewControllableMockContents>"
