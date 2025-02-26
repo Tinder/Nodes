@@ -284,6 +284,8 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         if _isStarted {
             assertionFailure("Lifecycle Violation: Expected `AbstractFlow` to end before it is deallocated.")
         }
+        LeakDetector.detect(self) { $0._context }
+        LeakDetector.detect(flowController)
         #endif
     }
 }
