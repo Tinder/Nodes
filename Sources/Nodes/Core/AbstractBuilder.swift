@@ -87,7 +87,7 @@ open class AbstractBuilder<ComponentType,
     ) -> BuildType {
         let component: ComponentType = componentFactory(dynamicComponentDependency)
         let newComponent: AnyObject = component as AnyObject
-        assert(newComponent !== lastComponent, "Factory must produce a new component each time it is called")
+        assert(newComponent !== lastComponent, "Factory must produce a new component each time it is called.")
         lastComponent = newComponent
         return build(component: component, dynamicBuildDependency: dynamicBuildDependency)
     }
