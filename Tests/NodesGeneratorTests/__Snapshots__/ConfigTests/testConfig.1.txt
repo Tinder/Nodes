@@ -46,6 +46,7 @@
   ▿ pluginListImports: 2 members
     - "<pluginListImports-1>"
     - "<pluginListImports-2>"
+  - pluginListInterfaceImports: 0 members
   - publisherFailureType: "<publisherFailureType>"
   - publisherType: "<publisherType>"
   ▿ reactiveImports: 2 members
