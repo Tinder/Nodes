@@ -17,6 +17,16 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     private let mockCounts: ClosedRange<Int> = 0...2
 
     func testRenderNode() throws {
+        let expectedTemplates: [String] = [
+            "Analytics",
+            "Builder",
+            "Context",
+            "Flow",
+            "Interface",
+            "State",
+            "ViewController",
+            "ViewState"
+        ]
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             try UIFramework.Kind.allCases.forEach { kind in
@@ -25,16 +35,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                                                                                  kind: kind,
                                                                                  includePlugin: false,
                                                                                  includeTests: false)
-                expect(templates.keys.sorted()) == [
-                    "Analytics",
-                    "Builder",
-                    "Context",
-                    "Flow",
-                    "Interface",
-                    "State",
-                    "ViewController",
-                    "ViewState"
-                ]
+                expect(templates.keys.sorted()) == expectedTemplates
                 templates.forEach { name, template in
                     assertSnapshot(of: template,
                                    as: .lines,
@@ -45,6 +46,18 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderNode_withPlugin() throws {
+        let expectedTemplates: [String] = [
+            "Analytics",
+            "Builder",
+            "Context",
+            "Flow",
+            "Interface",
+            "Plugin",
+            "PluginInterface",
+            "State",
+            "ViewController",
+            "ViewState"
+        ]
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             try UIFramework.Kind.allCases.forEach { kind in
@@ -53,18 +66,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                                                                                  kind: kind,
                                                                                  includePlugin: true,
                                                                                  includeTests: false)
-                expect(templates.keys.sorted()) == [
-                    "Analytics",
-                    "Builder",
-                    "Context",
-                    "Flow",
-                    "Interface",
-                    "Plugin",
-                    "PluginInterface",
-                    "State",
-                    "ViewController",
-                    "ViewState"
-                ]
+                expect(templates.keys.sorted()) == expectedTemplates
                 templates.forEach { name, template in
                     assertSnapshot(of: template,
                                    as: .lines,
@@ -75,6 +77,22 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderNode_withTests() throws {
+        let expectedTemplates: [String] = [
+            "Analytics",
+            "AnalyticsTests",
+            "Builder",
+            "BuilderTests",
+            "Context",
+            "ContextTests",
+            "Flow",
+            "FlowTests",
+            "Interface",
+            "State",
+            "ViewController",
+            "ViewControllerTests",
+            "ViewState",
+            "ViewStateFactoryTests"
+        ]
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             try UIFramework.Kind.allCases.forEach { kind in
@@ -83,22 +101,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
                                                                                  kind: kind,
                                                                                  includePlugin: false,
                                                                                  includeTests: true)
-                expect(templates.keys.sorted()) == [
-                    "Analytics",
-                    "AnalyticsTests",
-                    "Builder",
-                    "BuilderTests",
-                    "Context",
-                    "ContextTests",
-                    "Flow",
-                    "FlowTests",
-                    "Interface",
-                    "State",
-                    "ViewController",
-                    "ViewControllerTests",
-                    "ViewState",
-                    "ViewStateFactoryTests"
-                ]
+                expect(templates.keys.sorted()) == expectedTemplates
                 templates.forEach { name, template in
                     assertSnapshot(of: template,
                                    as: .lines,
@@ -109,7 +112,6 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderNode_withPluginAndTests() throws {
-        let stencilRenderer: StencilRenderer = .init()
         let expectedTemplates: [String] = [
             "Analytics",
             "AnalyticsTests",
@@ -129,7 +131,7 @@ final class StencilRendererTests: XCTestCase, TestFactories {
             "ViewState",
             "ViewStateFactoryTests"
         ]
-
+        let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             try UIFramework.Kind.allCases.forEach { kind in
                 let context: NodeStencilContext = try givenNodeStencilContext(mockCount: count)
@@ -148,23 +150,24 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderNodeViewInjected() throws {
+        let expectedTemplates: [String] = [
+            "Analytics",
+            "AnalyticsTests",
+            "Builder",
+            "BuilderTests",
+            "Context",
+            "ContextTests",
+            "Flow",
+            "FlowTests",
+            "Interface",
+            "State"
+        ]
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: NodeViewInjectedStencilContext = try givenNodeViewInjectedStencilContext(mockCount: count)
             let templates: [String: String] = try stencilRenderer.renderNodeViewInjected(context: context,
                                                                                          includeTests: true)
-            expect(templates.keys.sorted()) == [
-                "Analytics",
-                "AnalyticsTests",
-                "Builder",
-                "BuilderTests",
-                "Context",
-                "ContextTests",
-                "Flow",
-                "FlowTests",
-                "Interface",
-                "State"
-            ]
+            expect(templates.keys.sorted()) == expectedTemplates
             templates.forEach { name, template in
                 assertSnapshot(of: template, as: .lines, named: "\(name)-mockCount-\(count)")
             }
@@ -172,19 +175,20 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderNodePresetApp() throws {
+        let expectedTemplates: [String] = [
+            "Analytics",
+            "Builder",
+            "Context",
+            "Flow",
+            "Interface",
+            "State"
+        ]
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: NodeViewInjectedStencilContext = try givenNodeViewInjectedStencilContext(preset: .app,
                                                                                                   mockCount: count)
             let templates: [String: String] = try stencilRenderer.renderNodeViewInjected(context: context)
-            expect(templates.keys.sorted()) == [
-                "Analytics",
-                "Builder",
-                "Context",
-                "Flow",
-                "Interface",
-                "State"
-            ]
+            expect(templates.keys.sorted()) == expectedTemplates
             templates.forEach { name, template in
                 assertSnapshot(of: template,
                                as: .lines,
@@ -194,19 +198,20 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderNodePresetScene() throws {
+        let expectedTemplates: [String] = [
+            "Analytics",
+            "Builder",
+            "Context",
+            "Flow",
+            "Interface",
+            "State"
+        ]
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: NodeViewInjectedStencilContext = try givenNodeViewInjectedStencilContext(preset: .scene,
                                                                                                   mockCount: count)
             let templates: [String: String] = try stencilRenderer.renderNodeViewInjected(context: context)
-            expect(templates.keys.sorted()) == [
-                "Analytics",
-                "Builder",
-                "Context",
-                "Flow",
-                "Interface",
-                "State"
-            ]
+            expect(templates.keys.sorted()) == expectedTemplates
             templates.forEach { name, template in
                 assertSnapshot(of: template,
                                as: .lines,
@@ -216,19 +221,20 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderNodePresetWindow() throws {
+        let expectedTemplates: [String] = [
+            "Analytics",
+            "Builder",
+            "Context",
+            "Flow",
+            "Interface",
+            "State"
+        ]
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: NodeViewInjectedStencilContext = try givenNodeViewInjectedStencilContext(preset: .window,
                                                                                                   mockCount: count)
             let templates: [String: String] = try stencilRenderer.renderNodeViewInjected(context: context)
-            expect(templates.keys.sorted()) == [
-                "Analytics",
-                "Builder",
-                "Context",
-                "Flow",
-                "Interface",
-                "State"
-            ]
+            expect(templates.keys.sorted()) == expectedTemplates
             templates.forEach { name, template in
                 assertSnapshot(of: template,
                                as: .lines,
@@ -238,20 +244,21 @@ final class StencilRendererTests: XCTestCase, TestFactories {
     }
 
     func testRenderNodePresetRoot() throws {
+        let expectedTemplates: [String] = [
+            "Analytics",
+            "Builder",
+            "Context",
+            "Flow",
+            "Interface",
+            "State",
+            "ViewController",
+            "ViewState"
+        ]
         let stencilRenderer: StencilRenderer = .init()
         try mockCounts.forEach { count in
             let context: NodeStencilContext = try givenNodeStencilContext(preset: .root, mockCount: count)
             let templates: [String: String] = try stencilRenderer.renderNode(context: context, kind: .uiKit)
-            expect(templates.keys.sorted()) == [
-                "Analytics",
-                "Builder",
-                "Context",
-                "Flow",
-                "Interface",
-                "State",
-                "ViewController",
-                "ViewState"
-            ]
+            expect(templates.keys.sorted()) == expectedTemplates
             templates.forEach { name, template in
                 assertSnapshot(of: template,
                                as: .lines,
