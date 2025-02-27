@@ -31,23 +31,23 @@ public final class ___VARIABLE_productName___Component: Component
 
     // MARK: - Dependencies
 
-    /// Define dependencies as `fileprivate` computed property factories that create new instances when accessed.
-    /// Only increase access control to `public` when the component is to provide the dependency to its descendants.
-    ///
-    ///     fileprivate var exampleFactory: Example {
-    ///         Example()
-    ///     }
-    ///
-    /// Store the dependency on the component only when shared state is necessary.
-    ///
-    ///     fileprivate let example: Example = .init()
-    ///
-    /// Or use the `shared` helper method which always returns the same instance from the computed property.
-    /// This is only necessary for dependencies initialized with other dependencies.
-    ///
-    ///     fileprivate var example: Example {
-    ///         shared { Example(otherDependency: dependency.otherDependency) }
-    ///     }
+    // Define dependencies as `fileprivate` computed property factories that create new instances when accessed.
+    // Only increase access control to `public` when the component is to provide the dependency to its descendants.
+    //
+    //     fileprivate var exampleFactory: Example {
+    //         Example()
+    //     }
+    //
+    // Store the dependency on the component only when shared state is necessary.
+    //
+    //     fileprivate let example: Example = .init()
+    //
+    // Or use the `shared` helper method which always returns the same instance from the computed property.
+    // This is only necessary for dependencies initialized with other dependencies.
+    //
+    //     fileprivate var example: Example {
+    //         shared { Example(otherDependency: dependency.otherDependency) }
+    //     }
 
     private let dynamicDependency: ___VARIABLE_productName___DynamicComponentDependency
 
@@ -62,11 +62,11 @@ public final class ___VARIABLE_productName___Component: Component
 
     // MARK: - Child Components
 
-    /// Define child component factories as 'fileprivate' methods.
-    ///
-    ///     fileprivate func <name>ComponentFactory() -> <Name>Component {
-    ///         <Name>Component(parent: self)
-    ///     }
+    // Define child component factories as 'fileprivate' methods.
+    //
+    //     fileprivate func <name>ComponentFactory() -> <Name>Component {
+    //         <Name>Component(parent: self)
+    //     }
 }
 
 // MARK: - Builder
