@@ -105,9 +105,6 @@ open class AbstractFlow<ContextInterfaceType, ViewControllerType>: Flow {
         _isStarted = true
         #endif
         _context.activate()
-        #if DEBUG
-        _isStarted = true
-        #endif
         didStart()
     }
 
