@@ -9,13 +9,10 @@
         - isPeripheryCommentEnabled: true
         ▿ workerGenericTypes: 1 element
           - "<workerGenericType>"
-        ▿ workerImports: 3 elements
-          - "<baseImport>"
-          - "<reactiveImport>"
+        ▿ workerImports: 1 element
           - "Nodes"
         - workerName: "___VARIABLE_productName___"
-        ▿ workerTestsImports: 1 element
-          - "<baseTestImport>"
+        - workerTestsImports: 0 elements
       ▿ stencils: 2 elements
         - Worker
         - WorkerTests
