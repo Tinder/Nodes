@@ -1,6 +1,8 @@
 //<fileHeader>
 
-// This file defines the protocols and types in the Plugin List interface requiring public ACL for use in another module.
+/*
+ This file defines the protocols and types in the plugin list interface requiring public ACL for use in another module.
+ */
 
 /// Declares the type of key used to identify plugins within the collection.
 /// - NOTE: May be any ``Hashable`` type such as ``String`` or an enumeration.
