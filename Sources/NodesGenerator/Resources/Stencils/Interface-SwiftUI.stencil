@@ -6,18 +6,16 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-// This file defines the protocols and types in the interface requiring public ACL for use in another module.
+/*
+ This file defines the protocols and types in the interface requiring public ACL for use in another module.
+ */
 {% if node_name != "App" %}
-
-// MARK: - Listener
 
 /// Defines the delegate protocol through which the `Context` interfaces with its listener.
 /// @mockable
 @MainActor
 internal protocol {{ node_name }}Listener: AnyObject {}
 {% endif %}
-
-// MARK: - Flow
 
 /// @mockable
 @MainActor
@@ -26,8 +24,6 @@ internal protocol {{ node_name }}Flow: {{ plugin_list_name }}Flow {}
 {% else %}
 internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
 {% endif %}
-
-// MARK: - Builder
 
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
