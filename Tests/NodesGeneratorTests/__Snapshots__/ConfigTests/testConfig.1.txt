@@ -38,6 +38,9 @@
     ▿ Variable
       - name: "<flowProperties-name-2>"
       - type: "<flowProperties-type-2>"
+  ▿ interfaceImports: 2 members
+    - "<interfaceImports-1>"
+    - "<interfaceImports-2>"
   - isObservableStoreEnabled: false
   - isPeripheryCommentEnabled: true
   - isPreviewProviderEnabled: true

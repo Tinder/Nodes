@@ -59,8 +59,9 @@
               - value: "<flowPropertyType>"
         ▿ flowTestsImports: 1 element
           - "<baseTestImport>"
-        ▿ interfaceImports: 2 elements
+        ▿ interfaceImports: 3 elements
           - "<baseImport>"
+          - "<interfaceImport>"
           - "Nodes"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true
@@ -193,8 +194,9 @@
               - value: "<flowPropertyType>"
         ▿ flowTestsImports: 1 element
           - "<baseTestImport>"
-        ▿ interfaceImports: 2 elements
+        ▿ interfaceImports: 3 elements
           - "<baseImport>"
+          - "<interfaceImport>"
           - "Nodes"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true
@@ -327,8 +329,9 @@
               - value: "<flowPropertyType>"
         ▿ flowTestsImports: 1 element
           - "<baseTestImport>"
-        ▿ interfaceImports: 2 elements
+        ▿ interfaceImports: 3 elements
           - "<baseImport>"
+          - "<interfaceImport>"
           - "Nodes"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true
@@ -461,8 +464,9 @@
               - value: "<flowPropertyType>"
         ▿ flowTestsImports: 1 element
           - "<baseTestImport>"
-        ▿ interfaceImports: 2 elements
+        ▿ interfaceImports: 3 elements
           - "<baseImport>"
+          - "<interfaceImport>"
           - "Nodes"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true
@@ -595,8 +599,9 @@
               - value: "<flowPropertyType>"
         ▿ flowTestsImports: 1 element
           - "<baseTestImport>"
-        ▿ interfaceImports: 2 elements
+        ▿ interfaceImports: 3 elements
           - "<baseImport>"
+          - "<interfaceImport>"
           - "Nodes"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true
@@ -729,8 +734,9 @@
               - value: "<flowPropertyType>"
         ▿ flowTestsImports: 1 element
           - "<baseTestImport>"
-        ▿ interfaceImports: 2 elements
+        ▿ interfaceImports: 3 elements
           - "<baseImport>"
+          - "<interfaceImport>"
           - "Nodes"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true
@@ -863,8 +869,9 @@
               - value: "<flowPropertyType>"
         ▿ flowTestsImports: 1 element
           - "<baseTestImport>"
-        ▿ interfaceImports: 2 elements
+        ▿ interfaceImports: 3 elements
           - "<baseImport>"
+          - "<interfaceImport>"
           - "Nodes"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true
@@ -997,8 +1004,9 @@
               - value: "<flowPropertyType>"
         ▿ flowTestsImports: 1 element
           - "<baseTestImport>"
-        ▿ interfaceImports: 2 elements
+        ▿ interfaceImports: 3 elements
           - "<baseImport>"
+          - "<interfaceImport>"
           - "Nodes"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true
@@ -1131,8 +1139,9 @@
               - value: "<flowPropertyType>"
         ▿ flowTestsImports: 1 element
           - "<baseTestImport>"
-        ▿ interfaceImports: 2 elements
+        ▿ interfaceImports: 3 elements
           - "<baseImport>"
+          - "<interfaceImport>"
           - "Nodes"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true
@@ -1265,8 +1274,9 @@
               - value: "<flowPropertyType>"
         ▿ flowTestsImports: 1 element
           - "<baseTestImport>"
-        ▿ interfaceImports: 2 elements
+        ▿ interfaceImports: 3 elements
           - "<baseImport>"
+          - "<interfaceImport>"
           - "Nodes"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true

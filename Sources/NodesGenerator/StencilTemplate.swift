@@ -287,6 +287,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         case .interface:
             config.baseImports
                 .union(["Nodes"])
+                .union(config.interfaceImports)
         case .plugin:
             config.baseImports
                 .union(["Nodes"])
