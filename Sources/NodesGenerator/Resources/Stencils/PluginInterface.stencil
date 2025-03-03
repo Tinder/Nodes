@@ -7,7 +7,7 @@ import {{ import }}
 {% endif %}
 
 /*
- This file defines the protocols and types in the plugin interface requiring public ACL for use in another module.
+ This file contains the protocols and types of the plugin interface requiring public ACL for use in another module.
  */
 
 /// Dynamic state from the caller provided to the plugin to use in determining whether it is enabled.

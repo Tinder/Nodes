@@ -4,7 +4,7 @@ import <interfaceImport1>
 import <interfaceImport2>
 
 /*
- This file defines the protocols and types in the interface requiring public ACL for use in another module.
+ This file contains the protocols and types of the interface requiring public ACL for use in another module.
  */
 
 /// Defines the delegate protocol through which the `Context` interfaces with its listener.
