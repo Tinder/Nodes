@@ -40,6 +40,7 @@ extension TestFactories {
         config.dependencyInjectionImports = .mock(with: "dependencyInjectionImport", count: mockCount)
         config.builderImports = .mock(with: "builderImport", count: mockCount)
         config.flowImports = .mock(with: "flowImport", count: mockCount)
+        config.interfaceImports = .mock(with: "interfaceImport", count: mockCount)
         config.pluginListImports = .mock(with: "pluginListImport", count: mockCount)
         config.viewControllerImports = .mock(with: "viewControllerImport", count: mockCount)
         config.dependencies = .mock(with: "dependency", count: mockCount)
@@ -263,6 +264,7 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
             pluginListImports: .mock(with: "pluginListImport", count: mockCount),
+            pluginListInterfaceImports: .mock(with: "pluginListInterfaceImport", count: mockCount),
             pluginListTestsImports: .mock(with: "pluginListTestsImports", count: mockCount),
             viewControllableFlowType: "<viewControllableFlowType>",
             isPeripheryCommentEnabled: mockCount > 0,

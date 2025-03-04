@@ -1,21 +1,17 @@
 //<fileHeader>
 
-// This file defines the protocols and types in the interface requiring public ACL for use in another module.
-
-// MARK: - Listener
+/*
+ This file contains the protocols and types of the interface requiring public ACL for use in another module.
+ */
 
 /// Defines the delegate protocol through which the `Context` interfaces with its listener.
 /// @mockable
 @MainActor
 internal protocol RootListener: AnyObject {}
 
-// MARK: - Flow
-
 /// @mockable
 @MainActor
 internal protocol RootFlow: <viewControllableFlowType> {}
-
-// MARK: - Builder
 
 /// @mockable
 @MainActor

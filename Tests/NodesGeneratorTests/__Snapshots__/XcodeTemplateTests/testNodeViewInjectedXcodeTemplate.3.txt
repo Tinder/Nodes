@@ -92,9 +92,11 @@
         ▿ flowTestsImports: 2 elements
           - "<baseTestImport1>"
           - "<baseTestImport2>"
-        ▿ interfaceImports: 3 elements
+        ▿ interfaceImports: 5 elements
           - "<baseImport1>"
           - "<baseImport2>"
+          - "<interfaceImport1>"
+          - "<interfaceImport2>"
           - "Nodes"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true

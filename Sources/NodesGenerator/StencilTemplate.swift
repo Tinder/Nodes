@@ -23,6 +23,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
     case pluginInterface
     case pluginTests
     case pluginList
+    case pluginListInterface
     case pluginListTests
     case state
     case viewController(Variation)
@@ -199,6 +200,8 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
             "PluginTests"
         case .pluginList:
             "PluginList"
+        case .pluginListInterface:
+            "PluginListInterface"
         case .pluginListTests:
             "PluginListTests"
         case .state:
@@ -237,6 +240,8 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         case let .interface(variation):
             description.appending(variation.suffix)
         case .pluginList, .pluginListTests:
+            description
+        case .pluginListInterface:
             description
         case .state:
             description
@@ -282,6 +287,7 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
         case .interface:
             config.baseImports
                 .union(["Nodes"])
+                .union(config.interfaceImports)
         case .plugin:
             config.baseImports
                 .union(["Nodes"])
@@ -296,6 +302,8 @@ public enum StencilTemplate: CustomStringConvertible, Equatable, Sendable {
                 .union(["Nodes"])
                 .union(config.dependencyInjectionImports)
                 .union(config.pluginListImports)
+        case .pluginListInterface:
+            config.baseImports
         case .pluginListTests:
             config.baseTestImports
                 .union(["NodesTesting"])

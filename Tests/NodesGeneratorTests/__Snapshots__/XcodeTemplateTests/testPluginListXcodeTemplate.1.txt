@@ -9,12 +9,14 @@
         - isPeripheryCommentEnabled: true
         ▿ pluginListImports: 1 element
           - "Nodes"
+        - pluginListInterfaceImports: 0 elements
         - pluginListName: "___VARIABLE_productName___"
         ▿ pluginListTestsImports: 1 element
           - "NodesTesting"
         - viewControllableFlowType: "<viewControllableFlowType>"
-      ▿ stencils: 2 elements
+      ▿ stencils: 3 elements
         - PluginList
+        - PluginListInterface
         - PluginListTests
   ▿ propertyList: XcodeTemplatePropertyList
     ▿ allowedTypes: 1 element
