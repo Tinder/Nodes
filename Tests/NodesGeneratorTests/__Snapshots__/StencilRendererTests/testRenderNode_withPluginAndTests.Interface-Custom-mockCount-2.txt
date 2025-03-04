@@ -3,22 +3,18 @@
 import <interfaceImport1>
 import <interfaceImport2>
 
-// This file defines the protocols and types in the interface requiring public ACL for use in another module.
-
-// MARK: - Listener
+/*
+ This file contains the protocols and types of the interface requiring public ACL for use in another module.
+ */
 
 /// Defines the delegate protocol through which the `Context` interfaces with its listener.
 /// @mockable
 @MainActor
 internal protocol <nodeName>Listener: AnyObject {}
 
-// MARK: - Flow
-
 /// @mockable
 @MainActor
 internal protocol <nodeName>Flow: <pluginListName>Flow {}
-
-// MARK: - Builder
 
 // periphery:ignore
 /// @mockable

@@ -70,23 +70,6 @@ public final class <pluginListName>PluginListComponent: Component
 
 // MARK: - Plugin List
 
-/// Declares the type of key used to identify plugins within the collection.
-/// - NOTE: May be any ``Hashable`` type such as ``String`` or an enumeration.
-internal typealias <pluginListName>PluginListKeyType = String
-
-/// Dynamic state from the caller provided to the plugins to use in determining whether they are enabled.
-/// - NOTE: An alias to a tuple is supported.
-internal typealias <pluginListName>PluginListStateType = Void
-
-// periphery:ignore
-/// @mockable
-@MainActor
-internal protocol <pluginListName>PluginList {
-    func createAll() -> [<pluginListName>Builder]
-    func create() -> <pluginListName>Builder?
-    func create(key: <pluginListName>PluginListKeyType) -> <pluginListName>Builder?
-}
-
 // periphery:ignore
 internal final class <pluginListName>PluginListImp: PluginList
 <
