@@ -8,13 +8,6 @@ import Nodes
 @MainActor
 internal protocol ___VARIABLE_productName___ContextInterface: Context {}
 
-/// Defines the interface between the `Flow` and its view in order to present or contain other views. This protocol
-/// typically inherits protocols that include pre-defined behavior for convenience. Add additional methods for custom
-/// presentation or containment as desired.
-/// @mockable
-@MainActor
-internal protocol ___VARIABLE_productName___ViewControllable: ViewControllable {}
-
 internal final class ___VARIABLE_productName___FlowImp: AbstractFlow
 <
     ___VARIABLE_productName___ContextInterface,

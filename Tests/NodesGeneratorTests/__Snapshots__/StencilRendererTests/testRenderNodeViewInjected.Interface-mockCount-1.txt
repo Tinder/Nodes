@@ -11,6 +11,12 @@ import <interfaceImport>
 @MainActor
 internal protocol <nodeName>Listener: AnyObject {}
 
+/// Defines the interface between the `Flow` and its view in order to present or contain other views. This protocol
+/// typically inherits protocols that include pre-defined behavior for convenience. Add additional methods for custom
+/// presentation or containment as desired.
+@MainActor
+internal protocol <nodeName>ViewControllable: <viewControllableType> {}
+
 /// @mockable
 @MainActor
 internal protocol <nodeName>Flow: Flow {}

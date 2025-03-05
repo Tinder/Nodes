@@ -18,6 +18,7 @@ internal protocol {{ node_name }}ContextInterface: Context, WindowListener {}
 internal protocol {{ node_name }}ContextInterface: Context, RootListener {}
 {% else %}
 internal protocol {{ node_name }}ContextInterface: Context {}
+{% if owns_view %}
 
 /// Defines the interface between the `Flow` and its view in order to present or contain other views. This protocol
 /// typically inherits protocols that include pre-defined behavior for convenience. Add additional methods for custom
@@ -27,6 +28,7 @@ internal protocol {{ node_name }}ContextInterface: Context {}
 {% endif %}
 @MainActor
 internal protocol {{ node_name }}ViewControllable: {{ view_controllable_type }} {}
+{% endif %}
 {% endif %}
 
 internal final class {{ node_name }}FlowImp: AbstractFlow
