@@ -26,18 +26,20 @@ final class XCTestCaseTests: XCTestCase {
     private static let parentPath: String = "^->BootstrapComponent->ParentComponent"
     private static let childPath: String = "^->BootstrapComponent->ParentComponent->ChildComponent"
 
-    @MainActor
-    override func setUp() {
-        super.setUp()
-        expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)) == nil
-        expect(Self.registry.dependencyProviderFactory(for: Self.childPath)) == nil
+    override func setUp() async throws {
+        try await super.setUp()
+        _ = await Task { @MainActor in
+            expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)) == nil
+            expect(Self.registry.dependencyProviderFactory(for: Self.childPath)) == nil
+        }.result
     }
 
-    @MainActor
-    override func tearDown() {
-        expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)) == nil
-        expect(Self.registry.dependencyProviderFactory(for: Self.childPath)) == nil
-        super.tearDown()
+    override func tearDown() async throws {
+        _ = await Task { @MainActor in
+            expect(Self.registry.dependencyProviderFactory(for: Self.parentPath)) == nil
+            expect(Self.registry.dependencyProviderFactory(for: Self.childPath)) == nil
+        }.result
+        try await super.tearDown()
     }
 
     @MainActor

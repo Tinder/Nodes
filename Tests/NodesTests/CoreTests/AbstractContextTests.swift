@@ -34,16 +34,27 @@ final class AbstractContextTests: XCTestCase, TestCaseHelpers {
     private var mockWorkers: [WorkerMock]!
     private var mockCancellables: [CancellableMock]!
 
-    @MainActor
-    override func setUp() {
-        super.setUp()
-        tearDown(keyPath: \.mockWorkers, initialValue: [WorkerMock(), WorkerMock(), WorkerMock()])
-        tearDown(keyPath: \.mockCancellables, initialValue: [CancellableMock(), CancellableMock(), CancellableMock()])
+    override func setUp() async throws {
+        try await super.setUp()
+        struct Box<T: XCTestCase>: @unchecked Sendable {
+            let testCase: T
+        }
+        let box: Box<AbstractContextTests> = .init(testCase: self)
+        _ = await Task { @MainActor in
+            let testCase: AbstractContextTests = box.testCase
+            testCase.tearDown(
+                keyPath: \.mockWorkers,
+                initialValue: [WorkerMock(), WorkerMock(), WorkerMock()]
+            )
+            testCase.tearDown(
+                keyPath: \.mockCancellables,
+                initialValue: [CancellableMock(), CancellableMock(), CancellableMock()]
+            )
+        }.result
     }
 
-    @MainActor
-    override func tearDown() {
-        super.tearDown()
+    override func tearDown() async throws {
+        try await super.tearDown()
     }
 
     @MainActor
