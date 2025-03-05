@@ -7,11 +7,21 @@
         - fileHeader: "___FILEHEADER___"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true
-        ▿ pluginListImports: 1 element
+        ▿ pluginListImports: 7 elements
+          - "<baseImport1>"
+          - "<baseImport2>"
+          - "<dependencyInjectionImport1>"
+          - "<dependencyInjectionImport2>"
+          - "<pluginListImport1>"
+          - "<pluginListImport2>"
           - "Nodes"
-        - pluginListInterfaceImports: 0 elements
+        ▿ pluginListInterfaceImports: 2 elements
+          - "<baseImport1>"
+          - "<baseImport2>"
         - pluginListName: "___VARIABLE_productName___"
-        ▿ pluginListTestsImports: 1 element
+        ▿ pluginListTestsImports: 3 elements
+          - "<baseTestImport1>"
+          - "<baseTestImport2>"
           - "NodesTesting"
         - viewControllableFlowType: "<viewControllableFlowType>"
       ▿ stencils: 3 elements
