@@ -18,7 +18,7 @@ final class ___VARIABLE_productName___PluginTests: XCTestCase {
         } with: {
             // swiftlint:disable:next direct_return
             let dependency: ___VARIABLE_productName___PluginDependencyMock = .init()
-            // dependency.<dependencyName> = <dependencyName>Mock
+            // dependency.<dependencyName> = <DependencyName>Mock
             return dependency
         })
     }
