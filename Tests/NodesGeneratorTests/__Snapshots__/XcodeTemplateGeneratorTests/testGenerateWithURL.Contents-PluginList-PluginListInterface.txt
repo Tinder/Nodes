@@ -1,5 +1,7 @@
 //___FILEHEADER___
 
+import Nodes
+
 /*
  This file contains the protocols and types of the plugin list interface requiring public ACL for use in another module.
  */

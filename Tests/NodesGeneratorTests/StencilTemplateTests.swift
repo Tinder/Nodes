@@ -368,7 +368,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                     ]
                 case .pluginListInterface:
                     expect(imports) == [
-                        "<baseImport>"
+                        "<baseImport>",
+                        "Nodes"
                     ]
                 case .pluginListTests:
                     expect(imports) == [
@@ -494,7 +495,8 @@ final class StencilTemplateTests: XCTestCase, TestFactories {
                 ]
             case .pluginListInterface:
                 expect(imports) == [
-                    "<baseImport>"
+                    "<baseImport>",
+                    "Nodes"
                 ]
             case .pluginListTests:
                 expect(imports) == [
