@@ -6,31 +6,6 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-{% if is_periphery_comment_enabled %}
-// periphery:ignore
-{% endif %}
-/// @mockable
-@MainActor
-internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} {}
-
-{% if is_periphery_comment_enabled %}
-// periphery:ignore
-{% endif %}
-/// @mockable
-@MainActor
-internal protocol {{ plugin_list_name }}Listener: AnyObject {}
-
-{% if is_periphery_comment_enabled %}
-// periphery:ignore
-{% endif %}
-/// @mockable
-@MainActor
-internal protocol {{ plugin_list_name }}Builder: AnyObject {
-    func build(
-        withListener listener: {{ plugin_list_name }}Listener
-    ) -> {{ plugin_list_name }}Flow
-}
-
 // MARK: - Dependency
 
 /// Declares the dependencies required by the component. A code-generated conforming object is made available to the
