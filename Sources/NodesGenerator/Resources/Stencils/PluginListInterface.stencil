@@ -10,6 +10,32 @@ import {{ import }}
  This file contains the protocols and types of the plugin list interface requiring public ACL for use in another module.
  */
 
+/// Defines the delegate protocol through which the `Context` interfaces with its listener.
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
+/// @mockable
+@MainActor
+internal protocol {{ plugin_list_name }}Listener: AnyObject {}
+
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
+/// @mockable
+@MainActor
+internal protocol {{ plugin_list_name }}Flow: {{ view_controllable_flow_type }} {}
+
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
+/// @mockable
+@MainActor
+internal protocol {{ plugin_list_name }}Builder: AnyObject {
+    func build(
+        withListener listener: {{ plugin_list_name }}Listener
+    ) -> {{ plugin_list_name }}Flow
+}
+
 /// Declares the type of key used to identify plugins within the collection.
 /// - NOTE: May be any ``Hashable`` type such as ``String`` or an enumeration.
 internal typealias {{ plugin_list_name }}PluginListKeyType = String
