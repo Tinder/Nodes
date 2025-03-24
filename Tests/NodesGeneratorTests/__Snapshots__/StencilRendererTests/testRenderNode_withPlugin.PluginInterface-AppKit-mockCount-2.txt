@@ -4,6 +4,25 @@
  This file contains the protocols and types of the plugin interface requiring public ACL for use in another module.
  */
 
+// periphery:ignore
+/// @mockable
+@MainActor
+internal protocol <pluginListName>Flow: <viewControllableFlowType> {}
+
+// periphery:ignore
+/// @mockable
+@MainActor
+internal protocol <pluginListName>Listener: AnyObject {}
+
+// periphery:ignore
+/// @mockable
+@MainActor
+internal protocol <pluginListName>Builder: AnyObject {
+    func build(
+        withListener listener: <pluginListName>Listener
+    ) -> <pluginListName>Flow
+}
+
 /// Dynamic state from the caller provided to the plugin to use in determining whether it is enabled.
 /// - NOTE: An alias to a tuple is supported.
 internal typealias PluginStateType = Void
