@@ -1,21 +1,5 @@
 //<fileHeader>
 
-/// @mockable
-@MainActor
-internal protocol <pluginListName>Flow: <viewControllableFlowType> {}
-
-/// @mockable
-@MainActor
-internal protocol <pluginListName>Listener: AnyObject {}
-
-/// @mockable
-@MainActor
-internal protocol <pluginListName>Builder: AnyObject {
-    func build(
-        withListener listener: <pluginListName>Listener
-    ) -> <pluginListName>Flow
-}
-
 // MARK: - Dependency
 
 /// Declares the dependencies required by the component. A code-generated conforming object is made available to the
