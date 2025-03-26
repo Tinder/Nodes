@@ -9,8 +9,9 @@
       - "<dependencyInjectionImport>"
       - "<pluginListImport>"
       - "Nodes"
-    ▿ pluginListInterfaceImports: 2 elements
+    ▿ pluginListInterfaceImports: 3 elements
       - "<baseImport>"
+      - "<pluginListInterfaceImport>"
       - "Nodes"
     - pluginListName: "___VARIABLE_productName___"
     ▿ pluginListTestsImports: 2 elements

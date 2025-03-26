@@ -163,6 +163,9 @@ final class ConfigTests: XCTestCase, TestFactories {
         pluginListImports:
           - <pluginListImports-1>
           - <pluginListImports-2>
+        pluginListInterfaceImports:
+          - <pluginListInterfaceImports-1>
+          - <pluginListInterfaceImports-2>
         viewControllerImports:
           - <viewControllerImports-1>
           - <viewControllerImports-2>

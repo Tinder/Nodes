@@ -52,6 +52,7 @@ dependencyInjectionImports:
 builderImports: []
 flowImports: []
 pluginListImports: []
+pluginListInterfaceImports: []
 viewControllerImports: []
 dependencies: []
 analyticsProperties: []

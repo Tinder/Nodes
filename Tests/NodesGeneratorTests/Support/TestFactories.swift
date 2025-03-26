@@ -36,6 +36,7 @@ extension TestFactories {
         config.flowImports = ["<flowImport>"]
         config.interfaceImports = ["<interfaceImport>"]
         config.pluginListImports = ["<pluginListImport>"]
+        config.pluginListInterfaceImports = ["<pluginListInterfaceImport>"]
         config.viewControllerImports = ["<viewControllerImport>"]
         config.dependencies = [Variable(name: "<dependencyName>", type: "<dependencyType>")]
         config.analyticsProperties = [Variable(name: "<analyticsPropertyName>", type: "<analyticsPropertyType>")]
