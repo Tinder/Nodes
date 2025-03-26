@@ -144,6 +144,7 @@ open class _BaseContext: Context { // swiftlint:disable:this type_name
         if isActive {
             assertionFailure("Lifecycle Violation: Expected `AbstractContext` to deactivate before it is deallocated.")
         }
+        LeakDetector.detect(self) { $0.workerController }
         #endif
     }
 }
@@ -205,6 +206,14 @@ open class AbstractPresentableContext<CancellableType: Cancellable, PresentableT
         self.presentable = presentable
         super.init(workers: workers)
     }
+
+    #if DEBUG
+
+    deinit {
+        LeakDetector.detect(self, delay: 5) { $0.presentable as AnyObject }
+    }
+
+    #endif
 }
 
 // swiftlint:enable file_types_order period_spacing
