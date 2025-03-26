@@ -13,17 +13,10 @@ import NodesGenerator
 @main
 internal struct NodesXcodeTemplatesGeneratorCommand: ParsableCommand {
 
-    #if swift(>=5.10)
-    nonisolated(unsafe) internal static let configuration: CommandConfiguration = .init(
-        commandName: "nodes-xcode-templates-gen",
-        abstract: "Nodes Xcode Templates Generator"
-    )
-    #else
     internal static let configuration: CommandConfiguration = .init(
         commandName: "nodes-xcode-templates-gen",
         abstract: "Nodes Xcode Templates Generator"
     )
-    #endif
 
     @Option(name: .customLong("id"), help: "The Xcode templates identifier.")
     private var identifier: String
