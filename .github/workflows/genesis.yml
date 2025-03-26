@@ -55,6 +55,7 @@ jobs:
         -scheme "Tinder"
         -destination "name=$SIMULATOR,OS=latest"
         -skipPackagePluginValidation
+        SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
         CODE_SIGN_IDENTITY=""
         CODE_SIGNING_ALLOWED="NO"
         CODE_SIGNING_REQUIRED="NO"
