@@ -18,11 +18,17 @@ public final class WorkerController {
     /// The array of `Worker` instances managed by the ``WorkerController``.
     public private(set) var workers: [Worker] = []
 
+    /// The delegate to handle worker-related events.
+    private weak var delegate: WorkerControllerDelegate?
+
     /// Initializes a new ``WorkerController`` instance to manage a collection of `Worker` instances.
     ///
-    /// - Parameter workers: The array of `Worker` instances to be managed by the ``WorkerController``.
-    public init(workers: [Worker]) {
+    /// - Parameters:
+    ///   - workers: The array of `Worker` instances to be managed by the ``WorkerController``.
+    ///   - delegate: The delegate to handle worker-related events.
+    public init(workers: [Worker], delegate: WorkerControllerDelegate) {
         self.workers = workers
+        self.delegate = delegate
     }
 
     /// Starts all `Worker` instances in the `workers` array.
@@ -59,9 +65,14 @@ public final class WorkerController {
     ///     | worker | The `Worker` instance of type `T`. |
     ///
     ///     The closure returns `Void` and throws.
-    public func withFirstWorker<T>(ofType type: T.Type, perform: (_ worker: T) throws -> Void) rethrows {
+    ///
+    /// - Throws: ``NodeError/workerNotFound`` if no worker of the specified type exists.
+    public func withFirstWorker<T>(ofType type: T.Type, perform: (_ worker: T) throws -> Void) throws {
         guard let worker: T = firstWorker(ofType: type)
-        else { return }
+        else {
+            delegate?.workerController(self, didFailToFindWorkerOfType: String(describing: type))
+            throw NodeError.workerNotFound(String(describing: type))
+        }
         try perform(worker)
     }
 
