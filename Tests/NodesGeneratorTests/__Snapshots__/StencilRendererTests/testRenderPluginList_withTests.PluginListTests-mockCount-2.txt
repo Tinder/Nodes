@@ -17,7 +17,7 @@ final class <pluginListName>PluginListTests: XCTestCase {
         } with: {
             // swiftlint:disable:next direct_return
             let dependency: <pluginListName>PluginListDependencyMock = .init()
-            // dependency.<dependencyName> = <dependencyName>Mock
+            // dependency.<dependencyName> = <DependencyName>Mock
             return dependency
         })
     }

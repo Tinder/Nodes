@@ -35,7 +35,7 @@ final class {{ node_name }}BuilderTests: XCTestCase {
         } with: {
             // swiftlint:disable:next direct_return
             let dependency: {{ node_name }}DependencyMock = .init()
-            // dependency.<dependencyName> = <dependencyName>Mock
+            // dependency.<dependencyName> = <DependencyName>Mock
             return dependency
         })
     }
