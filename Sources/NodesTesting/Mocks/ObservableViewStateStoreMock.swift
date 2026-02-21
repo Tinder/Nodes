@@ -7,10 +7,10 @@
 //  See https://github.com/Tinder/Nodes/blob/main/LICENSE for license information.
 //
 
-#if canImport(SwiftUI)
+#if canImport(Combine)
 
+import Combine
 import Nodes
-import SwiftUI
 
 @preconcurrency
 @MainActor

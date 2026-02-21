@@ -98,10 +98,6 @@ Documentation is available online at: [https://Tinder.github.io/Nodes](https://T
 
 Following these steps will create a new iOS Xcode project set up with Nodes, Needle and Mockolo.
 
-### Requirements
-
-- Xcode version `13.3` or greater
-
 ### Install Dependencies
 
 ```

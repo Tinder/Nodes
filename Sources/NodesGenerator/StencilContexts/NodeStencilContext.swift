@@ -115,7 +115,7 @@ public struct NodeStencilContext: StencilContext {
         ]
     }
 
-    // swiftlint:disable:next function_default_parameter_at_end function_body_length
+    // swiftlint:disable:next function_body_length
     public init(
         fileHeader: String,
         nodeName: String,
@@ -139,7 +139,7 @@ public struct NodeStencilContext: StencilContext {
         viewStateImports: Set<String>,
         viewStateFactoryTestsImports: Set<String>,
         dependencies: [Config.Variable],
-        componentDependencies: String = "",
+        componentDependencies: String = "", // swiftlint:disable:this function_default_parameter_at_end
         analyticsProperties: [Config.Variable],
         flowProperties: [Config.Variable],
         viewControllableFlowType: String,

@@ -96,6 +96,17 @@ public enum DebugInformation {
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowWillStartNotification.self)")
 
+        internal let notification: Notification
+
+        internal init(flow: Flow, viewController: AnyObject) {
+            let userInfo: UserInfo = [
+                .flowIdentifier: ObjectIdentifier(flow),
+                .flowType: type(of: flow),
+                .factory: Factory(viewController)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
+        }
+
         @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
             NotificationCenter.default.publisher(for: name)
@@ -111,23 +122,22 @@ public enum DebugInformation {
                 }
                 .eraseToAnyPublisher()
         }
-
-        internal let notification: Notification
-
-        internal init(flow: Flow, viewController: AnyObject) {
-            let userInfo: UserInfo = [
-                .flowIdentifier: ObjectIdentifier(flow),
-                .flowType: type(of: flow),
-                .factory: Factory(viewController)
-            ]
-            notification = Notification(name: Self.name, userInfo: userInfo)
-        }
     }
 
     internal final class FlowDidEndNotification: NotificationPosting {
 
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowDidEndNotification.self)")
+
+        internal let notification: Notification
+
+        internal init(flow: Flow) {
+            let userInfo: UserInfo = [
+                .flowIdentifier: ObjectIdentifier(flow),
+                .flowType: type(of: flow)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
+        }
 
         @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
@@ -142,22 +152,24 @@ public enum DebugInformation {
                 }
                 .eraseToAnyPublisher()
         }
-
-        internal let notification: Notification
-
-        internal init(flow: Flow) {
-            let userInfo: UserInfo = [
-                .flowIdentifier: ObjectIdentifier(flow),
-                .flowType: type(of: flow)
-            ]
-            notification = Notification(name: Self.name, userInfo: userInfo)
-        }
     }
 
     internal final class FlowWillAttachNotification: NotificationPosting {
 
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowWillAttachNotification.self)")
+
+        internal let notification: Notification
+
+        internal init(flow: Flow, subFlow: Flow) {
+            let userInfo: UserInfo = [
+                .flowIdentifier: ObjectIdentifier(flow),
+                .flowType: type(of: flow),
+                .subFlowIdentifier: ObjectIdentifier(subFlow),
+                .subFlowType: type(of: subFlow)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
+        }
 
         @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
@@ -176,6 +188,12 @@ public enum DebugInformation {
                 }
                 .eraseToAnyPublisher()
         }
+    }
+
+    internal final class FlowDidDetachNotification: NotificationPosting {
+
+        private static let name: Notification.Name =
+            .init("Nodes.\(DebugInformation.self).\(FlowDidDetachNotification.self)")
 
         internal let notification: Notification
 
@@ -188,12 +206,6 @@ public enum DebugInformation {
             ]
             notification = Notification(name: Self.name, userInfo: userInfo)
         }
-    }
-
-    internal final class FlowDidDetachNotification: NotificationPosting {
-
-        private static let name: Notification.Name =
-            .init("Nodes.\(DebugInformation.self).\(FlowDidDetachNotification.self)")
 
         @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
@@ -212,24 +224,23 @@ public enum DebugInformation {
                 }
                 .eraseToAnyPublisher()
         }
-
-        internal let notification: Notification
-
-        internal init(flow: Flow, subFlow: Flow) {
-            let userInfo: UserInfo = [
-                .flowIdentifier: ObjectIdentifier(flow),
-                .flowType: type(of: flow),
-                .subFlowIdentifier: ObjectIdentifier(subFlow),
-                .subFlowType: type(of: subFlow)
-            ]
-            notification = Notification(name: Self.name, userInfo: userInfo)
-        }
     }
 
     internal final class FlowControllerWillAttachNotification: NotificationPosting {
 
         private static let name: Notification.Name =
             .init("Nodes.\(DebugInformation.self).\(FlowControllerWillAttachNotification.self)")
+
+        internal let notification: Notification
+
+        internal init(flowController: FlowController, flow: Flow) {
+            let userInfo: UserInfo = [
+                .flowControllerIdentifier: ObjectIdentifier(flowController),
+                .flowIdentifier: ObjectIdentifier(flow),
+                .flowType: type(of: flow)
+            ]
+            notification = Notification(name: Self.name, userInfo: userInfo)
+        }
 
         @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
@@ -246,6 +257,12 @@ public enum DebugInformation {
                 }
                 .eraseToAnyPublisher()
         }
+    }
+
+    internal final class FlowControllerDidDetachNotification: NotificationPosting {
+
+        private static let name: Notification.Name =
+            .init("Nodes.\(DebugInformation.self).\(FlowControllerDidDetachNotification.self)")
 
         internal let notification: Notification
 
@@ -257,12 +274,6 @@ public enum DebugInformation {
             ]
             notification = Notification(name: Self.name, userInfo: userInfo)
         }
-    }
-
-    internal final class FlowControllerDidDetachNotification: NotificationPosting {
-
-        private static let name: Notification.Name =
-            .init("Nodes.\(DebugInformation.self).\(FlowControllerDidDetachNotification.self)")
 
         @available(iOS 13.0, OSX 10.15, *) // swiftlint:disable:next strict_fileprivate
         fileprivate static func publisher() -> AnyPublisher<DebugInformation, Never> {
@@ -278,17 +289,6 @@ public enum DebugInformation {
                                                         flowType: flowType)
                 }
                 .eraseToAnyPublisher()
-        }
-
-        internal let notification: Notification
-
-        internal init(flowController: FlowController, flow: Flow) {
-            let userInfo: UserInfo = [
-                .flowControllerIdentifier: ObjectIdentifier(flowController),
-                .flowIdentifier: ObjectIdentifier(flow),
-                .flowType: type(of: flow)
-            ]
-            notification = Notification(name: Self.name, userInfo: userInfo)
         }
     }
 

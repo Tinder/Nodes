@@ -29,6 +29,16 @@ final class UIViewControllerViewControllableTests: XCTestCase {
         private(set) var willMoveCallCount: Int = 0
         private(set) var didMoveCallCount: Int = 0
 
+        override func willMove(toParent parent: UIViewController?) {
+            super.willMove(toParent: parent)
+            willMoveCallCount += 1
+        }
+
+        override func didMove(toParent parent: UIViewController?) {
+            super.didMove(toParent: parent)
+            didMoveCallCount += 1
+        }
+
         // swiftlint:disable unused_parameter
 
         override func present(
@@ -47,16 +57,6 @@ final class UIViewControllerViewControllableTests: XCTestCase {
         }
 
         // swiftlint:enable unused_parameter
-
-        override func willMove(toParent parent: UIViewController?) {
-            super.willMove(toParent: parent)
-            willMoveCallCount += 1
-        }
-
-        override func didMove(toParent parent: UIViewController?) {
-            super.didMove(toParent: parent)
-            didMoveCallCount += 1
-        }
     }
 
     @MainActor
