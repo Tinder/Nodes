@@ -893,7 +893,7 @@ files:
                   {% if path|replace:' ','' %}
                   path: "{{ path }}"),
                   {% else %}
-                  url: "git@github.com:Tinder/Nodes.git",
+                  url: "https://github.com/Tinder/Nodes",
                   exact: "{{ nodes }}"),
                   {% endif %}
               .package(
