@@ -1019,7 +1019,7 @@ files:
           version: 0.25.1
         Nimble:
           url: https://github.com/Quick/Nimble.git
-          version: 13.4.0
+          version: 14.0.0
       configFiles:
         Debug: BuildSettings/Debug.xcconfig
         Release: BuildSettings/Release.xcconfig
