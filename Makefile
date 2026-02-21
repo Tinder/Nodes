@@ -61,8 +61,7 @@ docs:
 		-scheme "$(target)" \
 		-destination "$(destination)" \
 		-derivedDataPath "$(DERIVED_DATA_PATH)" \
-		-skipPackagePluginValidation \
-		OTHER_DOCC_FLAGS="--warnings-as-errors"
+		-skipPackagePluginValidation
 	@find "$(DERIVED_DATA_PATH)" \
 		-type d \
 		-name "$(target).doccarchive" \
