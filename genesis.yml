@@ -59,8 +59,9 @@ files:
       - accessibility_label_for_image
       - accessibility_trait_for_button
       - anonymous_argument_in_multiline_closure
-      - anyobject_protocol
       - array_init
+      - async_without_await
+      - attribute_name_spacing
       # - attributes
       - balanced_xctest_lifecycle
       - blanket_disable_command
@@ -144,7 +145,6 @@ files:
       - implicitly_unwrapped_optional
       - inclusive_language
       # - indentation_width
-      - inert_defer
       - invalid_swiftlint_command
       - is_disjoint
       - joined_default_parameter
@@ -195,6 +195,7 @@ files:
       - opening_brace
       - operator_usage_whitespace
       - operator_whitespace
+      - optional_data_string_conversion
       - optional_enum_case_matching
       - orphaned_doc_comment
       - overridden_super_call
@@ -205,6 +206,7 @@ files:
       - prefer_nimble
       - prefer_self_in_static_references
       - prefer_self_type_over_type_of_self
+      - prefer_type_checking
       - prefer_zero_over_explicit_init
       # - prefixed_toplevel_constant
       - private_action
@@ -227,6 +229,7 @@ files:
       - redundant_objc_attribute
       - redundant_optional_initialization
       - redundant_self_in_closure
+      - redundant_sendable
       - redundant_set_access_control
       # - redundant_string_enum_value
       - redundant_type_annotation
@@ -274,7 +277,6 @@ files:
       - unneeded_synthesized_initializer
       - unowned_variable_capture
       - untyped_error_in_catch
-      - unused_capture_list
       - unused_closure_parameter
       - unused_control_flow_label
       - unused_enumerated
@@ -896,7 +898,7 @@ files:
                   {% endif %}
               .package(
                   url: "https://github.com/realm/SwiftLint.git",
-                  exact: "0.56.2"),
+                  exact: "0.59.1"),
           ]
       )
 
