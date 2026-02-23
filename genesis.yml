@@ -968,8 +968,8 @@ files:
               create "{{ project|replace:' ','_' }}/Sources/Bootstrap/Scene"
               create "{{ project|replace:' ','_' }}/Sources/Bootstrap/Window"
               create "{{ project|replace:' ','_' }}/Sources/Screens/Root"
-              find "{{ project|replace:' ','_' }}/Sources" -type f -name "*.swift" -exec sed -i '' '/@MainActor/,+0d' {} \;
           fi
+          find "{{ project|replace:' ','_' }}/Sources" -type f -name "*.swift" -exec sed -i '' '/@MainActor/,+0d' {} \;
           NEEDLE_GENERATED="{{ project|replace:' ','_' }}/Generated/NeedleGenerated.swift"
           MOCKOLO_GENERATED="{{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift"
           [[ -f "$NEEDLE_GENERATED" ]] || touch "$NEEDLE_GENERATED"
