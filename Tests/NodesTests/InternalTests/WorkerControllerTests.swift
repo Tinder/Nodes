@@ -16,14 +16,14 @@ final class WorkerControllerTests: XCTestCase, TestCaseHelpers {
     private var mockWorkers: [WorkerMock]!
 
     @MainActor
-    override func setUp() {
-        super.setUp()
+    override func setUp() async throws {
+        try await super.setUp()
         tearDown(keyPath: \.mockWorkers, initialValue: [WorkerMock(), WorkerMock(), WorkerMock()])
     }
 
     @MainActor
-    override func tearDown() {
-        super.tearDown()
+    override func tearDown() async throws {
+        try await super.tearDown()
     }
 
     @MainActor

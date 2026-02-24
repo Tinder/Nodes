@@ -1,0 +1,15 @@
+//<fileHeader>
+
+/*
+ This file contains the protocols and types of the interface requiring public ACL for use in another module.
+ */
+
+/// @mockable
+@MainActor
+internal protocol AppFlow: Flow {}
+
+/// @mockable
+@MainActor
+internal protocol AppBuilder: AnyObject {
+    func build() -> AppFlow
+}

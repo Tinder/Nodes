@@ -1,18 +1,10 @@
 //<fileHeader>
 
-/**
- PURPOSE:
- The interface that the View will speak to the Context through. Used for informing the Context of
- view events and user interactions.
- */
+/// Defines the delegate protocol through which the `Context` receives events and user interactions from its view.
 /// @mockable
 @MainActor
 internal protocol <nodeName>Receiver: AnyObject {}
 
-/**
- PURPOSE:
- Host of the SwiftUI view.
- */
 internal final class <nodeName>ViewController: <viewControllerType>
 <
     <nodeName>View
@@ -20,21 +12,12 @@ internal final class <nodeName>ViewController: <viewControllerType>
 
 extension <nodeName>ViewController: <nodeName>ViewControllable {}
 
-/**
- PURPOSE:
- Concrete implementation of the View.
- */
 internal struct <nodeName>View {
 
-    /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 
-    /// The Store instance.
     private let store: AnyViewStateStore<<nodeName>ViewState>
 
-    /// The initializer.
-    ///
-    /// - Parameter store: The Store instance.
     internal init<T: ViewStateStore>(
         store: T
     ) where T.ViewState == <nodeName>ViewState {

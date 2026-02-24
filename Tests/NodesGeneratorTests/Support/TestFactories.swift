@@ -34,7 +34,9 @@ extension TestFactories {
         config.dependencyInjectionImports = ["<dependencyInjectionImport>"]
         config.builderImports = ["<builderImport>"]
         config.flowImports = ["<flowImport>"]
+        config.interfaceImports = ["<interfaceImport>"]
         config.pluginListImports = ["<pluginListImport>"]
+        config.pluginListInterfaceImports = ["<pluginListInterfaceImport>"]
         config.viewControllerImports = ["<viewControllerImport>"]
         config.dependencies = [Variable(name: "<dependencyName>", type: "<dependencyType>")]
         config.analyticsProperties = [Variable(name: "<analyticsPropertyName>", type: "<analyticsPropertyType>")]
@@ -81,7 +83,9 @@ extension TestFactories {
             contextTestsImports: .mock(with: "contextTestsImport", count: mockCount),
             flowImports: .mock(with: "flowImport", count: mockCount),
             flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
+            interfaceImports: .mock(with: "interfaceImport", count: mockCount),
             pluginImports: includePlugin ? .mock(with: "pluginImport", count: mockCount) : [],
+            pluginInterfaceImports: includePlugin ? .mock(with: "pluginInterfaceImport", count: mockCount) : [],
             pluginTestsImports: includePlugin ? .mock(with: "pluginTestsImport", count: mockCount) : [],
             stateImports: .mock(with: "stateImport", count: mockCount),
             viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
@@ -132,6 +136,7 @@ extension TestFactories {
             contextTestsImports: .mock(with: "contextTestsImport", count: mockCount),
             flowImports: .mock(with: "flowImport", count: mockCount),
             flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
+            interfaceImports: .mock(with: "interfaceImport", count: mockCount),
             stateImports: .mock(with: "stateImport", count: mockCount),
             viewControllerImports: .mock(with: "viewControllerImport", count: mockCount),
             viewControllerTestsImports: .mock(with: "viewControllerTestsImport", count: mockCount),
@@ -182,7 +187,9 @@ extension TestFactories {
             contextTestsImports: .mock(with: "contextTestsImport", count: mockCount),
             flowImports: .mock(with: "flowImport", count: mockCount),
             flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
+            interfaceImports: .mock(with: "interfaceImport", count: mockCount),
             pluginImports: .mock(with: "pluginImport", count: mockCount),
+            pluginInterfaceImports: .mock(with: "pluginInterfaceImport", count: mockCount),
             pluginTestsImports: .mock(with: "pluginTestsImport", count: mockCount),
             stateImports: .mock(with: "stateImport", count: mockCount),
             dependencies: .mock(with: "dependency", count: mockCount),
@@ -213,7 +220,9 @@ extension TestFactories {
             contextTestsImports: .mock(with: "contextTestsImport", count: mockCount),
             flowImports: .mock(with: "flowImport", count: mockCount),
             flowTestsImports: .mock(with: "flowTestsImport", count: mockCount),
+            interfaceImports: .mock(with: "interfaceImport", count: mockCount),
             pluginImports: .mock(with: "pluginImport", count: mockCount),
+            pluginInterfaceImports: .mock(with: "pluginInterfaceImport", count: mockCount),
             pluginTestsImports: .mock(with: "pluginTestsImport", count: mockCount),
             stateImports: .mock(with: "stateImport", count: mockCount),
             dependencies: .mock(with: "dependency", count: mockCount),
@@ -236,6 +245,7 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             pluginName: "<pluginName>",
             pluginImports: .mock(with: "pluginImport", count: mockCount),
+            pluginInterfaceImports: .mock(with: "pluginInterfaceImport", count: mockCount),
             pluginTestsImports: .mock(with: "pluginTestsImport", count: mockCount),
             isPeripheryCommentEnabled: mockCount > 0,
             isNimbleEnabled: mockCount > 0
@@ -249,6 +259,7 @@ extension TestFactories {
             fileHeader: "<fileHeader>",
             pluginListName: "<pluginListName>",
             pluginListImports: .mock(with: "pluginListImport", count: mockCount),
+            pluginListInterfaceImports: .mock(with: "pluginListInterfaceImport", count: mockCount),
             pluginListTestsImports: .mock(with: "pluginListTestsImports", count: mockCount),
             viewControllableFlowType: "<viewControllableFlowType>",
             isPeripheryCommentEnabled: mockCount > 0,

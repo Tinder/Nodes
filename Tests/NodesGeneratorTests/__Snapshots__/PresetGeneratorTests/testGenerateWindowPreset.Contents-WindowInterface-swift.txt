@@ -1,0 +1,27 @@
+//
+//  Created by <author> on <date>.
+//
+
+import Nodes
+
+/*
+ This file contains the protocols and types of the interface requiring public ACL for use in another module.
+ */
+
+/// Defines the delegate protocol through which the `Context` interfaces with its listener.
+/// @mockable
+@MainActor
+internal protocol WindowListener: AnyObject {}
+
+/// @mockable
+@MainActor
+internal protocol WindowFlow: Flow {}
+
+/// @mockable
+@MainActor
+internal protocol WindowBuilder: AnyObject {
+    func build(
+        withListener listener: WindowListener,
+        viewController: WindowViewControllable
+    ) -> WindowFlow
+}

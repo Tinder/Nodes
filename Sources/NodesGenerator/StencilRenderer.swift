@@ -40,7 +40,7 @@ public final class StencilRenderer {
         includeTests: Bool
     ) throws -> [String: String] {
         let additional: [StencilTemplate] = includeTests ? [.pluginTests] : []
-        let stencils: [StencilTemplate] = [.plugin] + additional
+        let stencils: [StencilTemplate] = [.plugin, .pluginInterface] + additional
         return try render(stencils: stencils, with: context.dictionary)
     }
 
@@ -49,7 +49,7 @@ public final class StencilRenderer {
         includeTests: Bool
     ) throws -> [String: String] {
         let additional: [StencilTemplate] = includeTests ? [.pluginListTests] : []
-        let stencils: [StencilTemplate] = [.pluginList] + additional
+        let stencils: [StencilTemplate] = [.pluginList, .pluginListInterface] + additional
         return try render(stencils: stencils, with: context.dictionary)
     }
 

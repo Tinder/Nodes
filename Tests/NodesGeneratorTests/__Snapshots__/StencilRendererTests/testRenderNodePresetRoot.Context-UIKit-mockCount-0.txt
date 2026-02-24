@@ -1,48 +1,22 @@
 //<fileHeader>
 
-/**
- PURPOSE:
- The Context delegates callbacks to its (external) Listener, typically the parent Context.
- */
-/// @mockable
-@MainActor
-internal protocol RootListener: AnyObject {}
-
-/**
- PURPOSE:
- The interface that the Context will speak to the Flow through. Used to initiate navigation as
- an example.
- */
+/// Defines the interface between the `Context` and its `Flow`, intended for initiating navigation.
 /// @mockable
 @MainActor
 internal protocol RootFlowInterface: Flow {
     func didBecomeReady()
 }
 
-/**
- PURPOSE:
- Contains the business logic of the Node. The lifecycle of the Node is bookended between the
- `didBecomeActive` and `willResignActive` methods.
- */
 internal final class RootContextImp: AbstractContext {
 
-    /// The Flow instance.
     internal weak var flow: RootFlowInterface?
 
-    /// The Listener instance.
     internal weak var listener: RootListener?
 
-    /// The Store instance.
     private let store: AnyStateStore<RootState>
 
-    /// The Analytics instance.
     private let analytics: RootAnalytics
 
-    /// The initializer.
-    /// - Parameters:
-    ///   - workers: The Worker instances
-    ///   - store: The Store instance
-    ///   - analytics: The Analytics instance
     internal init<T: StateStore>(
         workers: [Worker],
         store: T,
@@ -53,10 +27,10 @@ internal final class RootContextImp: AbstractContext {
         super.init(workers: workers)
     }
 
-    /// Implement logic to execute when the Context becomes active.
+    /// Override to take action when activated.
     override internal func didBecomeActive() {}
 
-    /// Implement logic to execute when the Context will become inactive.
+    /// Override to take action when deactivated.
     override internal func willResignActive() {}
 }
 

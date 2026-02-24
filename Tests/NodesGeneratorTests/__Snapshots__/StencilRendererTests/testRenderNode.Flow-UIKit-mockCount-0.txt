@@ -1,40 +1,24 @@
 //<fileHeader>
 
-/**
- PURPOSE:
- The interface that the Flow will speak to the Context through. Used for informing the Context of
- presentation lifecycle events, as an example.
- */
+/// Defines the interface between the `Flow` and its `Context`, primarily for deep-linking. This enables the `Flow` to
+/// trigger events programmatically, such as simulating user interactions normally initiated in the view.
 /// @mockable
 @MainActor
 internal protocol <nodeName>ContextInterface: Context {}
 
-/**
- PURPOSE:
- The interface of the View used for presenting the View of child Nodes. May inherit additional base
- protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
- implementation as necessary.
- */
+/// Defines the interface between the `Flow` and its view in order to present or contain other views. This protocol
+/// typically inherits protocols that include pre-defined behavior for convenience. Add additional methods for custom
+/// presentation or containment as desired.
 /// @mockable
 @MainActor
 internal protocol <nodeName>ViewControllable: <viewControllableType> {}
 
-/**
- PURPOSE:
- Responsible for presenting views and starting child Flows, and should not contain business logic.
- */
 internal final class <nodeName>FlowImp: AbstractFlow
 <
     <nodeName>ContextInterface,
     <nodeName>ViewControllable
 > {
 
-    /// The initializer.
-    ///
-    /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
-    /// - Parameters:
-    ///   - context: The Context instance
-    ///   - viewController: The View Controller instance
     override internal init(
         context: <nodeName>ContextInterface,
         viewController: <nodeName>ViewControllable
@@ -42,12 +26,10 @@ internal final class <nodeName>FlowImp: AbstractFlow
         super.init(context: context, viewController: viewController)
     }
 
-    /// Implement logic to execute when the Flow is started.
+    /// Override to take action when started.
     override internal func didStart() {}
 
-    /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
-    ///
-    /// - Returns: The ``ViewControllable`` instance.
+    /// Required for presentation or containment (do not remove).
     internal func getViewController() -> <viewControllableType> {
         viewController
     }

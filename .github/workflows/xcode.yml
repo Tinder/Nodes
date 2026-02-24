@@ -7,17 +7,19 @@ on:
     branches: [ main ]
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_15.4.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_26.3.app/Contents/Developer
 
 jobs:
   xcode:
     name: Xcode
     runs-on: macos-latest
+    permissions:
+      contents: read
     env:
-      SIMULATOR: iPhone 15
+      SIMULATOR: iPhone 17
     steps:
     - name: Checkout source
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Resolve package dependencies
       run: xcodebuild -resolvePackageDependencies
     - name: Build

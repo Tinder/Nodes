@@ -58,6 +58,10 @@
               - value: "<flowPropertyType>"
         ▿ flowTestsImports: 1 element
           - "<baseTestImport>"
+        ▿ interfaceImports: 3 elements
+          - "<baseImport>"
+          - "<interfaceImport>"
+          - "Nodes"
         - isNimbleEnabled: false
         - isPeripheryCommentEnabled: true
         - nodeName: "___VARIABLE_productName___"
@@ -65,6 +69,8 @@
           - "<baseImport>"
           - "<dependencyInjectionImport>"
           - "Nodes"
+        ▿ pluginInterfaceImports: 1 element
+          - "<baseImport>"
         - pluginName: "___VARIABLE_productName___"
         ▿ pluginTestsImports: 2 elements
           - "<baseTestImport>"
@@ -76,14 +82,17 @@
         - viewControllableType: "<viewControllableType>"
         ▿ workerGenericTypes: 1 element
           - "<workerGenericType>"
-      ▿ stencils: 11 elements
+      ▿ stencils: 13 elements
         - Analytics
         ▿ Builder
           - builder: Variation.regular
         - Context
         - Flow
+        ▿ Interface
+          - interface: Variation.regular
         - State
         - Plugin
+        - PluginInterface
         - AnalyticsTests
         - BuilderTests
         - ContextTests

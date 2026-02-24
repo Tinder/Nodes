@@ -2,19 +2,11 @@
 
 import <viewControllerImport>
 
-/**
- PURPOSE:
- The interface that the View will speak to the Context through. Used for informing the Context of
- view events and user interactions.
- */
+/// Defines the delegate protocol through which the `Context` receives events and user interactions from its view.
 /// @mockable
 @MainActor
 internal protocol <nodeName>Receiver: AnyObject {}
 
-/**
- PURPOSE:
- Host of the SwiftUI view.
- */
 internal final class <nodeName>ViewController: <viewControllerType>
 <
     <nodeName>View
@@ -27,23 +19,14 @@ internal final class <nodeName>ViewController: <viewControllerType>
 
 extension <nodeName>ViewController: <nodeName>ViewControllable {}
 
-/**
- PURPOSE:
- Concrete implementation of the View.
- */
 internal struct <nodeName>View {
 
     // periphery:ignore
-    /// The view receiver.
     internal weak var receiver: <nodeName>Receiver?
 
-    /// The Store instance.
     <storePropertyWrapper>
     private var store: Any<storePrefix>ViewStateStore<<nodeName>ViewState>
 
-    /// The initializer.
-    ///
-    /// - Parameter store: The Store instance.
     internal init<T: <storePrefix>ViewStateStore>(
         store: T
     ) where T.ViewState == <nodeName>ViewState {
@@ -63,10 +46,6 @@ extension <nodeName>View: View {
 // MARK: - Preview
 
 // periphery:ignore
-/**
- PURPOSE:
- The SwiftUI preview (excluded from release builds).
- */
 internal struct <nodeName>View_Previews: PreviewProvider {
 
     internal static var previews: some View {

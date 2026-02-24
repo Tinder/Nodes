@@ -1,23 +1,3 @@
-.PHONY: release
-release: override library = Nodes
-release: override platforms = macos catalyst ios tvos watchos
-release: override bitcode = DISABLED
-release:
-	@make xcframework library="$(library)" platforms="$(platforms)" bitcode="$(bitcode)" version="$(version)"
-
-.PHONY: xcframework
-xcframework: library ?= $(shell make get-libraries | head -1)
-xcframework: platforms ?= $(shell make get-platforms)
-xcframework:
-ifndef version
-	$(error required variable: "version")
-endif
-ifeq ($(strip $(bitcode)),ENABLED)
-	@./bin/create-xcframework "$(library)" "$(platforms)" BITCODE_ENABLED "$(version)"
-else
-	@./bin/create-xcframework "$(library)" "$(platforms)" BITCODE_DISABLED "$(version)"
-endif
-
 .PHONY: open
 open: fix
 open:
@@ -81,18 +61,12 @@ docs:
 		-scheme "$(target)" \
 		-destination "$(destination)" \
 		-derivedDataPath "$(DERIVED_DATA_PATH)" \
-		-skipPackagePluginValidation \
-		OTHER_DOCC_FLAGS="--warnings-as-errors"
+		-skipPackagePluginValidation
 	@find "$(DERIVED_DATA_PATH)" \
 		-type d \
 		-name "$(target).doccarchive" \
 		-exec cp -R {} "$(ARCHIVE_PATH)/" \;
 	$(if $(filter $(open),OPEN),@open "$(ARCHIVE_PATH)/$(target).doccarchive",)
-
-.PHONY: preview
-preview: target ?= Nodes
-preview:
-	swift package --disable-sandbox preview-documentation --target "$(target)"
 
 .PHONY: site
 site: target ?= Nodes
@@ -108,18 +82,3 @@ site:
 		--output-path "$(prefix)/_site"
 	cp docs.html "$(prefix)/_site/index.html"
 	cp docs.html "$(prefix)/_site/documentation/index.html"
-
-.PHONY: get-libraries
-get-libraries:
-	@./bin/get-libraries
-
-.PHONY: get-platforms
-get-platforms:
-	@./bin/get-platforms
-
-.PHONY: get-deployment-target
-get-deployment-target:
-ifndef platform
-	$(error required variable: "platform")
-endif
-	@./bin/get-deployment-target "$(platform)"

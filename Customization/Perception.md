@@ -1,4 +1,10 @@
-A store compatible with [Perception](https://github.com/pointfreeco/swift-perception).
+# Using Perception with Nodes
+
+While Nodes is compatible with the [Observation](https://developer.apple.com/documentation/observation) framework for newer operating system versions or can be [configured](Configuration.md) to use [`ObservableObject`](https://developer.apple.com/documentation/Combine/ObservableObject) for backward compatibility, other observation libraries such as [Perception](https://github.com/pointfreeco/swift-perception) require custom setup.
+
+## Add Supporting Types
+
+Add the following types to the application:
 
 ```swift
 //
@@ -149,7 +155,9 @@ private class PerceptibleViewStateStoreBase<
 @Perceptible
 @preconcurrency
 @MainActor
-public final class PerceptiblePreviewStore<ViewState: Equatable>: PerceptibleViewStateStore {
+public final class PerceptiblePreviewStore<
+    ViewState: Equatable
+>: PerceptibleViewStateStore {
 
     public var viewState: ViewState
 

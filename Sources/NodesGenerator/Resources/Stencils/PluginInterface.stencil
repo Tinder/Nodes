@@ -1,0 +1,24 @@
+//{{ file_header }}
+{% if plugin_interface_imports %}
+
+{% for import in plugin_interface_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+/*
+ This file contains the protocols and types of the plugin interface requiring public ACL for use in another module.
+ */
+
+/// Dynamic state from the caller provided to the plugin to use in determining whether it is enabled.
+/// - NOTE: An alias to a tuple is supported.
+internal typealias {{ plugin_name }}PluginStateType = Void
+
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
+/// @mockable
+@MainActor
+internal protocol {{ plugin_name }}Plugin {
+    func create() -> {{ plugin_name }}Builder?
+}

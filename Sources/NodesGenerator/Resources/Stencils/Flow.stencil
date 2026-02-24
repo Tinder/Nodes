@@ -6,11 +6,8 @@ import {{ import }}
 {% endfor %}
 {% endif %}
 
-/**
- PURPOSE:
- The interface that the Flow will speak to the Context through. Used for informing the Context of
- presentation lifecycle events, as an example.
- */
+/// Defines the interface between the `Flow` and its `Context`, primarily for deep-linking. This enables the `Flow` to
+/// trigger events programmatically, such as simulating user interactions normally initiated in the view.
 /// @mockable
 @MainActor
 {% if node_name == "App" %}
@@ -21,24 +18,19 @@ internal protocol {{ node_name }}ContextInterface: Context, WindowListener {}
 internal protocol {{ node_name }}ContextInterface: Context, RootListener {}
 {% else %}
 internal protocol {{ node_name }}ContextInterface: Context {}
+{% if owns_view %}
 
-/**
- PURPOSE:
- The interface of the View used for presenting the View of child Nodes. May inherit additional base
- protocols to add further pre-baked presentation behavior and/or add new methods for custom presentation
- implementation as necessary.
- */
+/// Defines the interface between the `Flow` and its view in order to present or contain other views. This protocol
+/// typically inherits protocols that include pre-defined behavior for convenience. Add additional methods for custom
+/// presentation or containment as desired.
 {% if not view_controllable_mock_contents %}
 /// @mockable
 {% endif %}
 @MainActor
 internal protocol {{ node_name }}ViewControllable: {{ view_controllable_type }} {}
 {% endif %}
+{% endif %}
 
-/**
- PURPOSE:
- Responsible for presenting views and starting child Flows, and should not contain business logic.
- */
 internal final class {{ node_name }}FlowImp: AbstractFlow
 <
     {{ node_name }}ContextInterface,
@@ -65,24 +57,6 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     private let rootBuilder: RootBuilder
     {% endif %}
 
-    /// The initializer.
-    ///
-    /// Inject Plugins or Builders into the Flow in order to create sub-Flows.
-    /// - Parameters:
-    ///   - context: The Context instance
-    {% if node_name != "App" %}
-    ///   - viewController: The View Controller instance
-    {% endif %}
-    {% for property in flow_properties %}
-    ///   - {{ property.name }}: The {{ property.type }} instance
-    {% endfor %}
-    {% if node_name == "App" %}
-    ///   - windowSceneBuilder: The Window Scene Builder instance
-    {% elif node_name == "WindowScene" %}
-    ///   - windowBuilder: The Window Builder instance
-    {% elif node_name == "Window" %}
-    ///   - rootBuilder: The Root Builder instance
-    {% endif %}
     {% if node_name == "App" or node_name == "WindowScene" or node_name == "Window" or flow_properties %}
     internal init(
     {% else %}
@@ -115,8 +89,9 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
         super.init(context: context, viewController: viewController)
         {% endif %}
     }
+    {% if node_name != "Root" %}
 
-    /// Implement logic to execute when the Flow is started.
+    /// Override to take action when started.
     {% if node_name == "WindowScene" %}
     override internal func didStart() {
         attachWindow()
@@ -128,11 +103,10 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {% else %}
     override internal func didStart() {}
     {% endif %}
+    {% endif %}
     {% if owns_view or node_name == "WindowScene" %}
 
-    /// Provides the ``ViewControllable`` instance to the parent `Flow` for display or presentation.
-    ///
-    /// - Returns: The ``ViewControllable`` instance.
+    /// Required for presentation or containment (do not remove).
     {% if node_name == "WindowScene" %}
     internal func getViewController() -> {{ node_name }}ViewControllable {
     {% else %}
@@ -177,7 +151,7 @@ extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {
 
 extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {
 
-    /// Implement logic to execute when the Root Flow is ready to attach sub-Flows.
+    /// Implement to take action when ready.
     internal func didBecomeReady() {}
 }
 {% else %}

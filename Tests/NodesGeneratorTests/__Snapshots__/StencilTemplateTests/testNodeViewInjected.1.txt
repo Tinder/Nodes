@@ -8,6 +8,9 @@
   - contextTests: ContextTests
   - flow: Flow
   - flowTests: FlowTests
+  ▿ interface: Interface
+    - interface: Variation.regular
   - plugin: Plugin
+  - pluginInterface: PluginInterface
   - pluginTests: PluginTests
   - state: State

@@ -3,49 +3,24 @@
 import Combine
 import Nodes
 
-/**
- PURPOSE:
- The Context delegates callbacks to its (external) Listener, typically the parent Context.
- */
-/// @mockable
-@MainActor
-internal protocol ___VARIABLE_productName___Listener: AnyObject {}
-
-/**
- PURPOSE:
- The interface that the Context will speak to the Flow through. Used to initiate navigation as
- an example.
- */
+/// Defines the interface between the `Context` and its `Flow`, intended for initiating navigation.
 /// @mockable
 @MainActor
 internal protocol ___VARIABLE_productName___FlowInterface: Flow {}
 
-/**
- PURPOSE:
- Contains the business logic of the Node. The lifecycle of the Node is bookended between the
- `didBecomeActive` and `willResignActive` methods.
- */
 internal final class ___VARIABLE_productName___ContextImp: AbstractContext
 <
     AnyCancellable
 > {
 
-    /// The Flow instance.
     internal weak var flow: ___VARIABLE_productName___FlowInterface?
 
-    /// The Listener instance.
     internal weak var listener: ___VARIABLE_productName___Listener?
 
-    /// The State instance.
     private let state: ___VARIABLE_productName___State
 
-    /// The Analytics instance.
     private let analytics: ___VARIABLE_productName___Analytics
 
-    /// The initializer.
-    /// - Parameters:
-    ///   - workers: The Worker instances
-    ///   - analytics: The Analytics instance
     internal init(
         workers: [Worker],
         analytics: ___VARIABLE_productName___Analytics
@@ -55,10 +30,10 @@ internal final class ___VARIABLE_productName___ContextImp: AbstractContext
         super.init(workers: workers)
     }
 
-    /// Implement logic to execute when the Context becomes active.
+    /// Override to take action when activated.
     override internal func didBecomeActive() {}
 
-    /// Implement logic to execute when the Context will become inactive.
+    /// Override to take action when deactivated.
     override internal func willResignActive() {}
 }
 

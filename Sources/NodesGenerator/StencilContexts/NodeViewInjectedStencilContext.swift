@@ -20,7 +20,9 @@ public struct NodeViewInjectedStencilContext: StencilContext {
     private let contextTestsImports: [String]
     private let flowImports: [String]
     private let flowTestsImports: [String]
+    private let interfaceImports: [String]
     private let pluginImports: [String]
+    private let pluginInterfaceImports: [String]
     private let pluginTestsImports: [String]
     private let stateImports: [String]
     private let dependencies: [[String: Any]]
@@ -49,7 +51,9 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             "context_tests_imports": contextTestsImports,
             "flow_imports": flowImports,
             "flow_tests_imports": flowTestsImports,
+            "interface_imports": interfaceImports,
             "plugin_imports": pluginImports,
+            "plugin_interface_imports": pluginInterfaceImports,
             "plugin_tests_imports": pluginTestsImports,
             "state_imports": stateImports,
             "dependencies": dependencies,
@@ -66,7 +70,6 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         ]
     }
 
-    // swiftlint:disable:next function_default_parameter_at_end
     public init(
         fileHeader: String,
         nodeName: String,
@@ -79,11 +82,13 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         contextTestsImports: Set<String>,
         flowImports: Set<String>,
         flowTestsImports: Set<String>,
+        interfaceImports: Set<String>,
         pluginImports: Set<String>,
+        pluginInterfaceImports: Set<String>,
         pluginTestsImports: Set<String>,
         stateImports: Set<String>,
         dependencies: [Config.Variable],
-        componentDependencies: String = "",
+        componentDependencies: String = "", // swiftlint:disable:this function_default_parameter_at_end
         analyticsProperties: [Config.Variable],
         flowProperties: [Config.Variable],
         viewControllableFlowType: String,
@@ -107,7 +112,9 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             contextTestsImports: contextTestsImports,
             flowImports: flowImports,
             flowTestsImports: flowTestsImports,
+            interfaceImports: interfaceImports,
             pluginImports: pluginImports,
+            pluginInterfaceImports: pluginInterfaceImports,
             pluginTestsImports: pluginTestsImports,
             stateImports: stateImports,
             dependencies: dependencies,
@@ -135,7 +142,9 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         contextTestsImports: Set<String>,
         flowImports: Set<String>,
         flowTestsImports: Set<String>,
+        interfaceImports: Set<String>,
         pluginImports: Set<String>,
+        pluginInterfaceImports: Set<String>,
         pluginTestsImports: Set<String>,
         stateImports: Set<String>,
         dependencies: [Config.Variable],
@@ -164,7 +173,9 @@ public struct NodeViewInjectedStencilContext: StencilContext {
             contextTestsImports: contextTestsImports,
             flowImports: flowImports,
             flowTestsImports: flowTestsImports,
+            interfaceImports: interfaceImports,
             pluginImports: pluginImports,
+            pluginInterfaceImports: pluginInterfaceImports,
             pluginTestsImports: pluginTestsImports,
             stateImports: stateImports,
             dependencies: dependencies,
@@ -194,7 +205,9 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         contextTestsImports: Set<String>,
         flowImports: Set<String>,
         flowTestsImports: Set<String>,
+        interfaceImports: Set<String>,
         pluginImports: Set<String>,
+        pluginInterfaceImports: Set<String>,
         pluginTestsImports: Set<String>,
         stateImports: Set<String>,
         dependencies: [Config.Variable],
@@ -222,7 +235,9 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         self.contextTestsImports = contextTestsImports.sortedImports()
         self.flowImports = flowImports.sortedImports()
         self.flowTestsImports = flowTestsImports.sortedImports()
+        self.interfaceImports = interfaceImports.sortedImports()
         self.pluginImports = pluginImports.sortedImports()
+        self.pluginInterfaceImports = pluginInterfaceImports.sortedImports()
         self.pluginTestsImports = pluginTestsImports.sortedImports()
         self.stateImports = stateImports.sortedImports()
         self.dependencies = dependencies.map(\.dictionary)

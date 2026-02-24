@@ -4,19 +4,11 @@ import Combine
 import Nodes
 import SwiftUI
 
-/**
- PURPOSE:
- The interface that the View will speak to the Context through. Used for informing the Context of
- view events and user interactions.
- */
+/// Defines the delegate protocol through which the `Context` receives events and user interactions from its view.
 /// @mockable
 @MainActor
 internal protocol ___VARIABLE_productName___Receiver: AnyObject {}
 
-/**
- PURPOSE:
- Host of the SwiftUI view.
- */
 internal final class ___VARIABLE_productName___ViewController: NSHostingController
 <
     ___VARIABLE_productName___View
@@ -24,21 +16,12 @@ internal final class ___VARIABLE_productName___ViewController: NSHostingControll
 
 extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllable {}
 
-/**
- PURPOSE:
- Concrete implementation of the View.
- */
 internal struct ___VARIABLE_productName___View {
 
-    /// The view receiver.
     internal weak var receiver: ___VARIABLE_productName___Receiver?
 
-    /// The Store instance.
     private let store: AnyViewStateStore<___VARIABLE_productName___ViewState>
 
-    /// The initializer.
-    ///
-    /// - Parameter store: The Store instance.
     internal init<T: ViewStateStore>(
         store: T
     ) where T.ViewState == ___VARIABLE_productName___ViewState {

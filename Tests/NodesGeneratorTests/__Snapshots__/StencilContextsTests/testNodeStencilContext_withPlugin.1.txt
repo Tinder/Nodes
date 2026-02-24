@@ -1,4 +1,4 @@
-▿ 47 key/value pairs
+▿ 49 key/value pairs
   ▿ (2 elements)
     - key: "analytics_imports"
     ▿ value: 1 element
@@ -72,6 +72,10 @@
     ▿ value: 1 element
       - "<flowTestsImport>"
   ▿ (2 elements)
+    - key: "interface_imports"
+    ▿ value: 1 element
+      - "<interfaceImport>"
+  ▿ (2 elements)
     - key: "is_nimble_enabled"
     - value: true
   ▿ (2 elements)
@@ -90,6 +94,10 @@
     - key: "plugin_imports"
     ▿ value: 1 element
       - "<pluginImport>"
+  ▿ (2 elements)
+    - key: "plugin_interface_imports"
+    ▿ value: 1 element
+      - "<pluginInterfaceImport>"
   ▿ (2 elements)
     - key: "plugin_list_name"
     - value: "<pluginListName>"

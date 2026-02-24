@@ -1,10 +1,10 @@
 # Using RxSwift with Nodes
 
-While Nodes works out-of-the-box with [Combine](https://developer.apple.com/documentation/combine), the following custom configuration and setup is required to use other reactive frameworks, such [RxSwift](https://github.com/ReactiveX/RxSwift).
+While Nodes is configured by default for [Combine](https://developer.apple.com/documentation/combine), other reactive frameworks such as [RxSwift](https://github.com/ReactiveX/RxSwift) require custom configuration and setup.
 
 ## Configure the Xcode Templates Generator
 
-Specify a path to a custom config file by providing the `--config` option when executing `nodes-xcode-templates-gen`.
+Specify a path to a custom config file by providing the `--config` option when executing the `nodes-xcode-templates-gen` command.
 
 <details>
 
@@ -18,7 +18,7 @@ If utilizing the [quick start project setup](https://github.com/Tinder/Nodes#qui
 swift run --skip-build -- nodes-xcode-templates-gen --id "RxSwift" --config "nodes.yml"
 ```
 
-> TIP: The provided `id` value is used to uniquely identify different sets of templates within the new file dialog in Xcode.
+> The provided `id` value is used to uniquely identify different sets of templates within the new file dialog in Xcode.
 
 The script that creates the presets in the quick start project should use the same config file:
 
@@ -28,13 +28,13 @@ swift run --skip-build -- nodes-code-gen --preset "$PRESET" --author "$AUTHOR" -
 
 </details>
 
-### Sample Config File
+## Sample Config File
 
 ```yaml
 uiFrameworks:
   - framework:
       custom:
-        name: UIKit
+        name: UIKit (RxSwift)
         import: UIKit
         viewControllerType: UIViewController
         viewControllerSuperParameters: "nibName: nil, bundle: nil"
@@ -60,7 +60,6 @@ uiFrameworks:
               LeakDetector.detect(disposeBag)
               disposeBag = DisposeBag()
           }
-  - framework: SwiftUI
 reactiveImports:
   - RxSwift
 viewControllerSubscriptionsProperty: |-
@@ -72,7 +71,7 @@ viewStateOperators: |-
   .observe(on: MainScheduler.instance)
 viewStatePropertyComment: The view state observable
 viewStatePropertyName: stateObservable
-viewStateTransform: context.$state.map { viewStateFactory($0) }
+viewStateTransform: store.viewStatePublisher.asObservable()
 publisherType: Observable
 publisherFailureType: ""
 contextGenericTypes: []
@@ -134,6 +133,27 @@ extension StateObserver {
     ) -> Disposable where O.Element == StateObserverStateType {
         observable.subscribe { [weak self] state in
             self?.update(with: state)
+        }
+    }
+}
+
+extension Publisher {
+
+    public func asObservable() -> Observable<Output> {
+        Observable.create { observer in
+            let cancellable: AnyCancellable = sink { completion in
+                switch completion {
+                case .finished:
+                    observer.onCompleted()
+                case let .failure(error):
+                    observer.onError(error)
+                }
+            } receiveValue: { value in
+                observer.onNext(value)
+            }
+            return Disposables.create {
+                cancellable.cancel()
+            }
         }
     }
 }

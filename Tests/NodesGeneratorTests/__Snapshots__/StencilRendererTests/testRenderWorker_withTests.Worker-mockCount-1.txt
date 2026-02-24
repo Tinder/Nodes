@@ -3,30 +3,19 @@
 import <workerImport>
 
 // periphery:ignore
-/**
- PURPOSE:
- Encapsulates work to be performed by the Node.
- */
 /// @mockable
 internal protocol <workerName>Worker: Worker {}
 
 // periphery:ignore
-/**
- PURPOSE:
- Concrete implementation of the Worker.
- */
 internal final class <workerName>WorkerImp: AbstractWorker
 <
     <workerGenericType>
 > {
 
-    /// The initializer.
-    override internal init() {}
-
-    /// Implement logic to execute when the Worker is started.
+    /// Override to take action when started.
     override internal func didStart() {}
 
-    /// Implement logic to execute when the Worker has stopped.
+    /// Override to take action when stopped.
     override internal func willStop() {}
 }
 

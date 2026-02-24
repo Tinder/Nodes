@@ -1,4 +1,4 @@
-▿ 5 elements
+▿ 6 elements
   ▿ (2 elements)
     - path: "/AppAnalytics.swift"
     - atomically: true
@@ -10,6 +10,9 @@
     - atomically: true
   ▿ (2 elements)
     - path: "/AppFlow.swift"
+    - atomically: true
+  ▿ (2 elements)
+    - path: "/AppInterface.swift"
     - atomically: true
   ▿ (2 elements)
     - path: "/AppState.swift"

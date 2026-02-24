@@ -5,11 +5,7 @@
 import Combine
 import Nodes
 
-/**
- PURPOSE:
- The interface that the Context will speak to the Flow through. Used to initiate navigation as
- an example.
- */
+/// Defines the interface between the `Context` and its `Flow`, intended for initiating navigation.
 /// @mockable
 @MainActor
 internal protocol AppFlowInterface: Flow {
@@ -17,31 +13,19 @@ internal protocol AppFlowInterface: Flow {
     func detachWindowScene(_ viewController: WindowSceneViewControllable)
 }
 
-/**
- PURPOSE:
- Contains the business logic of the Node. The lifecycle of the Node is bookended between the
- `didBecomeActive` and `willResignActive` methods.
- */
 internal final class AppContextImp: AbstractContext
 <
     AnyCancellable
 > {
 
-    /// The Flow instance.
     internal weak var flow: AppFlowInterface?
 
-    /// The State instance.
     private let state: AppState
 
-    /// The Analytics instance.
     private let analytics: AppAnalytics
 
     private let windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>
 
-    /// The initializer.
-    /// - Parameters:
-    ///   - workers: The Worker instances
-    ///   - analytics: The Analytics instance
     internal init(
         workers: [Worker],
         analytics: AppAnalytics,
@@ -53,12 +37,12 @@ internal final class AppContextImp: AbstractContext
         super.init(workers: workers)
     }
 
-    /// Implement logic to execute when the Context becomes active.
+    /// Override to take action when activated.
     override internal func didBecomeActive() {
         subscribe(to: windowScenePublisher)
     }
 
-    /// Implement logic to execute when the Context will become inactive.
+    /// Override to take action when deactivated.
     override internal func willResignActive() {}
 
     private func subscribe(to windowScenePublisher: AnyPublisher<WindowSceneEvent, Never>) {

@@ -170,23 +170,246 @@ final class UIFrameworkFrameworkTests: XCTestCase {
             })
     }
 
-    func testDecodingThrowsTypeMismatchForExpectedOnlyOneKey() throws {
+    // swiftlint:disable line_length closure_body_length
+
+    func testDecodingThrowsDataCorruptedForExpectedAllKeysToBeUnique() throws {
         let data: Data = .init("custom:\ncustom:\n".utf8)
         expect(try data.decoded(as: UIFramework.Framework.self, using: YAMLDecoder()))
             .to(throwError(errorType: DecodingError.self) { error in
                 assertInlineSnapshot(of: error, as: .dump) {
                     """
                     ▿ DecodingError
-                      ▿ typeMismatch: (2 elements)
-                        - .0: Framework
-                        ▿ .1: Context
-                          - codingPath: 0 elements
-                          - debugDescription: "Expected only one key."
-                          - underlyingError: Optional<Error>.none
+                      ▿ dataCorrupted: Context
+                        - codingPath: 0 elements
+                        - debugDescription: "The given data was not valid YAML."
+                        ▿ underlyingError: Optional<Error>
+                          ▿ some: error: parser: expected all keys to be unique but found the following duplicated key(s):
+                    custom ([1:1, 2:1]):
+                    custom:
+                    ^
+                    custom:
+                    ^
+                            ▿ duplicatedKeysInMapping: (2 elements)
+                              ▿ duplicates: 1 key/value pair
+                                ▿ (2 elements)
+                                  ▿ key: Node
+                                    ▿ scalar: Scalar
+                                      - anchor: Optional<Anchor>.none
+                                      ▿ mark: Optional<Mark>
+                                        ▿ some: 1:1
+                                          - line: 1
+                                          - column: 1
+                                      - string: "custom"
+                                      - style: Style.plain
+                                      ▿ tag: tag:yaml.org,2002:str
+                                        ▿ constructor: Constructor
+                                          ▿ mappingMap: 2 key/value pairs
+                                            ▿ (2 elements)
+                                              ▿ key: Name
+                                                - rawValue: "tag:yaml.org,2002:map"
+                                              - value: (Function)
+                                            ▿ (2 elements)
+                                              ▿ key: Name
+                                                - rawValue: "tag:yaml.org,2002:set"
+                                              - value: (Function)
+                                          ▿ scalarMap: 7 key/value pairs
+                                            ▿ (2 elements)
+                                              ▿ key: Name
+                                                - rawValue: "tag:yaml.org,2002:binary"
+                                              - value: (Function)
+                                            ▿ (2 elements)
+                                              ▿ key: Name
+                                                - rawValue: "tag:yaml.org,2002:bool"
+                                              - value: (Function)
+                                            ▿ (2 elements)
+                                              ▿ key: Name
+                                                - rawValue: "tag:yaml.org,2002:float"
+                                              - value: (Function)
+                                            ▿ (2 elements)
+                                              ▿ key: Name
+                                                - rawValue: "tag:yaml.org,2002:int"
+                                              - value: (Function)
+                                            ▿ (2 elements)
+                                              ▿ key: Name
+                                                - rawValue: "tag:yaml.org,2002:null"
+                                              - value: (Function)
+                                            ▿ (2 elements)
+                                              ▿ key: Name
+                                                - rawValue: "tag:yaml.org,2002:str"
+                                              - value: (Function)
+                                            ▿ (2 elements)
+                                              ▿ key: Name
+                                                - rawValue: "tag:yaml.org,2002:timestamp"
+                                              - value: (Function)
+                                          ▿ sequenceMap: 3 key/value pairs
+                                            ▿ (2 elements)
+                                              ▿ key: Name
+                                                - rawValue: "tag:yaml.org,2002:omap"
+                                              - value: (Function)
+                                            ▿ (2 elements)
+                                              ▿ key: Name
+                                                - rawValue: "tag:yaml.org,2002:pairs"
+                                              - value: (Function)
+                                            ▿ (2 elements)
+                                              ▿ key: Name
+                                                - rawValue: "tag:yaml.org,2002:seq"
+                                              - value: (Function)
+                                        ▿ name: Name
+                                          - rawValue: "tag:yaml.org,2002:str"
+                                        ▿ resolver: Resolver
+                                          ▿ rules: 1 element
+                                            ▿ Rule
+                                              - regexp: <NSRegularExpression> ^(?:<<)$
+                                              ▿ tag: Name
+                                                - rawValue: "tag:yaml.org,2002:merge"
+                                  ▿ value: 2 elements
+                                    ▿ Node
+                                      ▿ scalar: Scalar
+                                        - anchor: Optional<Anchor>.none
+                                        ▿ mark: Optional<Mark>
+                                          ▿ some: 1:1
+                                            - line: 1
+                                            - column: 1
+                                        - string: "custom"
+                                        - style: Style.plain
+                                        ▿ tag: tag:yaml.org,2002:str
+                                          ▿ constructor: Constructor
+                                            ▿ mappingMap: 2 key/value pairs
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:map"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:set"
+                                                - value: (Function)
+                                            ▿ scalarMap: 7 key/value pairs
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:binary"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:bool"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:float"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:int"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:null"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:str"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:timestamp"
+                                                - value: (Function)
+                                            ▿ sequenceMap: 3 key/value pairs
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:omap"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:pairs"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:seq"
+                                                - value: (Function)
+                                          ▿ name: Name
+                                            - rawValue: "tag:yaml.org,2002:str"
+                                          ▿ resolver: Resolver
+                                            ▿ rules: 1 element
+                                              ▿ Rule
+                                                - regexp: <NSRegularExpression> ^(?:<<)$
+                                                ▿ tag: Name
+                                                  - rawValue: "tag:yaml.org,2002:merge"
+                                    ▿ Node
+                                      ▿ scalar: Scalar
+                                        - anchor: Optional<Anchor>.none
+                                        ▿ mark: Optional<Mark>
+                                          ▿ some: 2:1
+                                            - line: 2
+                                            - column: 1
+                                        - string: "custom"
+                                        - style: Style.plain
+                                        ▿ tag: tag:yaml.org,2002:str
+                                          ▿ constructor: Constructor
+                                            ▿ mappingMap: 2 key/value pairs
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:map"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:set"
+                                                - value: (Function)
+                                            ▿ scalarMap: 7 key/value pairs
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:binary"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:bool"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:float"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:int"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:null"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:str"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:timestamp"
+                                                - value: (Function)
+                                            ▿ sequenceMap: 3 key/value pairs
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:omap"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:pairs"
+                                                - value: (Function)
+                                              ▿ (2 elements)
+                                                ▿ key: Name
+                                                  - rawValue: "tag:yaml.org,2002:seq"
+                                                - value: (Function)
+                                          ▿ name: Name
+                                            - rawValue: "tag:yaml.org,2002:str"
+                                          ▿ resolver: Resolver
+                                            ▿ rules: 1 element
+                                              ▿ Rule
+                                                - regexp: <NSRegularExpression> ^(?:<<)$
+                                                ▿ tag: Name
+                                                  - rawValue: "tag:yaml.org,2002:merge"
+                              - yaml: "custom:\\ncustom:\\n"
                     """ + "\n"
                 }
             })
     }
+
+    // swiftlint:enable line_length closure_body_length
 
     func testDecodingThrowsTypeMismatchForExpectedToDecodeMapping() throws {
         let data: Data = .init("[]".utf8)

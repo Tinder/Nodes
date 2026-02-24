@@ -1,0 +1,15 @@
+//___FILEHEADER___
+
+/*
+ This file contains the protocols and types of the plugin interface requiring public ACL for use in another module.
+ */
+
+/// Dynamic state from the caller provided to the plugin to use in determining whether it is enabled.
+/// - NOTE: An alias to a tuple is supported.
+internal typealias ___VARIABLE_productName___PluginStateType = Void
+
+/// @mockable
+@MainActor
+internal protocol ___VARIABLE_productName___Plugin {
+    func create() -> ___VARIABLE_productName___Builder?
+}

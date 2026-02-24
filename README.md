@@ -9,10 +9,8 @@
 [![DocC](https://github.com/Tinder/Nodes/actions/workflows/docc.yml/badge.svg?event=push)](https://github.com/Tinder/Nodes/actions/workflows/docc.yml)
 &nbsp;
 [![Genesis](https://github.com/Tinder/Nodes/actions/workflows/genesis.yml/badge.svg?event=push)](https://github.com/Tinder/Nodes/actions/workflows/genesis.yml)
-
-[![Pages](https://github.com/Tinder/Nodes/actions/workflows/pages.yml/badge.svg?event=push)](https://github.com/Tinder/Nodes/actions/workflows/pages.yml)
 &nbsp;
-[![Artifactory](https://github.com/Tinder/Nodes/actions/workflows/artifactory.yml/badge.svg?event=push)](https://github.com/Tinder/Nodes/actions/workflows/artifactory.yml)
+[![Pages](https://github.com/Tinder/Nodes/actions/workflows/pages.yml/badge.svg?event=push)](https://github.com/Tinder/Nodes/actions/workflows/pages.yml)
 
 <img src="Nodes.png" />
 
@@ -56,11 +54,12 @@ Each node is comprised of a few pre-defined types working in conjunction to powe
 
 Nodes' Xcode templates are required to ensure correct use of the Nodes framework and to guarantee that every created node is properly defined.
 
-Installation of the templates is performed by the Xcode templates generator (the `nodes-xcode-templates-gen` executable in the Swift package). Without customizing the generator, Xcode templates for UIKit and SwiftUI (for iOS) are installed by default. The generator supports [optional customization](#optional-customization) if needed.
+Installation of the templates is performed by the Xcode templates generator (the `nodes-xcode-templates-gen` executable in the Swift package). Without customizing the generator, Xcode templates for iOS with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui) are installed by default. The generator supports [optional customization](#optional-customization) if needed.
 
 #### Xcode Templates Installation
 
-> TIP: After completing the [Quick Start](#quick-start) setup (below), Nodes' Xcode templates will be ***installed automatically***, so these instructions to manually install the Xcode templates ***may be skipped*** and are included here simply as a reference.
+> [!TIP]
+> After completing the [Quick Start](#quick-start) setup (below), Nodes' Xcode templates will be ***installed automatically***, so these instructions to manually install the Xcode templates ***may be skipped*** and are included here simply as a reference.
 
 <details>
 
@@ -73,7 +72,7 @@ To install Nodes' Xcode templates manually, first add Nodes as a dependency to a
 > Replace `<version>` in the command with the latest Nodes version.
 
 ```
-.package(url: "git@github.com:Tinder/Nodes.git", from: "<version>")
+.package(url: "https://github.com/Tinder/Nodes.git", from: "<version>")
 ```
 
 Then run the following shell command:
@@ -92,15 +91,12 @@ The Xcode templates will be installed to the following location to be made avail
 
 Documentation is available online at: [https://Tinder.github.io/Nodes](https://Tinder.github.io/Nodes)
 
-> TIP: After completing the [Quick Start](#quick-start) setup (below), documentation is viewable in Xcode by selecting `Build Documentation` from the `Product` menu.
+> [!TIP]
+> After completing the [Quick Start](#quick-start) setup (below), documentation is viewable in Xcode by selecting `Build Documentation` from the `Product` menu.
 
 ## Quick Start
 
 Following these steps will create a new iOS Xcode project set up with Nodes, Needle and Mockolo.
-
-### Requirements
-
-- Xcode version `13.3` or greater
 
 ### Install Dependencies
 
@@ -116,7 +112,7 @@ This step may be skipped if the Nodes repository was previously cloned.
 > Replace `<version>` in the command with the latest Nodes version.
 
 ```
-git clone -b <version> git@github.com:Tinder/Nodes.git
+git clone -b <version> https://github.com/Tinder/Nodes.git
 ```
 
 ### Create Project Directory
@@ -139,7 +135,8 @@ mint run genesis generate <path>/genesis.yml --options "author:$(git config user
 
 When prompted, enter the latest Nodes version, a name for the new iOS Xcode project and an organization identifier (which is the bundle ID prefix such as `com.tinder`).
 
-**OPTIONAL:** The cloned Nodes repository is no longer needed at this point and may be removed if there is no plan to create additional projects.
+> [!TIP]
+> The cloned Nodes repository is no longer needed at this point and may be removed if there is no plan to create additional projects.
 
 ### Generate Xcode Project
 
@@ -178,11 +175,21 @@ brew reinstall --build-from-source mockolo
 
 ### UI Frameworks
 
-While Nodes works out-of-the-box with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui) (for iOS), custom [configuration is required](Customization/Configuration.md) to use other UI frameworks, such as [AppKit](https://developer.apple.com/documentation/appkit).
+Nodes is configured by default for iOS with [UIKit](https://developer.apple.com/documentation/uikit) and [SwiftUI](https://developer.apple.com/xcode/swiftui). UI frameworks for [AppKit](https://developer.apple.com/documentation/appkit) or other platforms may be enabled with [custom configuration](Customization/Configuration.md).
+
+### Observation Frameworks
+
+Nodes is compatible with the [Observation](https://developer.apple.com/documentation/observation) framework for newer operating system versions or can be [configured](Customization/Configuration.md) to use [`ObservableObject`](https://developer.apple.com/documentation/Combine/ObservableObject) for backward compatibility. Other observation libraries such as [Perception](https://github.com/pointfreeco/swift-perception) require [custom setup](Customization/Perception.md).
 
 ### Reactive Frameworks
 
-While Nodes works out-of-the-box with [Combine](https://developer.apple.com/documentation/combine), custom [configuration and setup is required](Customization/RxSwift.md) to use other reactive frameworks, such [RxSwift](https://github.com/ReactiveX/RxSwift).
+Nodes is configured by default for [Combine](https://developer.apple.com/documentation/combine). Other reactive frameworks such as [RxSwift](https://github.com/ReactiveX/RxSwift) require [custom configuration and setup](Customization/RxSwift.md).
+
+### References
+
+- [Nodes Configuration](Customization/Configuration.md)
+- [Using Perception with Nodes](Customization/Perception.md)
+- [Using RxSwift with Nodes](Customization/RxSwift.md)
 
 ## Extras 
 

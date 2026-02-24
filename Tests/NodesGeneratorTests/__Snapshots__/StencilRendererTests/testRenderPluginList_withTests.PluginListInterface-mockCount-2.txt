@@ -1,0 +1,45 @@
+//<fileHeader>
+
+import <pluginListInterfaceImport1>
+import <pluginListInterfaceImport2>
+
+/*
+ This file contains the protocols and types of the plugin list interface requiring public ACL for use in another module.
+ */
+
+/// Defines the delegate protocol through which the `Context` interfaces with its listener.
+// periphery:ignore
+/// @mockable
+@MainActor
+internal protocol <pluginListName>Listener: AnyObject {}
+
+// periphery:ignore
+/// @mockable
+@MainActor
+internal protocol <pluginListName>Flow: <viewControllableFlowType> {}
+
+// periphery:ignore
+/// @mockable
+@MainActor
+internal protocol <pluginListName>Builder: AnyObject {
+    func build(
+        withListener listener: <pluginListName>Listener
+    ) -> <pluginListName>Flow
+}
+
+/// Declares the type of key used to identify plugins within the collection.
+/// - NOTE: May be any ``Hashable`` type such as ``String`` or an enumeration.
+internal typealias <pluginListName>PluginListKeyType = String
+
+/// Dynamic state from the caller provided to the plugins to use in determining whether they are enabled.
+/// - NOTE: An alias to a tuple is supported.
+internal typealias <pluginListName>PluginListStateType = Void
+
+// periphery:ignore
+/// @mockable
+@MainActor
+internal protocol <pluginListName>PluginList {
+    func createAll() -> [<pluginListName>Builder]
+    func create() -> <pluginListName>Builder?
+    func create(key: <pluginListName>PluginListKeyType) -> <pluginListName>Builder?
+}

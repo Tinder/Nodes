@@ -38,7 +38,9 @@ public struct Config: Codable, Equatable {
     public var dependencyInjectionImports: Set<String>
     public var builderImports: Set<String>
     public var flowImports: Set<String>
+    public var interfaceImports: Set<String>
     public var pluginListImports: Set<String>
+    public var pluginListInterfaceImports: Set<String>
     public var viewControllerImports: Set<String>
     public var dependencies: [Variable]
     public var analyticsProperties: [Variable]
@@ -94,7 +96,9 @@ extension Config {
         dependencyInjectionImports = ["NeedleFoundation"]
         builderImports = []
         flowImports = []
+        interfaceImports = []
         pluginListImports = []
+        pluginListInterfaceImports = []
         viewControllerImports = []
         dependencies = []
         analyticsProperties = []
@@ -168,9 +172,15 @@ extension Config {
         flowImports =
             (try? decoder.decode(CodingKeys.flowImports))
             ?? defaults.flowImports
+        interfaceImports =
+            (try? decoder.decode(CodingKeys.interfaceImports))
+            ?? defaults.interfaceImports
         pluginListImports =
             (try? decoder.decode(CodingKeys.pluginListImports))
             ?? defaults.pluginListImports
+        pluginListInterfaceImports =
+            (try? decoder.decode(CodingKeys.pluginListInterfaceImports))
+            ?? defaults.pluginListInterfaceImports
         viewControllerImports =
             (try? decoder.decode(CodingKeys.viewControllerImports))
             ?? defaults.viewControllerImports

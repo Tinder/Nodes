@@ -5,32 +5,12 @@
 import {{ import }}
 {% endfor %}
 {% endif %}
-
-/**
- PURPOSE:
- The interface of the Flow.
- */
-/// @mockable
-@MainActor
-{% if owns_view %}
-{% if plugin_list_name %}
-internal protocol {{ node_name }}Flow: {{ plugin_list_name }}Flow {}
-{% else %}
-internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
-{% endif %}
-{% elif node_name == "WindowScene" %}
-internal protocol {{ node_name }}Flow: Flow {
-    func getViewController() -> {{ node_name }}ViewControllable
-}
-{% else %}
-internal protocol {{ node_name }}Flow: Flow {}
-{% endif %}
 {% if node_name != "App" %}
 
-/**
- PURPOSE:
- Declares the dependencies required by this Node that will be injected (not created by this Node itself).
- */
+// MARK: - Dependency
+
+/// Declares the dependencies required by the component. A code-generated conforming object is made available to the
+/// component through its `dependencies` property. Dependencies must be provided by ancestor components on the DI graph.
 /// @mockable
 @MainActor
 {% if dependencies %}
@@ -44,12 +24,10 @@ public protocol {{ node_name }}Dependency: Dependency {}
 {% endif %}
 {% endif %}
 
-/**
- PURPOSE:
- A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
+// MARK: - Dynamic Dependencies
 
- Can be a tuple or struct containing multiple values when necessary.
- */
+/// Encapsulates arguments passed through the builder base class to its factory build method.
+/// - NOTE: An alias to a tuple is supported.
 {% if owns_view %}
 internal typealias {{ node_name }}DynamicBuildDependency = {{ node_name }}Listener
 {% elif node_name == "App" %}
@@ -58,20 +36,14 @@ internal typealias {{ node_name }}DynamicBuildDependency = Void
 internal typealias {{ node_name }}DynamicBuildDependency = ({{ node_name }}Listener, {{ node_name }}ViewControllable)
 {% endif %}
 
-/**
- PURPOSE:
- A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
-
- Can be a tuple or struct containing multiple values when necessary.
- */
+/// Encapsulates arguments passed through the builder base class to the component initializer.
+/// - NOTE: An alias to a tuple is supported.
 internal typealias {{ node_name }}DynamicComponentDependency = Void
 
 // MARK: - Component
 
-/**
- PURPOSE:
- Declares dependencies that are owned by this Node.
- */
+/// Implements a DI graph scope where the dependencies provided to this component and its descendants are defined.
+/// The component can also include child component factories, which are used to construct the graph.
 {% if node_name == "App" %}
 public final class {{ node_name }}Component: BootstrapComponent {
 {% else %}
@@ -81,30 +53,25 @@ public final class {{ node_name }}Component: Component
 > {
 {% endif %}
 
-    /*
-     Dependencies
-     ============
+    // MARK: - Dependencies
 
-     Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
-
-     fileprivate let example: Example = .init()
-
-     Whenever possible, for example when the dependency does not provide shared state, define the property as a
-     factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
-     Needle compatibility whenever the access control is increased.
-
-     fileprivate var exampleFactory: Example {
-         Example()
-     }
-
-     When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
-     that always returns the same instance from a computed property.
-
-     fileprivate var example: Example {
-         shared { Example(otherDependency: dependency.otherDependency) }
-     }
-
-     */
+    /// Define dependencies as `fileprivate` computed property factories that create new instances when accessed.
+    /// Only increase access control to `public` when the component is to provide the dependency to its descendants.
+    ///
+    ///     fileprivate var exampleFactory: Example {
+    ///         Example()
+    ///     }
+    ///
+    /// Store the dependency on the component only when shared state is necessary.
+    ///
+    ///     fileprivate let example: Example = .init()
+    ///
+    /// Or use the `shared` helper method which always returns the same instance from the computed property.
+    /// This is only necessary for dependencies initialized with other dependencies.
+    ///
+    ///     fileprivate var example: Example {
+    ///         shared { Example(otherDependency: dependency.otherDependency) }
+    ///     }
     {% if component_dependencies %}
 
     {{ component_dependencies }}
@@ -118,17 +85,7 @@ public final class {{ node_name }}Component: Component
     {% if is_periphery_comment_enabled %}
     // periphery:ignore
     {% endif %}
-    /// The initializer.
-    ///
-    /// Remove `dynamicDependency` default parameter when its type is not `Void`.
-    ///
-    {% if node_name == "App" %}
-    /// - Parameter dynamicDependency: The dynamic component dependency
-    {% else %}
-    /// - Parameters:
-    ///   - parent: The parent scope
-    ///   - dynamicDependency: The dynamic component dependency
-    {% endif %}
+    /// - NOTE: Remove the default value from `dynamicDependency` when its type is not `Void`.
     internal init(
         {% if node_name != "App" %}
         parent: Scope,
@@ -143,17 +100,13 @@ public final class {{ node_name }}Component: Component
         {% endif %}
     }
 
-    /*
-     Child Components
-     ================
+    // MARK: - Child Components
 
-     Declare child component factories as 'fileprivate' methods.
-
-     fileprivate func <name>ComponentFactory() -> <Name>Component {
-         <Name>Component(parent: self)
-     }
-
-     */
+    /// Define child component factories as 'fileprivate' methods.
+    ///
+    ///     fileprivate func <name>ComponentFactory() -> <Name>Component {
+    ///         <Name>Component(parent: self)
+    ///     }
     {% if node_name == "App" %}
 
     fileprivate func windowSceneComponentFactory() -> WindowSceneComponent {
@@ -177,38 +130,6 @@ public final class {{ node_name }}Component: Component
 {% if is_periphery_comment_enabled %}
 // periphery:ignore
 {% endif %}
-/**
- PURPOSE:
- The Builder interface (available to mock for testability).
- */
-/// @mockable
-@MainActor
-{% if plugin_list_name %}
-internal protocol {{ node_name }}Builder: {{ plugin_list_name }}Builder {
-    func build(
-        withListener listener: {{ node_name }}Listener
-    ) -> {{ node_name }}Flow
-}
-{% else %}
-internal protocol {{ node_name }}Builder: AnyObject {
-    {% if node_name == "App" %}
-    func build() -> {{ node_name }}Flow
-    {% else %}
-    func build(
-        withListener listener: {{ node_name }}Listener{% if not owns_view %}{{ ',' }}
-        viewController: {{ node_name }}ViewControllable{% endif +%}
-    ) -> {{ node_name }}Flow
-    {% endif %}
-}
-{% endif %}
-
-{% if is_periphery_comment_enabled %}
-// periphery:ignore
-{% endif %}
-/**
- PURPOSE:
- Concrete implementation of the Builder, where everything is created and associated.
- */
 internal final class {{ node_name }}BuilderImp: AbstractBuilder
 <
     {{ node_name }}Component,
@@ -218,12 +139,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
 > {
     {% if plugin_list_name %}
 
-    /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
-    /// the dynamic component dependency.
-    ///
-    /// The dynamic dependencies can be tuples containing multiple values when necessary.
-    /// - Parameter listener: An object that can listen for signals from the Node
-    /// - Returns: The Flow instance
+    /// Provides plugin list compatibility.
     internal func build(
         withListener listener: {{ plugin_list_name }}Listener
     ) -> {{ plugin_list_name }}Flow {
@@ -231,18 +147,8 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     }
     {% endif %}
 
-    /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
-    /// the dynamic component dependency.
-    ///
-    /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
-    {% if owns_view %}
-    /// - Parameter listener: An object that can listen for signals from the Node
-    {% elif node_name != "App" %}
-    /// - Parameters:
-    ///   - listener: An object that can listen for signals from the Node
-    ///   - viewController: The injected view controller
-    {% endif %}
-    /// - Returns: The Flow instance
+    /// Directs arguments passed through the base class, determining whether each will be provided to its factory build
+    /// method or the component initializer.
     {% if node_name == "App" %}
     internal func build() -> {{ node_name }}Flow {
     {% else %}
@@ -262,11 +168,7 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
         return build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
-    /// The factory method in which the Context and Flow are initialized.
-    /// - Parameters:
-    ///   - component: The component instance
-    ///   - dynamicBuildDependency: The dynamic build dependency
-    /// - Returns: The Flow instance
+    /// Implements the factory build method where instances are initialized.
     override internal func build(
         component: {{ node_name }}Component,
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency

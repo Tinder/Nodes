@@ -1,82 +1,55 @@
 //<fileHeader>
 
-/**
- PURPOSE:
- The interface of the Flow.
- */
-/// @mockable
-@MainActor
-internal protocol <nodeName>Flow: Flow {}
+// MARK: - Dependency
 
-/**
- PURPOSE:
- Declares the dependencies required by this Node that will be injected (not created by this Node itself).
- */
+/// Declares the dependencies required by the component. A code-generated conforming object is made available to the
+/// component through its `dependencies` property. Dependencies must be provided by ancestor components on the DI graph.
 /// @mockable
 @MainActor
 public protocol <nodeName>Dependency: Dependency {}
 
-/**
- PURPOSE:
- A dependency needed by the Builder (such as a Listener), passed in from the caller (i.e. is not on the DI graph).
+// MARK: - Dynamic Dependencies
 
- Can be a tuple or struct containing multiple values when necessary.
- */
+/// Encapsulates arguments passed through the builder base class to its factory build method.
+/// - NOTE: An alias to a tuple is supported.
 internal typealias <nodeName>DynamicBuildDependency = (<nodeName>Listener, <nodeName>ViewControllable)
 
-/**
- PURPOSE:
- A dependency used by the Component itself, passed into the Component's initializer (in the Component factory).
-
- Can be a tuple or struct containing multiple values when necessary.
- */
+/// Encapsulates arguments passed through the builder base class to the component initializer.
+/// - NOTE: An alias to a tuple is supported.
 internal typealias <nodeName>DynamicComponentDependency = Void
 
 // MARK: - Component
 
-/**
- PURPOSE:
- Declares dependencies that are owned by this Node.
- */
+/// Implements a DI graph scope where the dependencies provided to this component and its descendants are defined.
+/// The component can also include child component factories, which are used to construct the graph.
 public final class <nodeName>Component: Component
 <
     <nodeName>Dependency
 > {
 
-    /*
-     Dependencies
-     ============
+    // MARK: - Dependencies
 
-     Declare dependencies as 'fileprivate' properties (increasing access control only as necessary).
-
-     fileprivate let example: Example = .init()
-
-     Whenever possible, for example when the dependency does not provide shared state, define the property as a
-     factory that always returns a new instance. Factory properties are preferred over factory methods to ensure
-     Needle compatibility whenever the access control is increased.
-
-     fileprivate var exampleFactory: Example {
-         Example()
-     }
-
-     When shared state is desired but the dependency depends on another dependency, use the `shared` helper method
-     that always returns the same instance from a computed property.
-
-     fileprivate var example: Example {
-         shared { Example(otherDependency: dependency.otherDependency) }
-     }
-
-     */
+    /// Define dependencies as `fileprivate` computed property factories that create new instances when accessed.
+    /// Only increase access control to `public` when the component is to provide the dependency to its descendants.
+    ///
+    ///     fileprivate var exampleFactory: Example {
+    ///         Example()
+    ///     }
+    ///
+    /// Store the dependency on the component only when shared state is necessary.
+    ///
+    ///     fileprivate let example: Example = .init()
+    ///
+    /// Or use the `shared` helper method which always returns the same instance from the computed property.
+    /// This is only necessary for dependencies initialized with other dependencies.
+    ///
+    ///     fileprivate var example: Example {
+    ///         shared { Example(otherDependency: dependency.otherDependency) }
+    ///     }
 
     private let dynamicDependency: <nodeName>DynamicComponentDependency
 
-    /// The initializer.
-    ///
-    /// Remove `dynamicDependency` default parameter when its type is not `Void`.
-    ///
-    /// - Parameters:
-    ///   - parent: The parent scope
-    ///   - dynamicDependency: The dynamic component dependency
+    /// - NOTE: Remove the default value from `dynamicDependency` when its type is not `Void`.
     internal init(
         parent: Scope,
         dynamicDependency: <nodeName>DynamicComponentDependency = ()
@@ -85,38 +58,17 @@ public final class <nodeName>Component: Component
         super.init(parent: parent)
     }
 
-    /*
-     Child Components
-     ================
+    // MARK: - Child Components
 
-     Declare child component factories as 'fileprivate' methods.
-
-     fileprivate func <name>ComponentFactory() -> <Name>Component {
-         <Name>Component(parent: self)
-     }
-
-     */
+    /// Define child component factories as 'fileprivate' methods.
+    ///
+    ///     fileprivate func <name>ComponentFactory() -> <Name>Component {
+    ///         <Name>Component(parent: self)
+    ///     }
 }
 
 // MARK: - Builder
 
-/**
- PURPOSE:
- The Builder interface (available to mock for testability).
- */
-/// @mockable
-@MainActor
-internal protocol <nodeName>Builder: AnyObject {
-    func build(
-        withListener listener: <nodeName>Listener,
-        viewController: <nodeName>ViewControllable
-    ) -> <nodeName>Flow
-}
-
-/**
- PURPOSE:
- Concrete implementation of the Builder, where everything is created and associated.
- */
 internal final class <nodeName>BuilderImp: AbstractBuilder
 <
     <nodeName>Component,
@@ -125,14 +77,8 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
     <nodeName>DynamicComponentDependency
 > {
 
-    /// The purpose of this method is to route input parameters to either the dynamic build dependency and/or
-    /// the dynamic component dependency.
-    ///
-    /// The dynamic dependencies can be tuples or structs containing multiple values when necessary.
-    /// - Parameters:
-    ///   - listener: An object that can listen for signals from the Node
-    ///   - viewController: The injected view controller
-    /// - Returns: The Flow instance
+    /// Directs arguments passed through the base class, determining whether each will be provided to its factory build
+    /// method or the component initializer.
     internal func build(
         withListener listener: <nodeName>Listener,
         viewController: <nodeName>ViewControllable
@@ -142,11 +88,7 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         return build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
-    /// The factory method in which the Context and Flow are initialized.
-    /// - Parameters:
-    ///   - component: The component instance
-    ///   - dynamicBuildDependency: The dynamic build dependency
-    /// - Returns: The Flow instance
+    /// Implements the factory build method where instances are initialized.
     override internal func build(
         component: <nodeName>Component,
         dynamicBuildDependency: <nodeName>DynamicBuildDependency

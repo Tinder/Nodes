@@ -1,0 +1,19 @@
+//<fileHeader>
+
+import <interfaceImport1>
+import <interfaceImport2>
+
+/*
+ This file contains the protocols and types of the interface requiring public ACL for use in another module.
+ */
+
+/// @mockable
+@MainActor
+internal protocol AppFlow: Flow {}
+
+// periphery:ignore
+/// @mockable
+@MainActor
+internal protocol AppBuilder: AnyObject {
+    func build() -> AppFlow
+}

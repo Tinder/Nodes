@@ -12,12 +12,14 @@
     - "NeedleFoundation"
   - flowImports: 0 members
   - flowProperties: 0 elements
+  - interfaceImports: 0 members
   - isObservableStoreEnabled: false
   - isPeripheryCommentEnabled: false
   - isPreviewProviderEnabled: false
   - isTestTemplatesGenerationEnabled: true
   - isViewInjectedTemplateEnabled: true
   - pluginListImports: 0 members
+  - pluginListInterfaceImports: 0 members
   - publisherFailureType: "Never"
   - publisherType: "AnyPublisher"
   ▿ reactiveImports: 1 member

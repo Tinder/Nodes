@@ -1,0 +1,41 @@
+//{{ file_header }}
+{% if interface_imports %}
+
+{% for import in interface_imports %}
+import {{ import }}
+{% endfor %}
+{% endif %}
+
+/*
+ This file contains the protocols and types of the interface requiring public ACL for use in another module.
+ */
+{% if node_name != "App" %}
+
+/// Defines the delegate protocol through which the `Context` interfaces with its listener.
+/// @mockable
+@MainActor
+internal protocol {{ node_name }}Listener: AnyObject {}
+{% endif %}
+
+/// @mockable
+@MainActor
+{% if plugin_list_name %}
+internal protocol {{ node_name }}Flow: {{ plugin_list_name }}Flow {}
+{% else %}
+internal protocol {{ node_name }}Flow: {{ view_controllable_flow_type }} {}
+{% endif %}
+
+{% if is_periphery_comment_enabled %}
+// periphery:ignore
+{% endif %}
+/// @mockable
+@MainActor
+{% if plugin_list_name %}
+internal protocol {{ node_name }}Builder: {{ plugin_list_name }}Builder {
+{% else %}
+internal protocol {{ node_name }}Builder: AnyObject {
+{% endif %}
+    func build(
+        withListener listener: {{ node_name }}Listener
+    ) -> {{ node_name }}Flow
+}

@@ -1,0 +1,25 @@
+//<fileHeader>
+
+import <interfaceImport>
+
+/*
+ This file contains the protocols and types of the interface requiring public ACL for use in another module.
+ */
+
+/// Defines the delegate protocol through which the `Context` interfaces with its listener.
+/// @mockable
+@MainActor
+internal protocol <nodeName>Listener: AnyObject {}
+
+/// @mockable
+@MainActor
+internal protocol <nodeName>Flow: <pluginListName>Flow {}
+
+// periphery:ignore
+/// @mockable
+@MainActor
+internal protocol <nodeName>Builder: <pluginListName>Builder {
+    func build(
+        withListener listener: <nodeName>Listener
+    ) -> <nodeName>Flow
+}
