@@ -72,7 +72,7 @@ To install Nodes' Xcode templates manually, first add Nodes as a dependency to a
 > Replace `<version>` in the command with the latest Nodes version.
 
 ```
-.package(url: "git@github.com:Tinder/Nodes.git", from: "<version>")
+.package(url: "https://github.com/Tinder/Nodes.git", from: "<version>")
 ```
 
 Then run the following shell command:
@@ -98,10 +98,6 @@ Documentation is available online at: [https://Tinder.github.io/Nodes](https://T
 
 Following these steps will create a new iOS Xcode project set up with Nodes, Needle and Mockolo.
 
-### Requirements
-
-- Xcode version `13.3` or greater
-
 ### Install Dependencies
 
 ```
@@ -116,7 +112,7 @@ This step may be skipped if the Nodes repository was previously cloned.
 > Replace `<version>` in the command with the latest Nodes version.
 
 ```
-git clone -b <version> git@github.com:Tinder/Nodes.git
+git clone -b <version> https://github.com/Tinder/Nodes.git
 ```
 
 ### Create Project Directory

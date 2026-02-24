@@ -7,15 +7,17 @@ on:
     branches: [ main ]
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_15.4.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_26.3.app/Contents/Developer
 
 jobs:
   swift:
     name: Swift
     runs-on: macos-latest
+    permissions:
+      contents: read
     steps:
     - name: Checkout source
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Build
       run: swift build -v
     - name: Test

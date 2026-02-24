@@ -59,8 +59,9 @@ files:
       - accessibility_label_for_image
       - accessibility_trait_for_button
       - anonymous_argument_in_multiline_closure
-      - anyobject_protocol
       - array_init
+      - async_without_await
+      - attribute_name_spacing
       # - attributes
       - balanced_xctest_lifecycle
       - blanket_disable_command
@@ -144,7 +145,6 @@ files:
       - implicitly_unwrapped_optional
       - inclusive_language
       # - indentation_width
-      - inert_defer
       - invalid_swiftlint_command
       - is_disjoint
       - joined_default_parameter
@@ -195,6 +195,7 @@ files:
       - opening_brace
       - operator_usage_whitespace
       - operator_whitespace
+      - optional_data_string_conversion
       - optional_enum_case_matching
       - orphaned_doc_comment
       - overridden_super_call
@@ -205,6 +206,7 @@ files:
       - prefer_nimble
       - prefer_self_in_static_references
       - prefer_self_type_over_type_of_self
+      - prefer_type_checking
       - prefer_zero_over_explicit_init
       # - prefixed_toplevel_constant
       - private_action
@@ -227,6 +229,7 @@ files:
       - redundant_objc_attribute
       - redundant_optional_initialization
       - redundant_self_in_closure
+      - redundant_sendable
       - redundant_set_access_control
       # - redundant_string_enum_value
       - redundant_type_annotation
@@ -274,7 +277,6 @@ files:
       - unneeded_synthesized_initializer
       - unowned_variable_capture
       - untyped_error_in_catch
-      - unused_capture_list
       - unused_closure_parameter
       - unused_control_flow_label
       - unused_enumerated
@@ -891,12 +893,12 @@ files:
                   {% if path|replace:' ','' %}
                   path: "{{ path }}"),
                   {% else %}
-                  url: "git@github.com:Tinder/Nodes.git",
+                  url: "https://github.com/Tinder/Nodes.git",
                   exact: "{{ nodes }}"),
                   {% endif %}
               .package(
                   url: "https://github.com/realm/SwiftLint.git",
-                  exact: "0.56.2"),
+                  exact: "0.59.1"),
           ]
       )
 
@@ -966,8 +968,8 @@ files:
               create "{{ project|replace:' ','_' }}/Sources/Bootstrap/Scene"
               create "{{ project|replace:' ','_' }}/Sources/Bootstrap/Window"
               create "{{ project|replace:' ','_' }}/Sources/Screens/Root"
-              find "{{ project|replace:' ','_' }}/Sources" -type f -name "*.swift" -exec sed -i '' '/@MainActor/,+0d' {} \;
           fi
+          find "{{ project|replace:' ','_' }}/Sources" -type f -name "*.swift" -exec sed -i '' '/@MainActor/,+0d' {} \;
           NEEDLE_GENERATED="{{ project|replace:' ','_' }}/Generated/NeedleGenerated.swift"
           MOCKOLO_GENERATED="{{ project|replace:' ','_' }}Tests/Generated/MockoloGenerated.swift"
           [[ -f "$NEEDLE_GENERATED" ]] || touch "$NEEDLE_GENERATED"
@@ -1009,7 +1011,7 @@ files:
           {% if path|replace:' ','' %}
           path: {{ path }}
           {% else %}
-          url: git@github.com:Tinder/Nodes.git
+          url: https://github.com/Tinder/Nodes.git
           version: {{ nodes }}
           {% endif %}
         NeedleFoundation:
@@ -1017,7 +1019,7 @@ files:
           version: 0.25.1
         Nimble:
           url: https://github.com/Quick/Nimble.git
-          version: 13.4.0
+          version: 14.0.0
       configFiles:
         Debug: BuildSettings/Debug.xcconfig
         Release: BuildSettings/Release.xcconfig
@@ -1131,7 +1133,7 @@ files:
                     # https://github.com/realm/SwiftLint/blob/0.52.4/Source/swiftlint/Commands/SwiftLint.swift#L8
                     unset BUILD_WORKSPACE_DIRECTORY
 
-                    "$(find ".build/artifacts/swiftlint" -type f -name swiftlint -perm +111 -print -quit)"
+                    "$(find ".build/artifacts/swiftlint" -path "*macos*" -type f -name swiftlint -perm +111 -print -quit)"
                 else
                     echo "SwiftLint is skipped in CI."
                 fi

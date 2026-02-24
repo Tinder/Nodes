@@ -7,21 +7,23 @@ on:
     branches: [ main ]
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_15.4.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_26.3.app/Contents/Developer
 
 jobs:
   genesis:
     name: Genesis
     runs-on: macos-latest
+    permissions:
+      contents: read
     env:
-      SIMULATOR: iPhone 15
+      SIMULATOR: iPhone 17
     steps:
     - name: Install dependencies
       run: |
         brew install mint xcodegen needle mockolo
         mint install yonaskolb/genesis
     - name: Checkout source
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Create temporary directory
       id: mktemp
       run: echo "directory=$(mktemp -d)" >> "$GITHUB_OUTPUT"
@@ -33,16 +35,13 @@ jobs:
     - name: Generate Xcode project
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: xcodegen
-    - name: Remove @MainActor
-      working-directory: ${{ steps.mktemp.outputs.directory }}
-      run: find "Tinder/Sources" -type f -name "*.swift" -exec sed -i '' '/@MainActor/,+0d' {} \;
     - name: Download swiftlint binary
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: swift package resolve
     - name: Lint
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
-        "$(find ".build/artifacts/swiftlint" -type f -name swiftlint -perm +111 -print -quit)"
+        "$(find ".build/artifacts/swiftlint" -path "*macos*" -type f -name swiftlint -perm +111 -print -quit)"
         lint --strict --reporter github-actions-logging
     - name: Resolve package dependencies
       working-directory: ${{ steps.mktemp.outputs.directory }}

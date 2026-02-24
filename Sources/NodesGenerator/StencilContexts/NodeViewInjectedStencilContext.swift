@@ -70,7 +70,6 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         ]
     }
 
-    // swiftlint:disable:next function_default_parameter_at_end
     public init(
         fileHeader: String,
         nodeName: String,
@@ -89,7 +88,7 @@ public struct NodeViewInjectedStencilContext: StencilContext {
         pluginTestsImports: Set<String>,
         stateImports: Set<String>,
         dependencies: [Config.Variable],
-        componentDependencies: String = "",
+        componentDependencies: String = "", // swiftlint:disable:this function_default_parameter_at_end
         analyticsProperties: [Config.Variable],
         flowProperties: [Config.Variable],
         viewControllableFlowType: String,

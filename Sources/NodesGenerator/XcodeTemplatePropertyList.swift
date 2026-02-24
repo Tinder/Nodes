@@ -83,7 +83,7 @@ internal struct XcodeTemplatePropertyList: Codable, Equatable {
         }
 
         internal static func buildBlock(_ components: Component...) -> Component {
-            components.flatMap { $0 }
+            components.flatMap(\.self)
         }
 
         internal static func buildOptional(_ component: Component?) -> Component {
@@ -99,7 +99,7 @@ internal struct XcodeTemplatePropertyList: Codable, Equatable {
         }
 
         internal static func buildArray(_ components: [Component]) -> Component {
-            components.flatMap { $0 }
+            components.flatMap(\.self)
         }
 
         internal static func buildLimitedAvailability(_ component: Component) -> Component {
