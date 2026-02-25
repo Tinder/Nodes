@@ -57,6 +57,7 @@ jobs:
         CODE_SIGN_IDENTITY=""
         CODE_SIGNING_ALLOWED="NO"
         CODE_SIGNING_REQUIRED="NO"
+        APP_TARGET_SWIFT_FLAGS="-warnings-as-errors"
     - name: Test
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >

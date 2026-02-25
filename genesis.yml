@@ -549,6 +549,7 @@ files:
       ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon
       ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor
       LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks
+      OTHER_SWIFT_FLAGS = $(inherited) $(APP_TARGET_SWIFT_FLAGS)
       PRODUCT_NAME = $(TARGET_NAME)
       TARGETED_DEVICE_FAMILY = 1,2
 
@@ -788,6 +789,7 @@ files:
       ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
       BUNDLE_LOADER = $(TEST_HOST)
       LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @loader_path/Frameworks
+      OTHER_SWIFT_FLAGS = $(inherited) $(APP_TARGET_SWIFT_FLAGS)
       PRODUCT_NAME = $(TARGET_NAME)
       TARGETED_DEVICE_FAMILY = 1,2
       TEST_HOST = $(BUILT_PRODUCTS_DIR)/{{ project|replace:' ','_' }}.app/{{ project|replace:' ','_' }}
