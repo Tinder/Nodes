@@ -611,7 +611,8 @@ files:
           #if DEBUG
 
           private func makeAppComponentWithStubbedDependencies() -> AppComponent {
-              AppComponent()
+              let test: String = ""
+              return AppComponent()
           }
 
           #endif
