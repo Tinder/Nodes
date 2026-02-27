@@ -61,12 +61,13 @@ docs:
 		-scheme "$(target)" \
 		-destination "$(destination)" \
 		-derivedDataPath "$(DERIVED_DATA_PATH)" \
-		-skipPackagePluginValidation
+		-skipPackagePluginValidation \
+		$(if $(filter $(open),OPEN),OTHER_DOCC_FLAGS="--warnings-as-errors",)
 	@find "$(DERIVED_DATA_PATH)" \
 		-type d \
 		-name "$(target).doccarchive" \
 		-exec cp -R {} "$(ARCHIVE_PATH)/" \;
-	$(if $(filter $(open),OPEN),@open "$(ARCHIVE_PATH)/$(target).doccarchive",)
+	@$(if $(filter $(open),OPEN),open "$(ARCHIVE_PATH)/$(target).doccarchive",:)
 
 .PHONY: site
 site: target ?= Nodes
