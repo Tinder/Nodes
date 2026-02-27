@@ -11,4 +11,8 @@ import Codextended
 import Yams
 
 // Enables Codextended with YAMLDecoder [https://github.com/JohnSundell/Codextended]
+#if swift(>=5.9)
 extension YAMLDecoder: @retroactive AnyDecoder {}
+#else
+extension YAMLDecoder: AnyDecoder {}
+#endif
