@@ -41,7 +41,7 @@ jobs:
     - name: Lint
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
-        "swift package plugin --allow-writing-to-package-directory swiftlint --
+        swift package plugin --allow-writing-to-package-directory swiftlint --
         lint --strict --reporter github-actions-logging
     - name: Resolve package dependencies
       working-directory: ${{ steps.mktemp.outputs.directory }}
