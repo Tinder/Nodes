@@ -35,13 +35,13 @@ jobs:
     - name: Generate Xcode project
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: xcodegen
-    - name: Download swiftlint binary
+    - name: Resolve package dependencies
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: swift package resolve
     - name: Lint
       working-directory: ${{ steps.mktemp.outputs.directory }}
       run: >
-        "$(find ".build/artifacts/swiftlint" -path "*macos*" -type f -name swiftlint -perm +111 -print -quit)"
+        "swift package plugin --allow-writing-to-package-directory swiftlint --
         lint --strict --reporter github-actions-logging
     - name: Resolve package dependencies
       working-directory: ${{ steps.mktemp.outputs.directory }}
