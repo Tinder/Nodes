@@ -64,6 +64,7 @@ open class AbstractBuilder<ComponentType,
     ///   - dynamicBuildDependency: The `DynamicBuildDependencyType` instance.
     ///
     /// - Returns: A `BuildType` instance (`Flow` object).
+    @available(*, deprecated, message: "Override the async variant instead")
     open func build( // swiftlint:disable:this unavailable_function
         component: ComponentType,
         dynamicBuildDependency: DynamicBuildDependencyType
@@ -90,6 +91,48 @@ open class AbstractBuilder<ComponentType,
         assert(newComponent !== lastComponent, "Factory must produce a new component each time it is called")
         lastComponent = newComponent
         return build(component: component, dynamicBuildDependency: dynamicBuildDependency)
+    }
+
+    // MARK: - Async
+
+    /// Async variant of the factory method ``build(component:dynamicBuildDependency:)``.
+    ///
+    /// Override this instead of the synchronous version when your builder needs to
+    /// `await` async dependency resolution.
+    ///
+    /// - Important: This abstract method must be overridden in subclasses that use async building.
+    ///   This method should never be called directly.
+    ///   The ``AbstractBuilder`` instance calls this method internally.
+    ///
+    /// - Parameters:
+    ///   - component: The `ComponentType` instance.
+    ///   - dynamicBuildDependency: The `DynamicBuildDependencyType` instance.
+    ///
+    /// - Returns: A `BuildType` instance (`Flow` object).
+    open func build( // swiftlint:disable:this unavailable_function
+        component: ComponentType,
+        dynamicBuildDependency: DynamicBuildDependencyType
+    ) async -> BuildType {
+        preconditionFailure("Method in abstract base class must be overridden")
+    }
+
+    /// Async variant of ``build(_:_:)``. Creates a `ComponentType` instance and passes it to the
+    /// async ``build(component:dynamicBuildDependency:)`` override.
+    ///
+    /// - Parameters:
+    ///   - dynamicBuildDependency: The `DynamicBuildDependencyType` instance.
+    ///   - dynamicComponentDependency: The `DynamicComponentDependencyType` instance.
+    ///
+    /// - Returns: A `BuildType` instance (`Flow` object).
+    public final func build(
+        _ dynamicBuildDependency: DynamicBuildDependencyType,
+        _ dynamicComponentDependency: DynamicComponentDependencyType
+    ) async -> BuildType {
+        let component: ComponentType = componentFactory(dynamicComponentDependency)
+        let newComponent: AnyObject = component as AnyObject
+        assert(newComponent !== lastComponent, "Factory must produce a new component each time it is called")
+        lastComponent = newComponent
+        return await build(component: component, dynamicBuildDependency: dynamicBuildDependency)
     }
 }
 

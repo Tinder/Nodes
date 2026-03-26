@@ -29,7 +29,8 @@ final class <nodeName>BuilderTests: XCTestCase {
     }
 
     @MainActor
-    func testCreate() {
-        XCTAssertNotNil(builder.build(withListener: listenerMock))
+    func testCreate() async {
+        let result = await builder.build(withListener: listenerMock)
+        XCTAssertNotNil(result)
     }
 }

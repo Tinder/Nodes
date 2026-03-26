@@ -95,17 +95,17 @@ internal final class WindowBuilderImp: AbstractBuilder
     internal func build(
         withListener listener: WindowListener,
         viewController: WindowViewControllable
-    ) -> WindowFlow {
+    ) async -> WindowFlow {
         let dynamicBuildDependency: WindowDynamicBuildDependency = (listener, viewController)
         let dynamicComponentDependency: WindowDynamicComponentDependency = ()
-        return build(dynamicBuildDependency, dynamicComponentDependency)
+        return await build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
     /// Implements the factory build method where instances are initialized.
     override internal func build(
         component: WindowComponent,
         dynamicBuildDependency: WindowDynamicBuildDependency
-    ) -> WindowFlow {
+    ) async -> WindowFlow {
         let listener: WindowListener = dynamicBuildDependency.0
         let viewController: WindowViewControllable = dynamicBuildDependency.1
         let analytics: WindowAnalyticsImp = .init(

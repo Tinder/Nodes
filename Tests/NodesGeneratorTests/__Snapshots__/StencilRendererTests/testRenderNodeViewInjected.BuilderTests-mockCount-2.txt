@@ -40,7 +40,8 @@ final class <nodeName>BuilderTests: XCTestCase {
     }
 
     @MainActor
-    func testCreate() {
-        expect { [self] in builder.build(withListener: listenerMock, viewController: viewControllableMock) } != nil
+    func testCreate() async {
+        let result = await builder.build(withListener: listenerMock, viewController: viewControllableMock)
+        expect(result) != nil
     }
 }

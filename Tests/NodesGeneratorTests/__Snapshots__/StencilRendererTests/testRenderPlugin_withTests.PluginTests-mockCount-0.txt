@@ -26,12 +26,14 @@ final class <pluginName>PluginTests: XCTestCase {
     }
 
     @MainActor
-    func testCreate() {
-        XCTAssertNotNil(plugin.create())
+    func testCreate() async {
+        let result = await plugin.create()
+        XCTAssertNotNil(result)
     }
 
     @MainActor
-    func testOverride() {
-        XCTAssertNotNil(plugin.override())
+    func testOverride() async {
+        let result = await plugin.override()
+        XCTAssertNotNil(result)
     }
 }

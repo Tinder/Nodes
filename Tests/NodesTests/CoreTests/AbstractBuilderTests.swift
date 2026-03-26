@@ -25,10 +25,25 @@ final class AbstractBuilderTests: XCTestCase {
         }
     }
 
+    private class AsyncTestBuilder: AbstractBuilder<ComponentType, BuildType, Void, Void> {
+
+        // swiftlint:disable:next unused_parameter
+        override func build(component: ComponentType, dynamicBuildDependency: Void) async -> BuildType {
+            BuildType()
+        }
+    }
+
     @MainActor
     func testBuild() {
         let builder: TestBuilder = givenBuilder { ComponentType() }
         expect(builder.build()).to(beAKindOf(BuildType.self))
+    }
+
+    @MainActor
+    func testAsyncBuild() async {
+        let builder: AsyncTestBuilder = givenAsyncBuilder { ComponentType() }
+        let result = await builder.buildAsync()
+        expect(result).to(beAKindOf(BuildType.self))
     }
 
     @MainActor
@@ -44,11 +59,22 @@ final class AbstractBuilderTests: XCTestCase {
         expect(builder).to(notBeNilAndToDeallocateAfterTest())
         return builder
     }
+
+    @MainActor
+    private func givenAsyncBuilder(componentFactory: @escaping () -> ComponentType) -> AsyncTestBuilder {
+        let builder: AsyncTestBuilder = .init(componentFactory: componentFactory)
+        expect(builder).to(notBeNilAndToDeallocateAfterTest())
+        return builder
+    }
 }
 
 extension AbstractBuilder where DynamicBuildDependencyType == Void, DynamicComponentDependencyType == Void {
 
     func build() -> BuildType {
         build((), ())
+    }
+
+    func buildAsync() async -> BuildType {
+        await build((), ())
     }
 }

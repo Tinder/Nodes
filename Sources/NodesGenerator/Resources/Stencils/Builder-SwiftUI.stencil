@@ -106,8 +106,8 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     /// Provides plugin list compatibility.
     internal func build(
         withListener listener: {{ plugin_list_name }}Listener
-    ) -> {{ plugin_list_name }}Flow {
-        build(withListener: listener as {{ node_name }}Listener)
+    ) async -> {{ plugin_list_name }}Flow {
+        await build(withListener: listener as {{ node_name }}Listener)
     }
     {% endif %}
 
@@ -115,17 +115,17 @@ internal final class {{ node_name }}BuilderImp: AbstractBuilder
     /// method or the component initializer.
     internal func build(
         withListener listener: {{ node_name }}Listener
-    ) -> {{ node_name }}Flow {
+    ) async -> {{ node_name }}Flow {
         let dynamicBuildDependency: {{ node_name }}DynamicBuildDependency = listener
         let dynamicComponentDependency: {{ node_name }}DynamicComponentDependency = ()
-        return build(dynamicBuildDependency, dynamicComponentDependency)
+        return await build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
     /// Implements the factory build method where instances are initialized.
     override internal func build(
         component: {{ node_name }}Component,
         dynamicBuildDependency: {{ node_name }}DynamicBuildDependency
-    ) -> {{ node_name }}Flow {
+    ) async -> {{ node_name }}Flow {
         let listener: {{ node_name }}Listener = dynamicBuildDependency
         let store: {{ store_prefix }}Store<
             {{ node_name }}State,

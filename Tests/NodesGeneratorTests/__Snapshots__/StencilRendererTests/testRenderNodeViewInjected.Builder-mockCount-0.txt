@@ -82,17 +82,17 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
     internal func build(
         withListener listener: <nodeName>Listener,
         viewController: <nodeName>ViewControllable
-    ) -> <nodeName>Flow {
+    ) async -> <nodeName>Flow {
         let dynamicBuildDependency: <nodeName>DynamicBuildDependency = (listener, viewController)
         let dynamicComponentDependency: <nodeName>DynamicComponentDependency = ()
-        return build(dynamicBuildDependency, dynamicComponentDependency)
+        return await build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
     /// Implements the factory build method where instances are initialized.
     override internal func build(
         component: <nodeName>Component,
         dynamicBuildDependency: <nodeName>DynamicBuildDependency
-    ) -> <nodeName>Flow {
+    ) async -> <nodeName>Flow {
         let listener: <nodeName>Listener = dynamicBuildDependency.0
         let viewController: <nodeName>ViewControllable = dynamicBuildDependency.1
         let analytics: <nodeName>AnalyticsImp = .init()

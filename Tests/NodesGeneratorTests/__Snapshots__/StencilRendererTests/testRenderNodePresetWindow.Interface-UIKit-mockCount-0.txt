@@ -19,5 +19,5 @@ internal protocol WindowBuilder: AnyObject {
     func build(
         withListener listener: WindowListener,
         viewController: WindowViewControllable
-    ) -> WindowFlow
+    ) async -> WindowFlow
 }

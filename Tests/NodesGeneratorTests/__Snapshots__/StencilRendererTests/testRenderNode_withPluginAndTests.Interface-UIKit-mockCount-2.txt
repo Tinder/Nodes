@@ -22,5 +22,5 @@ internal protocol <nodeName>Flow: <pluginListName>Flow {}
 internal protocol <nodeName>Builder: <pluginListName>Builder {
     func build(
         withListener listener: <nodeName>Listener
-    ) -> <nodeName>Flow
+    ) async -> <nodeName>Flow
 }

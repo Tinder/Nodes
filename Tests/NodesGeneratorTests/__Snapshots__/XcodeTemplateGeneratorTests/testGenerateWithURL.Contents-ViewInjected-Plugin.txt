@@ -73,7 +73,7 @@ internal final class ___VARIABLE_productName___PluginImp: Plugin
     /// Implements the factory build method where the instance is initialized.
     override internal func build(
         component: ___VARIABLE_productName___PluginComponent
-    ) -> ___VARIABLE_productName___Builder {
+    ) async -> ___VARIABLE_productName___Builder {
         ___VARIABLE_productName___BuilderImp(componentFactory: component.componentFactory)
     }
 }

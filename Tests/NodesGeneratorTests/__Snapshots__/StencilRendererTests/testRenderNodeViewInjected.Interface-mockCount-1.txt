@@ -28,5 +28,5 @@ internal protocol <nodeName>Builder: AnyObject {
     func build(
         withListener listener: <nodeName>Listener,
         viewController: <nodeName>ViewControllable
-    ) -> <nodeName>Flow
+    ) async -> <nodeName>Flow
 }

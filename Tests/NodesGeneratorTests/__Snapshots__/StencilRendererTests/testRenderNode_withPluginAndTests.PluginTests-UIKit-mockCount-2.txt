@@ -26,12 +26,14 @@ final class PluginTests: XCTestCase {
     }
 
     @MainActor
-    func testCreate() {
-        expect { [self] in plugin.create() } != nil
+    func testCreate() async {
+        let result = await plugin.create()
+        expect(result) != nil
     }
 
     @MainActor
-    func testOverride() {
-        expect { [self] in plugin.override() } != nil
+    func testOverride() async {
+        let result = await plugin.override()
+        expect(result) != nil
     }
 }

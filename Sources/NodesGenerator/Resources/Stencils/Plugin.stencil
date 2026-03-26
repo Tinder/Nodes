@@ -79,7 +79,7 @@ internal final class {{ plugin_name }}PluginImp: Plugin
     /// Implements the factory build method where the instance is initialized.
     override internal func build(
         component: {{ plugin_name }}PluginComponent
-    ) -> {{ plugin_name }}Builder {
+    ) async -> {{ plugin_name }}Builder {
         {{ plugin_name }}BuilderImp(componentFactory: component.componentFactory)
     }
 }

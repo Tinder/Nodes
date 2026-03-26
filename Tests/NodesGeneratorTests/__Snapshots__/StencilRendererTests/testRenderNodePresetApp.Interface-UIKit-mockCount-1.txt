@@ -14,5 +14,5 @@ internal protocol AppFlow: Flow {}
 /// @mockable
 @MainActor
 internal protocol AppBuilder: AnyObject {
-    func build() -> AppFlow
+    func build() async -> AppFlow
 }

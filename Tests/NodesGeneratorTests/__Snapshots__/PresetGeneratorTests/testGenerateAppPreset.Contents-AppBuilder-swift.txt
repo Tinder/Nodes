@@ -79,17 +79,17 @@ internal final class AppBuilderImp: AbstractBuilder
 
     /// Directs arguments passed through the base class, determining whether each will be provided to its factory build
     /// method or the component initializer.
-    internal func build() -> AppFlow {
+    internal func build() async -> AppFlow {
         let dynamicBuildDependency: AppDynamicBuildDependency = ()
         let dynamicComponentDependency: AppDynamicComponentDependency = ()
-        return build(dynamicBuildDependency, dynamicComponentDependency)
+        return await build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
     /// Implements the factory build method where instances are initialized.
     override internal func build(
         component: AppComponent,
         dynamicBuildDependency: AppDynamicBuildDependency
-    ) -> AppFlow {
+    ) async -> AppFlow {
         let analytics: AppAnalyticsImp = .init()
         let context: AppContextImp = .init(
             workers: [],

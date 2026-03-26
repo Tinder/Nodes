@@ -18,5 +18,5 @@ internal protocol RootFlow: <viewControllableFlowType> {}
 internal protocol RootBuilder: AnyObject {
     func build(
         withListener listener: RootListener
-    ) -> RootFlow
+    ) async -> RootFlow
 }
