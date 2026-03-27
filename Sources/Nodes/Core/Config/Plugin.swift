@@ -68,7 +68,6 @@ open class Plugin<ComponentType, BuildType, StateType> {
     /// - Parameter component: The `ComponentType` instance.
     ///
     /// - Returns: A `BuildType` instance.
-    @available(*, deprecated, message: "Override the async variant instead")
     open func build(component: ComponentType) -> BuildType { // swiftlint:disable:this unavailable_function
         preconditionFailure("Method in abstract base class must be overridden")
     }

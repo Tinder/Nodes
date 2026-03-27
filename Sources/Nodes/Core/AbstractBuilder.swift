@@ -64,7 +64,6 @@ open class AbstractBuilder<ComponentType,
     ///   - dynamicBuildDependency: The `DynamicBuildDependencyType` instance.
     ///
     /// - Returns: A `BuildType` instance (`Flow` object).
-    @available(*, deprecated, message: "Override the async variant instead")
     open func build( // swiftlint:disable:this unavailable_function
         component: ComponentType,
         dynamicBuildDependency: DynamicBuildDependencyType
