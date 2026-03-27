@@ -41,7 +41,7 @@ final class PluginTests: XCTestCase, TestCaseHelpers {
             isEnabledOverride
         }
 
-        // swiftlint:disable:next unused_parameter
+        // swiftlint:disable:next unused_parameter async_without_await
         override func build(component: ComponentType) async -> BuildType {
             BuildType()
         }
@@ -60,11 +60,11 @@ final class PluginTests: XCTestCase, TestCaseHelpers {
     func testAsyncCreate() async {
         let plugin: AsyncTestPlugin = .init { ComponentType() }
         expect(plugin).to(notBeNilAndToDeallocateAfterTest())
-        let result = await plugin.create()
+        let result: BuildType? = await plugin.create()
         expect(result).to(beAKindOf(BuildType.self))
         plugin.isEnabledOverride = false
-        let nilResult = await plugin.create()
-        expect(nilResult).to(beNil())
+        let nilResult: BuildType? = await plugin.create()
+        expect(nilResult) == nil
     }
 
     @MainActor
@@ -78,7 +78,7 @@ final class PluginTests: XCTestCase, TestCaseHelpers {
     func testAsyncOverride() async {
         let plugin: AsyncTestPlugin = .init { ComponentType() }
         expect(plugin).to(notBeNilAndToDeallocateAfterTest())
-        let result = await plugin.override()
+        let result: BuildType = await plugin.override()
         expect(result).to(beAKindOf(BuildType.self))
     }
 

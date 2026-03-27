@@ -108,9 +108,10 @@ open class AbstractBuilder<ComponentType,
     ///   - dynamicBuildDependency: The `DynamicBuildDependencyType` instance.
     ///
     /// - Returns: A `BuildType` instance (`Flow` object).
+    // swiftlint:disable:next async_without_await
     open func build( // swiftlint:disable:this unavailable_function
-        component: ComponentType,
-        dynamicBuildDependency: DynamicBuildDependencyType
+        component: ComponentType, // swiftlint:disable:this unused_parameter
+        dynamicBuildDependency: DynamicBuildDependencyType // swiftlint:disable:this unused_parameter
     ) async -> BuildType {
         preconditionFailure("Method in abstract base class must be overridden")
     }

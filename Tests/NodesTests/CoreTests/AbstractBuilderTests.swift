@@ -27,7 +27,7 @@ final class AbstractBuilderTests: XCTestCase {
 
     private class AsyncTestBuilder: AbstractBuilder<ComponentType, BuildType, Void, Void> {
 
-        // swiftlint:disable:next unused_parameter
+        // swiftlint:disable:next unused_parameter async_without_await
         override func build(component: ComponentType, dynamicBuildDependency: Void) async -> BuildType {
             BuildType()
         }
@@ -42,7 +42,7 @@ final class AbstractBuilderTests: XCTestCase {
     @MainActor
     func testAsyncBuild() async {
         let builder: AsyncTestBuilder = givenAsyncBuilder { ComponentType() }
-        let result = await builder.buildAsync()
+        let result: BuildType = await builder.buildAsync()
         expect(result).to(beAKindOf(BuildType.self))
     }
 

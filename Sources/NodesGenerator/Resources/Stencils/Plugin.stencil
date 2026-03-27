@@ -77,6 +77,7 @@ internal final class {{ plugin_name }}PluginImp: Plugin
     }
 
     /// Implements the factory build method where the instance is initialized.
+    // swiftlint:disable:next async_without_await
     override internal func build(
         component: {{ plugin_name }}PluginComponent
     ) async -> {{ plugin_name }}Builder {

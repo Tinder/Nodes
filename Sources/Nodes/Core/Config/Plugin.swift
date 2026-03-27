@@ -108,6 +108,7 @@ open class Plugin<ComponentType, BuildType, StateType> {
     /// - Parameter component: The `ComponentType` instance.
     ///
     /// - Returns: A `BuildType` instance.
+    // swiftlint:disable:next async_without_await unused_parameter
     open func build(component: ComponentType) async -> BuildType { // swiftlint:disable:this unavailable_function
         preconditionFailure("Method in abstract base class must be overridden")
     }

@@ -86,6 +86,7 @@ internal final class AppBuilderImp: AbstractBuilder
     }
 
     /// Implements the factory build method where instances are initialized.
+    // swiftlint:disable:next async_without_await
     override internal func build(
         component: AppComponent,
         dynamicBuildDependency: AppDynamicBuildDependency
