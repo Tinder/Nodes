@@ -91,8 +91,8 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
         return await build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
+    // swiftlint:disable async_without_await
     /// Implements the factory build method where instances are initialized.
-    // swiftlint:disable:next async_without_await
     override internal func build(
         component: ___VARIABLE_productName___Component,
         dynamicBuildDependency: ___VARIABLE_productName___DynamicBuildDependency
@@ -124,6 +124,7 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
         context.flow = flow
         return flow
     }
+    // swiftlint:enable async_without_await
 }
 
 extension ___VARIABLE_productName___BuilderImp: ___VARIABLE_productName___Builder {}

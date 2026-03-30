@@ -101,8 +101,8 @@ internal final class WindowSceneBuilderImp: AbstractBuilder
         return await build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
+    // swiftlint:disable async_without_await
     /// Implements the factory build method where instances are initialized.
-    // swiftlint:disable:next async_without_await
     override internal func build(
         component: WindowSceneComponent,
         dynamicBuildDependency: WindowSceneDynamicBuildDependency
@@ -128,6 +128,7 @@ internal final class WindowSceneBuilderImp: AbstractBuilder
         context.flow = flow
         return flow
     }
+    // swiftlint:enable async_without_await
 }
 
 extension WindowSceneBuilderImp: WindowSceneBuilder {}

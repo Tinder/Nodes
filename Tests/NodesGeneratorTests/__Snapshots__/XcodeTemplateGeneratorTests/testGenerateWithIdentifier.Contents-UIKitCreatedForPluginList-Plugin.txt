@@ -70,13 +70,14 @@ internal final class ___VARIABLE_productName___PluginImp: Plugin
         true
     }
 
+    // swiftlint:disable async_without_await
     /// Implements the factory build method where the instance is initialized.
-    // swiftlint:disable:next async_without_await
     override internal func build(
         component: ___VARIABLE_productName___PluginComponent
     ) async -> ___VARIABLE_productName___Builder {
         ___VARIABLE_productName___BuilderImp(componentFactory: component.componentFactory)
     }
+    // swiftlint:enable async_without_await
 }
 
 extension ___VARIABLE_productName___PluginImp: ___VARIABLE_productName___Plugin {}
