@@ -633,7 +633,7 @@ files:
               return appComponentFactory()
           }
 
-          private lazy var appFlow: AppFlow = appBuilder.build()
+          private var appFlow: AppFlow?
 
           internal convenience init(appBuilder: AppBuilder) {
               self.init()
@@ -644,19 +644,26 @@ files:
               _ application: UIApplication, // swiftlint:disable:next discouraged_optional_collection
               didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
           ) -> Bool {
-              bootstrap()
+              Task { @MainActor in
+                  await bootstrap()
+              }
               return true
           }
 
-          private func bootstrap() {
+          private func bootstrap() async {
               #if DEBUG
               guard appBuilder is AppBuilderImp
-              else { return appFlow.start() }
+              else {
+                  appFlow = await appBuilder.build()
+                  appFlow?.start()
+                  return
+              }
               guard NSClassFromString("XCTestCase") == nil
               else { return }
               #endif
               registerProviderFactories()
-              appFlow.start()
+              appFlow = await appBuilder.build()
+              appFlow?.start()
           }
       }
 

@@ -94,6 +94,7 @@ open class AbstractBuilder<ComponentType,
 
     // MARK: - Async
 
+    // swiftlint:disable async_without_await unavailable_function unused_parameter
     /// Async variant of the factory method ``build(component:dynamicBuildDependency:)``.
     ///
     /// Override this instead of the synchronous version when your builder needs to
@@ -108,14 +109,13 @@ open class AbstractBuilder<ComponentType,
     ///   - dynamicBuildDependency: The `DynamicBuildDependencyType` instance.
     ///
     /// - Returns: A `BuildType` instance (`Flow` object).
-    // swiftlint:disable async_without_await
-    open func build( // swiftlint:disable:this unavailable_function
-        component: ComponentType, // swiftlint:disable:this unused_parameter
-        dynamicBuildDependency: DynamicBuildDependencyType // swiftlint:disable:this unused_parameter
+    open func build(
+        component: ComponentType,
+        dynamicBuildDependency: DynamicBuildDependencyType
     ) async -> BuildType {
         preconditionFailure("Method in abstract base class must be overridden")
     }
-    // swiftlint:enable async_without_await
+    // swiftlint:enable async_without_await unavailable_function unused_parameter
 
     /// Async variant of ``build(_:_:)``. Creates a `ComponentType` instance and passes it to the
     /// async ``build(component:dynamicBuildDependency:)`` override.
