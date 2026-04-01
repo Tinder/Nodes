@@ -644,12 +644,13 @@ files:
               _ application: UIApplication, // swiftlint:disable:next discouraged_optional_collection
               didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
           ) -> Bool {
-              Task { @MainActor in
+              Task {
                   await bootstrap()
               }
               return true
           }
 
+          @MainActor
           private func bootstrap() async {
               #if DEBUG
               guard appBuilder is AppBuilderImp
