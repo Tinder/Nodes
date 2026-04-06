@@ -39,9 +39,11 @@ internal final class WindowFlowImp: AbstractFlow
     }
 
     private func attachRoot() {
-        let flow: RootFlow = rootBuilder.build(withListener: context)
-        viewController.makeKeyAndVisible(rootViewController: flow.getViewController())
-        attach(starting: flow)
+        Task {
+            let flow: RootFlow = await rootBuilder.build(withListener: context)
+            viewController.makeKeyAndVisible(rootViewController: flow.getViewController())
+            attach(starting: flow)
+        }
     }
 }
 

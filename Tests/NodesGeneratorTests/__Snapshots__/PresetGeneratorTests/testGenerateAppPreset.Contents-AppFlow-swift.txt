@@ -35,9 +35,11 @@ extension AppFlowImp: AppFlow {}
 extension AppFlowImp: AppFlowInterface {
 
     internal func attachWindowScene(_ viewController: WindowSceneViewControllable) {
-        let flow: WindowSceneFlow = windowSceneBuilder.build(withListener: context,
-                                                             viewController: viewController)
-        attach(starting: flow)
+        Task {
+            let flow: WindowSceneFlow = await windowSceneBuilder.build(withListener: context,
+                                                                       viewController: viewController)
+            attach(starting: flow)
+        }
     }
 
     internal func detachWindowScene(_ viewController: WindowSceneViewControllable) {

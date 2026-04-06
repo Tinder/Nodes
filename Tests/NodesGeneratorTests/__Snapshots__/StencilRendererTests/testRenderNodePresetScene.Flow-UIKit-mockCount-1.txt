@@ -40,9 +40,11 @@ internal final class WindowSceneFlowImp: AbstractFlow
     }
 
     private func attachWindow() {
-        let flow: WindowFlow = windowBuilder.build(withListener: context,
-                                                   viewController: viewController.makeWindow())
-        attach(starting: flow)
+        Task {
+            let flow: WindowFlow = await windowBuilder.build(withListener: context,
+                                                             viewController: viewController.makeWindow())
+            attach(starting: flow)
+        }
     }
 }
 
