@@ -37,5 +37,5 @@ internal protocol {{ node_name }}Builder: AnyObject {
 {% endif %}
     func build(
         withListener listener: {{ node_name }}Listener
-    ) async -> {{ node_name }}Flow
+    ) -> {{ node_name }}Flow
 }

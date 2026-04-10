@@ -20,5 +20,5 @@ internal protocol ___VARIABLE_productName___Flow: ViewControllableFlow {}
 internal protocol ___VARIABLE_productName___Builder: AnyObject {
     func build(
         withListener listener: ___VARIABLE_productName___Listener
-    ) async -> ___VARIABLE_productName___Flow
+    ) -> ___VARIABLE_productName___Flow
 }

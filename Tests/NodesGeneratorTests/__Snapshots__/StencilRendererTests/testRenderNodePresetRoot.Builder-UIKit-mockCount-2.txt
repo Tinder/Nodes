@@ -90,18 +90,17 @@ internal final class RootBuilderImp: AbstractBuilder
     /// method or the component initializer.
     internal func build(
         withListener listener: RootListener
-    ) async -> RootFlow {
+    ) -> RootFlow {
         let dynamicBuildDependency: RootDynamicBuildDependency = listener
         let dynamicComponentDependency: RootDynamicComponentDependency = ()
-        return await build(dynamicBuildDependency, dynamicComponentDependency)
+        return build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
-    // swiftlint:disable async_without_await
     /// Implements the factory build method where instances are initialized.
     override internal func build(
         component: RootComponent,
         dynamicBuildDependency: RootDynamicBuildDependency
-    ) async -> RootFlow {
+    ) -> RootFlow {
         let listener: RootListener = dynamicBuildDependency
         let store: <storePrefix>Store<
             RootState,
@@ -134,7 +133,6 @@ internal final class RootBuilderImp: AbstractBuilder
         context.flow = flow
         return flow
     }
-    // swiftlint:enable async_without_await
 }
 
 extension RootBuilderImp: RootBuilder {}

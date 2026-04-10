@@ -83,18 +83,17 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
     /// method or the component initializer.
     internal func build(
         withListener listener: ___VARIABLE_productName___Listener
-    ) async -> ___VARIABLE_productName___Flow {
+    ) -> ___VARIABLE_productName___Flow {
         let dynamicBuildDependency: ___VARIABLE_productName___DynamicBuildDependency = listener
         let dynamicComponentDependency: ___VARIABLE_productName___DynamicComponentDependency = ()
-        return await build(dynamicBuildDependency, dynamicComponentDependency)
+        return build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
-    // swiftlint:disable async_without_await
     /// Implements the factory build method where instances are initialized.
     override internal func build(
         component: ___VARIABLE_productName___Component,
         dynamicBuildDependency: ___VARIABLE_productName___DynamicBuildDependency
-    ) async -> ___VARIABLE_productName___Flow {
+    ) -> ___VARIABLE_productName___Flow {
         let listener: ___VARIABLE_productName___Listener = dynamicBuildDependency
         let store: Store<
             ___VARIABLE_productName___State,
@@ -124,7 +123,6 @@ internal final class ___VARIABLE_productName___BuilderImp: AbstractBuilder
         context.flow = flow
         return flow
     }
-    // swiftlint:enable async_without_await
 }
 
 extension ___VARIABLE_productName___BuilderImp: ___VARIABLE_productName___Builder {}

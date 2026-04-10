@@ -87,26 +87,25 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
     /// Provides plugin list compatibility.
     internal func build(
         withListener listener: <pluginListName>Listener
-    ) async -> <pluginListName>Flow {
-        await build(withListener: listener as <nodeName>Listener)
+    ) -> <pluginListName>Flow {
+        build(withListener: listener as <nodeName>Listener)
     }
 
     /// Directs arguments passed through the base class, determining whether each will be provided to its factory build
     /// method or the component initializer.
     internal func build(
         withListener listener: <nodeName>Listener
-    ) async -> <nodeName>Flow {
+    ) -> <nodeName>Flow {
         let dynamicBuildDependency: <nodeName>DynamicBuildDependency = listener
         let dynamicComponentDependency: <nodeName>DynamicComponentDependency = ()
-        return await build(dynamicBuildDependency, dynamicComponentDependency)
+        return build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
-    // swiftlint:disable async_without_await
     /// Implements the factory build method where instances are initialized.
     override internal func build(
         component: <nodeName>Component,
         dynamicBuildDependency: <nodeName>DynamicBuildDependency
-    ) async -> <nodeName>Flow {
+    ) -> <nodeName>Flow {
         let listener: <nodeName>Listener = dynamicBuildDependency
         let store: <storePrefix>Store<
             <nodeName>State,
@@ -137,7 +136,6 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         context.flow = flow
         return flow
     }
-    // swiftlint:enable async_without_await
 }
 
 extension <nodeName>BuilderImp: <nodeName>Builder {}

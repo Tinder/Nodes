@@ -118,20 +118,16 @@ internal final class {{ node_name }}FlowImp: AbstractFlow
     {% if node_name == "WindowScene" %}
 
     private func attachWindow() {
-        Task {
-            let flow: WindowFlow = await windowBuilder.build(withListener: context,
-                                                             viewController: viewController.makeWindow())
-            attach(starting: flow)
-        }
+        let flow: WindowFlow = windowBuilder.build(withListener: context,
+                                                   viewController: viewController.makeWindow())
+        attach(starting: flow)
     }
     {% elif node_name == "Window" %}
 
     private func attachRoot() {
-        Task {
-            let flow: RootFlow = await rootBuilder.build(withListener: context)
-            viewController.makeKeyAndVisible(rootViewController: flow.getViewController())
-            attach(starting: flow)
-        }
+        let flow: RootFlow = rootBuilder.build(withListener: context)
+        viewController.makeKeyAndVisible(rootViewController: flow.getViewController())
+        attach(starting: flow)
     }
     {% endif %}
 }
@@ -142,11 +138,9 @@ extension {{ node_name }}FlowImp: {{ node_name }}Flow {}
 extension {{ node_name }}FlowImp: {{ node_name }}FlowInterface {
 
     internal func attachWindowScene(_ viewController: WindowSceneViewControllable) {
-        Task {
-            let flow: WindowSceneFlow = await windowSceneBuilder.build(withListener: context,
-                                                                       viewController: viewController)
-            attach(starting: flow)
-        }
+        let flow: WindowSceneFlow = windowSceneBuilder.build(withListener: context,
+                                                             viewController: viewController)
+        attach(starting: flow)
     }
 
     internal func detachWindowScene(_ viewController: WindowSceneViewControllable) {

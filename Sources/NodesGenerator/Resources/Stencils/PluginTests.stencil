@@ -32,24 +32,20 @@ final class {{ plugin_name }}PluginTests: XCTestCase {
     }
 
     @MainActor
-    func testCreate() async {
+    func testCreate() {
         {% if is_nimble_enabled %}
-        let result = await plugin.create()
-        expect(result) != nil
+        expect { [self] in plugin.create() } != nil
         {% else %}
-        let result = await plugin.create()
-        XCTAssertNotNil(result)
+        XCTAssertNotNil(plugin.create())
         {% endif %}
     }
 
     @MainActor
-    func testOverride() async {
+    func testOverride() {
         {% if is_nimble_enabled %}
-        let result = await plugin.override()
-        expect(result) != nil
+        expect { [self] in plugin.override() } != nil
         {% else %}
-        let result = await plugin.override()
-        XCTAssertNotNil(result)
+        XCTAssertNotNil(plugin.override())
         {% endif %}
     }
 }

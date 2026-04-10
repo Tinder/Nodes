@@ -28,5 +28,5 @@ internal protocol ___VARIABLE_productName___Builder: AnyObject {
     func build(
         withListener listener: ___VARIABLE_productName___Listener,
         viewController: ___VARIABLE_productName___ViewControllable
-    ) async -> ___VARIABLE_productName___Flow
+    ) -> ___VARIABLE_productName___Flow
 }

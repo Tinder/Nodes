@@ -71,14 +71,12 @@ internal final class <pluginName>PluginImp: Plugin
         true
     }
 
-    // swiftlint:disable async_without_await
     /// Implements the factory build method where the instance is initialized.
     override internal func build(
         component: <pluginName>PluginComponent
-    ) async -> <pluginName>Builder {
+    ) -> <pluginName>Builder {
         <pluginName>BuilderImp(componentFactory: component.componentFactory)
     }
-    // swiftlint:enable async_without_await
 }
 
 extension <pluginName>PluginImp: <pluginName>Plugin {}

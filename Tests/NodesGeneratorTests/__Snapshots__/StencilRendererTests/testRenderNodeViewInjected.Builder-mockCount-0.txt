@@ -82,18 +82,17 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
     internal func build(
         withListener listener: <nodeName>Listener,
         viewController: <nodeName>ViewControllable
-    ) async -> <nodeName>Flow {
+    ) -> <nodeName>Flow {
         let dynamicBuildDependency: <nodeName>DynamicBuildDependency = (listener, viewController)
         let dynamicComponentDependency: <nodeName>DynamicComponentDependency = ()
-        return await build(dynamicBuildDependency, dynamicComponentDependency)
+        return build(dynamicBuildDependency, dynamicComponentDependency)
     }
 
-    // swiftlint:disable async_without_await
     /// Implements the factory build method where instances are initialized.
     override internal func build(
         component: <nodeName>Component,
         dynamicBuildDependency: <nodeName>DynamicBuildDependency
-    ) async -> <nodeName>Flow {
+    ) -> <nodeName>Flow {
         let listener: <nodeName>Listener = dynamicBuildDependency.0
         let viewController: <nodeName>ViewControllable = dynamicBuildDependency.1
         let analytics: <nodeName>AnalyticsImp = .init()
@@ -109,7 +108,6 @@ internal final class <nodeName>BuilderImp: AbstractBuilder
         context.flow = flow
         return flow
     }
-    // swiftlint:enable async_without_await
 }
 
 extension <nodeName>BuilderImp: <nodeName>Builder {}

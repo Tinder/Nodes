@@ -30,14 +30,12 @@ final class ___VARIABLE_productName___PluginTests: XCTestCase {
     }
 
     @MainActor
-    func testCreate() async {
-        let result = await plugin.create()
-        expect(result) != nil
+    func testCreate() {
+        expect { [self] in plugin.create() } != nil
     }
 
     @MainActor
-    func testOverride() async {
-        let result = await plugin.override()
-        expect(result) != nil
+    func testOverride() {
+        expect { [self] in plugin.override() } != nil
     }
 }
