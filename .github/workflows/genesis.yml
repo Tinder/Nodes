@@ -20,7 +20,9 @@ jobs:
     steps:
     - name: Install dependencies
       run: |
-        brew install mint xcodegen needle mockolo
+        brew install mint xcodegen needle
+        mint install uber/mockolo@2.5.0
+        sudo ln -sf ~/.mint/bin/mockolo /usr/local/bin/mockolo
         mint install yonaskolb/genesis
     - name: Checkout source
       uses: actions/checkout@v6

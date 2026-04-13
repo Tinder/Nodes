@@ -94,6 +94,45 @@ open class Plugin<ComponentType, BuildType, StateType> {
         return build(component: component)
     }
 
+    // MARK: - Async
+
+    // swiftlint:disable async_without_await unavailable_function unused_parameter
+    /// Async variant of ``build(component:)``.
+    ///
+    /// Override this instead of the synchronous version when the plugin needs to
+    /// `await` async dependency resolution.
+    ///
+    /// - Important: This abstract method must be overridden in subclasses that use async building.
+    ///   This method should never be called directly.
+    ///   The plugin calls this method internally.
+    ///
+    /// - Parameter component: The `ComponentType` instance.
+    ///
+    /// - Returns: A `BuildType` instance.
+    open func build(component: ComponentType) async -> BuildType {
+        preconditionFailure("Method in abstract base class must be overridden")
+    }
+    // swiftlint:enable async_without_await unavailable_function unused_parameter
+
+    /// Async variant of ``create(state:)``. Returns a `BuildType` instance when enabled, otherwise `nil`.
+    ///
+    /// - Parameter state: The `StateType` instance.
+    ///
+    /// - Returns: An optional `BuildType` instance.
+    public func create(state: StateType) async -> BuildType? {
+        let component: ComponentType = makeComponent()
+        guard isEnabled(component: component, state: state)
+        else { return nil }
+        return await build(component: component)
+    }
+
+    /// Async variant of ``override()``. Returns a `BuildType` instance ignoring whether the plugin is enabled.
+    ///
+    /// - Returns: A `BuildType` instance.
+    public func override() async -> BuildType {
+        await build(component: makeComponent())
+    }
+
     // MARK: - Access Control: private
 
     private func makeComponent() -> ComponentType {
@@ -116,5 +155,12 @@ extension Plugin where StateType == Void {
     /// - Returns: An optional `BuildType` instance.
     public func create() -> BuildType? {
         create(state: ())
+    }
+
+    /// Async convenience for plugins whose `StateType` is `Void`.
+    ///
+    /// - Returns: An optional `BuildType` instance.
+    public func create() async -> BuildType? {
+        await create(state: ())
     }
 }
