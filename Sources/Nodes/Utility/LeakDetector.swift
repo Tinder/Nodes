@@ -34,12 +34,15 @@ public enum LeakDetector {
         return (info.kp_proc.p_flag & P_TRACED) != 0
     }
 
-    /// Detects whether the given `object` deallocates from memory as expected.
+    /// Detects whether the given `object` instance deallocates from memory as expected.
     ///
     /// - Parameters:
     ///   - object: The instance with which to detect the expected deallocation.
     ///   - delay: The time interval in seconds to wait before leak detection occurs.
-    public static func detect(_ object: AnyObject, delay: TimeInterval = 1) {
+    public static func detect(
+        _ object: AnyObject,
+        delay: TimeInterval = 1
+    ) {
         struct WeakBox: @unchecked Sendable {
             weak var object: AnyObject?
         }
@@ -51,14 +54,32 @@ public enum LeakDetector {
             else { return }
             let message: String = "Expected object to deallocate: \(object)"
             DispatchQueue.main.async {
-                if let callStack: String = callStackSymbols?.joined(separator: "\n") {
-                    print(callStack)
+                if let callStackSymbols: [String] {
+                    print(callStackSymbols.joined(separator: "\n"))
                 }
                 guard isDebuggedProcessBeingTraced
                 else { return assertionFailure(message) }
                 print(message)
                 _ = kill(getpid(), SIGSTOP)
             }
+        }
+    }
+
+    /// Detects whether the instance returned by the given `object` closure deallocates from memory as expected.
+    ///
+    /// - Parameters:
+    ///   - root: The root instance to be passed to the `object` closure.
+    ///   - delay: The time interval in seconds to wait before leak detection occurs.
+    ///   - object: The closure returning the instance with which to detect the expected deallocation.
+    internal static func detect<Root>(
+        _ root: Root,
+        delay: TimeInterval = 1,
+        _ object: @MainActor (Root) -> AnyObject
+    ) {
+        typealias Object = (Root) -> AnyObject
+        withoutActuallyEscaping(object) { object in
+            let object: Object = unsafeBitCast(object, to: Object.self)
+            detect(object(root), delay: delay)
         }
     }
 
@@ -72,8 +93,20 @@ public enum LeakDetector {
 
     #else
 
-    // swiftlint:disable:next unused_parameter
-    public static func detect(_ object: AnyObject, delay: TimeInterval = 1) {}
+    // swiftlint:disable unused_parameter
+
+    public static func detect(
+        _ object: AnyObject,
+        delay: TimeInterval = 1
+    ) {}
+
+    public static func detect<Root>(
+        _ root: Root,
+        delay: TimeInterval = 1,
+        _ object: @MainActor (Root) -> AnyObject
+    ) {}
+
+    // swiftlint:enable unused_parameter
 
     #endif
 }
