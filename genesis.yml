@@ -805,6 +805,7 @@ files:
       //  Created by {{ author }} on {{ date }}.
       //
 
+      import Nimble
       import XCTest
 
       final class {{ project|replace:' ','' }}Tests: XCTestCase {}
