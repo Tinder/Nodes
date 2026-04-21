@@ -139,13 +139,15 @@ open class _BaseContext: Context { // swiftlint:disable:this type_name
         try workerController.withWorkers(ofType: type, perform: perform)
     }
 
+    #if DEBUG
+
     deinit {
-        #if DEBUG
         if isActive {
-            assertionFailure("Lifecycle Violation: Expected `AbstractContext` to deactivate before it is deallocated.")
+            assertionFailure("Lifecycle Violation: Expect `AbstractContext` to deactivate before it is deallocated.")
         }
-        #endif
     }
+
+    #endif
 }
 
 /**
